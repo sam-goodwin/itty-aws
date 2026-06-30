@@ -9,6 +9,16 @@ export const PostTopupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.Array(Schema.String)),
   metadata: Schema.optional(Schema.Unknown),
+  payment_method: Schema.optional(Schema.String),
+  payment_method_options: Schema.optional(
+    Schema.Struct({
+      us_bank_account: Schema.optional(
+        Schema.Struct({
+          network: Schema.Literals(["ach"]),
+        }),
+      ),
+    }),
+  ),
   source: Schema.optional(Schema.String),
   statement_descriptor: Schema.optional(Schema.String),
   transfer_group: Schema.optional(Schema.String),

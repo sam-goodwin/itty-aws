@@ -10,7 +10,12 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const FluidRelayContainersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+    fluidRelayServerName: Schema.String.pipe(T.PathParam()),
+    fluidRelayContainerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers/{fluidRelayContainerName}",
@@ -30,6 +35,10 @@ export type FluidRelayContainersDeleteOutput =
 /**
  * Delete a Fluid Relay container.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
+ * @param resourceGroup - The resource group containing the resource.
+ * @param fluidRelayServerName - The Fluid Relay server resource name.
+ * @param fluidRelayContainerName - The Fluid Relay container resource name.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -40,7 +49,12 @@ export const FluidRelayContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const FluidRelayContainersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+    fluidRelayServerName: Schema.String.pipe(T.PathParam()),
+    fluidRelayContainerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers/{fluidRelayContainerName}",
@@ -64,6 +78,10 @@ export type FluidRelayContainersGetOutput =
 /**
  * Get a Fluid Relay container.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
+ * @param resourceGroup - The resource group containing the resource.
+ * @param fluidRelayServerName - The Fluid Relay server resource name.
+ * @param fluidRelayContainerName - The Fluid Relay container resource name.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -74,7 +92,11 @@ export const FluidRelayContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const FluidRelayContainersListByFluidRelayServersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+    fluidRelayServerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers",
@@ -105,6 +127,9 @@ export type FluidRelayContainersListByFluidRelayServersOutput =
 /**
  * List all Fluid Relay containers which are children of a given Fluid Relay server.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
+ * @param resourceGroup - The resource group containing the resource.
+ * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayContainersListByFluidRelayServers =
@@ -163,6 +188,9 @@ export const FluidRelayOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FluidRelayServersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+    fluidRelayServerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         frsTenantId: Schema.optional(Schema.String),
@@ -261,6 +289,9 @@ export type FluidRelayServersCreateOrUpdateOutput =
 /**
  * Create or Update a Fluid Relay server.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
+ * @param resourceGroup - The resource group containing the resource.
+ * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersCreateOrUpdate =
@@ -270,7 +301,11 @@ export const FluidRelayServersCreateOrUpdate =
   }));
 // Input Schema
 export const FluidRelayServersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+    fluidRelayServerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
@@ -290,6 +325,9 @@ export type FluidRelayServersDeleteOutput =
 /**
  * Delete a Fluid Relay server.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
+ * @param resourceGroup - The resource group containing the resource.
+ * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -300,7 +338,11 @@ export const FluidRelayServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const FluidRelayServersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+    fluidRelayServerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
@@ -322,6 +364,9 @@ export type FluidRelayServersGetOutput = typeof FluidRelayServersGetOutput.Type;
 /**
  * Get a Fluid Relay server.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
+ * @param resourceGroup - The resource group containing the resource.
+ * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -332,7 +377,10 @@ export const FluidRelayServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const FluidRelayServersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers",
@@ -361,6 +409,8 @@ export type FluidRelayServersListByResourceGroupOutput =
 /**
  * List all Fluid Relay servers in a resource group.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
+ * @param resourceGroup - The resource group containing the resource.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersListByResourceGroup =
@@ -370,7 +420,9 @@ export const FluidRelayServersListByResourceGroup =
   }));
 // Input Schema
 export const FluidRelayServersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.FluidRelay/fluidRelayServers",
@@ -399,6 +451,7 @@ export type FluidRelayServersListBySubscriptionOutput =
 /**
  * List all Fluid Relay servers in a subscription.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersListBySubscription =
@@ -408,7 +461,11 @@ export const FluidRelayServersListBySubscription =
   }));
 // Input Schema
 export const FluidRelayServersListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+    fluidRelayServerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/listKeys",
@@ -431,6 +488,9 @@ export type FluidRelayServersListKeysOutput =
 /**
  * Get primary and secondary key for this server.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
+ * @param resourceGroup - The resource group containing the resource.
+ * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -442,6 +502,9 @@ export const FluidRelayServersListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FluidRelayServersRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+    fluidRelayServerName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.Literals(["key1", "key2"]),
   }).pipe(
     T.Http({
@@ -466,6 +529,9 @@ export type FluidRelayServersRegenerateKeyOutput =
 /**
  * Regenerate the primary or secondary key for this server.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
+ * @param resourceGroup - The resource group containing the resource.
+ * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersRegenerateKey =
@@ -476,6 +542,9 @@ export const FluidRelayServersRegenerateKey =
 // Input Schema
 export const FluidRelayServersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+    fluidRelayServerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         encryption: Schema.optional(
@@ -548,6 +617,9 @@ export type FluidRelayServersUpdateOutput =
 /**
  * Update a Fluid Relay server.
  *
+ * @param subscriptionId - The subscription id (GUID) for this resource.
+ * @param resourceGroup - The resource group containing the resource.
+ * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(

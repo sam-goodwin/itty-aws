@@ -23,7 +23,7 @@ export type ExportEvmAccountByNameOutput =
 
 // The operation
 /**
- * Export an EVM account by name
+ * Export EVM account by name
  *
  * Export an existing EVM account's private key by its name. It is important to store the private key in a secure place after it's exported.
  *

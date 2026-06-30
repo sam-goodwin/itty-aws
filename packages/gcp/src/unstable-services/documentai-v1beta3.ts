@@ -6629,7 +6629,7 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
@@ -6654,7 +6654,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -7613,11 +7613,7 @@ export const EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersion
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Evaluates a ProcessorVersion against annotated documents, producing an Evaluation. */
 export const evaluateProcessorVersionProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<
@@ -7661,11 +7657,7 @@ export const ImportProcessorVersionProjectsLocationsProcessorsProcessorVersionsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProcessorVersionProjectsLocationsProcessorsProcessorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Imports a processor version from source processor version. */
 export const importProcessorVersionProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<

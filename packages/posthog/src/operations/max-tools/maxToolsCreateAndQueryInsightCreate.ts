@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const MaxToolsCreateAndQueryInsightCreateInput =
@@ -14,7 +13,7 @@ export const MaxToolsCreateAndQueryInsightCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/max_tools/create_and_query_insight/",
+      path: "/api/projects/{project_id}/max_tools/create_and_query_insight/",
     }),
   );
 export type MaxToolsCreateAndQueryInsightCreateInput =
@@ -35,5 +34,4 @@ export const maxToolsCreateAndQueryInsightCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: MaxToolsCreateAndQueryInsightCreateInput,
     outputSchema: MaxToolsCreateAndQueryInsightCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

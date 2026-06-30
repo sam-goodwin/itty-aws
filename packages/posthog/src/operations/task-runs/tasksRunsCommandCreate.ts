@@ -42,11 +42,10 @@ export type TasksRunsCommandCreateOutput =
 
 // The operation
 /**
- * Send command to agent server
+ * Send command to task run
  *
- * Forward a JSON-RPC command to the agent server running in the sandbox. Supports user_message, cancel, close, permission_response, and set_config_option commands.
+ * Queue user_message JSON-RPC commands through the task workflow and forward sandbox control commands to the agent server. Supports user_message, cancel, close, permission_response, and set_config_option commands.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsCommandCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(

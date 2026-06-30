@@ -27,7 +27,7 @@ export type RemoveOrgUserRoleOutput = typeof RemoveOrgUserRoleOutput.Type;
 /**
  * Remove One Organization Role from One MongoDB Cloud User
  *
- * Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+ * Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times.
  * **Note**: This operation is atomic.
  * **Note**: This resource cannot be used to remove a role from users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
  *

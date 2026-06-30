@@ -38,9 +38,7 @@ export type GetProjectBranchDatabaseOutput =
  * Retrieve database details
  *
  * Retrieves information about the specified database.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` and `database_name` by listing the branch's databases.
- * For related information, see [Manage databases](https://neon.tech/docs/manage/databases/).
+ * For related information, see [Manage databases](https://neon.com/docs/manage/databases/).
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

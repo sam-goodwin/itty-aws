@@ -13,6 +13,7 @@ export const LogsAttributesRetrieveInput =
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
     search: Schema.optional(Schema.String),
+    search_values: Schema.optional(Schema.Boolean),
     serviceNames: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -31,6 +32,8 @@ export const LogsAttributesRetrieveOutput =
         Schema.Struct({
           name: Schema.optional(Schema.String),
           propertyFilterType: Schema.optional(Schema.String),
+          matchedOn: Schema.optional(Schema.Literals(["key", "value"])),
+          matchedValue: Schema.optional(Schema.NullOr(Schema.String)),
         }),
       ),
     ),
@@ -52,6 +55,7 @@ export type LogsAttributesRetrieveOutput =
  * @param offset - Pagination offset (default: 0)
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Search filter for attribute names
+ * @param search_values - When true, the search query also matches attribute values (not just keys). Each result indicates whether it matched on key or value.
  * @param serviceNames - Filter attributes to those appearing in logs from these services.
  */
 export const logsAttributesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(

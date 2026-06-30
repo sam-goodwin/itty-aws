@@ -29,7 +29,7 @@ export type SignEvmTransactionWithEndUserAccountOutput =
 
 // The operation
 /**
- * Sign a transaction with end user EVM account
+ * Sign transaction via end user EVM account
  *
  * Signs a transaction with the given end user EVM account.
  * The transaction should be serialized as a hex string using [RLP](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/).

@@ -30,7 +30,8 @@ export type UpdateNeonAuthUserRoleOutput =
 /**
  * Update auth user role
  *
- * Updates the role of an auth user for the specified project.
+ * Updates the role of a user in the Neon Auth user directory for the specified branch.
+ * The role controls the user's level of access within the Neon Auth integration.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

@@ -29,7 +29,7 @@ export type SignEvmMessageWithEndUserAccountOutput =
 
 // The operation
 /**
- * Sign an EIP-191 message with end user EVM account
+ * Sign EIP-191 message via end user EVM account
  *
  * Signs an [EIP-191](https://eips.ethereum.org/EIPS/eip-191) message with the given end user EVM account.
  * Per the specification, the message in the request body is prepended with `0x19 <0x45 (E)> <thereum Signed Message:\\n" + len(message)>` before being signed.

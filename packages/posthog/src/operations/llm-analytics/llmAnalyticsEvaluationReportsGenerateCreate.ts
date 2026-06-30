@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsEvaluationReportsGenerateCreateInput =
@@ -11,7 +10,7 @@ export const LlmAnalyticsEvaluationReportsGenerateCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/llm_analytics/evaluation_reports/{id}/generate/",
+      path: "/api/projects/{project_id}/llm_analytics/evaluation_reports/{id}/generate/",
     }),
   );
 export type LlmAnalyticsEvaluationReportsGenerateCreateInput =
@@ -34,5 +33,4 @@ export const llmAnalyticsEvaluationReportsGenerateCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsEvaluationReportsGenerateCreateInput,
     outputSchema: LlmAnalyticsEvaluationReportsGenerateCreateOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

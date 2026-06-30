@@ -26,6 +26,9 @@ export const SendEvmAssetWithEndUserAccountInput =
     ]),
     useCdpPaymaster: Schema.optional(Schema.Boolean),
     paymasterUrl: Schema.optional(Schema.String),
+    paymasterContext: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
     walletSecretId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({

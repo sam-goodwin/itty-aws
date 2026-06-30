@@ -12,38 +12,12 @@ export type V1GetJitAccessConfigInput = typeof V1GetJitAccessConfigInput.Type;
 
 // Output Schema
 export const V1GetJitAccessConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user_id: Schema.String,
-    user_roles: Schema.Array(
-      Schema.Struct({
-        role: Schema.String,
-        expires_at: Schema.optional(Schema.Number),
-        allowed_networks: Schema.optional(
-          Schema.Struct({
-            allowed_cidrs: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
-            ),
-            allowed_cidrs_v6: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type V1GetJitAccessConfigOutput = typeof V1GetJitAccessConfigOutput.Type;
 
 // The operation
 /**
- * [Beta] Get project's just-in-time access configuration.
+ * [Beta] Get project's temporary access configuration.
  *
  * @param ref - Project ref
  */

@@ -32,7 +32,7 @@ export type UpdateGroupApiKeyRolesOutput =
 /**
  * Update Organization API Key Roles for One Project
  *
- * Updates the roles of the organization API key that you specify for the project that you specify. You must specify at least one valid role for the project. The application removes any roles that you do not include in this request if they were previously set in the organization API key that you specify for the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+ * Updates the roles of the organization API key that you specify for the project that you specify. You must specify at least one valid role for the project. The application removes any roles that you do not include in this request if they were previously set in the organization API key that you specify for the project.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

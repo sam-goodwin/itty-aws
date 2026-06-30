@@ -35,6 +35,27 @@ export const UserlandUserOrganizationMembershipsControllerCreateOutput =
     role: Schema.Struct({
       slug: Schema.optional(Schema.String),
     }),
+    roles: Schema.Array(
+      Schema.Struct({
+        slug: Schema.optional(Schema.String),
+      }),
+    ),
+    user: Schema.Struct({
+      object: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      first_name: Schema.optional(Schema.NullOr(Schema.String)),
+      last_name: Schema.optional(Schema.NullOr(Schema.String)),
+      name: Schema.optional(Schema.NullOr(Schema.String)),
+      profile_picture_url: Schema.optional(Schema.NullOr(Schema.String)),
+      email: Schema.optional(Schema.String),
+      email_verified: Schema.optional(Schema.Boolean),
+      external_id: Schema.optional(Schema.NullOr(Schema.String)),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      last_sign_in_at: Schema.optional(Schema.NullOr(Schema.String)),
+      locale: Schema.optional(Schema.NullOr(Schema.String)),
+      created_at: Schema.optional(Schema.String),
+      updated_at: Schema.optional(Schema.String),
+    }),
   });
 export type UserlandUserOrganizationMembershipsControllerCreateOutput =
   typeof UserlandUserOrganizationMembershipsControllerCreateOutput.Type;

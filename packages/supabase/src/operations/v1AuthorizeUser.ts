@@ -16,6 +16,7 @@ export const V1AuthorizeUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Literals(["plain", "sha256", "S256"]),
   ),
   organization_slug: Schema.optional(Schema.String),
+  target_flow: Schema.optional(Schema.String),
   resource: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "GET", path: "/v1/oauth/authorize" }));
 export type V1AuthorizeUserInput = typeof V1AuthorizeUserInput.Type;

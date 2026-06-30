@@ -29,11 +29,19 @@ export const VisualReviewRunsSnapshotHistoryListOutput =
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
+          current_artifact: Schema.optional(Schema.Unknown),
           run_id: Schema.optional(Schema.String),
+          snapshot_id: Schema.optional(Schema.String),
           result: Schema.optional(Schema.String),
           branch: Schema.optional(Schema.String),
           commit_sha: Schema.optional(Schema.String),
           created_at: Schema.optional(Schema.String),
+          pr_number: Schema.optional(Schema.NullOr(Schema.Number)),
+          diff_percentage: Schema.optional(Schema.NullOr(Schema.Number)),
+          review_state: Schema.optional(Schema.String),
+          ssim_score: Schema.optional(Schema.NullOr(Schema.Number)),
+          change_kind: Schema.optional(Schema.String),
+          size_mismatch: Schema.optional(Schema.Boolean),
         }),
       ),
     ),

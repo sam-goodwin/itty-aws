@@ -21,6 +21,9 @@ export const V1GetStorageConfigOutput =
       s3Protocol: Schema.Struct({
         enabled: Schema.Boolean,
       }),
+      purgeCache: Schema.Struct({
+        enabled: Schema.Boolean,
+      }),
       icebergCatalog: Schema.Struct({
         enabled: Schema.Boolean,
         maxNamespaces: Schema.Number,

@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const McpToolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -10,7 +9,7 @@ export const McpToolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "/api/environments/{project_id}/mcp_tools/{tool_name}/",
+    path: "/api/projects/{project_id}/mcp_tools/{tool_name}/",
   }),
 );
 export type McpToolsCreateInput = typeof McpToolsCreateInput.Type;
@@ -34,5 +33,4 @@ export type McpToolsCreateOutput = typeof McpToolsCreateOutput.Type;
 export const mcpToolsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: McpToolsCreateInput,
   outputSchema: McpToolsCreateOutput,
-  errors: [Forbidden, NotFound] as const,
 }));

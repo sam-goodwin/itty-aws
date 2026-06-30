@@ -23,6 +23,7 @@ export const UserlandUsersControllerGetByExternalIdOutput =
     id: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
     last_name: Schema.optional(Schema.NullOr(Schema.String)),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
     profile_picture_url: Schema.optional(Schema.NullOr(Schema.String)),
     email: Schema.optional(Schema.String),
     email_verified: Schema.optional(Schema.Boolean),

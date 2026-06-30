@@ -7,46 +7,20 @@ import { BadRequest, Forbidden } from "../errors.ts";
 export const V1UpdateJitAccessConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
-    state: Schema.Literals(["enabled", "disabled", "unavailable"]),
+    state: Schema.Literals(["enabled", "disabled"]),
   }).pipe(T.Http({ method: "PUT", path: "/v1/projects/{ref}/jit-access" }));
 export type V1UpdateJitAccessConfigInput =
   typeof V1UpdateJitAccessConfigInput.Type;
 
 // Output Schema
 export const V1UpdateJitAccessConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user_id: Schema.String,
-    user_roles: Schema.Array(
-      Schema.Struct({
-        role: Schema.String,
-        expires_at: Schema.optional(Schema.Number),
-        allowed_networks: Schema.optional(
-          Schema.Struct({
-            allowed_cidrs: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
-            ),
-            allowed_cidrs_v6: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type V1UpdateJitAccessConfigOutput =
   typeof V1UpdateJitAccessConfigOutput.Type;
 
 // The operation
 /**
- * [Beta] Update project's just-in-time access configuration.
+ * [Beta] Update project's temporary access configuration.
  *
  * @param ref - Project ref
  */

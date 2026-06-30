@@ -182,7 +182,8 @@ export type RestoreSnapshotOutput = typeof RestoreSnapshotOutput.Type;
 /**
  * Restore snapshot
  *
- * Restore the specified snapshot to a new branch and optionally finalize the restore operation.
+ * Restores the specified snapshot to a new branch,
+ * and optionally finalizes the restore operation to replace the original branch.
  * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID

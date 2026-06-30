@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingIssuesAllActivityRetrieveInput =
@@ -10,7 +9,7 @@ export const ErrorTrackingIssuesAllActivityRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/issues/activity/",
+      path: "/api/projects/{project_id}/error_tracking/issues/activity/",
     }),
   );
 export type ErrorTrackingIssuesAllActivityRetrieveInput =
@@ -31,5 +30,4 @@ export const errorTrackingIssuesAllActivityRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingIssuesAllActivityRetrieveInput,
     outputSchema: ErrorTrackingIssuesAllActivityRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

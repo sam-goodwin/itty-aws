@@ -1141,6 +1141,16 @@ export const GoogleCloudDocumentaiV1DocumentRevision: Schema.Schema<GoogleCloudD
     ),
   }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentRevision" });
 
+export interface GoogleCloudDocumentaiV1DocumentAnnotations {
+  /** The description of the content with this annotation. */
+  description?: string;
+}
+
+export const GoogleCloudDocumentaiV1DocumentAnnotations: Schema.Schema<GoogleCloudDocumentaiV1DocumentAnnotations> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentAnnotations" });
+
 export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock {
   /** Text content stored in the block. */
   text?: string;
@@ -1148,6 +1158,8 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   type?: string;
   /** A text block could further have child blocks. Repeated blocks support further hierarchies and nested blocks. */
   blocks?: ReadonlyArray<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>;
+  /** Annotation of the text block. */
+  annotations?: GoogleCloudDocumentaiV1DocumentAnnotations;
 }
 
 export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock: Schema.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock> =
@@ -1160,6 +1172,7 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLay
           GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock,
         ),
       ),
+      annotations: Schema.optional(GoogleCloudDocumentaiV1DocumentAnnotations),
     }),
   ).annotate({
     identifier:
@@ -1217,6 +1230,8 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   bodyRows?: ReadonlyArray<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>;
   /** Table caption/title. */
   caption?: string;
+  /** Annotation of the table block. */
+  annotations?: GoogleCloudDocumentaiV1DocumentAnnotations;
 }
 
 export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock: Schema.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock> =
@@ -1233,6 +1248,7 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLay
         ),
       ),
       caption: Schema.optional(Schema.String),
+      annotations: Schema.optional(GoogleCloudDocumentaiV1DocumentAnnotations),
     }),
   ).annotate({
     identifier:
@@ -1280,6 +1296,34 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLay
       "GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock",
   }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock>;
 
+export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock {
+  /** Optional. Asset id of the inline image. If set, find the image content in the blob_assets field. */
+  blobAssetId?: string;
+  /** Optional. Google Cloud Storage uri of the image. */
+  gcsUri?: string;
+  /** Optional. Data uri of the image. It is composed of four parts: a prefix (data:), a MIME type indicating the type of data, an optional base64 token if non-textual, and the data itself: data:, */
+  dataUri?: string;
+  /** Mime type of the image. An IANA published [media type (MIME type)] (https://www.iana.org/assignments/media-types/media-types.xhtml). */
+  mimeType?: string;
+  /** Text extracted from the image using OCR or alt text describing the image. */
+  imageText?: string;
+  /** Annotation of the image block. */
+  annotations?: GoogleCloudDocumentaiV1DocumentAnnotations;
+}
+
+export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock: Schema.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    blobAssetId: Schema.optional(Schema.String),
+    gcsUri: Schema.optional(Schema.String),
+    dataUri: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    imageText: Schema.optional(Schema.String),
+    annotations: Schema.optional(GoogleCloudDocumentaiV1DocumentAnnotations),
+  }).annotate({
+    identifier:
+      "GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock",
+  });
+
 export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan {
   /** Page where block starts in the document. */
   pageStart?: number;
@@ -1303,6 +1347,8 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   tableBlock?: GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock;
   /** Block consisting of list content/structure. */
   listBlock?: GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock;
+  /** Block consisting of image content. */
+  imageBlock?: GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock;
   /** ID of the block. */
   blockId?: string;
   /** Page span of the block. */
@@ -1322,6 +1368,9 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock: S
       ),
       listBlock: Schema.optional(
         GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock,
+      ),
+      imageBlock: Schema.optional(
+        GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock,
       ),
       blockId: Schema.optional(Schema.String),
       pageSpan: Schema.optional(
@@ -1400,6 +1449,60 @@ export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter:
       "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter",
   });
 
+export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField {
+  /** Optional. Asset id of the inline image. If set, find the image content in the blob_assets field. */
+  blobAssetId?: string;
+  /** Optional. Google Cloud Storage uri of the image. */
+  gcsUri?: string;
+  /** Optional. Data uri of the image. It is composed of four parts: a prefix (data:), a MIME type indicating the type of data, an optional base64 token if non-textual, and the data itself: data:, */
+  dataUri?: string;
+  /** Annotation of the image chunk field. */
+  annotations?: GoogleCloudDocumentaiV1DocumentAnnotations;
+}
+
+export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField: Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    blobAssetId: Schema.optional(Schema.String),
+    gcsUri: Schema.optional(Schema.String),
+    dataUri: Schema.optional(Schema.String),
+    annotations: Schema.optional(GoogleCloudDocumentaiV1DocumentAnnotations),
+  }).annotate({
+    identifier:
+      "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField",
+  });
+
+export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField {
+  /** Annotation of the table chunk field. */
+  annotations?: GoogleCloudDocumentaiV1DocumentAnnotations;
+}
+
+export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField: Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotations: Schema.optional(GoogleCloudDocumentaiV1DocumentAnnotations),
+  }).annotate({
+    identifier:
+      "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField",
+  });
+
+export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField {
+  /** The image chunk field in the chunk. */
+  imageChunkField?: GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField;
+  /** The table chunk field in the chunk. */
+  tableChunkField?: GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField;
+}
+
+export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField: Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageChunkField: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField,
+    ),
+    tableChunkField: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField,
+    ),
+  }).annotate({
+    identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField",
+  });
+
 export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
   /** ID of the chunk. */
   chunkId?: string;
@@ -1413,6 +1516,8 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
   pageHeaders?: ReadonlyArray<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader>;
   /** Page footers associated with the chunk. */
   pageFooters?: ReadonlyArray<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
+  /** Chunk fields inside this chunk. */
+  chunkFields?: ReadonlyArray<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField>;
 }
 
 export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk: Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk> =
@@ -1433,6 +1538,11 @@ export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk: Schema.Schema<
         GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter,
       ),
     ),
+    chunkFields: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField,
+      ),
+    ),
   }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk",
   });
@@ -1448,6 +1558,22 @@ export const GoogleCloudDocumentaiV1DocumentChunkedDocument: Schema.Schema<Googl
       Schema.Array(GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk),
     ),
   }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocument" });
+
+export interface GoogleCloudDocumentaiV1DocumentBlobAsset {
+  /** Optional. The id of the blob asset. */
+  assetId?: string;
+  /** Optional. The content of the blob asset, for example, image bytes. */
+  content?: string;
+  /** The mime type of the blob asset. An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml). */
+  mimeType?: string;
+}
+
+export const GoogleCloudDocumentaiV1DocumentBlobAsset: Schema.Schema<GoogleCloudDocumentaiV1DocumentBlobAsset> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assetId: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentBlobAsset" });
 
 export interface GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult {
   /** Optional. The name of the rule resource that is used for validation. Format: `projects/{project}/locations/{location}/rules/{rule}` */
@@ -1555,6 +1681,8 @@ export interface GoogleCloudDocumentaiV1Document {
   documentLayout?: GoogleCloudDocumentaiV1DocumentDocumentLayout;
   /** Document chunked based on chunking config. */
   chunkedDocument?: GoogleCloudDocumentaiV1DocumentChunkedDocument;
+  /** Optional. The blob assets in this document. This is used to store the content of the inline blobs in this document, for example, image bytes, such that it can be referenced by other fields in the document via asset id. */
+  blobAssets?: ReadonlyArray<GoogleCloudDocumentaiV1DocumentBlobAsset>;
   /** The entity validation output for the document. This is the validation output for `document.entities` field. */
   entityValidationOutput?: GoogleCloudDocumentaiV1DocumentEntityValidationOutput;
   /** A list of entity revisions. The entity revisions are appended to the document in the processing order. This field can be used for comparing the entity extraction results at different stages of the processing. */
@@ -1593,6 +1721,9 @@ export const GoogleCloudDocumentaiV1Document: Schema.Schema<GoogleCloudDocumenta
     ),
     chunkedDocument: Schema.optional(
       GoogleCloudDocumentaiV1DocumentChunkedDocument,
+    ),
+    blobAssets: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentBlobAsset),
     ),
     entityValidationOutput: Schema.optional(
       GoogleCloudDocumentaiV1DocumentEntityValidationOutput,
@@ -6544,7 +6675,7 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
@@ -6569,7 +6700,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -7469,11 +7600,7 @@ export const EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersion
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Evaluates a ProcessorVersion against annotated documents, producing an Evaluation. */
 export const evaluateProcessorVersionProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<

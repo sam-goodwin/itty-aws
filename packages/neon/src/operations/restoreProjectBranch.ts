@@ -137,9 +137,11 @@ export type RestoreProjectBranchOutput = typeof RestoreProjectBranchOutput.Type;
 
 // The operation
 /**
- * Restore branch
+ * Restore branch to a historical state
  *
  * Restores a branch to an earlier state in its own or another branch's history
+ * by specifying an LSN or timestamp.
+ * Creates a new branch from the historical state.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

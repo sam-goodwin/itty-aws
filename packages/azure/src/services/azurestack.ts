@@ -38,6 +38,7 @@ export type CloudManifestFileGetOutput = typeof CloudManifestFileGetOutput.Type;
  *
  * @param verificationVersion - Signing verification key version.
  * @param versionCreationDate - Signing verification key version creation date.
+ * @param api-version - Client API Version.
  */
 export const CloudManifestFileGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -70,6 +71,8 @@ export type CloudManifestFileListOutput =
 // The operation
 /**
  * Returns a cloud specific manifest JSON file with latest version.
+ *
+ * @param api-version - Client API Version.
  */
 export const CloudManifestFileList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -83,6 +86,16 @@ export const CustomerSubscriptionsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
+    customerSubscriptionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -111,6 +124,7 @@ export type CustomerSubscriptionsCreateOutput =
  * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroup - Name of the resource group.
  * @param registrationName - Name of the Azure Stack registration.
+ * @param customerSubscriptionName - Name of the product.
  * @param api-version - Client API Version.
  */
 export const CustomerSubscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -125,6 +139,7 @@ export const CustomerSubscriptionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
+    customerSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -148,6 +163,7 @@ export type CustomerSubscriptionsDeleteOutput =
  * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroup - Name of the resource group.
  * @param registrationName - Name of the Azure Stack registration.
+ * @param customerSubscriptionName - Name of the product.
  * @param api-version - Client API Version.
  */
 export const CustomerSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -162,6 +178,7 @@ export const CustomerSubscriptionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
+    customerSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -190,6 +207,7 @@ export type CustomerSubscriptionsGetOutput =
  * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroup - Name of the resource group.
  * @param registrationName - Name of the Azure Stack registration.
+ * @param customerSubscriptionName - Name of the product.
  * @param api-version - Client API Version.
  */
 export const CustomerSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -249,7 +267,10 @@ export const CustomerSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DeploymentLicenseCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    verificationVersion: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStack/generateDeploymentLicense",
@@ -271,6 +292,9 @@ export type DeploymentLicenseCreateOutput =
 // The operation
 /**
  * Creates a license that can be used to deploy an Azure Stack device.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Client API Version.
  */
 export const DeploymentLicenseCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -315,6 +339,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Returns the list of supported REST operations.
+ *
+ * @param api-version - Client API Version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -325,6 +351,7 @@ export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroup: Schema.String.pipe(T.PathParam()),
   registrationName: Schema.String.pipe(T.PathParam()),
+  productName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -350,6 +377,7 @@ export type ProductsGetOutput = typeof ProductsGetOutput.Type;
  * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroup - Name of the resource group.
  * @param registrationName - Name of the Azure Stack registration.
+ * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
 export const ProductsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -362,6 +390,9 @@ export const ProductsGetProductInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
+    productName: Schema.String.pipe(T.PathParam()),
+    deviceVersion: Schema.optional(Schema.String),
+    identitySystem: Schema.optional(Schema.Literals(["AzureAD", "ADFS"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -388,6 +419,7 @@ export type ProductsGetProductOutput = typeof ProductsGetProductOutput.Type;
  * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroup - Name of the resource group.
  * @param registrationName - Name of the Azure Stack registration.
+ * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
 export const ProductsGetProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -400,6 +432,9 @@ export const ProductsGetProductsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
+    productName: Schema.String.pipe(T.PathParam()),
+    deviceVersion: Schema.optional(Schema.String),
+    identitySystem: Schema.optional(Schema.Literals(["AzureAD", "ADFS"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -433,6 +468,7 @@ export type ProductsGetProductsOutput = typeof ProductsGetProductsOutput.Type;
  * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroup - Name of the resource group.
  * @param registrationName - Name of the Azure Stack registration.
+ * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
 export const ProductsGetProducts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -488,6 +524,7 @@ export const ProductsListDetailsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
+    productName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -545,6 +582,7 @@ export type ProductsListDetailsOutput = typeof ProductsListDetailsOutput.Type;
  * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroup - Name of the resource group.
  * @param registrationName - Name of the Azure Stack registration.
+ * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
 export const ProductsListDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -557,6 +595,9 @@ export const ProductsListProductsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
+    productName: Schema.String.pipe(T.PathParam()),
+    deviceVersion: Schema.optional(Schema.String),
+    identitySystem: Schema.optional(Schema.Literals(["AzureAD", "ADFS"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -590,6 +631,7 @@ export type ProductsListProductsOutput = typeof ProductsListProductsOutput.Type;
  * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroup - Name of the resource group.
  * @param registrationName - Name of the Azure Stack registration.
+ * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
 export const ProductsListProducts = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -604,6 +646,11 @@ export const ProductsUploadLogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
+    productName: Schema.String.pipe(T.PathParam()),
+    operation: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.String),
   },
 ).pipe(
   T.Http({
@@ -638,6 +685,7 @@ export type ProductsUploadLogOutput = typeof ProductsUploadLogOutput.Type;
  * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroup - Name of the resource group.
  * @param registrationName - Name of the Azure Stack registration.
+ * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
 export const ProductsUploadLog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -650,6 +698,10 @@ export const RegistrationsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      registrationToken: Schema.String,
+    }),
+    location: Schema.Literals(["global"]),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -932,6 +984,10 @@ export const RegistrationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      registrationToken: Schema.String,
+    }),
+    location: Schema.Literals(["global"]),
   }).pipe(
     T.Http({
       method: "PATCH",

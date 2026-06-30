@@ -66,6 +66,9 @@ export const PostIssuingCardholdersCardholderInput =
     ),
     spending_controls: Schema.optional(
       Schema.Struct({
+        allowed_card_presences: Schema.optional(
+          Schema.Array(Schema.Literals(["not_present", "present"])),
+        ),
         allowed_categories: Schema.optional(
           Schema.Array(
             Schema.Literals([
@@ -369,6 +372,9 @@ export const PostIssuingCardholdersCardholderInput =
         ),
         allowed_merchant_countries: Schema.optional(
           Schema.Array(Schema.String),
+        ),
+        blocked_card_presences: Schema.optional(
+          Schema.Array(Schema.Literals(["not_present", "present"])),
         ),
         blocked_categories: Schema.optional(
           Schema.Array(

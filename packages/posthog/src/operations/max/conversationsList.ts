@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -11,10 +10,7 @@ export const ConversationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     offset: Schema.optional(Schema.Number),
   },
 ).pipe(
-  T.Http({
-    method: "GET",
-    path: "/api/environments/{project_id}/conversations/",
-  }),
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/conversations/" }),
 );
 export type ConversationsListInput = typeof ConversationsListInput.Type;
 
@@ -32,6 +28,7 @@ export const ConversationsListOutput =
             Schema.Literals(["idle", "in_progress", "canceling"]),
           ),
           title: Schema.optional(Schema.NullOr(Schema.String)),
+          topic: Schema.optional(Schema.Unknown),
           user: Schema.optional(
             Schema.NullOr(
               Schema.Struct({
@@ -64,6 +61,7 @@ export const ConversationsListOutput =
           is_internal: Schema.optional(Schema.NullOr(Schema.Boolean)),
           slack_thread_key: Schema.optional(Schema.NullOr(Schema.String)),
           slack_workspace_domain: Schema.optional(Schema.NullOr(Schema.String)),
+          task: Schema.optional(Schema.Unknown),
         }),
       ),
     ),
@@ -80,5 +78,4 @@ export type ConversationsListOutput = typeof ConversationsListOutput.Type;
 export const conversationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConversationsListInput,
   outputSchema: ConversationsListOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

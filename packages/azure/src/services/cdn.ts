@@ -118,7 +118,7 @@ export const AFDCustomDomainsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDCustomDomainsCreateInput =
@@ -175,7 +175,7 @@ export const AFDCustomDomainsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDCustomDomainsDeleteInput =
@@ -214,7 +214,7 @@ export const AFDCustomDomainsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDCustomDomainsGetInput = typeof AFDCustomDomainsGetInput.Type;
@@ -266,7 +266,7 @@ export const AFDCustomDomainsListByProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDCustomDomainsListByProfileInput =
@@ -336,7 +336,7 @@ export const AFDCustomDomainsRefreshValidationTokenInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}/refreshValidationToken",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDCustomDomainsRefreshValidationTokenInput =
@@ -438,7 +438,7 @@ export const AFDCustomDomainsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDCustomDomainsUpdateInput =
@@ -524,7 +524,7 @@ export const AFDEndpointsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDEndpointsCreateInput = typeof AFDEndpointsCreateInput.Type;
@@ -577,7 +577,7 @@ export const AFDEndpointsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDEndpointsDeleteInput = typeof AFDEndpointsDeleteInput.Type;
@@ -610,7 +610,7 @@ export const AFDEndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AFDEndpointsGetInput = typeof AFDEndpointsGetInput.Type;
@@ -661,7 +661,7 @@ export const AFDEndpointsListByProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDEndpointsListByProfileInput =
@@ -732,7 +732,7 @@ export const AFDEndpointsListResourceUsageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/usages",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDEndpointsListResourceUsageInput =
@@ -786,7 +786,7 @@ export const AFDEndpointsPurgeContentInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/purge",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDEndpointsPurgeContentInput =
@@ -832,7 +832,7 @@ export const AFDEndpointsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDEndpointsUpdateInput = typeof AFDEndpointsUpdateInput.Type;
@@ -886,7 +886,7 @@ export const AFDEndpointsValidateCustomDomainInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/validateCustomDomain",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDEndpointsValidateCustomDomainInput =
@@ -986,7 +986,7 @@ export const AFDOriginGroupsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDOriginGroupsCreateInput = typeof AFDOriginGroupsCreateInput.Type;
@@ -1042,7 +1042,7 @@ export const AFDOriginGroupsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDOriginGroupsDeleteInput = typeof AFDOriginGroupsDeleteInput.Type;
@@ -1080,7 +1080,7 @@ export const AFDOriginGroupsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDOriginGroupsGetInput = typeof AFDOriginGroupsGetInput.Type;
@@ -1132,7 +1132,7 @@ export const AFDOriginGroupsListByProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDOriginGroupsListByProfileInput =
@@ -1202,7 +1202,7 @@ export const AFDOriginGroupsListResourceUsageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/usages",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDOriginGroupsListResourceUsageInput =
@@ -1300,7 +1300,7 @@ export const AFDOriginGroupsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDOriginGroupsUpdateInput = typeof AFDOriginGroupsUpdateInput.Type;
@@ -1407,7 +1407,7 @@ export const AFDOriginsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AFDOriginsCreateInput = typeof AFDOriginsCreateInput.Type;
@@ -1462,7 +1462,7 @@ export const AFDOriginsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AFDOriginsDeleteInput = typeof AFDOriginsDeleteInput.Type;
@@ -1497,7 +1497,7 @@ export const AFDOriginsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AFDOriginsGetInput = typeof AFDOriginsGetInput.Type;
@@ -1550,7 +1550,7 @@ export const AFDOriginsListByOriginGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDOriginsListByOriginGroupInput =
@@ -1661,7 +1661,7 @@ export const AFDOriginsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AFDOriginsUpdateInput = typeof AFDOriginsUpdateInput.Type;
@@ -1728,7 +1728,7 @@ export const AFDProfilesCheckEndpointNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkEndpointNameAvailability",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDProfilesCheckEndpointNameAvailabilityInput =
@@ -1770,7 +1770,7 @@ export const AFDProfilesCheckHostNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkHostNameAvailability",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDProfilesCheckHostNameAvailabilityInput =
@@ -1810,7 +1810,7 @@ export const AFDProfilesListResourceUsageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/usages",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDProfilesListResourceUsageInput =
@@ -1868,7 +1868,7 @@ export const AFDProfilesUpgradeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/upgrade",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDProfilesUpgradeInput = typeof AFDProfilesUpgradeInput.Type;
@@ -1929,7 +1929,7 @@ export const AFDProfilesValidateSecretInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/validateSecret",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AFDProfilesValidateSecretInput =
@@ -1988,7 +1988,7 @@ export const CheckEndpointNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/checkEndpointNameAvailability",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type CheckEndpointNameAvailabilityInput =
@@ -2030,7 +2030,7 @@ export const CheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Cdn/checkNameAvailability",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type CheckNameAvailabilityInput = typeof CheckNameAvailabilityInput.Type;
@@ -2070,7 +2070,7 @@ export const CheckNameAvailabilityWithSubscriptionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkNameAvailability",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type CheckNameAvailabilityWithSubscriptionInput =
@@ -2115,7 +2115,7 @@ export const CustomDomainsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type CustomDomainsCreateInput = typeof CustomDomainsCreateInput.Type;
@@ -2170,7 +2170,7 @@ export const CustomDomainsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type CustomDomainsDeleteInput = typeof CustomDomainsDeleteInput.Type;
@@ -2207,7 +2207,7 @@ export const CustomDomainsDisableCustomHttpsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/disableCustomHttps",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type CustomDomainsDisableCustomHttpsInput =
@@ -2270,7 +2270,7 @@ export const CustomDomainsEnableCustomHttpsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type CustomDomainsEnableCustomHttpsInput =
@@ -2327,7 +2327,7 @@ export const CustomDomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type CustomDomainsGetInput = typeof CustomDomainsGetInput.Type;
@@ -2382,7 +2382,7 @@ export const CustomDomainsListByEndpointInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type CustomDomainsListByEndpointInput =
@@ -2450,7 +2450,7 @@ export const EdgeNodesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Cdn/edgenodes",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EdgeNodesListInput = typeof EdgeNodesListInput.Type;
@@ -2619,7 +2619,7 @@ export const EndpointsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EndpointsCreateInput = typeof EndpointsCreateInput.Type;
@@ -2670,7 +2670,7 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
@@ -2703,7 +2703,7 @@ export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EndpointsGetInput = typeof EndpointsGetInput.Type;
@@ -2754,7 +2754,7 @@ export const EndpointsListByProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type EndpointsListByProfileInput =
@@ -2825,7 +2825,7 @@ export const EndpointsListResourceUsageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/checkResourceUsage",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type EndpointsListResourceUsageInput =
@@ -2875,7 +2875,7 @@ export const EndpointsLoadContentInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/load",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type EndpointsLoadContentInput = typeof EndpointsLoadContentInput.Type;
@@ -2913,7 +2913,7 @@ export const EndpointsPurgeContentInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/purge",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type EndpointsPurgeContentInput = typeof EndpointsPurgeContentInput.Type;
@@ -2950,7 +2950,7 @@ export const EndpointsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/start",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EndpointsStartInput = typeof EndpointsStartInput.Type;
@@ -3001,7 +3001,7 @@ export const EndpointsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/stop",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EndpointsStopInput = typeof EndpointsStopInput.Type;
@@ -3168,7 +3168,7 @@ export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
@@ -3221,7 +3221,7 @@ export const EndpointsValidateCustomDomainInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/validateCustomDomain",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type EndpointsValidateCustomDomainInput =
@@ -3262,7 +3262,7 @@ export const LogAnalyticsGetLogAnalyticsLocationsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsLocations",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type LogAnalyticsGetLogAnalyticsLocationsInput =
@@ -3323,7 +3323,7 @@ export const LogAnalyticsGetLogAnalyticsMetricsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type LogAnalyticsGetLogAnalyticsMetricsInput =
@@ -3400,7 +3400,7 @@ export const LogAnalyticsGetLogAnalyticsRankingsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsRankings",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type LogAnalyticsGetLogAnalyticsRankingsInput =
@@ -3462,7 +3462,7 @@ export const LogAnalyticsGetLogAnalyticsResourcesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsResources",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type LogAnalyticsGetLogAnalyticsResourcesInput =
@@ -3535,7 +3535,7 @@ export const LogAnalyticsGetWafLogAnalyticsMetricsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsMetrics",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type LogAnalyticsGetWafLogAnalyticsMetricsInput =
@@ -3606,7 +3606,7 @@ export const LogAnalyticsGetWafLogAnalyticsRankingsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsRankings",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type LogAnalyticsGetWafLogAnalyticsRankingsInput =
@@ -3660,7 +3660,7 @@ export const ManagedRuleSetsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/cdnWebApplicationFirewallManagedRuleSets",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ManagedRuleSetsListInput = typeof ManagedRuleSetsListInput.Type;
@@ -3721,7 +3721,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Cdn/operations",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -3865,7 +3865,7 @@ export const OriginGroupsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type OriginGroupsCreateInput = typeof OriginGroupsCreateInput.Type;
@@ -3920,7 +3920,7 @@ export const OriginGroupsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type OriginGroupsDeleteInput = typeof OriginGroupsDeleteInput.Type;
@@ -3955,7 +3955,7 @@ export const OriginGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type OriginGroupsGetInput = typeof OriginGroupsGetInput.Type;
@@ -4008,7 +4008,7 @@ export const OriginGroupsListByEndpointInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type OriginGroupsListByEndpointInput =
@@ -4125,7 +4125,7 @@ export const OriginGroupsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type OriginGroupsUpdateInput = typeof OriginGroupsUpdateInput.Type;
@@ -4194,7 +4194,7 @@ export const OriginsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type OriginsCreateInput = typeof OriginsCreateInput.Type;
@@ -4247,7 +4247,7 @@ export const OriginsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type OriginsDeleteInput = typeof OriginsDeleteInput.Type;
@@ -4282,7 +4282,7 @@ export const OriginsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type OriginsGetInput = typeof OriginsGetInput.Type;
@@ -4335,7 +4335,7 @@ export const OriginsListByEndpointInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type OriginsListByEndpointInput = typeof OriginsListByEndpointInput.Type;
@@ -4421,7 +4421,7 @@ export const OriginsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type OriginsUpdateInput = typeof OriginsUpdateInput.Type;
@@ -4703,7 +4703,7 @@ export const PoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type PoliciesCreateOrUpdateInput =
@@ -4757,7 +4757,7 @@ export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type PoliciesDeleteInput = typeof PoliciesDeleteInput.Type;
@@ -4788,7 +4788,7 @@ export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type PoliciesGetInput = typeof PoliciesGetInput.Type;
@@ -4836,7 +4836,7 @@ export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type PoliciesListInput = typeof PoliciesListInput.Type;
@@ -4890,7 +4890,7 @@ export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type PoliciesUpdateInput = typeof PoliciesUpdateInput.Type;
@@ -4942,7 +4942,7 @@ export const ProfilesCanMigrateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/canMigrate",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ProfilesCanMigrateInput = typeof ProfilesCanMigrateInput.Type;
@@ -4998,7 +4998,7 @@ export const ProfilesCdnCanMigrateToAfdInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnCanMigrateToAfd",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ProfilesCdnCanMigrateToAfdInput =
@@ -5086,7 +5086,7 @@ export const ProfilesCdnMigrateToAfdInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnMigrateToAfd",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ProfilesCdnMigrateToAfdInput =
@@ -5229,7 +5229,7 @@ export const ProfilesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ProfilesCreateInput = typeof ProfilesCreateInput.Type;
@@ -5278,7 +5278,7 @@ export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ProfilesDeleteInput = typeof ProfilesDeleteInput.Type;
@@ -5310,7 +5310,7 @@ export const ProfilesGenerateSsoUriInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/generateSsoUri",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ProfilesGenerateSsoUriInput =
@@ -5348,7 +5348,7 @@ export const ProfilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ProfilesGetInput = typeof ProfilesGetInput.Type;
@@ -5395,7 +5395,7 @@ export const ProfilesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/profiles",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ProfilesListInput = typeof ProfilesListInput.Type;
@@ -5447,7 +5447,7 @@ export const ProfilesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ProfilesListByResourceGroupInput =
@@ -5516,7 +5516,7 @@ export const ProfilesListResourceUsageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkResourceUsage",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ProfilesListResourceUsageInput =
@@ -5563,7 +5563,7 @@ export const ProfilesListSupportedOptimizationTypesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getSupportedOptimizationTypes",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ProfilesListSupportedOptimizationTypesInput =
@@ -5648,7 +5648,7 @@ export const ProfilesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/migrate",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ProfilesMigrateInput = typeof ProfilesMigrateInput.Type;
@@ -5691,7 +5691,7 @@ export const ProfilesMigrationAbortInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationAbort",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ProfilesMigrationAbortInput =
@@ -5728,7 +5728,7 @@ export const ProfilesMigrationCommitInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationCommit",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ProfilesMigrationCommitInput =
@@ -5812,7 +5812,7 @@ export const ProfilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ProfilesUpdateInput = typeof ProfilesUpdateInput.Type;
@@ -5861,7 +5861,7 @@ export const ResourceUsageListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ResourceUsageListInput = typeof ResourceUsageListInput.Type;
@@ -5974,7 +5974,7 @@ export const RoutesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RoutesCreateInput = typeof RoutesCreateInput.Type;
@@ -6027,7 +6027,7 @@ export const RoutesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RoutesDeleteInput = typeof RoutesDeleteInput.Type;
@@ -6062,7 +6062,7 @@ export const RoutesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RoutesGetInput = typeof RoutesGetInput.Type;
@@ -6115,7 +6115,7 @@ export const RoutesListByEndpointInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type RoutesListByEndpointInput = typeof RoutesListByEndpointInput.Type;
@@ -6244,7 +6244,7 @@ export const RoutesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RoutesUpdateInput = typeof RoutesUpdateInput.Type;
@@ -6362,7 +6362,7 @@ export const RulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RulesCreateInput = typeof RulesCreateInput.Type;
@@ -6415,7 +6415,7 @@ export const RulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RulesDeleteInput = typeof RulesDeleteInput.Type;
@@ -6445,11 +6445,27 @@ export const RuleSetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
   ruleSetName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Updating",
+          "Deleting",
+          "Creating",
+        ]),
+      ),
+      deploymentStatus: Schema.optional(
+        Schema.Literals(["NotStarted", "InProgress", "Succeeded", "Failed"]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RuleSetsCreateInput = typeof RuleSetsCreateInput.Type;
@@ -6478,7 +6494,7 @@ export type RuleSetsCreateOutput = typeof RuleSetsCreateOutput.Type;
 
 // The operation
 /**
- * Creates a new rule set within the specified profile.
+ * Creates or update a batch rule set within the specified profile along with the rules associate to it.
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
@@ -6500,7 +6516,7 @@ export const RuleSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RuleSetsDeleteInput = typeof RuleSetsDeleteInput.Type;
@@ -6533,7 +6549,7 @@ export const RuleSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RuleSetsGetInput = typeof RuleSetsGetInput.Type;
@@ -6584,7 +6600,7 @@ export const RuleSetsListByProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type RuleSetsListByProfileInput = typeof RuleSetsListByProfileInput.Type;
@@ -6654,7 +6670,7 @@ export const RuleSetsListResourceUsageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/usages",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type RuleSetsListResourceUsageInput =
@@ -6707,7 +6723,7 @@ export const RulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RulesGetInput = typeof RulesGetInput.Type;
@@ -6760,7 +6776,7 @@ export const RulesListByRuleSetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type RulesListByRuleSetInput = typeof RulesListByRuleSetInput.Type;
@@ -6881,7 +6897,7 @@ export const RulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type RulesUpdateInput = typeof RulesUpdateInput.Type;
@@ -6949,7 +6965,7 @@ export const SecretsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SecretsCreateInput = typeof SecretsCreateInput.Type;
@@ -7000,7 +7016,7 @@ export const SecretsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SecretsDeleteInput = typeof SecretsDeleteInput.Type;
@@ -7033,7 +7049,7 @@ export const SecretsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SecretsGetInput = typeof SecretsGetInput.Type;
@@ -7084,7 +7100,7 @@ export const SecretsListByProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SecretsListByProfileInput = typeof SecretsListByProfileInput.Type;
@@ -7169,7 +7185,7 @@ export const SecurityPoliciesCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SecurityPoliciesCreateInput =
@@ -7226,7 +7242,7 @@ export const SecurityPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SecurityPoliciesDeleteInput =
@@ -7265,7 +7281,7 @@ export const SecurityPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SecurityPoliciesGetInput = typeof SecurityPoliciesGetInput.Type;
@@ -7317,7 +7333,7 @@ export const SecurityPoliciesListByProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SecurityPoliciesListByProfileInput =
@@ -7396,7 +7412,7 @@ export const SecurityPoliciesPatchInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
-      apiVersion: "2025-06-01",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SecurityPoliciesPatchInput = typeof SecurityPoliciesPatchInput.Type;
@@ -7449,7 +7465,7 @@ export const ValidateProbeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/validateProbe",
-    apiVersion: "2025-06-01",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ValidateProbeInput = typeof ValidateProbeInput.Type;

@@ -1197,7 +1197,7 @@ export interface ListCustomHostnamesRequest {
   zoneId: string;
   page?: number;
   perPage?: number;
-  /** Query param: Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname' parameter. */
+  /** Query param: Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostnam */
   id?: string;
   /** Query param: Filter by the certificate authority that issued the SSL certificate. */
   certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | (string & {});
@@ -1206,7 +1206,7 @@ export interface ListCustomHostnamesRequest {
   /** Query param: Direction to order hostnames. */
   direction?: "asc" | "desc" | (string & {});
   /** Query param */
-  hostname?: { contain?: string };
+  hostname?: { contain?: string; exact?: string; startsWith?: string };
   /** Query param: Filter by the hostname's activation status. */
   hostnameStatus?:
     | "active"
@@ -1280,6 +1280,8 @@ export const ListCustomHostnamesRequest =
       hostname: Schema.optional(
         Schema.Struct({
           contain: Schema.optional(Schema.String),
+          exact: Schema.optional(Schema.String),
+          startsWith: Schema.optional(Schema.String),
         }),
       ).pipe(T.HttpQuery("hostname")),
       hostnameStatus: Schema.optional(

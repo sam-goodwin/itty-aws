@@ -48,6 +48,8 @@ export type DomainServiceOperationsListOutput =
 // The operation
 /**
  * Lists all the available Domain Services operations.
+ *
+ * @param api-version - Client Api Version.
  */
 export const DomainServiceOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -58,6 +60,9 @@ export const DomainServiceOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DomainServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    domainServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         version: Schema.optional(Schema.Number),
@@ -285,6 +290,11 @@ export type DomainServicesCreateOrUpdateOutput =
  * Create or Update Domain Service (PUT Resource)
  *
  * The Create Domain Service operation creates a new domain service with the specified parameters. If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param domainServiceName - The name of the domain service.
  */
 export const DomainServicesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -293,7 +303,11 @@ export const DomainServicesCreateOrUpdate =
   }));
 // Input Schema
 export const DomainServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    domainServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
@@ -312,6 +326,11 @@ export type DomainServicesDeleteOutput = typeof DomainServicesDeleteOutput.Type;
  * Delete Domain Service (DELETE Resource)
  *
  * The Delete Domain Service operation deletes an existing Domain Service.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param domainServiceName - The name of the domain service.
  */
 export const DomainServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -321,7 +340,11 @@ export const DomainServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DomainServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    domainServiceName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -362,6 +385,11 @@ export type DomainServicesGetOutput = typeof DomainServicesGetOutput.Type;
  * Get Domain Service
  *
  * The Get Domain Service operation retrieves a json representation of the Domain Service.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param domainServiceName - The name of the domain service.
  */
 export const DomainServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DomainServicesGetInput,
@@ -369,7 +397,9 @@ export const DomainServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DomainServicesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AAD/domainServices",
@@ -426,6 +456,9 @@ export type DomainServicesListOutput = typeof DomainServicesListOutput.Type;
  * List Domain Services in Subscription
  *
  * The List Domain Services in Subscription operation lists all the domain services available under the given subscription (and across all resource groups within that subscription).
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DomainServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DomainServicesListInput,
@@ -433,7 +466,10 @@ export const DomainServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DomainServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices",
@@ -492,6 +528,10 @@ export type DomainServicesListByResourceGroupOutput =
  * List Domain Services in Resource Group
  *
  * The List Domain Services in Resource Group operation lists all the domain services available under the given resource group.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  */
 export const DomainServicesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -501,6 +541,9 @@ export const DomainServicesListByResourceGroup =
 // Input Schema
 export const DomainServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    domainServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         version: Schema.optional(Schema.Number),
@@ -726,6 +769,11 @@ export type DomainServicesUpdateOutput = typeof DomainServicesUpdateOutput.Type;
  * Update Domain Service (PATCH Resource)
  *
  * The Update Domain Service operation can be used to update the existing deployment. The update call only supports the properties listed in the PATCH body.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param domainServiceName - The name of the domain service.
  */
 export const DomainServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -736,6 +784,10 @@ export const DomainServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const OuContainerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    domainServiceName: Schema.String.pipe(T.PathParam()),
+    ouContainerName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.optional(Schema.String),
     spn: Schema.optional(Schema.String),
     password: Schema.optional(SensitiveString),
@@ -780,6 +832,12 @@ export type OuContainerCreateOutput = typeof OuContainerCreateOutput.Type;
  * Create OuContainer
  *
  * The Create OuContainer operation creates a new OuContainer under the specified Domain Service instance.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param domainServiceName - The name of the domain service.
+ * @param ouContainerName - The name of the OuContainer.
  */
 export const OuContainerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OuContainerCreateInput,
@@ -787,7 +845,12 @@ export const OuContainerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const OuContainerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    domainServiceName: Schema.String.pipe(T.PathParam()),
+    ouContainerName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "DELETE",
@@ -806,15 +869,24 @@ export type OuContainerDeleteOutput = typeof OuContainerDeleteOutput.Type;
  * Delete OuContainer
  *
  * The Delete OuContainer operation deletes specified OuContainer.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param domainServiceName - The name of the domain service.
+ * @param ouContainerName - The name of the OuContainer.
  */
 export const OuContainerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OuContainerDeleteInput,
   outputSchema: OuContainerDeleteOutput,
 }));
 // Input Schema
-export const OuContainerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OuContainerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  domainServiceName: Schema.String.pipe(T.PathParam()),
+  ouContainerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
@@ -853,15 +925,23 @@ export type OuContainerGetOutput = typeof OuContainerGetOutput.Type;
  * Get particular OuContainer in DomainService instance
  *
  * Get OuContainer in DomainService instance.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param domainServiceName - The name of the domain service.
+ * @param ouContainerName - The name of the OuContainer.
  */
 export const OuContainerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OuContainerGetInput,
   outputSchema: OuContainerGetOutput,
 }));
 // Input Schema
-export const OuContainerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OuContainerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  domainServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer",
@@ -917,6 +997,11 @@ export type OuContainerListOutput = typeof OuContainerListOutput.Type;
  * List of OuContainers in DomainService instance
  *
  * The List of OuContainers in DomainService instance.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param domainServiceName - The name of the domain service.
  */
 export const OuContainerList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OuContainerListInput,
@@ -961,6 +1046,8 @@ export type OuContainerOperationsListOutput =
 // The operation
 /**
  * Lists all the available OuContainer operations.
+ *
+ * @param api-version - Client Api Version.
  */
 export const OuContainerOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -971,6 +1058,10 @@ export const OuContainerOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const OuContainerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    domainServiceName: Schema.String.pipe(T.PathParam()),
+    ouContainerName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.optional(Schema.String),
     spn: Schema.optional(Schema.String),
     password: Schema.optional(SensitiveString),
@@ -1015,6 +1106,12 @@ export type OuContainerUpdateOutput = typeof OuContainerUpdateOutput.Type;
  * Update OuContainer (PATCH Resource)
  *
  * The Update OuContainer operation can be used to update the existing OuContainers.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param domainServiceName - The name of the domain service.
+ * @param ouContainerName - The name of the OuContainer.
  */
 export const OuContainerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OuContainerUpdateInput,

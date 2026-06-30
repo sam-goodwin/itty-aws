@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Conflict, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const WebhookEndpointsControllerCreateInput =
@@ -28,6 +28,7 @@ export const WebhookEndpointsControllerCreateInput =
           "authentication.radar_risk_detected",
           "api_key.created",
           "api_key.revoked",
+          "api_key.updated",
           "connection.activated",
           "connection.deactivated",
           "connection.saml_certificate_renewal_required",
@@ -83,7 +84,12 @@ export const WebhookEndpointsControllerCreateInput =
           "permission.created",
           "permission.deleted",
           "permission.updated",
+          "pipes.connected_account.connected",
+          "pipes.connected_account.connection_failed",
+          "pipes.connected_account.disconnected",
+          "pipes.connected_account.reauthorization_needed",
           "session.created",
+          "session.reauthenticated",
           "session.revoked",
           "waitlist_user.approved",
           "waitlist_user.created",
@@ -101,7 +107,7 @@ export const WebhookEndpointsControllerCreateOutput =
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     endpoint_url: Schema.optional(Schema.String),
-    secret: Schema.optional(SensitiveString),
+    secret: Schema.optional(SensitiveOutputString),
     status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
     events: Schema.optional(Schema.Array(Schema.String)),
     created_at: Schema.optional(Schema.String),

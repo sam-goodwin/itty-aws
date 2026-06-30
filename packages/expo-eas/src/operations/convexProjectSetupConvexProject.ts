@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation convexProjectSetupConvexProject($input: SetupConvexProjectInput!) {\n  convexProject {\n    setupConvexProject(input: $input) {\n      convexDeploymentName\n      convexDeploymentUrl\n      convexProject {\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        convexProjectIdentifier\n        convexProjectName\n        convexProjectSlug\n        convexTeamConnection {\n          convexTeamIdentifier\n          convexTeamName\n          convexTeamSlug\n          createdAt\n          hasBeenClaimed\n          id\n          invitedAt\n          invitedEmail\n          updatedAt\n        }\n        createdAt\n        id\n        updatedAt\n      }\n      deployKey\n    }\n  }\n}";
+  "mutation convexProjectSetupConvexProject($input: SetupConvexProjectInput!) {\n  convexProject {\n    setupConvexProject(input: $input) {\n      convexDeploymentName\n      convexDeploymentUrl\n      convexProject {\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        convexProjectIdentifier\n        convexProjectName\n        convexProjectSlug\n        convexTeamConnection {\n          convexTeamIdentifier\n          convexTeamName\n          convexTeamSlug\n          createdAt\n          hasBeenClaimed\n          id\n          invitedAt\n          invitedEmail\n          updatedAt\n        }\n        createdAt\n        id\n        updatedAt\n      }\n      deployKey\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const ConvexProjectSetupConvexProjectInput = Schema.Struct({
@@ -30,6 +30,11 @@ export const ConvexProjectSetupConvexProjectOutput = Schema.Struct({
   convexDeploymentUrl: Schema.String,
   convexProject: Schema.Struct({
     app: Schema.Struct({
+      appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+        "HAS_WORKFLOWS_IS_CONNECTED",
+        "HAS_WORKFLOWS_MISSING_CONNECTION",
+        "NO_APP_STORE_CONNECT_WORKFLOWS",
+      ]),
       appStoreUrl: Schema.NullOr(Schema.String),
       assetLimitPerUpdateGroup: Schema.Number,
       buildProfiles: Schema.Array(Schema.String),

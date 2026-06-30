@@ -34,9 +34,8 @@ export type RevokeOrgApiKeyOutput = typeof RevokeOrgApiKeyOutput.Type;
  * Revokes the specified organization API key.
  * An API key that is no longer needed can be revoked.
  * This action cannot be reversed.
- * You can obtain `key_id` values by listing the API keys for an organization.
  * API keys can also be managed in the Neon Console.
- * See [Manage API keys](https://neon.tech/docs/manage/api-keys/).
+ * See [Manage API keys](https://neon.com/docs/manage/api-keys/).
  *
  * @param org_id - The Neon organization ID
  * @param key_id - The API key ID

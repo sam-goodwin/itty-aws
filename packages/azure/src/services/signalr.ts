@@ -139,6 +139,7 @@ export const SignalRCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.String,
@@ -450,6 +451,7 @@ export type SignalRCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -462,6 +464,7 @@ export const SignalRCustomCertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
@@ -521,6 +524,7 @@ export type SignalRCustomCertificatesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param certificateName - Custom certificate name
  * @param api-version - The API version to use for this operation.
  */
@@ -534,6 +538,7 @@ export const SignalRCustomCertificatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -557,6 +562,7 @@ export type SignalRCustomCertificatesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param certificateName - Custom certificate name
  * @param api-version - The API version to use for this operation.
  */
@@ -570,6 +576,7 @@ export const SignalRCustomCertificatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -611,6 +618,7 @@ export type SignalRCustomCertificatesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param certificateName - Custom certificate name
  * @param api-version - The API version to use for this operation.
  */
@@ -624,6 +632,7 @@ export const SignalRCustomCertificatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -681,6 +690,7 @@ export type SignalRCustomCertificatesListOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRCustomCertificatesList =
@@ -693,6 +703,7 @@ export const SignalRCustomDomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
@@ -753,6 +764,7 @@ export type SignalRCustomDomainsCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
@@ -766,6 +778,7 @@ export const SignalRCustomDomainsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -789,6 +802,7 @@ export type SignalRCustomDomainsDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
@@ -803,6 +817,7 @@ export const SignalRCustomDomainsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -844,6 +859,7 @@ export type SignalRCustomDomainsGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
@@ -858,6 +874,7 @@ export const SignalRCustomDomainsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -915,6 +932,7 @@ export type SignalRCustomDomainsListOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -927,6 +945,7 @@ export const SignalRCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SignalRDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -947,6 +966,7 @@ export type SignalRDeleteOutput = typeof SignalRDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SignalRDeleteInput,
@@ -956,6 +976,7 @@ export const SignalRDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SignalRGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -994,6 +1015,7 @@ export type SignalRGetOutput = typeof SignalRGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SignalRGetInput,
@@ -1141,6 +1163,7 @@ export const SignalRListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SignalRListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -1166,6 +1189,7 @@ export type SignalRListKeysOutput = typeof SignalRListKeysOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SignalRListKeysInput,
@@ -1176,6 +1200,8 @@ export const SignalRListReplicaSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1229,6 +1255,8 @@ export type SignalRListReplicaSkusOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRListReplicaSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1241,6 +1269,7 @@ export const SignalRListReplicaSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SignalRListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1292,6 +1321,7 @@ export type SignalRListSkusOutput = typeof SignalRListSkusOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SignalRListSkusInput,
@@ -1303,6 +1333,7 @@ export const SignalRPrivateEndpointConnectionsDeleteInput =
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1327,6 +1358,7 @@ export type SignalRPrivateEndpointConnectionsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRPrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1339,6 +1371,7 @@ export const SignalRPrivateEndpointConnectionsGetInput =
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1381,6 +1414,7 @@ export type SignalRPrivateEndpointConnectionsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRPrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1392,6 +1426,7 @@ export const SignalRPrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1450,6 +1485,7 @@ export type SignalRPrivateEndpointConnectionsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRPrivateEndpointConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1462,6 +1498,7 @@ export const SignalRPrivateEndpointConnectionsUpdateInput =
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -1541,6 +1578,7 @@ export type SignalRPrivateEndpointConnectionsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRPrivateEndpointConnectionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1552,6 +1590,7 @@ export const SignalRPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1610,6 +1649,7 @@ export type SignalRPrivateLinkResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRPrivateLinkResourcesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1621,6 +1661,7 @@ export const SignalRRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     keyType: Schema.optional(Schema.Literals(["Primary", "Secondary", "Salt"])),
   }).pipe(
     T.Http({
@@ -1648,6 +1689,7 @@ export type SignalRRegenerateKeyOutput = typeof SignalRRegenerateKeyOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1660,6 +1702,8 @@ export const SignalRReplicasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.String,
@@ -1732,6 +1776,8 @@ export type SignalRReplicasCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicasCreateOrUpdate =
@@ -1744,6 +1790,8 @@ export const SignalRReplicasDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1765,6 +1813,8 @@ export type SignalRReplicasDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1778,6 +1828,8 @@ export const SignalRReplicasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1816,6 +1868,8 @@ export type SignalRReplicasGetOutput = typeof SignalRReplicasGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1827,6 +1881,9 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
+    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         groupId: Schema.String,
@@ -1896,6 +1953,9 @@ export type SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
+ * @param sharedPrivateLinkResourceName - The name of the shared private link resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdate =
@@ -1908,6 +1968,9 @@ export const SignalRReplicaSharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
+    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1948,6 +2011,9 @@ export type SignalRReplicaSharedPrivateLinkResourcesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
+ * @param sharedPrivateLinkResourceName - The name of the shared private link resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicaSharedPrivateLinkResourcesGet =
@@ -1960,6 +2026,8 @@ export const SignalRReplicaSharedPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2017,6 +2085,8 @@ export type SignalRReplicaSharedPrivateLinkResourcesListOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicaSharedPrivateLinkResourcesList =
@@ -2029,6 +2099,7 @@ export const SignalRReplicasListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2084,6 +2155,7 @@ export type SignalRReplicasListOutput = typeof SignalRReplicasListOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2095,6 +2167,8 @@ export const SignalRReplicasRestartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2117,6 +2191,8 @@ export type SignalRReplicasRestartOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicasRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2130,6 +2206,8 @@ export const SignalRReplicasUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.String,
@@ -2201,6 +2279,8 @@ export type SignalRReplicasUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2213,6 +2293,7 @@ export const SignalRReplicasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SignalRRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -2233,6 +2314,7 @@ export type SignalRRestartOutput = typeof SignalRRestartOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SignalRRestartInput,
@@ -2241,8 +2323,10 @@ export const SignalRRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         groupId: Schema.String,
@@ -2310,9 +2394,11 @@ export type SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput =
 /**
  * Create or update a shared private link resource
  *
+ * @param sharedPrivateLinkResourceName - The name of the shared private link resource.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRSharedPrivateLinkResourcesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2322,8 +2408,10 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdate =
 // Input Schema
 export const SignalRSharedPrivateLinkResourcesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2344,9 +2432,11 @@ export type SignalRSharedPrivateLinkResourcesDeleteOutput =
 /**
  * Delete the specified shared private link resource
  *
+ * @param sharedPrivateLinkResourceName - The name of the shared private link resource.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRSharedPrivateLinkResourcesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2356,8 +2446,10 @@ export const SignalRSharedPrivateLinkResourcesDelete =
 // Input Schema
 export const SignalRSharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2396,9 +2488,11 @@ export type SignalRSharedPrivateLinkResourcesGetOutput =
 /**
  * Get the specified shared private link resource
  *
+ * @param sharedPrivateLinkResourceName - The name of the shared private link resource.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRSharedPrivateLinkResourcesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2410,6 +2504,7 @@ export const SignalRSharedPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2468,6 +2563,7 @@ export type SignalRSharedPrivateLinkResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRSharedPrivateLinkResourcesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2478,6 +2574,7 @@ export const SignalRSharedPrivateLinkResourcesList =
 export const SignalRUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   sku: Schema.optional(
     Schema.Struct({
       name: Schema.String,
@@ -2787,6 +2884,7 @@ export type SignalRUpdateOutput = typeof SignalRUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const SignalRUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SignalRUpdateInput,

@@ -36,7 +36,7 @@ export const FirewallRulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -93,7 +93,7 @@ export const FirewallRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -127,7 +127,7 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-06-01",
   }),
 );
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
@@ -180,7 +180,7 @@ export const FirewallRulesListByMongoClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type FirewallRulesListByMongoClusterInput =
@@ -250,7 +250,7 @@ export const MongoClustersCheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/checkMongoClusterNameAvailability",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type MongoClustersCheckNameAvailabilityInput =
@@ -461,6 +461,9 @@ export const MongoClustersCreateOrUpdateInput =
             ),
           }),
         ),
+        networkBypassMode: Schema.optional(
+          Schema.Literals(["None", "AzureCosmosDB"]),
+        ),
       }),
     ),
     identity: Schema.optional(
@@ -490,7 +493,7 @@ export const MongoClustersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type MongoClustersCreateOrUpdateInput =
@@ -545,7 +548,7 @@ export const MongoClustersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type MongoClustersDeleteInput = typeof MongoClustersDeleteInput.Type;
@@ -577,7 +580,7 @@ export const MongoClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-06-01",
   }),
 );
 export type MongoClustersGetInput = typeof MongoClustersGetInput.Type;
@@ -628,7 +631,7 @@ export const MongoClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/mongoClusters",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-06-01",
   }),
 );
 export type MongoClustersListInput = typeof MongoClustersListInput.Type;
@@ -691,7 +694,7 @@ export const MongoClustersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type MongoClustersListByResourceGroupInput =
@@ -759,7 +762,7 @@ export const MongoClustersListConnectionStringsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/listConnectionStrings",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type MongoClustersListConnectionStringsInput =
@@ -807,7 +810,7 @@ export const MongoClustersPromoteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/promote",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type MongoClustersPromoteInput = typeof MongoClustersPromoteInput.Type;
@@ -940,13 +943,16 @@ export const MongoClustersUpdateInput =
             ),
           }),
         ),
+        networkBypassMode: Schema.optional(
+          Schema.Literals(["None", "AzureCosmosDB"]),
+        ),
       }),
     ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type MongoClustersUpdateInput = typeof MongoClustersUpdateInput.Type;
@@ -994,7 +1000,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DocumentDB/operations",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-06-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1066,7 +1072,7 @@ export const PrivateEndpointConnectionsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -1122,7 +1128,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1160,7 +1166,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1215,7 +1221,7 @@ export const PrivateEndpointConnectionsListByMongoClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PrivateEndpointConnectionsListByMongoClusterInput =
@@ -1284,7 +1290,7 @@ export const PrivateLinksListByMongoClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateLinkResources",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PrivateLinksListByMongoClusterInput =
@@ -1353,7 +1359,7 @@ export const ReplicasListByParentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/replicas",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type ReplicasListByParentInput = typeof ReplicasListByParentInput.Type;
@@ -1449,7 +1455,7 @@ export const UsersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
@@ -1501,7 +1507,7 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-06-01",
   }),
 );
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
@@ -1534,7 +1540,7 @@ export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-06-01",
   }),
 );
 export type UsersGetInput = typeof UsersGetInput.Type;
@@ -1585,7 +1591,7 @@ export const UsersListByMongoClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type UsersListByMongoClusterInput =

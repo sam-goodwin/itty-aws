@@ -12,6 +12,11 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const ApiPortalCustomDomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         thumbprint: Schema.optional(Schema.String),
@@ -54,6 +59,13 @@ export type ApiPortalCustomDomainsCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update the API portal custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
+ * @param domainName - The name of the API portal custom domain.
  */
 export const ApiPortalCustomDomainsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -62,7 +74,13 @@ export const ApiPortalCustomDomainsCreateOrUpdate =
   }));
 // Input Schema
 export const ApiPortalCustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
@@ -81,6 +99,13 @@ export type ApiPortalCustomDomainsDeleteOutput =
 // The operation
 /**
  * Delete the API portal custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
+ * @param domainName - The name of the API portal custom domain.
  */
 export const ApiPortalCustomDomainsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -89,7 +114,13 @@ export const ApiPortalCustomDomainsDelete =
   }));
 // Input Schema
 export const ApiPortalCustomDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
@@ -126,6 +157,13 @@ export type ApiPortalCustomDomainsGetOutput =
 // The operation
 /**
  * Get the API portal custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
+ * @param domainName - The name of the API portal custom domain.
  */
 export const ApiPortalCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -135,7 +173,12 @@ export const ApiPortalCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ApiPortalCustomDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains",
@@ -189,6 +232,12 @@ export type ApiPortalCustomDomainsListOutput =
 // The operation
 /**
  * Handle requests to list all API portal custom domains.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
  */
 export const ApiPortalCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -199,6 +248,10 @@ export const ApiPortalCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ApiPortalsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -286,6 +339,12 @@ export type ApiPortalsCreateOrUpdateOutput =
 // The operation
 /**
  * Create the default API portal or update the existing API portal.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
  */
 export const ApiPortalsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -294,9 +353,12 @@ export const ApiPortalsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ApiPortalsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ApiPortalsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  apiPortalName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
@@ -312,15 +374,24 @@ export type ApiPortalsDeleteOutput = typeof ApiPortalsDeleteOutput.Type;
 // The operation
 /**
  * Delete the default API portal.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
  */
 export const ApiPortalsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApiPortalsDeleteInput,
   outputSchema: ApiPortalsDeleteOutput,
 }));
 // Input Schema
-export const ApiPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ApiPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  apiPortalName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
@@ -354,15 +425,23 @@ export type ApiPortalsGetOutput = typeof ApiPortalsGetOutput.Type;
 // The operation
 /**
  * Get the API portal and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
  */
 export const ApiPortalsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApiPortalsGetInput,
   outputSchema: ApiPortalsGetOutput,
 }));
 // Input Schema
-export const ApiPortalsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ApiPortalsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals",
@@ -413,6 +492,11 @@ export type ApiPortalsListOutput = typeof ApiPortalsListOutput.Type;
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ApiPortalsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApiPortalsListInput,
@@ -421,6 +505,10 @@ export const ApiPortalsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ApiPortalsValidateDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({
@@ -444,6 +532,12 @@ export type ApiPortalsValidateDomainOutput =
 // The operation
 /**
  * Check the domains are valid as well as not in use.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
  */
 export const ApiPortalsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -454,6 +548,10 @@ export const ApiPortalsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ApmsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apmName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         type: Schema.String,
@@ -508,15 +606,24 @@ export type ApmsCreateOrUpdateOutput = typeof ApmsCreateOrUpdateOutput.Type;
 // The operation
 /**
  * Create or update an APM.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apmName - The name of the APM
  */
 export const ApmsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApmsCreateOrUpdateInput,
   outputSchema: ApmsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const ApmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ApmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  apmName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
@@ -532,13 +639,24 @@ export type ApmsDeleteOutput = typeof ApmsDeleteOutput.Type;
 // The operation
 /**
  * Operation to delete an APM
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apmName - The name of the APM
  */
 export const ApmsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApmsDeleteInput,
   outputSchema: ApmsDeleteOutput,
 }));
 // Input Schema
-export const ApmsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const ApmsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  apmName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
@@ -572,13 +690,23 @@ export type ApmsGetOutput = typeof ApmsGetOutput.Type;
 // The operation
 /**
  * Get the APM by name.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apmName - The name of the APM
  */
 export const ApmsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApmsGetInput,
   outputSchema: ApmsGetOutput,
 }));
 // Input Schema
-export const ApmsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const ApmsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms",
@@ -629,6 +757,11 @@ export type ApmsListOutput = typeof ApmsListOutput.Type;
 // The operation
 /**
  * Get collection of APMs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ApmsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApmsListInput,
@@ -636,7 +769,12 @@ export const ApmsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ApmsListSecretKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apmName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}/listSecretKeys",
@@ -655,6 +793,12 @@ export type ApmsListSecretKeysOutput = typeof ApmsListSecretKeysOutput.Type;
 // The operation
 /**
  * List keys of APM sensitive properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apmName - The name of the APM
  */
 export const ApmsListSecretKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApmsListSecretKeysInput,
@@ -663,6 +807,10 @@ export const ApmsListSecretKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ApplicationAcceleratorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -743,6 +891,12 @@ export type ApplicationAcceleratorsCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update the application accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
  */
 export const ApplicationAcceleratorsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -751,7 +905,12 @@ export const ApplicationAcceleratorsCreateOrUpdate =
   }));
 // Input Schema
 export const ApplicationAcceleratorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
@@ -770,6 +929,12 @@ export type ApplicationAcceleratorsDeleteOutput =
 // The operation
 /**
  * Delete the application accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
  */
 export const ApplicationAcceleratorsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -778,7 +943,12 @@ export const ApplicationAcceleratorsDelete =
   }));
 // Input Schema
 export const ApplicationAcceleratorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
@@ -815,6 +985,12 @@ export type ApplicationAcceleratorsGetOutput =
 // The operation
 /**
  * Get the application accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
  */
 export const ApplicationAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -824,7 +1000,11 @@ export const ApplicationAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ApplicationAcceleratorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators",
@@ -878,6 +1058,11 @@ export type ApplicationAcceleratorsListOutput =
 // The operation
 /**
  * Handle requests to list all application accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ApplicationAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -888,6 +1073,10 @@ export const ApplicationAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ApplicationLiveViewsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationLiveViewName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -961,6 +1150,12 @@ export type ApplicationLiveViewsCreateOrUpdateOutput =
 // The operation
 /**
  * Create the default Application Live View or update the existing Application Live View.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationLiveViewName - The name of Application Live View.
  */
 export const ApplicationLiveViewsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -969,7 +1164,12 @@ export const ApplicationLiveViewsCreateOrUpdate =
   }));
 // Input Schema
 export const ApplicationLiveViewsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationLiveViewName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
@@ -988,6 +1188,12 @@ export type ApplicationLiveViewsDeleteOutput =
 // The operation
 /**
  * Disable the default Application Live View.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationLiveViewName - The name of Application Live View.
  */
 export const ApplicationLiveViewsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -997,7 +1203,12 @@ export const ApplicationLiveViewsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ApplicationLiveViewsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationLiveViewName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
@@ -1034,6 +1245,12 @@ export type ApplicationLiveViewsGetOutput =
 // The operation
 /**
  * Get the Application Live  and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationLiveViewName - The name of Application Live View.
  */
 export const ApplicationLiveViewsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1043,7 +1260,11 @@ export const ApplicationLiveViewsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ApplicationLiveViewsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews",
@@ -1097,6 +1318,11 @@ export type ApplicationLiveViewsListOutput =
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ApplicationLiveViewsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1107,6 +1333,10 @@ export const ApplicationLiveViewsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AppsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         public: Schema.optional(Schema.Boolean),
@@ -1248,15 +1478,24 @@ export type AppsCreateOrUpdateOutput = typeof AppsCreateOrUpdateOutput.Type;
 // The operation
 /**
  * Create a new App or update an exiting App.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsCreateOrUpdateInput,
   outputSchema: AppsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
@@ -1272,6 +1511,12 @@ export type AppsDeleteOutput = typeof AppsDeleteOutput.Type;
 // The operation
 /**
  * Operation to delete an App.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsDeleteInput,
@@ -1279,6 +1524,10 @@ export const AppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
   syncStatus: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -1315,6 +1564,11 @@ export type AppsGetOutput = typeof AppsGetOutput.Type;
 /**
  * Get an App and its properties.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  * @param syncStatus - Indicates whether sync status
  */
 export const AppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1323,7 +1577,12 @@ export const AppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AppsGetResourceUploadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/getResourceUploadUrl",
@@ -1345,6 +1604,12 @@ export type AppsGetResourceUploadUrlOutput =
 // The operation
 /**
  * Get an resource upload URL for an App, which may be artifacts or source archive.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsGetResourceUploadUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1353,7 +1618,11 @@ export const AppsGetResourceUploadUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const AppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps",
@@ -1404,6 +1673,11 @@ export type AppsListOutput = typeof AppsListOutput.Type;
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const AppsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsListInput,
@@ -1412,6 +1686,10 @@ export const AppsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AppsSetActiveDeploymentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
     activeDeploymentNames: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -1450,6 +1728,12 @@ export type AppsSetActiveDeploymentsOutput =
 // The operation
 /**
  * Set existing Deployment under the app as active
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsSetActiveDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1459,6 +1743,10 @@ export const AppsSetActiveDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       public: Schema.optional(Schema.Boolean),
@@ -1597,6 +1885,12 @@ export type AppsUpdateOutput = typeof AppsUpdateOutput.Type;
 // The operation
 /**
  * Operation to update an exiting App.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsUpdateInput,
@@ -1605,6 +1899,10 @@ export const AppsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AppsValidateDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({
@@ -1626,6 +1924,12 @@ export type AppsValidateDomainOutput = typeof AppsValidateDomainOutput.Type;
 // The operation
 /**
  * Check the resource name is valid as well as not in use.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsValidateDomainInput,
@@ -1634,6 +1938,11 @@ export const AppsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const BindingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    bindingName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         resourceName: Schema.optional(Schema.String),
@@ -1685,6 +1994,13 @@ export type BindingsCreateOrUpdateOutput =
 // The operation
 /**
  * Create a new Binding or update an exiting Binding.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param bindingName - The name of the Binding resource.
  */
 export const BindingsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1693,9 +2009,13 @@ export const BindingsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const BindingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BindingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  bindingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
@@ -1711,15 +2031,26 @@ export type BindingsDeleteOutput = typeof BindingsDeleteOutput.Type;
 // The operation
 /**
  * Operation to delete a Binding.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param bindingName - The name of the Binding resource.
  */
 export const BindingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BindingsDeleteInput,
   outputSchema: BindingsDeleteOutput,
 }));
 // Input Schema
-export const BindingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BindingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  bindingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
@@ -1753,15 +2084,25 @@ export type BindingsGetOutput = typeof BindingsGetOutput.Type;
 // The operation
 /**
  * Get a Binding and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param bindingName - The name of the Binding resource.
  */
 export const BindingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BindingsGetInput,
   outputSchema: BindingsGetOutput,
 }));
 // Input Schema
-export const BindingsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BindingsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings",
@@ -1812,6 +2153,12 @@ export type BindingsListOutput = typeof BindingsListOutput.Type;
 // The operation
 /**
  * Handles requests to list all resources in an App.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const BindingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BindingsListInput,
@@ -1819,6 +2166,11 @@ export const BindingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BindingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  bindingName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       resourceName: Schema.optional(Schema.String),
@@ -1867,6 +2219,13 @@ export type BindingsUpdateOutput = typeof BindingsUpdateOutput.Type;
 // The operation
 /**
  * Operation to update an exiting Binding.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param bindingName - The name of the Binding resource.
  */
 export const BindingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BindingsUpdateInput,
@@ -1875,6 +2234,12 @@ export const BindingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const BuildpackBindingCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+    buildpackBindingName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         bindingType: Schema.optional(
@@ -1945,6 +2310,14 @@ export type BuildpackBindingCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update a buildpack binding.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
+ * @param buildpackBindingName - The name of the Buildpack Binding Name
  */
 export const BuildpackBindingCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1953,7 +2326,14 @@ export const BuildpackBindingCreateOrUpdate =
   }));
 // Input Schema
 export const BuildpackBindingDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+    buildpackBindingName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
@@ -1972,6 +2352,14 @@ export type BuildpackBindingDeleteOutput =
 // The operation
 /**
  * Operation to delete a Buildpack Binding
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
+ * @param buildpackBindingName - The name of the Buildpack Binding Name
  */
 export const BuildpackBindingDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1981,7 +2369,14 @@ export const BuildpackBindingDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildpackBindingGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+    buildpackBindingName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
@@ -2016,6 +2411,14 @@ export type BuildpackBindingGetOutput = typeof BuildpackBindingGetOutput.Type;
 // The operation
 /**
  * Get a buildpack binding by name.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
+ * @param buildpackBindingName - The name of the Buildpack Binding Name
  */
 export const BuildpackBindingGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BuildpackBindingGetInput,
@@ -2023,7 +2426,13 @@ export const BuildpackBindingGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BuildpackBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings",
@@ -2075,6 +2484,13 @@ export type BuildpackBindingListOutput = typeof BuildpackBindingListOutput.Type;
 // The operation
 /**
  * Handles requests to list all buildpack bindings in a builder.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
  */
 export const BuildpackBindingList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2084,7 +2500,11 @@ export const BuildpackBindingList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildpackBindingListForClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildpackBindings",
@@ -2138,6 +2558,11 @@ export type BuildpackBindingListForClusterOutput =
 // The operation
 /**
  * Get collection of buildpack bindings under all builders.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const BuildpackBindingListForCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2146,7 +2571,13 @@ export const BuildpackBindingListForCluster =
   }));
 // Input Schema
 export const BuildServiceAgentPoolGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    agentPoolName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
@@ -2183,6 +2614,13 @@ export type BuildServiceAgentPoolGetOutput =
 // The operation
 /**
  * Get build service agent pool.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param agentPoolName - The name of the build service agent pool resource.
  */
 export const BuildServiceAgentPoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2192,7 +2630,12 @@ export const BuildServiceAgentPoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceAgentPoolListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools",
@@ -2246,6 +2689,12 @@ export type BuildServiceAgentPoolListOutput =
 // The operation
 /**
  * List build service agent pool.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceAgentPoolList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2256,6 +2705,11 @@ export const BuildServiceAgentPoolList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const BuildServiceAgentPoolUpdatePutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    agentPoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(Schema.String),
@@ -2305,6 +2759,13 @@ export type BuildServiceAgentPoolUpdatePutOutput =
 // The operation
 /**
  * Create or update build service agent pool.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param agentPoolName - The name of the build service agent pool resource.
  */
 export const BuildServiceAgentPoolUpdatePut =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2314,6 +2775,11 @@ export const BuildServiceAgentPoolUpdatePut =
 // Input Schema
 export const BuildServiceBuilderCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -2384,6 +2850,13 @@ export type BuildServiceBuilderCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update a KPack builder.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
  */
 export const BuildServiceBuilderCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2392,7 +2865,13 @@ export const BuildServiceBuilderCreateOrUpdate =
   }));
 // Input Schema
 export const BuildServiceBuilderDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
@@ -2411,6 +2890,13 @@ export type BuildServiceBuilderDeleteOutput =
 // The operation
 /**
  * Delete a KPack builder.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
  */
 export const BuildServiceBuilderDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2420,7 +2906,13 @@ export const BuildServiceBuilderDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceBuilderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
@@ -2457,6 +2949,13 @@ export type BuildServiceBuilderGetOutput =
 // The operation
 /**
  * Get a KPack builder.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
  */
 export const BuildServiceBuilderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2466,7 +2965,12 @@ export const BuildServiceBuilderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceBuilderListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders",
@@ -2520,6 +3024,12 @@ export type BuildServiceBuilderListOutput =
 // The operation
 /**
  * List KPack builders result.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceBuilderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2529,7 +3039,13 @@ export const BuildServiceBuilderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceBuilderListDeploymentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/listUsingDeployments",
@@ -2550,6 +3066,13 @@ export type BuildServiceBuilderListDeploymentsOutput =
 // The operation
 /**
  * List deployments that are using the builder.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
  */
 export const BuildServiceBuilderListDeployments =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2559,6 +3082,10 @@ export const BuildServiceBuilderListDeployments =
 // Input Schema
 export const BuildServiceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         containerRegistry: Schema.optional(Schema.String),
@@ -2617,6 +3144,12 @@ export type BuildServiceCreateOrUpdateOutput =
 // The operation
 /**
  * Create a build service resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2627,6 +3160,11 @@ export const BuildServiceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const BuildServiceCreateOrUpdateBuildInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         relativePath: Schema.optional(Schema.String),
@@ -2720,6 +3258,13 @@ export type BuildServiceCreateOrUpdateBuildOutput =
 // The operation
 /**
  * Create or update a KPack build.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
  */
 export const BuildServiceCreateOrUpdateBuild =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2728,7 +3273,13 @@ export const BuildServiceCreateOrUpdateBuild =
   }));
 // Input Schema
 export const BuildServiceDeleteBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
@@ -2747,6 +3298,13 @@ export type BuildServiceDeleteBuildOutput =
 // The operation
 /**
  * delete a KPack build.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
  */
 export const BuildServiceDeleteBuild = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2756,7 +3314,13 @@ export const BuildServiceDeleteBuild = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceGetBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
@@ -2791,6 +3355,13 @@ export type BuildServiceGetBuildOutput = typeof BuildServiceGetBuildOutput.Type;
 // The operation
 /**
  * Get a KPack build.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
  */
 export const BuildServiceGetBuild = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2800,7 +3371,14 @@ export const BuildServiceGetBuild = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceGetBuildResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+    buildResultName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}",
@@ -2837,6 +3415,14 @@ export type BuildServiceGetBuildResultOutput =
 // The operation
 /**
  * Get a KPack build result.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
+ * @param buildResultName - The name of the build result resource.
  */
 export const BuildServiceGetBuildResult = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2846,7 +3432,14 @@ export const BuildServiceGetBuildResult = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceGetBuildResultLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+    buildResultName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}/getLogFileUrl",
@@ -2867,6 +3460,14 @@ export type BuildServiceGetBuildResultLogOutput =
 // The operation
 /**
  * Get a KPack build result log download URL.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
+ * @param buildResultName - The name of the build result resource.
  */
 export const BuildServiceGetBuildResultLog =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2875,7 +3476,12 @@ export const BuildServiceGetBuildResultLog =
   }));
 // Input Schema
 export const BuildServiceGetBuildServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
@@ -2912,6 +3518,12 @@ export type BuildServiceGetBuildServiceOutput =
 // The operation
 /**
  * Get a build service resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceGetBuildService = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2921,7 +3533,12 @@ export const BuildServiceGetBuildService = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceGetResourceUploadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/getResourceUploadUrl",
@@ -2943,6 +3560,12 @@ export type BuildServiceGetResourceUploadUrlOutput =
 // The operation
 /**
  * Get an resource upload URL for build service, which may be artifacts or source archive.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceGetResourceUploadUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2951,7 +3574,13 @@ export const BuildServiceGetResourceUploadUrl =
   }));
 // Input Schema
 export const BuildServiceGetSupportedBuildpackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildpackName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedBuildpacks/{buildpackName}",
@@ -2988,6 +3617,13 @@ export type BuildServiceGetSupportedBuildpackOutput =
 // The operation
 /**
  * Get the supported buildpack resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildpackName - The name of the buildpack resource.
  */
 export const BuildServiceGetSupportedBuildpack =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2996,7 +3632,13 @@ export const BuildServiceGetSupportedBuildpack =
   }));
 // Input Schema
 export const BuildServiceGetSupportedStackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    stackName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks/{stackName}",
@@ -3033,6 +3675,13 @@ export type BuildServiceGetSupportedStackOutput =
 // The operation
 /**
  * Get the supported stack resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param stackName - The name of the stack resource.
  */
 export const BuildServiceGetSupportedStack =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3041,7 +3690,13 @@ export const BuildServiceGetSupportedStack =
   }));
 // Input Schema
 export const BuildServiceListBuildResultsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results",
@@ -3095,6 +3750,13 @@ export type BuildServiceListBuildResultsOutput =
 // The operation
 /**
  * List KPack build results.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
  */
 export const BuildServiceListBuildResults =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3103,7 +3765,12 @@ export const BuildServiceListBuildResults =
   }));
 // Input Schema
 export const BuildServiceListBuildsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds",
@@ -3157,6 +3824,12 @@ export type BuildServiceListBuildsOutput =
 // The operation
 /**
  * List KPack builds.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceListBuilds = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3166,7 +3839,11 @@ export const BuildServiceListBuilds = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceListBuildServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices",
@@ -3220,6 +3897,11 @@ export type BuildServiceListBuildServicesOutput =
 // The operation
 /**
  * List build services resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const BuildServiceListBuildServices =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3228,7 +3910,12 @@ export const BuildServiceListBuildServices =
   }));
 // Input Schema
 export const BuildServiceListSupportedBuildpacksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedBuildpacks",
@@ -3282,6 +3969,12 @@ export type BuildServiceListSupportedBuildpacksOutput =
 // The operation
 /**
  * Get all supported buildpacks.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceListSupportedBuildpacks =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3290,7 +3983,12 @@ export const BuildServiceListSupportedBuildpacks =
   }));
 // Input Schema
 export const BuildServiceListSupportedStacksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks",
@@ -3344,6 +4042,12 @@ export type BuildServiceListSupportedStacksOutput =
 // The operation
 /**
  * Get all supported stacks.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceListSupportedStacks =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3353,6 +4057,10 @@ export const BuildServiceListSupportedStacks =
 // Input Schema
 export const CertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         type: Schema.String,
@@ -3411,6 +4119,12 @@ export type CertificatesCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update certificate resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param certificateName - The name of the certificate resource.
  */
 export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3420,7 +4134,12 @@ export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
@@ -3436,15 +4155,24 @@ export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
 // The operation
 /**
  * Delete the certificate resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param certificateName - The name of the certificate resource.
  */
 export const CertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesDeleteInput,
   outputSchema: CertificatesDeleteOutput,
 }));
 // Input Schema
-export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
@@ -3478,15 +4206,23 @@ export type CertificatesGetOutput = typeof CertificatesGetOutput.Type;
 // The operation
 /**
  * Get the certificate resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param certificateName - The name of the certificate resource.
  */
 export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesGetInput,
   outputSchema: CertificatesGetOutput,
 }));
 // Input Schema
-export const CertificatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const CertificatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates",
@@ -3539,15 +4275,22 @@ export type CertificatesListOutput = typeof CertificatesListOutput.Type;
 // The operation
 /**
  * List all the certificates of one user.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const CertificatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesListInput,
   outputSchema: CertificatesListOutput,
 }));
 // Input Schema
-export const ConfigServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ConfigServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
@@ -3583,6 +4326,11 @@ export type ConfigServersGetOutput = typeof ConfigServersGetOutput.Type;
 // The operation
 /**
  * Get the config server and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ConfigServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConfigServersGetInput,
@@ -3591,6 +4339,9 @@ export const ConfigServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ConfigServersUpdatePatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -3681,6 +4432,11 @@ export type ConfigServersUpdatePatchOutput =
 // The operation
 /**
  * Update the config server.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ConfigServersUpdatePatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3691,6 +4447,9 @@ export const ConfigServersUpdatePatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConfigServersUpdatePutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -3781,6 +4540,11 @@ export type ConfigServersUpdatePutOutput =
 // The operation
 /**
  * Update the config server.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ConfigServersUpdatePut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3791,6 +4555,9 @@ export const ConfigServersUpdatePut = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConfigServersValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     gitProperty: Schema.optional(
       Schema.Struct({
         repositories: Schema.optional(
@@ -3850,6 +4617,11 @@ export type ConfigServersValidateOutput =
 // The operation
 /**
  * Check if the config server settings are valid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ConfigServersValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3860,6 +4632,10 @@ export const ConfigServersValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConfigurationServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    configurationServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -3955,6 +4731,12 @@ export type ConfigurationServicesCreateOrUpdateOutput =
 // The operation
 /**
  * Create the default Application Configuration Service or update the existing Application Configuration Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param configurationServiceName - The name of Application Configuration Service.
  */
 export const ConfigurationServicesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3963,7 +4745,12 @@ export const ConfigurationServicesCreateOrUpdate =
   }));
 // Input Schema
 export const ConfigurationServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    configurationServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
@@ -3982,6 +4769,12 @@ export type ConfigurationServicesDeleteOutput =
 // The operation
 /**
  * Disable the default Application Configuration Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param configurationServiceName - The name of Application Configuration Service.
  */
 export const ConfigurationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3991,7 +4784,12 @@ export const ConfigurationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigurationServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    configurationServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
@@ -4028,6 +4826,12 @@ export type ConfigurationServicesGetOutput =
 // The operation
 /**
  * Get the Application Configuration Service and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param configurationServiceName - The name of Application Configuration Service.
  */
 export const ConfigurationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4037,7 +4841,11 @@ export const ConfigurationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigurationServicesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices",
@@ -4091,6 +4899,11 @@ export type ConfigurationServicesListOutput =
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ConfigurationServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4101,6 +4914,10 @@ export const ConfigurationServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConfigurationServicesValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    configurationServiceName: Schema.String.pipe(T.PathParam()),
     gitProperty: Schema.optional(
       Schema.Struct({
         repositories: Schema.optional(
@@ -4159,6 +4976,12 @@ export type ConfigurationServicesValidateOutput =
 // The operation
 /**
  * Check if the Application Configuration Service settings are valid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param configurationServiceName - The name of Application Configuration Service.
  */
 export const ConfigurationServicesValidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4168,6 +4991,10 @@ export const ConfigurationServicesValidate =
 // Input Schema
 export const ConfigurationServicesValidateResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    configurationServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -4259,6 +5086,12 @@ export type ConfigurationServicesValidateResourceOutput =
 // The operation
 /**
  * Check if the Application Configuration Service resource is valid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param configurationServiceName - The name of Application Configuration Service.
  */
 export const ConfigurationServicesValidateResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4268,6 +5101,10 @@ export const ConfigurationServicesValidateResource =
 // Input Schema
 export const ContainerRegistriesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    containerRegistryName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         credentials: Schema.Struct({
@@ -4322,6 +5159,12 @@ export type ContainerRegistriesCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update container registry resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param containerRegistryName - The name of the container registry.
  */
 export const ContainerRegistriesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4330,7 +5173,12 @@ export const ContainerRegistriesCreateOrUpdate =
   }));
 // Input Schema
 export const ContainerRegistriesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    containerRegistryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
@@ -4349,6 +5197,12 @@ export type ContainerRegistriesDeleteOutput =
 // The operation
 /**
  * Delete a container registry resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param containerRegistryName - The name of the container registry.
  */
 export const ContainerRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4358,7 +5212,12 @@ export const ContainerRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ContainerRegistriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    containerRegistryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
@@ -4395,6 +5254,12 @@ export type ContainerRegistriesGetOutput =
 // The operation
 /**
  * Get the container registries resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param containerRegistryName - The name of the container registry.
  */
 export const ContainerRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4404,7 +5269,11 @@ export const ContainerRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ContainerRegistriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries",
@@ -4458,6 +5327,11 @@ export type ContainerRegistriesListOutput =
 // The operation
 /**
  * List container registries resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ContainerRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4468,6 +5342,10 @@ export const ContainerRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ContainerRegistriesValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    containerRegistryName: Schema.String.pipe(T.PathParam()),
     credentials: Schema.Struct({
       type: Schema.String,
     }),
@@ -4503,6 +5381,12 @@ export type ContainerRegistriesValidateOutput =
 // The operation
 /**
  * Check if the container registry properties are valid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param containerRegistryName - The name of the container registry.
  */
 export const ContainerRegistriesValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4513,6 +5397,11 @@ export const ContainerRegistriesValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CustomDomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         thumbprint: Schema.optional(Schema.String),
@@ -4566,6 +5455,13 @@ export type CustomDomainsCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update custom domain of one lifecycle application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param domainName - The name of the custom domain resource.
  */
 export const CustomDomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4575,7 +5471,13 @@ export const CustomDomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
@@ -4592,15 +5494,26 @@ export type CustomDomainsDeleteOutput = typeof CustomDomainsDeleteOutput.Type;
 // The operation
 /**
  * Delete the custom domain of one lifecycle application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param domainName - The name of the custom domain resource.
  */
 export const CustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsDeleteInput,
   outputSchema: CustomDomainsDeleteOutput,
 }));
 // Input Schema
-export const CustomDomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const CustomDomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  domainName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
@@ -4636,6 +5549,13 @@ export type CustomDomainsGetOutput = typeof CustomDomainsGetOutput.Type;
 // The operation
 /**
  * Get the custom domain of one lifecycle application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param domainName - The name of the custom domain resource.
  */
 export const CustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsGetInput,
@@ -4643,7 +5563,12 @@ export const CustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CustomDomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -4696,6 +5621,12 @@ export type CustomDomainsListOutput = typeof CustomDomainsListOutput.Type;
 // The operation
 /**
  * List the custom domains of one lifecycle application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const CustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsListInput,
@@ -4704,6 +5635,11 @@ export const CustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CustomDomainsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         thumbprint: Schema.optional(Schema.String),
@@ -4755,6 +5691,13 @@ export type CustomDomainsUpdateOutput = typeof CustomDomainsUpdateOutput.Type;
 // The operation
 /**
  * Update custom domain of one lifecycle application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param domainName - The name of the custom domain resource.
  */
 export const CustomDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsUpdateInput,
@@ -4763,6 +5706,11 @@ export const CustomDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CustomizedAcceleratorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    customizedAcceleratorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -4840,6 +5788,13 @@ export type CustomizedAcceleratorsCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update the customized accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param customizedAcceleratorName - The name of the customized accelerator.
  */
 export const CustomizedAcceleratorsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4848,7 +5803,13 @@ export const CustomizedAcceleratorsCreateOrUpdate =
   }));
 // Input Schema
 export const CustomizedAcceleratorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    customizedAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
@@ -4867,6 +5828,13 @@ export type CustomizedAcceleratorsDeleteOutput =
 // The operation
 /**
  * Delete the customized accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param customizedAcceleratorName - The name of the customized accelerator.
  */
 export const CustomizedAcceleratorsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4875,7 +5843,13 @@ export const CustomizedAcceleratorsDelete =
   }));
 // Input Schema
 export const CustomizedAcceleratorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    customizedAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
@@ -4912,6 +5886,13 @@ export type CustomizedAcceleratorsGetOutput =
 // The operation
 /**
  * Get the customized accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param customizedAcceleratorName - The name of the customized accelerator.
  */
 export const CustomizedAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4921,7 +5902,12 @@ export const CustomizedAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CustomizedAcceleratorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators",
@@ -4975,6 +5961,12 @@ export type CustomizedAcceleratorsListOutput =
 // The operation
 /**
  * Handle requests to list all customized accelerators.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
  */
 export const CustomizedAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4985,6 +5977,11 @@ export const CustomizedAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CustomizedAcceleratorsValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    customizedAcceleratorName: Schema.String.pipe(T.PathParam()),
     provisioningState: Schema.optional(
       Schema.Literals([
         "Creating",
@@ -5036,6 +6033,13 @@ export type CustomizedAcceleratorsValidateOutput =
 // The operation
 /**
  * Check the customized accelerator are valid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param customizedAcceleratorName - The name of the customized accelerator.
  */
 export const CustomizedAcceleratorsValidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5045,6 +6049,11 @@ export const CustomizedAcceleratorsValidate =
 // Input Schema
 export const DeploymentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         source: Schema.optional(
@@ -5202,6 +6211,13 @@ export type DeploymentsCreateOrUpdateOutput =
 // The operation
 /**
  * Create a new Deployment or update an exiting Deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5211,7 +6227,13 @@ export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "DELETE",
@@ -5228,6 +6250,13 @@ export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
 // The operation
 /**
  * Operation to delete a Deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsDeleteInput,
@@ -5235,7 +6264,13 @@ export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DeploymentsDisableRemoteDebuggingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/disableRemoteDebugging",
@@ -5257,6 +6292,13 @@ export type DeploymentsDisableRemoteDebuggingOutput =
 // The operation
 /**
  * Disable remote debugging.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsDisableRemoteDebugging =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5266,6 +6308,11 @@ export const DeploymentsDisableRemoteDebugging =
 // Input Schema
 export const DeploymentsEnableRemoteDebuggingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     port: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -5289,6 +6336,13 @@ export type DeploymentsEnableRemoteDebuggingOutput =
 // The operation
 /**
  * Enable remote debugging.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsEnableRemoteDebugging =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5298,6 +6352,11 @@ export const DeploymentsEnableRemoteDebugging =
 // Input Schema
 export const DeploymentsGenerateHeapDumpInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     appInstance: Schema.optional(Schema.String),
     filePath: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
@@ -5320,6 +6379,13 @@ export type DeploymentsGenerateHeapDumpOutput =
 // The operation
 /**
  * Generate Heap Dump
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsGenerateHeapDump = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5330,6 +6396,11 @@ export const DeploymentsGenerateHeapDump = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DeploymentsGenerateThreadDumpInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     appInstance: Schema.optional(Schema.String),
     filePath: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
@@ -5352,6 +6423,13 @@ export type DeploymentsGenerateThreadDumpOutput =
 // The operation
 /**
  * Generate Thread Dump
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsGenerateThreadDump =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5359,9 +6437,13 @@ export const DeploymentsGenerateThreadDump =
     outputSchema: DeploymentsGenerateThreadDumpOutput,
   }));
 // Input Schema
-export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
@@ -5395,6 +6477,13 @@ export type DeploymentsGetOutput = typeof DeploymentsGetOutput.Type;
 // The operation
 /**
  * Get a Deployment and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsGetInput,
@@ -5402,7 +6491,13 @@ export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DeploymentsGetLogFileUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getLogFileUrl",
@@ -5423,6 +6518,13 @@ export type DeploymentsGetLogFileUrlOutput =
 // The operation
 /**
  * Get deployment log file URL
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsGetLogFileUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5432,7 +6534,13 @@ export const DeploymentsGetLogFileUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DeploymentsGetRemoteDebuggingConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getRemoteDebuggingConfig",
@@ -5454,6 +6562,13 @@ export type DeploymentsGetRemoteDebuggingConfigOutput =
 // The operation
 /**
  * Get remote debugging config.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsGetRemoteDebuggingConfig =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5462,6 +6577,10 @@ export const DeploymentsGetRemoteDebuggingConfig =
   }));
 // Input Schema
 export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
   version: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -5515,6 +6634,11 @@ export type DeploymentsListOutput = typeof DeploymentsListOutput.Type;
 /**
  * Handles requests to list all resources in an App.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  * @param version - Version of the deployments to be listed
  */
 export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5524,6 +6648,9 @@ export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DeploymentsListForClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     version: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -5581,6 +6708,10 @@ export type DeploymentsListForClusterOutput =
 /**
  * List deployments for a certain service
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  * @param version - Version of the deployments to be listed
  * @param $expand - The expand expression to apply on the operation.
  */
@@ -5592,7 +6723,13 @@ export const DeploymentsListForCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DeploymentsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/restart",
@@ -5608,15 +6745,26 @@ export type DeploymentsRestartOutput = typeof DeploymentsRestartOutput.Type;
 // The operation
 /**
  * Restart the deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsRestartInput,
   outputSchema: DeploymentsRestartOutput,
 }));
 // Input Schema
-export const DeploymentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DeploymentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/start",
@@ -5632,6 +6780,13 @@ export type DeploymentsStartOutput = typeof DeploymentsStartOutput.Type;
 // The operation
 /**
  * Start the deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsStartInput,
@@ -5640,6 +6795,11 @@ export const DeploymentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DeploymentsStartJFRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     appInstance: Schema.optional(Schema.String),
     filePath: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
@@ -5660,15 +6820,26 @@ export type DeploymentsStartJFROutput = typeof DeploymentsStartJFROutput.Type;
 // The operation
 /**
  * Start JFR
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsStartJFR = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsStartJFRInput,
   outputSchema: DeploymentsStartJFROutput,
 }));
 // Input Schema
-export const DeploymentsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DeploymentsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/stop",
@@ -5684,6 +6855,13 @@ export type DeploymentsStopOutput = typeof DeploymentsStopOutput.Type;
 // The operation
 /**
  * Stop the deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsStopInput,
@@ -5692,6 +6870,11 @@ export const DeploymentsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         source: Schema.optional(
@@ -5848,6 +7031,13 @@ export type DeploymentsUpdateOutput = typeof DeploymentsUpdateOutput.Type;
 // The operation
 /**
  * Operation to update an exiting Deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsUpdateInput,
@@ -5856,6 +7046,10 @@ export const DeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DevToolPortalsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    devToolPortalName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -5959,6 +7153,12 @@ export type DevToolPortalsCreateOrUpdateOutput =
 // The operation
 /**
  * Create the default Dev Tool Portal or update the existing Dev Tool Portal.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param devToolPortalName - The name of Dev Tool Portal.
  */
 export const DevToolPortalsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5967,7 +7167,12 @@ export const DevToolPortalsCreateOrUpdate =
   }));
 // Input Schema
 export const DevToolPortalsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    devToolPortalName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
@@ -5984,6 +7189,12 @@ export type DevToolPortalsDeleteOutput = typeof DevToolPortalsDeleteOutput.Type;
 // The operation
 /**
  * Disable the default Dev Tool Portal.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param devToolPortalName - The name of Dev Tool Portal.
  */
 export const DevToolPortalsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5993,7 +7204,12 @@ export const DevToolPortalsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DevToolPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    devToolPortalName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -6029,6 +7245,12 @@ export type DevToolPortalsGetOutput = typeof DevToolPortalsGetOutput.Type;
 // The operation
 /**
  * Get the Application Live  and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param devToolPortalName - The name of Dev Tool Portal.
  */
 export const DevToolPortalsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DevToolPortalsGetInput,
@@ -6036,7 +7258,11 @@ export const DevToolPortalsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DevToolPortalsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/devToolPortals",
@@ -6088,6 +7314,11 @@ export type DevToolPortalsListOutput = typeof DevToolPortalsListOutput.Type;
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const DevToolPortalsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DevToolPortalsListInput,
@@ -6096,6 +7327,11 @@ export const DevToolPortalsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const GatewayCustomDomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         thumbprint: Schema.optional(Schema.String),
@@ -6138,6 +7374,13 @@ export type GatewayCustomDomainsCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update the Spring Cloud Gateway custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param domainName - The name of the Spring Cloud Gateway custom domain.
  */
 export const GatewayCustomDomainsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6146,7 +7389,13 @@ export const GatewayCustomDomainsCreateOrUpdate =
   }));
 // Input Schema
 export const GatewayCustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
@@ -6165,6 +7414,13 @@ export type GatewayCustomDomainsDeleteOutput =
 // The operation
 /**
  * Delete the Spring Cloud Gateway custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param domainName - The name of the Spring Cloud Gateway custom domain.
  */
 export const GatewayCustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6174,7 +7430,13 @@ export const GatewayCustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const GatewayCustomDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
@@ -6211,6 +7473,13 @@ export type GatewayCustomDomainsGetOutput =
 // The operation
 /**
  * Get the Spring Cloud Gateway custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param domainName - The name of the Spring Cloud Gateway custom domain.
  */
 export const GatewayCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6220,7 +7489,12 @@ export const GatewayCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const GatewayCustomDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains",
@@ -6274,6 +7548,12 @@ export type GatewayCustomDomainsListOutput =
 // The operation
 /**
  * Handle requests to list all Spring Cloud Gateway custom domains.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewayCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6284,6 +7564,11 @@ export const GatewayCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const GatewayRouteConfigsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    routeConfigName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -6359,6 +7644,13 @@ export type GatewayRouteConfigsCreateOrUpdateOutput =
 // The operation
 /**
  * Create the default Spring Cloud Gateway route configs or update the existing Spring Cloud Gateway route configs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param routeConfigName - The name of the Spring Cloud Gateway route config.
  */
 export const GatewayRouteConfigsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6367,7 +7659,13 @@ export const GatewayRouteConfigsCreateOrUpdate =
   }));
 // Input Schema
 export const GatewayRouteConfigsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    routeConfigName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
@@ -6386,6 +7684,13 @@ export type GatewayRouteConfigsDeleteOutput =
 // The operation
 /**
  * Delete the Spring Cloud Gateway route config.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param routeConfigName - The name of the Spring Cloud Gateway route config.
  */
 export const GatewayRouteConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6395,7 +7700,13 @@ export const GatewayRouteConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const GatewayRouteConfigsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    routeConfigName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
@@ -6432,6 +7743,13 @@ export type GatewayRouteConfigsGetOutput =
 // The operation
 /**
  * Get the Spring Cloud Gateway route configs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param routeConfigName - The name of the Spring Cloud Gateway route config.
  */
 export const GatewayRouteConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6441,7 +7759,12 @@ export const GatewayRouteConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const GatewayRouteConfigsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs",
@@ -6495,6 +7818,12 @@ export type GatewayRouteConfigsListOutput =
 // The operation
 /**
  * Handle requests to list all Spring Cloud Gateway route configs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewayRouteConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6505,6 +7834,10 @@ export const GatewayRouteConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const GatewaysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -6651,6 +7984,12 @@ export type GatewaysCreateOrUpdateOutput =
 // The operation
 /**
  * Create the default Spring Cloud Gateway or update the existing Spring Cloud Gateway.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6659,9 +7998,12 @@ export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
@@ -6677,15 +8019,24 @@ export type GatewaysDeleteOutput = typeof GatewaysDeleteOutput.Type;
 // The operation
 /**
  * Disable the default Spring Cloud Gateway.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysDeleteInput,
   outputSchema: GatewaysDeleteOutput,
 }));
 // Input Schema
-export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
@@ -6719,15 +8070,23 @@ export type GatewaysGetOutput = typeof GatewaysGetOutput.Type;
 // The operation
 /**
  * Get the Spring Cloud Gateway and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysGetInput,
   outputSchema: GatewaysGetOutput,
 }));
 // Input Schema
-export const GatewaysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GatewaysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways",
@@ -6778,6 +8137,11 @@ export type GatewaysListOutput = typeof GatewaysListOutput.Type;
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const GatewaysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysListInput,
@@ -6785,7 +8149,12 @@ export const GatewaysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GatewaysListEnvSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/listEnvSecrets",
@@ -6804,6 +8173,12 @@ export type GatewaysListEnvSecretsOutput =
 // The operation
 /**
  * List sensitive environment variables of Spring Cloud Gateway.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysListEnvSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6812,9 +8187,12 @@ export const GatewaysListEnvSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const GatewaysRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GatewaysRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/restart",
@@ -6830,6 +8208,12 @@ export type GatewaysRestartOutput = typeof GatewaysRestartOutput.Type;
 // The operation
 /**
  * Restart the Spring Cloud Gateway.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysRestartInput,
@@ -6838,6 +8222,10 @@ export const GatewaysRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const GatewaysValidateDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({
@@ -6861,6 +8249,12 @@ export type GatewaysValidateDomainOutput =
 // The operation
 /**
  * Check the domains are valid as well as not in use.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6870,7 +8264,11 @@ export const GatewaysValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MonitoringSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
@@ -6906,6 +8304,11 @@ export type MonitoringSettingsGetOutput =
 // The operation
 /**
  * Get the Monitoring Setting and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const MonitoringSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6916,6 +8319,9 @@ export const MonitoringSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const MonitoringSettingsUpdatePatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -6974,6 +8380,11 @@ export type MonitoringSettingsUpdatePatchOutput =
 // The operation
 /**
  * Update the Monitoring Setting.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const MonitoringSettingsUpdatePatch =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6983,6 +8394,9 @@ export const MonitoringSettingsUpdatePatch =
 // Input Schema
 export const MonitoringSettingsUpdatePutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -7041,6 +8455,11 @@ export type MonitoringSettingsUpdatePutOutput =
 // The operation
 /**
  * Update the Monitoring Setting.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const MonitoringSettingsUpdatePut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7135,6 +8554,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available REST API operations of the Microsoft.AppPlatform provider.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -7142,7 +8563,13 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PredefinedAcceleratorsDisableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    predefinedAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/disable",
@@ -7161,6 +8588,13 @@ export type PredefinedAcceleratorsDisableOutput =
 // The operation
 /**
  * Disable predefined accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param predefinedAcceleratorName - The name of the predefined accelerator.
  */
 export const PredefinedAcceleratorsDisable =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7169,7 +8603,13 @@ export const PredefinedAcceleratorsDisable =
   }));
 // Input Schema
 export const PredefinedAcceleratorsEnableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    predefinedAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/enable",
@@ -7188,6 +8628,13 @@ export type PredefinedAcceleratorsEnableOutput =
 // The operation
 /**
  * Enable predefined accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param predefinedAcceleratorName - The name of the predefined accelerator.
  */
 export const PredefinedAcceleratorsEnable =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7196,7 +8643,13 @@ export const PredefinedAcceleratorsEnable =
   }));
 // Input Schema
 export const PredefinedAcceleratorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    predefinedAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}",
@@ -7233,6 +8686,13 @@ export type PredefinedAcceleratorsGetOutput =
 // The operation
 /**
  * Get the predefined accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param predefinedAcceleratorName - The name of the predefined accelerator.
  */
 export const PredefinedAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7242,7 +8702,12 @@ export const PredefinedAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PredefinedAcceleratorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators",
@@ -7296,6 +8761,12 @@ export type PredefinedAcceleratorsListOutput =
 // The operation
 /**
  * Handle requests to list all predefined accelerators.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
  */
 export const PredefinedAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7336,6 +8807,8 @@ export type RuntimeVersionsListRuntimeVersionsOutput =
 // The operation
 /**
  * Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const RuntimeVersionsListRuntimeVersions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7344,7 +8817,12 @@ export const RuntimeVersionsListRuntimeVersions =
   }));
 // Input Schema
 export const ServiceRegistriesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    serviceRegistryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
@@ -7381,6 +8859,12 @@ export type ServiceRegistriesCreateOrUpdateOutput =
 // The operation
 /**
  * Create the default Service Registry or update the existing Service Registry.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param serviceRegistryName - The name of Service Registry.
  */
 export const ServiceRegistriesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7389,7 +8873,12 @@ export const ServiceRegistriesCreateOrUpdate =
   }));
 // Input Schema
 export const ServiceRegistriesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    serviceRegistryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
@@ -7408,6 +8897,12 @@ export type ServiceRegistriesDeleteOutput =
 // The operation
 /**
  * Disable the default Service Registry.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param serviceRegistryName - The name of Service Registry.
  */
 export const ServiceRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7417,7 +8912,12 @@ export const ServiceRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServiceRegistriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    serviceRegistryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
@@ -7452,6 +8952,12 @@ export type ServiceRegistriesGetOutput = typeof ServiceRegistriesGetOutput.Type;
 // The operation
 /**
  * Get the Service Registry and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param serviceRegistryName - The name of Service Registry.
  */
 export const ServiceRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7461,7 +8967,11 @@ export const ServiceRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServiceRegistriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries",
@@ -7514,6 +9024,11 @@ export type ServiceRegistriesListOutput =
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServiceRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7524,6 +9039,7 @@ export const ServiceRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     type: Schema.String,
     name: Schema.String,
@@ -7551,6 +9067,8 @@ export type ServicesCheckNameAvailabilityOutput =
 /**
  * Checks that the resource name is valid and is not already in use.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - the region
  */
 export const ServicesCheckNameAvailability =
@@ -7561,6 +9079,9 @@ export const ServicesCheckNameAvailability =
 // Input Schema
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -7677,6 +9198,11 @@ export type ServicesCreateOrUpdateOutput =
 // The operation
 /**
  * Create a new Service or update an exiting Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7685,9 +9211,11 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
@@ -7703,6 +9231,11 @@ export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 // The operation
 /**
  * Operation to delete a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
@@ -7711,6 +9244,9 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServicesDisableApmGloballyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     resourceId: Schema.String,
   }).pipe(
     T.Http({
@@ -7731,6 +9267,11 @@ export type ServicesDisableApmGloballyOutput =
 // The operation
 /**
  * Disable an APM globally.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesDisableApmGlobally = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7740,7 +9281,11 @@ export const ServicesDisableApmGlobally = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServicesDisableTestEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableTestEndpoint",
@@ -7759,6 +9304,11 @@ export type ServicesDisableTestEndpointOutput =
 // The operation
 /**
  * Disable test endpoint functionality for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesDisableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7769,6 +9319,9 @@ export const ServicesDisableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServicesEnableApmGloballyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     resourceId: Schema.String,
   }).pipe(
     T.Http({
@@ -7789,6 +9342,11 @@ export type ServicesEnableApmGloballyOutput =
 // The operation
 /**
  * Enable an APM globally.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesEnableApmGlobally = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7798,7 +9356,11 @@ export const ServicesEnableApmGlobally = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServicesEnableTestEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableTestEndpoint",
@@ -7823,6 +9385,11 @@ export type ServicesEnableTestEndpointOutput =
 // The operation
 /**
  * Enable test endpoint functionality for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesEnableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7832,7 +9399,11 @@ export const ServicesEnableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServicesFlushVnetDnsSettingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/flushVirtualNetworkDnsSettings",
@@ -7851,6 +9422,11 @@ export type ServicesFlushVnetDnsSettingOutput =
 // The operation
 /**
  * Flush Virtual Network DNS settings for a VNET injected Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesFlushVnetDnsSetting = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7859,9 +9435,11 @@ export const ServicesFlushVnetDnsSetting = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
@@ -7895,15 +9473,21 @@ export type ServicesGetOutput = typeof ServicesGetOutput.Type;
 // The operation
 /**
  * Get a Service and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring",
@@ -7954,6 +9538,10 @@ export type ServicesListOutput = typeof ServicesListOutput.Type;
 // The operation
 /**
  * Handles requests to list all resources in a resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
  */
 export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
@@ -7961,7 +9549,9 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/Spring",
@@ -8015,6 +9605,9 @@ export type ServicesListBySubscriptionOutput =
 // The operation
 /**
  * Handles requests to list all resources in a subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServicesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8024,7 +9617,11 @@ export const ServicesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServicesListGloballyEnabledApmsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listGloballyEnabledApms",
@@ -8045,6 +9642,11 @@ export type ServicesListGloballyEnabledApmsOutput =
 // The operation
 /**
  * List globally enabled APMs for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesListGloballyEnabledApms =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8053,7 +9655,11 @@ export const ServicesListGloballyEnabledApms =
   }));
 // Input Schema
 export const ServicesListSupportedApmTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedApmTypes",
@@ -8081,6 +9687,11 @@ export type ServicesListSupportedApmTypesOutput =
 // The operation
 /**
  * List supported APM types for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesListSupportedApmTypes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8089,7 +9700,11 @@ export const ServicesListSupportedApmTypes =
   }));
 // Input Schema
 export const ServicesListSupportedServerVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedServerVersions",
@@ -8119,6 +9734,11 @@ export type ServicesListSupportedServerVersionsOutput =
 // The operation
 /**
  * Lists all of the available server versions supported by Microsoft.AppPlatform provider.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesListSupportedServerVersions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8127,7 +9747,11 @@ export const ServicesListSupportedServerVersions =
   }));
 // Input Schema
 export const ServicesListTestKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listTestKeys",
@@ -8150,6 +9774,11 @@ export type ServicesListTestKeysOutput = typeof ServicesListTestKeysOutput.Type;
 // The operation
 /**
  * List test keys for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesListTestKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8160,6 +9789,9 @@ export const ServicesListTestKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServicesRegenerateTestKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     keyType: Schema.Literals(["Primary", "Secondary"]),
   }).pipe(
     T.Http({
@@ -8186,6 +9818,11 @@ export type ServicesRegenerateTestKeyOutput =
 // The operation
 /**
  * Regenerate a test key for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesRegenerateTestKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8194,9 +9831,11 @@ export const ServicesRegenerateTestKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/start",
@@ -8212,15 +9851,22 @@ export type ServicesStartOutput = typeof ServicesStartOutput.Type;
 // The operation
 /**
  * Start a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesStartInput,
   outputSchema: ServicesStartOutput,
 }));
 // Input Schema
-export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/stop",
@@ -8236,6 +9882,11 @@ export type ServicesStopOutput = typeof ServicesStopOutput.Type;
 // The operation
 /**
  * Stop a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesStopInput,
@@ -8243,6 +9894,9 @@ export const ServicesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       provisioningState: Schema.optional(
@@ -8356,13 +10010,20 @@ export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
 // The operation
 /**
  * Operation to update an exiting Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpdateInput,
   outputSchema: ServicesUpdateOutput,
 }));
 // Input Schema
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/skus",
@@ -8440,6 +10101,9 @@ export type SkusListOutput = typeof SkusListOutput.Type;
 // The operation
 /**
  * Lists all of the available skus of the Microsoft.AppPlatform provider.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
@@ -8448,6 +10112,10 @@ export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StoragesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    storageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         storageType: Schema.Literals(["StorageAccount"]),
@@ -8490,6 +10158,12 @@ export type StoragesCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update storage resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param storageName - The name of the storage resource.
  */
 export const StoragesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8498,9 +10172,12 @@ export const StoragesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const StoragesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const StoragesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  storageName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
@@ -8516,15 +10193,24 @@ export type StoragesDeleteOutput = typeof StoragesDeleteOutput.Type;
 // The operation
 /**
  * Delete the storage resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param storageName - The name of the storage resource.
  */
 export const StoragesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StoragesDeleteInput,
   outputSchema: StoragesDeleteOutput,
 }));
 // Input Schema
-export const StoragesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const StoragesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  storageName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
@@ -8558,15 +10244,23 @@ export type StoragesGetOutput = typeof StoragesGetOutput.Type;
 // The operation
 /**
  * Get the storage resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param storageName - The name of the storage resource.
  */
 export const StoragesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StoragesGetInput,
   outputSchema: StoragesGetOutput,
 }));
 // Input Schema
-export const StoragesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const StoragesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages",
@@ -8617,6 +10311,11 @@ export type StoragesListOutput = typeof StoragesListOutput.Type;
 // The operation
 /**
  * List all the storages of one Azure Spring Apps resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const StoragesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StoragesListInput,

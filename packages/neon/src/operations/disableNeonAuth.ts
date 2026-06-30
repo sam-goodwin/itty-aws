@@ -21,7 +21,13 @@ export type DisableNeonAuthOutput = typeof DisableNeonAuthOutput.Type;
 
 // The operation
 /**
- * Disables Neon Auth for the branch
+ * Disable Neon Auth for the branch
+ *
+ * Disables the Neon Auth integration for the specified branch, removing the connection
+ * to the authentication provider.
+ * If `delete_data` is `true`, also deletes the `neon_auth` schema and all associated tables
+ * from the branch database.
+ * The integration can be re-enabled by calling `POST /projects/{project_id}/branches/{branch_id}/auth`.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

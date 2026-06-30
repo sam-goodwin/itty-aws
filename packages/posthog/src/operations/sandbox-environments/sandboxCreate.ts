@@ -6,8 +6,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 // Input Schema
 export const SandboxCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
+  name: Schema.String,
   network_access_level: Schema.optional(
     Schema.Literals(["trusted", "full", "custom"]),
   ),
@@ -15,29 +14,7 @@ export const SandboxCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   include_default_domains: Schema.optional(Schema.Boolean),
   repositories: Schema.optional(Schema.Array(Schema.String)),
   environment_variables: Schema.optional(Schema.Unknown),
-  has_environment_variables: Schema.optional(Schema.Boolean),
   private: Schema.optional(Schema.Boolean),
-  internal: Schema.optional(Schema.Boolean),
-  effective_domains: Schema.optional(Schema.Array(Schema.String)),
-  created_by: Schema.optional(
-    Schema.NullOr(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        uuid: Schema.optional(Schema.String),
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.optional(Schema.String),
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.optional(
-          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-        ),
-        role_at_organization: Schema.optional(Schema.Unknown),
-      }),
-    ),
-  ),
-  created_at: Schema.optional(Schema.String),
-  updated_at: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
@@ -48,38 +25,16 @@ export type SandboxCreateInput = typeof SandboxCreateInput.Type;
 
 // Output Schema
 export const SandboxCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  network_access_level: Schema.optional(
-    Schema.Literals(["trusted", "full", "custom"]),
-  ),
+  id: Schema.String,
+  name: Schema.String,
+  network_access_level: Schema.String,
   allowed_domains: Schema.optional(Schema.Array(Schema.String)),
-  include_default_domains: Schema.optional(Schema.Boolean),
   repositories: Schema.optional(Schema.Array(Schema.String)),
-  environment_variables: Schema.optional(Schema.Unknown),
-  has_environment_variables: Schema.optional(Schema.Boolean),
-  private: Schema.optional(Schema.Boolean),
-  internal: Schema.optional(Schema.Boolean),
-  effective_domains: Schema.optional(Schema.Array(Schema.String)),
-  created_by: Schema.optional(
-    Schema.NullOr(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        uuid: Schema.optional(Schema.String),
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.optional(Schema.String),
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.optional(
-          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-        ),
-        role_at_organization: Schema.optional(Schema.Unknown),
-      }),
-    ),
-  ),
-  created_at: Schema.optional(Schema.String),
-  updated_at: Schema.optional(Schema.String),
+  private: Schema.Boolean,
+  internal: Schema.Boolean,
+  created_by: Schema.optional(Schema.Unknown),
+  created_at: Schema.optional(Schema.NullOr(Schema.String)),
+  updated_at: Schema.optional(Schema.NullOr(Schema.String)),
 });
 export type SandboxCreateOutput = typeof SandboxCreateOutput.Type;
 

@@ -22,96 +22,7 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface MoveProjectMetadata {}
-
-export const MoveProjectMetadata: Schema.Schema<MoveProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "MoveProjectMetadata",
-  });
-
-export interface UndeleteProjectMetadata {}
-
-export const UndeleteProjectMetadata: Schema.Schema<UndeleteProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteProjectMetadata",
-  });
-
-export interface DeleteFolderMetadata {}
-
-export const DeleteFolderMetadata: Schema.Schema<DeleteFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteFolderMetadata",
-  });
-
-export interface FolderOperationError {
-  /** The type of operation error experienced. */
-  errorMessageId?:
-    | "ERROR_TYPE_UNSPECIFIED"
-    | "ACTIVE_FOLDER_HEIGHT_VIOLATION"
-    | "MAX_CHILD_FOLDERS_VIOLATION"
-    | "FOLDER_NAME_UNIQUENESS_VIOLATION"
-    | "RESOURCE_DELETED_VIOLATION"
-    | "PARENT_DELETED_VIOLATION"
-    | "CYCLE_INTRODUCED_VIOLATION"
-    | "FOLDER_BEING_MOVED_VIOLATION"
-    | "FOLDER_TO_DELETE_NON_EMPTY_VIOLATION"
-    | "DELETED_FOLDER_HEIGHT_VIOLATION"
-    | "FOLDER_TO_DELETE_CONFIGURED_CAPABILITY_VIOLATION"
-    | (string & {});
-}
-
-export const FolderOperationError: Schema.Schema<FolderOperationError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errorMessageId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FolderOperationError" });
-
-export interface MoveFolderMetadata {
-  /** The resource name of the folder's parent. */
-  sourceParent?: string;
-  /** The display name of the folder. */
-  displayName?: string;
-  /** The resource name of the folder or organization to move the folder to. */
-  destinationParent?: string;
-}
-
-export const MoveFolderMetadata: Schema.Schema<MoveFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sourceParent: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    destinationParent: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MoveFolderMetadata" });
-
-export interface CreateProjectMetadata {
-  /** Creation time of the project creation workflow. */
-  createTime?: string;
-  /** True if the project creation process is complete. */
-  ready?: boolean;
-  /** True if the project can be retrieved using `GetProject`. No other operations on the project are guaranteed to work until the project creation is complete. */
-  gettable?: boolean;
-}
-
-export const CreateProjectMetadata: Schema.Schema<CreateProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createTime: Schema.optional(Schema.String),
-    ready: Schema.optional(Schema.Boolean),
-    gettable: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "CreateProjectMetadata" });
-
-export interface UpdateTagValueMetadata {}
-
-export const UpdateTagValueMetadata: Schema.Schema<UpdateTagValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UpdateTagValueMetadata",
-  });
-
-export interface UpdateProjectMetadata {}
-
-export const UpdateProjectMetadata: Schema.Schema<UpdateProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UpdateProjectMetadata",
-  });
-
-export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
+export interface FolderOperation {
   /** The type of this operation. */
   operationType?:
     | "OPERATION_TYPE_UNSPECIFIED"
@@ -126,22 +37,45 @@ export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOpe
   destinationParent?: string;
 }
 
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation> =
+export const FolderOperation: Schema.Schema<FolderOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationType: Schema.optional(Schema.String),
     sourceParent: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     destinationParent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FolderOperation" });
+
+export interface DeleteProjectMetadata {}
+
+export const DeleteProjectMetadata: Schema.Schema<DeleteProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteProjectMetadata",
+  });
+
+export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
+  /** The display name of the folder. */
+  displayName?: string;
+  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
+  destinationParent?: string;
+  /** The type of this operation. */
+  operationType?:
+    | "OPERATION_TYPE_UNSPECIFIED"
+    | "CREATE"
+    | "MOVE"
+    | (string & {});
+  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
+  sourceParent?: string;
+}
+
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    destinationParent: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
   }).annotate({
     identifier:
       "CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation",
-  });
-
-export interface UndeleteOrganizationMetadata {}
-
-export const UndeleteOrganizationMetadata: Schema.Schema<UndeleteOrganizationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteOrganizationMetadata",
   });
 
 export interface GetPolicyOptions {
@@ -164,153 +98,78 @@ export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
 
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
-}
+export interface UpdateFolderMetadata {}
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
-
-export interface UndeleteFolderMetadata {}
-
-export const UndeleteFolderMetadata: Schema.Schema<UndeleteFolderMetadata> =
+export const UpdateFolderMetadata: Schema.Schema<UpdateFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteFolderMetadata",
+    identifier: "UpdateFolderMetadata",
   });
 
-export interface MoveFolderRequest {
-  /** Required. The resource name of the Folder or Organization to reparent the folder under. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. */
-  destinationParent?: string;
-}
-
-export const MoveFolderRequest: Schema.Schema<MoveFolderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destinationParent: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MoveFolderRequest" });
-
-export interface CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
-  /** The type of this operation. */
-  operationType?:
-    | "OPERATION_TYPE_UNSPECIFIED"
-    | "CREATE"
-    | "MOVE"
-    | (string & {});
-  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
-  sourceParent?: string;
-  /** The display name of the folder. */
+export interface Folder {
+  /** Output only. Management Project associated with this folder (if app-management capability is enabled). Example: `projects/google-mp-123` OUTPUT ONLY. */
+  managementProject?: string;
+  /** Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234". */
+  name?: string;
+  /** The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`. */
   displayName?: string;
-  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
-  destinationParent?: string;
-}
-
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operationType: Schema.optional(Schema.String),
-    sourceParent: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    destinationParent: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation",
-  });
-
-export interface DeleteProjectMetadata {}
-
-export const DeleteProjectMetadata: Schema.Schema<DeleteProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteProjectMetadata",
-  });
-
-export interface SearchFoldersRequest {
-  /** Optional. The maximum number of folders to return in the response. The server can return fewer folders than requested. If unspecified, server picks an appropriate default. */
-  pageSize?: number;
-  /** Search criteria used to select the Folders to return. If no search criteria is specified then all accessible folders will be returned. Query expressions can be used to restrict results based upon displayName, lifecycleState and parent, where the operators `=`, `NOT`, `AND` and `OR` can be used along with the suffix wildcard symbol `*`. The displayName field in a query expression should use escaped quotes for values that include whitespace to prevent unexpected behavior. Some example queries are: * Query `displayName=Test*` returns Folder resources whose display name starts with "Test". * Query `lifecycleState=ACTIVE` returns Folder resources with `lifecycleState` set to `ACTIVE`. * Query `parent=folders/123` returns Folder resources that have `folders/123` as a parent resource. * Query `parent=folders/123 AND lifecycleState=ACTIVE` returns active Folder resources that have `folders/123` as a parent resource. * Query `displayName=\\"Test String\\"` returns Folder resources with display names that include both "Test" and "String". */
-  query?: string;
-  /** Optional. A pagination token returned from a previous call to `SearchFolders` that indicates from where search should continue. */
-  pageToken?: string;
-}
-
-export const SearchFoldersRequest: Schema.Schema<SearchFoldersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number),
-    query: Schema.optional(Schema.String),
-    pageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SearchFoldersRequest" });
-
-export interface UndeleteFolderRequest {}
-
-export const UndeleteFolderRequest: Schema.Schema<UndeleteFolderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteFolderRequest",
-  });
-
-export interface DeleteTagValueMetadata {}
-
-export const DeleteTagValueMetadata: Schema.Schema<DeleteTagValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteTagValueMetadata",
-  });
-
-export interface FolderOperation {
-  /** The display name of the folder. */
-  displayName?: string;
-  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
-  destinationParent?: string;
-  /** The type of this operation. */
-  operationType?:
-    | "OPERATION_TYPE_UNSPECIFIED"
-    | "CREATE"
-    | "MOVE"
+  /** Output only. The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder. */
+  lifecycleState?:
+    | "LIFECYCLE_STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "DELETE_REQUESTED"
     | (string & {});
-  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
-  sourceParent?: string;
+  /** Output only. Timestamp when the Folder was created. Assigned by the server. */
+  createTime?: string;
+  /** Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview. */
+  tags?: Record<string, string>;
+  /** Output only. Optional capabilities configured for this folder (via UpdateCapability API). Example: `folders/123/capabilities/app-management`. */
+  configuredCapabilities?: ReadonlyArray<string>;
+  /** Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder. */
+  parent?: string;
 }
 
-export const FolderOperation: Schema.Schema<FolderOperation> =
+export const Folder: Schema.Schema<Folder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementProject: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
-    destinationParent: Schema.optional(Schema.String),
-    operationType: Schema.optional(Schema.String),
-    sourceParent: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FolderOperation" });
+    lifecycleState: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    configuredCapabilities: Schema.optional(Schema.Array(Schema.String)),
+    parent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Folder" });
 
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
+export interface SearchFoldersResponse {
+  /** A possibly paginated folder search results. the specified parent resource. */
+  folders?: ReadonlyArray<Folder>;
+  /** A pagination token returned from a previous call to `SearchFolders` that indicates from where searching should continue. */
+  nextPageToken?: string;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const SearchFoldersResponse: Schema.Schema<SearchFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface DeleteTagKeyMetadata {}
-
-export const DeleteTagKeyMetadata: Schema.Schema<DeleteTagKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteTagKeyMetadata",
-  });
+    folders: Schema.optional(Schema.Array(Folder)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchFoldersResponse" });
 
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
 }
 
 export const Expr: Schema.Schema<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).annotate({ identifier: "Expr" });
 
 export interface Binding {
@@ -348,49 +207,87 @@ export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
   }).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
-  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
-  service?: string;
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
+  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
+  service?: string;
 }
 
 export const AuditConfig: Schema.Schema<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+    service: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: ReadonlyArray<Binding>;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
 export const Policy: Schema.Schema<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(Binding)),
+    version: Schema.optional(Schema.Number),
+    etag: Schema.optional(Schema.String),
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
   }).annotate({ identifier: "Policy" });
 
-export interface DeleteTagBindingMetadata {}
+export interface SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
+  updateMask?: string;
+}
 
-export const DeleteTagBindingMetadata: Schema.Schema<DeleteTagBindingMetadata> =
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
+
+export interface MoveProjectMetadata {}
+
+export const MoveProjectMetadata: Schema.Schema<MoveProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteTagBindingMetadata",
+    identifier: "MoveProjectMetadata",
   });
+
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+}
+
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
 
 export interface CreateTagKeyMetadata {}
 
 export const CreateTagKeyMetadata: Schema.Schema<CreateTagKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateTagKeyMetadata",
+  });
+
+export interface UpdateTagValueMetadata {}
+
+export const UpdateTagValueMetadata: Schema.Schema<UpdateTagValueMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateTagValueMetadata",
   });
 
 export interface CreateTagBindingMetadata {}
@@ -400,59 +297,206 @@ export const CreateTagBindingMetadata: Schema.Schema<CreateTagBindingMetadata> =
     identifier: "CreateTagBindingMetadata",
   });
 
-export interface Folder {
-  /** Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder. */
-  parent?: string;
-  /** Output only. Timestamp when the Folder was created. Assigned by the server. */
+export interface UndeleteFolderRequest {}
+
+export const UndeleteFolderRequest: Schema.Schema<UndeleteFolderRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteFolderRequest",
+  });
+
+export interface ProjectCreationStatus {
+  /** True if the project creation process is complete. */
+  ready?: boolean;
+  /** Creation time of the project creation workflow. */
   createTime?: string;
-  /** Output only. Management Project associated with this folder (if app-management capability is enabled). Example: `projects/google-mp-123` OUTPUT ONLY. */
-  managementProject?: string;
-  /** The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`. */
-  displayName?: string;
-  /** Output only. The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder. */
-  lifecycleState?:
-    | "LIFECYCLE_STATE_UNSPECIFIED"
-    | "ACTIVE"
-    | "DELETE_REQUESTED"
-    | (string & {});
-  /** Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview. */
-  tags?: Record<string, string>;
-  /** Output only. Optional capabilities configured for this folder (via UpdateCapability API). Example: `folders/123/capabilities/app-management`. */
-  configuredCapabilities?: ReadonlyArray<string>;
-  /** Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234". */
-  name?: string;
+  /** True if the project can be retrieved using GetProject. No other operations on the project are guaranteed to work until the project creation is complete. */
+  gettable?: boolean;
 }
 
-export const Folder: Schema.Schema<Folder> =
+export const ProjectCreationStatus: Schema.Schema<ProjectCreationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.optional(Schema.String),
+    ready: Schema.optional(Schema.Boolean),
     createTime: Schema.optional(Schema.String),
-    managementProject: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    lifecycleState: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    configuredCapabilities: Schema.optional(Schema.Array(Schema.String)),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Folder" });
+    gettable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ProjectCreationStatus" });
 
-export interface ListFoldersResponse {
-  /** A possibly paginated list of Folders that are direct descendants of the specified parent resource. */
-  folders?: ReadonlyArray<Folder>;
-  /** A pagination token returned from a previous call to `ListFolders` that indicates from where listing should continue. */
-  nextPageToken?: string;
-}
+export interface CreateTagValueMetadata {}
 
-export const ListFoldersResponse: Schema.Schema<ListFoldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    folders: Schema.optional(Schema.Array(Folder)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListFoldersResponse" });
+export const CreateTagValueMetadata: Schema.Schema<CreateTagValueMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CreateTagValueMetadata",
+  });
 
 export interface DeleteOrganizationMetadata {}
 
 export const DeleteOrganizationMetadata: Schema.Schema<DeleteOrganizationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteOrganizationMetadata",
+  });
+
+export interface DeleteTagKeyMetadata {}
+
+export const DeleteTagKeyMetadata: Schema.Schema<DeleteTagKeyMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteTagKeyMetadata",
+  });
+
+export interface SearchFoldersRequest {
+  /** Optional. The maximum number of folders to return in the response. The server can return fewer folders than requested. If unspecified, server picks an appropriate default. */
+  pageSize?: number;
+  /** Optional. A pagination token returned from a previous call to `SearchFolders` that indicates from where search should continue. */
+  pageToken?: string;
+  /** Search criteria used to select the Folders to return. If no search criteria is specified then all accessible folders will be returned. Query expressions can be used to restrict results based upon displayName, lifecycleState and parent, where the operators `=`, `NOT`, `AND` and `OR` can be used along with the suffix wildcard symbol `*`. The displayName field in a query expression should use escaped quotes for values that include whitespace to prevent unexpected behavior. Some example queries are: * Query `displayName=Test*` returns Folder resources whose display name starts with "Test". * Query `lifecycleState=ACTIVE` returns Folder resources with `lifecycleState` set to `ACTIVE`. * Query `parent=folders/123` returns Folder resources that have `folders/123` as a parent resource. * Query `parent=folders/123 AND lifecycleState=ACTIVE` returns active Folder resources that have `folders/123` as a parent resource. * Query `displayName=\\"Test String\\"` returns Folder resources with display names that include both "Test" and "String". */
+  query?: string;
+}
+
+export const SearchFoldersRequest: Schema.Schema<SearchFoldersRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchFoldersRequest" });
+
+export interface CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
+  /** The type of this operation. */
+  operationType?:
+    | "OPERATION_TYPE_UNSPECIFIED"
+    | "CREATE"
+    | "MOVE"
+    | (string & {});
+  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
+  sourceParent?: string;
+  /** The display name of the folder. */
+  displayName?: string;
+  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
+  destinationParent?: string;
+}
+
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationType: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    destinationParent: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation",
+  });
+
+export interface DeleteFolderMetadata {}
+
+export const DeleteFolderMetadata: Schema.Schema<DeleteFolderMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteFolderMetadata",
+  });
+
+export interface UpdateProjectMetadata {}
+
+export const UpdateProjectMetadata: Schema.Schema<UpdateProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateProjectMetadata",
+  });
+
+export interface DeleteTagBindingMetadata {}
+
+export const DeleteTagBindingMetadata: Schema.Schema<DeleteTagBindingMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteTagBindingMetadata",
+  });
+
+export interface Operation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+}
+
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
+
+export interface MoveFolderRequest {
+  /** Required. The resource name of the Folder or Organization to reparent the folder under. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. */
+  destinationParent?: string;
+}
+
+export const MoveFolderRequest: Schema.Schema<MoveFolderRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationParent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MoveFolderRequest" });
+
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+export interface UpdateTagKeyMetadata {}
+
+export const UpdateTagKeyMetadata: Schema.Schema<UpdateTagKeyMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateTagKeyMetadata",
+  });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
+
+export interface UndeleteOrganizationMetadata {}
+
+export const UndeleteOrganizationMetadata: Schema.Schema<UndeleteOrganizationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteOrganizationMetadata",
+  });
+
+export interface FolderOperationError {
+  /** The type of operation error experienced. */
+  errorMessageId?:
+    | "ERROR_TYPE_UNSPECIFIED"
+    | "ACTIVE_FOLDER_HEIGHT_VIOLATION"
+    | "MAX_CHILD_FOLDERS_VIOLATION"
+    | "FOLDER_NAME_UNIQUENESS_VIOLATION"
+    | "RESOURCE_DELETED_VIOLATION"
+    | "PARENT_DELETED_VIOLATION"
+    | "CYCLE_INTRODUCED_VIOLATION"
+    | "FOLDER_BEING_MOVED_VIOLATION"
+    | "FOLDER_TO_DELETE_NON_EMPTY_VIOLATION"
+    | "DELETED_FOLDER_HEIGHT_VIOLATION"
+    | "FOLDER_TO_DELETE_CONFIGURED_CAPABILITY_VIOLATION"
+    | (string & {});
+}
+
+export const FolderOperationError: Schema.Schema<FolderOperationError> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessageId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FolderOperationError" });
+
+export interface DeleteTagValueMetadata {}
+
+export const DeleteTagValueMetadata: Schema.Schema<DeleteTagValueMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteTagValueMetadata",
   });
 
 export interface CreateFolderMetadata {
@@ -468,108 +512,64 @@ export const CreateFolderMetadata: Schema.Schema<CreateFolderMetadata> =
     parent: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateFolderMetadata" });
 
-export interface CreateTagValueMetadata {}
+export interface UndeleteFolderMetadata {}
 
-export const CreateTagValueMetadata: Schema.Schema<CreateTagValueMetadata> =
+export const UndeleteFolderMetadata: Schema.Schema<UndeleteFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CreateTagValueMetadata",
+    identifier: "UndeleteFolderMetadata",
   });
 
-export interface UpdateTagKeyMetadata {}
-
-export const UpdateTagKeyMetadata: Schema.Schema<UpdateTagKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UpdateTagKeyMetadata",
-  });
-
-export interface ProjectCreationStatus {
-  /** True if the project can be retrieved using GetProject. No other operations on the project are guaranteed to work until the project creation is complete. */
-  gettable?: boolean;
+export interface CreateProjectMetadata {
   /** Creation time of the project creation workflow. */
   createTime?: string;
+  /** True if the project can be retrieved using `GetProject`. No other operations on the project are guaranteed to work until the project creation is complete. */
+  gettable?: boolean;
   /** True if the project creation process is complete. */
   ready?: boolean;
 }
 
-export const ProjectCreationStatus: Schema.Schema<ProjectCreationStatus> =
+export const CreateProjectMetadata: Schema.Schema<CreateProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gettable: Schema.optional(Schema.Boolean),
     createTime: Schema.optional(Schema.String),
+    gettable: Schema.optional(Schema.Boolean),
     ready: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "ProjectCreationStatus" });
+  }).annotate({ identifier: "CreateProjectMetadata" });
 
-export interface SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
-  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
-  updateMask?: string;
+export interface MoveFolderMetadata {
+  /** The resource name of the folder's parent. */
+  sourceParent?: string;
+  /** The display name of the folder. */
+  displayName?: string;
+  /** The resource name of the folder or organization to move the folder to. */
+  destinationParent?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const MoveFolderMetadata: Schema.Schema<MoveFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(Policy),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SetIamPolicyRequest" });
+    sourceParent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    destinationParent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MoveFolderMetadata" });
 
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-}
+export interface UndeleteProjectMetadata {}
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.Number),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    message: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Status" });
+export const UndeleteProjectMetadata: Schema.Schema<UndeleteProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteProjectMetadata",
+  });
 
-export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-}
-
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    error: Schema.optional(Status),
-    done: Schema.optional(Schema.Boolean),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "Operation" });
-
-export interface SearchFoldersResponse {
-  /** A possibly paginated folder search results. the specified parent resource. */
+export interface ListFoldersResponse {
+  /** A possibly paginated list of Folders that are direct descendants of the specified parent resource. */
   folders?: ReadonlyArray<Folder>;
-  /** A pagination token returned from a previous call to `SearchFolders` that indicates from where searching should continue. */
+  /** A pagination token returned from a previous call to `ListFolders` that indicates from where listing should continue. */
   nextPageToken?: string;
 }
 
-export const SearchFoldersResponse: Schema.Schema<SearchFoldersResponse> =
+export const ListFoldersResponse: Schema.Schema<ListFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folders: Schema.optional(Schema.Array(Folder)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SearchFoldersResponse" });
-
-export interface UpdateFolderMetadata {}
-
-export const UpdateFolderMetadata: Schema.Schema<UpdateFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UpdateFolderMetadata",
-  });
+  }).annotate({ identifier: "ListFoldersResponse" });
 
 // ==========================================================================
 // Errors
@@ -625,42 +625,72 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface UndeleteFoldersRequest {
-  /** Required. The resource name of the Folder to undelete. Must be of the form `folders/{folder_id}`. */
+export interface GetOperationsRequest {
+  /** The name of the operation resource. */
   name: string;
-  /** Request body */
-  body?: UndeleteFolderRequest;
 }
 
-export const UndeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(UndeleteFolderRequest).pipe(T.HttpBody()),
-  },
-).pipe(
-  T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
+export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<UndeleteFoldersRequest>;
+) as unknown as Schema.Schema<GetOperationsRequest>;
 
-export type UndeleteFoldersResponse = Folder;
-export const UndeleteFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
+export type GetOperationsResponse = Operation;
+export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteFoldersError =
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getOperations: API.OperationMethod<
+  GetOperationsRequest,
+  GetOperationsResponse,
+  GetOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOperationsRequest,
+  output: GetOperationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PatchFoldersRequest {
+  /** Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234". */
+  name: string;
+  /** Required. Fields to be updated. Only the `display_name` can be updated. */
+  updateMask?: string;
+  /** Request body */
+  body?: Folder;
+}
+
+export const PatchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+  body: Schema.optional(Folder).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<PatchFoldersRequest>;
+
+export type PatchFoldersResponse = Folder;
+export const PatchFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
+
+export type PatchFoldersError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Cancels the deletion request for a Folder. This method may only be called on a Folder in the DELETE_REQUESTED state. In order to succeed, the Folder's parent must be in the ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming, height and fanout constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.undelete` permission on the identified folder. */
-export const undeleteFolders: API.OperationMethod<
-  UndeleteFoldersRequest,
-  UndeleteFoldersResponse,
-  UndeleteFoldersError,
+/** Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if they violate either the display_name formatting rules or naming constraints described in the CreateFolder documentation. The Folder's display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the regular expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique name constraint then a PreconditionFailure explaining this violation will be returned in the Status.details field. */
+export const patchFolders: API.OperationMethod<
+  PatchFoldersRequest,
+  PatchFoldersResponse,
+  PatchFoldersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UndeleteFoldersRequest,
-  output: UndeleteFoldersResponse,
+  input: PatchFoldersRequest,
+  output: PatchFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -707,6 +737,78 @@ export const testIamPermissionsFolders: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetFoldersRequest {
+  /** Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`. */
+  name: string;
+}
+
+export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v2/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetFoldersRequest>;
+
+export type GetFoldersResponse = Folder;
+export const GetFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
+
+export type GetFoldersError = DefaultErrors | NotFound | Forbidden;
+
+/** Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder. */
+export const getFolders: API.OperationMethod<
+  GetFoldersRequest,
+  GetFoldersResponse,
+  GetFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetFoldersRequest,
+  output: GetFoldersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListFoldersRequest {
+  /** Optional. The maximum number of Folders to return in the response. The server can return fewer folders than requested. If unspecified, server picks an appropriate default. */
+  pageSize?: number;
+  /** Optional. A pagination token returned from a previous call to `ListFolders` that indicates where this listing should continue from. */
+  pageToken?: string;
+  /** Optional. Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false. */
+  showDeleted?: boolean;
+  /** Required. The resource name of the Organization or Folder whose Folders are being listed. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking the `resourcemanager.folders.list` permission on the `parent`. */
+  parent?: string;
+}
+
+export const ListFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  showDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("showDeleted")),
+  parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
+}).pipe(
+  T.Http({ method: "GET", path: "v2/folders" }),
+  svc,
+) as unknown as Schema.Schema<ListFoldersRequest>;
+
+export type ListFoldersResponse_Op = ListFoldersResponse;
+export const ListFoldersResponse_Op =
+  /*@__PURE__*/ /*#__PURE__*/ ListFoldersResponse;
+
+export type ListFoldersError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists the Folders that are direct descendants of supplied parent resource. List provides a strongly consistent view of the Folders underneath the specified parent resource. List returns Folders sorted based upon the (ascending) lexical ordering of their display_name. The caller must have `resourcemanager.folders.list` permission on the identified parent. */
+export const listFolders: API.PaginatedOperationMethod<
+  ListFoldersRequest,
+  ListFoldersResponse_Op,
+  ListFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListFoldersRequest,
+  output: ListFoldersResponse_Op,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface CreateFoldersRequest {
   /** Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. */
   parent?: string;
@@ -742,112 +844,6 @@ export const createFolders: API.OperationMethod<
   input: CreateFoldersRequest,
   output: CreateFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetFoldersRequest {
-  /** Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`. */
-  name: string;
-}
-
-export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v2/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetFoldersRequest>;
-
-export type GetFoldersResponse = Folder;
-export const GetFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
-
-export type GetFoldersError = DefaultErrors | NotFound | Forbidden;
-
-/** Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder. */
-export const getFolders: API.OperationMethod<
-  GetFoldersRequest,
-  GetFoldersResponse,
-  GetFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetFoldersRequest,
-  output: GetFoldersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteFoldersRequest {
-  /** Required. the resource name of the Folder to be deleted. Must be of the form `folders/{folder_id}`. */
-  name: string;
-}
-
-export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "DELETE", path: "v2/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<DeleteFoldersRequest>;
-
-export type DeleteFoldersResponse = Folder;
-export const DeleteFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
-
-export type DeleteFoldersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and is deleted approximately 30 days later. This method may only be called on an empty Folder in the ACTIVE state, where a Folder is empty if it doesn't contain any Folders or Projects in the ACTIVE state. The caller must have `resourcemanager.folders.delete` permission on the identified folder. */
-export const deleteFolders: API.OperationMethod<
-  DeleteFoldersRequest,
-  DeleteFoldersResponse,
-  DeleteFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteFoldersRequest,
-  output: DeleteFoldersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListFoldersRequest {
-  /** Optional. The maximum number of Folders to return in the response. The server can return fewer folders than requested. If unspecified, server picks an appropriate default. */
-  pageSize?: number;
-  /** Optional. Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false. */
-  showDeleted?: boolean;
-  /** Required. The resource name of the Organization or Folder whose Folders are being listed. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking the `resourcemanager.folders.list` permission on the `parent`. */
-  parent?: string;
-  /** Optional. A pagination token returned from a previous call to `ListFolders` that indicates where this listing should continue from. */
-  pageToken?: string;
-}
-
-export const ListFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  showDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("showDeleted")),
-  parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-}).pipe(
-  T.Http({ method: "GET", path: "v2/folders" }),
-  svc,
-) as unknown as Schema.Schema<ListFoldersRequest>;
-
-export type ListFoldersResponse_Op = ListFoldersResponse;
-export const ListFoldersResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListFoldersResponse;
-
-export type ListFoldersError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists the Folders that are direct descendants of supplied parent resource. List provides a strongly consistent view of the Folders underneath the specified parent resource. List returns Folders sorted based upon the (ascending) lexical ordering of their display_name. The caller must have `resourcemanager.folders.list` permission on the identified parent. */
-export const listFolders: API.PaginatedOperationMethod<
-  ListFoldersRequest,
-  ListFoldersResponse_Op,
-  ListFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersRequest,
-  output: ListFoldersResponse_Op,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface SetIamPolicyFoldersRequest {
@@ -892,6 +888,152 @@ export const setIamPolicyFolders: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface MoveFoldersRequest {
+  /** Required. The resource name of the Folder to move. Must be of the form folders/{folder_id} */
+  name: string;
+  /** Request body */
+  body?: MoveFolderRequest;
+}
+
+export const MoveFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(MoveFolderRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v2/{+name}:move", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<MoveFoldersRequest>;
+
+export type MoveFoldersResponse = Operation;
+export const MoveFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type MoveFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Moves a Folder under a new resource parent. Returns an Operation which can be used to track the progress of the folder move workflow. Upon success the Operation.response field will be populated with the moved Folder. Upon failure, a FolderOperationError categorizing the failure cause will be returned - if the failure occurs synchronously then the FolderOperationError will be returned via the Status.details field and if it occurs asynchronously then the FolderOperation will be returned via the Operation.error field. In addition, the Operation.metadata field will be populated with a FolderOperation message as an aid to stateless clients. Folder moves will be rejected if they violate either the naming, height or fanout constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move` permission on the folder's current and proposed new parent. */
+export const moveFolders: API.OperationMethod<
+  MoveFoldersRequest,
+  MoveFoldersResponse,
+  MoveFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: MoveFoldersRequest,
+  output: MoveFoldersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SearchFoldersRequest_Op {
+  /** Request body */
+  body?: SearchFoldersRequest;
+}
+
+export const SearchFoldersRequest_Op =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(SearchFoldersRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/folders:search", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<SearchFoldersRequest_Op>;
+
+export type SearchFoldersResponse_Op = SearchFoldersResponse;
+export const SearchFoldersResponse_Op =
+  /*@__PURE__*/ /*#__PURE__*/ SearchFoldersResponse;
+
+export type SearchFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Search for folders that match specific filter criteria. Search provides an eventually consistent view of the folders a user has access to which meet the specified filter criteria. This will only return folders on which the caller has the permission `resourcemanager.folders.get`. */
+export const searchFolders: API.OperationMethod<
+  SearchFoldersRequest_Op,
+  SearchFoldersResponse_Op,
+  SearchFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SearchFoldersRequest_Op,
+  output: SearchFoldersResponse_Op,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UndeleteFoldersRequest {
+  /** Required. The resource name of the Folder to undelete. Must be of the form `folders/{folder_id}`. */
+  name: string;
+  /** Request body */
+  body?: UndeleteFolderRequest;
+}
+
+export const UndeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(UndeleteFolderRequest).pipe(T.HttpBody()),
+  },
+).pipe(
+  T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<UndeleteFoldersRequest>;
+
+export type UndeleteFoldersResponse = Folder;
+export const UndeleteFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
+
+export type UndeleteFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Cancels the deletion request for a Folder. This method may only be called on a Folder in the DELETE_REQUESTED state. In order to succeed, the Folder's parent must be in the ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming, height and fanout constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.undelete` permission on the identified folder. */
+export const undeleteFolders: API.OperationMethod<
+  UndeleteFoldersRequest,
+  UndeleteFoldersResponse,
+  UndeleteFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UndeleteFoldersRequest,
+  output: UndeleteFoldersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteFoldersRequest {
+  /** Required. the resource name of the Folder to be deleted. Must be of the form `folders/{folder_id}`. */
+  name: string;
+}
+
+export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "v2/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteFoldersRequest>;
+
+export type DeleteFoldersResponse = Folder;
+export const DeleteFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
+
+export type DeleteFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and is deleted approximately 30 days later. This method may only be called on an empty Folder in the ACTIVE state, where a Folder is empty if it doesn't contain any Folders or Projects in the ACTIVE state. The caller must have `resourcemanager.folders.delete` permission on the identified folder. */
+export const deleteFolders: API.OperationMethod<
+  DeleteFoldersRequest,
+  DeleteFoldersResponse,
+  DeleteFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteFoldersRequest,
+  output: DeleteFoldersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface GetIamPolicyFoldersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -932,146 +1074,4 @@ export const getIamPolicyFolders: API.OperationMethod<
   input: GetIamPolicyFoldersRequest,
   output: GetIamPolicyFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SearchFoldersRequest_Op {
-  /** Request body */
-  body?: SearchFoldersRequest;
-}
-
-export const SearchFoldersRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(SearchFoldersRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/folders:search", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<SearchFoldersRequest_Op>;
-
-export type SearchFoldersResponse_Op = SearchFoldersResponse;
-export const SearchFoldersResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ SearchFoldersResponse;
-
-export type SearchFoldersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Search for folders that match specific filter criteria. Search provides an eventually consistent view of the folders a user has access to which meet the specified filter criteria. This will only return folders on which the caller has the permission `resourcemanager.folders.get`. */
-export const searchFolders: API.OperationMethod<
-  SearchFoldersRequest_Op,
-  SearchFoldersResponse_Op,
-  SearchFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SearchFoldersRequest_Op,
-  output: SearchFoldersResponse_Op,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchFoldersRequest {
-  /** Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234". */
-  name: string;
-  /** Required. Fields to be updated. Only the `display_name` can be updated. */
-  updateMask?: string;
-  /** Request body */
-  body?: Folder;
-}
-
-export const PatchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-  body: Schema.optional(Folder).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<PatchFoldersRequest>;
-
-export type PatchFoldersResponse = Folder;
-export const PatchFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
-
-export type PatchFoldersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if they violate either the display_name formatting rules or naming constraints described in the CreateFolder documentation. The Folder's display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the regular expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique name constraint then a PreconditionFailure explaining this violation will be returned in the Status.details field. */
-export const patchFolders: API.OperationMethod<
-  PatchFoldersRequest,
-  PatchFoldersResponse,
-  PatchFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchFoldersRequest,
-  output: PatchFoldersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface MoveFoldersRequest {
-  /** Required. The resource name of the Folder to move. Must be of the form folders/{folder_id} */
-  name: string;
-  /** Request body */
-  body?: MoveFolderRequest;
-}
-
-export const MoveFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-  body: Schema.optional(MoveFolderRequest).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "v2/{+name}:move", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<MoveFoldersRequest>;
-
-export type MoveFoldersResponse = Operation;
-export const MoveFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type MoveFoldersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Moves a Folder under a new resource parent. Returns an Operation which can be used to track the progress of the folder move workflow. Upon success the Operation.response field will be populated with the moved Folder. Upon failure, a FolderOperationError categorizing the failure cause will be returned - if the failure occurs synchronously then the FolderOperationError will be returned via the Status.details field and if it occurs asynchronously then the FolderOperation will be returned via the Operation.error field. In addition, the Operation.metadata field will be populated with a FolderOperation message as an aid to stateless clients. Folder moves will be rejected if they violate either the naming, height or fanout constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move` permission on the folder's current and proposed new parent. */
-export const moveFolders: API.OperationMethod<
-  MoveFoldersRequest,
-  MoveFoldersResponse,
-  MoveFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: MoveFoldersRequest,
-  output: MoveFoldersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
-
-export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getOperations: API.OperationMethod<
-  GetOperationsRequest,
-  GetOperationsResponse,
-  GetOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: GetOperationsResponse,
-  errors: [NotFound, Forbidden],
 }));

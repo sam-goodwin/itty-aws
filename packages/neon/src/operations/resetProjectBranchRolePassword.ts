@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const ResetProjectBranchRolePasswordInput =
@@ -25,7 +25,7 @@ export const ResetProjectBranchRolePasswordOutput =
     role: Schema.Struct({
       branch_id: Schema.String,
       name: Schema.String,
-      password: Schema.optional(SensitiveString),
+      password: Schema.optional(SensitiveOutputString),
       protected: Schema.optional(Schema.Boolean),
       authentication_method: Schema.optional(Schema.String),
       created_at: Schema.String,
@@ -102,10 +102,7 @@ export type ResetProjectBranchRolePasswordOutput =
  * The old password remains valid until last operation finishes.
  * Connections to the compute endpoint are dropped. If idle,
  * the compute endpoint becomes active for a short period of time.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
- * You can obtain the `role_name` by listing the roles for a branch.
- * For related information, see [Manage roles](https://neon.tech/docs/manage/roles/).
+ * For related information, see [Manage roles](https://neon.com/docs/manage/roles/).
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

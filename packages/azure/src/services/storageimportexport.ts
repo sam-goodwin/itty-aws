@@ -12,6 +12,8 @@ import * as T from "../traits.ts";
 export const BitLockerKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     jobName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -41,6 +43,10 @@ export type BitLockerKeysListOutput = typeof BitLockerKeysListOutput.Type;
  * Returns the BitLocker Keys for all drives in the specified job.
  *
  * @param jobName - The name of the import/export job.
+ * @param subscriptionId - The subscription ID for the Azure user.
+ * @param resourceGroupName - The resource group name uniquely identifies the resource group within the user subscription.
+ * @param api-version - Specifies the API version to use for this request.
+ * @param Accept-Language - Specifies the preferred language for the response.
  */
 export const BitLockerKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BitLockerKeysListInput,
@@ -49,6 +55,8 @@ export const BitLockerKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Unknown),
   properties: Schema.optional(
@@ -318,6 +326,11 @@ export type JobsCreateOutput = typeof JobsCreateOutput.Type;
  * Creates a new job or updates an existing job in the specified subscription.
  *
  * @param jobName - The name of the import/export job.
+ * @param subscriptionId - The subscription ID for the Azure user.
+ * @param resourceGroupName - The resource group name uniquely identifies the resource group within the user subscription.
+ * @param api-version - Specifies the API version to use for this request.
+ * @param Accept-Language - Specifies the preferred language for the response.
+ * @param x-ms-client-tenant-id - The tenant ID of the client making the request.
  */
 export const JobsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsCreateInput,
@@ -326,6 +339,8 @@ export const JobsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -344,6 +359,10 @@ export type JobsDeleteOutput = typeof JobsDeleteOutput.Type;
  * Deletes an existing job. Only jobs in the Creating or Completed states can be deleted.
  *
  * @param jobName - The name of the import/export job.
+ * @param subscriptionId - The subscription ID for the Azure user.
+ * @param resourceGroupName - The resource group name uniquely identifies the resource group within the user subscription.
+ * @param api-version - Specifies the API version to use for this request.
+ * @param Accept-Language - Specifies the preferred language for the response.
  */
 export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsDeleteInput,
@@ -352,6 +371,8 @@ export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -509,6 +530,10 @@ export type JobsGetOutput = typeof JobsGetOutput.Type;
  * Gets information about an existing job.
  *
  * @param jobName - The name of the import/export job.
+ * @param subscriptionId - The subscription ID for the Azure user.
+ * @param resourceGroupName - The resource group name uniquely identifies the resource group within the user subscription.
+ * @param api-version - Specifies the API version to use for this request.
+ * @param Accept-Language - Specifies the preferred language for the response.
  */
 export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsGetInput,
@@ -517,6 +542,8 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -699,6 +726,10 @@ export type JobsListByResourceGroupOutput =
  *
  * @param $top - An integer value that specifies how many jobs at most should be returned. The value cannot exceed 100.
  * @param $filter - Can be used to restrict the results to certain conditions.
+ * @param subscriptionId - The subscription ID for the Azure user.
+ * @param resourceGroupName - The resource group name uniquely identifies the resource group within the user subscription.
+ * @param api-version - Specifies the API version to use for this request.
+ * @param Accept-Language - Specifies the preferred language for the response.
  */
 export const JobsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -709,6 +740,7 @@ export const JobsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -891,6 +923,9 @@ export type JobsListBySubscriptionOutput =
  *
  * @param $top - An integer value that specifies how many jobs at most should be returned. The value cannot exceed 100.
  * @param $filter - Can be used to restrict the results to certain conditions.
+ * @param subscriptionId - The subscription ID for the Azure user.
+ * @param api-version - Specifies the API version to use for this request.
+ * @param Accept-Language - Specifies the preferred language for the response.
  */
 export const JobsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -901,6 +936,8 @@ export const JobsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Unknown),
   properties: Schema.optional(
     Schema.Struct({
@@ -1122,6 +1159,10 @@ export type JobsUpdateOutput = typeof JobsUpdateOutput.Type;
  * Updates specific properties of a job. You can call this operation to notify the Import/Export service that the hard drives comprising the import or export job have been shipped to the Microsoft data center. It can also be used to cancel an existing job.
  *
  * @param jobName - The name of the import/export job.
+ * @param subscriptionId - The subscription ID for the Azure user.
+ * @param resourceGroupName - The resource group name uniquely identifies the resource group within the user subscription.
+ * @param api-version - Specifies the API version to use for this request.
+ * @param Accept-Language - Specifies the preferred language for the response.
  */
 export const JobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsUpdateInput,
@@ -1167,6 +1208,8 @@ export type LocationsGetOutput = typeof LocationsGetOutput.Type;
  * Returns the details about a location to which you can ship the disks associated with an import or export job. A location is an Azure region.
  *
  * @param locationName - The name of the location. For example, West US or westus.
+ * @param api-version - Specifies the API version to use for this request.
+ * @param Accept-Language - Specifies the preferred language for the response.
  */
 export const LocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LocationsGetInput,
@@ -1216,6 +1259,9 @@ export type LocationsListOutput = typeof LocationsListOutput.Type;
 // The operation
 /**
  * Returns a list of locations to which you can ship the disks associated with an import or export job. A location is a Microsoft data center region.
+ *
+ * @param api-version - Specifies the API version to use for this request.
+ * @param Accept-Language - Specifies the preferred language for the response.
  */
 export const LocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LocationsListInput,
@@ -1254,6 +1300,9 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Returns the list of operations supported by the import/export resource provider.
+ *
+ * @param api-version - Specifies the API version to use for this request.
+ * @param Accept-Language - Specifies the preferred language for the response.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,

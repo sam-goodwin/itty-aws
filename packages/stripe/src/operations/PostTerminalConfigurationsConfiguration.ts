@@ -16,7 +16,11 @@ export const PostTerminalConfigurationsConfigurationInput =
     stripe_s700: Schema.optional(Schema.Unknown),
     stripe_s710: Schema.optional(Schema.Unknown),
     tipping: Schema.optional(Schema.Unknown),
+    verifone_m425: Schema.optional(Schema.Unknown),
     verifone_p400: Schema.optional(Schema.Unknown),
+    verifone_p630: Schema.optional(Schema.Unknown),
+    verifone_ux700: Schema.optional(Schema.Unknown),
+    verifone_v660p: Schema.optional(Schema.Unknown),
     wifi: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({

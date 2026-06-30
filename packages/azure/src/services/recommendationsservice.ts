@@ -54,6 +54,7 @@ export const AccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         configuration: Schema.optional(Schema.Literals(["Free", "Capacity"])),
@@ -126,6 +127,7 @@ export type AccountsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
  */
 export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -137,6 +139,7 @@ export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -157,6 +160,7 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
  */
 export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
@@ -166,6 +170,7 @@ export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -190,6 +195,7 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
  */
 export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
@@ -200,6 +206,7 @@ export const AccountsGetStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -239,6 +246,7 @@ export type AccountsGetStatusOutput = typeof AccountsGetStatusOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
  */
 export const AccountsGetStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetStatusInput,
@@ -338,6 +346,7 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
     Schema.Struct({
@@ -390,6 +399,7 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
  */
 export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
@@ -400,6 +410,8 @@ export const ModelingCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    modelingName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         features: Schema.optional(
@@ -458,6 +470,8 @@ export type ModelingCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
+ * @param modelingName - The name of the Modeling resource.
  */
 export const ModelingCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -469,6 +483,8 @@ export const ModelingCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ModelingDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  modelingName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -489,6 +505,8 @@ export type ModelingDeleteOutput = typeof ModelingDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
+ * @param modelingName - The name of the Modeling resource.
  */
 export const ModelingDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ModelingDeleteInput,
@@ -498,6 +516,8 @@ export const ModelingDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ModelingGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  modelingName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -522,6 +542,8 @@ export type ModelingGetOutput = typeof ModelingGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
+ * @param modelingName - The name of the Modeling resource.
  */
 export const ModelingGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ModelingGetInput,
@@ -532,6 +554,7 @@ export const ModelingListByAccountResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -566,6 +589,7 @@ export type ModelingListByAccountResourceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
  */
 export const ModelingListByAccountResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -576,6 +600,8 @@ export const ModelingListByAccountResource =
 export const ModelingUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  modelingName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
     Schema.Struct({
@@ -610,6 +636,8 @@ export type ModelingUpdateOutput = typeof ModelingUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
+ * @param modelingName - The name of the Modeling resource.
  */
 export const ModelingUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ModelingUpdateInput,
@@ -755,6 +783,8 @@ export const ServiceEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    serviceEndpointName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         preAllocatedCapacity: Schema.optional(Schema.Number),
@@ -806,6 +836,8 @@ export type ServiceEndpointsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
+ * @param serviceEndpointName - The name of the ServiceEndpoint resource.
  */
 export const ServiceEndpointsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -817,6 +849,8 @@ export const ServiceEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    serviceEndpointName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -840,6 +874,8 @@ export type ServiceEndpointsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
+ * @param serviceEndpointName - The name of the ServiceEndpoint resource.
  */
 export const ServiceEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -852,6 +888,8 @@ export const ServiceEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    serviceEndpointName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -877,6 +915,8 @@ export type ServiceEndpointsGetOutput = typeof ServiceEndpointsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
+ * @param serviceEndpointName - The name of the ServiceEndpoint resource.
  */
 export const ServiceEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceEndpointsGetInput,
@@ -887,6 +927,7 @@ export const ServiceEndpointsListByAccountResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -921,6 +962,7 @@ export type ServiceEndpointsListByAccountResourceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
  */
 export const ServiceEndpointsListByAccountResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -932,6 +974,8 @@ export const ServiceEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    serviceEndpointName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -960,6 +1004,8 @@ export type ServiceEndpointsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the RecommendationsService Account resource.
+ * @param serviceEndpointName - The name of the ServiceEndpoint resource.
  */
 export const ServiceEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

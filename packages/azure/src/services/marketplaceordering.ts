@@ -10,7 +10,12 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const MarketplaceAgreementsCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    publisherId: Schema.String.pipe(T.PathParam()),
+    offerId: Schema.String.pipe(T.PathParam()),
+    planId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements/{publisherId}/offers/{offerId}/plans/{planId}/cancel",
@@ -33,6 +38,12 @@ export type MarketplaceAgreementsCancelOutput =
 // The operation
 /**
  * Cancel marketplace terms.
+ *
+ * @param api-version - The API version to use for the request.
+ * @param subscriptionId - The subscription ID that identifies an Azure subscription.
+ * @param publisherId - Publisher identifier string of image being deployed.
+ * @param offerId - Offer identifier string of image being deployed.
+ * @param planId - Plan identifier string of image being deployed.
  */
 export const MarketplaceAgreementsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -43,6 +54,11 @@ export const MarketplaceAgreementsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const MarketplaceAgreementsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerType: Schema.Literals(["virtualmachine"]).pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    publisherId: Schema.String.pipe(T.PathParam()),
+    offerId: Schema.String.pipe(T.PathParam()),
+    planId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         publisher: Schema.optional(Schema.String),
@@ -96,6 +112,13 @@ export type MarketplaceAgreementsCreateOutput =
 // The operation
 /**
  * Save marketplace terms.
+ *
+ * @param api-version - The API version to use for the request.
+ * @param offerType - Offer Type, currently only virtualmachine type is supported.
+ * @param subscriptionId - The subscription ID that identifies an Azure subscription.
+ * @param publisherId - Publisher identifier string of image being deployed.
+ * @param offerId - Offer identifier string of image being deployed.
+ * @param planId - Plan identifier string of image being deployed.
  */
 export const MarketplaceAgreementsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -105,7 +128,13 @@ export const MarketplaceAgreementsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MarketplaceAgreementsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    offerType: Schema.Literals(["virtualmachine"]).pipe(T.PathParam()),
+    publisherId: Schema.String.pipe(T.PathParam()),
+    offerId: Schema.String.pipe(T.PathParam()),
+    planId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current",
@@ -128,6 +157,13 @@ export type MarketplaceAgreementsGetOutput =
 // The operation
 /**
  * Get marketplace terms.
+ *
+ * @param api-version - The API version to use for the request.
+ * @param subscriptionId - The subscription ID that identifies an Azure subscription.
+ * @param offerType - Offer Type, currently only virtualmachine type is supported.
+ * @param publisherId - Publisher identifier string of image being deployed.
+ * @param offerId - Offer identifier string of image being deployed.
+ * @param planId - Plan identifier string of image being deployed.
  */
 export const MarketplaceAgreementsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -137,7 +173,12 @@ export const MarketplaceAgreementsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MarketplaceAgreementsGetAgreementInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    publisherId: Schema.String.pipe(T.PathParam()),
+    offerId: Schema.String.pipe(T.PathParam()),
+    planId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements/{publisherId}/offers/{offerId}/plans/{planId}",
@@ -160,6 +201,12 @@ export type MarketplaceAgreementsGetAgreementOutput =
 // The operation
 /**
  * Get marketplace agreement.
+ *
+ * @param api-version - The API version to use for the request.
+ * @param subscriptionId - The subscription ID that identifies an Azure subscription.
+ * @param publisherId - Publisher identifier string of image being deployed.
+ * @param offerId - Offer identifier string of image being deployed.
+ * @param planId - Plan identifier string of image being deployed.
  */
 export const MarketplaceAgreementsGetAgreement =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -168,7 +215,9 @@ export const MarketplaceAgreementsGetAgreement =
   }));
 // Input Schema
 export const MarketplaceAgreementsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements",
@@ -197,6 +246,9 @@ export type MarketplaceAgreementsListOutput =
 // The operation
 /**
  * List marketplace agreements in the subscription.
+ *
+ * @param api-version - The API version to use for the request.
+ * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  */
 export const MarketplaceAgreementsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -206,7 +258,12 @@ export const MarketplaceAgreementsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MarketplaceAgreementsSignInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    publisherId: Schema.String.pipe(T.PathParam()),
+    offerId: Schema.String.pipe(T.PathParam()),
+    planId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements/{publisherId}/offers/{offerId}/plans/{planId}/sign",
@@ -229,6 +286,12 @@ export type MarketplaceAgreementsSignOutput =
 // The operation
 /**
  * Sign marketplace terms.
+ *
+ * @param api-version - The API version to use for the request.
+ * @param subscriptionId - The subscription ID that identifies an Azure subscription.
+ * @param publisherId - Publisher identifier string of image being deployed.
+ * @param offerId - Offer identifier string of image being deployed.
+ * @param planId - Plan identifier string of image being deployed.
  */
 export const MarketplaceAgreementsSign = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -272,6 +335,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Microsoft.MarketplaceOrdering REST API operations.
+ *
+ * @param api-version - The API version to use for the request.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,

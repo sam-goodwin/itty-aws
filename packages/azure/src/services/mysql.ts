@@ -779,6 +779,7 @@ export const BackupsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const CheckNameAvailabilityExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.optional(Schema.String),
   }).pipe(
@@ -807,6 +808,7 @@ export type CheckNameAvailabilityExecuteOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The name of the location.
  */
 export const CheckNameAvailabilityExecute =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -855,6 +857,7 @@ export const CheckNameAvailabilityWithoutLocationExecute =
 export const CheckVirtualNetworkSubnetUsageExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
     virtualNetworkResourceId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -889,6 +892,7 @@ export type CheckVirtualNetworkSubnetUsageExecuteOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The name of the location.
  */
 export const CheckVirtualNetworkSubnetUsageExecute =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1738,6 +1742,7 @@ export const GetPrivateDnsZoneSuffixExecute =
 export const LocationBasedCapabilitiesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1812,6 +1817,7 @@ export type LocationBasedCapabilitiesListOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The name of the location.
  */
 export const LocationBasedCapabilitiesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1822,6 +1828,7 @@ export const LocationBasedCapabilitiesList =
 export const LocationBasedCapabilitySetGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
     capabilitySetName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1863,6 +1870,7 @@ export type LocationBasedCapabilitySetGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The name of the location.
  * @param capabilitySetName - Name of capability set
  */
 export const LocationBasedCapabilitySetGet =
@@ -1874,6 +1882,7 @@ export const LocationBasedCapabilitySetGet =
 export const LocationBasedCapabilitySetListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1931,6 +1940,7 @@ export type LocationBasedCapabilitySetListOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The name of the location.
  */
 export const LocationBasedCapabilitySetList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2392,6 +2402,7 @@ export const MaintenancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OperationProgressGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2467,6 +2478,7 @@ export type OperationProgressGetOutput = typeof OperationProgressGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The name of the location.
  * @param operationId - The ID of an ongoing async operation.
  */
 export const OperationProgressGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2479,6 +2491,7 @@ export const OperationProgressGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const OperationResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2554,6 +2567,7 @@ export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The name of the location.
  * @param operationId - The ID of an ongoing async operation.
  */
 export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3066,6 +3080,7 @@ export const ReplicasListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerKeysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serverName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3101,6 +3116,7 @@ export type ServerKeysCreateOrUpdateOutput =
 /**
  * Creates or updates a MySQL Server key.
  *
+ * @param serverName - The name of the server.
  * @param keyName - The name of the MySQL Server key to be operated on (updated or created).
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
@@ -3114,6 +3130,7 @@ export const ServerKeysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServerKeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serverName: Schema.String.pipe(T.PathParam()),
   keyName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3134,6 +3151,7 @@ export type ServerKeysDeleteOutput = typeof ServerKeysDeleteOutput.Type;
 /**
  * Deletes the MySQL Server key with the given name.
  *
+ * @param serverName - The name of the server.
  * @param keyName - The name of the MySQL Server key to be deleted.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
@@ -3146,6 +3164,7 @@ export const ServerKeysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServerKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   keyName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3170,6 +3189,7 @@ export type ServerKeysGetOutput = typeof ServerKeysGetOutput.Type;
  * Gets a MySQL Server key.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param keyName - The name of the MySQL Server key to be retrieved.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
@@ -3182,6 +3202,7 @@ export const ServerKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServerKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -3213,6 +3234,7 @@ export type ServerKeysListOutput = typeof ServerKeysListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServerKeysListInput,
@@ -4094,6 +4116,7 @@ export const ServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServersUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       targetServerVersion: Schema.optional(Schema.String),
@@ -4119,6 +4142,7 @@ export type ServersUpgradeOutput = typeof ServersUpgradeOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServersUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersUpgradeInput,

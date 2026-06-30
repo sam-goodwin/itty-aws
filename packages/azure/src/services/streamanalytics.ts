@@ -13,6 +13,7 @@ export const ClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.Literals(["Default"])),
@@ -59,6 +60,7 @@ export type ClustersCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  * @param If-Match - The ETag of the resource. Omit this value to always overwrite the current record set. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new resource to be created, but to prevent updating an existing record set. Other values will result in a 412 Pre-condition Failed response.
@@ -73,6 +75,7 @@ export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -92,6 +95,7 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  */
 export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -102,6 +106,7 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -125,6 +130,7 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  */
 export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -226,6 +232,7 @@ export const ClustersListStreamingJobsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -272,6 +279,7 @@ export type ClustersListStreamingJobsOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  */
 export const ClustersListStreamingJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -284,6 +292,7 @@ export const ClustersListStreamingJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   sku: Schema.optional(
     Schema.Struct({
       name: Schema.optional(Schema.Literals(["Default"])),
@@ -327,6 +336,7 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  * @param If-Match - The ETag of the resource. Omit this value to always overwrite the current record set. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  */
@@ -340,6 +350,7 @@ export const FunctionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
+    functionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         type: Schema.String,
@@ -401,6 +412,7 @@ export type FunctionsCreateOrReplaceOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param functionName - The name of the function.
  */
 export const FunctionsCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -413,6 +425,7 @@ export const FunctionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -434,6 +447,7 @@ export type FunctionsDeleteOutput = typeof FunctionsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param functionName - The name of the function.
  */
 export const FunctionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FunctionsDeleteInput,
@@ -444,6 +458,7 @@ export const FunctionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -469,6 +484,7 @@ export type FunctionsGetOutput = typeof FunctionsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param functionName - The name of the function.
  */
 export const FunctionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FunctionsGetInput,
@@ -530,6 +546,7 @@ export const FunctionsRetrieveDefaultDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
+    functionName: Schema.String.pipe(T.PathParam()),
     bindingType: Schema.String,
   }).pipe(
     T.Http({
@@ -559,6 +576,7 @@ export type FunctionsRetrieveDefaultDefinitionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param functionName - The name of the function.
  */
 export const FunctionsRetrieveDefaultDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -570,6 +588,7 @@ export const FunctionsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       type: Schema.String,
@@ -630,6 +649,7 @@ export type FunctionsTestOutput = typeof FunctionsTestOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param functionName - The name of the function.
  */
 export const FunctionsTest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FunctionsTestInput,
@@ -640,6 +660,7 @@ export const FunctionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  functionName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       type: Schema.String,
@@ -697,6 +718,7 @@ export type FunctionsUpdateOutput = typeof FunctionsUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param functionName - The name of the function.
  */
 export const FunctionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FunctionsUpdateInput,
@@ -708,6 +730,7 @@ export const InputsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
+    inputName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         type: Schema.String,
@@ -770,6 +793,7 @@ export type InputsCreateOrReplaceOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param inputName - The name of the input.
  */
 export const InputsCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -782,6 +806,7 @@ export const InputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  inputName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -803,6 +828,7 @@ export type InputsDeleteOutput = typeof InputsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param inputName - The name of the input.
  */
 export const InputsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InputsDeleteInput,
@@ -813,6 +839,7 @@ export const InputsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  inputName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -838,6 +865,7 @@ export type InputsGetOutput = typeof InputsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param inputName - The name of the input.
  */
 export const InputsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InputsGetInput,
@@ -898,6 +926,7 @@ export const InputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  inputName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       type: Schema.String,
@@ -960,6 +989,7 @@ export type InputsTestOutput = typeof InputsTestOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param inputName - The name of the input.
  */
 export const InputsTest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InputsTestInput,
@@ -970,6 +1000,7 @@ export const InputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  inputName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       type: Schema.String,
@@ -1029,6 +1060,7 @@ export type InputsUpdateOutput = typeof InputsUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param inputName - The name of the input.
  */
 export const InputsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InputsUpdateInput,
@@ -1084,6 +1116,7 @@ export const OutputsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
+    outputName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         datasource: Schema.optional(
@@ -1147,6 +1180,7 @@ export type OutputsCreateOrReplaceOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param outputName - The name of the output.
  */
 export const OutputsCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1159,6 +1193,7 @@ export const OutputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  outputName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -1180,6 +1215,7 @@ export type OutputsDeleteOutput = typeof OutputsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param outputName - The name of the output.
  */
 export const OutputsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OutputsDeleteInput,
@@ -1190,6 +1226,7 @@ export const OutputsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  outputName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1215,6 +1252,7 @@ export type OutputsGetOutput = typeof OutputsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param outputName - The name of the output.
  */
 export const OutputsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OutputsGetInput,
@@ -1275,6 +1313,7 @@ export const OutputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  outputName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       datasource: Schema.optional(
@@ -1337,6 +1376,7 @@ export type OutputsTestOutput = typeof OutputsTestOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param outputName - The name of the output.
  */
 export const OutputsTest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OutputsTestInput,
@@ -1347,6 +1387,7 @@ export const OutputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  outputName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       datasource: Schema.optional(
@@ -1406,6 +1447,7 @@ export type OutputsUpdateOutput = typeof OutputsUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param outputName - The name of the output.
  */
 export const OutputsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OutputsUpdateInput,
@@ -1417,6 +1459,7 @@ export const PrivateEndpointsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         createdDate: Schema.optional(Schema.String),
@@ -1470,6 +1513,7 @@ export type PrivateEndpointsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param privateEndpointName - The name of the private endpoint.
  * @param api-version - The API version to use for this operation.
  * @param If-Match - The ETag of the resource. Omit this value to always overwrite the current record set. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new resource to be created, but to prevent updating an existing record set. Other values will result in a 412 Pre-condition Failed response.
@@ -1485,6 +1529,7 @@ export const PrivateEndpointsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1508,6 +1553,7 @@ export type PrivateEndpointsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param privateEndpointName - The name of the private endpoint.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1522,6 +1568,7 @@ export const PrivateEndpointsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1547,6 +1594,7 @@ export type PrivateEndpointsGetOutput = typeof PrivateEndpointsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param privateEndpointName - The name of the private endpoint.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2173,6 +2221,7 @@ export const TransformationsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
+    transformationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         streamingUnits: Schema.optional(Schema.Number),
@@ -2214,6 +2263,7 @@ export type TransformationsCreateOrReplaceOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param transformationName - The name of the transformation.
  */
 export const TransformationsCreateOrReplace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2226,6 +2276,7 @@ export const TransformationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
+    transformationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2252,6 +2303,7 @@ export type TransformationsGetOutput = typeof TransformationsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param transformationName - The name of the transformation.
  */
 export const TransformationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TransformationsGetInput,
@@ -2263,6 +2315,7 @@ export const TransformationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
+    transformationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         streamingUnits: Schema.optional(Schema.Number),
@@ -2302,6 +2355,7 @@ export type TransformationsUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
+ * @param transformationName - The name of the transformation.
  */
 export const TransformationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

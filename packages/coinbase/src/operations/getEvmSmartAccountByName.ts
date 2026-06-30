@@ -27,7 +27,7 @@ export type GetEvmSmartAccountByNameOutput =
 
 // The operation
 /**
- * Get a Smart Account by name
+ * Get Smart Account by name
  *
  * Gets a Smart Account by its name.
  *

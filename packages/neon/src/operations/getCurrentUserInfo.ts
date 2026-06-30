@@ -133,7 +133,8 @@ export type GetCurrentUserInfoOutput = typeof GetCurrentUserInfoOutput.Type;
 /**
  * Retrieve current user details
  *
- * Retrieves information about the current Neon user account.
+ * Retrieves information about the currently authenticated Neon user,
+ * including account identifiers, plan details, and linked auth accounts.
  */
 export const getCurrentUserInfo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetCurrentUserInfoInput,

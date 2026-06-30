@@ -33,6 +33,7 @@ export const GetInvoiceLineItemsOutput =
         subtotal: Schema.Number,
         description: Schema.String,
         metric_name: Schema.String,
+        cloudflare_billed: Schema.Boolean,
         database_id: Schema.String,
         database_name: Schema.String,
         resource: Schema.Struct({

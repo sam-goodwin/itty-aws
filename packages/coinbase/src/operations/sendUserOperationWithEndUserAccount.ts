@@ -30,6 +30,9 @@ export const SendUserOperationWithEndUserAccountInput =
     ),
     useCdpPaymaster: Schema.Boolean,
     paymasterUrl: Schema.optional(Schema.String),
+    paymasterContext: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
     walletSecretId: Schema.optional(Schema.String),
     dataSuffix: Schema.optional(Schema.String),
   }).pipe(
@@ -90,13 +93,14 @@ export const SendUserOperationWithEndUserAccountOutput =
         }),
       ),
     ),
+    expiresAt: Schema.optional(Schema.String),
   });
 export type SendUserOperationWithEndUserAccountOutput =
   typeof SendUserOperationWithEndUserAccountOutput.Type;
 
 // The operation
 /**
- * Send a user operation for end user Smart Account
+ * Send user operation for end user Smart Account
  *
  * Prepares, signs, and sends a user operation for an end user's Smart Account.
  *

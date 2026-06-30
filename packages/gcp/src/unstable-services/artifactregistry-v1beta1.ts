@@ -22,27 +22,24 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Location {
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+export interface Package {
+  /** The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped. */
   name?: string;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  /** The time when the package was created. */
+  createTime?: string;
+  /** The display name of the package. */
   displayName?: string;
+  /** The time when the package was last updated. This includes publishing a new version of the package. */
+  updateTime?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Package: Schema.Schema<Package> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
-    locationId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Location" });
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Package" });
 
 export interface Tag {
   /** The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded. */
@@ -57,66 +54,59 @@ export const Tag: Schema.Schema<Tag> =
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "Tag" });
 
-export interface Version {
-  /** The time when the version was last updated. */
-  updateTime?: string;
-  /** Output only. A list of related tags. Will contain up to 100 tags that reference this version. */
-  relatedTags?: ReadonlyArray<Tag>;
-  /** The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If the package or version ID parts contain slashes, the slashes are escaped. */
-  name?: string;
-  /** Optional. Description of the version, as specified in its metadata. */
-  description?: string;
-  /** The time when the version was created. */
-  createTime?: string;
+export interface ListTagsResponse {
+  /** The tags returned. */
+  tags?: ReadonlyArray<Tag>;
+  /** The token to retrieve the next page of tags, or empty if there are no more tags to return. */
+  nextPageToken?: string;
 }
 
-export const Version: Schema.Schema<Version> =
+export const ListTagsResponse: Schema.Schema<ListTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateTime: Schema.optional(Schema.String),
-    relatedTags: Schema.optional(Schema.Array(Tag)),
-    name: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Version" });
+    tags: Schema.optional(Schema.Array(Tag)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTagsResponse" });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Expr {
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
 }
 
 export const Expr: Schema.Schema<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
   }).annotate({ identifier: "Expr" });
 
-export interface Binding {
-  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  condition?: Expr;
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: ReadonlyArray<string>;
-}
-
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    condition: Schema.optional(Expr),
-    role: Schema.optional(Schema.String),
-    members: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Binding" });
-
 export interface Repository {
+  /** The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. For each location in a project, repository names must be unique. */
+  name?: string;
+  /** The user-provided description of the repository. */
+  description?: string;
+  /** Output only. The time when the repository was created. */
+  createTime?: string;
   /** Output only. Whether or not this repository satisfies PZI. */
   satisfiesPzi?: boolean;
+  /** The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created. */
+  kmsKeyName?: string;
   /** Optional. The format of packages that are stored in the repository. */
   format?:
     | "FORMAT_UNSPECIFIED"
@@ -128,77 +118,105 @@ export interface Repository {
     | "GOOGET"
     | "PYTHON"
     | (string & {});
-  /** Output only. Whether or not this repository satisfies PZS. */
-  satisfiesPzs?: boolean;
-  /** The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. For each location in a project, repository names must be unique. */
-  name?: string;
-  /** The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created. */
-  kmsKeyName?: string;
-  /** Output only. The time when the repository was last updated. */
-  updateTime?: string;
   /** Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes. */
   labels?: Record<string, string>;
-  /** The user-provided description of the repository. */
-  description?: string;
-  /** Output only. The time when the repository was created. */
-  createTime?: string;
+  /** Output only. The time when the repository was last updated. */
+  updateTime?: string;
   /** Output only. The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs. */
   sizeBytes?: string;
+  /** Output only. Whether or not this repository satisfies PZS. */
+  satisfiesPzs?: boolean;
 }
 
 export const Repository: Schema.Schema<Repository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    satisfiesPzi: Schema.optional(Schema.Boolean),
-    format: Schema.optional(Schema.String),
-    satisfiesPzs: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
-    kmsKeyName: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     description: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    kmsKeyName: Schema.optional(Schema.String),
+    format: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    updateTime: Schema.optional(Schema.String),
     sizeBytes: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Repository" });
 
-export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
+export interface Binding {
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: ReadonlyArray<string>;
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
+  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  condition?: Expr;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Binding: Schema.Schema<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.Number),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-  }).annotate({ identifier: "Status" });
+    members: Schema.optional(Schema.Array(Schema.String)),
+    role: Schema.optional(Schema.String),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "Binding" });
 
-export interface Operation {
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+export interface Policy {
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: ReadonlyArray<Binding>;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
+}
+
+export const Policy: Schema.Schema<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bindings: Schema.optional(Schema.Array(Binding)),
+    etag: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Policy" });
+
+export interface Location {
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: Record<string, unknown>;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Location: Schema.Schema<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(Status),
-    done: Schema.optional(Schema.Boolean),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    locationId: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "Operation" });
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Location" });
+
+export interface Version {
+  /** The time when the version was last updated. */
+  updateTime?: string;
+  /** The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If the package or version ID parts contain slashes, the slashes are escaped. */
+  name?: string;
+  /** Output only. A list of related tags. Will contain up to 100 tags that reference this version. */
+  relatedTags?: ReadonlyArray<Tag>;
+  /** Optional. Description of the version, as specified in its metadata. */
+  description?: string;
+  /** The time when the version was created. */
+  createTime?: string;
+}
+
+export const Version: Schema.Schema<Version> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    relatedTags: Schema.optional(Schema.Array(Tag)),
+    description: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Version" });
 
 export interface Hash {
   /** The algorithm used to compute the hash value. */
@@ -218,6 +236,75 @@ export const Hash: Schema.Schema<Hash> =
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "Hash" });
 
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+}
+
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
+
+export interface ListRepositoriesResponse {
+  /** The repositories returned. */
+  repositories?: ReadonlyArray<Repository>;
+  /** The token to retrieve the next page of repositories, or empty if there are no more repositories to return. */
+  nextPageToken?: string;
+}
+
+export const ListRepositoriesResponse: Schema.Schema<ListRepositoriesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repositories: Schema.optional(Schema.Array(Repository)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListRepositoriesResponse" });
+
+export interface File {
+  /** Output only. The time when the File was last updated. */
+  updateTime?: string;
+  /** The name of the file, for example: `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains slashes, they are escaped. */
+  name?: string;
+  /** The hashes of the file content. */
+  hashes?: ReadonlyArray<Hash>;
+  /** The size of the File in bytes. */
+  sizeBytes?: string;
+  /** The name of the Package or Version that owns this file, if any. */
+  owner?: string;
+  /** Output only. The time when the File was created. */
+  createTime?: string;
+}
+
+export const File: Schema.Schema<File> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    hashes: Schema.optional(Schema.Array(Hash)),
+    sizeBytes: Schema.optional(Schema.String),
+    owner: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "File" });
+
+export interface ListFilesResponse {
+  /** The token to retrieve the next page of files, or empty if there are no more files to return. */
+  nextPageToken?: string;
+  /** The files returned. */
+  files?: ReadonlyArray<File>;
+}
+
+export const ListFilesResponse: Schema.Schema<ListFilesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    files: Schema.optional(Schema.Array(File)),
+  }).annotate({ identifier: "ListFilesResponse" });
+
 export interface Empty {}
 
 export const Empty: Schema.Schema<Empty> =
@@ -225,21 +312,28 @@ export const Empty: Schema.Schema<Empty> =
     identifier: "Empty",
   });
 
-export interface Policy {
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: ReadonlyArray<Binding>;
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.Number),
-    bindings: Schema.optional(Schema.Array(Binding)),
-  }).annotate({ identifier: "Policy" });
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+export interface ListLocationsResponse {
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: ReadonlyArray<Location>;
+}
+
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(Location)),
+  }).annotate({ identifier: "ListLocationsResponse" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -250,25 +344,6 @@ export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface Package {
-  /** The time when the package was last updated. This includes publishing a new version of the package. */
-  updateTime?: string;
-  /** The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped. */
-  name?: string;
-  /** The time when the package was created. */
-  createTime?: string;
-  /** The display name of the package. */
-  displayName?: string;
-}
-
-export const Package: Schema.Schema<Package> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Package" });
 
 export interface ListPackagesResponse {
   /** The packages returned. */
@@ -283,79 +358,27 @@ export const ListPackagesResponse: Schema.Schema<ListPackagesResponse> =
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPackagesResponse" });
 
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
-
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: ReadonlyArray<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locations: Schema.optional(Schema.Array(Location)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListLocationsResponse" });
-
-export interface ListRepositoriesResponse {
-  /** The token to retrieve the next page of repositories, or empty if there are no more repositories to return. */
-  nextPageToken?: string;
-  /** The repositories returned. */
-  repositories?: ReadonlyArray<Repository>;
-}
-
-export const ListRepositoriesResponse: Schema.Schema<ListRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    repositories: Schema.optional(Schema.Array(Repository)),
-  }).annotate({ identifier: "ListRepositoriesResponse" });
-
-export interface ListTagsResponse {
-  /** The tags returned. */
-  tags?: ReadonlyArray<Tag>;
-  /** The token to retrieve the next page of tags, or empty if there are no more tags to return. */
-  nextPageToken?: string;
-}
-
-export const ListTagsResponse: Schema.Schema<ListTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Array(Tag)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListTagsResponse" });
-
-export interface File {
-  /** The name of the Package or Version that owns this file, if any. */
-  owner?: string;
-  /** The size of the File in bytes. */
-  sizeBytes?: string;
-  /** The hashes of the file content. */
-  hashes?: ReadonlyArray<Hash>;
-  /** Output only. The time when the File was last updated. */
-  updateTime?: string;
-  /** The name of the file, for example: `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains slashes, they are escaped. */
+export interface Operation {
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
-  /** Output only. The time when the File was created. */
-  createTime?: string;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
 }
 
-export const File: Schema.Schema<File> =
+export const Operation: Schema.Schema<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    owner: Schema.optional(Schema.String),
-    sizeBytes: Schema.optional(Schema.String),
-    hashes: Schema.optional(Schema.Array(Hash)),
-    updateTime: Schema.optional(Schema.String),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "File" });
+    error: Schema.optional(Status),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Operation" });
 
 export interface ListVersionsResponse {
   /** The token to retrieve the next page of versions, or empty if there are no more versions to return. */
@@ -369,29 +392,6 @@ export const ListVersionsResponse: Schema.Schema<ListVersionsResponse> =
     nextPageToken: Schema.optional(Schema.String),
     versions: Schema.optional(Schema.Array(Version)),
   }).annotate({ identifier: "ListVersionsResponse" });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface ListFilesResponse {
-  /** The files returned. */
-  files?: ReadonlyArray<File>;
-  /** The token to retrieve the next page of files, or empty if there are no more files to return. */
-  nextPageToken?: string;
-}
-
-export const ListFilesResponse: Schema.Schema<ListFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    files: Schema.optional(Schema.Array(File)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListFilesResponse" });
 
 // ==========================================================================
 // Errors
@@ -448,27 +448,27 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
@@ -480,7 +480,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -561,52 +561,52 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface ListProjectsLocationsRepositoriesRequest {
-  /** The maximum number of repositories to return. Maximum page size is 1,000. */
-  pageSize?: number;
-  /** The next_page_token value returned from a previous list request, if any. */
-  pageToken?: string;
-  /** Required. The name of the parent resource whose repositories will be listed. */
+export interface CreateProjectsLocationsRepositoriesRequest {
+  /** Required. The name of the parent resource where the repository will be created. */
   parent: string;
-  /** Optional. The field to order the results by. */
-  orderBy?: string;
+  /** Required. The repository id to use for this repository. */
+  repositoryId?: string;
+  /** Request body */
+  body?: Repository;
 }
 
-export const ListProjectsLocationsRepositoriesRequest =
+export const CreateProjectsLocationsRepositoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    repositoryId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("repositoryId"),
+    ),
+    body: Schema.optional(Repository).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+parent}/repositories" }),
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+parent}/repositories",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesRequest>;
 
-export type ListProjectsLocationsRepositoriesResponse =
-  ListRepositoriesResponse;
-export const ListProjectsLocationsRepositoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRepositoriesResponse;
+export type CreateProjectsLocationsRepositoriesResponse = Operation;
+export const CreateProjectsLocationsRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ListProjectsLocationsRepositoriesError =
+export type CreateProjectsLocationsRepositoriesError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists repositories. */
-export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
-  ListProjectsLocationsRepositoriesRequest,
-  ListProjectsLocationsRepositoriesResponse,
-  ListProjectsLocationsRepositoriesError,
+/** Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository. */
+export const createProjectsLocationsRepositories: API.OperationMethod<
+  CreateProjectsLocationsRepositoriesRequest,
+  CreateProjectsLocationsRepositoriesResponse,
+  CreateProjectsLocationsRepositoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRepositoriesRequest,
-  output: ListProjectsLocationsRepositoriesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsRepositoriesRequest,
+  output: CreateProjectsLocationsRepositoriesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsRepositoriesRequest {
@@ -648,133 +648,6 @@ export const patchProjectsLocationsRepositories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsRepositoriesRequest,
   output: PatchProjectsLocationsRepositoriesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsRepositoriesRequest {
-  /** Required. The name of the repository to delete. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesRequest>;
-
-export type DeleteProjectsLocationsRepositoriesResponse = Operation;
-export const DeleteProjectsLocationsRepositoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsRepositoriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a repository and all of its contents. The returned Operation will finish once the repository has been deleted. It will not have any Operation metadata and will return a google.protobuf.Empty response. */
-export const deleteProjectsLocationsRepositories: API.OperationMethod<
-  DeleteProjectsLocationsRepositoriesRequest,
-  DeleteProjectsLocationsRepositoriesResponse,
-  DeleteProjectsLocationsRepositoriesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRepositoriesRequest,
-  output: DeleteProjectsLocationsRepositoriesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
-
-export type SetIamPolicyProjectsLocationsRepositoriesResponse = Policy;
-export const SetIamPolicyProjectsLocationsRepositoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsRepositoriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the IAM policy for a given resource. */
-export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
-  SetIamPolicyProjectsLocationsRepositoriesRequest,
-  SetIamPolicyProjectsLocationsRepositoriesResponse,
-  SetIamPolicyProjectsLocationsRepositoriesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRepositoriesRequest,
-  output: SetIamPolicyProjectsLocationsRepositoriesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsRepositoriesRequest {
-  /** Required. The repository id to use for this repository. */
-  repositoryId?: string;
-  /** Required. The name of the parent resource where the repository will be created. */
-  parent: string;
-  /** Request body */
-  body?: Repository;
-}
-
-export const CreateProjectsLocationsRepositoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    repositoryId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("repositoryId"),
-    ),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(Repository).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+parent}/repositories",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesRequest>;
-
-export type CreateProjectsLocationsRepositoriesResponse = Operation;
-export const CreateProjectsLocationsRepositoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsRepositoriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository. */
-export const createProjectsLocationsRepositories: API.OperationMethod<
-  CreateProjectsLocationsRepositoriesRequest,
-  CreateProjectsLocationsRepositoriesResponse,
-  CreateProjectsLocationsRepositoriesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRepositoriesRequest,
-  output: CreateProjectsLocationsRepositoriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -856,19 +729,110 @@ export const getProjectsLocationsRepositories: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
+export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsRepositoriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
+
+export type SetIamPolicyProjectsLocationsRepositoriesResponse = Policy;
+export const SetIamPolicyProjectsLocationsRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the IAM policy for a given resource. */
+export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
+  SetIamPolicyProjectsLocationsRepositoriesRequest,
+  SetIamPolicyProjectsLocationsRepositoriesResponse,
+  SetIamPolicyProjectsLocationsRepositoriesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsRepositoriesRequest,
+  output: SetIamPolicyProjectsLocationsRepositoriesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsRepositoriesRequest {
+  /** The maximum number of repositories to return. Maximum page size is 1,000. */
+  pageSize?: number;
+  /** The next_page_token value returned from a previous list request, if any. */
+  pageToken?: string;
+  /** Required. The name of the parent resource whose repositories will be listed. */
+  parent: string;
+  /** Optional. The field to order the results by. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsRepositoriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/repositories" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesRequest>;
+
+export type ListProjectsLocationsRepositoriesResponse =
+  ListRepositoriesResponse;
+export const ListProjectsLocationsRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListRepositoriesResponse;
+
+export type ListProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists repositories. */
+export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
+  ListProjectsLocationsRepositoriesRequest,
+  ListProjectsLocationsRepositoriesResponse,
+  ListProjectsLocationsRepositoriesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRepositoriesRequest,
+  output: ListProjectsLocationsRepositoriesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
 }
 
 export const GetIamPolicyProjectsLocationsRepositoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
-    resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
     svc,
@@ -895,52 +859,40 @@ export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface ListProjectsLocationsRepositoriesPackagesRequest {
-  /** The next_page_token value returned from a previous list request, if any. */
-  pageToken?: string;
-  /** Required. The name of the parent resource whose packages will be listed. */
-  parent: string;
-  /** Optional. The field to order the results by. */
-  orderBy?: string;
-  /** The maximum number of packages to return. Maximum page size is 1,000. */
-  pageSize?: number;
+export interface DeleteProjectsLocationsRepositoriesRequest {
+  /** Required. The name of the repository to delete. */
+  name: string;
 }
 
-export const ListProjectsLocationsRepositoriesPackagesRequest =
+export const DeleteProjectsLocationsRepositoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+parent}/packages" }),
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesPackagesRequest>;
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesRequest>;
 
-export type ListProjectsLocationsRepositoriesPackagesResponse =
-  ListPackagesResponse;
-export const ListProjectsLocationsRepositoriesPackagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPackagesResponse;
+export type DeleteProjectsLocationsRepositoriesResponse = Operation;
+export const DeleteProjectsLocationsRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ListProjectsLocationsRepositoriesPackagesError =
+export type DeleteProjectsLocationsRepositoriesError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists packages. */
-export const listProjectsLocationsRepositoriesPackages: API.PaginatedOperationMethod<
-  ListProjectsLocationsRepositoriesPackagesRequest,
-  ListProjectsLocationsRepositoriesPackagesResponse,
-  ListProjectsLocationsRepositoriesPackagesError,
+/** Deletes a repository and all of its contents. The returned Operation will finish once the repository has been deleted. It will not have any Operation metadata and will return a google.protobuf.Empty response. */
+export const deleteProjectsLocationsRepositories: API.OperationMethod<
+  DeleteProjectsLocationsRepositoriesRequest,
+  DeleteProjectsLocationsRepositoriesResponse,
+  DeleteProjectsLocationsRepositoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRepositoriesPackagesRequest,
-  output: ListProjectsLocationsRepositoriesPackagesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsRepositoriesRequest,
+  output: DeleteProjectsLocationsRepositoriesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsRepositoriesPackagesRequest {
@@ -1013,6 +965,102 @@ export const deleteProjectsLocationsRepositoriesPackages: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface ListProjectsLocationsRepositoriesPackagesRequest {
+  /** The maximum number of packages to return. Maximum page size is 1,000. */
+  pageSize?: number;
+  /** The next_page_token value returned from a previous list request, if any. */
+  pageToken?: string;
+  /** Required. The name of the parent resource whose packages will be listed. */
+  parent: string;
+  /** Optional. The field to order the results by. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsRepositoriesPackagesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/packages" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesPackagesRequest>;
+
+export type ListProjectsLocationsRepositoriesPackagesResponse =
+  ListPackagesResponse;
+export const ListProjectsLocationsRepositoriesPackagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListPackagesResponse;
+
+export type ListProjectsLocationsRepositoriesPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists packages. */
+export const listProjectsLocationsRepositoriesPackages: API.PaginatedOperationMethod<
+  ListProjectsLocationsRepositoriesPackagesRequest,
+  ListProjectsLocationsRepositoriesPackagesResponse,
+  ListProjectsLocationsRepositoriesPackagesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRepositoriesPackagesRequest,
+  output: ListProjectsLocationsRepositoriesPackagesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ListProjectsLocationsRepositoriesPackagesTagsRequest {
+  /** The maximum number of tags to return. Maximum page size is 1,000. */
+  pageSize?: number;
+  /** The next_page_token value returned from a previous list request, if any. */
+  pageToken?: string;
+  /** An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `version` Examples of using a filter: To filter the results of your request to tags with the name `my-tag` in package `my-package` in repository `my-repo` in project "`y-project` in the us-central region, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my-tag"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my*"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag*"` To filter the results of your request to tags applied to the version `1.0` in package `my-package`, append the following filter expression to your request: * `version="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"` */
+  filter?: string;
+  /** The name of the parent package whose tags will be listed. For example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. */
+  parent: string;
+}
+
+export const ListProjectsLocationsRepositoriesPackagesTagsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/tags" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesPackagesTagsRequest>;
+
+export type ListProjectsLocationsRepositoriesPackagesTagsResponse =
+  ListTagsResponse;
+export const ListProjectsLocationsRepositoriesPackagesTagsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListTagsResponse;
+
+export type ListProjectsLocationsRepositoriesPackagesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists tags. */
+export const listProjectsLocationsRepositoriesPackagesTags: API.PaginatedOperationMethod<
+  ListProjectsLocationsRepositoriesPackagesTagsRequest,
+  ListProjectsLocationsRepositoriesPackagesTagsResponse,
+  ListProjectsLocationsRepositoriesPackagesTagsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRepositoriesPackagesTagsRequest,
+  output: ListProjectsLocationsRepositoriesPackagesTagsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface DeleteProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the tag to delete. */
   name: string;
@@ -1050,18 +1098,18 @@ export const deleteProjectsLocationsRepositoriesPackagesTags: API.OperationMetho
 }));
 
 export interface PatchProjectsLocationsRepositoriesPackagesTagsRequest {
-  /** The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask */
-  updateMask?: string;
   /** The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded. */
   name: string;
+  /** The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask */
+  updateMask?: string;
   /** Request body */
   body?: Tag;
 }
 
 export const PatchProjectsLocationsRepositoriesPackagesTagsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Tag).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
@@ -1089,88 +1137,6 @@ export const patchProjectsLocationsRepositoriesPackagesTags: API.OperationMethod
   input: PatchProjectsLocationsRepositoriesPackagesTagsRequest,
   output: PatchProjectsLocationsRepositoriesPackagesTagsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsRepositoriesPackagesTagsRequest {
-  /** The name of the parent package whose tags will be listed. For example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. */
-  parent: string;
-  /** An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `version` Examples of using a filter: To filter the results of your request to tags with the name `my-tag` in package `my-package` in repository `my-repo` in project "`y-project` in the us-central region, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my-tag"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my*"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag*"` To filter the results of your request to tags applied to the version `1.0` in package `my-package`, append the following filter expression to your request: * `version="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"` */
-  filter?: string;
-  /** The next_page_token value returned from a previous list request, if any. */
-  pageToken?: string;
-  /** The maximum number of tags to return. Maximum page size is 1,000. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsRepositoriesPackagesTagsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+parent}/tags" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesPackagesTagsRequest>;
-
-export type ListProjectsLocationsRepositoriesPackagesTagsResponse =
-  ListTagsResponse;
-export const ListProjectsLocationsRepositoriesPackagesTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTagsResponse;
-
-export type ListProjectsLocationsRepositoriesPackagesTagsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists tags. */
-export const listProjectsLocationsRepositoriesPackagesTags: API.PaginatedOperationMethod<
-  ListProjectsLocationsRepositoriesPackagesTagsRequest,
-  ListProjectsLocationsRepositoriesPackagesTagsResponse,
-  ListProjectsLocationsRepositoriesPackagesTagsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRepositoriesPackagesTagsRequest,
-  output: ListProjectsLocationsRepositoriesPackagesTagsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsRepositoriesPackagesTagsRequest {
-  /** The name of the tag to retrieve. */
-  name: string;
-}
-
-export const GetProjectsLocationsRepositoriesPackagesTagsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesPackagesTagsRequest>;
-
-export type GetProjectsLocationsRepositoriesPackagesTagsResponse = Tag;
-export const GetProjectsLocationsRepositoriesPackagesTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Tag;
-
-export type GetProjectsLocationsRepositoriesPackagesTagsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets a tag. */
-export const getProjectsLocationsRepositoriesPackagesTags: API.OperationMethod<
-  GetProjectsLocationsRepositoriesPackagesTagsRequest,
-  GetProjectsLocationsRepositoriesPackagesTagsResponse,
-  GetProjectsLocationsRepositoriesPackagesTagsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRepositoriesPackagesTagsRequest,
-  output: GetProjectsLocationsRepositoriesPackagesTagsResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsRepositoriesPackagesTagsRequest {
@@ -1215,26 +1181,137 @@ export const createProjectsLocationsRepositoriesPackagesTags: API.OperationMetho
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsRepositoriesPackagesVersionsRequest {
+export interface GetProjectsLocationsRepositoriesPackagesTagsRequest {
+  /** The name of the tag to retrieve. */
+  name: string;
+}
+
+export const GetProjectsLocationsRepositoriesPackagesTagsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesPackagesTagsRequest>;
+
+export type GetProjectsLocationsRepositoriesPackagesTagsResponse = Tag;
+export const GetProjectsLocationsRepositoriesPackagesTagsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Tag;
+
+export type GetProjectsLocationsRepositoriesPackagesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets a tag. */
+export const getProjectsLocationsRepositoriesPackagesTags: API.OperationMethod<
+  GetProjectsLocationsRepositoriesPackagesTagsRequest,
+  GetProjectsLocationsRepositoriesPackagesTagsResponse,
+  GetProjectsLocationsRepositoriesPackagesTagsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsRepositoriesPackagesTagsRequest,
+  output: GetProjectsLocationsRepositoriesPackagesTagsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsRepositoriesPackagesVersionsRequest {
+  /** The name of the version to delete. */
+  name: string;
+  /** By default, a version that is tagged may not be deleted. If force=true, the version and any tags pointing to the version are deleted. */
+  force?: boolean;
+}
+
+export const DeleteProjectsLocationsRepositoriesPackagesVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
+
+export type DeleteProjectsLocationsRepositoriesPackagesVersionsResponse =
+  Operation;
+export const DeleteProjectsLocationsRepositoriesPackagesVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsRepositoriesPackagesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a version and all of its content. The returned operation will complete once the version has been deleted. */
+export const deleteProjectsLocationsRepositoriesPackagesVersions: API.OperationMethod<
+  DeleteProjectsLocationsRepositoriesPackagesVersionsRequest,
+  DeleteProjectsLocationsRepositoriesPackagesVersionsResponse,
+  DeleteProjectsLocationsRepositoriesPackagesVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsRepositoriesPackagesVersionsRequest,
+  output: DeleteProjectsLocationsRepositoriesPackagesVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The view that should be returned in the response. */
   view?: "VERSION_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
+  /** The name of the version to retrieve. */
+  name: string;
+}
+
+export const GetProjectsLocationsRepositoriesPackagesVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
+
+export type GetProjectsLocationsRepositoriesPackagesVersionsResponse = Version;
+export const GetProjectsLocationsRepositoriesPackagesVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Version;
+
+export type GetProjectsLocationsRepositoriesPackagesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets a version */
+export const getProjectsLocationsRepositoriesPackagesVersions: API.OperationMethod<
+  GetProjectsLocationsRepositoriesPackagesVersionsRequest,
+  GetProjectsLocationsRepositoriesPackagesVersionsResponse,
+  GetProjectsLocationsRepositoriesPackagesVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsRepositoriesPackagesVersionsRequest,
+  output: GetProjectsLocationsRepositoriesPackagesVersionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsRepositoriesPackagesVersionsRequest {
+  /** The maximum number of versions to return. Maximum page size is 1,000. */
+  pageSize?: number;
+  /** The view that should be returned in the response. */
+  view?: "VERSION_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
+  /** Optional. The field to order the results by. */
+  orderBy?: string;
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
   /** The name of the parent resource whose versions will be listed. */
   parent: string;
-  /** Optional. The field to order the results by. */
-  orderBy?: string;
-  /** The maximum number of versions to return. Maximum page size is 1,000. */
-  pageSize?: number;
 }
 
 export const ListProjectsLocationsRepositoriesPackagesVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/versions" }),
     svc,
@@ -1266,81 +1343,51 @@ export const listProjectsLocationsRepositoriesPackagesVersions: API.PaginatedOpe
   },
 }));
 
-export interface DeleteProjectsLocationsRepositoriesPackagesVersionsRequest {
-  /** By default, a version that is tagged may not be deleted. If force=true, the version and any tags pointing to the version are deleted. */
-  force?: boolean;
-  /** The name of the version to delete. */
-  name: string;
+export interface ListProjectsLocationsRepositoriesFilesRequest {
+  /** Required. The name of the repository whose files will be listed. For example: "projects/p1/locations/us-central1/repositories/repo1 */
+  parent: string;
+  /** The maximum number of files to return. Maximum page size is 1,000. */
+  pageSize?: number;
+  /** The next_page_token value returned from a previous list request, if any. */
+  pageToken?: string;
+  /** An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `owner` * `annotations` Examples of using a filter: To filter the results of your request to files with the name `my_file.txt` in project `my-project` in the `us-central` region, in repository `my-repo`, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-file.txt"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-*"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/*file.txt"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/*file*"` To filter the results of your request to files owned by the version `1.0` in package `pkg1`, append the following filter expression to your request: * `owner="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"` To filter the results of your request to files with the annotation key-value pair [`external_link`: `external_link_value`], append the following filter expression to your request: * `"annotations.external_link:external_link_value"` To filter just for a specific annotation key `external_link`, append the following filter expression to your request: * `"annotations.external_link"` If the annotation key or value contains special characters, you can escape them by surrounding the value with backticks. For example, to filter the results of your request to files with the annotation key-value pair [`external.link`:`https://example.com/my-file`], append the following filter expression to your request: * `` "annotations.`external.link`:`https://example.com/my-file`" `` You can also filter with annotations with a wildcard to match any number of characters before or after the value: * `` "annotations.*_link:`*example.com*`" `` */
+  filter?: string;
 }
 
-export const DeleteProjectsLocationsRepositoriesPackagesVersionsRequest =
+export const ListProjectsLocationsRepositoriesFilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-    name: Schema.String.pipe(T.HttpPath("name")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/files" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesFilesRequest>;
 
-export type DeleteProjectsLocationsRepositoriesPackagesVersionsResponse =
-  Operation;
-export const DeleteProjectsLocationsRepositoriesPackagesVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type ListProjectsLocationsRepositoriesFilesResponse = ListFilesResponse;
+export const ListProjectsLocationsRepositoriesFilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListFilesResponse;
 
-export type DeleteProjectsLocationsRepositoriesPackagesVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a version and all of its content. The returned operation will complete once the version has been deleted. */
-export const deleteProjectsLocationsRepositoriesPackagesVersions: API.OperationMethod<
-  DeleteProjectsLocationsRepositoriesPackagesVersionsRequest,
-  DeleteProjectsLocationsRepositoriesPackagesVersionsResponse,
-  DeleteProjectsLocationsRepositoriesPackagesVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRepositoriesPackagesVersionsRequest,
-  output: DeleteProjectsLocationsRepositoriesPackagesVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsRepositoriesPackagesVersionsRequest {
-  /** The name of the version to retrieve. */
-  name: string;
-  /** The view that should be returned in the response. */
-  view?: "VERSION_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
-}
-
-export const GetProjectsLocationsRepositoriesPackagesVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
-
-export type GetProjectsLocationsRepositoriesPackagesVersionsResponse = Version;
-export const GetProjectsLocationsRepositoriesPackagesVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Version;
-
-export type GetProjectsLocationsRepositoriesPackagesVersionsError =
+export type ListProjectsLocationsRepositoriesFilesError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets a version */
-export const getProjectsLocationsRepositoriesPackagesVersions: API.OperationMethod<
-  GetProjectsLocationsRepositoriesPackagesVersionsRequest,
-  GetProjectsLocationsRepositoriesPackagesVersionsResponse,
-  GetProjectsLocationsRepositoriesPackagesVersionsError,
+/** Lists files. */
+export const listProjectsLocationsRepositoriesFiles: API.PaginatedOperationMethod<
+  ListProjectsLocationsRepositoriesFilesRequest,
+  ListProjectsLocationsRepositoriesFilesResponse,
+  ListProjectsLocationsRepositoriesFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRepositoriesPackagesVersionsRequest,
-  output: GetProjectsLocationsRepositoriesPackagesVersionsResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRepositoriesFilesRequest,
+  output: ListProjectsLocationsRepositoriesFilesResponse,
   errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface GetProjectsLocationsRepositoriesFilesRequest {
@@ -1375,51 +1422,4 @@ export const getProjectsLocationsRepositoriesFiles: API.OperationMethod<
   input: GetProjectsLocationsRepositoriesFilesRequest,
   output: GetProjectsLocationsRepositoriesFilesResponse,
   errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsRepositoriesFilesRequest {
-  /** The next_page_token value returned from a previous list request, if any. */
-  pageToken?: string;
-  /** Required. The name of the repository whose files will be listed. For example: "projects/p1/locations/us-central1/repositories/repo1 */
-  parent: string;
-  /** An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `owner` * `annotations` Examples of using a filter: To filter the results of your request to files with the name `my_file.txt` in project `my-project` in the `us-central` region, in repository `my-repo`, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-file.txt"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-*"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/*file.txt"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/*file*"` To filter the results of your request to files owned by the version `1.0` in package `pkg1`, append the following filter expression to your request: * `owner="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"` To filter the results of your request to files with the annotation key-value pair [`external_link`: `external_link_value`], append the following filter expression to your request: * `"annotations.external_link:external_link_value"` To filter just for a specific annotation key `external_link`, append the following filter expression to your request: * `"annotations.external_link"` If the annotation key or value contains special characters, you can escape them by surrounding the value with backticks. For example, to filter the results of your request to files with the annotation key-value pair [`external.link`:`https://example.com/my-file`], append the following filter expression to your request: * `` "annotations.`external.link`:`https://example.com/my-file`" `` You can also filter with annotations with a wildcard to match any number of characters before or after the value: * `` "annotations.*_link:`*example.com*`" `` */
-  filter?: string;
-  /** The maximum number of files to return. Maximum page size is 1,000. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsRepositoriesFilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+parent}/files" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesFilesRequest>;
-
-export type ListProjectsLocationsRepositoriesFilesResponse = ListFilesResponse;
-export const ListProjectsLocationsRepositoriesFilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFilesResponse;
-
-export type ListProjectsLocationsRepositoriesFilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists files. */
-export const listProjectsLocationsRepositoriesFiles: API.PaginatedOperationMethod<
-  ListProjectsLocationsRepositoriesFilesRequest,
-  ListProjectsLocationsRepositoriesFilesResponse,
-  ListProjectsLocationsRepositoriesFilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRepositoriesFilesRequest,
-  output: ListProjectsLocationsRepositoriesFilesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));

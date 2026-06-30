@@ -888,6 +888,1174 @@ paths:
                   - properties
                   - ts
       x-distilled-pagination-class: InvestigateListResponsesV4PagePaginationArray
+  /accounts/{account_id}/email-security/investigate/bulk/{jobId}:
+    get:
+      operationId: getInvestigateBulk
+      description: "Get bulk action job details  @example ```ts const bulk = await
+        client.emailSecurity.investigate.bulk.get(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  action_params:
+                    oneOf:
+                      - type: object
+                        properties:
+                          destination:
+                            type: string
+                            enum:
+                              - Inbox
+                              - JunkEmail
+                              - DeletedItems
+                              - RecoverableItemsDeletions
+                              - RecoverableItemsPurges
+                          type:
+                            type: string
+                            enum:
+                              - MOVE
+                          expected_disposition:
+                            type: string
+                            enum:
+                              - MALICIOUS
+                              - MALICIOUS-BEC
+                              - SUSPICIOUS
+                              - SPOOF
+                              - SPAM
+                              - BULK
+                              - ENCRYPTED
+                              - EXTERNAL
+                              - UNKNOWN
+                              - NONE
+                        required:
+                          - destination
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - RELEASE
+                        required:
+                          - type
+                  action_type:
+                    type: string
+                    enum:
+                      - MOVE
+                      - RELEASE
+                  created_at:
+                    type: string
+                  job_id:
+                    type: string
+                  messages_failed:
+                    type: number
+                  messages_pending:
+                    type: number
+                  messages_successful:
+                    type: number
+                  search_params:
+                    type: object
+                    properties:
+                      action_log:
+                        type: boolean
+                        description: "@deprecated Deprecated, use `GET
+                          /investigate/{investigate_id}/action_log` instead. End
+                          of life: November 1, 2026."
+                      alert_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      delivery_status:
+                        type: string
+                        enum:
+                          - delivered
+                          - moved
+                          - quarantined
+                          - rejected
+                          - deferred
+                          - bounced
+                          - queued
+                        description: Delivery status of the message.
+                      detections_only:
+                        type: boolean
+                      domain:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      end:
+                        type: string
+                        description: End of search date range
+                      exact_subject:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      final_disposition:
+                        type: string
+                        enum:
+                          - MALICIOUS
+                          - MALICIOUS-BEC
+                          - SUSPICIOUS
+                          - SPOOF
+                          - SPAM
+                          - BULK
+                          - ENCRYPTED
+                          - EXTERNAL
+                          - UNKNOWN
+                          - NONE
+                      message_action:
+                        type: string
+                        enum:
+                          - PREVIEW
+                          - QUARANTINE_RELEASED
+                          - MOVED
+                        nullable: true
+                      message_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      metric:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      query:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      recipient:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      sender:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      start:
+                        type: string
+                        description: Beginning of search date range
+                      subject:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      submissions:
+                        type: boolean
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - DISCOVERING
+                      - PROCESSING
+                      - COMPLETED
+                      - FAILED
+                      - CANCELLED
+                      - SKIPPED
+                  total_messages_discovered:
+                    type: number
+                  comment:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  completed_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  started_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  status_message:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - action_params
+                  - action_type
+                  - created_at
+                  - job_id
+                  - messages_failed
+                  - messages_pending
+                  - messages_successful
+                  - search_params
+                  - status
+                  - total_messages_discovered
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteInvestigateBulk
+      description: "Soft-deletes the job, hiding it from all list and detail
+        endpoints. Only jobs in a terminal state (`COMPLETED`, `CANCELLED`,
+        `FAILED`, or `SKIPPED`) can be deleted. To stop an in-progress job
+        without removing it, use the cancel endpoint instead.  @example ```ts
+        const bulk = await client.emailSecurity.investigate.bulk.delete(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
+      x-distilled-response-path: result
+  /accounts/{account_id}/email-security/investigate/bulk:
+    get:
+      operationId: listInvestigateBulks
+      description: "List bulk action jobs  @example ```ts // Automatically fetches
+        more pages as needed. for await (const bulkListResponse of
+        client.emailSecurity.investigate.bulk.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: action_type
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: string
+            enum:
+              - MOVE
+              - RELEASE
+        - name: status
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: string
+            enum:
+              - PENDING
+              - DISCOVERING
+              - PROCESSING
+              - COMPLETED
+              - FAILED
+              - CANCELLED
+              - SKIPPED
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  action_params:
+                    oneOf:
+                      - type: object
+                        properties:
+                          destination:
+                            type: string
+                            enum:
+                              - Inbox
+                              - JunkEmail
+                              - DeletedItems
+                              - RecoverableItemsDeletions
+                              - RecoverableItemsPurges
+                          type:
+                            type: string
+                            enum:
+                              - MOVE
+                          expected_disposition:
+                            type: string
+                            enum:
+                              - MALICIOUS
+                              - MALICIOUS-BEC
+                              - SUSPICIOUS
+                              - SPOOF
+                              - SPAM
+                              - BULK
+                              - ENCRYPTED
+                              - EXTERNAL
+                              - UNKNOWN
+                              - NONE
+                        required:
+                          - destination
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - RELEASE
+                        required:
+                          - type
+                  action_type:
+                    type: string
+                    enum:
+                      - MOVE
+                      - RELEASE
+                  created_at:
+                    type: string
+                  job_id:
+                    type: string
+                  messages_failed:
+                    type: number
+                  messages_pending:
+                    type: number
+                  messages_successful:
+                    type: number
+                  search_params:
+                    type: object
+                    properties:
+                      action_log:
+                        type: boolean
+                        description: "@deprecated Deprecated, use `GET
+                          /investigate/{investigate_id}/action_log` instead. End
+                          of life: November 1, 2026."
+                      alert_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      delivery_status:
+                        type: string
+                        enum:
+                          - delivered
+                          - moved
+                          - quarantined
+                          - rejected
+                          - deferred
+                          - bounced
+                          - queued
+                        description: Delivery status of the message.
+                      detections_only:
+                        type: boolean
+                      domain:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      end:
+                        type: string
+                        description: End of search date range
+                      exact_subject:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      final_disposition:
+                        type: string
+                        enum:
+                          - MALICIOUS
+                          - MALICIOUS-BEC
+                          - SUSPICIOUS
+                          - SPOOF
+                          - SPAM
+                          - BULK
+                          - ENCRYPTED
+                          - EXTERNAL
+                          - UNKNOWN
+                          - NONE
+                      message_action:
+                        type: string
+                        enum:
+                          - PREVIEW
+                          - QUARANTINE_RELEASED
+                          - MOVED
+                        nullable: true
+                      message_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      metric:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      query:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      recipient:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      sender:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      start:
+                        type: string
+                        description: Beginning of search date range
+                      subject:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      submissions:
+                        type: boolean
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - DISCOVERING
+                      - PROCESSING
+                      - COMPLETED
+                      - FAILED
+                      - CANCELLED
+                      - SKIPPED
+                  total_messages_discovered:
+                    type: number
+                  comment:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  completed_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  started_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  status_message:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - action_params
+                  - action_type
+                  - created_at
+                  - job_id
+                  - messages_failed
+                  - messages_pending
+                  - messages_successful
+                  - search_params
+                  - status
+                  - total_messages_discovered
+      x-distilled-pagination-class: BulkListResponsesV4PagePaginationArray
+    post:
+      operationId: createInvestigateBulk
+      description: "Create a bulk action job  @example ```ts const bulk = await
+        client.emailSecurity.investigate.bulk.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', action: 'MOVE', search_params: {},
+        }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum:
+                    - MOVE
+                    - RELEASE
+                  description: Body param
+                search_params:
+                  type: object
+                  properties:
+                    action_log:
+                      type: boolean
+                      description: "@deprecated Deprecated, use `GET
+                        /investigate/{investigate_id}/action_log` instead. End
+                        of life: November 1, 2026."
+                    alert_id:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    delivery_status:
+                      type: string
+                      enum:
+                        - delivered
+                        - moved
+                        - quarantined
+                        - rejected
+                        - deferred
+                        - bounced
+                        - queued
+                      description: Delivery status of the message.
+                    detections_only:
+                      type: boolean
+                    domain:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    end:
+                      type: string
+                      description: End of search date range
+                    exact_subject:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    final_disposition:
+                      type: string
+                      enum:
+                        - MALICIOUS
+                        - MALICIOUS-BEC
+                        - SUSPICIOUS
+                        - SPOOF
+                        - SPAM
+                        - BULK
+                        - ENCRYPTED
+                        - EXTERNAL
+                        - UNKNOWN
+                        - NONE
+                    message_action:
+                      type: string
+                      enum:
+                        - PREVIEW
+                        - QUARANTINE_RELEASED
+                        - MOVED
+                      nullable: true
+                    message_id:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    metric:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    query:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    recipient:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    sender:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    start:
+                      type: string
+                      description: Beginning of search date range
+                    subject:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    submissions:
+                      type: boolean
+                  description: Body param
+                comment:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: Body param
+                destination:
+                  type: string
+                  enum:
+                    - Inbox
+                    - JunkEmail
+                    - DeletedItems
+                    - RecoverableItemsDeletions
+                    - RecoverableItemsPurges
+                  description: Body param
+                expected_disposition:
+                  type: string
+                  enum:
+                    - MALICIOUS
+                    - MALICIOUS-BEC
+                    - SUSPICIOUS
+                    - SPOOF
+                    - SPAM
+                    - BULK
+                    - ENCRYPTED
+                    - EXTERNAL
+                    - UNKNOWN
+                    - NONE
+                  description: Body param
+              required:
+                - action
+                - search_params
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  action_params:
+                    oneOf:
+                      - type: object
+                        properties:
+                          destination:
+                            type: string
+                            enum:
+                              - Inbox
+                              - JunkEmail
+                              - DeletedItems
+                              - RecoverableItemsDeletions
+                              - RecoverableItemsPurges
+                          type:
+                            type: string
+                            enum:
+                              - MOVE
+                          expected_disposition:
+                            type: string
+                            enum:
+                              - MALICIOUS
+                              - MALICIOUS-BEC
+                              - SUSPICIOUS
+                              - SPOOF
+                              - SPAM
+                              - BULK
+                              - ENCRYPTED
+                              - EXTERNAL
+                              - UNKNOWN
+                              - NONE
+                        required:
+                          - destination
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - RELEASE
+                        required:
+                          - type
+                  action_type:
+                    type: string
+                    enum:
+                      - MOVE
+                      - RELEASE
+                  created_at:
+                    type: string
+                  job_id:
+                    type: string
+                  messages_failed:
+                    type: number
+                  messages_pending:
+                    type: number
+                  messages_successful:
+                    type: number
+                  search_params:
+                    type: object
+                    properties:
+                      action_log:
+                        type: boolean
+                        description: "@deprecated Deprecated, use `GET
+                          /investigate/{investigate_id}/action_log` instead. End
+                          of life: November 1, 2026."
+                      alert_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      delivery_status:
+                        type: string
+                        enum:
+                          - delivered
+                          - moved
+                          - quarantined
+                          - rejected
+                          - deferred
+                          - bounced
+                          - queued
+                        description: Delivery status of the message.
+                      detections_only:
+                        type: boolean
+                      domain:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      end:
+                        type: string
+                        description: End of search date range
+                      exact_subject:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      final_disposition:
+                        type: string
+                        enum:
+                          - MALICIOUS
+                          - MALICIOUS-BEC
+                          - SUSPICIOUS
+                          - SPOOF
+                          - SPAM
+                          - BULK
+                          - ENCRYPTED
+                          - EXTERNAL
+                          - UNKNOWN
+                          - NONE
+                      message_action:
+                        type: string
+                        enum:
+                          - PREVIEW
+                          - QUARANTINE_RELEASED
+                          - MOVED
+                        nullable: true
+                      message_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      metric:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      query:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      recipient:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      sender:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      start:
+                        type: string
+                        description: Beginning of search date range
+                      subject:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      submissions:
+                        type: boolean
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - DISCOVERING
+                      - PROCESSING
+                      - COMPLETED
+                      - FAILED
+                      - CANCELLED
+                      - SKIPPED
+                  total_messages_discovered:
+                    type: number
+                  comment:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  completed_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  started_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  status_message:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - action_params
+                  - action_type
+                  - created_at
+                  - job_id
+                  - messages_failed
+                  - messages_pending
+                  - messages_successful
+                  - search_params
+                  - status
+                  - total_messages_discovered
+      x-distilled-response-path: result
+  /accounts/{account_id}/email-security/investigate/bulk/{jobId}/cancel:
+    post:
+      operationId: createInvestigateBulkCancel
+      description: "Marks the job as cancelled and stops any pending message
+        processing. The job record remains visible in list and detail
+        endpoints.  @example ```ts const cancel = await
+        client.emailSecurity.investigate.bulk.cancel.create(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  action_params:
+                    oneOf:
+                      - type: object
+                        properties:
+                          destination:
+                            type: string
+                            enum:
+                              - Inbox
+                              - JunkEmail
+                              - DeletedItems
+                              - RecoverableItemsDeletions
+                              - RecoverableItemsPurges
+                          type:
+                            type: string
+                            enum:
+                              - MOVE
+                          expected_disposition:
+                            type: string
+                            enum:
+                              - MALICIOUS
+                              - MALICIOUS-BEC
+                              - SUSPICIOUS
+                              - SPOOF
+                              - SPAM
+                              - BULK
+                              - ENCRYPTED
+                              - EXTERNAL
+                              - UNKNOWN
+                              - NONE
+                        required:
+                          - destination
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - RELEASE
+                        required:
+                          - type
+                  action_type:
+                    type: string
+                    enum:
+                      - MOVE
+                      - RELEASE
+                  created_at:
+                    type: string
+                  job_id:
+                    type: string
+                  messages_failed:
+                    type: number
+                  messages_pending:
+                    type: number
+                  messages_successful:
+                    type: number
+                  search_params:
+                    type: object
+                    properties:
+                      action_log:
+                        type: boolean
+                        description: "@deprecated Deprecated, use `GET
+                          /investigate/{investigate_id}/action_log` instead. End
+                          of life: November 1, 2026."
+                      alert_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      delivery_status:
+                        type: string
+                        enum:
+                          - delivered
+                          - moved
+                          - quarantined
+                          - rejected
+                          - deferred
+                          - bounced
+                          - queued
+                        description: Delivery status of the message.
+                      detections_only:
+                        type: boolean
+                      domain:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      end:
+                        type: string
+                        description: End of search date range
+                      exact_subject:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      final_disposition:
+                        type: string
+                        enum:
+                          - MALICIOUS
+                          - MALICIOUS-BEC
+                          - SUSPICIOUS
+                          - SPOOF
+                          - SPAM
+                          - BULK
+                          - ENCRYPTED
+                          - EXTERNAL
+                          - UNKNOWN
+                          - NONE
+                      message_action:
+                        type: string
+                        enum:
+                          - PREVIEW
+                          - QUARANTINE_RELEASED
+                          - MOVED
+                        nullable: true
+                      message_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      metric:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      query:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      recipient:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      sender:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      start:
+                        type: string
+                        description: Beginning of search date range
+                      subject:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      submissions:
+                        type: boolean
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - DISCOVERING
+                      - PROCESSING
+                      - COMPLETED
+                      - FAILED
+                      - CANCELLED
+                      - SKIPPED
+                  total_messages_discovered:
+                    type: number
+                  comment:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  completed_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  started_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  status_message:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - action_params
+                  - action_type
+                  - created_at
+                  - job_id
+                  - messages_failed
+                  - messages_pending
+                  - messages_successful
+                  - search_params
+                  - status
+                  - total_messages_discovered
+      x-distilled-response-path: result
+  /accounts/{account_id}/email-security/investigate/bulk/{jobId}/messages:
+    get:
+      operationId: listInvestigateBulkMessages
+      description: "List messages for a bulk action job  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        messageListResponse of
+        client.emailSecurity.investigate.bulk.messages.list(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: status
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: string
+            enum:
+              - PENDING
+              - DISCOVERING
+              - PROCESSING
+              - COMPLETED
+              - FAILED
+              - CANCELLED
+              - SKIPPED
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  action_params:
+                    oneOf:
+                      - type: object
+                        properties:
+                          client_recipient:
+                            type: string
+                          destination:
+                            type: string
+                            enum:
+                              - Inbox
+                              - JunkEmail
+                              - DeletedItems
+                              - RecoverableItemsDeletions
+                              - RecoverableItemsPurges
+                          type:
+                            type: string
+                            enum:
+                              - MOVE
+                          expected_disposition:
+                            type: string
+                            enum:
+                              - MALICIOUS
+                              - MALICIOUS-BEC
+                              - SUSPICIOUS
+                              - SPOOF
+                              - SPAM
+                              - BULK
+                              - ENCRYPTED
+                              - EXTERNAL
+                              - UNKNOWN
+                              - NONE
+                        required:
+                          - client_recipient
+                          - destination
+                          - type
+                      - type: object
+                        properties:
+                          client_recipient:
+                            type: string
+                          type:
+                            type: string
+                            enum:
+                              - RELEASE
+                        required:
+                          - client_recipient
+                          - type
+                  action_type:
+                    type: string
+                    enum:
+                      - MOVE
+                      - RELEASE
+                  created_at:
+                    type: string
+                  message_id:
+                    type: string
+                  postfix_id:
+                    type: string
+                  retry_count:
+                    type: number
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - DISCOVERING
+                      - PROCESSING
+                      - COMPLETED
+                      - FAILED
+                      - CANCELLED
+                      - SKIPPED
+                  alert_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  email_message_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  processed_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  retry_after:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: When to retry the action if it failed
+                  status_message:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - action_params
+                  - action_type
+                  - created_at
+                  - message_id
+                  - postfix_id
+                  - retry_count
+                  - status
+      x-distilled-pagination-class: MessageListResponsesV4PagePaginationArray
   /accounts/{account_id}/email-security/investigate/{investigateId}/detections:
     get:
       operationId: getInvestigateDetection
@@ -1188,6 +2356,20 @@ paths:
                     - RecoverableItemsDeletions
                     - RecoverableItemsPurges
                   description: Body param
+                expected_disposition:
+                  type: string
+                  enum:
+                    - MALICIOUS
+                    - MALICIOUS-BEC
+                    - SUSPICIOUS
+                    - SPOOF
+                    - SPAM
+                    - BULK
+                    - ENCRYPTED
+                    - EXTERNAL
+                    - UNKNOWN
+                    - NONE
+                  description: Body param
               required:
                 - destination
       responses:
@@ -1282,6 +2464,20 @@ paths:
                     - DeletedItems
                     - RecoverableItemsDeletions
                     - RecoverableItemsPurges
+                  description: Body param
+                expected_disposition:
+                  type: string
+                  enum:
+                    - MALICIOUS
+                    - MALICIOUS-BEC
+                    - SUSPICIOUS
+                    - SPOOF
+                    - SPAM
+                    - BULK
+                    - ENCRYPTED
+                    - EXTERNAL
+                    - UNKNOWN
+                    - NONE
                   description: Body param
                 ids:
                   type: array

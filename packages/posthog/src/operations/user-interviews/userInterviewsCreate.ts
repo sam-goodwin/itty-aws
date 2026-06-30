@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const UserInterviewsCreateInput =
@@ -27,13 +26,18 @@ export const UserInterviewsCreateInput =
     ),
     created_at: Schema.optional(Schema.String),
     interviewee_emails: Schema.optional(Schema.Array(Schema.String)),
+    interviewee_identifier: Schema.optional(Schema.String),
+    topic: Schema.optional(Schema.NullOr(Schema.String)),
     transcript: Schema.optional(Schema.String),
     summary: Schema.optional(Schema.String),
+    classifications: Schema.optional(
+      Schema.Array(Schema.Literals(["abandoned", "off-topic"])),
+    ),
     audio: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/user_interviews/",
+      path: "/api/projects/{project_id}/user_interviews/",
     }),
   );
 export type UserInterviewsCreateInput = typeof UserInterviewsCreateInput.Type;
@@ -61,8 +65,13 @@ export const UserInterviewsCreateOutput =
     ),
     created_at: Schema.optional(Schema.String),
     interviewee_emails: Schema.optional(Schema.Array(Schema.String)),
+    interviewee_identifier: Schema.optional(Schema.String),
+    topic: Schema.optional(Schema.NullOr(Schema.String)),
     transcript: Schema.optional(Schema.String),
     summary: Schema.optional(Schema.String),
+    classifications: Schema.optional(
+      Schema.Array(Schema.Literals(["abandoned", "off-topic"])),
+    ),
     audio: Schema.optional(Schema.String),
   });
 export type UserInterviewsCreateOutput = typeof UserInterviewsCreateOutput.Type;
@@ -76,6 +85,5 @@ export const userInterviewsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UserInterviewsCreateInput,
     outputSchema: UserInterviewsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

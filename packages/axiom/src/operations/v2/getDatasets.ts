@@ -16,6 +16,7 @@ export const GetDatasetsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     created: Schema.String,
     description: Schema.String,
     edgeDeployment: Schema.optional(Schema.String),
+    edgeDeploymentUrl: Schema.optional(Schema.String),
     id: Schema.String,
     kind: Schema.Literals([
       "otel:metrics:v1",
@@ -27,6 +28,7 @@ export const GetDatasetsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     name: Schema.String,
     retentionDays: Schema.optional(Schema.Number),
     sharedByOrg: Schema.optional(Schema.String),
+    updatedAt: Schema.String,
     useRetentionPeriod: Schema.optional(Schema.Boolean),
     who: Schema.String,
   }),

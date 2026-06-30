@@ -10,7 +10,7 @@ export const OrganizationMembershipGroupsControllerListGroupsInput =
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -57,7 +57,7 @@ export type OrganizationMembershipGroupsControllerListGroupsOutput =
  * @param before - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`.
  * @param after - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `after="obj_123"` to fetch a new batch of objects after `"obj_123"`.
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
- * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
+ * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
 export const OrganizationMembershipGroupsControllerListGroups =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const CreateProjectBranchInput =
@@ -215,7 +215,7 @@ export const CreateProjectBranchOutput =
       Schema.Struct({
         branch_id: Schema.String,
         name: Schema.String,
-        password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
         protected: Schema.optional(Schema.Boolean),
         authentication_method: Schema.optional(Schema.String),
         created_at: Schema.String,
@@ -235,10 +235,10 @@ export const CreateProjectBranchOutput =
     connection_uris: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          connection_uri: SensitiveString,
+          connection_uri: SensitiveOutputString,
           connection_parameters: Schema.Struct({
             database: Schema.String,
-            password: SensitiveString,
+            password: SensitiveOutputString,
             role: Schema.String,
             host: Schema.String,
             pooler_host: Schema.String,
@@ -254,12 +254,11 @@ export type CreateProjectBranchOutput = typeof CreateProjectBranchOutput.Type;
  * Create branch
  *
  * Creates a branch in the specified project.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * This method does not require a request body, but you can specify one to create a compute endpoint for the branch or to select a non-default parent branch.
+ * No request body is required, but you can specify one to create a compute endpoint or select a non-default parent branch.
  * By default, the branch is created from the project's default branch with no compute endpoint, and the branch name is auto-generated.
- * To access the branch, you must add an endpoint object. A `read_write` endpoint allows you to perform read and write operations on the branch.
+ * To access the branch, add a `read_write` endpoint.
  * Each branch supports one read-write endpoint and multiple read-only endpoints.
- * For related information, see [Manage branches](https://neon.tech/docs/manage/branches/).
+ * For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
  *
  * @param project_id - The Neon project ID
  */

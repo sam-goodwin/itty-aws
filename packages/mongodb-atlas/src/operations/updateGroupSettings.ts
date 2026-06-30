@@ -26,7 +26,7 @@ export type UpdateGroupSettingsOutput = typeof UpdateGroupSettingsOutput.Type;
 /**
  * Update Project Settings
  *
- * Updates the settings of the specified project. You can update any of the options available. MongoDB cloud only updates the options provided in the request. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+ * Updates the settings of the specified project. You can update any of the options available. MongoDB cloud only updates the options provided in the request.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

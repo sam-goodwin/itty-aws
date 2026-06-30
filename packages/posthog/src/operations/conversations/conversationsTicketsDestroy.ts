@@ -26,7 +26,7 @@ export type ConversationsTicketsDestroyOutput =
 // The operation
 /**
  *
- * @param id - A UUID string identifying this ticket.
+ * @param id - The ticket's UUID or its numeric ticket number.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const conversationsTicketsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(

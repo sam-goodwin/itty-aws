@@ -29,7 +29,7 @@ export type DownloadGroupDataFederationQueryLogsOutput =
 /**
  * Download Query Logs for One Federated Database Instance
  *
- * Downloads the query logs for the specified federated database instance. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Data Access Read Write roles. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: `Accept: application/vnd.atlas.YYYY-MM-DD+gzip`.
+ * Downloads the query logs for the specified federated database instance. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: `Accept: application/vnd.atlas.YYYY-MM-DD+gzip`.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

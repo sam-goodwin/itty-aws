@@ -34,7 +34,6 @@ export const ProductToursRetrieveOutput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -53,7 +52,6 @@ export const ProductToursRetrieveOutput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -64,7 +62,7 @@ export const ProductToursRetrieveOutput =
       Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
     ),
     content: Schema.optional(Schema.Unknown),
-    draft_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    draft_content: Schema.optional(Schema.Unknown),
     has_draft: Schema.optional(Schema.Boolean),
     auto_launch: Schema.optional(Schema.Boolean),
     start_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -89,6 +87,7 @@ export const ProductToursRetrieveOutput =
     ),
     updated_at: Schema.optional(Schema.String),
     archived: Schema.optional(Schema.Boolean),
+    search_match_type: Schema.optional(Schema.Unknown),
   });
 export type ProductToursRetrieveOutput = typeof ProductToursRetrieveOutput.Type;
 

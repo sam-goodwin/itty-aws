@@ -22,6 +22,45 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface WorkloadOnboardingStep {
+  /** The starting time of the onboarding step. */
+  startTime?: string;
+  /** Output only. The completion state of the onboarding step. */
+  completionState?:
+    | "COMPLETION_STATE_UNSPECIFIED"
+    | "PENDING"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "NOT_APPLICABLE"
+    | (string & {});
+  /** The onboarding step. */
+  step?:
+    | "STEP_UNSPECIFIED"
+    | "EKM_PROVISIONED"
+    | "SIGNED_ACCESS_APPROVAL_CONFIGURED"
+    | (string & {});
+  /** The completion time of the onboarding step. */
+  completionTime?: string;
+}
+
+export const WorkloadOnboardingStep: Schema.Schema<WorkloadOnboardingStep> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    completionState: Schema.optional(Schema.String),
+    step: Schema.optional(Schema.String),
+    completionTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkloadOnboardingStep" });
+
+export interface WorkloadOnboardingState {
+  /** List of workload onboarding steps. */
+  onboardingSteps?: ReadonlyArray<WorkloadOnboardingStep>;
+}
+
+export const WorkloadOnboardingState: Schema.Schema<WorkloadOnboardingState> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    onboardingSteps: Schema.optional(Schema.Array(WorkloadOnboardingStep)),
+  }).annotate({ identifier: "WorkloadOnboardingState" });
+
 export interface Sku {
   /** Argentum product SKU, that is associated with the partner offerings to customers used by Syntro for billing purposes. SKUs can represent resold Google products or support services. */
   id?: string;
@@ -34,6 +73,293 @@ export const Sku: Schema.Schema<Sku> =
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Sku" });
+
+export interface CustomerOnboardingStep {
+  /** The onboarding step */
+  step?:
+    | "STEP_UNSPECIFIED"
+    | "KAJ_ENROLLMENT"
+    | "CUSTOMER_ENVIRONMENT"
+    | (string & {});
+  /** The completion time of the onboarding step */
+  completionTime?: string;
+  /** The starting time of the onboarding step */
+  startTime?: string;
+  /** Output only. Current state of the step */
+  completionState?:
+    | "COMPLETION_STATE_UNSPECIFIED"
+    | "PENDING"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "NOT_APPLICABLE"
+    | (string & {});
+}
+
+export const CustomerOnboardingStep: Schema.Schema<CustomerOnboardingStep> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    step: Schema.optional(Schema.String),
+    completionTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    completionState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerOnboardingStep" });
+
+export interface CustomerOnboardingState {
+  /** List of customer onboarding steps */
+  onboardingSteps?: ReadonlyArray<CustomerOnboardingStep>;
+}
+
+export const CustomerOnboardingState: Schema.Schema<CustomerOnboardingState> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    onboardingSteps: Schema.optional(Schema.Array(CustomerOnboardingStep)),
+  }).annotate({ identifier: "CustomerOnboardingState" });
+
+export interface Customer {
+  /** Required. Display name for the customer */
+  displayName?: string;
+  /** Output only. The customer organization domain, extracted from CRM Organization’s display_name field. e.g. "google.com" */
+  organizationDomain?: string;
+  /** Output only. Indicates whether a customer is fully onboarded */
+  isOnboarded?: boolean;
+  /** Output only. Container for customer onboarding steps */
+  customerOnboardingState?: CustomerOnboardingState;
+  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
+  name?: string;
+}
+
+export const Customer: Schema.Schema<Customer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    organizationDomain: Schema.optional(Schema.String),
+    isOnboarded: Schema.optional(Schema.Boolean),
+    customerOnboardingState: Schema.optional(CustomerOnboardingState),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Customer" });
+
+export interface ListCustomersResponse {
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+  /** List of customers */
+  customers?: ReadonlyArray<Customer>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListCustomersResponse: Schema.Schema<ListCustomersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    customers: Schema.optional(Schema.Array(Customer)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCustomersResponse" });
+
+export interface ConnectionError {
+  /** The error domain for the error */
+  errorDomain?: string;
+  /** The error message for the error */
+  errorMessage?: string;
+}
+
+export const ConnectionError: Schema.Schema<ConnectionError> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorDomain: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConnectionError" });
+
+export interface EkmConnection {
+  /** The connection error that occurred if any */
+  connectionError?: ConnectionError;
+  /** Output only. The connection state */
+  connectionState?:
+    | "CONNECTION_STATE_UNSPECIFIED"
+    | "AVAILABLE"
+    | "NOT_AVAILABLE"
+    | "ERROR"
+    | "PERMISSION_DENIED"
+    | (string & {});
+  /** Resource name of the EKM connection in the format: projects/{project}/locations/{location}/ekmConnections/{ekm_connection} */
+  connectionName?: string;
+}
+
+export const EkmConnection: Schema.Schema<EkmConnection> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionError: Schema.optional(ConnectionError),
+    connectionState: Schema.optional(Schema.String),
+    connectionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EkmConnection" });
+
+export interface PartnerPermissions {
+  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/partnerPermissions` */
+  name?: string;
+  /** The partner permissions granted for the workload */
+  partnerPermissions?: ReadonlyArray<
+    | "PERMISSION_UNSPECIFIED"
+    | "ACCESS_TRANSPARENCY_AND_EMERGENCY_ACCESS_LOGS"
+    | "ASSURED_WORKLOADS_MONITORING"
+    | "ACCESS_APPROVAL_REQUESTS"
+    | "ASSURED_WORKLOADS_EKM_CONNECTION_STATUS"
+    | "ACCESS_TRANSPARENCY_LOGS_SUPPORT_CASE_VIEWER"
+    | (string & {})
+  >;
+}
+
+export const PartnerPermissions: Schema.Schema<PartnerPermissions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    partnerPermissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "PartnerPermissions" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface Gcloud {
+  /** Gcloud command to resolve violation */
+  gcloudCommands?: ReadonlyArray<string>;
+  /** Steps to resolve violation via gcloud cli */
+  steps?: ReadonlyArray<string>;
+  /** Additional urls for more information about steps */
+  additionalLinks?: ReadonlyArray<string>;
+}
+
+export const Gcloud: Schema.Schema<Gcloud> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcloudCommands: Schema.optional(Schema.Array(Schema.String)),
+    steps: Schema.optional(Schema.Array(Schema.String)),
+    additionalLinks: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Gcloud" });
+
+export interface Console {
+  /** Steps to resolve violation via cloud console */
+  steps?: ReadonlyArray<string>;
+  /** Additional urls for more information about steps */
+  additionalLinks?: ReadonlyArray<string>;
+  /** Link to console page where violations can be resolved */
+  consoleUris?: ReadonlyArray<string>;
+}
+
+export const Console: Schema.Schema<Console> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    steps: Schema.optional(Schema.Array(Schema.String)),
+    additionalLinks: Schema.optional(Schema.Array(Schema.String)),
+    consoleUris: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Console" });
+
+export interface Instructions {
+  /** Remediation instructions to resolve violation via gcloud cli */
+  gcloudInstructions?: Gcloud;
+  /** Remediation instructions to resolve violation via cloud console */
+  consoleInstructions?: Console;
+}
+
+export const Instructions: Schema.Schema<Instructions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcloudInstructions: Schema.optional(Gcloud),
+    consoleInstructions: Schema.optional(Console),
+  }).annotate({ identifier: "Instructions" });
+
+export interface Remediation {
+  /** Values that can resolve the violation For example: for list org policy violations, this will either be the list of allowed or denied values */
+  compliantValues?: ReadonlyArray<string>;
+  /** Output only. Remediation type based on the type of org policy values violated */
+  remediationType?:
+    | "REMEDIATION_TYPE_UNSPECIFIED"
+    | "REMEDIATION_BOOLEAN_ORG_POLICY_VIOLATION"
+    | "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION"
+    | "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION"
+    | "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION"
+    | "REMEDIATION_RESOURCE_VIOLATION"
+    | (string & {});
+  /** Required. Remediation instructions to resolve violations */
+  instructions?: Instructions;
+}
+
+export const Remediation: Schema.Schema<Remediation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    compliantValues: Schema.optional(Schema.Array(Schema.String)),
+    remediationType: Schema.optional(Schema.String),
+    instructions: Schema.optional(Instructions),
+  }).annotate({ identifier: "Remediation" });
+
+export interface Violation {
+  /** Output only. Compliance violation remediation */
+  remediation?: Remediation;
+  /** Output only. Description for the Violation. e.g. OrgPolicy gcp.resourceLocations has non compliant value. */
+  description?: string;
+  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/violations/{violation}` */
+  name?: string;
+  /** Output only. Time of the event which triggered the Violation. */
+  beginTime?: string;
+  /** Output only. The last time when the Violation record was updated. */
+  updateTime?: string;
+  /** Output only. Time of the event which fixed the Violation. If the violation is ACTIVE this will be empty. */
+  resolveTime?: string;
+  /** Output only. State of the violation */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "RESOLVED"
+    | "UNRESOLVED"
+    | "EXCEPTION"
+    | (string & {});
+  /** The folder_id of the violation */
+  folderId?: string;
+  /** Output only. Immutable. Name of the OrgPolicy which was modified with non-compliant change and resulted this violation. Format: `projects/{project_number}/policies/{constraint_name}` `folders/{folder_id}/policies/{constraint_name}` `organizations/{organization_id}/policies/{constraint_name}` */
+  nonCompliantOrgPolicy?: string;
+  /** Output only. Category under which this violation is mapped. e.g. Location, Service Usage, Access, Encryption, etc. */
+  category?: string;
+}
+
+export const Violation: Schema.Schema<Violation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    remediation: Schema.optional(Remediation),
+    description: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    beginTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    resolveTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    folderId: Schema.optional(Schema.String),
+    nonCompliantOrgPolicy: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Violation" });
+
+export interface ListViolationsResponse {
+  /** Workloads that could not be reached due to permission errors or any other error. Ref: https://google.aip.dev/217 */
+  unreachable?: ReadonlyArray<string>;
+  /** List of violation */
+  violations?: ReadonlyArray<Violation>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListViolationsResponse: Schema.Schema<ListViolationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    violations: Schema.optional(Schema.Array(Violation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListViolationsResponse" });
+
+export interface AccessReason {
+  /** Type of access justification. */
+  type?:
+    | "TYPE_UNSPECIFIED"
+    | "CUSTOMER_INITIATED_SUPPORT"
+    | "GOOGLE_INITIATED_SERVICE"
+    | "GOOGLE_INITIATED_REVIEW"
+    | "THIRD_PARTY_DATA_REQUEST"
+    | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
+    | "CLOUD_INITIATED_ACCESS"
+    | (string & {});
+  /** More detail about certain reason types. See comments for each type above. */
+  detail?: string;
+}
+
+export const AccessReason: Schema.Schema<AccessReason> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccessReason" });
 
 export interface EkmMetadata {
   /** The Cloud EKM partner. */
@@ -57,434 +383,49 @@ export const EkmMetadata: Schema.Schema<EkmMetadata> =
 export interface Partner {
   /** List of SKUs the partner is offering */
   skus?: ReadonlyArray<Sku>;
+  /** List of Google Cloud supported EKM partners supported by the partner */
+  ekmSolutions?: ReadonlyArray<EkmMetadata>;
+  /** Google Cloud project ID in the partner's Google Cloud organization for receiving enhanced Logs for Partners. */
+  partnerProjectId?: string;
   /** List of Google Cloud regions that the partner sells services to customers. Valid Google Cloud regions found here: https://cloud.google.com/compute/docs/regions-zones */
   operatedCloudRegions?: ReadonlyArray<string>;
+  /** Output only. Time the resource was created */
+  createTime?: string;
   /** Identifier. The resource name of the partner. Format: `organizations/{organization}/locations/{location}/partner` Example: "organizations/123456/locations/us-central1/partner" */
   name?: string;
   /** Output only. The last time the resource was updated */
   updateTime?: string;
-  /** Output only. Time the resource was created */
-  createTime?: string;
-  /** Google Cloud project ID in the partner's Google Cloud organization for receiving enhanced Logs for Partners. */
-  partnerProjectId?: string;
-  /** List of Google Cloud supported EKM partners supported by the partner */
-  ekmSolutions?: ReadonlyArray<EkmMetadata>;
 }
 
 export const Partner: Schema.Schema<Partner> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skus: Schema.optional(Schema.Array(Sku)),
+    ekmSolutions: Schema.optional(Schema.Array(EkmMetadata)),
+    partnerProjectId: Schema.optional(Schema.String),
     operatedCloudRegions: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    partnerProjectId: Schema.optional(Schema.String),
-    ekmSolutions: Schema.optional(Schema.Array(EkmMetadata)),
   }).annotate({ identifier: "Partner" });
 
-export interface ConnectionError {
-  /** The error domain for the error */
-  errorDomain?: string;
-  /** The error message for the error */
-  errorMessage?: string;
-}
-
-export const ConnectionError: Schema.Schema<ConnectionError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errorDomain: Schema.optional(Schema.String),
-    errorMessage: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ConnectionError" });
-
-export interface EkmConnection {
-  /** Resource name of the EKM connection in the format: projects/{project}/locations/{location}/ekmConnections/{ekm_connection} */
-  connectionName?: string;
-  /** The connection error that occurred if any */
-  connectionError?: ConnectionError;
-  /** Output only. The connection state */
-  connectionState?:
-    | "CONNECTION_STATE_UNSPECIFIED"
-    | "AVAILABLE"
-    | "NOT_AVAILABLE"
-    | "ERROR"
-    | "PERMISSION_DENIED"
-    | (string & {});
-}
-
-export const EkmConnection: Schema.Schema<EkmConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    connectionName: Schema.optional(Schema.String),
-    connectionError: Schema.optional(ConnectionError),
-    connectionState: Schema.optional(Schema.String),
-  }).annotate({ identifier: "EkmConnection" });
-
-export interface WorkloadOnboardingStep {
-  /** The onboarding step. */
-  step?:
-    | "STEP_UNSPECIFIED"
-    | "EKM_PROVISIONED"
-    | "SIGNED_ACCESS_APPROVAL_CONFIGURED"
-    | (string & {});
-  /** The completion time of the onboarding step. */
-  completionTime?: string;
-  /** Output only. The completion state of the onboarding step. */
-  completionState?:
-    | "COMPLETION_STATE_UNSPECIFIED"
-    | "PENDING"
-    | "SUCCEEDED"
-    | "FAILED"
-    | "NOT_APPLICABLE"
-    | (string & {});
-  /** The starting time of the onboarding step. */
-  startTime?: string;
-}
-
-export const WorkloadOnboardingStep: Schema.Schema<WorkloadOnboardingStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    step: Schema.optional(Schema.String),
-    completionTime: Schema.optional(Schema.String),
-    completionState: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "WorkloadOnboardingStep" });
-
-export interface WorkloadOnboardingState {
-  /** List of workload onboarding steps. */
-  onboardingSteps?: ReadonlyArray<WorkloadOnboardingStep>;
-}
-
-export const WorkloadOnboardingState: Schema.Schema<WorkloadOnboardingState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    onboardingSteps: Schema.optional(Schema.Array(WorkloadOnboardingStep)),
-  }).annotate({ identifier: "WorkloadOnboardingState" });
-
-export interface Gcloud {
-  /** Steps to resolve violation via gcloud cli */
-  steps?: ReadonlyArray<string>;
-  /** Gcloud command to resolve violation */
-  gcloudCommands?: ReadonlyArray<string>;
-  /** Additional urls for more information about steps */
-  additionalLinks?: ReadonlyArray<string>;
-}
-
-export const Gcloud: Schema.Schema<Gcloud> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    steps: Schema.optional(Schema.Array(Schema.String)),
-    gcloudCommands: Schema.optional(Schema.Array(Schema.String)),
-    additionalLinks: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Gcloud" });
-
-export interface Console {
-  /** Additional urls for more information about steps */
-  additionalLinks?: ReadonlyArray<string>;
-  /** Steps to resolve violation via cloud console */
-  steps?: ReadonlyArray<string>;
-  /** Link to console page where violations can be resolved */
-  consoleUris?: ReadonlyArray<string>;
-}
-
-export const Console: Schema.Schema<Console> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    additionalLinks: Schema.optional(Schema.Array(Schema.String)),
-    steps: Schema.optional(Schema.Array(Schema.String)),
-    consoleUris: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Console" });
-
-export interface Instructions {
-  /** Remediation instructions to resolve violation via gcloud cli */
-  gcloudInstructions?: Gcloud;
-  /** Remediation instructions to resolve violation via cloud console */
-  consoleInstructions?: Console;
-}
-
-export const Instructions: Schema.Schema<Instructions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gcloudInstructions: Schema.optional(Gcloud),
-    consoleInstructions: Schema.optional(Console),
-  }).annotate({ identifier: "Instructions" });
-
-export interface Remediation {
-  /** Output only. Remediation type based on the type of org policy values violated */
-  remediationType?:
-    | "REMEDIATION_TYPE_UNSPECIFIED"
-    | "REMEDIATION_BOOLEAN_ORG_POLICY_VIOLATION"
-    | "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION"
-    | "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION"
-    | "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION"
-    | "REMEDIATION_RESOURCE_VIOLATION"
-    | (string & {});
-  /** Required. Remediation instructions to resolve violations */
-  instructions?: Instructions;
-  /** Values that can resolve the violation For example: for list org policy violations, this will either be the list of allowed or denied values */
-  compliantValues?: ReadonlyArray<string>;
-}
-
-export const Remediation: Schema.Schema<Remediation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    remediationType: Schema.optional(Schema.String),
-    instructions: Schema.optional(Instructions),
-    compliantValues: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Remediation" });
-
-export interface Violation {
-  /** Output only. Immutable. Name of the OrgPolicy which was modified with non-compliant change and resulted this violation. Format: `projects/{project_number}/policies/{constraint_name}` `folders/{folder_id}/policies/{constraint_name}` `organizations/{organization_id}/policies/{constraint_name}` */
-  nonCompliantOrgPolicy?: string;
-  /** The folder_id of the violation */
-  folderId?: string;
-  /** Output only. Compliance violation remediation */
-  remediation?: Remediation;
-  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/violations/{violation}` */
-  name?: string;
-  /** Output only. Time of the event which fixed the Violation. If the violation is ACTIVE this will be empty. */
-  resolveTime?: string;
-  /** Output only. State of the violation */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "RESOLVED"
-    | "UNRESOLVED"
-    | "EXCEPTION"
-    | (string & {});
-  /** Output only. Category under which this violation is mapped. e.g. Location, Service Usage, Access, Encryption, etc. */
-  category?: string;
-  /** Output only. Description for the Violation. e.g. OrgPolicy gcp.resourceLocations has non compliant value. */
-  description?: string;
-  /** Output only. Time of the event which triggered the Violation. */
-  beginTime?: string;
-  /** Output only. The last time when the Violation record was updated. */
-  updateTime?: string;
-}
-
-export const Violation: Schema.Schema<Violation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nonCompliantOrgPolicy: Schema.optional(Schema.String),
-    folderId: Schema.optional(Schema.String),
-    remediation: Schema.optional(Remediation),
-    name: Schema.optional(Schema.String),
-    resolveTime: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    category: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    beginTime: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Violation" });
-
-export interface ListViolationsResponse {
-  /** Workloads that could not be reached due to permission errors or any other error. Ref: https://google.aip.dev/217 */
-  unreachable?: ReadonlyArray<string>;
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** List of violation */
-  violations?: ReadonlyArray<Violation>;
-}
-
-export const ListViolationsResponse: Schema.Schema<ListViolationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-    violations: Schema.optional(Schema.Array(Violation)),
-  }).annotate({ identifier: "ListViolationsResponse" });
-
-export interface CustomerOnboardingStep {
-  /** The onboarding step */
-  step?:
-    | "STEP_UNSPECIFIED"
-    | "KAJ_ENROLLMENT"
-    | "CUSTOMER_ENVIRONMENT"
-    | (string & {});
-  /** The completion time of the onboarding step */
-  completionTime?: string;
-  /** Output only. Current state of the step */
-  completionState?:
-    | "COMPLETION_STATE_UNSPECIFIED"
-    | "PENDING"
-    | "SUCCEEDED"
-    | "FAILED"
-    | "NOT_APPLICABLE"
-    | (string & {});
-  /** The starting time of the onboarding step */
-  startTime?: string;
-}
-
-export const CustomerOnboardingStep: Schema.Schema<CustomerOnboardingStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    step: Schema.optional(Schema.String),
-    completionTime: Schema.optional(Schema.String),
-    completionState: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CustomerOnboardingStep" });
-
-export interface CustomerOnboardingState {
-  /** List of customer onboarding steps */
-  onboardingSteps?: ReadonlyArray<CustomerOnboardingStep>;
-}
-
-export const CustomerOnboardingState: Schema.Schema<CustomerOnboardingState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    onboardingSteps: Schema.optional(Schema.Array(CustomerOnboardingStep)),
-  }).annotate({ identifier: "CustomerOnboardingState" });
-
-export interface Customer {
-  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
-  name?: string;
-  /** Output only. Container for customer onboarding steps */
-  customerOnboardingState?: CustomerOnboardingState;
-  /** Output only. The customer organization domain, extracted from CRM Organization’s display_name field. e.g. "google.com" */
-  organizationDomain?: string;
-  /** Output only. Indicates whether a customer is fully onboarded */
-  isOnboarded?: boolean;
-  /** Required. Display name for the customer */
-  displayName?: string;
-}
-
-export const Customer: Schema.Schema<Customer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    customerOnboardingState: Schema.optional(CustomerOnboardingState),
-    organizationDomain: Schema.optional(Schema.String),
-    isOnboarded: Schema.optional(Schema.Boolean),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Customer" });
-
-export interface AccessReason {
-  /** Type of access justification. */
-  type?:
-    | "TYPE_UNSPECIFIED"
-    | "CUSTOMER_INITIATED_SUPPORT"
-    | "GOOGLE_INITIATED_SERVICE"
-    | "GOOGLE_INITIATED_REVIEW"
-    | "THIRD_PARTY_DATA_REQUEST"
-    | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
-    | "CLOUD_INITIATED_ACCESS"
-    | (string & {});
-  /** More detail about certain reason types. See comments for each type above. */
-  detail?: string;
-}
-
-export const AccessReason: Schema.Schema<AccessReason> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    detail: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AccessReason" });
-
 export interface AccessApprovalRequest {
-  /** The time at which approval was requested. */
-  requestTime?: string;
-  /** The justification for which approval is being requested. */
-  requestedReason?: AccessReason;
   /** The requested expiration for the approval. If the request is approved, access will be granted from the time of approval until the expiration time. */
   requestedExpirationTime?: string;
   /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/accessApprovalRequests/{access_approval_request}` */
   name?: string;
+  /** The time at which approval was requested. */
+  requestTime?: string;
+  /** The justification for which approval is being requested. */
+  requestedReason?: AccessReason;
 }
 
 export const AccessApprovalRequest: Schema.Schema<AccessApprovalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestTime: Schema.optional(Schema.String),
-    requestedReason: Schema.optional(AccessReason),
     requestedExpirationTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    requestedReason: Schema.optional(AccessReason),
   }).annotate({ identifier: "AccessApprovalRequest" });
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
-export interface ListCustomersResponse {
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** List of customers */
-  customers?: ReadonlyArray<Customer>;
-}
-
-export const ListCustomersResponse: Schema.Schema<ListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-    customers: Schema.optional(Schema.Array(Customer)),
-  }).annotate({ identifier: "ListCustomersResponse" });
-
-export interface PartnerPermissions {
-  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/partnerPermissions` */
-  name?: string;
-  /** The partner permissions granted for the workload */
-  partnerPermissions?: ReadonlyArray<
-    | "PERMISSION_UNSPECIFIED"
-    | "ACCESS_TRANSPARENCY_AND_EMERGENCY_ACCESS_LOGS"
-    | "ASSURED_WORKLOADS_MONITORING"
-    | "ACCESS_APPROVAL_REQUESTS"
-    | "ASSURED_WORKLOADS_EKM_CONNECTION_STATUS"
-    | "ACCESS_TRANSPARENCY_LOGS_SUPPORT_CASE_VIEWER"
-    | (string & {})
-  >;
-}
-
-export const PartnerPermissions: Schema.Schema<PartnerPermissions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    partnerPermissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "PartnerPermissions" });
-
-export interface Workload {
-  /** Output only. Time the resource was created. */
-  createTime?: string;
-  /** Output only. The name of container folder of the assured workload */
-  folder?: string;
-  /** Indicates whether a workload is fully onboarded. */
-  isOnboarded?: boolean;
-  /** The project id of the key management project for the workload */
-  keyManagementProjectId?: string;
-  /** Partner associated with this workload. */
-  partner?:
-    | "PARTNER_UNSPECIFIED"
-    | "PARTNER_LOCAL_CONTROLS_BY_S3NS"
-    | "PARTNER_SOVEREIGN_CONTROLS_BY_T_SYSTEMS"
-    | "PARTNER_SOVEREIGN_CONTROLS_BY_SIA_MINSAIT"
-    | "PARTNER_SOVEREIGN_CONTROLS_BY_PSN"
-    | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT"
-    | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM"
-    | "PARTNER_SPAIN_DATA_BOUNDARY_BY_TELEFONICA"
-    | (string & {});
-  /** Container for workload onboarding steps. */
-  workloadOnboardingState?: WorkloadOnboardingState;
-  /** The Google Cloud location of the workload */
-  location?: string;
-  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
-  name?: string;
-  /** Output only. Folder id this workload is associated with */
-  folderId?: string;
-}
-
-export const Workload: Schema.Schema<Workload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createTime: Schema.optional(Schema.String),
-    folder: Schema.optional(Schema.String),
-    isOnboarded: Schema.optional(Schema.Boolean),
-    keyManagementProjectId: Schema.optional(Schema.String),
-    partner: Schema.optional(Schema.String),
-    workloadOnboardingState: Schema.optional(WorkloadOnboardingState),
-    location: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    folderId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Workload" });
-
-export interface ListWorkloadsResponse {
-  /** List of customer workloads */
-  workloads?: ReadonlyArray<Workload>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListWorkloadsResponse: Schema.Schema<ListWorkloadsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    workloads: Schema.optional(Schema.Array(Workload)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListWorkloadsResponse" });
 
 export interface EkmConnections {
   /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/ekmConnections` */
@@ -500,50 +441,109 @@ export const EkmConnections: Schema.Schema<EkmConnections> =
   }).annotate({ identifier: "EkmConnections" });
 
 export interface ListAccessApprovalRequestsResponse {
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** Locations that could not be reached. */
   unreachable?: ReadonlyArray<string>;
   /** List of access approval requests */
   accessApprovalRequests?: ReadonlyArray<AccessApprovalRequest>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 
 export const ListAccessApprovalRequestsResponse: Schema.Schema<ListAccessApprovalRequestsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     accessApprovalRequests: Schema.optional(
       Schema.Array(AccessApprovalRequest),
     ),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAccessApprovalRequestsResponse" });
 
 export interface OperationMetadata {
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
   /** Output only. Server-defined resource path for the target of the operation. */
   target?: string;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
   /** Output only. The time the operation was created. */
   createTime?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
   /** Output only. Human-readable status of the operation, if any. */
   statusMessage?: string;
 }
 
 export const OperationMetadata: Schema.Schema<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    verb: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    endTime: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
-    apiVersion: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
     statusMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "OperationMetadata" });
+
+export interface Workload {
+  /** Output only. Folder id this workload is associated with */
+  folderId?: string;
+  /** The Google Cloud location of the workload */
+  location?: string;
+  /** Indicates whether a workload is fully onboarded. */
+  isOnboarded?: boolean;
+  /** The project id of the key management project for the workload */
+  keyManagementProjectId?: string;
+  /** Container for workload onboarding steps. */
+  workloadOnboardingState?: WorkloadOnboardingState;
+  /** Partner associated with this workload. */
+  partner?:
+    | "PARTNER_UNSPECIFIED"
+    | "PARTNER_LOCAL_CONTROLS_BY_S3NS"
+    | "PARTNER_SOVEREIGN_CONTROLS_BY_T_SYSTEMS"
+    | "PARTNER_SOVEREIGN_CONTROLS_BY_SIA_MINSAIT"
+    | "PARTNER_SOVEREIGN_CONTROLS_BY_PSN"
+    | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT"
+    | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM"
+    | "PARTNER_SPAIN_DATA_BOUNDARY_BY_TELEFONICA"
+    | (string & {});
+  /** Output only. Time the resource was created. */
+  createTime?: string;
+  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
+  name?: string;
+  /** Output only. The name of container folder of the assured workload */
+  folder?: string;
+}
+
+export const Workload: Schema.Schema<Workload> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    folderId: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    isOnboarded: Schema.optional(Schema.Boolean),
+    keyManagementProjectId: Schema.optional(Schema.String),
+    workloadOnboardingState: Schema.optional(WorkloadOnboardingState),
+    partner: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    folder: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Workload" });
+
+export interface ListWorkloadsResponse {
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** List of customer workloads */
+  workloads?: ReadonlyArray<Workload>;
+}
+
+export const ListWorkloadsResponse: Schema.Schema<ListWorkloadsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    workloads: Schema.optional(Schema.Array(Workload)),
+  }).annotate({ identifier: "ListWorkloadsResponse" });
 
 // ==========================================================================
 // Errors
@@ -633,126 +633,6 @@ export const getPartnerOrganizationsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetOrganizationsLocationsCustomersRequest {
-  /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
-  name: string;
-}
-
-export const GetOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersRequest>;
-
-export type GetOrganizationsLocationsCustomersResponse = Customer;
-export const GetOrganizationsLocationsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Customer;
-
-export type GetOrganizationsLocationsCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single customer */
-export const getOrganizationsLocationsCustomers: API.OperationMethod<
-  GetOrganizationsLocationsCustomersRequest,
-  GetOrganizationsLocationsCustomersResponse,
-  GetOrganizationsLocationsCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsCustomersRequest,
-  output: GetOrganizationsLocationsCustomersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteOrganizationsLocationsCustomersRequest {
-  /** Required. name of the resource to be deleted format: name=organizations/* /locations/* /customers/* */
-  name: string;
-}
-
-export const DeleteOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsCustomersRequest>;
-
-export type DeleteOrganizationsLocationsCustomersResponse = Empty;
-export const DeleteOrganizationsLocationsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteOrganizationsLocationsCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Delete details of a single customer */
-export const deleteOrganizationsLocationsCustomers: API.OperationMethod<
-  DeleteOrganizationsLocationsCustomersRequest,
-  DeleteOrganizationsLocationsCustomersResponse,
-  DeleteOrganizationsLocationsCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsCustomersRequest,
-  output: DeleteOrganizationsLocationsCustomersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListOrganizationsLocationsCustomersRequest {
-  /** Optional. Filtering results */
-  filter?: string;
-  /** Required. Parent resource Format: `organizations/{organization}/locations/{location}` */
-  parent: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
-  /** A page token, received from a previous `ListCustomers` call. Provide this to retrieve the subsequent page. */
-  pageToken?: string;
-  /** The maximum number of Customers to return. The service may return fewer than this value. If unspecified, at most 500 Customers will be returned. */
-  pageSize?: number;
-}
-
-export const ListOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+parent}/customers" }),
-    svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersRequest>;
-
-export type ListOrganizationsLocationsCustomersResponse = ListCustomersResponse;
-export const ListOrganizationsLocationsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCustomersResponse;
-
-export type ListOrganizationsLocationsCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists customers of a partner identified by its Google Cloud organization ID */
-export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
-  ListOrganizationsLocationsCustomersRequest,
-  ListOrganizationsLocationsCustomersResponse,
-  ListOrganizationsLocationsCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsCustomersRequest,
-  output: ListOrganizationsLocationsCustomersResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface CreateOrganizationsLocationsCustomersRequest {
   /** Required. Parent resource Format: `organizations/{organization}/locations/{location}` */
   parent: string;
@@ -799,19 +679,55 @@ export const createOrganizationsLocationsCustomers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchOrganizationsLocationsCustomersRequest {
-  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
+export interface DeleteOrganizationsLocationsCustomersRequest {
+  /** Required. name of the resource to be deleted format: name=organizations/* /locations/* /customers/* */
   name: string;
+}
+
+export const DeleteOrganizationsLocationsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsCustomersRequest>;
+
+export type DeleteOrganizationsLocationsCustomersResponse = Empty;
+export const DeleteOrganizationsLocationsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteOrganizationsLocationsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Delete details of a single customer */
+export const deleteOrganizationsLocationsCustomers: API.OperationMethod<
+  DeleteOrganizationsLocationsCustomersRequest,
+  DeleteOrganizationsLocationsCustomersResponse,
+  DeleteOrganizationsLocationsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteOrganizationsLocationsCustomersRequest,
+  output: DeleteOrganizationsLocationsCustomersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchOrganizationsLocationsCustomersRequest {
   /** Optional. The list of fields to update */
   updateMask?: string;
+  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
+  name: string;
   /** Request body */
   body?: Customer;
 }
 
 export const PatchOrganizationsLocationsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Customer).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
@@ -841,38 +757,88 @@ export const patchOrganizationsLocationsCustomers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetOrganizationsLocationsCustomersWorkloadsRequest {
-  /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
+export interface GetOrganizationsLocationsCustomersRequest {
+  /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
   name: string;
 }
 
-export const GetOrganizationsLocationsCustomersWorkloadsRequest =
+export const GetOrganizationsLocationsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>;
+  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersRequest>;
 
-export type GetOrganizationsLocationsCustomersWorkloadsResponse = Workload;
-export const GetOrganizationsLocationsCustomersWorkloadsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Workload;
+export type GetOrganizationsLocationsCustomersResponse = Customer;
+export const GetOrganizationsLocationsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type GetOrganizationsLocationsCustomersWorkloadsError =
+export type GetOrganizationsLocationsCustomersError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets details of a single workload */
-export const getOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
-  GetOrganizationsLocationsCustomersWorkloadsRequest,
-  GetOrganizationsLocationsCustomersWorkloadsResponse,
-  GetOrganizationsLocationsCustomersWorkloadsError,
+/** Gets details of a single customer */
+export const getOrganizationsLocationsCustomers: API.OperationMethod<
+  GetOrganizationsLocationsCustomersRequest,
+  GetOrganizationsLocationsCustomersResponse,
+  GetOrganizationsLocationsCustomersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsCustomersWorkloadsRequest,
-  output: GetOrganizationsLocationsCustomersWorkloadsResponse,
+  input: GetOrganizationsLocationsCustomersRequest,
+  output: GetOrganizationsLocationsCustomersResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface ListOrganizationsLocationsCustomersRequest {
+  /** A page token, received from a previous `ListCustomers` call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
+  /** Required. Parent resource Format: `organizations/{organization}/locations/{location}` */
+  parent: string;
+  /** The maximum number of Customers to return. The service may return fewer than this value. If unspecified, at most 500 Customers will be returned. */
+  pageSize?: number;
+  /** Optional. Filtering results */
+  filter?: string;
+}
+
+export const ListOrganizationsLocationsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+parent}/customers" }),
+    svc,
+  ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersRequest>;
+
+export type ListOrganizationsLocationsCustomersResponse = ListCustomersResponse;
+export const ListOrganizationsLocationsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListCustomersResponse;
+
+export type ListOrganizationsLocationsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists customers of a partner identified by its Google Cloud organization ID */
+export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
+  ListOrganizationsLocationsCustomersRequest,
+  ListOrganizationsLocationsCustomersResponse,
+  ListOrganizationsLocationsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListOrganizationsLocationsCustomersRequest,
+  output: ListOrganizationsLocationsCustomersResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest {
@@ -910,61 +876,26 @@ export const getEkmConnectionsOrganizationsLocationsCustomersWorkloads: API.Oper
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest {
-  /** Required. Name of the resource to get in the format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/partnerPermissions` */
-  name: string;
-}
-
-export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest>;
-
-export type GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsResponse =
-  PartnerPermissions;
-export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PartnerPermissions;
-
-export type GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the partner permissions granted for a workload */
-export const getPartnerPermissionsOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
-  GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest,
-  GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsResponse,
-  GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest,
-  output: GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface ListOrganizationsLocationsCustomersWorkloadsRequest {
-  /** Optional. Hint for how to order the results. */
-  orderBy?: string;
   /** A page token, received from a previous `ListWorkloads` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
+  /** Optional. Hint for how to order the results. */
+  orderBy?: string;
+  /** Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
+  parent: string;
   /** The maximum number of workloads to return. The service may return fewer than this value. If unspecified, at most 500 workloads will be returned. */
   pageSize?: number;
   /** Optional. Filtering results. */
   filter?: string;
-  /** Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
-  parent: string;
 }
 
 export const ListOrganizationsLocationsCustomersWorkloadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/workloads" }),
     svc,
@@ -996,26 +927,93 @@ export const listOrganizationsLocationsCustomersWorkloads: API.PaginatedOperatio
   },
 }));
 
+export interface GetOrganizationsLocationsCustomersWorkloadsRequest {
+  /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
+  name: string;
+}
+
+export const GetOrganizationsLocationsCustomersWorkloadsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>;
+
+export type GetOrganizationsLocationsCustomersWorkloadsResponse = Workload;
+export const GetOrganizationsLocationsCustomersWorkloadsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Workload;
+
+export type GetOrganizationsLocationsCustomersWorkloadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single workload */
+export const getOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
+  GetOrganizationsLocationsCustomersWorkloadsRequest,
+  GetOrganizationsLocationsCustomersWorkloadsResponse,
+  GetOrganizationsLocationsCustomersWorkloadsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOrganizationsLocationsCustomersWorkloadsRequest,
+  output: GetOrganizationsLocationsCustomersWorkloadsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest {
+  /** Required. Name of the resource to get in the format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/partnerPermissions` */
+  name: string;
+}
+
+export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest>;
+
+export type GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsResponse =
+  PartnerPermissions;
+export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ PartnerPermissions;
+
+export type GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Gets the partner permissions granted for a workload */
+export const getPartnerPermissionsOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
+  GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest,
+  GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsResponse,
+  GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest,
+  output: GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest {
-  /** Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
-  parent: string;
-  /** Optional. Filtering results. */
-  filter?: string;
-  /** Optional. Hint for how to order the results. */
-  orderBy?: string;
-  /** Optional. The maximum number of access requests to return. The service may return fewer than this value. If unspecified, at most 500 access requests will be returned. */
-  pageSize?: number;
   /** Optional. A page token, received from a previous `ListAccessApprovalRequests` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
+  /** Optional. Hint for how to order the results. */
+  orderBy?: string;
+  /** Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
+  parent: string;
+  /** Optional. The maximum number of access requests to return. The service may return fewer than this value. If unspecified, at most 500 access requests will be returned. */
+  pageSize?: number;
+  /** Optional. Filtering results. */
+  filter?: string;
 }
 
 export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/accessApprovalRequests" }),
     svc,
@@ -1027,9 +1025,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsR
   /*@__PURE__*/ /*#__PURE__*/ ListAccessApprovalRequestsResponse;
 
 export type ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Deprecated: Only returns access approval requests directly associated with an assured workload folder. */
 export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests: API.PaginatedOperationMethod<
@@ -1042,67 +1038,6 @@ export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests:
     ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest,
   output:
     ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ListOrganizationsLocationsCustomersWorkloadsViolationsRequest {
-  /** Optional. The maximum number of customers row to return. The service may return fewer than this value. If unspecified, at most 10 customers will be returned. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListViolations` call. Provide this to retrieve the subsequent page. */
-  pageToken?: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
-  /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
-  "interval.endTime"?: string;
-  /** Required. Parent resource Format `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
-  parent: string;
-  /** Optional. Filtering results */
-  filter?: string;
-  /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
-  "interval.startTime"?: string;
-}
-
-export const ListOrganizationsLocationsCustomersWorkloadsViolationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    "interval.endTime": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("interval.endTime"),
-    ),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    "interval.startTime": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("interval.startTime"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+parent}/violations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
-
-export type ListOrganizationsLocationsCustomersWorkloadsViolationsResponse =
-  ListViolationsResponse;
-export const ListOrganizationsLocationsCustomersWorkloadsViolationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListViolationsResponse;
-
-export type ListOrganizationsLocationsCustomersWorkloadsViolationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists Violations for a workload Callers may also choose to read across multiple Customers or for a single customer as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of {customer} & {workload}. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
-export const listOrganizationsLocationsCustomersWorkloadsViolations: API.PaginatedOperationMethod<
-  ListOrganizationsLocationsCustomersWorkloadsViolationsRequest,
-  ListOrganizationsLocationsCustomersWorkloadsViolationsResponse,
-  ListOrganizationsLocationsCustomersWorkloadsViolationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsCustomersWorkloadsViolationsRequest,
-  output: ListOrganizationsLocationsCustomersWorkloadsViolationsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -1143,4 +1078,65 @@ export const getOrganizationsLocationsCustomersWorkloadsViolations: API.Operatio
   input: GetOrganizationsLocationsCustomersWorkloadsViolationsRequest,
   output: GetOrganizationsLocationsCustomersWorkloadsViolationsResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface ListOrganizationsLocationsCustomersWorkloadsViolationsRequest {
+  /** Optional. A page token, received from a previous `ListViolations` call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
+  /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
+  "interval.startTime"?: string;
+  /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
+  "interval.endTime"?: string;
+  /** Required. Parent resource Format `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
+  parent: string;
+  /** Optional. The maximum number of customers row to return. The service may return fewer than this value. If unspecified, at most 10 customers will be returned. */
+  pageSize?: number;
+  /** Optional. Filtering results */
+  filter?: string;
+}
+
+export const ListOrganizationsLocationsCustomersWorkloadsViolationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    "interval.startTime": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("interval.startTime"),
+    ),
+    "interval.endTime": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("interval.endTime"),
+    ),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+parent}/violations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
+
+export type ListOrganizationsLocationsCustomersWorkloadsViolationsResponse =
+  ListViolationsResponse;
+export const ListOrganizationsLocationsCustomersWorkloadsViolationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListViolationsResponse;
+
+export type ListOrganizationsLocationsCustomersWorkloadsViolationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists Violations for a workload Callers may also choose to read across multiple Customers or for a single customer as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of {customer} & {workload}. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
+export const listOrganizationsLocationsCustomersWorkloadsViolations: API.PaginatedOperationMethod<
+  ListOrganizationsLocationsCustomersWorkloadsViolationsRequest,
+  ListOrganizationsLocationsCustomersWorkloadsViolationsResponse,
+  ListOrganizationsLocationsCustomersWorkloadsViolationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListOrganizationsLocationsCustomersWorkloadsViolationsRequest,
+  output: ListOrganizationsLocationsCustomersWorkloadsViolationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));

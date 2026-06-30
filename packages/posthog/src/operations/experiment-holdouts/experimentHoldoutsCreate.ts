@@ -10,7 +10,18 @@ export const ExperimentHoldoutsCreateInput =
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-    filters: Schema.optional(Schema.Unknown),
+    filters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          properties: Schema.optional(Schema.Array(Schema.Unknown)),
+          rollout_percentage: Schema.optional(Schema.Number),
+          variant: Schema.optional(Schema.NullOr(Schema.String)),
+          aggregation_group_type_index: Schema.optional(
+            Schema.NullOr(Schema.Number),
+          ),
+        }),
+      ),
+    ),
     created_by: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -30,6 +41,7 @@ export const ExperimentHoldoutsCreateInput =
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
+    user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -45,7 +57,18 @@ export const ExperimentHoldoutsCreateOutput =
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-    filters: Schema.optional(Schema.Unknown),
+    filters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          properties: Schema.optional(Schema.Array(Schema.Unknown)),
+          rollout_percentage: Schema.optional(Schema.Number),
+          variant: Schema.optional(Schema.NullOr(Schema.String)),
+          aggregation_group_type_index: Schema.optional(
+            Schema.NullOr(Schema.Number),
+          ),
+        }),
+      ),
+    ),
     created_by: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -65,6 +88,7 @@ export const ExperimentHoldoutsCreateOutput =
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
+    user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type ExperimentHoldoutsCreateOutput =
   typeof ExperimentHoldoutsCreateOutput.Type;

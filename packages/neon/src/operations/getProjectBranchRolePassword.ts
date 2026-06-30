@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const GetProjectBranchRolePasswordInput =
@@ -22,7 +22,7 @@ export type GetProjectBranchRolePasswordInput =
 // Output Schema
 export const GetProjectBranchRolePasswordOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    password: SensitiveString,
+    password: SensitiveOutputString,
   });
 export type GetProjectBranchRolePasswordOutput =
   typeof GetProjectBranchRolePasswordOutput.Type;
@@ -32,10 +32,7 @@ export type GetProjectBranchRolePasswordOutput =
  * Retrieve role password
  *
  * Retrieves the password for the specified Postgres role, if possible.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
- * You can obtain the `role_name` by listing the roles for a branch.
- * For related information, see [Manage roles](https://neon.tech/docs/manage/roles/).
+ * For related information, see [Manage roles](https://neon.com/docs/manage/roles/).
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

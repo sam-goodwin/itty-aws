@@ -31,6 +31,7 @@ export const UserlandUsersControllerConfirmEmailChangeOutput =
       id: Schema.String,
       first_name: Schema.NullOr(Schema.String),
       last_name: Schema.NullOr(Schema.String),
+      name: Schema.optional(Schema.NullOr(Schema.String)),
       profile_picture_url: Schema.NullOr(Schema.String),
       email: Schema.String,
       email_verified: Schema.Boolean,

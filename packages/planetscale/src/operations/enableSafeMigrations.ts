@@ -49,6 +49,7 @@ export const EnableSafeMigrationsOutput =
     safe_migrations: Schema.Boolean,
     sharded: Schema.optional(Schema.Boolean),
     shard_count: Schema.optional(Schema.Number),
+    keyspace_count: Schema.optional(Schema.Number),
     stale_schema: Schema.Boolean,
     actor: Schema.NullOr(
       Schema.Struct({

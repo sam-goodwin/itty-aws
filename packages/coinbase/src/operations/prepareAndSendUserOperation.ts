@@ -27,6 +27,9 @@ export const PrepareAndSendUserOperationInput =
       }),
     ),
     paymasterUrl: Schema.optional(Schema.String),
+    paymasterContext: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -85,13 +88,14 @@ export const PrepareAndSendUserOperationOutput =
         }),
       ),
     ),
+    expiresAt: Schema.optional(Schema.String),
   });
 export type PrepareAndSendUserOperationOutput =
   typeof PrepareAndSendUserOperationOutput.Type;
 
 // The operation
 /**
- * Prepare and send a user operation for EVM Smart Account
+ * Prepare and send user operation
  *
  * Prepares, signs, and sends a user operation for an EVM Smart Account. This API can be used only if the owner on Smart Account is a CDP EVM Account.
  *

@@ -27,6 +27,9 @@ export const PrepareUserOperationInput =
       }),
     ),
     paymasterUrl: Schema.optional(Schema.String),
+    paymasterContext: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
     dataSuffix: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -85,12 +88,13 @@ export const PrepareUserOperationOutput =
         }),
       ),
     ),
+    expiresAt: Schema.optional(Schema.String),
   });
 export type PrepareUserOperationOutput = typeof PrepareUserOperationOutput.Type;
 
 // The operation
 /**
- * Prepare a user operation
+ * Prepare user operation
  *
  * Prepares a new user operation on a Smart Account for a specific network.
  *

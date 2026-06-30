@@ -26,6 +26,7 @@ export type ProxyRecordsDestroyOutput = typeof ProxyRecordsDestroyOutput.Type;
  * Delete a reverse proxy. For proxies in 'waiting', 'erroring', or 'timed_out' status, the record is deleted immediately. For active proxies, a deletion workflow is started to clean up the provisioned infrastructure.
  *
  * @param id - A UUID string identifying this proxy record.
+ * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const proxyRecordsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProxyRecordsDestroyInput,

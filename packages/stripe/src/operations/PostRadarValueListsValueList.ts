@@ -28,6 +28,7 @@ export const PostRadarValueListsValueListOutput =
     created_by: Schema.String,
     id: Schema.String,
     item_type: Schema.Literals([
+      "account",
       "card_bin",
       "card_fingerprint",
       "case_sensitive_string",

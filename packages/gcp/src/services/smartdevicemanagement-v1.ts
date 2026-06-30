@@ -22,19 +22,6 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface GoogleHomeEnterpriseSdmV1Structure {
-  /** Structure traits. */
-  traits?: Record<string, unknown>;
-  /** Output only. The resource name of the structure. For example: "enterprises/XYZ/structures/ABC". */
-  name?: string;
-}
-
-export const GoogleHomeEnterpriseSdmV1Structure: Schema.Schema<GoogleHomeEnterpriseSdmV1Structure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Structure" });
-
 export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   /** The results of executing the command. */
   results?: Record<string, unknown>;
@@ -45,35 +32,6 @@ export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse: Schema.Schem
     results: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
     identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse",
-  });
-
-export interface GoogleHomeEnterpriseSdmV1ListStructuresResponse {
-  /** The list of structures. */
-  structures?: ReadonlyArray<GoogleHomeEnterpriseSdmV1Structure>;
-}
-
-export const GoogleHomeEnterpriseSdmV1ListStructuresResponse: Schema.Schema<GoogleHomeEnterpriseSdmV1ListStructuresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    structures: Schema.optional(
-      Schema.Array(GoogleHomeEnterpriseSdmV1Structure),
-    ),
-  }).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1ListStructuresResponse",
-  });
-
-export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
-  /** The command name to execute, represented by the fully qualified protobuf message name. */
-  command?: string;
-  /** The command message to execute, represented as a Struct. */
-  params?: Record<string, unknown>;
-}
-
-export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest: Schema.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    command: Schema.optional(Schema.String),
-    params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest",
   });
 
 export interface GoogleHomeEnterpriseSdmV1ParentRelation {
@@ -90,24 +48,24 @@ export const GoogleHomeEnterpriseSdmV1ParentRelation: Schema.Schema<GoogleHomeEn
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ParentRelation" });
 
 export interface GoogleHomeEnterpriseSdmV1Device {
-  /** Output only. Type of the device for general display purposes. For example: "THERMOSTAT". The device type should not be used to deduce or infer functionality of the actual device it is assigned to. Instead, use the returned traits for the device. */
-  type?: string;
-  /** Assignee details of the device. */
-  parentRelations?: ReadonlyArray<GoogleHomeEnterpriseSdmV1ParentRelation>;
   /** Output only. Device traits. */
   traits?: Record<string, unknown>;
   /** Required. The resource name of the device. For example: "enterprises/XYZ/devices/123". */
   name?: string;
+  /** Output only. Type of the device for general display purposes. For example: "THERMOSTAT". The device type should not be used to deduce or infer functionality of the actual device it is assigned to. Instead, use the returned traits for the device. */
+  type?: string;
+  /** Assignee details of the device. */
+  parentRelations?: ReadonlyArray<GoogleHomeEnterpriseSdmV1ParentRelation>;
 }
 
 export const GoogleHomeEnterpriseSdmV1Device: Schema.Schema<GoogleHomeEnterpriseSdmV1Device> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     parentRelations: Schema.optional(
       Schema.Array(GoogleHomeEnterpriseSdmV1ParentRelation),
     ),
-    traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Device" });
 
 export interface GoogleHomeEnterpriseSdmV1ListDevicesResponse {
@@ -120,18 +78,60 @@ export const GoogleHomeEnterpriseSdmV1ListDevicesResponse: Schema.Schema<GoogleH
     devices: Schema.optional(Schema.Array(GoogleHomeEnterpriseSdmV1Device)),
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ListDevicesResponse" });
 
-export interface GoogleHomeEnterpriseSdmV1Room {
-  /** Output only. The resource name of the room. For example: "enterprises/XYZ/structures/ABC/rooms/123". */
+export interface GoogleHomeEnterpriseSdmV1Structure {
+  /** Output only. The resource name of the structure. For example: "enterprises/XYZ/structures/ABC". */
   name?: string;
+  /** Structure traits. */
+  traits?: Record<string, unknown>;
+}
+
+export const GoogleHomeEnterpriseSdmV1Structure: Schema.Schema<GoogleHomeEnterpriseSdmV1Structure> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Structure" });
+
+export interface GoogleHomeEnterpriseSdmV1ListStructuresResponse {
+  /** The list of structures. */
+  structures?: ReadonlyArray<GoogleHomeEnterpriseSdmV1Structure>;
+}
+
+export const GoogleHomeEnterpriseSdmV1ListStructuresResponse: Schema.Schema<GoogleHomeEnterpriseSdmV1ListStructuresResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    structures: Schema.optional(
+      Schema.Array(GoogleHomeEnterpriseSdmV1Structure),
+    ),
+  }).annotate({
+    identifier: "GoogleHomeEnterpriseSdmV1ListStructuresResponse",
+  });
+
+export interface GoogleHomeEnterpriseSdmV1Room {
   /** Room traits. */
   traits?: Record<string, unknown>;
+  /** Output only. The resource name of the room. For example: "enterprises/XYZ/structures/ABC/rooms/123". */
+  name?: string;
 }
 
 export const GoogleHomeEnterpriseSdmV1Room: Schema.Schema<GoogleHomeEnterpriseSdmV1Room> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
     traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Room" });
+
+export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
+  /** The command message to execute, represented as a Struct. */
+  params?: Record<string, unknown>;
+  /** The command name to execute, represented by the fully qualified protobuf message name. */
+  command?: string;
+}
+
+export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest: Schema.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    command: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest",
+  });
 
 export interface GoogleHomeEnterpriseSdmV1ListRoomsResponse {
   /** The list of rooms. */
@@ -309,6 +309,41 @@ export const getEnterprisesDevices: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
+export interface GetEnterprisesStructuresRequest {
+  /** The name of the structure requested. For example: "enterprises/XYZ/structures/ABC". */
+  name: string;
+}
+
+export const GetEnterprisesStructuresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetEnterprisesStructuresRequest>;
+
+export type GetEnterprisesStructuresResponse =
+  GoogleHomeEnterpriseSdmV1Structure;
+export const GetEnterprisesStructuresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1Structure;
+
+export type GetEnterprisesStructuresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets a structure managed by the enterprise. */
+export const getEnterprisesStructures: API.OperationMethod<
+  GetEnterprisesStructuresRequest,
+  GetEnterprisesStructuresResponse,
+  GetEnterprisesStructuresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEnterprisesStructuresRequest,
+  output: GetEnterprisesStructuresResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListEnterprisesStructuresRequest {
   /** The parent enterprise to list structures under. E.g. "enterprises/XYZ". */
   parent: string;
@@ -344,41 +379,6 @@ export const listEnterprisesStructures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEnterprisesStructuresRequest,
   output: ListEnterprisesStructuresResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetEnterprisesStructuresRequest {
-  /** The name of the structure requested. For example: "enterprises/XYZ/structures/ABC". */
-  name: string;
-}
-
-export const GetEnterprisesStructuresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetEnterprisesStructuresRequest>;
-
-export type GetEnterprisesStructuresResponse =
-  GoogleHomeEnterpriseSdmV1Structure;
-export const GetEnterprisesStructuresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1Structure;
-
-export type GetEnterprisesStructuresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets a structure managed by the enterprise. */
-export const getEnterprisesStructures: API.OperationMethod<
-  GetEnterprisesStructuresRequest,
-  GetEnterprisesStructuresResponse,
-  GetEnterprisesStructuresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEnterprisesStructuresRequest,
-  output: GetEnterprisesStructuresResponse,
   errors: [NotFound, Forbidden],
 }));
 

@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const V1GetPostgrestServiceConfigInput =
@@ -19,7 +19,7 @@ export const V1GetPostgrestServiceConfigOutput =
     max_rows: Schema.Number,
     db_extra_search_path: Schema.String,
     db_pool: Schema.NullOr(Schema.Number),
-    jwt_secret: Schema.optional(SensitiveString),
+    jwt_secret: Schema.optional(SensitiveOutputString),
   });
 export type V1GetPostgrestServiceConfigOutput =
   typeof V1GetPostgrestServiceConfigOutput.Type;

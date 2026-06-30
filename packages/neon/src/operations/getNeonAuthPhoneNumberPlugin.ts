@@ -10,7 +10,7 @@ export const GetNeonAuthPhoneNumberPluginInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/projects/{project_id}/branches/{branch_id}/auth/plugins/phone_number",
+      path: "/projects/{project_id}/branches/{branch_id}/auth/plugins/phone-number",
     }),
   );
 export type GetNeonAuthPhoneNumberPluginInput =
@@ -21,14 +21,13 @@ export const GetNeonAuthPhoneNumberPluginOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     otp_expires_in: Schema.optional(Schema.Number),
-    allowed_attempts: Schema.optional(Schema.Number),
   });
 export type GetNeonAuthPhoneNumberPluginOutput =
   typeof GetNeonAuthPhoneNumberPluginOutput.Type;
 
 // The operation
 /**
- * Get phone number plugin configuration
+ * Retrieve phone number plugin configuration
  *
  * Returns the phone number plugin configuration for Neon Auth.
  * The phone number plugin enables phone-based OTP authentication.

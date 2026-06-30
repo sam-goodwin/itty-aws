@@ -24,7 +24,7 @@ export type UpdateEvmAccountOutput = typeof UpdateEvmAccountOutput.Type;
 
 // The operation
 /**
- * Update an EVM account
+ * Update EVM account
  *
  * Updates an existing EVM account. Use this to update the account's name or account-level policy.
  *

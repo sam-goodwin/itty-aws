@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsScoreDefinitionsPartialUpdateInput =
@@ -14,7 +13,7 @@ export const LlmAnalyticsScoreDefinitionsPartialUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/llm_analytics/score_definitions/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/score_definitions/{id}/",
     }),
   );
 export type LlmAnalyticsScoreDefinitionsPartialUpdateInput =
@@ -31,24 +30,9 @@ export const LlmAnalyticsScoreDefinitionsPartialUpdateOutput =
     ),
     archived: Schema.optional(Schema.Boolean),
     current_version: Schema.optional(Schema.Number),
+    current_version_id: Schema.optional(Schema.NullOr(Schema.String)),
     config: Schema.optional(Schema.Unknown),
-    created_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          uuid: Schema.optional(Schema.String),
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          role_at_organization: Schema.optional(Schema.Unknown),
-        }),
-      ),
-    ),
+    created_by: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
     team: Schema.optional(Schema.Number),
@@ -66,5 +50,4 @@ export const llmAnalyticsScoreDefinitionsPartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsScoreDefinitionsPartialUpdateInput,
     outputSchema: LlmAnalyticsScoreDefinitionsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

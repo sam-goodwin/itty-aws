@@ -5,6 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const PostTestHelpersTestClocksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customer: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.Array(Schema.String)),
     frozen_time: Schema.Number,
     name: Schema.optional(Schema.String),

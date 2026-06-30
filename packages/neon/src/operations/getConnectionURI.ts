@@ -29,9 +29,7 @@ export type GetConnectionURIOutput = typeof GetConnectionURIOutput.Type;
  * Retrieve connection URI
  *
  * Retrieves a connection URI for the specified database.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `database_name` by listing the databases for a branch.
- * You can obtain a `role_name` by listing the roles for a branch.
+ * The URI uses the standard PostgreSQL connection string format. Set `pooled=true` to include the `-pooler` suffix for a connection pooler URI.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID. Defaults to your project's default `branch_id` if not specified.

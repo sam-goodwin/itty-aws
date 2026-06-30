@@ -14,6 +14,7 @@ export const AppAttachPackageCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    appAttachPackageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals(["Succeeded", "Provisioning", "Failed", "Canceled"]),
@@ -111,6 +112,7 @@ export type AppAttachPackageCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param appAttachPackageName - The name of the App Attach package
  */
 export const AppAttachPackageCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -122,6 +124,7 @@ export const AppAttachPackageDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    appAttachPackageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -145,6 +148,7 @@ export type AppAttachPackageDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param appAttachPackageName - The name of the App Attach package
  */
 export const AppAttachPackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -157,6 +161,7 @@ export const AppAttachPackageGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    appAttachPackageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -196,6 +201,7 @@ export type AppAttachPackageGetOutput = typeof AppAttachPackageGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param appAttachPackageName - The name of the App Attach package
  */
 export const AppAttachPackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppAttachPackageGetInput,
@@ -206,6 +212,7 @@ export const AppAttachPackageInfoImportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
     packageArchitecture: Schema.optional(
       Schema.NullOr(
@@ -278,6 +285,7 @@ export type AppAttachPackageInfoImportOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const AppAttachPackageInfoImport = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -430,6 +438,7 @@ export const AppAttachPackageUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    appAttachPackageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         image: Schema.optional(
@@ -541,6 +550,7 @@ export type AppAttachPackageUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param appAttachPackageName - The name of the App Attach package
  */
 export const AppAttachPackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -553,6 +563,7 @@ export const ApplicationGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
     managedBy: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -650,6 +661,7 @@ export type ApplicationGroupsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  */
 export const ApplicationGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -661,6 +673,7 @@ export const ApplicationGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -684,6 +697,7 @@ export type ApplicationGroupsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  */
 export const ApplicationGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -696,6 +710,7 @@ export const ApplicationGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -735,6 +750,7 @@ export type ApplicationGroupsGetOutput = typeof ApplicationGroupsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  */
 export const ApplicationGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -893,6 +909,7 @@ export const ApplicationGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
@@ -961,6 +978,7 @@ export type ApplicationGroupsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  */
 export const ApplicationGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -973,6 +991,8 @@ export const ApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -1049,6 +1069,8 @@ export type ApplicationsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param applicationName - The name of the application within the specified application group
  */
 export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1061,6 +1083,8 @@ export const ApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1081,6 +1105,8 @@ export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param applicationName - The name of the application within the specified application group
  */
 export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsDeleteInput,
@@ -1090,6 +1116,8 @@ export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1128,6 +1156,8 @@ export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param applicationName - The name of the application within the specified application group
  */
 export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsGetInput,
@@ -1137,6 +1167,7 @@ export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ApplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -1197,6 +1228,7 @@ export type ApplicationsListOutput = typeof ApplicationsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -1210,6 +1242,8 @@ export const ApplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -1268,6 +1302,8 @@ export type ApplicationsUpdateOutput = typeof ApplicationsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param applicationName - The name of the application within the specified application group
  */
 export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsUpdateInput,
@@ -1277,6 +1313,8 @@ export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DesktopsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
+  desktopName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1315,6 +1353,8 @@ export type DesktopsGetOutput = typeof DesktopsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param desktopName - The name of the desktop within the specified desktop group
  */
 export const DesktopsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DesktopsGetInput,
@@ -1324,6 +1364,7 @@ export const DesktopsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DesktopsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -1382,6 +1423,7 @@ export type DesktopsListOutput = typeof DesktopsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -1394,6 +1436,8 @@ export const DesktopsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DesktopsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
+  desktopName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       description: Schema.optional(Schema.String),
@@ -1438,6 +1482,8 @@ export type DesktopsUpdateOutput = typeof DesktopsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param desktopName - The name of the desktop within the specified desktop group
  */
 export const DesktopsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DesktopsUpdateInput,
@@ -1448,6 +1494,7 @@ export const HostPoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     managedBy: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1660,6 +1707,7 @@ export type HostPoolsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const HostPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1671,6 +1719,7 @@ export const HostPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const HostPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
@@ -1692,6 +1741,7 @@ export type HostPoolsDeleteOutput = typeof HostPoolsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param force - Force flag to delete sessionHost.
  */
 export const HostPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1702,6 +1752,7 @@ export const HostPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const HostPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1740,6 +1791,7 @@ export type HostPoolsGetOutput = typeof HostPoolsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const HostPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HostPoolsGetInput,
@@ -1893,6 +1945,7 @@ export const HostPoolsListRegistrationTokensInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1926,6 +1979,7 @@ export type HostPoolsListRegistrationTokensOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const HostPoolsListRegistrationTokens =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1937,6 +1991,7 @@ export const HostPoolsRetrieveRegistrationTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1966,6 +2021,7 @@ export type HostPoolsRetrieveRegistrationTokenOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const HostPoolsRetrieveRegistrationToken =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1976,6 +2032,7 @@ export const HostPoolsRetrieveRegistrationToken =
 export const HostPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(
     Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
   ),
@@ -2125,6 +2182,7 @@ export type HostPoolsUpdateOutput = typeof HostPoolsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const HostPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HostPoolsUpdateInput,
@@ -2134,6 +2192,7 @@ export const HostPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MsixImagesExpandInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
   uri: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -2192,6 +2251,7 @@ export type MsixImagesExpandOutput = typeof MsixImagesExpandOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const MsixImagesExpand = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MsixImagesExpandInput,
@@ -2202,6 +2262,8 @@ export const MSIXPackagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    msixPackageFullName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -2293,6 +2355,8 @@ export type MSIXPackagesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param msixPackageFullName - The version specific package full name of the MSIX package within specified hostpool
  */
 export const MSIXPackagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2305,6 +2369,8 @@ export const MSIXPackagesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    msixPackageFullName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2325,6 +2391,8 @@ export type MSIXPackagesDeleteOutput = typeof MSIXPackagesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param msixPackageFullName - The version specific package full name of the MSIX package within specified hostpool
  */
 export const MSIXPackagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MSIXPackagesDeleteInput,
@@ -2334,6 +2402,8 @@ export const MSIXPackagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MSIXPackagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
+  msixPackageFullName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2372,6 +2442,8 @@ export type MSIXPackagesGetOutput = typeof MSIXPackagesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param msixPackageFullName - The version specific package full name of the MSIX package within specified hostpool
  */
 export const MSIXPackagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MSIXPackagesGetInput,
@@ -2381,6 +2453,7 @@ export const MSIXPackagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MSIXPackagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -2441,6 +2514,7 @@ export type MSIXPackagesListOutput = typeof MSIXPackagesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -2454,6 +2528,8 @@ export const MSIXPackagesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    msixPackageFullName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         isActive: Schema.optional(Schema.Boolean),
@@ -2517,6 +2593,8 @@ export type MSIXPackagesUpdateOutput = typeof MSIXPackagesUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param msixPackageFullName - The version specific package full name of the MSIX package within specified hostpool
  */
 export const MSIXPackagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MSIXPackagesUpdateInput,
@@ -2586,6 +2664,7 @@ export const PrivateEndpointConnectionsDeleteByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2610,6 +2689,7 @@ export type PrivateEndpointConnectionsDeleteByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDeleteByHostPool =
@@ -2622,6 +2702,7 @@ export const PrivateEndpointConnectionsDeleteByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2646,6 +2727,7 @@ export type PrivateEndpointConnectionsDeleteByWorkspaceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDeleteByWorkspace =
@@ -2658,6 +2740,7 @@ export const PrivateEndpointConnectionsGetByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2700,6 +2783,7 @@ export type PrivateEndpointConnectionsGetByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGetByHostPool =
@@ -2712,6 +2796,7 @@ export const PrivateEndpointConnectionsGetByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2754,6 +2839,7 @@ export type PrivateEndpointConnectionsGetByWorkspaceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGetByWorkspace =
@@ -2766,6 +2852,7 @@ export const PrivateEndpointConnectionsListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -2827,6 +2914,7 @@ export type PrivateEndpointConnectionsListByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -2841,6 +2929,7 @@ export const PrivateEndpointConnectionsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2899,6 +2988,7 @@ export type PrivateEndpointConnectionsListByWorkspaceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  */
 export const PrivateEndpointConnectionsListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2910,6 +3000,7 @@ export const PrivateEndpointConnectionsUpdateByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -2972,6 +3063,7 @@ export type PrivateEndpointConnectionsUpdateByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsUpdateByHostPool =
@@ -2984,6 +3076,7 @@ export const PrivateEndpointConnectionsUpdateByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -3046,6 +3139,7 @@ export type PrivateEndpointConnectionsUpdateByWorkspaceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsUpdateByWorkspace =
@@ -3058,6 +3152,7 @@ export const PrivateLinkResourcesListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3119,6 +3214,7 @@ export type PrivateLinkResourcesListByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -3133,6 +3229,7 @@ export const PrivateLinkResourcesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3194,6 +3291,7 @@ export type PrivateLinkResourcesListByWorkspaceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -3208,6 +3306,8 @@ export const ScalingPlanPersonalSchedulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -3349,6 +3449,8 @@ export type ScalingPlanPersonalSchedulesCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPersonalSchedulesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3360,6 +3462,8 @@ export const ScalingPlanPersonalSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -3383,6 +3487,8 @@ export type ScalingPlanPersonalSchedulesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPersonalSchedulesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3394,6 +3500,8 @@ export const ScalingPlanPersonalSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3435,6 +3543,8 @@ export type ScalingPlanPersonalSchedulesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPersonalSchedulesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3446,6 +3556,7 @@ export const ScalingPlanPersonalSchedulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3507,6 +3618,7 @@ export type ScalingPlanPersonalSchedulesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -3521,6 +3633,8 @@ export const ScalingPlanPersonalSchedulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         daysOfWeek: Schema.optional(
@@ -3650,6 +3764,8 @@ export type ScalingPlanPersonalSchedulesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPersonalSchedulesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3661,6 +3777,8 @@ export const ScalingPlanPooledSchedulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -3780,6 +3898,8 @@ export type ScalingPlanPooledSchedulesCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPooledSchedulesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3791,6 +3911,8 @@ export const ScalingPlanPooledSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -3814,6 +3936,8 @@ export type ScalingPlanPooledSchedulesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPooledSchedulesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3825,6 +3949,8 @@ export const ScalingPlanPooledSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3866,6 +3992,8 @@ export type ScalingPlanPooledSchedulesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPooledSchedulesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3877,6 +4005,7 @@ export const ScalingPlanPooledSchedulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3938,6 +4067,7 @@ export type ScalingPlanPooledSchedulesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -3952,6 +4082,8 @@ export const ScalingPlanPooledSchedulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         daysOfWeek: Schema.optional(
@@ -4073,6 +4205,8 @@ export type ScalingPlanPooledSchedulesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPooledSchedulesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4084,6 +4218,7 @@ export const ScalingPlansCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
     managedBy: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -4251,6 +4386,7 @@ export type ScalingPlansCreateOutput = typeof ScalingPlansCreateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  */
 export const ScalingPlansCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScalingPlansCreateInput,
@@ -4261,6 +4397,7 @@ export const ScalingPlansDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -4281,6 +4418,7 @@ export type ScalingPlansDeleteOutput = typeof ScalingPlansDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  */
 export const ScalingPlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScalingPlansDeleteInput,
@@ -4290,6 +4428,7 @@ export const ScalingPlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ScalingPlansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  scalingPlanName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -4328,6 +4467,7 @@ export type ScalingPlansGetOutput = typeof ScalingPlansGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  */
 export const ScalingPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScalingPlansGetInput,
@@ -4338,6 +4478,7 @@ export const ScalingPlansListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -4399,6 +4540,7 @@ export type ScalingPlansListByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -4562,6 +4704,7 @@ export const ScalingPlansUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
@@ -4686,6 +4829,7 @@ export type ScalingPlansUpdateOutput = typeof ScalingPlansUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  */
 export const ScalingPlansUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScalingPlansUpdateInput,
@@ -4696,6 +4840,8 @@ export const SessionHostsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    sessionHostName: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -4717,6 +4863,8 @@ export type SessionHostsDeleteOutput = typeof SessionHostsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
  * @param force - Force flag to force sessionHost deletion even when userSession exists.
  */
 export const SessionHostsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4727,6 +4875,8 @@ export const SessionHostsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SessionHostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
+  sessionHostName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -4765,6 +4915,8 @@ export type SessionHostsGetOutput = typeof SessionHostsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
  */
 export const SessionHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SessionHostsGetInput,
@@ -4774,6 +4926,7 @@ export const SessionHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SessionHostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -4834,6 +4987,7 @@ export type SessionHostsListOutput = typeof SessionHostsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -4847,6 +5001,8 @@ export const SessionHostsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    sessionHostName: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
     properties: Schema.optional(
       Schema.Struct({
@@ -4911,6 +5067,8 @@ export type SessionHostsUpdateOutput = typeof SessionHostsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
  * @param force - Force flag to update assign, unassign or reassign personal desktop.
  */
 export const SessionHostsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4922,6 +5080,7 @@ export const StartMenuItemsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -4981,6 +5140,7 @@ export type StartMenuItemsListOutput = typeof StartMenuItemsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -4994,6 +5154,9 @@ export const UserSessionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    sessionHostName: Schema.String.pipe(T.PathParam()),
+    userSessionId: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -5015,6 +5178,9 @@ export type UserSessionsDeleteOutput = typeof UserSessionsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
+ * @param userSessionId - The name of the user session within the specified session host
  * @param force - Force flag to login off userSession.
  */
 export const UserSessionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5026,6 +5192,9 @@ export const UserSessionsDisconnectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    sessionHostName: Schema.String.pipe(T.PathParam()),
+    userSessionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5049,6 +5218,9 @@ export type UserSessionsDisconnectOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
+ * @param userSessionId - The name of the user session within the specified session host
  */
 export const UserSessionsDisconnect = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5060,6 +5232,9 @@ export const UserSessionsDisconnect = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const UserSessionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
+  sessionHostName: Schema.String.pipe(T.PathParam()),
+  userSessionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -5098,6 +5273,9 @@ export type UserSessionsGetOutput = typeof UserSessionsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
+ * @param userSessionId - The name of the user session within the specified session host
  */
 export const UserSessionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UserSessionsGetInput,
@@ -5107,6 +5285,8 @@ export const UserSessionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const UserSessionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
+  sessionHostName: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -5167,6 +5347,8 @@ export type UserSessionsListOutput = typeof UserSessionsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -5180,6 +5362,7 @@ export const UserSessionsListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
@@ -5242,6 +5425,7 @@ export type UserSessionsListByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param $filter - OData filter expression. Valid properties for filtering are userprincipalname and sessionstate.
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
@@ -5258,6 +5442,9 @@ export const UserSessionsSendMessageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    sessionHostName: Schema.String.pipe(T.PathParam()),
+    userSessionId: Schema.String.pipe(T.PathParam()),
     messageTitle: Schema.optional(Schema.String),
     messageBody: Schema.optional(Schema.String),
   }).pipe(
@@ -5283,6 +5470,9 @@ export type UserSessionsSendMessageOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
+ * @param userSessionId - The name of the user session within the specified session host
  */
 export const UserSessionsSendMessage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5295,6 +5485,7 @@ export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     managedBy: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -5431,6 +5622,7 @@ export type WorkspacesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  */
 export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5442,6 +5634,7 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -5462,6 +5655,7 @@ export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  */
 export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesDeleteInput,
@@ -5471,6 +5665,7 @@ export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -5509,6 +5704,7 @@ export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  */
 export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetInput,
@@ -5660,6 +5856,7 @@ export const WorkspacesListBySubscription =
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(
     Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
   ),
@@ -5715,6 +5912,7 @@ export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  */
 export const WorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesUpdateInput,

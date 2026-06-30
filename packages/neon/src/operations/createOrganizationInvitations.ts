@@ -9,7 +9,13 @@ export const CreateOrganizationInvitationsInput =
     invitations: Schema.Array(
       Schema.Struct({
         email: Schema.String,
-        role: Schema.Literals(["admin", "member"]),
+        role: Schema.Literals([
+          "admin",
+          "member",
+          "editor",
+          "viewer",
+          "collaborator",
+        ]),
       }),
     ),
   }).pipe(
@@ -28,7 +34,13 @@ export const CreateOrganizationInvitationsOutput =
         org_id: Schema.String,
         invited_by: Schema.String,
         invited_at: Schema.String,
-        role: Schema.Literals(["admin", "member"]),
+        role: Schema.Literals([
+          "admin",
+          "member",
+          "editor",
+          "viewer",
+          "collaborator",
+        ]),
       }),
     ),
   });

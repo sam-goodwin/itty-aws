@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const GetPaymentIntentsSearchInput =
@@ -105,7 +105,7 @@ export const GetPaymentIntentsSearchOutput =
           "automatic_async",
           "manual",
         ]),
-        client_secret: SensitiveNullableString,
+        client_secret: SensitiveOutputNullableString,
         confirmation_method: Schema.Literals(["automatic", "manual"]),
         created: Schema.Number,
         currency: Schema.String,
@@ -125,6 +125,7 @@ export const GetPaymentIntentsSearchOutput =
               "bacs_debit",
               "bancontact",
               "billie",
+              "bizum",
               "blik",
               "boleto",
               "card",
@@ -157,8 +158,10 @@ export const GetPaymentIntentsSearchOutput =
               "revolut_pay",
               "samsung_pay",
               "satispay",
+              "scalapay",
               "sepa_debit",
               "sofort",
+              "sunbit",
               "swish",
               "twint",
               "upi",
@@ -185,6 +188,7 @@ export const GetPaymentIntentsSearchOutput =
         last_payment_error: Schema.Unknown,
         latest_charge: Schema.Unknown,
         livemode: Schema.Boolean,
+        managed_payments: Schema.Unknown,
         metadata: Schema.Record(Schema.String, Schema.String),
         next_action: Schema.Unknown,
         object: Schema.Literals(["payment_intent"]),
@@ -249,7 +253,7 @@ export type GetPaymentIntentsSearchOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param page - A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
- * @param query - The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for payment intents](https://docs.stripe.com/search#query-fields-for-payment-intents).
+ * @param query - The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for payment intents](https://docs.stripe.com/search#query-fields-for-paymentintents).
  */
 export const GetPaymentIntentsSearch =
   /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({

@@ -25,37 +25,37 @@ const svc = T.Service({
 export interface UrlNotification {
   /** Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request time. */
   notifyTime?: string;
-  /** The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google. */
-  url?: string;
   /** The URL life cycle event that Google is being notified about. */
   type?:
     | "URL_NOTIFICATION_TYPE_UNSPECIFIED"
     | "URL_UPDATED"
     | "URL_DELETED"
     | (string & {});
+  /** The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google. */
+  url?: string;
 }
 
 export const UrlNotification: Schema.Schema<UrlNotification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notifyTime: Schema.optional(Schema.String),
-    url: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
   }).annotate({ identifier: "UrlNotification" });
 
 export interface UrlNotificationMetadata {
+  /** Latest notification received with type `URL_UPDATED`. */
+  latestUpdate?: UrlNotification;
   /** URL to which this metadata refers. */
   url?: string;
   /** Latest notification received with type `URL_REMOVED`. */
   latestRemove?: UrlNotification;
-  /** Latest notification received with type `URL_UPDATED`. */
-  latestUpdate?: UrlNotification;
 }
 
 export const UrlNotificationMetadata: Schema.Schema<UrlNotificationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latestUpdate: Schema.optional(UrlNotification),
     url: Schema.optional(Schema.String),
     latestRemove: Schema.optional(UrlNotification),
-    latestUpdate: Schema.optional(UrlNotification),
   }).annotate({ identifier: "UrlNotificationMetadata" });
 
 export interface PublishUrlNotificationResponse {

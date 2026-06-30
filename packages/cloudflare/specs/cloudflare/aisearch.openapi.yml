@@ -13,7 +13,7 @@ paths:
         using indexed content as context for generating responses.  @example
         ```ts const response = await client.aiSearch.instances.chatCompletions(
         'my-ai-search', { account_id: 'c3dc5f0b34a14ff8e1b3ec04895e1b22',
-        messages: [{ content: 'content', role: 'system' }], }, ); ```"
+        messages: [{ content: 'string', role: 'system' }], }, ); ```"
       parameters:
         - name: id
           in: path
@@ -41,6 +41,36 @@ paths:
                       content:
                         oneOf:
                           - type: string
+                          - type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    type:
+                                      type: string
+                                      enum:
+                                        - text
+                                  required:
+                                    - text
+                                    - type
+                                - type: object
+                                  properties:
+                                    image_url:
+                                      type: object
+                                      properties:
+                                        url:
+                                          type: string
+                                      required:
+                                        - url
+                                    type:
+                                      type: string
+                                      enum:
+                                        - image_url
+                                  required:
+                                    - image_url
+                                    - type
                         nullable: true
                       role:
                         type: string
@@ -176,8 +206,9 @@ paths:
                           description: Controls which documents are candidates for BM25 scoring. 'and'
                             restricts candidates to documents containing all
                             query terms; 'or' includes any document containing
-                            at least one term, ranked by BM25 relevance.
-                            Defaults to 'and'.
+                            at least one term, ranked by BM25 relevance. When
+                            omitted, falls back to the instance-level
+                            retrieval_options.keyword_match_mode, then to 'and'.
                         match_threshold:
                           type: number
                         max_num_results:
@@ -249,6 +280,36 @@ paths:
                             content:
                               oneOf:
                                 - type: string
+                                - type: array
+                                  items:
+                                    oneOf:
+                                      - type: object
+                                        properties:
+                                          text:
+                                            type: string
+                                          type:
+                                            type: string
+                                            enum:
+                                              - text
+                                        required:
+                                          - text
+                                          - type
+                                      - type: object
+                                        properties:
+                                          image_url:
+                                            type: object
+                                            properties:
+                                              url:
+                                                type: string
+                                            required:
+                                              - url
+                                          type:
+                                            type: string
+                                            enum:
+                                              - image_url
+                                        required:
+                                          - image_url
+                                          - type
                               nullable: true
                             role:
                               type: string
@@ -330,7 +391,7 @@ paths:
         generating a response.  @example ```ts const response = await
         client.aiSearch.namespaces.chatCompletions( 'my-namespace', {
         account_id: 'c3dc5f0b34a14ff8e1b3ec04895e1b22', ai_search_options: {
-        instance_ids: ['my-ai-search'] }, messages: [{ content: 'content', role:
+        instance_ids: ['my-ai-search'] }, messages: [{ content: 'string', role:
         'system' }], }, ); ```"
       parameters:
         - name: name
@@ -477,8 +538,9 @@ paths:
                           description: Controls which documents are candidates for BM25 scoring. 'and'
                             restricts candidates to documents containing all
                             query terms; 'or' includes any document containing
-                            at least one term, ranked by BM25 relevance.
-                            Defaults to 'and'.
+                            at least one term, ranked by BM25 relevance. When
+                            omitted, falls back to the instance-level
+                            retrieval_options.keyword_match_mode, then to 'and'.
                         match_threshold:
                           type: number
                         max_num_results:
@@ -502,6 +564,36 @@ paths:
                       content:
                         oneOf:
                           - type: string
+                          - type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    type:
+                                      type: string
+                                      enum:
+                                        - text
+                                  required:
+                                    - text
+                                    - type
+                                - type: object
+                                  properties:
+                                    image_url:
+                                      type: object
+                                      properties:
+                                        url:
+                                          type: string
+                                      required:
+                                        - url
+                                    type:
+                                      type: string
+                                      enum:
+                                        - image_url
+                                  required:
+                                    - image_url
+                                    - type
                         nullable: true
                       role:
                         type: string
@@ -574,6 +666,36 @@ paths:
                             content:
                               oneOf:
                                 - type: string
+                                - type: array
+                                  items:
+                                    oneOf:
+                                      - type: object
+                                        properties:
+                                          text:
+                                            type: string
+                                          type:
+                                            type: string
+                                            enum:
+                                              - text
+                                        required:
+                                          - text
+                                          - type
+                                      - type: object
+                                        properties:
+                                          image_url:
+                                            type: object
+                                            properties:
+                                              url:
+                                                type: string
+                                            required:
+                                              - url
+                                          type:
+                                            type: string
+                                            enum:
+                                              - image_url
+                                        required:
+                                          - image_url
+                                          - type
                               nullable: true
                             role:
                               type: string
@@ -670,7 +792,7 @@ paths:
         ```ts const response = await
         client.aiSearch.namespaces.instances.chatCompletions( 'my-namespace',
         'my-ai-search', { account_id: 'c3dc5f0b34a14ff8e1b3ec04895e1b22',
-        messages: [{ content: 'content', role: 'system' }], }, ); ```"
+        messages: [{ content: 'string', role: 'system' }], }, ); ```"
       parameters:
         - name: name
           in: path
@@ -703,6 +825,36 @@ paths:
                       content:
                         oneOf:
                           - type: string
+                          - type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    type:
+                                      type: string
+                                      enum:
+                                        - text
+                                  required:
+                                    - text
+                                    - type
+                                - type: object
+                                  properties:
+                                    image_url:
+                                      type: object
+                                      properties:
+                                        url:
+                                          type: string
+                                      required:
+                                        - url
+                                    type:
+                                      type: string
+                                      enum:
+                                        - image_url
+                                  required:
+                                    - image_url
+                                    - type
                         nullable: true
                       role:
                         type: string
@@ -838,8 +990,9 @@ paths:
                           description: Controls which documents are candidates for BM25 scoring. 'and'
                             restricts candidates to documents containing all
                             query terms; 'or' includes any document containing
-                            at least one term, ranked by BM25 relevance.
-                            Defaults to 'and'.
+                            at least one term, ranked by BM25 relevance. When
+                            omitted, falls back to the instance-level
+                            retrieval_options.keyword_match_mode, then to 'and'.
                         match_threshold:
                           type: number
                         max_num_results:
@@ -911,6 +1064,36 @@ paths:
                             content:
                               oneOf:
                                 - type: string
+                                - type: array
+                                  items:
+                                    oneOf:
+                                      - type: object
+                                        properties:
+                                          text:
+                                            type: string
+                                          type:
+                                            type: string
+                                            enum:
+                                              - text
+                                        required:
+                                          - text
+                                          - type
+                                      - type: object
+                                        properties:
+                                          image_url:
+                                            type: object
+                                            properties:
+                                              url:
+                                                type: string
+                                            required:
+                                              - url
+                                          type:
+                                            type: string
+                                            enum:
+                                              - image_url
+                                        required:
+                                          - image_url
+                                          - type
                               nullable: true
                             role:
                               type: string
@@ -1146,6 +1329,7 @@ paths:
                     type: string
                     enum:
                       - "@cf/qwen/qwen3-embedding-0.6b"
+                      - "@cf/qwen/qwen3-vl-embedding-2b"
                       - "@cf/baai/bge-m3"
                       - "@cf/baai/bge-large-en-v1.5"
                       - "@cf/google/embeddinggemma-300m"
@@ -1392,23 +1576,6 @@ paths:
                           web_crawler:
                             type: object
                             properties:
-                              crawl_options:
-                                type: object
-                                properties:
-                                  depth:
-                                    type: number
-                                  include_external_links:
-                                    type: boolean
-                                  include_subdomains:
-                                    type: boolean
-                                  max_age:
-                                    type: number
-                                  source:
-                                    type: string
-                                    enum:
-                                      - all
-                                      - sitemaps
-                                      - links
                               parse_options:
                                 type: object
                                 properties:
@@ -1462,21 +1629,7 @@ paths:
                                 type: string
                                 enum:
                                   - sitemap
-                                  - feed-rss
                                   - crawl
-                              store_options:
-                                type: object
-                                properties:
-                                  storage_id:
-                                    type: string
-                                  r2_jurisdiction:
-                                    type: string
-                                  storage_type:
-                                    type: string
-                                    enum:
-                                      - r2
-                                required:
-                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -1623,6 +1776,7 @@ paths:
                   type: string
                   enum:
                     - "@cf/qwen/qwen3-embedding-0.6b"
+                    - "@cf/qwen/qwen3-vl-embedding-2b"
                     - "@cf/baai/bge-m3"
                     - "@cf/baai/bge-large-en-v1.5"
                     - "@cf/google/embeddinggemma-300m"
@@ -1859,23 +2013,6 @@ paths:
                         web_crawler:
                           type: object
                           properties:
-                            crawl_options:
-                              type: object
-                              properties:
-                                depth:
-                                  type: number
-                                include_external_links:
-                                  type: boolean
-                                include_subdomains:
-                                  type: boolean
-                                max_age:
-                                  type: number
-                                source:
-                                  type: string
-                                  enum:
-                                    - all
-                                    - sitemaps
-                                    - links
                             parse_options:
                               type: object
                               properties:
@@ -1929,21 +2066,7 @@ paths:
                               type: string
                               enum:
                                 - sitemap
-                                - feed-rss
                                 - crawl
-                            store_options:
-                              type: object
-                              properties:
-                                storage_id:
-                                  type: string
-                                r2_jurisdiction:
-                                  type: string
-                                storage_type:
-                                  type: string
-                                  enum:
-                                    - r2
-                              required:
-                                - storage_id
                   nullable: true
                   description: Body param
                 sync_interval:
@@ -2061,6 +2184,7 @@ paths:
                     type: string
                     enum:
                       - "@cf/qwen/qwen3-embedding-0.6b"
+                      - "@cf/qwen/qwen3-vl-embedding-2b"
                       - "@cf/baai/bge-m3"
                       - "@cf/baai/bge-large-en-v1.5"
                       - "@cf/google/embeddinggemma-300m"
@@ -2311,23 +2435,6 @@ paths:
                           web_crawler:
                             type: object
                             properties:
-                              crawl_options:
-                                type: object
-                                properties:
-                                  depth:
-                                    type: number
-                                  include_external_links:
-                                    type: boolean
-                                  include_subdomains:
-                                    type: boolean
-                                  max_age:
-                                    type: number
-                                  source:
-                                    type: string
-                                    enum:
-                                      - all
-                                      - sitemaps
-                                      - links
                               parse_options:
                                 type: object
                                 properties:
@@ -2381,21 +2488,7 @@ paths:
                                 type: string
                                 enum:
                                   - sitemap
-                                  - feed-rss
                                   - crawl
-                              store_options:
-                                type: object
-                                properties:
-                                  storage_id:
-                                    type: string
-                                  r2_jurisdiction:
-                                    type: string
-                                  storage_type:
-                                    type: string
-                                    enum:
-                                      - r2
-                                required:
-                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -2546,6 +2639,7 @@ paths:
                   type: string
                   enum:
                     - "@cf/qwen/qwen3-embedding-0.6b"
+                    - "@cf/qwen/qwen3-vl-embedding-2b"
                     - "@cf/baai/bge-m3"
                     - "@cf/baai/bge-large-en-v1.5"
                     - "@cf/google/embeddinggemma-300m"
@@ -2750,6 +2844,11 @@ paths:
                 score_threshold:
                   type: number
                   description: Body param
+                source:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: Body param
                 source_params:
                   oneOf:
                     - type: object
@@ -2777,23 +2876,6 @@ paths:
                         web_crawler:
                           type: object
                           properties:
-                            crawl_options:
-                              type: object
-                              properties:
-                                depth:
-                                  type: number
-                                include_external_links:
-                                  type: boolean
-                                include_subdomains:
-                                  type: boolean
-                                max_age:
-                                  type: number
-                                source:
-                                  type: string
-                                  enum:
-                                    - all
-                                    - sitemaps
-                                    - links
                             parse_options:
                               type: object
                               properties:
@@ -2847,21 +2929,7 @@ paths:
                               type: string
                               enum:
                                 - sitemap
-                                - feed-rss
                                 - crawl
-                            store_options:
-                              type: object
-                              properties:
-                                storage_id:
-                                  type: string
-                                r2_jurisdiction:
-                                  type: string
-                                storage_type:
-                                  type: string
-                                  enum:
-                                    - r2
-                              required:
-                                - storage_id
                   nullable: true
                   description: Body param
                 summarization:
@@ -3023,6 +3091,7 @@ paths:
                     type: string
                     enum:
                       - "@cf/qwen/qwen3-embedding-0.6b"
+                      - "@cf/qwen/qwen3-vl-embedding-2b"
                       - "@cf/baai/bge-m3"
                       - "@cf/baai/bge-large-en-v1.5"
                       - "@cf/google/embeddinggemma-300m"
@@ -3273,23 +3342,6 @@ paths:
                           web_crawler:
                             type: object
                             properties:
-                              crawl_options:
-                                type: object
-                                properties:
-                                  depth:
-                                    type: number
-                                  include_external_links:
-                                    type: boolean
-                                  include_subdomains:
-                                    type: boolean
-                                  max_age:
-                                    type: number
-                                  source:
-                                    type: string
-                                    enum:
-                                      - all
-                                      - sitemaps
-                                      - links
                               parse_options:
                                 type: object
                                 properties:
@@ -3343,21 +3395,7 @@ paths:
                                 type: string
                                 enum:
                                   - sitemap
-                                  - feed-rss
                                   - crawl
-                              store_options:
-                                type: object
-                                properties:
-                                  storage_id:
-                                    type: string
-                                  r2_jurisdiction:
-                                    type: string
-                                  storage_type:
-                                    type: string
-                                    enum:
-                                      - r2
-                                required:
-                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -3505,6 +3543,7 @@ paths:
                     type: string
                     enum:
                       - "@cf/qwen/qwen3-embedding-0.6b"
+                      - "@cf/qwen/qwen3-vl-embedding-2b"
                       - "@cf/baai/bge-m3"
                       - "@cf/baai/bge-large-en-v1.5"
                       - "@cf/google/embeddinggemma-300m"
@@ -3755,23 +3794,6 @@ paths:
                           web_crawler:
                             type: object
                             properties:
-                              crawl_options:
-                                type: object
-                                properties:
-                                  depth:
-                                    type: number
-                                  include_external_links:
-                                    type: boolean
-                                  include_subdomains:
-                                    type: boolean
-                                  max_age:
-                                    type: number
-                                  source:
-                                    type: string
-                                    enum:
-                                      - all
-                                      - sitemaps
-                                      - links
                               parse_options:
                                 type: object
                                 properties:
@@ -3825,21 +3847,7 @@ paths:
                                 type: string
                                 enum:
                                   - sitemap
-                                  - feed-rss
                                   - crawl
-                              store_options:
-                                type: object
-                                properties:
-                                  storage_id:
-                                    type: string
-                                  r2_jurisdiction:
-                                    type: string
-                                  storage_type:
-                                    type: string
-                                    enum:
-                                      - r2
-                                required:
-                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -3982,6 +3990,7 @@ paths:
                     type: string
                     enum:
                       - "@cf/qwen/qwen3-embedding-0.6b"
+                      - "@cf/qwen/qwen3-vl-embedding-2b"
                       - "@cf/baai/bge-m3"
                       - "@cf/baai/bge-large-en-v1.5"
                       - "@cf/google/embeddinggemma-300m"
@@ -4232,23 +4241,6 @@ paths:
                           web_crawler:
                             type: object
                             properties:
-                              crawl_options:
-                                type: object
-                                properties:
-                                  depth:
-                                    type: number
-                                  include_external_links:
-                                    type: boolean
-                                  include_subdomains:
-                                    type: boolean
-                                  max_age:
-                                    type: number
-                                  source:
-                                    type: string
-                                    enum:
-                                      - all
-                                      - sitemaps
-                                      - links
                               parse_options:
                                 type: object
                                 properties:
@@ -4302,21 +4294,7 @@ paths:
                                 type: string
                                 enum:
                                   - sitemap
-                                  - feed-rss
                                   - crawl
-                              store_options:
-                                type: object
-                                properties:
-                                  storage_id:
-                                    type: string
-                                  r2_jurisdiction:
-                                    type: string
-                                  storage_type:
-                                    type: string
-                                    enum:
-                                      - r2
-                                required:
-                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -4493,8 +4471,9 @@ paths:
                           description: Controls which documents are candidates for BM25 scoring. 'and'
                             restricts candidates to documents containing all
                             query terms; 'or' includes any document containing
-                            at least one term, ranked by BM25 relevance.
-                            Defaults to 'and'.
+                            at least one term, ranked by BM25 relevance. When
+                            omitted, falls back to the instance-level
+                            retrieval_options.keyword_match_mode, then to 'and'.
                         match_threshold:
                           type: number
                         max_num_results:
@@ -4516,6 +4495,36 @@ paths:
                       content:
                         oneOf:
                           - type: string
+                          - type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    type:
+                                      type: string
+                                      enum:
+                                        - text
+                                  required:
+                                    - text
+                                    - type
+                                - type: object
+                                  properties:
+                                    image_url:
+                                      type: object
+                                      properties:
+                                        url:
+                                          type: string
+                                      required:
+                                        - url
+                                    type:
+                                      type: string
+                                      enum:
+                                        - image_url
+                                  required:
+                                    - image_url
+                                    - type
                         nullable: true
                       role:
                         type: string
@@ -4528,7 +4537,12 @@ paths:
                     required:
                       - content
                       - role
-                  description: Body param
+                  description: "Body param: OpenAI-compatible message array. For multimodal
+                    queries, set the last user message's `content` to an array
+                    of typed parts: `[{type:'text', text:'…'},
+                    {type:'image_url', image_url:{url:'…'}}]`. Image inputs
+                    require the RAG's embedding_model to declare 'image' in
+                    supported_modalities."
                 query:
                   type: string
                   description: "Body param: A simple text query string. Alternative to 'messages'
@@ -4589,11 +4603,17 @@ paths:
                         - score
                         - text
                         - type
+                  query_kind:
+                    type: string
+                    enum:
+                      - text
+                      - image
+                      - multimodal
                   search_query:
                     type: string
                 required:
                   - chunks
-                  - search_query
+                  - query_kind
       x-distilled-response-path: result
   /accounts/{account_id}/ai-search/instances/{id}/stats:
     get:
@@ -5327,8 +5347,9 @@ paths:
                           description: Controls which documents are candidates for BM25 scoring. 'and'
                             restricts candidates to documents containing all
                             query terms; 'or' includes any document containing
-                            at least one term, ranked by BM25 relevance.
-                            Defaults to 'and'.
+                            at least one term, ranked by BM25 relevance. When
+                            omitted, falls back to the instance-level
+                            retrieval_options.keyword_match_mode, then to 'and'.
                         match_threshold:
                           type: number
                         max_num_results:
@@ -5352,6 +5373,36 @@ paths:
                       content:
                         oneOf:
                           - type: string
+                          - type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    type:
+                                      type: string
+                                      enum:
+                                        - text
+                                  required:
+                                    - text
+                                    - type
+                                - type: object
+                                  properties:
+                                    image_url:
+                                      type: object
+                                      properties:
+                                        url:
+                                          type: string
+                                      required:
+                                        - url
+                                    type:
+                                      type: string
+                                      enum:
+                                        - image_url
+                                  required:
+                                    - image_url
+                                    - type
                         nullable: true
                       role:
                         type: string
@@ -5364,7 +5415,12 @@ paths:
                     required:
                       - content
                       - role
-                  description: Body param
+                  description: "Body param: OpenAI-compatible message array. For multimodal
+                    queries, set the last user message's `content` to an array
+                    of typed parts: `[{type:'text', text:'…'},
+                    {type:'image_url', image_url:{url:'…'}}]`. Image inputs
+                    require the RAG's embedding_model to declare 'image' in
+                    supported_modalities."
                 query:
                   type: string
                   description: "Body param: A simple text query string. Alternative to 'messages'
@@ -5430,8 +5486,12 @@ paths:
                         - score
                         - text
                         - type
-                  search_query:
+                  query_kind:
                     type: string
+                    enum:
+                      - text
+                      - image
+                      - multimodal
                   errors:
                     type: array
                     items:
@@ -5444,9 +5504,11 @@ paths:
                       required:
                         - instance_id
                         - message
+                  search_query:
+                    type: string
                 required:
                   - chunks
-                  - search_query
+                  - query_kind
       x-distilled-response-path: result
   /accounts/{account_id}/ai-search/namespaces/{name}/instances:
     get:
@@ -5615,6 +5677,7 @@ paths:
                     type: string
                     enum:
                       - "@cf/qwen/qwen3-embedding-0.6b"
+                      - "@cf/qwen/qwen3-vl-embedding-2b"
                       - "@cf/baai/bge-m3"
                       - "@cf/baai/bge-large-en-v1.5"
                       - "@cf/google/embeddinggemma-300m"
@@ -5861,23 +5924,6 @@ paths:
                           web_crawler:
                             type: object
                             properties:
-                              crawl_options:
-                                type: object
-                                properties:
-                                  depth:
-                                    type: number
-                                  include_external_links:
-                                    type: boolean
-                                  include_subdomains:
-                                    type: boolean
-                                  max_age:
-                                    type: number
-                                  source:
-                                    type: string
-                                    enum:
-                                      - all
-                                      - sitemaps
-                                      - links
                               parse_options:
                                 type: object
                                 properties:
@@ -5931,21 +5977,7 @@ paths:
                                 type: string
                                 enum:
                                   - sitemap
-                                  - feed-rss
                                   - crawl
-                              store_options:
-                                type: object
-                                properties:
-                                  storage_id:
-                                    type: string
-                                  r2_jurisdiction:
-                                    type: string
-                                  storage_type:
-                                    type: string
-                                    enum:
-                                      - r2
-                                required:
-                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -6103,6 +6135,7 @@ paths:
                   type: string
                   enum:
                     - "@cf/qwen/qwen3-embedding-0.6b"
+                    - "@cf/qwen/qwen3-vl-embedding-2b"
                     - "@cf/baai/bge-m3"
                     - "@cf/baai/bge-large-en-v1.5"
                     - "@cf/google/embeddinggemma-300m"
@@ -6339,23 +6372,6 @@ paths:
                         web_crawler:
                           type: object
                           properties:
-                            crawl_options:
-                              type: object
-                              properties:
-                                depth:
-                                  type: number
-                                include_external_links:
-                                  type: boolean
-                                include_subdomains:
-                                  type: boolean
-                                max_age:
-                                  type: number
-                                source:
-                                  type: string
-                                  enum:
-                                    - all
-                                    - sitemaps
-                                    - links
                             parse_options:
                               type: object
                               properties:
@@ -6409,21 +6425,7 @@ paths:
                               type: string
                               enum:
                                 - sitemap
-                                - feed-rss
                                 - crawl
-                            store_options:
-                              type: object
-                              properties:
-                                storage_id:
-                                  type: string
-                                r2_jurisdiction:
-                                  type: string
-                                storage_type:
-                                  type: string
-                                  enum:
-                                    - r2
-                              required:
-                                - storage_id
                   nullable: true
                   description: Body param
                 sync_interval:
@@ -6541,6 +6543,7 @@ paths:
                     type: string
                     enum:
                       - "@cf/qwen/qwen3-embedding-0.6b"
+                      - "@cf/qwen/qwen3-vl-embedding-2b"
                       - "@cf/baai/bge-m3"
                       - "@cf/baai/bge-large-en-v1.5"
                       - "@cf/google/embeddinggemma-300m"
@@ -6791,23 +6794,6 @@ paths:
                           web_crawler:
                             type: object
                             properties:
-                              crawl_options:
-                                type: object
-                                properties:
-                                  depth:
-                                    type: number
-                                  include_external_links:
-                                    type: boolean
-                                  include_subdomains:
-                                    type: boolean
-                                  max_age:
-                                    type: number
-                                  source:
-                                    type: string
-                                    enum:
-                                      - all
-                                      - sitemaps
-                                      - links
                               parse_options:
                                 type: object
                                 properties:
@@ -6861,21 +6847,7 @@ paths:
                                 type: string
                                 enum:
                                   - sitemap
-                                  - feed-rss
                                   - crawl
-                              store_options:
-                                type: object
-                                properties:
-                                  storage_id:
-                                    type: string
-                                  r2_jurisdiction:
-                                    type: string
-                                  storage_type:
-                                    type: string
-                                    enum:
-                                      - r2
-                                required:
-                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -7048,6 +7020,7 @@ paths:
                   type: string
                   enum:
                     - "@cf/qwen/qwen3-embedding-0.6b"
+                    - "@cf/qwen/qwen3-vl-embedding-2b"
                     - "@cf/baai/bge-m3"
                     - "@cf/baai/bge-large-en-v1.5"
                     - "@cf/google/embeddinggemma-300m"
@@ -7252,6 +7225,11 @@ paths:
                 score_threshold:
                   type: number
                   description: Body param
+                source:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: Body param
                 source_params:
                   oneOf:
                     - type: object
@@ -7279,23 +7257,6 @@ paths:
                         web_crawler:
                           type: object
                           properties:
-                            crawl_options:
-                              type: object
-                              properties:
-                                depth:
-                                  type: number
-                                include_external_links:
-                                  type: boolean
-                                include_subdomains:
-                                  type: boolean
-                                max_age:
-                                  type: number
-                                source:
-                                  type: string
-                                  enum:
-                                    - all
-                                    - sitemaps
-                                    - links
                             parse_options:
                               type: object
                               properties:
@@ -7349,21 +7310,7 @@ paths:
                               type: string
                               enum:
                                 - sitemap
-                                - feed-rss
                                 - crawl
-                            store_options:
-                              type: object
-                              properties:
-                                storage_id:
-                                  type: string
-                                r2_jurisdiction:
-                                  type: string
-                                storage_type:
-                                  type: string
-                                  enum:
-                                    - r2
-                              required:
-                                - storage_id
                   nullable: true
                   description: Body param
                 summarization:
@@ -7525,6 +7472,7 @@ paths:
                     type: string
                     enum:
                       - "@cf/qwen/qwen3-embedding-0.6b"
+                      - "@cf/qwen/qwen3-vl-embedding-2b"
                       - "@cf/baai/bge-m3"
                       - "@cf/baai/bge-large-en-v1.5"
                       - "@cf/google/embeddinggemma-300m"
@@ -7775,23 +7723,6 @@ paths:
                           web_crawler:
                             type: object
                             properties:
-                              crawl_options:
-                                type: object
-                                properties:
-                                  depth:
-                                    type: number
-                                  include_external_links:
-                                    type: boolean
-                                  include_subdomains:
-                                    type: boolean
-                                  max_age:
-                                    type: number
-                                  source:
-                                    type: string
-                                    enum:
-                                      - all
-                                      - sitemaps
-                                      - links
                               parse_options:
                                 type: object
                                 properties:
@@ -7845,21 +7776,7 @@ paths:
                                 type: string
                                 enum:
                                   - sitemap
-                                  - feed-rss
                                   - crawl
-                              store_options:
-                                type: object
-                                properties:
-                                  storage_id:
-                                    type: string
-                                  r2_jurisdiction:
-                                    type: string
-                                  storage_type:
-                                    type: string
-                                    enum:
-                                      - r2
-                                required:
-                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -8025,6 +7942,7 @@ paths:
                     type: string
                     enum:
                       - "@cf/qwen/qwen3-embedding-0.6b"
+                      - "@cf/qwen/qwen3-vl-embedding-2b"
                       - "@cf/baai/bge-m3"
                       - "@cf/baai/bge-large-en-v1.5"
                       - "@cf/google/embeddinggemma-300m"
@@ -8275,23 +8193,6 @@ paths:
                           web_crawler:
                             type: object
                             properties:
-                              crawl_options:
-                                type: object
-                                properties:
-                                  depth:
-                                    type: number
-                                  include_external_links:
-                                    type: boolean
-                                  include_subdomains:
-                                    type: boolean
-                                  max_age:
-                                    type: number
-                                  source:
-                                    type: string
-                                    enum:
-                                      - all
-                                      - sitemaps
-                                      - links
                               parse_options:
                                 type: object
                                 properties:
@@ -8345,21 +8246,7 @@ paths:
                                 type: string
                                 enum:
                                   - sitemap
-                                  - feed-rss
                                   - crawl
-                              store_options:
-                                type: object
-                                properties:
-                                  storage_id:
-                                    type: string
-                                  r2_jurisdiction:
-                                    type: string
-                                  storage_type:
-                                    type: string
-                                    enum:
-                                      - r2
-                                required:
-                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -8516,6 +8403,7 @@ paths:
                     type: string
                     enum:
                       - "@cf/qwen/qwen3-embedding-0.6b"
+                      - "@cf/qwen/qwen3-vl-embedding-2b"
                       - "@cf/baai/bge-m3"
                       - "@cf/baai/bge-large-en-v1.5"
                       - "@cf/google/embeddinggemma-300m"
@@ -8766,23 +8654,6 @@ paths:
                           web_crawler:
                             type: object
                             properties:
-                              crawl_options:
-                                type: object
-                                properties:
-                                  depth:
-                                    type: number
-                                  include_external_links:
-                                    type: boolean
-                                  include_subdomains:
-                                    type: boolean
-                                  max_age:
-                                    type: number
-                                  source:
-                                    type: string
-                                    enum:
-                                      - all
-                                      - sitemaps
-                                      - links
                               parse_options:
                                 type: object
                                 properties:
@@ -8836,21 +8707,7 @@ paths:
                                 type: string
                                 enum:
                                   - sitemap
-                                  - feed-rss
                                   - crawl
-                              store_options:
-                                type: object
-                                properties:
-                                  storage_id:
-                                    type: string
-                                  r2_jurisdiction:
-                                    type: string
-                                  storage_type:
-                                    type: string
-                                    enum:
-                                      - r2
-                                required:
-                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -9041,8 +8898,9 @@ paths:
                           description: Controls which documents are candidates for BM25 scoring. 'and'
                             restricts candidates to documents containing all
                             query terms; 'or' includes any document containing
-                            at least one term, ranked by BM25 relevance.
-                            Defaults to 'and'.
+                            at least one term, ranked by BM25 relevance. When
+                            omitted, falls back to the instance-level
+                            retrieval_options.keyword_match_mode, then to 'and'.
                         match_threshold:
                           type: number
                         max_num_results:
@@ -9064,6 +8922,36 @@ paths:
                       content:
                         oneOf:
                           - type: string
+                          - type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    type:
+                                      type: string
+                                      enum:
+                                        - text
+                                  required:
+                                    - text
+                                    - type
+                                - type: object
+                                  properties:
+                                    image_url:
+                                      type: object
+                                      properties:
+                                        url:
+                                          type: string
+                                      required:
+                                        - url
+                                    type:
+                                      type: string
+                                      enum:
+                                        - image_url
+                                  required:
+                                    - image_url
+                                    - type
                         nullable: true
                       role:
                         type: string
@@ -9076,7 +8964,12 @@ paths:
                     required:
                       - content
                       - role
-                  description: Body param
+                  description: "Body param: OpenAI-compatible message array. For multimodal
+                    queries, set the last user message's `content` to an array
+                    of typed parts: `[{type:'text', text:'…'},
+                    {type:'image_url', image_url:{url:'…'}}]`. Image inputs
+                    require the RAG's embedding_model to declare 'image' in
+                    supported_modalities."
                 query:
                   type: string
                   description: "Body param: A simple text query string. Alternative to 'messages'
@@ -9137,11 +9030,17 @@ paths:
                         - score
                         - text
                         - type
+                  query_kind:
+                    type: string
+                    enum:
+                      - text
+                      - image
+                      - multimodal
                   search_query:
                     type: string
                 required:
                   - chunks
-                  - search_query
+                  - query_kind
       x-distilled-response-path: result
   /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/stats:
     get:

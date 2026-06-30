@@ -32,9 +32,10 @@ export type GetNeonAuthEmailAndPasswordConfigOutput =
 
 // The operation
 /**
- * Get email and password configuration
+ * Retrieve email and password configuration
  *
- * Gets the email and password authentication configuration for Neon Auth
+ * Retrieves the email and password authentication configuration for the specified branch's Neon Auth integration,
+ * including whether it is enabled and the email verification method.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

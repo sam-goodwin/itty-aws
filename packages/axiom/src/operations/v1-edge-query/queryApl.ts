@@ -28,7 +28,6 @@ export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   includeCursorField: Schema.optional(Schema.Boolean),
   libraries: Schema.optional(Schema.Array(Schema.String)),
   maxBinAutoGroups: Schema.optional(Schema.Number),
-  queryEdgeDeployment: Schema.optional(Schema.String),
   queryOptions: Schema.optional(
     Schema.Struct({
       against: Schema.optional(Schema.String),
@@ -60,7 +59,6 @@ export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       timeSeriesView: Schema.optional(Schema.String),
     }),
   ),
-  queryRegion: Schema.optional(Schema.String),
   startTime: Schema.optional(Schema.String),
   variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
 }).pipe(T.Http({ method: "POST", path: "/v1/datasets/_apl?format=tabular" }));

@@ -29,7 +29,7 @@ export type DeleteFederationSettingConnectedOrgConfigRoleMappingOutput =
 /**
  * Remove One Role Mapping from One Organization
  *
- * Removes one role mapping in the specified organization from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+ * Removes one role mapping in the specified organization from the specified federation.
  *
  * @param federationSettingsId - Unique 24-hexadecimal digit string that identifies your federation.
  * @param id - Unique 24-hexadecimal digit string that identifies the role mapping that you want to remove.

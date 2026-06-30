@@ -56,6 +56,25 @@ export const DeleteSubscriptionsSubscriptionExposedIdOutput =
       type: Schema.Literals(["classic", "flexible"]),
       updated_at: Schema.optional(Schema.Number),
     }),
+    billing_schedules: Schema.Array(
+      Schema.Struct({
+        applies_to: Schema.NullOr(
+          Schema.Array(
+            Schema.Struct({
+              price: Schema.Unknown,
+              type: Schema.Literals(["price"]),
+            }),
+          ),
+        ),
+        bill_until: Schema.Struct({
+          computed_timestamp: Schema.Number,
+          duration: Schema.Unknown,
+          timestamp: Schema.NullOr(Schema.Number),
+          type: Schema.Literals(["duration", "timestamp"]),
+        }),
+        key: Schema.String,
+      }),
+    ),
     billing_thresholds: Schema.Unknown,
     cancel_at: Schema.NullOr(Schema.Number),
     cancel_at_period_end: Schema.Boolean,
@@ -134,6 +153,16 @@ export const DeleteSubscriptionsSubscriptionExposedIdOutput =
     id: Schema.String,
     invoice_settings: Schema.Struct({
       account_tax_ids: Schema.NullOr(Schema.Array(Schema.Unknown)),
+      custom_fields: Schema.NullOr(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+      ),
+      description: Schema.NullOr(Schema.String),
+      footer: Schema.NullOr(Schema.String),
       issuer: Schema.Struct({
         account: Schema.optional(Schema.Unknown),
         type: Schema.Literals(["account", "self"]),
@@ -142,6 +171,7 @@ export const DeleteSubscriptionsSubscriptionExposedIdOutput =
     items: Schema.Struct({
       data: Schema.Array(
         Schema.Struct({
+          billed_until: Schema.optional(Schema.Number),
           billing_thresholds: Schema.Unknown,
           created: Schema.Number,
           current_period_end: Schema.Number,
@@ -306,6 +336,7 @@ export const DeleteSubscriptionsSubscriptionExposedIdOutput =
     }),
     latest_invoice: Schema.Unknown,
     livemode: Schema.Boolean,
+    managed_payments: Schema.Unknown,
     metadata: Schema.Record(Schema.String, Schema.String),
     next_pending_invoice_item_invoice: Schema.NullOr(Schema.Number),
     object: Schema.Literals(["subscription"]),
@@ -345,8 +376,8 @@ export type DeleteSubscriptionsSubscriptionExposedIdOutput =
 /**
  * Cancel a subscription
  *
- * <p>Cancels a customer’s subscription immediately. The customer won’t be charged again for the subscription. After it’s canceled, you can no longer update the subscription or its <a href="/metadata">metadata</a>.</p>
- * <p>Any pending invoice items that you’ve created are still charged at the end of the period, unless manually <a href="/api/invoiceitems/delete">deleted</a>. If you’ve set the subscription to cancel at the end of the period, any pending prorations are also left in place and collected at the end of the period. But if the subscription is set to cancel immediately, pending prorations are removed if <code>invoice_now</code> and <code>prorate</code> are both set to true.</p>
+ * <p>Cancels a customer’s subscription immediately. The customer won’t be charged again for the subscription. After it’s canceled, the subscription is largely immutable. You can still update its <a href="/metadata">metadata</a> and <code>cancellation_details</code>.</p>
+ * <p>Any pending invoice items that you’ve created are still charged at the end of the period, unless manually <a href="/api/invoiceitems/delete">deleted</a>. If you’ve set the subscription to cancel at the end of the period, any pending prorations are also left in place and collected at the end of the period. But if the subscription is set to cancel immediately, pending prorations are removed if <code>invoice_now</code> and <code>prorate</code> are both set to false.</p>
  * <p>By default, upon subscription cancellation, Stripe stops automatic collection of all finalized invoices for the customer. This is intended to prevent unexpected payment attempts after the customer has canceled a subscription. However, you can resume automatic collection of the invoices manually after subscription cancellation to have us proceed. Or, you could check for unpaid invoices before allowing the customer to cancel the subscription at all.</p>
  */
 export const DeleteSubscriptionsSubscriptionExposedId =

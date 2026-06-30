@@ -10,6 +10,8 @@ export const ListPasswordsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
   read_only_region_id: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  q: Schema.optional(Schema.String),
   page: Schema.optional(Schema.Number),
   per_page: Schema.optional(Schema.Number),
 }).pipe(
@@ -88,6 +90,8 @@ export type ListPasswordsOutput = typeof ListPasswordsOutput.Type;
  * @param database - The name of the database the password belongs to
  * @param branch - The name of the branch the password belongs to
  * @param read_only_region_id - A read-only region of the database branch. If present, the password results will be filtered to only those in the region
+ * @param status - Filter passwords by status
+ * @param q - Search passwords by name
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */

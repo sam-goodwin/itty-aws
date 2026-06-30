@@ -23,7 +23,7 @@ export type GetPolicyByIdOutput = typeof GetPolicyByIdOutput.Type;
 
 // The operation
 /**
- * Get a policy by ID
+ * Get policy by ID
  *
  * Get a policy by its ID.
  *

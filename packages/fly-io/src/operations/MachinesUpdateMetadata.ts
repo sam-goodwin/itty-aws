@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../errors.ts";
+import { BadRequest } from "../errors.ts";
 
 // Input Schema
 export const MachinesUpdateMetadataInput =
@@ -13,7 +13,7 @@ export const MachinesUpdateMetadataInput =
     updated_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
-      method: "PUT",
+      method: "PATCH",
       path: "/apps/{app_name}/machines/{machine_id}/metadata",
     }),
   );
@@ -40,6 +40,6 @@ export const MachinesUpdateMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: MachinesUpdateMetadataInput,
     outputSchema: MachinesUpdateMetadataOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
+    errors: [BadRequest] as const,
   }),
 );

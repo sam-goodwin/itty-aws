@@ -1593,23 +1593,6 @@ export const CachesCreateOrUpdateInput =
         name: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2397,23 +2380,6 @@ export const CachesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sku: Schema.optional(
     Schema.Struct({
       name: Schema.optional(Schema.String),
-    }),
-  ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
 }).pipe(

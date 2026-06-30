@@ -11,6 +11,9 @@ import * as T from "../traits.ts";
 // Input Schema
 export const AccessPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
     accessPolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       principalObjectId: Schema.optional(Schema.String),
@@ -43,7 +46,11 @@ export type AccessPoliciesCreateOrUpdateOutput =
 /**
  * Create or update an access policy in the specified environment.
  *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
  * @param accessPolicyName - Name of the access policy.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const AccessPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -52,7 +59,12 @@ export const AccessPoliciesCreateOrUpdate =
   }));
 // Input Schema
 export const AccessPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    accessPolicyName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
@@ -69,6 +81,12 @@ export type AccessPoliciesDeleteOutput = typeof AccessPoliciesDeleteOutput.Type;
 // The operation
 /**
  * Deletes the access policy with the specified name in the specified subscription, resource group, and environment
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param accessPolicyName - The name of the Time Series Insights access policy associated with the specified environment.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const AccessPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -78,7 +96,12 @@ export const AccessPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AccessPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    accessPolicyName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -100,6 +123,12 @@ export type AccessPoliciesGetOutput = typeof AccessPoliciesGetOutput.Type;
 // The operation
 /**
  * Gets the access policy with the specified name in the specified environment.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param accessPolicyName - The name of the Time Series Insights access policy associated with the specified environment.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const AccessPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccessPoliciesGetInput,
@@ -107,7 +136,11 @@ export const AccessPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AccessPoliciesListByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies",
@@ -136,6 +169,11 @@ export type AccessPoliciesListByEnvironmentOutput =
 // The operation
 /**
  * Lists all the available access policies associated with the environment.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const AccessPoliciesListByEnvironment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -145,6 +183,10 @@ export const AccessPoliciesListByEnvironment =
 // Input Schema
 export const AccessPoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    accessPolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -174,6 +216,12 @@ export type AccessPoliciesUpdateOutput = typeof AccessPoliciesUpdateOutput.Type;
 // The operation
 /**
  * Updates the access policy with the specified name in the specified subscription, resource group, and environment.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param accessPolicyName - The name of the Time Series Insights access policy associated with the specified environment.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const AccessPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -184,6 +232,8 @@ export const AccessPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const EnvironmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["Gen1", "Gen2"]),
     sku: Schema.Struct({
@@ -216,7 +266,10 @@ export type EnvironmentsCreateOrUpdateOutput =
 /**
  * Create or update an environment in the specified subscription and resource group.
  *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
  * @param environmentName - Name of the environment
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EnvironmentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -226,7 +279,11 @@ export const EnvironmentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const EnvironmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
@@ -242,15 +299,23 @@ export type EnvironmentsDeleteOutput = typeof EnvironmentsDeleteOutput.Type;
 // The operation
 /**
  * Deletes the environment with the specified name in the specified subscription and resource group.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsDeleteInput,
   outputSchema: EnvironmentsDeleteOutput,
 }));
 // Input Schema
-export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  environmentName: Schema.String.pipe(T.PathParam()),
+  $expand: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
@@ -270,6 +335,12 @@ export type EnvironmentsGetOutput = typeof EnvironmentsGetOutput.Type;
 // The operation
 /**
  * Gets the environment with the specified name in the specified subscription and resource group.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param $expand - Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsGetInput,
@@ -277,7 +348,10 @@ export const EnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const EnvironmentsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments",
@@ -306,6 +380,10 @@ export type EnvironmentsListByResourceGroupOutput =
 // The operation
 /**
  * Lists all the available environments associated with the subscription and within the specified resource group.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EnvironmentsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -314,7 +392,9 @@ export const EnvironmentsListByResourceGroup =
   }));
 // Input Schema
 export const EnvironmentsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.TimeSeriesInsights/environments",
@@ -343,6 +423,9 @@ export type EnvironmentsListBySubscriptionOutput =
 // The operation
 /**
  * Lists all the available environments within a subscription, irrespective of the resource groups.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EnvironmentsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -352,6 +435,9 @@ export const EnvironmentsListBySubscription =
 // Input Schema
 export const EnvironmentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["Gen1", "Gen2"]),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -375,6 +461,11 @@ export type EnvironmentsUpdateOutput = typeof EnvironmentsUpdateOutput.Type;
 // The operation
 /**
  * Updates the environment with the specified name in the specified subscription and resource group.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsUpdateInput,
@@ -383,6 +474,9 @@ export const EnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const EventSourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
     eventSourceName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["Microsoft.EventHub", "Microsoft.IoTHub"]),
     localTimestamp: Schema.optional(
@@ -421,7 +515,11 @@ export type EventSourcesCreateOrUpdateOutput =
 /**
  * Create or update an event source under the specified environment.
  *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
  * @param eventSourceName - Name of the event source.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -431,7 +529,12 @@ export const EventSourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const EventSourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    eventSourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
@@ -447,15 +550,24 @@ export type EventSourcesDeleteOutput = typeof EventSourcesDeleteOutput.Type;
 // The operation
 /**
  * Deletes the event source with the specified name in the specified subscription, resource group, and environment
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param eventSourceName - The name of the Time Series Insights event source associated with the specified environment.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EventSourcesDeleteInput,
   outputSchema: EventSourcesDeleteOutput,
 }));
 // Input Schema
-export const EventSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const EventSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  environmentName: Schema.String.pipe(T.PathParam()),
+  eventSourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
@@ -475,6 +587,12 @@ export type EventSourcesGetOutput = typeof EventSourcesGetOutput.Type;
 // The operation
 /**
  * Gets the event source with the specified name in the specified environment.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param eventSourceName - The name of the Time Series Insights event source associated with the specified environment.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EventSourcesGetInput,
@@ -482,7 +600,11 @@ export const EventSourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const EventSourcesListByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources",
@@ -511,6 +633,11 @@ export type EventSourcesListByEnvironmentOutput =
 // The operation
 /**
  * Lists all the available event sources associated with the subscription and within the specified resource group and environment.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSourcesListByEnvironment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -520,6 +647,10 @@ export const EventSourcesListByEnvironment =
 // Input Schema
 export const EventSourcesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    eventSourceName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["Microsoft.EventHub", "Microsoft.IoTHub"]),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -543,6 +674,12 @@ export type EventSourcesUpdateOutput = typeof EventSourcesUpdateOutput.Type;
 // The operation
 /**
  * Updates the event source with the specified name in the specified subscription, resource group, and environment.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param eventSourceName - The name of the Time Series Insights event source associated with the specified environment.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EventSourcesUpdateInput,
@@ -632,6 +769,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Time Series Insights related operations.
+ *
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -640,6 +779,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReferenceDataSetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
     referenceDataSetName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       keyProperties: Schema.Array(
@@ -680,7 +822,11 @@ export type ReferenceDataSetsCreateOrUpdateOutput =
 /**
  * Create or update a reference data set in the specified environment.
  *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
  * @param referenceDataSetName - Name of the reference data set.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ReferenceDataSetsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -689,7 +835,12 @@ export const ReferenceDataSetsCreateOrUpdate =
   }));
 // Input Schema
 export const ReferenceDataSetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    referenceDataSetName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
@@ -708,6 +859,12 @@ export type ReferenceDataSetsDeleteOutput =
 // The operation
 /**
  * Deletes the reference data set with the specified name in the specified subscription, resource group, and environment
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param referenceDataSetName - The name of the Time Series Insights reference data set associated with the specified environment.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ReferenceDataSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -717,7 +874,12 @@ export const ReferenceDataSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ReferenceDataSetsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    referenceDataSetName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
@@ -738,6 +900,12 @@ export type ReferenceDataSetsGetOutput = typeof ReferenceDataSetsGetOutput.Type;
 // The operation
 /**
  * Gets the reference data set with the specified name in the specified environment.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param referenceDataSetName - The name of the Time Series Insights reference data set associated with the specified environment.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ReferenceDataSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -747,7 +915,11 @@ export const ReferenceDataSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ReferenceDataSetsListByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets",
@@ -776,6 +948,11 @@ export type ReferenceDataSetsListByEnvironmentOutput =
 // The operation
 /**
  * Lists all the available reference data sets associated with the subscription and within the specified resource group and environment.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ReferenceDataSetsListByEnvironment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -785,6 +962,10 @@ export const ReferenceDataSetsListByEnvironment =
 // Input Schema
 export const ReferenceDataSetsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    referenceDataSetName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -809,6 +990,12 @@ export type ReferenceDataSetsUpdateOutput =
 // The operation
 /**
  * Updates the reference data set with the specified name in the specified subscription, resource group, and environment.
+ *
+ * @param subscriptionId - Azure Subscription ID.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
+ * @param referenceDataSetName - The name of the Time Series Insights reference data set associated with the specified environment.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ReferenceDataSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

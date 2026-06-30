@@ -21,6 +21,8 @@ export const CreateBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   major_version: Schema.optional(Schema.String),
+  create_database_if_missing: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.Literals(["mysql", "postgresql"])),
 }).pipe(
   T.Http({
     method: "POST",
@@ -60,6 +62,7 @@ export const CreateBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   safe_migrations: Schema.Boolean,
   sharded: Schema.optional(Schema.Boolean),
   shard_count: Schema.optional(Schema.Number),
+  keyspace_count: Schema.optional(Schema.Number),
   stale_schema: Schema.Boolean,
   actor: Schema.NullOr(
     Schema.Struct({
@@ -114,6 +117,8 @@ export type CreateBranchOutput = typeof CreateBranchOutput.Type;
  * @param seed_data - If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching™ being enabled for the branch.
  * @param cluster_size - The database cluster size. Required if a backup_id is provided, optional otherwise. Options: PS_10, PS_20, PS_40, ..., PS_2800
  * @param major_version - For PostgreSQL databases, the PostgreSQL major version to use for the branch. Defaults to the major version of the parent branch if it exists or the database's default branch major version. Ignored for branches restored from backups.
+ * @param create_database_if_missing - Create a new database for the branch if the database does not exist. Defaults to false.
+ * @param kind - The kind of branch to create. Required when create_database_if_missing is set.
  */
 export const createBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateBranchInput,

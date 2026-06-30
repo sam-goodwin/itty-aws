@@ -23,7 +23,7 @@ export type CreateEvmAccountOutput = typeof CreateEvmAccountOutput.Type;
 
 // The operation
 /**
- * Create an EVM account
+ * Create EVM account
  *
  * Creates a new EVM account.
  *

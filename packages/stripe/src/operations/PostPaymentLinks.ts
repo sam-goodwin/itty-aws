@@ -162,6 +162,11 @@ export const PostPaymentLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       quantity: Schema.Number,
     }),
   ),
+  managed_payments: Schema.optional(
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Boolean),
+    }),
+  ),
   metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   name_collection: Schema.optional(
     Schema.Struct({
@@ -213,6 +218,28 @@ export const PostPaymentLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   payment_method_collection: Schema.optional(
     Schema.Literals(["always", "if_required"]),
   ),
+  payment_method_options: Schema.optional(
+    Schema.Struct({
+      card: Schema.optional(
+        Schema.Struct({
+          restrictions: Schema.optional(
+            Schema.Struct({
+              brands_blocked: Schema.optional(
+                Schema.Array(
+                  Schema.Literals([
+                    "american_express",
+                    "discover_global_network",
+                    "mastercard",
+                    "visa",
+                  ]),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
   payment_method_types: Schema.optional(
     Schema.Array(
       Schema.Literals([
@@ -224,6 +251,7 @@ export const PostPaymentLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "bacs_debit",
         "bancontact",
         "billie",
+        "bizum",
         "blik",
         "boleto",
         "card",
@@ -250,6 +278,7 @@ export const PostPaymentLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "satispay",
         "sepa_debit",
         "sofort",
+        "sunbit",
         "swish",
         "twint",
         "upi",
@@ -778,6 +807,7 @@ export const PostPaymentLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
     livemode: Schema.Boolean,
+    managed_payments: Schema.Unknown,
     metadata: Schema.Record(Schema.String, Schema.String),
     name_collection: Schema.optional(
       Schema.Struct({
@@ -810,6 +840,7 @@ export const PostPaymentLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     payment_intent_data: Schema.Unknown,
     payment_method_collection: Schema.Literals(["always", "if_required"]),
+    payment_method_options: Schema.Unknown,
     payment_method_types: Schema.NullOr(
       Schema.Array(
         Schema.Literals([
@@ -821,6 +852,7 @@ export const PostPaymentLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           "bacs_debit",
           "bancontact",
           "billie",
+          "bizum",
           "blik",
           "boleto",
           "card",
@@ -847,6 +879,7 @@ export const PostPaymentLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           "satispay",
           "sepa_debit",
           "sofort",
+          "sunbit",
           "swish",
           "twint",
           "upi",

@@ -24,7 +24,7 @@ export type GetOrgActivityFeedOutput = typeof GetOrgActivityFeedOutput.Type;
 /**
  * Return Pre-Filtered Activity Feed Link for One Organization
  *
- * Returns a pre-filtered activity feed link for the specified organization based on the provided date range and event types. The returned link can be shared and opened to view the activity feed with the same filters applied. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+ * Returns a pre-filtered activity feed link for the specified organization based on the provided date range and event types. The returned link can be shared and opened to view the activity feed with the same filters applied.
  *
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

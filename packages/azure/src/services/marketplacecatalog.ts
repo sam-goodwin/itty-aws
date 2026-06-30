@@ -45,7 +45,15 @@ export const CreateApiKeyPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const EdgeZonesProductsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    edgeZone: Schema.String.pipe(T.PathParam()),
+    language: Schema.optional(Schema.String),
+    market: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/locations/{location}/edgeZones/{edgeZone}/products",
@@ -1351,6 +1359,15 @@ export type EdgeZonesProductsListOutput =
 // The operation
 /**
  * Get a list of edge zone products
+ *
+ * @param subscriptionId - Subscription id of the caller
+ * @param location - Location of the edge zones
+ * @param edgeZone - Required edge zone
+ * @param language - The language of the free texts
+ * @param market - The required market
+ * @param $select - Properties to be returned in the response.
+ * @param $skipToken - The optional page continuation token that is used in the event of paginated result.
+ * @param api-version - The API version to use for the request.
  */
 export const EdgeZonesProductsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1447,6 +1464,8 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ProductGetGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    productId: Schema.String.pipe(T.PathParam()),
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
     includeHiddenPlans: Schema.optional(Schema.Boolean),
@@ -1925,6 +1944,8 @@ export type ProductGetGetByBillingAccountOutput =
  * Gets a single product by billing account.
  *
  * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param productId - The ID of the product
  * @param includeStopSoldPlans - Indicates whether to include plans that are no longer available for purchase in the response. By default, includeStopSoldPlans is set to FALSE.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
  * @param includeHiddenPlans - Indicates whether to include hidden plans in the response. By default, includeHiddenPlans is set to FALSE.
@@ -1940,6 +1961,9 @@ export const ProductGetGetByBillingAccount =
 // Input Schema
 export const ProductGetGetByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingProfileId: Schema.String.pipe(T.PathParam()),
+    productId: Schema.String.pipe(T.PathParam()),
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
     includeHiddenPlans: Schema.optional(Schema.Boolean),
@@ -2418,6 +2442,9 @@ export type ProductGetGetByBillingProfileOutput =
  * Gets a single product by billing profile.
  *
  * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param billingProfileId - The ID of the target billing account.
+ * @param productId - The ID of the product
  * @param includeStopSoldPlans - Indicates whether to include plans that are no longer available for purchase in the response. By default, includeStopSoldPlans is set to FALSE.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
  * @param includeHiddenPlans - Indicates whether to include hidden plans in the response. By default, includeHiddenPlans is set to FALSE.
@@ -2434,6 +2461,7 @@ export const ProductGetGetByBillingProfile =
 export const ProductGetGetBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    productId: Schema.String.pipe(T.PathParam()),
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
     includeHiddenPlans: Schema.optional(Schema.Boolean),
@@ -2914,6 +2942,7 @@ export type ProductGetGetBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param productId - The ID of the product
  * @param includeStopSoldPlans - Indicates whether to include plans that are no longer available for purchase in the response. By default, includeStopSoldPlans is set to FALSE.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
  * @param includeHiddenPlans - Indicates whether to include hidden plans in the response. By default, includeHiddenPlans is set to FALSE.
@@ -2931,6 +2960,7 @@ export const ProductGetGetBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ProductGetGetByTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String.pipe(T.PathParam()),
     market: Schema.String,
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
@@ -3410,6 +3440,7 @@ export type ProductGetGetByTenantOutput =
  * Gets a single product by tenant.
  *
  * @param api-version - The API version to use for this operation.
+ * @param productId - The ID of the product
  * @param market - Product market value that will be used to fetch the product and affect the returning result.Possible values can be found at https://docs.microsoft.com/en-us/azure/marketplace/marketplace-geo-availability-currencies. Example: 'US'
  * @param includeStopSoldPlans - Indicates whether to include plans that are no longer available for purchase in the response. By default, includeStopSoldPlans is set to FALSE.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
@@ -3428,6 +3459,7 @@ export const ProductGetGetByTenant = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ProductListListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
     locations: Schema.optional(Schema.String),
@@ -3536,6 +3568,7 @@ export type ProductListListByBillingAccountOutput =
  * Lists products for billing account.
  *
  * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
  * @param excludePublicOffersAndPublicPlans - Whether to exclude public offers and public plans from the response. Default is false, which means that public offers and public plans are included in the response. If set to true, only private plans will be returned.
  * @param locations - Return products available in selected location. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/
@@ -3589,6 +3622,8 @@ export const ProductListListByBillingAccount =
 // Input Schema
 export const ProductListListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingProfileId: Schema.String.pipe(T.PathParam()),
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
     locations: Schema.optional(Schema.String),
@@ -3697,6 +3732,8 @@ export type ProductListListByBillingProfileOutput =
  * Lists products for billing profile.
  *
  * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param billingProfileId - The ID of the target billing account.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
  * @param excludePublicOffersAndPublicPlans - Whether to exclude public offers and public plans from the response. Default is false, which means that public offers and public plans are included in the response. If set to true, only private plans will be returned.
  * @param locations - Return products available in selected location. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/
@@ -4248,3 +4285,636 @@ export const SearchPostArm = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SearchPostArmInput,
   outputSchema: SearchPostArmOutput,
 }));
+// Input Schema
+export const SkusGetByBillingAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    skuId: Schema.String.pipe(T.PathParam()),
+    language: Schema.optional(Schema.String),
+    includeStopSold: Schema.optional(Schema.Boolean),
+    includeFutureAvailabilities: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus/{skuId}",
+      apiVersion: "2025-05-01",
+    }),
+  );
+export type SkusGetByBillingAccountInput =
+  typeof SkusGetByBillingAccountInput.Type;
+
+// Output Schema
+export const SkusGetByBillingAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String,
+    productDisplayName: Schema.optional(Schema.String),
+    productDescription: Schema.optional(Schema.String),
+    serviceFamily: Schema.optional(Schema.String),
+    service: Schema.optional(Schema.String),
+    publisherId: Schema.optional(Schema.String),
+    publisherType: Schema.optional(Schema.String),
+    productType: Schema.optional(Schema.String),
+    productSubType: Schema.optional(Schema.String),
+    summary: Schema.optional(Schema.String),
+    productAttributes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          key: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    skuName: Schema.String,
+    skuId: Schema.String,
+    skuType: Schema.String,
+    language: Schema.String,
+    skuDescription: Schema.String,
+    skuTitle: Schema.String,
+    lastModifiedDateTime: Schema.optional(Schema.String),
+    location: Schema.String,
+    armRegionName: Schema.optional(Schema.String),
+    cloud: Schema.String,
+    locationType: Schema.String,
+    region: Schema.optional(Schema.String),
+    skuGroupId: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    feature: Schema.optional(Schema.String),
+    serviceType: Schema.optional(Schema.String),
+    minQuantity: Schema.optional(Schema.Number),
+    maxQuantity: Schema.optional(Schema.Number),
+    cspState: Schema.optional(Schema.String),
+    hasRi: Schema.optional(Schema.Boolean),
+    skuAttributes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          key: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    skuProperties: Schema.optional(
+      Schema.Struct({
+        category: Schema.optional(Schema.String),
+        dataDiskType: Schema.optional(Schema.String),
+        diskType: Schema.optional(Schema.String),
+        numberOfCores: Schema.optional(Schema.String),
+        ram: Schema.optional(Schema.String),
+        vCpu: Schema.optional(Schema.String),
+        armSkuName: Schema.optional(Schema.String),
+        accessTier: Schema.optional(Schema.String),
+      }),
+    ),
+    offeringProperties: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          meterType: Schema.optional(Schema.String),
+          billingMeterId: Schema.optional(Schema.String),
+          offeringId: Schema.optional(Schema.String),
+          productCode: Schema.optional(Schema.String),
+          termId: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    alternateIds: Schema.optional(
+      Schema.Struct({
+        aadSkuId: Schema.optional(Schema.Array(Schema.String)),
+        legacyOfferGuid: Schema.optional(Schema.Array(Schema.String)),
+        applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+        addOnParent: Schema.optional(Schema.Array(Schema.String)),
+        applicableFuturePriceConcession: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        benefitSku: Schema.optional(Schema.Array(Schema.String)),
+        includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+        associatedSku: Schema.optional(Schema.Array(Schema.String)),
+        products: Schema.optional(
+          Schema.Struct({
+            applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+            addOnParent: Schema.optional(Schema.Array(Schema.String)),
+            applicableFuturePriceConcession: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            benefitSku: Schema.optional(Schema.Array(Schema.String)),
+            includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+            associatedSku: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    offeringType: Schema.optional(Schema.String),
+    categoryIds: Schema.optional(Schema.Array(Schema.String)),
+  });
+export type SkusGetByBillingAccountOutput =
+  typeof SkusGetByBillingAccountOutput.Type;
+
+// The operation
+/**
+ * Gets a single SKU with availabilities for the given billing account.
+ * Returns full SKU details (including availabilities) for the SKU identified by
+ * the composite `productId/skuId`, scoped to the given billing account. The caller
+ * must have billing account permissions. Supports both EA (legacy) and Modern (MCA)
+ * billing account ID formats.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param skuId - The ID of the SKU
+ * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'.
+ * @param includeStopSold - Include stop-sold SKUs in the response. Default is false.
+ * @param includeFutureAvailabilities - Include availabilities whose start date is in the future. Default is false.
+ */
+export const SkusGetByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SkusGetByBillingAccountInput,
+    outputSchema: SkusGetByBillingAccountOutput,
+  }),
+);
+// Input Schema
+export const SkusGetByBillingProfileInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingProfileId: Schema.String.pipe(T.PathParam()),
+    skuId: Schema.String.pipe(T.PathParam()),
+    language: Schema.optional(Schema.String),
+    includeStopSold: Schema.optional(Schema.Boolean),
+    includeFutureAvailabilities: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus/{skuId}",
+      apiVersion: "2025-05-01",
+    }),
+  );
+export type SkusGetByBillingProfileInput =
+  typeof SkusGetByBillingProfileInput.Type;
+
+// Output Schema
+export const SkusGetByBillingProfileOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String,
+    productDisplayName: Schema.optional(Schema.String),
+    productDescription: Schema.optional(Schema.String),
+    serviceFamily: Schema.optional(Schema.String),
+    service: Schema.optional(Schema.String),
+    publisherId: Schema.optional(Schema.String),
+    publisherType: Schema.optional(Schema.String),
+    productType: Schema.optional(Schema.String),
+    productSubType: Schema.optional(Schema.String),
+    summary: Schema.optional(Schema.String),
+    productAttributes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          key: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    skuName: Schema.String,
+    skuId: Schema.String,
+    skuType: Schema.String,
+    language: Schema.String,
+    skuDescription: Schema.String,
+    skuTitle: Schema.String,
+    lastModifiedDateTime: Schema.optional(Schema.String),
+    location: Schema.String,
+    armRegionName: Schema.optional(Schema.String),
+    cloud: Schema.String,
+    locationType: Schema.String,
+    region: Schema.optional(Schema.String),
+    skuGroupId: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    feature: Schema.optional(Schema.String),
+    serviceType: Schema.optional(Schema.String),
+    minQuantity: Schema.optional(Schema.Number),
+    maxQuantity: Schema.optional(Schema.Number),
+    cspState: Schema.optional(Schema.String),
+    hasRi: Schema.optional(Schema.Boolean),
+    skuAttributes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          key: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    skuProperties: Schema.optional(
+      Schema.Struct({
+        category: Schema.optional(Schema.String),
+        dataDiskType: Schema.optional(Schema.String),
+        diskType: Schema.optional(Schema.String),
+        numberOfCores: Schema.optional(Schema.String),
+        ram: Schema.optional(Schema.String),
+        vCpu: Schema.optional(Schema.String),
+        armSkuName: Schema.optional(Schema.String),
+        accessTier: Schema.optional(Schema.String),
+      }),
+    ),
+    offeringProperties: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          meterType: Schema.optional(Schema.String),
+          billingMeterId: Schema.optional(Schema.String),
+          offeringId: Schema.optional(Schema.String),
+          productCode: Schema.optional(Schema.String),
+          termId: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    alternateIds: Schema.optional(
+      Schema.Struct({
+        aadSkuId: Schema.optional(Schema.Array(Schema.String)),
+        legacyOfferGuid: Schema.optional(Schema.Array(Schema.String)),
+        applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+        addOnParent: Schema.optional(Schema.Array(Schema.String)),
+        applicableFuturePriceConcession: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        benefitSku: Schema.optional(Schema.Array(Schema.String)),
+        includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+        associatedSku: Schema.optional(Schema.Array(Schema.String)),
+        products: Schema.optional(
+          Schema.Struct({
+            applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+            addOnParent: Schema.optional(Schema.Array(Schema.String)),
+            applicableFuturePriceConcession: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            benefitSku: Schema.optional(Schema.Array(Schema.String)),
+            includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+            associatedSku: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    offeringType: Schema.optional(Schema.String),
+    categoryIds: Schema.optional(Schema.Array(Schema.String)),
+  });
+export type SkusGetByBillingProfileOutput =
+  typeof SkusGetByBillingProfileOutput.Type;
+
+// The operation
+/**
+ * Gets a single SKU with availabilities for the given billing account and billing profile.
+ * Same as the billing-account-only variant, but additionally scopes the hydration
+ * claims to a specific billing profile. Only meaningful for Modern (MCA) billing
+ * accounts; for EA billing accounts the billing profile is ignored.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param billingProfileId - The ID of the target billing profile.
+ * @param skuId - The ID of the SKU
+ * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'.
+ * @param includeStopSold - Include stop-sold SKUs in the response. Default is false.
+ * @param includeFutureAvailabilities - Include availabilities whose start date is in the future. Default is false.
+ */
+export const SkusGetByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SkusGetByBillingProfileInput,
+    outputSchema: SkusGetByBillingProfileOutput,
+  }),
+);
+// Input Schema
+export const SkusListByBillingAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    serviceFamily: Schema.String,
+    service: Schema.String,
+    language: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
+    $orderBy: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus",
+      apiVersion: "2025-05-01",
+    }),
+  );
+export type SkusListByBillingAccountInput =
+  typeof SkusListByBillingAccountInput.Type;
+
+// Output Schema
+export const SkusListByBillingAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        productId: Schema.String,
+        productDisplayName: Schema.optional(Schema.String),
+        productDescription: Schema.optional(Schema.String),
+        serviceFamily: Schema.optional(Schema.String),
+        service: Schema.optional(Schema.String),
+        publisherId: Schema.optional(Schema.String),
+        publisherType: Schema.optional(Schema.String),
+        productType: Schema.optional(Schema.String),
+        productSubType: Schema.optional(Schema.String),
+        summary: Schema.optional(Schema.String),
+        productAttributes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        skuName: Schema.String,
+        skuId: Schema.String,
+        skuType: Schema.String,
+        language: Schema.String,
+        skuDescription: Schema.String,
+        skuTitle: Schema.String,
+        lastModifiedDateTime: Schema.optional(Schema.String),
+        location: Schema.String,
+        armRegionName: Schema.optional(Schema.String),
+        cloud: Schema.String,
+        locationType: Schema.String,
+        region: Schema.optional(Schema.String),
+        skuGroupId: Schema.optional(Schema.String),
+        zone: Schema.optional(Schema.String),
+        feature: Schema.optional(Schema.String),
+        serviceType: Schema.optional(Schema.String),
+        minQuantity: Schema.optional(Schema.Number),
+        maxQuantity: Schema.optional(Schema.Number),
+        cspState: Schema.optional(Schema.String),
+        hasRi: Schema.optional(Schema.Boolean),
+        skuAttributes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        skuProperties: Schema.optional(
+          Schema.Struct({
+            category: Schema.optional(Schema.String),
+            dataDiskType: Schema.optional(Schema.String),
+            diskType: Schema.optional(Schema.String),
+            numberOfCores: Schema.optional(Schema.String),
+            ram: Schema.optional(Schema.String),
+            vCpu: Schema.optional(Schema.String),
+            armSkuName: Schema.optional(Schema.String),
+            accessTier: Schema.optional(Schema.String),
+          }),
+        ),
+        offeringProperties: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              meterType: Schema.optional(Schema.String),
+              billingMeterId: Schema.optional(Schema.String),
+              offeringId: Schema.optional(Schema.String),
+              productCode: Schema.optional(Schema.String),
+              termId: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        alternateIds: Schema.optional(
+          Schema.Struct({
+            aadSkuId: Schema.optional(Schema.Array(Schema.String)),
+            legacyOfferGuid: Schema.optional(Schema.Array(Schema.String)),
+            applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+            addOnParent: Schema.optional(Schema.Array(Schema.String)),
+            applicableFuturePriceConcession: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            benefitSku: Schema.optional(Schema.Array(Schema.String)),
+            includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+            associatedSku: Schema.optional(Schema.Array(Schema.String)),
+            products: Schema.optional(
+              Schema.Struct({
+                applicablePromotion: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                addOnParent: Schema.optional(Schema.Array(Schema.String)),
+                applicableFuturePriceConcession: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                benefitSku: Schema.optional(Schema.Array(Schema.String)),
+                includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+                associatedSku: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
+        offeringType: Schema.optional(Schema.String),
+        categoryIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SkusListByBillingAccountOutput =
+  typeof SkusListByBillingAccountOutput.Type;
+
+// The operation
+/**
+ * Lists SKUs for billing account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param serviceFamily - The service family to filter by, such as 'Compute'.
+ * @param service - The service to filter by, such as 'Virtual Machines'.
+ * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'.
+ * @param locations - Return SKUs available in the selected locations. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/.
+ * @param $filter - Filters the results, based on a Boolean condition. Example: $filter=serviceFamily eq 'Compute'. Fields that can be filtered by are:
+- `productId`
+- `serviceFamily`
+- `service`
+- `skuId`
+- `skuName`
+- `skuType`
+- `armRegionName`
+- `location`
+- `publisherId`
+- `productType`
+ * @param $select - Selects which properties to include in the results. Example: $select=skuName,skuId
+ * @param $expand - Expands related entities inline.
+ * @param $orderBy - Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are:
+- `lastModifiedDateTime`
+- `skuName`
+- `skuId`
+- `productId`
+- `serviceFamily`
+- `service`
+ */
+export const SkusListByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SkusListByBillingAccountInput,
+    outputSchema: SkusListByBillingAccountOutput,
+  }),
+);
+// Input Schema
+export const SkusListByBillingProfileInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingProfileId: Schema.String.pipe(T.PathParam()),
+    serviceFamily: Schema.String,
+    service: Schema.String,
+    language: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
+    $orderBy: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus",
+      apiVersion: "2025-05-01",
+    }),
+  );
+export type SkusListByBillingProfileInput =
+  typeof SkusListByBillingProfileInput.Type;
+
+// Output Schema
+export const SkusListByBillingProfileOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        productId: Schema.String,
+        productDisplayName: Schema.optional(Schema.String),
+        productDescription: Schema.optional(Schema.String),
+        serviceFamily: Schema.optional(Schema.String),
+        service: Schema.optional(Schema.String),
+        publisherId: Schema.optional(Schema.String),
+        publisherType: Schema.optional(Schema.String),
+        productType: Schema.optional(Schema.String),
+        productSubType: Schema.optional(Schema.String),
+        summary: Schema.optional(Schema.String),
+        productAttributes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        skuName: Schema.String,
+        skuId: Schema.String,
+        skuType: Schema.String,
+        language: Schema.String,
+        skuDescription: Schema.String,
+        skuTitle: Schema.String,
+        lastModifiedDateTime: Schema.optional(Schema.String),
+        location: Schema.String,
+        armRegionName: Schema.optional(Schema.String),
+        cloud: Schema.String,
+        locationType: Schema.String,
+        region: Schema.optional(Schema.String),
+        skuGroupId: Schema.optional(Schema.String),
+        zone: Schema.optional(Schema.String),
+        feature: Schema.optional(Schema.String),
+        serviceType: Schema.optional(Schema.String),
+        minQuantity: Schema.optional(Schema.Number),
+        maxQuantity: Schema.optional(Schema.Number),
+        cspState: Schema.optional(Schema.String),
+        hasRi: Schema.optional(Schema.Boolean),
+        skuAttributes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        skuProperties: Schema.optional(
+          Schema.Struct({
+            category: Schema.optional(Schema.String),
+            dataDiskType: Schema.optional(Schema.String),
+            diskType: Schema.optional(Schema.String),
+            numberOfCores: Schema.optional(Schema.String),
+            ram: Schema.optional(Schema.String),
+            vCpu: Schema.optional(Schema.String),
+            armSkuName: Schema.optional(Schema.String),
+            accessTier: Schema.optional(Schema.String),
+          }),
+        ),
+        offeringProperties: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              meterType: Schema.optional(Schema.String),
+              billingMeterId: Schema.optional(Schema.String),
+              offeringId: Schema.optional(Schema.String),
+              productCode: Schema.optional(Schema.String),
+              termId: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        alternateIds: Schema.optional(
+          Schema.Struct({
+            aadSkuId: Schema.optional(Schema.Array(Schema.String)),
+            legacyOfferGuid: Schema.optional(Schema.Array(Schema.String)),
+            applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+            addOnParent: Schema.optional(Schema.Array(Schema.String)),
+            applicableFuturePriceConcession: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            benefitSku: Schema.optional(Schema.Array(Schema.String)),
+            includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+            associatedSku: Schema.optional(Schema.Array(Schema.String)),
+            products: Schema.optional(
+              Schema.Struct({
+                applicablePromotion: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                addOnParent: Schema.optional(Schema.Array(Schema.String)),
+                applicableFuturePriceConcession: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                benefitSku: Schema.optional(Schema.Array(Schema.String)),
+                includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+                associatedSku: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
+        offeringType: Schema.optional(Schema.String),
+        categoryIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SkusListByBillingProfileOutput =
+  typeof SkusListByBillingProfileOutput.Type;
+
+// The operation
+/**
+ * Lists SKUs for billing profile.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param billingProfileId - The ID of the target billing profile.
+ * @param serviceFamily - The service family to filter by, such as 'Compute'.
+ * @param service - The service to filter by, such as 'Virtual Machines'.
+ * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'.
+ * @param locations - Return SKUs available in the selected locations. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/.
+ * @param $filter - Filters the results, based on a Boolean condition. Example: $filter=serviceFamily eq 'Compute'. Fields that can be filtered by are:
+- `productId`
+- `serviceFamily`
+- `service`
+- `skuId`
+- `skuName`
+- `skuType`
+- `armRegionName`
+- `location`
+- `publisherId`
+- `productType`
+ * @param $select - Selects which properties to include in the results. Example: $select=skuName,skuId
+ * @param $expand - Expands related entities inline.
+ * @param $orderBy - Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are:
+- `lastModifiedDateTime`
+- `skuName`
+- `skuId`
+- `productId`
+- `serviceFamily`
+- `service`
+ */
+export const SkusListByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SkusListByBillingProfileInput,
+    outputSchema: SkusListByBillingProfileOutput,
+  }),
+);

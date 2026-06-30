@@ -1108,6 +1108,8 @@ export interface Auth {
   claims?: Record<string, unknown>;
   /** A list of access level resource names that allow resources to be accessed by authenticated requester. It is part of Secure GCP processing for the incoming request. An access level string has the format: "//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}" Example: "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL" */
   accessLevels?: ReadonlyArray<string>;
+  /** Identifies the client credential id used for authentication. credential_id is in the format of AUTH_METHOD:IDENTIFIER, e.g. "serviceaccount:XXXXX, apikey:XXXXX" where the format of the IDENTIFIER can vary for different AUTH_METHODs. */
+  credentialId?: string;
   /** Attributes of the OAuth token associated with the request. */
   oauth?: Oauth;
 }
@@ -1119,6 +1121,7 @@ export const Auth: Schema.Schema<Auth> =
     presenter: Schema.optional(Schema.String),
     claims: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     accessLevels: Schema.optional(Schema.Array(Schema.String)),
+    credentialId: Schema.optional(Schema.String),
     oauth: Schema.optional(Oauth),
   }).annotate({ identifier: "Auth" });
 
@@ -1213,6 +1216,8 @@ export const RequestMetadata: Schema.Schema<RequestMetadata> =
   }).annotate({ identifier: "RequestMetadata" });
 
 export interface AuditLog {
+  /** The API version identifier of the operation that uses interface based versioning (IBV). For example, `"2026-01-01-preview"`. The version identifier generally follows the format of [variant_]date[_decorator]. It should not be parsed because the exact format varies across services. */
+  apiVersionIdentifier?: string;
   /** The name of the API service performing the operation. For example, `"compute.googleapis.com"`. */
   serviceName?: string;
   /** The name of the service method or operation. For API calls, this should be the name of the API method. For example, "google.cloud.bigquery.v2.TableService.InsertTable" "google.logging.v2.ConfigServiceV2.CreateSink" */
@@ -1247,6 +1252,7 @@ export interface AuditLog {
 
 export const AuditLog: Schema.Schema<AuditLog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersionIdentifier: Schema.optional(Schema.String),
     serviceName: Schema.optional(Schema.String),
     methodName: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),

@@ -16,6 +16,7 @@ export const V1ApplyProjectAddonInput =
       "auth_mfa_phone",
       "auth_mfa_web_authn",
       "log_drain",
+      "etl_pipeline",
     ]),
   }).pipe(
     T.Http({ method: "PATCH", path: "/v1/projects/{ref}/billing/addons" }),

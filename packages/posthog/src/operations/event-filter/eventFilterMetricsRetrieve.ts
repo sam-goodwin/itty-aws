@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const EventFilterMetricsRetrieveInput =
@@ -10,7 +9,7 @@ export const EventFilterMetricsRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/event_filter/metrics/",
+      path: "/api/projects/{project_id}/event_filter/metrics/",
     }),
   );
 export type EventFilterMetricsRetrieveInput =
@@ -46,6 +45,5 @@ export const eventFilterMetricsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: EventFilterMetricsRetrieveInput,
     outputSchema: EventFilterMetricsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

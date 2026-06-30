@@ -66,12 +66,13 @@ export const SendUserOperationOutput =
         }),
       ),
     ),
+    expiresAt: Schema.optional(Schema.String),
   });
 export type SendUserOperationOutput = typeof SendUserOperationOutput.Type;
 
 // The operation
 /**
- * Send a user operation
+ * Send user operation
  *
  * Sends a user operation with a signature.
  * The payload to sign must be the `userOpHash` field of the user operation. This hash should be signed directly (not using `personal_sign` or EIP-191 message hashing).

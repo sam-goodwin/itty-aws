@@ -47,6 +47,7 @@ export const ActivityLogListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "UserGroup",
       "BatchExport",
       "BatchImport",
+      "ExportedAsset",
       "Integration",
       "Annotation",
       "Tag",
@@ -54,6 +55,7 @@ export const ActivityLogListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "Subscription",
       "PersonalAPIKey",
       "ProjectSecretAPIKey",
+      "OAuthApplication",
       "User",
       "Action",
       "AlertConfiguration",
@@ -61,13 +63,18 @@ export const ActivityLogListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "AlertSubscription",
       "ExternalDataSource",
       "ExternalDataSchema",
+      "Evaluation",
       "LLMTrace",
       "WebAnalyticsFilterPreset",
       "CustomerProfileConfig",
       "Log",
       "LogsAlertConfiguration",
+      "LogsExclusionRule",
+      "DashboardWidget",
       "ProductTour",
       "Ticket",
+      "InstanceSetting",
+      "SignalScoutConfig",
     ]),
   ),
   scopes: Schema.optional(Schema.String),
@@ -104,14 +111,16 @@ export const ActivityLogListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         ),
         unread: Schema.optional(Schema.Boolean),
+        team_id: Schema.optional(Schema.NullOr(Schema.Number)),
         organization_id: Schema.optional(Schema.NullOr(Schema.String)),
         was_impersonated: Schema.optional(Schema.NullOr(Schema.Boolean)),
         is_system: Schema.optional(Schema.NullOr(Schema.Boolean)),
         client: Schema.optional(Schema.NullOr(Schema.String)),
+        ip_address: Schema.optional(Schema.NullOr(Schema.String)),
         activity: Schema.optional(Schema.String),
         item_id: Schema.optional(Schema.NullOr(Schema.String)),
         scope: Schema.optional(Schema.String),
-        detail: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        detail: Schema.optional(Schema.Unknown),
         created_at: Schema.optional(Schema.String),
       }),
     ),
@@ -164,6 +173,7 @@ export type ActivityLogListOutput = typeof ActivityLogListOutput.Type;
 * `UserGroup` - UserGroup
 * `BatchExport` - BatchExport
 * `BatchImport` - BatchImport
+* `ExportedAsset` - ExportedAsset
 * `Integration` - Integration
 * `Annotation` - Annotation
 * `Tag` - Tag
@@ -171,6 +181,7 @@ export type ActivityLogListOutput = typeof ActivityLogListOutput.Type;
 * `Subscription` - Subscription
 * `PersonalAPIKey` - PersonalAPIKey
 * `ProjectSecretAPIKey` - ProjectSecretAPIKey
+* `OAuthApplication` - OAuthApplication
 * `User` - User
 * `Action` - Action
 * `AlertConfiguration` - AlertConfiguration
@@ -178,13 +189,18 @@ export type ActivityLogListOutput = typeof ActivityLogListOutput.Type;
 * `AlertSubscription` - AlertSubscription
 * `ExternalDataSource` - ExternalDataSource
 * `ExternalDataSchema` - ExternalDataSchema
+* `Evaluation` - Evaluation
 * `LLMTrace` - LLMTrace
 * `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset
 * `CustomerProfileConfig` - CustomerProfileConfig
 * `Log` - Log
 * `LogsAlertConfiguration` - LogsAlertConfiguration
+* `LogsExclusionRule` - LogsExclusionRule
+* `DashboardWidget` - DashboardWidget
 * `ProductTour` - ProductTour
 * `Ticket` - Ticket
+* `InstanceSetting` - InstanceSetting
+* `SignalScoutConfig` - SignalScoutConfig
  * @param scopes - Filter by multiple activity scopes, comma-separated. Values must be valid ActivityScope enum values. E.g. "FeatureFlag,Insight".
  * @param user - Filter by user UUID who performed the action.
  */

@@ -87,7 +87,6 @@ export type ListProjectOperationsOutput =
  * List operations
  *
  * Retrieves a list of operations for the specified Neon project.
- * You can obtain a `project_id` by listing the projects for your Neon account.
  * The number of operations returned can be large.
  * To paginate the response, issue an initial request with a `limit` value.
  * Then, add the `cursor` value that was returned in the response to the next request.

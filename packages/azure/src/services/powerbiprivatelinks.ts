@@ -49,6 +49,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Power BI RP operations.
+ *
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -57,6 +59,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PowerBIResourcesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureResourceName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -257,6 +262,12 @@ export type PowerBIResourcesCreateOutput =
 // The operation
 /**
  * Creates or updates a Private Link Service Resource for Power BI.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param resourceGroupName - The name of the resource group.
+ * @param azureResourceName - The name of the Azure resource.
+ * @param api-version - The API version to be used with the HTTP request.
+ * @param x-ms-client-tenant-id - The client tenant id in header. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
  */
 export const PowerBIResourcesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -266,7 +277,11 @@ export const PowerBIResourcesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PowerBIResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureResourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}",
@@ -285,6 +300,11 @@ export type PowerBIResourcesDeleteOutput =
 // The operation
 /**
  * Deletes a Private Link Service Resource for Power BI.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param resourceGroupName - The name of the resource group.
+ * @param azureResourceName - The name of the Azure resource.
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const PowerBIResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -294,7 +314,11 @@ export const PowerBIResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PowerBIResourcesListByResourceNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureResourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}",
@@ -406,6 +430,11 @@ export type PowerBIResourcesListByResourceNameOutput =
 // The operation
 /**
  * Gets all the private link resources for the given Azure resource.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param resourceGroupName - The name of the resource group.
+ * @param azureResourceName - The name of the Azure resource.
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const PowerBIResourcesListByResourceName =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -415,6 +444,9 @@ export const PowerBIResourcesListByResourceName =
 // Input Schema
 export const PowerBIResourcesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureResourceName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -615,6 +647,12 @@ export type PowerBIResourcesUpdateOutput =
 // The operation
 /**
  * Creates or updates a Private Link Service Resource for Power BI.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param resourceGroupName - The name of the resource group.
+ * @param azureResourceName - The name of the Azure resource.
+ * @param api-version - The API version to be used with the HTTP request.
+ * @param x-ms-client-tenant-id - The client tenant id in header. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
  */
 export const PowerBIResourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -625,6 +663,10 @@ export const PowerBIResourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureResourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -747,6 +789,12 @@ export type PrivateEndpointConnectionsCreateOutput =
  * Update a specific private endpoint connection.
  *
  * Updates the status of Private Endpoint Connection object. Used to approve or reject a connection.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param resourceGroupName - The name of the resource group.
+ * @param azureResourceName - The name of the Azure resource.
+ * @param privateEndpointName - The name of the private endpoint.
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateEndpointConnectionsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -755,7 +803,12 @@ export const PrivateEndpointConnectionsCreate =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureResourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections/{privateEndpointName}",
@@ -776,6 +829,12 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * Asynchronous API to delete a private endpoint connection for Power BI by private endpoint name.
  *
  * Deletes a private endpoint connection for Power BI by private endpoint name.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param resourceGroupName - The name of the resource group.
+ * @param azureResourceName - The name of the Azure resource.
+ * @param privateEndpointName - The name of the private endpoint.
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -784,7 +843,12 @@ export const PrivateEndpointConnectionsDelete =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureResourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections/{privateEndpointName}",
@@ -856,6 +920,12 @@ export type PrivateEndpointConnectionsGetOutput =
  * Get a specific private endpoint connection.
  *
  * Get a specific private endpoint connection for Power BI by private endpoint name.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param resourceGroupName - The name of the resource group.
+ * @param azureResourceName - The name of the Azure resource.
+ * @param privateEndpointName - The name of the private endpoint.
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -865,6 +935,7 @@ export const PrivateEndpointConnectionsGet =
 // Input Schema
 export const PrivateEndpointConnectionsListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -957,8 +1028,10 @@ export type PrivateEndpointConnectionsListByResourceOutput =
  *
  * Gets private endpoint connection for Power BI.
  *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param azureResourceName - The name of the powerbi resource.
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateEndpointConnectionsListByResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -968,6 +1041,9 @@ export const PrivateEndpointConnectionsListByResource =
 // Input Schema
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureResourceName: Schema.String.pipe(T.PathParam()),
     privateLinkResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1002,7 +1078,11 @@ export type PrivateLinkResourcesGetOutput =
  *
  * Get properties of a private link resource.
  *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param resourceGroupName - The name of the resource group.
+ * @param azureResourceName - The name of the Azure resource.
  * @param privateLinkResourceName - The name of private link resource.
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1012,7 +1092,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkResourcesListByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureResourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateLinkResources",
@@ -1051,6 +1135,11 @@ export type PrivateLinkResourcesListByResourceOutput =
  * List private link Power BI resource.
  *
  * List private link resources under a specific Power BI resource.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param resourceGroupName - The name of the resource group.
+ * @param azureResourceName - The name of the Azure resource.
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateLinkResourcesListByResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1059,7 +1148,10 @@ export const PrivateLinkResourcesListByResource =
   }));
 // Input Schema
 export const PrivateLinkServiceResourceOperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/operationResults/{operationId}",
@@ -1117,6 +1209,10 @@ export type PrivateLinkServiceResourceOperationResultsGetOutput =
 // The operation
 /**
  * Gets operation result of Private Link Service Resources for Power BI.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param operationId - The id of Azure async operation.
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateLinkServiceResourceOperationResultsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1125,7 +1221,9 @@ export const PrivateLinkServiceResourceOperationResultsGet =
   }));
 // Input Schema
 export const PrivateLinkServicesForPowerBIListBySubscriptionIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI",
@@ -1237,6 +1335,9 @@ export type PrivateLinkServicesForPowerBIListBySubscriptionIdOutput =
 // The operation
 /**
  * Gets all the private link resources for the given subscription id.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const privateLinkServicesForPowerBIListBySubscriptionId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1245,7 +1346,10 @@ export const privateLinkServicesForPowerBIListBySubscriptionId =
   }));
 // Input Schema
 export const PrivateLinkServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI",
@@ -1357,6 +1461,10 @@ export type PrivateLinkServicesListByResourceGroupOutput =
 // The operation
 /**
  * Gets all the private link resources for the given resource group.
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+ * @param resourceGroupName - The name of the resource group.
+ * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateLinkServicesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

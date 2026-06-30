@@ -21,7 +21,7 @@ export type AddGroupTeamsOutput = typeof AddGroupTeamsOutput.Type;
 /**
  * Add Multiple Teams to One Project
  *
- * Adds multiple teams to the specified project. All members of a team share the same project access. MongoDB Cloud limits the number of users to a maximum of 100 teams per project and a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+ * Adds multiple teams to the specified project. All members of a team share the same project access. MongoDB Cloud limits the number of users to a maximum of 100 teams per project and a maximum of 250 teams per organization.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

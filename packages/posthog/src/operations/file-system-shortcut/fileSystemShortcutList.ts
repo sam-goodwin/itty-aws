@@ -32,6 +32,7 @@ export const FileSystemShortcutListOutput =
           type: Schema.optional(Schema.String),
           ref: Schema.optional(Schema.NullOr(Schema.String)),
           href: Schema.optional(Schema.NullOr(Schema.String)),
+          order: Schema.optional(Schema.Number),
           created_at: Schema.optional(Schema.String),
         }),
       ),

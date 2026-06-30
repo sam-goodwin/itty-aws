@@ -26,7 +26,7 @@ export type GetOrganizationOutput = typeof GetOrganizationOutput.Type;
 /**
  * Retrieve organization details
  *
- * Retrieves information about the specified organization.
+ * Retrieves details for the specified organization, including its name, plan, and configuration.
  *
  * @param org_id - The Neon organization ID
  */

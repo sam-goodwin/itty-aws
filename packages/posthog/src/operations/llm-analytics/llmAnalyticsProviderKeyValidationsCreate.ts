@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsProviderKeyValidationsCreateInput =
@@ -10,7 +9,7 @@ export const LlmAnalyticsProviderKeyValidationsCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/llm_analytics/provider_key_validations/",
+      path: "/api/projects/{project_id}/llm_analytics/provider_key_validations/",
     }),
   );
 export type LlmAnalyticsProviderKeyValidationsCreateInput =
@@ -32,5 +31,4 @@ export const llmAnalyticsProviderKeyValidationsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsProviderKeyValidationsCreateInput,
     outputSchema: LlmAnalyticsProviderKeyValidationsCreateOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

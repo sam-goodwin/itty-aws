@@ -5542,6 +5542,8 @@ export const WorkloadNetworksDeleteDnsServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dnsServiceId: Schema.String.pipe(T.PathParam()),
+    privateCloudName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5565,6 +5567,8 @@ export type WorkloadNetworksDeleteDnsServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param dnsServiceId - ID of the DNS service.
+ * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksDeleteDnsService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5576,6 +5580,8 @@ export const WorkloadNetworksDeleteDnsZoneInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dnsZoneId: Schema.String.pipe(T.PathParam()),
+    privateCloudName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5599,6 +5605,8 @@ export type WorkloadNetworksDeleteDnsZoneOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param dnsZoneId - ID of the DNS zone.
+ * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksDeleteDnsZone =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5610,6 +5618,8 @@ export const WorkloadNetworksDeletePortMirroringInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    portMirroringId: Schema.String.pipe(T.PathParam()),
+    privateCloudName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5633,6 +5643,8 @@ export type WorkloadNetworksDeletePortMirroringOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param portMirroringId - ID of the NSX port mirroring profile.
+ * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksDeletePortMirroring =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5644,6 +5656,8 @@ export const WorkloadNetworksDeletePublicIPInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    publicIPId: Schema.String.pipe(T.PathParam()),
+    privateCloudName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5667,6 +5681,8 @@ export type WorkloadNetworksDeletePublicIPOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param publicIPId - ID of the DNS zone.
+ * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksDeletePublicIP =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5716,6 +5732,8 @@ export const WorkloadNetworksDeleteVMGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vmGroupId: Schema.String.pipe(T.PathParam()),
+    privateCloudName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5739,6 +5757,8 @@ export type WorkloadNetworksDeleteVMGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vmGroupId - ID of the VM group.
+ * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksDeleteVMGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5801,6 +5821,8 @@ export const WorkloadNetworksGetDhcpInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dhcpId: Schema.String.pipe(T.PathParam()),
+    privateCloudName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5842,6 +5864,8 @@ export type WorkloadNetworksGetDhcpOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param dhcpId - The ID of the DHCP configuration
+ * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksGetDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

@@ -23,7 +23,7 @@ export type CreateSolanaAccountOutput = typeof CreateSolanaAccountOutput.Type;
 
 // The operation
 /**
- * Create a Solana account
+ * Create Solana account
  *
  * Creates a new Solana account.
  *

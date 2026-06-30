@@ -9,16 +9,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const ConnectedClusterCreateInput =
+export const ConnectedClusterCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    identity: Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals(["None", "SystemAssigned"]),
-    }),
-    kind: Schema.optional(Schema.Literals(["ProvisionedCluster"])),
+    clusterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       agentPublicKeyCertificate: Schema.String,
       kubernetesVersion: Schema.optional(Schema.String),
@@ -43,7 +38,13 @@ export const ConnectedClusterCreateInput =
       managedIdentityCertificateExpirationTime: Schema.optional(Schema.String),
       lastConnectivityTime: Schema.optional(Schema.String),
       connectivityStatus: Schema.optional(
-        Schema.Literals(["Connecting", "Connected", "Offline", "Expired"]),
+        Schema.Literals([
+          "Connecting",
+          "Connected",
+          "Offline",
+          "Expired",
+          "AgentNotInstalled",
+        ]),
       ),
       privateLinkState: Schema.optional(
         Schema.Literals(["Enabled", "Disabled"]),
@@ -65,12 +66,93 @@ export const ConnectedClusterCreateInput =
           agentAutoUpgrade: Schema.optional(
             Schema.Literals(["Enabled", "Disabled"]),
           ),
+          systemComponents: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                userSpecifiedVersion: Schema.optional(Schema.String),
+                majorVersion: Schema.optional(Schema.Number),
+                currentVersion: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          agentErrors: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                message: Schema.optional(Schema.String),
+                severity: Schema.optional(Schema.String),
+                component: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          agentState: Schema.optional(Schema.String),
         }),
+      ),
+      securityProfile: Schema.optional(
+        Schema.Struct({
+          workloadIdentity: Schema.optional(
+            Schema.Struct({
+              enabled: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        }),
+      ),
+      oidcIssuerProfile: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.optional(Schema.Boolean),
+          issuerUrl: Schema.optional(Schema.String),
+          selfHostedIssuerUrl: Schema.optional(Schema.String),
+        }),
+      ),
+      gateway: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      arcAgentryConfigurations: Schema.optional(
+        Schema.NullOr(
+          Schema.Array(
+            Schema.Struct({
+              feature: Schema.optional(Schema.String),
+              settings: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+              ),
+              protectedSettings: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+              ),
+            }),
+          ),
+        ),
       ),
       miscellaneousProperties: Schema.optional(
         Schema.Record(Schema.String, Schema.String),
       ),
     }),
+    identity: Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals(["None", "SystemAssigned"]),
+    }),
+    kind: Schema.optional(Schema.Literals(["ProvisionedCluster"])),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+      apiVersion: "2026-05-01",
+    }),
+  );
+export type ConnectedClusterCreateOrReplaceInput =
+  typeof ConnectedClusterCreateOrReplaceInput.Type;
+
+// Output Schema
+export const ConnectedClusterCreateOrReplaceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -85,54 +167,37 @@ export const ConnectedClusterCreateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
-      apiVersion: "2024-01-01",
-    }),
-  );
-export type ConnectedClusterCreateInput =
-  typeof ConnectedClusterCreateInput.Type;
-
-// Output Schema
-export const ConnectedClusterCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
   });
-export type ConnectedClusterCreateOutput =
-  typeof ConnectedClusterCreateOutput.Type;
+export type ConnectedClusterCreateOrReplaceOutput =
+  typeof ConnectedClusterCreateOrReplaceOutput.Type;
 
 // The operation
 /**
  * Register a new Kubernetes cluster with Azure Resource Manager.
  *
- * API to register a new Kubernetes cluster and create a tracked resource in Azure Resource Manager (ARM).
+ * API to register a new Kubernetes cluster and create or replace a connected cluster tracked resource in Azure Resource Manager (ARM).
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kubernetes cluster on which get is called.
  */
-export const ConnectedClusterCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedClusterCreateInput,
-    outputSchema: ConnectedClusterCreateOutput,
-  }),
-);
+export const ConnectedClusterCreateOrReplace =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConnectedClusterCreateOrReplaceInput,
+    outputSchema: ConnectedClusterCreateOrReplaceOutput,
+  }));
 // Input Schema
 export const ConnectedClusterDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
-      apiVersion: "2024-01-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ConnectedClusterDeleteInput =
@@ -153,6 +218,7 @@ export type ConnectedClusterDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kubernetes cluster on which get is called.
  */
 export const ConnectedClusterDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -165,11 +231,12 @@ export const ConnectedClusterGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
-      apiVersion: "2024-01-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ConnectedClusterGetInput = typeof ConnectedClusterGetInput.Type;
@@ -180,6 +247,20 @@ export const ConnectedClusterGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type ConnectedClusterGetOutput = typeof ConnectedClusterGetOutput.Type;
 
@@ -192,6 +273,7 @@ export type ConnectedClusterGetOutput = typeof ConnectedClusterGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kubernetes cluster on which get is called.
  */
 export const ConnectedClusterGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConnectedClusterGetInput,
@@ -205,8 +287,8 @@ export const ConnectedClusterListByResourceGroupInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters",
-      apiVersion: "2024-01-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ConnectedClusterListByResourceGroupInput =
@@ -215,14 +297,36 @@ export type ConnectedClusterListByResourceGroupInput =
 // Output Schema
 export const ConnectedClusterListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -231,7 +335,7 @@ export type ConnectedClusterListByResourceGroupOutput =
 
 // The operation
 /**
- * Lists all connected clusters
+ * Lists all connected clusters in the given Resource Group
  *
  * API to enumerate registered connected K8s clusters under a Resource Group
  *
@@ -252,7 +356,7 @@ export const ConnectedClusterListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kubernetes/connectedClusters",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ConnectedClusterListBySubscriptionInput =
@@ -261,14 +365,36 @@ export type ConnectedClusterListBySubscriptionInput =
 // Output Schema
 export const ConnectedClusterListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -277,12 +403,12 @@ export type ConnectedClusterListBySubscriptionOutput =
 
 // The operation
 /**
- * Lists all connected clusters
+ * Lists all connected clusters in the given Subscription
  *
  * API to enumerate registered connected K8s clusters under a Subscription
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ConnectedClusterListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -294,13 +420,14 @@ export const ConnectedClusterListClusterUserCredentialInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     authenticationMethod: Schema.Literals(["Token", "AAD"]),
     clientProxy: Schema.Boolean,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}/listClusterUserCredential",
-      apiVersion: "2024-01-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}/listClusterUserCredential",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ConnectedClusterListClusterUserCredentialInput =
@@ -315,6 +442,8 @@ export const ConnectedClusterListClusterUserCredentialOutput =
         hybridConnectionName: Schema.optional(Schema.String),
         relay: Schema.optional(Schema.String),
         token: Schema.optional(Schema.String),
+        relayTid: Schema.optional(Schema.String),
+        relayType: Schema.optional(Schema.String),
       }),
     ),
     kubeconfigs: Schema.optional(
@@ -338,6 +467,7 @@ export type ConnectedClusterListClusterUserCredentialOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kubernetes cluster on which get is called.
  */
 export const ConnectedClusterListClusterUserCredential =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -349,6 +479,7 @@ export const ConnectedClusterUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -357,13 +488,18 @@ export const ConnectedClusterUpdateInput =
         azureHybridBenefit: Schema.optional(
           Schema.Literals(["True", "False", "NotApplicable"]),
         ),
+        gateway: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
       }),
     ),
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
-      apiVersion: "2024-01-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ConnectedClusterUpdateInput =
@@ -375,6 +511,20 @@ export const ConnectedClusterUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type ConnectedClusterUpdateOutput =
   typeof ConnectedClusterUpdateOutput.Type;
@@ -388,6 +538,7 @@ export type ConnectedClusterUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kubernetes cluster on which get is called.
  */
 export const ConnectedClusterUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -402,27 +553,30 @@ export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Kubernetes/operations",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type OperationsGetInput = typeof OperationsGetInput.Type;
 
 // Output Schema
 export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      isDataAction: Schema.optional(Schema.Boolean),
+      display: Schema.optional(
+        Schema.Struct({
+          provider: Schema.optional(Schema.String),
+          resource: Schema.optional(Schema.String),
+          operation: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+      origin: Schema.optional(
+        Schema.Literals(["user", "system", "user,system"]),
+      ),
+      actionType: Schema.optional(Schema.Literals(["Internal"])),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -430,7 +584,7 @@ export type OperationsGetOutput = typeof OperationsGetOutput.Type;
 
 // The operation
 /**
- * Lists all of the available API operations for Connected Cluster resource.
+ * List the operations for the provider
  *
  * @param api-version - The API version to use for this operation.
  */

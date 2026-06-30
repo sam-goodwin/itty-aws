@@ -75,13 +75,14 @@ export const RevokeSpendPermissionOutput =
         }),
       ),
     ),
+    expiresAt: Schema.optional(Schema.String),
   });
 export type RevokeSpendPermissionOutput =
   typeof RevokeSpendPermissionOutput.Type;
 
 // The operation
 /**
- * Revoke a spend permission
+ * Revoke spend permission
  *
  * Revokes an existing spend permission.
  *

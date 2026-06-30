@@ -7,6 +7,7 @@ import { BadRequest, Forbidden } from "../errors.ts";
 export const V1DeleteHostnameConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
+    remove_addon: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/custom-hostname" }),
   );
@@ -24,6 +25,7 @@ export type V1DeleteHostnameConfigOutput =
  * [Beta] Deletes a project's custom hostname configuration
  *
  * @param ref - Project ref
+ * @param remove_addon - If true, also removes the custom domain add-on from the project subscription.
  */
 export const v1DeleteHostnameConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

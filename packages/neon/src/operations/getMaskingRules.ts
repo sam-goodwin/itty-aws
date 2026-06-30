@@ -31,12 +31,10 @@ export type GetMaskingRulesOutput = typeof GetMaskingRulesOutput.Type;
 
 // The operation
 /**
- * Get masking rules
+ * Retrieve masking rules
  *
  * Retrieves the masking rules for the specified anonymized branch.
  * Masking rules define how sensitive data should be anonymized using PostgreSQL Anonymizer.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
  * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID

@@ -32,9 +32,9 @@ export type GetSnapshotScheduleOutput = typeof GetSnapshotScheduleOutput.Type;
 
 // The operation
 /**
- * View backup schedule
+ * Retrieve backup schedule
  *
- * View the backup schedule for the specified branch.
+ * Returns the backup schedule for the specified branch, including the configured snapshot frequencies.
  * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID

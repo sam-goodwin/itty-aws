@@ -43,7 +43,8 @@ export type UpdateNeonAuthEmailAndPasswordConfigOutput =
 /**
  * Update email and password configuration
  *
- * Updates the email and password authentication configuration for Neon Auth
+ * Updates the email and password authentication configuration for the specified branch's Neon Auth integration.
+ * Only the fields provided in the request body are updated.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

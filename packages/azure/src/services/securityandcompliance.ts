@@ -10,7 +10,11 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const OperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    operationResultId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/locations/{locationName}/operationresults/{operationResultId}",
@@ -41,6 +45,11 @@ export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
 // The operation
 /**
  * Get the operation result for a long running operation.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - The subscription identifier.
+ * @param locationName - The location of the operation.
+ * @param operationResultId - The ID of the operation result to get.
  */
 export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationResultsGetInput,
@@ -84,6 +93,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available SecurityAndCompliance REST API operations.
+ *
+ * @param api-version - Client Api Version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,

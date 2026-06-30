@@ -41,9 +41,10 @@ export type GetNeonAuthWebhookConfigOutput =
 
 // The operation
 /**
- * Get webhook configuration for Neon Auth
+ * Retrieve Neon Auth webhook configuration
  *
- * Returns the webhook configuration for Neon Auth.
+ * Returns the webhook configuration for the specified branch's Neon Auth integration,
+ * including the endpoint URL and the events that trigger it.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

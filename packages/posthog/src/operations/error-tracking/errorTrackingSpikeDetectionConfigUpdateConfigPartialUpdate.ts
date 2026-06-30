@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput =
@@ -13,7 +12,7 @@ export const ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/error_tracking/spike_detection_config/update_config/",
+      path: "/api/projects/{project_id}/error_tracking/spike_detection_config/update_config/",
     }),
   );
 export type ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput =
@@ -40,5 +39,4 @@ export const errorTrackingSpikeDetectionConfigUpdateConfigPartialUpdate =
       ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput,
     outputSchema:
       ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

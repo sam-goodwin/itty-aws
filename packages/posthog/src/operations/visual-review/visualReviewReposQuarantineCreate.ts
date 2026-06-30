@@ -11,6 +11,7 @@ export const VisualReviewReposQuarantineCreateInput =
     run_type: Schema.String.pipe(T.PathParam()),
     identifier: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
+    source_run_id: Schema.optional(Schema.NullOr(Schema.String)),
     expires_at: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
@@ -24,15 +25,8 @@ export type VisualReviewReposQuarantineCreateInput =
 // Output Schema
 export const VisualReviewReposQuarantineCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    created_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          first_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    created_by: Schema.optional(Schema.Unknown),
+    source_run: Schema.optional(Schema.Unknown),
     id: Schema.optional(Schema.String),
     identifier: Schema.optional(Schema.String),
     run_type: Schema.optional(Schema.String),

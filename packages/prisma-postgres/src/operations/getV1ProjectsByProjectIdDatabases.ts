@@ -89,6 +89,7 @@ export const GetV1ProjectsByProjectIdDatabasesOutput =
           }),
         ),
         source: Schema.Unknown,
+        branchId: Schema.NullOr(Schema.String),
       }),
     ),
     pagination: Schema.Struct({

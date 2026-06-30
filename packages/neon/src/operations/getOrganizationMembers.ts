@@ -23,7 +23,13 @@ export const GetOrganizationMembersOutput =
           id: Schema.String,
           user_id: Schema.String,
           org_id: Schema.String,
-          role: Schema.Literals(["admin", "member"]),
+          role: Schema.Literals([
+            "admin",
+            "member",
+            "editor",
+            "viewer",
+            "collaborator",
+          ]),
           joined_at: Schema.optional(Schema.String),
         }),
         user: Schema.Struct({
@@ -46,7 +52,7 @@ export type GetOrganizationMembersOutput =
 
 // The operation
 /**
- * Retrieve organization members details
+ * List organization members
  *
  * Retrieves a paginated list of members for the specified organization.
  *

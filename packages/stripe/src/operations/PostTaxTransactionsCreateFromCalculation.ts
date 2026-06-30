@@ -78,8 +78,10 @@ export const PostTaxTransactionsCreateFromCalculationOutput =
             "et_tin",
             "eu_oss_vat",
             "eu_vat",
+            "fo_vat",
             "gb_vat",
             "ge_vat",
+            "gi_tin",
             "gn_nif",
             "hk_br",
             "hr_oib",
@@ -88,6 +90,7 @@ export const PostTaxTransactionsCreateFromCalculationOutput =
             "il_vat",
             "in_gst",
             "is_vat",
+            "it_cf",
             "jp_cn",
             "jp_rn",
             "jp_trn",
@@ -118,6 +121,7 @@ export const PostTaxTransactionsCreateFromCalculationOutput =
             "pe_ruc",
             "ph_tin",
             "pl_nip",
+            "py_ruc",
             "ro_tin",
             "rs_pib",
             "ru_inn",
@@ -201,7 +205,7 @@ export type PostTaxTransactionsCreateFromCalculationOutput =
 
 // The operation
 /**
- * Create a transaction from a calculation
+ * Create a Transaction from a Calculation
  *
  * <p>Creates a Tax Transaction from a calculation, if that calculation hasn’t expired. Calculations expire after 90 days.</p>
  */

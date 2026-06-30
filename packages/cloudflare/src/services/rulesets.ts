@@ -826,6 +826,16 @@ export interface GetPhasResponse {
               stripEtags?: boolean | null;
               stripLastModified?: boolean | null;
               stripSetCookie?: boolean | null;
+              vary?: {
+                default?: {
+                  action:
+                    | "bypass"
+                    | "passthrough"
+                    | "normalize"
+                    | (string & {});
+                } | null;
+                headers?: Record<string, unknown> | null;
+              } | null;
             } | null;
             categories?: string[] | null;
             description?: string | null;
@@ -3772,6 +3782,34 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
                     stripSetCookie: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
+                    vary: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          default: Schema.optional(
+                            Schema.Union([
+                              Schema.Struct({
+                                action: Schema.Union([
+                                  Schema.Literals([
+                                    "bypass",
+                                    "passthrough",
+                                    "normalize",
+                                  ]),
+                                  Schema.String,
+                                ]),
+                              }),
+                              Schema.Null,
+                            ]),
+                          ),
+                          headers: Schema.optional(
+                            Schema.Union([
+                              Schema.Record(Schema.String, Schema.Unknown),
+                              Schema.Null,
+                            ]),
+                          ),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
                   }).pipe(
                     Schema.encodeKeys({
                       additionalCacheablePorts: "additional_cacheable_ports",
@@ -3789,6 +3827,7 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
                       stripEtags: "strip_etags",
                       stripLastModified: "strip_last_modified",
                       stripSetCookie: "strip_set_cookie",
+                      vary: "vary",
                     }),
                   ),
                   Schema.Null,
@@ -6160,6 +6199,21 @@ const PutPhasBaseFields = {
               stripEtags: Schema.optional(Schema.Boolean),
               stripLastModified: Schema.optional(Schema.Boolean),
               stripSetCookie: Schema.optional(Schema.Boolean),
+              vary: Schema.optional(
+                Schema.Struct({
+                  default: Schema.optional(
+                    Schema.Struct({
+                      action: Schema.Union([
+                        Schema.Literals(["bypass", "passthrough", "normalize"]),
+                        Schema.String,
+                      ]),
+                    }),
+                  ),
+                  headers: Schema.optional(
+                    Schema.Record(Schema.String, Schema.Unknown),
+                  ),
+                }),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -6177,6 +6231,7 @@ const PutPhasBaseFields = {
                 stripEtags: "strip_etags",
                 stripLastModified: "strip_last_modified",
                 stripSetCookie: "strip_set_cookie",
+                vary: "vary",
               }),
             ),
           ),
@@ -7192,6 +7247,12 @@ interface PutPhasBaseRequest {
           stripEtags?: boolean;
           stripLastModified?: boolean;
           stripSetCookie?: boolean;
+          vary?: {
+            default?: {
+              action: "bypass" | "passthrough" | "normalize" | (string & {});
+            };
+            headers?: Record<string, unknown>;
+          };
         };
         description?: string;
         enabled?: boolean;
@@ -8147,6 +8208,16 @@ export interface PutPhasResponse {
               stripEtags?: boolean | null;
               stripLastModified?: boolean | null;
               stripSetCookie?: boolean | null;
+              vary?: {
+                default?: {
+                  action:
+                    | "bypass"
+                    | "passthrough"
+                    | "normalize"
+                    | (string & {});
+                } | null;
+                headers?: Record<string, unknown> | null;
+              } | null;
             } | null;
             categories?: string[] | null;
             description?: string | null;
@@ -11095,6 +11166,34 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
                     stripSetCookie: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
+                    vary: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          default: Schema.optional(
+                            Schema.Union([
+                              Schema.Struct({
+                                action: Schema.Union([
+                                  Schema.Literals([
+                                    "bypass",
+                                    "passthrough",
+                                    "normalize",
+                                  ]),
+                                  Schema.String,
+                                ]),
+                              }),
+                              Schema.Null,
+                            ]),
+                          ),
+                          headers: Schema.optional(
+                            Schema.Union([
+                              Schema.Record(Schema.String, Schema.Unknown),
+                              Schema.Null,
+                            ]),
+                          ),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
                   }).pipe(
                     Schema.encodeKeys({
                       additionalCacheablePorts: "additional_cacheable_ports",
@@ -11112,6 +11211,7 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
                       stripEtags: "strip_etags",
                       stripLastModified: "strip_last_modified",
                       stripSetCookie: "strip_set_cookie",
+                      vary: "vary",
                     }),
                   ),
                   Schema.Null,
@@ -12573,6 +12673,12 @@ export interface GetPhasVersionResponse {
           stripEtags?: boolean | null;
           stripLastModified?: boolean | null;
           stripSetCookie?: boolean | null;
+          vary?: {
+            default?: {
+              action: "bypass" | "passthrough" | "normalize" | (string & {});
+            } | null;
+            headers?: Record<string, unknown> | null;
+          } | null;
         } | null;
         categories?: string[] | null;
         description?: string | null;
@@ -15496,6 +15602,34 @@ export const GetPhasVersionResponse =
                   stripSetCookie: Schema.optional(
                     Schema.Union([Schema.Boolean, Schema.Null]),
                   ),
+                  vary: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        default: Schema.optional(
+                          Schema.Union([
+                            Schema.Struct({
+                              action: Schema.Union([
+                                Schema.Literals([
+                                  "bypass",
+                                  "passthrough",
+                                  "normalize",
+                                ]),
+                                Schema.String,
+                              ]),
+                            }),
+                            Schema.Null,
+                          ]),
+                        ),
+                        headers: Schema.optional(
+                          Schema.Union([
+                            Schema.Record(Schema.String, Schema.Unknown),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
                 }).pipe(
                   Schema.encodeKeys({
                     additionalCacheablePorts: "additional_cacheable_ports",
@@ -15513,6 +15647,7 @@ export const GetPhasVersionResponse =
                     stripEtags: "strip_etags",
                     stripLastModified: "strip_last_modified",
                     stripSetCookie: "strip_set_cookie",
+                    vary: "vary",
                   }),
                 ),
                 Schema.Null,
@@ -17080,6 +17215,21 @@ const CreateRuleBaseFields = {
         stripEtags: Schema.optional(Schema.Boolean),
         stripLastModified: Schema.optional(Schema.Boolean),
         stripSetCookie: Schema.optional(Schema.Boolean),
+        vary: Schema.optional(
+          Schema.Struct({
+            default: Schema.optional(
+              Schema.Struct({
+                action: Schema.Union([
+                  Schema.Literals(["bypass", "passthrough", "normalize"]),
+                  Schema.String,
+                ]),
+              }),
+            ),
+            headers: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+          }),
+        ),
       }).pipe(
         Schema.encodeKeys({
           additionalCacheablePorts: "additional_cacheable_ports",
@@ -17097,6 +17247,7 @@ const CreateRuleBaseFields = {
           stripEtags: "strip_etags",
           stripLastModified: "strip_last_modified",
           stripSetCookie: "strip_set_cookie",
+          vary: "vary",
         }),
       ),
       Schema.Struct({
@@ -17535,6 +17686,12 @@ interface CreateRuleBaseRequest {
         stripEtags?: boolean;
         stripLastModified?: boolean;
         stripSetCookie?: boolean;
+        vary?: {
+          default?: {
+            action: "bypass" | "passthrough" | "normalize" | (string & {});
+          };
+          headers?: Record<string, unknown>;
+        };
       }
     | { operation: "add" | "remove" | "set" | (string & {}); values: string[] }
     | {
@@ -18435,6 +18592,12 @@ export interface CreateRuleResponse {
           stripEtags?: boolean | null;
           stripLastModified?: boolean | null;
           stripSetCookie?: boolean | null;
+          vary?: {
+            default?: {
+              action: "bypass" | "passthrough" | "normalize" | (string & {});
+            } | null;
+            headers?: Record<string, unknown> | null;
+          } | null;
         } | null;
         categories?: string[] | null;
         description?: string | null;
@@ -21358,6 +21521,34 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                   stripSetCookie: Schema.optional(
                     Schema.Union([Schema.Boolean, Schema.Null]),
                   ),
+                  vary: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        default: Schema.optional(
+                          Schema.Union([
+                            Schema.Struct({
+                              action: Schema.Union([
+                                Schema.Literals([
+                                  "bypass",
+                                  "passthrough",
+                                  "normalize",
+                                ]),
+                                Schema.String,
+                              ]),
+                            }),
+                            Schema.Null,
+                          ]),
+                        ),
+                        headers: Schema.optional(
+                          Schema.Union([
+                            Schema.Record(Schema.String, Schema.Unknown),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
                 }).pipe(
                   Schema.encodeKeys({
                     additionalCacheablePorts: "additional_cacheable_ports",
@@ -21375,6 +21566,7 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                     stripEtags: "strip_etags",
                     stripLastModified: "strip_last_modified",
                     stripSetCookie: "strip_set_cookie",
+                    vary: "vary",
                   }),
                 ),
                 Schema.Null,
@@ -22766,6 +22958,21 @@ const PatchRuleBaseFields = {
         stripEtags: Schema.optional(Schema.Boolean),
         stripLastModified: Schema.optional(Schema.Boolean),
         stripSetCookie: Schema.optional(Schema.Boolean),
+        vary: Schema.optional(
+          Schema.Struct({
+            default: Schema.optional(
+              Schema.Struct({
+                action: Schema.Union([
+                  Schema.Literals(["bypass", "passthrough", "normalize"]),
+                  Schema.String,
+                ]),
+              }),
+            ),
+            headers: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+          }),
+        ),
       }).pipe(
         Schema.encodeKeys({
           additionalCacheablePorts: "additional_cacheable_ports",
@@ -22783,6 +22990,7 @@ const PatchRuleBaseFields = {
           stripEtags: "strip_etags",
           stripLastModified: "strip_last_modified",
           stripSetCookie: "strip_set_cookie",
+          vary: "vary",
         }),
       ),
       Schema.Struct({
@@ -23222,6 +23430,12 @@ interface PatchRuleBaseRequest {
         stripEtags?: boolean;
         stripLastModified?: boolean;
         stripSetCookie?: boolean;
+        vary?: {
+          default?: {
+            action: "bypass" | "passthrough" | "normalize" | (string & {});
+          };
+          headers?: Record<string, unknown>;
+        };
       }
     | { operation: "add" | "remove" | "set" | (string & {}); values: string[] }
     | {
@@ -24122,6 +24336,12 @@ export interface PatchRuleResponse {
           stripEtags?: boolean | null;
           stripLastModified?: boolean | null;
           stripSetCookie?: boolean | null;
+          vary?: {
+            default?: {
+              action: "bypass" | "passthrough" | "normalize" | (string & {});
+            } | null;
+            headers?: Record<string, unknown> | null;
+          } | null;
         } | null;
         categories?: string[] | null;
         description?: string | null;
@@ -27045,6 +27265,34 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                   stripSetCookie: Schema.optional(
                     Schema.Union([Schema.Boolean, Schema.Null]),
                   ),
+                  vary: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        default: Schema.optional(
+                          Schema.Union([
+                            Schema.Struct({
+                              action: Schema.Union([
+                                Schema.Literals([
+                                  "bypass",
+                                  "passthrough",
+                                  "normalize",
+                                ]),
+                                Schema.String,
+                              ]),
+                            }),
+                            Schema.Null,
+                          ]),
+                        ),
+                        headers: Schema.optional(
+                          Schema.Union([
+                            Schema.Record(Schema.String, Schema.Unknown),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
                 }).pipe(
                   Schema.encodeKeys({
                     additionalCacheablePorts: "additional_cacheable_ports",
@@ -27062,6 +27310,7 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                     stripEtags: "strip_etags",
                     stripLastModified: "strip_last_modified",
                     stripSetCookie: "strip_set_cookie",
+                    vary: "vary",
                   }),
                 ),
                 Schema.Null,
@@ -28512,6 +28761,12 @@ export interface DeleteRuleResponse {
           stripEtags?: boolean | null;
           stripLastModified?: boolean | null;
           stripSetCookie?: boolean | null;
+          vary?: {
+            default?: {
+              action: "bypass" | "passthrough" | "normalize" | (string & {});
+            } | null;
+            headers?: Record<string, unknown> | null;
+          } | null;
         } | null;
         categories?: string[] | null;
         description?: string | null;
@@ -31435,6 +31690,34 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                   stripSetCookie: Schema.optional(
                     Schema.Union([Schema.Boolean, Schema.Null]),
                   ),
+                  vary: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        default: Schema.optional(
+                          Schema.Union([
+                            Schema.Struct({
+                              action: Schema.Union([
+                                Schema.Literals([
+                                  "bypass",
+                                  "passthrough",
+                                  "normalize",
+                                ]),
+                                Schema.String,
+                              ]),
+                            }),
+                            Schema.Null,
+                          ]),
+                        ),
+                        headers: Schema.optional(
+                          Schema.Union([
+                            Schema.Record(Schema.String, Schema.Unknown),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
                 }).pipe(
                   Schema.encodeKeys({
                     additionalCacheablePorts: "additional_cacheable_ports",
@@ -31452,6 +31735,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                     stripEtags: "strip_etags",
                     stripLastModified: "strip_last_modified",
                     stripSetCookie: "strip_set_cookie",
+                    vary: "vary",
                   }),
                 ),
                 Schema.Null,
@@ -32916,6 +33200,16 @@ export interface GetRulesetResponse {
               stripEtags?: boolean | null;
               stripLastModified?: boolean | null;
               stripSetCookie?: boolean | null;
+              vary?: {
+                default?: {
+                  action:
+                    | "bypass"
+                    | "passthrough"
+                    | "normalize"
+                    | (string & {});
+                } | null;
+                headers?: Record<string, unknown> | null;
+              } | null;
             } | null;
             categories?: string[] | null;
             description?: string | null;
@@ -35925,6 +36219,34 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                       stripSetCookie: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
+                      vary: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            default: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  action: Schema.Union([
+                                    Schema.Literals([
+                                      "bypass",
+                                      "passthrough",
+                                      "normalize",
+                                    ]),
+                                    Schema.String,
+                                  ]),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            headers: Schema.optional(
+                              Schema.Union([
+                                Schema.Record(Schema.String, Schema.Unknown),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                          Schema.Null,
+                        ]),
+                      ),
                     }).pipe(
                       Schema.encodeKeys({
                         additionalCacheablePorts: "additional_cacheable_ports",
@@ -35942,6 +36264,7 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                         stripEtags: "strip_etags",
                         stripLastModified: "strip_last_modified",
                         stripSetCookie: "strip_set_cookie",
+                        vary: "vary",
                       }),
                     ),
                     Schema.Null,
@@ -38555,6 +38878,21 @@ const CreateRulesetBaseFields = {
               stripEtags: Schema.optional(Schema.Boolean),
               stripLastModified: Schema.optional(Schema.Boolean),
               stripSetCookie: Schema.optional(Schema.Boolean),
+              vary: Schema.optional(
+                Schema.Struct({
+                  default: Schema.optional(
+                    Schema.Struct({
+                      action: Schema.Union([
+                        Schema.Literals(["bypass", "passthrough", "normalize"]),
+                        Schema.String,
+                      ]),
+                    }),
+                  ),
+                  headers: Schema.optional(
+                    Schema.Record(Schema.String, Schema.Unknown),
+                  ),
+                }),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -38572,6 +38910,7 @@ const CreateRulesetBaseFields = {
                 stripEtags: "strip_etags",
                 stripLastModified: "strip_last_modified",
                 stripSetCookie: "strip_set_cookie",
+                vary: "vary",
               }),
             ),
           ),
@@ -39615,6 +39954,12 @@ interface CreateRulesetBaseRequest {
           stripEtags?: boolean;
           stripLastModified?: boolean;
           stripSetCookie?: boolean;
+          vary?: {
+            default?: {
+              action: "bypass" | "passthrough" | "normalize" | (string & {});
+            };
+            headers?: Record<string, unknown>;
+          };
         };
         description?: string;
         enabled?: boolean;
@@ -40562,6 +40907,16 @@ export interface CreateRulesetResponse {
               stripEtags?: boolean | null;
               stripLastModified?: boolean | null;
               stripSetCookie?: boolean | null;
+              vary?: {
+                default?: {
+                  action:
+                    | "bypass"
+                    | "passthrough"
+                    | "normalize"
+                    | (string & {});
+                } | null;
+                headers?: Record<string, unknown> | null;
+              } | null;
             } | null;
             categories?: string[] | null;
             description?: string | null;
@@ -43571,6 +43926,34 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                       stripSetCookie: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
+                      vary: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            default: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  action: Schema.Union([
+                                    Schema.Literals([
+                                      "bypass",
+                                      "passthrough",
+                                      "normalize",
+                                    ]),
+                                    Schema.String,
+                                  ]),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            headers: Schema.optional(
+                              Schema.Union([
+                                Schema.Record(Schema.String, Schema.Unknown),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                          Schema.Null,
+                        ]),
+                      ),
                     }).pipe(
                       Schema.encodeKeys({
                         additionalCacheablePorts: "additional_cacheable_ports",
@@ -43588,6 +43971,7 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                         stripEtags: "strip_etags",
                         stripLastModified: "strip_last_modified",
                         stripSetCookie: "strip_set_cookie",
+                        vary: "vary",
                       }),
                     ),
                     Schema.Null,
@@ -46012,6 +46396,21 @@ const UpdateRulesetBaseFields = {
               stripEtags: Schema.optional(Schema.Boolean),
               stripLastModified: Schema.optional(Schema.Boolean),
               stripSetCookie: Schema.optional(Schema.Boolean),
+              vary: Schema.optional(
+                Schema.Struct({
+                  default: Schema.optional(
+                    Schema.Struct({
+                      action: Schema.Union([
+                        Schema.Literals(["bypass", "passthrough", "normalize"]),
+                        Schema.String,
+                      ]),
+                    }),
+                  ),
+                  headers: Schema.optional(
+                    Schema.Record(Schema.String, Schema.Unknown),
+                  ),
+                }),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -46029,6 +46428,7 @@ const UpdateRulesetBaseFields = {
                 stripEtags: "strip_etags",
                 stripLastModified: "strip_last_modified",
                 stripSetCookie: "strip_set_cookie",
+                vary: "vary",
               }),
             ),
           ),
@@ -47073,6 +47473,12 @@ interface UpdateRulesetBaseRequest {
           stripEtags?: boolean;
           stripLastModified?: boolean;
           stripSetCookie?: boolean;
+          vary?: {
+            default?: {
+              action: "bypass" | "passthrough" | "normalize" | (string & {});
+            };
+            headers?: Record<string, unknown>;
+          };
         };
         description?: string;
         enabled?: boolean;
@@ -48025,6 +48431,16 @@ export interface UpdateRulesetResponse {
               stripEtags?: boolean | null;
               stripLastModified?: boolean | null;
               stripSetCookie?: boolean | null;
+              vary?: {
+                default?: {
+                  action:
+                    | "bypass"
+                    | "passthrough"
+                    | "normalize"
+                    | (string & {});
+                } | null;
+                headers?: Record<string, unknown> | null;
+              } | null;
             } | null;
             categories?: string[] | null;
             description?: string | null;
@@ -51034,6 +51450,34 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                       stripSetCookie: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
+                      vary: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            default: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  action: Schema.Union([
+                                    Schema.Literals([
+                                      "bypass",
+                                      "passthrough",
+                                      "normalize",
+                                    ]),
+                                    Schema.String,
+                                  ]),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            headers: Schema.optional(
+                              Schema.Union([
+                                Schema.Record(Schema.String, Schema.Unknown),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                          Schema.Null,
+                        ]),
+                      ),
                     }).pipe(
                       Schema.encodeKeys({
                         additionalCacheablePorts: "additional_cacheable_ports",
@@ -51051,6 +51495,7 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                         stripEtags: "strip_etags",
                         stripLastModified: "strip_last_modified",
                         stripSetCookie: "strip_set_cookie",
+                        vary: "vary",
                       }),
                     ),
                     Schema.Null,
@@ -52598,6 +53043,12 @@ export interface GetVersionResponse {
           stripEtags?: boolean | null;
           stripLastModified?: boolean | null;
           stripSetCookie?: boolean | null;
+          vary?: {
+            default?: {
+              action: "bypass" | "passthrough" | "normalize" | (string & {});
+            } | null;
+            headers?: Record<string, unknown> | null;
+          } | null;
         } | null;
         categories?: string[] | null;
         description?: string | null;
@@ -55521,6 +55972,34 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                   stripSetCookie: Schema.optional(
                     Schema.Union([Schema.Boolean, Schema.Null]),
                   ),
+                  vary: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        default: Schema.optional(
+                          Schema.Union([
+                            Schema.Struct({
+                              action: Schema.Union([
+                                Schema.Literals([
+                                  "bypass",
+                                  "passthrough",
+                                  "normalize",
+                                ]),
+                                Schema.String,
+                              ]),
+                            }),
+                            Schema.Null,
+                          ]),
+                        ),
+                        headers: Schema.optional(
+                          Schema.Union([
+                            Schema.Record(Schema.String, Schema.Unknown),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
                 }).pipe(
                   Schema.encodeKeys({
                     additionalCacheablePorts: "additional_cacheable_ports",
@@ -55538,6 +56017,7 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                     stripEtags: "strip_etags",
                     stripLastModified: "strip_last_modified",
                     stripSetCookie: "strip_set_cookie",
+                    vary: "vary",
                   }),
                 ),
                 Schema.Null,

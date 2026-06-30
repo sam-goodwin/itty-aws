@@ -33,7 +33,7 @@ export const FeatureFlagsVersionsRetrieveOutput =
     active: Schema.optional(Schema.Boolean),
     deleted: Schema.optional(Schema.Boolean),
     version: Schema.optional(Schema.NullOr(Schema.Number)),
-    rollback_conditions: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    rollback_conditions: Schema.optional(Schema.Unknown),
     performed_rollback: Schema.optional(Schema.NullOr(Schema.Boolean)),
     ensure_experience_continuity: Schema.optional(
       Schema.NullOr(Schema.Boolean),

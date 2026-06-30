@@ -14,6 +14,14 @@ export const ActionsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    ruleId: Schema.String.pipe(T.PathParam()),
+    actionId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        logicAppResourceId: Schema.String,
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -55,6 +63,8 @@ export type ActionsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param ruleId - Alert rule ID
+ * @param actionId - Action ID
  */
 export const ActionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -67,6 +77,8 @@ export const ActionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  ruleId: Schema.String.pipe(T.PathParam()),
+  actionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -88,6 +100,8 @@ export type ActionsDeleteOutput = typeof ActionsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param ruleId - Alert rule ID
+ * @param actionId - Action ID
  */
 export const ActionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ActionsDeleteInput,
@@ -98,6 +112,8 @@ export const ActionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  ruleId: Schema.String.pipe(T.PathParam()),
+  actionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -137,6 +153,8 @@ export type ActionsGetOutput = typeof ActionsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param ruleId - Alert rule ID
+ * @param actionId - Action ID
  */
 export const ActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ActionsGetInput,
@@ -148,6 +166,7 @@ export const ActionsListByAlertRuleInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    ruleId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -205,6 +224,7 @@ export type ActionsListByAlertRuleOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param ruleId - Alert rule ID
  */
 export const ActionsListByAlertRule = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -218,6 +238,13 @@ export const AlertRulesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    ruleId: Schema.String.pipe(T.PathParam()),
+    kind: Schema.Literals([
+      "Scheduled",
+      "MicrosoftSecurityIncidentCreation",
+      "Fusion",
+    ]),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -260,6 +287,7 @@ export type AlertRulesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param ruleId - Alert rule ID
  */
 export const AlertRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -272,6 +300,7 @@ export const AlertRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  ruleId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -293,6 +322,7 @@ export type AlertRulesDeleteOutput = typeof AlertRulesDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param ruleId - Alert rule ID
  */
 export const AlertRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AlertRulesDeleteInput,
@@ -303,6 +333,7 @@ export const AlertRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  ruleId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -342,6 +373,7 @@ export type AlertRulesGetOutput = typeof AlertRulesGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param ruleId - Alert rule ID
  */
 export const AlertRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AlertRulesGetInput,
@@ -407,6 +439,7 @@ export const AlertRuleTemplatesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    alertRuleTemplateId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -448,6 +481,7 @@ export type AlertRuleTemplatesGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param alertRuleTemplateId - Alert rule template ID
  */
 export const AlertRuleTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -531,6 +565,7 @@ export const AutomationRulesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    automationRuleId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       displayName: Schema.String,
       order: Schema.Number,
@@ -625,6 +660,7 @@ export type AutomationRulesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param automationRuleId - Automation rule ID
  */
 export const AutomationRulesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -637,6 +673,7 @@ export const AutomationRulesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    automationRuleId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -660,6 +697,7 @@ export type AutomationRulesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param automationRuleId - Automation rule ID
  */
 export const AutomationRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -673,6 +711,7 @@ export const AutomationRulesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    automationRuleId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -713,6 +752,7 @@ export type AutomationRulesGetOutput = typeof AutomationRulesGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param automationRuleId - Automation rule ID
  */
 export const AutomationRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AutomationRulesGetInput,
@@ -792,6 +832,46 @@ export const BookmarksCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    bookmarkId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        created: Schema.optional(Schema.String),
+        createdBy: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
+        ),
+        displayName: Schema.String,
+        labels: Schema.optional(Schema.Array(Schema.String)),
+        notes: Schema.optional(Schema.String),
+        query: Schema.String,
+        queryResult: Schema.optional(Schema.String),
+        updated: Schema.optional(Schema.String),
+        updatedBy: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
+        ),
+        eventTime: Schema.optional(Schema.String),
+        queryStartTime: Schema.optional(Schema.String),
+        queryEndTime: Schema.optional(Schema.String),
+        incidentInfo: Schema.optional(
+          Schema.Struct({
+            incidentId: Schema.optional(Schema.String),
+            severity: Schema.optional(
+              Schema.Literals(["High", "Medium", "Low", "Informational"]),
+            ),
+            title: Schema.optional(Schema.String),
+            relationName: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -834,6 +914,7 @@ export type BookmarksCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param bookmarkId - Bookmark ID
  */
 export const BookmarksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -846,6 +927,7 @@ export const BookmarksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  bookmarkId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -867,6 +949,7 @@ export type BookmarksDeleteOutput = typeof BookmarksDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param bookmarkId - Bookmark ID
  */
 export const BookmarksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BookmarksDeleteInput,
@@ -877,6 +960,7 @@ export const BookmarksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  bookmarkId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -916,6 +1000,7 @@ export type BookmarksGetOutput = typeof BookmarksGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param bookmarkId - Bookmark ID
  */
 export const BookmarksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BookmarksGetInput,
@@ -981,6 +1066,75 @@ export const ContentPackageInstallInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    packageId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        contentId: Schema.optional(Schema.String),
+        contentProductId: Schema.optional(Schema.String),
+        contentKind: Schema.optional(
+          Schema.Literals(["Solution", "Standalone"]),
+        ),
+        contentSchemaVersion: Schema.optional(Schema.String),
+        isNew: Schema.optional(Schema.Literals(["true", "false"])),
+        isPreview: Schema.optional(Schema.Literals(["true", "false"])),
+        isFeatured: Schema.optional(Schema.Literals(["true", "false"])),
+        isDeprecated: Schema.optional(Schema.Literals(["true", "false"])),
+        version: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        publisherDisplayName: Schema.optional(Schema.String),
+        source: Schema.optional(
+          Schema.Struct({
+            kind: Schema.Literals([
+              "LocalWorkspace",
+              "Community",
+              "Solution",
+              "SourceRepository",
+            ]),
+            name: Schema.optional(Schema.String),
+            sourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        author: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            link: Schema.optional(Schema.String),
+          }),
+        ),
+        support: Schema.optional(
+          Schema.Struct({
+            tier: Schema.Literals(["Microsoft", "Partner", "Community"]),
+            name: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            link: Schema.optional(Schema.String),
+          }),
+        ),
+        dependencies: Schema.optional(
+          Schema.Struct({
+            contentId: Schema.optional(Schema.String),
+            kind: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            operator: Schema.optional(Schema.Literals(["AND", "OR"])),
+            criteria: Schema.optional(Schema.Array(Schema.Unknown)),
+          }),
+        ),
+        providers: Schema.optional(Schema.Array(Schema.String)),
+        firstPublishDate: Schema.optional(Schema.String),
+        lastPublishDate: Schema.optional(Schema.String),
+        categories: Schema.optional(
+          Schema.Struct({
+            domains: Schema.optional(Schema.Array(Schema.String)),
+            verticals: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        threatAnalysisTactics: Schema.optional(Schema.Array(Schema.String)),
+        threatAnalysisTechniques: Schema.optional(Schema.Array(Schema.String)),
+        icon: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1022,6 +1176,7 @@ export type ContentPackageInstallOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param packageId - package Id
  */
 export const ContentPackageInstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1035,6 +1190,7 @@ export const ContentPackagesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    packageId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1075,6 +1231,7 @@ export type ContentPackagesGetOutput = typeof ContentPackagesGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param packageId - package Id
  */
 export const ContentPackagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContentPackagesGetInput,
@@ -1166,6 +1323,7 @@ export const ContentPackageUninstallInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    packageId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1190,6 +1348,7 @@ export type ContentPackageUninstallOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param packageId - package Id
  */
 export const ContentPackageUninstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1203,6 +1362,7 @@ export const ContentTemplateDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    templateId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1226,6 +1386,7 @@ export type ContentTemplateDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param templateId - template Id
  */
 export const ContentTemplateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1239,6 +1400,7 @@ export const ContentTemplateGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    templateId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1282,6 +1444,7 @@ export type ContentTemplateGetOutput = typeof ContentTemplateGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param templateId - template Id
  */
 export const ContentTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContentTemplateGetInput,
@@ -1293,6 +1456,79 @@ export const ContentTemplateInstallInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    templateId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        contentId: Schema.optional(Schema.String),
+        contentProductId: Schema.optional(Schema.String),
+        packageVersion: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        contentKind: Schema.optional(Schema.String),
+        source: Schema.optional(
+          Schema.Struct({
+            kind: Schema.Literals([
+              "LocalWorkspace",
+              "Community",
+              "Solution",
+              "SourceRepository",
+            ]),
+            name: Schema.optional(Schema.String),
+            sourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        author: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            link: Schema.optional(Schema.String),
+          }),
+        ),
+        support: Schema.optional(
+          Schema.Struct({
+            tier: Schema.Literals(["Microsoft", "Partner", "Community"]),
+            name: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            link: Schema.optional(Schema.String),
+          }),
+        ),
+        dependencies: Schema.optional(
+          Schema.Struct({
+            contentId: Schema.optional(Schema.String),
+            kind: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            operator: Schema.optional(Schema.Literals(["AND", "OR"])),
+            criteria: Schema.optional(Schema.Array(Schema.Unknown)),
+          }),
+        ),
+        categories: Schema.optional(
+          Schema.Struct({
+            domains: Schema.optional(Schema.Array(Schema.String)),
+            verticals: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        providers: Schema.optional(Schema.Array(Schema.String)),
+        firstPublishDate: Schema.optional(Schema.String),
+        lastPublishDate: Schema.optional(Schema.String),
+        customVersion: Schema.optional(Schema.String),
+        contentSchemaVersion: Schema.optional(Schema.String),
+        icon: Schema.optional(Schema.String),
+        threatAnalysisTactics: Schema.optional(Schema.Array(Schema.String)),
+        threatAnalysisTechniques: Schema.optional(Schema.Array(Schema.String)),
+        previewImages: Schema.optional(Schema.Array(Schema.String)),
+        previewImagesDark: Schema.optional(Schema.Array(Schema.String)),
+        packageId: Schema.optional(Schema.String),
+        packageKind: Schema.optional(
+          Schema.Literals(["Solution", "Standalone"]),
+        ),
+        packageName: Schema.optional(Schema.String),
+        isDeprecated: Schema.optional(Schema.Literals(["true", "false"])),
+        mainTemplate: Schema.optional(Schema.Unknown),
+        dependantTemplates: Schema.optional(Schema.Array(Schema.Unknown)),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1335,6 +1571,7 @@ export type ContentTemplateInstallOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param templateId - template Id
  */
 export const ContentTemplateInstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1435,6 +1672,7 @@ export const DataConnectorDefinitionsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    dataConnectorDefinitionName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["Customizable"]),
     etag: Schema.optional(Schema.String),
   }).pipe(
@@ -1478,6 +1716,7 @@ export type DataConnectorDefinitionsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param dataConnectorDefinitionName - The data connector definition name.
  * @param api-version - The API version to use for this operation.
  */
 export const DataConnectorDefinitionsCreateOrUpdate =
@@ -1491,6 +1730,7 @@ export const DataConnectorDefinitionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    dataConnectorDefinitionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1514,6 +1754,7 @@ export type DataConnectorDefinitionsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param dataConnectorDefinitionName - The data connector definition name.
  * @param api-version - The API version to use for this operation.
  */
 export const DataConnectorDefinitionsDelete =
@@ -1527,6 +1768,7 @@ export const DataConnectorDefinitionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    dataConnectorDefinitionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1568,6 +1810,7 @@ export type DataConnectorDefinitionsGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param dataConnectorDefinitionName - The data connector definition name.
  * @param api-version - The API version to use for this operation.
  */
 export const DataConnectorDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1653,6 +1896,21 @@ export const DataConnectorsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    dataConnectorId: Schema.String.pipe(T.PathParam()),
+    kind: Schema.Literals([
+      "AzureActiveDirectory",
+      "AzureSecurityCenter",
+      "MicrosoftCloudAppSecurity",
+      "ThreatIntelligence",
+      "MicrosoftThreatIntelligence",
+      "PremiumMicrosoftDefenderForThreatIntelligence",
+      "Office365",
+      "AmazonWebServicesCloudTrail",
+      "AzureAdvancedThreatProtection",
+      "MicrosoftDefenderAdvancedThreatProtection",
+      "RestApiPoller",
+    ]),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1695,6 +1953,7 @@ export type DataConnectorsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param dataConnectorId - Connector ID
  */
 export const DataConnectorsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1707,6 +1966,7 @@ export const DataConnectorsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    dataConnectorId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1729,6 +1989,7 @@ export type DataConnectorsDeleteOutput = typeof DataConnectorsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param dataConnectorId - Connector ID
  */
 export const DataConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1742,6 +2003,7 @@ export const DataConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    dataConnectorId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -1783,6 +2045,7 @@ export type DataConnectorsGetOutput = typeof DataConnectorsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param dataConnectorId - Connector ID
  */
 export const DataConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataConnectorsGetInput,
@@ -1898,6 +2161,24 @@ export const IncidentCommentsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
+    incidentCommentId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        createdTimeUtc: Schema.optional(Schema.String),
+        lastModifiedTimeUtc: Schema.optional(Schema.String),
+        message: Schema.String,
+        author: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            userPrincipalName: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1940,6 +2221,8 @@ export type IncidentCommentsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
+ * @param incidentCommentId - Incident comment ID
  */
 export const IncidentCommentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1952,6 +2235,8 @@ export const IncidentCommentsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
+    incidentCommentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1976,6 +2261,8 @@ export type IncidentCommentsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
+ * @param incidentCommentId - Incident comment ID
  */
 export const IncidentCommentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1989,6 +2276,8 @@ export const IncidentCommentsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
+    incidentCommentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2029,6 +2318,8 @@ export type IncidentCommentsGetOutput = typeof IncidentCommentsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
+ * @param incidentCommentId - Incident comment ID
  */
 export const IncidentCommentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IncidentCommentsGetInput,
@@ -2040,6 +2331,7 @@ export const IncidentCommentsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -2099,6 +2391,7 @@ export type IncidentCommentsListOutput = typeof IncidentCommentsListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
  * @param $filter - Filters the results, based on a Boolean condition. Optional.
  * @param $orderby - Sorts the results. Optional.
  * @param $top - Returns only the first n results. Optional.
@@ -2116,6 +2409,17 @@ export const IncidentRelationsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
+    relationName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        relatedResourceId: Schema.String,
+        relatedResourceName: Schema.optional(Schema.String),
+        relatedResourceType: Schema.optional(Schema.String),
+        relatedResourceKind: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2158,6 +2462,8 @@ export type IncidentRelationsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
+ * @param relationName - Relation Name
  */
 export const IncidentRelationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2170,6 +2476,8 @@ export const IncidentRelationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
+    relationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2194,6 +2502,8 @@ export type IncidentRelationsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
+ * @param relationName - Relation Name
  */
 export const IncidentRelationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2207,6 +2517,8 @@ export const IncidentRelationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
+    relationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2247,6 +2559,8 @@ export type IncidentRelationsGetOutput = typeof IncidentRelationsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
+ * @param relationName - Relation Name
  */
 export const IncidentRelationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2260,6 +2574,7 @@ export const IncidentRelationsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -2320,6 +2635,7 @@ export type IncidentRelationsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
  * @param $filter - Filters the results, based on a Boolean condition. Optional.
  * @param $orderby - Sorts the results. Optional.
  * @param $top - Returns only the first n results. Optional.
@@ -2337,6 +2653,95 @@ export const IncidentsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        additionalData: Schema.optional(
+          Schema.Struct({
+            alertsCount: Schema.optional(Schema.Number),
+            bookmarksCount: Schema.optional(Schema.Number),
+            commentsCount: Schema.optional(Schema.Number),
+            alertProductNames: Schema.optional(Schema.Array(Schema.String)),
+            tactics: Schema.optional(
+              Schema.Array(
+                Schema.Literals([
+                  "Reconnaissance",
+                  "ResourceDevelopment",
+                  "InitialAccess",
+                  "Execution",
+                  "Persistence",
+                  "PrivilegeEscalation",
+                  "DefenseEvasion",
+                  "CredentialAccess",
+                  "Discovery",
+                  "LateralMovement",
+                  "Collection",
+                  "Exfiltration",
+                  "CommandAndControl",
+                  "Impact",
+                  "PreAttack",
+                  "ImpairProcessControl",
+                  "InhibitResponseFunction",
+                ]),
+              ),
+            ),
+            providerIncidentUrl: Schema.optional(Schema.String),
+          }),
+        ),
+        classification: Schema.optional(
+          Schema.Literals([
+            "Undetermined",
+            "TruePositive",
+            "BenignPositive",
+            "FalsePositive",
+          ]),
+        ),
+        classificationComment: Schema.optional(Schema.String),
+        classificationReason: Schema.optional(
+          Schema.Literals([
+            "SuspiciousActivity",
+            "SuspiciousButExpected",
+            "IncorrectAlertLogic",
+            "InaccurateData",
+          ]),
+        ),
+        createdTimeUtc: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        firstActivityTimeUtc: Schema.optional(Schema.String),
+        incidentUrl: Schema.optional(Schema.String),
+        providerName: Schema.optional(Schema.String),
+        providerIncidentId: Schema.optional(Schema.String),
+        incidentNumber: Schema.optional(Schema.Number),
+        labels: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              labelName: Schema.String,
+              labelType: Schema.optional(
+                Schema.Literals(["User", "AutoAssigned"]),
+              ),
+            }),
+          ),
+        ),
+        lastActivityTimeUtc: Schema.optional(Schema.String),
+        lastModifiedTimeUtc: Schema.optional(Schema.String),
+        owner: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            assignedTo: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            userPrincipalName: Schema.optional(Schema.String),
+            ownerType: Schema.optional(
+              Schema.Literals(["Unknown", "User", "Group"]),
+            ),
+          }),
+        ),
+        relatedAnalyticRuleIds: Schema.optional(Schema.Array(Schema.String)),
+        severity: Schema.Literals(["High", "Medium", "Low", "Informational"]),
+        status: Schema.Literals(["New", "Active", "Closed"]),
+        title: Schema.String,
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2379,6 +2784,7 @@ export type IncidentsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
  */
 export const IncidentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2391,6 +2797,7 @@ export const IncidentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  incidentId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -2412,6 +2819,7 @@ export type IncidentsDeleteOutput = typeof IncidentsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
  */
 export const IncidentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IncidentsDeleteInput,
@@ -2422,6 +2830,7 @@ export const IncidentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  incidentId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2461,6 +2870,7 @@ export type IncidentsGetOutput = typeof IncidentsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
  */
 export const IncidentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IncidentsGetInput,
@@ -2534,6 +2944,7 @@ export const IncidentsListAlertsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2588,6 +2999,7 @@ export type IncidentsListAlertsOutput = typeof IncidentsListAlertsOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
  */
 export const IncidentsListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IncidentsListAlertsInput,
@@ -2599,6 +3011,7 @@ export const IncidentsListBookmarksInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2655,6 +3068,7 @@ export type IncidentsListBookmarksOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
  */
 export const IncidentsListBookmarks = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2668,6 +3082,7 @@ export const IncidentsListEntitiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2755,6 +3170,7 @@ export type IncidentsListEntitiesOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
  */
 export const IncidentsListEntities = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2807,6 +3223,32 @@ export const IncidentTasksCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
+    incidentTaskId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      title: Schema.String,
+      description: Schema.optional(Schema.String),
+      status: Schema.Literals(["New", "Completed"]),
+      createdTimeUtc: Schema.optional(Schema.String),
+      lastModifiedTimeUtc: Schema.optional(Schema.String),
+      createdBy: Schema.optional(
+        Schema.Struct({
+          email: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          objectId: Schema.optional(Schema.String),
+          userPrincipalName: Schema.optional(Schema.String),
+        }),
+      ),
+      lastModifiedBy: Schema.optional(
+        Schema.Struct({
+          email: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          objectId: Schema.optional(Schema.String),
+          userPrincipalName: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2849,6 +3291,8 @@ export type IncidentTasksCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
+ * @param incidentTaskId - Incident task ID
  */
 export const IncidentTasksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2862,6 +3306,8 @@ export const IncidentTasksDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
+    incidentTaskId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2884,6 +3330,8 @@ export type IncidentTasksDeleteOutput = typeof IncidentTasksDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
+ * @param incidentTaskId - Incident task ID
  */
 export const IncidentTasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IncidentTasksDeleteInput,
@@ -2894,6 +3342,8 @@ export const IncidentTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  incidentId: Schema.String.pipe(T.PathParam()),
+  incidentTaskId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2935,6 +3385,8 @@ export type IncidentTasksGetOutput = typeof IncidentTasksGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
+ * @param incidentTaskId - Incident task ID
  */
 export const IncidentTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IncidentTasksGetInput,
@@ -2946,6 +3398,7 @@ export const IncidentTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    incidentId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -3004,6 +3457,7 @@ export type IncidentTasksListOutput = typeof IncidentTasksListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param incidentId - Incident ID
  */
 export const IncidentTasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IncidentTasksListInput,
@@ -3014,6 +3468,80 @@ export const MetadataCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  metadataName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      contentId: Schema.optional(Schema.String),
+      parentId: Schema.String,
+      version: Schema.optional(Schema.String),
+      kind: Schema.String,
+      source: Schema.optional(
+        Schema.Struct({
+          kind: Schema.Literals([
+            "LocalWorkspace",
+            "Community",
+            "Solution",
+            "SourceRepository",
+          ]),
+          name: Schema.optional(Schema.String),
+          sourceId: Schema.optional(Schema.String),
+        }),
+      ),
+      author: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          link: Schema.optional(Schema.String),
+        }),
+      ),
+      support: Schema.optional(
+        Schema.Struct({
+          tier: Schema.Literals(["Microsoft", "Partner", "Community"]),
+          name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          link: Schema.optional(Schema.String),
+        }),
+      ),
+      dependencies: Schema.optional(
+        Schema.Struct({
+          contentId: Schema.optional(Schema.String),
+          kind: Schema.optional(Schema.String),
+          version: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          operator: Schema.optional(Schema.Literals(["AND", "OR"])),
+          criteria: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                contentId: Schema.optional(Schema.String),
+                kind: Schema.optional(Schema.String),
+                version: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                operator: Schema.optional(Schema.Literals(["AND", "OR"])),
+                criteria: Schema.optional(Schema.Array(Schema.Unknown)),
+              }),
+            ),
+          ),
+        }),
+      ),
+      categories: Schema.optional(
+        Schema.Struct({
+          domains: Schema.optional(Schema.Array(Schema.String)),
+          verticals: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      providers: Schema.optional(Schema.Array(Schema.String)),
+      firstPublishDate: Schema.optional(Schema.String),
+      lastPublishDate: Schema.optional(Schema.String),
+      customVersion: Schema.optional(Schema.String),
+      contentSchemaVersion: Schema.optional(Schema.String),
+      icon: Schema.optional(Schema.String),
+      threatAnalysisTactics: Schema.optional(Schema.Array(Schema.String)),
+      threatAnalysisTechniques: Schema.optional(Schema.Array(Schema.String)),
+      previewImages: Schema.optional(Schema.Array(Schema.String)),
+      previewImagesDark: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  etag: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -3053,6 +3581,7 @@ export type MetadataCreateOutput = typeof MetadataCreateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param metadataName - The Metadata name.
  */
 export const MetadataCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MetadataCreateInput,
@@ -3063,6 +3592,7 @@ export const MetadataDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  metadataName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -3084,6 +3614,7 @@ export type MetadataDeleteOutput = typeof MetadataDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param metadataName - The Metadata name.
  */
 export const MetadataDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MetadataDeleteInput,
@@ -3094,6 +3625,7 @@ export const MetadataGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  metadataName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -3133,6 +3665,7 @@ export type MetadataGetOutput = typeof MetadataGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param metadataName - The Metadata name.
  */
 export const MetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MetadataGetInput,
@@ -3205,6 +3738,80 @@ export const MetadataUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  metadataName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      contentId: Schema.optional(Schema.String),
+      parentId: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      source: Schema.optional(
+        Schema.Struct({
+          kind: Schema.Literals([
+            "LocalWorkspace",
+            "Community",
+            "Solution",
+            "SourceRepository",
+          ]),
+          name: Schema.optional(Schema.String),
+          sourceId: Schema.optional(Schema.String),
+        }),
+      ),
+      author: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          link: Schema.optional(Schema.String),
+        }),
+      ),
+      support: Schema.optional(
+        Schema.Struct({
+          tier: Schema.Literals(["Microsoft", "Partner", "Community"]),
+          name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          link: Schema.optional(Schema.String),
+        }),
+      ),
+      dependencies: Schema.optional(
+        Schema.Struct({
+          contentId: Schema.optional(Schema.String),
+          kind: Schema.optional(Schema.String),
+          version: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          operator: Schema.optional(Schema.Literals(["AND", "OR"])),
+          criteria: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                contentId: Schema.optional(Schema.String),
+                kind: Schema.optional(Schema.String),
+                version: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                operator: Schema.optional(Schema.Literals(["AND", "OR"])),
+                criteria: Schema.optional(Schema.Array(Schema.Unknown)),
+              }),
+            ),
+          ),
+        }),
+      ),
+      categories: Schema.optional(
+        Schema.Struct({
+          domains: Schema.optional(Schema.Array(Schema.String)),
+          verticals: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      providers: Schema.optional(Schema.Array(Schema.String)),
+      firstPublishDate: Schema.optional(Schema.String),
+      lastPublishDate: Schema.optional(Schema.String),
+      customVersion: Schema.optional(Schema.String),
+      contentSchemaVersion: Schema.optional(Schema.String),
+      icon: Schema.optional(Schema.String),
+      threatAnalysisTactics: Schema.optional(Schema.Array(Schema.String)),
+      threatAnalysisTechniques: Schema.optional(Schema.Array(Schema.String)),
+      previewImages: Schema.optional(Schema.Array(Schema.String)),
+      previewImagesDark: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  etag: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -3244,6 +3851,7 @@ export type MetadataUpdateOutput = typeof MetadataUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param metadataName - The Metadata name.
  */
 export const MetadataUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MetadataUpdateInput,
@@ -3298,6 +3906,7 @@ export const ProductPackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    packageId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -3339,6 +3948,7 @@ export type ProductPackageGetOutput = typeof ProductPackageGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param packageId - package Id
  */
 export const ProductPackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProductPackageGetInput,
@@ -3429,6 +4039,7 @@ export const ProductTemplateGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    templateId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3469,6 +4080,7 @@ export type ProductTemplateGetOutput = typeof ProductTemplateGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param templateId - template Id
  */
 export const ProductTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProductTemplateGetInput,
@@ -3562,6 +4174,9 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    settingsResourceName: Schema.String.pipe(T.PathParam()),
+    kind: Schema.Literals(["Anomaly"]),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3604,6 +4219,7 @@ export type SecurityMLAnalyticsSettingsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param settingsResourceName - Security ML Analytics Settings resource name
  */
 export const SecurityMLAnalyticsSettingsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3616,6 +4232,7 @@ export const SecurityMLAnalyticsSettingsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    settingsResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -3640,6 +4257,7 @@ export type SecurityMLAnalyticsSettingsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param settingsResourceName - Security ML Analytics Settings resource name
  */
 export const SecurityMLAnalyticsSettingsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3652,6 +4270,7 @@ export const SecurityMLAnalyticsSettingsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    settingsResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3694,6 +4313,7 @@ export type SecurityMLAnalyticsSettingsGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param settingsResourceName - Security ML Analytics Settings resource name
  */
 export const SecurityMLAnalyticsSettingsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3775,6 +4395,13 @@ export const SentinelOnboardingStatesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    sentinelOnboardingStateName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        customerManagedKey: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3817,6 +4444,7 @@ export type SentinelOnboardingStatesCreateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param sentinelOnboardingStateName - The Sentinel onboarding state name. Supports - default
  */
 export const SentinelOnboardingStatesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3829,6 +4457,7 @@ export const SentinelOnboardingStatesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    sentinelOnboardingStateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -3853,6 +4482,7 @@ export type SentinelOnboardingStatesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param sentinelOnboardingStateName - The Sentinel onboarding state name. Supports - default
  */
 export const SentinelOnboardingStatesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3865,6 +4495,7 @@ export const SentinelOnboardingStatesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    sentinelOnboardingStateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3907,6 +4538,7 @@ export type SentinelOnboardingStatesGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param sentinelOnboardingStateName - The Sentinel onboarding state name. Supports - default
  */
 export const SentinelOnboardingStatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3988,6 +4620,16 @@ export const SourceControlListRepositoriesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      repositoryAccess: Schema.Struct({
+        kind: Schema.Literals(["OAuth", "PAT", "App"]),
+        code: Schema.optional(Schema.String),
+        state: Schema.optional(Schema.String),
+        clientId: Schema.optional(Schema.String),
+        token: Schema.optional(Schema.String),
+        installationId: Schema.optional(Schema.String),
+      }),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4034,6 +4676,113 @@ export const SourceControlsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    sourceControlId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      id: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.Literals(["V1", "V2"])),
+      displayName: Schema.String,
+      description: Schema.optional(Schema.String),
+      repoType: Schema.Literals(["Github", "AzureDevOps"]),
+      contentTypes: Schema.Array(
+        Schema.Literals([
+          "AnalyticsRule",
+          "AutomationRule",
+          "HuntingQuery",
+          "Parser",
+          "Playbook",
+          "Workbook",
+        ]),
+      ),
+      repository: Schema.Struct({
+        url: Schema.String,
+        branch: Schema.String,
+        displayUrl: Schema.optional(Schema.String),
+        deploymentLogsUrl: Schema.optional(Schema.String),
+      }),
+      servicePrincipal: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          tenantId: Schema.optional(Schema.String),
+          appId: Schema.optional(Schema.String),
+          credentialsExpireOn: Schema.optional(Schema.String),
+        }),
+      ),
+      workloadIdentityFederation: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          tenantId: Schema.optional(Schema.String),
+          appId: Schema.optional(Schema.String),
+          subject: Schema.optional(Schema.String),
+          issuer: Schema.optional(Schema.String),
+        }),
+      ),
+      repositoryAccess: Schema.optional(
+        Schema.Struct({
+          kind: Schema.Literals(["OAuth", "PAT", "App"]),
+          code: Schema.optional(Schema.String),
+          state: Schema.optional(Schema.String),
+          clientId: Schema.optional(Schema.String),
+          token: Schema.optional(Schema.String),
+          installationId: Schema.optional(Schema.String),
+        }),
+      ),
+      repositoryResourceInfo: Schema.optional(
+        Schema.Struct({
+          webhook: Schema.optional(
+            Schema.Struct({
+              webhookId: Schema.optional(Schema.String),
+              webhookUrl: Schema.optional(Schema.String),
+              webhookSecretUpdateTime: Schema.optional(Schema.String),
+              rotateWebhookSecret: Schema.optional(Schema.Boolean),
+            }),
+          ),
+          gitHubResourceInfo: Schema.optional(
+            Schema.Struct({
+              appInstallationId: Schema.optional(Schema.String),
+            }),
+          ),
+          azureDevOpsResourceInfo: Schema.optional(
+            Schema.Struct({
+              pipelineId: Schema.optional(Schema.String),
+              serviceConnectionId: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      lastDeploymentInfo: Schema.optional(
+        Schema.Struct({
+          deploymentFetchStatus: Schema.optional(
+            Schema.Literals(["Success", "Unauthorized", "NotFound"]),
+          ),
+          deployment: Schema.optional(
+            Schema.Struct({
+              deploymentId: Schema.optional(Schema.String),
+              deploymentState: Schema.optional(
+                Schema.Literals([
+                  "In_Progress",
+                  "Completed",
+                  "Queued",
+                  "Canceling",
+                ]),
+              ),
+              deploymentResult: Schema.optional(
+                Schema.Literals(["Success", "Canceled", "Failed"]),
+              ),
+              deploymentTime: Schema.optional(Schema.String),
+              deploymentLogsUrl: Schema.optional(Schema.String),
+            }),
+          ),
+          message: Schema.optional(Schema.String),
+        }),
+      ),
+      pullRequest: Schema.optional(
+        Schema.Struct({
+          url: Schema.optional(Schema.String),
+          state: Schema.optional(Schema.Literals(["Open", "Closed"])),
+        }),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4074,6 +4823,7 @@ export type SourceControlsCreateOutput = typeof SourceControlsCreateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param sourceControlId - Source control Id
  */
 export const SourceControlsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4087,6 +4837,17 @@ export const SourceControlsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    sourceControlId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      repositoryAccess: Schema.Struct({
+        kind: Schema.Literals(["OAuth", "PAT", "App"]),
+        code: Schema.optional(Schema.String),
+        state: Schema.optional(Schema.String),
+        clientId: Schema.optional(Schema.String),
+        token: Schema.optional(Schema.String),
+        installationId: Schema.optional(Schema.String),
+      }),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4125,6 +4886,7 @@ export type SourceControlsDeleteOutput = typeof SourceControlsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param sourceControlId - Source control Id
  */
 export const SourceControlsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4138,6 +4900,7 @@ export const SourceControlsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    sourceControlId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -4179,6 +4942,7 @@ export type SourceControlsGetOutput = typeof SourceControlsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param sourceControlId - Source control Id
  */
 export const SourceControlsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SourceControlsGetInput,
@@ -4256,6 +5020,8 @@ export const ThreatIntelligenceIndicatorAppendTagsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    threatIntelligenceTags: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4280,6 +5046,7 @@ export type ThreatIntelligenceIndicatorAppendTagsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param name - Threat intelligence indicator name field.
  */
 export const ThreatIntelligenceIndicatorAppendTags =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4292,6 +5059,16 @@ export const ThreatIntelligenceIndicatorCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        additionalData: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        friendlyName: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.Literals(["indicator"]),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4334,6 +5111,7 @@ export type ThreatIntelligenceIndicatorCreateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param name - Threat intelligence indicator name field.
  */
 export const ThreatIntelligenceIndicatorCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4346,6 +5124,15 @@ export const ThreatIntelligenceIndicatorCreateIndicatorInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        additionalData: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        friendlyName: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.Literals(["indicator"]),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4400,6 +5187,7 @@ export const ThreatIntelligenceIndicatorDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -4424,6 +5212,7 @@ export type ThreatIntelligenceIndicatorDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param name - Threat intelligence indicator name field.
  */
 export const ThreatIntelligenceIndicatorDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4436,6 +5225,7 @@ export const ThreatIntelligenceIndicatorGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4478,6 +5268,7 @@ export type ThreatIntelligenceIndicatorGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param name - Threat intelligence indicator name field.
  */
 export const ThreatIntelligenceIndicatorGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4560,6 +5351,28 @@ export const ThreatIntelligenceIndicatorQueryIndicatorsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    pageSize: Schema.optional(Schema.Number),
+    minConfidence: Schema.optional(Schema.Number),
+    maxConfidence: Schema.optional(Schema.Number),
+    minValidUntil: Schema.optional(Schema.String),
+    maxValidUntil: Schema.optional(Schema.String),
+    includeDisabled: Schema.optional(Schema.Boolean),
+    sortBy: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          itemKey: Schema.optional(Schema.String),
+          sortOrder: Schema.optional(
+            Schema.Literals(["unsorted", "ascending", "descending"]),
+          ),
+        }),
+      ),
+    ),
+    sources: Schema.optional(Schema.Array(Schema.String)),
+    patternTypes: Schema.optional(Schema.Array(Schema.String)),
+    threatTypes: Schema.optional(Schema.Array(Schema.String)),
+    ids: Schema.optional(Schema.Array(Schema.String)),
+    keywords: Schema.optional(Schema.Array(Schema.String)),
+    skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4629,6 +5442,16 @@ export const ThreatIntelligenceIndicatorReplaceTagsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        additionalData: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        friendlyName: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.Literals(["indicator"]),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4671,6 +5494,7 @@ export type ThreatIntelligenceIndicatorReplaceTagsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param name - Threat intelligence indicator name field.
  */
 export const ThreatIntelligenceIndicatorReplaceTags =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4760,6 +5584,35 @@ export const WatchlistItemsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    watchlistAlias: Schema.String.pipe(T.PathParam()),
+    watchlistItemId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        watchlistItemType: Schema.optional(Schema.String),
+        watchlistItemId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        isDeleted: Schema.optional(Schema.Boolean),
+        created: Schema.optional(Schema.String),
+        updated: Schema.optional(Schema.String),
+        createdBy: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
+        ),
+        updatedBy: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
+        ),
+        itemsKeyValue: Schema.Unknown,
+        entityMapping: Schema.optional(Schema.Unknown),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4802,6 +5655,8 @@ export type WatchlistItemsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param watchlistAlias - The watchlist alias
+ * @param watchlistItemId - The watchlist item id (GUID)
  */
 export const WatchlistItemsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4814,6 +5669,8 @@ export const WatchlistItemsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    watchlistAlias: Schema.String.pipe(T.PathParam()),
+    watchlistItemId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -4836,6 +5693,8 @@ export type WatchlistItemsDeleteOutput = typeof WatchlistItemsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param watchlistAlias - The watchlist alias
+ * @param watchlistItemId - The watchlist item id (GUID)
  */
 export const WatchlistItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4849,6 +5708,8 @@ export const WatchlistItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    watchlistAlias: Schema.String.pipe(T.PathParam()),
+    watchlistItemId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -4890,6 +5751,8 @@ export type WatchlistItemsGetOutput = typeof WatchlistItemsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param watchlistAlias - The watchlist alias
+ * @param watchlistItemId - The watchlist item id (GUID)
  */
 export const WatchlistItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WatchlistItemsGetInput,
@@ -4901,6 +5764,7 @@ export const WatchlistItemsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    watchlistAlias: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4957,6 +5821,7 @@ export type WatchlistItemsListOutput = typeof WatchlistItemsListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param watchlistAlias - The watchlist alias
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
 export const WatchlistItemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4969,6 +5834,56 @@ export const WatchlistsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    watchlistAlias: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        watchlistId: Schema.optional(Schema.String),
+        displayName: Schema.String,
+        provider: Schema.String,
+        source: Schema.optional(Schema.String),
+        sourceType: Schema.optional(Schema.Literals(["Local", "AzureStorage"])),
+        created: Schema.optional(Schema.String),
+        updated: Schema.optional(Schema.String),
+        createdBy: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
+        ),
+        updatedBy: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
+        ),
+        description: Schema.optional(Schema.String),
+        watchlistType: Schema.optional(Schema.String),
+        watchlistAlias: Schema.optional(Schema.String),
+        isDeleted: Schema.optional(Schema.Boolean),
+        labels: Schema.optional(Schema.Array(Schema.String)),
+        defaultDuration: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        numberOfLinesToSkip: Schema.optional(Schema.Number),
+        rawContent: Schema.optional(Schema.String),
+        itemsSearchKey: Schema.String,
+        contentType: Schema.optional(Schema.String),
+        uploadStatus: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "New",
+            "InProgress",
+            "Uploading",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5011,6 +5926,7 @@ export type WatchlistsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param watchlistAlias - The watchlist alias
  */
 export const WatchlistsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5023,6 +5939,7 @@ export const WatchlistsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  watchlistAlias: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -5044,6 +5961,7 @@ export type WatchlistsDeleteOutput = typeof WatchlistsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param watchlistAlias - The watchlist alias
  */
 export const WatchlistsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WatchlistsDeleteInput,
@@ -5054,6 +5972,7 @@ export const WatchlistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  watchlistAlias: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -5093,6 +6012,7 @@ export type WatchlistsGetOutput = typeof WatchlistsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param watchlistAlias - The watchlist alias
  */
 export const WatchlistsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WatchlistsGetInput,

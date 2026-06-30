@@ -34,7 +34,6 @@ export type TasksRunsArtifactsPresignCreateOutput =
  *
  * Returns a temporary, signed URL that can be used to download a specific artifact.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsArtifactsPresignCreate =

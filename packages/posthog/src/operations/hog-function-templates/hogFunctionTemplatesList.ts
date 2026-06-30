@@ -41,8 +41,8 @@ export const HogFunctionTemplatesListOutput =
           category: Schema.optional(Schema.Unknown),
           free: Schema.optional(Schema.Boolean),
           icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-          filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          filters: Schema.optional(Schema.Unknown),
+          masking: Schema.optional(Schema.Unknown),
           mapping_templates: Schema.optional(
             Schema.NullOr(
               Schema.Array(
@@ -54,9 +54,9 @@ export const HogFunctionTemplatesListOutput =
                   use_all_events_by_default: Schema.optional(
                     Schema.NullOr(Schema.Boolean),
                   ),
-                  filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                  inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                  inputs_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  filters: Schema.optional(Schema.Unknown),
+                  inputs: Schema.optional(Schema.Unknown),
+                  inputs_schema: Schema.optional(Schema.Unknown),
                 }),
               ),
             ),

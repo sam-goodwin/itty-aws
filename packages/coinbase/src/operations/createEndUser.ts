@@ -67,7 +67,7 @@ export type CreateEndUserOutput = typeof CreateEndUserOutput.Type;
 
 // The operation
 /**
- * Create an end user
+ * Create end user
  *
  * Creates an end user. An end user is an entity that can own CDP EVM accounts, EVM smart accounts, and/or Solana accounts. 1 or more authentication methods must be associated with an end user. By default, no accounts are created unless the optional `evmAccount` and/or `solanaAccount` fields are provided.
  * This API is intended to be used by the developer's own backend, and is authenticated using the developer's CDP API key.

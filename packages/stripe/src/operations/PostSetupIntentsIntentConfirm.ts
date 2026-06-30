@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostSetupIntentsIntentConfirmInput =
@@ -51,6 +51,7 @@ export const PostSetupIntentsIntentConfirmInput =
             tax_id: Schema.optional(Schema.String),
           }),
         ),
+        bizum: Schema.optional(Schema.Struct({})),
         blik: Schema.optional(Schema.Struct({})),
         boleto: Schema.optional(
           Schema.Struct({
@@ -248,6 +249,7 @@ export const PostSetupIntentsIntentConfirmInput =
         revolut_pay: Schema.optional(Schema.Struct({})),
         samsung_pay: Schema.optional(Schema.Struct({})),
         satispay: Schema.optional(Schema.Struct({})),
+        scalapay: Schema.optional(Schema.Struct({})),
         sepa_debit: Schema.optional(
           Schema.Struct({
             iban: Schema.String,
@@ -258,6 +260,7 @@ export const PostSetupIntentsIntentConfirmInput =
             country: Schema.Literals(["AT", "BE", "DE", "ES", "IT", "NL"]),
           }),
         ),
+        sunbit: Schema.optional(Schema.Struct({})),
         swish: Schema.optional(Schema.Struct({})),
         twint: Schema.optional(Schema.Struct({})),
         type: Schema.Literals([
@@ -271,6 +274,7 @@ export const PostSetupIntentsIntentConfirmInput =
           "bacs_debit",
           "bancontact",
           "billie",
+          "bizum",
           "blik",
           "boleto",
           "cashapp",
@@ -303,8 +307,10 @@ export const PostSetupIntentsIntentConfirmInput =
           "revolut_pay",
           "samsung_pay",
           "satispay",
+          "scalapay",
           "sepa_debit",
           "sofort",
+          "sunbit",
           "swish",
           "twint",
           "upi",
@@ -378,6 +384,7 @@ export const PostSetupIntentsIntentConfirmInput =
             ),
           }),
         ),
+        bizum: Schema.optional(Schema.Struct({})),
         card: Schema.optional(
           Schema.Struct({
             mandate_options: Schema.optional(
@@ -587,6 +594,34 @@ export const PostSetupIntentsIntentConfirmInput =
             ),
           }),
         ),
+        pix: Schema.optional(
+          Schema.Struct({
+            mandate_options: Schema.optional(
+              Schema.Struct({
+                amount: Schema.optional(Schema.Number),
+                amount_includes_iof: Schema.optional(
+                  Schema.Literals(["always", "never"]),
+                ),
+                amount_type: Schema.optional(
+                  Schema.Literals(["fixed", "maximum"]),
+                ),
+                currency: Schema.optional(Schema.String),
+                end_date: Schema.optional(Schema.String),
+                payment_schedule: Schema.optional(
+                  Schema.Literals([
+                    "halfyearly",
+                    "monthly",
+                    "quarterly",
+                    "weekly",
+                    "yearly",
+                  ]),
+                ),
+                reference: Schema.optional(Schema.String),
+                start_date: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
         sepa_debit: Schema.optional(
           Schema.Struct({
             mandate_options: Schema.optional(
@@ -684,7 +719,7 @@ export const PostSetupIntentsIntentConfirmOutput =
     cancellation_reason: Schema.NullOr(
       Schema.Literals(["abandoned", "duplicate", "requested_by_customer"]),
     ),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
     customer: Schema.Unknown,
     customer_account: Schema.optional(Schema.NullOr(Schema.String)),
@@ -702,6 +737,7 @@ export const PostSetupIntentsIntentConfirmOutput =
           "bacs_debit",
           "bancontact",
           "billie",
+          "bizum",
           "blik",
           "boleto",
           "card",
@@ -734,8 +770,10 @@ export const PostSetupIntentsIntentConfirmOutput =
           "revolut_pay",
           "samsung_pay",
           "satispay",
+          "scalapay",
           "sepa_debit",
           "sofort",
+          "sunbit",
           "swish",
           "twint",
           "upi",
@@ -752,6 +790,7 @@ export const PostSetupIntentsIntentConfirmOutput =
     last_setup_error: Schema.Unknown,
     latest_attempt: Schema.Unknown,
     livemode: Schema.Boolean,
+    managed_payments: Schema.optional(Schema.Unknown),
     mandate: Schema.Unknown,
     metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     next_action: Schema.Unknown,

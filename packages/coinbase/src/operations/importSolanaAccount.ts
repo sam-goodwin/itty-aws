@@ -23,7 +23,7 @@ export type ImportSolanaAccountOutput = typeof ImportSolanaAccountOutput.Type;
 
 // The operation
 /**
- * Import a Solana account
+ * Import Solana account
  *
  * Import an existing Solana account into the developer's CDP Project. This API should be called from the [CDP SDK](https://github.com/coinbase/cdp-sdk) to ensure that the associated private key is properly encrypted.
  *

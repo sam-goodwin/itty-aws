@@ -9,7 +9,7 @@ export const AuditLogValidatorsControllerListInput =
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "GET", path: "/audit_logs/actions" }));
 export type AuditLogValidatorsControllerListInput =
   typeof AuditLogValidatorsControllerListInput.Type;

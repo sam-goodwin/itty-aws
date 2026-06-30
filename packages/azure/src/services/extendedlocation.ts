@@ -13,6 +13,7 @@ export const CustomLocationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
@@ -81,6 +82,7 @@ export type CustomLocationsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -92,6 +94,7 @@ export const CustomLocationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -116,6 +119,7 @@ export type CustomLocationsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -128,6 +132,7 @@ export const CustomLocationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -155,6 +160,7 @@ export type CustomLocationsGetOutput = typeof CustomLocationsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CustomLocationsGetInput,
@@ -257,6 +263,7 @@ export const CustomLocationsListEnabledResourceTypesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -293,6 +300,7 @@ export type CustomLocationsListEnabledResourceTypesOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsListEnabledResourceTypes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -350,6 +358,7 @@ export const CustomLocationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
@@ -402,6 +411,7 @@ export type CustomLocationsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

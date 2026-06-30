@@ -8,6 +8,8 @@ export const PatchV1DatabasesByDatabaseIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
+    branchId: Schema.optional(Schema.NullOr(Schema.String)),
+    branchGitName: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(T.Http({ method: "PATCH", path: "/v1/databases/{databaseId}" }));
 export type PatchV1DatabasesByDatabaseIdInput =
   typeof PatchV1DatabasesByDatabaseIdInput.Type;
@@ -85,6 +87,7 @@ export const PatchV1DatabasesByDatabaseIdOutput =
         }),
       ),
       source: Schema.Unknown,
+      branchId: Schema.NullOr(Schema.String),
     }),
   });
 export type PatchV1DatabasesByDatabaseIdOutput =

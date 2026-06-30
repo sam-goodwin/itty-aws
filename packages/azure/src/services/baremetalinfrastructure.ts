@@ -13,6 +13,7 @@ export const AzureBareMetalInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureBareMetalInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -42,6 +43,7 @@ export type AzureBareMetalInstancesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param azureBareMetalInstanceName - Name of the Azure BareMetal on Azure instance.
  */
 export const AzureBareMetalInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -146,6 +148,8 @@ export const AzureBareMetalInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureBareMetalInstanceName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -175,6 +179,7 @@ export type AzureBareMetalInstancesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param azureBareMetalInstanceName - Name of the Azure BareMetal on Azure instance.
  */
 export const AzureBareMetalInstancesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -186,6 +191,7 @@ export const AzureBareMetalStorageInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureBareMetalStorageInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         azureBareMetalStorageInstanceUniqueIdentifier: Schema.optional(
@@ -265,6 +271,7 @@ export type AzureBareMetalStorageInstancesCreateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param azureBareMetalStorageInstanceName - Name of the AzureBareMetalStorage on Azure instance.
  */
 export const AzureBareMetalStorageInstancesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -276,6 +283,7 @@ export const AzureBareMetalStorageInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureBareMetalStorageInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -298,6 +306,7 @@ export type AzureBareMetalStorageInstancesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param azureBareMetalStorageInstanceName - Name of the AzureBareMetalStorage on Azure instance.
  * @param api-version - The API version to use for this operation.
  */
 export const AzureBareMetalStorageInstancesDelete =
@@ -310,6 +319,7 @@ export const AzureBareMetalStorageInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureBareMetalStorageInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -339,6 +349,7 @@ export type AzureBareMetalStorageInstancesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param azureBareMetalStorageInstanceName - Name of the AzureBareMetalStorage on Azure instance.
  */
 export const AzureBareMetalStorageInstancesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -442,6 +453,8 @@ export const AzureBareMetalStorageInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    azureBareMetalStorageInstanceName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -471,6 +484,7 @@ export type AzureBareMetalStorageInstancesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param azureBareMetalStorageInstanceName - Name of the AzureBareMetalStorage on Azure instance.
  */
 export const AzureBareMetalStorageInstancesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

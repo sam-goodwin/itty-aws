@@ -14,10 +14,10 @@ export type JwtTemplatesControllerUpdateJwtTemplateInput =
 // Output Schema
 export const JwtTemplatesControllerUpdateJwtTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    content: Schema.optional(Schema.String),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
+    object: Schema.String,
+    content: Schema.String,
+    created_at: Schema.String,
+    updated_at: Schema.String,
   });
 export type JwtTemplatesControllerUpdateJwtTemplateOutput =
   typeof JwtTemplatesControllerUpdateJwtTemplateOutput.Type;

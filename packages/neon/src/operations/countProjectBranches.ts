@@ -25,7 +25,7 @@ export type CountProjectBranchesOutput = typeof CountProjectBranchesOutput.Type;
  * Retrieve number of branches
  *
  * Retrieves the total number of branches in the specified project.
- * You can obtain a `project_id` by listing the projects for your Neon account.
+ * Supports an optional `search` parameter to count branches matching a name filter.
  *
  * @param project_id - The Neon project ID
  * @param search - Count branches matching the `name` in search query

@@ -30,15 +30,8 @@ export const VisualReviewReposQuarantineListOutput =
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          created_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                first_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
+          created_by: Schema.optional(Schema.Unknown),
+          source_run: Schema.optional(Schema.Unknown),
           id: Schema.optional(Schema.String),
           identifier: Schema.optional(Schema.String),
           run_type: Schema.optional(Schema.String),

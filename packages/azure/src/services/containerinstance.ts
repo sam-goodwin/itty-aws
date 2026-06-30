@@ -429,23 +429,6 @@ export const CGProfileCreateOrUpdateInput =
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
     zones: Schema.optional(Schema.Array(Schema.String)),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1403,9 +1386,20 @@ export const ContainerGroupsCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    zones: Schema.optional(Schema.Array(Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type ContainerGroupsCreateOrUpdateOutput =
   typeof ContainerGroupsCreateOrUpdateOutput.Type;
@@ -1447,9 +1441,20 @@ export const ContainerGroupsDeleteOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    zones: Schema.optional(Schema.Array(Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type ContainerGroupsDeleteOutput =
   typeof ContainerGroupsDeleteOutput.Type;
@@ -1492,9 +1497,20 @@ export const ContainerGroupsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    zones: Schema.optional(Schema.Array(Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type ContainerGroupsGetOutput = typeof ContainerGroupsGetOutput.Type;
 
@@ -2754,9 +2770,20 @@ export const ContainerGroupsUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    zones: Schema.optional(Schema.Array(Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type ContainerGroupsUpdateOutput =
   typeof ContainerGroupsUpdateOutput.Type;
@@ -3261,23 +3288,6 @@ export const NGroupsCreateOrUpdateInput =
             }),
           ),
         ),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   }).pipe(
@@ -3941,7 +3951,7 @@ export const SubnetServiceAssociationLinkDeleteInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default",
       apiVersion: "2025-09-01",
     }),
   );

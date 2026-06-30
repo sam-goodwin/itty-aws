@@ -44,6 +44,7 @@ export const GetMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   triggerAfterNPositiveResults: Schema.optional(Schema.Number),
   triggerFromNRuns: Schema.optional(Schema.Number),
   type: Schema.Literals(["Threshold", "MatchEvent", "AnomalyDetection"]),
+  updatedAt: Schema.optional(Schema.String),
   id: Schema.String,
 });
 export type GetMonitorOutput = typeof GetMonitorOutput.Type;

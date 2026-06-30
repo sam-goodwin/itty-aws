@@ -58,6 +58,21 @@ export const PostFinancialConnectionsAccountsAccountSubscribeOutput =
       ),
     ),
     status: Schema.Literals(["active", "disconnected", "inactive"]),
+    status_details: Schema.optional(
+      Schema.Struct({
+        active: Schema.optional(
+          Schema.Struct({
+            action: Schema.Literals(["none", "relink_required"]),
+            cause: Schema.Literals([
+              "access_expired",
+              "institution_requirement",
+              "unspecified",
+            ]),
+            expected_deactivation_date: Schema.Number,
+          }),
+        ),
+      }),
+    ),
     subcategory: Schema.Literals([
       "checking",
       "credit_card",

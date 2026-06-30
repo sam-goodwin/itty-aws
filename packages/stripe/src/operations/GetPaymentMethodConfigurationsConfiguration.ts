@@ -132,6 +132,16 @@ export const GetPaymentMethodConfigurationsConfigurationOutput =
         }),
       }),
     ),
+    bizum: Schema.optional(
+      Schema.Struct({
+        available: Schema.Boolean,
+        display_preference: Schema.Struct({
+          overridable: Schema.NullOr(Schema.Boolean),
+          preference: Schema.Literals(["none", "off", "on"]),
+          value: Schema.Literals(["off", "on"]),
+        }),
+      }),
+    ),
     blik: Schema.optional(
       Schema.Struct({
         available: Schema.Boolean,
@@ -498,6 +508,16 @@ export const GetPaymentMethodConfigurationsConfigurationOutput =
         }),
       }),
     ),
+    scalapay: Schema.optional(
+      Schema.Struct({
+        available: Schema.Boolean,
+        display_preference: Schema.Struct({
+          overridable: Schema.NullOr(Schema.Boolean),
+          preference: Schema.Literals(["none", "off", "on"]),
+          value: Schema.Literals(["off", "on"]),
+        }),
+      }),
+    ),
     sepa_debit: Schema.optional(
       Schema.Struct({
         available: Schema.Boolean,
@@ -509,6 +529,16 @@ export const GetPaymentMethodConfigurationsConfigurationOutput =
       }),
     ),
     sofort: Schema.optional(
+      Schema.Struct({
+        available: Schema.Boolean,
+        display_preference: Schema.Struct({
+          overridable: Schema.NullOr(Schema.Boolean),
+          preference: Schema.Literals(["none", "off", "on"]),
+          value: Schema.Literals(["off", "on"]),
+        }),
+      }),
+    ),
+    sunbit: Schema.optional(
       Schema.Struct({
         available: Schema.Boolean,
         display_preference: Schema.Struct({

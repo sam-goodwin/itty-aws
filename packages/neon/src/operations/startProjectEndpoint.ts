@@ -127,12 +127,10 @@ export type StartProjectEndpointOutput = typeof StartProjectEndpointOutput.Type;
 /**
  * Start compute endpoint
  *
- * Starts a compute endpoint. The compute endpoint is ready to use
- * after the last operation in chain finishes successfully.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain an `endpoint_id` by listing your project's compute endpoints.
+ * Starts a compute endpoint.
+ * The compute endpoint is ready to use after the last operation in the chain finishes successfully.
  * An `endpoint_id` has an `ep-` prefix.
- * For information about compute endpoints, see [Manage computes](https://neon.tech/docs/manage/endpoints/).
+ * For information about compute endpoints, see [Manage computes](https://neon.com/docs/manage/endpoints/).
  *
  * @param project_id - The Neon project ID
  * @param endpoint_id - The endpoint ID

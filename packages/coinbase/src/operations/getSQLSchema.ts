@@ -4,7 +4,9 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetSQLSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  database: Schema.optional(Schema.Literals(["base", "base_sepolia"])),
+  database: Schema.optional(
+    Schema.Literals(["base", "base_sepolia", "solana", "hyperevm"]),
+  ),
   table: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "GET", path: "/v2/data/query/schema" }));
 export type GetSQLSchemaInput = typeof GetSQLSchemaInput.Type;
@@ -35,7 +37,7 @@ export type GetSQLSchemaOutput = typeof GetSQLSchemaOutput.Type;
 
 // The operation
 /**
- * Get schemas details
+ * Get schema details
  *
  * Retrieve the schema information for the available tables in the SQL API's indexed data.
  * This includes table names, column definitions, data types, and indexed fields.

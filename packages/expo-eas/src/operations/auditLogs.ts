@@ -45,6 +45,8 @@ export const AuditLogsOutput = Schema.Struct({
         "IosAppCredentialsEntity",
         "LogRocketOrganizationEntity",
         "LogRocketProjectEntity",
+        "PostHogOrganizationConnectionEntity",
+        "PostHogProjectEntity",
         "UserInvitationEntity",
         "UserPermissionEntity",
         "VexoAccountConnectionEntity",

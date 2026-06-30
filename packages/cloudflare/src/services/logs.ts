@@ -308,6 +308,749 @@ export const createControlRetention: API.OperationMethod<
 }));
 
 // =============================================================================
+// LogExplorerDataset
+// =============================================================================
+
+const GetLogExplorerDatasetBaseFields = {
+  datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
+} as const;
+
+interface GetLogExplorerDatasetBaseRequest {
+  datasetId: string;
+}
+
+export interface GetLogExplorerDatasetForAccountRequest extends GetLogExplorerDatasetBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetLogExplorerDatasetForZoneRequest extends GetLogExplorerDatasetBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const GetLogExplorerDatasetForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...GetLogExplorerDatasetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/logs/explorer/datasets/{datasetId}",
+      }),
+    ),
+  ) as unknown as Schema.Schema<GetLogExplorerDatasetForAccountRequest>;
+
+export const GetLogExplorerDatasetForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...GetLogExplorerDatasetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/logs/explorer/datasets/{datasetId}",
+      }),
+    ),
+  ) as unknown as Schema.Schema<GetLogExplorerDatasetForZoneRequest>;
+
+export interface GetLogExplorerDatasetResponse {
+  /** RFC3339 timestamp recording when the API created this dataset. */
+  createdAt: string;
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Unique dataset ID. */
+  datasetId: string;
+  /** Whether log ingest is currently active for this dataset. */
+  enabled: boolean;
+  /** Public ID of the account or zone that owns this dataset. */
+  objectId: string;
+  /** Whether this dataset belongs to an account or a zone. */
+  objectType: "account" | "zone" | (string & {});
+  /** RFC3339 timestamp recording when the API last updated this dataset. */
+  updatedAt: string;
+  /** The field configuration for this dataset. */
+  fields?: { enabled: boolean; name: string }[] | null;
+}
+
+export const GetLogExplorerDatasetResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdAt: Schema.String,
+      dataset: Schema.String,
+      datasetId: Schema.String,
+      enabled: Schema.Boolean,
+      objectId: Schema.String,
+      objectType: Schema.Union([
+        Schema.Literals(["account", "zone"]),
+        Schema.String,
+      ]),
+      updatedAt: Schema.String,
+      fields: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          dataset: "dataset",
+          datasetId: "dataset_id",
+          enabled: "enabled",
+          objectId: "object_id",
+          objectType: "object_type",
+          updatedAt: "updated_at",
+          fields: "fields",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetLogExplorerDatasetResponse>;
+
+export type GetLogExplorerDatasetError = DefaultErrors;
+
+export const getLogExplorerDatasetForAccount: API.OperationMethod<
+  GetLogExplorerDatasetForAccountRequest,
+  GetLogExplorerDatasetResponse,
+  GetLogExplorerDatasetError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetLogExplorerDatasetForAccountRequest,
+  output: GetLogExplorerDatasetResponse,
+  errors: [],
+}));
+
+export const getLogExplorerDatasetForZone: API.OperationMethod<
+  GetLogExplorerDatasetForZoneRequest,
+  GetLogExplorerDatasetResponse,
+  GetLogExplorerDatasetError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetLogExplorerDatasetForZoneRequest,
+  output: GetLogExplorerDatasetResponse,
+  errors: [],
+}));
+
+const ListLogExplorerDatasetsBaseFields = {
+  includeZones: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("include_zones"),
+  ),
+} as const;
+
+interface ListLogExplorerDatasetsBaseRequest {
+  /** Query param: Set to true to include zone-scoped datasets belonging to this account. */
+  includeZones?: boolean;
+}
+
+export interface ListLogExplorerDatasetsForAccountRequest extends ListLogExplorerDatasetsBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListLogExplorerDatasetsForZoneRequest extends ListLogExplorerDatasetsBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const ListLogExplorerDatasetsForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...ListLogExplorerDatasetsBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/logs/explorer/datasets",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ListLogExplorerDatasetsForAccountRequest>;
+
+export const ListLogExplorerDatasetsForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...ListLogExplorerDatasetsBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/logs/explorer/datasets",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ListLogExplorerDatasetsForZoneRequest>;
+
+export interface ListLogExplorerDatasetsResponse {
+  result: {
+    createdAt: string;
+    dataset: string;
+    datasetId: string;
+    enabled: boolean;
+    objectId: string;
+    objectType: "account" | "zone" | (string & {});
+    updatedAt: string;
+  }[];
+}
+
+export const ListLogExplorerDatasetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          createdAt: Schema.String,
+          dataset: Schema.String,
+          datasetId: Schema.String,
+          enabled: Schema.Boolean,
+          objectId: Schema.String,
+          objectType: Schema.Union([
+            Schema.Literals(["account", "zone"]),
+            Schema.String,
+          ]),
+          updatedAt: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            createdAt: "created_at",
+            dataset: "dataset",
+            datasetId: "dataset_id",
+            enabled: "enabled",
+            objectId: "object_id",
+            objectType: "object_type",
+            updatedAt: "updated_at",
+          }),
+        ),
+      ),
+    }),
+  ) as unknown as Schema.Schema<ListLogExplorerDatasetsResponse>;
+
+export type ListLogExplorerDatasetsError = DefaultErrors;
+
+export const listLogExplorerDatasetsForAccount: API.PaginatedOperationMethod<
+  ListLogExplorerDatasetsForAccountRequest,
+  ListLogExplorerDatasetsResponse,
+  ListLogExplorerDatasetsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListLogExplorerDatasetsForAccountRequest,
+  output: ListLogExplorerDatasetsResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export const listLogExplorerDatasetsForZone: API.PaginatedOperationMethod<
+  ListLogExplorerDatasetsForZoneRequest,
+  ListLogExplorerDatasetsResponse,
+  ListLogExplorerDatasetsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListLogExplorerDatasetsForZoneRequest,
+  output: ListLogExplorerDatasetsResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+const CreateLogExplorerDatasetBaseFields = {
+  dataset: Schema.String,
+  fields: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        enabled: Schema.Boolean,
+        name: Schema.String,
+      }),
+    ),
+  ),
+} as const;
+
+interface CreateLogExplorerDatasetBaseRequest {
+  /** Body param: Dataset type name to create (e.g. `http_requests`). */
+  dataset: string;
+  /** Body param: Controls which fields the API ingests. Defaults to all available fields when absent. */
+  fields?: { enabled: boolean; name: string }[];
+}
+
+export interface CreateLogExplorerDatasetForAccountRequest extends CreateLogExplorerDatasetBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateLogExplorerDatasetForZoneRequest extends CreateLogExplorerDatasetBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const CreateLogExplorerDatasetForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...CreateLogExplorerDatasetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/logs/explorer/datasets",
+      }),
+    ),
+  ) as unknown as Schema.Schema<CreateLogExplorerDatasetForAccountRequest>;
+
+export const CreateLogExplorerDatasetForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...CreateLogExplorerDatasetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/zones/{zone_id}/logs/explorer/datasets",
+      }),
+    ),
+  ) as unknown as Schema.Schema<CreateLogExplorerDatasetForZoneRequest>;
+
+export interface CreateLogExplorerDatasetResponse {
+  /** RFC3339 timestamp recording when the API created this dataset. */
+  createdAt: string;
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Unique dataset ID. */
+  datasetId: string;
+  /** Whether log ingest is currently active for this dataset. */
+  enabled: boolean;
+  /** Public ID of the account or zone that owns this dataset. */
+  objectId: string;
+  /** Whether this dataset belongs to an account or a zone. */
+  objectType: "account" | "zone" | (string & {});
+  /** RFC3339 timestamp recording when the API last updated this dataset. */
+  updatedAt: string;
+  /** The field configuration for this dataset. */
+  fields?: { enabled: boolean; name: string }[] | null;
+}
+
+export const CreateLogExplorerDatasetResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdAt: Schema.String,
+      dataset: Schema.String,
+      datasetId: Schema.String,
+      enabled: Schema.Boolean,
+      objectId: Schema.String,
+      objectType: Schema.Union([
+        Schema.Literals(["account", "zone"]),
+        Schema.String,
+      ]),
+      updatedAt: Schema.String,
+      fields: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          dataset: "dataset",
+          datasetId: "dataset_id",
+          enabled: "enabled",
+          objectId: "object_id",
+          objectType: "object_type",
+          updatedAt: "updated_at",
+          fields: "fields",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateLogExplorerDatasetResponse>;
+
+export type CreateLogExplorerDatasetError = DefaultErrors;
+
+export const createLogExplorerDatasetForAccount: API.OperationMethod<
+  CreateLogExplorerDatasetForAccountRequest,
+  CreateLogExplorerDatasetResponse,
+  CreateLogExplorerDatasetError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateLogExplorerDatasetForAccountRequest,
+  output: CreateLogExplorerDatasetResponse,
+  errors: [],
+}));
+
+export const createLogExplorerDatasetForZone: API.OperationMethod<
+  CreateLogExplorerDatasetForZoneRequest,
+  CreateLogExplorerDatasetResponse,
+  CreateLogExplorerDatasetError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateLogExplorerDatasetForZoneRequest,
+  output: CreateLogExplorerDatasetResponse,
+  errors: [],
+}));
+
+const UpdateLogExplorerDatasetBaseFields = {
+  datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
+  enabled: Schema.Boolean,
+  fields: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        enabled: Schema.Boolean,
+        name: Schema.String,
+      }),
+    ),
+  ),
+} as const;
+
+interface UpdateLogExplorerDatasetBaseRequest {
+  datasetId: string;
+  /** Body param: Whether to enable or disable log ingest for this dataset. */
+  enabled: boolean;
+  /** Body param: Controls which fields the API ingests after the update. Defaults to all available fields when absent. */
+  fields?: { enabled: boolean; name: string }[];
+}
+
+export interface UpdateLogExplorerDatasetForAccountRequest extends UpdateLogExplorerDatasetBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface UpdateLogExplorerDatasetForZoneRequest extends UpdateLogExplorerDatasetBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const UpdateLogExplorerDatasetForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...UpdateLogExplorerDatasetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/logs/explorer/datasets/{datasetId}",
+      }),
+    ),
+  ) as unknown as Schema.Schema<UpdateLogExplorerDatasetForAccountRequest>;
+
+export const UpdateLogExplorerDatasetForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...UpdateLogExplorerDatasetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/zones/{zone_id}/logs/explorer/datasets/{datasetId}",
+      }),
+    ),
+  ) as unknown as Schema.Schema<UpdateLogExplorerDatasetForZoneRequest>;
+
+export interface UpdateLogExplorerDatasetResponse {
+  /** RFC3339 timestamp recording when the API created this dataset. */
+  createdAt: string;
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Unique dataset ID. */
+  datasetId: string;
+  /** Whether log ingest is currently active for this dataset. */
+  enabled: boolean;
+  /** Public ID of the account or zone that owns this dataset. */
+  objectId: string;
+  /** Whether this dataset belongs to an account or a zone. */
+  objectType: "account" | "zone" | (string & {});
+  /** RFC3339 timestamp recording when the API last updated this dataset. */
+  updatedAt: string;
+  /** The field configuration for this dataset. */
+  fields?: { enabled: boolean; name: string }[] | null;
+}
+
+export const UpdateLogExplorerDatasetResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdAt: Schema.String,
+      dataset: Schema.String,
+      datasetId: Schema.String,
+      enabled: Schema.Boolean,
+      objectId: Schema.String,
+      objectType: Schema.Union([
+        Schema.Literals(["account", "zone"]),
+        Schema.String,
+      ]),
+      updatedAt: Schema.String,
+      fields: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          dataset: "dataset",
+          datasetId: "dataset_id",
+          enabled: "enabled",
+          objectId: "object_id",
+          objectType: "object_type",
+          updatedAt: "updated_at",
+          fields: "fields",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<UpdateLogExplorerDatasetResponse>;
+
+export type UpdateLogExplorerDatasetError = DefaultErrors;
+
+export const updateLogExplorerDatasetForAccount: API.OperationMethod<
+  UpdateLogExplorerDatasetForAccountRequest,
+  UpdateLogExplorerDatasetResponse,
+  UpdateLogExplorerDatasetError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateLogExplorerDatasetForAccountRequest,
+  output: UpdateLogExplorerDatasetResponse,
+  errors: [],
+}));
+
+export const updateLogExplorerDatasetForZone: API.OperationMethod<
+  UpdateLogExplorerDatasetForZoneRequest,
+  UpdateLogExplorerDatasetResponse,
+  UpdateLogExplorerDatasetError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateLogExplorerDatasetForZoneRequest,
+  output: UpdateLogExplorerDatasetResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// LogExplorerDatasetAvailable
+// =============================================================================
+
+const ListLogExplorerDatasetAvailablesBaseFields = {} as const;
+
+interface ListLogExplorerDatasetAvailablesBaseRequest {}
+
+export interface ListLogExplorerDatasetAvailablesForAccountRequest extends ListLogExplorerDatasetAvailablesBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListLogExplorerDatasetAvailablesForZoneRequest extends ListLogExplorerDatasetAvailablesBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const ListLogExplorerDatasetAvailablesForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...ListLogExplorerDatasetAvailablesBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/logs/explorer/datasets/available",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ListLogExplorerDatasetAvailablesForAccountRequest>;
+
+export const ListLogExplorerDatasetAvailablesForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...ListLogExplorerDatasetAvailablesBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/logs/explorer/datasets/available",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ListLogExplorerDatasetAvailablesForZoneRequest>;
+
+export interface ListLogExplorerDatasetAvailablesResponse {
+  result: {
+    dataset: string;
+    objectType: "account" | "zone" | (string & {});
+    schema: {
+      properties?: Record<string, unknown> | null;
+      required?: string[] | null;
+      type?: "object" | null;
+    };
+    timestampField: string;
+  }[];
+}
+
+export const ListLogExplorerDatasetAvailablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          dataset: Schema.String,
+          objectType: Schema.Union([
+            Schema.Literals(["account", "zone"]),
+            Schema.String,
+          ]),
+          schema: Schema.Struct({
+            properties: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
+            required: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("object"), Schema.Null]),
+            ),
+          }),
+          timestampField: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            dataset: "dataset",
+            objectType: "object_type",
+            schema: "schema",
+            timestampField: "timestamp_field",
+          }),
+        ),
+      ),
+    }),
+  ) as unknown as Schema.Schema<ListLogExplorerDatasetAvailablesResponse>;
+
+export type ListLogExplorerDatasetAvailablesError = DefaultErrors;
+
+export const listLogExplorerDatasetAvailablesForAccount: API.PaginatedOperationMethod<
+  ListLogExplorerDatasetAvailablesForAccountRequest,
+  ListLogExplorerDatasetAvailablesResponse,
+  ListLogExplorerDatasetAvailablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListLogExplorerDatasetAvailablesForAccountRequest,
+  output: ListLogExplorerDatasetAvailablesResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export const listLogExplorerDatasetAvailablesForZone: API.PaginatedOperationMethod<
+  ListLogExplorerDatasetAvailablesForZoneRequest,
+  ListLogExplorerDatasetAvailablesResponse,
+  ListLogExplorerDatasetAvailablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListLogExplorerDatasetAvailablesForZoneRequest,
+  output: ListLogExplorerDatasetAvailablesResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+// =============================================================================
+// LogExplorerQuery
+// =============================================================================
+
+const SqlLogExplorerQueryBaseFields = {} as const;
+
+interface SqlLogExplorerQueryBaseRequest {}
+
+export interface SqlLogExplorerQueryForAccountRequest extends SqlLogExplorerQueryBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface SqlLogExplorerQueryForZoneRequest extends SqlLogExplorerQueryBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const SqlLogExplorerQueryForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...SqlLogExplorerQueryBaseFields,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/logs/explorer/query/sql",
+      }),
+    ),
+  ) as unknown as Schema.Schema<SqlLogExplorerQueryForAccountRequest>;
+
+export const SqlLogExplorerQueryForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...SqlLogExplorerQueryBaseFields,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/zones/{zone_id}/logs/explorer/query/sql",
+      }),
+    ),
+  ) as unknown as Schema.Schema<SqlLogExplorerQueryForZoneRequest>;
+
+export interface SqlLogExplorerQueryResponse {
+  result: Record<string, unknown>[];
+}
+
+export const SqlLogExplorerQueryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ) as unknown as Schema.Schema<SqlLogExplorerQueryResponse>;
+
+export type SqlLogExplorerQueryError = DefaultErrors;
+
+export const sqlLogExplorerQueryForAccount: API.PaginatedOperationMethod<
+  SqlLogExplorerQueryForAccountRequest,
+  SqlLogExplorerQueryResponse,
+  SqlLogExplorerQueryError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: SqlLogExplorerQueryForAccountRequest,
+  output: SqlLogExplorerQueryResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export const sqlLogExplorerQueryForZone: API.PaginatedOperationMethod<
+  SqlLogExplorerQueryForZoneRequest,
+  SqlLogExplorerQueryResponse,
+  SqlLogExplorerQueryError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: SqlLogExplorerQueryForZoneRequest,
+  output: SqlLogExplorerQueryResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+// =============================================================================
 // Rayid
 // =============================================================================
 

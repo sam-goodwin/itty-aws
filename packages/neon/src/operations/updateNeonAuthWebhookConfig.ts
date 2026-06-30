@@ -57,9 +57,10 @@ export type UpdateNeonAuthWebhookConfigOutput =
 
 // The operation
 /**
- * Update webhook configuration for Neon Auth
+ * Update Neon Auth webhook configuration
  *
- * Updates the webhook configuration for Neon Auth on a specific branch.
+ * Updates the webhook configuration for the specified branch's Neon Auth integration.
+ * Webhooks notify an external endpoint when auth events occur, such as user creation or sign-in.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

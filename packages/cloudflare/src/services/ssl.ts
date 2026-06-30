@@ -93,6 +93,122 @@ export const createAnalyze: API.OperationMethod<
 }));
 
 // =============================================================================
+// AutoOriginTlsKex
+// =============================================================================
+
+export interface GetAutoOriginTlsKexRequest {
+  zoneId: string;
+}
+
+export const GetAutoOriginTlsKexRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/settings/auto_origin_tls_kex",
+      }),
+    ),
+  ) as unknown as Schema.Schema<GetAutoOriginTlsKexRequest>;
+
+export interface GetAutoOriginTlsKexResponse {
+  id: string;
+  /** Whether Auto-Origin TLS KEX selection is enabled for the zone. */
+  enabled: boolean;
+  /** Last time this setting was modified. */
+  modifiedOn: string;
+}
+
+export const GetAutoOriginTlsKexResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      enabled: Schema.Boolean,
+      modifiedOn: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          enabled: "enabled",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetAutoOriginTlsKexResponse>;
+
+export type GetAutoOriginTlsKexError = DefaultErrors;
+
+export const getAutoOriginTlsKex: API.OperationMethod<
+  GetAutoOriginTlsKexRequest,
+  GetAutoOriginTlsKexResponse,
+  GetAutoOriginTlsKexError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAutoOriginTlsKexRequest,
+  output: GetAutoOriginTlsKexResponse,
+  errors: [],
+}));
+
+export interface PatchAutoOriginTlsKexRequest {
+  /** Path param */
+  zoneId: string;
+  /** Body param: Controls enablement of Auto-Origin TLS KEX selection for the zone. */
+  enabled: boolean;
+}
+
+export const PatchAutoOriginTlsKexRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      enabled: Schema.Boolean,
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/zones/{zone_id}/settings/auto_origin_tls_kex",
+      }),
+    ),
+  ) as unknown as Schema.Schema<PatchAutoOriginTlsKexRequest>;
+
+export interface PatchAutoOriginTlsKexResponse {
+  id: string;
+  /** Whether Auto-Origin TLS KEX selection is enabled for the zone. */
+  enabled: boolean;
+  /** Last time this setting was modified. */
+  modifiedOn: string;
+}
+
+export const PatchAutoOriginTlsKexResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      enabled: Schema.Boolean,
+      modifiedOn: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          enabled: "enabled",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchAutoOriginTlsKexResponse>;
+
+export type PatchAutoOriginTlsKexError = DefaultErrors;
+
+export const patchAutoOriginTlsKex: API.OperationMethod<
+  PatchAutoOriginTlsKexRequest,
+  PatchAutoOriginTlsKexResponse,
+  PatchAutoOriginTlsKexError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAutoOriginTlsKexRequest,
+  output: PatchAutoOriginTlsKexResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // CertificatePack
 // =============================================================================
 
@@ -1804,71 +1920,6 @@ export const getCertificatePackQuota: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCertificatePackQuotaRequest,
   output: GetCertificatePackQuotaResponse,
-  errors: [],
-}));
-
-// =============================================================================
-// Recommendation
-// =============================================================================
-
-export interface GetRecommendationRequest {
-  zoneId: string;
-}
-
-export const GetRecommendationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/ssl/recommendation" }),
-    ),
-  ) as unknown as Schema.Schema<GetRecommendationRequest>;
-
-export interface GetRecommendationResponse {
-  id: string;
-  /** Whether this setting can be updated or not. */
-  editable: boolean;
-  /** Last time this setting was modified. */
-  modifiedOn: string;
-  /** Current setting of the automatic SSL/TLS. */
-  value: "auto" | "custom" | (string & {});
-  /** Next time this zone will be scanned by the Automatic SSL/TLS. */
-  nextScheduledScan?: string | null;
-}
-
-export const GetRecommendationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      editable: Schema.Boolean,
-      modifiedOn: Schema.String,
-      value: Schema.Union([Schema.Literals(["auto", "custom"]), Schema.String]),
-      nextScheduledScan: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          editable: "editable",
-          modifiedOn: "modified_on",
-          value: "value",
-          nextScheduledScan: "next_scheduled_scan",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetRecommendationResponse>;
-
-export type GetRecommendationError = DefaultErrors;
-
-export const getRecommendation: API.OperationMethod<
-  GetRecommendationRequest,
-  GetRecommendationResponse,
-  GetRecommendationError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetRecommendationRequest,
-  output: GetRecommendationResponse,
   errors: [],
 }));
 

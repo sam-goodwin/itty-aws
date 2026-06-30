@@ -32,6 +32,9 @@ export const DataIntegrationsUserManagementControllerGetUserDataIntegrationsOutp
           integration_type: Schema.String,
           credentials_type: Schema.String,
           scopes: Schema.Unknown,
+          auth_methods: Schema.optional(
+            Schema.Array(Schema.Literals(["oauth", "api_key"])),
+          ),
           ownership: Schema.Literals(["userland_user", "organization"]),
           created_at: Schema.String,
           updated_at: Schema.String,
@@ -49,7 +52,7 @@ export type DataIntegrationsUserManagementControllerGetUserDataIntegrationsOutpu
 
 // The operation
 /**
- * List providers
+ * List providers for a user
  *
  * Retrieves a list of available providers and the user's connection status for each. Returns all providers configured for your environment, along with the user's [connected account](/reference/pipes/connected-account) information where applicable.
  *

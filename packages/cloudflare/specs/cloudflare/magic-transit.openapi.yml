@@ -425,6 +425,744 @@ paths:
           - code: 1025
         Forbidden:
           - status: 403
+  /accounts/{account_id}/magic/cf1_sites/{cf1SiteId}:
+    get:
+      operationId: getCf1Site
+      description: "Gets a specific CF1 Site for an account.  @example ```ts const
+        cf1Site = await client.magicTransit.cf1Sites.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: cf1SiteId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: A human-provided name describing the CF1 Site that should be unique
+                      within the account.
+                  id:
+                    type: string
+                    description: Identifier
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: A human-provided description of the CF1 Site.
+                  location:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                        description: Latitude of the CF1 Site.
+                      long:
+                        type: number
+                        description: Longitude of the CF1 Site.
+                      name:
+                        type: string
+                        description: Name of nearest town, city, or village.
+                  modified_on:
+                    type: string
+                required:
+                  - name
+      x-distilled-response-path: result
+    patch:
+      operationId: patchCf1Site
+      description: "Partially updates a specific CF1 Site for an account. Only the
+        fields included in the request body are modified; omitted fields retain
+        their existing values.  @example ```ts const cf1Site = await
+        client.magicTransit.cf1Sites.update( '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: cf1SiteId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: "Body param: A human-provided description of the CF1 Site."
+                location:
+                  type: object
+                  properties:
+                    lat:
+                      type: number
+                      description: Latitude of the CF1 Site.
+                    long:
+                      type: number
+                      description: Longitude of the CF1 Site.
+                    name:
+                      type: string
+                      description: Name of nearest town, city, or village.
+                  description: Body param
+                name:
+                  type: string
+                  description: "Body param: A human-provided name describing the CF1 Site that
+                    should be unique within the account."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: A human-provided name describing the CF1 Site that should be unique
+                      within the account.
+                  id:
+                    type: string
+                    description: Identifier
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: A human-provided description of the CF1 Site.
+                  location:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                        description: Latitude of the CF1 Site.
+                      long:
+                        type: number
+                        description: Longitude of the CF1 Site.
+                      name:
+                        type: string
+                        description: Name of nearest town, city, or village.
+                  modified_on:
+                    type: string
+                required:
+                  - name
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteCf1Site
+      description: "Deletes a specific CF1 Site for an account.  @example ```ts const
+        cf1Site = await client.magicTransit.cf1Sites.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: cf1SiteId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: A human-provided name describing the CF1 Site that should be unique
+                      within the account.
+                  id:
+                    type: string
+                    description: Identifier
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: A human-provided description of the CF1 Site.
+                  location:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                        description: Latitude of the CF1 Site.
+                      long:
+                        type: number
+                        description: Longitude of the CF1 Site.
+                      name:
+                        type: string
+                        description: Name of nearest town, city, or village.
+                  modified_on:
+                    type: string
+                required:
+                  - name
+      x-distilled-response-path: result
+  /accounts/{account_id}/magic/cf1_sites:
+    get:
+      operationId: listCf1Sites
+      description: "Lists CF1 Sites associated with an account. A CF1 Site represents
+        a physical customer network location with optional geographic
+        coordinates.  @example ```ts // Automatically fetches more pages as
+        needed. for await (const cf1Site of client.magicTransit.cf1Sites.list( {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: A human-provided name describing the CF1 Site that should be unique
+                      within the account.
+                  id:
+                    type: string
+                    description: Identifier
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: A human-provided description of the CF1 Site.
+                  location:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                        description: Latitude of the CF1 Site.
+                      long:
+                        type: number
+                        description: Longitude of the CF1 Site.
+                      name:
+                        type: string
+                        description: Name of nearest town, city, or village.
+                  modified_on:
+                    type: string
+                required:
+                  - name
+      x-distilled-pagination-class: Cf1SitesSinglePage
+    post:
+      operationId: createCf1Site
+      description: "Creates new CF1 Sites for an account. Each site must have a unique
+        name within the account.  @example ```ts // Automatically fetches more
+        pages as needed. for await (const cf1Site of
+        client.magicTransit.cf1Sites.create( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: [{ name: 'Pad 34' }], }, )) {
+        // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: A human-provided name describing the CF1 Site that should be unique
+                      within the account.
+                  description:
+                    type: string
+                    description: A human-provided description of the CF1 Site.
+                  location:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                        description: Latitude of the CF1 Site.
+                      long:
+                        type: number
+                        description: Longitude of the CF1 Site.
+                      name:
+                        type: string
+                        description: Name of nearest town, city, or village.
+                required:
+                  - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: A human-provided name describing the CF1 Site that should be unique
+                      within the account.
+                  id:
+                    type: string
+                    description: Identifier
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: A human-provided description of the CF1 Site.
+                  location:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                        description: Latitude of the CF1 Site.
+                      long:
+                        type: number
+                        description: Longitude of the CF1 Site.
+                      name:
+                        type: string
+                        description: Name of nearest town, city, or village.
+                  modified_on:
+                    type: string
+                required:
+                  - name
+      x-distilled-pagination-class: Cf1SitesSinglePage
+  /accounts/{account_id}/magic/cf1_sites/{cf1SiteId}/ramps/{rampId}:
+    get:
+      operationId: getCf1SiteRamp
+      description: "Gets a specific ramp for a CF1 Site.  @example ```ts const ramp =
+        await client.magicTransit.cf1Sites.ramps.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: cf1SiteId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: rampId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                    description: A human-provided name describing the ramp that should be unique
+                      within the CF1 Site.
+                  type:
+                    type: string
+                    enum:
+                      - gre
+                      - gre_interconnect
+                      - mpls_interconnect
+                      - mconn
+                      - ipsec
+                    description: The type of network connection (ramp) linking a CF1 Site to
+                      Cloudflare's network.
+                  description:
+                    type: string
+                    description: A human-provided description of the ramp.
+                  gre:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  gre_interconnect:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  ipsec:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  mconn:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  mpls_interconnect:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                required:
+                  - id
+                  - created_on
+                  - modified_on
+                  - name
+                  - type
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteCf1SiteRamp
+      description: "Deletes a specific ramp from a CF1 Site.  @example ```ts const
+        ramp = await client.magicTransit.cf1Sites.ramps.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: cf1SiteId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: rampId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                    description: A human-provided name describing the ramp that should be unique
+                      within the CF1 Site.
+                  type:
+                    type: string
+                    enum:
+                      - gre
+                      - gre_interconnect
+                      - mpls_interconnect
+                      - mconn
+                      - ipsec
+                    description: The type of network connection (ramp) linking a CF1 Site to
+                      Cloudflare's network.
+                  description:
+                    type: string
+                    description: A human-provided description of the ramp.
+                  gre:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  gre_interconnect:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  ipsec:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  mconn:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  mpls_interconnect:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                required:
+                  - id
+                  - created_on
+                  - modified_on
+                  - name
+                  - type
+      x-distilled-response-path: result
+  /accounts/{account_id}/magic/cf1_sites/{cf1SiteId}/ramps:
+    get:
+      operationId: listCf1SiteRamps
+      description: "Lists ramps (network connections) associated with a CF1 Site.
+        Ramps represent GRE tunnels, IPsec tunnels, interconnects, or MCONN
+        links.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const ramp of client.magicTransit.cf1Sites.ramps.list(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: cf1SiteId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                    description: A human-provided name describing the ramp that should be unique
+                      within the CF1 Site.
+                  type:
+                    type: string
+                    enum:
+                      - gre
+                      - gre_interconnect
+                      - mpls_interconnect
+                      - mconn
+                      - ipsec
+                    description: The type of network connection (ramp) linking a CF1 Site to
+                      Cloudflare's network.
+                  description:
+                    type: string
+                    description: A human-provided description of the ramp.
+                  gre:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  gre_interconnect:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  ipsec:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  mconn:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  mpls_interconnect:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                required:
+                  - id
+                  - created_on
+                  - modified_on
+                  - name
+                  - type
+      x-distilled-pagination-class: RampsSinglePage
+    post:
+      operationId: createCf1SiteRamp
+      description: "Creates ramps (network connections) for a CF1 Site.  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        ramp of client.magicTransit.cf1Sites.ramps.create(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: [ { source_ramp_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', type: 'gre', }, ], }, )) { // ... }
+        ```"
+      parameters:
+        - name: cf1SiteId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  source_ramp_id:
+                    type: string
+                    description: Identifier of the source network resource to associate as a ramp.
+                  type:
+                    type: string
+                    enum:
+                      - gre
+                      - gre_interconnect
+                      - mpls_interconnect
+                      - mconn
+                      - ipsec
+                    description: The type of network connection (ramp) linking a CF1 Site to
+                      Cloudflare's network.
+                required:
+                  - source_ramp_id
+                  - type
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                    description: A human-provided name describing the ramp that should be unique
+                      within the CF1 Site.
+                  type:
+                    type: string
+                    enum:
+                      - gre
+                      - gre_interconnect
+                      - mpls_interconnect
+                      - mconn
+                      - ipsec
+                    description: The type of network connection (ramp) linking a CF1 Site to
+                      Cloudflare's network.
+                  description:
+                    type: string
+                    description: A human-provided description of the ramp.
+                  gre:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  gre_interconnect:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  ipsec:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  mconn:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                  mpls_interconnect:
+                    type: object
+                    properties:
+                      managed_by:
+                        type: string
+                        description: URL reference to the source network resource that this ramp is
+                          managed by.
+                required:
+                  - id
+                  - created_on
+                  - modified_on
+                  - name
+                  - type
+      x-distilled-pagination-class: RampsSinglePage
   /accounts/{account_id}/magic/cf_interconnects/{cfInterconnectId}:
     get:
       operationId: getCfInterconnect
@@ -1152,6 +1890,8 @@ paths:
                     type: string
                   notes:
                     type: string
+                  primary:
+                    type: boolean
                   timezone:
                     type: string
                   device:
@@ -1174,6 +1914,8 @@ paths:
                     type: string
                   license_key:
                     type: string
+                  site_id:
+                    type: string
                 required:
                   - id
                   - activated
@@ -1183,6 +1925,7 @@ paths:
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
+                  - primary
                   - timezone
       x-distilled-response-path: result
     put:
@@ -1241,9 +1984,15 @@ paths:
                 notes:
                   type: string
                   description: Body param
+                primary:
+                  type: boolean
+                  description: Body param
                 provision_license:
                   type: boolean
                   description: "Body param: When true, regenerate license key for the connector."
+                site_id:
+                  type: string
+                  description: Body param
                 timezone:
                   type: string
                   description: Body param
@@ -1285,6 +2034,8 @@ paths:
                     type: string
                   notes:
                     type: string
+                  primary:
+                    type: boolean
                   timezone:
                     type: string
                   device:
@@ -1307,6 +2058,8 @@ paths:
                     type: string
                   license_key:
                     type: string
+                  site_id:
+                    type: string
                 required:
                   - id
                   - activated
@@ -1316,6 +2069,7 @@ paths:
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
+                  - primary
                   - timezone
       x-distilled-response-path: result
     patch:
@@ -1374,9 +2128,15 @@ paths:
                 notes:
                   type: string
                   description: Body param
+                primary:
+                  type: boolean
+                  description: Body param
                 provision_license:
                   type: boolean
                   description: "Body param: When true, regenerate license key for the connector."
+                site_id:
+                  type: string
+                  description: Body param
                 timezone:
                   type: string
                   description: Body param
@@ -1418,6 +2178,8 @@ paths:
                     type: string
                   notes:
                     type: string
+                  primary:
+                    type: boolean
                   timezone:
                     type: string
                   device:
@@ -1440,6 +2202,8 @@ paths:
                     type: string
                   license_key:
                     type: string
+                  site_id:
+                    type: string
                 required:
                   - id
                   - activated
@@ -1449,6 +2213,7 @@ paths:
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
+                  - primary
                   - timezone
       x-distilled-response-path: result
     delete:
@@ -1506,6 +2271,8 @@ paths:
                     type: string
                   notes:
                     type: string
+                  primary:
+                    type: boolean
                   timezone:
                     type: string
                   device:
@@ -1528,6 +2295,8 @@ paths:
                     type: string
                   license_key:
                     type: string
+                  site_id:
+                    type: string
                 required:
                   - id
                   - activated
@@ -1537,6 +2306,7 @@ paths:
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
+                  - primary
                   - timezone
       x-distilled-response-path: result
   /accounts/{account_id}/magic/connectors:
@@ -1600,6 +2370,8 @@ paths:
                     type: string
                   notes:
                     type: string
+                  primary:
+                    type: boolean
                   timezone:
                     type: string
                   device:
@@ -1622,6 +2394,8 @@ paths:
                     type: string
                   license_key:
                     type: string
+                  site_id:
+                    type: string
                 required:
                   - id
                   - activated
@@ -1631,6 +2405,7 @@ paths:
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
+                  - primary
                   - timezone
       x-distilled-pagination-class: ConnectorListResponsesSinglePage
     post:
@@ -1696,6 +2471,12 @@ paths:
                 notes:
                   type: string
                   description: Body param
+                primary:
+                  type: boolean
+                  description: Body param
+                site_id:
+                  type: string
+                  description: Body param
                 timezone:
                   type: string
                   description: Body param
@@ -1739,6 +2520,8 @@ paths:
                     type: string
                   notes:
                     type: string
+                  primary:
+                    type: boolean
                   timezone:
                     type: string
                   device:
@@ -1761,6 +2544,8 @@ paths:
                     type: string
                   license_key:
                     type: string
+                  site_id:
+                    type: string
                 required:
                   - id
                   - activated
@@ -1770,6 +2555,7 @@ paths:
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
+                  - primary
                   - timezone
       x-distilled-response-path: result
   /accounts/{account_id}/magic/connectors/{connectorId}/telemetry/events/{eventT}.{eventN}:
@@ -4358,12 +5144,20 @@ paths:
                           customer_asn:
                             type: number
                             description: ASN used on the customer end of the BGP session
+                          export_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes advertised to the
+                              customer.
                           extra_prefixes:
                             type: array
                             items:
                               type: string
                             description: Prefixes in this list will be advertised to the customer device, in
                               addition to the routes in the Magic routing table.
+                          import_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes received from the
+                              customer.
                           md5_key:
                             type: string
                             description: "MD5 key to use for session authentication.  Note that _this is not
@@ -4692,12 +5486,20 @@ paths:
                           customer_asn:
                             type: number
                             description: ASN used on the customer end of the BGP session
+                          export_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes advertised to the
+                              customer.
                           extra_prefixes:
                             type: array
                             items:
                               type: string
                             description: Prefixes in this list will be advertised to the customer device, in
                               addition to the routes in the Magic routing table.
+                          import_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes received from the
+                              customer.
                           md5_key:
                             type: string
                             description: "MD5 key to use for session authentication.  Note that _this is not
@@ -4916,12 +5718,20 @@ paths:
                           customer_asn:
                             type: number
                             description: ASN used on the customer end of the BGP session
+                          export_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes advertised to the
+                              customer.
                           extra_prefixes:
                             type: array
                             items:
                               type: string
                             description: Prefixes in this list will be advertised to the customer device, in
                               addition to the routes in the Magic routing table.
+                          import_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes received from the
+                              customer.
                           md5_key:
                             type: string
                             description: "MD5 key to use for session authentication.  Note that _this is not
@@ -5133,6 +5943,10 @@ paths:
                             customer_asn:
                               type: number
                               description: ASN used on the customer end of the BGP session
+                            export_filter_id:
+                              type: string
+                              description: ID of the BGP filter profile applied to routes advertised to the
+                                customer.
                             extra_prefixes:
                               type: array
                               items:
@@ -5140,6 +5954,10 @@ paths:
                               description: Prefixes in this list will be advertised to the customer device, in
                                 addition to the routes in the Magic routing
                                 table.
+                            import_filter_id:
+                              type: string
+                              description: ID of the BGP filter profile applied to routes received from the
+                                customer.
                             md5_key:
                               type: string
                               description: "MD5 key to use for session authentication.  Note that _this is not
@@ -5348,12 +6166,20 @@ paths:
                     customer_asn:
                       type: number
                       description: ASN used on the customer end of the BGP session
+                    export_filter_id:
+                      type: string
+                      description: ID of the BGP filter profile applied to routes advertised to the
+                        customer.
                     extra_prefixes:
                       type: array
                       items:
                         type: string
                       description: Prefixes in this list will be advertised to the customer device, in
                         addition to the routes in the Magic routing table.
+                    import_filter_id:
+                      type: string
+                      description: ID of the BGP filter profile applied to routes received from the
+                        customer.
                     md5_key:
                       type: string
                       description: "MD5 key to use for session authentication.  Note that _this is not
@@ -5490,12 +6316,20 @@ paths:
                       customer_asn:
                         type: number
                         description: ASN used on the customer end of the BGP session
+                      export_filter_id:
+                        type: string
+                        description: ID of the BGP filter profile applied to routes advertised to the
+                          customer.
                       extra_prefixes:
                         type: array
                         items:
                           type: string
                         description: Prefixes in this list will be advertised to the customer device, in
                           addition to the routes in the Magic routing table.
+                      import_filter_id:
+                        type: string
+                        description: ID of the BGP filter profile applied to routes received from the
+                          customer.
                       md5_key:
                         type: string
                         description: "MD5 key to use for session authentication.  Note that _this is not
@@ -5712,6 +6546,10 @@ paths:
                             customer_asn:
                               type: number
                               description: ASN used on the customer end of the BGP session
+                            export_filter_id:
+                              type: string
+                              description: ID of the BGP filter profile applied to routes advertised to the
+                                customer.
                             extra_prefixes:
                               type: array
                               items:
@@ -5719,6 +6557,10 @@ paths:
                               description: Prefixes in this list will be advertised to the customer device, in
                                 addition to the routes in the Magic routing
                                 table.
+                            import_filter_id:
+                              type: string
+                              description: ID of the BGP filter profile applied to routes received from the
+                                customer.
                             md5_key:
                               type: string
                               description: "MD5 key to use for session authentication.  Note that _this is not
@@ -5931,12 +6773,20 @@ paths:
                           customer_asn:
                             type: number
                             description: ASN used on the customer end of the BGP session
+                          export_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes advertised to the
+                              customer.
                           extra_prefixes:
                             type: array
                             items:
                               type: string
                             description: Prefixes in this list will be advertised to the customer device, in
                               addition to the routes in the Magic routing table.
+                          import_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes received from the
+                              customer.
                           md5_key:
                             type: string
                             description: "MD5 key to use for session authentication.  Note that _this is not
@@ -6165,12 +7015,20 @@ paths:
                     customer_asn:
                       type: number
                       description: ASN used on the customer end of the BGP session
+                    export_filter_id:
+                      type: string
+                      description: ID of the BGP filter profile applied to routes advertised to the
+                        customer.
                     extra_prefixes:
                       type: array
                       items:
                         type: string
                       description: Prefixes in this list will be advertised to the customer device, in
                         addition to the routes in the Magic routing table.
+                    import_filter_id:
+                      type: string
+                      description: ID of the BGP filter profile applied to routes received from the
+                        customer.
                     md5_key:
                       type: string
                       description: "MD5 key to use for session authentication.  Note that _this is not
@@ -6333,12 +7191,20 @@ paths:
                           customer_asn:
                             type: number
                             description: ASN used on the customer end of the BGP session
+                          export_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes advertised to the
+                              customer.
                           extra_prefixes:
                             type: array
                             items:
                               type: string
                             description: Prefixes in this list will be advertised to the customer device, in
                               addition to the routes in the Magic routing table.
+                          import_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes received from the
+                              customer.
                           md5_key:
                             type: string
                             description: "MD5 key to use for session authentication.  Note that _this is not
@@ -6579,12 +7445,20 @@ paths:
                           customer_asn:
                             type: number
                             description: ASN used on the customer end of the BGP session
+                          export_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes advertised to the
+                              customer.
                           extra_prefixes:
                             type: array
                             items:
                               type: string
                             description: Prefixes in this list will be advertised to the customer device, in
                               addition to the routes in the Magic routing table.
+                          import_filter_id:
+                            type: string
+                            description: ID of the BGP filter profile applied to routes received from the
+                              customer.
                           md5_key:
                             type: string
                             description: "MD5 key to use for session authentication.  Note that _this is not
@@ -6818,6 +7692,10 @@ paths:
                             customer_asn:
                               type: number
                               description: ASN used on the customer end of the BGP session
+                            export_filter_id:
+                              type: string
+                              description: ID of the BGP filter profile applied to routes advertised to the
+                                customer.
                             extra_prefixes:
                               type: array
                               items:
@@ -6825,6 +7703,10 @@ paths:
                               description: Prefixes in this list will be advertised to the customer device, in
                                 addition to the routes in the Magic routing
                                 table.
+                            import_filter_id:
+                              type: string
+                              description: ID of the BGP filter profile applied to routes received from the
+                                customer.
                             md5_key:
                               type: string
                               description: "MD5 key to use for session authentication.  Note that _this is not
@@ -7050,12 +7932,20 @@ paths:
                     customer_asn:
                       type: number
                       description: ASN used on the customer end of the BGP session
+                    export_filter_id:
+                      type: string
+                      description: ID of the BGP filter profile applied to routes advertised to the
+                        customer.
                     extra_prefixes:
                       type: array
                       items:
                         type: string
                       description: Prefixes in this list will be advertised to the customer device, in
                         addition to the routes in the Magic routing table.
+                    import_filter_id:
+                      type: string
+                      description: ID of the BGP filter profile applied to routes received from the
+                        customer.
                     md5_key:
                       type: string
                       description: "MD5 key to use for session authentication.  Note that _this is not
@@ -7211,12 +8101,20 @@ paths:
                       customer_asn:
                         type: number
                         description: ASN used on the customer end of the BGP session
+                      export_filter_id:
+                        type: string
+                        description: ID of the BGP filter profile applied to routes advertised to the
+                          customer.
                       extra_prefixes:
                         type: array
                         items:
                           type: string
                         description: Prefixes in this list will be advertised to the customer device, in
                           addition to the routes in the Magic routing table.
+                      import_filter_id:
+                        type: string
+                        description: ID of the BGP filter profile applied to routes received from the
+                          customer.
                       md5_key:
                         type: string
                         description: "MD5 key to use for session authentication.  Note that _this is not
@@ -7455,6 +8353,10 @@ paths:
                             customer_asn:
                               type: number
                               description: ASN used on the customer end of the BGP session
+                            export_filter_id:
+                              type: string
+                              description: ID of the BGP filter profile applied to routes advertised to the
+                                customer.
                             extra_prefixes:
                               type: array
                               items:
@@ -7462,6 +8364,10 @@ paths:
                               description: Prefixes in this list will be advertised to the customer device, in
                                 addition to the routes in the Magic routing
                                 table.
+                            import_filter_id:
+                              type: string
+                              description: ID of the BGP filter profile applied to routes received from the
+                                customer.
                             md5_key:
                               type: string
                               description: "MD5 key to use for session authentication.  Note that _this is not
@@ -9127,6 +10033,75 @@ paths:
           - code: 1012
         Forbidden:
           - status: 403
+  /accounts/{account_id}/magic/ipsec_tunnels/psk:
+    post:
+      operationId: pskSetIpsecTunnel
+      description: "Sets Pre-Shared Keys for multiple IPsec tunnels associated with an
+        account. Use `?validate_only=true` as an optional query parameter to
+        only run validation without persisting changes. After PSKs are applied,
+        they are immediately persisted to Cloudflare's edge and cannot be
+        retrieved later. Store the PSKs in a safe place.  @example ```ts const
+        response = await client.magicTransit.ipsecTunnels.pskSet({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', psks: [ { id:
+        '023e105f4ecef8ad9ca31a8372d0c353', psk:
+        'O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy', }, ], }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+        - name: validate_only
+          in: query
+          required: false
+          description: "Query param: If `true`, only run validation without persisting
+            changes."
+          schema:
+            type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                psks:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the IPsec tunnel.
+                      psk:
+                        type: string
+                        description: A randomly generated or provided string for use in the IPsec
+                          tunnel.
+                    required:
+                      - id
+                      - psk
+                  description: "Body param: List of tunnel ID and PSK pairs."
+              required:
+                - psks
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  successfully_applied_psks:
+                    type: object
+                    additionalProperties: true
+                    description: Map of tunnel IDs to successfully applied PSK details.
+                  unapplied_psks:
+                    type: object
+                    additionalProperties: true
+                    description: Map of tunnel IDs to failure reasons for PSKs that could not be
+                      applied.
+      x-distilled-response-path: result
   /accounts/{account_id}/magic/sites/{siteId}:
     get:
       operationId: getSite

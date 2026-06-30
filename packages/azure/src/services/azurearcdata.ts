@@ -12,6 +12,10 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const ActiveDirectoryConnectorsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+    activeDirectoryConnectorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       domainServiceAccountLoginInformation: Schema.optional(
         Schema.Struct({
@@ -97,6 +101,12 @@ export type ActiveDirectoryConnectorsCreateOutput =
 // The operation
 /**
  * Creates or replaces an Active Directory connector resource.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param activeDirectoryConnectorName - The name of the Active Directory connector instance
+ * @param api-version - The API version to use for the request
  * @param properties - null
  */
 export const ActiveDirectoryConnectorsCreate =
@@ -106,7 +116,12 @@ export const ActiveDirectoryConnectorsCreate =
   }));
 // Input Schema
 export const ActiveDirectoryConnectorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+    activeDirectoryConnectorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
@@ -125,6 +140,12 @@ export type ActiveDirectoryConnectorsDeleteOutput =
 // The operation
 /**
  * Deletes an Active Directory connector resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param activeDirectoryConnectorName - The name of the Active Directory connector instance
+ * @param api-version - The API version to use for the request
  */
 export const ActiveDirectoryConnectorsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -133,7 +154,12 @@ export const ActiveDirectoryConnectorsDelete =
   }));
 // Input Schema
 export const ActiveDirectoryConnectorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+    activeDirectoryConnectorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
@@ -170,6 +196,12 @@ export type ActiveDirectoryConnectorsGetOutput =
 // The operation
 /**
  * Retrieves an Active Directory connector resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param activeDirectoryConnectorName - The name of the Active Directory connector instance
+ * @param api-version - The API version to use for the request
  */
 export const ActiveDirectoryConnectorsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -178,7 +210,11 @@ export const ActiveDirectoryConnectorsGet =
   }));
 // Input Schema
 export const ActiveDirectoryConnectorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors",
@@ -232,6 +268,11 @@ export type ActiveDirectoryConnectorsListOutput =
 // The operation
 /**
  * List the active directory connectors associated with the given data controller.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param api-version - The API version to use for the request
  */
 export const ActiveDirectoryConnectorsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -240,7 +281,11 @@ export const ActiveDirectoryConnectorsList =
   }));
 // Input Schema
 export const DataControllersDeleteDataControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
@@ -259,6 +304,11 @@ export type DataControllersDeleteDataControllerOutput =
 // The operation
 /**
  * Deletes a dataController resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param api-version - The API version to use for the request
  */
 export const DataControllersDeleteDataController =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -267,7 +317,11 @@ export const DataControllersDeleteDataController =
   }));
 // Input Schema
 export const DataControllersGetDataControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
@@ -304,6 +358,11 @@ export type DataControllersGetDataControllerOutput =
 // The operation
 /**
  * Retrieves a dataController resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param api-version - The API version to use for the request
  */
 export const DataControllersGetDataController =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -312,7 +371,10 @@ export const DataControllersGetDataController =
   }));
 // Input Schema
 export const DataControllersListInGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers",
@@ -366,6 +428,10 @@ export type DataControllersListInGroupOutput =
 // The operation
 /**
  * List dataController resources in the resource group
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param api-version - The API version to use for the request
  */
 export const DataControllersListInGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -375,7 +441,9 @@ export const DataControllersListInGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DataControllersListInSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/dataControllers",
@@ -429,6 +497,9 @@ export type DataControllersListInSubscriptionOutput =
 // The operation
 /**
  * List dataController resources in the subscription
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param api-version - The API version to use for the request
  */
 export const DataControllersListInSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -438,6 +509,9 @@ export const DataControllersListInSubscription =
 // Input Schema
 export const DataControllersPatchDataControllerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -541,6 +615,11 @@ export type DataControllersPatchDataControllerOutput =
 // The operation
 /**
  * Updates a dataController resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param api-version - The API version to use for the request
  * @param tags - Resource tags
  * @param properties - The data controller's properties
  */
@@ -552,6 +631,9 @@ export const DataControllersPatchDataController =
 // Input Schema
 export const DataControllersPutDataControllerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
     extendedLocation: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -660,6 +742,11 @@ export type DataControllersPutDataControllerOutput =
 // The operation
 /**
  * Creates or replaces a dataController resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param api-version - The API version to use for the request
  * @param extendedLocation - The complex type of the extended location.
  * @param properties - The data controller's properties
  */
@@ -671,6 +758,10 @@ export const DataControllersPutDataController =
 // Input Schema
 export const FailoverGroupsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+    failoverGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
@@ -727,6 +818,12 @@ export type FailoverGroupsCreateOutput = typeof FailoverGroupsCreateOutput.Type;
 // The operation
 /**
  * Creates or replaces a failover group resource.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param failoverGroupName - The name of the Failover Group
+ * @param api-version - The API version to use for the request
  * @param properties - null
  */
 export const FailoverGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -737,7 +834,12 @@ export const FailoverGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const FailoverGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+    failoverGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
@@ -754,6 +856,12 @@ export type FailoverGroupsDeleteOutput = typeof FailoverGroupsDeleteOutput.Type;
 // The operation
 /**
  * Deletes a failover group resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param failoverGroupName - The name of the Failover Group
+ * @param api-version - The API version to use for the request
  */
 export const FailoverGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -763,7 +871,12 @@ export const FailoverGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const FailoverGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+    failoverGroupName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -799,6 +912,12 @@ export type FailoverGroupsGetOutput = typeof FailoverGroupsGetOutput.Type;
 // The operation
 /**
  * Retrieves a failover group resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param failoverGroupName - The name of the Failover Group
+ * @param api-version - The API version to use for the request
  */
 export const FailoverGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FailoverGroupsGetInput,
@@ -806,7 +925,11 @@ export const FailoverGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const FailoverGroupsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups",
@@ -858,6 +981,11 @@ export type FailoverGroupsListOutput = typeof FailoverGroupsListOutput.Type;
 // The operation
 /**
  * List the failover groups associated with the given sql managed instance.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param api-version - The API version to use for the request
  */
 export const FailoverGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FailoverGroupsListInput,
@@ -902,6 +1030,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Azure Data Services on Azure Arc API operations.
+ *
+ * @param api-version - The API version to use for the request
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -910,6 +1040,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PostgresInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    postgresInstanceName: Schema.String.pipe(T.PathParam()),
     extendedLocation: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -977,6 +1110,11 @@ export type PostgresInstancesCreateOutput =
 // The operation
 /**
  * Creates or replaces a postgres Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param postgresInstanceName - Name of Postgres Instance
+ * @param api-version - The API version to use for the request
  * @param extendedLocation - The complex type of the extended location.
  * @param properties - null
  * @param sku - Resource sku.
@@ -989,7 +1127,11 @@ export const PostgresInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PostgresInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    postgresInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
@@ -1008,6 +1150,11 @@ export type PostgresInstancesDeleteOutput =
 // The operation
 /**
  * Deletes a postgres Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param postgresInstanceName - Name of Postgres Instance
+ * @param api-version - The API version to use for the request
  */
 export const PostgresInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1017,7 +1164,11 @@ export const PostgresInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PostgresInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    postgresInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
@@ -1052,6 +1203,11 @@ export type PostgresInstancesGetOutput = typeof PostgresInstancesGetOutput.Type;
 // The operation
 /**
  * Retrieves a postgres Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param postgresInstanceName - Name of Postgres Instance
+ * @param api-version - The API version to use for the request
  */
 export const PostgresInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1061,7 +1217,9 @@ export const PostgresInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PostgresInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/postgresInstances",
@@ -1114,6 +1272,9 @@ export type PostgresInstancesListOutput =
 // The operation
 /**
  * List postgres Instance resources in the subscription
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param api-version - The API version to use for the request
  */
 export const PostgresInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1123,7 +1284,10 @@ export const PostgresInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PostgresInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances",
@@ -1179,6 +1343,10 @@ export type PostgresInstancesListByResourceGroupOutput =
  * List postgres Instance resources in the resource group
  *
  * Get a postgres Instances list by Resource group name.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param api-version - The API version to use for the request
  */
 export const PostgresInstancesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1188,6 +1356,9 @@ export const PostgresInstancesListByResourceGroup =
 // Input Schema
 export const PostgresInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    postgresInstanceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -1241,6 +1412,11 @@ export type PostgresInstancesUpdateOutput =
 // The operation
 /**
  * Updates a postgres Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param postgresInstanceName - Name of Postgres Instance
+ * @param api-version - The API version to use for the request
  * @param tags - Resource tags.
  */
 export const PostgresInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1252,6 +1428,9 @@ export const PostgresInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SqlManagedInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       dataControllerId: Schema.optional(Schema.String),
       admin: Schema.optional(Schema.String),
@@ -1402,6 +1581,11 @@ export type SqlManagedInstancesCreateOutput =
 // The operation
 /**
  * Creates or replaces a SQL Managed Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param api-version - The API version to use for the request
  * @param properties - null
  * @param extendedLocation - The complex type of the extended location.
  * @param sku - Resource sku.
@@ -1414,7 +1598,11 @@ export const SqlManagedInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlManagedInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
@@ -1433,6 +1621,11 @@ export type SqlManagedInstancesDeleteOutput =
 // The operation
 /**
  * Deletes a SQL Managed Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlManagedInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1442,7 +1635,11 @@ export const SqlManagedInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlManagedInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
@@ -1479,6 +1676,11 @@ export type SqlManagedInstancesGetOutput =
 // The operation
 /**
  * Retrieves a SQL Managed Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlManagedInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1488,7 +1690,9 @@ export const SqlManagedInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlManagedInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlManagedInstances",
@@ -1542,6 +1746,9 @@ export type SqlManagedInstancesListOutput =
 // The operation
 /**
  * List sqlManagedInstance resources in the subscription
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param api-version - The API version to use for the request
  */
 export const SqlManagedInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1551,7 +1758,10 @@ export const SqlManagedInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlManagedInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances",
@@ -1607,6 +1817,10 @@ export type SqlManagedInstancesListByResourceGroupOutput =
  * List sqlManagedInstance resources in the resource group
  *
  * Gets all sqlManagedInstances in a resource group.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param api-version - The API version to use for the request
  */
 export const SqlManagedInstancesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1616,6 +1830,9 @@ export const SqlManagedInstancesListByResourceGroup =
 // Input Schema
 export const SqlManagedInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -1654,6 +1871,11 @@ export type SqlManagedInstancesUpdateOutput =
 // The operation
 /**
  * Updates a SQL Managed Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param api-version - The API version to use for the request
  * @param tags - Resource tags.
  */
 export const SqlManagedInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1666,6 +1888,9 @@ export const SqlManagedInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SqlServerAvailabilityGroupsAddDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
     values: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -1706,6 +1931,9 @@ export type SqlServerAvailabilityGroupsAddDatabasesOutput =
  * Request adding database(s) to an existing availability group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsAddDatabases =
@@ -1717,6 +1945,9 @@ export const SqlServerAvailabilityGroupsAddDatabases =
 export const SqlServerAvailabilityGroupsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       availabilityGroupId: Schema.optional(Schema.String),
       serverName: Schema.optional(Schema.String),
@@ -1922,6 +2153,9 @@ export type SqlServerAvailabilityGroupsCreateOutput =
  * Creates or replaces an Arc Sql Server Availability Group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreate =
@@ -1933,6 +2167,8 @@ export const SqlServerAvailabilityGroupsCreate =
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     availabilityGroupName: Schema.optional(Schema.String),
     replicas: Schema.optional(
       Schema.Array(
@@ -2044,6 +2280,8 @@ export type SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput =
  * Create a SQL Server availability group
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroup =
@@ -2055,6 +2293,8 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroup =
 export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     availabilityGroupName: Schema.optional(Schema.String),
     primaryAvailabilityGroup: Schema.optional(
       Schema.Struct({
@@ -2131,6 +2371,8 @@ export type SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput 
  * Create a SQL Server distributed availability group
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroup =
@@ -2145,6 +2387,7 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     availabilityGroup: Schema.optional(
       Schema.Struct({
         availabilityGroupName: Schema.optional(Schema.String),
@@ -2313,6 +2556,7 @@ export type SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreateManagedInstanceLink =
@@ -2324,6 +2568,9 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLink =
 export const SqlServerAvailabilityGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2345,6 +2592,9 @@ export type SqlServerAvailabilityGroupsDeleteOutput =
  * Deletes an Arc Sql Server availability group resource.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsDelete =
@@ -2357,6 +2607,8 @@ export const SqlServerAvailabilityGroupsDeleteMiLinkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2379,6 +2631,8 @@ export type SqlServerAvailabilityGroupsDeleteMiLinkOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsDeleteMiLink =
@@ -2390,6 +2644,9 @@ export const SqlServerAvailabilityGroupsDeleteMiLink =
 export const SqlServerAvailabilityGroupsDetailViewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2429,6 +2686,9 @@ export type SqlServerAvailabilityGroupsDetailViewOutput =
  * Retrieves detailed properties of the Availability Group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsDetailView =
@@ -2440,6 +2700,9 @@ export const SqlServerAvailabilityGroupsDetailView =
 export const SqlServerAvailabilityGroupsFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2479,6 +2742,9 @@ export type SqlServerAvailabilityGroupsFailoverOutput =
  * Request manual failover of the availability group to this server.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsFailover =
@@ -2491,6 +2757,8 @@ export const SqlServerAvailabilityGroupsFailoverMiLinkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceId: Schema.optional(Schema.String),
     force: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -2533,6 +2801,8 @@ export type SqlServerAvailabilityGroupsFailoverMiLinkOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsFailoverMiLink =
@@ -2544,6 +2814,9 @@ export const SqlServerAvailabilityGroupsFailoverMiLink =
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2583,6 +2856,9 @@ export type SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput =
  * Request forced failover of the availability group to this server.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLoss =
@@ -2594,6 +2870,9 @@ export const SqlServerAvailabilityGroupsForceFailoverAllowDataLoss =
 export const SqlServerAvailabilityGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2633,6 +2912,9 @@ export type SqlServerAvailabilityGroupsGetOutput =
  * Retrieves an Arc Sql Server availability group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsGet =
@@ -2644,6 +2926,8 @@ export const SqlServerAvailabilityGroupsGet =
 export const SqlServerAvailabilityGroupsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2700,6 +2984,8 @@ export type SqlServerAvailabilityGroupsListOutput =
  * List the availability group associated with the given Arc Sql Server.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsList =
@@ -2711,6 +2997,9 @@ export const SqlServerAvailabilityGroupsList =
 export const SqlServerAvailabilityGroupsRemoveDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
     values: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -2751,6 +3040,9 @@ export type SqlServerAvailabilityGroupsRemoveDatabasesOutput =
  * Request removing database(s) from an existing availability group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsRemoveDatabases =
@@ -2762,6 +3054,9 @@ export const SqlServerAvailabilityGroupsRemoveDatabases =
 export const SqlServerAvailabilityGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -2978,6 +3273,9 @@ export type SqlServerAvailabilityGroupsUpdateOutput =
  * Updates an existing Availability Group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsUpdate =
@@ -2988,6 +3286,10 @@ export const SqlServerAvailabilityGroupsUpdate =
 // Input Schema
 export const SqlServerDatabasesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       collationName: Schema.optional(Schema.String),
       databaseCreationDate: Schema.optional(Schema.String),
@@ -3322,6 +3624,12 @@ export type SqlServerDatabasesCreateOutput =
 // The operation
 /**
  * Creates or replaces an Arc Sql Server Database.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param databaseName - Name of the database
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerDatabasesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3331,7 +3639,12 @@ export const SqlServerDatabasesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlServerDatabasesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
@@ -3350,6 +3663,12 @@ export type SqlServerDatabasesDeleteOutput =
 // The operation
 /**
  * Deletes an Arc Sql Server database resource.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param databaseName - Name of the database
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerDatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3359,7 +3678,12 @@ export const SqlServerDatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlServerDatabasesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
@@ -3395,6 +3719,12 @@ export type SqlServerDatabasesGetOutput =
 // The operation
 /**
  * Retrieves an Arc Sql Server database.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param databaseName - Name of the database
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerDatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3404,7 +3734,11 @@ export const SqlServerDatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlServerDatabasesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases",
@@ -3458,6 +3792,11 @@ export type SqlServerDatabasesListOutput =
 // The operation
 /**
  * List the databases associated with the given Arc Sql Server.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3468,6 +3807,10 @@ export const SqlServerDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SqlServerDatabasesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -3815,6 +4158,12 @@ export type SqlServerDatabasesUpdateOutput =
 // The operation
 /**
  * Updates an existing database.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param databaseName - Name of the database
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerDatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3827,6 +4176,7 @@ export const SqlServerEsuLicensesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       billingPlan: Schema.Literals(["PAYG"]),
       version: Schema.Literals(["SQL Server 2012", "SQL Server 2014"]),
@@ -3880,6 +4230,7 @@ export type SqlServerEsuLicensesCreateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerEsuLicensesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3893,6 +4244,7 @@ export const SqlServerEsuLicensesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -3915,6 +4267,7 @@ export type SqlServerEsuLicensesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerEsuLicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3928,6 +4281,7 @@ export const SqlServerEsuLicensesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3968,6 +4322,7 @@ export type SqlServerEsuLicensesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerEsuLicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4120,6 +4475,7 @@ export const SqlServerEsuLicensesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -4180,6 +4536,7 @@ export type SqlServerEsuLicensesUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerEsuLicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4191,6 +4548,9 @@ export const SqlServerEsuLicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SqlServerInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         version: Schema.optional(
@@ -4774,6 +5134,11 @@ export type SqlServerInstancesCreateOutput =
 // The operation
 /**
  * Creates or replaces a SQL Server Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  * @param properties - null
  */
 export const SqlServerInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4784,7 +5149,11 @@ export const SqlServerInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlServerInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
@@ -4803,6 +5172,11 @@ export type SqlServerInstancesDeleteOutput =
 // The operation
 /**
  * Deletes a SQL Server Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4812,7 +5186,11 @@ export const SqlServerInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlServerInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
@@ -4848,6 +5226,11 @@ export type SqlServerInstancesGetOutput =
 // The operation
 /**
  * Retrieves a SQL Server Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4859,6 +5242,19 @@ export const SqlServerInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SqlServerInstancesGetAllAvailabilityGroupsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupTypeFilter: Schema.optional(
+      Schema.Literals(["CONTAINED", "DISTRIBUTED", "DEFAULT"]),
+    ),
+    replicationPartnerTypeFilter: Schema.optional(
+      Schema.Literals([
+        "SQLServer",
+        "AzureSQLVM",
+        "AzureSQLManagedInstance",
+        "Unknown",
+      ]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4915,6 +5311,8 @@ export type SqlServerInstancesGetAllAvailabilityGroupsOutput =
  * Retrieves full properties of all the Availability Groups in a SQL Server instance.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerInstancesGetAllAvailabilityGroups =
@@ -4925,6 +5323,9 @@ export const SqlServerInstancesGetAllAvailabilityGroups =
 // Input Schema
 export const SqlServerInstancesGetBestPracticesAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     reportType: Schema.optional(
       Schema.Literals(["AssessmentDataPoint", "AssessmentSummary"]),
     ),
@@ -4969,6 +5370,11 @@ export type SqlServerInstancesGetBestPracticesAssessmentOutput =
 // The operation
 /**
  * Retrieves SQL best practices assessment results for the SQL Server instance.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  * @param reportType - The report type that needs to be fetched. If not specified, the default is AssessmentSummary.
  * @param reportId - The GUID of the report to return best practices assessment results for. If not specified, summaries for all reports will be returned.
  * @param skipToken - The opaque token to use to skip to a specific page of the report. If not specified, the first page will be returned.
@@ -4981,6 +5387,9 @@ export const SqlServerInstancesGetBestPracticesAssessment =
 // Input Schema
 export const SqlServerInstancesGetJobsStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.optional(Schema.String),
     jobType: Schema.optional(Schema.String),
   }).pipe(
@@ -5075,6 +5484,11 @@ export type SqlServerInstancesGetJobsStatusOutput =
 // The operation
 /**
  * Gets jobs status details for sql arc resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  * @param featureName - The name of the feature to retrieve the job status for.
  * @param jobType - The type of the job to retrieve the status for.
  */
@@ -5086,6 +5500,9 @@ export const SqlServerInstancesGetJobsStatus =
 // Input Schema
 export const SqlServerInstancesGetTelemetryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     datasetName: Schema.String,
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -5133,6 +5550,11 @@ export type SqlServerInstancesGetTelemetryOutput =
 // The operation
 /**
  * Retrieves SQL Server instance telemetry
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  * @param datasetName - The name of the telemetry dataset to retrieve.
  * @param startTime - The start time for the time range to fetch telemetry for. If not specified, the current time minus 1 hour is used.
  * @param endTime - The end time for the time range to fetch telemetry for. If not specified, the current time is used.
@@ -5147,7 +5569,9 @@ export const SqlServerInstancesGetTelemetry =
   }));
 // Input Schema
 export const SqlServerInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerInstances",
@@ -5201,6 +5625,9 @@ export type SqlServerInstancesListOutput =
 // The operation
 /**
  * List sqlServerInstance resources in the subscription
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5210,7 +5637,10 @@ export const SqlServerInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlServerInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances",
@@ -5266,6 +5696,10 @@ export type SqlServerInstancesListByResourceGroupOutput =
  * List sqlServerInstance resources in the resource group
  *
  * Gets all sqlServerInstances in a resource group.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5274,7 +5708,11 @@ export const SqlServerInstancesListByResourceGroup =
   }));
 // Input Schema
 export const SqlServerInstancesPostUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/postUpgrade",
@@ -5312,6 +5750,9 @@ export type SqlServerInstancesPostUpgradeOutput =
 /**
  * Clean up after upgrading.
  *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerInstancesPostUpgrade =
@@ -5321,7 +5762,11 @@ export const SqlServerInstancesPostUpgrade =
   }));
 // Input Schema
 export const SqlServerInstancesPreUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/preUpgrade",
@@ -5359,6 +5804,9 @@ export type SqlServerInstancesPreUpgradeOutput =
 /**
  * Request Upgrade Permission before upgrading.
  *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerInstancesPreUpgrade =
@@ -5368,7 +5816,11 @@ export const SqlServerInstancesPreUpgrade =
   }));
 // Input Schema
 export const SqlServerInstancesRunBestPracticesAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/runBestPracticesAssessment",
@@ -5449,6 +5901,11 @@ export type SqlServerInstancesRunBestPracticesAssessmentOutput =
 // The operation
 /**
  * The request to run SQL best practices assessment.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesRunBestPracticesAssessment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5460,6 +5917,7 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     azureManagedInstanceResourceId: Schema.String,
     azureManagedInstanceRole: Schema.optional(
       Schema.Literals(["Primary", "Secondary"]),
@@ -5534,6 +5992,7 @@ export type SqlServerInstancesRunManagedInstanceLinkAssessmentOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  * @param azureManagedInstanceResourceId - The Azure SQL Managed Instance resource ID to link with the SQL Server instance.
  * @param azureManagedInstanceRole - The role of managed instance in a distributed availability group, can be Primary or Secondary.
@@ -5550,7 +6009,11 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessment =
   }));
 // Input Schema
 export const SqlServerInstancesRunMigrationAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/runMigrationAssessment",
@@ -5631,6 +6094,11 @@ export type SqlServerInstancesRunMigrationAssessmentOutput =
 // The operation
 /**
  * Runs migration assessment for SQL Server instance
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesRunMigrationAssessment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5640,6 +6108,9 @@ export const SqlServerInstancesRunMigrationAssessment =
 // Input Schema
 export const SqlServerInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -6222,6 +6693,11 @@ export type SqlServerInstancesUpdateOutput =
 // The operation
 /**
  * Updates a SQL Server Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  * @param tags - Resource tags.
  * @param properties - null
  */
@@ -6234,6 +6710,9 @@ export const SqlServerInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SqlServerLicensesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       billingPlan: Schema.Literals(["PAYG", "Paid"]),
       physicalCores: Schema.Number,
@@ -6283,6 +6762,11 @@ export type SqlServerLicensesCreateOutput =
 // The operation
 /**
  * Creates or replaces a SQL Server license resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerLicenseName - Name of SQL Server License
+ * @param api-version - The API version to use for the request
  * @param properties - SQL Server license properties
  */
 export const SqlServerLicensesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -6293,7 +6777,11 @@ export const SqlServerLicensesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlServerLicensesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
@@ -6312,6 +6800,11 @@ export type SqlServerLicensesDeleteOutput =
 // The operation
 /**
  * Deletes a SQL Server license resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerLicenseName - Name of SQL Server License
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerLicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6321,7 +6814,11 @@ export const SqlServerLicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlServerLicensesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
@@ -6356,6 +6853,11 @@ export type SqlServerLicensesGetOutput = typeof SqlServerLicensesGetOutput.Type;
 // The operation
 /**
  * Retrieves a SQL Server license resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerLicenseName - Name of SQL Server License
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerLicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6365,7 +6867,9 @@ export const SqlServerLicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlServerLicensesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerLicenses",
@@ -6418,6 +6922,9 @@ export type SqlServerLicensesListOutput =
 // The operation
 /**
  * List sqlServerLicense resources in the subscription
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerLicensesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6427,7 +6934,10 @@ export const SqlServerLicensesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlServerLicensesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses",
@@ -6483,6 +6993,10 @@ export type SqlServerLicensesListByResourceGroupOutput =
  * List sqlServerLicense resources in the resource group
  *
  * Gets all sqlServerLicenses in a resource group.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerLicensesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6492,6 +7006,9 @@ export const SqlServerLicensesListByResourceGroup =
 // Input Schema
 export const SqlServerLicensesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -6546,6 +7063,11 @@ export type SqlServerLicensesUpdateOutput =
 // The operation
 /**
  * Updates a SQL Server license resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerLicenseName - Name of SQL Server License
+ * @param api-version - The API version to use for the request
  * @param tags - Resource tags.
  * @param properties - null
  */

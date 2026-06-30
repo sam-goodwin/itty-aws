@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LogsViewsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -31,10 +30,7 @@ export const LogsViewsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   updated_at: Schema.optional(Schema.NullOr(Schema.String)),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "/api/environments/{project_id}/logs/views/",
-  }),
+  T.Http({ method: "POST", path: "/api/projects/{project_id}/logs/views/" }),
 );
 export type LogsViewsCreateInput = typeof LogsViewsCreateInput.Type;
 
@@ -75,5 +71,4 @@ export type LogsViewsCreateOutput = typeof LogsViewsCreateOutput.Type;
 export const logsViewsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LogsViewsCreateInput,
   outputSchema: LogsViewsCreateOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

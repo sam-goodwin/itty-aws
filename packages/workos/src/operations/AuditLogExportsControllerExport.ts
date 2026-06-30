@@ -18,7 +18,9 @@ export const AuditLogExportsControllerExportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.Literals(["pending", "ready", "error"])),
+    state: Schema.optional(
+      Schema.Literals(["pending", "ready", "error", "expired"]),
+    ),
     url: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),

@@ -1,7 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  BadRequest,
+  Forbidden,
+  NotFound,
+  UnprocessableEntity,
+} from "../errors.ts";
 
 // Input Schema
 export const GroupMembershipsControllerAddMemberInput =
@@ -45,5 +50,5 @@ export const GroupMembershipsControllerAddMember =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GroupMembershipsControllerAddMemberInput,
     outputSchema: GroupMembershipsControllerAddMemberOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
   }));

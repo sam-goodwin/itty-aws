@@ -32,9 +32,9 @@ export type GetCurrentUserOrganizationsOutput =
 
 // The operation
 /**
- * Retrieve current user organizations list
+ * List organizations for the current user
  *
- * Retrieves information about the current Neon user's organizations
+ * Retrieves the organizations that the currently authenticated user belongs to.
  */
 export const getCurrentUserOrganizations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

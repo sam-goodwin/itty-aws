@@ -190,6 +190,7 @@ export const GetChargesChargeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   ),
                   pix: Schema.optional(Schema.Struct({})),
                   revolut: Schema.optional(Schema.Struct({})),
+                  scalapay: Schema.optional(Schema.Struct({})),
                   sofort: Schema.optional(Schema.Struct({})),
                   swish: Schema.optional(
                     Schema.Struct({

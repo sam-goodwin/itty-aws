@@ -10,7 +10,10 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const MarketplaceRegistrationDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    marketplaceIdentifier: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions/{marketplaceIdentifier}",
@@ -82,6 +85,10 @@ export type MarketplaceRegistrationDefinitionsGetOutput =
 // The operation
 /**
  * Get the marketplace registration definition for the marketplace identifier.
+ *
+ * @param scope - The scope of the resource.
+ * @param marketplaceIdentifier - The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}).
+ * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -90,7 +97,10 @@ export const MarketplaceRegistrationDefinitionsGet =
   }));
 // Input Schema
 export const MarketplaceRegistrationDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions",
@@ -176,6 +186,10 @@ export type MarketplaceRegistrationDefinitionsListOutput =
 // The operation
 /**
  * Gets a list of the marketplace registration definitions for the marketplace identifier.
+ *
+ * @param scope - The scope of the resource.
+ * @param $filter - The filter query parameter to filter managed services resources by.
+ * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -184,7 +198,9 @@ export const MarketplaceRegistrationDefinitionsList =
   }));
 // Input Schema
 export const MarketplaceRegistrationDefinitionsWithoutScopeGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    marketplaceIdentifier: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions/{marketplaceIdentifier}",
@@ -256,6 +272,9 @@ export type MarketplaceRegistrationDefinitionsWithoutScopeGetOutput =
 // The operation
 /**
  * Get the marketplace registration definition for the marketplace identifier.
+ *
+ * @param marketplaceIdentifier - The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}).
+ * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsWithoutScopeGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -264,7 +283,9 @@ export const MarketplaceRegistrationDefinitionsWithoutScopeGet =
   }));
 // Input Schema
 export const MarketplaceRegistrationDefinitionsWithoutScopeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions",
@@ -350,6 +371,9 @@ export type MarketplaceRegistrationDefinitionsWithoutScopeListOutput =
 // The operation
 /**
  * Gets a list of the marketplace registration definitions for the marketplace identifier.
+ *
+ * @param $filter - The filter query parameter to filter managed services resources by.
+ * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsWithoutScopeList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -391,6 +415,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Gets a list of the operations.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -398,7 +424,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const OperationsWithScopeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/operations",
@@ -433,6 +461,9 @@ export type OperationsWithScopeListOutput =
 // The operation
 /**
  * Gets a list of the operations with the scope.
+ *
+ * @param scope - The scope of the resource.
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsWithScopeList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -443,6 +474,8 @@ export const OperationsWithScopeList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RegistrationAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    registrationAssignmentId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         registrationDefinitionId: Schema.String,
@@ -753,6 +786,10 @@ export type RegistrationAssignmentsCreateOrUpdateOutput =
 // The operation
 /**
  * Creates or updates a registration assignment.
+ *
+ * @param scope - The scope of the resource.
+ * @param registrationAssignmentId - The GUID of the registration assignment.
+ * @param api-version - The API version to use for this operation.
  */
 export const RegistrationAssignmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -761,7 +798,10 @@ export const RegistrationAssignmentsCreateOrUpdate =
   }));
 // Input Schema
 export const RegistrationAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    registrationAssignmentId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
@@ -780,6 +820,10 @@ export type RegistrationAssignmentsDeleteOutput =
 // The operation
 /**
  * Deletes the specified registration assignment.
+ *
+ * @param scope - The scope of the resource.
+ * @param registrationAssignmentId - The GUID of the registration assignment.
+ * @param api-version - The API version to use for this operation.
  */
 export const RegistrationAssignmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -788,7 +832,11 @@ export const RegistrationAssignmentsDelete =
   }));
 // Input Schema
 export const RegistrationAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    registrationAssignmentId: Schema.String.pipe(T.PathParam()),
+    $expandRegistrationDefinition: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
@@ -953,6 +1001,11 @@ export type RegistrationAssignmentsGetOutput =
 // The operation
 /**
  * Gets the details of the specified registration assignment.
+ *
+ * @param scope - The scope of the resource.
+ * @param registrationAssignmentId - The GUID of the registration assignment.
+ * @param $expandRegistrationDefinition - The flag indicating whether to return the registration definition details along with the registration assignment details.
+ * @param api-version - The API version to use for this operation.
  */
 export const RegistrationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -962,7 +1015,11 @@ export const RegistrationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const RegistrationAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    $expandRegistrationDefinition: Schema.optional(Schema.Boolean),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments",
@@ -1150,6 +1207,11 @@ export type RegistrationAssignmentsListOutput =
 // The operation
 /**
  * Gets a list of the registration assignments.
+ *
+ * @param scope - The scope of the resource.
+ * @param $expandRegistrationDefinition - The flag indicating whether to return the registration definition details along with the registration assignment details.
+ * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter query parameter to filter managed services resources by.
  */
 export const RegistrationAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1160,6 +1222,8 @@ export const RegistrationAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RegistrationDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registrationDefinitionId: Schema.String.pipe(T.PathParam()),
+    scope: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -1348,6 +1412,10 @@ export type RegistrationDefinitionsCreateOrUpdateOutput =
 // The operation
 /**
  * Creates or updates a registration definition.
+ *
+ * @param registrationDefinitionId - The GUID of the registration definition.
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The scope of the resource.
  */
 export const RegistrationDefinitionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1356,7 +1424,10 @@ export const RegistrationDefinitionsCreateOrUpdate =
   }));
 // Input Schema
 export const RegistrationDefinitionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registrationDefinitionId: Schema.String.pipe(T.PathParam()),
+    scope: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
@@ -1375,6 +1446,10 @@ export type RegistrationDefinitionsDeleteOutput =
 // The operation
 /**
  * Deletes the registration definition.
+ *
+ * @param registrationDefinitionId - The GUID of the registration definition.
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The scope of the resource.
  */
 export const RegistrationDefinitionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1383,7 +1458,10 @@ export const RegistrationDefinitionsDelete =
   }));
 // Input Schema
 export const RegistrationDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    registrationDefinitionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
@@ -1487,6 +1565,10 @@ export type RegistrationDefinitionsGetOutput =
 // The operation
 /**
  * Gets the registration definition details.
+ *
+ * @param scope - The scope of the resource.
+ * @param registrationDefinitionId - The GUID of the registration definition.
+ * @param api-version - The API version to use for this operation.
  */
 export const RegistrationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1496,7 +1578,10 @@ export const RegistrationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const RegistrationDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions",
@@ -1624,6 +1709,10 @@ export type RegistrationDefinitionsListOutput =
 // The operation
 /**
  * Gets a list of the registration definitions.
+ *
+ * @param scope - The scope of the resource.
+ * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter query parameter to filter managed services resources by.
  */
 export const RegistrationDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

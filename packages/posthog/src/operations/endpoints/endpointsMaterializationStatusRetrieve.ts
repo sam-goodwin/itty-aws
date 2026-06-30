@@ -26,7 +26,6 @@ export const EndpointsMaterializationStatusRetrieveOutput =
     reason: Schema.optional(Schema.NullOr(Schema.String)),
     last_materialized_at: Schema.optional(Schema.NullOr(Schema.String)),
     error: Schema.optional(Schema.String),
-    sync_frequency: Schema.optional(Schema.NullOr(Schema.String)),
     saved_query_id: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type EndpointsMaterializationStatusRetrieveOutput =

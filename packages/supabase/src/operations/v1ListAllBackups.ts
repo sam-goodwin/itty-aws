@@ -17,6 +17,7 @@ export const V1ListAllBackupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     pitr_enabled: Schema.Boolean,
     backups: Schema.Array(
       Schema.Struct({
+        id: Schema.Number,
         is_physical_backup: Schema.Boolean,
         status: Schema.Literals([
           "COMPLETED",

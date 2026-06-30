@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingGitProviderFileLinksResolveGithubRetrieveInput =
@@ -14,7 +13,7 @@ export const ErrorTrackingGitProviderFileLinksResolveGithubRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/git-provider-file-links/resolve_github/",
+      path: "/api/projects/{project_id}/error_tracking/git-provider-file-links/resolve_github/",
     }),
   );
 export type ErrorTrackingGitProviderFileLinksResolveGithubRetrieveInput =
@@ -43,5 +42,4 @@ export const errorTrackingGitProviderFileLinksResolveGithubRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingGitProviderFileLinksResolveGithubRetrieveInput,
     outputSchema: ErrorTrackingGitProviderFileLinksResolveGithubRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

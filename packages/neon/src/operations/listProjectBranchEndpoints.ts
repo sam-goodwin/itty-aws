@@ -76,8 +76,6 @@ export type ListProjectBranchEndpointsOutput =
  * Retrieves a list of compute endpoints for the specified branch.
  * Neon permits only one read-write compute endpoint per branch.
  * A branch can have multiple read-only compute endpoints.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

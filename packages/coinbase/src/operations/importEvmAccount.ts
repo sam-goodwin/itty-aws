@@ -24,7 +24,7 @@ export type ImportEvmAccountOutput = typeof ImportEvmAccountOutput.Type;
 
 // The operation
 /**
- * Import an EVM account
+ * Import EVM account
  *
  * Import an existing EVM account into the developer's CDP Project. This API should be called from the [CDP SDK](https://github.com/coinbase/cdp-sdk) to ensure that the associated private key is properly encrypted.
  *

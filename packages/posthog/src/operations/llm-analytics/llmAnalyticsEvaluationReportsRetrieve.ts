@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsEvaluationReportsRetrieveInput =
@@ -11,7 +10,7 @@ export const LlmAnalyticsEvaluationReportsRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/llm_analytics/evaluation_reports/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/evaluation_reports/{id}/",
     }),
   );
 export type LlmAnalyticsEvaluationReportsRetrieveInput =
@@ -53,5 +52,4 @@ export const llmAnalyticsEvaluationReportsRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsEvaluationReportsRetrieveInput,
     outputSchema: LlmAnalyticsEvaluationReportsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

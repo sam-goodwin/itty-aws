@@ -72,8 +72,10 @@ export const PostTaxCalculationsInput =
                 "et_tin",
                 "eu_oss_vat",
                 "eu_vat",
+                "fo_vat",
                 "gb_vat",
                 "ge_vat",
+                "gi_tin",
                 "gn_nif",
                 "hk_br",
                 "hr_oib",
@@ -82,6 +84,7 @@ export const PostTaxCalculationsInput =
                 "il_vat",
                 "in_gst",
                 "is_vat",
+                "it_cf",
                 "jp_cn",
                 "jp_rn",
                 "jp_trn",
@@ -112,6 +115,7 @@ export const PostTaxCalculationsInput =
                 "pe_ruc",
                 "ph_tin",
                 "pl_nip",
+                "py_ruc",
                 "ro_tin",
                 "rs_pib",
                 "ru_inn",
@@ -253,8 +257,10 @@ export const PostTaxCalculationsOutput =
             "et_tin",
             "eu_oss_vat",
             "eu_vat",
+            "fo_vat",
             "gb_vat",
             "ge_vat",
+            "gi_tin",
             "gn_nif",
             "hk_br",
             "hr_oib",
@@ -263,6 +269,7 @@ export const PostTaxCalculationsOutput =
             "il_vat",
             "in_gst",
             "is_vat",
+            "it_cf",
             "jp_cn",
             "jp_rn",
             "jp_trn",
@@ -293,6 +300,7 @@ export const PostTaxCalculationsOutput =
             "pe_ruc",
             "ph_tin",
             "pl_nip",
+            "py_ruc",
             "ro_tin",
             "rs_pib",
             "ru_inn",
@@ -463,7 +471,7 @@ export type PostTaxCalculationsOutput = typeof PostTaxCalculationsOutput.Type;
 
 // The operation
 /**
- * Create a Tax Calculation
+ * Create a Calculation
  *
  * <p>Calculates tax based on the input and returns a Tax <code>Calculation</code> object.</p>
  */

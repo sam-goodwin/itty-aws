@@ -8,6 +8,9 @@ export const IntegrationsChannelsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
+    limit: Schema.optional(Schema.Number),
+    offset: Schema.optional(Schema.Number),
+    search: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -19,7 +22,20 @@ export type IntegrationsChannelsRetrieveInput =
 
 // Output Schema
 export const IntegrationsChannelsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channels: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
+        is_private: Schema.Boolean,
+        is_member: Schema.Boolean,
+        is_ext_shared: Schema.Boolean,
+        is_private_without_access: Schema.Boolean,
+      }),
+    ),
+    lastRefreshedAt: Schema.optional(Schema.NullOr(Schema.String)),
+    has_more: Schema.optional(Schema.Boolean),
+  });
 export type IntegrationsChannelsRetrieveOutput =
   typeof IntegrationsChannelsRetrieveOutput.Type;
 
@@ -27,7 +43,10 @@ export type IntegrationsChannelsRetrieveOutput =
 /**
  *
  * @param id - A unique integer value identifying this integration.
+ * @param limit - Maximum number of channels to return per request (max 200).
+ * @param offset - Number of channels to skip before returning results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+ * @param search - Optional case-insensitive channel name or ID search query.
  */
 export const integrationsChannelsRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

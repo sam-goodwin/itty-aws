@@ -8,6 +8,7 @@ export const PostSubscriptionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     add_invoice_items: Schema.optional(
       Schema.Array(
         Schema.Struct({
+          discountable: Schema.optional(Schema.Boolean),
           discounts: Schema.optional(
             Schema.Array(
               Schema.Struct({
@@ -88,6 +89,31 @@ export const PostSubscriptionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         type: Schema.Literals(["classic", "flexible"]),
       }),
     ),
+    billing_schedules: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          applies_to: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                price: Schema.optional(Schema.String),
+                type: Schema.Literals(["price"]),
+              }),
+            ),
+          ),
+          bill_until: Schema.Struct({
+            duration: Schema.optional(
+              Schema.Struct({
+                interval: Schema.Literals(["day", "month", "week", "year"]),
+                interval_count: Schema.optional(Schema.Number),
+              }),
+            ),
+            timestamp: Schema.optional(Schema.Number),
+            type: Schema.Literals(["duration", "timestamp"]),
+          }),
+          key: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     billing_thresholds: Schema.optional(Schema.Unknown),
     cancel_at: Schema.optional(Schema.Unknown),
     cancel_at_period_end: Schema.optional(Schema.Boolean),
@@ -107,6 +133,9 @@ export const PostSubscriptionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     invoice_settings: Schema.optional(
       Schema.Struct({
         account_tax_ids: Schema.optional(Schema.Unknown),
+        custom_fields: Schema.optional(Schema.Unknown),
+        description: Schema.optional(Schema.String),
+        footer: Schema.optional(Schema.String),
         issuer: Schema.optional(
           Schema.Struct({
             account: Schema.optional(Schema.String),
@@ -166,7 +195,9 @@ export const PostSubscriptionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             customer_balance: Schema.optional(Schema.Unknown),
             konbini: Schema.optional(Schema.Unknown),
             payto: Schema.optional(Schema.Unknown),
+            pix: Schema.optional(Schema.Unknown),
             sepa_debit: Schema.optional(Schema.Unknown),
+            upi: Schema.optional(Schema.Unknown),
             us_bank_account: Schema.optional(Schema.Unknown),
           }),
         ),
@@ -229,6 +260,25 @@ export const PostSubscriptionsOutput =
       type: Schema.Literals(["classic", "flexible"]),
       updated_at: Schema.optional(Schema.Number),
     }),
+    billing_schedules: Schema.Array(
+      Schema.Struct({
+        applies_to: Schema.NullOr(
+          Schema.Array(
+            Schema.Struct({
+              price: Schema.Unknown,
+              type: Schema.Literals(["price"]),
+            }),
+          ),
+        ),
+        bill_until: Schema.Struct({
+          computed_timestamp: Schema.Number,
+          duration: Schema.Unknown,
+          timestamp: Schema.NullOr(Schema.Number),
+          type: Schema.Literals(["duration", "timestamp"]),
+        }),
+        key: Schema.String,
+      }),
+    ),
     billing_thresholds: Schema.Unknown,
     cancel_at: Schema.NullOr(Schema.Number),
     cancel_at_period_end: Schema.Boolean,
@@ -307,6 +357,16 @@ export const PostSubscriptionsOutput =
     id: Schema.String,
     invoice_settings: Schema.Struct({
       account_tax_ids: Schema.NullOr(Schema.Array(Schema.Unknown)),
+      custom_fields: Schema.NullOr(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+      ),
+      description: Schema.NullOr(Schema.String),
+      footer: Schema.NullOr(Schema.String),
       issuer: Schema.Struct({
         account: Schema.optional(Schema.Unknown),
         type: Schema.Literals(["account", "self"]),
@@ -315,6 +375,7 @@ export const PostSubscriptionsOutput =
     items: Schema.Struct({
       data: Schema.Array(
         Schema.Struct({
+          billed_until: Schema.optional(Schema.Number),
           billing_thresholds: Schema.Unknown,
           created: Schema.Number,
           current_period_end: Schema.Number,
@@ -479,6 +540,7 @@ export const PostSubscriptionsOutput =
     }),
     latest_invoice: Schema.Unknown,
     livemode: Schema.Boolean,
+    managed_payments: Schema.Unknown,
     metadata: Schema.Record(Schema.String, Schema.String),
     next_pending_invoice_item_invoice: Schema.NullOr(Schema.Number),
     object: Schema.Literals(["subscription"]),

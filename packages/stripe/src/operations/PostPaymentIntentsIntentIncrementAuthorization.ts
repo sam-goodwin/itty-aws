@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostPaymentIntentsIntentIncrementAuthorizationInput =
@@ -135,7 +135,7 @@ export const PostPaymentIntentsIntentIncrementAuthorizationOutput =
       ]),
     ),
     capture_method: Schema.Literals(["automatic", "automatic_async", "manual"]),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     confirmation_method: Schema.Literals(["automatic", "manual"]),
     created: Schema.Number,
     currency: Schema.String,
@@ -155,6 +155,7 @@ export const PostPaymentIntentsIntentIncrementAuthorizationOutput =
           "bacs_debit",
           "bancontact",
           "billie",
+          "bizum",
           "blik",
           "boleto",
           "card",
@@ -187,8 +188,10 @@ export const PostPaymentIntentsIntentIncrementAuthorizationOutput =
           "revolut_pay",
           "samsung_pay",
           "satispay",
+          "scalapay",
           "sepa_debit",
           "sofort",
+          "sunbit",
           "swish",
           "twint",
           "upi",
@@ -215,6 +218,7 @@ export const PostPaymentIntentsIntentIncrementAuthorizationOutput =
     last_payment_error: Schema.Unknown,
     latest_charge: Schema.Unknown,
     livemode: Schema.Boolean,
+    managed_payments: Schema.Unknown,
     metadata: Schema.Record(Schema.String, Schema.String),
     next_action: Schema.Unknown,
     object: Schema.Literals(["payment_intent"]),
@@ -283,7 +287,9 @@ export type PostPaymentIntentsIntentIncrementAuthorizationOutput =
  * object remains capturable for the previously authorized amount.</p>
  * <p>Each PaymentIntent can have a maximum of 10 incremental authorization attempts, including declines.
  * After it’s captured, a PaymentIntent can no longer be incremented.</p>
- * <p>Learn more about <a href="/docs/terminal/features/incremental-authorizations">incremental authorizations</a>.</p>
+ * <p>Learn more about incremental authorizations with
+ * <a href="/docs/terminal/features/incremental-authorizations">in-person payments</a> and
+ * <a href="/docs/payments/incremental-authorization?platform=web&ui=elements">online payments</a>.</p>
  */
 export const PostPaymentIntentsIntentIncrementAuthorization =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

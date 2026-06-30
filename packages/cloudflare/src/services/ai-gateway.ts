@@ -4596,6 +4596,472 @@ export const deleteBillingTopupConfig: API.OperationMethod<
 }));
 
 // =============================================================================
+// CustomProvider
+// =============================================================================
+
+export interface GetCustomProviderRequest {
+  id: string;
+  accountId: string;
+}
+
+export const GetCustomProviderRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String.pipe(T.HttpPath("id")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/ai-gateway/custom-providers/{id}",
+      }),
+    ),
+  ) as unknown as Schema.Schema<GetCustomProviderRequest>;
+
+export interface GetCustomProviderResponse {
+  id: string;
+  baseUrl: string;
+  createdAt: string;
+  modifiedAt: string;
+  name: string;
+  slug: string;
+  beta?: boolean | null;
+  curlExample?: string | null;
+  description?: string | null;
+  enable?: boolean | null;
+  headers?: string | null;
+  jsExample?: string | null;
+  link?: string | null;
+  logo?: string | null;
+  position?: number | null;
+}
+
+export const GetCustomProviderResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      baseUrl: Schema.String,
+      createdAt: Schema.String,
+      modifiedAt: Schema.String,
+      name: Schema.String,
+      slug: Schema.String,
+      beta: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      curlExample: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      headers: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      jsExample: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      link: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      position: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          baseUrl: "base_url",
+          createdAt: "created_at",
+          modifiedAt: "modified_at",
+          name: "name",
+          slug: "slug",
+          beta: "beta",
+          curlExample: "curl_example",
+          description: "description",
+          enable: "enable",
+          headers: "headers",
+          jsExample: "js_example",
+          link: "link",
+          logo: "logo",
+          position: "position",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetCustomProviderResponse>;
+
+export type GetCustomProviderError = DefaultErrors;
+
+export const getCustomProvider: API.OperationMethod<
+  GetCustomProviderRequest,
+  GetCustomProviderResponse,
+  GetCustomProviderError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetCustomProviderRequest,
+  output: GetCustomProviderResponse,
+  errors: [],
+}));
+
+export interface ListCustomProvidersRequest {
+  /** Path param */
+  accountId: string;
+  page?: number;
+  perPage?: number;
+  /** Query param */
+  beta?: boolean;
+  /** Query param */
+  enable?: boolean;
+  /** Query param: Search by id, name, slug */
+  search?: string;
+}
+
+export const ListCustomProvidersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      beta: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("beta")),
+      enable: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("enable")),
+      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/ai-gateway/custom-providers",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ListCustomProvidersRequest>;
+
+export interface ListCustomProvidersResponse {
+  result: {
+    id: string;
+    baseUrl: string;
+    createdAt: string;
+    modifiedAt: string;
+    name: string;
+    slug: string;
+    beta?: boolean | null;
+    curlExample?: string | null;
+    description?: string | null;
+    enable?: boolean | null;
+    headers?: string | null;
+    jsExample?: string | null;
+    link?: string | null;
+    logo?: string | null;
+    position?: number | null;
+  }[];
+  resultInfo?: {
+    count?: number | null;
+    page?: number | null;
+    perPage?: number | null;
+    totalCount?: number | null;
+  } | null;
+}
+
+export const ListCustomProvidersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          baseUrl: Schema.String,
+          createdAt: Schema.String,
+          modifiedAt: Schema.String,
+          name: Schema.String,
+          slug: Schema.String,
+          beta: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          curlExample: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          headers: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          jsExample: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          link: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          position: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            baseUrl: "base_url",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+            name: "name",
+            slug: "slug",
+            beta: "beta",
+            curlExample: "curl_example",
+            description: "description",
+            enable: "enable",
+            headers: "headers",
+            jsExample: "js_example",
+            link: "link",
+            logo: "logo",
+            position: "position",
+          }),
+        ),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+  ) as unknown as Schema.Schema<ListCustomProvidersResponse>;
+
+export type ListCustomProvidersError = DefaultErrors;
+
+export const listCustomProviders: API.PaginatedOperationMethod<
+  ListCustomProvidersRequest,
+  ListCustomProvidersResponse,
+  ListCustomProvidersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListCustomProvidersRequest,
+  output: ListCustomProvidersResponse,
+  errors: [],
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+export interface CreateCustomProviderRequest {
+  /** Path param */
+  accountId: string;
+  /** Body param */
+  baseUrl: string;
+  /** Body param */
+  name: string;
+  /** Body param */
+  slug: string;
+  /** Body param */
+  beta?: boolean;
+  /** Body param */
+  curlExample?: string;
+  /** Body param */
+  description?: string;
+  /** Body param */
+  enable?: boolean;
+  /** Body param */
+  headers?: string;
+  /** Body param */
+  jsExample?: string;
+  /** Body param */
+  link?: string;
+  /** Body param */
+  position?: number;
+}
+
+export const CreateCustomProviderRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      baseUrl: Schema.String,
+      name: Schema.String,
+      slug: Schema.String,
+      beta: Schema.optional(Schema.Boolean),
+      curlExample: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      enable: Schema.optional(Schema.Boolean),
+      headers: Schema.optional(Schema.String),
+      jsExample: Schema.optional(Schema.String),
+      link: Schema.optional(Schema.String),
+      position: Schema.optional(Schema.Number),
+    }).pipe(
+      Schema.encodeKeys({
+        baseUrl: "base_url",
+        name: "name",
+        slug: "slug",
+        beta: "beta",
+        curlExample: "curl_example",
+        description: "description",
+        enable: "enable",
+        headers: "headers",
+        jsExample: "js_example",
+        link: "link",
+        position: "position",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/ai-gateway/custom-providers",
+      }),
+    ),
+  ) as unknown as Schema.Schema<CreateCustomProviderRequest>;
+
+export interface CreateCustomProviderResponse {
+  id: string;
+  baseUrl: string;
+  createdAt: string;
+  modifiedAt: string;
+  name: string;
+  slug: string;
+  beta?: boolean | null;
+  curlExample?: string | null;
+  description?: string | null;
+  enable?: boolean | null;
+  headers?: string | null;
+  jsExample?: string | null;
+  link?: string | null;
+  logo?: string | null;
+  position?: number | null;
+}
+
+export const CreateCustomProviderResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      baseUrl: Schema.String,
+      createdAt: Schema.String,
+      modifiedAt: Schema.String,
+      name: Schema.String,
+      slug: Schema.String,
+      beta: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      curlExample: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      headers: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      jsExample: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      link: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      position: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          baseUrl: "base_url",
+          createdAt: "created_at",
+          modifiedAt: "modified_at",
+          name: "name",
+          slug: "slug",
+          beta: "beta",
+          curlExample: "curl_example",
+          description: "description",
+          enable: "enable",
+          headers: "headers",
+          jsExample: "js_example",
+          link: "link",
+          logo: "logo",
+          position: "position",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateCustomProviderResponse>;
+
+export type CreateCustomProviderError = DefaultErrors;
+
+export const createCustomProvider: API.OperationMethod<
+  CreateCustomProviderRequest,
+  CreateCustomProviderResponse,
+  CreateCustomProviderError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateCustomProviderRequest,
+  output: CreateCustomProviderResponse,
+  errors: [],
+}));
+
+export interface DeleteCustomProviderRequest {
+  id: string;
+  accountId: string;
+}
+
+export const DeleteCustomProviderRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String.pipe(T.HttpPath("id")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/ai-gateway/custom-providers/{id}",
+      }),
+    ),
+  ) as unknown as Schema.Schema<DeleteCustomProviderRequest>;
+
+export interface DeleteCustomProviderResponse {
+  id: string;
+  baseUrl: string;
+  createdAt: string;
+  modifiedAt: string;
+  name: string;
+  slug: string;
+  beta?: boolean | null;
+  curlExample?: string | null;
+  description?: string | null;
+  enable?: boolean | null;
+  headers?: string | null;
+  jsExample?: string | null;
+  link?: string | null;
+  logo?: string | null;
+  position?: number | null;
+}
+
+export const DeleteCustomProviderResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      baseUrl: Schema.String,
+      createdAt: Schema.String,
+      modifiedAt: Schema.String,
+      name: Schema.String,
+      slug: Schema.String,
+      beta: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      curlExample: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      headers: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      jsExample: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      link: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      position: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          baseUrl: "base_url",
+          createdAt: "created_at",
+          modifiedAt: "modified_at",
+          name: "name",
+          slug: "slug",
+          beta: "beta",
+          curlExample: "curl_example",
+          description: "description",
+          enable: "enable",
+          headers: "headers",
+          jsExample: "js_example",
+          link: "link",
+          logo: "logo",
+          position: "position",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<DeleteCustomProviderResponse>;
+
+export type DeleteCustomProviderError = DefaultErrors;
+
+export const deleteCustomProvider: API.OperationMethod<
+  DeleteCustomProviderRequest,
+  DeleteCustomProviderResponse,
+  DeleteCustomProviderError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteCustomProviderRequest,
+  output: DeleteCustomProviderResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // Dataset
 // =============================================================================
 

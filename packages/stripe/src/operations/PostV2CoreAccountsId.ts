@@ -300,6 +300,11 @@ export const PostV2CoreAccountsIdInput =
                     requested: Schema.optional(Schema.Boolean),
                   }),
                 ),
+                sunbit_payments: Schema.optional(
+                  Schema.Struct({
+                    requested: Schema.optional(Schema.Boolean),
+                  }),
+                ),
                 swish_payments: Schema.optional(
                   Schema.Struct({
                     requested: Schema.optional(Schema.Boolean),
@@ -575,14 +580,14 @@ export const PostV2CoreAccountsIdInput =
                     user_agent: Schema.optional(Schema.String),
                   }),
                 ),
-                crypto_storer: Schema.optional(
+                crypto_money_manager: Schema.optional(
                   Schema.Struct({
                     date: Schema.optional(Schema.String),
                     ip: Schema.optional(Schema.String),
                     user_agent: Schema.optional(Schema.String),
                   }),
                 ),
-                storer: Schema.optional(
+                money_manager: Schema.optional(
                   Schema.Struct({
                     date: Schema.optional(Schema.String),
                     ip: Schema.optional(Schema.String),
@@ -673,12 +678,22 @@ export const PostV2CoreAccountsIdInput =
                 proof_of_registration: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),
                 proof_of_ultimate_beneficial_ownership: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),
@@ -2452,6 +2467,34 @@ export const PostV2CoreAccountsIdOutput =
                     ),
                   }),
                 ),
+                sunbit_payments: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.Literals([
+                      "active",
+                      "pending",
+                      "restricted",
+                      "unsupported",
+                    ]),
+                    status_details: Schema.Array(
+                      Schema.Struct({
+                        code: Schema.Literals([
+                          "determining_status",
+                          "requirements_past_due",
+                          "requirements_pending_verification",
+                          "restricted_other",
+                          "unsupported_business",
+                          "unsupported_country",
+                          "unsupported_entity_type",
+                        ]),
+                        resolution: Schema.Literals([
+                          "contact_stripe",
+                          "no_resolution",
+                          "provide_info",
+                        ]),
+                      }),
+                    ),
+                  }),
+                ),
                 swish_payments: Schema.optional(
                   Schema.Struct({
                     status: Schema.Literals([
@@ -3192,12 +3235,22 @@ export const PostV2CoreAccountsIdOutput =
                 proof_of_registration: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),
                 proof_of_ultimate_beneficial_ownership: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),

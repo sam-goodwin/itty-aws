@@ -13,6 +13,8 @@ export const EvidenceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     evidenceName: Schema.String.pipe(T.PathParam()),
+    offerGuid: Schema.optional(Schema.String),
+    reportCreatorTenantId: Schema.optional(Schema.String),
     properties: Schema.Struct({
       evidenceType: Schema.optional(
         Schema.Literals(["File", "AutoCollectedEvidence", "Data"]),
@@ -73,6 +75,8 @@ export type EvidenceCreateOrUpdateOutput =
  * Create or Update an evidence a specified report
  *
  * @param api-version - The API version to use for this operation.
+ * @param offerGuid - The offerGuid which mapping to the reports.
+ * @param reportCreatorTenantId - The tenant id of the report creator.
  * @param reportName - Report Name.
  * @param evidenceName - The evidence name.
  */
@@ -201,6 +205,13 @@ export const EvidenceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EvidenceListByReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
+    $skipToken: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $select: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $orderby: Schema.optional(Schema.String),
+    offerGuid: Schema.optional(Schema.String),
+    reportCreatorTenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -253,6 +264,13 @@ export type EvidenceListByReportOutput = typeof EvidenceListByReportOutput.Type;
  * Returns a paginated list of evidences for a specified report.
  *
  * @param api-version - The API version to use for this operation.
+ * @param $skipToken - Skip over when retrieving results.
+ * @param $top - Number of elements to return when retrieving results.
+ * @param $select - OData Select statement. Limits the properties on each entry to just those requested, e.g. ?$select=reportName,id.
+ * @param $filter - The filter to apply on the operation.
+ * @param $orderby - OData order by query option.
+ * @param offerGuid - The offerGuid which mapping to the reports.
+ * @param reportCreatorTenantId - The tenant id of the report creator.
  * @param reportName - Report Name.
  */
 export const EvidenceListByReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -858,9 +876,15 @@ export const ReportGetScopingQuestions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ReportListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ReportListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  $skipToken: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $select: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  offerGuid: Schema.optional(Schema.String),
+  reportCreatorTenantId: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppComplianceAutomation/reports",
@@ -901,6 +925,13 @@ export type ReportListOutput = typeof ReportListOutput.Type;
  * Get the AppComplianceAutomation report list for the tenant.
  *
  * @param api-version - The API version to use for this operation.
+ * @param $skipToken - Skip over when retrieving results.
+ * @param $top - Number of elements to return when retrieving results.
+ * @param $select - OData Select statement. Limits the properties on each entry to just those requested, e.g. ?$select=reportName,id.
+ * @param $filter - The filter to apply on the operation.
+ * @param $orderby - OData order by query option.
+ * @param offerGuid - The offerGuid which mapping to the reports.
+ * @param reportCreatorTenantId - The tenant id of the report creator.
  */
 export const ReportList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReportListInput,
@@ -1526,6 +1557,13 @@ export const SnapshotGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SnapshotListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
+  $skipToken: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $select: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  offerGuid: Schema.optional(Schema.String),
+  reportCreatorTenantId: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1567,6 +1605,13 @@ export type SnapshotListOutput = typeof SnapshotListOutput.Type;
  * Get the AppComplianceAutomation snapshot list.
  *
  * @param api-version - The API version to use for this operation.
+ * @param $skipToken - Skip over when retrieving results.
+ * @param $top - Number of elements to return when retrieving results.
+ * @param $select - OData Select statement. Limits the properties on each entry to just those requested, e.g. ?$select=reportName,id.
+ * @param $filter - The filter to apply on the operation.
+ * @param $orderby - OData order by query option.
+ * @param offerGuid - The offerGuid which mapping to the reports.
+ * @param reportCreatorTenantId - The tenant id of the report creator.
  * @param reportName - Report Name.
  */
 export const SnapshotList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1744,6 +1789,13 @@ export const WebhookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WebhookListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
+  $skipToken: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $select: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $orderby: Schema.optional(Schema.String),
+  offerGuid: Schema.optional(Schema.String),
+  reportCreatorTenantId: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1785,6 +1837,13 @@ export type WebhookListOutput = typeof WebhookListOutput.Type;
  * Get the AppComplianceAutomation webhook list.
  *
  * @param api-version - The API version to use for this operation.
+ * @param $skipToken - Skip over when retrieving results.
+ * @param $top - Number of elements to return when retrieving results.
+ * @param $select - OData Select statement. Limits the properties on each entry to just those requested, e.g. ?$select=reportName,id.
+ * @param $filter - The filter to apply on the operation.
+ * @param $orderby - OData order by query option.
+ * @param offerGuid - The offerGuid which mapping to the reports.
+ * @param reportCreatorTenantId - The tenant id of the report creator.
  * @param reportName - Report Name.
  */
 export const WebhookList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

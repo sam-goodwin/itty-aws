@@ -430,6 +430,7 @@ export const GatewaysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -493,6 +494,7 @@ export type GatewaysCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param gatewayName - The name of the Gateway.
  */
 export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -504,6 +506,7 @@ export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -524,6 +527,7 @@ export type GatewaysDeleteOutput = typeof GatewaysDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param gatewayName - The name of the Gateway.
  */
 export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysDeleteInput,
@@ -533,6 +537,7 @@ export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -571,6 +576,7 @@ export type GatewaysGetOutput = typeof GatewaysGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param gatewayName - The name of the Gateway.
  */
 export const GatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysGetInput,
@@ -714,6 +720,7 @@ export const GatewaysListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const GatewaysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       allowedFeatures: Schema.optional(Schema.Array(Schema.String)),
@@ -758,6 +765,7 @@ export type GatewaysUpdateOutput = typeof GatewaysUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param gatewayName - The name of the Gateway.
  */
 export const GatewaysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysUpdateInput,
@@ -898,6 +906,8 @@ export const LicenseProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    licenseProfileName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         softwareAssurance: Schema.optional(
@@ -1085,6 +1095,8 @@ export type LicenseProfilesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param licenseProfileName - The name of the license profile.
  */
 export const LicenseProfilesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1096,6 +1108,8 @@ export const LicenseProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    licenseProfileName: Schema.Literals(["default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1118,6 +1132,8 @@ export type LicenseProfilesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param licenseProfileName - The name of the license profile.
  */
 export const LicenseProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1130,6 +1146,8 @@ export const LicenseProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    licenseProfileName: Schema.Literals(["default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1169,6 +1187,8 @@ export type LicenseProfilesGetOutput = typeof LicenseProfilesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param licenseProfileName - The name of the license profile.
  */
 export const LicenseProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LicenseProfilesGetInput,
@@ -1245,6 +1265,8 @@ export const LicenseProfilesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    licenseProfileName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         softwareAssurance: Schema.optional(
@@ -1320,6 +1342,8 @@ export type LicenseProfilesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param licenseProfileName - The name of the license profile.
  */
 export const LicenseProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1332,6 +1356,7 @@ export const LicensesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    licenseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -1423,6 +1448,7 @@ export type LicensesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param licenseName - The name of the license.
  */
 export const LicensesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1434,6 +1460,7 @@ export const LicensesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  licenseName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -1454,6 +1481,7 @@ export type LicensesDeleteOutput = typeof LicensesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param licenseName - The name of the license.
  */
 export const LicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LicensesDeleteInput,
@@ -1463,6 +1491,7 @@ export const LicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const LicensesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  licenseName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1501,6 +1530,7 @@ export type LicensesGetOutput = typeof LicensesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param licenseName - The name of the license.
  */
 export const LicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LicensesGetInput,
@@ -1644,6 +1674,7 @@ export const LicensesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LicensesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  licenseName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       licenseType: Schema.optional(Schema.Literals(["ESU"])),
@@ -1699,6 +1730,7 @@ export type LicensesUpdateOutput = typeof LicensesUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param licenseName - The name of the license.
  */
 export const LicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LicensesUpdateInput,
@@ -2139,6 +2171,8 @@ export const MachineExtensionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const MachineRunCommandsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    runCommandName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -2267,6 +2301,8 @@ export type MachineRunCommandsCreateOrUpdateOutput =
  * The operation to create or update a run command.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param runCommandName - The name of the run command.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -2279,6 +2315,8 @@ export const MachineRunCommandsCreateOrUpdate =
 export const MachineRunCommandsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    runCommandName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2301,6 +2339,8 @@ export type MachineRunCommandsDeleteOutput =
  * The operation to delete a run command.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param runCommandName - The name of the run command.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -2314,6 +2354,8 @@ export const MachineRunCommandsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const MachineRunCommandsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    runCommandName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2353,6 +2395,8 @@ export type MachineRunCommandsGetOutput =
  * The operation to get a run command.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param runCommandName - The name of the run command.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -2366,6 +2410,7 @@ export const MachineRunCommandsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const MachineRunCommandsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -2424,6 +2469,7 @@ export type MachineRunCommandsListOutput =
  * The operation to get all the run commands of a non-Azure machine.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
  * @param $expand - The expand expression to apply on the operation.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
@@ -2438,6 +2484,8 @@ export const MachineRunCommandsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const MachineRunCommandsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    runCommandName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -2479,6 +2527,8 @@ export type MachineRunCommandsUpdateOutput =
  * The operation to update the run command.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param runCommandName - The name of the run command.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -3792,6 +3842,7 @@ export const NetworkConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         location: Schema.optional(Schema.String),
@@ -3859,6 +3910,7 @@ export type NetworkConfigurationsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
 export const NetworkConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3870,6 +3922,7 @@ export const NetworkConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3911,6 +3964,7 @@ export type NetworkConfigurationsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
 export const NetworkConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3923,6 +3977,7 @@ export const NetworkConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         location: Schema.optional(Schema.String),
@@ -3990,6 +4045,7 @@ export type NetworkConfigurationsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
 export const NetworkConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4059,6 +4115,8 @@ export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
+    perimeterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4174,6 +4232,8 @@ export type NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
+ * @param perimeterName - The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
  */
 export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4187,6 +4247,7 @@ export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4311,6 +4372,7 @@ export type NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4324,6 +4386,8 @@ export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeI
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
+    perimeterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4349,6 +4413,8 @@ export type NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOu
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
+ * @param perimeterName - The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
  */
 export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4406,6 +4472,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -4480,6 +4547,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
@@ -4492,6 +4560,7 @@ export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4516,6 +4585,7 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
@@ -4528,6 +4598,7 @@ export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4570,6 +4641,7 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
@@ -4582,6 +4654,7 @@ export const PrivateEndpointConnectionsListByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4640,6 +4713,7 @@ export type PrivateEndpointConnectionsListByPrivateLinkScopeOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateEndpointConnectionsListByPrivateLinkScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4651,6 +4725,8 @@ export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
+    groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4692,6 +4768,8 @@ export type PrivateLinkResourcesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
+ * @param groupName - The name of the private link resource.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4704,6 +4782,7 @@ export const PrivateLinkResourcesListByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4762,6 +4841,7 @@ export type PrivateLinkResourcesListByPrivateLinkScopeOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkResourcesListByPrivateLinkScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4773,6 +4853,7 @@ export const PrivateLinkScopesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         publicNetworkAccess: Schema.optional(
@@ -4857,6 +4938,7 @@ export type PrivateLinkScopesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4868,6 +4950,7 @@ export const PrivateLinkScopesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -4891,6 +4974,7 @@ export type PrivateLinkScopesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4903,6 +4987,7 @@ export const PrivateLinkScopesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4930,6 +5015,7 @@ export type PrivateLinkScopesGetOutput = typeof PrivateLinkScopesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4940,7 +5026,9 @@ export const PrivateLinkScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PrivateLinkScopesGetValidationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    privateLinkScopeId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4977,8 +5065,10 @@ export type PrivateLinkScopesGetValidationDetailsOutput =
 /**
  * Returns a Azure Arc PrivateLinkScope's validation details.
  *
+ * @param location - The location of the target resource.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param privateLinkScopeId - The id (Guid) of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesGetValidationDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4990,6 +5080,7 @@ export const PrivateLinkScopesGetValidationDetailsForMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5029,6 +5120,7 @@ export type PrivateLinkScopesGetValidationDetailsForMachineOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
 export const PrivateLinkScopesGetValidationDetailsForMachine =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5128,6 +5220,7 @@ export const PrivateLinkScopesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -5158,6 +5251,7 @@ export type PrivateLinkScopesUpdateTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5169,6 +5263,10 @@ export const PrivateLinkScopesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  baseProvider: Schema.String.pipe(T.PathParam()),
+  baseResourceType: Schema.String.pipe(T.PathParam()),
+  baseResourceName: Schema.String.pipe(T.PathParam()),
+  settingsResourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -5207,6 +5305,10 @@ export type SettingsGetOutput = typeof SettingsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param baseProvider - The name of the base Resource Provider.
+ * @param baseResourceType - The name of the base Resource Type.
+ * @param baseResourceName - The name of the base resource.
+ * @param settingsResourceName - The name of the settings resource.
  */
 export const SettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SettingsGetInput,
@@ -5216,6 +5318,10 @@ export const SettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SettingsPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  baseProvider: Schema.String.pipe(T.PathParam()),
+  baseResourceType: Schema.String.pipe(T.PathParam()),
+  baseResourceName: Schema.String.pipe(T.PathParam()),
+  settingsResourceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       tenantId: Schema.optional(Schema.String),
@@ -5264,6 +5370,10 @@ export type SettingsPatchOutput = typeof SettingsPatchOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param baseProvider - The name of the base Resource Provider.
+ * @param baseResourceType - The name of the base Resource Type.
+ * @param baseResourceName - The name of the base resource.
+ * @param settingsResourceName - The name of the settings resource.
  */
 export const SettingsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SettingsPatchInput,
@@ -5273,6 +5383,10 @@ export const SettingsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SettingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  baseProvider: Schema.String.pipe(T.PathParam()),
+  baseResourceType: Schema.String.pipe(T.PathParam()),
+  baseResourceName: Schema.String.pipe(T.PathParam()),
+  settingsResourceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       tenantId: Schema.optional(Schema.String),
@@ -5321,6 +5435,10 @@ export type SettingsUpdateOutput = typeof SettingsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param baseProvider - The name of the base Resource Provider.
+ * @param baseResourceType - The name of the base Resource Type.
+ * @param baseResourceName - The name of the base resource.
+ * @param settingsResourceName - The name of the settings resource.
  */
 export const SettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SettingsUpdateInput,

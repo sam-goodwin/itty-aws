@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingSpikeDetectionConfigListInput =
@@ -10,7 +9,7 @@ export const ErrorTrackingSpikeDetectionConfigListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/spike_detection_config/",
+      path: "/api/projects/{project_id}/error_tracking/spike_detection_config/",
     }),
   );
 export type ErrorTrackingSpikeDetectionConfigListInput =
@@ -37,5 +36,4 @@ export const errorTrackingSpikeDetectionConfigList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingSpikeDetectionConfigListInput,
     outputSchema: ErrorTrackingSpikeDetectionConfigListOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

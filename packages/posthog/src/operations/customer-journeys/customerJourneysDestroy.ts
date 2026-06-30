@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const CustomerJourneysDestroyInput =
@@ -11,7 +10,7 @@ export const CustomerJourneysDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/customer_journeys/{id}/",
+      path: "/api/projects/{project_id}/customer_journeys/{id}/",
     }),
   );
 export type CustomerJourneysDestroyInput =
@@ -26,13 +25,11 @@ export type CustomerJourneysDestroyOutput =
 // The operation
 /**
  *
- * @param id - A UUID string identifying this customer journey.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const customerJourneysDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CustomerJourneysDestroyInput,
     outputSchema: CustomerJourneysDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

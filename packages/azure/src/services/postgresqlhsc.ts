@@ -52,6 +52,7 @@ export const ClustersCheckNameAvailability =
 export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       administratorLogin: Schema.optional(Schema.String),
@@ -168,6 +169,7 @@ export type ClustersCreateOutput = typeof ClustersCreateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersCreateInput,
@@ -177,6 +179,7 @@ export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -197,6 +200,7 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
@@ -206,6 +210,7 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -244,6 +249,7 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
@@ -386,6 +392,7 @@ export const ClustersPromoteReadReplicaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -409,6 +416,7 @@ export type ClustersPromoteReadReplicaOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const ClustersPromoteReadReplica = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -420,6 +428,7 @@ export const ClustersPromoteReadReplica = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -440,6 +449,7 @@ export type ClustersRestartOutput = typeof ClustersRestartOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const ClustersRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersRestartInput,
@@ -449,6 +459,7 @@ export const ClustersRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -469,6 +480,7 @@ export type ClustersStartOutput = typeof ClustersStartOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const ClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersStartInput,
@@ -478,6 +490,7 @@ export const ClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -498,6 +511,7 @@ export type ClustersStopOutput = typeof ClustersStopOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const ClustersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersStopInput,
@@ -507,6 +521,7 @@ export const ClustersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       administratorLoginPassword: Schema.optional(SensitiveString),
@@ -573,6 +588,7 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
@@ -583,6 +599,8 @@ export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    configurationName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -623,6 +641,8 @@ export type ConfigurationsGetOutput = typeof ConfigurationsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param configurationName - The name of the cluster configuration.
  */
 export const ConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationsGetInput,
@@ -633,6 +653,8 @@ export const ConfigurationsGetCoordinatorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    configurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -674,6 +696,8 @@ export type ConfigurationsGetCoordinatorOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param configurationName - The name of the cluster configuration.
  */
 export const ConfigurationsGetCoordinator =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -685,6 +709,8 @@ export const ConfigurationsGetNodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    configurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -725,6 +751,8 @@ export type ConfigurationsGetNodeOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param configurationName - The name of the cluster configuration.
  */
 export const ConfigurationsGetNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -737,6 +765,7 @@ export const ConfigurationsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -795,6 +824,7 @@ export type ConfigurationsListByClusterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const ConfigurationsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -807,6 +837,8 @@ export const ConfigurationsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -865,6 +897,8 @@ export type ConfigurationsListByServerOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param serverName - The name of the server.
  */
 export const ConfigurationsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -877,6 +911,8 @@ export const ConfigurationsUpdateOnCoordinatorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    configurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -934,6 +970,8 @@ export type ConfigurationsUpdateOnCoordinatorOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param configurationName - The name of the cluster configuration.
  */
 export const ConfigurationsUpdateOnCoordinator =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -945,6 +983,8 @@ export const ConfigurationsUpdateOnNodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    configurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -1002,6 +1042,8 @@ export type ConfigurationsUpdateOnNodeOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param configurationName - The name of the cluster configuration.
  */
 export const ConfigurationsUpdateOnNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1014,6 +1056,8 @@ export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    firewallRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       startIpAddress: Schema.String,
       endIpAddress: Schema.String,
@@ -1062,6 +1106,8 @@ export type FirewallRulesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param firewallRuleName - The name of the cluster firewall rule.
  */
 export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1074,6 +1120,8 @@ export const FirewallRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    firewallRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1095,6 +1143,8 @@ export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param firewallRuleName - The name of the cluster firewall rule.
  */
 export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
@@ -1104,6 +1154,8 @@ export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  firewallRuleName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1144,6 +1196,8 @@ export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param firewallRuleName - The name of the cluster firewall rule.
  */
 export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
@@ -1154,6 +1208,7 @@ export const FirewallRulesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1211,6 +1266,7 @@ export type FirewallRulesListByClusterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const FirewallRulesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1273,6 +1329,8 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         groupIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1351,6 +1409,8 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the cluster.
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
@@ -1363,6 +1423,8 @@ export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1386,6 +1448,8 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the cluster.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1397,6 +1461,8 @@ export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1438,6 +1504,8 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the cluster.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1449,6 +1517,7 @@ export const PrivateEndpointConnectionsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1506,6 +1575,7 @@ export type PrivateEndpointConnectionsListByClusterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const PrivateEndpointConnectionsListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1517,6 +1587,8 @@ export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateLinkResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1558,6 +1630,8 @@ export type PrivateLinkResourcesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param privateLinkResourceName - The name of the private link resource.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1570,6 +1644,7 @@ export const PrivateLinkResourcesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1627,6 +1702,7 @@ export type PrivateLinkResourcesListByClusterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const PrivateLinkResourcesListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1637,6 +1713,8 @@ export const PrivateLinkResourcesListByCluster =
 export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  roleName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     password: SensitiveString,
     provisioningState: Schema.optional(
@@ -1681,6 +1759,8 @@ export type RolesCreateOutput = typeof RolesCreateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param roleName - The name of the cluster role.
  */
 export const RolesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RolesCreateInput,
@@ -1690,6 +1770,8 @@ export const RolesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  roleName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -1710,6 +1792,8 @@ export type RolesDeleteOutput = typeof RolesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param roleName - The name of the cluster role.
  */
 export const RolesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RolesDeleteInput,
@@ -1719,6 +1803,8 @@ export const RolesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const RolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  roleName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1757,6 +1843,8 @@ export type RolesGetOutput = typeof RolesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param roleName - The name of the cluster role.
  */
 export const RolesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RolesGetInput,
@@ -1767,6 +1855,7 @@ export const RolesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1822,6 +1911,7 @@ export type RolesListByClusterOutput = typeof RolesListByClusterOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const RolesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RolesListByClusterInput,
@@ -1831,6 +1921,8 @@ export const RolesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1869,6 +1961,8 @@ export type ServersGetOutput = typeof ServersGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param serverName - The name of the server.
  */
 export const ServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersGetInput,
@@ -1879,6 +1973,7 @@ export const ServersListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1934,6 +2029,7 @@ export type ServersListByClusterOutput = typeof ServersListByClusterOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
  */
 export const ServersListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

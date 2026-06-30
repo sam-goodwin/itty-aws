@@ -16,7 +16,7 @@ export type DeletePolicyOutput = typeof DeletePolicyOutput.Type;
 
 // The operation
 /**
- * Delete a policy
+ * Delete policy
  *
  * Delete a policy by its ID. This will have the effect of removing the policy from all accounts that are currently using it.
  *

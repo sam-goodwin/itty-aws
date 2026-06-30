@@ -1347,6 +1347,1796 @@ export const listInvestigates: API.PaginatedOperationMethod<
 }));
 
 // =============================================================================
+// InvestigateBulk
+// =============================================================================
+
+export interface GetInvestigateBulkRequest {
+  jobId: string;
+  /** Identifier. */
+  accountId: string;
+}
+
+export const GetInvestigateBulkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      jobId: Schema.String.pipe(T.HttpPath("jobId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/email-security/investigate/bulk/{jobId}",
+      }),
+    ),
+  ) as unknown as Schema.Schema<GetInvestigateBulkRequest>;
+
+export interface GetInvestigateBulkResponse {
+  actionParams:
+    | {
+        destination:
+          | "Inbox"
+          | "JunkEmail"
+          | "DeletedItems"
+          | "RecoverableItemsDeletions"
+          | "RecoverableItemsPurges"
+          | (string & {});
+        type: "MOVE";
+        expectedDisposition?:
+          | "MALICIOUS"
+          | "MALICIOUS-BEC"
+          | "SUSPICIOUS"
+          | "SPOOF"
+          | "SPAM"
+          | "BULK"
+          | "ENCRYPTED"
+          | "EXTERNAL"
+          | "UNKNOWN"
+          | "NONE"
+          | (string & {})
+          | null;
+      }
+    | { type: "RELEASE" };
+  actionType: "MOVE" | "RELEASE" | (string & {});
+  createdAt: string;
+  jobId: string;
+  messagesFailed: number;
+  messagesPending: number;
+  messagesSuccessful: number;
+  searchParams: {
+    actionLog?: boolean | null;
+    alertId?: string | null;
+    deliveryStatus?:
+      | "delivered"
+      | "moved"
+      | "quarantined"
+      | "rejected"
+      | "deferred"
+      | "bounced"
+      | "queued"
+      | (string & {})
+      | null;
+    detectionsOnly?: boolean | null;
+    domain?: string | null;
+    end?: string | null;
+    exactSubject?: string | null;
+    finalDisposition?:
+      | "MALICIOUS"
+      | "MALICIOUS-BEC"
+      | "SUSPICIOUS"
+      | "SPOOF"
+      | "SPAM"
+      | "BULK"
+      | "ENCRYPTED"
+      | "EXTERNAL"
+      | "UNKNOWN"
+      | "NONE"
+      | (string & {})
+      | null;
+    messageAction?: "PREVIEW" | "QUARANTINE_RELEASED" | "MOVED" | null;
+    messageId?: string | null;
+    metric?: string | null;
+    query?: string | null;
+    recipient?: string | null;
+    sender?: string | null;
+    start?: string | null;
+    subject?: string | null;
+    submissions?: boolean | null;
+  };
+  status:
+    | "PENDING"
+    | "DISCOVERING"
+    | "PROCESSING"
+    | "COMPLETED"
+    | "FAILED"
+    | "CANCELLED"
+    | "SKIPPED"
+    | (string & {});
+  totalMessagesDiscovered: number;
+  comment?: string | null;
+  completedAt?: string | null;
+  startedAt?: string | null;
+  statusMessage?: string | null;
+}
+
+export const GetInvestigateBulkResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      actionParams: Schema.Union([
+        Schema.Struct({
+          destination: Schema.Union([
+            Schema.Literals([
+              "Inbox",
+              "JunkEmail",
+              "DeletedItems",
+              "RecoverableItemsDeletions",
+              "RecoverableItemsPurges",
+            ]),
+            Schema.String,
+          ]),
+          type: Schema.Literal("MOVE"),
+          expectedDisposition: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals([
+                  "MALICIOUS",
+                  "MALICIOUS-BEC",
+                  "SUSPICIOUS",
+                  "SPOOF",
+                  "SPAM",
+                  "BULK",
+                  "ENCRYPTED",
+                  "EXTERNAL",
+                  "UNKNOWN",
+                  "NONE",
+                ]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            destination: "destination",
+            type: "type",
+            expectedDisposition: "expected_disposition",
+          }),
+        ),
+        Schema.Struct({
+          type: Schema.Literal("RELEASE"),
+        }),
+      ]),
+      actionType: Schema.Union([
+        Schema.Literals(["MOVE", "RELEASE"]),
+        Schema.String,
+      ]),
+      createdAt: Schema.String,
+      jobId: Schema.String,
+      messagesFailed: Schema.Number,
+      messagesPending: Schema.Number,
+      messagesSuccessful: Schema.Number,
+      searchParams: Schema.Struct({
+        actionLog: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        alertId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        deliveryStatus: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "delivered",
+                "moved",
+                "quarantined",
+                "rejected",
+                "deferred",
+                "bounced",
+                "queued",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        detectionsOnly: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        end: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        exactSubject: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        finalDisposition: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "MALICIOUS",
+                "MALICIOUS-BEC",
+                "SUSPICIOUS",
+                "SPOOF",
+                "SPAM",
+                "BULK",
+                "ENCRYPTED",
+                "EXTERNAL",
+                "UNKNOWN",
+                "NONE",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        messageAction: Schema.optional(
+          Schema.Union([
+            Schema.Literal("PREVIEW"),
+            Schema.Literal("QUARANTINE_RELEASED"),
+            Schema.Literal("MOVED"),
+            Schema.Null,
+          ]),
+        ),
+        messageId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        metric: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        query: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        recipient: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        sender: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        start: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        subject: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        submissions: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          actionLog: "action_log",
+          alertId: "alert_id",
+          deliveryStatus: "delivery_status",
+          detectionsOnly: "detections_only",
+          domain: "domain",
+          end: "end",
+          exactSubject: "exact_subject",
+          finalDisposition: "final_disposition",
+          messageAction: "message_action",
+          messageId: "message_id",
+          metric: "metric",
+          query: "query",
+          recipient: "recipient",
+          sender: "sender",
+          start: "start",
+          subject: "subject",
+          submissions: "submissions",
+        }),
+      ),
+      status: Schema.Union([
+        Schema.Literals([
+          "PENDING",
+          "DISCOVERING",
+          "PROCESSING",
+          "COMPLETED",
+          "FAILED",
+          "CANCELLED",
+          "SKIPPED",
+        ]),
+        Schema.String,
+      ]),
+      totalMessagesDiscovered: Schema.Number,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      completedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      startedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      statusMessage: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          actionParams: "action_params",
+          actionType: "action_type",
+          createdAt: "created_at",
+          jobId: "job_id",
+          messagesFailed: "messages_failed",
+          messagesPending: "messages_pending",
+          messagesSuccessful: "messages_successful",
+          searchParams: "search_params",
+          status: "status",
+          totalMessagesDiscovered: "total_messages_discovered",
+          comment: "comment",
+          completedAt: "completed_at",
+          startedAt: "started_at",
+          statusMessage: "status_message",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetInvestigateBulkResponse>;
+
+export type GetInvestigateBulkError = DefaultErrors;
+
+export const getInvestigateBulk: API.OperationMethod<
+  GetInvestigateBulkRequest,
+  GetInvestigateBulkResponse,
+  GetInvestigateBulkError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetInvestigateBulkRequest,
+  output: GetInvestigateBulkResponse,
+  errors: [],
+}));
+
+export interface ListInvestigateBulksRequest {
+  /** Path param: Identifier. */
+  accountId: string;
+  page?: number;
+  perPage?: number;
+  /** Query param */
+  actionType?: "MOVE" | "RELEASE" | (string & {});
+  /** Query param */
+  status?:
+    | "PENDING"
+    | "DISCOVERING"
+    | "PROCESSING"
+    | "COMPLETED"
+    | "FAILED"
+    | "CANCELLED"
+    | "SKIPPED"
+    | (string & {});
+}
+
+export const ListInvestigateBulksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      actionType: Schema.optional(
+        Schema.Union([Schema.Literals(["MOVE", "RELEASE"]), Schema.String]),
+      ).pipe(T.HttpQuery("action_type")),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "PENDING",
+            "DISCOVERING",
+            "PROCESSING",
+            "COMPLETED",
+            "FAILED",
+            "CANCELLED",
+            "SKIPPED",
+          ]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("status")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/email-security/investigate/bulk",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ListInvestigateBulksRequest>;
+
+export interface ListInvestigateBulksResponse {
+  result: {
+    actionParams:
+      | {
+          destination:
+            | "Inbox"
+            | "JunkEmail"
+            | "DeletedItems"
+            | "RecoverableItemsDeletions"
+            | "RecoverableItemsPurges"
+            | (string & {});
+          type: "MOVE";
+          expectedDisposition?:
+            | "MALICIOUS"
+            | "MALICIOUS-BEC"
+            | "SUSPICIOUS"
+            | "SPOOF"
+            | "SPAM"
+            | "BULK"
+            | "ENCRYPTED"
+            | "EXTERNAL"
+            | "UNKNOWN"
+            | "NONE"
+            | (string & {})
+            | null;
+        }
+      | { type: "RELEASE" };
+    actionType: "MOVE" | "RELEASE" | (string & {});
+    createdAt: string;
+    jobId: string;
+    messagesFailed: number;
+    messagesPending: number;
+    messagesSuccessful: number;
+    searchParams: {
+      actionLog?: boolean | null;
+      alertId?: string | null;
+      deliveryStatus?:
+        | "delivered"
+        | "moved"
+        | "quarantined"
+        | "rejected"
+        | "deferred"
+        | "bounced"
+        | "queued"
+        | (string & {})
+        | null;
+      detectionsOnly?: boolean | null;
+      domain?: string | null;
+      end?: string | null;
+      exactSubject?: string | null;
+      finalDisposition?:
+        | "MALICIOUS"
+        | "MALICIOUS-BEC"
+        | "SUSPICIOUS"
+        | "SPOOF"
+        | "SPAM"
+        | "BULK"
+        | "ENCRYPTED"
+        | "EXTERNAL"
+        | "UNKNOWN"
+        | "NONE"
+        | (string & {})
+        | null;
+      messageAction?: "PREVIEW" | "QUARANTINE_RELEASED" | "MOVED" | null;
+      messageId?: string | null;
+      metric?: string | null;
+      query?: string | null;
+      recipient?: string | null;
+      sender?: string | null;
+      start?: string | null;
+      subject?: string | null;
+      submissions?: boolean | null;
+    };
+    status:
+      | "PENDING"
+      | "DISCOVERING"
+      | "PROCESSING"
+      | "COMPLETED"
+      | "FAILED"
+      | "CANCELLED"
+      | "SKIPPED"
+      | (string & {});
+    totalMessagesDiscovered: number;
+    comment?: string | null;
+    completedAt?: string | null;
+    startedAt?: string | null;
+    statusMessage?: string | null;
+  }[];
+  resultInfo?: {
+    count?: number | null;
+    page?: number | null;
+    perPage?: number | null;
+    totalCount?: number | null;
+  } | null;
+}
+
+export const ListInvestigateBulksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          actionParams: Schema.Union([
+            Schema.Struct({
+              destination: Schema.Union([
+                Schema.Literals([
+                  "Inbox",
+                  "JunkEmail",
+                  "DeletedItems",
+                  "RecoverableItemsDeletions",
+                  "RecoverableItemsPurges",
+                ]),
+                Schema.String,
+              ]),
+              type: Schema.Literal("MOVE"),
+              expectedDisposition: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals([
+                      "MALICIOUS",
+                      "MALICIOUS-BEC",
+                      "SUSPICIOUS",
+                      "SPOOF",
+                      "SPAM",
+                      "BULK",
+                      "ENCRYPTED",
+                      "EXTERNAL",
+                      "UNKNOWN",
+                      "NONE",
+                    ]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                destination: "destination",
+                type: "type",
+                expectedDisposition: "expected_disposition",
+              }),
+            ),
+            Schema.Struct({
+              type: Schema.Literal("RELEASE"),
+            }),
+          ]),
+          actionType: Schema.Union([
+            Schema.Literals(["MOVE", "RELEASE"]),
+            Schema.String,
+          ]),
+          createdAt: Schema.String,
+          jobId: Schema.String,
+          messagesFailed: Schema.Number,
+          messagesPending: Schema.Number,
+          messagesSuccessful: Schema.Number,
+          searchParams: Schema.Struct({
+            actionLog: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            alertId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            deliveryStatus: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "delivered",
+                    "moved",
+                    "quarantined",
+                    "rejected",
+                    "deferred",
+                    "bounced",
+                    "queued",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+            detectionsOnly: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            end: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            exactSubject: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            finalDisposition: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "MALICIOUS",
+                    "MALICIOUS-BEC",
+                    "SUSPICIOUS",
+                    "SPOOF",
+                    "SPAM",
+                    "BULK",
+                    "ENCRYPTED",
+                    "EXTERNAL",
+                    "UNKNOWN",
+                    "NONE",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+            messageAction: Schema.optional(
+              Schema.Union([
+                Schema.Literal("PREVIEW"),
+                Schema.Literal("QUARANTINE_RELEASED"),
+                Schema.Literal("MOVED"),
+                Schema.Null,
+              ]),
+            ),
+            messageId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            metric: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            query: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            recipient: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            sender: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            start: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            subject: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            submissions: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              actionLog: "action_log",
+              alertId: "alert_id",
+              deliveryStatus: "delivery_status",
+              detectionsOnly: "detections_only",
+              domain: "domain",
+              end: "end",
+              exactSubject: "exact_subject",
+              finalDisposition: "final_disposition",
+              messageAction: "message_action",
+              messageId: "message_id",
+              metric: "metric",
+              query: "query",
+              recipient: "recipient",
+              sender: "sender",
+              start: "start",
+              subject: "subject",
+              submissions: "submissions",
+            }),
+          ),
+          status: Schema.Union([
+            Schema.Literals([
+              "PENDING",
+              "DISCOVERING",
+              "PROCESSING",
+              "COMPLETED",
+              "FAILED",
+              "CANCELLED",
+              "SKIPPED",
+            ]),
+            Schema.String,
+          ]),
+          totalMessagesDiscovered: Schema.Number,
+          comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          completedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          startedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          statusMessage: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            actionParams: "action_params",
+            actionType: "action_type",
+            createdAt: "created_at",
+            jobId: "job_id",
+            messagesFailed: "messages_failed",
+            messagesPending: "messages_pending",
+            messagesSuccessful: "messages_successful",
+            searchParams: "search_params",
+            status: "status",
+            totalMessagesDiscovered: "total_messages_discovered",
+            comment: "comment",
+            completedAt: "completed_at",
+            startedAt: "started_at",
+            statusMessage: "status_message",
+          }),
+        ),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+  ) as unknown as Schema.Schema<ListInvestigateBulksResponse>;
+
+export type ListInvestigateBulksError = DefaultErrors;
+
+export const listInvestigateBulks: API.PaginatedOperationMethod<
+  ListInvestigateBulksRequest,
+  ListInvestigateBulksResponse,
+  ListInvestigateBulksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListInvestigateBulksRequest,
+  output: ListInvestigateBulksResponse,
+  errors: [],
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+export interface CreateInvestigateBulkRequest {
+  /** Path param: Identifier. */
+  accountId: string;
+  /** Body param */
+  action: "MOVE" | "RELEASE" | (string & {});
+  /** Body param */
+  searchParams: {
+    actionLog?: boolean;
+    alertId?: string | null;
+    deliveryStatus?:
+      | "delivered"
+      | "moved"
+      | "quarantined"
+      | "rejected"
+      | "deferred"
+      | "bounced"
+      | "queued"
+      | (string & {});
+    detectionsOnly?: boolean;
+    domain?: string | null;
+    end?: string;
+    exactSubject?: string | null;
+    finalDisposition?:
+      | "MALICIOUS"
+      | "MALICIOUS-BEC"
+      | "SUSPICIOUS"
+      | "SPOOF"
+      | "SPAM"
+      | "BULK"
+      | "ENCRYPTED"
+      | "EXTERNAL"
+      | "UNKNOWN"
+      | "NONE"
+      | (string & {});
+    messageAction?: "PREVIEW" | "QUARANTINE_RELEASED" | "MOVED" | null;
+    messageId?: string | null;
+    metric?: string | null;
+    query?: string | null;
+    recipient?: string | null;
+    sender?: string | null;
+    start?: string;
+    subject?: string | null;
+    submissions?: boolean;
+  };
+  /** Body param */
+  comment?: string | null;
+  /** Body param */
+  destination?:
+    | "Inbox"
+    | "JunkEmail"
+    | "DeletedItems"
+    | "RecoverableItemsDeletions"
+    | "RecoverableItemsPurges"
+    | (string & {});
+  /** Body param */
+  expectedDisposition?:
+    | "MALICIOUS"
+    | "MALICIOUS-BEC"
+    | "SUSPICIOUS"
+    | "SPOOF"
+    | "SPAM"
+    | "BULK"
+    | "ENCRYPTED"
+    | "EXTERNAL"
+    | "UNKNOWN"
+    | "NONE"
+    | (string & {});
+}
+
+export const CreateInvestigateBulkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      action: Schema.Union([
+        Schema.Literals(["MOVE", "RELEASE"]),
+        Schema.String,
+      ]),
+      searchParams: Schema.Struct({
+        actionLog: Schema.optional(Schema.Boolean),
+        alertId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        deliveryStatus: Schema.optional(
+          Schema.Union([
+            Schema.Literals([
+              "delivered",
+              "moved",
+              "quarantined",
+              "rejected",
+              "deferred",
+              "bounced",
+              "queued",
+            ]),
+            Schema.String,
+          ]),
+        ),
+        detectionsOnly: Schema.optional(Schema.Boolean),
+        domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        end: Schema.optional(Schema.String),
+        exactSubject: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        finalDisposition: Schema.optional(
+          Schema.Union([
+            Schema.Literals([
+              "MALICIOUS",
+              "MALICIOUS-BEC",
+              "SUSPICIOUS",
+              "SPOOF",
+              "SPAM",
+              "BULK",
+              "ENCRYPTED",
+              "EXTERNAL",
+              "UNKNOWN",
+              "NONE",
+            ]),
+            Schema.String,
+          ]),
+        ),
+        messageAction: Schema.optional(
+          Schema.Union([
+            Schema.Literal("PREVIEW"),
+            Schema.Literal("QUARANTINE_RELEASED"),
+            Schema.Literal("MOVED"),
+            Schema.Null,
+          ]),
+        ),
+        messageId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        metric: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        query: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        recipient: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        sender: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        start: Schema.optional(Schema.String),
+        subject: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        submissions: Schema.optional(Schema.Boolean),
+      }).pipe(
+        Schema.encodeKeys({
+          actionLog: "action_log",
+          alertId: "alert_id",
+          deliveryStatus: "delivery_status",
+          detectionsOnly: "detections_only",
+          domain: "domain",
+          end: "end",
+          exactSubject: "exact_subject",
+          finalDisposition: "final_disposition",
+          messageAction: "message_action",
+          messageId: "message_id",
+          metric: "metric",
+          query: "query",
+          recipient: "recipient",
+          sender: "sender",
+          start: "start",
+          subject: "subject",
+          submissions: "submissions",
+        }),
+      ),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      destination: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "Inbox",
+            "JunkEmail",
+            "DeletedItems",
+            "RecoverableItemsDeletions",
+            "RecoverableItemsPurges",
+          ]),
+          Schema.String,
+        ]),
+      ),
+      expectedDisposition: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "MALICIOUS",
+            "MALICIOUS-BEC",
+            "SUSPICIOUS",
+            "SPOOF",
+            "SPAM",
+            "BULK",
+            "ENCRYPTED",
+            "EXTERNAL",
+            "UNKNOWN",
+            "NONE",
+          ]),
+          Schema.String,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        action: "action",
+        searchParams: "search_params",
+        comment: "comment",
+        destination: "destination",
+        expectedDisposition: "expected_disposition",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/email-security/investigate/bulk",
+      }),
+    ),
+  ) as unknown as Schema.Schema<CreateInvestigateBulkRequest>;
+
+export interface CreateInvestigateBulkResponse {
+  actionParams:
+    | {
+        destination:
+          | "Inbox"
+          | "JunkEmail"
+          | "DeletedItems"
+          | "RecoverableItemsDeletions"
+          | "RecoverableItemsPurges"
+          | (string & {});
+        type: "MOVE";
+        expectedDisposition?:
+          | "MALICIOUS"
+          | "MALICIOUS-BEC"
+          | "SUSPICIOUS"
+          | "SPOOF"
+          | "SPAM"
+          | "BULK"
+          | "ENCRYPTED"
+          | "EXTERNAL"
+          | "UNKNOWN"
+          | "NONE"
+          | (string & {})
+          | null;
+      }
+    | { type: "RELEASE" };
+  actionType: "MOVE" | "RELEASE" | (string & {});
+  createdAt: string;
+  jobId: string;
+  messagesFailed: number;
+  messagesPending: number;
+  messagesSuccessful: number;
+  searchParams: {
+    actionLog?: boolean | null;
+    alertId?: string | null;
+    deliveryStatus?:
+      | "delivered"
+      | "moved"
+      | "quarantined"
+      | "rejected"
+      | "deferred"
+      | "bounced"
+      | "queued"
+      | (string & {})
+      | null;
+    detectionsOnly?: boolean | null;
+    domain?: string | null;
+    end?: string | null;
+    exactSubject?: string | null;
+    finalDisposition?:
+      | "MALICIOUS"
+      | "MALICIOUS-BEC"
+      | "SUSPICIOUS"
+      | "SPOOF"
+      | "SPAM"
+      | "BULK"
+      | "ENCRYPTED"
+      | "EXTERNAL"
+      | "UNKNOWN"
+      | "NONE"
+      | (string & {})
+      | null;
+    messageAction?: "PREVIEW" | "QUARANTINE_RELEASED" | "MOVED" | null;
+    messageId?: string | null;
+    metric?: string | null;
+    query?: string | null;
+    recipient?: string | null;
+    sender?: string | null;
+    start?: string | null;
+    subject?: string | null;
+    submissions?: boolean | null;
+  };
+  status:
+    | "PENDING"
+    | "DISCOVERING"
+    | "PROCESSING"
+    | "COMPLETED"
+    | "FAILED"
+    | "CANCELLED"
+    | "SKIPPED"
+    | (string & {});
+  totalMessagesDiscovered: number;
+  comment?: string | null;
+  completedAt?: string | null;
+  startedAt?: string | null;
+  statusMessage?: string | null;
+}
+
+export const CreateInvestigateBulkResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      actionParams: Schema.Union([
+        Schema.Struct({
+          destination: Schema.Union([
+            Schema.Literals([
+              "Inbox",
+              "JunkEmail",
+              "DeletedItems",
+              "RecoverableItemsDeletions",
+              "RecoverableItemsPurges",
+            ]),
+            Schema.String,
+          ]),
+          type: Schema.Literal("MOVE"),
+          expectedDisposition: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals([
+                  "MALICIOUS",
+                  "MALICIOUS-BEC",
+                  "SUSPICIOUS",
+                  "SPOOF",
+                  "SPAM",
+                  "BULK",
+                  "ENCRYPTED",
+                  "EXTERNAL",
+                  "UNKNOWN",
+                  "NONE",
+                ]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            destination: "destination",
+            type: "type",
+            expectedDisposition: "expected_disposition",
+          }),
+        ),
+        Schema.Struct({
+          type: Schema.Literal("RELEASE"),
+        }),
+      ]),
+      actionType: Schema.Union([
+        Schema.Literals(["MOVE", "RELEASE"]),
+        Schema.String,
+      ]),
+      createdAt: Schema.String,
+      jobId: Schema.String,
+      messagesFailed: Schema.Number,
+      messagesPending: Schema.Number,
+      messagesSuccessful: Schema.Number,
+      searchParams: Schema.Struct({
+        actionLog: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        alertId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        deliveryStatus: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "delivered",
+                "moved",
+                "quarantined",
+                "rejected",
+                "deferred",
+                "bounced",
+                "queued",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        detectionsOnly: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        end: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        exactSubject: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        finalDisposition: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "MALICIOUS",
+                "MALICIOUS-BEC",
+                "SUSPICIOUS",
+                "SPOOF",
+                "SPAM",
+                "BULK",
+                "ENCRYPTED",
+                "EXTERNAL",
+                "UNKNOWN",
+                "NONE",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        messageAction: Schema.optional(
+          Schema.Union([
+            Schema.Literal("PREVIEW"),
+            Schema.Literal("QUARANTINE_RELEASED"),
+            Schema.Literal("MOVED"),
+            Schema.Null,
+          ]),
+        ),
+        messageId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        metric: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        query: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        recipient: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        sender: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        start: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        subject: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        submissions: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          actionLog: "action_log",
+          alertId: "alert_id",
+          deliveryStatus: "delivery_status",
+          detectionsOnly: "detections_only",
+          domain: "domain",
+          end: "end",
+          exactSubject: "exact_subject",
+          finalDisposition: "final_disposition",
+          messageAction: "message_action",
+          messageId: "message_id",
+          metric: "metric",
+          query: "query",
+          recipient: "recipient",
+          sender: "sender",
+          start: "start",
+          subject: "subject",
+          submissions: "submissions",
+        }),
+      ),
+      status: Schema.Union([
+        Schema.Literals([
+          "PENDING",
+          "DISCOVERING",
+          "PROCESSING",
+          "COMPLETED",
+          "FAILED",
+          "CANCELLED",
+          "SKIPPED",
+        ]),
+        Schema.String,
+      ]),
+      totalMessagesDiscovered: Schema.Number,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      completedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      startedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      statusMessage: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          actionParams: "action_params",
+          actionType: "action_type",
+          createdAt: "created_at",
+          jobId: "job_id",
+          messagesFailed: "messages_failed",
+          messagesPending: "messages_pending",
+          messagesSuccessful: "messages_successful",
+          searchParams: "search_params",
+          status: "status",
+          totalMessagesDiscovered: "total_messages_discovered",
+          comment: "comment",
+          completedAt: "completed_at",
+          startedAt: "started_at",
+          statusMessage: "status_message",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateInvestigateBulkResponse>;
+
+export type CreateInvestigateBulkError = DefaultErrors;
+
+export const createInvestigateBulk: API.OperationMethod<
+  CreateInvestigateBulkRequest,
+  CreateInvestigateBulkResponse,
+  CreateInvestigateBulkError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateInvestigateBulkRequest,
+  output: CreateInvestigateBulkResponse,
+  errors: [],
+}));
+
+export interface DeleteInvestigateBulkRequest {
+  jobId: string;
+  /** Identifier. */
+  accountId: string;
+}
+
+export const DeleteInvestigateBulkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      jobId: Schema.String.pipe(T.HttpPath("jobId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/email-security/investigate/bulk/{jobId}",
+      }),
+    ),
+  ) as unknown as Schema.Schema<DeleteInvestigateBulkRequest>;
+
+export interface DeleteInvestigateBulkResponse {
+  id: string;
+}
+
+export const DeleteInvestigateBulkResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+    }).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<DeleteInvestigateBulkResponse>;
+
+export type DeleteInvestigateBulkError = DefaultErrors;
+
+export const deleteInvestigateBulk: API.OperationMethod<
+  DeleteInvestigateBulkRequest,
+  DeleteInvestigateBulkResponse,
+  DeleteInvestigateBulkError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteInvestigateBulkRequest,
+  output: DeleteInvestigateBulkResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// InvestigateBulkCancel
+// =============================================================================
+
+export interface CreateInvestigateBulkCancelRequest {
+  jobId: string;
+  /** Identifier. */
+  accountId: string;
+}
+
+export const CreateInvestigateBulkCancelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      jobId: Schema.String.pipe(T.HttpPath("jobId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/email-security/investigate/bulk/{jobId}/cancel",
+      }),
+    ),
+  ) as unknown as Schema.Schema<CreateInvestigateBulkCancelRequest>;
+
+export interface CreateInvestigateBulkCancelResponse {
+  actionParams:
+    | {
+        destination:
+          | "Inbox"
+          | "JunkEmail"
+          | "DeletedItems"
+          | "RecoverableItemsDeletions"
+          | "RecoverableItemsPurges"
+          | (string & {});
+        type: "MOVE";
+        expectedDisposition?:
+          | "MALICIOUS"
+          | "MALICIOUS-BEC"
+          | "SUSPICIOUS"
+          | "SPOOF"
+          | "SPAM"
+          | "BULK"
+          | "ENCRYPTED"
+          | "EXTERNAL"
+          | "UNKNOWN"
+          | "NONE"
+          | (string & {})
+          | null;
+      }
+    | { type: "RELEASE" };
+  actionType: "MOVE" | "RELEASE" | (string & {});
+  createdAt: string;
+  jobId: string;
+  messagesFailed: number;
+  messagesPending: number;
+  messagesSuccessful: number;
+  searchParams: {
+    actionLog?: boolean | null;
+    alertId?: string | null;
+    deliveryStatus?:
+      | "delivered"
+      | "moved"
+      | "quarantined"
+      | "rejected"
+      | "deferred"
+      | "bounced"
+      | "queued"
+      | (string & {})
+      | null;
+    detectionsOnly?: boolean | null;
+    domain?: string | null;
+    end?: string | null;
+    exactSubject?: string | null;
+    finalDisposition?:
+      | "MALICIOUS"
+      | "MALICIOUS-BEC"
+      | "SUSPICIOUS"
+      | "SPOOF"
+      | "SPAM"
+      | "BULK"
+      | "ENCRYPTED"
+      | "EXTERNAL"
+      | "UNKNOWN"
+      | "NONE"
+      | (string & {})
+      | null;
+    messageAction?: "PREVIEW" | "QUARANTINE_RELEASED" | "MOVED" | null;
+    messageId?: string | null;
+    metric?: string | null;
+    query?: string | null;
+    recipient?: string | null;
+    sender?: string | null;
+    start?: string | null;
+    subject?: string | null;
+    submissions?: boolean | null;
+  };
+  status:
+    | "PENDING"
+    | "DISCOVERING"
+    | "PROCESSING"
+    | "COMPLETED"
+    | "FAILED"
+    | "CANCELLED"
+    | "SKIPPED"
+    | (string & {});
+  totalMessagesDiscovered: number;
+  comment?: string | null;
+  completedAt?: string | null;
+  startedAt?: string | null;
+  statusMessage?: string | null;
+}
+
+export const CreateInvestigateBulkCancelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      actionParams: Schema.Union([
+        Schema.Struct({
+          destination: Schema.Union([
+            Schema.Literals([
+              "Inbox",
+              "JunkEmail",
+              "DeletedItems",
+              "RecoverableItemsDeletions",
+              "RecoverableItemsPurges",
+            ]),
+            Schema.String,
+          ]),
+          type: Schema.Literal("MOVE"),
+          expectedDisposition: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals([
+                  "MALICIOUS",
+                  "MALICIOUS-BEC",
+                  "SUSPICIOUS",
+                  "SPOOF",
+                  "SPAM",
+                  "BULK",
+                  "ENCRYPTED",
+                  "EXTERNAL",
+                  "UNKNOWN",
+                  "NONE",
+                ]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            destination: "destination",
+            type: "type",
+            expectedDisposition: "expected_disposition",
+          }),
+        ),
+        Schema.Struct({
+          type: Schema.Literal("RELEASE"),
+        }),
+      ]),
+      actionType: Schema.Union([
+        Schema.Literals(["MOVE", "RELEASE"]),
+        Schema.String,
+      ]),
+      createdAt: Schema.String,
+      jobId: Schema.String,
+      messagesFailed: Schema.Number,
+      messagesPending: Schema.Number,
+      messagesSuccessful: Schema.Number,
+      searchParams: Schema.Struct({
+        actionLog: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        alertId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        deliveryStatus: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "delivered",
+                "moved",
+                "quarantined",
+                "rejected",
+                "deferred",
+                "bounced",
+                "queued",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        detectionsOnly: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        end: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        exactSubject: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        finalDisposition: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "MALICIOUS",
+                "MALICIOUS-BEC",
+                "SUSPICIOUS",
+                "SPOOF",
+                "SPAM",
+                "BULK",
+                "ENCRYPTED",
+                "EXTERNAL",
+                "UNKNOWN",
+                "NONE",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        messageAction: Schema.optional(
+          Schema.Union([
+            Schema.Literal("PREVIEW"),
+            Schema.Literal("QUARANTINE_RELEASED"),
+            Schema.Literal("MOVED"),
+            Schema.Null,
+          ]),
+        ),
+        messageId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        metric: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        query: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        recipient: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        sender: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        start: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        subject: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        submissions: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          actionLog: "action_log",
+          alertId: "alert_id",
+          deliveryStatus: "delivery_status",
+          detectionsOnly: "detections_only",
+          domain: "domain",
+          end: "end",
+          exactSubject: "exact_subject",
+          finalDisposition: "final_disposition",
+          messageAction: "message_action",
+          messageId: "message_id",
+          metric: "metric",
+          query: "query",
+          recipient: "recipient",
+          sender: "sender",
+          start: "start",
+          subject: "subject",
+          submissions: "submissions",
+        }),
+      ),
+      status: Schema.Union([
+        Schema.Literals([
+          "PENDING",
+          "DISCOVERING",
+          "PROCESSING",
+          "COMPLETED",
+          "FAILED",
+          "CANCELLED",
+          "SKIPPED",
+        ]),
+        Schema.String,
+      ]),
+      totalMessagesDiscovered: Schema.Number,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      completedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      startedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      statusMessage: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          actionParams: "action_params",
+          actionType: "action_type",
+          createdAt: "created_at",
+          jobId: "job_id",
+          messagesFailed: "messages_failed",
+          messagesPending: "messages_pending",
+          messagesSuccessful: "messages_successful",
+          searchParams: "search_params",
+          status: "status",
+          totalMessagesDiscovered: "total_messages_discovered",
+          comment: "comment",
+          completedAt: "completed_at",
+          startedAt: "started_at",
+          statusMessage: "status_message",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateInvestigateBulkCancelResponse>;
+
+export type CreateInvestigateBulkCancelError = DefaultErrors;
+
+export const createInvestigateBulkCancel: API.OperationMethod<
+  CreateInvestigateBulkCancelRequest,
+  CreateInvestigateBulkCancelResponse,
+  CreateInvestigateBulkCancelError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateInvestigateBulkCancelRequest,
+  output: CreateInvestigateBulkCancelResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// InvestigateBulkMessage
+// =============================================================================
+
+export interface ListInvestigateBulkMessagesRequest {
+  jobId: string;
+  /** Path param: Identifier. */
+  accountId: string;
+  page?: number;
+  perPage?: number;
+  /** Query param */
+  status?:
+    | "PENDING"
+    | "DISCOVERING"
+    | "PROCESSING"
+    | "COMPLETED"
+    | "FAILED"
+    | "CANCELLED"
+    | "SKIPPED"
+    | (string & {});
+}
+
+export const ListInvestigateBulkMessagesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      jobId: Schema.String.pipe(T.HttpPath("jobId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "PENDING",
+            "DISCOVERING",
+            "PROCESSING",
+            "COMPLETED",
+            "FAILED",
+            "CANCELLED",
+            "SKIPPED",
+          ]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("status")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/email-security/investigate/bulk/{jobId}/messages",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ListInvestigateBulkMessagesRequest>;
+
+export interface ListInvestigateBulkMessagesResponse {
+  result: {
+    actionParams:
+      | {
+          clientRecipient: string;
+          destination:
+            | "Inbox"
+            | "JunkEmail"
+            | "DeletedItems"
+            | "RecoverableItemsDeletions"
+            | "RecoverableItemsPurges"
+            | (string & {});
+          type: "MOVE";
+          expectedDisposition?:
+            | "MALICIOUS"
+            | "MALICIOUS-BEC"
+            | "SUSPICIOUS"
+            | "SPOOF"
+            | "SPAM"
+            | "BULK"
+            | "ENCRYPTED"
+            | "EXTERNAL"
+            | "UNKNOWN"
+            | "NONE"
+            | (string & {})
+            | null;
+        }
+      | { clientRecipient: string; type: "RELEASE" };
+    actionType: "MOVE" | "RELEASE" | (string & {});
+    createdAt: string;
+    messageId: string;
+    postfixId: string;
+    retryCount: number;
+    status:
+      | "PENDING"
+      | "DISCOVERING"
+      | "PROCESSING"
+      | "COMPLETED"
+      | "FAILED"
+      | "CANCELLED"
+      | "SKIPPED"
+      | (string & {});
+    alertId?: string | null;
+    emailMessageId?: string | null;
+    processedAt?: string | null;
+    retryAfter?: string | null;
+    statusMessage?: string | null;
+  }[];
+  resultInfo?: {
+    count?: number | null;
+    page?: number | null;
+    perPage?: number | null;
+    totalCount?: number | null;
+  } | null;
+}
+
+export const ListInvestigateBulkMessagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          actionParams: Schema.Union([
+            Schema.Struct({
+              clientRecipient: Schema.String,
+              destination: Schema.Union([
+                Schema.Literals([
+                  "Inbox",
+                  "JunkEmail",
+                  "DeletedItems",
+                  "RecoverableItemsDeletions",
+                  "RecoverableItemsPurges",
+                ]),
+                Schema.String,
+              ]),
+              type: Schema.Literal("MOVE"),
+              expectedDisposition: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals([
+                      "MALICIOUS",
+                      "MALICIOUS-BEC",
+                      "SUSPICIOUS",
+                      "SPOOF",
+                      "SPAM",
+                      "BULK",
+                      "ENCRYPTED",
+                      "EXTERNAL",
+                      "UNKNOWN",
+                      "NONE",
+                    ]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                clientRecipient: "client_recipient",
+                destination: "destination",
+                type: "type",
+                expectedDisposition: "expected_disposition",
+              }),
+            ),
+            Schema.Struct({
+              clientRecipient: Schema.String,
+              type: Schema.Literal("RELEASE"),
+            }).pipe(
+              Schema.encodeKeys({
+                clientRecipient: "client_recipient",
+                type: "type",
+              }),
+            ),
+          ]),
+          actionType: Schema.Union([
+            Schema.Literals(["MOVE", "RELEASE"]),
+            Schema.String,
+          ]),
+          createdAt: Schema.String,
+          messageId: Schema.String,
+          postfixId: Schema.String,
+          retryCount: Schema.Number,
+          status: Schema.Union([
+            Schema.Literals([
+              "PENDING",
+              "DISCOVERING",
+              "PROCESSING",
+              "COMPLETED",
+              "FAILED",
+              "CANCELLED",
+              "SKIPPED",
+            ]),
+            Schema.String,
+          ]),
+          alertId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          emailMessageId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          processedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          retryAfter: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          statusMessage: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            actionParams: "action_params",
+            actionType: "action_type",
+            createdAt: "created_at",
+            messageId: "message_id",
+            postfixId: "postfix_id",
+            retryCount: "retry_count",
+            status: "status",
+            alertId: "alert_id",
+            emailMessageId: "email_message_id",
+            processedAt: "processed_at",
+            retryAfter: "retry_after",
+            statusMessage: "status_message",
+          }),
+        ),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+  ) as unknown as Schema.Schema<ListInvestigateBulkMessagesResponse>;
+
+export type ListInvestigateBulkMessagesError = DefaultErrors;
+
+export const listInvestigateBulkMessages: API.PaginatedOperationMethod<
+  ListInvestigateBulkMessagesRequest,
+  ListInvestigateBulkMessagesResponse,
+  ListInvestigateBulkMessagesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListInvestigateBulkMessagesRequest,
+  output: ListInvestigateBulkMessagesResponse,
+  errors: [],
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+// =============================================================================
 // InvestigateDetection
 // =============================================================================
 
@@ -1685,6 +3475,19 @@ export interface CreateInvestigateMoveRequest {
     | "RecoverableItemsDeletions"
     | "RecoverableItemsPurges"
     | (string & {});
+  /** Body param */
+  expectedDisposition?:
+    | "MALICIOUS"
+    | "MALICIOUS-BEC"
+    | "SUSPICIOUS"
+    | "SPOOF"
+    | "SPAM"
+    | "BULK"
+    | "ENCRYPTED"
+    | "EXTERNAL"
+    | "UNKNOWN"
+    | "NONE"
+    | (string & {});
 }
 
 export const CreateInvestigateMoveRequest =
@@ -1702,7 +3505,28 @@ export const CreateInvestigateMoveRequest =
         ]),
         Schema.String,
       ]),
+      expectedDisposition: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "MALICIOUS",
+            "MALICIOUS-BEC",
+            "SUSPICIOUS",
+            "SPOOF",
+            "SPAM",
+            "BULK",
+            "ENCRYPTED",
+            "EXTERNAL",
+            "UNKNOWN",
+            "NONE",
+          ]),
+          Schema.String,
+        ]),
+      ),
     }).pipe(
+      Schema.encodeKeys({
+        destination: "destination",
+        expectedDisposition: "expected_disposition",
+      }),
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/email-security/investigate/{investigateId}/move",
@@ -1799,6 +3623,19 @@ export interface BulkInvestigateMoveRequest {
     | "RecoverableItemsDeletions"
     | "RecoverableItemsPurges"
     | (string & {});
+  /** Body param */
+  expectedDisposition?:
+    | "MALICIOUS"
+    | "MALICIOUS-BEC"
+    | "SUSPICIOUS"
+    | "SPOOF"
+    | "SPAM"
+    | "BULK"
+    | "ENCRYPTED"
+    | "EXTERNAL"
+    | "UNKNOWN"
+    | "NONE"
+    | (string & {});
   /** Body param: List of message IDs to move */
   ids?: string[];
 }
@@ -1820,8 +3657,30 @@ export const BulkInvestigateMoveRequest =
         ]),
         Schema.String,
       ]),
+      expectedDisposition: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "MALICIOUS",
+            "MALICIOUS-BEC",
+            "SUSPICIOUS",
+            "SPOOF",
+            "SPAM",
+            "BULK",
+            "ENCRYPTED",
+            "EXTERNAL",
+            "UNKNOWN",
+            "NONE",
+          ]),
+          Schema.String,
+        ]),
+      ),
       ids: Schema.optional(Schema.Array(Schema.String)),
     }).pipe(
+      Schema.encodeKeys({
+        destination: "destination",
+        expectedDisposition: "expected_disposition",
+        ids: "ids",
+      }),
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/email-security/investigate/move",

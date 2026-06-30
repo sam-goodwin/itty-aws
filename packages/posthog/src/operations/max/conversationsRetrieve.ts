@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsRetrieveInput =
@@ -11,7 +10,7 @@ export const ConversationsRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/conversations/{conversation}/",
+      path: "/api/projects/{project_id}/conversations/{conversation}/",
     }),
   );
 export type ConversationsRetrieveInput = typeof ConversationsRetrieveInput.Type;
@@ -24,6 +23,7 @@ export const ConversationsRetrieveOutput =
       Schema.Literals(["idle", "in_progress", "canceling"]),
     ),
     title: Schema.optional(Schema.NullOr(Schema.String)),
+    topic: Schema.optional(Schema.Unknown),
     user: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -54,10 +54,12 @@ export const ConversationsRetrieveOutput =
     ),
     has_unsupported_content: Schema.optional(Schema.Boolean),
     agent_mode: Schema.optional(Schema.NullOr(Schema.String)),
+    agent_runtime: Schema.optional(Schema.Literals(["langgraph", "sandbox"])),
     is_sandbox: Schema.optional(Schema.Boolean),
     pending_approvals: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    task: Schema.optional(Schema.Unknown),
   });
 export type ConversationsRetrieveOutput =
   typeof ConversationsRetrieveOutput.Type;
@@ -72,6 +74,5 @@ export const conversationsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ConversationsRetrieveInput,
     outputSchema: ConversationsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

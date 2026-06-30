@@ -49,7 +49,7 @@ export const LogsCountCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 "is_not_set",
               ]),
             ),
-            value: Schema.optional(Schema.NullOr(Schema.Unknown)),
+            value: Schema.optional(Schema.Unknown),
           }),
         ),
       ),

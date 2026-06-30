@@ -33,8 +33,9 @@ export type SetSnapshotScheduleOutput = typeof SetSnapshotScheduleOutput.Type;
 /**
  * Update backup schedule
  *
- * Update the backup schedule for the specified branch.
- * **Note** : This endpoint is currently in Beta.
+ * Updates the backup schedule for the specified branch.
+ * The schedule defines how often automatic snapshots are created (e.g., `hourly`, `daily`).
+ * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

@@ -1,0 +1,448 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare MOQ API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: moq
+paths:
+  /accounts/{account_id}/moq/relays/{relayId}:
+    get:
+      operationId: getRelay
+      description: "Retrieves a single MoQ relay including config and status. Tokens
+        are NOT included.  @example ```ts const relay = await
+        client.moq.relays.get( 'a1b2c3d4e5f67890a1b2c3d4e5f67890', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: relayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Cloudflare account identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      lingering_subscribe:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          max_timeout_ms:
+                            type: number
+                            description: Relay-level ceiling on lingering subscribe timeout (ms). Default
+                              30000.
+                      origin_fallback:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          origins:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                url:
+                                  type: string
+                                  description: Upstream origin relay URL.
+                            description: Ordered list of upstream origin relays. Each entry is an object
+                              (not a bare string) so per-origin configuration
+                              can be added in the future without another
+                              breaking change.
+                    description: origin_fallback and lingering_subscribe are mutually exclusive.
+                  created:
+                    type: string
+                  modified:
+                    type: string
+                  name:
+                    type: string
+                  uid:
+                    type: string
+                  status:
+                    type: string
+                    enum:
+                      - connected
+                    description: '"connected" when active, omitted otherwise.'
+                required:
+                  - config
+                  - created
+                  - modified
+                  - name
+                  - uid
+      x-distilled-response-path: result
+    put:
+      operationId: updateRelay
+      description: "Updates a relay's name and/or configuration. Partial updates:
+        omitted fields are preserved. Config sub-objects replace as whole
+        objects when present. origin_fallback and lingering_subscribe are
+        mutually exclusive.  @example ```ts const relay = await
+        client.moq.relays.update( 'a1b2c3d4e5f67890a1b2c3d4e5f67890', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: relayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Cloudflare account identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                config:
+                  type: object
+                  properties:
+                    lingering_subscribe:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        max_timeout_ms:
+                          type: number
+                          description: Relay-level ceiling on lingering subscribe timeout (ms). Default
+                            30000.
+                    origin_fallback:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        origins:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                description: Upstream origin relay URL.
+                          description: Ordered list of upstream origin relays. Each entry is an object
+                            (not a bare string) so per-origin configuration can
+                            be added in the future without another breaking
+                            change.
+                  description: "Body param: origin_fallback and lingering_subscribe are mutually
+                    exclusive."
+                name:
+                  type: string
+                  description: Body param
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      lingering_subscribe:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          max_timeout_ms:
+                            type: number
+                            description: Relay-level ceiling on lingering subscribe timeout (ms). Default
+                              30000.
+                      origin_fallback:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          origins:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                url:
+                                  type: string
+                                  description: Upstream origin relay URL.
+                            description: Ordered list of upstream origin relays. Each entry is an object
+                              (not a bare string) so per-origin configuration
+                              can be added in the future without another
+                              breaking change.
+                    description: origin_fallback and lingering_subscribe are mutually exclusive.
+                  created:
+                    type: string
+                  modified:
+                    type: string
+                  name:
+                    type: string
+                  uid:
+                    type: string
+                  status:
+                    type: string
+                    enum:
+                      - connected
+                    description: '"connected" when active, omitted otherwise.'
+                required:
+                  - config
+                  - created
+                  - modified
+                  - name
+                  - uid
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteRelay
+      description: "Soft-deletes a MoQ relay.  @example ```ts const relay = await
+        client.moq.relays.delete( 'a1b2c3d4e5f67890a1b2c3d4e5f67890', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: relayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Cloudflare account identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+  /accounts/{account_id}/moq/relays:
+    get:
+      operationId: listRelays
+      description: "Lists all MoQ relays for the account. Returns only metadata.
+        Config, status, and tokens are omitted.  Results are cursor-paginated
+        (keyset on the `created` timestamp). Use `created_before` /
+        `created_after` with the `created` value of the first/last item in a
+        page to fetch the adjacent page. `result_info` reports the page `count`
+        and the `total` matching the cursor filters.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        relayListResponse of client.moq.relays.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Cloudflare account identifier."
+          schema:
+            type: string
+        - name: asc
+          in: query
+          required: false
+          description: "Query param: Sort order by `created`. When true, results are
+            returned oldest-first (ascending); otherwise newest-first
+            (descending, the default)."
+          schema:
+            type: boolean
+        - name: created_after
+          in: query
+          required: false
+          description: "Query param: Cursor for pagination. Returns relays created
+            strictly after this RFC 3339 timestamp (typically the `created`
+            value of the last item on the current page, to fetch the next
+            page)."
+          schema:
+            type: string
+        - name: created_before
+          in: query
+          required: false
+          description: "Query param: Cursor for pagination. Returns relays created
+            strictly before this RFC 3339 timestamp (typically the `created`
+            value of the first item on the current page, to fetch the previous
+            page)."
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          required: false
+          description: "Query param: Maximum number of relays to return per page."
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created:
+                    type: string
+                  modified:
+                    type: string
+                  name:
+                    type: string
+                  uid:
+                    type: string
+                required:
+                  - created
+                  - modified
+                  - name
+                  - uid
+      x-distilled-pagination-class: RelayListResponsesSinglePage
+    post:
+      operationId: createRelay
+      description: "Provisions a new MoQ relay instance. Auto-creates a
+        publish+subscribe token and a subscribe-only token. Token values are
+        included in the response (shown once). Config is set to defaults
+        (lingering subscribe enabled, 30s ceiling, origin fallback off). Use PUT
+        to modify.  @example ```ts const relay = await
+        client.moq.relays.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'Production Live Stream', });
+        ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Cloudflare account identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Human-readable name for the relay."
+              required:
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      lingering_subscribe:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          max_timeout_ms:
+                            type: number
+                            description: Relay-level ceiling on lingering subscribe timeout (ms). Default
+                              30000.
+                      origin_fallback:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          origins:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                url:
+                                  type: string
+                                  description: Upstream origin relay URL.
+                            description: Ordered list of upstream origin relays. Each entry is an object
+                              (not a bare string) so per-origin configuration
+                              can be added in the future without another
+                              breaking change.
+                    description: origin_fallback and lingering_subscribe are mutually exclusive.
+                  created:
+                    type: string
+                  modified:
+                    type: string
+                  name:
+                    type: string
+                  token_publish_subscribe:
+                    type: string
+                    description: Full access token (publish + subscribe). Treat as sensitive.
+                  token_subscribe:
+                    type: string
+                    description: Subscribe-only token. Treat as sensitive.
+                  uid:
+                    type: string
+                    description: Server-generated unique identifier (32 hex chars).
+                required:
+                  - config
+                  - created
+                  - modified
+                  - name
+                  - token_publish_subscribe
+                  - token_subscribe
+                  - uid
+      x-distilled-response-path: result
+  /accounts/{account_id}/moq/relays/{relayId}/tokens/rotate:
+    post:
+      operationId: rotateRelayToken
+      description: "Generates a new token for the specified type. The old token is
+        immediately invalidated. Token value is shown once in the
+        response.  @example ```ts const response = await
+        client.moq.relays.tokens.rotate( 'a1b2c3d4e5f67890a1b2c3d4e5f67890', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', type:
+        'publish_subscribe', }, ); ```"
+      parameters:
+        - name: relayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Cloudflare account identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - publish_subscribe
+                    - subscribe
+                  description: "Body param: Which token type to rotate."
+              required:
+                - type
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: New token value (shown once). Treat as sensitive.
+                  type:
+                    type: string
+                    enum:
+                      - publish_subscribe
+                      - subscribe
+                required:
+                  - token
+                  - type
+      x-distilled-response-path: result

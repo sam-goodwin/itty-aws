@@ -28,7 +28,7 @@ export type DeleteProjectBranchDataAPIOutput =
  * Delete Neon Data API
  *
  * Deletes the Neon Data API for the specified branch.
- * You can obtain the `project_id` and `branch_id` by listing the projects and branches for your Neon account.
+ * Existing connections using the Data API endpoint will fail after deletion.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

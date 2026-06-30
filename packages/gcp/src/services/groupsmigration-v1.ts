@@ -23,16 +23,16 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Groups {
-  /** The status of the insert request. */
-  responseCode?: string;
   /** The kind of insert resource this is. */
   kind?: string;
+  /** The status of the insert request. */
+  responseCode?: string;
 }
 
 export const Groups: Schema.Schema<Groups> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    responseCode: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
+    responseCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "Groups" });
 
 // ==========================================================================

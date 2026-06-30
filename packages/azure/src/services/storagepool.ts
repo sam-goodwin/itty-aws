@@ -10,7 +10,34 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DiskPoolsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    diskPoolName: Schema.String.pipe(T.PathParam()),
+    sku: Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(Schema.String),
+    }),
+    properties: Schema.Struct({
+      availabilityZones: Schema.optional(Schema.Array(Schema.String)),
+      disks: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.String,
+          }),
+        ),
+      ),
+      subnetId: Schema.String,
+      additionalCapabilities: Schema.optional(Schema.Array(Schema.String)),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    managedBy: Schema.optional(Schema.String),
+    managedByExtended: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
@@ -33,6 +60,11 @@ export type DiskPoolsCreateOrUpdateOutput =
 // The operation
 /**
  * Create or Update Disk pool. This create or update operation can take 15 minutes to complete. This is expected service behavior.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -42,7 +74,11 @@ export const DiskPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DiskPoolsDeallocateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    diskPoolName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/deallocate",
@@ -59,15 +95,22 @@ export type DiskPoolsDeallocateOutput = typeof DiskPoolsDeallocateOutput.Type;
 // The operation
 /**
  * Shuts down the Disk Pool and releases the compute resources. You are not billed for the compute resources that this Disk Pool uses. This operation can take 10 minutes to complete. This is expected service behavior.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsDeallocate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsDeallocateInput,
   outputSchema: DiskPoolsDeallocateOutput,
 }));
 // Input Schema
-export const DiskPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DiskPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  diskPoolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
@@ -83,15 +126,22 @@ export type DiskPoolsDeleteOutput = typeof DiskPoolsDeleteOutput.Type;
 // The operation
 /**
  * Delete a Disk pool; attached disks are not affected. This delete operation can take 10 minutes to complete. This is expected service behavior.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsDeleteInput,
   outputSchema: DiskPoolsDeleteOutput,
 }));
 // Input Schema
-export const DiskPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DiskPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  diskPoolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
@@ -111,6 +161,11 @@ export type DiskPoolsGetOutput = typeof DiskPoolsGetOutput.Type;
 // The operation
 /**
  * Get a Disk pool.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsGetInput,
@@ -118,7 +173,10 @@ export const DiskPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DiskPoolsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools",
@@ -146,6 +204,10 @@ export type DiskPoolsListByResourceGroupOutput =
 // The operation
 /**
  * Gets a list of DiskPools in a resource group.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -154,7 +216,9 @@ export const DiskPoolsListByResourceGroup =
   }));
 // Input Schema
 export const DiskPoolsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/diskPools",
@@ -182,6 +246,9 @@ export type DiskPoolsListBySubscriptionOutput =
 // The operation
 /**
  * Gets a list of Disk Pools in a subscription
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -191,7 +258,11 @@ export const DiskPoolsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DiskPoolsListOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    diskPoolName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/outboundNetworkDependenciesEndpoints",
@@ -234,6 +305,11 @@ export type DiskPoolsListOutboundNetworkDependenciesEndpointsOutput =
 // The operation
 /**
  * Gets the network endpoints of all outbound dependencies of a Disk Pool
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsListOutboundNetworkDependenciesEndpoints =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -241,9 +317,11 @@ export const DiskPoolsListOutboundNetworkDependenciesEndpoints =
     outputSchema: DiskPoolsListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
-export const DiskPoolsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DiskPoolsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  diskPoolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/start",
@@ -259,15 +337,40 @@ export type DiskPoolsStartOutput = typeof DiskPoolsStartOutput.Type;
 // The operation
 /**
  * The operation to start a Disk Pool. This start operation can take 10 minutes to complete. This is expected service behavior.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsStartInput,
   outputSchema: DiskPoolsStartOutput,
 }));
 // Input Schema
-export const DiskPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DiskPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  diskPoolName: Schema.String.pipe(T.PathParam()),
+  managedBy: Schema.optional(Schema.String),
+  managedByExtended: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.Struct({
+    disks: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+        }),
+      ),
+    ),
+  }),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
@@ -287,15 +390,22 @@ export type DiskPoolsUpdateOutput = typeof DiskPoolsUpdateOutput.Type;
 // The operation
 /**
  * Update a Disk pool.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsUpdateInput,
   outputSchema: DiskPoolsUpdateOutput,
 }));
 // Input Schema
-export const DiskPoolsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DiskPoolsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  diskPoolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/upgrade",
@@ -311,6 +421,11 @@ export type DiskPoolsUpgradeOutput = typeof DiskPoolsUpgradeOutput.Type;
 // The operation
 /**
  * Upgrade replaces the underlying virtual machine hosts one at a time. This operation can take 10-15 minutes to complete. This is expected service behavior.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsUpgradeInput,
@@ -318,7 +433,10 @@ export const DiskPoolsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DiskPoolZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -352,6 +470,10 @@ export type DiskPoolZonesListOutput = typeof DiskPoolZonesListOutput.Type;
 // The operation
 /**
  * Lists available Disk Pool Skus in an Azure location.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location of the resource.
  */
 export const DiskPoolZonesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolZonesListInput,
@@ -359,7 +481,35 @@ export const DiskPoolZonesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const IscsiTargetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    diskPoolName: Schema.String.pipe(T.PathParam()),
+    iscsiTargetName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      aclMode: Schema.Literals(["Dynamic", "Static"]),
+      targetIqn: Schema.optional(Schema.String),
+      staticAcls: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            initiatorIqn: Schema.String,
+            mappedLuns: Schema.Array(Schema.String),
+          }),
+        ),
+      ),
+      luns: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            managedDiskAzureResourceId: Schema.String,
+            lun: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+    }),
+    managedBy: Schema.optional(Schema.String),
+    managedByExtended: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
@@ -382,6 +532,12 @@ export type IscsiTargetsCreateOrUpdateOutput =
 // The operation
 /**
  * Create or Update an iSCSI Target.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param iscsiTargetName - The name of the iSCSI Target.
+ * @param api-version - The API version to use for this operation.
  */
 export const IscsiTargetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -391,7 +547,12 @@ export const IscsiTargetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const IscsiTargetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    diskPoolName: Schema.String.pipe(T.PathParam()),
+    iscsiTargetName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
@@ -407,15 +568,24 @@ export type IscsiTargetsDeleteOutput = typeof IscsiTargetsDeleteOutput.Type;
 // The operation
 /**
  * Delete an iSCSI Target.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param iscsiTargetName - The name of the iSCSI Target.
+ * @param api-version - The API version to use for this operation.
  */
 export const IscsiTargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IscsiTargetsDeleteInput,
   outputSchema: IscsiTargetsDeleteOutput,
 }));
 // Input Schema
-export const IscsiTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const IscsiTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  diskPoolName: Schema.String.pipe(T.PathParam()),
+  iscsiTargetName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
@@ -435,6 +605,12 @@ export type IscsiTargetsGetOutput = typeof IscsiTargetsGetOutput.Type;
 // The operation
 /**
  * Get an iSCSI Target.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param iscsiTargetName - The name of the iSCSI Target.
+ * @param api-version - The API version to use for this operation.
  */
 export const IscsiTargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IscsiTargetsGetInput,
@@ -442,7 +618,11 @@ export const IscsiTargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const IscsiTargetsListByDiskPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    diskPoolName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets",
@@ -470,6 +650,11 @@ export type IscsiTargetsListByDiskPoolOutput =
 // The operation
 /**
  * Get iSCSI Targets in a Disk pool.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param api-version - The API version to use for this operation.
  */
 export const IscsiTargetsListByDiskPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -479,7 +664,33 @@ export const IscsiTargetsListByDiskPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const IscsiTargetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    diskPoolName: Schema.String.pipe(T.PathParam()),
+    iscsiTargetName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      staticAcls: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            initiatorIqn: Schema.String,
+            mappedLuns: Schema.Array(Schema.String),
+          }),
+        ),
+      ),
+      luns: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            managedDiskAzureResourceId: Schema.String,
+            lun: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+    }),
+    managedBy: Schema.optional(Schema.String),
+    managedByExtended: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
@@ -500,6 +711,12 @@ export type IscsiTargetsUpdateOutput = typeof IscsiTargetsUpdateOutput.Type;
 // The operation
 /**
  * Update an iSCSI Target.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param diskPoolName - The name of the Disk Pool.
+ * @param iscsiTargetName - The name of the iSCSI Target.
+ * @param api-version - The API version to use for this operation.
  */
 export const IscsiTargetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IscsiTargetsUpdateInput,
@@ -540,15 +757,18 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Gets a list of StoragePool operations.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ResourceSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ResourceSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/skus",
@@ -624,6 +844,10 @@ export type ResourceSkusListOutput = typeof ResourceSkusListOutput.Type;
 // The operation
 /**
  * Lists available StoragePool resources and skus in an Azure location.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location of the resource.
  */
 export const ResourceSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourceSkusListInput,

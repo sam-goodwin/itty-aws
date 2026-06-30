@@ -48,6 +48,7 @@ export const PostChargesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   transfer_data: Schema.optional(
     Schema.Struct({
       amount: Schema.optional(Schema.Number),
+      description: Schema.optional(Schema.String),
       destination: Schema.String,
     }),
   ),
@@ -235,6 +236,7 @@ export const PostChargesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ),
                 pix: Schema.optional(Schema.Struct({})),
                 revolut: Schema.optional(Schema.Struct({})),
+                scalapay: Schema.optional(Schema.Struct({})),
                 sofort: Schema.optional(Schema.Struct({})),
                 swish: Schema.optional(
                   Schema.Struct({

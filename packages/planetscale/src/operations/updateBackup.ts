@@ -39,6 +39,7 @@ export const UpdateBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   completed_at: Schema.NullOr(Schema.String),
   deleted_at: Schema.NullOr(Schema.String),
   pvc_size: Schema.Number,
+  uncompressed_size: Schema.Number,
   protected: Schema.Boolean,
   required: Schema.Boolean,
   restored_branches: Schema.Array(

@@ -28,7 +28,7 @@ export type GrantPermissionToProjectOutput =
 /**
  * Grant project access
  *
- * Grants project access to the account associated with the specified email address
+ * Grants project access to the account associated with the specified email address.
  */
 export const grantPermissionToProject = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

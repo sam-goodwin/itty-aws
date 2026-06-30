@@ -215,6 +215,8 @@ export interface Endpoint {
   appEngineVersion?: AppEngineVersionEndpoint;
   /** A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to source endpoint. */
   cloudRunRevision?: CloudRunRevisionEndpoint;
+  /** A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job} */
+  cloudRunJob?: string;
   /** A VPC network URI. For source endpoints, used according to the `network_type`. For destination endpoints, used only when the source is an external IP address endpoint, and the destination is an internal IP address endpoint. */
   network?: string;
   /** For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints. */
@@ -248,6 +250,7 @@ export const Endpoint: Schema.Schema<Endpoint> =
     cloudFunction: Schema.optional(CloudFunctionEndpoint),
     appEngineVersion: Schema.optional(AppEngineVersionEndpoint),
     cloudRunRevision: Schema.optional(CloudRunRevisionEndpoint),
+    cloudRunJob: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
     networkType: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -264,9 +267,9 @@ export interface EndpointInfo {
   sourcePort?: number;
   /** Destination port. Only valid when protocol is TCP or UDP. */
   destinationPort?: number;
-  /** URI of the network where this packet originates from. */
+  /** URI of the network where this packet originates from. Format: `projects/{project_id}/global/networks/{network_id}` */
   sourceNetworkUri?: string;
-  /** URI of the network where this packet is sent to. */
+  /** URI of the network where this packet is sent to. Format: `projects/{project_id}/global/networks/{network_id}` */
   destinationNetworkUri?: string;
   /** URI of the source telemetry agent this packet originates from. */
   sourceAgentUri?: string;
@@ -287,11 +290,11 @@ export const EndpointInfo: Schema.Schema<EndpointInfo> =
 export interface InstanceInfo {
   /** Name of a Compute Engine instance. */
   displayName?: string;
-  /** URI of a Compute Engine instance. */
+  /** URI of a Compute Engine instance in format "projects/{project}/zones/{zone}/instances/{instance}" */
   uri?: string;
   /** Name of the network interface of a Compute Engine instance. */
   interface?: string;
-  /** URI of a Compute Engine network. */
+  /** URI of a Compute Engine network in format "projects/{project}/global/networks/{network}" */
   networkUri?: string;
   /** Internal IP address of the network interface. */
   internalIp?: string;
@@ -301,7 +304,7 @@ export interface InstanceInfo {
   networkTags?: ReadonlyArray<string>;
   /** Service account authorized for the instance. */
   serviceAccount?: string;
-  /** URI of the PSC network attachment the NIC is attached to (if relevant). */
+  /** URI of the PSC network attachment the NIC is attached to (if relevant) in format "projects/{project}/regions/{region}/networkAttachments/{network_attachment}" */
   pscNetworkAttachmentUri?: string;
   /** Indicates whether the Compute Engine instance is running. Deprecated: use the `status` field instead. */
   running?: boolean;
@@ -327,7 +330,7 @@ export const InstanceInfo: Schema.Schema<InstanceInfo> =
 export interface FirewallInfo {
   /** The display name of the firewall rule. This field might be empty for firewall policy rules. */
   displayName?: string;
-  /** The URI of the firewall rule. This field is not applicable to implied VPC firewall rules. */
+  /** The URI of the firewall rule in format "projects/{project}/global/firewalls/{firewall}". This field is not applicable to implied VPC firewall rules. */
   uri?: string;
   /** Possible values: INGRESS, EGRESS */
   direction?: string;
@@ -335,7 +338,7 @@ export interface FirewallInfo {
   action?: string;
   /** The priority of the firewall rule. */
   priority?: number;
-  /** The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules. */
+  /** The URI of the VPC network that the firewall rule is associated with in format "projects/{project}/global/networks/{network}". This field is not applicable to hierarchical firewall policy rules. */
   networkUri?: string;
   /** The target tags defined by the VPC firewall rule. This field is not applicable to firewall policy rules. */
   targetTags?: ReadonlyArray<string>;
@@ -343,7 +346,7 @@ export interface FirewallInfo {
   targetServiceAccounts?: ReadonlyArray<string>;
   /** The name of the firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules and implied VPC firewall rules. */
   policy?: string;
-  /** The URI of the firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules and implied VPC firewall rules. */
+  /** The URI of the firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules and implied VPC firewall rules. Format: * `locations/global/firewallPolicies/{policy_id}` (hierarchical policy) * `projects/{project_id}/global/firewallPolicies/{policy_id}` (global network firewall policy) * `projects/{project_id}/regions/{region}/firewallPolicies/{policy_id}` (regional network firewall policy) */
   policyUri?: string;
   /** The firewall rule's type. */
   firewallRuleType?:
@@ -425,7 +428,7 @@ export interface RouteInfo {
     | (string & {});
   /** Name of a route. */
   displayName?: string;
-  /** URI of a route. SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED routes only. */
+  /** URI of a route in format "projects/{project}/global/routes/{route}". SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED routes only. */
   uri?: string;
   /** Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set for POLICY_BASED route, this is a region of VLAN attachments for Cloud Interconnect the route applies to. If set to "all" for POLICY_BASED route, the route applies to VLAN attachments of Cloud Interconnect in all regions. */
   region?: string;
@@ -433,7 +436,7 @@ export interface RouteInfo {
   destIpRange?: string;
   /** String type of the next hop of the route (for example, "VPN tunnel"). Deprecated in favor of the next_hop_type and next_hop_uri fields, not used in new tests. */
   nextHop?: string;
-  /** URI of a VPC network where route is located. */
+  /** URI of a VPC network where route is located in format "projects/{project}/global/networks/{network}". */
   networkUri?: string;
   /** Priority of the route. */
   priority?: number;
@@ -447,23 +450,23 @@ export interface RouteInfo {
   srcPortRanges?: ReadonlyArray<string>;
   /** Protocols of the route. POLICY_BASED routes only. */
   protocols?: ReadonlyArray<string>;
-  /** URI of the NCC Hub the route is advertised by. PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub only. */
+  /** URI of the NCC Hub the route is advertised by in format "projects/{project}/locations/global/hubs/{hub}". PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub only. */
   nccHubUri?: string;
-  /** URI of the destination NCC Spoke. PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub only. */
+  /** URI of the destination NCC Spoke in format "projects/{project}/locations/{location}/spokes/{spoke}" (regional) or "projects/{project}/locations/global/spokes/{spoke}" (global). PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub only. */
   nccSpokeUri?: string;
-  /** For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix. */
+  /** For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix in format "projects/{project}/regions/{region}/routers/{router}". */
   advertisedRouteSourceRouterUri?: string;
   /** For ADVERTISED routes, the URI of their next hop, i.e. the URI of the hybrid endpoint (VPN tunnel, Interconnect attachment, NCC router appliance) the advertised prefix is advertised through, or URI of the source peered network. Deprecated in favor of the next_hop_uri field, not used in new tests. */
   advertisedRouteNextHopUri?: string;
   /** URI of the next hop resource. */
   nextHopUri?: string;
-  /** URI of a VPC network where the next hop resource is located. */
+  /** URI of a VPC network where the next hop resource is located in format "projects/{project}/global/networks/{network}". */
   nextHopNetworkUri?: string;
-  /** For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating SUBNET/STATIC route. */
+  /** For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating SUBNET/STATIC route. Format: `projects/{project_id}/global/routes/{route_id}` */
   originatingRouteUri?: string;
   /** For PEERING_SUBNET, PEERING_STATIC and PEERING_DYNAMIC routes, the name of the originating SUBNET/STATIC/DYNAMIC route. */
   originatingRouteDisplayName?: string;
-  /** For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub, the URI of the corresponding route in NCC Hub's routing table. */
+  /** For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub, the URI of the corresponding route in NCC Hub's routing table. Format: `projects/{project_id}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}/routes/{route_id}` */
   nccHubRouteUri?: string;
 }
 
@@ -520,7 +523,7 @@ export const GoogleServiceInfo: Schema.Schema<GoogleServiceInfo> =
 export interface ForwardingRuleInfo {
   /** Name of the forwarding rule. */
   displayName?: string;
-  /** URI of the forwarding rule. */
+  /** URI of the forwarding rule in format "projects/{project}/global/forwardingRules/{forwarding_rule}" (global) or "projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}" (regional). */
   uri?: string;
   /** Protocol defined in the forwarding rule that matches the packet. */
   matchedProtocol?: string;
@@ -530,13 +533,13 @@ export interface ForwardingRuleInfo {
   vip?: string;
   /** Target type of the forwarding rule. */
   target?: string;
-  /** Network URI. */
+  /** URI of a VPC network where the forwarding rule is located in format "projects/{project}/global/networks/{network}". */
   networkUri?: string;
   /** Region of the forwarding rule. Set only for regional forwarding rules. */
   region?: string;
   /** Name of the load balancer the forwarding rule belongs to. Empty for forwarding rules not related to load balancers (like PSC forwarding rules). */
   loadBalancerName?: string;
-  /** URI of the PSC service attachment this forwarding rule targets (if applicable). */
+  /** URI of the PSC service attachment this forwarding rule targets (if applicable) in format "projects/{project}/regions/{region}/serviceAttachments/{service_attachment}". */
   pscServiceAttachmentUri?: string;
   /** PSC Google API target this forwarding rule targets (if applicable). */
   pscGoogleApiTarget?: string;
@@ -560,7 +563,7 @@ export const ForwardingRuleInfo: Schema.Schema<ForwardingRuleInfo> =
 export interface HybridSubnetInfo {
   /** Name of a hybrid subnet. */
   displayName?: string;
-  /** URI of a hybrid subnet. */
+  /** URI of the hybrid subnet. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}` */
   uri?: string;
   /** Name of a Google Cloud region where the hybrid subnet is configured. */
   region?: string;
@@ -576,13 +579,13 @@ export const HybridSubnetInfo: Schema.Schema<HybridSubnetInfo> =
 export interface VpnGatewayInfo {
   /** Name of a VPN gateway. */
   displayName?: string;
-  /** URI of a VPN gateway. */
+  /** URI of the VPN gateway. Format: * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (HA VPN gateway) * `projects/{project_id}/regions/{region}/targetVpnGateways/{target_vpn_gateway_id}` (Classic VPN gateway) */
   uri?: string;
-  /** URI of a Compute Engine network where the VPN gateway is configured. */
+  /** URI of the VPC network where the VPN gateway is configured. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
   /** IP address of the VPN gateway. */
   ipAddress?: string;
-  /** A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed. */
+  /** URI of the VPN tunnel associated with the VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed. Format: `projects/{project_id}/regions/{region}/vpnTunnels/{vpn_tunnel_id}` */
   vpnTunnelUri?: string;
   /** Name of a Google Cloud region where this VPN gateway is configured. */
   region?: string;
@@ -601,17 +604,17 @@ export const VpnGatewayInfo: Schema.Schema<VpnGatewayInfo> =
 export interface VpnTunnelInfo {
   /** Name of a VPN tunnel. */
   displayName?: string;
-  /** URI of a VPN tunnel. */
+  /** URI of the VPN tunnel. Format: `projects/{project_id}/regions/{region}/vpnTunnels/{vpn_tunnel_id}` */
   uri?: string;
-  /** URI of the VPN gateway at local end of the tunnel. */
+  /** URI of the VPN gateway at local end of the tunnel. Format: * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (HA VPN gateway) * `projects/{project_id}/regions/{region}/targetVpnGateways/{target_vpn_gateway_id}` (Classic VPN gateway) */
   sourceGateway?: string;
-  /** URI of a VPN gateway at remote end of the tunnel. */
+  /** URI of a VPN gateway at remote end of the tunnel. Format: * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (GCP HA VPN gateway) * `projects/{project_id}/global/peerVpnGateways/{peer_vpn_gateway_id}` (GCP peer VPN gateway) */
   remoteGateway?: string;
   /** Remote VPN gateway's IP address. */
   remoteGatewayIp?: string;
   /** Local VPN gateway's IP address. */
   sourceGatewayIp?: string;
-  /** URI of a Compute Engine network where the VPN tunnel is configured. */
+  /** URI of the VPC network where the VPN tunnel is configured. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
   /** Name of a Google Cloud region where this VPN tunnel is configured. */
   region?: string;
@@ -640,13 +643,13 @@ export const VpnTunnelInfo: Schema.Schema<VpnTunnelInfo> =
 export interface InterconnectAttachmentInfo {
   /** Name of an Interconnect attachment. */
   displayName?: string;
-  /** URI of an Interconnect attachment. */
+  /** URI of the Interconnect attachment. Format: `projects/{project_id}/regions/{region}/interconnectAttachments/{attachment_id}` */
   uri?: string;
-  /** URI of the Interconnect where the Interconnect attachment is configured. */
+  /** URI of the Interconnect. Format: `projects/{project_id}/global/interconnects/{interconnect_id}` */
   interconnectUri?: string;
   /** Name of a Google Cloud region where the Interconnect attachment is configured. */
   region?: string;
-  /** URI of the Cloud Router to be used for dynamic routing. */
+  /** URI of the Cloud Router to be used for dynamic routing. Format: `projects/{project_id}/regions/{region}/routers/{router_id}` */
   cloudRouterUri?: string;
   /** The type of interconnect attachment this is. */
   type?:
@@ -674,7 +677,7 @@ export const InterconnectAttachmentInfo: Schema.Schema<InterconnectAttachmentInf
 export interface VpcConnectorInfo {
   /** Name of a VPC connector. */
   displayName?: string;
-  /** URI of a VPC connector. */
+  /** URI of a VPC connector. Format: `projects/{project_id}/locations/{location}/connectors/{connector_id}` */
   uri?: string;
   /** Location in which the VPC connector is deployed. */
   location?: string;
@@ -688,9 +691,9 @@ export const VpcConnectorInfo: Schema.Schema<VpcConnectorInfo> =
   }).annotate({ identifier: "VpcConnectorInfo" });
 
 export interface DirectVpcEgressConnectionInfo {
-  /** URI of direct access network. */
+  /** URI of the VPC network for direct egress. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
-  /** URI of direct access subnetwork. */
+  /** URI of the subnetwork for direct egress. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}` */
   subnetworkUri?: string;
   /** Selected IP range. */
   selectedIpRange?: string;
@@ -741,8 +744,11 @@ export interface DeliverInfo {
     | "REDIS_INSTANCE"
     | "REDIS_CLUSTER"
     | "GKE_POD"
+    | "CLOUD_RUN_JOB"
+    | "DMS_PRIVATE_CONNECTION"
+    | "DATASTREAM_PRIVATE_CONNECTION"
     | (string & {});
-  /** URI of the resource that the packet is delivered to. */
+  /** URI of the resource that the packet is delivered to. For example: * `"projects/{project}/zones/{zone}/instances/{instance}"` * `"projects/{project}/regions/{region}/networkEndpointGroups/{network_endpoint_group}"` */
   resourceUri?: string;
   /** IP address of the target (if applicable). */
   ipAddress?: string;
@@ -786,7 +792,7 @@ export interface ForwardInfo {
     | "ROUTER_APPLIANCE"
     | "SECURE_WEB_PROXY_GATEWAY"
     | (string & {});
-  /** URI of the resource that the packet is forwarded to. */
+  /** URI of the resource that the packet is forwarded to. Format: * `projects/{project_id}/global/networks/{network_id}` (VPC peering network) * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (VPN gateway) */
   resourceUri?: string;
   /** IP address of the target (if applicable). */
   ipAddress?: string;
@@ -848,7 +854,7 @@ export interface AbortInfo {
     | "GKE_POD_UNKNOWN_ENDPOINT_LOCATION"
     | "RESPONSE_TOO_LARGE"
     | (string & {});
-  /** URI of the resource that caused the abort. */
+  /** URI of the resource that caused the abort. Format: * `projects/{project_id}/global/networks/{network_id}` (VPC network) * `projects/{project_id}/zones/{zone}/instances/{instance_id}` (VM instance) */
   resourceUri?: string;
   /** IP address that caused the abort. */
   ipAddress?: string;
@@ -894,6 +900,7 @@ export interface DropInfo {
     | "FORWARDING_RULE_MISMATCH"
     | "FORWARDING_RULE_NO_INSTANCES"
     | "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK"
+    | "FIREWALL_BLOCKING_LOAD_BALANCER_ENVOY_PROXY_HEALTH_CHECK"
     | "INGRESS_FIREWALL_TAGS_UNSUPPORTED_BY_DIRECT_VPC_EGRESS"
     | "INSTANCE_NOT_RUNNING"
     | "GKE_CLUSTER_NOT_RUNNING"
@@ -906,6 +913,8 @@ export interface DropInfo {
     | "CLOUD_SQL_INSTANCE_UNAUTHORIZED_ACCESS"
     | "DROPPED_INSIDE_GKE_SERVICE"
     | "DROPPED_INSIDE_CLOUD_SQL_SERVICE"
+    | "DROPPED_INSIDE_DMS_PRIVATE_CONNECTION"
+    | "DROPPED_INSIDE_DATASTREAM_PRIVATE_CONNECTION"
     | "GOOGLE_MANAGED_SERVICE_NO_PEERING"
     | "GOOGLE_MANAGED_SERVICE_NO_PSC_ENDPOINT"
     | "GKE_PSC_ENDPOINT_MISSING"
@@ -933,6 +942,7 @@ export interface DropInfo {
     | "HYBRID_NEG_NON_DYNAMIC_ROUTE_MATCHED"
     | "HYBRID_NEG_NON_LOCAL_DYNAMIC_ROUTE_MATCHED"
     | "CLOUD_RUN_REVISION_NOT_READY"
+    | "CLOUD_RUN_JOB_NOT_READY"
     | "DROPPED_INSIDE_PSC_SERVICE_PRODUCER"
     | "LOAD_BALANCER_HAS_NO_PROXY_SUBNET"
     | "CLOUD_NAT_NO_ADDRESSES"
@@ -974,7 +984,7 @@ export interface DropInfo {
     | "NO_VALID_ROUTE_FROM_GOOGLE_MANAGED_NETWORK_TO_DESTINATION"
     | "PRIVATE_CONNECTION_NO_RUNNING_INSTANCE"
     | (string & {});
-  /** URI of the resource that caused the drop. */
+  /** URI of the resource that caused the drop. Format: * `projects/{project_id}/global/firewalls/{firewall_id}` (firewall rule) * `projects/{project_id}/global/routes/{route_id}` (route) */
   resourceUri?: string;
   /** Source IP address of the dropped packet (if relevant). */
   sourceIp?: string;
@@ -1002,7 +1012,7 @@ export const DropInfo: Schema.Schema<DropInfo> =
 export interface LoadBalancerBackend {
   /** Name of a Compute Engine instance or network endpoint. */
   displayName?: string;
-  /** URI of a Compute Engine instance or network endpoint. */
+  /** URI of the backend instance or network endpoint. Format: * `projects/{project_id}/zones/{zone}/instances/{instance_id}` (instance) * `projects/{project_id}/zones/{zone}/networkEndpointGroups/{neg_id}` (zonal NEG) * `projects/{project_id}/regions/{region}/networkEndpointGroups/{neg_id}` (regional NEG) * `projects/{project_id}/global/networkEndpointGroups/{neg_id}` (global NEG) */
   uri?: string;
   /** State of the health check firewall configuration. */
   healthCheckFirewallState?:
@@ -1050,7 +1060,7 @@ export interface LoadBalancerInfo {
     | "TARGET_POOL"
     | "TARGET_INSTANCE"
     | (string & {});
-  /** Backend configuration URI. */
+  /** URI of the backend associated with the load balancer. Format: * `projects/{project_id}/regions/{region}/backendServices/{backend_service_id}` * `projects/{project_id}/global/backendServices/{backend_service_id}` * `projects/{project_id}/regions/{region}/targetPools/{target_pool_id}` * `projects/{project_id}/zones/{zone}/targetInstances/{target_instance_id}` */
   backendUri?: string;
 }
 
@@ -1066,9 +1076,9 @@ export const LoadBalancerInfo: Schema.Schema<LoadBalancerInfo> =
 export interface NetworkInfo {
   /** Name of a Compute Engine network. */
   displayName?: string;
-  /** URI of a Compute Engine network. */
+  /** URI of a Compute Engine network in format "projects/{project}/global/networks/{network}" */
   uri?: string;
-  /** URI of the subnet matching the source IP address of the test. */
+  /** URI of the subnet matching the source IP address of the test in format "projects/{project}/regions/{region}/subnetworks/{subnetwork}" */
   matchedSubnetUri?: string;
   /** The IP range of the subnet matching the source IP address of the test. */
   matchedIpRange?: string;
@@ -1086,9 +1096,9 @@ export const NetworkInfo: Schema.Schema<NetworkInfo> =
   }).annotate({ identifier: "NetworkInfo" });
 
 export interface GKEMasterInfo {
-  /** URI of a GKE cluster. */
+  /** URI of the GKE cluster. Format: * `projects/{project_id}/locations/{location}/clusters/{cluster_id}` (regional cluster) * `projects/{project_id}/zones/{zone}/clusters/{cluster_id}` (zonal cluster) */
   clusterUri?: string;
-  /** URI of a GKE cluster network. */
+  /** URI of the GKE cluster network. Format: `projects/{project_id}/global/networks/{network_id}` */
   clusterNetworkUri?: string;
   /** Internal IP address of a GKE cluster control plane. */
   internalIp?: string;
@@ -1112,7 +1122,7 @@ export interface GkePodInfo {
   podUri?: string;
   /** IP address of a GKE Pod. If the Pod is dual-stack, this is the IP address relevant to the trace. */
   ipAddress?: string;
-  /** URI of the network containing the GKE Pod. */
+  /** URI of the network containing the GKE Pod. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
 }
 
@@ -1184,9 +1194,9 @@ export const GkeNetworkPolicySkippedInfo: Schema.Schema<GkeNetworkPolicySkippedI
 export interface CloudSQLInstanceInfo {
   /** Name of a Cloud SQL instance. */
   displayName?: string;
-  /** URI of a Cloud SQL instance. */
+  /** URI of a Cloud SQL instance in format "projects/{project}/instances/{instance}" */
   uri?: string;
-  /** URI of a Cloud SQL instance network or empty string if the instance does not have one. */
+  /** URI of a Cloud SQL instance network or empty string if the instance does not have one. In format "projects/{project}/global/networks/{network}". */
   networkUri?: string;
   /** Internal IP address of a Cloud SQL instance. */
   internalIp?: string;
@@ -1209,9 +1219,9 @@ export const CloudSQLInstanceInfo: Schema.Schema<CloudSQLInstanceInfo> =
 export interface RedisInstanceInfo {
   /** Name of a Cloud Redis Instance. */
   displayName?: string;
-  /** URI of a Cloud Redis Instance. */
+  /** URI of a Cloud Redis Instance in format "projects/{project}/locations/{location}/instances/{instance}" */
   uri?: string;
-  /** URI of a Cloud Redis Instance network. */
+  /** URI of a Cloud Redis Instance network in format "projects/{project}/global/networks/{network}". */
   networkUri?: string;
   /** Primary endpoint IP address of a Cloud Redis Instance. */
   primaryEndpointIp?: string;
@@ -1259,7 +1269,7 @@ export const RedisClusterInfo: Schema.Schema<RedisClusterInfo> =
 export interface CloudFunctionInfo {
   /** Name of a Cloud Function. */
   displayName?: string;
-  /** URI of a Cloud Function. */
+  /** URI of the Cloud Function. Format: `projects/{project_id}/locations/{location}/functions/{function_id}` */
   uri?: string;
   /** Location in which the Cloud Function is deployed. */
   location?: string;
@@ -1278,7 +1288,7 @@ export const CloudFunctionInfo: Schema.Schema<CloudFunctionInfo> =
 export interface AppEngineVersionInfo {
   /** Name of an App Engine version. */
   displayName?: string;
-  /** URI of an App Engine version. */
+  /** URI of the App Engine version. Format: `apps/{app_id}/services/{service_id}/versions/{version_id}` */
   uri?: string;
   /** Runtime of the App Engine version. */
   runtime?: string;
@@ -1297,11 +1307,11 @@ export const AppEngineVersionInfo: Schema.Schema<AppEngineVersionInfo> =
 export interface CloudRunRevisionInfo {
   /** Name of a Cloud Run revision. */
   displayName?: string;
-  /** URI of a Cloud Run revision. */
+  /** URI of the Cloud Run revision. Format: `projects/{project_id}/locations/{location}/revisions/{revision_id}` */
   uri?: string;
   /** Location in which this revision is deployed. */
   location?: string;
-  /** URI of Cloud Run service this revision belongs to. */
+  /** URI of Cloud Run service this revision belongs to. Format: `projects/{project_id}/locations/{location}/services/{service_id}` */
   serviceUri?: string;
 }
 
@@ -1312,6 +1322,22 @@ export const CloudRunRevisionInfo: Schema.Schema<CloudRunRevisionInfo> =
     location: Schema.optional(Schema.String),
     serviceUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "CloudRunRevisionInfo" });
+
+export interface CloudRunJobInfo {
+  /** Name of a Cloud Run job. */
+  displayName?: string;
+  /** URI of the Cloud Run job. Format: `projects/{project_id}/locations/{location}/jobs/{job_id}` */
+  uri?: string;
+  /** Location in which this job is deployed. */
+  location?: string;
+}
+
+export const CloudRunJobInfo: Schema.Schema<CloudRunJobInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudRunJobInfo" });
 
 export interface NatInfo {
   /** Type of NAT. */
@@ -1325,7 +1351,7 @@ export interface NatInfo {
     | (string & {});
   /** IP protocol in string format, for example: "TCP", "UDP", "ICMP". */
   protocol?: string;
-  /** URI of the network where NAT translation takes place. */
+  /** URI of the VPC network where NAT translation takes place. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
   /** Source IP address before NAT translation. */
   oldSourceIp?: string;
@@ -1343,7 +1369,7 @@ export interface NatInfo {
   oldDestinationPort?: number;
   /** Destination port after NAT translation. Only valid when protocol is TCP or UDP. */
   newDestinationPort?: number;
-  /** Uri of the Cloud Router. Only valid when type is CLOUD_NAT. */
+  /** URI of the Cloud Router. Only valid when type is CLOUD_NAT. Format: `projects/{project_id}/regions/{region}/routers/{router_id}` */
   routerUri?: string;
   /** The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT. */
   natGatewayName?: string;
@@ -1395,9 +1421,9 @@ export interface ProxyConnectionInfo {
   oldDestinationPort?: number;
   /** Destination port of a new connection. Only valid when protocol is TCP or UDP. */
   newDestinationPort?: number;
-  /** Uri of proxy subnet. */
+  /** URI of the proxy subnet. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}` */
   subnetUri?: string;
-  /** URI of the network where connection is proxied. */
+  /** URI of the VPC network where connection is proxied. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
 }
 
@@ -1419,21 +1445,21 @@ export const ProxyConnectionInfo: Schema.Schema<ProxyConnectionInfo> =
 export interface LoadBalancerBackendInfo {
   /** Display name of the backend. For example, it might be an instance name for the instance group backends, or an IP address and port for zonal network endpoint group backends. */
   name?: string;
-  /** URI of the backend instance (if applicable). Populated for instance group backends, and zonal NEG backends. */
+  /** URI of the backend instance (if applicable) in format "projects/{project}/zones/{zone}/instances/{instance}". Populated for instance group backends, and zonal NEG backends. */
   instanceUri?: string;
-  /** URI of the backend service this backend belongs to (if applicable). */
+  /** URI of the backend service this backend belongs to (if applicable) in format "projects/{project}/regions/{region}/backendServices/{backend_service}" (regional) or "projects/{project}/global/backendServices/{backend_service}" (global). */
   backendServiceUri?: string;
-  /** URI of the instance group this backend belongs to (if applicable). */
+  /** URI of the instance group this backend belongs to (if applicable) in format "projects/{project}/zones/{zone}/instanceGroups/{instance_group}". */
   instanceGroupUri?: string;
-  /** URI of the network endpoint group this backend belongs to (if applicable). */
+  /** URI of the network endpoint group this backend belongs to (if applicable) Format: * `projects/{project_id}/zones/{zone}/networkEndpointGroups/{neg_id}` (zonal NEG) * `projects/{project_id}/regions/{region}/networkEndpointGroups/{neg_id}` (regional NEG) * `projects/{project_id}/global/networkEndpointGroups/{neg_id}` (global NEG) */
   networkEndpointGroupUri?: string;
-  /** URI of the backend bucket this backend targets (if applicable). */
+  /** URI of the backend bucket this backend targets (if applicable) in format "projects/{project}/global/backendBuckets/{backend_bucket}". */
   backendBucketUri?: string;
-  /** URI of the PSC service attachment this PSC NEG backend targets (if applicable). */
+  /** URI of the PSC service attachment this PSC NEG backend targets (if applicable) in format "projects/{project}/regions/{region}/serviceAttachments/{service_attachment}". */
   pscServiceAttachmentUri?: string;
   /** PSC Google API target this PSC NEG backend targets (if applicable). */
   pscGoogleApiTarget?: string;
-  /** URI of the health check attached to this backend (if applicable). */
+  /** URI of the health check attached to this backend (if applicable). Format: * `projects/{project_id}/global/healthChecks/{health_check_id}` * `projects/{project_id}/regions/{region}/healthChecks/{health_check_id}` * `projects/{project_id}/global/httpHealthChecks/{health_check_id}` (legacy) */
   healthCheckUri?: string;
   /** Output only. Health check firewalls configuration state for the backend. This is a result of the static firewall analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation for more information: https://cloud.google.com/load-balancing/docs/firewall-rules */
   healthCheckFirewallsConfigState?:
@@ -1470,7 +1496,7 @@ export const StorageBucketInfo: Schema.Schema<StorageBucketInfo> =
   }).annotate({ identifier: "StorageBucketInfo" });
 
 export interface ServerlessNegInfo {
-  /** URI of the serverless network endpoint group. */
+  /** URI of the serverless network endpoint group in format "projects/{project}/regions/{region}/networkEndpointGroups/{network_endpoint_group}". */
   negUri?: string;
 }
 
@@ -1480,7 +1506,7 @@ export const ServerlessNegInfo: Schema.Schema<ServerlessNegInfo> =
   }).annotate({ identifier: "ServerlessNegInfo" });
 
 export interface NgfwPacketInspectionInfo {
-  /** URI of the security profile group associated with this firewall packet inspection. */
+  /** URI of the security profile group associated with this firewall packet inspection. Format: `organizations/{organization_id}/locations/global/securityProfileGroups/{security_profile_group_id}` */
   securityProfileGroupUri?: string;
 }
 
@@ -1517,6 +1543,7 @@ export interface Step {
     | "START_FROM_CLOUD_FUNCTION"
     | "START_FROM_APP_ENGINE_VERSION"
     | "START_FROM_CLOUD_RUN_REVISION"
+    | "START_FROM_CLOUD_RUN_JOB"
     | "START_FROM_STORAGE_BUCKET"
     | "START_FROM_PSC_PUBLISHED_SERVICE"
     | "START_FROM_SERVERLESS_NEG"
@@ -1617,6 +1644,8 @@ export interface Step {
   appEngineVersion?: AppEngineVersionInfo;
   /** Display information of a Cloud Run revision. */
   cloudRunRevision?: CloudRunRevisionInfo;
+  /** Display information of a Cloud Run job. */
+  cloudRunJob?: CloudRunJobInfo;
   /** Display information of a NAT. */
   nat?: NatInfo;
   /** Display information of a ProxyConnection. */
@@ -1673,6 +1702,7 @@ export const Step: Schema.Schema<Step> =
     cloudFunction: Schema.optional(CloudFunctionInfo),
     appEngineVersion: Schema.optional(AppEngineVersionInfo),
     cloudRunRevision: Schema.optional(CloudRunRevisionInfo),
+    cloudRunJob: Schema.optional(CloudRunJobInfo),
     nat: Schema.optional(NatInfo),
     proxyConnection: Schema.optional(ProxyConnectionInfo),
     loadBalancerBackendInfo: Schema.optional(LoadBalancerBackendInfo),
@@ -3174,9 +3204,7 @@ export const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRespon
   /*@__PURE__*/ /*#__PURE__*/ QueryOrgVpcFlowLogsConfigsResponse;
 
 export type QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** QueryOrgVpcFlowLogsConfigs returns a list of all organization-level VPC Flow Logs configurations applicable to the specified project. */
 export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
@@ -3228,9 +3256,7 @@ export const ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResp
   /*@__PURE__*/ /*#__PURE__*/ ShowEffectiveFlowLogsConfigsResponse;
 
 export type ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations applicable to a specified resource. */
 export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<

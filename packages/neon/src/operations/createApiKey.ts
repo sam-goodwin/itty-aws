@@ -24,9 +24,10 @@ export type CreateApiKeyOutput = typeof CreateApiKeyOutput.Type;
  *
  * Creates an API key.
  * The `key_name` is a user-specified name for the key.
- * This method returns an `id` and `key`. The `key` is a randomly generated, 64-bit token required to access the Neon API.
+ * Returns an `id` and `key`; the `key` is a randomly generated, 64-bit token required to access the Neon API.
+ * Store the key securely — it is only returned once.
  * API keys can also be managed in the Neon Console.
- * See [Manage API keys](https://neon.tech/docs/manage/api-keys/).
+ * See [Manage API keys](https://neon.com/docs/manage/api-keys/).
  */
 export const createApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateApiKeyInput,

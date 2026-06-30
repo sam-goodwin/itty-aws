@@ -23,14 +23,10 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface SiteSummaryResponse {
-  /** The time at which the site's status last changed. */
-  lastChangeTime?: string;
-  /** A link to the full Abusive Experience Report for the site. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report. */
-  reportUrl?: string;
-  /** The name of the reviewed site, e.g. `google.com`. */
-  reviewedSite?: string;
   /** The time at which [enforcement](https://support.google.com/webtools/answer/7538608) against the site began or will begin. Not set when the filter_status is OFF. */
   enforcementTime?: string;
+  /** A link to the full Abusive Experience Report for the site. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report. */
+  reportUrl?: string;
   /** The site's [enforcement status](https://support.google.com/webtools/answer/7538608). */
   filterStatus?:
     | "UNKNOWN"
@@ -39,21 +35,25 @@ export interface SiteSummaryResponse {
     | "PAUSED"
     | "PENDING"
     | (string & {});
+  /** The name of the reviewed site, e.g. `google.com`. */
+  reviewedSite?: string;
   /** The site's Abusive Experience Report status. */
   abusiveStatus?: "UNKNOWN" | "PASSING" | "FAILING" | (string & {});
   /** Whether the site is currently under review. */
   underReview?: boolean;
+  /** The time at which the site's status last changed. */
+  lastChangeTime?: string;
 }
 
 export const SiteSummaryResponse: Schema.Schema<SiteSummaryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    lastChangeTime: Schema.optional(Schema.String),
-    reportUrl: Schema.optional(Schema.String),
-    reviewedSite: Schema.optional(Schema.String),
     enforcementTime: Schema.optional(Schema.String),
+    reportUrl: Schema.optional(Schema.String),
     filterStatus: Schema.optional(Schema.String),
+    reviewedSite: Schema.optional(Schema.String),
     abusiveStatus: Schema.optional(Schema.String),
     underReview: Schema.optional(Schema.Boolean),
+    lastChangeTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "SiteSummaryResponse" });
 
 export interface ViolatingSitesResponse {
@@ -97,32 +97,6 @@ T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
 // Operations
 // ==========================================================================
 
-export interface ListViolatingSitesRequest {}
-
-export const ListViolatingSitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "v1/violatingSites" }),
-    svc,
-  ) as unknown as Schema.Schema<ListViolatingSitesRequest>;
-
-export type ListViolatingSitesResponse = ViolatingSitesResponse;
-export const ListViolatingSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ViolatingSitesResponse;
-
-export type ListViolatingSitesError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists sites that are failing in the Abusive Experience Report. */
-export const listViolatingSites: API.OperationMethod<
-  ListViolatingSitesRequest,
-  ListViolatingSitesResponse,
-  ListViolatingSitesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListViolatingSitesRequest,
-  output: ListViolatingSitesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface GetSitesRequest {
   /** Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}` */
   name: string;
@@ -149,5 +123,31 @@ export const getSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSitesRequest,
   output: GetSitesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListViolatingSitesRequest {}
+
+export const ListViolatingSitesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({ method: "GET", path: "v1/violatingSites" }),
+    svc,
+  ) as unknown as Schema.Schema<ListViolatingSitesRequest>;
+
+export type ListViolatingSitesResponse = ViolatingSitesResponse;
+export const ListViolatingSitesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ViolatingSitesResponse;
+
+export type ListViolatingSitesError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists sites that are failing in the Abusive Experience Report. */
+export const listViolatingSites: API.OperationMethod<
+  ListViolatingSitesRequest,
+  ListViolatingSitesResponse,
+  ListViolatingSitesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListViolatingSitesRequest,
+  output: ListViolatingSitesResponse,
   errors: [NotFound, Forbidden],
 }));

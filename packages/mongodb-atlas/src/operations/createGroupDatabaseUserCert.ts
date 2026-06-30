@@ -29,7 +29,7 @@ export type CreateGroupDatabaseUserCertOutput =
 /**
  * Create One X.509 Certificate for One Database User
  *
- * Generates one X.509 certificate for the specified MongoDB user. Atlas manages the certificate and MongoDB user that belong to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+ * Generates one X.509 certificate for the specified MongoDB user. Atlas manages the            certificate and MongoDB user that belong to one project.
  * To get MongoDB Cloud to generate a managed certificate for a database user, set `"x509Type" : "MANAGED"` on the desired MongoDB Database User.
  * If you are managing your own Certificate Authority (CA) in Self-Managed X.509 mode, you must generate certificates for database users using your own CA.
  *

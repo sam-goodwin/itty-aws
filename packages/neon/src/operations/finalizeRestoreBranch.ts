@@ -83,7 +83,7 @@ export type FinalizeRestoreBranchOutput =
 
 // The operation
 /**
- * Finalize restore
+ * Finalize branch restore from snapshot
  *
  * Finalize the restore operation for a branch created from a snapshot.
  * This operation updates the branch so it functions as the original branch it replaced.

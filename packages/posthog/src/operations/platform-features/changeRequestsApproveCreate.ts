@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ChangeRequestsApproveCreateInput =
@@ -18,7 +17,7 @@ export const ChangeRequestsApproveCreateInput =
     validation_status: Schema.optional(
       Schema.Literals(["valid", "invalid", "expired", "stale"]),
     ),
-    validation_errors: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    validation_errors: Schema.optional(Schema.Unknown),
     validated_at: Schema.optional(Schema.NullOr(Schema.String)),
     state: Schema.optional(
       Schema.Literals([
@@ -69,7 +68,7 @@ export const ChangeRequestsApproveCreateInput =
     expires_at: Schema.optional(Schema.String),
     applied_at: Schema.optional(Schema.NullOr(Schema.String)),
     apply_error: Schema.optional(Schema.String),
-    result_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    result_data: Schema.optional(Schema.Unknown),
     approvals: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -80,7 +79,7 @@ export const ChangeRequestsApproveCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/change_requests/{id}/approve/",
+      path: "/api/projects/{project_id}/change_requests/{id}/approve/",
     }),
   );
 export type ChangeRequestsApproveCreateInput =
@@ -100,7 +99,7 @@ export const ChangeRequestsApproveCreateOutput =
     validation_status: Schema.optional(
       Schema.Literals(["valid", "invalid", "expired", "stale"]),
     ),
-    validation_errors: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    validation_errors: Schema.optional(Schema.Unknown),
     validated_at: Schema.optional(Schema.NullOr(Schema.String)),
     state: Schema.optional(
       Schema.Literals([
@@ -151,7 +150,7 @@ export const ChangeRequestsApproveCreateOutput =
     expires_at: Schema.optional(Schema.String),
     applied_at: Schema.optional(Schema.NullOr(Schema.String)),
     apply_error: Schema.optional(Schema.String),
-    result_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    result_data: Schema.optional(Schema.Unknown),
     approvals: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -175,6 +174,5 @@ export const changeRequestsApproveCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ChangeRequestsApproveCreateInput,
     outputSchema: ChangeRequestsApproveCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

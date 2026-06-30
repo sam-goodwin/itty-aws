@@ -76,17 +76,15 @@ export type RunSQLQueryOutput = typeof RunSQLQueryOutput.Type;
  * - Read-only queries (SELECT statements)
  * - No DDL or DML operations
  * - Query that follow limits (defined below)
- * ### Supported Tables
- * - `<network>.events` - Base mainnet decoded event logs with parameters, event signature, topics, and more.
- * - `<network>.transactions` - Base mainnet transaction data including hash, block number, gas usage.
- * - `<network>.blocks` - Base mainnet block information.
- * - `<network>.encoded_logs` - Encoded log data of event logs that aren't able to be decoded by our event decoder (ex: log0 opcode).
- * - `<network>.decoded_user_operations` - Decoded user operations data including hash, block number, gas usage, builder codes, entrypoint version, and more.
- * - `<network>.transaction_attributions` - Information about the attributions of a transaction to a builder and associated builder codes.
  * ### Supported Networks
  * - Base Mainnet: `base`
  * - Base Sepolia: `base_sepolia`
- * So for example, valid tables are: `base.events`, `base_sepolia.events`, `base.transactions`, etc.
+ * - Solana Mainnet: `solana`
+ * - Hyperevm Mainnet: `hyperevm`
+ * ### Supported Tables
+ * The below tables are supported for `base` and `base_sepolia` networks.
+ * Following the above, the valid tables on Base Mainnet are `base.events`, `base.transactions`, `base.blocks`, `base.encoded_logs`, `base.decoded_user_operations`, and `base.transaction_attributions`.
+ * Separately, there is a limited set of tables supported for `solana` and `hyperevm` networks:
  * ### Query Limits
  * - Maximum result set: 50,000 rows
  * - Maximum query length: 10,000 characters

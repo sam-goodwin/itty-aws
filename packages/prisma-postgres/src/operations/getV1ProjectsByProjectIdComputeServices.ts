@@ -32,6 +32,7 @@ export const GetV1ProjectsByProjectIdComputeServicesOutput =
           name: Schema.String,
         }),
         projectId: Schema.String,
+        branchId: Schema.NullOr(Schema.String),
         latestVersionId: Schema.NullOr(Schema.String),
         serviceEndpointDomain: Schema.String,
         createdAt: Schema.String,

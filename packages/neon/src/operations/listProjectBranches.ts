@@ -101,12 +101,11 @@ export type ListProjectBranchesOutput = typeof ListProjectBranchesOutput.Type;
  * List branches
  *
  * Retrieves a list of branches for the specified project.
- * You can obtain a `project_id` by listing the projects for your Neon account.
  * Each Neon project has a root branch named `main`.
  * A `branch_id` value has a `br-` prefix.
  * A project may contain child branches that were branched from `main` or from another branch.
  * A parent branch is identified by the `parent_id` value, which is the `id` of the parent branch.
- * For related information, see [Manage branches](https://neon.tech/docs/manage/branches/).
+ * For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
  *
  * @param project_id - The Neon project ID
  * @param search - Search by branch `name` or `id`. You can specify partial `name` or `id` values to filter results.

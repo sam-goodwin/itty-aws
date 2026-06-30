@@ -8,18 +8,18 @@ export const EndpointsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    query: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    query: Schema.optional(Schema.Unknown),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-    cache_age_seconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    data_freshness_seconds: Schema.optional(Schema.NullOr(Schema.Number)),
     is_active: Schema.optional(Schema.NullOr(Schema.Boolean)),
     is_materialized: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    sync_frequency: Schema.optional(Schema.NullOr(Schema.String)),
     derived_from_insight: Schema.optional(Schema.NullOr(Schema.String)),
     version: Schema.optional(Schema.NullOr(Schema.Number)),
     bucket_overrides: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
     ),
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    tags: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -37,7 +37,7 @@ export const EndpointsPartialUpdateOutput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
     query: Schema.optional(Schema.Unknown),
     is_active: Schema.optional(Schema.Boolean),
-    cache_age_seconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    data_freshness_seconds: Schema.optional(Schema.Number),
     endpoint_path: Schema.optional(Schema.String),
     url: Schema.optional(Schema.NullOr(Schema.String)),
     ui_url: Schema.optional(Schema.NullOr(Schema.String)),
@@ -74,7 +74,6 @@ export const EndpointsPartialUpdateOutput =
         reason: Schema.optional(Schema.NullOr(Schema.String)),
         last_materialized_at: Schema.optional(Schema.NullOr(Schema.String)),
         error: Schema.optional(Schema.String),
-        sync_frequency: Schema.optional(Schema.NullOr(Schema.String)),
         saved_query_id: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
@@ -89,6 +88,7 @@ export const EndpointsPartialUpdateOutput =
         }),
       ),
     ),
+    tags: Schema.optional(Schema.Array(Schema.String)),
   });
 export type EndpointsPartialUpdateOutput =
   typeof EndpointsPartialUpdateOutput.Type;

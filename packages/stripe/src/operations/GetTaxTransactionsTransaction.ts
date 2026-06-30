@@ -75,8 +75,10 @@ export const GetTaxTransactionsTransactionOutput =
             "et_tin",
             "eu_oss_vat",
             "eu_vat",
+            "fo_vat",
             "gb_vat",
             "ge_vat",
+            "gi_tin",
             "gn_nif",
             "hk_br",
             "hr_oib",
@@ -85,6 +87,7 @@ export const GetTaxTransactionsTransactionOutput =
             "il_vat",
             "in_gst",
             "is_vat",
+            "it_cf",
             "jp_cn",
             "jp_rn",
             "jp_trn",
@@ -115,6 +118,7 @@ export const GetTaxTransactionsTransactionOutput =
             "pe_ruc",
             "ph_tin",
             "pl_nip",
+            "py_ruc",
             "ro_tin",
             "rs_pib",
             "ru_inn",
@@ -198,7 +202,7 @@ export type GetTaxTransactionsTransactionOutput =
 
 // The operation
 /**
- * Retrieve a transaction
+ * Retrieve a Transaction
  *
  * <p>Retrieves a Tax <code>Transaction</code> object.</p>
  *

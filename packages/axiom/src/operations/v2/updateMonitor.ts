@@ -39,6 +39,7 @@ export const UpdateMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   triggerAfterNPositiveResults: Schema.optional(Schema.Number),
   triggerFromNRuns: Schema.optional(Schema.Number),
   type: Schema.Literals(["Threshold", "MatchEvent", "AnomalyDetection"]),
+  updatedAt: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "PUT", path: "/v2/monitors/{id}" }));
 export type UpdateMonitorInput = typeof UpdateMonitorInput.Type;
 
@@ -77,6 +78,7 @@ export const UpdateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   triggerAfterNPositiveResults: Schema.optional(Schema.Number),
   triggerFromNRuns: Schema.optional(Schema.Number),
   type: Schema.Literals(["Threshold", "MatchEvent", "AnomalyDetection"]),
+  updatedAt: Schema.optional(Schema.String),
   id: Schema.String,
 });
 export type UpdateMonitorOutput = typeof UpdateMonitorOutput.Type;

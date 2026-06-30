@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsViewsRetrieveInput =
@@ -11,7 +10,7 @@ export const ConversationsViewsRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/conversations/views/{short_id}/",
+      path: "/api/projects/{project_id}/conversations/views/{short_id}/",
     }),
   );
 export type ConversationsViewsRetrieveInput =
@@ -55,6 +54,5 @@ export const conversationsViewsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ConversationsViewsRetrieveInput,
     outputSchema: ConversationsViewsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

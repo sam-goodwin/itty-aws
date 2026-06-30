@@ -9,7 +9,7 @@ export const DirectoriesControllerListInput =
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
     search: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),

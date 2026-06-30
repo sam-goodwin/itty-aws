@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const GetNeonAuthPluginConfigsInput =
@@ -40,7 +40,6 @@ export const GetNeonAuthPluginConfigsOutput =
       Schema.Struct({
         enabled: Schema.Boolean,
         otp_expires_in: Schema.optional(Schema.Number),
-        allowed_attempts: Schema.optional(Schema.Number),
       }),
     ),
     email_provider: Schema.optional(Schema.Unknown),
@@ -61,7 +60,7 @@ export const GetNeonAuthPluginConfigsOutput =
           id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
           type: Schema.Literals(["standard", "shared"]),
           client_id: Schema.optional(Schema.String),
-          client_secret: Schema.optional(SensitiveString),
+          client_secret: Schema.optional(SensitiveOutputString),
         }),
       ),
     ),
@@ -72,7 +71,7 @@ export type GetNeonAuthPluginConfigsOutput =
 
 // The operation
 /**
- * Get all plugin configurations
+ * Retrieve Neon Auth plugin configurations
  *
  * Returns all plugin configurations for Neon Auth in a single response.
  * This endpoint aggregates organization, email provider, email and password,

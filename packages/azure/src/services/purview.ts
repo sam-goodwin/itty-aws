@@ -11,6 +11,9 @@ import * as T from "../traits.ts";
 // Input Schema
 export const AccountsAddRootCollectionAdminInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     objectId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -33,6 +36,11 @@ export type AccountsAddRootCollectionAdminOutput =
  * Add the administrator for root collection.
  *
  * Add the administrator for root collection associated with this account.
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
+ * @param api-version - The api version to use.
  */
 export const AccountsAddRootCollectionAdmin =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -42,6 +50,7 @@ export const AccountsAddRootCollectionAdmin =
 // Input Schema
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
@@ -69,6 +78,9 @@ export type AccountsCheckNameAvailabilityOutput =
  * Checks the account name availability.
  *
  * Checks if account name is available.
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param api-version - The api version to use.
  */
 export const AccountsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -78,6 +90,9 @@ export const AccountsCheckNameAvailability =
 // Input Schema
 export const AccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         accountStatus: Schema.optional(
@@ -289,6 +304,11 @@ export type AccountsCreateOrUpdateOutput =
  * Create or update an account resource
  *
  * Creates or updates an account
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
+ * @param api-version - The api version to use.
  */
 export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -297,9 +317,11 @@ export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
@@ -317,15 +339,22 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
  * Deletes the account resource.
  *
  * Deletes an account resource
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
+ * @param api-version - The api version to use.
  */
 export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
@@ -381,6 +410,11 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
  * Gets the account resource.
  *
  * Get an account
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
+ * @param api-version - The api version to use.
  */
 export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
@@ -389,6 +423,8 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -466,6 +502,9 @@ export type AccountsListByResourceGroupOutput =
  *
  * List accounts in ResourceGroup
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - The api version to use.
  * @param $skipToken - The skip token.
  */
 export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -477,6 +516,7 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -554,6 +594,8 @@ export type AccountsListBySubscriptionOutput =
  *
  * List accounts in Subscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param api-version - The api version to use.
  * @param $skipToken - The skip token.
  */
 export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -563,9 +605,11 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/listkeys",
@@ -588,6 +632,11 @@ export type AccountsListKeysOutput = typeof AccountsListKeysOutput.Type;
  * Lists the keys asynchronous.
  *
  * List the authorization keys associated with this account.
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
+ * @param api-version - The api version to use.
  */
 export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsListKeysInput,
@@ -595,6 +644,9 @@ export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   identity: Schema.optional(
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
@@ -779,6 +831,11 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
  * Patches the account resource.
  *
  * Updates an account
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
+ * @param api-version - The api version to use.
  */
 export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
@@ -820,6 +877,7 @@ export type DefaultAccountsGetOutput = typeof DefaultAccountsGetOutput.Type;
  * @param scopeTenantId - The tenant ID.
  * @param scopeType - The scope for the default account.
  * @param scope - The Id of the scope object, for example if the scope is "Subscription" then it is the ID of that subscription.
+ * @param api-version - The api version to use.
  */
 export const DefaultAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DefaultAccountsGetInput,
@@ -853,6 +911,7 @@ export type DefaultAccountsRemoveOutput =
  * @param scopeTenantId - The tenant ID.
  * @param scopeType - The scope for the default account.
  * @param scope - The Id of the scope object, for example if the scope is "Subscription" then it is the ID of that subscription.
+ * @param api-version - The api version to use.
  */
 export const DefaultAccountsRemove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -893,6 +952,8 @@ export type DefaultAccountsSetOutput = typeof DefaultAccountsSetOutput.Type;
 // The operation
 /**
  * Sets the default account for the scope.
+ *
+ * @param api-version - The api version to use.
  */
 export const DefaultAccountsSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DefaultAccountsSetInput,
@@ -901,6 +962,9 @@ export const DefaultAccountsSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FeaturesAccountGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     features: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -925,6 +989,11 @@ Status of enabled features will be true. Status of disabled features will be fal
 Features that don't exist will be excluded from the results.
  *
  * Gets details from a list of feature names.
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
+ * @param api-version - The api version to use.
  */
 export const FeaturesAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesAccountGetInput,
@@ -933,6 +1002,7 @@ export const FeaturesAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FeaturesSubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locations: Schema.String.pipe(T.PathParam()),
     features: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -961,7 +1031,9 @@ Features that don't exist will be excluded from the results.
  *
  * Gets details from a list of feature names.
  *
+ * @param subscriptionId - The subscription identifier
  * @param locations - Location of feature.
+ * @param api-version - The api version to use.
  */
 export const FeaturesSubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -972,6 +1044,9 @@ export const FeaturesSubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const KafkaConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     kafkaConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1054,7 +1129,11 @@ export type KafkaConfigurationsCreateOrUpdateOutput =
  *
  * Create or update Kafka Configuration
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
  * @param kafkaConfigurationName - The kafka configuration name.
+ * @param api-version - The api version to use.
  */
 export const KafkaConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1064,6 +1143,9 @@ export const KafkaConfigurationsCreateOrUpdate =
 // Input Schema
 export const KafkaConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     kafkaConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1087,7 +1169,11 @@ export type KafkaConfigurationsDeleteOutput =
  *
  * Deletes a KafkaConfiguration resource.
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
  * @param kafkaConfigurationName - Name of kafka configuration.
+ * @param api-version - The api version to use.
  */
 export const KafkaConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1098,6 +1184,9 @@ export const KafkaConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const KafkaConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     kafkaConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1139,7 +1228,11 @@ export type KafkaConfigurationsGetOutput =
  *
  * Gets the kafka configuration for the account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
  * @param kafkaConfigurationName - Name of kafka configuration.
+ * @param api-version - The api version to use.
  */
 export const KafkaConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1150,6 +1243,9 @@ export const KafkaConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const KafkaConfigurationsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1206,6 +1302,10 @@ export type KafkaConfigurationsListByAccountOutput =
  *
  * Lists the Kafka configurations in the Account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
+ * @param api-version - The api version to use.
  * @param $skipToken - The skip token.
  */
 export const KafkaConfigurationsListByAccount =
@@ -1302,6 +1402,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  * Lists the available operations
  *
  * List of available operations
+ *
+ * @param api-version - The api version to use.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -1310,6 +1412,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1393,7 +1498,11 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  *
  * Create or update a private endpoint connection
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
+ * @param api-version - The api version to use.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1403,6 +1512,9 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1426,7 +1538,11 @@ export type PrivateEndpointConnectionsDeleteOutput =
  *
  * Delete a private endpoint connection
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
+ * @param api-version - The api version to use.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1436,6 +1552,9 @@ export const PrivateEndpointConnectionsDelete =
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1477,7 +1596,11 @@ export type PrivateEndpointConnectionsGetOutput =
  *
  * Get a private endpoint connection
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
+ * @param api-version - The api version to use.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1487,6 +1610,9 @@ export const PrivateEndpointConnectionsGet =
 // Input Schema
 export const PrivateEndpointConnectionsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1543,6 +1669,10 @@ export type PrivateEndpointConnectionsListByAccountOutput =
  *
  * Get private endpoint connections for account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
+ * @param api-version - The api version to use.
  * @param $skipToken - The skip token.
  */
 export const PrivateEndpointConnectionsListByAccount =
@@ -1553,6 +1683,9 @@ export const PrivateEndpointConnectionsListByAccount =
 // Input Schema
 export const PrivateLinkResourcesGetByGroupIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1587,7 +1720,11 @@ export type PrivateLinkResourcesGetByGroupIdOutput =
  *
  * Gets a privately linkable resources for an account with given group identifier
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
  * @param groupId - The group identifier.
+ * @param api-version - The api version to use.
  */
 export const PrivateLinkResourcesGetByGroupId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1596,7 +1733,11 @@ export const PrivateLinkResourcesGetByGroupId =
   }));
 // Input Schema
 export const PrivateLinkResourcesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateLinkResources",
@@ -1633,6 +1774,11 @@ export type PrivateLinkResourcesListByAccountOutput =
  * Gets a list of privately linkable resources for an account.
  *
  * Gets a list of privately linkable resources for an account
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the account.
+ * @param api-version - The api version to use.
  */
 export const PrivateLinkResourcesListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1641,6 +1787,7 @@ export const PrivateLinkResourcesListByAccount =
   }));
 // Input Schema
 export const UsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
 }).pipe(
@@ -1680,7 +1827,9 @@ export type UsagesGetOutput = typeof UsagesGetOutput.Type;
  *
  * Get the usage quota configuration
  *
+ * @param subscriptionId - The subscription identifier
  * @param location - The region.
+ * @param api-version - The api version to use.
  */
 export const UsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsagesGetInput,

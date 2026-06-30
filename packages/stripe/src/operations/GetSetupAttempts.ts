@@ -70,6 +70,7 @@ export const GetSetupAttemptsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               iin: Schema.optional(Schema.NullOr(Schema.String)),
               issuer: Schema.optional(Schema.NullOr(Schema.String)),
               last4: Schema.NullOr(Schema.String),
+              moto: Schema.optional(Schema.Boolean),
               network: Schema.NullOr(Schema.String),
               three_d_secure: Schema.Unknown,
               wallet: Schema.Unknown,
@@ -151,7 +152,13 @@ export const GetSetupAttemptsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           nz_bank_account: Schema.optional(Schema.Struct({})),
           paypal: Schema.optional(Schema.Struct({})),
           payto: Schema.optional(Schema.Struct({})),
+          pix: Schema.optional(
+            Schema.Struct({
+              fingerprint: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
           revolut_pay: Schema.optional(Schema.Struct({})),
+          satispay: Schema.optional(Schema.Struct({})),
           sepa_debit: Schema.optional(Schema.Struct({})),
           sofort: Schema.optional(
             Schema.Struct({
@@ -167,6 +174,7 @@ export const GetSetupAttemptsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               verified_name: Schema.NullOr(Schema.String),
             }),
           ),
+          twint: Schema.optional(Schema.Struct({})),
           type: Schema.String,
           upi: Schema.optional(Schema.Struct({})),
           us_bank_account: Schema.optional(Schema.Struct({})),

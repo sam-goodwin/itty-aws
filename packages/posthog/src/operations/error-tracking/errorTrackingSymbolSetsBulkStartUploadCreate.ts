@@ -7,16 +7,19 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const ErrorTrackingSymbolSetsBulkStartUploadCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.optional(Schema.String),
-    ref: Schema.optional(Schema.String),
-    team_id: Schema.optional(Schema.Number),
-    created_at: Schema.optional(Schema.String),
-    last_used: Schema.optional(Schema.NullOr(Schema.String)),
-    storage_ptr: Schema.optional(Schema.NullOr(Schema.String)),
-    failure_reason: Schema.optional(Schema.NullOr(Schema.String)),
-    release: Schema.optional(
-      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+    chunk_ids: Schema.optional(Schema.Array(Schema.String)),
+    release_id: Schema.optional(Schema.NullOr(Schema.String)),
+    symbol_sets: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          chunk_id: Schema.String,
+          release_id: Schema.optional(Schema.NullOr(Schema.String)),
+          content_hash: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
     ),
+    force: Schema.optional(Schema.Boolean),
+    skip_on_conflict: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",

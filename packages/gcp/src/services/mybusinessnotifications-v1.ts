@@ -23,10 +23,6 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface NotificationSetting {
-  /** Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`. */
-  name?: string;
-  /** Optional. The Google Pub/Sub topic that will receive notifications when locations managed by this account are updated. If unset, no notifications will be posted. The account mybusiness-api-pubsub@system.gserviceaccount.com must have at least Publish permissions on the Pub/Sub topic. */
-  pubsubTopic?: string;
   /** The types of notifications that will be sent to the Pub/Sub topic. To stop receiving notifications entirely, use NotificationSettings.UpdateNotificationSetting with an empty notification_types or set the pubsub_topic to an empty string. */
   notificationTypes?: ReadonlyArray<
     | "NOTIFICATION_TYPE_UNSPECIFIED"
@@ -43,13 +39,17 @@ export interface NotificationSetting {
     | "VOICE_OF_MERCHANT_UPDATED"
     | (string & {})
   >;
+  /** Optional. The Google Pub/Sub topic that will receive notifications when locations managed by this account are updated. If unset, no notifications will be posted. The account mybusiness-api-pubsub@system.gserviceaccount.com must have at least Publish permissions on the Pub/Sub topic. */
+  pubsubTopic?: string;
+  /** Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`. */
+  name?: string;
 }
 
 export const NotificationSetting: Schema.Schema<NotificationSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    pubsubTopic: Schema.optional(Schema.String),
     notificationTypes: Schema.optional(Schema.Array(Schema.String)),
+    pubsubTopic: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
   }).annotate({ identifier: "NotificationSetting" });
 
 // ==========================================================================
@@ -141,18 +141,18 @@ export const getNotificationSettingAccounts: API.OperationMethod<
 }));
 
 export interface UpdateNotificationSettingAccountsRequest {
-  /** Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`. */
-  name: string;
   /** Required. The specific fields that should be updated. The only editable field is notification_setting. */
   updateMask?: string;
+  /** Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`. */
+  name: string;
   /** Request body */
   body?: NotificationSetting;
 }
 
 export const UpdateNotificationSettingAccountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(NotificationSetting).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),

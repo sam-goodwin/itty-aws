@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation workflowRevisionGetWorkflowRevisionsFromGitRef($appId: ID!, $gitRef: String!) {\n  workflowRevision {\n    getWorkflowRevisionsFromGitRef(appId: $appId, gitRef: $gitRef) {\n      blobSha\n      commitSha\n      createdAt\n      id\n      workflow {\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        createdAt\n        fileName\n        id\n        name\n        updatedAt\n      }\n      yamlConfig\n    }\n  }\n}";
+  "mutation workflowRevisionGetWorkflowRevisionsFromGitRef($appId: ID!, $gitRef: String!) {\n  workflowRevision {\n    getWorkflowRevisionsFromGitRef(appId: $appId, gitRef: $gitRef) {\n      blobSha\n      commitSha\n      createdAt\n      id\n      workflow {\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        createdAt\n        fileName\n        id\n        name\n        updatedAt\n      }\n      yamlConfig\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const WorkflowRevisionGetWorkflowRevisionsFromGitRefInput =
@@ -31,6 +31,11 @@ export const WorkflowRevisionGetWorkflowRevisionsFromGitRefOutput =
       id: Schema.String,
       workflow: Schema.Struct({
         app: Schema.Struct({
+          appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+            "HAS_WORKFLOWS_IS_CONNECTED",
+            "HAS_WORKFLOWS_MISSING_CONNECTION",
+            "NO_APP_STORE_CONNECT_WORKFLOWS",
+          ]),
           appStoreUrl: Schema.NullOr(Schema.String),
           assetLimitPerUpdateGroup: Schema.Number,
           buildProfiles: Schema.Array(Schema.String),

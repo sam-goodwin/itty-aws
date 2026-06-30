@@ -37,43 +37,43 @@ export const Empty: Schema.Schema<Empty> =
   });
 
 export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
 }
 
 export const Status: Schema.Schema<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
     message: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Status" });
 
 export interface Operation {
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
 }
 
 export const Operation: Schema.Schema<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    done: Schema.optional(Schema.Boolean),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    error: Schema.optional(Status),
     name: Schema.optional(Schema.String),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
@@ -147,26 +147,26 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListOperationsRequest {
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
   /** The standard list page token. */
   pageToken?: string;
-  /** The standard list page size. */
-  pageSize?: number;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
   /** The standard list filter. */
   filter?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list page size. */
+  pageSize?: number;
 }
 
 export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("returnPartialSuccess"),
   ),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  name: Schema.String.pipe(T.HttpPath("name")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
@@ -192,41 +192,6 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface DeleteOperationsRequest {
-  /** The name of the operation resource to be deleted. */
-  name: string;
-}
-
-export const DeleteOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteOperationsRequest>;
-
-export type DeleteOperationsResponse = Empty;
-export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
-export const deleteOperations: API.OperationMethod<
-  DeleteOperationsRequest,
-  DeleteOperationsResponse,
-  DeleteOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteOperationsRequest,
-  output: DeleteOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelOperationsRequest {
@@ -264,5 +229,40 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteOperationsRequest {
+  /** The name of the operation resource to be deleted. */
+  name: string;
+}
+
+export const DeleteOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteOperationsRequest>;
+
+export type DeleteOperationsResponse = Empty;
+export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
+export const deleteOperations: API.OperationMethod<
+  DeleteOperationsRequest,
+  DeleteOperationsResponse,
+  DeleteOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteOperationsRequest,
+  output: DeleteOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

@@ -898,6 +898,17 @@ paths:
           description: "Query param: Skip DNS resolution lookups for faster response."
           schema:
             type: boolean
+        - name: skip_ranking
+          in: query
+          required: false
+          description: "Query param: Skip the domain ranking lookup for faster responses.
+            Defaults to `false` (ranking is included). Set to `true` to opt out
+            — primarily used by callers like Cloudflare Radar that need to avoid
+            a circular dependency when building the domain details page. Note:
+            the bulk endpoint (`/intel/domain/bulk`) uses opposite defaults —
+            see `include_ranking` there."
+          schema:
+            type: boolean
       responses:
         "200":
           description: Success
@@ -999,7 +1010,14 @@ paths:
   /accounts/{account_id}/intel/domain/bulk:
     get:
       operationId: getDomainBulk
-      description: "Same as summary.  @example ```ts const bulks = await
+      description: "Returns security details and statistics about multiple domains in
+        a single request.    Behavior change — domain ranking is becoming
+        opt-in.  This endpoint previously included domain ranking data in every
+        response and accepted a `skip_ranking=true` query parameter to opt out.
+        That parameter is being deprecated and ranking will no longer be
+        returned by default. Callers that want ranking data must pass
+        `include_ranking=true`. The `skip_ranking` parameter will be silently
+        ignored once the change ships.  @example ```ts const bulks = await
         client.intel.domains.bulks.get({ account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
@@ -1018,6 +1036,27 @@ paths:
             type: array
             items:
               type: string
+        - name: include_ranking
+          in: query
+          required: false
+          description: "Query param: Whether to include domain ranking data in the
+            response. Defaults to `false` — ranking lookups are expensive at
+            bulk scale and most callers do not need them. Set to `true` to opt
+            in. This parameter replaces the deprecated `skip_ranking` (see
+            below)."
+          schema:
+            type: boolean
+        - name: skip_ranking
+          in: query
+          required: false
+          description: "Query param:  Deprecated.  Previously controlled whether the
+            ranking lookup was skipped (defaulted to `false`, meaning ranking
+            ran). The endpoint's default behavior is being flipped — ranking is
+            now opt-in via `include_ranking=true` — and this parameter will be
+            silently ignored. Remove it from your callers and use
+            `include_ranking` instead."
+          schema:
+            type: boolean
       responses:
         "200":
           description: Success

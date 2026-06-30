@@ -20,36 +20,35 @@ export type TaskAutomationsListInput = typeof TaskAutomationsListInput.Type;
 // Output Schema
 export const TaskAutomationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.optional(Schema.Number),
+    count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          prompt: Schema.optional(Schema.String),
-          repository: Schema.optional(Schema.String),
-          github_integration: Schema.optional(Schema.NullOr(Schema.Number)),
-          cron_expression: Schema.optional(Schema.String),
-          timezone: Schema.optional(Schema.String),
-          template_id: Schema.optional(Schema.NullOr(Schema.String)),
-          enabled: Schema.optional(Schema.Boolean),
-          last_run_at: Schema.optional(Schema.NullOr(Schema.String)),
-          last_run_status: Schema.optional(Schema.NullOr(Schema.String)),
-          last_task_id: Schema.optional(Schema.NullOr(Schema.String)),
-          last_task_run_id: Schema.optional(Schema.NullOr(Schema.String)),
-          last_error: Schema.optional(Schema.NullOr(Schema.String)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+    results: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
+        prompt: Schema.String,
+        repository: Schema.NullOr(Schema.String),
+        github_integration: Schema.NullOr(Schema.Number),
+        cron_expression: Schema.String,
+        timezone: Schema.String,
+        template_id: Schema.NullOr(Schema.String),
+        enabled: Schema.Boolean,
+        last_run_at: Schema.NullOr(Schema.String),
+        last_run_status: Schema.NullOr(Schema.String),
+        last_task_id: Schema.String,
+        last_task_run_id: Schema.NullOr(Schema.String),
+        last_error: Schema.NullOr(Schema.String),
+        created_at: Schema.String,
+        updated_at: Schema.String,
+      }),
     ),
   });
 export type TaskAutomationsListOutput = typeof TaskAutomationsListOutput.Type;
 
 // The operation
 /**
+ * API for managing scheduled task automations.
  *
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.

@@ -9,6 +9,19 @@ export const ErrorTrackingSymbolSetsListInput =
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
+    order_by: Schema.optional(
+      Schema.Literals([
+        "created_at",
+        "-created_at",
+        "ref",
+        "-ref",
+        "last_used",
+        "-last_used",
+      ]),
+    ),
+    ref: Schema.optional(Schema.String),
+    search: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.Literals(["all", "valid", "invalid"])),
   }).pipe(
     T.Http({
       method: "GET",
@@ -32,11 +45,9 @@ export const ErrorTrackingSymbolSetsListOutput =
           team_id: Schema.optional(Schema.Number),
           created_at: Schema.optional(Schema.String),
           last_used: Schema.optional(Schema.NullOr(Schema.String)),
-          storage_ptr: Schema.optional(Schema.NullOr(Schema.String)),
           failure_reason: Schema.optional(Schema.NullOr(Schema.String)),
-          release: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
+          has_uploaded_file: Schema.optional(Schema.Boolean),
+          release: Schema.optional(Schema.Unknown),
         }),
       ),
     ),
@@ -49,7 +60,22 @@ export type ErrorTrackingSymbolSetsListOutput =
  *
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
+ * @param order_by - Sort order for symbol sets. Prefix with `-` for descending order.
+
+* `created_at` - created_at
+* `-created_at` - -created_at
+* `ref` - ref
+* `-ref` - -ref
+* `last_used` - last_used
+* `-last_used` - -last_used
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+ * @param ref - Exact symbol set reference to filter by.
+ * @param search - Case-insensitive substring search across reference, release version, release project, and release commit SHA.
+ * @param status - Upload status filter: `valid` has an uploaded file, `invalid` is missing a file, `all` returns both.
+
+* `all` - all
+* `valid` - valid
+* `invalid` - invalid
  */
 export const errorTrackingSymbolSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

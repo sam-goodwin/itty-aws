@@ -1,0 +1,58 @@
+import * as Schema from "effect/Schema";
+import { API } from "../../client.ts";
+import * as T from "../../traits.ts";
+
+// Input Schema
+export const ErrorTrackingExternalReferencesCreateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project_id: Schema.String.pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    integration: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        kind: Schema.optional(Schema.String),
+        display_name: Schema.optional(Schema.String),
+      }),
+    ),
+    integration_id: Schema.optional(Schema.Number),
+    config: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    issue: Schema.optional(Schema.String),
+    external_url: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/projects/{project_id}/error_tracking/external_references/",
+    }),
+  );
+export type ErrorTrackingExternalReferencesCreateInput =
+  typeof ErrorTrackingExternalReferencesCreateInput.Type;
+
+// Output Schema
+export const ErrorTrackingExternalReferencesCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    integration: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        kind: Schema.optional(Schema.String),
+        display_name: Schema.optional(Schema.String),
+      }),
+    ),
+    integration_id: Schema.optional(Schema.Number),
+    config: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    issue: Schema.optional(Schema.String),
+    external_url: Schema.optional(Schema.String),
+  });
+export type ErrorTrackingExternalReferencesCreateOutput =
+  typeof ErrorTrackingExternalReferencesCreateOutput.Type;
+
+// The operation
+/**
+ *
+ * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+ */
+export const errorTrackingExternalReferencesCreate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ErrorTrackingExternalReferencesCreateInput,
+    outputSchema: ErrorTrackingExternalReferencesCreateOutput,
+  }));

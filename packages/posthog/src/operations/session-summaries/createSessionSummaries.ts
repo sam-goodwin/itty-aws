@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const CreateSessionSummariesInput =
@@ -12,7 +11,7 @@ export const CreateSessionSummariesInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/session_summaries/create_session_summaries/",
+      path: "/api/projects/{project_id}/session_summaries/create_session_summaries/",
     }),
   );
 export type CreateSessionSummariesInput =
@@ -37,6 +36,5 @@ export const createSessionSummaries = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateSessionSummariesInput,
     outputSchema: CreateSessionSummariesOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

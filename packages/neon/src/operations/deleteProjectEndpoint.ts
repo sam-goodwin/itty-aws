@@ -128,14 +128,12 @@ export type DeleteProjectEndpointOutput =
 /**
  * Delete compute endpoint
  *
- * Delete the specified compute endpoint.
+ * Deletes the specified compute endpoint.
  * A compute endpoint is a Neon compute instance.
  * Deleting a compute endpoint drops existing network connections to the compute endpoint.
- * The deletion is completed when last operation in the chain finishes successfully.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain an `endpoint_id` by listing your project's compute endpoints.
+ * The deletion is completed when the last operation in the chain finishes successfully.
  * An `endpoint_id` has an `ep-` prefix.
- * For information about compute endpoints, see [Manage computes](https://neon.tech/docs/manage/endpoints/).
+ * For information about compute endpoints, see [Manage computes](https://neon.com/docs/manage/endpoints/).
  *
  * @param project_id - The Neon project ID
  * @param endpoint_id - The endpoint ID

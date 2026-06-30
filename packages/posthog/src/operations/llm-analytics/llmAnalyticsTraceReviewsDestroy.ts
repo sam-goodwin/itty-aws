@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsTraceReviewsDestroyInput =
@@ -11,7 +10,7 @@ export const LlmAnalyticsTraceReviewsDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/llm_analytics/trace_reviews/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/trace_reviews/{id}/",
     }),
   );
 export type LlmAnalyticsTraceReviewsDestroyInput =
@@ -33,5 +32,4 @@ export const llmAnalyticsTraceReviewsDestroy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsTraceReviewsDestroyInput,
     outputSchema: LlmAnalyticsTraceReviewsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

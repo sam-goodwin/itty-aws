@@ -43,7 +43,9 @@ export const GetKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "node_ttl_off",
   ]),
   replication_durability_constraints: Schema.Struct({
-    strategy: Schema.optional(Schema.Literals(["available", "lag", "always"])),
+    strategy: Schema.optional(
+      Schema.NullOr(Schema.Literals(["available", "lag", "always"])),
+    ),
   }),
   vreplication_flags: Schema.Struct({
     optimize_inserts: Schema.Boolean,

@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingGroupingRulesCreateInput =
@@ -13,19 +12,12 @@ export const ErrorTrackingGroupingRulesCreateInput =
         values: Schema.optional(Schema.Array(Schema.Unknown)),
       }),
     ),
-    assignee: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          type: Schema.optional(Schema.Literals(["user", "role"])),
-          id: Schema.optional(Schema.Unknown),
-        }),
-      ),
-    ),
+    assignee: Schema.optional(Schema.Unknown),
     description: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/error_tracking/grouping_rules/",
+      path: "/api/projects/{project_id}/error_tracking/grouping_rules/",
     }),
   );
 export type ErrorTrackingGroupingRulesCreateInput =
@@ -49,7 +41,7 @@ export const ErrorTrackingGroupingRulesCreateOutput =
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
     order_key: Schema.optional(Schema.Number),
-    disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    disabled_data: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
   });
@@ -65,5 +57,4 @@ export const errorTrackingGroupingRulesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingGroupingRulesCreateInput,
     outputSchema: ErrorTrackingGroupingRulesCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

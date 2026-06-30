@@ -2604,6 +2604,7 @@ export const GetThreatEventRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
 export interface GetThreatEventResponse {
   attacker: string;
   attackerCountry: string;
+  attackerCountryAlpha3: string;
   category: string;
   datasetId: string;
   date: string;
@@ -2624,6 +2625,7 @@ export interface GetThreatEventResponse {
   referencesIds: number[];
   tags: string[];
   targetCountry: string;
+  targetCountryAlpha3: string;
   targetIndustry: string;
   tlp: string;
   uuid: string;
@@ -2636,6 +2638,7 @@ export const GetThreatEventResponse =
     Schema.Struct({
       attacker: Schema.String,
       attackerCountry: Schema.String,
+      attackerCountryAlpha3: Schema.String,
       category: Schema.String,
       datasetId: Schema.String,
       date: Schema.String,
@@ -2656,6 +2659,7 @@ export const GetThreatEventResponse =
       referencesIds: Schema.Array(Schema.Number),
       tags: Schema.Array(Schema.String),
       targetCountry: Schema.String,
+      targetCountryAlpha3: Schema.String,
       targetIndustry: Schema.String,
       tlp: Schema.String,
       uuid: Schema.String,
@@ -2786,6 +2790,7 @@ export const ListThreatEventsRequest =
 export type ListThreatEventsResponse = {
   attacker: string;
   attackerCountry: string;
+  attackerCountryAlpha3: string;
   category: string;
   datasetId: string;
   date: string;
@@ -2806,6 +2811,7 @@ export type ListThreatEventsResponse = {
   referencesIds: number[];
   tags: string[];
   targetCountry: string;
+  targetCountryAlpha3: string;
   targetIndustry: string;
   tlp: string;
   uuid: string;
@@ -2819,6 +2825,7 @@ export const ListThreatEventsResponse =
       Schema.Struct({
         attacker: Schema.String,
         attackerCountry: Schema.String,
+        attackerCountryAlpha3: Schema.String,
         category: Schema.String,
         datasetId: Schema.String,
         date: Schema.String,
@@ -2839,6 +2846,7 @@ export const ListThreatEventsResponse =
         referencesIds: Schema.Array(Schema.Number),
         tags: Schema.Array(Schema.String),
         targetCountry: Schema.String,
+        targetCountryAlpha3: Schema.String,
         targetIndustry: Schema.String,
         tlp: Schema.String,
         uuid: Schema.String,
@@ -2941,6 +2949,7 @@ export const CreateThreatEventRequest =
 export interface CreateThreatEventResponse {
   attacker: string;
   attackerCountry: string;
+  attackerCountryAlpha3: string;
   category: string;
   datasetId: string;
   date: string;
@@ -2961,6 +2970,7 @@ export interface CreateThreatEventResponse {
   referencesIds: number[];
   tags: string[];
   targetCountry: string;
+  targetCountryAlpha3: string;
   targetIndustry: string;
   tlp: string;
   uuid: string;
@@ -2973,6 +2983,7 @@ export const CreateThreatEventResponse =
     Schema.Struct({
       attacker: Schema.String,
       attackerCountry: Schema.String,
+      attackerCountryAlpha3: Schema.String,
       category: Schema.String,
       datasetId: Schema.String,
       date: Schema.String,
@@ -2993,6 +3004,7 @@ export const CreateThreatEventResponse =
       referencesIds: Schema.Array(Schema.Number),
       tags: Schema.Array(Schema.String),
       targetCountry: Schema.String,
+      targetCountryAlpha3: Schema.String,
       targetIndustry: Schema.String,
       tlp: Schema.String,
       uuid: Schema.String,
@@ -3095,6 +3107,7 @@ export const PatchThreatEventRequest =
 export interface PatchThreatEventResponse {
   attacker: string;
   attackerCountry: string;
+  attackerCountryAlpha3: string;
   category: string;
   datasetId: string;
   date: string;
@@ -3115,6 +3128,7 @@ export interface PatchThreatEventResponse {
   referencesIds: number[];
   tags: string[];
   targetCountry: string;
+  targetCountryAlpha3: string;
   targetIndustry: string;
   tlp: string;
   uuid: string;
@@ -3127,6 +3141,7 @@ export const PatchThreatEventResponse =
     Schema.Struct({
       attacker: Schema.String,
       attackerCountry: Schema.String,
+      attackerCountryAlpha3: Schema.String,
       category: Schema.String,
       datasetId: Schema.String,
       date: Schema.String,
@@ -3147,6 +3162,7 @@ export const PatchThreatEventResponse =
       referencesIds: Schema.Array(Schema.Number),
       tags: Schema.Array(Schema.String),
       targetCountry: Schema.String,
+      targetCountryAlpha3: Schema.String,
       targetIndustry: Schema.String,
       tlp: Schema.String,
       uuid: Schema.String,
@@ -3762,6 +3778,7 @@ export interface GetThreatEventDatasetResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
+  deletedAt?: string | null;
 }
 
 export const GetThreatEventDatasetResponse =
@@ -3770,6 +3787,7 @@ export const GetThreatEventDatasetResponse =
       isPublic: Schema.Boolean,
       name: Schema.String,
       uuid: Schema.String,
+      deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
   ) as unknown as Schema.Schema<GetThreatEventDatasetResponse>;
 
@@ -3787,14 +3805,19 @@ export const getThreatEventDataset: API.OperationMethod<
 }));
 
 export interface ListThreatEventDatasetsRequest {
-  /** Account ID. */
+  /** Path param: Account ID. */
   accountId: string;
+  /** Query param: When true, include soft-deleted datasets in the response. Each item includes a `deletedAt` field (ISO 8601 or null). Default: false. */
+  includeDeleted?: boolean;
 }
 
 export const ListThreatEventDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      includeDeleted: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("includeDeleted"),
+      ),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3807,6 +3830,7 @@ export type ListThreatEventDatasetsResponse = {
   isPublic: boolean;
   name: string;
   uuid: string;
+  deletedAt?: string | null;
 }[];
 
 export const ListThreatEventDatasetsResponse =
@@ -3816,6 +3840,7 @@ export const ListThreatEventDatasetsResponse =
         isPublic: Schema.Boolean,
         name: Schema.String,
         uuid: Schema.String,
+        deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
     ),
   ) as unknown as Schema.Schema<ListThreatEventDatasetsResponse>;
@@ -3860,6 +3885,7 @@ export interface CreateThreatEventDatasetResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
+  deletedAt?: string | null;
 }
 
 export const CreateThreatEventDatasetResponse =
@@ -3868,6 +3894,7 @@ export const CreateThreatEventDatasetResponse =
       isPublic: Schema.Boolean,
       name: Schema.String,
       uuid: Schema.String,
+      deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
   ) as unknown as Schema.Schema<CreateThreatEventDatasetResponse>;
 
@@ -3913,6 +3940,7 @@ export interface PatchThreatEventDatasetResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
+  deletedAt?: string | null;
 }
 
 export const PatchThreatEventDatasetResponse =
@@ -3921,6 +3949,7 @@ export const PatchThreatEventDatasetResponse =
       isPublic: Schema.Boolean,
       name: Schema.String,
       uuid: Schema.String,
+      deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
   ) as unknown as Schema.Schema<PatchThreatEventDatasetResponse>;
 
@@ -4307,8 +4336,14 @@ export interface CreateThreatEventTagRequest {
   value: string;
   /** Body param */
   activeDuration?: string;
-  /** Body param */
+  /** Body param: Actor variety. Allowed values: Activist, Competitor, Customer, Crime Syndicate, Former Employee, Nation State, Organized Crime, Nation State Affiliated, Terrorist, Unaffiliated. */
   actorCategory?: string;
+  /** Body param: Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts. */
+  aliases?: {
+    value: string;
+    confidence?: number | null;
+    tlp?: "red" | "amber" | "green" | "white" | null;
+  }[];
   /** Body param */
   aliasGroupNames?: string[];
   /** Body param */
@@ -4318,14 +4353,24 @@ export interface CreateThreatEventTagRequest {
   /** Body param */
   attributionConfidence?: string;
   /** Body param */
+  attributionConfidenceScore?: number;
+  /** Body param */
   attributionOrganization?: string;
   /** Body param */
   categoryUuid?: string;
+  /** Body param: Date the actor was discovered (ISO YYYY-MM-DD). */
+  dateOfDiscovery?: string;
   /** Body param */
   externalReferenceLinks?: string[];
+  /** Body param: Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts. */
+  internalAliases?: {
+    value: string;
+    confidence?: number | null;
+    tlp?: "red" | "amber" | "green" | "white" | null;
+  }[];
   /** Body param */
   internalDescription?: string;
-  /** Body param */
+  /** Body param: Actor motive. Allowed values: Convenience, Fear, Fun, Financial, Grudge, Ideology, Espionage. */
   motive?: string;
   /** Body param */
   opsecLevel?: string;
@@ -4344,13 +4389,53 @@ export const CreateThreatEventTagRequest =
       value: Schema.String,
       activeDuration: Schema.optional(Schema.String),
       actorCategory: Schema.optional(Schema.String),
+      aliases: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            value: Schema.String,
+            confidence: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            tlp: Schema.optional(
+              Schema.Union([
+                Schema.Literal("red"),
+                Schema.Literal("amber"),
+                Schema.Literal("green"),
+                Schema.Literal("white"),
+                Schema.Null,
+              ]),
+            ),
+          }),
+        ),
+      ),
       aliasGroupNames: Schema.optional(Schema.Array(Schema.String)),
       aliasGroupNamesInternal: Schema.optional(Schema.Array(Schema.String)),
       analyticPriority: Schema.optional(Schema.Number),
       attributionConfidence: Schema.optional(Schema.String),
+      attributionConfidenceScore: Schema.optional(Schema.Number),
       attributionOrganization: Schema.optional(Schema.String),
       categoryUuid: Schema.optional(Schema.String),
+      dateOfDiscovery: Schema.optional(Schema.String),
       externalReferenceLinks: Schema.optional(Schema.Array(Schema.String)),
+      internalAliases: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            value: Schema.String,
+            confidence: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            tlp: Schema.optional(
+              Schema.Union([
+                Schema.Literal("red"),
+                Schema.Literal("amber"),
+                Schema.Literal("green"),
+                Schema.Literal("white"),
+                Schema.Null,
+              ]),
+            ),
+          }),
+        ),
+      ),
       internalDescription: Schema.optional(Schema.String),
       motive: Schema.optional(Schema.String),
       opsecLevel: Schema.optional(Schema.String),
@@ -4370,18 +4455,37 @@ export interface CreateThreatEventTagResponse {
   value: string;
   activeDuration?: string | null;
   actorCategory?: string | null;
+  /** Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts. */
+  aliases?:
+    | {
+        value: string;
+        confidence?: number | null;
+        tlp?: "red" | "amber" | "green" | "white" | null;
+      }[]
+    | null;
   aliasGroupNames?: string[] | null;
   aliasGroupNamesInternal?: string[] | null;
   analyticPriority?: number | null;
   attributionConfidence?: string | null;
+  attributionConfidenceScore?: number | null;
   attributionOrganization?: string | null;
   categoryName?: string | null;
   categoryUuid?: string | null;
+  dateOfDiscovery?: string | null;
   externalReferenceLinks?: string[] | null;
+  /** Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts. */
+  internalAliases?:
+    | {
+        value: string;
+        confidence?: number | null;
+        tlp?: "red" | "amber" | "green" | "white" | null;
+      }[]
+    | null;
   internalDescription?: string | null;
   motive?: string | null;
   opsecLevel?: string | null;
   originCountryISO?: string | null;
+  originCountryISOAlpha3?: string | null;
   priority?: number | null;
   sophisticationLevel?: string | null;
 }
@@ -4397,6 +4501,28 @@ export const CreateThreatEventTagResponse =
       actorCategory: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
+      aliases: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              value: Schema.String,
+              confidence: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              tlp: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("red"),
+                  Schema.Literal("amber"),
+                  Schema.Literal("green"),
+                  Schema.Literal("white"),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
       aliasGroupNames: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
@@ -4409,13 +4535,41 @@ export const CreateThreatEventTagResponse =
       attributionConfidence: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
+      attributionConfidenceScore: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
       attributionOrganization: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
       categoryName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       categoryUuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      dateOfDiscovery: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
       externalReferenceLinks: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      internalAliases: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              value: Schema.String,
+              confidence: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              tlp: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("red"),
+                  Schema.Literal("amber"),
+                  Schema.Literal("green"),
+                  Schema.Literal("white"),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+          ),
+          Schema.Null,
+        ]),
       ),
       internalDescription: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -4423,6 +4577,9 @@ export const CreateThreatEventTagResponse =
       motive: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       opsecLevel: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       originCountryISO: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      originCountryISOAlpha3: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
       priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),

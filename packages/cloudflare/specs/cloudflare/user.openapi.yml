@@ -860,6 +860,98 @@ paths:
                   subscription_id:
                     type: string
                     description: Subscription identifier tag.
+  /user/tenants:
+    get:
+      operationId: listTenants
+      description: Retrieves list of tenants the authenticated user / method has
+        access to.  @example ```ts // Automatically fetches more pages as
+        needed. for await (const organization of client.user.tenants.list()) {
+        // ... } ```
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  create_time:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      flags:
+                        type: object
+                        properties:
+                          account_creation:
+                            type: string
+                          account_deletion:
+                            type: string
+                          account_migration:
+                            type: string
+                          account_mobility:
+                            type: string
+                          sub_org_creation:
+                            type: string
+                        required:
+                          - account_creation
+                          - account_deletion
+                          - account_migration
+                          - account_mobility
+                          - sub_org_creation
+                        description: Enable features for Organizations.
+                      hierarchy_tags:
+                        type: array
+                        items:
+                          type: string
+                        description: Ordered chain of organization tags from the root organization down
+                          to (and including) this organization itself. Root
+                          organizations return a single-element array containing
+                          their own tag; sub-organizations return `[rootTag,
+                          ...intermediateTags, parentTag, selfTag]`. Useful for
+                          constructing authorization scopes that need to cover
+                          every ancestor in the hierarchy.
+                      managed_by:
+                        type: string
+                  name:
+                    type: string
+                  parent:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                      - id
+                      - name
+                  profile:
+                    type: object
+                    properties:
+                      business_address:
+                        type: string
+                      business_email:
+                        type: string
+                      business_name:
+                        type: string
+                      business_phone:
+                        type: string
+                      external_metadata:
+                        type: string
+                    required:
+                      - business_address
+                      - business_email
+                      - business_name
+                      - business_phone
+                      - external_metadata
+                required:
+                  - id
+                  - create_time
+                  - meta
+                  - name
+      x-distilled-pagination-class: OrganizationsSinglePage
   /user/tokens/{tokenId}:
     get:
       operationId: getToken
@@ -1614,6 +1706,23 @@ paths:
                   id:
                     type: string
                     description: Public ID.
+                  category:
+                    type: string
+                    enum:
+                      - developer_platform
+                      - ai_and_machine_learning
+                      - dns_and_zones
+                      - app_security
+                      - rules_and_configuration
+                      - cloudflare_one_and_zero_trust
+                      - analytics_and_logs
+                      - network_services
+                      - media
+                      - email_and_messaging
+                      - cache_and_performance
+                      - account_and_billing
+                      - other
+                    description: Product category that this permission group belongs to.
                   name:
                     type: string
                     description: Permission Group Name
@@ -1656,7 +1765,9 @@ paths:
   /user:
     get:
       operationId: getUser
-      description: User Details  @example ```ts const user = await client.user.get(); ```
+      description: Retrieves detailed information about the currently authenticated
+        user, including email, name, and account memberships.  @example ```ts
+        const user = await client.user.get(); ```
       responses:
         "200":
           description: Success

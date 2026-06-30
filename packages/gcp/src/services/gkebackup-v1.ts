@@ -22,160 +22,44 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Gkebackup_Date {
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
+export interface Expr {
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
 }
 
-export const Gkebackup_Date: Schema.Schema<Gkebackup_Date> =
+export const Expr: Schema.Schema<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    year: Schema.optional(Schema.Number),
-    month: Schema.optional(Schema.Number),
-    day: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Gkebackup_Date" });
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
 
-export interface RestorePlanBinding {
-  /** Output only. The fully qualified name of the RestorePlan bound to this RestoreChannel. `projects/* /locations/* /restorePlans/{restore_plan}` */
-  restorePlan?: string;
-  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a RestorePlanBinding from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform RestorePlanBinding updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlanBinding`, and systems are expected to put that etag in the request to `UpdateRestorePlanBinding` or `DeleteRestorePlanBinding` to ensure that their change will be applied to the same version of the resource. */
-  etag?: string;
-  /** Output only. The fully qualified name of the BackupPlan bound to the specified RestorePlan. `projects/* /locations/* /backukpPlans/{backup_plan}` */
-  backupPlan?: string;
-  /** Identifier. The fully qualified name of the RestorePlanBinding. `projects/* /locations/* /restoreChannels/* /restorePlanBindings/*` */
-  name?: string;
-  /** Output only. Server generated global unique identifier of [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier) */
-  uid?: string;
-  /** Output only. The timestamp when this binding was created. */
-  createTime?: string;
-  /** Output only. The timestamp when this binding was created. */
-  updateTime?: string;
+export interface Binding {
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: ReadonlyArray<string>;
+  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  condition?: Expr;
 }
 
-export const RestorePlanBinding: Schema.Schema<RestorePlanBinding> =
+export const Binding: Schema.Schema<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    restorePlan: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    backupPlan: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RestorePlanBinding" });
-
-export interface ListRestorePlanBindingsResponse {
-  /** A token which may be sent as page_token in a subsequent `ListRestorePlanBindings` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
-  nextPageToken?: string;
-  /** The list of RestorePlanBindings matching the given criteria. */
-  restorePlanBindings?: ReadonlyArray<RestorePlanBinding>;
-  /** Unordered list. Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListRestorePlanBindingsResponse: Schema.Schema<ListRestorePlanBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    restorePlanBindings: Schema.optional(Schema.Array(RestorePlanBinding)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListRestorePlanBindingsResponse" });
-
-export interface NamespacedName {
-  /** Optional. The name of the Kubernetes resource. */
-  name?: string;
-  /** Optional. The Namespace of the Kubernetes resource. */
-  namespace?: string;
-}
-
-export const NamespacedName: Schema.Schema<NamespacedName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    namespace: Schema.optional(Schema.String),
-  }).annotate({ identifier: "NamespacedName" });
-
-export interface GroupKind {
-  /** Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc. */
-  resourceKind?: string;
-  /** Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group. */
-  resourceGroup?: string;
-}
-
-export const GroupKind: Schema.Schema<GroupKind> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceKind: Schema.optional(Schema.String),
-    resourceGroup: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GroupKind" });
-
-export interface ResourceSelector {
-  /** Optional. Selects resources using their Kubernetes GroupKinds. If specified, only resources of provided GroupKind will be selected. */
-  groupKind?: GroupKind;
-  /** Optional. Selects resources using their resource names. If specified, only resources with the provided name will be selected. */
-  name?: string;
-  /** Optional. Selects resources using Kubernetes [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). If specified, a resource will be selected if and only if the resource has all of the provided labels and all the label values match. */
-  labels?: Record<string, string>;
-  /** Optional. Selects resources using their namespaces. This only applies to namespace scoped resources and cannot be used for selecting cluster scoped resources. If specified, only resources in the provided namespace will be selected. If not specified, the filter will apply to both cluster scoped and namespace scoped resources (e.g. name or label). The [Namespace](https://pkg.go.dev/k8s.io/api/core/v1#Namespace) resource itself will be restored if and only if any resources within the namespace are restored. */
-  namespace?: string;
-}
-
-export const ResourceSelector: Schema.Schema<ResourceSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupKind: Schema.optional(GroupKind),
-    name: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    namespace: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ResourceSelector" });
-
-export interface Filter {
-  /** Optional. Selects resources for restoration. If specified, only resources which match `inclusion_filters` will be selected for restoration. A resource will be selected if it matches any `ResourceSelector` of the `inclusion_filters`. */
-  inclusionFilters?: ReadonlyArray<ResourceSelector>;
-  /** Optional. Excludes resources from restoration. If specified, a resource will not be restored if it matches any `ResourceSelector` of the `exclusion_filters`. */
-  exclusionFilters?: ReadonlyArray<ResourceSelector>;
-}
-
-export const Filter: Schema.Schema<Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    inclusionFilters: Schema.optional(Schema.Array(ResourceSelector)),
-    exclusionFilters: Schema.optional(Schema.Array(ResourceSelector)),
-  }).annotate({ identifier: "Filter" });
-
-export interface NamespacedNames {
-  /** Optional. A list of namespaced Kubernetes resources. */
-  namespacedNames?: ReadonlyArray<NamespacedName>;
-}
-
-export const NamespacedNames: Schema.Schema<NamespacedNames> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    namespacedNames: Schema.optional(Schema.Array(NamespacedName)),
-  }).annotate({ identifier: "NamespacedNames" });
-
-export interface ClusterResourceRestoreScope {
-  /** Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message. */
-  selectedGroupKinds?: ReadonlyArray<GroupKind>;
-  /** Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message. */
-  allGroupKinds?: boolean;
-  /** Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message. */
-  excludedGroupKinds?: ReadonlyArray<GroupKind>;
-  /** Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message. */
-  noGroupKinds?: boolean;
-}
-
-export const ClusterResourceRestoreScope: Schema.Schema<ClusterResourceRestoreScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    selectedGroupKinds: Schema.optional(Schema.Array(GroupKind)),
-    allGroupKinds: Schema.optional(Schema.Boolean),
-    excludedGroupKinds: Schema.optional(Schema.Array(GroupKind)),
-    noGroupKinds: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "ClusterResourceRestoreScope" });
+    role: Schema.optional(Schema.String),
+    members: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "Binding" });
 
 export interface TransformationRuleAction {
-  /** Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from. */
-  fromPath?: string;
   /** Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed. */
   path?: string;
-  /** Optional. A string that specifies the desired value in string format to use for transformation. */
-  value?: string;
   /** Required. op specifies the operation to perform. */
   op?:
     | "OP_UNSPECIFIED"
@@ -186,68 +70,35 @@ export interface TransformationRuleAction {
     | "TEST"
     | "REPLACE"
     | (string & {});
+  /** Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from. */
+  fromPath?: string;
+  /** Optional. A string that specifies the desired value in string format to use for transformation. */
+  value?: string;
 }
 
 export const TransformationRuleAction: Schema.Schema<TransformationRuleAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    fromPath: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.String),
     op: Schema.optional(Schema.String),
+    fromPath: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
   }).annotate({ identifier: "TransformationRuleAction" });
 
-export interface ResourceFilter {
-  /** Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation). */
-  jsonPath?: string;
-  /** Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation). */
-  groupKinds?: ReadonlyArray<GroupKind>;
-  /** Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation). */
-  namespaces?: ReadonlyArray<string>;
+export interface GetTagsResponse {
+  /** A checksum based on the current bindings. This field is always set in server responses. */
+  etag?: string;
+  /** Required. The full resource name of the service resource. */
+  name?: string;
+  /** Required. Tag keys/values directly bound to this resource. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" */
+  tags?: Record<string, string>;
 }
 
-export const ResourceFilter: Schema.Schema<ResourceFilter> =
+export const GetTagsResponse: Schema.Schema<GetTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    jsonPath: Schema.optional(Schema.String),
-    groupKinds: Schema.optional(Schema.Array(GroupKind)),
-    namespaces: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ResourceFilter" });
-
-export interface TransformationRule {
-  /** Required. A list of transformation rule actions to take against candidate resources. Actions are executed in order defined - this order matters, as they could potentially interfere with each other and the first operation could affect the outcome of the second operation. */
-  fieldActions?: ReadonlyArray<TransformationRuleAction>;
-  /** Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions. */
-  resourceFilter?: ResourceFilter;
-  /** Optional. The description is a user specified string description of the transformation rule. */
-  description?: string;
-}
-
-export const TransformationRule: Schema.Schema<TransformationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    fieldActions: Schema.optional(Schema.Array(TransformationRuleAction)),
-    resourceFilter: Schema.optional(ResourceFilter),
-    description: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TransformationRule" });
-
-export interface VolumeDataRestorePolicyBinding {
-  /** Required. The VolumeDataRestorePolicy to apply when restoring volumes in scope. */
-  policy?:
-    | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
-    | "RESTORE_VOLUME_DATA_FROM_BACKUP"
-    | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
-    | "NO_VOLUME_DATA_RESTORATION"
-    | (string & {});
-  /** The volume type, as determined by the PVC's bound PV, to apply the policy to. */
-  volumeType?:
-    | "VOLUME_TYPE_UNSPECIFIED"
-    | "GCE_PERSISTENT_DISK"
-    | (string & {});
-}
-
-export const VolumeDataRestorePolicyBinding: Schema.Schema<VolumeDataRestorePolicyBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(Schema.String),
-    volumeType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "VolumeDataRestorePolicyBinding" });
+    etag: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GetTagsResponse" });
 
 export interface Namespaces {
   /** Optional. A list of Kubernetes Namespaces. */
@@ -259,244 +110,152 @@ export const Namespaces: Schema.Schema<Namespaces> =
     namespaces: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Namespaces" });
 
-export interface SubstitutionRule {
-  /** Optional. (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields. */
-  originalValuePattern?: string;
-  /** Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string (""). */
-  newValue?: string;
-  /** Required. This is a [JSONPath] (https://kubernetes.io/docs/reference/kubectl/jsonpath/) expression that matches specific fields of candidate resources and it operates as both a filtering parameter (resources that are not matched with this expression will not be candidates for substitution) as well as a field identifier (identifies exactly which fields out of the candidate resources will be modified). */
-  targetJsonPath?: string;
-  /** Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces. */
-  targetNamespaces?: ReadonlyArray<string>;
-  /** Optional. (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution). */
-  targetGroupKinds?: ReadonlyArray<GroupKind>;
+export interface EncryptionKey {
+  /** Optional. Google Cloud KMS encryption key. Format: `projects/* /locations/* /keyRings/* /cryptoKeys/*` */
+  gcpKmsEncryptionKey?: string;
 }
 
-export const SubstitutionRule: Schema.Schema<SubstitutionRule> =
+export const EncryptionKey: Schema.Schema<EncryptionKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originalValuePattern: Schema.optional(Schema.String),
-    newValue: Schema.optional(Schema.String),
-    targetJsonPath: Schema.optional(Schema.String),
-    targetNamespaces: Schema.optional(Schema.Array(Schema.String)),
-    targetGroupKinds: Schema.optional(Schema.Array(GroupKind)),
-  }).annotate({ identifier: "SubstitutionRule" });
+    gcpKmsEncryptionKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EncryptionKey" });
 
-export interface GroupKindDependency {
-  /** Required. The satisfying group kind must be restored first in order to satisfy the dependency. */
-  satisfying?: GroupKind;
-  /** Required. The requiring group kind requires that the other group kind be restored first. */
-  requiring?: GroupKind;
+export interface NamespacedName {
+  /** Optional. The Namespace of the Kubernetes resource. */
+  namespace?: string;
+  /** Optional. The name of the Kubernetes resource. */
+  name?: string;
 }
 
-export const GroupKindDependency: Schema.Schema<GroupKindDependency> =
+export const NamespacedName: Schema.Schema<NamespacedName> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    satisfying: Schema.optional(GroupKind),
-    requiring: Schema.optional(GroupKind),
-  }).annotate({ identifier: "GroupKindDependency" });
+    namespace: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NamespacedName" });
 
-export interface RestoreOrder {
-  /** Optional. Contains a list of group kind dependency pairs provided by the customer, that is used by Backup for GKE to generate a group kind restore order. */
-  groupKindDependencies?: ReadonlyArray<GroupKindDependency>;
+export interface NamespacedNames {
+  /** Optional. A list of namespaced Kubernetes resources. */
+  namespacedNames?: ReadonlyArray<NamespacedName>;
 }
 
-export const RestoreOrder: Schema.Schema<RestoreOrder> =
+export const NamespacedNames: Schema.Schema<NamespacedNames> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupKindDependencies: Schema.optional(Schema.Array(GroupKindDependency)),
-  }).annotate({ identifier: "RestoreOrder" });
+    namespacedNames: Schema.optional(Schema.Array(NamespacedName)),
+  }).annotate({ identifier: "NamespacedNames" });
 
-export interface RestoreConfig {
-  /** A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored. */
-  selectedApplications?: NamespacedNames;
-  /** Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed. */
-  noNamespaces?: boolean;
-  /** Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED. */
-  namespacedResourceRestoreMode?:
-    | "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED"
-    | "DELETE_AND_RESTORE"
-    | "FAIL_ON_CONFLICT"
-    | "MERGE_SKIP_ON_CONFLICT"
-    | "MERGE_REPLACE_VOLUME_ON_CONFLICT"
-    | "MERGE_REPLACE_ON_CONFLICT"
-    | (string & {});
-  /** Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored. */
-  clusterResourceRestoreScope?: ClusterResourceRestoreScope;
-  /** Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error. */
-  allNamespaces?: boolean;
-  /** Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur. */
-  transformationRules?: ReadonlyArray<TransformationRule>;
-  /** Optional. A table that binds volumes by their scope to a restore policy. Bindings must have a unique scope. Any volumes not scoped in the bindings are subject to the policy defined in volume_data_restore_policy. */
-  volumeDataRestorePolicyBindings?: ReadonlyArray<VolumeDataRestorePolicyBinding>;
-  /** Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty. */
-  clusterResourceConflictPolicy?:
-    | "CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED"
-    | "USE_EXISTING_VERSION"
-    | "USE_BACKUP_VERSION"
-    | (string & {});
-  /** A list of selected Namespaces to restore from the Backup. The listed Namespaces and all resources contained in them will be restored. */
+export interface BackupConfigDetails {
+  /** Output only. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted. */
+  encryptionKey?: EncryptionKey;
+  /** Output only. If set, include just the resources in the listed namespaces. */
   selectedNamespaces?: Namespaces;
-  /** Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION). */
-  volumeDataRestorePolicy?:
-    | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
-    | "RESTORE_VOLUME_DATA_FROM_BACKUP"
-    | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
-    | "NO_VOLUME_DATA_RESTORATION"
-    | (string & {});
-  /** A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored. */
-  excludedNamespaces?: Namespaces;
-  /** Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur. */
-  substitutionRules?: ReadonlyArray<SubstitutionRule>;
-  /** Optional. RestoreOrder contains custom ordering to use on a Restore. */
-  restoreOrder?: RestoreOrder;
+  /** Output only. If set, include just the resources referenced by the listed ProtectedApplications. */
+  selectedApplications?: NamespacedNames;
+  /** Output only. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False */
+  includeVolumeData?: boolean;
+  /** Output only. If True, include all namespaced resources */
+  allNamespaces?: boolean;
+  /** Output only. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False */
+  includeSecrets?: boolean;
 }
 
-export const RestoreConfig: Schema.Schema<RestoreConfig> =
+export const BackupConfigDetails: Schema.Schema<BackupConfigDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    selectedApplications: Schema.optional(NamespacedNames),
-    noNamespaces: Schema.optional(Schema.Boolean),
-    namespacedResourceRestoreMode: Schema.optional(Schema.String),
-    clusterResourceRestoreScope: Schema.optional(ClusterResourceRestoreScope),
-    allNamespaces: Schema.optional(Schema.Boolean),
-    transformationRules: Schema.optional(Schema.Array(TransformationRule)),
-    volumeDataRestorePolicyBindings: Schema.optional(
-      Schema.Array(VolumeDataRestorePolicyBinding),
-    ),
-    clusterResourceConflictPolicy: Schema.optional(Schema.String),
+    encryptionKey: Schema.optional(EncryptionKey),
     selectedNamespaces: Schema.optional(Namespaces),
-    volumeDataRestorePolicy: Schema.optional(Schema.String),
-    excludedNamespaces: Schema.optional(Namespaces),
-    substitutionRules: Schema.optional(Schema.Array(SubstitutionRule)),
-    restoreOrder: Schema.optional(RestoreOrder),
-  }).annotate({ identifier: "RestoreConfig" });
+    selectedApplications: Schema.optional(NamespacedNames),
+    includeVolumeData: Schema.optional(Schema.Boolean),
+    allNamespaces: Schema.optional(Schema.Boolean),
+    includeSecrets: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BackupConfigDetails" });
 
-export interface VolumeDataRestorePolicyOverride {
-  /** Required. The VolumeDataRestorePolicy to apply when restoring volumes in scope. */
-  policy?:
-    | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
-    | "RESTORE_VOLUME_DATA_FROM_BACKUP"
-    | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
-    | "NO_VOLUME_DATA_RESTORATION"
-    | (string & {});
-  /** A list of PVCs to apply the policy override to. */
-  selectedPvcs?: NamespacedNames;
+export interface RetentionPolicyDetails {
+  /** Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking) */
+  backupDeleteLockDays?: number;
+  /** Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Default: 0 (no automatic deletion) */
+  backupRetainDays?: number;
 }
 
-export const VolumeDataRestorePolicyOverride: Schema.Schema<VolumeDataRestorePolicyOverride> =
+export const RetentionPolicyDetails: Schema.Schema<RetentionPolicyDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(Schema.String),
-    selectedPvcs: Schema.optional(NamespacedNames),
-  }).annotate({ identifier: "VolumeDataRestorePolicyOverride" });
+    backupDeleteLockDays: Schema.optional(Schema.Number),
+    backupRetainDays: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RetentionPolicyDetails" });
+
+export interface BackupPlanDetails {
+  /** Output only. A number that represents the current risk level of this BackupPlan from RPO perspective with 1 being no risk and 5 being highest risk. */
+  rpoRiskLevel?: number;
+  /** Output only. Completion time of the last successful Backup. This is sourced from a successful Backup's complete_time field. */
+  lastSuccessfulBackupTime?: string;
+  /** Output only. The fully qualified name of the last successful Backup created under this BackupPlan. `projects/* /locations/* /backupPlans/* /backups/*` */
+  lastSuccessfulBackup?: string;
+  /** Output only. Contains details about the BackupConfig of Backups created via this BackupPlan. */
+  backupConfigDetails?: BackupConfigDetails;
+  /** Output only. The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan. */
+  protectedPodCount?: number;
+  /** Output only. Contains details about the RetentionPolicy of Backups created via this BackupPlan. */
+  retentionPolicyDetails?: RetentionPolicyDetails;
+  /** Output only. State of the BackupPlan. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CLUSTER_PENDING"
+    | "PROVISIONING"
+    | "READY"
+    | "FAILED"
+    | "DEACTIVATED"
+    | "DELETING"
+    | (string & {});
+  /** Output only. Start time of next scheduled backup under this BackupPlan by either cron_schedule or rpo config. This is sourced from BackupPlan. */
+  nextScheduledBackupTime?: string;
+}
+
+export const BackupPlanDetails: Schema.Schema<BackupPlanDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rpoRiskLevel: Schema.optional(Schema.Number),
+    lastSuccessfulBackupTime: Schema.optional(Schema.String),
+    lastSuccessfulBackup: Schema.optional(Schema.String),
+    backupConfigDetails: Schema.optional(BackupConfigDetails),
+    protectedPodCount: Schema.optional(Schema.Number),
+    retentionPolicyDetails: Schema.optional(RetentionPolicyDetails),
+    state: Schema.optional(Schema.String),
+    nextScheduledBackupTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackupPlanDetails" });
+
+export interface ClusterMetadata {
+  /** Output only. GKE version */
+  gkeVersion?: string;
+  /** Output only. The Kubernetes server version of the source cluster. */
+  k8sVersion?: string;
+  /** Output only. A list of the Backup for GKE CRD versions found in the cluster. */
+  backupCrdVersions?: Record<string, string>;
+  /** Output only. Anthos version */
+  anthosVersion?: string;
+  /** Output only. The source cluster from which this Backup was created. Valid formats: - `projects/* /locations/* /clusters/*` - `projects/* /zones/* /clusters/*` This is inherited from the parent BackupPlan's cluster field. */
+  cluster?: string;
+}
+
+export const ClusterMetadata: Schema.Schema<ClusterMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gkeVersion: Schema.optional(Schema.String),
+    k8sVersion: Schema.optional(Schema.String),
+    backupCrdVersions: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    anthosVersion: Schema.optional(Schema.String),
+    cluster: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClusterMetadata" });
 
 export interface TroubleshootingInfo {
-  /** Output only. URL for the troubleshooting doc which will help the user fix the failing backup/restore operation. */
-  stateReasonUri?: string;
   /** Output only. Unique code for each backup/restore operation failure message which helps user identify the failure. */
   stateReasonCode?: string;
+  /** Output only. URL for the troubleshooting doc which will help the user fix the failing backup/restore operation. */
+  stateReasonUri?: string;
 }
 
 export const TroubleshootingInfo: Schema.Schema<TroubleshootingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    stateReasonUri: Schema.optional(Schema.String),
     stateReasonCode: Schema.optional(Schema.String),
+    stateReasonUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "TroubleshootingInfo" });
-
-export interface Restore {
-  /** Output only. Number of resources that failed to be restored during the restore execution. */
-  resourcesFailedCount?: number;
-  /** Output only. Timestamp of when the restore operation completed. */
-  completeTime?: string;
-  /** Optional. Immutable. Filters resources for `Restore`. If not specified, the scope of the restore will remain the same as defined in the `RestorePlan`. If this is specified and no resources are matched by the `inclusion_filters` or everything is excluded by the `exclusion_filters`, nothing will be restored. This filter can only be specified if the value of namespaced_resource_restore_mode is set to `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT` or `MERGE_REPLACE_ON_CONFLICT`. */
-  filter?: Filter;
-  /** Output only. The target cluster into which this Restore will restore data. Valid formats: - `projects/* /locations/* /clusters/*` - `projects/* /zones/* /clusters/*` Inherited from parent RestorePlan's cluster value. */
-  cluster?: string;
-  /** Output only. Configuration of the Restore. Inherited from parent RestorePlan's restore_config. */
-  restoreConfig?: RestoreConfig;
-  /** Output only. Human-readable description of why the Restore is in its current state. This field is only meant for human readability and should not be used programmatically as this field is not guaranteed to be consistent. */
-  stateReason?: string;
-  /** Output only. The timestamp when this Restore resource was last updated. */
-  updateTime?: string;
-  /** Optional. Immutable. Overrides the volume data restore policies selected in the Restore Config for override-scoped resources. */
-  volumeDataRestorePolicyOverrides?: ReadonlyArray<VolumeDataRestorePolicyOverride>;
-  /** Output only. Information about the troubleshooting steps which will provide debugging information to the end users. */
-  troubleshootingInfo?: TroubleshootingInfo;
-  /** Output only. Number of volumes restored during the restore execution. */
-  volumesRestoredCount?: number;
-  /** Output only. Number of resources restored during the restore execution. */
-  resourcesRestoredCount?: number;
-  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
-  uid?: string;
-  /** Output only. Identifier. The full name of the Restore resource. Format: `projects/* /locations/* /restorePlans/* /restores/*` */
-  name?: string;
-  /** Optional. User specified descriptive string for this Restore. */
-  description?: string;
-  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource. */
-  etag?: string;
-  /** Output only. The current state of the Restore. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "IN_PROGRESS"
-    | "SUCCEEDED"
-    | "FAILED"
-    | "DELETING"
-    | "VALIDATING"
-    | (string & {});
-  /** Required. Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/* /locations/* /backupPlans/* /backups/*`. */
-  backup?: string;
-  /** A set of custom labels supplied by user. */
-  labels?: Record<string, string>;
-  /** Output only. The timestamp when this Restore resource was created. */
-  createTime?: string;
-  /** Output only. Number of resources excluded during the restore execution. */
-  resourcesExcludedCount?: number;
-}
-
-export const Restore: Schema.Schema<Restore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourcesFailedCount: Schema.optional(Schema.Number),
-    completeTime: Schema.optional(Schema.String),
-    filter: Schema.optional(Filter),
-    cluster: Schema.optional(Schema.String),
-    restoreConfig: Schema.optional(RestoreConfig),
-    stateReason: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    volumeDataRestorePolicyOverrides: Schema.optional(
-      Schema.Array(VolumeDataRestorePolicyOverride),
-    ),
-    troubleshootingInfo: Schema.optional(TroubleshootingInfo),
-    volumesRestoredCount: Schema.optional(Schema.Number),
-    resourcesRestoredCount: Schema.optional(Schema.Number),
-    uid: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    backup: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    createTime: Schema.optional(Schema.String),
-    resourcesExcludedCount: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Restore" });
-
-export interface Location {
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-}
-
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    locationId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "Location" });
 
 export interface Label {
   /** Optional. The key/name of the label. */
@@ -521,55 +280,692 @@ export const ResourceLabels: Schema.Schema<ResourceLabels> =
     resourceLabels: Schema.optional(Schema.Array(Label)),
   }).annotate({ identifier: "ResourceLabels" });
 
-export interface GoogleLongrunningCancelOperationRequest {}
+export interface Backup {
+  /** Output only. If True, all namespaces were included in the Backup. */
+  allNamespaces?: boolean;
+  /** Output only. [Output Only] Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Output only. Information about the GKE cluster from which this Backup was created. */
+  clusterMetadata?: ClusterMetadata;
+  /** Output only. [Output Only] Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Output only. Completion time of the Backup */
+  completeTime?: string;
+  /** Output only. The time at which an existing delete lock will expire for this backup (calculated from create_time + delete_lock_days). */
+  deleteLockExpireTime?: string;
+  /** Optional. A set of custom labels supplied by user. */
+  labels?: Record<string, string>;
+  /** Output only. The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited from the parent BackupPlan's encryption_key value. */
+  encryptionKey?: EncryptionKey;
+  /** Output only. The size of the config backup in bytes. */
+  configBackupSizeBytes?: string;
+  /** Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update). */
+  deleteLockDays?: number;
+  /** Output only. The total number of user managed namespaces contained in the Backup. */
+  namespaceCount?: number;
+  /** Output only. Information about the troubleshooting steps which will provide debugging information to the end users. */
+  troubleshootingInfo?: TroubleshootingInfo;
+  /** Output only. If set, the list of ProtectedApplications whose resources were included in the Backup. */
+  selectedApplications?: NamespacedNames;
+  /** Output only. The total number of Kubernetes resources included in the Backup. */
+  resourceCount?: number;
+  /** Output only. The timestamp when this Backup resource was created. */
+  createTime?: string;
+  /** Output only. Human-readable description of why the backup is in the current `state`. This field is only meant for human readability and should not be used programmatically as this field is not guaranteed to be consistent. */
+  stateReason?: string;
+  /** Output only. Current state of the Backup */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "IN_PROGRESS"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "DELETING"
+    | (string & {});
+  /** Output only. Whether or not the Backup contains volume data. Controlled by the parent BackupPlan's include_volume_data value. */
+  containsVolumeData?: boolean;
+  /** Output only. Whether or not the Backup contains Kubernetes Secrets. Controlled by the parent BackupPlan's include_secrets value. */
+  containsSecrets?: boolean;
+  /** Output only. If false, Backup will fail when Backup for GKE detects Kubernetes configuration that is non-standard or requires additional setup to restore. Inherited from the parent BackupPlan's permissive_mode value. */
+  permissiveMode?: boolean;
+  /** Output only. The timestamp when this Backup resource was last updated. */
+  updateTime?: string;
+  /** Output only. Identifier. The fully qualified name of the Backup. `projects/* /locations/* /backupPlans/* /backups/*` */
+  name?: string;
+  /** Output only. The total number of volume backups contained in the Backup. */
+  volumeCount?: number;
+  /** Output only. If set, the list of labels whose constituent namespaces were included in the Backup. */
+  selectedNamespaceLabels?: ResourceLabels;
+  /** Output only. The total size of the Backup in bytes = config backup size + sum(volume backup sizes) */
+  sizeBytes?: string;
+  /** Output only. The time at which this Backup will be automatically deleted (calculated from create_time + retain_days). */
+  retainExpireTime?: string;
+  /** Output only. The total number of Kubernetes Pods contained in the Backup. */
+  podCount?: number;
+  /** Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value. */
+  retainDays?: number;
+  /** Output only. This flag indicates whether this Backup resource was created manually by a user or via a schedule in the BackupPlan. A value of True means that the Backup was created manually. */
+  manual?: boolean;
+  /** Optional. User specified descriptive string for this Backup. */
+  description?: string;
+  /** Output only. Server generated global unique identifier of [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier) */
+  uid?: string;
+  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` or `DeleteBackup` to ensure that their change will be applied to the same version of the resource. */
+  etag?: string;
+  /** Output only. If set, the list of namespaces that were included in the Backup. */
+  selectedNamespaces?: Namespaces;
+}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+export const Backup: Schema.Schema<Backup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allNamespaces: Schema.optional(Schema.Boolean),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    clusterMetadata: Schema.optional(ClusterMetadata),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    completeTime: Schema.optional(Schema.String),
+    deleteLockExpireTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    encryptionKey: Schema.optional(EncryptionKey),
+    configBackupSizeBytes: Schema.optional(Schema.String),
+    deleteLockDays: Schema.optional(Schema.Number),
+    namespaceCount: Schema.optional(Schema.Number),
+    troubleshootingInfo: Schema.optional(TroubleshootingInfo),
+    selectedApplications: Schema.optional(NamespacedNames),
+    resourceCount: Schema.optional(Schema.Number),
+    createTime: Schema.optional(Schema.String),
+    stateReason: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    containsVolumeData: Schema.optional(Schema.Boolean),
+    containsSecrets: Schema.optional(Schema.Boolean),
+    permissiveMode: Schema.optional(Schema.Boolean),
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    volumeCount: Schema.optional(Schema.Number),
+    selectedNamespaceLabels: Schema.optional(ResourceLabels),
+    sizeBytes: Schema.optional(Schema.String),
+    retainExpireTime: Schema.optional(Schema.String),
+    podCount: Schema.optional(Schema.Number),
+    retainDays: Schema.optional(Schema.Number),
+    manual: Schema.optional(Schema.Boolean),
+    description: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    selectedNamespaces: Schema.optional(Namespaces),
+  }).annotate({ identifier: "Backup" });
+
+export interface ListBackupsResponse {
+  /** The list of Backups matching the given criteria. */
+  backups?: ReadonlyArray<Backup>;
+  /** A token which may be sent as page_token in a subsequent `ListBackups` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListBackupsResponse: Schema.Schema<ListBackupsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backups: Schema.optional(Schema.Array(Backup)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBackupsResponse" });
+
+export interface VolumeRestore {
+  /** Output only. The type of volume provisioned */
+  volumeType?:
+    | "VOLUME_TYPE_UNSPECIFIED"
+    | "GCE_PERSISTENT_DISK"
+    | (string & {});
+  /** Output only. A human readable message explaining why the VolumeRestore is in its current state. */
+  stateMessage?: string;
+  /** Output only. A storage system-specific opaque handler to the underlying volume created for the target PVC from the volume backup. */
+  volumeHandle?: string;
+  /** Output only. Full name of the VolumeRestore resource. Format: `projects/* /locations/* /restorePlans/* /restores/* /volumeRestores/*` */
+  name?: string;
+  /** Output only. The timestamp when this VolumeRestore resource was created. */
+  createTime?: string;
+  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
+  uid?: string;
+  /** Output only. The full name of the VolumeBackup from which the volume will be restored. Format: `projects/* /locations/* /backupPlans/* /backups/* /volumeBackups/*`. */
+  volumeBackup?: string;
+  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a volume restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform volume restore updates in order to avoid race conditions. */
+  etag?: string;
+  /** Output only. The timestamp when this VolumeRestore resource was last updated. */
+  updateTime?: string;
+  /** Output only. The reference to the target Kubernetes PVC to be restored. */
+  targetPvc?: NamespacedName;
+  /** Output only. The timestamp when the associated underlying volume restoration completed. */
+  completeTime?: string;
+  /** Output only. The current state of this VolumeRestore. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "RESTORING"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "DELETING"
+    | (string & {});
+}
+
+export const VolumeRestore: Schema.Schema<VolumeRestore> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    volumeType: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    volumeHandle: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    volumeBackup: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    targetPvc: Schema.optional(NamespacedName),
+    completeTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VolumeRestore" });
+
+export interface GroupKind {
+  /** Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group. */
+  resourceGroup?: string;
+  /** Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc. */
+  resourceKind?: string;
+}
+
+export const GroupKind: Schema.Schema<GroupKind> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroup: Schema.optional(Schema.String),
+    resourceKind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GroupKind" });
+
+export interface SubstitutionRule {
+  /** Optional. (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields. */
+  originalValuePattern?: string;
+  /** Required. This is a [JSONPath] (https://kubernetes.io/docs/reference/kubectl/jsonpath/) expression that matches specific fields of candidate resources and it operates as both a filtering parameter (resources that are not matched with this expression will not be candidates for substitution) as well as a field identifier (identifies exactly which fields out of the candidate resources will be modified). */
+  targetJsonPath?: string;
+  /** Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string (""). */
+  newValue?: string;
+  /** Optional. (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution). */
+  targetGroupKinds?: ReadonlyArray<GroupKind>;
+  /** Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces. */
+  targetNamespaces?: ReadonlyArray<string>;
+}
+
+export const SubstitutionRule: Schema.Schema<SubstitutionRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalValuePattern: Schema.optional(Schema.String),
+    targetJsonPath: Schema.optional(Schema.String),
+    newValue: Schema.optional(Schema.String),
+    targetGroupKinds: Schema.optional(Schema.Array(GroupKind)),
+    targetNamespaces: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "SubstitutionRule" });
+
+export interface VolumeDataRestorePolicyBinding {
+  /** Required. The VolumeDataRestorePolicy to apply when restoring volumes in scope. */
+  policy?:
+    | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
+    | "RESTORE_VOLUME_DATA_FROM_BACKUP"
+    | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
+    | "NO_VOLUME_DATA_RESTORATION"
+    | (string & {});
+  /** The volume type, as determined by the PVC's bound PV, to apply the policy to. */
+  volumeType?:
+    | "VOLUME_TYPE_UNSPECIFIED"
+    | "GCE_PERSISTENT_DISK"
+    | (string & {});
+}
+
+export const VolumeDataRestorePolicyBinding: Schema.Schema<VolumeDataRestorePolicyBinding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Schema.String),
+    volumeType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VolumeDataRestorePolicyBinding" });
+
+export interface ResourceFilter {
+  /** Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation). */
+  jsonPath?: string;
+  /** Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation). */
+  groupKinds?: ReadonlyArray<GroupKind>;
+  /** Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation). */
+  namespaces?: ReadonlyArray<string>;
+}
+
+export const ResourceFilter: Schema.Schema<ResourceFilter> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jsonPath: Schema.optional(Schema.String),
+    groupKinds: Schema.optional(Schema.Array(GroupKind)),
+    namespaces: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ResourceFilter" });
+
+export interface TransformationRule {
+  /** Required. A list of transformation rule actions to take against candidate resources. Actions are executed in order defined - this order matters, as they could potentially interfere with each other and the first operation could affect the outcome of the second operation. */
+  fieldActions?: ReadonlyArray<TransformationRuleAction>;
+  /** Optional. The description is a user specified string description of the transformation rule. */
+  description?: string;
+  /** Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions. */
+  resourceFilter?: ResourceFilter;
+}
+
+export const TransformationRule: Schema.Schema<TransformationRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldActions: Schema.optional(Schema.Array(TransformationRuleAction)),
+    description: Schema.optional(Schema.String),
+    resourceFilter: Schema.optional(ResourceFilter),
+  }).annotate({ identifier: "TransformationRule" });
+
+export interface GroupKindDependency {
+  /** Required. The satisfying group kind must be restored first in order to satisfy the dependency. */
+  satisfying?: GroupKind;
+  /** Required. The requiring group kind requires that the other group kind be restored first. */
+  requiring?: GroupKind;
+}
+
+export const GroupKindDependency: Schema.Schema<GroupKindDependency> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    satisfying: Schema.optional(GroupKind),
+    requiring: Schema.optional(GroupKind),
+  }).annotate({ identifier: "GroupKindDependency" });
+
+export interface RestoreOrder {
+  /** Optional. Contains a list of group kind dependency pairs provided by the customer, that is used by Backup for GKE to generate a group kind restore order. */
+  groupKindDependencies?: ReadonlyArray<GroupKindDependency>;
+}
+
+export const RestoreOrder: Schema.Schema<RestoreOrder> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupKindDependencies: Schema.optional(Schema.Array(GroupKindDependency)),
+  }).annotate({ identifier: "RestoreOrder" });
+
+export interface ClusterResourceRestoreScope {
+  /** Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message. */
+  selectedGroupKinds?: ReadonlyArray<GroupKind>;
+  /** Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message. */
+  noGroupKinds?: boolean;
+  /** Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message. */
+  allGroupKinds?: boolean;
+  /** Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message. */
+  excludedGroupKinds?: ReadonlyArray<GroupKind>;
+}
+
+export const ClusterResourceRestoreScope: Schema.Schema<ClusterResourceRestoreScope> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    selectedGroupKinds: Schema.optional(Schema.Array(GroupKind)),
+    noGroupKinds: Schema.optional(Schema.Boolean),
+    allGroupKinds: Schema.optional(Schema.Boolean),
+    excludedGroupKinds: Schema.optional(Schema.Array(GroupKind)),
+  }).annotate({ identifier: "ClusterResourceRestoreScope" });
+
+export interface RestoreConfig {
+  /** Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED. */
+  namespacedResourceRestoreMode?:
+    | "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED"
+    | "DELETE_AND_RESTORE"
+    | "FAIL_ON_CONFLICT"
+    | "MERGE_SKIP_ON_CONFLICT"
+    | "MERGE_REPLACE_VOLUME_ON_CONFLICT"
+    | "MERGE_REPLACE_ON_CONFLICT"
+    | (string & {});
+  /** Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur. */
+  substitutionRules?: ReadonlyArray<SubstitutionRule>;
+  /** A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored. */
+  excludedNamespaces?: Namespaces;
+  /** Optional. A table that binds volumes by their scope to a restore policy. Bindings must have a unique scope. Any volumes not scoped in the bindings are subject to the policy defined in volume_data_restore_policy. */
+  volumeDataRestorePolicyBindings?: ReadonlyArray<VolumeDataRestorePolicyBinding>;
+  /** Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error. */
+  allNamespaces?: boolean;
+  /** Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur. */
+  transformationRules?: ReadonlyArray<TransformationRule>;
+  /** Optional. RestoreOrder contains custom ordering to use on a Restore. */
+  restoreOrder?: RestoreOrder;
+  /** Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION). */
+  volumeDataRestorePolicy?:
+    | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
+    | "RESTORE_VOLUME_DATA_FROM_BACKUP"
+    | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
+    | "NO_VOLUME_DATA_RESTORATION"
+    | (string & {});
+  /** Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty. */
+  clusterResourceConflictPolicy?:
+    | "CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED"
+    | "USE_EXISTING_VERSION"
+    | "USE_BACKUP_VERSION"
+    | (string & {});
+  /** Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored. */
+  clusterResourceRestoreScope?: ClusterResourceRestoreScope;
+  /** A list of selected Namespaces to restore from the Backup. The listed Namespaces and all resources contained in them will be restored. */
+  selectedNamespaces?: Namespaces;
+  /** A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored. */
+  selectedApplications?: NamespacedNames;
+  /** Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed. */
+  noNamespaces?: boolean;
+}
+
+export const RestoreConfig: Schema.Schema<RestoreConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespacedResourceRestoreMode: Schema.optional(Schema.String),
+    substitutionRules: Schema.optional(Schema.Array(SubstitutionRule)),
+    excludedNamespaces: Schema.optional(Namespaces),
+    volumeDataRestorePolicyBindings: Schema.optional(
+      Schema.Array(VolumeDataRestorePolicyBinding),
+    ),
+    allNamespaces: Schema.optional(Schema.Boolean),
+    transformationRules: Schema.optional(Schema.Array(TransformationRule)),
+    restoreOrder: Schema.optional(RestoreOrder),
+    volumeDataRestorePolicy: Schema.optional(Schema.String),
+    clusterResourceConflictPolicy: Schema.optional(Schema.String),
+    clusterResourceRestoreScope: Schema.optional(ClusterResourceRestoreScope),
+    selectedNamespaces: Schema.optional(Namespaces),
+    selectedApplications: Schema.optional(NamespacedNames),
+    noNamespaces: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RestoreConfig" });
+
+export interface Location {
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+}
+
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Location" });
+
+export interface ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: ReadonlyArray<Location>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
+
+export interface Gkebackup_Date {
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
+}
+
+export const Gkebackup_Date: Schema.Schema<Gkebackup_Date> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    year: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Gkebackup_Date" });
+
+export interface RestoreChannel {
+  /** Optional. A set of custom labels supplied by user. */
+  labels?: Record<string, string>;
+  /** Identifier. The fully qualified name of the RestoreChannel. `projects/* /locations/* /restoreChannels/*` */
+  name?: string;
+  /** Required. Immutable. The project into which the backups will be restored. The format is `projects/{projectId}` or `projects/{projectNumber}`. */
+  destinationProject?: string;
+  /** Output only. The timestamp when this RestoreChannel was created. */
+  createTime?: string;
+  /** Output only. The project_id where backups will be restored. Example Project ID: "my-project-id". This will be an OUTPUT_ONLY field to return the project_id of the destination project. */
+  destinationProjectId?: string;
+  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
+  uid?: string;
+  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a RestoreChannel from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform RestoreChannel updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestoreChannel`, and systems are expected to put that etag in the request to `UpdateRestoreChannel` or `DeleteRestoreChannel` to ensure that their change will be applied to the same version of the resource. */
+  etag?: string;
+  /** Output only. The timestamp when this RestoreChannel was last updated. */
+  updateTime?: string;
+  /** Optional. User specified descriptive string for this RestoreChannel. */
+  description?: string;
+}
+
+export const RestoreChannel: Schema.Schema<RestoreChannel> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    destinationProject: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    destinationProjectId: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RestoreChannel" });
+
+export interface ListRestoreChannelsResponse {
+  /** The list of RestoreChannels matching the given criteria. */
+  restoreChannels?: ReadonlyArray<RestoreChannel>;
+  /** A token which may be sent as page_token in a subsequent `ListRestoreChannels` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListRestoreChannelsResponse: Schema.Schema<ListRestoreChannelsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    restoreChannels: Schema.optional(Schema.Array(RestoreChannel)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListRestoreChannelsResponse" });
+
+export interface ResourceSelector {
+  /** Optional. Selects resources using their Kubernetes GroupKinds. If specified, only resources of provided GroupKind will be selected. */
+  groupKind?: GroupKind;
+  /** Optional. Selects resources using their namespaces. This only applies to namespace scoped resources and cannot be used for selecting cluster scoped resources. If specified, only resources in the provided namespace will be selected. If not specified, the filter will apply to both cluster scoped and namespace scoped resources (e.g. name or label). The [Namespace](https://pkg.go.dev/k8s.io/api/core/v1#Namespace) resource itself will be restored if and only if any resources within the namespace are restored. */
+  namespace?: string;
+  /** Optional. Selects resources using Kubernetes [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). If specified, a resource will be selected if and only if the resource has all of the provided labels and all the label values match. */
+  labels?: Record<string, string>;
+  /** Optional. Selects resources using their resource names. If specified, only resources with the provided name will be selected. */
+  name?: string;
+}
+
+export const ResourceSelector: Schema.Schema<ResourceSelector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupKind: Schema.optional(GroupKind),
+    namespace: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResourceSelector" });
+
+export interface Filter {
+  /** Optional. Selects resources for restoration. If specified, only resources which match `inclusion_filters` will be selected for restoration. A resource will be selected if it matches any `ResourceSelector` of the `inclusion_filters`. */
+  inclusionFilters?: ReadonlyArray<ResourceSelector>;
+  /** Optional. Excludes resources from restoration. If specified, a resource will not be restored if it matches any `ResourceSelector` of the `exclusion_filters`. */
+  exclusionFilters?: ReadonlyArray<ResourceSelector>;
+}
+
+export const Filter: Schema.Schema<Filter> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inclusionFilters: Schema.optional(Schema.Array(ResourceSelector)),
+    exclusionFilters: Schema.optional(Schema.Array(ResourceSelector)),
+  }).annotate({ identifier: "Filter" });
+
+export interface VolumeDataRestorePolicyOverride {
+  /** Required. The VolumeDataRestorePolicy to apply when restoring volumes in scope. */
+  policy?:
+    | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
+    | "RESTORE_VOLUME_DATA_FROM_BACKUP"
+    | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
+    | "NO_VOLUME_DATA_RESTORATION"
+    | (string & {});
+  /** A list of PVCs to apply the policy override to. */
+  selectedPvcs?: NamespacedNames;
+}
+
+export const VolumeDataRestorePolicyOverride: Schema.Schema<VolumeDataRestorePolicyOverride> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Schema.String),
+    selectedPvcs: Schema.optional(NamespacedNames),
+  }).annotate({ identifier: "VolumeDataRestorePolicyOverride" });
+
+export interface Restore {
+  /** Output only. The target cluster into which this Restore will restore data. Valid formats: - `projects/* /locations/* /clusters/*` - `projects/* /zones/* /clusters/*` Inherited from parent RestorePlan's cluster value. */
+  cluster?: string;
+  /** Output only. Configuration of the Restore. Inherited from parent RestorePlan's restore_config. */
+  restoreConfig?: RestoreConfig;
+  /** Output only. Information about the troubleshooting steps which will provide debugging information to the end users. */
+  troubleshootingInfo?: TroubleshootingInfo;
+  /** Output only. Number of volumes restored during the restore execution. */
+  volumesRestoredCount?: number;
+  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
+  uid?: string;
+  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource. */
+  etag?: string;
+  /** Optional. User specified descriptive string for this Restore. */
+  description?: string;
+  /** A set of custom labels supplied by user. */
+  labels?: Record<string, string>;
+  /** Output only. Identifier. The full name of the Restore resource. Format: `projects/* /locations/* /restorePlans/* /restores/*` */
+  name?: string;
+  /** Output only. Number of resources restored during the restore execution. */
+  resourcesRestoredCount?: number;
+  /** Optional. Immutable. Filters resources for `Restore`. If not specified, the scope of the restore will remain the same as defined in the `RestorePlan`. If this is specified and no resources are matched by the `inclusion_filters` or everything is excluded by the `exclusion_filters`, nothing will be restored. This filter can only be specified if the value of namespaced_resource_restore_mode is set to `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT` or `MERGE_REPLACE_ON_CONFLICT`. */
+  filter?: Filter;
+  /** Output only. Timestamp of when the restore operation completed. */
+  completeTime?: string;
+  /** Output only. Number of resources that failed to be restored during the restore execution. */
+  resourcesFailedCount?: number;
+  /** Output only. The current state of the Restore. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "IN_PROGRESS"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "DELETING"
+    | "VALIDATING"
+    | (string & {});
+  /** Optional. Immutable. Overrides the volume data restore policies selected in the Restore Config for override-scoped resources. */
+  volumeDataRestorePolicyOverrides?: ReadonlyArray<VolumeDataRestorePolicyOverride>;
+  /** Output only. The timestamp when this Restore resource was last updated. */
+  updateTime?: string;
+  /** Output only. The timestamp when this Restore resource was created. */
+  createTime?: string;
+  /** Required. Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/* /locations/* /backupPlans/* /backups/*`. */
+  backup?: string;
+  /** Output only. Number of resources excluded during the restore execution. */
+  resourcesExcludedCount?: number;
+  /** Output only. Human-readable description of why the Restore is in its current state. This field is only meant for human readability and should not be used programmatically as this field is not guaranteed to be consistent. */
+  stateReason?: string;
+}
+
+export const Restore: Schema.Schema<Restore> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cluster: Schema.optional(Schema.String),
+    restoreConfig: Schema.optional(RestoreConfig),
+    troubleshootingInfo: Schema.optional(TroubleshootingInfo),
+    volumesRestoredCount: Schema.optional(Schema.Number),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    resourcesRestoredCount: Schema.optional(Schema.Number),
+    filter: Schema.optional(Filter),
+    completeTime: Schema.optional(Schema.String),
+    resourcesFailedCount: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.String),
+    volumeDataRestorePolicyOverrides: Schema.optional(
+      Schema.Array(VolumeDataRestorePolicyOverride),
+    ),
+    updateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    backup: Schema.optional(Schema.String),
+    resourcesExcludedCount: Schema.optional(Schema.Number),
+    stateReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Restore" });
+
+export interface RestorePlanBinding {
+  /** Output only. The fully qualified name of the RestorePlan bound to this RestoreChannel. `projects/* /locations/* /restorePlans/{restore_plan}` */
+  restorePlan?: string;
+  /** Output only. The fully qualified name of the BackupPlan bound to the specified RestorePlan. `projects/* /locations/* /backukpPlans/{backup_plan}` */
+  backupPlan?: string;
+  /** Identifier. The fully qualified name of the RestorePlanBinding. `projects/* /locations/* /restoreChannels/* /restorePlanBindings/*` */
+  name?: string;
+  /** Output only. The timestamp when this binding was created. */
+  createTime?: string;
+  /** Output only. The timestamp when this binding was created. */
+  updateTime?: string;
+  /** Output only. Server generated global unique identifier of [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier) */
+  uid?: string;
+  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a RestorePlanBinding from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform RestorePlanBinding updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlanBinding`, and systems are expected to put that etag in the request to `UpdateRestorePlanBinding` or `DeleteRestorePlanBinding` to ensure that their change will be applied to the same version of the resource. */
+  etag?: string;
+}
+
+export const RestorePlanBinding: Schema.Schema<RestorePlanBinding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    restorePlan: Schema.optional(Schema.String),
+    backupPlan: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RestorePlanBinding" });
+
+export interface ListRestorePlanBindingsResponse {
+  /** A token which may be sent as page_token in a subsequent `ListRestorePlanBindings` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
+  nextPageToken?: string;
+  /** Unordered list. Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+  /** The list of RestorePlanBindings matching the given criteria. */
+  restorePlanBindings?: ReadonlyArray<RestorePlanBinding>;
+}
+
+export const ListRestorePlanBindingsResponse: Schema.Schema<ListRestorePlanBindingsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    restorePlanBindings: Schema.optional(Schema.Array(RestorePlanBinding)),
+  }).annotate({ identifier: "ListRestorePlanBindingsResponse" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleLongrunningCancelOperationRequest",
+    identifier: "Empty",
   });
 
-export interface EncryptionKey {
-  /** Optional. Google Cloud KMS encryption key. Format: `projects/* /locations/* /keyRings/* /cryptoKeys/*` */
-  gcpKmsEncryptionKey?: string;
+export interface OperationMetadata {
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
 }
 
-export const EncryptionKey: Schema.Schema<EncryptionKey> =
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gcpKmsEncryptionKey: Schema.optional(Schema.String),
-  }).annotate({ identifier: "EncryptionKey" });
-
-export interface BackupConfig {
-  /** Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted. */
-  encryptionKey?: EncryptionKey;
-  /** Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False */
-  includeVolumeData?: boolean;
-  /** If set, include just the resources referenced by the listed ProtectedApplications. */
-  selectedApplications?: NamespacedNames;
-  /** If set, the list of labels whose constituent namespaces were included in the Backup. */
-  selectedNamespaceLabels?: ResourceLabels;
-  /** If True, include all namespaced resources */
-  allNamespaces?: boolean;
-  /** If set, include just the resources in the listed namespaces. */
-  selectedNamespaces?: Namespaces;
-  /** Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False */
-  includeSecrets?: boolean;
-  /** Optional. If false, Backups will fail when Backup for GKE detects Kubernetes configuration that is non-standard or requires additional setup to restore. Default: False */
-  permissiveMode?: boolean;
-}
-
-export const BackupConfig: Schema.Schema<BackupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encryptionKey: Schema.optional(EncryptionKey),
-    includeVolumeData: Schema.optional(Schema.Boolean),
-    selectedApplications: Schema.optional(NamespacedNames),
-    selectedNamespaceLabels: Schema.optional(ResourceLabels),
-    allNamespaces: Schema.optional(Schema.Boolean),
-    selectedNamespaces: Schema.optional(Namespaces),
-    includeSecrets: Schema.optional(Schema.Boolean),
-    permissiveMode: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "BackupConfig" });
+    endTime: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
 
 export interface AuditLogConfig {
+  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
+  exemptedMembers?: ReadonlyArray<string>;
   /** The log type that this config enables. */
   logType?:
     | "LOG_TYPE_UNSPECIFIED"
@@ -577,14 +973,12 @@ export interface AuditLogConfig {
     | "DATA_WRITE"
     | "DATA_READ"
     | (string & {});
-  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+    logType: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
@@ -600,48 +994,13 @@ export const AuditConfig: Schema.Schema<AuditConfig> =
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
   }).annotate({ identifier: "AuditConfig" });
 
-export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-}
-
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expression: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Expr" });
-
-export interface Binding {
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
-  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  condition?: Expr;
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: ReadonlyArray<string>;
-}
-
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    role: Schema.optional(Schema.String),
-    condition: Schema.optional(Expr),
-    members: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Binding" });
-
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
-  /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
+  /** Specifies cloud audit logging configuration for this policy. */
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: ReadonlyArray<Binding>;
 }
@@ -649,29 +1008,20 @@ export interface Policy {
 export const Policy: Schema.Schema<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
-    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     etag: Schema.optional(Schema.String),
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     bindings: Schema.optional(Schema.Array(Binding)),
   }).annotate({ identifier: "Policy" });
 
-export interface TimeOfDay {
-  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
-  minutes?: number;
-  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
-  seconds?: number;
-  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
-  nanos?: number;
-  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  hours?: number;
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    minutes: Schema.optional(Schema.Number),
-    seconds: Schema.optional(Schema.Number),
-    nanos: Schema.optional(Schema.Number),
-    hours: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "TimeOfDay" });
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface DayOfWeekList {
   /** Optional. A list of days of week. */
@@ -693,26 +1043,328 @@ export const DayOfWeekList: Schema.Schema<DayOfWeekList> =
     daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DayOfWeekList" });
 
+export interface VolumeBackup {
+  /** Output only. The format used for the volume backup. */
+  format?:
+    | "VOLUME_BACKUP_FORMAT_UNSPECIFIED"
+    | "GCE_PERSISTENT_DISK"
+    | (string & {});
+  /** Output only. A storage system-specific opaque handle to the underlying volume backup. */
+  volumeBackupHandle?: string;
+  /** Output only. The full name of the VolumeBackup resource. Format: `projects/* /locations/* /backupPlans/* /backups/* /volumeBackups/*`. */
+  name?: string;
+  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
+  uid?: string;
+  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a volume backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform volume backup updates in order to avoid race conditions. */
+  etag?: string;
+  /** Output only. The aggregate size of the underlying artifacts associated with this VolumeBackup in the backup storage. This may change over time when multiple backups of the same volume share the same backup storage location. In particular, this is likely to increase in size when the immediately preceding backup of the same volume is deleted. */
+  storageBytes?: string;
+  /** Output only. [Output Only] Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Output only. A human readable message explaining why the VolumeBackup is in its current state. This field is only meant for human consumption and should not be used programmatically as this field is not guaranteed to be consistent. */
+  stateMessage?: string;
+  /** Output only. [Output Only] Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Output only. The timestamp when this VolumeBackup resource was created. */
+  createTime?: string;
+  /** Output only. A reference to the source Kubernetes PVC from which this VolumeBackup was created. */
+  sourcePvc?: NamespacedName;
+  /** Output only. The timestamp when this VolumeBackup resource was last updated. */
+  updateTime?: string;
+  /** Output only. The minimum size of the disk to which this VolumeBackup can be restored. */
+  diskSizeBytes?: string;
+  /** Output only. The timestamp when the associated underlying volume backup operation completed. */
+  completeTime?: string;
+  /** Output only. The current state of this VolumeBackup. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "SNAPSHOTTING"
+    | "UPLOADING"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "DELETING"
+    | "CLEANED_UP"
+    | (string & {});
+}
+
+export const VolumeBackup: Schema.Schema<VolumeBackup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    format: Schema.optional(Schema.String),
+    volumeBackupHandle: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    storageBytes: Schema.optional(Schema.String),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    stateMessage: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    sourcePvc: Schema.optional(NamespacedName),
+    updateTime: Schema.optional(Schema.String),
+    diskSizeBytes: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VolumeBackup" });
+
+export interface BackupRuleDetail {
+  /** Backup Rule Name. */
+  ruleName?: string;
+  /** Backup Retention in Days. */
+  retentionDays?: number;
+  /** Backup Window For Eg. “00:00 to 06:00” */
+  backupWindow?: string;
+  /** Recurrence Repeat Schedule. For Eg. “1st and 25th day of the month.” */
+  recurrenceSchedule?: string;
+  /** Recurrence Type. For Eg. “Weekly”,” Monthly” or “Daily”. */
+  recurrence?: string;
+  /** Backup Window Timezone in IANA format. For Eg. “America/Los_Angeles” */
+  backupWindowTimezone?: string;
+}
+
+export const BackupRuleDetail: Schema.Schema<BackupRuleDetail> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ruleName: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    backupWindow: Schema.optional(Schema.String),
+    recurrenceSchedule: Schema.optional(Schema.String),
+    recurrence: Schema.optional(Schema.String),
+    backupWindowTimezone: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackupRuleDetail" });
+
+export interface BDRBackupPlanJobLog {
+  /** End time of the job. */
+  endTime?: string;
+  /** The resource_type field displays the type of the protected resource. */
+  resourceType?: string;
+  /** Revised Backup Plan rules. */
+  revisedBackupRules?: ReadonlyArray<BackupRuleDetail>;
+  /** Previous Backup Plan rules. */
+  previousBackupRules?: ReadonlyArray<BackupRuleDetail>;
+  /** Full resource name for previous backup plan revision */
+  previousBackupPlanRevisionName?: string;
+  /** The total number of workloads affected by the job. */
+  workloadsAffectedCount?: number;
+  /** User friendly revision id e.g. v0, v1 etc. */
+  previousBackupPlanRevisionId?: string;
+  /** The name of the error type eg. PERMISSION_DENIED. Only populated in error scenarios. */
+  errorType?: string;
+  /** The category field displays the category of the job. Can be one of [UPDATE_BACKUP_PLAN]. */
+  jobCategory?: string;
+  /** Full resource name for new backup plan revision */
+  newBackupPlanRevisionName?: string;
+  /** The job_id field displays the identifier of the job being reported. */
+  jobId?: string;
+  /** User friendly revision id e.g. v0, v1 etc. */
+  newBackupPlanRevisionId?: string;
+  /** Start time of the job. */
+  startTime?: string;
+  /** Canonical resource name for Backup Plan Plan of the job. */
+  backupPlanName?: string;
+  /** The user readable error message. Only populated in error scenarios. */
+  errorMessage?: string;
+  /** The error code. Only populated in error scenarios. */
+  errorCode?: number;
+  /** The status field displays the status of the job. Can be one of [RUNNING,SUCCESSFUL, FAILED]. */
+  jobStatus?: string;
+}
+
+export const BDRBackupPlanJobLog: Schema.Schema<BDRBackupPlanJobLog> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    revisedBackupRules: Schema.optional(Schema.Array(BackupRuleDetail)),
+    previousBackupRules: Schema.optional(Schema.Array(BackupRuleDetail)),
+    previousBackupPlanRevisionName: Schema.optional(Schema.String),
+    workloadsAffectedCount: Schema.optional(Schema.Number),
+    previousBackupPlanRevisionId: Schema.optional(Schema.String),
+    errorType: Schema.optional(Schema.String),
+    jobCategory: Schema.optional(Schema.String),
+    newBackupPlanRevisionName: Schema.optional(Schema.String),
+    jobId: Schema.optional(Schema.String),
+    newBackupPlanRevisionId: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    backupPlanName: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.Number),
+    jobStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BDRBackupPlanJobLog" });
+
+export interface GetBackupIndexDownloadUrlResponse {
+  /** Required. The signed URL for downloading the backup index. */
+  signedUrl?: string;
+}
+
+export const GetBackupIndexDownloadUrlResponse: Schema.Schema<GetBackupIndexDownloadUrlResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signedUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetBackupIndexDownloadUrlResponse" });
+
+export interface BDRBackupRestoreJobLog {
+  /** End time of the job. */
+  endTime?: string;
+  /** The resource_type field displays the type of the protected resource. */
+  resourceType?: string;
+  /** Name of the backup rule. Only populated for Scheduled Backup and Adhoc Backup. */
+  backupRule?: string;
+  /** Restore resource location. */
+  restoreResourceLocation?: string;
+  /** Backup retention in days. */
+  backupRetentionDays?: number;
+  /** Canonical Data Source Name */
+  dataSourceName?: string;
+  /** Full resource name of the backup created in backup jobs and used in restore jobs. */
+  backupName?: string;
+  /** The category field displays the category of the job. */
+  jobCategory?: string;
+  /** Full resource name of the protected resource. */
+  sourceResourceName?: string;
+  /** The amount of incremental backup data copied. */
+  incrementalBackupSizeGib?: number;
+  /** Recovery point time. */
+  recoveryPointTime?: string;
+  /** The name of the error type eg. PERMISSION_DENIED. Only populated in error scenarios. */
+  errorType?: string;
+  /** Full resource name backup vault name */
+  backupVaultName?: string;
+  /** Backup consistency time. */
+  backupConsistencyTime?: string;
+  /** The target resource type for restore jobs. */
+  targetResourceType?: string;
+  /** Source resource location. */
+  sourceResourceLocation?: string;
+  /** The error code. Only populated in error scenarios. */
+  errorCode?: number;
+  /** Full resource name of the restore resource. Only populated in restore jobs. */
+  restoreResourceName?: string;
+  /** The source resource ID. */
+  sourceResourceId?: string;
+  /** The status field displays the status of the job. */
+  jobStatus?: string;
+  /** The job_id field displays the identifier of the job being logged. */
+  jobId?: string;
+  /** Start time of the job. */
+  startTime?: string;
+  /** Full resource name for Backup Plan of the job. Only populated for Scheduled Backup and Adhoc Backup. */
+  backupPlanName?: string;
+  /** The user readable error message. Only populated in error scenarios. */
+  errorMessage?: string;
+}
+
+export const BDRBackupRestoreJobLog: Schema.Schema<BDRBackupRestoreJobLog> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    backupRule: Schema.optional(Schema.String),
+    restoreResourceLocation: Schema.optional(Schema.String),
+    backupRetentionDays: Schema.optional(Schema.Number),
+    dataSourceName: Schema.optional(Schema.String),
+    backupName: Schema.optional(Schema.String),
+    jobCategory: Schema.optional(Schema.String),
+    sourceResourceName: Schema.optional(Schema.String),
+    incrementalBackupSizeGib: Schema.optional(Schema.Number),
+    recoveryPointTime: Schema.optional(Schema.String),
+    errorType: Schema.optional(Schema.String),
+    backupVaultName: Schema.optional(Schema.String),
+    backupConsistencyTime: Schema.optional(Schema.String),
+    targetResourceType: Schema.optional(Schema.String),
+    sourceResourceLocation: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.Number),
+    restoreResourceName: Schema.optional(Schema.String),
+    sourceResourceId: Schema.optional(Schema.String),
+    jobStatus: Schema.optional(Schema.String),
+    jobId: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    backupPlanName: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BDRBackupRestoreJobLog" });
+
+export interface TimeOfDay {
+  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  hours?: number;
+  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
+  minutes?: number;
+  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
+  seconds?: number;
+  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
+  nanos?: number;
+}
+
+export const TimeOfDay: Schema.Schema<TimeOfDay> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hours: Schema.optional(Schema.Number),
+    minutes: Schema.optional(Schema.Number),
+    seconds: Schema.optional(Schema.Number),
+    nanos: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TimeOfDay" });
+
+export interface BackupConfig {
+  /** If True, include all namespaced resources */
+  allNamespaces?: boolean;
+  /** If set, the list of labels whose constituent namespaces were included in the Backup. */
+  selectedNamespaceLabels?: ResourceLabels;
+  /** Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False */
+  includeSecrets?: boolean;
+  /** Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False */
+  includeVolumeData?: boolean;
+  /** Optional. If false, Backups will fail when Backup for GKE detects Kubernetes configuration that is non-standard or requires additional setup to restore. Default: False */
+  permissiveMode?: boolean;
+  /** If set, include just the resources in the listed namespaces. */
+  selectedNamespaces?: Namespaces;
+  /** If set, include just the resources referenced by the listed ProtectedApplications. */
+  selectedApplications?: NamespacedNames;
+  /** Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted. */
+  encryptionKey?: EncryptionKey;
+}
+
+export const BackupConfig: Schema.Schema<BackupConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allNamespaces: Schema.optional(Schema.Boolean),
+    selectedNamespaceLabels: Schema.optional(ResourceLabels),
+    includeSecrets: Schema.optional(Schema.Boolean),
+    includeVolumeData: Schema.optional(Schema.Boolean),
+    permissiveMode: Schema.optional(Schema.Boolean),
+    selectedNamespaces: Schema.optional(Namespaces),
+    selectedApplications: Schema.optional(NamespacedNames),
+    encryptionKey: Schema.optional(EncryptionKey),
+  }).annotate({ identifier: "BackupConfig" });
+
+export interface RetentionPolicy {
+  /** Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion) */
+  backupRetainDays?: number;
+  /** Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False */
+  locked?: boolean;
+  /** Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking) */
+  backupDeleteLockDays?: number;
+}
+
+export const RetentionPolicy: Schema.Schema<RetentionPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupRetainDays: Schema.optional(Schema.Number),
+    locked: Schema.optional(Schema.Boolean),
+    backupDeleteLockDays: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RetentionPolicy" });
+
 export interface ExclusionWindow {
-  /** Optional. Specifies the start time of the window using time of the day in UTC. */
-  startTime?: TimeOfDay;
-  /** No recurrence. The exclusion window occurs only once and on this date in UTC. */
-  singleOccurrenceDate?: Gkebackup_Date;
-  /** Required. Specifies duration of the window. Duration must be >= 5 minutes and < (target RPO - 20 minutes). Additional restrictions based on the recurrence type to allow some time for backup to happen: - single_occurrence_date: no restriction, but UI may warn about this when duration >= target RPO - daily window: duration < 24 hours - weekly window: - days of week includes all seven days of a week: duration < 24 hours - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours) */
-  duration?: string;
-  /** The exclusion window occurs every day if set to "True". Specifying this field to "False" is an error. */
-  daily?: boolean;
   /** The exclusion window occurs on these days of each week in UTC. */
   daysOfWeek?: DayOfWeekList;
+  /** Optional. Specifies the start time of the window using time of the day in UTC. */
+  startTime?: TimeOfDay;
+  /** The exclusion window occurs every day if set to "True". Specifying this field to "False" is an error. */
+  daily?: boolean;
+  /** Required. Specifies duration of the window. Duration must be >= 5 minutes and < (target RPO - 20 minutes). Additional restrictions based on the recurrence type to allow some time for backup to happen: - single_occurrence_date: no restriction, but UI may warn about this when duration >= target RPO - daily window: duration < 24 hours - weekly window: - days of week includes all seven days of a week: duration < 24 hours - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours) */
+  duration?: string;
+  /** No recurrence. The exclusion window occurs only once and on this date in UTC. */
+  singleOccurrenceDate?: Gkebackup_Date;
 }
 
 export const ExclusionWindow: Schema.Schema<ExclusionWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(TimeOfDay),
-    singleOccurrenceDate: Schema.optional(Gkebackup_Date),
-    duration: Schema.optional(Schema.String),
-    daily: Schema.optional(Schema.Boolean),
     daysOfWeek: Schema.optional(DayOfWeekList),
+    startTime: Schema.optional(TimeOfDay),
+    daily: Schema.optional(Schema.Boolean),
+    duration: Schema.optional(Schema.String),
+    singleOccurrenceDate: Schema.optional(Gkebackup_Date),
   }).annotate({ identifier: "ExclusionWindow" });
 
 export interface RpoConfig {
@@ -729,71 +1381,25 @@ export const RpoConfig: Schema.Schema<RpoConfig> =
   }).annotate({ identifier: "RpoConfig" });
 
 export interface Schedule {
+  /** Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False */
+  paused?: boolean;
   /** Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur. */
   cronSchedule?: string;
   /** Optional. Defines the RPO schedule configuration for this BackupPlan. This is mutually exclusive with the cron_schedule field since at most one schedule can be defined for a BackupPLan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur. */
   rpoConfig?: RpoConfig;
   /** Output only. Start time of next scheduled backup under this BackupPlan by either cron_schedule or rpo config. */
   nextScheduledBackupTime?: string;
-  /** Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False */
-  paused?: boolean;
 }
 
 export const Schedule: Schema.Schema<Schedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    paused: Schema.optional(Schema.Boolean),
     cronSchedule: Schema.optional(Schema.String),
     rpoConfig: Schema.optional(RpoConfig),
     nextScheduledBackupTime: Schema.optional(Schema.String),
-    paused: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Schedule" });
 
-export interface RetentionPolicy {
-  /** Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking) */
-  backupDeleteLockDays?: number;
-  /** Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion) */
-  backupRetainDays?: number;
-  /** Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False */
-  locked?: boolean;
-}
-
-export const RetentionPolicy: Schema.Schema<RetentionPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backupDeleteLockDays: Schema.optional(Schema.Number),
-    backupRetainDays: Schema.optional(Schema.Number),
-    locked: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "RetentionPolicy" });
-
 export interface BackupPlan {
-  /** Output only. Human-readable description of why the BackupPlan is in the current rpo_risk_level and action items if any. */
-  rpoRiskReason?: string;
-  /** Output only. Completion time of the last successful Backup. This is sourced from a successful Backup's complete_time field. This field is added to maintain consistency with BackupPlanBinding to display last successful backup time. */
-  lastSuccessfulBackupTime?: string;
-  /** Required. Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/* /locations/* /clusters/*` - `projects/* /zones/* /clusters/*` */
-  cluster?: string;
-  /** Output only. Human-readable description of why BackupPlan is in the current `state`. This field is only meant for human readability and should not be used programmatically as this field is not guaranteed to be consistent. */
-  stateReason?: string;
-  /** Output only. The timestamp when this BackupPlan resource was last updated. */
-  updateTime?: string;
-  /** Optional. Defines a schedule for automatic Backup creation via this BackupPlan. */
-  backupSchedule?: Schedule;
-  /** Optional. Defines the configuration of Backups created via this BackupPlan. */
-  backupConfig?: BackupConfig;
-  /** Output only. Identifier. The full name of the BackupPlan resource. Format: `projects/* /locations/* /backupPlans/*` */
-  name?: string;
-  /** Output only. The fully qualified name of the BackupChannel to be used to create a backup. This field is set only if the cluster being backed up is in a different project. `projects/* /locations/* /backupChannels/*` */
-  backupChannel?: string;
-  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
-  uid?: string;
-  /** Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False */
-  deactivated?: boolean;
-  /** Output only. The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan. */
-  protectedPodCount?: number;
-  /** Output only. The number of user managed namespaces backed up in the last successful Backup created via this BackupPlan. */
-  protectedNamespaceCount?: number;
-  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource. */
-  etag?: string;
-  /** Optional. User specified descriptive string for this BackupPlan. */
-  description?: string;
   /** Output only. State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update */
   state?:
     | "STATE_UNSPECIFIED"
@@ -806,640 +1412,83 @@ export interface BackupPlan {
     | (string & {});
   /** Optional. RetentionPolicy governs lifecycle of Backups created under this plan. */
   retentionPolicy?: RetentionPolicy;
-  /** Optional. A set of custom labels supplied by user. */
-  labels?: Record<string, string>;
-  /** Output only. A number that represents the current risk level of this BackupPlan from RPO perspective with 1 being no risk and 5 being highest risk. */
-  rpoRiskLevel?: number;
+  /** Output only. The timestamp when this BackupPlan resource was last updated. */
+  updateTime?: string;
+  /** Output only. The fully qualified name of the BackupChannel to be used to create a backup. This field is set only if the cluster being backed up is in a different project. `projects/* /locations/* /backupChannels/*` */
+  backupChannel?: string;
   /** Output only. The timestamp when this BackupPlan resource was created. */
   createTime?: string;
+  /** Output only. Human-readable description of why BackupPlan is in the current `state`. This field is only meant for human readability and should not be used programmatically as this field is not guaranteed to be consistent. */
+  stateReason?: string;
+  /** Required. Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/* /locations/* /clusters/*` - `projects/* /zones/* /clusters/*` */
+  cluster?: string;
+  /** Output only. The number of user managed namespaces backed up in the last successful Backup created via this BackupPlan. */
+  protectedNamespaceCount?: number;
+  /** Output only. Human-readable description of why the BackupPlan is in the current rpo_risk_level and action items if any. */
+  rpoRiskReason?: string;
+  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
+  uid?: string;
+  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource. */
+  etag?: string;
+  /** Optional. User specified descriptive string for this BackupPlan. */
+  description?: string;
+  /** Optional. A set of custom labels supplied by user. */
+  labels?: Record<string, string>;
+  /** Output only. The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan. */
+  protectedPodCount?: number;
+  /** Optional. Defines a schedule for automatic Backup creation via this BackupPlan. */
+  backupSchedule?: Schedule;
+  /** Optional. Defines the configuration of Backups created via this BackupPlan. */
+  backupConfig?: BackupConfig;
+  /** Output only. Identifier. The full name of the BackupPlan resource. Format: `projects/* /locations/* /backupPlans/*` */
+  name?: string;
+  /** Output only. Completion time of the last successful Backup. This is sourced from a successful Backup's complete_time field. This field is added to maintain consistency with BackupPlanBinding to display last successful backup time. */
+  lastSuccessfulBackupTime?: string;
+  /** Output only. A number that represents the current risk level of this BackupPlan from RPO perspective with 1 being no risk and 5 being highest risk. */
+  rpoRiskLevel?: number;
+  /** Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False */
+  deactivated?: boolean;
 }
 
 export const BackupPlan: Schema.Schema<BackupPlan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rpoRiskReason: Schema.optional(Schema.String),
-    lastSuccessfulBackupTime: Schema.optional(Schema.String),
-    cluster: Schema.optional(Schema.String),
-    stateReason: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    retentionPolicy: Schema.optional(RetentionPolicy),
     updateTime: Schema.optional(Schema.String),
+    backupChannel: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    stateReason: Schema.optional(Schema.String),
+    cluster: Schema.optional(Schema.String),
+    protectedNamespaceCount: Schema.optional(Schema.Number),
+    rpoRiskReason: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    protectedPodCount: Schema.optional(Schema.Number),
     backupSchedule: Schema.optional(Schedule),
     backupConfig: Schema.optional(BackupConfig),
     name: Schema.optional(Schema.String),
-    backupChannel: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    deactivated: Schema.optional(Schema.Boolean),
-    protectedPodCount: Schema.optional(Schema.Number),
-    protectedNamespaceCount: Schema.optional(Schema.Number),
-    etag: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    retentionPolicy: Schema.optional(RetentionPolicy),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    lastSuccessfulBackupTime: Schema.optional(Schema.String),
     rpoRiskLevel: Schema.optional(Schema.Number),
-    createTime: Schema.optional(Schema.String),
+    deactivated: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BackupPlan" });
 
 export interface ListBackupPlansResponse {
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
   /** The list of BackupPlans matching the given criteria. */
   backupPlans?: ReadonlyArray<BackupPlan>;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
   /** A token which may be sent as page_token in a subsequent `ListBackupPlans` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
   nextPageToken?: string;
 }
 
 export const ListBackupPlansResponse: Schema.Schema<ListBackupPlansResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
     backupPlans: Schema.optional(Schema.Array(BackupPlan)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListBackupPlansResponse" });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface BackupRuleDetail {
-  /** Backup Rule Name. */
-  ruleName?: string;
-  /** Recurrence Type. For Eg. “Weekly”,” Monthly” or “Daily”. */
-  recurrence?: string;
-  /** Backup Retention in Days. */
-  retentionDays?: number;
-  /** Backup Window For Eg. “00:00 to 06:00” */
-  backupWindow?: string;
-  /** Backup Window Timezone in IANA format. For Eg. “America/Los_Angeles” */
-  backupWindowTimezone?: string;
-  /** Recurrence Repeat Schedule. For Eg. “1st and 25th day of the month.” */
-  recurrenceSchedule?: string;
-}
-
-export const BackupRuleDetail: Schema.Schema<BackupRuleDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ruleName: Schema.optional(Schema.String),
-    recurrence: Schema.optional(Schema.String),
-    retentionDays: Schema.optional(Schema.Number),
-    backupWindow: Schema.optional(Schema.String),
-    backupWindowTimezone: Schema.optional(Schema.String),
-    recurrenceSchedule: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BackupRuleDetail" });
-
-export interface GoogleRpcStatus {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-}
-
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.optional(Schema.String),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    code: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "GoogleRpcStatus" });
-
-export interface GoogleLongrunningOperation {
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: GoogleRpcStatus;
-}
-
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    done: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    error: Schema.optional(GoogleRpcStatus),
-  }).annotate({ identifier: "GoogleLongrunningOperation" });
-
-export interface VolumeRestore {
-  /** Output only. The full name of the VolumeBackup from which the volume will be restored. Format: `projects/* /locations/* /backupPlans/* /backups/* /volumeBackups/*`. */
-  volumeBackup?: string;
-  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
-  uid?: string;
-  /** Output only. The timestamp when this VolumeRestore resource was created. */
-  createTime?: string;
-  /** Output only. The reference to the target Kubernetes PVC to be restored. */
-  targetPvc?: NamespacedName;
-  /** Output only. Full name of the VolumeRestore resource. Format: `projects/* /locations/* /restorePlans/* /restores/* /volumeRestores/*` */
-  name?: string;
-  /** Output only. The type of volume provisioned */
-  volumeType?:
-    | "VOLUME_TYPE_UNSPECIFIED"
-    | "GCE_PERSISTENT_DISK"
-    | (string & {});
-  /** Output only. The timestamp when the associated underlying volume restoration completed. */
-  completeTime?: string;
-  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a volume restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform volume restore updates in order to avoid race conditions. */
-  etag?: string;
-  /** Output only. A human readable message explaining why the VolumeRestore is in its current state. */
-  stateMessage?: string;
-  /** Output only. The timestamp when this VolumeRestore resource was last updated. */
-  updateTime?: string;
-  /** Output only. A storage system-specific opaque handler to the underlying volume created for the target PVC from the volume backup. */
-  volumeHandle?: string;
-  /** Output only. The current state of this VolumeRestore. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "RESTORING"
-    | "SUCCEEDED"
-    | "FAILED"
-    | "DELETING"
-    | (string & {});
-}
-
-export const VolumeRestore: Schema.Schema<VolumeRestore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    volumeBackup: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    targetPvc: Schema.optional(NamespacedName),
-    name: Schema.optional(Schema.String),
-    volumeType: Schema.optional(Schema.String),
-    completeTime: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    stateMessage: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    volumeHandle: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-  }).annotate({ identifier: "VolumeRestore" });
-
-export interface ListVolumeRestoresResponse {
-  /** A token which may be sent as page_token in a subsequent `ListVolumeRestores` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
-  nextPageToken?: string;
-  /** The list of VolumeRestores matching the given criteria. */
-  volumeRestores?: ReadonlyArray<VolumeRestore>;
-}
-
-export const ListVolumeRestoresResponse: Schema.Schema<ListVolumeRestoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    volumeRestores: Schema.optional(Schema.Array(VolumeRestore)),
-  }).annotate({ identifier: "ListVolumeRestoresResponse" });
-
-export interface GetTagsResponse {
-  /** Required. The full resource name of the service resource. */
-  name?: string;
-  /** A checksum based on the current bindings. This field is always set in server responses. */
-  etag?: string;
-  /** Required. Tag keys/values directly bound to this resource. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" */
-  tags?: Record<string, string>;
-}
-
-export const GetTagsResponse: Schema.Schema<GetTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "GetTagsResponse" });
-
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: ReadonlyArray<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locations: Schema.optional(Schema.Array(Location)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListLocationsResponse" });
-
-export interface BackupChannel {
-  /** Output only. The timestamp when this BackupChannel resource was last updated. */
-  updateTime?: string;
-  /** Output only. The project_id where Backups are allowed to be stored. Example Project ID: "my-project-id". This will be an OUTPUT_ONLY field to return the project_id of the destination project. */
-  destinationProjectId?: string;
-  /** Optional. User specified descriptive string for this BackupChannel. */
-  description?: string;
-  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a BackupChannel from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupChannel updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupChannel`, and systems are expected to put that etag in the request to `UpdateBackupChannel` or `DeleteBackupChannel` to ensure that their change will be applied to the same version of the resource. */
-  etag?: string;
-  /** Required. Immutable. The project where Backups are allowed to be stored. The format is `projects/{projectId}` or `projects/{projectNumber}`. */
-  destinationProject?: string;
-  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
-  uid?: string;
-  /** Output only. The timestamp when this BackupChannel resource was created. */
-  createTime?: string;
-  /** Identifier. The fully qualified name of the BackupChannel. `projects/* /locations/* /backupChannels/*` */
-  name?: string;
-  /** Optional. A set of custom labels supplied by user. */
-  labels?: Record<string, string>;
-}
-
-export const BackupChannel: Schema.Schema<BackupChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateTime: Schema.optional(Schema.String),
-    destinationProjectId: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    destinationProject: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "BackupChannel" });
-
-export interface ListBackupChannelsResponse {
-  /** The list of BackupChannels matching the given criteria. */
-  backupChannels?: ReadonlyArray<BackupChannel>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** A token which may be sent as page_token in a subsequent `ListBackupChannels` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
-  nextPageToken?: string;
-}
-
-export const ListBackupChannelsResponse: Schema.Schema<ListBackupChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backupChannels: Schema.optional(Schema.Array(BackupChannel)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListBackupChannelsResponse" });
-
-export interface RestoreChannel {
-  /** Output only. The project_id where backups will be restored. Example Project ID: "my-project-id". This will be an OUTPUT_ONLY field to return the project_id of the destination project. */
-  destinationProjectId?: string;
-  /** Output only. The timestamp when this RestoreChannel was last updated. */
-  updateTime?: string;
-  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a RestoreChannel from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform RestoreChannel updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestoreChannel`, and systems are expected to put that etag in the request to `UpdateRestoreChannel` or `DeleteRestoreChannel` to ensure that their change will be applied to the same version of the resource. */
-  etag?: string;
-  /** Required. Immutable. The project into which the backups will be restored. The format is `projects/{projectId}` or `projects/{projectNumber}`. */
-  destinationProject?: string;
-  /** Optional. User specified descriptive string for this RestoreChannel. */
-  description?: string;
-  /** Identifier. The fully qualified name of the RestoreChannel. `projects/* /locations/* /restoreChannels/*` */
-  name?: string;
-  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
-  uid?: string;
-  /** Output only. The timestamp when this RestoreChannel was created. */
-  createTime?: string;
-  /** Optional. A set of custom labels supplied by user. */
-  labels?: Record<string, string>;
-}
-
-export const RestoreChannel: Schema.Schema<RestoreChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destinationProjectId: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    destinationProject: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "RestoreChannel" });
-
-export interface ListRestoreChannelsResponse {
-  /** A token which may be sent as page_token in a subsequent `ListRestoreChannels` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
-  nextPageToken?: string;
-  /** The list of RestoreChannels matching the given criteria. */
-  restoreChannels?: ReadonlyArray<RestoreChannel>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListRestoreChannelsResponse: Schema.Schema<ListRestoreChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    restoreChannels: Schema.optional(Schema.Array(RestoreChannel)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListRestoreChannelsResponse" });
-
-export interface VolumeBackup {
-  /** Output only. The aggregate size of the underlying artifacts associated with this VolumeBackup in the backup storage. This may change over time when multiple backups of the same volume share the same backup storage location. In particular, this is likely to increase in size when the immediately preceding backup of the same volume is deleted. */
-  storageBytes?: string;
-  /** Output only. The format used for the volume backup. */
-  format?:
-    | "VOLUME_BACKUP_FORMAT_UNSPECIFIED"
-    | "GCE_PERSISTENT_DISK"
-    | (string & {});
-  /** Output only. The timestamp when this VolumeBackup resource was created. */
-  createTime?: string;
-  /** Output only. The minimum size of the disk to which this VolumeBackup can be restored. */
-  diskSizeBytes?: string;
-  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a volume backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform volume backup updates in order to avoid race conditions. */
-  etag?: string;
-  /** Output only. A human readable message explaining why the VolumeBackup is in its current state. This field is only meant for human consumption and should not be used programmatically as this field is not guaranteed to be consistent. */
-  stateMessage?: string;
-  /** Output only. The current state of this VolumeBackup. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "SNAPSHOTTING"
-    | "UPLOADING"
-    | "SUCCEEDED"
-    | "FAILED"
-    | "DELETING"
-    | "CLEANED_UP"
-    | (string & {});
-  /** Output only. The full name of the VolumeBackup resource. Format: `projects/* /locations/* /backupPlans/* /backups/* /volumeBackups/*`. */
-  name?: string;
-  /** Output only. A reference to the source Kubernetes PVC from which this VolumeBackup was created. */
-  sourcePvc?: NamespacedName;
-  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
-  uid?: string;
-  /** Output only. A storage system-specific opaque handle to the underlying volume backup. */
-  volumeBackupHandle?: string;
-  /** Output only. The timestamp when the associated underlying volume backup operation completed. */
-  completeTime?: string;
-  /** Output only. [Output Only] Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** Output only. [Output Only] Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** Output only. The timestamp when this VolumeBackup resource was last updated. */
-  updateTime?: string;
-}
-
-export const VolumeBackup: Schema.Schema<VolumeBackup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storageBytes: Schema.optional(Schema.String),
-    format: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    diskSizeBytes: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    stateMessage: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    sourcePvc: Schema.optional(NamespacedName),
-    uid: Schema.optional(Schema.String),
-    volumeBackupHandle: Schema.optional(Schema.String),
-    completeTime: Schema.optional(Schema.String),
-    satisfiesPzi: Schema.optional(Schema.Boolean),
-    satisfiesPzs: Schema.optional(Schema.Boolean),
-    updateTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "VolumeBackup" });
-
-export interface BDRBackupPlanJobLog {
-  /** The job_id field displays the identifier of the job being reported. */
-  jobId?: string;
-  /** The category field displays the category of the job. Can be one of [UPDATE_BACKUP_PLAN]. */
-  jobCategory?: string;
-  /** Previous Backup Plan rules. */
-  previousBackupRules?: ReadonlyArray<BackupRuleDetail>;
-  /** Start time of the job. */
-  startTime?: string;
-  /** The name of the error type eg. PERMISSION_DENIED. Only populated in error scenarios. */
-  errorType?: string;
-  /** The error code. Only populated in error scenarios. */
-  errorCode?: number;
-  /** The status field displays the status of the job. Can be one of [RUNNING,SUCCESSFUL, FAILED]. */
-  jobStatus?: string;
-  /** Revised Backup Plan rules. */
-  revisedBackupRules?: ReadonlyArray<BackupRuleDetail>;
-  /** The resource_type field displays the type of the protected resource. */
-  resourceType?: string;
-  /** Full resource name for previous backup plan revision */
-  previousBackupPlanRevisionName?: string;
-  /** The user readable error message. Only populated in error scenarios. */
-  errorMessage?: string;
-  /** User friendly revision id e.g. v0, v1 etc. */
-  previousBackupPlanRevisionId?: string;
-  /** User friendly revision id e.g. v0, v1 etc. */
-  newBackupPlanRevisionId?: string;
-  /** Full resource name for new backup plan revision */
-  newBackupPlanRevisionName?: string;
-  /** Canonical resource name for Backup Plan Plan of the job. */
-  backupPlanName?: string;
-  /** End time of the job. */
-  endTime?: string;
-  /** The total number of workloads affected by the job. */
-  workloadsAffectedCount?: number;
-}
-
-export const BDRBackupPlanJobLog: Schema.Schema<BDRBackupPlanJobLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    jobId: Schema.optional(Schema.String),
-    jobCategory: Schema.optional(Schema.String),
-    previousBackupRules: Schema.optional(Schema.Array(BackupRuleDetail)),
-    startTime: Schema.optional(Schema.String),
-    errorType: Schema.optional(Schema.String),
-    errorCode: Schema.optional(Schema.Number),
-    jobStatus: Schema.optional(Schema.String),
-    revisedBackupRules: Schema.optional(Schema.Array(BackupRuleDetail)),
-    resourceType: Schema.optional(Schema.String),
-    previousBackupPlanRevisionName: Schema.optional(Schema.String),
-    errorMessage: Schema.optional(Schema.String),
-    previousBackupPlanRevisionId: Schema.optional(Schema.String),
-    newBackupPlanRevisionId: Schema.optional(Schema.String),
-    newBackupPlanRevisionName: Schema.optional(Schema.String),
-    backupPlanName: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    workloadsAffectedCount: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "BDRBackupPlanJobLog" });
-
-export interface BackupConfigDetails {
-  /** Output only. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False */
-  includeVolumeData?: boolean;
-  /** Output only. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted. */
-  encryptionKey?: EncryptionKey;
-  /** Output only. If True, include all namespaced resources */
-  allNamespaces?: boolean;
-  /** Output only. If set, include just the resources in the listed namespaces. */
-  selectedNamespaces?: Namespaces;
-  /** Output only. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False */
-  includeSecrets?: boolean;
-  /** Output only. If set, include just the resources referenced by the listed ProtectedApplications. */
-  selectedApplications?: NamespacedNames;
-}
-
-export const BackupConfigDetails: Schema.Schema<BackupConfigDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    includeVolumeData: Schema.optional(Schema.Boolean),
-    encryptionKey: Schema.optional(EncryptionKey),
-    allNamespaces: Schema.optional(Schema.Boolean),
-    selectedNamespaces: Schema.optional(Namespaces),
-    includeSecrets: Schema.optional(Schema.Boolean),
-    selectedApplications: Schema.optional(NamespacedNames),
-  }).annotate({ identifier: "BackupConfigDetails" });
-
-export interface RetentionPolicyDetails {
-  /** Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Default: 0 (no automatic deletion) */
-  backupRetainDays?: number;
-  /** Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking) */
-  backupDeleteLockDays?: number;
-}
-
-export const RetentionPolicyDetails: Schema.Schema<RetentionPolicyDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backupRetainDays: Schema.optional(Schema.Number),
-    backupDeleteLockDays: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "RetentionPolicyDetails" });
-
-export interface BackupPlanDetails {
-  /** Output only. Completion time of the last successful Backup. This is sourced from a successful Backup's complete_time field. */
-  lastSuccessfulBackupTime?: string;
-  /** Output only. A number that represents the current risk level of this BackupPlan from RPO perspective with 1 being no risk and 5 being highest risk. */
-  rpoRiskLevel?: number;
-  /** Output only. Contains details about the BackupConfig of Backups created via this BackupPlan. */
-  backupConfigDetails?: BackupConfigDetails;
-  /** Output only. The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan. */
-  protectedPodCount?: number;
-  /** Output only. State of the BackupPlan. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CLUSTER_PENDING"
-    | "PROVISIONING"
-    | "READY"
-    | "FAILED"
-    | "DEACTIVATED"
-    | "DELETING"
-    | (string & {});
-  /** Output only. Contains details about the RetentionPolicy of Backups created via this BackupPlan. */
-  retentionPolicyDetails?: RetentionPolicyDetails;
-  /** Output only. Start time of next scheduled backup under this BackupPlan by either cron_schedule or rpo config. This is sourced from BackupPlan. */
-  nextScheduledBackupTime?: string;
-  /** Output only. The fully qualified name of the last successful Backup created under this BackupPlan. `projects/* /locations/* /backupPlans/* /backups/*` */
-  lastSuccessfulBackup?: string;
-}
-
-export const BackupPlanDetails: Schema.Schema<BackupPlanDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    lastSuccessfulBackupTime: Schema.optional(Schema.String),
-    rpoRiskLevel: Schema.optional(Schema.Number),
-    backupConfigDetails: Schema.optional(BackupConfigDetails),
-    protectedPodCount: Schema.optional(Schema.Number),
-    state: Schema.optional(Schema.String),
-    retentionPolicyDetails: Schema.optional(RetentionPolicyDetails),
-    nextScheduledBackupTime: Schema.optional(Schema.String),
-    lastSuccessfulBackup: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BackupPlanDetails" });
-
-export interface BackupPlanBinding {
-  /** Identifier. The fully qualified name of the BackupPlanBinding. `projects/* /locations/* /backupChannels/* /backupPlanBindings/*` */
-  name?: string;
-  /** Output only. Contains details about the backup plan/backup. */
-  backupPlanDetails?: BackupPlanDetails;
-  /** Output only. Immutable. The fully qualified name of the cluster that is being backed up Valid formats: - `projects/* /locations/* /clusters/*` - `projects/* /zones/* /clusters/*` */
-  cluster?: string;
-  /** Output only. Server generated global unique identifier of [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier) */
-  uid?: string;
-  /** Output only. The timestamp when this binding was created. */
-  createTime?: string;
-  /** Output only. The timestamp when this binding was created. */
-  updateTime?: string;
-  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a BackupPlanBinding from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlanBinding updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlanBinding`, and systems are expected to put that etag in the request to `UpdateBackupPlanBinding` or `DeleteBackupPlanBinding` to ensure that their change will be applied to the same version of the resource. */
-  etag?: string;
-  /** Output only. Immutable. The fully qualified name of the BackupPlan bound with the parent BackupChannel. `projects/* /locations/* /backupPlans/{backup_plan}` */
-  backupPlan?: string;
-}
-
-export const BackupPlanBinding: Schema.Schema<BackupPlanBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    backupPlanDetails: Schema.optional(BackupPlanDetails),
-    cluster: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    backupPlan: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BackupPlanBinding" });
-
-export interface RestorePlan {
-  /** Output only. State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in during the Create operation. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CLUSTER_PENDING"
-    | "READY"
-    | "FAILED"
-    | "DELETING"
-    | (string & {});
-  /** Output only. The fully qualified name of the RestoreChannel to be used to create a RestorePlan. This field is set only if the `backup_plan` is in a different project than the RestorePlan. Format: `projects/* /locations/* /restoreChannels/*` */
-  restoreChannel?: string;
-  /** Optional. User specified descriptive string for this RestorePlan. */
-  description?: string;
-  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource. */
-  etag?: string;
-  /** Output only. The timestamp when this RestorePlan resource was created. */
-  createTime?: string;
-  /** Required. Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/* /locations/* /backupPlans/*`. */
-  backupPlan?: string;
-  /** Optional. A set of custom labels supplied by user. */
-  labels?: Record<string, string>;
-  /** Output only. The timestamp when this RestorePlan resource was last updated. */
-  updateTime?: string;
-  /** Required. Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/* /locations/* /clusters/*` - `projects/* /zones/* /clusters/*` */
-  cluster?: string;
-  /** Required. Configuration of Restores created via this RestorePlan. */
-  restoreConfig?: RestoreConfig;
-  /** Output only. Human-readable description of why RestorePlan is in the current `state`. This field is only meant for human readability and should not be used programmatically as this field is not guaranteed to be consistent. */
-  stateReason?: string;
-  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
-  uid?: string;
-  /** Output only. Identifier. The full name of the RestorePlan resource. Format: `projects/* /locations/* /restorePlans/*`. */
-  name?: string;
-}
-
-export const RestorePlan: Schema.Schema<RestorePlan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    state: Schema.optional(Schema.String),
-    restoreChannel: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    backupPlan: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    updateTime: Schema.optional(Schema.String),
-    cluster: Schema.optional(Schema.String),
-    restoreConfig: Schema.optional(RestoreConfig),
-    stateReason: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RestorePlan" });
-
-export interface SetTagsRequest {
-  /** Optional. A unique identifier for this request. Must be a valid UUID. This request is only idempotent if a `request_id` is provided. */
-  requestId?: string;
-  /** Required. The full resource name of the service resource. */
-  name?: string;
-  /** Optional. A checksum based on the current bindings which can be passed to prevent race conditions. If not passed, etag check would be skipped. */
-  etag?: string;
-  /** Required. These bindings will override any bindings previously set and will be effective immediately. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" */
-  tags?: Record<string, string>;
-}
-
-export const SetTagsRequest: Schema.Schema<SetTagsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "SetTagsRequest" });
-
-export interface ListBackupPlanBindingsResponse {
-  /** The list of BackupPlanBindings matching the given criteria. */
-  backupPlanBindings?: ReadonlyArray<BackupPlanBinding>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** A token which may be sent as page_token in a subsequent `ListBackupPlanBindingss` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
-  nextPageToken?: string;
-}
-
-export const ListBackupPlanBindingsResponse: Schema.Schema<ListBackupPlanBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backupPlanBindings: Schema.optional(Schema.Array(BackupPlanBinding)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListBackupPlanBindingsResponse" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
@@ -1451,187 +1500,236 @@ export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsRespons
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
-export interface Empty {}
+export interface GoogleLongrunningCancelOperationRequest {}
 
-export const Empty: Schema.Schema<Empty> =
+export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
+    identifier: "GoogleLongrunningCancelOperationRequest",
   });
 
-export interface OperationMetadata {
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-}
-
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    statusMessage: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    apiVersion: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OperationMetadata" });
-
-export interface ClusterMetadata {
-  /** Output only. The source cluster from which this Backup was created. Valid formats: - `projects/* /locations/* /clusters/*` - `projects/* /zones/* /clusters/*` This is inherited from the parent BackupPlan's cluster field. */
+export interface BackupPlanBinding {
+  /** Output only. Immutable. The fully qualified name of the BackupPlan bound with the parent BackupChannel. `projects/* /locations/* /backupPlans/{backup_plan}` */
+  backupPlan?: string;
+  /** Output only. Immutable. The fully qualified name of the cluster that is being backed up Valid formats: - `projects/* /locations/* /clusters/*` - `projects/* /zones/* /clusters/*` */
   cluster?: string;
-  /** Output only. Anthos version */
-  anthosVersion?: string;
-  /** Output only. The Kubernetes server version of the source cluster. */
-  k8sVersion?: string;
-  /** Output only. GKE version */
-  gkeVersion?: string;
-  /** Output only. A list of the Backup for GKE CRD versions found in the cluster. */
-  backupCrdVersions?: Record<string, string>;
+  /** Identifier. The fully qualified name of the BackupPlanBinding. `projects/* /locations/* /backupChannels/* /backupPlanBindings/*` */
+  name?: string;
+  /** Output only. The timestamp when this binding was created. */
+  createTime?: string;
+  /** Output only. Contains details about the backup plan/backup. */
+  backupPlanDetails?: BackupPlanDetails;
+  /** Output only. The timestamp when this binding was created. */
+  updateTime?: string;
+  /** Output only. Server generated global unique identifier of [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier) */
+  uid?: string;
+  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a BackupPlanBinding from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlanBinding updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlanBinding`, and systems are expected to put that etag in the request to `UpdateBackupPlanBinding` or `DeleteBackupPlanBinding` to ensure that their change will be applied to the same version of the resource. */
+  etag?: string;
 }
 
-export const ClusterMetadata: Schema.Schema<ClusterMetadata> =
+export const BackupPlanBinding: Schema.Schema<BackupPlanBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupPlan: Schema.optional(Schema.String),
     cluster: Schema.optional(Schema.String),
-    anthosVersion: Schema.optional(Schema.String),
-    k8sVersion: Schema.optional(Schema.String),
-    gkeVersion: Schema.optional(Schema.String),
-    backupCrdVersions: Schema.optional(
-      Schema.Record(Schema.String, Schema.String),
-    ),
-  }).annotate({ identifier: "ClusterMetadata" });
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    backupPlanDetails: Schema.optional(BackupPlanDetails),
+    updateTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackupPlanBinding" });
 
-export interface Backup {
-  /** Output only. This flag indicates whether this Backup resource was created manually by a user or via a schedule in the BackupPlan. A value of True means that the Backup was created manually. */
-  manual?: boolean;
-  /** Output only. The total number of user managed namespaces contained in the Backup. */
-  namespaceCount?: number;
-  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` or `DeleteBackup` to ensure that their change will be applied to the same version of the resource. */
-  etag?: string;
-  /** Output only. If set, the list of namespaces that were included in the Backup. */
-  selectedNamespaces?: Namespaces;
-  /** Output only. The total number of Kubernetes resources included in the Backup. */
-  resourceCount?: number;
-  /** Output only. The timestamp when this Backup resource was created. */
+export interface BackupChannel {
+  /** Identifier. The fully qualified name of the BackupChannel. `projects/* /locations/* /backupChannels/*` */
+  name?: string;
+  /** Required. Immutable. The project where Backups are allowed to be stored. The format is `projects/{projectId}` or `projects/{projectNumber}`. */
+  destinationProject?: string;
+  /** Output only. The timestamp when this BackupChannel resource was created. */
   createTime?: string;
-  /** Output only. Whether or not the Backup contains volume data. Controlled by the parent BackupPlan's include_volume_data value. */
-  containsVolumeData?: boolean;
-  /** Output only. If false, Backup will fail when Backup for GKE detects Kubernetes configuration that is non-standard or requires additional setup to restore. Inherited from the parent BackupPlan's permissive_mode value. */
-  permissiveMode?: boolean;
-  /** Output only. The total number of volume backups contained in the Backup. */
-  volumeCount?: number;
-  /** Output only. The total number of Kubernetes Pods contained in the Backup. */
-  podCount?: number;
-  /** Output only. Information about the GKE cluster from which this Backup was created. */
-  clusterMetadata?: ClusterMetadata;
-  /** Output only. [Output Only] Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value. */
-  retainDays?: number;
-  /** Output only. Completion time of the Backup */
-  completeTime?: string;
-  /** Output only. If set, the list of ProtectedApplications whose resources were included in the Backup. */
-  selectedApplications?: NamespacedNames;
-  /** Output only. The total size of the Backup in bytes = config backup size + sum(volume backup sizes) */
-  sizeBytes?: string;
-  /** Output only. Information about the troubleshooting steps which will provide debugging information to the end users. */
-  troubleshootingInfo?: TroubleshootingInfo;
-  /** Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update). */
-  deleteLockDays?: number;
-  /** Output only. Current state of the Backup */
+  /** Optional. A set of custom labels supplied by user. */
+  labels?: Record<string, string>;
+  /** Output only. The timestamp when this BackupChannel resource was last updated. */
+  updateTime?: string;
+  /** Optional. User specified descriptive string for this BackupChannel. */
+  description?: string;
+  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
+  uid?: string;
+  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a BackupChannel from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupChannel updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupChannel`, and systems are expected to put that etag in the request to `UpdateBackupChannel` or `DeleteBackupChannel` to ensure that their change will be applied to the same version of the resource. */
+  etag?: string;
+  /** Output only. The project_id where Backups are allowed to be stored. Example Project ID: "my-project-id". This will be an OUTPUT_ONLY field to return the project_id of the destination project. */
+  destinationProjectId?: string;
+}
+
+export const BackupChannel: Schema.Schema<BackupChannel> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    destinationProject: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    destinationProjectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackupChannel" });
+
+export interface RestorePlan {
+  /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
+  uid?: string;
+  /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource. */
+  etag?: string;
+  /** Optional. User specified descriptive string for this RestorePlan. */
+  description?: string;
+  /** Required. Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/* /locations/* /clusters/*` - `projects/* /zones/* /clusters/*` */
+  cluster?: string;
+  /** Required. Configuration of Restores created via this RestorePlan. */
+  restoreConfig?: RestoreConfig;
+  /** Optional. A set of custom labels supplied by user. */
+  labels?: Record<string, string>;
+  /** Output only. Identifier. The full name of the RestorePlan resource. Format: `projects/* /locations/* /restorePlans/*`. */
+  name?: string;
+  /** Output only. The timestamp when this RestorePlan resource was last updated. */
+  updateTime?: string;
+  /** Output only. State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in during the Create operation. */
   state?:
     | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "IN_PROGRESS"
-    | "SUCCEEDED"
+    | "CLUSTER_PENDING"
+    | "READY"
     | "FAILED"
     | "DELETING"
     | (string & {});
-  /** Optional. User specified descriptive string for this Backup. */
-  description?: string;
-  /** Output only. If set, the list of labels whose constituent namespaces were included in the Backup. */
-  selectedNamespaceLabels?: ResourceLabels;
-  /** Output only. Whether or not the Backup contains Kubernetes Secrets. Controlled by the parent BackupPlan's include_secrets value. */
-  containsSecrets?: boolean;
-  /** Output only. The time at which an existing delete lock will expire for this backup (calculated from create_time + delete_lock_days). */
-  deleteLockExpireTime?: string;
-  /** Optional. A set of custom labels supplied by user. */
-  labels?: Record<string, string>;
-  /** Output only. If True, all namespaces were included in the Backup. */
-  allNamespaces?: boolean;
-  /** Output only. Human-readable description of why the backup is in the current `state`. This field is only meant for human readability and should not be used programmatically as this field is not guaranteed to be consistent. */
+  /** Output only. Human-readable description of why RestorePlan is in the current `state`. This field is only meant for human readability and should not be used programmatically as this field is not guaranteed to be consistent. */
   stateReason?: string;
-  /** Output only. [Output Only] Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** Output only. The timestamp when this Backup resource was last updated. */
-  updateTime?: string;
-  /** Output only. The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited from the parent BackupPlan's encryption_key value. */
-  encryptionKey?: EncryptionKey;
-  /** Output only. Server generated global unique identifier of [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier) */
-  uid?: string;
-  /** Output only. Identifier. The fully qualified name of the Backup. `projects/* /locations/* /backupPlans/* /backups/*` */
-  name?: string;
-  /** Output only. The time at which this Backup will be automatically deleted (calculated from create_time + retain_days). */
-  retainExpireTime?: string;
-  /** Output only. The size of the config backup in bytes. */
-  configBackupSizeBytes?: string;
+  /** Required. Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/* /locations/* /backupPlans/*`. */
+  backupPlan?: string;
+  /** Output only. The fully qualified name of the RestoreChannel to be used to create a RestorePlan. This field is set only if the `backup_plan` is in a different project than the RestorePlan. Format: `projects/* /locations/* /restoreChannels/*` */
+  restoreChannel?: string;
+  /** Output only. The timestamp when this RestorePlan resource was created. */
+  createTime?: string;
 }
 
-export const Backup: Schema.Schema<Backup> =
+export const RestorePlan: Schema.Schema<RestorePlan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    manual: Schema.optional(Schema.Boolean),
-    namespaceCount: Schema.optional(Schema.Number),
-    etag: Schema.optional(Schema.String),
-    selectedNamespaces: Schema.optional(Namespaces),
-    resourceCount: Schema.optional(Schema.Number),
-    createTime: Schema.optional(Schema.String),
-    containsVolumeData: Schema.optional(Schema.Boolean),
-    permissiveMode: Schema.optional(Schema.Boolean),
-    volumeCount: Schema.optional(Schema.Number),
-    podCount: Schema.optional(Schema.Number),
-    clusterMetadata: Schema.optional(ClusterMetadata),
-    satisfiesPzi: Schema.optional(Schema.Boolean),
-    retainDays: Schema.optional(Schema.Number),
-    completeTime: Schema.optional(Schema.String),
-    selectedApplications: Schema.optional(NamespacedNames),
-    sizeBytes: Schema.optional(Schema.String),
-    troubleshootingInfo: Schema.optional(TroubleshootingInfo),
-    deleteLockDays: Schema.optional(Schema.Number),
-    state: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    selectedNamespaceLabels: Schema.optional(ResourceLabels),
-    containsSecrets: Schema.optional(Schema.Boolean),
-    deleteLockExpireTime: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    allNamespaces: Schema.optional(Schema.Boolean),
-    stateReason: Schema.optional(Schema.String),
-    satisfiesPzs: Schema.optional(Schema.Boolean),
-    updateTime: Schema.optional(Schema.String),
-    encryptionKey: Schema.optional(EncryptionKey),
     uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    cluster: Schema.optional(Schema.String),
+    restoreConfig: Schema.optional(RestoreConfig),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     name: Schema.optional(Schema.String),
-    retainExpireTime: Schema.optional(Schema.String),
-    configBackupSizeBytes: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Backup" });
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    stateReason: Schema.optional(Schema.String),
+    backupPlan: Schema.optional(Schema.String),
+    restoreChannel: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RestorePlan" });
 
-export interface GetBackupIndexDownloadUrlResponse {
-  /** Required. The signed URL for downloading the backup index. */
-  signedUrl?: string;
+export interface GoogleRpcStatus {
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
 }
 
-export const GetBackupIndexDownloadUrlResponse: Schema.Schema<GetBackupIndexDownloadUrlResponse> =
+export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    signedUrl: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GetBackupIndexDownloadUrlResponse" });
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleRpcStatus" });
+
+export interface GoogleLongrunningOperation {
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: GoogleRpcStatus;
+}
+
+export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(GoogleRpcStatus),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
+
+export interface ListBackupPlanBindingsResponse {
+  /** The list of BackupPlanBindings matching the given criteria. */
+  backupPlanBindings?: ReadonlyArray<BackupPlanBinding>;
+  /** A token which may be sent as page_token in a subsequent `ListBackupPlanBindingss` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListBackupPlanBindingsResponse: Schema.Schema<ListBackupPlanBindingsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupPlanBindings: Schema.optional(Schema.Array(BackupPlanBinding)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBackupPlanBindingsResponse" });
+
+export interface ListBackupChannelsResponse {
+  /** The list of BackupChannels matching the given criteria. */
+  backupChannels?: ReadonlyArray<BackupChannel>;
+  /** A token which may be sent as page_token in a subsequent `ListBackupChannels` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListBackupChannelsResponse: Schema.Schema<ListBackupChannelsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupChannels: Schema.optional(Schema.Array(BackupChannel)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBackupChannelsResponse" });
+
+export interface SetTagsRequest {
+  /** Required. These bindings will override any bindings previously set and will be effective immediately. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" */
+  tags?: Record<string, string>;
+  /** Optional. A unique identifier for this request. Must be a valid UUID. This request is only idempotent if a `request_id` is provided. */
+  requestId?: string;
+  /** Optional. A checksum based on the current bindings which can be passed to prevent race conditions. If not passed, etag check would be skipped. */
+  etag?: string;
+  /** Required. The full resource name of the service resource. */
+  name?: string;
+}
+
+export const SetTagsRequest: Schema.Schema<SetTagsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    requestId: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetTagsRequest" });
+
+export interface GoogleLongrunningListOperationsResponse {
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface SetTagsResponse {
   /** Required. Tag keys/values directly bound to this resource. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" */
@@ -1650,125 +1748,17 @@ export const SetTagsResponse: Schema.Schema<SetTagsResponse> =
   }).annotate({ identifier: "SetTagsResponse" });
 
 export interface SetIamPolicyRequest {
-  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
-  updateMask?: string;
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
+  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
+  updateMask?: string;
 }
 
 export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String),
     policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface BDRBackupRestoreJobLog {
-  /** Restore resource location. */
-  restoreResourceLocation?: string;
-  /** Full resource name of the restore resource. Only populated in restore jobs. */
-  restoreResourceName?: string;
-  /** Full resource name for Backup Plan of the job. Only populated for Scheduled Backup and Adhoc Backup. */
-  backupPlanName?: string;
-  /** End time of the job. */
-  endTime?: string;
-  /** The source resource ID. */
-  sourceResourceId?: string;
-  /** Name of the backup rule. Only populated for Scheduled Backup and Adhoc Backup. */
-  backupRule?: string;
-  /** Source resource location. */
-  sourceResourceLocation?: string;
-  /** Full resource name backup vault name */
-  backupVaultName?: string;
-  /** Backup consistency time. */
-  backupConsistencyTime?: string;
-  /** The resource_type field displays the type of the protected resource. */
-  resourceType?: string;
-  /** The user readable error message. Only populated in error scenarios. */
-  errorMessage?: string;
-  /** The status field displays the status of the job. */
-  jobStatus?: string;
-  /** The error code. Only populated in error scenarios. */
-  errorCode?: number;
-  /** Start time of the job. */
-  startTime?: string;
-  /** The name of the error type eg. PERMISSION_DENIED. Only populated in error scenarios. */
-  errorType?: string;
-  /** Canonical Data Source Name */
-  dataSourceName?: string;
-  /** Full resource name of the protected resource. */
-  sourceResourceName?: string;
-  /** The amount of incremental backup data copied. */
-  incrementalBackupSizeGib?: number;
-  /** Full resource name of the backup created in backup jobs and used in restore jobs. */
-  backupName?: string;
-  /** The category field displays the category of the job. */
-  jobCategory?: string;
-  /** Recovery point time. */
-  recoveryPointTime?: string;
-  /** The job_id field displays the identifier of the job being logged. */
-  jobId?: string;
-  /** Backup retention in days. */
-  backupRetentionDays?: number;
-}
-
-export const BDRBackupRestoreJobLog: Schema.Schema<BDRBackupRestoreJobLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    restoreResourceLocation: Schema.optional(Schema.String),
-    restoreResourceName: Schema.optional(Schema.String),
-    backupPlanName: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    sourceResourceId: Schema.optional(Schema.String),
-    backupRule: Schema.optional(Schema.String),
-    sourceResourceLocation: Schema.optional(Schema.String),
-    backupVaultName: Schema.optional(Schema.String),
-    backupConsistencyTime: Schema.optional(Schema.String),
-    resourceType: Schema.optional(Schema.String),
-    errorMessage: Schema.optional(Schema.String),
-    jobStatus: Schema.optional(Schema.String),
-    errorCode: Schema.optional(Schema.Number),
-    startTime: Schema.optional(Schema.String),
-    errorType: Schema.optional(Schema.String),
-    dataSourceName: Schema.optional(Schema.String),
-    sourceResourceName: Schema.optional(Schema.String),
-    incrementalBackupSizeGib: Schema.optional(Schema.Number),
-    backupName: Schema.optional(Schema.String),
-    jobCategory: Schema.optional(Schema.String),
-    recoveryPointTime: Schema.optional(Schema.String),
-    jobId: Schema.optional(Schema.String),
-    backupRetentionDays: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "BDRBackupRestoreJobLog" });
-
-export interface ListRestorePlansResponse {
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** The list of RestorePlans matching the given criteria. */
-  restorePlans?: ReadonlyArray<RestorePlan>;
-  /** A token which may be sent as page_token in a subsequent `ListRestorePlans` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
-  nextPageToken?: string;
-}
-
-export const ListRestorePlansResponse: Schema.Schema<ListRestorePlansResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    restorePlans: Schema.optional(Schema.Array(RestorePlan)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListRestorePlansResponse" });
-
-export interface GoogleLongrunningListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<GoogleLongrunningOperation>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface ListRestoresResponse {
   /** Locations that could not be reached. */
@@ -1796,33 +1786,46 @@ export const GetTagsRequest: Schema.Schema<GetTagsRequest> =
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GetTagsRequest" });
 
-export interface ListBackupsResponse {
-  /** A token which may be sent as page_token in a subsequent `ListBackups` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
+export interface ListVolumeRestoresResponse {
+  /** The list of VolumeRestores matching the given criteria. */
+  volumeRestores?: ReadonlyArray<VolumeRestore>;
+  /** A token which may be sent as page_token in a subsequent `ListVolumeRestores` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
+  nextPageToken?: string;
+}
+
+export const ListVolumeRestoresResponse: Schema.Schema<ListVolumeRestoresResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    volumeRestores: Schema.optional(Schema.Array(VolumeRestore)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListVolumeRestoresResponse" });
+
+export interface ListRestorePlansResponse {
+  /** The list of RestorePlans matching the given criteria. */
+  restorePlans?: ReadonlyArray<RestorePlan>;
+  /** A token which may be sent as page_token in a subsequent `ListRestorePlans` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
   unreachable?: ReadonlyArray<string>;
-  /** The list of Backups matching the given criteria. */
-  backups?: ReadonlyArray<Backup>;
 }
 
-export const ListBackupsResponse: Schema.Schema<ListBackupsResponse> =
+export const ListRestorePlansResponse: Schema.Schema<ListRestorePlansResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    restorePlans: Schema.optional(Schema.Array(RestorePlan)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
-    backups: Schema.optional(Schema.Array(Backup)),
-  }).annotate({ identifier: "ListBackupsResponse" });
+  }).annotate({ identifier: "ListRestorePlansResponse" });
 
 export interface ListVolumeBackupsResponse {
-  /** A token which may be sent as page_token in a subsequent `ListVolumeBackups` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
-  nextPageToken?: string;
   /** The list of VolumeBackups matching the given criteria. */
   volumeBackups?: ReadonlyArray<VolumeBackup>;
+  /** A token which may be sent as page_token in a subsequent `ListVolumeBackups` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
+  nextPageToken?: string;
 }
 
 export const ListVolumeBackupsResponse: Schema.Schema<ListVolumeBackupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
     volumeBackups: Schema.optional(Schema.Array(VolumeBackup)),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListVolumeBackupsResponse" });
 
 // ==========================================================================
@@ -1880,12 +1883,12 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -1894,11 +1897,11 @@ export interface ListProjectsLocationsRequest {
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
@@ -1959,6 +1962,473 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
+export interface CreateProjectsLocationsRestoreChannelsRequest {
+  /** Optional. The client-provided short name for the RestoreChannel resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestoreChannels in this location If the user does not provide a name, a uuid will be used as the name. */
+  restoreChannelId?: string;
+  /** Required. The location within which to create the RestoreChannel. Format: `projects/* /locations/*` */
+  parent: string;
+  /** Request body */
+  body?: RestoreChannel;
+}
+
+export const CreateProjectsLocationsRestoreChannelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    restoreChannelId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("restoreChannelId"),
+    ),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(RestoreChannel).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/restoreChannels",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsRestoreChannelsRequest>;
+
+export type CreateProjectsLocationsRestoreChannelsResponse =
+  GoogleLongrunningOperation;
+export const CreateProjectsLocationsRestoreChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type CreateProjectsLocationsRestoreChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new RestoreChannel in a given location. */
+export const createProjectsLocationsRestoreChannels: API.OperationMethod<
+  CreateProjectsLocationsRestoreChannelsRequest,
+  CreateProjectsLocationsRestoreChannelsResponse,
+  CreateProjectsLocationsRestoreChannelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsRestoreChannelsRequest,
+  output: CreateProjectsLocationsRestoreChannelsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsRestoreChannelsRequest {
+  /** Optional. If provided, this value must match the current value of the target RestoreChannel's etag field or the request is rejected. */
+  etag?: string;
+  /** Required. Fully qualified RestoreChannel name. Format: `projects/* /locations/* /restoreChannels/*` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsRestoreChannelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsRestoreChannelsRequest>;
+
+export type DeleteProjectsLocationsRestoreChannelsResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsRestoreChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type DeleteProjectsLocationsRestoreChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing RestoreChannel. */
+export const deleteProjectsLocationsRestoreChannels: API.OperationMethod<
+  DeleteProjectsLocationsRestoreChannelsRequest,
+  DeleteProjectsLocationsRestoreChannelsResponse,
+  DeleteProjectsLocationsRestoreChannelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsRestoreChannelsRequest,
+  output: DeleteProjectsLocationsRestoreChannelsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsRestoreChannelsRequest {
+  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+  /** Required. The location that contains the RestoreChannels to list. Format: `projects/* /locations/*` */
+  parent: string;
+  /** Optional. Field by which to sort the results. */
+  orderBy?: string;
+  /** Optional. The value of next_page_token received from a previous `ListRestoreChannels` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestoreChannels` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field match expression used to filter the results. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsRestoreChannelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/restoreChannels" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRestoreChannelsRequest>;
+
+export type ListProjectsLocationsRestoreChannelsResponse =
+  ListRestoreChannelsResponse;
+export const ListProjectsLocationsRestoreChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListRestoreChannelsResponse;
+
+export type ListProjectsLocationsRestoreChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists RestoreChannels in a given location. */
+export const listProjectsLocationsRestoreChannels: API.PaginatedOperationMethod<
+  ListProjectsLocationsRestoreChannelsRequest,
+  ListProjectsLocationsRestoreChannelsResponse,
+  ListProjectsLocationsRestoreChannelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRestoreChannelsRequest,
+  output: ListProjectsLocationsRestoreChannelsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsRestoreChannelsRequest {
+  /** Required. Fully qualified RestoreChannel name. Format: `projects/* /locations/* /restoreChannels/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsRestoreChannelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsRestoreChannelsRequest>;
+
+export type GetProjectsLocationsRestoreChannelsResponse = RestoreChannel;
+export const GetProjectsLocationsRestoreChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RestoreChannel;
+
+export type GetProjectsLocationsRestoreChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Retrieve the details of a single RestoreChannel. */
+export const getProjectsLocationsRestoreChannels: API.OperationMethod<
+  GetProjectsLocationsRestoreChannelsRequest,
+  GetProjectsLocationsRestoreChannelsResponse,
+  GetProjectsLocationsRestoreChannelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsRestoreChannelsRequest,
+  output: GetProjectsLocationsRestoreChannelsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PatchProjectsLocationsRestoreChannelsRequest {
+  /** Optional. This is used to specify the fields to be overwritten in the RestoreChannel targeted for update. The values for each of these updated fields will be taken from the `restore_channel` provided with this request. Field names are relative to the root of the resource (e.g., `description`, `destination_project_id`, etc.) If no `update_mask` is provided, all fields in `restore_channel` will be written to the target RestoreChannel resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `restore_channel` are ignored and are not used to update the target RestoreChannel. */
+  updateMask?: string;
+  /** Identifier. The fully qualified name of the RestoreChannel. `projects/* /locations/* /restoreChannels/*` */
+  name: string;
+  /** Request body */
+  body?: RestoreChannel;
+}
+
+export const PatchProjectsLocationsRestoreChannelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RestoreChannel).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsRestoreChannelsRequest>;
+
+export type PatchProjectsLocationsRestoreChannelsResponse =
+  GoogleLongrunningOperation;
+export const PatchProjectsLocationsRestoreChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type PatchProjectsLocationsRestoreChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Update a RestoreChannel. */
+export const patchProjectsLocationsRestoreChannels: API.OperationMethod<
+  PatchProjectsLocationsRestoreChannelsRequest,
+  PatchProjectsLocationsRestoreChannelsResponse,
+  PatchProjectsLocationsRestoreChannelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsRestoreChannelsRequest,
+  output: PatchProjectsLocationsRestoreChannelsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest {
+  /** Required. The RestoreChannel that contains the ListRestorePlanBindings to list. Format: `projects/* /locations/* /restoreChannels/*` */
+  parent: string;
+  /** Optional. Field by which to sort the results. */
+  orderBy?: string;
+  /** Optional. The value of next_page_token received from a previous `ListRestorePlanBindings` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestorePlanBindings` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field match expression used to filter the results. */
+  filter?: string;
+  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/restorePlanBindings" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
+
+export type ListProjectsLocationsRestoreChannelsRestorePlanBindingsResponse =
+  ListRestorePlanBindingsResponse;
+export const ListProjectsLocationsRestoreChannelsRestorePlanBindingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListRestorePlanBindingsResponse;
+
+export type ListProjectsLocationsRestoreChannelsRestorePlanBindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists RestorePlanBindings in a given location. */
+export const listProjectsLocationsRestoreChannelsRestorePlanBindings: API.PaginatedOperationMethod<
+  ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
+  ListProjectsLocationsRestoreChannelsRestorePlanBindingsResponse,
+  ListProjectsLocationsRestoreChannelsRestorePlanBindingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
+  output: ListProjectsLocationsRestoreChannelsRestorePlanBindingsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest {
+  /** Required. Fully qualified RestorePlanBinding name. Format: `projects/* /locations/* /restoreChannels/* /restorePlanBindings/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
+
+export type GetProjectsLocationsRestoreChannelsRestorePlanBindingsResponse =
+  RestorePlanBinding;
+export const GetProjectsLocationsRestoreChannelsRestorePlanBindingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RestorePlanBinding;
+
+export type GetProjectsLocationsRestoreChannelsRestorePlanBindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Retrieve the details of a single RestorePlanBinding. */
+export const getProjectsLocationsRestoreChannelsRestorePlanBindings: API.OperationMethod<
+  GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
+  GetProjectsLocationsRestoreChannelsRestorePlanBindingsResponse,
+  GetProjectsLocationsRestoreChannelsRestorePlanBindingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
+  output: GetProjectsLocationsRestoreChannelsRestorePlanBindingsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be deleted. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+
+export type DeleteProjectsLocationsOperationsResponse = Empty;
+export const DeleteProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
+export const deleteProjectsLocationsOperations: API.OperationMethod<
+  DeleteProjectsLocationsOperationsRequest,
+  DeleteProjectsLocationsOperationsResponse,
+  DeleteProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: DeleteProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsOperationsRequest {
+  /** The standard list page size. */
+  pageSize?: number;
+  /** The standard list filter. */
+  filter?: string;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** The name of the operation's parent resource. */
+  name: string;
+}
+
+export const ListProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+
+export type ListProjectsLocationsOperationsResponse =
+  GoogleLongrunningListOperationsResponse;
+export const ListProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
+  ListProjectsLocationsOperationsRequest,
+  ListProjectsLocationsOperationsResponse,
+  ListProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+
+export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CancelProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
+  /** Request body */
+  body?: GoogleLongrunningCancelOperationRequest;
+}
+
+export const CancelProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(GoogleLongrunningCancelOperationRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+
+export type CancelProjectsLocationsOperationsResponse = Empty;
+export const CancelProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+export const cancelProjectsLocationsOperations: API.OperationMethod<
+  CancelProjectsLocationsOperationsRequest,
+  CancelProjectsLocationsOperationsResponse,
+  CancelProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelProjectsLocationsOperationsRequest,
+  output: CancelProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface CreateProjectsLocationsBackupChannelsRequest {
   /** Required. The location within which to create the BackupChannel. Format: `projects/* /locations/*` */
   parent: string;
@@ -2008,55 +2478,47 @@ export const createProjectsLocationsBackupChannels: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsBackupChannelsRequest {
-  /** Optional. Field by which to sort the results. */
-  orderBy?: string;
-  /** Required. The location that contains the BackupChannels to list. Format: `projects/* /locations/*` */
-  parent: string;
-  /** Optional. The value of next_page_token received from a previous `ListBackupChannels` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListBackupChannels` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Field match expression used to filter the results. */
-  filter?: string;
-  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
+export interface DeleteProjectsLocationsBackupChannelsRequest {
+  /** Required. Fully qualified BackupChannel name. Format: `projects/* /locations/* /backupChannels/*` */
+  name: string;
+  /** Optional. If set to true, any BackupPlanAssociations below this BackupChannel will also be deleted. Otherwise, the request will only succeed if the BackupChannel has no BackupPlanAssociations. */
+  force?: boolean;
+  /** Optional. If provided, this value must match the current value of the target BackupChannel's etag field or the request is rejected. */
+  etag?: string;
 }
 
-export const ListProjectsLocationsBackupChannelsRequest =
+export const DeleteProjectsLocationsBackupChannelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/backupChannels" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsBackupChannelsRequest>;
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupChannelsRequest>;
 
-export type ListProjectsLocationsBackupChannelsResponse =
-  ListBackupChannelsResponse;
-export const ListProjectsLocationsBackupChannelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBackupChannelsResponse;
+export type DeleteProjectsLocationsBackupChannelsResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsBackupChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ListProjectsLocationsBackupChannelsError =
+export type DeleteProjectsLocationsBackupChannelsError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists BackupChannels in a given location. */
-export const listProjectsLocationsBackupChannels: API.PaginatedOperationMethod<
-  ListProjectsLocationsBackupChannelsRequest,
-  ListProjectsLocationsBackupChannelsResponse,
-  ListProjectsLocationsBackupChannelsError,
+/** Deletes an existing BackupChannel. */
+export const deleteProjectsLocationsBackupChannels: API.OperationMethod<
+  DeleteProjectsLocationsBackupChannelsRequest,
+  DeleteProjectsLocationsBackupChannelsResponse,
+  DeleteProjectsLocationsBackupChannelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackupChannelsRequest,
-  output: ListProjectsLocationsBackupChannelsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsBackupChannelsRequest,
+  output: DeleteProjectsLocationsBackupChannelsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsBackupChannelsRequest {
@@ -2102,6 +2564,57 @@ export const patchProjectsLocationsBackupChannels: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface ListProjectsLocationsBackupChannelsRequest {
+  /** Required. The location that contains the BackupChannels to list. Format: `projects/* /locations/*` */
+  parent: string;
+  /** Optional. Field by which to sort the results. */
+  orderBy?: string;
+  /** Optional. The value of next_page_token received from a previous `ListBackupChannels` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListBackupChannels` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field match expression used to filter the results. */
+  filter?: string;
+  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsBackupChannelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/backupChannels" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsBackupChannelsRequest>;
+
+export type ListProjectsLocationsBackupChannelsResponse =
+  ListBackupChannelsResponse;
+export const ListProjectsLocationsBackupChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListBackupChannelsResponse;
+
+export type ListProjectsLocationsBackupChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists BackupChannels in a given location. */
+export const listProjectsLocationsBackupChannels: API.PaginatedOperationMethod<
+  ListProjectsLocationsBackupChannelsRequest,
+  ListProjectsLocationsBackupChannelsResponse,
+  ListProjectsLocationsBackupChannelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsBackupChannelsRequest,
+  output: ListProjectsLocationsBackupChannelsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface GetProjectsLocationsBackupChannelsRequest {
   /** Required. Fully qualified BackupChannel name. Format: `projects/* /locations/* /backupChannels/*` */
   name: string;
@@ -2136,69 +2649,26 @@ export const getProjectsLocationsBackupChannels: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface DeleteProjectsLocationsBackupChannelsRequest {
-  /** Required. Fully qualified BackupChannel name. Format: `projects/* /locations/* /backupChannels/*` */
-  name: string;
-  /** Optional. If provided, this value must match the current value of the target BackupChannel's etag field or the request is rejected. */
-  etag?: string;
-  /** Optional. If set to true, any BackupPlanAssociations below this BackupChannel will also be deleted. Otherwise, the request will only succeed if the BackupChannel has no BackupPlanAssociations. */
-  force?: boolean;
-}
-
-export const DeleteProjectsLocationsBackupChannelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupChannelsRequest>;
-
-export type DeleteProjectsLocationsBackupChannelsResponse =
-  GoogleLongrunningOperation;
-export const DeleteProjectsLocationsBackupChannelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type DeleteProjectsLocationsBackupChannelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an existing BackupChannel. */
-export const deleteProjectsLocationsBackupChannels: API.OperationMethod<
-  DeleteProjectsLocationsBackupChannelsRequest,
-  DeleteProjectsLocationsBackupChannelsResponse,
-  DeleteProjectsLocationsBackupChannelsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBackupChannelsRequest,
-  output: DeleteProjectsLocationsBackupChannelsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest {
+  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
   /** Required. The BackupChannel that contains the BackupPlanBindings to list. Format: `projects/* /locations/* /backupChannels/*` */
   parent: string;
+  /** Optional. Field by which to sort the results. */
+  orderBy?: string;
   /** Optional. The value of next_page_token received from a previous `ListBackupPlanBindings` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListBackupPlanBindings` must match the call that provided the page token. */
   pageToken?: string;
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
-  /** Optional. Field by which to sort the results. */
-  orderBy?: string;
-  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
 }
 
 export const ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/backupPlanBindings" }),
     svc,
@@ -2265,6 +2735,1013 @@ export const getProjectsLocationsBackupChannelsBackupPlanBindings: API.Operation
   errors: [NotFound, Forbidden],
 }));
 
+export interface DeleteProjectsLocationsRestorePlansRequest {
+  /** Required. Fully qualified RestorePlan name. Format: `projects/* /locations/* /restorePlans/*` */
+  name: string;
+  /** Optional. If set to true, any Restores below this RestorePlan will also be deleted. Otherwise, the request will only succeed if the RestorePlan has no Restores. */
+  force?: boolean;
+  /** Optional. If provided, this value must match the current value of the target RestorePlan's etag field or the request is rejected. */
+  etag?: string;
+}
+
+export const DeleteProjectsLocationsRestorePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsRestorePlansRequest>;
+
+export type DeleteProjectsLocationsRestorePlansResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsRestorePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type DeleteProjectsLocationsRestorePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing RestorePlan. */
+export const deleteProjectsLocationsRestorePlans: API.OperationMethod<
+  DeleteProjectsLocationsRestorePlansRequest,
+  DeleteProjectsLocationsRestorePlansResponse,
+  DeleteProjectsLocationsRestorePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsRestorePlansRequest,
+  output: DeleteProjectsLocationsRestorePlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetTagsProjectsLocationsRestorePlansRequest {
+  /** Required. The full resource name of the service resource. */
+  name: string;
+}
+
+export const GetTagsProjectsLocationsRestorePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:getTags" }),
+    svc,
+  ) as unknown as Schema.Schema<GetTagsProjectsLocationsRestorePlansRequest>;
+
+export type GetTagsProjectsLocationsRestorePlansResponse = GetTagsResponse;
+export const GetTagsProjectsLocationsRestorePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GetTagsResponse;
+
+export type GetTagsProjectsLocationsRestorePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns tags directly bound to a GCP resource. */
+export const getTagsProjectsLocationsRestorePlans: API.OperationMethod<
+  GetTagsProjectsLocationsRestorePlansRequest,
+  GetTagsProjectsLocationsRestorePlansResponse,
+  GetTagsProjectsLocationsRestorePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetTagsProjectsLocationsRestorePlansRequest,
+  output: GetTagsProjectsLocationsRestorePlansResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsRestorePlansRequest {
+  /** Required. The location within which to create the RestorePlan. Format: `projects/* /locations/*` */
+  parent: string;
+  /** Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location */
+  restorePlanId?: string;
+  /** Request body */
+  body?: RestorePlan;
+}
+
+export const CreateProjectsLocationsRestorePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    restorePlanId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("restorePlanId"),
+    ),
+    body: Schema.optional(RestorePlan).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/restorePlans",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsRestorePlansRequest>;
+
+export type CreateProjectsLocationsRestorePlansResponse =
+  GoogleLongrunningOperation;
+export const CreateProjectsLocationsRestorePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type CreateProjectsLocationsRestorePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new RestorePlan in a given location. */
+export const createProjectsLocationsRestorePlans: API.OperationMethod<
+  CreateProjectsLocationsRestorePlansRequest,
+  CreateProjectsLocationsRestorePlansResponse,
+  CreateProjectsLocationsRestorePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsRestorePlansRequest,
+  output: CreateProjectsLocationsRestorePlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsRestorePlansRequest {
+  /** Output only. Identifier. The full name of the RestorePlan resource. Format: `projects/* /locations/* /restorePlans/*`. */
+  name: string;
+  /** Optional. This is used to specify the fields to be overwritten in the RestorePlan targeted for update. The values for each of these updated fields will be taken from the `restore_plan` provided with this request. Field names are relative to the root of the resource. If no `update_mask` is provided, all fields in `restore_plan` will be written to the target RestorePlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `restore_plan` are ignored and are not used to update the target RestorePlan. */
+  updateMask?: string;
+  /** Request body */
+  body?: RestorePlan;
+}
+
+export const PatchProjectsLocationsRestorePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(RestorePlan).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsRestorePlansRequest>;
+
+export type PatchProjectsLocationsRestorePlansResponse =
+  GoogleLongrunningOperation;
+export const PatchProjectsLocationsRestorePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type PatchProjectsLocationsRestorePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Update a RestorePlan. */
+export const patchProjectsLocationsRestorePlans: API.OperationMethod<
+  PatchProjectsLocationsRestorePlansRequest,
+  PatchProjectsLocationsRestorePlansResponse,
+  PatchProjectsLocationsRestorePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsRestorePlansRequest,
+  output: PatchProjectsLocationsRestorePlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetTagsProjectsLocationsRestorePlansRequest {
+  /** Required. The full resource name of the service resource. */
+  name: string;
+  /** Request body */
+  body?: SetTagsRequest;
+}
+
+export const SetTagsProjectsLocationsRestorePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SetTagsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:setTags", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<SetTagsProjectsLocationsRestorePlansRequest>;
+
+export type SetTagsProjectsLocationsRestorePlansResponse = SetTagsResponse;
+export const SetTagsProjectsLocationsRestorePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SetTagsResponse;
+
+export type SetTagsProjectsLocationsRestorePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates tags directly bound to a GCP resource. */
+export const setTagsProjectsLocationsRestorePlans: API.OperationMethod<
+  SetTagsProjectsLocationsRestorePlansRequest,
+  SetTagsProjectsLocationsRestorePlansResponse,
+  SetTagsProjectsLocationsRestorePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetTagsProjectsLocationsRestorePlansRequest,
+  output: SetTagsProjectsLocationsRestorePlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsRestorePlansRequest {
+  /** Optional. The value of next_page_token received from a previous `ListRestorePlans` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestorePlans` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field match expression used to filter the results. */
+  filter?: string;
+  /** Required. The location that contains the RestorePlans to list. Format: `projects/* /locations/*` */
+  parent: string;
+  /** Optional. Field by which to sort the results. */
+  orderBy?: string;
+  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsRestorePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/restorePlans" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRestorePlansRequest>;
+
+export type ListProjectsLocationsRestorePlansResponse =
+  ListRestorePlansResponse;
+export const ListProjectsLocationsRestorePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListRestorePlansResponse;
+
+export type ListProjectsLocationsRestorePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists RestorePlans in a given location. */
+export const listProjectsLocationsRestorePlans: API.PaginatedOperationMethod<
+  ListProjectsLocationsRestorePlansRequest,
+  ListProjectsLocationsRestorePlansResponse,
+  ListProjectsLocationsRestorePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRestorePlansRequest,
+  output: ListProjectsLocationsRestorePlansResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsRestorePlansRequest {
+  /** Required. Fully qualified RestorePlan name. Format: `projects/* /locations/* /restorePlans/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsRestorePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsRestorePlansRequest>;
+
+export type GetProjectsLocationsRestorePlansResponse = RestorePlan;
+export const GetProjectsLocationsRestorePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RestorePlan;
+
+export type GetProjectsLocationsRestorePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Retrieve the details of a single RestorePlan. */
+export const getProjectsLocationsRestorePlans: API.OperationMethod<
+  GetProjectsLocationsRestorePlansRequest,
+  GetProjectsLocationsRestorePlansResponse,
+  GetProjectsLocationsRestorePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsRestorePlansRequest,
+  output: GetProjectsLocationsRestorePlansResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface TestIamPermissionsProjectsLocationsRestorePlansRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsRestorePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRestorePlansRequest>;
+
+export type TestIamPermissionsProjectsLocationsRestorePlansResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsRestorePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsRestorePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsRestorePlans: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsRestorePlansRequest,
+  TestIamPermissionsProjectsLocationsRestorePlansResponse,
+  TestIamPermissionsProjectsLocationsRestorePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsRestorePlansRequest,
+  output: TestIamPermissionsProjectsLocationsRestorePlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsRestorePlansRequest {
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+}
+
+export const GetIamPolicyProjectsLocationsRestorePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRestorePlansRequest>;
+
+export type GetIamPolicyProjectsLocationsRestorePlansResponse = Policy;
+export const GetIamPolicyProjectsLocationsRestorePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsRestorePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsRestorePlans: API.OperationMethod<
+  GetIamPolicyProjectsLocationsRestorePlansRequest,
+  GetIamPolicyProjectsLocationsRestorePlansResponse,
+  GetIamPolicyProjectsLocationsRestorePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsRestorePlansRequest,
+  output: GetIamPolicyProjectsLocationsRestorePlansResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsLocationsRestorePlansRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsRestorePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRestorePlansRequest>;
+
+export type SetIamPolicyProjectsLocationsRestorePlansResponse = Policy;
+export const SetIamPolicyProjectsLocationsRestorePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsRestorePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsRestorePlans: API.OperationMethod<
+  SetIamPolicyProjectsLocationsRestorePlansRequest,
+  SetIamPolicyProjectsLocationsRestorePlansResponse,
+  SetIamPolicyProjectsLocationsRestorePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsRestorePlansRequest,
+  output: SetIamPolicyProjectsLocationsRestorePlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsRestorePlansRestoresRequest {
+  /** Required. The RestorePlan within which to create the Restore. Format: `projects/* /locations/* /restorePlans/*` */
+  parent: string;
+  /** Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan. */
+  restoreId?: string;
+  /** Request body */
+  body?: Restore;
+}
+
+export const CreateProjectsLocationsRestorePlansRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    restoreId: Schema.optional(Schema.String).pipe(T.HttpQuery("restoreId")),
+    body: Schema.optional(Restore).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/restores", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsRestorePlansRestoresRequest>;
+
+export type CreateProjectsLocationsRestorePlansRestoresResponse =
+  GoogleLongrunningOperation;
+export const CreateProjectsLocationsRestorePlansRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type CreateProjectsLocationsRestorePlansRestoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new Restore for the given RestorePlan. */
+export const createProjectsLocationsRestorePlansRestores: API.OperationMethod<
+  CreateProjectsLocationsRestorePlansRestoresRequest,
+  CreateProjectsLocationsRestorePlansRestoresResponse,
+  CreateProjectsLocationsRestorePlansRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsRestorePlansRestoresRequest,
+  output: CreateProjectsLocationsRestorePlansRestoresResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetIamPolicyProjectsLocationsRestorePlansRestoresRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsRestorePlansRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresRequest>;
+
+export type SetIamPolicyProjectsLocationsRestorePlansRestoresResponse = Policy;
+export const SetIamPolicyProjectsLocationsRestorePlansRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsRestorePlansRestoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsRestorePlansRestores: API.OperationMethod<
+  SetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
+  SetIamPolicyProjectsLocationsRestorePlansRestoresResponse,
+  SetIamPolicyProjectsLocationsRestorePlansRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
+  output: SetIamPolicyProjectsLocationsRestorePlansRestoresResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsRestorePlansRestoresRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsRestorePlansRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresRequest>;
+
+export type GetIamPolicyProjectsLocationsRestorePlansRestoresResponse = Policy;
+export const GetIamPolicyProjectsLocationsRestorePlansRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsRestorePlansRestoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsRestorePlansRestores: API.OperationMethod<
+  GetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
+  GetIamPolicyProjectsLocationsRestorePlansRestoresResponse,
+  GetIamPolicyProjectsLocationsRestorePlansRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
+  output: GetIamPolicyProjectsLocationsRestorePlansRestoresResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsRestorePlansRestoresRequest {
+  /** Optional. If provided, this value must match the current value of the target Restore's etag field or the request is rejected. */
+  etag?: string;
+  /** Required. Full name of the Restore Format: `projects/* /locations/* /restorePlans/* /restores/*` */
+  name: string;
+  /** Optional. If set to true, any VolumeRestores below this restore will also be deleted. Otherwise, the request will only succeed if the restore has no VolumeRestores. */
+  force?: boolean;
+}
+
+export const DeleteProjectsLocationsRestorePlansRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsRestorePlansRestoresRequest>;
+
+export type DeleteProjectsLocationsRestorePlansRestoresResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsRestorePlansRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type DeleteProjectsLocationsRestorePlansRestoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing Restore. */
+export const deleteProjectsLocationsRestorePlansRestores: API.OperationMethod<
+  DeleteProjectsLocationsRestorePlansRestoresRequest,
+  DeleteProjectsLocationsRestorePlansRestoresResponse,
+  DeleteProjectsLocationsRestorePlansRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsRestorePlansRestoresRequest,
+  output: DeleteProjectsLocationsRestorePlansRestoresResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsRestorePlansRestoresRequest {
+  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+  /** Required. The RestorePlan that contains the Restores to list. Format: `projects/* /locations/* /restorePlans/*` */
+  parent: string;
+  /** Optional. Field by which to sort the results. */
+  orderBy?: string;
+  /** Optional. The value of next_page_token received from a previous `ListRestores` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestores` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field match expression used to filter the results. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsRestorePlansRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/restores" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRestorePlansRestoresRequest>;
+
+export type ListProjectsLocationsRestorePlansRestoresResponse =
+  ListRestoresResponse;
+export const ListProjectsLocationsRestorePlansRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListRestoresResponse;
+
+export type ListProjectsLocationsRestorePlansRestoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the Restores for a given RestorePlan. */
+export const listProjectsLocationsRestorePlansRestores: API.PaginatedOperationMethod<
+  ListProjectsLocationsRestorePlansRestoresRequest,
+  ListProjectsLocationsRestorePlansRestoresResponse,
+  ListProjectsLocationsRestorePlansRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRestorePlansRestoresRequest,
+  output: ListProjectsLocationsRestorePlansRestoresResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsRestorePlansRestoresRequest {
+  /** Required. Name of the restore resource. Format: `projects/* /locations/* /restorePlans/* /restores/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsRestorePlansRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsRestorePlansRestoresRequest>;
+
+export type GetProjectsLocationsRestorePlansRestoresResponse = Restore;
+export const GetProjectsLocationsRestorePlansRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Restore;
+
+export type GetProjectsLocationsRestorePlansRestoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Retrieves the details of a single Restore. */
+export const getProjectsLocationsRestorePlansRestores: API.OperationMethod<
+  GetProjectsLocationsRestorePlansRestoresRequest,
+  GetProjectsLocationsRestorePlansRestoresResponse,
+  GetProjectsLocationsRestorePlansRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsRestorePlansRestoresRequest,
+  output: GetProjectsLocationsRestorePlansRestoresResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest>;
+
+export type TestIamPermissionsProjectsLocationsRestorePlansRestoresResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsRestorePlansRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsRestorePlansRestoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsRestorePlansRestores: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest,
+  TestIamPermissionsProjectsLocationsRestorePlansRestoresResponse,
+  TestIamPermissionsProjectsLocationsRestorePlansRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest,
+  output: TestIamPermissionsProjectsLocationsRestorePlansRestoresResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsRestorePlansRestoresRequest {
+  /** Optional. This is used to specify the fields to be overwritten in the Restore targeted for update. The values for each of these updated fields will be taken from the `restore` provided with this request. Field names are relative to the root of the resource. If no `update_mask` is provided, all fields in `restore` will be written to the target Restore resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `restore` are ignored and are not used to update the target Restore. */
+  updateMask?: string;
+  /** Output only. Identifier. The full name of the Restore resource. Format: `projects/* /locations/* /restorePlans/* /restores/*` */
+  name: string;
+  /** Request body */
+  body?: Restore;
+}
+
+export const PatchProjectsLocationsRestorePlansRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Restore).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsRestorePlansRestoresRequest>;
+
+export type PatchProjectsLocationsRestorePlansRestoresResponse =
+  GoogleLongrunningOperation;
+export const PatchProjectsLocationsRestorePlansRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type PatchProjectsLocationsRestorePlansRestoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Update a Restore. */
+export const patchProjectsLocationsRestorePlansRestores: API.OperationMethod<
+  PatchProjectsLocationsRestorePlansRestoresRequest,
+  PatchProjectsLocationsRestorePlansRestoresResponse,
+  PatchProjectsLocationsRestorePlansRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsRestorePlansRestoresRequest,
+  output: PatchProjectsLocationsRestorePlansRestoresResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+}
+
+export const GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
+
+export type GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
+  Policy;
+export const GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
+  GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
+  GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  output:
+    GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
+
+export type SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
+  Policy;
+export const SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError =
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
+  SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
+  SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  output:
+    SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
+  /** Required. The Restore that contains the VolumeRestores to list. Format: `projects/* /locations/* /restorePlans/* /restores/*` */
+  parent: string;
+  /** Optional. Field by which to sort the results. */
+  orderBy?: string;
+  /** Optional. The value of next_page_token received from a previous `ListVolumeRestores` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListVolumeRestores` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field match expression used to filter the results. */
+  filter?: string;
+  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/volumeRestores" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
+
+export type ListProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
+  ListVolumeRestoresResponse;
+export const ListProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListVolumeRestoresResponse;
+
+export type ListProjectsLocationsRestorePlansRestoresVolumeRestoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the VolumeRestores for a given Restore. */
+export const listProjectsLocationsRestorePlansRestoresVolumeRestores: API.PaginatedOperationMethod<
+  ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  ListProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
+  ListProjectsLocationsRestorePlansRestoresVolumeRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  output: ListProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
+  /** Required. Full name of the VolumeRestore resource. Format: `projects/* /locations/* /restorePlans/* /restores/* /volumeRestores/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
+
+export type GetProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
+  VolumeRestore;
+export const GetProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ VolumeRestore;
+
+export type GetProjectsLocationsRestorePlansRestoresVolumeRestoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Retrieve the details of a single VolumeRestore. */
+export const getProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
+  GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  GetProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
+  GetProjectsLocationsRestorePlansRestoresVolumeRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  output: GetProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
+
+export type TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresError =
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
+  TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+  output:
+    TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsBackupPlansRequest {
+  /** Optional. If provided, this value must match the current value of the target BackupPlan's etag field or the request is rejected. */
+  etag?: string;
+  /** Required. Fully qualified BackupPlan name. Format: `projects/* /locations/* /backupPlans/*` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsBackupPlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupPlansRequest>;
+
+export type DeleteProjectsLocationsBackupPlansResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsBackupPlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type DeleteProjectsLocationsBackupPlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing BackupPlan. */
+export const deleteProjectsLocationsBackupPlans: API.OperationMethod<
+  DeleteProjectsLocationsBackupPlansRequest,
+  DeleteProjectsLocationsBackupPlansResponse,
+  DeleteProjectsLocationsBackupPlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsBackupPlansRequest,
+  output: DeleteProjectsLocationsBackupPlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface GetTagsProjectsLocationsBackupPlansRequest {
   /** Required. The full resource name of the service resource. */
   name: string;
@@ -2297,167 +3774,6 @@ export const getTagsProjectsLocationsBackupPlans: API.OperationMethod<
   input: GetTagsProjectsLocationsBackupPlansRequest,
   output: GetTagsProjectsLocationsBackupPlansResponse,
   errors: [NotFound, Forbidden],
-}));
-
-export interface SetIamPolicyProjectsLocationsBackupPlansRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsBackupPlansRequest>;
-
-export type SetIamPolicyProjectsLocationsBackupPlansResponse = Policy;
-export const SetIamPolicyProjectsLocationsBackupPlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsBackupPlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsBackupPlans: API.OperationMethod<
-  SetIamPolicyProjectsLocationsBackupPlansRequest,
-  SetIamPolicyProjectsLocationsBackupPlansResponse,
-  SetIamPolicyProjectsLocationsBackupPlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsBackupPlansRequest,
-  output: SetIamPolicyProjectsLocationsBackupPlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsBackupPlansRequest {
-  /** Required. Fully qualified BackupPlan name. Format: `projects/* /locations/* /backupPlans/*` */
-  name: string;
-  /** Optional. If provided, this value must match the current value of the target BackupPlan's etag field or the request is rejected. */
-  etag?: string;
-}
-
-export const DeleteProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupPlansRequest>;
-
-export type DeleteProjectsLocationsBackupPlansResponse =
-  GoogleLongrunningOperation;
-export const DeleteProjectsLocationsBackupPlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type DeleteProjectsLocationsBackupPlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an existing BackupPlan. */
-export const deleteProjectsLocationsBackupPlans: API.OperationMethod<
-  DeleteProjectsLocationsBackupPlansRequest,
-  DeleteProjectsLocationsBackupPlansResponse,
-  DeleteProjectsLocationsBackupPlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBackupPlansRequest,
-  output: DeleteProjectsLocationsBackupPlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsBackupPlansRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsBackupPlansRequest>;
-
-export type GetIamPolicyProjectsLocationsBackupPlansResponse = Policy;
-export const GetIamPolicyProjectsLocationsBackupPlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsBackupPlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsBackupPlans: API.OperationMethod<
-  GetIamPolicyProjectsLocationsBackupPlansRequest,
-  GetIamPolicyProjectsLocationsBackupPlansResponse,
-  GetIamPolicyProjectsLocationsBackupPlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsBackupPlansRequest,
-  output: GetIamPolicyProjectsLocationsBackupPlansResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface SetTagsProjectsLocationsBackupPlansRequest {
-  /** Required. The full resource name of the service resource. */
-  name: string;
-  /** Request body */
-  body?: SetTagsRequest;
-}
-
-export const SetTagsProjectsLocationsBackupPlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SetTagsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:setTags", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<SetTagsProjectsLocationsBackupPlansRequest>;
-
-export type SetTagsProjectsLocationsBackupPlansResponse = SetTagsResponse;
-export const SetTagsProjectsLocationsBackupPlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SetTagsResponse;
-
-export type SetTagsProjectsLocationsBackupPlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates tags directly bound to a GCP resource. */
-export const setTagsProjectsLocationsBackupPlans: API.OperationMethod<
-  SetTagsProjectsLocationsBackupPlansRequest,
-  SetTagsProjectsLocationsBackupPlansResponse,
-  SetTagsProjectsLocationsBackupPlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetTagsProjectsLocationsBackupPlansRequest,
-  output: SetTagsProjectsLocationsBackupPlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsBackupPlansRequest {
@@ -2505,26 +3821,108 @@ export const createProjectsLocationsBackupPlans: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface PatchProjectsLocationsBackupPlansRequest {
+  /** Output only. Identifier. The full name of the BackupPlan resource. Format: `projects/* /locations/* /backupPlans/*` */
+  name: string;
+  /** Optional. This is used to specify the fields to be overwritten in the BackupPlan targeted for update. The values for each of these updated fields will be taken from the `backup_plan` provided with this request. Field names are relative to the root of the resource (e.g., `description`, `backup_config.include_volume_data`, etc.) If no `update_mask` is provided, all fields in `backup_plan` will be written to the target BackupPlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `backup_plan` are ignored and are not used to update the target BackupPlan. */
+  updateMask?: string;
+  /** Request body */
+  body?: BackupPlan;
+}
+
+export const PatchProjectsLocationsBackupPlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(BackupPlan).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsBackupPlansRequest>;
+
+export type PatchProjectsLocationsBackupPlansResponse =
+  GoogleLongrunningOperation;
+export const PatchProjectsLocationsBackupPlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type PatchProjectsLocationsBackupPlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Update a BackupPlan. */
+export const patchProjectsLocationsBackupPlans: API.OperationMethod<
+  PatchProjectsLocationsBackupPlansRequest,
+  PatchProjectsLocationsBackupPlansResponse,
+  PatchProjectsLocationsBackupPlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsBackupPlansRequest,
+  output: PatchProjectsLocationsBackupPlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetTagsProjectsLocationsBackupPlansRequest {
+  /** Required. The full resource name of the service resource. */
+  name: string;
+  /** Request body */
+  body?: SetTagsRequest;
+}
+
+export const SetTagsProjectsLocationsBackupPlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SetTagsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:setTags", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<SetTagsProjectsLocationsBackupPlansRequest>;
+
+export type SetTagsProjectsLocationsBackupPlansResponse = SetTagsResponse;
+export const SetTagsProjectsLocationsBackupPlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SetTagsResponse;
+
+export type SetTagsProjectsLocationsBackupPlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates tags directly bound to a GCP resource. */
+export const setTagsProjectsLocationsBackupPlans: API.OperationMethod<
+  SetTagsProjectsLocationsBackupPlansRequest,
+  SetTagsProjectsLocationsBackupPlansResponse,
+  SetTagsProjectsLocationsBackupPlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetTagsProjectsLocationsBackupPlansRequest,
+  output: SetTagsProjectsLocationsBackupPlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListProjectsLocationsBackupPlansRequest {
-  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
   /** Required. The location that contains the BackupPlans to list. Format: `projects/* /locations/*` */
   parent: string;
+  /** Optional. Field by which to sort the results. */
+  orderBy?: string;
   /** Optional. The value of next_page_token received from a previous `ListBackupPlans` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListBackupPlans` must match the call that provided the page token. */
   pageToken?: string;
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
-  /** Optional. Field by which to sort the results. */
-  orderBy?: string;
+  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
 }
 
 export const ListProjectsLocationsBackupPlansRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/backupPlans" }),
     svc,
@@ -2633,100 +4031,53 @@ export const testIamPermissionsProjectsLocationsBackupPlans: API.OperationMethod
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchProjectsLocationsBackupPlansRequest {
-  /** Output only. Identifier. The full name of the BackupPlan resource. Format: `projects/* /locations/* /backupPlans/*` */
-  name: string;
-  /** Optional. This is used to specify the fields to be overwritten in the BackupPlan targeted for update. The values for each of these updated fields will be taken from the `backup_plan` provided with this request. Field names are relative to the root of the resource (e.g., `description`, `backup_config.include_volume_data`, etc.) If no `update_mask` is provided, all fields in `backup_plan` will be written to the target BackupPlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `backup_plan` are ignored and are not used to update the target BackupPlan. */
-  updateMask?: string;
-  /** Request body */
-  body?: BackupPlan;
+export interface GetIamPolicyProjectsLocationsBackupPlansRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
 }
 
-export const PatchProjectsLocationsBackupPlansRequest =
+export const GetIamPolicyProjectsLocationsBackupPlansRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(BackupPlan).pipe(T.HttpBody()),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsBackupPlansRequest>;
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsBackupPlansRequest>;
 
-export type PatchProjectsLocationsBackupPlansResponse =
-  GoogleLongrunningOperation;
-export const PatchProjectsLocationsBackupPlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+export type GetIamPolicyProjectsLocationsBackupPlansResponse = Policy;
+export const GetIamPolicyProjectsLocationsBackupPlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type PatchProjectsLocationsBackupPlansError =
+export type GetIamPolicyProjectsLocationsBackupPlansError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Update a BackupPlan. */
-export const patchProjectsLocationsBackupPlans: API.OperationMethod<
-  PatchProjectsLocationsBackupPlansRequest,
-  PatchProjectsLocationsBackupPlansResponse,
-  PatchProjectsLocationsBackupPlansError,
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsBackupPlans: API.OperationMethod<
+  GetIamPolicyProjectsLocationsBackupPlansRequest,
+  GetIamPolicyProjectsLocationsBackupPlansResponse,
+  GetIamPolicyProjectsLocationsBackupPlansError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBackupPlansRequest,
-  output: PatchProjectsLocationsBackupPlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: GetIamPolicyProjectsLocationsBackupPlansRequest,
+  output: GetIamPolicyProjectsLocationsBackupPlansResponse,
+  errors: [NotFound, Forbidden],
 }));
 
-export interface DeleteProjectsLocationsBackupPlansBackupsRequest {
-  /** Optional. If set to true, any VolumeBackups below this Backup will also be deleted. Otherwise, the request will only succeed if the Backup has no VolumeBackups. */
-  force?: boolean;
-  /** Required. Name of the Backup resource. Format: `projects/* /locations/* /backupPlans/* /backups/*` */
-  name: string;
-  /** Optional. If provided, this value must match the current value of the target Backup's etag field or the request is rejected. */
-  etag?: string;
-}
-
-export const DeleteProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupPlansBackupsRequest>;
-
-export type DeleteProjectsLocationsBackupPlansBackupsResponse =
-  GoogleLongrunningOperation;
-export const DeleteProjectsLocationsBackupPlansBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type DeleteProjectsLocationsBackupPlansBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an existing Backup. */
-export const deleteProjectsLocationsBackupPlansBackups: API.OperationMethod<
-  DeleteProjectsLocationsBackupPlansBackupsRequest,
-  DeleteProjectsLocationsBackupPlansBackupsResponse,
-  DeleteProjectsLocationsBackupPlansBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBackupPlansBackupsRequest,
-  output: DeleteProjectsLocationsBackupPlansBackupsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsBackupPlansBackupsRequest {
+export interface SetIamPolicyProjectsLocationsBackupPlansRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
 
-export const SetIamPolicyProjectsLocationsBackupPlansBackupsRequest =
+export const SetIamPolicyProjectsLocationsBackupPlansRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
@@ -2737,13 +4088,13 @@ export const SetIamPolicyProjectsLocationsBackupPlansBackupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsRequest>;
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsBackupPlansRequest>;
 
-export type SetIamPolicyProjectsLocationsBackupPlansBackupsResponse = Policy;
-export const SetIamPolicyProjectsLocationsBackupPlansBackupsResponse =
+export type SetIamPolicyProjectsLocationsBackupPlansResponse = Policy;
+export const SetIamPolicyProjectsLocationsBackupPlansResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsBackupPlansBackupsError =
+export type SetIamPolicyProjectsLocationsBackupPlansError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -2751,50 +4102,15 @@ export type SetIamPolicyProjectsLocationsBackupPlansBackupsError =
   | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsBackupPlansBackups: API.OperationMethod<
-  SetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
-  SetIamPolicyProjectsLocationsBackupPlansBackupsResponse,
-  SetIamPolicyProjectsLocationsBackupPlansBackupsError,
+export const setIamPolicyProjectsLocationsBackupPlans: API.OperationMethod<
+  SetIamPolicyProjectsLocationsBackupPlansRequest,
+  SetIamPolicyProjectsLocationsBackupPlansResponse,
+  SetIamPolicyProjectsLocationsBackupPlansError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
-  output: SetIamPolicyProjectsLocationsBackupPlansBackupsResponse,
+  input: SetIamPolicyProjectsLocationsBackupPlansRequest,
+  output: SetIamPolicyProjectsLocationsBackupPlansResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest {
-  /** Required. Full name of Backup resource. Format: projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup} */
-  backup: string;
-}
-
-export const GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backup: Schema.String.pipe(T.HttpPath("backup")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+backup}:getBackupIndexDownloadUrl" }),
-    svc,
-  ) as unknown as Schema.Schema<GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest>;
-
-export type GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsResponse =
-  GetBackupIndexDownloadUrlResponse;
-export const GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetBackupIndexDownloadUrlResponse;
-
-export type GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Retrieve the link to the backupIndex. */
-export const getBackupIndexDownloadUrlProjectsLocationsBackupPlansBackups: API.OperationMethod<
-  GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest,
-  GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsResponse,
-  GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest,
-  output: GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsBackupPlansBackupsRequest {
@@ -2838,6 +4154,62 @@ export const patchProjectsLocationsBackupPlansBackups: API.OperationMethod<
   input: PatchProjectsLocationsBackupPlansBackupsRequest,
   output: PatchProjectsLocationsBackupPlansBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsBackupPlansBackupsRequest {
+  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+  /** Required. The BackupPlan that contains the Backups to list. Format: `projects/* /locations/* /backupPlans/*` */
+  parent: string;
+  /** Optional. Field by which to sort the results. */
+  orderBy?: string;
+  /** Optional. If set to true, the response will return partial results when some regions are unreachable and the unreachable field will be populated. */
+  returnPartialSuccess?: boolean;
+  /** Optional. The value of next_page_token received from a previous `ListBackups` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListBackups` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field match expression used to filter the results. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsBackupPlansBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/backups" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsBackupPlansBackupsRequest>;
+
+export type ListProjectsLocationsBackupPlansBackupsResponse =
+  ListBackupsResponse;
+export const ListProjectsLocationsBackupPlansBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
+
+export type ListProjectsLocationsBackupPlansBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the Backups for a given BackupPlan. */
+export const listProjectsLocationsBackupPlansBackups: API.PaginatedOperationMethod<
+  ListProjectsLocationsBackupPlansBackupsRequest,
+  ListProjectsLocationsBackupPlansBackupsResponse,
+  ListProjectsLocationsBackupPlansBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsBackupPlansBackupsRequest,
+  output: ListProjectsLocationsBackupPlansBackupsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface GetProjectsLocationsBackupPlansBackupsRequest {
@@ -2918,75 +4290,179 @@ export const testIamPermissionsProjectsLocationsBackupPlansBackups: API.Operatio
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsBackupPlansBackupsRequest {
-  /** Required. The BackupPlan that contains the Backups to list. Format: `projects/* /locations/* /backupPlans/*` */
-  parent: string;
-  /** Optional. The value of next_page_token received from a previous `ListBackups` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListBackups` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Field match expression used to filter the results. */
-  filter?: string;
-  /** Optional. Field by which to sort the results. */
-  orderBy?: string;
-  /** Optional. If set to true, the response will return partial results when some regions are unreachable and the unreachable field will be populated. */
-  returnPartialSuccess?: boolean;
-  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
+export interface GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest {
+  /** Required. Full name of Backup resource. Format: projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup} */
+  backup: string;
 }
 
-export const ListProjectsLocationsBackupPlansBackupsRequest =
+export const GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    backup: Schema.String.pipe(T.HttpPath("backup")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/backups" }),
+    T.Http({ method: "GET", path: "v1/{+backup}:getBackupIndexDownloadUrl" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsBackupPlansBackupsRequest>;
+  ) as unknown as Schema.Schema<GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest>;
 
-export type ListProjectsLocationsBackupPlansBackupsResponse =
-  ListBackupsResponse;
-export const ListProjectsLocationsBackupPlansBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
+export type GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsResponse =
+  GetBackupIndexDownloadUrlResponse;
+export const GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GetBackupIndexDownloadUrlResponse;
 
-export type ListProjectsLocationsBackupPlansBackupsError =
+export type GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists the Backups for a given BackupPlan. */
-export const listProjectsLocationsBackupPlansBackups: API.PaginatedOperationMethod<
-  ListProjectsLocationsBackupPlansBackupsRequest,
-  ListProjectsLocationsBackupPlansBackupsResponse,
-  ListProjectsLocationsBackupPlansBackupsError,
+/** Retrieve the link to the backupIndex. */
+export const getBackupIndexDownloadUrlProjectsLocationsBackupPlansBackups: API.OperationMethod<
+  GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest,
+  GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsResponse,
+  GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackupPlansBackupsRequest,
-  output: ListProjectsLocationsBackupPlansBackupsResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest,
+  output: GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsResponse,
   errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+}));
+
+export interface GetIamPolicyProjectsLocationsBackupPlansBackupsRequest {
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+}
+
+export const GetIamPolicyProjectsLocationsBackupPlansBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsBackupPlansBackupsRequest>;
+
+export type GetIamPolicyProjectsLocationsBackupPlansBackupsResponse = Policy;
+export const GetIamPolicyProjectsLocationsBackupPlansBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsBackupPlansBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsBackupPlansBackups: API.OperationMethod<
+  GetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
+  GetIamPolicyProjectsLocationsBackupPlansBackupsResponse,
+  GetIamPolicyProjectsLocationsBackupPlansBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
+  output: GetIamPolicyProjectsLocationsBackupPlansBackupsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsLocationsBackupPlansBackupsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsBackupPlansBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsRequest>;
+
+export type SetIamPolicyProjectsLocationsBackupPlansBackupsResponse = Policy;
+export const SetIamPolicyProjectsLocationsBackupPlansBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsBackupPlansBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsBackupPlansBackups: API.OperationMethod<
+  SetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
+  SetIamPolicyProjectsLocationsBackupPlansBackupsResponse,
+  SetIamPolicyProjectsLocationsBackupPlansBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
+  output: SetIamPolicyProjectsLocationsBackupPlansBackupsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsBackupPlansBackupsRequest {
+  /** Required. Name of the Backup resource. Format: `projects/* /locations/* /backupPlans/* /backups/*` */
+  name: string;
+  /** Optional. If set to true, any VolumeBackups below this Backup will also be deleted. Otherwise, the request will only succeed if the Backup has no VolumeBackups. */
+  force?: boolean;
+  /** Optional. If provided, this value must match the current value of the target Backup's etag field or the request is rejected. */
+  etag?: string;
+}
+
+export const DeleteProjectsLocationsBackupPlansBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupPlansBackupsRequest>;
+
+export type DeleteProjectsLocationsBackupPlansBackupsResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsBackupPlansBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type DeleteProjectsLocationsBackupPlansBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing Backup. */
+export const deleteProjectsLocationsBackupPlansBackups: API.OperationMethod<
+  DeleteProjectsLocationsBackupPlansBackupsRequest,
+  DeleteProjectsLocationsBackupPlansBackupsResponse,
+  DeleteProjectsLocationsBackupPlansBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsBackupPlansBackupsRequest,
+  output: DeleteProjectsLocationsBackupPlansBackupsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsBackupPlansBackupsRequest {
-  /** Required. The BackupPlan within which to create the Backup. Format: `projects/* /locations/* /backupPlans/*` */
-  parent: string;
   /** Optional. The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan */
   backupId?: string;
+  /** Required. The BackupPlan within which to create the Backup. Format: `projects/* /locations/* /backupPlans/*` */
+  parent: string;
   /** Request body */
   body?: Backup;
 }
 
 export const CreateProjectsLocationsBackupPlansBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     backupId: Schema.optional(Schema.String).pipe(T.HttpQuery("backupId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Backup).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/backups", hasBody: true }),
@@ -3017,139 +4493,63 @@ export const createProjectsLocationsBackupPlansBackups: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetIamPolicyProjectsLocationsBackupPlansBackupsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsBackupPlansBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsBackupPlansBackupsRequest>;
-
-export type GetIamPolicyProjectsLocationsBackupPlansBackupsResponse = Policy;
-export const GetIamPolicyProjectsLocationsBackupPlansBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsBackupPlansBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsBackupPlansBackups: API.OperationMethod<
-  GetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
-  GetIamPolicyProjectsLocationsBackupPlansBackupsResponse,
-  GetIamPolicyProjectsLocationsBackupPlansBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
-  output: GetIamPolicyProjectsLocationsBackupPlansBackupsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
-  /** Required. Full name of the VolumeBackup resource. Format: `projects/* /locations/* /backupPlans/* /backups/* /volumeBackups/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
-
-export type GetProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
-  VolumeBackup;
-export const GetProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VolumeBackup;
-
-export type GetProjectsLocationsBackupPlansBackupsVolumeBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Retrieve the details of a single VolumeBackup. */
-export const getProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationMethod<
-  GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  GetProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
-  GetProjectsLocationsBackupPlansBackupsVolumeBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  output: GetProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+export interface SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
-  body?: TestIamPermissionsRequest;
+  body?: SetIamPolicyRequest;
 }
 
-export const TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
+export const SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
+      path: "v1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
 
-export type TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+export type SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
+  Policy;
+export const SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsError =
+export type SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
-  TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsError,
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationMethod<
+  SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
+  SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
+  SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input:
-    TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  output:
-    TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
+  input: SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
+  output: SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
 }
 
 export const GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
@@ -3228,313 +4628,49 @@ export const listProjectsLocationsBackupPlansBackupsVolumeBackups: API.Paginated
   },
 }));
 
-export interface SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
-
-export type SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
-  Policy;
-export const SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationMethod<
-  SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
-  SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  output: SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsRestorePlansRequest {
-  /** Optional. Field by which to sort the results. */
-  orderBy?: string;
-  /** Required. The location that contains the RestorePlans to list. Format: `projects/* /locations/*` */
-  parent: string;
-  /** Optional. The value of next_page_token received from a previous `ListRestorePlans` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestorePlans` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Field match expression used to filter the results. */
-  filter?: string;
-  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/restorePlans" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRestorePlansRequest>;
-
-export type ListProjectsLocationsRestorePlansResponse =
-  ListRestorePlansResponse;
-export const ListProjectsLocationsRestorePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRestorePlansResponse;
-
-export type ListProjectsLocationsRestorePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists RestorePlans in a given location. */
-export const listProjectsLocationsRestorePlans: API.PaginatedOperationMethod<
-  ListProjectsLocationsRestorePlansRequest,
-  ListProjectsLocationsRestorePlansResponse,
-  ListProjectsLocationsRestorePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRestorePlansRequest,
-  output: ListProjectsLocationsRestorePlansResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface CreateProjectsLocationsRestorePlansRequest {
-  /** Required. The location within which to create the RestorePlan. Format: `projects/* /locations/*` */
-  parent: string;
-  /** Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location */
-  restorePlanId?: string;
-  /** Request body */
-  body?: RestorePlan;
-}
-
-export const CreateProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    restorePlanId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("restorePlanId"),
-    ),
-    body: Schema.optional(RestorePlan).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/restorePlans",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRestorePlansRequest>;
-
-export type CreateProjectsLocationsRestorePlansResponse =
-  GoogleLongrunningOperation;
-export const CreateProjectsLocationsRestorePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type CreateProjectsLocationsRestorePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new RestorePlan in a given location. */
-export const createProjectsLocationsRestorePlans: API.OperationMethod<
-  CreateProjectsLocationsRestorePlansRequest,
-  CreateProjectsLocationsRestorePlansResponse,
-  CreateProjectsLocationsRestorePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRestorePlansRequest,
-  output: CreateProjectsLocationsRestorePlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetTagsProjectsLocationsRestorePlansRequest {
-  /** Required. The full resource name of the service resource. */
-  name: string;
-  /** Request body */
-  body?: SetTagsRequest;
-}
-
-export const SetTagsProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SetTagsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:setTags", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<SetTagsProjectsLocationsRestorePlansRequest>;
-
-export type SetTagsProjectsLocationsRestorePlansResponse = SetTagsResponse;
-export const SetTagsProjectsLocationsRestorePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SetTagsResponse;
-
-export type SetTagsProjectsLocationsRestorePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates tags directly bound to a GCP resource. */
-export const setTagsProjectsLocationsRestorePlans: API.OperationMethod<
-  SetTagsProjectsLocationsRestorePlansRequest,
-  SetTagsProjectsLocationsRestorePlansResponse,
-  SetTagsProjectsLocationsRestorePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetTagsProjectsLocationsRestorePlansRequest,
-  output: SetTagsProjectsLocationsRestorePlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsRestorePlansRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRestorePlansRequest>;
-
-export type GetIamPolicyProjectsLocationsRestorePlansResponse = Policy;
-export const GetIamPolicyProjectsLocationsRestorePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsRestorePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsRestorePlans: API.OperationMethod<
-  GetIamPolicyProjectsLocationsRestorePlansRequest,
-  GetIamPolicyProjectsLocationsRestorePlansResponse,
-  GetIamPolicyProjectsLocationsRestorePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsRestorePlansRequest,
-  output: GetIamPolicyProjectsLocationsRestorePlansResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface PatchProjectsLocationsRestorePlansRequest {
-  /** Output only. Identifier. The full name of the RestorePlan resource. Format: `projects/* /locations/* /restorePlans/*`. */
-  name: string;
-  /** Optional. This is used to specify the fields to be overwritten in the RestorePlan targeted for update. The values for each of these updated fields will be taken from the `restore_plan` provided with this request. Field names are relative to the root of the resource. If no `update_mask` is provided, all fields in `restore_plan` will be written to the target RestorePlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `restore_plan` are ignored and are not used to update the target RestorePlan. */
-  updateMask?: string;
-  /** Request body */
-  body?: RestorePlan;
-}
-
-export const PatchProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(RestorePlan).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRestorePlansRequest>;
-
-export type PatchProjectsLocationsRestorePlansResponse =
-  GoogleLongrunningOperation;
-export const PatchProjectsLocationsRestorePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type PatchProjectsLocationsRestorePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Update a RestorePlan. */
-export const patchProjectsLocationsRestorePlans: API.OperationMethod<
-  PatchProjectsLocationsRestorePlansRequest,
-  PatchProjectsLocationsRestorePlansResponse,
-  PatchProjectsLocationsRestorePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsRestorePlansRequest,
-  output: PatchProjectsLocationsRestorePlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsRestorePlansRequest {
-  /** Required. Fully qualified RestorePlan name. Format: `projects/* /locations/* /restorePlans/*` */
+export interface GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
+  /** Required. Full name of the VolumeBackup resource. Format: `projects/* /locations/* /backupPlans/* /backups/* /volumeBackups/*` */
   name: string;
 }
 
-export const GetProjectsLocationsRestorePlansRequest =
+export const GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRestorePlansRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
 
-export type GetProjectsLocationsRestorePlansResponse = RestorePlan;
-export const GetProjectsLocationsRestorePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RestorePlan;
+export type GetProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
+  VolumeBackup;
+export const GetProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ VolumeBackup;
 
-export type GetProjectsLocationsRestorePlansError =
+export type GetProjectsLocationsBackupPlansBackupsVolumeBackupsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Retrieve the details of a single RestorePlan. */
-export const getProjectsLocationsRestorePlans: API.OperationMethod<
-  GetProjectsLocationsRestorePlansRequest,
-  GetProjectsLocationsRestorePlansResponse,
-  GetProjectsLocationsRestorePlansError,
+/** Retrieve the details of a single VolumeBackup. */
+export const getProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationMethod<
+  GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
+  GetProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
+  GetProjectsLocationsBackupPlansBackupsVolumeBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRestorePlansRequest,
-  output: GetProjectsLocationsRestorePlansResponse,
+  input: GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
+  output: GetProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface TestIamPermissionsProjectsLocationsRestorePlansRequest {
+export interface TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
 
-export const TestIamPermissionsProjectsLocationsRestorePlansRequest =
+export const TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
@@ -3545,1173 +4681,26 @@ export const TestIamPermissionsProjectsLocationsRestorePlansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRestorePlansRequest>;
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
 
-export type TestIamPermissionsProjectsLocationsRestorePlansResponse =
+export type TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
   TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsRestorePlansResponse =
+export const TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsRestorePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsError =
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsRestorePlans: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsRestorePlansRequest,
-  TestIamPermissionsProjectsLocationsRestorePlansResponse,
-  TestIamPermissionsProjectsLocationsRestorePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRestorePlansRequest,
-  output: TestIamPermissionsProjectsLocationsRestorePlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsRestorePlansRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRestorePlansRequest>;
-
-export type SetIamPolicyProjectsLocationsRestorePlansResponse = Policy;
-export const SetIamPolicyProjectsLocationsRestorePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsRestorePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsRestorePlans: API.OperationMethod<
-  SetIamPolicyProjectsLocationsRestorePlansRequest,
-  SetIamPolicyProjectsLocationsRestorePlansResponse,
-  SetIamPolicyProjectsLocationsRestorePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRestorePlansRequest,
-  output: SetIamPolicyProjectsLocationsRestorePlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetTagsProjectsLocationsRestorePlansRequest {
-  /** Required. The full resource name of the service resource. */
-  name: string;
-}
-
-export const GetTagsProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}:getTags" }),
-    svc,
-  ) as unknown as Schema.Schema<GetTagsProjectsLocationsRestorePlansRequest>;
-
-export type GetTagsProjectsLocationsRestorePlansResponse = GetTagsResponse;
-export const GetTagsProjectsLocationsRestorePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetTagsResponse;
-
-export type GetTagsProjectsLocationsRestorePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns tags directly bound to a GCP resource. */
-export const getTagsProjectsLocationsRestorePlans: API.OperationMethod<
-  GetTagsProjectsLocationsRestorePlansRequest,
-  GetTagsProjectsLocationsRestorePlansResponse,
-  GetTagsProjectsLocationsRestorePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetTagsProjectsLocationsRestorePlansRequest,
-  output: GetTagsProjectsLocationsRestorePlansResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsRestorePlansRequest {
-  /** Required. Fully qualified RestorePlan name. Format: `projects/* /locations/* /restorePlans/*` */
-  name: string;
-  /** Optional. If provided, this value must match the current value of the target RestorePlan's etag field or the request is rejected. */
-  etag?: string;
-  /** Optional. If set to true, any Restores below this RestorePlan will also be deleted. Otherwise, the request will only succeed if the RestorePlan has no Restores. */
-  force?: boolean;
-}
-
-export const DeleteProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRestorePlansRequest>;
-
-export type DeleteProjectsLocationsRestorePlansResponse =
-  GoogleLongrunningOperation;
-export const DeleteProjectsLocationsRestorePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type DeleteProjectsLocationsRestorePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an existing RestorePlan. */
-export const deleteProjectsLocationsRestorePlans: API.OperationMethod<
-  DeleteProjectsLocationsRestorePlansRequest,
-  DeleteProjectsLocationsRestorePlansResponse,
-  DeleteProjectsLocationsRestorePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRestorePlansRequest,
-  output: DeleteProjectsLocationsRestorePlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsRestorePlansRestoresRequest {
-  /** Required. The RestorePlan within which to create the Restore. Format: `projects/* /locations/* /restorePlans/*` */
-  parent: string;
-  /** Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan. */
-  restoreId?: string;
-  /** Request body */
-  body?: Restore;
-}
-
-export const CreateProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    restoreId: Schema.optional(Schema.String).pipe(T.HttpQuery("restoreId")),
-    body: Schema.optional(Restore).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/restores", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRestorePlansRestoresRequest>;
-
-export type CreateProjectsLocationsRestorePlansRestoresResponse =
-  GoogleLongrunningOperation;
-export const CreateProjectsLocationsRestorePlansRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type CreateProjectsLocationsRestorePlansRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new Restore for the given RestorePlan. */
-export const createProjectsLocationsRestorePlansRestores: API.OperationMethod<
-  CreateProjectsLocationsRestorePlansRestoresRequest,
-  CreateProjectsLocationsRestorePlansRestoresResponse,
-  CreateProjectsLocationsRestorePlansRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRestorePlansRestoresRequest,
-  output: CreateProjectsLocationsRestorePlansRestoresResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsRestorePlansRestoresRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresRequest>;
-
-export type SetIamPolicyProjectsLocationsRestorePlansRestoresResponse = Policy;
-export const SetIamPolicyProjectsLocationsRestorePlansRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsRestorePlansRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsRestorePlansRestores: API.OperationMethod<
-  SetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
-  SetIamPolicyProjectsLocationsRestorePlansRestoresResponse,
-  SetIamPolicyProjectsLocationsRestorePlansRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
-  output: SetIamPolicyProjectsLocationsRestorePlansRestoresResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsRestorePlansRestoresRequest {
-  /** Optional. Field by which to sort the results. */
-  orderBy?: string;
-  /** Optional. The value of next_page_token received from a previous `ListRestores` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestores` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Field match expression used to filter the results. */
-  filter?: string;
-  /** Required. The RestorePlan that contains the Restores to list. Format: `projects/* /locations/* /restorePlans/*` */
-  parent: string;
-  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/restores" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRestorePlansRestoresRequest>;
-
-export type ListProjectsLocationsRestorePlansRestoresResponse =
-  ListRestoresResponse;
-export const ListProjectsLocationsRestorePlansRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRestoresResponse;
-
-export type ListProjectsLocationsRestorePlansRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the Restores for a given RestorePlan. */
-export const listProjectsLocationsRestorePlansRestores: API.PaginatedOperationMethod<
-  ListProjectsLocationsRestorePlansRestoresRequest,
-  ListProjectsLocationsRestorePlansRestoresResponse,
-  ListProjectsLocationsRestorePlansRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRestorePlansRestoresRequest,
-  output: ListProjectsLocationsRestorePlansRestoresResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetIamPolicyProjectsLocationsRestorePlansRestoresRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresRequest>;
-
-export type GetIamPolicyProjectsLocationsRestorePlansRestoresResponse = Policy;
-export const GetIamPolicyProjectsLocationsRestorePlansRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsRestorePlansRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsRestorePlansRestores: API.OperationMethod<
-  GetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
-  GetIamPolicyProjectsLocationsRestorePlansRestoresResponse,
-  GetIamPolicyProjectsLocationsRestorePlansRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
-  output: GetIamPolicyProjectsLocationsRestorePlansRestoresResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface PatchProjectsLocationsRestorePlansRestoresRequest {
-  /** Output only. Identifier. The full name of the Restore resource. Format: `projects/* /locations/* /restorePlans/* /restores/*` */
-  name: string;
-  /** Optional. This is used to specify the fields to be overwritten in the Restore targeted for update. The values for each of these updated fields will be taken from the `restore` provided with this request. Field names are relative to the root of the resource. If no `update_mask` is provided, all fields in `restore` will be written to the target Restore resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `restore` are ignored and are not used to update the target Restore. */
-  updateMask?: string;
-  /** Request body */
-  body?: Restore;
-}
-
-export const PatchProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Restore).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRestorePlansRestoresRequest>;
-
-export type PatchProjectsLocationsRestorePlansRestoresResponse =
-  GoogleLongrunningOperation;
-export const PatchProjectsLocationsRestorePlansRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type PatchProjectsLocationsRestorePlansRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Update a Restore. */
-export const patchProjectsLocationsRestorePlansRestores: API.OperationMethod<
-  PatchProjectsLocationsRestorePlansRestoresRequest,
-  PatchProjectsLocationsRestorePlansRestoresResponse,
-  PatchProjectsLocationsRestorePlansRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsRestorePlansRestoresRequest,
-  output: PatchProjectsLocationsRestorePlansRestoresResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsRestorePlansRestoresRequest {
-  /** Required. Name of the restore resource. Format: `projects/* /locations/* /restorePlans/* /restores/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRestorePlansRestoresRequest>;
-
-export type GetProjectsLocationsRestorePlansRestoresResponse = Restore;
-export const GetProjectsLocationsRestorePlansRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Restore;
-
-export type GetProjectsLocationsRestorePlansRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Retrieves the details of a single Restore. */
-export const getProjectsLocationsRestorePlansRestores: API.OperationMethod<
-  GetProjectsLocationsRestorePlansRestoresRequest,
-  GetProjectsLocationsRestorePlansRestoresResponse,
-  GetProjectsLocationsRestorePlansRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRestorePlansRestoresRequest,
-  output: GetProjectsLocationsRestorePlansRestoresResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsRestorePlansRestoresRequest {
-  /** Required. Full name of the Restore Format: `projects/* /locations/* /restorePlans/* /restores/*` */
-  name: string;
-  /** Optional. If provided, this value must match the current value of the target Restore's etag field or the request is rejected. */
-  etag?: string;
-  /** Optional. If set to true, any VolumeRestores below this restore will also be deleted. Otherwise, the request will only succeed if the restore has no VolumeRestores. */
-  force?: boolean;
-}
-
-export const DeleteProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRestorePlansRestoresRequest>;
-
-export type DeleteProjectsLocationsRestorePlansRestoresResponse =
-  GoogleLongrunningOperation;
-export const DeleteProjectsLocationsRestorePlansRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type DeleteProjectsLocationsRestorePlansRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an existing Restore. */
-export const deleteProjectsLocationsRestorePlansRestores: API.OperationMethod<
-  DeleteProjectsLocationsRestorePlansRestoresRequest,
-  DeleteProjectsLocationsRestorePlansRestoresResponse,
-  DeleteProjectsLocationsRestorePlansRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRestorePlansRestoresRequest,
-  output: DeleteProjectsLocationsRestorePlansRestoresResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest>;
-
-export type TestIamPermissionsProjectsLocationsRestorePlansRestoresResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsRestorePlansRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsRestorePlansRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsRestorePlansRestores: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest,
-  TestIamPermissionsProjectsLocationsRestorePlansRestoresResponse,
-  TestIamPermissionsProjectsLocationsRestorePlansRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest,
-  output: TestIamPermissionsProjectsLocationsRestorePlansRestoresResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
-
-export type GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
-  Policy;
-export const GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
-  GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
-  GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  output:
-    GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
-
-export type SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
-  Policy;
-export const SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
-  SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
-  SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  output:
-    SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
-  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-  /** Required. The Restore that contains the VolumeRestores to list. Format: `projects/* /locations/* /restorePlans/* /restores/*` */
-  parent: string;
-  /** Optional. The value of next_page_token received from a previous `ListVolumeRestores` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListVolumeRestores` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Field match expression used to filter the results. */
-  filter?: string;
-  /** Optional. Field by which to sort the results. */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/volumeRestores" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
-
-export type ListProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
-  ListVolumeRestoresResponse;
-export const ListProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVolumeRestoresResponse;
-
-export type ListProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the VolumeRestores for a given Restore. */
-export const listProjectsLocationsRestorePlansRestoresVolumeRestores: API.PaginatedOperationMethod<
-  ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  ListProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
-  ListProjectsLocationsRestorePlansRestoresVolumeRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  output: ListProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
-  /** Required. Full name of the VolumeRestore resource. Format: `projects/* /locations/* /restorePlans/* /restores/* /volumeRestores/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
-
-export type GetProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
-  VolumeRestore;
-export const GetProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VolumeRestore;
-
-export type GetProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Retrieve the details of a single VolumeRestore. */
-export const getProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
-  GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  GetProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
-  GetProjectsLocationsRestorePlansRestoresVolumeRestoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  output: GetProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
-
-export type TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
-  TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresError,
+export const testIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
+  TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
+  TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input:
-    TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
+    TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
   output:
-    TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsRestoreChannelsRequest {
-  /** Required. The location within which to create the RestoreChannel. Format: `projects/* /locations/*` */
-  parent: string;
-  /** Optional. The client-provided short name for the RestoreChannel resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestoreChannels in this location If the user does not provide a name, a uuid will be used as the name. */
-  restoreChannelId?: string;
-  /** Request body */
-  body?: RestoreChannel;
-}
-
-export const CreateProjectsLocationsRestoreChannelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    restoreChannelId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("restoreChannelId"),
-    ),
-    body: Schema.optional(RestoreChannel).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/restoreChannels",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRestoreChannelsRequest>;
-
-export type CreateProjectsLocationsRestoreChannelsResponse =
-  GoogleLongrunningOperation;
-export const CreateProjectsLocationsRestoreChannelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type CreateProjectsLocationsRestoreChannelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new RestoreChannel in a given location. */
-export const createProjectsLocationsRestoreChannels: API.OperationMethod<
-  CreateProjectsLocationsRestoreChannelsRequest,
-  CreateProjectsLocationsRestoreChannelsResponse,
-  CreateProjectsLocationsRestoreChannelsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRestoreChannelsRequest,
-  output: CreateProjectsLocationsRestoreChannelsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsRestoreChannelsRequest {
-  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-  /** Optional. Field by which to sort the results. */
-  orderBy?: string;
-  /** Optional. The value of next_page_token received from a previous `ListRestoreChannels` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestoreChannels` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Field match expression used to filter the results. */
-  filter?: string;
-  /** Required. The location that contains the RestoreChannels to list. Format: `projects/* /locations/*` */
-  parent: string;
-}
-
-export const ListProjectsLocationsRestoreChannelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/restoreChannels" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRestoreChannelsRequest>;
-
-export type ListProjectsLocationsRestoreChannelsResponse =
-  ListRestoreChannelsResponse;
-export const ListProjectsLocationsRestoreChannelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRestoreChannelsResponse;
-
-export type ListProjectsLocationsRestoreChannelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists RestoreChannels in a given location. */
-export const listProjectsLocationsRestoreChannels: API.PaginatedOperationMethod<
-  ListProjectsLocationsRestoreChannelsRequest,
-  ListProjectsLocationsRestoreChannelsResponse,
-  ListProjectsLocationsRestoreChannelsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRestoreChannelsRequest,
-  output: ListProjectsLocationsRestoreChannelsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface PatchProjectsLocationsRestoreChannelsRequest {
-  /** Identifier. The fully qualified name of the RestoreChannel. `projects/* /locations/* /restoreChannels/*` */
-  name: string;
-  /** Optional. This is used to specify the fields to be overwritten in the RestoreChannel targeted for update. The values for each of these updated fields will be taken from the `restore_channel` provided with this request. Field names are relative to the root of the resource (e.g., `description`, `destination_project_id`, etc.) If no `update_mask` is provided, all fields in `restore_channel` will be written to the target RestoreChannel resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `restore_channel` are ignored and are not used to update the target RestoreChannel. */
-  updateMask?: string;
-  /** Request body */
-  body?: RestoreChannel;
-}
-
-export const PatchProjectsLocationsRestoreChannelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(RestoreChannel).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRestoreChannelsRequest>;
-
-export type PatchProjectsLocationsRestoreChannelsResponse =
-  GoogleLongrunningOperation;
-export const PatchProjectsLocationsRestoreChannelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type PatchProjectsLocationsRestoreChannelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Update a RestoreChannel. */
-export const patchProjectsLocationsRestoreChannels: API.OperationMethod<
-  PatchProjectsLocationsRestoreChannelsRequest,
-  PatchProjectsLocationsRestoreChannelsResponse,
-  PatchProjectsLocationsRestoreChannelsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsRestoreChannelsRequest,
-  output: PatchProjectsLocationsRestoreChannelsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsRestoreChannelsRequest {
-  /** Required. Fully qualified RestoreChannel name. Format: `projects/* /locations/* /restoreChannels/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsRestoreChannelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRestoreChannelsRequest>;
-
-export type GetProjectsLocationsRestoreChannelsResponse = RestoreChannel;
-export const GetProjectsLocationsRestoreChannelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RestoreChannel;
-
-export type GetProjectsLocationsRestoreChannelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Retrieve the details of a single RestoreChannel. */
-export const getProjectsLocationsRestoreChannels: API.OperationMethod<
-  GetProjectsLocationsRestoreChannelsRequest,
-  GetProjectsLocationsRestoreChannelsResponse,
-  GetProjectsLocationsRestoreChannelsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRestoreChannelsRequest,
-  output: GetProjectsLocationsRestoreChannelsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsRestoreChannelsRequest {
-  /** Required. Fully qualified RestoreChannel name. Format: `projects/* /locations/* /restoreChannels/*` */
-  name: string;
-  /** Optional. If provided, this value must match the current value of the target RestoreChannel's etag field or the request is rejected. */
-  etag?: string;
-}
-
-export const DeleteProjectsLocationsRestoreChannelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRestoreChannelsRequest>;
-
-export type DeleteProjectsLocationsRestoreChannelsResponse =
-  GoogleLongrunningOperation;
-export const DeleteProjectsLocationsRestoreChannelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type DeleteProjectsLocationsRestoreChannelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an existing RestoreChannel. */
-export const deleteProjectsLocationsRestoreChannels: API.OperationMethod<
-  DeleteProjectsLocationsRestoreChannelsRequest,
-  DeleteProjectsLocationsRestoreChannelsResponse,
-  DeleteProjectsLocationsRestoreChannelsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRestoreChannelsRequest,
-  output: DeleteProjectsLocationsRestoreChannelsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest {
-  /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-  /** Optional. Field by which to sort the results. */
-  orderBy?: string;
-  /** Optional. The value of next_page_token received from a previous `ListRestorePlanBindings` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestorePlanBindings` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Field match expression used to filter the results. */
-  filter?: string;
-  /** Required. The RestoreChannel that contains the ListRestorePlanBindings to list. Format: `projects/* /locations/* /restoreChannels/*` */
-  parent: string;
-}
-
-export const ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/restorePlanBindings" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
-
-export type ListProjectsLocationsRestoreChannelsRestorePlanBindingsResponse =
-  ListRestorePlanBindingsResponse;
-export const ListProjectsLocationsRestoreChannelsRestorePlanBindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRestorePlanBindingsResponse;
-
-export type ListProjectsLocationsRestoreChannelsRestorePlanBindingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists RestorePlanBindings in a given location. */
-export const listProjectsLocationsRestoreChannelsRestorePlanBindings: API.PaginatedOperationMethod<
-  ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
-  ListProjectsLocationsRestoreChannelsRestorePlanBindingsResponse,
-  ListProjectsLocationsRestoreChannelsRestorePlanBindingsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
-  output: ListProjectsLocationsRestoreChannelsRestorePlanBindingsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest {
-  /** Required. Fully qualified RestorePlanBinding name. Format: `projects/* /locations/* /restoreChannels/* /restorePlanBindings/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
-
-export type GetProjectsLocationsRestoreChannelsRestorePlanBindingsResponse =
-  RestorePlanBinding;
-export const GetProjectsLocationsRestoreChannelsRestorePlanBindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RestorePlanBinding;
-
-export type GetProjectsLocationsRestoreChannelsRestorePlanBindingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Retrieve the details of a single RestorePlanBinding. */
-export const getProjectsLocationsRestoreChannelsRestorePlanBindings: API.OperationMethod<
-  GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
-  GetProjectsLocationsRestoreChannelsRestorePlanBindingsResponse,
-  GetProjectsLocationsRestoreChannelsRestorePlanBindingsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
-  output: GetProjectsLocationsRestoreChannelsRestorePlanBindingsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list filter. */
-  filter?: string;
-  /** The standard list page token. */
-  pageToken?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list page size. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
-
-export type ListProjectsLocationsOperationsResponse =
-  GoogleLongrunningListOperationsResponse;
-export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
-
-export type ListProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
-  ListProjectsLocationsOperationsRequest,
-  ListProjectsLocationsOperationsResponse,
-  ListProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface CancelProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
-  /** Request body */
-  body?: GoogleLongrunningCancelOperationRequest;
-}
-
-export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(GoogleLongrunningCancelOperationRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
-
-export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type CancelProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-export const cancelProjectsLocationsOperations: API.OperationMethod<
-  CancelProjectsLocationsOperationsRequest,
-  CancelProjectsLocationsOperationsResponse,
-  CancelProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: CancelProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
-
-export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type GetProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsLocationsOperations: API.OperationMethod<
-  GetProjectsLocationsOperationsRequest,
-  GetProjectsLocationsOperationsResponse,
-  GetProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GetProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be deleted. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
-
-export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
-export const deleteProjectsLocationsOperations: API.OperationMethod<
-  DeleteProjectsLocationsOperationsRequest,
-  DeleteProjectsLocationsOperationsResponse,
-  DeleteProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: DeleteProjectsLocationsOperationsResponse,
+    TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

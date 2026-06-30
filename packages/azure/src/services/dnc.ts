@@ -11,6 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const ControllerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -54,6 +55,7 @@ export type ControllerCreateOutput = typeof ControllerCreateOutput.Type;
  * Create a dnc controller
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -64,6 +66,7 @@ export const ControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ControllerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -83,6 +86,7 @@ export type ControllerDeleteOutput = typeof ControllerDeleteOutput.Type;
  * Deletes the DNC controller
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -94,6 +98,7 @@ export const ControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ControllerGetDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -120,6 +125,7 @@ export type ControllerGetDetailsOutput = typeof ControllerGetDetailsOutput.Type;
  * Gets details about the specified dnc controller.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -132,6 +138,7 @@ export const ControllerGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ControllerPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -158,6 +165,7 @@ export type ControllerPatchOutput = typeof ControllerPatchOutput.Type;
  * Update dnc controller
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -257,7 +265,9 @@ export const DelegatedNetworkListBySubscription =
 export const DelegatedSubnetServiceDeleteDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    forceDelete: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -279,8 +289,10 @@ export type DelegatedSubnetServiceDeleteDetailsOutput =
  * Delete dnc DelegatedSubnet.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param forceDelete - Force delete resource
  */
 export const DelegatedSubnetServiceDeleteDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -291,6 +303,7 @@ export const DelegatedSubnetServiceDeleteDetails =
 export const DelegatedSubnetServiceGetDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -319,6 +332,7 @@ export type DelegatedSubnetServiceGetDetailsOutput =
  * Gets details about the specified dnc DelegatedSubnet Link.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -419,6 +433,7 @@ export const DelegatedSubnetServiceListBySubscription =
 export const DelegatedSubnetServicePatchDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -448,6 +463,7 @@ export type DelegatedSubnetServicePatchDetailsOutput =
  * Patch delegated subnet resource
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -460,6 +476,7 @@ export const DelegatedSubnetServicePatchDetails =
 export const DelegatedSubnetServicePutDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -511,6 +528,7 @@ export type DelegatedSubnetServicePutDetailsOutput =
  * Put delegated subnet resource
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -571,6 +589,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OrchestratorInstanceServiceCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -636,6 +655,7 @@ export type OrchestratorInstanceServiceCreateOutput =
  * Create a orchestrator instance
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -648,7 +668,9 @@ export const OrchestratorInstanceServiceCreate =
 export const OrchestratorInstanceServiceDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    forceDelete: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -670,8 +692,10 @@ export type OrchestratorInstanceServiceDeleteOutput =
  * Deletes the Orchestrator Instance
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param forceDelete - Force delete resource
  */
 export const OrchestratorInstanceServiceDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -682,6 +706,7 @@ export const OrchestratorInstanceServiceDelete =
 export const OrchestratorInstanceServiceGetDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -718,6 +743,7 @@ export type OrchestratorInstanceServiceGetDetailsOutput =
  * Gets details about the orchestrator instance.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -834,6 +860,7 @@ export const OrchestratorInstanceServiceListBySubscription =
 export const OrchestratorInstanceServicePatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -871,6 +898,7 @@ export type OrchestratorInstanceServicePatchOutput =
  * Update Orchestrator Instance
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */

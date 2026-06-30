@@ -13,6 +13,7 @@ export const ApplicationDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationDefinitionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       lockLevel: Schema.Literals(["CanNotDelete", "ReadOnly", "None"]),
       displayName: Schema.optional(Schema.String),
@@ -123,6 +124,8 @@ export type ApplicationDefinitionsCreateOrUpdateOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationDefinitionName - The name of the managed application definition.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationDefinitionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -134,6 +137,7 @@ export const ApplicationDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationDefinitionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -156,6 +160,8 @@ export type ApplicationDefinitionsDeleteOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationDefinitionName - The name of the managed application definition to delete.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationDefinitionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -167,6 +173,7 @@ export const ApplicationDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationDefinitionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -195,6 +202,8 @@ export type ApplicationDefinitionsGetOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationDefinitionName - The name of the managed application definition.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -206,6 +215,7 @@ export const ApplicationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ApplicationDefinitionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -240,6 +250,8 @@ export type ApplicationDefinitionsListByResourceGroupOutput =
  * Lists the managed application definitions in a resource group.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationDefinitionsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -251,6 +263,7 @@ export const ApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       managedResourceGroupId: Schema.optional(Schema.String),
       applicationDefinitionId: Schema.optional(Schema.String),
@@ -421,6 +434,8 @@ export type ApplicationsCreateOrUpdateOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationName - The name of the managed application.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -601,6 +616,7 @@ export type ApplicationsCreateOrUpdateByIdOutput =
  * Creates a new managed application.
  *
  * @param applicationId - The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
+ * @param api-version - The API version to use for this operation.
  */
 export const ApplicationsCreateOrUpdateById =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -612,6 +628,7 @@ export const ApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -631,6 +648,8 @@ export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationName - The name of the managed application.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsDeleteInput,
@@ -661,6 +680,7 @@ export type ApplicationsDeleteByIdOutput =
  * Deletes the managed application.
  *
  * @param applicationId - The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
+ * @param api-version - The API version to use for this operation.
  */
 export const ApplicationsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -672,6 +692,7 @@ export const ApplicationsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   applicationName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -697,6 +718,8 @@ export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationName - The name of the managed application.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsGetInput,
@@ -731,6 +754,7 @@ export type ApplicationsGetByIdOutput = typeof ApplicationsGetByIdOutput.Type;
  * Gets the managed application.
  *
  * @param applicationId - The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
+ * @param api-version - The API version to use for this operation.
  */
 export const ApplicationsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsGetByIdInput,
@@ -740,6 +764,7 @@ export const ApplicationsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ApplicationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -774,6 +799,8 @@ export type ApplicationsListByResourceGroupOutput =
  * Gets all the applications within a resource group.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -782,7 +809,9 @@ export const ApplicationsListByResourceGroup =
   }));
 // Input Schema
 export const ApplicationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applications",
@@ -814,6 +843,9 @@ export type ApplicationsListBySubscriptionOutput =
 // The operation
 /**
  * Gets all the applications within a subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -825,6 +857,7 @@ export const ApplicationsRefreshPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -847,6 +880,8 @@ export type ApplicationsRefreshPermissionsOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationName - The name of the managed application.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsRefreshPermissions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -858,6 +893,7 @@ export const ApplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         managedResourceGroupId: Schema.optional(Schema.String),
@@ -1028,6 +1064,8 @@ export type ApplicationsUpdateOutput = typeof ApplicationsUpdateOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationName - The name of the managed application.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsUpdateInput,
@@ -1206,6 +1244,7 @@ export type ApplicationsUpdateByIdOutput =
  * Updates an existing managed application. The only value that can be updated via PATCH currently is the tags.
  *
  * @param applicationId - The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
+ * @param api-version - The API version to use for this operation.
  */
 export const ApplicationsUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1260,9 +1299,14 @@ export const AuthorizationOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ChangesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ChangesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  changeResourceId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Resources/changes/{changeResourceId}",
@@ -1282,15 +1326,29 @@ export type ChangesGetOutput = typeof ChangesGetOutput.Type;
 // The operation
 /**
  * Obtains the specified change resource for the target resource
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+ * @param resourceGroupName - The name of the resource group.
+ * @param resourceProviderNamespace - The name of the resource provider namespace.
+ * @param resourceType - The name of the resource type.
+ * @param resourceName - The name of the resource.
+ * @param api-version - The API version to be used with the HTTP request.
+ * @param changeResourceId - The ID of the change resource
  */
 export const ChangesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChangesGetInput,
   outputSchema: ChangesGetOutput,
 }));
 // Input Schema
-export const ChangesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ChangesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Resources/changes",
@@ -1317,6 +1375,15 @@ export type ChangesListOutput = typeof ChangesListOutput.Type;
 // The operation
 /**
  * Obtains a list of change resources from the past 14 days for the target resource
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+ * @param resourceGroupName - The name of the resource group.
+ * @param resourceProviderNamespace - The name of the resource provider namespace.
+ * @param resourceType - The name of the resource type.
+ * @param resourceName - The name of the resource.
+ * @param api-version - The API version to be used with the HTTP request.
+ * @param $top - (Optional) Set the maximum number of results per response.
+ * @param $skipToken - (Optional) The page-continuation token
  */
 export const ChangesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChangesListInput,
@@ -1536,7 +1603,7 @@ export const DataPolicyManifestsGetByPolicyModeInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/dataPolicyManifests/{policyMode}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type DataPolicyManifestsGetByPolicyModeInput =
@@ -1588,7 +1655,7 @@ export const DataPolicyManifestsListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/dataPolicyManifests",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type DataPolicyManifestsListInput =
@@ -4178,6 +4245,7 @@ export const DeploymentsCreateOrUpdateAtTenantScope =
 export const DeploymentScriptsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["AzurePowerShell", "AzureCLI"]),
     identity: Schema.optional(
@@ -4237,6 +4305,7 @@ export type DeploymentScriptsCreateOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  */
 export const DeploymentScriptsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4249,6 +4318,7 @@ export const DeploymentScriptsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DeploymentScriptsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4272,6 +4342,7 @@ export type DeploymentScriptsDeleteOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  */
 export const DeploymentScriptsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4284,6 +4355,7 @@ export const DeploymentScriptsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DeploymentScriptsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4323,6 +4395,7 @@ export type DeploymentScriptsGetOutput = typeof DeploymentScriptsGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  */
 export const DeploymentScriptsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4335,6 +4408,7 @@ export const DeploymentScriptsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DeploymentScriptsGetLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4392,6 +4466,7 @@ export type DeploymentScriptsGetLogsOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  */
 export const DeploymentScriptsGetLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4404,6 +4479,7 @@ export const DeploymentScriptsGetLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DeploymentScriptsGetLogsDefaultInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
     tail: Schema.optional(Schema.Number),
   }).pipe(
@@ -4446,6 +4522,7 @@ export type DeploymentScriptsGetLogsDefaultOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  * @param tail - The number of lines to show from the tail of the deployment script log. Valid value is a positive number up to 1000. If 'tail' is not provided, all available logs are shown up to container instance log capacity of 4mb.
  */
@@ -4458,6 +4535,7 @@ export const DeploymentScriptsGetLogsDefault =
 export const DeploymentScriptsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4515,6 +4593,7 @@ export type DeploymentScriptsListByResourceGroupOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DeploymentScriptsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4592,6 +4671,7 @@ export const DeploymentScriptsListBySubscription =
 export const DeploymentScriptsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
@@ -4637,6 +4717,7 @@ export type DeploymentScriptsUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  */
 export const DeploymentScriptsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -6879,6 +6960,19 @@ export const DeploymentStacksDeleteAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     deploymentStackName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -6902,6 +6996,11 @@ export type DeploymentStacksDeleteAtManagementGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param managementGroupId - The management group ID.
  * @param deploymentStackName - Name of the deployment stack.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksDeleteAtManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6914,6 +7013,19 @@ export const DeploymentStacksDeleteAtResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deploymentStackName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -6938,6 +7050,11 @@ export type DeploymentStacksDeleteAtResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deploymentStackName - Name of the deployment stack.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksDeleteAtResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6949,6 +7066,19 @@ export const DeploymentStacksDeleteAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     deploymentStackName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -6972,6 +7102,11 @@ export type DeploymentStacksDeleteAtSubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param deploymentStackName - Name of the deployment stack.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksDeleteAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9616,6 +9751,19 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     deploymentStacksWhatIfResultName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -9639,6 +9787,11 @@ export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param managementGroupId - The management group ID.
  * @param deploymentStacksWhatIfResultName - Name of the deployment stack what-if result.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksWhatIfResultsAtManagementGroupDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10224,6 +10377,19 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deploymentStacksWhatIfResultName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -10248,6 +10414,11 @@ export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deploymentStacksWhatIfResultName - Name of the deployment stack what-if result.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksWhatIfResultsAtResourceGroupDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10835,6 +11006,19 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     deploymentStacksWhatIfResultName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -10858,6 +11042,11 @@ export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param deploymentStacksWhatIfResultName - Name of the deployment stack what-if result.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksWhatIfResultsAtSubscriptionDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15147,6 +15336,7 @@ export const DeploymentsWhatIfAtTenantScope =
 export const FeaturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -15175,6 +15365,8 @@ export type FeaturesGetOutput = typeof FeaturesGetOutput.Type;
  *
  * @param resourceProviderNamespace - The resource provider namespace for the feature.
  * @param featureName - The name of the feature to get.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const FeaturesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesGetInput,
@@ -15183,6 +15375,7 @@ export const FeaturesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FeaturesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -15217,15 +15410,17 @@ export type FeaturesListOutput = typeof FeaturesListOutput.Type;
  * Gets all the preview features in a provider namespace that are available through AFEC for the subscription.
  *
  * @param resourceProviderNamespace - The namespace of the resource provider for getting features.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const FeaturesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesListInput,
   outputSchema: FeaturesListOutput,
 }));
 // Input Schema
-export const FeaturesListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const FeaturesListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/features",
@@ -15257,6 +15452,9 @@ export type FeaturesListAllOutput = typeof FeaturesListAllOutput.Type;
 // The operation
 /**
  * Gets all the preview features that are available through AFEC for the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const FeaturesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesListAllInput,
@@ -15266,6 +15464,7 @@ export const FeaturesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FeaturesRegisterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -15296,6 +15495,8 @@ export type FeaturesRegisterOutput = typeof FeaturesRegisterOutput.Type;
  *
  * @param resourceProviderNamespace - The namespace of the resource provider.
  * @param featureName - The name of the feature to register.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const FeaturesRegister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesRegisterInput,
@@ -15306,6 +15507,7 @@ export const FeaturesUnregisterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -15335,6 +15537,8 @@ export type FeaturesUnregisterOutput = typeof FeaturesUnregisterOutput.Type;
  *
  * @param resourceProviderNamespace - The namespace of the resource provider.
  * @param featureName - The name of the feature to unregister.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const FeaturesUnregister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesUnregisterInput,
@@ -15345,6 +15549,7 @@ export const JitRequestsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jitRequestName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         applicationResourceId: Schema.String,
@@ -15437,6 +15642,8 @@ export type JitRequestsCreateOrUpdateOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jitRequestName - The name of the JIT request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const jitRequestsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -15449,6 +15656,7 @@ export const JitRequestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jitRequestName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -15469,6 +15677,8 @@ export type JitRequestsDeleteOutput = typeof JitRequestsDeleteOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jitRequestName - The name of the JIT request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const jitRequestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JitRequestsDeleteInput,
@@ -15478,6 +15688,7 @@ export const jitRequestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const JitRequestsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jitRequestName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -15503,6 +15714,8 @@ export type JitRequestsGetOutput = typeof JitRequestsGetOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jitRequestName - The name of the JIT request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const JitRequestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JitRequestsGetInput,
@@ -15512,6 +15725,7 @@ export const JitRequestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const JitRequestsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -15546,6 +15760,8 @@ export type JitRequestsListByResourceGroupOutput =
  * Retrieves all JIT requests within the resource group.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const jitRequestsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15554,7 +15770,9 @@ export const jitRequestsListByResourceGroup =
   }));
 // Input Schema
 export const JitRequestsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/jitRequests",
@@ -15586,6 +15804,9 @@ export type JitRequestsListBySubscriptionOutput =
 // The operation
 /**
  * Retrieves all JIT requests within the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const jitRequestsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15597,6 +15818,7 @@ export const JitRequestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jitRequestName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
@@ -15625,6 +15847,8 @@ export type JitRequestsUpdateOutput = typeof JitRequestsUpdateOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jitRequestName - The name of the JIT request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const JitRequestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JitRequestsUpdateInput,
@@ -15665,6 +15889,8 @@ export type ListOperationsOutput = typeof ListOperationsOutput.Type;
 // The operation
 /**
  * Lists all of the available Microsoft.Features REST API operations.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const ListOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListOperationsInput,
@@ -15675,6 +15901,7 @@ export const ManagementLocksCreateOrUpdateAtResourceGroupLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       level: Schema.Literals(["NotSpecified", "CanNotDelete", "ReadOnly"]),
       notes: Schema.optional(Schema.String),
@@ -15757,6 +15984,7 @@ export type ManagementLocksCreateOrUpdateAtResourceGroupLevelOutput =
  * @param resourceGroupName - The name of the resource group to lock.
  * @param lockName - The lock name. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \\, ?, /, or any control characters.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksCreateOrUpdateAtResourceGroupLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15772,6 +16000,7 @@ export const ManagementLocksCreateOrUpdateAtResourceLevelInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       level: Schema.Literals(["NotSpecified", "CanNotDelete", "ReadOnly"]),
       notes: Schema.optional(Schema.String),
@@ -15858,6 +16087,7 @@ export type ManagementLocksCreateOrUpdateAtResourceLevelOutput =
  * @param resourceName - The name of the resource to lock.
  * @param lockName - The name of lock. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \\, ?, /, or any control characters.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksCreateOrUpdateAtResourceLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15868,6 +16098,7 @@ export const ManagementLocksCreateOrUpdateAtResourceLevel =
 export const ManagementLocksCreateOrUpdateAtSubscriptionLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       level: Schema.Literals(["NotSpecified", "CanNotDelete", "ReadOnly"]),
       notes: Schema.optional(Schema.String),
@@ -15949,6 +16180,7 @@ export type ManagementLocksCreateOrUpdateAtSubscriptionLevelOutput =
  *
  * @param lockName - The name of lock. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \\, ?, /, or any control characters.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksCreateOrUpdateAtSubscriptionLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16051,6 +16283,7 @@ export const ManagementLocksDeleteAtResourceGroupLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -16076,6 +16309,7 @@ export type ManagementLocksDeleteAtResourceGroupLevelOutput =
  * @param resourceGroupName - The name of the resource group containing the lock.
  * @param lockName - The name of lock to delete.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksDeleteAtResourceGroupLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16091,6 +16325,7 @@ export const ManagementLocksDeleteAtResourceLevelInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -16120,6 +16355,7 @@ export type ManagementLocksDeleteAtResourceLevelOutput =
  * @param resourceName - The name of the resource with the lock to delete.
  * @param lockName - The name of the lock to delete.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksDeleteAtResourceLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16130,6 +16366,7 @@ export const ManagementLocksDeleteAtResourceLevel =
 export const ManagementLocksDeleteAtSubscriptionLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -16154,6 +16391,7 @@ export type ManagementLocksDeleteAtSubscriptionLevelOutput =
  *
  * @param lockName - The name of lock to delete.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksDeleteAtSubscriptionLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16199,6 +16437,7 @@ export const ManagementLocksGetAtResourceGroupLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -16251,6 +16490,7 @@ export type ManagementLocksGetAtResourceGroupLevelOutput =
  * @param resourceGroupName - The name of the locked resource group.
  * @param lockName - The name of the lock to get.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksGetAtResourceGroupLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16266,6 +16506,7 @@ export const ManagementLocksGetAtResourceLevelInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -16322,6 +16563,7 @@ export type ManagementLocksGetAtResourceLevelOutput =
  * @param resourceName - The name of the resource.
  * @param lockName - The name of lock.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksGetAtResourceLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16332,6 +16574,7 @@ export const ManagementLocksGetAtResourceLevel =
 export const ManagementLocksGetAtSubscriptionLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -16383,6 +16626,7 @@ export type ManagementLocksGetAtSubscriptionLevelOutput =
  *
  * @param lockName - The name of the lock to get.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksGetAtSubscriptionLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16457,6 +16701,7 @@ export const ManagementLocksGetByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ManagementLocksListAtResourceGroupLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -16531,6 +16776,7 @@ export type ManagementLocksListAtResourceGroupLevelOutput =
  * @param resourceGroupName - The name of the resource group containing the locks to get.
  * @param $filter - The filter to apply on the operation.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksListAtResourceGroupLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16545,6 +16791,7 @@ export const ManagementLocksListAtResourceLevelInput =
     parentResourcePath: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -16623,6 +16870,7 @@ export type ManagementLocksListAtResourceLevelOutput =
  * @param resourceName - The name of the locked resource.
  * @param $filter - The filter to apply on the operation.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksListAtResourceLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16632,6 +16880,7 @@ export const ManagementLocksListAtResourceLevel =
 // Input Schema
 export const ManagementLocksListAtSubscriptionLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -16705,6 +16954,7 @@ export type ManagementLocksListAtSubscriptionLevelOutput =
  *
  * @param $filter - The filter to apply on the operation.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksListAtSubscriptionLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16814,6 +17064,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
         display: Schema.optional(
           Schema.Struct({
             provider: Schema.optional(Schema.String),
@@ -16822,6 +17073,10 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             description: Schema.optional(Schema.String),
           }),
         ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
       }),
     ),
   ),
@@ -16831,7 +17086,9 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * Lists all of the available Microsoft.Resources REST API operations.
+ * List the operations for the provider
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -16885,10 +17142,14 @@ export const PolicyAssignmentsCreateInput =
                         "resourceType",
                         "resourceWithoutLocation",
                         "policyDefinitionReferenceId",
+                        "resourcePercentage",
+                        "userPrincipalId",
+                        "groupPrincipalId",
                       ]),
                     ),
                     in: Schema.optional(Schema.Array(Schema.String)),
                     notIn: Schema.optional(Schema.Array(Schema.String)),
+                    progress: Schema.optional(Schema.Number),
                   }),
                 ),
               ),
@@ -16911,10 +17172,14 @@ export const PolicyAssignmentsCreateInput =
                         "resourceType",
                         "resourceWithoutLocation",
                         "policyDefinitionReferenceId",
+                        "resourcePercentage",
+                        "userPrincipalId",
+                        "groupPrincipalId",
                       ]),
                     ),
                     in: Schema.optional(Schema.Array(Schema.String)),
                     notIn: Schema.optional(Schema.Array(Schema.String)),
+                    progress: Schema.optional(Schema.Number),
                   }),
                 ),
               ),
@@ -16958,7 +17223,7 @@ export const PolicyAssignmentsCreateInput =
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyAssignmentsCreateInput =
@@ -17011,7 +17276,7 @@ export const PolicyAssignmentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyAssignmentsDeleteInput =
@@ -17065,7 +17330,7 @@ export const PolicyAssignmentsGetInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyAssignmentsGetInput = typeof PolicyAssignmentsGetInput.Type;
@@ -17119,7 +17384,7 @@ export const PolicyAssignmentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyAssignmentsListInput = typeof PolicyAssignmentsListInput.Type;
@@ -17192,7 +17457,7 @@ export const PolicyAssignmentsListForManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyAssignmentsListForManagementGroupInput =
@@ -17270,7 +17535,7 @@ export const PolicyAssignmentsListForResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyAssignmentsListForResourceInput =
@@ -17349,7 +17614,7 @@ export const PolicyAssignmentsListForResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyAssignmentsListForResourceGroupInput =
@@ -17430,10 +17695,14 @@ export const PolicyAssignmentsUpdateInput =
                         "resourceType",
                         "resourceWithoutLocation",
                         "policyDefinitionReferenceId",
+                        "resourcePercentage",
+                        "userPrincipalId",
+                        "groupPrincipalId",
                       ]),
                     ),
                     in: Schema.optional(Schema.Array(Schema.String)),
                     notIn: Schema.optional(Schema.Array(Schema.String)),
+                    progress: Schema.optional(Schema.Number),
                   }),
                 ),
               ),
@@ -17456,10 +17725,14 @@ export const PolicyAssignmentsUpdateInput =
                         "resourceType",
                         "resourceWithoutLocation",
                         "policyDefinitionReferenceId",
+                        "resourcePercentage",
+                        "userPrincipalId",
+                        "groupPrincipalId",
                       ]),
                     ),
                     in: Schema.optional(Schema.Array(Schema.String)),
                     notIn: Schema.optional(Schema.Array(Schema.String)),
+                    progress: Schema.optional(Schema.Number),
                   }),
                 ),
               ),
@@ -17499,7 +17772,7 @@ export const PolicyAssignmentsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyAssignmentsUpdateInput =
@@ -17608,7 +17881,7 @@ export const PolicyDefinitionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionsCreateOrUpdateInput =
@@ -17716,7 +17989,7 @@ export const PolicyDefinitionsCreateOrUpdateAtManagementGroupInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionsCreateOrUpdateAtManagementGroupInput =
@@ -17768,7 +18041,7 @@ export const PolicyDefinitionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionsDeleteInput =
@@ -17803,7 +18076,7 @@ export const PolicyDefinitionsDeleteAtManagementGroupInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionsDeleteAtManagementGroupInput =
@@ -17837,7 +18110,7 @@ export const PolicyDefinitionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionsGetInput = typeof PolicyDefinitionsGetInput.Type;
@@ -17888,7 +18161,7 @@ export const PolicyDefinitionsGetAtManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionsGetAtManagementGroupInput =
@@ -17939,7 +18212,7 @@ export const PolicyDefinitionsGetBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionsGetBuiltInInput =
@@ -17992,7 +18265,7 @@ export const PolicyDefinitionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionsListInput = typeof PolicyDefinitionsListInput.Type;
@@ -18060,7 +18333,7 @@ export const PolicyDefinitionsListBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policyDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionsListBuiltInInput =
@@ -18128,7 +18401,7 @@ export const PolicyDefinitionsListByManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionsListByManagementGroupInput =
@@ -18252,7 +18525,7 @@ export const PolicyDefinitionVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsCreateOrUpdateInput =
@@ -18361,7 +18634,7 @@ export const PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupInput =
@@ -18415,7 +18688,7 @@ export const PolicyDefinitionVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsDeleteInput =
@@ -18451,7 +18724,7 @@ export const PolicyDefinitionVersionsDeleteAtManagementGroupInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsDeleteAtManagementGroupInput =
@@ -18487,7 +18760,7 @@ export const PolicyDefinitionVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsGetInput =
@@ -18542,7 +18815,7 @@ export const PolicyDefinitionVersionsGetAtManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsGetAtManagementGroupInput =
@@ -18595,7 +18868,7 @@ export const PolicyDefinitionVersionsGetBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsGetBuiltInInput =
@@ -18648,7 +18921,7 @@ export const PolicyDefinitionVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsListInput =
@@ -18715,7 +18988,7 @@ export const PolicyDefinitionVersionsListAllInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsListAllInput =
@@ -18782,7 +19055,7 @@ export const PolicyDefinitionVersionsListAllAtManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsListAllAtManagementGroupInput =
@@ -18847,7 +19120,7 @@ export const PolicyDefinitionVersionsListAllBuiltinsInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsListAllBuiltinsInput =
@@ -18914,7 +19187,7 @@ export const PolicyDefinitionVersionsListBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsListBuiltInInput =
@@ -18982,7 +19255,7 @@ export const PolicyDefinitionVersionsListByManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyDefinitionVersionsListByManagementGroupInput =
@@ -19120,7 +19393,7 @@ export const PolicySetDefinitionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionsCreateOrUpdateInput =
@@ -19242,7 +19515,7 @@ export const PolicySetDefinitionsCreateOrUpdateAtManagementGroupInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionsCreateOrUpdateAtManagementGroupInput =
@@ -19294,7 +19567,7 @@ export const PolicySetDefinitionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionsDeleteInput =
@@ -19329,7 +19602,7 @@ export const PolicySetDefinitionsDeleteAtManagementGroupInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionsDeleteAtManagementGroupInput =
@@ -19364,7 +19637,7 @@ export const PolicySetDefinitionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionsGetInput =
@@ -19419,7 +19692,7 @@ export const PolicySetDefinitionsGetAtManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionsGetAtManagementGroupInput =
@@ -19472,7 +19745,7 @@ export const PolicySetDefinitionsGetBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionsGetBuiltInInput =
@@ -19526,7 +19799,7 @@ export const PolicySetDefinitionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionsListInput =
@@ -19597,7 +19870,7 @@ export const PolicySetDefinitionsListBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policySetDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionsListBuiltInInput =
@@ -19667,7 +19940,7 @@ export const PolicySetDefinitionsListByManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionsListByManagementGroupInput =
@@ -19806,7 +20079,7 @@ export const PolicySetDefinitionVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsCreateOrUpdateInput =
@@ -19929,7 +20202,7 @@ export const PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupInput =
@@ -19985,7 +20258,7 @@ export const PolicySetDefinitionVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsDeleteInput =
@@ -20021,7 +20294,7 @@ export const PolicySetDefinitionVersionsDeleteAtManagementGroupInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsDeleteAtManagementGroupInput =
@@ -20058,7 +20331,7 @@ export const PolicySetDefinitionVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsGetInput =
@@ -20114,7 +20387,7 @@ export const PolicySetDefinitionVersionsGetAtManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsGetAtManagementGroupInput =
@@ -20169,7 +20442,7 @@ export const PolicySetDefinitionVersionsGetBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsGetBuiltInInput =
@@ -20224,7 +20497,7 @@ export const PolicySetDefinitionVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsListInput =
@@ -20292,7 +20565,7 @@ export const PolicySetDefinitionVersionsListAllInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsListAllInput =
@@ -20359,7 +20632,7 @@ export const PolicySetDefinitionVersionsListAllAtManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsListAllAtManagementGroupInput =
@@ -20424,7 +20697,7 @@ export const PolicySetDefinitionVersionsListAllBuiltinsInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsListAllBuiltinsInput =
@@ -20492,7 +20765,7 @@ export const PolicySetDefinitionVersionsListBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsListBuiltInInput =
@@ -20562,7 +20835,7 @@ export const PolicySetDefinitionVersionsListByManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicySetDefinitionVersionsListByManagementGroupInput =
@@ -20636,7 +20909,7 @@ export const PolicyTokensAcquireInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/acquirePolicyToken",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyTokensAcquireInput = typeof PolicyTokensAcquireInput.Type;
@@ -20666,25 +20939,14 @@ export const PolicyTokensAcquireOutput =
               policySetDefinitionId: Schema.optional(Schema.String),
               policyDefinitionReferenceId: Schema.optional(Schema.String),
               policySetDefinitionName: Schema.optional(Schema.String),
-              policySetDefinitionDisplayName: Schema.optional(Schema.String),
               policySetDefinitionVersion: Schema.optional(Schema.String),
-              policySetDefinitionCategory: Schema.optional(Schema.String),
               policyDefinitionName: Schema.optional(Schema.String),
-              policyDefinitionDisplayName: Schema.optional(Schema.String),
               policyDefinitionVersion: Schema.optional(Schema.String),
               policyDefinitionEffect: Schema.optional(Schema.String),
-              policyDefinitionGroupNames: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
               policyAssignmentId: Schema.optional(Schema.String),
               policyAssignmentName: Schema.optional(Schema.String),
-              policyAssignmentDisplayName: Schema.optional(Schema.String),
               policyAssignmentVersion: Schema.optional(Schema.String),
               policyAssignmentScope: Schema.optional(Schema.String),
-              resourceLocation: Schema.optional(Schema.String),
-              ancestors: Schema.optional(Schema.String),
-              complianceReasonCode: Schema.optional(Schema.String),
-              policyExemptionIds: Schema.optional(Schema.Array(Schema.String)),
             }),
           ),
           result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
@@ -20735,7 +20997,7 @@ export const PolicyTokensAcquireAtManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/acquirePolicyToken",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
   );
 export type PolicyTokensAcquireAtManagementGroupInput =
@@ -20766,25 +21028,14 @@ export const PolicyTokensAcquireAtManagementGroupOutput =
               policySetDefinitionId: Schema.optional(Schema.String),
               policyDefinitionReferenceId: Schema.optional(Schema.String),
               policySetDefinitionName: Schema.optional(Schema.String),
-              policySetDefinitionDisplayName: Schema.optional(Schema.String),
               policySetDefinitionVersion: Schema.optional(Schema.String),
-              policySetDefinitionCategory: Schema.optional(Schema.String),
               policyDefinitionName: Schema.optional(Schema.String),
-              policyDefinitionDisplayName: Schema.optional(Schema.String),
               policyDefinitionVersion: Schema.optional(Schema.String),
               policyDefinitionEffect: Schema.optional(Schema.String),
-              policyDefinitionGroupNames: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
               policyAssignmentId: Schema.optional(Schema.String),
               policyAssignmentName: Schema.optional(Schema.String),
-              policyAssignmentDisplayName: Schema.optional(Schema.String),
               policyAssignmentVersion: Schema.optional(Schema.String),
               policyAssignmentScope: Schema.optional(Schema.String),
-              resourceLocation: Schema.optional(Schema.String),
-              ancestors: Schema.optional(Schema.String),
-              complianceReasonCode: Schema.optional(Schema.String),
-              policyExemptionIds: Schema.optional(Schema.Array(Schema.String)),
             }),
           ),
           result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
@@ -20825,7 +21076,10 @@ export const PolicyTokensAcquireAtManagementGroup =
   }));
 // Input Schema
 export const PrivateLinkAssociationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    plaId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Authorization/privateLinkAssociations/{plaId}",
@@ -20844,6 +21098,10 @@ export type PrivateLinkAssociationDeleteOutput =
 // The operation
 /**
  * Delete a PrivateLinkAssociation
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param groupId - The management group ID.
+ * @param plaId - The ID of the PLA
  */
 export const PrivateLinkAssociationDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -20852,7 +21110,10 @@ export const PrivateLinkAssociationDelete =
   }));
 // Input Schema
 export const PrivateLinkAssociationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    plaId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Authorization/privateLinkAssociations/{plaId}",
@@ -20885,6 +21146,10 @@ export type PrivateLinkAssociationGetOutput =
 // The operation
 /**
  * Get a single private link association
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param groupId - The management group ID.
+ * @param plaId - The ID of the PLA
  */
 export const PrivateLinkAssociationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20894,7 +21159,9 @@ export const PrivateLinkAssociationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkAssociationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Authorization/privateLinkAssociations",
@@ -20933,6 +21200,9 @@ export type PrivateLinkAssociationListOutput =
 // The operation
 /**
  * Get a private link association for a management group scope
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param groupId - The management group ID.
  */
 export const PrivateLinkAssociationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20943,6 +21213,8 @@ export const PrivateLinkAssociationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PrivateLinkAssociationPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    plaId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         privateLink: Schema.optional(Schema.String),
@@ -20984,6 +21256,10 @@ export type PrivateLinkAssociationPutOutput =
 // The operation
 /**
  * Create a PrivateLinkAssociation
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param groupId - The management group ID.
+ * @param plaId - The ID of the PLA
  */
 export const PrivateLinkAssociationPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20994,6 +21270,7 @@ export const PrivateLinkAssociationPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ProviderResourceTypesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -21009,119 +21286,117 @@ export type ProviderResourceTypesListInput =
 // Output Schema
 export const ProviderResourceTypesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          locations: Schema.optional(Schema.Array(Schema.String)),
-          locationMappings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                location: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                extendedLocations: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
+    value: Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        locations: Schema.optional(Schema.Array(Schema.String)),
+        locationMappings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              location: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              extendedLocations: Schema.optional(Schema.Array(Schema.String)),
+            }),
           ),
-          aliases: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                paths: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      path: Schema.optional(Schema.String),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      pattern: Schema.optional(
-                        Schema.Struct({
-                          phrase: Schema.optional(Schema.String),
-                          variable: Schema.optional(Schema.String),
-                          type: Schema.optional(
-                            Schema.Literals(["NotSpecified", "Extract"]),
-                          ),
-                        }),
-                      ),
-                      metadata: Schema.optional(
-                        Schema.Struct({
-                          type: Schema.optional(
-                            Schema.Literals([
-                              "NotSpecified",
-                              "Any",
-                              "String",
-                              "Object",
-                              "Array",
-                              "Integer",
-                              "Number",
-                              "Boolean",
-                            ]),
-                          ),
-                          attributes: Schema.optional(
-                            Schema.Literals(["None", "Modifiable"]),
-                          ),
-                        }),
-                      ),
-                    }),
+        ),
+        aliases: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              paths: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    path: Schema.optional(Schema.String),
+                    apiVersions: Schema.optional(Schema.Array(Schema.String)),
+                    pattern: Schema.optional(
+                      Schema.Struct({
+                        phrase: Schema.optional(Schema.String),
+                        variable: Schema.optional(Schema.String),
+                        type: Schema.optional(
+                          Schema.Literals(["NotSpecified", "Extract"]),
+                        ),
+                      }),
+                    ),
+                    metadata: Schema.optional(
+                      Schema.Struct({
+                        type: Schema.optional(
+                          Schema.Literals([
+                            "NotSpecified",
+                            "Any",
+                            "String",
+                            "Object",
+                            "Array",
+                            "Integer",
+                            "Number",
+                            "Boolean",
+                          ]),
+                        ),
+                        attributes: Schema.optional(
+                          Schema.Literals(["None", "Modifiable"]),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+              type: Schema.optional(
+                Schema.Literals(["NotSpecified", "PlainText", "Mask"]),
+              ),
+              defaultPath: Schema.optional(Schema.String),
+              defaultPattern: Schema.optional(
+                Schema.Struct({
+                  phrase: Schema.optional(Schema.String),
+                  variable: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals(["NotSpecified", "Extract"]),
                   ),
-                ),
-                type: Schema.optional(
-                  Schema.Literals(["NotSpecified", "PlainText", "Mask"]),
-                ),
-                defaultPath: Schema.optional(Schema.String),
-                defaultPattern: Schema.optional(
-                  Schema.Struct({
-                    phrase: Schema.optional(Schema.String),
-                    variable: Schema.optional(Schema.String),
-                    type: Schema.optional(
-                      Schema.Literals(["NotSpecified", "Extract"]),
-                    ),
-                  }),
-                ),
-                defaultMetadata: Schema.optional(
-                  Schema.Struct({
-                    type: Schema.optional(
-                      Schema.Literals([
-                        "NotSpecified",
-                        "Any",
-                        "String",
-                        "Object",
-                        "Array",
-                        "Integer",
-                        "Number",
-                        "Boolean",
-                      ]),
-                    ),
-                    attributes: Schema.optional(
-                      Schema.Literals(["None", "Modifiable"]),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+                }),
+              ),
+              defaultMetadata: Schema.optional(
+                Schema.Struct({
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "NotSpecified",
+                      "Any",
+                      "String",
+                      "Object",
+                      "Array",
+                      "Integer",
+                      "Number",
+                      "Boolean",
+                    ]),
+                  ),
+                  attributes: Schema.optional(
+                    Schema.Literals(["None", "Modifiable"]),
+                  ),
+                }),
+              ),
+            }),
           ),
-          apiVersions: Schema.optional(Schema.Array(Schema.String)),
-          defaultApiVersion: Schema.optional(Schema.String),
-          zoneMappings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                location: Schema.optional(Schema.String),
-                zones: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
+        ),
+        apiVersions: Schema.optional(Schema.Array(Schema.String)),
+        defaultApiVersion: Schema.optional(Schema.String),
+        zoneMappings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              location: Schema.optional(Schema.String),
+              zones: Schema.optional(Schema.Array(Schema.String)),
+            }),
           ),
-          apiProfiles: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                profileVersion: Schema.optional(Schema.String),
-                apiVersion: Schema.optional(Schema.String),
-              }),
-            ),
+        ),
+        apiProfiles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              profileVersion: Schema.optional(Schema.String),
+              apiVersion: Schema.optional(Schema.String),
+            }),
           ),
-          capabilities: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        }),
-      ),
+        ),
+        capabilities: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -21132,7 +21407,9 @@ export type ProviderResourceTypesListOutput =
 /**
  * List the resource types for a specified resource provider.
  *
- * @param $expand - The $expand query parameter. For example, to include property aliases in response, use $expand=resourceTypes/aliases.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param $expand - The $expand query parameter.
  * @param resourceProviderNamespace - The namespace of the resource provider.
  */
 export const ProviderResourceTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -21144,6 +21421,7 @@ export const ProviderResourceTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ProvidersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -21284,8 +21562,10 @@ export type ProvidersGetOutput = typeof ProvidersGetOutput.Type;
 /**
  * Gets the specified resource provider.
  *
+ * @param api-version - The API version to use for this operation.
  * @param $expand - The $expand query parameter. For example, to include property aliases in response, use $expand=resourceTypes/aliases.
  * @param resourceProviderNamespace - The namespace of the resource provider.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ProvidersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProvidersGetInput,
@@ -21438,6 +21718,7 @@ export type ProvidersGetAtTenantScopeOutput =
 /**
  * Gets the specified resource provider at the tenant level.
  *
+ * @param api-version - The API version to use for this operation.
  * @param $expand - The $expand query parameter. For example, to include property aliases in response, use $expand=resourceTypes/aliases.
  * @param resourceProviderNamespace - The namespace of the resource provider.
  */
@@ -21449,6 +21730,7 @@ export const ProvidersGetAtTenantScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ProvidersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -21461,8 +21743,170 @@ export type ProvidersListInput = typeof ProvidersListInput.Type;
 
 // Output Schema
 export const ProvidersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      registrationState: Schema.optional(Schema.String),
+      registrationPolicy: Schema.optional(Schema.String),
+      resourceTypes: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceType: Schema.optional(Schema.String),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            locationMappings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  location: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                  extendedLocations: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                }),
+              ),
+            ),
+            aliases: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  paths: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        path: Schema.optional(Schema.String),
+                        apiVersions: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        pattern: Schema.optional(
+                          Schema.Struct({
+                            phrase: Schema.optional(Schema.String),
+                            variable: Schema.optional(Schema.String),
+                            type: Schema.optional(
+                              Schema.Literals(["NotSpecified", "Extract"]),
+                            ),
+                          }),
+                        ),
+                        metadata: Schema.optional(
+                          Schema.Struct({
+                            type: Schema.optional(
+                              Schema.Literals([
+                                "NotSpecified",
+                                "Any",
+                                "String",
+                                "Object",
+                                "Array",
+                                "Integer",
+                                "Number",
+                                "Boolean",
+                              ]),
+                            ),
+                            attributes: Schema.optional(
+                              Schema.Literals(["None", "Modifiable"]),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  type: Schema.optional(
+                    Schema.Literals(["NotSpecified", "PlainText", "Mask"]),
+                  ),
+                  defaultPath: Schema.optional(Schema.String),
+                  defaultPattern: Schema.optional(
+                    Schema.Struct({
+                      phrase: Schema.optional(Schema.String),
+                      variable: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["NotSpecified", "Extract"]),
+                      ),
+                    }),
+                  ),
+                  defaultMetadata: Schema.optional(
+                    Schema.Struct({
+                      type: Schema.optional(
+                        Schema.Literals([
+                          "NotSpecified",
+                          "Any",
+                          "String",
+                          "Object",
+                          "Array",
+                          "Integer",
+                          "Number",
+                          "Boolean",
+                        ]),
+                      ),
+                      attributes: Schema.optional(
+                        Schema.Literals(["None", "Modifiable"]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            apiVersions: Schema.optional(Schema.Array(Schema.String)),
+            defaultApiVersion: Schema.optional(Schema.String),
+            zoneMappings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  location: Schema.optional(Schema.String),
+                  zones: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            apiProfiles: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  profileVersion: Schema.optional(Schema.String),
+                  apiVersion: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            capabilities: Schema.optional(Schema.String),
+            properties: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+      ),
+      providerAuthorizationConsentState: Schema.optional(
+        Schema.Literals([
+          "NotSpecified",
+          "Required",
+          "NotRequired",
+          "Consented",
+        ]),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type ProvidersListOutput = typeof ProvidersListOutput.Type;
+
+// The operation
+/**
+ * Gets all resource providers for a subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param $expand - The properties to include in the results. For example, use &$expand=metadata in the query string to retrieve resource provider metadata. To include property aliases in response, use $expand=resourceTypes/aliases.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const ProvidersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ProvidersListInput,
+  outputSchema: ProvidersListOutput,
+}));
+// Input Schema
+export const ProvidersListAtTenantScopeInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $expand: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({ method: "GET", path: "/providers", apiVersion: "2025-04-01" }),
+  );
+export type ProvidersListAtTenantScopeInput =
+  typeof ProvidersListAtTenantScopeInput.Type;
+
+// Output Schema
+export const ProvidersListAtTenantScopeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
         namespace: Schema.optional(Schema.String),
@@ -21596,170 +22040,6 @@ export const ProvidersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
       }),
     ),
-  ),
-  nextLink: Schema.optional(Schema.String),
-});
-export type ProvidersListOutput = typeof ProvidersListOutput.Type;
-
-// The operation
-/**
- * Gets all resource providers for a subscription.
- *
- * @param $expand - The properties to include in the results. For example, use &$expand=metadata in the query string to retrieve resource provider metadata. To include property aliases in response, use $expand=resourceTypes/aliases.
- */
-export const ProvidersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ProvidersListInput,
-  outputSchema: ProvidersListOutput,
-}));
-// Input Schema
-export const ProvidersListAtTenantScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    $expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers", apiVersion: "2025-04-01" }),
-  );
-export type ProvidersListAtTenantScopeInput =
-  typeof ProvidersListAtTenantScopeInput.Type;
-
-// Output Schema
-export const ProvidersListAtTenantScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          registrationState: Schema.optional(Schema.String),
-          registrationPolicy: Schema.optional(Schema.String),
-          resourceTypes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                resourceType: Schema.optional(Schema.String),
-                locations: Schema.optional(Schema.Array(Schema.String)),
-                locationMappings: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      location: Schema.optional(Schema.String),
-                      type: Schema.optional(Schema.String),
-                      extendedLocations: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                ),
-                aliases: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      paths: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            path: Schema.optional(Schema.String),
-                            apiVersions: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                            pattern: Schema.optional(
-                              Schema.Struct({
-                                phrase: Schema.optional(Schema.String),
-                                variable: Schema.optional(Schema.String),
-                                type: Schema.optional(
-                                  Schema.Literals(["NotSpecified", "Extract"]),
-                                ),
-                              }),
-                            ),
-                            metadata: Schema.optional(
-                              Schema.Struct({
-                                type: Schema.optional(
-                                  Schema.Literals([
-                                    "NotSpecified",
-                                    "Any",
-                                    "String",
-                                    "Object",
-                                    "Array",
-                                    "Integer",
-                                    "Number",
-                                    "Boolean",
-                                  ]),
-                                ),
-                                attributes: Schema.optional(
-                                  Schema.Literals(["None", "Modifiable"]),
-                                ),
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      type: Schema.optional(
-                        Schema.Literals(["NotSpecified", "PlainText", "Mask"]),
-                      ),
-                      defaultPath: Schema.optional(Schema.String),
-                      defaultPattern: Schema.optional(
-                        Schema.Struct({
-                          phrase: Schema.optional(Schema.String),
-                          variable: Schema.optional(Schema.String),
-                          type: Schema.optional(
-                            Schema.Literals(["NotSpecified", "Extract"]),
-                          ),
-                        }),
-                      ),
-                      defaultMetadata: Schema.optional(
-                        Schema.Struct({
-                          type: Schema.optional(
-                            Schema.Literals([
-                              "NotSpecified",
-                              "Any",
-                              "String",
-                              "Object",
-                              "Array",
-                              "Integer",
-                              "Number",
-                              "Boolean",
-                            ]),
-                          ),
-                          attributes: Schema.optional(
-                            Schema.Literals(["None", "Modifiable"]),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                defaultApiVersion: Schema.optional(Schema.String),
-                zoneMappings: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      location: Schema.optional(Schema.String),
-                      zones: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                apiProfiles: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      profileVersion: Schema.optional(Schema.String),
-                      apiVersion: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                capabilities: Schema.optional(Schema.String),
-                properties: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          ),
-          providerAuthorizationConsentState: Schema.optional(
-            Schema.Literals([
-              "NotSpecified",
-              "Required",
-              "NotRequired",
-              "Consented",
-            ]),
-          ),
-        }),
-      ),
-    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ProvidersListAtTenantScopeOutput =
@@ -21769,7 +22049,8 @@ export type ProvidersListAtTenantScopeOutput =
 /**
  * Gets all resource providers for the tenant.
  *
- * @param $expand - The properties to include in the results. For example, use &$expand=metadata in the query string to retrieve resource provider metadata. To include property aliases in response, use $expand=resourceTypes/aliases.
+ * @param api-version - The API version to use for this operation.
+ * @param $expand - The properties to include in the results.
  */
 export const ProvidersListAtTenantScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -21780,6 +22061,7 @@ export const ProvidersListAtTenantScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ProvidersProviderPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -21794,60 +22076,54 @@ export type ProvidersProviderPermissionsInput =
 // Output Schema
 export const ProvidersProviderPermissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          applicationId: Schema.optional(Schema.String),
-          roleDefinition: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              isServiceRole: Schema.optional(Schema.Boolean),
-              permissions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    actions: Schema.optional(Schema.Array(Schema.String)),
-                    notActions: Schema.optional(Schema.Array(Schema.String)),
-                    dataActions: Schema.optional(Schema.Array(Schema.String)),
-                    notDataActions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                  }),
-                ),
+    value: Schema.Array(
+      Schema.Struct({
+        applicationId: Schema.optional(Schema.String),
+        roleDefinition: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            isServiceRole: Schema.optional(Schema.Boolean),
+            permissions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  actions: Schema.optional(Schema.Array(Schema.String)),
+                  notActions: Schema.optional(Schema.Array(Schema.String)),
+                  dataActions: Schema.optional(Schema.Array(Schema.String)),
+                  notDataActions: Schema.optional(Schema.Array(Schema.String)),
+                }),
               ),
-              scopes: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          managedByRoleDefinition: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              isServiceRole: Schema.optional(Schema.Boolean),
-              permissions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    actions: Schema.optional(Schema.Array(Schema.String)),
-                    notActions: Schema.optional(Schema.Array(Schema.String)),
-                    dataActions: Schema.optional(Schema.Array(Schema.String)),
-                    notDataActions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                  }),
-                ),
+            ),
+            scopes: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        managedByRoleDefinition: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            isServiceRole: Schema.optional(Schema.Boolean),
+            permissions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  actions: Schema.optional(Schema.Array(Schema.String)),
+                  notActions: Schema.optional(Schema.Array(Schema.String)),
+                  dataActions: Schema.optional(Schema.Array(Schema.String)),
+                  notDataActions: Schema.optional(Schema.Array(Schema.String)),
+                }),
               ),
-              scopes: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          providerAuthorizationConsentState: Schema.optional(
-            Schema.Literals([
-              "NotSpecified",
-              "Required",
-              "NotRequired",
-              "Consented",
-            ]),
-          ),
-        }),
-      ),
+            ),
+            scopes: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        providerAuthorizationConsentState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Required",
+            "NotRequired",
+            "Consented",
+          ]),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -21858,6 +22134,8 @@ export type ProvidersProviderPermissionsOutput =
 /**
  * Get the provider permissions.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceProviderNamespace - The namespace of the resource provider.
  */
 export const ProvidersProviderPermissions =
@@ -21868,6 +22146,7 @@ export const ProvidersProviderPermissions =
 // Input Schema
 export const ProvidersRegisterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     thirdPartyProviderConsent: Schema.optional(
       Schema.Struct({
@@ -22015,6 +22294,8 @@ export type ProvidersRegisterOutput = typeof ProvidersRegisterOutput.Type;
 /**
  * Registers a subscription with a resource provider.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceProviderNamespace - The namespace of the resource provider to register.
  */
 export const ProvidersRegister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22025,6 +22306,7 @@ export const ProvidersRegister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ProvidersRegisterAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+    groupId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -22045,7 +22327,8 @@ export type ProvidersRegisterAtManagementGroupScopeOutput =
 /**
  * Registers a management group with a resource provider. Use this operation to register a resource provider with resource types that can be deployed at the management group scope. It does not recursively register subscriptions within the management group. Instead, you must register subscriptions individually.
  *
- * @param resourceProviderNamespace - The namespace of the resource provider to register.
+ * @param api-version - The API version to use for this operation.
+ * @param resourceProviderNamespace - The management group ID.The namespace of the resource provider to register.
  */
 export const ProvidersRegisterAtManagementGroupScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22055,6 +22338,7 @@ export const ProvidersRegisterAtManagementGroupScope =
 // Input Schema
 export const ProvidersUnregisterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -22196,6 +22480,8 @@ export type ProvidersUnregisterOutput = typeof ProvidersUnregisterOutput.Type;
 /**
  * Unregisters a subscription from a resource provider.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceProviderNamespace - The namespace of the resource provider to unregister.
  */
 export const ProvidersUnregister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22205,18 +22491,16 @@ export const ProvidersUnregister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ResourceGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(Schema.String),
       }),
     ),
-    location: Schema.String,
     managedBy: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -22233,14 +22517,20 @@ export const ResourceGroupsCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    location: Schema.String,
-    managedBy: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type ResourceGroupsCreateOrUpdateOutput =
   typeof ResourceGroupsCreateOrUpdateOutput.Type;
@@ -22249,7 +22539,9 @@ export type ResourceGroupsCreateOrUpdateOutput =
 /**
  * Creates or updates a resource group.
  *
- * @param resourceGroupName - The name of the resource group to create or update. Can include alphanumeric, underscore, parentheses, hyphen, period (except at end), and Unicode characters that match the allowed characters.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourceGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22259,6 +22551,7 @@ export const ResourceGroupsCreateOrUpdate =
 // Input Schema
 export const ResourceGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     forceDeletionTypes: Schema.optional(Schema.String),
   }).pipe(
@@ -22281,7 +22574,9 @@ export type ResourceGroupsDeleteOutput = typeof ResourceGroupsDeleteOutput.Type;
  *
  * When you delete a resource group, all of its resources are also deleted. Deleting a resource group deletes all of its template deployments and currently stored operations.
  *
- * @param resourceGroupName - The name of the resource group to delete. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  * @param forceDeletionTypes - The resource types you want to force delete. Currently, only the following is supported: forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
  */
 export const ResourceGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -22293,6 +22588,7 @@ export const ResourceGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ResourceGroupsExportTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resources: Schema.optional(Schema.Array(Schema.String)),
     options: Schema.optional(Schema.String),
@@ -22353,7 +22649,9 @@ export type ResourceGroupsExportTemplateOutput =
 /**
  * Captures the specified resource group as a template.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourceGroupsExportTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22363,6 +22661,7 @@ export const ResourceGroupsExportTemplate =
 // Input Schema
 export const ResourceGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
@@ -22380,14 +22679,20 @@ export const ResourceGroupsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    location: Schema.String,
-    managedBy: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type ResourceGroupsGetOutput = typeof ResourceGroupsGetOutput.Type;
 
@@ -22395,6 +22700,8 @@ export type ResourceGroupsGetOutput = typeof ResourceGroupsGetOutput.Type;
 /**
  * Gets a resource group.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourceGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22404,6 +22711,7 @@ export const ResourceGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ResourceGroupsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -22418,22 +22726,36 @@ export type ResourceGroupsListInput = typeof ResourceGroupsListInput.Type;
 // Output Schema
 export const ResourceGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              provisioningState: Schema.optional(Schema.String),
-            }),
-          ),
-          location: Schema.String,
-          managedBy: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -22443,6 +22765,8 @@ export type ResourceGroupsListOutput = typeof ResourceGroupsListOutput.Type;
 /**
  * Gets all the resource groups for a subscription.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param $filter - The filter to apply on the operation.<br><br>You can filter by tag names and values. For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'
  * @param $top - The number of results to return. If null is passed, returns all resource groups.
  */
@@ -22453,6 +22777,7 @@ export const ResourceGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ResourceGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -22477,14 +22802,20 @@ export const ResourceGroupsUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    location: Schema.String,
-    managedBy: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type ResourceGroupsUpdateOutput = typeof ResourceGroupsUpdateOutput.Type;
 
@@ -22494,7 +22825,9 @@ export type ResourceGroupsUpdateOutput = typeof ResourceGroupsUpdateOutput.Type;
  *
  * Resource groups can be updated through a simple PATCH operation to a group address. The format of the request is the same as that for creating a resource group. If a field is unspecified, the current value is retained.
  *
- * @param resourceGroupName - The name of the resource group to update. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourceGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -22544,6 +22877,7 @@ export type ResourceLinksCreateOrUpdateOutput =
  * Creates or updates a resource link between the specified resources.
  *
  * @param linkId - The fully qualified ID of the resource link. Use the format, /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/{provider-namespace}/{resource-type}/{resource-name}/Microsoft.Resources/links/{link-name}. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
+ * @param api-version - The API version to use for the operation.
  */
 export const ResourceLinksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -22570,6 +22904,7 @@ export type ResourceLinksDeleteOutput = typeof ResourceLinksDeleteOutput.Type;
  * Deletes a resource link with the specified ID.
  *
  * @param linkId - The fully qualified ID of the resource link. Use the format, /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/{provider-namespace}/{resource-type}/{resource-name}/Microsoft.Resources/links/{link-name}. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
+ * @param api-version - The API version to use for the operation.
  */
 export const ResourceLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourceLinksDeleteInput,
@@ -22603,6 +22938,7 @@ export type ResourceLinksGetOutput = typeof ResourceLinksGetOutput.Type;
  * Gets a resource link with the specified ID.
  *
  * @param linkId - The fully qualified Id of the resource link. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
+ * @param api-version - The API version to use for the operation.
  */
 export const ResourceLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourceLinksGetInput,
@@ -22651,6 +22987,7 @@ export type ResourceLinksListAtSourceScopeOutput =
  *
  * @param scope - The fully qualified ID of the scope for getting the resource links. For example, to list resource links at and under a resource group, set the scope to /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup.
  * @param $filter - The filter to apply when getting resource links. To get links only at the specified scope (not below the scope), use Filter.atScope().
+ * @param api-version - The API version to use for the operation.
  */
 export const ResourceLinksListAtSourceScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22660,6 +22997,7 @@ export const ResourceLinksListAtSourceScope =
 // Input Schema
 export const ResourceLinksListAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -22698,6 +23036,8 @@ export type ResourceLinksListAtSubscriptionOutput =
  * Gets all the linked resources for the subscription.
  *
  * @param $filter - The filter to apply on the list resource links operation. The supported filter for list resource links is targetId. For example, $filter=targetId eq {value}
+ * @param api-version - The API version to use for the operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ResourceLinksListAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22707,7 +23047,9 @@ export const ResourceLinksListAtSubscription =
 // Input Schema
 export const ResourceManagementPrivateLinkDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    rmplName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -22728,7 +23070,10 @@ export type ResourceManagementPrivateLinkDeleteOutput =
 /**
  * Delete a resource management private link.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param rmplName - The name of the resource management private link.
  */
 export const ResourceManagementPrivateLinkDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22738,7 +23083,9 @@ export const ResourceManagementPrivateLinkDelete =
 // Input Schema
 export const ResourceManagementPrivateLinkGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    rmplName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -22771,7 +23118,10 @@ export type ResourceManagementPrivateLinkGetOutput =
 /**
  * Get a resource management private link(resource-level).
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param rmplName - The name of the resource management private link.
  */
 export const ResourceManagementPrivateLinkGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22780,7 +23130,9 @@ export const ResourceManagementPrivateLinkGet =
   }));
 // Input Schema
 export const ResourceManagementPrivateLinkListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/resourceManagementPrivateLinks",
@@ -22817,6 +23169,9 @@ export type ResourceManagementPrivateLinkListOutput =
 // The operation
 /**
  * Get all the resource management private links in a subscription.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourceManagementPrivateLinkList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22826,6 +23181,7 @@ export const ResourceManagementPrivateLinkList =
 // Input Schema
 export const ResourceManagementPrivateLinkListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -22865,7 +23221,9 @@ export type ResourceManagementPrivateLinkListByResourceGroupOutput =
 /**
  * Get all the resource management private links in a resource group.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourceManagementPrivateLinkListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22875,7 +23233,9 @@ export const ResourceManagementPrivateLinkListByResourceGroup =
 // Input Schema
 export const ResourceManagementPrivateLinkPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    rmplName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -22909,7 +23269,10 @@ export type ResourceManagementPrivateLinkPutOutput =
 /**
  * Create a resource management group private link.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param rmplName - The name of the resource management private link.
  */
 export const ResourceManagementPrivateLinkPut =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22919,11 +23282,13 @@ export const ResourceManagementPrivateLinkPut =
 // Input Schema
 export const ResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     parentResourcePath: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(Schema.Unknown),
     plan: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -22933,7 +23298,6 @@ export const ResourcesCreateOrUpdateInput =
         version: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.optional(Schema.Unknown),
     kind: Schema.optional(Schema.String),
     managedBy: Schema.optional(Schema.String),
     sku: Schema.optional(
@@ -22969,9 +23333,6 @@ export const ResourcesCreateOrUpdateInput =
         ),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     extendedLocation: Schema.optional(
       Schema.Struct({
@@ -22980,6 +23341,23 @@ export const ResourcesCreateOrUpdateInput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -22996,14 +23374,20 @@ export const ResourcesCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    extendedLocation: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
-        name: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type ResourcesCreateOrUpdateOutput =
   typeof ResourcesCreateOrUpdateOutput.Type;
@@ -23012,12 +23396,13 @@ export type ResourcesCreateOrUpdateOutput =
 /**
  * Creates a resource.
  *
- * @param resourceGroupName - The name of the resource group for the resource. The name is case insensitive.
- * @param resourceProviderNamespace - The namespace of the resource provider.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group containing the resource to get. The name is case insensitive.
+ * @param resourceProviderNamespace - The resource provider of the resource to check.
  * @param parentResourcePath - The parent resource identity.
- * @param resourceType - The resource type of the resource to create.
- * @param resourceName - The name of the resource to create.
- * @param api-version - The API version to use for the operation.
+ * @param resourceType - The resource type.
+ * @param resourceName - The name of the resource to check whether it exists.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -23029,6 +23414,7 @@ export const ResourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ResourcesCreateOrUpdateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(Schema.Unknown),
     plan: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -23038,7 +23424,6 @@ export const ResourcesCreateOrUpdateByIdInput =
         version: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.optional(Schema.Unknown),
     kind: Schema.optional(Schema.String),
     managedBy: Schema.optional(Schema.String),
     sku: Schema.optional(
@@ -23074,9 +23459,6 @@ export const ResourcesCreateOrUpdateByIdInput =
         ),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     extendedLocation: Schema.optional(
       Schema.Struct({
@@ -23085,6 +23467,23 @@ export const ResourcesCreateOrUpdateByIdInput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({ method: "PUT", path: "/{resourceId}", apiVersion: "2025-04-01" }),
   );
@@ -23097,14 +23496,20 @@ export const ResourcesCreateOrUpdateByIdOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    extendedLocation: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
-        name: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type ResourcesCreateOrUpdateByIdOutput =
   typeof ResourcesCreateOrUpdateByIdOutput.Type;
@@ -23113,8 +23518,7 @@ export type ResourcesCreateOrUpdateByIdOutput =
 /**
  * Create a resource by ID.
  *
- * @param resourceId - The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
- * @param api-version - The API version to use for the operation.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesCreateOrUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -23124,6 +23528,7 @@ export const ResourcesCreateOrUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ResourcesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   parentResourcePath: Schema.String.pipe(T.PathParam()),
@@ -23146,12 +23551,13 @@ export type ResourcesDeleteOutput = typeof ResourcesDeleteOutput.Type;
 /**
  * Deletes a resource.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource to delete. The name is case insensitive.
- * @param resourceProviderNamespace - The namespace of the resource provider.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group containing the resource to get. The name is case insensitive.
+ * @param resourceProviderNamespace - The resource provider of the resource to check.
  * @param parentResourcePath - The parent resource identity.
  * @param resourceType - The resource type.
- * @param resourceName - The name of the resource to delete.
- * @param api-version - The API version to use for the operation.
+ * @param resourceName - The name of the resource to check whether it exists.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesDeleteInput,
@@ -23179,8 +23585,7 @@ export type ResourcesDeleteByIdOutput = typeof ResourcesDeleteByIdOutput.Type;
 /**
  * Deletes a resource by ID.
  *
- * @param resourceId - The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
- * @param api-version - The API version to use for the operation.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesDeleteByIdInput,
@@ -23188,6 +23593,7 @@ export const ResourcesDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ResourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   parentResourcePath: Schema.String.pipe(T.PathParam()),
@@ -23207,14 +23613,20 @@ export const ResourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  extendedLocation: Schema.optional(
+  systemData: Schema.optional(
     Schema.Struct({
-      type: Schema.optional(Schema.Literals(["EdgeZone"])),
-      name: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 });
 export type ResourcesGetOutput = typeof ResourcesGetOutput.Type;
 
@@ -23222,12 +23634,13 @@ export type ResourcesGetOutput = typeof ResourcesGetOutput.Type;
 /**
  * Gets a resource.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group containing the resource to get. The name is case insensitive.
- * @param resourceProviderNamespace - The namespace of the resource provider.
+ * @param resourceProviderNamespace - The resource provider of the resource to check.
  * @param parentResourcePath - The parent resource identity.
- * @param resourceType - The resource type of the resource.
- * @param resourceName - The name of the resource to get.
- * @param api-version - The API version to use for the operation.
+ * @param resourceType - The resource type.
+ * @param resourceName - The name of the resource to check whether it exists.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesGetInput,
@@ -23247,14 +23660,20 @@ export const ResourcesGetByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    extendedLocation: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
-        name: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 );
 export type ResourcesGetByIdOutput = typeof ResourcesGetByIdOutput.Type;
@@ -23263,8 +23682,7 @@ export type ResourcesGetByIdOutput = typeof ResourcesGetByIdOutput.Type;
 /**
  * Gets a resource by ID.
  *
- * @param resourceId - The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
- * @param api-version - The API version to use for the operation.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesGetByIdInput,
@@ -23272,6 +23690,7 @@ export const ResourcesGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ResourcesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
   $expand: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -23286,22 +23705,26 @@ export type ResourcesListInput = typeof ResourcesListInput.Type;
 
 // Output Schema
 export const ResourcesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        extendedLocation: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.Literals(["EdgeZone"])),
-            name: Schema.optional(Schema.String),
-          }),
-        ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -23311,6 +23734,8 @@ export type ResourcesListOutput = typeof ResourcesListOutput.Type;
 /**
  * Get all the resources in a subscription.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param $filter - The filter to apply on the operation.<br><br>Filter comparison operators include `eq` (equals) and `ne` (not equals) and may be used with the following properties: `location`, `resourceType`, `name`, `resourceGroup`, `identity`, `identity/principalId`, `plan`, `plan/publisher`, `plan/product`, `plan/name`, `plan/version`, and `plan/promotionCode`.<br><br>For example, to filter by a resource type, use `$filter=resourceType eq 'Microsoft.Network/virtualNetworks'`<br><br><br>`substringof(value, property)` can  be used to filter for substrings of the following currently-supported properties: `name` and `resourceGroup`<br><br>For example, to get all resources with 'demo' anywhere in the resource name, use `$filter=substringof('demo', name)`<br><br>Multiple substring operations can also be combined using `and`/`or` operators.<br><br>Note that any truncated number of results queried via `$top` may also not be compatible when using a filter.<br><br><br>Resources can be filtered by tag names and values. For example, to filter for a tag name and value, use `$filter=tagName eq 'tag1' and tagValue eq 'Value1'`. Note that when resources are filtered by tag name and value, <b>the original tags for each resource will not be returned in the results.</b> Any list of additional properties queried via `$expand` may also not be compatible when filtering by tag names/values. <br><br>For tag names only, resources can be filtered by prefix using the following syntax: `$filter=startswith(tagName, 'depart')`. This query will return all resources with a tag name prefixed by the phrase `depart` (i.e.`department`, `departureDate`, `departureTime`, etc.)<br><br><br>Note that some properties can be combined when filtering resources, which include the following: `substringof() and/or resourceType`, `plan and plan/publisher and plan/name`, and `identity and identity/principalId`.
  * @param $expand - Comma-separated list of additional properties to be included in the response. Valid values include `createdTime`, `changedTime` and `provisioningState`. For example, `$expand=createdTime,changedTime`.
  * @param $top - The number of recommendations per page if a paged version of this API is being used.
@@ -23322,6 +23747,7 @@ export const ResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ResourcesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -23329,7 +23755,7 @@ export const ResourcesListByResourceGroupInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/resources",
+      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/resources",
       apiVersion: "2025-04-01",
     }),
   );
@@ -23339,22 +23765,36 @@ export type ResourcesListByResourceGroupInput =
 // Output Schema
 export const ResourcesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          extendedLocation: Schema.optional(
-            Schema.Struct({
-              type: Schema.optional(Schema.Literals(["EdgeZone"])),
-              name: Schema.optional(Schema.String),
-            }),
-          ),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -23365,7 +23805,9 @@ export type ResourcesListByResourceGroupOutput =
 /**
  * Get all the resources for a resource group.
  *
- * @param resourceGroupName - The resource group with the resources to get.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  * @param $filter - The filter to apply on the operation.<br><br>The properties you can use for eq (equals) or ne (not equals) are: location, resourceType, name, resourceGroup, identity, identity/principalId, plan, plan/publisher, plan/product, plan/name, plan/version, and plan/promotionCode.<br><br>For example, to filter by a resource type, use: $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value, property) in the filter. The properties you can use for substring are: name and resourceGroup.<br><br>For example, to get all resources with 'demo' anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can link more than one substringof together by adding and/or operators.<br><br>You can filter by tag names and values. For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'. When you filter by a tag name and value, the tags for each resource are not returned in the results.<br><br>You can use some properties together when filtering. The combinations you can use are: substringof and/or resourceType, plan and plan/publisher and plan/name, identity and identity/principalId.
  * @param $expand - Comma-separated list of additional properties to be included in the response. Valid values include `createdTime`, `changedTime` and `provisioningState`. For example, `$expand=createdTime,changedTime`.
  * @param $top - The number of results to return. If null is passed, returns all resources.
@@ -23378,13 +23820,14 @@ export const ResourcesListByResourceGroup =
 // Input Schema
 export const ResourcesMoveResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     sourceResourceGroupName: Schema.String.pipe(T.PathParam()),
     resources: Schema.optional(Schema.Array(Schema.String)),
     targetResourceGroup: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources",
+      path: "/subscriptions/{subscriptionId}/resourcegroups/{sourceResourceGroupName}/moveResources",
       apiVersion: "2025-04-01",
     }),
   );
@@ -23403,7 +23846,9 @@ export type ResourcesMoveResourcesOutput =
  *
  * The resources to be moved must be in the same source resource group in the source subscription being used. The target resource group may be in a different subscription. When moving resources, both the source group and the target group are locked for the duration of the operation. Write and delete operations are blocked on the groups until the move completes.
  *
- * @param sourceResourceGroupName - The name of the resource group from the source subscription containing the resources to be moved.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param sourceResourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourcesMoveResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -23413,11 +23858,13 @@ export const ResourcesMoveResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ResourcesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   parentResourcePath: Schema.String.pipe(T.PathParam()),
   resourceType: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(Schema.Unknown),
   plan: Schema.optional(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -23427,7 +23874,6 @@ export const ResourcesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       version: Schema.optional(Schema.String),
     }),
   ),
-  properties: Schema.optional(Schema.Unknown),
   kind: Schema.optional(Schema.String),
   managedBy: Schema.optional(Schema.String),
   sku: Schema.optional(
@@ -23463,9 +23909,6 @@ export const ResourcesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   extendedLocation: Schema.optional(
     Schema.Struct({
@@ -23474,6 +23917,23 @@ export const ResourcesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -23488,14 +23948,20 @@ export const ResourcesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  extendedLocation: Schema.optional(
+  systemData: Schema.optional(
     Schema.Struct({
-      type: Schema.optional(Schema.Literals(["EdgeZone"])),
-      name: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 });
 export type ResourcesUpdateOutput = typeof ResourcesUpdateOutput.Type;
 
@@ -23503,12 +23969,13 @@ export type ResourcesUpdateOutput = typeof ResourcesUpdateOutput.Type;
 /**
  * Updates a resource.
  *
- * @param resourceGroupName - The name of the resource group for the resource. The name is case insensitive.
- * @param resourceProviderNamespace - The namespace of the resource provider.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group containing the resource to get. The name is case insensitive.
+ * @param resourceProviderNamespace - The resource provider of the resource to check.
  * @param parentResourcePath - The parent resource identity.
- * @param resourceType - The resource type of the resource to update.
- * @param resourceName - The name of the resource to update.
- * @param api-version - The API version to use for the operation.
+ * @param resourceType - The resource type.
+ * @param resourceName - The name of the resource to check whether it exists.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesUpdateInput,
@@ -23518,6 +23985,7 @@ export const ResourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ResourcesUpdateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(Schema.Unknown),
     plan: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -23527,7 +23995,6 @@ export const ResourcesUpdateByIdInput =
         version: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.optional(Schema.Unknown),
     kind: Schema.optional(Schema.String),
     managedBy: Schema.optional(Schema.String),
     sku: Schema.optional(
@@ -23563,9 +24030,6 @@ export const ResourcesUpdateByIdInput =
         ),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     extendedLocation: Schema.optional(
       Schema.Struct({
@@ -23574,6 +24038,23 @@ export const ResourcesUpdateByIdInput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -23589,23 +24070,28 @@ export const ResourcesUpdateByIdOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    extendedLocation: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
-        name: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type ResourcesUpdateByIdOutput = typeof ResourcesUpdateByIdOutput.Type;
 
 // The operation
 /**
- * Updates a resource by ID.
+ * Update a resource by ID.
  *
- * @param resourceId - The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
- * @param api-version - The API version to use for the operation.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesUpdateByIdInput,
@@ -23614,13 +24100,14 @@ export const ResourcesUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ResourcesValidateMoveResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     sourceResourceGroupName: Schema.String.pipe(T.PathParam()),
     resources: Schema.optional(Schema.Array(Schema.String)),
     targetResourceGroup: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources",
+      path: "/subscriptions/{subscriptionId}/resourcegroups/{sourceResourceGroupName}/validateMoveResources",
       apiVersion: "2025-04-01",
     }),
   );
@@ -23639,7 +24126,9 @@ export type ResourcesValidateMoveResourcesOutput =
  *
  * This operation checks whether the specified resources can be moved to the target. The resources to be moved must be in the same source resource group in the source subscription being used. The target resource group may be in a different subscription. If validation succeeds, it returns HTTP response code 204 (no content). If validation fails, it returns HTTP response code 409 (Conflict) with an error message. Retrieve the URL in the Location header value to check the result of the long-running operation.
  *
- * @param sourceResourceGroupName - The name of the resource group from the source subscription containing the resources to be validated for move.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param sourceResourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourcesValidateMoveResources =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23695,6 +24184,9 @@ export const ResourceValidatorValidateResources =
 // Input Schema
 export const SubscriptionFeatureRegistrationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    providerNamespace: Schema.String.pipe(T.PathParam()),
+    featureName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         tenantId: Schema.optional(Schema.String),
@@ -23759,6 +24251,11 @@ export type SubscriptionFeatureRegistrationsCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update a feature registration.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param providerNamespace - The provider namespace.
+ * @param featureName - The feature name.
  */
 export const SubscriptionFeatureRegistrationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23767,7 +24264,11 @@ export const SubscriptionFeatureRegistrationsCreateOrUpdate =
   }));
 // Input Schema
 export const SubscriptionFeatureRegistrationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    providerNamespace: Schema.String.pipe(T.PathParam()),
+    featureName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/featureProviders/{providerNamespace}/subscriptionFeatureRegistrations/{featureName}",
@@ -23786,6 +24287,11 @@ export type SubscriptionFeatureRegistrationsDeleteOutput =
 // The operation
 /**
  * Deletes a feature registration
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param providerNamespace - The provider namespace.
+ * @param featureName - The feature name.
  */
 export const SubscriptionFeatureRegistrationsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23794,7 +24300,11 @@ export const SubscriptionFeatureRegistrationsDelete =
   }));
 // Input Schema
 export const SubscriptionFeatureRegistrationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    providerNamespace: Schema.String.pipe(T.PathParam()),
+    featureName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/featureProviders/{providerNamespace}/subscriptionFeatureRegistrations/{featureName}",
@@ -23817,6 +24327,11 @@ export type SubscriptionFeatureRegistrationsGetOutput =
 // The operation
 /**
  * Returns a feature registration
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param providerNamespace - The provider namespace.
+ * @param featureName - The feature name.
  */
 export const SubscriptionFeatureRegistrationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23825,7 +24340,9 @@ export const SubscriptionFeatureRegistrationsGet =
   }));
 // Input Schema
 export const SubscriptionFeatureRegistrationsListAllBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/subscriptionFeatureRegistrations",
@@ -23855,6 +24372,9 @@ export type SubscriptionFeatureRegistrationsListAllBySubscriptionOutput =
 // The operation
 /**
  * Returns subscription feature registrations for given subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const SubscriptionFeatureRegistrationsListAllBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23863,7 +24383,10 @@ export const SubscriptionFeatureRegistrationsListAllBySubscription =
   }));
 // Input Schema
 export const SubscriptionFeatureRegistrationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    providerNamespace: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/featureProviders/{providerNamespace}/subscriptionFeatureRegistrations",
@@ -23893,6 +24416,10 @@ export type SubscriptionFeatureRegistrationsListBySubscriptionOutput =
 // The operation
 /**
  * Returns subscription feature registrations for given subscription and provider namespace.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param providerNamespace - The provider namespace.
  */
 export const SubscriptionFeatureRegistrationsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -24155,6 +24682,7 @@ export const SubscriptionsListLocations = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const TagsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -24198,7 +24726,9 @@ export type TagsCreateOrUpdateOutput = typeof TagsCreateOrUpdateOutput.Type;
  *
  * This operation allows adding a name to the list of predefined tag names for the given subscription. A tag name can have a maximum of 512 characters and is case-insensitive. Tag names cannot have the following prefixes which are reserved for Azure use: 'microsoft', 'azure', 'windows'.
  *
+ * @param api-version - The API version to use for this operation.
  * @param tagName - The name of the tag to create.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const TagsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsCreateOrUpdateInput,
@@ -24207,9 +24737,7 @@ export const TagsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TagsCreateOrUpdateAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    scope: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     }),
@@ -24229,9 +24757,20 @@ export const TagsCreateOrUpdateAtScopeOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TagsCreateOrUpdateAtScopeOutput =
   typeof TagsCreateOrUpdateAtScopeOutput.Type;
@@ -24241,6 +24780,9 @@ export type TagsCreateOrUpdateAtScopeOutput =
  * Creates or updates the entire set of tags on a resource or subscription.
  *
  * This operation allows adding or replacing the entire set of tags on the specified resource or subscription. The specified entity can have a maximum of 50 tags.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const TagsCreateOrUpdateAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24253,6 +24795,7 @@ export const TagsCreateOrUpdateValueInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagName: Schema.String.pipe(T.PathParam()),
     tagValue: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -24284,8 +24827,10 @@ export type TagsCreateOrUpdateValueOutput =
  *
  * This operation allows adding a value to the list of predefined values for an existing predefined tag name. A tag value can have a maximum of 256 characters.
  *
+ * @param api-version - The API version to use for this operation.
  * @param tagName - The name of the tag.
  * @param tagValue - The value of the tag to create.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const TagsCreateOrUpdateValue = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24296,6 +24841,7 @@ export const TagsCreateOrUpdateValue = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TagsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tagName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -24315,7 +24861,9 @@ export type TagsDeleteOutput = typeof TagsDeleteOutput.Type;
  *
  * This operation allows deleting a name from the list of predefined tag names for the given subscription. The name being deleted must not be in use as a tag name for any resource. All predefined values for the given name must have already been deleted.
  *
+ * @param api-version - The API version to use for this operation.
  * @param tagName - The name of the tag.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const TagsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsDeleteInput,
@@ -24323,7 +24871,9 @@ export const TagsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TagsDeleteAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    scope: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "DELETE",
@@ -24340,6 +24890,9 @@ export type TagsDeleteAtScopeOutput = typeof TagsDeleteAtScopeOutput.Type;
 // The operation
 /**
  * Deletes the entire set of tags on a resource or subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const TagsDeleteAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsDeleteAtScopeInput,
@@ -24349,6 +24902,7 @@ export const TagsDeleteAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const TagsDeleteValueInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tagName: Schema.String.pipe(T.PathParam()),
   tagValue: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -24368,17 +24922,19 @@ export type TagsDeleteValueOutput = typeof TagsDeleteValueOutput.Type;
  *
  * This operation allows deleting a value from the list of predefined values for an existing predefined tag name. The value being deleted must not be in use as a tag value for the given tag name for any resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param tagName - The name of the tag.
  * @param tagValue - The value of the tag to delete.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const TagsDeleteValue = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsDeleteValueInput,
   outputSchema: TagsDeleteValueOutput,
 }));
 // Input Schema
-export const TagsGetAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TagsGetAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Resources/tags/default",
@@ -24392,22 +24948,38 @@ export const TagsGetAtScopeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  properties: Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type TagsGetAtScopeOutput = typeof TagsGetAtScopeOutput.Type;
 
 // The operation
 /**
  * Gets the entire set of tags on a resource or subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const TagsGetAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsGetAtScopeInput,
   outputSchema: TagsGetAtScopeOutput,
 }));
 // Input Schema
-export const TagsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const TagsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/tagNames",
@@ -24418,33 +24990,31 @@ export type TagsListInput = typeof TagsListInput.Type;
 
 // Output Schema
 export const TagsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        tagName: Schema.optional(Schema.String),
-        count: Schema.optional(
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      tagName: Schema.optional(Schema.String),
+      count: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.Number),
+        }),
+      ),
+      values: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            type: Schema.optional(Schema.String),
-            value: Schema.optional(Schema.Number),
+            id: Schema.optional(Schema.String),
+            tagValue: Schema.optional(Schema.String),
+            count: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.Number),
+              }),
+            ),
           }),
         ),
-        values: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              tagValue: Schema.optional(Schema.String),
-              count: Schema.optional(
-                Schema.Struct({
-                  type: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
+      ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -24455,6 +25025,9 @@ export type TagsListOutput = typeof TagsListOutput.Type;
  * Gets a summary of tag usage under the subscription.
  *
  * This operation performs a union of predefined tags, resource tags, resource group tags and subscription tags, and returns a summary of usage for each tag name and value under the given subscription. In case of a large number of tags, this operation may return a previously cached result.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const TagsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsListInput,
@@ -24463,6 +25036,7 @@ export const TagsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TagsUpdateAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    scope: Schema.String.pipe(T.PathParam()),
     operation: Schema.optional(Schema.Literals(["Replace", "Merge", "Delete"])),
     properties: Schema.optional(
       Schema.Struct({
@@ -24485,9 +25059,20 @@ export const TagsUpdateAtScopeOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TagsUpdateAtScopeOutput = typeof TagsUpdateAtScopeOutput.Type;
 
@@ -24496,6 +25081,9 @@ export type TagsUpdateAtScopeOutput = typeof TagsUpdateAtScopeOutput.Type;
  * Selectively updates the set of tags on a resource or subscription.
  *
  * This operation allows replacing, merging or selectively deleting tags on the specified resource or subscription. The specified entity can have a maximum of 50 tags at the end of the operation. The 'replace' option replaces the entire set of existing tags with a new set. The 'merge' option allows adding tags with new names and updating the values of tags with existing names. The 'delete' option allows selectively deleting tags based on given names or name/value pairs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const TagsUpdateAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsUpdateAtScopeInput,
@@ -24504,6 +25092,9 @@ export const TagsUpdateAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TemplateSpecsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
     location: Schema.String,
     properties: Schema.optional(
       Schema.Struct({
@@ -24577,6 +25168,11 @@ export type TemplateSpecsCreateOrUpdateOutput =
 // The operation
 /**
  * Creates or updates a Template Spec.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24586,7 +25182,11 @@ export const TemplateSpecsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TemplateSpecsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}",
@@ -24603,15 +25203,23 @@ export type TemplateSpecsDeleteOutput = typeof TemplateSpecsDeleteOutput.Type;
 // The operation
 /**
  * Deletes a Template Spec by name. When operation completes, status code 200 returned without content.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TemplateSpecsDeleteInput,
   outputSchema: TemplateSpecsDeleteOutput,
 }));
 // Input Schema
-export const TemplateSpecsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TemplateSpecsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  templateSpecName: Schema.String.pipe(T.PathParam()),
+  $expand: Schema.optional(Schema.Literals(["versions"])),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}",
@@ -24647,6 +25255,12 @@ export type TemplateSpecsGetOutput = typeof TemplateSpecsGetOutput.Type;
 // The operation
 /**
  * Gets a Template Spec with a given name.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param $expand - Allows for expansion of additional Template Spec details in the response. Optional.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TemplateSpecsGetInput,
@@ -24654,7 +25268,10 @@ export const TemplateSpecsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TemplateSpecsGetBuiltInInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    $expand: Schema.optional(Schema.Literals(["versions"])),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Resources/builtInTemplateSpecs/{templateSpecName}",
@@ -24691,6 +25308,10 @@ export type TemplateSpecsGetBuiltInOutput =
 // The operation
 /**
  * Gets a built-in Template Spec with a given name.
+ *
+ * @param templateSpecName - Name of the Template Spec.
+ * @param $expand - Allows for expansion of additional Template Spec details in the response. Optional.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsGetBuiltIn = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24700,7 +25321,9 @@ export const TemplateSpecsGetBuiltIn = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TemplateSpecsListBuiltInsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $expand: Schema.optional(Schema.Literals(["versions"])),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Resources/builtInTemplateSpecs/",
@@ -24754,6 +25377,9 @@ export type TemplateSpecsListBuiltInsOutput =
 // The operation
 /**
  * Lists built-in Template Specs.
+ *
+ * @param $expand - Allows for expansion of additional Template Spec details in the response. Optional.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsListBuiltIns = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24763,7 +25389,11 @@ export const TemplateSpecsListBuiltIns = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TemplateSpecsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $expand: Schema.optional(Schema.Literals(["versions"])),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/",
@@ -24817,6 +25447,11 @@ export type TemplateSpecsListByResourceGroupOutput =
 // The operation
 /**
  * Lists all the Template Specs within the specified resource group.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $expand - Allows for expansion of additional Template Spec details in the response. Optional.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -24825,7 +25460,10 @@ export const TemplateSpecsListByResourceGroup =
   }));
 // Input Schema
 export const TemplateSpecsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $expand: Schema.optional(Schema.Literals(["versions"])),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/templateSpecs/",
@@ -24879,6 +25517,10 @@ export type TemplateSpecsListBySubscriptionOutput =
 // The operation
 /**
  * Lists all the Template Specs within the specified subscriptions.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param $expand - Allows for expansion of additional Template Spec details in the response. Optional.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -24888,6 +25530,9 @@ export const TemplateSpecsListBySubscription =
 // Input Schema
 export const TemplateSpecsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -24941,6 +25586,11 @@ export type TemplateSpecsUpdateOutput = typeof TemplateSpecsUpdateOutput.Type;
 // The operation
 /**
  * Updates Template Spec tags with specified values.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TemplateSpecsUpdateInput,
@@ -24949,6 +25599,10 @@ export const TemplateSpecsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TemplateSpecVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    templateSpecVersion: Schema.String.pipe(T.PathParam()),
     location: Schema.String,
     properties: Schema.Struct({
       description: Schema.optional(Schema.String),
@@ -25019,6 +25673,12 @@ export type TemplateSpecVersionsCreateOrUpdateOutput =
 // The operation
 /**
  * Creates or updates a Template Spec version.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param templateSpecVersion - The version of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecVersionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -25027,7 +25687,12 @@ export const TemplateSpecVersionsCreateOrUpdate =
   }));
 // Input Schema
 export const TemplateSpecVersionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    templateSpecVersion: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}/versions/{templateSpecVersion}",
@@ -25046,6 +25711,12 @@ export type TemplateSpecVersionsDeleteOutput =
 // The operation
 /**
  * Deletes a specific version from a Template Spec. When operation completes, status code 200 returned without content.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
+ * @param templateSpecVersion - The version of the Template Spec.
  */
 export const TemplateSpecVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -25055,7 +25726,12 @@ export const TemplateSpecVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TemplateSpecVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    templateSpecVersion: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}/versions/{templateSpecVersion}",
@@ -25092,6 +25768,12 @@ export type TemplateSpecVersionsGetOutput =
 // The operation
 /**
  * Gets a Template Spec version from a specific Template Spec.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
+ * @param templateSpecVersion - The version of the Template Spec.
  */
 export const TemplateSpecVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -25101,7 +25783,10 @@ export const TemplateSpecVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TemplateSpecVersionsGetBuiltInInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    templateSpecVersion: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Resources/builtInTemplateSpecs/{templateSpecName}/versions/{templateSpecVersion}",
@@ -25138,6 +25823,10 @@ export type TemplateSpecVersionsGetBuiltInOutput =
 // The operation
 /**
  * Gets a Template Spec version from a specific built-in Template Spec.
+ *
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
+ * @param templateSpecVersion - The version of the Template Spec.
  */
 export const TemplateSpecVersionsGetBuiltIn =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -25146,7 +25835,11 @@ export const TemplateSpecVersionsGetBuiltIn =
   }));
 // Input Schema
 export const TemplateSpecVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}/versions",
@@ -25200,6 +25893,11 @@ export type TemplateSpecVersionsListOutput =
 // The operation
 /**
  * Lists all the Template Spec versions in the specified Template Spec.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -25209,7 +25907,9 @@ export const TemplateSpecVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TemplateSpecVersionsListBuiltInsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Resources/builtInTemplateSpecs/{templateSpecName}/versions",
@@ -25263,6 +25963,9 @@ export type TemplateSpecVersionsListBuiltInsOutput =
 // The operation
 /**
  * Lists all the Template Spec versions in the specified built-in Template Spec.
+ *
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecVersionsListBuiltIns =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -25272,6 +25975,10 @@ export const TemplateSpecVersionsListBuiltIns =
 // Input Schema
 export const TemplateSpecVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    templateSpecVersion: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -25327,6 +26034,12 @@ export type TemplateSpecVersionsUpdateOutput =
 // The operation
 /**
  * Updates Template Spec Version tags with specified values.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
+ * @param templateSpecVersion - The version of the Template Spec.
  */
 export const TemplateSpecVersionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

@@ -20,7 +20,7 @@ export type GetEvmAccountOutput = typeof GetEvmAccountOutput.Type;
 
 // The operation
 /**
- * Get an EVM account by address
+ * Get EVM account by address
  *
  * Gets an EVM account by its address.
  *

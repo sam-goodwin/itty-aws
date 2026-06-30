@@ -11,6 +11,10 @@ import * as T from "../traits.ts";
 // Input Schema
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         privateEndpoint: Schema.optional(
@@ -65,6 +69,12 @@ export type PrivateEndpointConnectionsCreateOutput =
 // The operation
 /**
  * Creates specified private endpoint connection associated with the given policy.
+ *
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param policyName - The name of the private link policy in Azure AD.
+ * @param privateEndpointConnectionName - The PrivateEndpointConnection name.
  */
 export const PrivateEndpointConnectionsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -73,7 +83,12 @@ export const PrivateEndpointConnectionsCreate =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -92,6 +107,12 @@ export type PrivateEndpointConnectionsDeleteOutput =
 // The operation
 /**
  * Deletes the specified private endpoint connection associated with the given policy.
+ *
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param policyName - The name of the private link policy in Azure AD.
+ * @param privateEndpointConnectionName - The PrivateEndpointConnection name.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure subscription ID.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -100,7 +121,12 @@ export const PrivateEndpointConnectionsDelete =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -123,6 +149,12 @@ export type PrivateEndpointConnectionsGetOutput =
 // The operation
 /**
  * Gets the specified private endpoint connection associated with the given policy.
+ *
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param policyName - The name of the private link policy in Azure AD.
+ * @param privateEndpointConnectionName - The PrivateEndpointConnection name.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure subscription ID.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -131,7 +163,11 @@ export const PrivateEndpointConnectionsGet =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsListByPolicyNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections",
@@ -161,6 +197,11 @@ export type PrivateEndpointConnectionsListByPolicyNameOutput =
 // The operation
 /**
  * Lists all Private Endpoint Connections for the given policy.
+ *
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param policyName - The name of the private link policy in Azure AD.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure subscription ID.
  */
 export const PrivateEndpointConnectionsListByPolicyName =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -170,12 +211,14 @@ export const PrivateEndpointConnectionsListByPolicyName =
 // Input Schema
 export const PrivateLinkForAzureAdCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     ownerTenantId: Schema.optional(Schema.String),
     allTenants: Schema.optional(Schema.Boolean),
     tenants: Schema.optional(Schema.Array(Schema.String)),
     resourceName: Schema.optional(Schema.String),
-    subscriptionId: Schema.optional(Schema.String),
     resourceGroup: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
@@ -203,6 +246,11 @@ export type PrivateLinkForAzureAdCreateOutput =
 // The operation
 /**
  * Creates a private link policy.
+ *
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param policyName - The name of the private link policy in Azure AD.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const privateLinkForAzureAdCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -212,7 +260,11 @@ export const privateLinkForAzureAdCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkForAzureAdDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}",
@@ -231,6 +283,11 @@ export type PrivateLinkForAzureAdDeleteOutput =
 // The operation
 /**
  * Deletes a private link policy. When operation completes, status code 200 returned without content.
+ *
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param policyName - The name of the private link policy in Azure AD.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const privateLinkForAzureAdDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -240,7 +297,11 @@ export const privateLinkForAzureAdDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkForAzureAdGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}",
@@ -263,6 +324,11 @@ export type PrivateLinkForAzureAdGetOutput =
 // The operation
 /**
  * Gets a private link policy with a given name.
+ *
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param policyName - The name of the private link policy in Azure AD.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const privateLinkForAzureAdGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -272,7 +338,10 @@ export const privateLinkForAzureAdGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkForAzureAdListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd",
@@ -302,6 +371,10 @@ export type PrivateLinkForAzureAdListOutput =
 // The operation
 /**
  * Operation to return the list of Private Link Policies For AzureAD scoped to the resourceGroup.
+ *
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const privateLinkForAzureAdList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -311,7 +384,9 @@ export const privateLinkForAzureAdList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkForAzureAdListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/microsoft.aadiam/privateLinkForAzureAd",
@@ -341,6 +416,9 @@ export type PrivateLinkForAzureAdListBySubscriptionOutput =
 // The operation
 /**
  * Lists all  Private Link Policies For AzureAD in the given subscription.
+ *
+ * @param subscriptionId - Azure subscription ID.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const privateLinkForAzureAdListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -350,6 +428,9 @@ export const privateLinkForAzureAdListBySubscription =
 // Input Schema
 export const PrivateLinkForAzureAdUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -374,6 +455,11 @@ export type PrivateLinkForAzureAdUpdateOutput =
 // The operation
 /**
  * Updates private link policy tags with specified values.
+ *
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param policyName - The name of the private link policy in Azure AD.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const privateLinkForAzureAdUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -383,7 +469,12 @@ export const privateLinkForAzureAdUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+    groupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources/{groupName}",
@@ -406,6 +497,12 @@ export type PrivateLinkResourcesGetOutput =
 // The operation
 /**
  * Gets the private link resources that need to be created for a policy of AzureAD.
+ *
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param policyName - The name of the private link policy in Azure AD.
+ * @param groupName - The name of the private link resource.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -415,7 +512,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkResourcesListByPrivateLinkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources",
@@ -445,6 +546,11 @@ export type PrivateLinkResourcesListByPrivateLinkPolicyOutput =
 // The operation
 /**
  * Gets the private link resources that need to be created for a policy of AzureAD.
+ *
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Name of an Azure resource group.
+ * @param policyName - The name of the private link policy in Azure AD.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PrivateLinkResourcesListByPrivateLinkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

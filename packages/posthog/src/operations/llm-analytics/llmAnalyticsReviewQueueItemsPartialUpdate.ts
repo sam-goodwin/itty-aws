@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsReviewQueueItemsPartialUpdateInput =
@@ -12,7 +11,7 @@ export const LlmAnalyticsReviewQueueItemsPartialUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/llm_analytics/review_queue_items/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/review_queue_items/{id}/",
     }),
   );
 export type LlmAnalyticsReviewQueueItemsPartialUpdateInput =
@@ -59,5 +58,4 @@ export const llmAnalyticsReviewQueueItemsPartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsReviewQueueItemsPartialUpdateInput,
     outputSchema: LlmAnalyticsReviewQueueItemsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

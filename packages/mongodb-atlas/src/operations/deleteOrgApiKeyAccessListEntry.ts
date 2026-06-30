@@ -30,7 +30,7 @@ export type DeleteOrgApiKeyAccessListEntryOutput =
 /**
  * Remove One Access List Entry for One Organization API Key
  *
- * Removes the specified access list entry from the specified organization API key. Resources require all API requests originate from the IP addresses on the API access list. To use this resource, the requesting Service Account or API Key must have the Read Write role. In addition, you cannot remove the requesting IP address from the requesting organization API key.
+ * Removes the specified access list entry from the specified organization API key. Resources require all API requests originate from the IP addresses on the API access list. In addition, you cannot remove the requesting IP address from the requesting organization API key.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.

@@ -12,6 +12,7 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const BgpPeersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     bgpPeerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -70,6 +71,7 @@ export type BgpPeersCreateOrUpdateOutput =
  * Create a BgpPeer
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param bgpPeerName - The name of the BgpPeer
  */
 export const BgpPeersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -80,6 +82,7 @@ export const BgpPeersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BgpPeersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   bgpPeerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -99,6 +102,7 @@ export type BgpPeersDeleteOutput = typeof BgpPeersDeleteOutput.Type;
  * Delete a BgpPeer
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param bgpPeerName - The name of the BgpPeer
  */
 export const BgpPeersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -107,6 +111,7 @@ export const BgpPeersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BgpPeersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   bgpPeerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -144,6 +149,7 @@ export type BgpPeersGetOutput = typeof BgpPeersGetOutput.Type;
  * Get a BgpPeer
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param bgpPeerName - The name of the BgpPeer
  */
 export const BgpPeersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -151,9 +157,9 @@ export const BgpPeersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BgpPeersGetOutput,
 }));
 // Input Schema
-export const BgpPeersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BgpPeersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers",
@@ -194,6 +200,7 @@ export type BgpPeersListOutput = typeof BgpPeersListOutput.Type;
  * List BgpPeer resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const BgpPeersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BgpPeersListInput,
@@ -202,6 +209,7 @@ export const BgpPeersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LoadBalancersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     loadBalancerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -263,6 +271,7 @@ export type LoadBalancersCreateOrUpdateOutput =
  * Create a LoadBalancer
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param loadBalancerName - The name of the LoadBalancer
  */
 export const LoadBalancersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -274,6 +283,7 @@ export const LoadBalancersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LoadBalancersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     loadBalancerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -294,6 +304,7 @@ export type LoadBalancersDeleteOutput = typeof LoadBalancersDeleteOutput.Type;
  * Delete a LoadBalancer
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param loadBalancerName - The name of the LoadBalancer
  */
 export const LoadBalancersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -302,6 +313,7 @@ export const LoadBalancersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LoadBalancersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   loadBalancerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -341,6 +353,7 @@ export type LoadBalancersGetOutput = typeof LoadBalancersGetOutput.Type;
  * Get a LoadBalancer
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param loadBalancerName - The name of the LoadBalancer
  */
 export const LoadBalancersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -349,7 +362,9 @@ export const LoadBalancersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LoadBalancersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -402,6 +417,7 @@ export type LoadBalancersListOutput = typeof LoadBalancersListOutput.Type;
  * List LoadBalancer resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const LoadBalancersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LoadBalancersListInput,
@@ -458,6 +474,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -514,6 +531,7 @@ export type ServicesCreateOrUpdateOutput =
  * Create a ServiceResource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param serviceName - The name of the the service
  */
 export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -524,6 +542,7 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -543,6 +562,7 @@ export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
  * Delete a ServiceResource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param serviceName - The name of the the service
  */
 export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -551,6 +571,7 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -588,6 +609,7 @@ export type ServicesGetOutput = typeof ServicesGetOutput.Type;
  * Get a ServiceResource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param serviceName - The name of the the service
  */
 export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -595,9 +617,9 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services",
@@ -638,6 +660,7 @@ export type ServicesListOutput = typeof ServicesListOutput.Type;
  * List ServiceResource resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
@@ -646,6 +669,7 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StorageClassCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     storageClassName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -732,6 +756,7 @@ export type StorageClassCreateOrUpdateOutput =
  * Create a StorageClassResource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param storageClassName - The name of the the storage class
  */
 export const StorageClassCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -743,6 +768,7 @@ export const StorageClassCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const StorageClassDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     storageClassName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -762,6 +788,7 @@ export type StorageClassDeleteOutput = typeof StorageClassDeleteOutput.Type;
  * Delete a StorageClassResource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param storageClassName - The name of the the storage class
  */
 export const StorageClassDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -770,6 +797,7 @@ export const StorageClassDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const StorageClassGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   storageClassName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -807,6 +835,7 @@ export type StorageClassGetOutput = typeof StorageClassGetOutput.Type;
  * Get a StorageClassResource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param storageClassName - The name of the the storage class
  */
 export const StorageClassGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -814,9 +843,9 @@ export const StorageClassGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StorageClassGetOutput,
 }));
 // Input Schema
-export const StorageClassListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const StorageClassListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses",
@@ -869,6 +898,7 @@ export type StorageClassListOutput = typeof StorageClassListOutput.Type;
  * List StorageClassResource resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const StorageClassList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StorageClassListInput,
@@ -877,6 +907,7 @@ export const StorageClassList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StorageClassUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     storageClassName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -959,6 +990,7 @@ export type StorageClassUpdateOutput = typeof StorageClassUpdateOutput.Type;
  * Update a StorageClassResource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param storageClassName - The name of the the storage class
  */
 export const StorageClassUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

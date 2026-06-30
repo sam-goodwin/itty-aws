@@ -22,13 +22,6 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface AddFirebaseRequest {}
-
-export const AddFirebaseRequest: Schema.Schema<AddFirebaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "AddFirebaseRequest",
-  });
-
 export interface Bucket {
   /** Output only. Resource name of the bucket. */
   name?: string;
@@ -40,22 +33,22 @@ export const Bucket: Schema.Schema<Bucket> =
   }).annotate({ identifier: "Bucket" });
 
 export interface DefaultBucket {
+  /** Immutable. Location of the default bucket. */
+  location?: string;
   /** Output only. Underlying bucket resource. */
   bucket?: Bucket;
   /** Immutable. Storage class of the default bucket. Supported values are available at https://cloud.google.com/storage/docs/storage-classes#classes. */
   storageClass?: string;
   /** Identifier. Resource name of the default bucket. */
   name?: string;
-  /** Immutable. Location of the default bucket. */
-  location?: string;
 }
 
 export const DefaultBucket: Schema.Schema<DefaultBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
     bucket: Schema.optional(Bucket),
     storageClass: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
   }).annotate({ identifier: "DefaultBucket" });
 
 export interface Empty {}
@@ -66,17 +59,24 @@ export const Empty: Schema.Schema<Empty> =
   });
 
 export interface ListBucketsResponse {
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The list of linked buckets. */
   buckets?: ReadonlyArray<Bucket>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 
 export const ListBucketsResponse: Schema.Schema<ListBucketsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
     buckets: Schema.optional(Schema.Array(Bucket)),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListBucketsResponse" });
+
+export interface AddFirebaseRequest {}
+
+export const AddFirebaseRequest: Schema.Schema<AddFirebaseRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "AddFirebaseRequest",
+  });
 
 export interface RemoveFirebaseRequest {}
 
@@ -293,6 +293,36 @@ export const addFirebaseProjectsBuckets: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetProjectsBucketsRequest {
+  /** Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. */
+  name: string;
+}
+
+export const GetProjectsBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsBucketsRequest>;
+
+export type GetProjectsBucketsResponse = Bucket;
+export const GetProjectsBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
+
+export type GetProjectsBucketsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets a single linked storage bucket. */
+export const getProjectsBuckets: API.OperationMethod<
+  GetProjectsBucketsRequest,
+  GetProjectsBucketsResponse,
+  GetProjectsBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsBucketsRequest,
+  output: GetProjectsBucketsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface RemoveFirebaseProjectsBucketsRequest {
   /** Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. */
   bucket: string;
@@ -334,36 +364,6 @@ export const removeFirebaseProjectsBuckets: API.OperationMethod<
   input: RemoveFirebaseProjectsBucketsRequest,
   output: RemoveFirebaseProjectsBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsBucketsRequest {
-  /** Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. */
-  name: string;
-}
-
-export const GetProjectsBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsBucketsRequest>;
-
-export type GetProjectsBucketsResponse = Bucket;
-export const GetProjectsBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
-
-export type GetProjectsBucketsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets a single linked storage bucket. */
-export const getProjectsBuckets: API.OperationMethod<
-  GetProjectsBucketsRequest,
-  GetProjectsBucketsResponse,
-  GetProjectsBucketsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsBucketsRequest,
-  output: GetProjectsBucketsResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsDefaultBucketRequest {

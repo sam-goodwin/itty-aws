@@ -22,7 +22,7 @@ export type ListOrgTeamsOutput = typeof ListOrgTeamsOutput.Type;
 /**
  * Return All Teams in One Organization
  *
- * Returns all teams that belong to the specified organization. Teams enable you to grant project access roles to MongoDB Cloud users. MongoDB Cloud only returns teams for which you have access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+ * Returns all teams that belong to the specified organization. Teams enable you to grant project access roles to MongoDB Cloud users. MongoDB Cloud only returns teams for which you have access.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param itemsPerPage - Number of items that the response returns per page.

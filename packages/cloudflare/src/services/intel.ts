@@ -1290,6 +1290,8 @@ export interface GetDomainRequest {
   domain?: string;
   /** Query param: Skip DNS resolution lookups for faster response. */
   skipDns?: boolean;
+  /** Query param: Skip the domain ranking lookup for faster responses. Defaults to `false` (ranking is included). Set to `true` to opt out — primarily used by callers like Cloudflare Radar that need to avo */
+  skipRanking?: boolean;
 }
 
 export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -1297,6 +1299,9 @@ export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     domain: Schema.optional(Schema.String).pipe(T.HttpQuery("domain")),
     skipDns: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("skip_dns")),
+    skipRanking: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("skip_ranking"),
+    ),
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/intel/domain" }),
   ),
@@ -1514,6 +1519,10 @@ export interface GetDomainBulkRequest {
   accountId: string;
   /** Query param: Accepts multiple values like `?domain=cloudflare.com&domain=example.com`. */
   domain?: string[];
+  /** Query param: Whether to include domain ranking data in the response. Defaults to `false` — ranking lookups are expensive at bulk scale and most callers do not need them. Set to `true` to opt in. This  */
+  includeRanking?: boolean;
+  /** Query param:  Deprecated.  Previously controlled whether the ranking lookup was skipped (defaulted to `false`, meaning ranking ran). The endpoint's default behavior is being flipped — ranking is now o */
+  skipRanking?: boolean;
 }
 
 export const GetDomainBulkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
@@ -1522,6 +1531,12 @@ export const GetDomainBulkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       domain: Schema.optional(Schema.Array(Schema.String)).pipe(
         T.HttpQuery("domain"),
+      ),
+      includeRanking: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("include_ranking"),
+      ),
+      skipRanking: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("skip_ranking"),
       ),
     }).pipe(
       T.Http({

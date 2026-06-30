@@ -17,7 +17,7 @@ export const AvailableServiceTiersListByWorkspaceInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/availableServiceTiers",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/availableServiceTiers",
       apiVersion: "2025-07-01",
     }),
   );
@@ -54,10 +54,10 @@ export type AvailableServiceTiersListByWorkspaceOutput =
 /**
  * Gets the available service tiers for the workspace.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  */
 export const AvailableServiceTiersListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -67,36 +67,9 @@ export const AvailableServiceTiersListByWorkspace =
 // Input Schema
 export const ClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        capacity: Schema.optional(Schema.NullOr(Schema.Number)),
-        name: Schema.optional(Schema.Literals(["CapacityReservation"])),
-      }),
-    ),
     properties: Schema.optional(
       Schema.Struct({
         clusterId: Schema.optional(Schema.String),
@@ -166,12 +139,39 @@ export const ClustersCreateOrUpdateInput =
         ),
       }),
     ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        capacity: Schema.optional(Schema.NullOr(Schema.Number)),
+        name: Schema.optional(Schema.Literals(["CapacityReservation"])),
+      }),
+    ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -184,6 +184,20 @@ export const ClustersCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type ClustersCreateOrUpdateOutput =
   typeof ClustersCreateOrUpdateOutput.Type;
@@ -192,10 +206,10 @@ export type ClustersCreateOrUpdateOutput =
 /**
  * Create or update a Log Analytics cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
- * @param clusterName - The name of the Log Analytics cluster.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - Name of the Log Analytics Cluster.
  */
 export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -205,13 +219,13 @@ export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -225,10 +239,10 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 /**
  * Deletes a cluster instance.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Name of the Log Analytics Cluster.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
@@ -242,7 +256,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -253,6 +267,20 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type ClustersGetOutput = typeof ClustersGetOutput.Type;
 
@@ -260,9 +288,9 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
 /**
  * Gets a Log Analytics cluster instance.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Name of the Log Analytics Cluster.
  */
 export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -283,16 +311,28 @@ export type ClustersListInput = typeof ClustersListInput.Type;
 
 // Output Schema
 export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type ClustersListOutput = typeof ClustersListOutput.Type;
 
@@ -301,7 +341,7 @@ export type ClustersListOutput = typeof ClustersListOutput.Type;
  * Gets the Log Analytics clusters in a subscription.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
@@ -310,12 +350,12 @@ export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters",
       apiVersion: "2025-07-01",
     }),
   );
@@ -325,16 +365,38 @@ export type ClustersListByResourceGroupInput =
 // Output Schema
 export const ClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ClustersListByResourceGroupOutput =
   typeof ClustersListByResourceGroupOutput.Type;
@@ -343,9 +405,9 @@ export type ClustersListByResourceGroupOutput =
 /**
  * Gets Log Analytics clusters in a resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -355,9 +417,9 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       keyVaultProperties: Schema.optional(
@@ -402,7 +464,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -413,6 +475,20 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
 
@@ -420,10 +496,10 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
 /**
  * Updates a Log Analytics cluster.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Name of the Log Analytics Cluster.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
@@ -461,7 +537,7 @@ export const DataExportsCreateOrUpdateInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -474,6 +550,20 @@ export const DataExportsCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type DataExportsCreateOrUpdateOutput =
   typeof DataExportsCreateOrUpdateOutput.Type;
@@ -482,11 +572,11 @@ export type DataExportsCreateOrUpdateOutput =
 /**
  * Create or update a data export.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param dataExportName - The data export rule name.
- * @param api-version - The API version to use for this operation.
  */
 export const DataExportsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -505,7 +595,7 @@ export const DataExportsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "DELETE",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -519,11 +609,11 @@ export type DataExportsDeleteOutput = typeof DataExportsDeleteOutput.Type;
 /**
  * Deletes the specified data export in a given workspace..
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param dataExportName - The data export rule name.
- * @param api-version - The API version to use for this operation.
  */
 export const DataExportsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataExportsDeleteInput,
@@ -538,7 +628,7 @@ export const DataExportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -549,6 +639,20 @@ export const DataExportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type DataExportsGetOutput = typeof DataExportsGetOutput.Type;
 
@@ -556,11 +660,11 @@ export type DataExportsGetOutput = typeof DataExportsGetOutput.Type;
 /**
  * Gets a data export instance.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param dataExportName - The data export rule name.
- * @param api-version - The API version to use for this operation.
  */
 export const DataExportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataExportsGetInput,
@@ -575,7 +679,7 @@ export const DataExportsListByWorkspaceInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports",
       apiVersion: "2025-07-01",
     }),
   );
@@ -591,9 +695,34 @@ export const DataExportsListByWorkspaceOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DataExportsListByWorkspaceOutput =
   typeof DataExportsListByWorkspaceOutput.Type;
@@ -602,10 +731,10 @@ export type DataExportsListByWorkspaceOutput =
 /**
  * Lists the data export instances within a workspace.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  */
 export const DataExportsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -616,11 +745,11 @@ export const DataExportsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DataSourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     dataSourceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({}),
+    properties: Schema.Unknown,
     etag: Schema.optional(Schema.String),
     kind: Schema.Literals([
       "WindowsEvent",
@@ -661,7 +790,7 @@ export const DataSourcesCreateOrUpdateInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -674,6 +803,20 @@ export const DataSourcesCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type DataSourcesCreateOrUpdateOutput =
   typeof DataSourcesCreateOrUpdateOutput.Type;
@@ -682,11 +825,11 @@ export type DataSourcesCreateOrUpdateOutput =
 /**
  * Create or update a data source.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param dataSourceName - The name of the datasource resource.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param dataSourceName - Name of the datasource
  */
 export const DataSourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -697,15 +840,15 @@ export const DataSourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DataSourcesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     dataSourceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
     method: "DELETE",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -719,11 +862,11 @@ export type DataSourcesDeleteOutput = typeof DataSourcesDeleteOutput.Type;
 /**
  * Deletes a data source instance.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param dataSourceName - Name of the datasource.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param dataSourceName - Name of the datasource
  */
 export const DataSourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataSourcesDeleteInput,
@@ -731,14 +874,14 @@ export const DataSourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DataSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   dataSourceName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -749,6 +892,20 @@ export const DataSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type DataSourcesGetOutput = typeof DataSourcesGetOutput.Type;
 
@@ -756,11 +913,11 @@ export type DataSourcesGetOutput = typeof DataSourcesGetOutput.Type;
 /**
  * Gets a datasource instance.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param dataSourceName - Name of the datasource
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const DataSourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataSourcesGetInput,
@@ -769,15 +926,15 @@ export const DataSourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DataSourcesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.String,
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources",
       apiVersion: "2025-07-01",
     }),
   );
@@ -787,14 +944,36 @@ export type DataSourcesListByWorkspaceInput =
 // Output Schema
 export const DataSourcesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -805,12 +984,12 @@ export type DataSourcesListByWorkspaceOutput =
 /**
  * Gets the first page of data source instances in a workspace with the link to the next page.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param $filter - The filter to apply on the operation.
  * @param $skiptoken - Starting point of the collection of data source instances.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const DataSourcesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -840,9 +1019,34 @@ export const DeletedWorkspacesListOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DeletedWorkspacesListOutput =
   typeof DeletedWorkspacesListOutput.Type;
@@ -852,7 +1056,7 @@ export type DeletedWorkspacesListOutput =
  * Gets recently deleted workspaces in a subscription, available for recovery.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const DeletedWorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -863,12 +1067,12 @@ export const DeletedWorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DeletedWorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
       apiVersion: "2025-07-01",
     }),
   );
@@ -884,9 +1088,34 @@ export const DeletedWorkspacesListByResourceGroupOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DeletedWorkspacesListByResourceGroupOutput =
   typeof DeletedWorkspacesListByResourceGroupOutput.Type;
@@ -895,9 +1124,9 @@ export type DeletedWorkspacesListByResourceGroupOutput =
 /**
  * Gets recently deleted workspaces in a resource group, available for recovery.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DeletedWorkspacesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -909,10 +1138,11 @@ export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  gatewayId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/gateways/{gatewayId}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/gateways/{gatewayId}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -926,10 +1156,11 @@ export type GatewaysDeleteOutput = typeof GatewaysDeleteOutput.Type;
 /**
  * Delete a Log Analytics gateway.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
+ * @param gatewayId - The Log Analytics gateway Id.
  */
 export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysDeleteInput,
@@ -938,14 +1169,14 @@ export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const IntelligencePacksDisableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     intelligencePackName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Disable",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Disable",
       apiVersion: "2025-07-01",
     }),
   );
@@ -962,11 +1193,11 @@ export type IntelligencePacksDisableOutput =
 /**
  * Disables an intelligence pack for a given workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param intelligencePackName - The name of the intelligence pack to be disabled.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param intelligencePackName - The name of the intelligence pack.
  */
 export const IntelligencePacksDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -977,14 +1208,14 @@ export const IntelligencePacksDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IntelligencePacksEnableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     intelligencePackName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Enable",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Enable",
       apiVersion: "2025-07-01",
     }),
   );
@@ -1001,11 +1232,11 @@ export type IntelligencePacksEnableOutput =
 /**
  * Enables an intelligence pack for a given workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param intelligencePackName - The name of the intelligence pack to be enabled.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param intelligencePackName - The name of the intelligence pack.
  */
 export const IntelligencePacksEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1016,13 +1247,13 @@ export const IntelligencePacksEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IntelligencePacksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks",
       apiVersion: "2025-07-01",
     }),
   );
@@ -1044,10 +1275,10 @@ export type IntelligencePacksListOutput =
 /**
  * Lists all the intelligence packs possible and whether they are enabled or disabled for a given workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const IntelligencePacksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1058,10 +1289,10 @@ export const IntelligencePacksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LinkedServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     linkedServiceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resourceId: Schema.optional(Schema.String),
       writeAccessResourceId: Schema.optional(Schema.String),
@@ -1078,7 +1309,7 @@ export const LinkedServicesCreateOrUpdateInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -1091,6 +1322,20 @@ export const LinkedServicesCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type LinkedServicesCreateOrUpdateOutput =
   typeof LinkedServicesCreateOrUpdateOutput.Type;
@@ -1099,11 +1344,11 @@ export type LinkedServicesCreateOrUpdateOutput =
 /**
  * Create or update a linked service.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param linkedServiceName - Name of the linkedServices resource
- * @param subscriptionId - The ID of the target subscription.
- * @param api-version - The API version to use for this operation.
+ * @param linkedServiceName - Name of the linked service.
  */
 export const LinkedServicesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1113,14 +1358,14 @@ export const LinkedServicesCreateOrUpdate =
 // Input Schema
 export const LinkedServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     linkedServiceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -1132,6 +1377,20 @@ export const LinkedServicesDeleteOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type LinkedServicesDeleteOutput = typeof LinkedServicesDeleteOutput.Type;
 
@@ -1139,11 +1398,11 @@ export type LinkedServicesDeleteOutput = typeof LinkedServicesDeleteOutput.Type;
 /**
  * Deletes a linked service instance.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param linkedServiceName - Name of the linked service.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const LinkedServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1154,15 +1413,15 @@ export const LinkedServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LinkedServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     linkedServiceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -1174,6 +1433,20 @@ export const LinkedServicesGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type LinkedServicesGetOutput = typeof LinkedServicesGetOutput.Type;
 
@@ -1181,11 +1454,11 @@ export type LinkedServicesGetOutput = typeof LinkedServicesGetOutput.Type;
 /**
  * Gets a linked service instance.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param linkedServiceName - Name of the linked service.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const LinkedServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LinkedServicesGetInput,
@@ -1194,13 +1467,13 @@ export const LinkedServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LinkedServicesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices",
       apiVersion: "2025-07-01",
     }),
   );
@@ -1216,9 +1489,34 @@ export const LinkedServicesListByWorkspaceOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type LinkedServicesListByWorkspaceOutput =
   typeof LinkedServicesListByWorkspaceOutput.Type;
@@ -1227,10 +1525,10 @@ export type LinkedServicesListByWorkspaceOutput =
 /**
  * Gets the linked services instances in a workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const LinkedServicesListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1240,9 +1538,16 @@ export const LinkedServicesListByWorkspace =
 // Input Schema
 export const LinkedStorageAccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    dataSourceType: Schema.Literals([
+      "CustomLogs",
+      "AzureWatson",
+      "Query",
+      "Ingestion",
+      "Alerts",
+    ]).pipe(T.PathParam()),
     properties: Schema.Struct({
       dataSourceType: Schema.optional(
         Schema.Literals([
@@ -1258,7 +1563,7 @@ export const LinkedStorageAccountsCreateOrUpdateInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -1271,6 +1576,20 @@ export const LinkedStorageAccountsCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type LinkedStorageAccountsCreateOrUpdateOutput =
   typeof LinkedStorageAccountsCreateOrUpdateOutput.Type;
@@ -1279,10 +1598,11 @@ export type LinkedStorageAccountsCreateOrUpdateOutput =
 /**
  * Create or Update a link relation between current workspace and a group of storage accounts of a specific data source type.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param subscriptionId - The ID of the target subscription.
- * @param api-version - The API version to use for this operation.
+ * @param dataSourceType - Linked storage accounts type.
  */
 export const LinkedStorageAccountsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1292,13 +1612,20 @@ export const LinkedStorageAccountsCreateOrUpdate =
 // Input Schema
 export const LinkedStorageAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    dataSourceType: Schema.Literals([
+      "CustomLogs",
+      "AzureWatson",
+      "Query",
+      "Ingestion",
+      "Alerts",
+    ]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -1315,10 +1642,11 @@ export type LinkedStorageAccountsDeleteOutput =
 /**
  * Deletes all linked storage accounts of a specific data source type associated with the specified workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param dataSourceType - Linked storage accounts type.
  */
 export const LinkedStorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1329,13 +1657,20 @@ export const LinkedStorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LinkedStorageAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    dataSourceType: Schema.Literals([
+      "CustomLogs",
+      "AzureWatson",
+      "Query",
+      "Ingestion",
+      "Alerts",
+    ]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -1348,6 +1683,20 @@ export const LinkedStorageAccountsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type LinkedStorageAccountsGetOutput =
   typeof LinkedStorageAccountsGetOutput.Type;
@@ -1356,10 +1705,11 @@ export type LinkedStorageAccountsGetOutput =
 /**
  * Gets all linked storage account of a specific data source type associated with the specified workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param dataSourceType - Linked storage accounts type.
  */
 export const LinkedStorageAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1392,9 +1742,34 @@ export const LinkedStorageAccountsListByWorkspaceOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type LinkedStorageAccountsListByWorkspaceOutput =
   typeof LinkedStorageAccountsListByWorkspaceOutput.Type;
@@ -1403,9 +1778,9 @@ export type LinkedStorageAccountsListByWorkspaceOutput =
 /**
  * Gets all linked storage accounts associated with the specified workspace, storage accounts will be sorted by their data source type.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
 export const LinkedStorageAccountsListByWorkspace =
@@ -1416,13 +1791,13 @@ export const LinkedStorageAccountsListByWorkspace =
 // Input Schema
 export const ManagementGroupsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/managementGroups",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/managementGroups",
       apiVersion: "2025-07-01",
     }),
   );
@@ -1449,6 +1824,7 @@ export const ManagementGroupsListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ManagementGroupsListOutput = typeof ManagementGroupsListOutput.Type;
 
@@ -1456,10 +1832,10 @@ export type ManagementGroupsListOutput = typeof ManagementGroupsListOutput.Type;
 /**
  * Gets a list of management groups connected to a workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1481,20 +1857,18 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      display: Schema.optional(
+        Schema.Struct({
+          provider: Schema.optional(Schema.String),
+          resource: Schema.optional(Schema.String),
+          operation: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -1560,10 +1934,10 @@ export type OperationStatusesGetOutput = typeof OperationStatusesGetOutput.Type;
 /**
  * Get the status of a long running azure asynchronous operation.
  *
- * @param location - The region name of operation.
- * @param asyncOperationId - The operation Id.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param location - The name of the Azure region.
+ * @param asyncOperationId - The operation Id.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1575,6 +1949,8 @@ export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const QueriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  queryPackName: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -1592,9 +1968,11 @@ export type QueriesDeleteOutput = typeof QueriesDeleteOutput.Type;
 /**
  * Deletes a specific Query defined within an Log Analytics QueryPack.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param queryPackName - The name of the Log Analytics QueryPack resource.
+ * @param id - The id of a specific query defined in the Log Analytics QueryPack
  */
 export const QueriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueriesDeleteInput,
@@ -1604,6 +1982,8 @@ export const QueriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  queryPackName: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1639,9 +2019,11 @@ export type QueriesGetOutput = typeof QueriesGetOutput.Type;
 /**
  * Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param queryPackName - The name of the Log Analytics QueryPack resource.
+ * @param id - The id of a specific query defined in the Log Analytics QueryPack
  */
 export const QueriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueriesGetInput,
@@ -1651,6 +2033,10 @@ export const QueriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  queryPackName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  includeBody: Schema.optional(Schema.Boolean),
+  $skipToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1691,9 +2077,13 @@ export type QueriesListOutput = typeof QueriesListOutput.Type;
 /**
  * Gets a list of Queries defined within a Log Analytics QueryPack.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param queryPackName - The name of the Log Analytics QueryPack resource.
+ * @param $top - Maximum items returned in page.
+ * @param includeBody - Flag indicating whether or not to return the body of each applicable query. If false, only return the query information.
+ * @param $skipToken - Base64 encoded token used to fetch the next page of items. Default is null.
  */
 export const QueriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueriesListInput,
@@ -1703,6 +2093,8 @@ export const QueriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueriesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  queryPackName: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1760,9 +2152,11 @@ export type QueriesPutOutput = typeof QueriesPutOutput.Type;
 /**
  * Adds or Updates a specific Query within a Log Analytics QueryPack.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param queryPackName - The name of the Log Analytics QueryPack resource.
+ * @param id - The id of a specific query defined in the Log Analytics QueryPack
  */
 export const QueriesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueriesPutInput,
@@ -1772,6 +2166,10 @@ export const QueriesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueriesSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  queryPackName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  includeBody: Schema.optional(Schema.Boolean),
+  $skipToken: Schema.optional(Schema.String),
   related: Schema.optional(
     Schema.Struct({
       categories: Schema.optional(Schema.Array(Schema.String)),
@@ -1822,9 +2220,13 @@ export type QueriesSearchOutput = typeof QueriesSearchOutput.Type;
 /**
  * Search a list of Queries defined within a Log Analytics QueryPack according to given search properties.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param queryPackName - The name of the Log Analytics QueryPack resource.
+ * @param $top - Maximum items returned in page.
+ * @param includeBody - Flag indicating whether or not to return the body of each applicable query. If false, only return the query information.
+ * @param $skipToken - Base64 encoded token used to fetch the next page of items. Default is null.
  */
 export const QueriesSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueriesSearchInput,
@@ -1834,6 +2236,8 @@ export const QueriesSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  queryPackName: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1891,9 +2295,11 @@ export type QueriesUpdateOutput = typeof QueriesUpdateOutput.Type;
 /**
  * Adds or Updates a specific Query within a Log Analytics QueryPack.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param queryPackName - The name of the Log Analytics QueryPack resource.
+ * @param id - The id of a specific query defined in the Log Analytics QueryPack
  */
 export const QueriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueriesUpdateInput,
@@ -1902,8 +2308,9 @@ export const QueriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const QueryPacksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    queryPackName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       queryPackId: Schema.optional(Schema.String),
       timeCreated: Schema.optional(Schema.String),
@@ -1950,9 +2357,10 @@ export type QueryPacksCreateOrUpdateOutput =
 /**
  * Creates (or updates) a Log Analytics QueryPack. Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param queryPackName - The name of the Log Analytics QueryPack resource.
  */
 export const QueryPacksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1963,8 +2371,8 @@ export const QueryPacksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const QueryPacksCreateOrUpdateWithoutNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       queryPackId: Schema.optional(Schema.String),
       timeCreated: Schema.optional(Schema.String),
@@ -2011,9 +2419,9 @@ export type QueryPacksCreateOrUpdateWithoutNameOutput =
 /**
  * Creates a Log Analytics QueryPack. Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const QueryPacksCreateOrUpdateWithoutName =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2022,8 +2430,9 @@ export const QueryPacksCreateOrUpdateWithoutName =
   }));
 // Input Schema
 export const QueryPacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  queryPackName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -2041,9 +2450,10 @@ export type QueryPacksDeleteOutput = typeof QueryPacksDeleteOutput.Type;
 /**
  * Deletes a Log Analytics QueryPack.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param queryPackName - The name of the Log Analytics QueryPack resource.
  */
 export const QueryPacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueryPacksDeleteInput,
@@ -2051,8 +2461,9 @@ export const QueryPacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const QueryPacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  queryPackName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2088,9 +2499,10 @@ export type QueryPacksGetOutput = typeof QueryPacksGetOutput.Type;
 /**
  * Returns a Log Analytics QueryPack.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param queryPackName - The name of the Log Analytics QueryPack resource.
  */
 export const QueryPacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueryPacksGetInput,
@@ -2140,7 +2552,7 @@ export type QueryPacksListOutput = typeof QueryPacksListOutput.Type;
  * Gets a list of all Log Analytics QueryPacks within a subscription.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const QueryPacksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueryPacksListInput,
@@ -2149,8 +2561,8 @@ export const QueryPacksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const QueryPacksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2204,9 +2616,9 @@ export type QueryPacksListByResourceGroupOutput =
 /**
  * Gets a list of Log Analytics QueryPacks within a resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const QueryPacksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2216,8 +2628,9 @@ export const QueryPacksListByResourceGroup =
 // Input Schema
 export const QueryPacksUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    queryPackName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -2255,9 +2668,10 @@ export type QueryPacksUpdateTagsOutput = typeof QueryPacksUpdateTagsOutput.Type;
 /**
  * Updates an existing QueryPack's tags. To update other fields use the CreateOrUpdate method.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param queryPackName - The name of the Log Analytics QueryPack resource.
  */
 export const QueryPacksUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2272,7 +2686,6 @@ export const SavedSearchesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     savedSearchId: Schema.String.pipe(T.PathParam()),
-    etag: Schema.optional(Schema.String),
     properties: Schema.Struct({
       category: Schema.String,
       displayName: Schema.String,
@@ -2289,10 +2702,11 @@ export const SavedSearchesCreateOrUpdateInput =
         ),
       ),
     }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -2305,6 +2719,20 @@ export const SavedSearchesCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SavedSearchesCreateOrUpdateOutput =
   typeof SavedSearchesCreateOrUpdateOutput.Type;
@@ -2313,11 +2741,11 @@ export type SavedSearchesCreateOrUpdateOutput =
 /**
  * Creates or updates a saved search for a given workspace.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param savedSearchId - The id of the saved search.
- * @param api-version - The API version to use for this operation.
  */
 export const SavedSearchesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2335,7 +2763,7 @@ export const SavedSearchesDeleteInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -2350,11 +2778,11 @@ export type SavedSearchesDeleteOutput = typeof SavedSearchesDeleteOutput.Type;
 /**
  * Deletes the specified saved search in a given workspace.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param savedSearchId - The id of the saved search.
- * @param api-version - The API version to use for this operation.
  */
 export const SavedSearchesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SavedSearchesDeleteInput,
@@ -2369,7 +2797,7 @@ export const SavedSearchesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -2381,6 +2809,20 @@ export const SavedSearchesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   },
 );
 export type SavedSearchesGetOutput = typeof SavedSearchesGetOutput.Type;
@@ -2389,11 +2831,11 @@ export type SavedSearchesGetOutput = typeof SavedSearchesGetOutput.Type;
 /**
  * Gets the specified saved search for a given workspace.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param savedSearchId - The id of the saved search.
- * @param api-version - The API version to use for this operation.
  */
 export const SavedSearchesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SavedSearchesGetInput,
@@ -2402,13 +2844,13 @@ export const SavedSearchesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SavedSearchesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches",
       apiVersion: "2025-07-01",
     }),
   );
@@ -2424,6 +2866,30 @@ export const SavedSearchesListByWorkspaceOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
@@ -2435,10 +2901,10 @@ export type SavedSearchesListByWorkspaceOutput =
 /**
  * Gets the saved searches for a given Log Analytics Workspace
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const SavedSearchesListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2447,13 +2913,13 @@ export const SavedSearchesListByWorkspace =
   }));
 // Input Schema
 export const SchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/schema",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/schema",
     apiVersion: "2025-07-01",
   }),
 );
@@ -2521,10 +2987,10 @@ export type SchemaGetOutput = typeof SchemaGetOutput.Type;
 /**
  * Gets the schema for a given workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const SchemaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SchemaGetInput,
@@ -2533,13 +2999,13 @@ export const SchemaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SharedKeysGetSharedKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/sharedKeys",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/sharedKeys",
       apiVersion: "2025-07-01",
     }),
   );
@@ -2559,10 +3025,10 @@ export type SharedKeysGetSharedKeysOutput =
 /**
  * Gets the shared keys for a workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const SharedKeysGetSharedKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2579,7 +3045,7 @@ export const SharedKeysRegenerateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/regenerateSharedKey",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/regenerateSharedKey",
       apiVersion: "2025-07-01",
     }),
   );
@@ -2597,10 +3063,10 @@ export type SharedKeysRegenerateOutput = typeof SharedKeysRegenerateOutput.Type;
 /**
  * Regenerates the shared keys for a Log Analytics Workspace. These keys are used to connect Microsoft Operational Insights agents to the workspace.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  */
 export const SharedKeysRegenerate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2611,10 +3077,10 @@ export const SharedKeysRegenerate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const StorageInsightConfigsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     storageInsightName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         containers: Schema.optional(Schema.Array(Schema.String)),
@@ -2636,7 +3102,7 @@ export const StorageInsightConfigsCreateOrUpdateInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -2649,6 +3115,20 @@ export const StorageInsightConfigsCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type StorageInsightConfigsCreateOrUpdateOutput =
   typeof StorageInsightConfigsCreateOrUpdateOutput.Type;
@@ -2657,11 +3137,11 @@ export type StorageInsightConfigsCreateOrUpdateOutput =
 /**
  * Create or update a storage insight.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param storageInsightName - Name of the storageInsightsConfigs resource
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const StorageInsightConfigsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2671,14 +3151,14 @@ export const StorageInsightConfigsCreateOrUpdate =
 // Input Schema
 export const StorageInsightConfigsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     storageInsightName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -2695,11 +3175,11 @@ export type StorageInsightConfigsDeleteOutput =
 /**
  * Deletes a storageInsightsConfigs resource
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param storageInsightName - Name of the storageInsightsConfigs resource
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const StorageInsightConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2710,14 +3190,14 @@ export const StorageInsightConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const StorageInsightConfigsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     storageInsightName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
       apiVersion: "2025-07-01",
     }),
   );
@@ -2730,6 +3210,20 @@ export const StorageInsightConfigsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type StorageInsightConfigsGetOutput =
   typeof StorageInsightConfigsGetOutput.Type;
@@ -2738,11 +3232,11 @@ export type StorageInsightConfigsGetOutput =
 /**
  * Gets a storage insight instance.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param storageInsightName - Name of the storageInsightsConfigs resource
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const StorageInsightConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2753,13 +3247,13 @@ export const StorageInsightConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const StorageInsightConfigsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs",
       apiVersion: "2025-07-01",
     }),
   );
@@ -2775,6 +3269,30 @@ export const StorageInsightConfigsListByWorkspaceOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
@@ -2787,10 +3305,10 @@ export type StorageInsightConfigsListByWorkspaceOutput =
 /**
  * Lists the storage insight instances within a workspace
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const StorageInsightConfigsListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2803,6 +3321,7 @@ export const SummaryLogsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    summaryLogsName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         ruleType: Schema.optional(Schema.Literals(["User"])),
@@ -2831,20 +3350,6 @@ export const SummaryLogsCreateOrUpdateInput =
             destinationTable: Schema.optional(Schema.String),
           }),
         ),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   }).pipe(
@@ -2885,10 +3390,11 @@ export type SummaryLogsCreateOrUpdateOutput =
 /**
  * Creates or updates Log Analytics workspace Summary rules.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
+ * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
 export const SummaryLogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2902,6 +3408,7 @@ export const SummaryLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    summaryLogsName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -2920,10 +3427,11 @@ export type SummaryLogsDeleteOutput = typeof SummaryLogsDeleteOutput.Type;
 /**
  * Deletes Log Analytics workspace Summary rules.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
+ * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
 export const SummaryLogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SummaryLogsDeleteInput,
@@ -2934,6 +3442,7 @@ export const SummaryLogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  summaryLogsName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2969,10 +3478,11 @@ export type SummaryLogsGetOutput = typeof SummaryLogsGetOutput.Type;
 /**
  * Gets Log Analytics workspace Summary rules.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
+ * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
 export const SummaryLogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SummaryLogsGetInput,
@@ -2997,38 +3507,36 @@ export type SummaryLogsListByWorkspaceInput =
 // Output Schema
 export const SummaryLogsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3039,10 +3547,10 @@ export type SummaryLogsListByWorkspaceOutput =
 /**
  * Gets all summary rules for the specified Log Analytics workspace.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  */
 export const SummaryLogsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3056,6 +3564,7 @@ export const SummaryLogsRetryBinInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    summaryLogsName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         retryBinStartTime: Schema.String,
@@ -3079,10 +3588,11 @@ export type SummaryLogsRetryBinOutput = typeof SummaryLogsRetryBinOutput.Type;
 /**
  * Retries a failed Summary rule bin.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
+ * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
 export const SummaryLogsRetryBin = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SummaryLogsRetryBinInput,
@@ -3093,6 +3603,7 @@ export const SummaryLogsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  summaryLogsName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -3110,10 +3621,11 @@ export type SummaryLogsStartOutput = typeof SummaryLogsStartOutput.Type;
 /**
  * Starts an inactive Summary rule.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
+ * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
 export const SummaryLogsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SummaryLogsStartInput,
@@ -3124,6 +3636,7 @@ export const SummaryLogsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  summaryLogsName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -3141,10 +3654,11 @@ export type SummaryLogsStopOutput = typeof SummaryLogsStopOutput.Type;
 /**
  * Stops an active Summary rule.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
+ * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
 export const SummaryLogsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SummaryLogsStopInput,
@@ -3174,10 +3688,10 @@ export type TablesCancelSearchOutput = typeof TablesCancelSearchOutput.Type;
 /**
  * Cancel a log analytics workspace search results table query run.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  * @param tableName - The name of the table.
  */
 export const TablesCancelSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3307,20 +3821,6 @@ export const TablesCreateOrUpdateInput =
         totalRetentionInDaysAsDefault: Schema.optional(Schema.Boolean),
       }),
     ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3336,6 +3836,20 @@ export const TablesCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TablesCreateOrUpdateOutput = typeof TablesCreateOrUpdateOutput.Type;
 
@@ -3343,10 +3857,10 @@ export type TablesCreateOrUpdateOutput = typeof TablesCreateOrUpdateOutput.Type;
 /**
  * Update or Create a Log Analytics workspace table.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  * @param tableName - The name of the table.
  */
 export const TablesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3378,10 +3892,10 @@ export type TablesDeleteOutput = typeof TablesDeleteOutput.Type;
 /**
  * Delete a Log Analytics workspace table.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  * @param tableName - The name of the table.
  */
 export const TablesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3408,6 +3922,20 @@ export const TablesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type TablesGetOutput = typeof TablesGetOutput.Type;
 
@@ -3415,10 +3943,10 @@ export type TablesGetOutput = typeof TablesGetOutput.Type;
 /**
  * Gets a Log Analytics workspace table.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  * @param tableName - The name of the table.
  */
 export const TablesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3449,9 +3977,34 @@ export const TablesListByWorkspaceOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type TablesListByWorkspaceOutput =
   typeof TablesListByWorkspaceOutput.Type;
@@ -3460,10 +4013,10 @@ export type TablesListByWorkspaceOutput =
 /**
  * Gets all the tables for the specified Log Analytics workspace.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  */
 export const TablesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3494,10 +4047,10 @@ export type TablesMigrateOutput = typeof TablesMigrateOutput.Type;
 /**
  * Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  * @param tableName - The name of the table.
  */
 export const TablesMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3626,20 +4179,6 @@ export const TablesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       totalRetentionInDaysAsDefault: Schema.optional(Schema.Boolean),
     }),
   ),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -3654,6 +4193,20 @@ export const TablesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type TablesUpdateOutput = typeof TablesUpdateOutput.Type;
 
@@ -3661,10 +4214,10 @@ export type TablesUpdateOutput = typeof TablesUpdateOutput.Type;
 /**
  * Update a Log Analytics workspace table.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  * @param tableName - The name of the table.
  */
 export const TablesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3673,13 +4226,13 @@ export const TablesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/usages",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/usages",
     apiVersion: "2025-07-01",
   }),
 );
@@ -3704,6 +4257,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type UsagesListOutput = typeof UsagesListOutput.Type;
 
@@ -3711,10 +4265,10 @@ export type UsagesListOutput = typeof UsagesListOutput.Type;
 /**
  * Gets a list of usage metrics for a workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
@@ -3723,9 +4277,10 @@ export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkspacePurgeGetPurgeStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    purgeId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3748,10 +4303,11 @@ export type WorkspacePurgeGetPurgeStatusOutput =
 /**
  * Gets status of an ongoing purge operation.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param purgeId - In a purge status request, this is the Id of the operation the status of which is returned.
  */
 export const WorkspacePurgeGetPurgeStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3761,9 +4317,18 @@ export const WorkspacePurgeGetPurgeStatus =
 // Input Schema
 export const WorkspacePurgePurgeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    table: Schema.String,
+    filters: Schema.Array(
+      Schema.Struct({
+        column: Schema.optional(Schema.String),
+        operator: Schema.optional(Schema.String),
+        value: Schema.optional(Schema.Unknown),
+        key: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3784,9 +4349,9 @@ export type WorkspacePurgePurgeOutput = typeof WorkspacePurgePurgeOutput.Type;
  * In order to manage system resources, purge requests are throttled at 50 requests per hour. You should batch the execution of purge requests by sending a single command whose predicate includes all user identities that require purging. Use the in operator to specify multiple identities. You should run the query prior to using for a purge request to verify that the results are expected.
  * Log Analytics only supports purge operations required for compliance with GDPR. The Log Analytics product team reserves the right to reject requests for purge operations that are not for the purpose of GDPR compliance. In the event of a dispute, please create a support ticket
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
 export const WorkspacePurgePurge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3796,9 +4361,9 @@ export const WorkspacePurgePurge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -3936,6 +4501,25 @@ export const WorkspacesCreateOrUpdateInput =
         ),
       }),
     ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type WorkspacesCreateOrUpdateInput =
+  typeof WorkspacesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const WorkspacesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -3950,25 +4534,6 @@ export const WorkspacesCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    etag: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
-      apiVersion: "2025-07-01",
-    }),
-  );
-export type WorkspacesCreateOrUpdateInput =
-  typeof WorkspacesCreateOrUpdateInput.Type;
-
-// Output Schema
-export const WorkspacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
   });
 export type WorkspacesCreateOrUpdateOutput =
   typeof WorkspacesCreateOrUpdateOutput.Type;
@@ -3977,10 +4542,10 @@ export type WorkspacesCreateOrUpdateOutput =
 /**
  * Create or update a workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3990,14 +4555,14 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -4011,10 +4576,10 @@ export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
 /**
  * Deletes a workspace resource. To recover the workspace, create it again with the same name, in the same subscription, resource group and location. The name is kept for 14 days and cannot be used for another workspace. To remove the workspace completely and release the name, use the force flag.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  * @param force - Deletes the workspace without the recovery option. A workspace that was deleted with this flag cannot be recovered.
  */
 export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4045,10 +4610,10 @@ export type WorkspacesFailbackOutput = typeof WorkspacesFailbackOutput.Type;
  * Deactivates failover for the specified workspace.
  * The failback operation is asynchronous and can take up to 30 minutes to complete. The status of the operation can be checked using the operationId returned in the response.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  */
 export const WorkspacesFailback = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesFailbackInput,
@@ -4079,11 +4644,11 @@ export type WorkspacesFailoverOutput = typeof WorkspacesFailoverOutput.Type;
  * Activates failover for the specified workspace.
  * The specified replication location must match the location of the enabled replication for this workspace. The failover operation is asynchronous and can take up to 30 minutes to complete. The status of the operation can be checked using the operationId returned in the response.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of the Azure region.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
  */
 export const WorkspacesFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesFailoverInput,
@@ -4091,13 +4656,13 @@ export const WorkspacesFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -4108,6 +4673,20 @@ export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
 
@@ -4115,10 +4694,10 @@ export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
 /**
  * Gets a workspace instance.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetInput,
@@ -4126,9 +4705,10 @@ export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WorkspacesGetNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
+  networkSecurityPerimeterConfigurationName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -4166,10 +4746,11 @@ export type WorkspacesGetNSPOutput = typeof WorkspacesGetNSPOutput.Type;
 /**
  * Gets a network security perimeter configuration.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param networkSecurityPerimeterConfigurationName - The name for a network security perimeter configuration
  */
 export const WorkspacesGetNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetNSPInput,
@@ -4195,9 +4776,34 @@ export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
 
@@ -4206,7 +4812,7 @@ export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
  * Gets the workspaces in a subscription.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesListInput,
@@ -4215,12 +4821,12 @@ export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces",
       apiVersion: "2025-07-01",
     }),
   );
@@ -4236,9 +4842,34 @@ export const WorkspacesListByResourceGroupOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type WorkspacesListByResourceGroupOutput =
   typeof WorkspacesListByResourceGroupOutput.Type;
@@ -4247,9 +4878,9 @@ export type WorkspacesListByResourceGroupOutput =
 /**
  * Gets workspaces in a resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const WorkspacesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4259,9 +4890,9 @@ export const WorkspacesListByResourceGroup =
 // Input Schema
 export const WorkspacesListNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -4316,10 +4947,10 @@ export type WorkspacesListNSPOutput = typeof WorkspacesListNSPOutput.Type;
 /**
  * Gets a list of NSP configurations for specified workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const WorkspacesListNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesListNSPInput,
@@ -4328,9 +4959,12 @@ export const WorkspacesListNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkspacesReconcileNSPInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    networkSecurityPerimeterConfigurationName: Schema.String.pipe(
+      T.PathParam(),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4351,10 +4985,11 @@ export type WorkspacesReconcileNSPOutput =
 /**
  * Reconcile network security perimeter configuration for Workspace resource.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param networkSecurityPerimeterConfigurationName - The name for a network security perimeter configuration
  */
 export const WorkspacesReconcileNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4364,9 +4999,9 @@ export const WorkspacesReconcileNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       provisioningState: Schema.optional(
@@ -4509,7 +5144,7 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
     apiVersion: "2025-07-01",
   }),
 );
@@ -4521,6 +5156,20 @@ export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   },
 );
 export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
@@ -4529,10 +5178,10 @@ export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
 /**
  * Updates a workspace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
 export const WorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesUpdateInput,

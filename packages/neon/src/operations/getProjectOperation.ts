@@ -84,8 +84,6 @@ export type GetProjectOperationOutput = typeof GetProjectOperationOutput.Type;
  *
  * Retrieves details for the specified operation.
  * An operation is an action performed on a Neon project resource.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain a `operation_id` by listing operations for the project.
  *
  * @param project_id - The Neon project ID
  * @param operation_id - The operation ID

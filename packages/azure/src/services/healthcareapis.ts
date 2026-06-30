@@ -11,7 +11,10 @@ import * as T from "../traits.ts";
 // Input Schema
 export const DicomServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    dicomServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -157,8 +160,11 @@ export type DicomServicesCreateOrUpdateOutput =
 /**
  * Creates or updates a DICOM Service resource with the specified parameters.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param dicomServiceName - The name of DICOM Service resource.
  */
 export const DicomServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -170,6 +176,9 @@ export const DicomServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DicomServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dicomServiceName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -190,6 +199,9 @@ export type DicomServicesDeleteOutput = typeof DicomServicesDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param dicomServiceName - The name of DICOM Service resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const DicomServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DicomServicesDeleteInput,
@@ -197,7 +209,10 @@ export const DicomServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DicomServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  dicomServiceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -239,8 +254,11 @@ export type DicomServicesGetOutput = typeof DicomServicesGetOutput.Type;
 /**
  * Gets the properties of the specified DICOM Service.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param dicomServiceName - The name of DICOM Service resource.
  */
 export const DicomServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DicomServicesGetInput,
@@ -249,7 +267,9 @@ export const DicomServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DicomServicesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -299,8 +319,10 @@ export type DicomServicesListByWorkspaceOutput =
 /**
  * Lists all DICOM Services for the given workspace
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const DicomServicesListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -310,7 +332,10 @@ export const DicomServicesListByWorkspace =
 // Input Schema
 export const DicomServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    dicomServiceName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
@@ -373,8 +398,11 @@ export type DicomServicesUpdateOutput = typeof DicomServicesUpdateOutput.Type;
 /**
  * Patch DICOM Service details.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param dicomServiceName - The name of DICOM Service resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const DicomServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DicomServicesUpdateInput,
@@ -383,7 +411,10 @@ export const DicomServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FhirDestinationsListByIotConnectorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -416,8 +447,11 @@ export type FhirDestinationsListByIotConnectorOutput =
 /**
  * Lists all FHIR destinations for the given IoT Connector
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
  */
 export const FhirDestinationsListByIotConnector =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -427,7 +461,10 @@ export const FhirDestinationsListByIotConnector =
 // Input Schema
 export const FhirServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    fhirServiceName: Schema.String.pipe(T.PathParam()),
     kind: Schema.optional(Schema.Literals(["fhir-Stu3", "fhir-R4"])),
     properties: Schema.optional(
       Schema.Struct({
@@ -633,8 +670,11 @@ export type FhirServicesCreateOrUpdateOutput =
 /**
  * Creates or updates a FHIR Service resource with the specified parameters.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param fhirServiceName - The name of FHIR Service resource.
  */
 export const FhirServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -646,6 +686,9 @@ export const FhirServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const FhirServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    fhirServiceName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -665,6 +708,9 @@ export type FhirServicesDeleteOutput = typeof FhirServicesDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param fhirServiceName - The name of FHIR Service resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const FhirServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FhirServicesDeleteInput,
@@ -672,7 +718,10 @@ export const FhirServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const FhirServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  fhirServiceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -712,8 +761,11 @@ export type FhirServicesGetOutput = typeof FhirServicesGetOutput.Type;
 /**
  * Gets the properties of the specified FHIR Service.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param fhirServiceName - The name of FHIR Service resource.
  */
 export const FhirServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FhirServicesGetInput,
@@ -722,7 +774,9 @@ export const FhirServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FhirServicesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -772,8 +826,10 @@ export type FhirServicesListByWorkspaceOutput =
 /**
  * Lists all FHIR Services for the given workspace
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const FhirServicesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -784,7 +840,10 @@ export const FhirServicesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FhirServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    fhirServiceName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
@@ -847,8 +906,11 @@ export type FhirServicesUpdateOutput = typeof FhirServicesUpdateOutput.Type;
 /**
  * Patch FHIR Service details.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param fhirServiceName - The name of FHIR Service resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const FhirServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FhirServicesUpdateInput,
@@ -857,7 +919,11 @@ export const FhirServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const IotConnectorFhirDestinationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
+    fhirDestinationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals([
@@ -917,8 +983,12 @@ export type IotConnectorFhirDestinationCreateOrUpdateOutput =
 /**
  * Creates or updates an IoT Connector FHIR destination resource with the specified parameters.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
+ * @param fhirDestinationName - The name of IoT Connector FHIR destination resource.
  */
 export const IotConnectorFhirDestinationCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -929,6 +999,10 @@ export const IotConnectorFhirDestinationCreateOrUpdate =
 export const IotConnectorFhirDestinationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
+    fhirDestinationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -951,6 +1025,10 @@ export type IotConnectorFhirDestinationDeleteOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
+ * @param fhirDestinationName - The name of IoT Connector FHIR destination resource.
  */
 export const IotConnectorFhirDestinationDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -960,7 +1038,11 @@ export const IotConnectorFhirDestinationDelete =
 // Input Schema
 export const IotConnectorFhirDestinationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
+    fhirDestinationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -986,8 +1068,12 @@ export type IotConnectorFhirDestinationGetOutput =
 /**
  * Gets the properties of the specified Iot Connector FHIR destination.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
+ * @param fhirDestinationName - The name of IoT Connector FHIR destination resource.
  */
 export const IotConnectorFhirDestinationGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -997,7 +1083,10 @@ export const IotConnectorFhirDestinationGet =
 // Input Schema
 export const IotConnectorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -1108,8 +1197,11 @@ export type IotConnectorsCreateOrUpdateOutput =
 /**
  * Creates or updates an IoT Connector resource with the specified parameters.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
  */
 export const IotConnectorsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1121,6 +1213,9 @@ export const IotConnectorsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const IotConnectorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1141,6 +1236,9 @@ export type IotConnectorsDeleteOutput = typeof IotConnectorsDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param iotConnectorName - The name of IoT Connector resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const IotConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IotConnectorsDeleteInput,
@@ -1148,7 +1246,10 @@ export const IotConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const IotConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  iotConnectorName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1190,8 +1291,11 @@ export type IotConnectorsGetOutput = typeof IotConnectorsGetOutput.Type;
 /**
  * Gets the properties of the specified IoT Connector.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
  */
 export const IotConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IotConnectorsGetInput,
@@ -1200,7 +1304,9 @@ export const IotConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const IotConnectorsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1250,8 +1356,10 @@ export type IotConnectorsListByWorkspaceOutput =
 /**
  * Lists all IoT Connectors for the given workspace
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const IotConnectorsListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1261,7 +1369,10 @@ export const IotConnectorsListByWorkspace =
 // Input Schema
 export const IotConnectorsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
@@ -1324,8 +1435,11 @@ export type IotConnectorsUpdateOutput = typeof IotConnectorsUpdateOutput.Type;
 /**
  * Patch an IoT Connector.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param iotConnectorName - The name of IoT Connector resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const IotConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IotConnectorsUpdateInput,
@@ -1335,6 +1449,8 @@ export const IotConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OperationResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    operationResultId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1370,6 +1486,8 @@ export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param locationName - The location of the operation.
+ * @param operationResultId - The ID of the operation result to get.
  */
 export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationResultsGetInput,
@@ -1480,6 +1598,8 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1528,6 +1648,8 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * Update the state of the specified private endpoint connection associated with the service.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  * @param properties - Resource properties.
@@ -1541,6 +1663,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1563,6 +1687,8 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * Deletes a private endpoint connection.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
@@ -1575,6 +1701,8 @@ export const PrivateEndpointConnectionsDelete =
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1601,6 +1729,8 @@ export type PrivateEndpointConnectionsGetOutput =
  * Gets the specified private endpoint connection associated with the service.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
@@ -1613,6 +1743,8 @@ export const PrivateEndpointConnectionsGet =
 export const PrivateEndpointConnectionsListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1644,6 +1776,8 @@ export type PrivateEndpointConnectionsListByServiceOutput =
  * Lists all private endpoint connections for a service.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsListByService =
@@ -1655,6 +1789,8 @@ export const PrivateEndpointConnectionsListByService =
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1681,6 +1817,8 @@ export type PrivateLinkResourcesGetOutput =
  * Gets a private link resource that need to be created for a service.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  * @param groupName - The name of the private link resource group.
  */
@@ -1694,6 +1832,8 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PrivateLinkResourcesListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1725,6 +1865,8 @@ export type PrivateLinkResourcesListByServiceOutput =
  * Gets the private link resources that need to be created for a service.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateLinkResourcesListByService =
@@ -1774,6 +1916,8 @@ export const ServicesCheckNameAvailability =
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -1928,6 +2072,8 @@ export type ServicesCreateOrUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  */
 export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1938,6 +2084,8 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -1957,6 +2105,8 @@ export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  */
 export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
@@ -1965,6 +2115,8 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1999,6 +2151,8 @@ export type ServicesGetOutput = typeof ServicesGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  */
 export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
@@ -2057,6 +2211,7 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2103,6 +2258,7 @@ export type ServicesListByResourceGroupOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  */
 export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2113,6 +2269,8 @@ export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
     Schema.Struct({
@@ -2155,6 +2313,8 @@ export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  */
 export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpdateInput,
@@ -2164,6 +2324,8 @@ export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
@@ -2224,6 +2386,8 @@ export type WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdate =
@@ -2235,6 +2399,8 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdate =
 export const WorkspacePrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2258,6 +2424,8 @@ export type WorkspacePrivateEndpointConnectionsDeleteOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const WorkspacePrivateEndpointConnectionsDelete =
@@ -2269,6 +2437,8 @@ export const WorkspacePrivateEndpointConnectionsDelete =
 export const WorkspacePrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2296,6 +2466,8 @@ export type WorkspacePrivateEndpointConnectionsGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const WorkspacePrivateEndpointConnectionsGet =
@@ -2307,6 +2479,8 @@ export const WorkspacePrivateEndpointConnectionsGet =
 export const WorkspacePrivateEndpointConnectionsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2339,6 +2513,8 @@ export type WorkspacePrivateEndpointConnectionsListByWorkspaceOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacePrivateEndpointConnectionsListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2349,6 +2525,8 @@ export const WorkspacePrivateEndpointConnectionsListByWorkspace =
 export const WorkspacePrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2376,6 +2554,8 @@ export type WorkspacePrivateLinkResourcesGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  * @param groupName - The name of the private link resource group.
  */
 export const WorkspacePrivateLinkResourcesGet =
@@ -2387,6 +2567,8 @@ export const WorkspacePrivateLinkResourcesGet =
 export const WorkspacePrivateLinkResourcesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2419,6 +2601,8 @@ export type WorkspacePrivateLinkResourcesListByWorkspaceOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacePrivateLinkResourcesListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2428,7 +2612,9 @@ export const WorkspacePrivateLinkResourcesListByWorkspace =
 // Input Schema
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -2499,8 +2685,10 @@ export type WorkspacesCreateOrUpdateOutput =
 /**
  * Creates or updates a workspace resource with the specified parameters.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2511,6 +2699,8 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -2530,6 +2720,8 @@ export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesDeleteInput,
@@ -2537,7 +2729,9 @@ export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2558,8 +2752,10 @@ export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
 /**
  * Gets the properties of the specified workspace.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetInput,
@@ -2569,6 +2765,7 @@ export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2601,6 +2798,7 @@ export type WorkspacesListByResourceGroupOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  */
 export const WorkspacesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2651,7 +2849,9 @@ export const WorkspacesListBySubscription =
   }));
 // Input Schema
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -2675,8 +2875,10 @@ export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
 /**
  * Patch workspace details.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesUpdateInput,

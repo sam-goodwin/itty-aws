@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const UpdateBranchNeonAuthOauthProviderInput =
@@ -27,7 +27,7 @@ export const UpdateBranchNeonAuthOauthProviderOutput =
     id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
     type: Schema.Literals(["standard", "shared"]),
     client_id: Schema.optional(Schema.String),
-    client_secret: Schema.optional(SensitiveString),
+    client_secret: Schema.optional(SensitiveOutputString),
   });
 export type UpdateBranchNeonAuthOauthProviderOutput =
   typeof UpdateBranchNeonAuthOauthProviderOutput.Type;

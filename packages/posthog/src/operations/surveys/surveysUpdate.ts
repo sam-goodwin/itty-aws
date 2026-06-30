@@ -25,7 +25,6 @@ export const SurveysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -46,7 +45,6 @@ export const SurveysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -65,18 +63,17 @@ export const SurveysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
       evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
     }),
   ),
-  questions: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  questions: Schema.optional(Schema.Unknown),
   conditions: Schema.optional(
     Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
   ),
-  appearance: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  appearance: Schema.optional(Schema.Unknown),
   created_at: Schema.optional(Schema.String),
   created_by: Schema.optional(
     Schema.NullOr(
@@ -113,14 +110,14 @@ export const SurveysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   response_sampling_interval_type: Schema.optional(Schema.Unknown),
   response_sampling_interval: Schema.optional(Schema.NullOr(Schema.Number)),
   response_sampling_limit: Schema.optional(Schema.NullOr(Schema.Number)),
-  response_sampling_daily_limits: Schema.optional(
-    Schema.NullOr(Schema.Unknown),
-  ),
+  response_sampling_daily_limits: Schema.optional(Schema.Unknown),
   enable_partial_responses: Schema.optional(Schema.NullOr(Schema.Boolean)),
   enable_iframe_embedding: Schema.optional(Schema.NullOr(Schema.Boolean)),
-  translations: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  base_language: Schema.optional(Schema.String),
+  translations: Schema.optional(Schema.Unknown),
   user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
-  form_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  form_content: Schema.optional(Schema.Unknown),
+  search_match_type: Schema.optional(Schema.Unknown),
 }).pipe(
   T.Http({ method: "PUT", path: "/api/projects/{project_id}/surveys/{id}/" }),
 );
@@ -147,7 +144,6 @@ export const SurveysUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -168,7 +164,6 @@ export const SurveysUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -187,18 +182,17 @@ export const SurveysUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
       evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
     }),
   ),
-  questions: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  questions: Schema.optional(Schema.Unknown),
   conditions: Schema.optional(
     Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
   ),
-  appearance: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  appearance: Schema.optional(Schema.Unknown),
   created_at: Schema.optional(Schema.String),
   created_by: Schema.optional(
     Schema.NullOr(
@@ -235,14 +229,14 @@ export const SurveysUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   response_sampling_interval_type: Schema.optional(Schema.Unknown),
   response_sampling_interval: Schema.optional(Schema.NullOr(Schema.Number)),
   response_sampling_limit: Schema.optional(Schema.NullOr(Schema.Number)),
-  response_sampling_daily_limits: Schema.optional(
-    Schema.NullOr(Schema.Unknown),
-  ),
+  response_sampling_daily_limits: Schema.optional(Schema.Unknown),
   enable_partial_responses: Schema.optional(Schema.NullOr(Schema.Boolean)),
   enable_iframe_embedding: Schema.optional(Schema.NullOr(Schema.Boolean)),
-  translations: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  base_language: Schema.optional(Schema.String),
+  translations: Schema.optional(Schema.Unknown),
   user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
-  form_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  form_content: Schema.optional(Schema.Unknown),
+  search_match_type: Schema.optional(Schema.Unknown),
 });
 export type SurveysUpdateOutput = typeof SurveysUpdateOutput.Type;
 

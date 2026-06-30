@@ -37,6 +37,7 @@ export const V1AuthorizeJitAccessOutput =
           ),
         }),
       ),
+      branches_only: Schema.optional(Schema.Boolean),
     }),
   });
 export type V1AuthorizeJitAccessOutput = typeof V1AuthorizeJitAccessOutput.Type;

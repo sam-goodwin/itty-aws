@@ -58,6 +58,7 @@ export const V1CreateAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   template_url: Schema.optional(Schema.String),
+  high_availability: Schema.optional(Schema.Boolean),
 }).pipe(T.Http({ method: "POST", path: "/v1/projects" }));
 export type V1CreateAProjectInput = typeof V1CreateAProjectInput.Type;
 

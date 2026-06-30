@@ -11,6 +11,7 @@ export const AlertsSimulateCreateInput =
     detector_config: Schema.optional(Schema.Unknown),
     series_index: Schema.optional(Schema.Number),
     date_from: Schema.optional(Schema.NullOr(Schema.String)),
+    config: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "POST",

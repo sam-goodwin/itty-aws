@@ -5136,6 +5136,22 @@ export const GetTokenPermissionGroupRequest =
 
 export type GetTokenPermissionGroupResponse = {
   id?: string | null;
+  category?:
+    | "developer_platform"
+    | "ai_and_machine_learning"
+    | "dns_and_zones"
+    | "app_security"
+    | "rules_and_configuration"
+    | "cloudflare_one_and_zero_trust"
+    | "analytics_and_logs"
+    | "network_services"
+    | "media"
+    | "email_and_messaging"
+    | "cache_and_performance"
+    | "account_and_billing"
+    | "other"
+    | (string & {})
+    | null;
   name?: string | null;
   scopes?:
     | (
@@ -5153,6 +5169,29 @@ export const GetTokenPermissionGroupResponse =
     Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        category: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "developer_platform",
+                "ai_and_machine_learning",
+                "dns_and_zones",
+                "app_security",
+                "rules_and_configuration",
+                "cloudflare_one_and_zero_trust",
+                "analytics_and_logs",
+                "network_services",
+                "media",
+                "email_and_messaging",
+                "cache_and_performance",
+                "account_and_billing",
+                "other",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
         name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         scopes: Schema.optional(
           Schema.Union([
@@ -5213,6 +5252,22 @@ export const ListTokenPermissionGroupsRequest =
 export interface ListTokenPermissionGroupsResponse {
   result: {
     id?: string | null;
+    category?:
+      | "developer_platform"
+      | "ai_and_machine_learning"
+      | "dns_and_zones"
+      | "app_security"
+      | "rules_and_configuration"
+      | "cloudflare_one_and_zero_trust"
+      | "analytics_and_logs"
+      | "network_services"
+      | "media"
+      | "email_and_messaging"
+      | "cache_and_performance"
+      | "account_and_billing"
+      | "other"
+      | (string & {})
+      | null;
     name?: string | null;
     scopes?:
       | (
@@ -5232,6 +5287,29 @@ export const ListTokenPermissionGroupsResponse =
       result: Schema.Array(
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          category: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals([
+                  "developer_platform",
+                  "ai_and_machine_learning",
+                  "dns_and_zones",
+                  "app_security",
+                  "rules_and_configuration",
+                  "cloudflare_one_and_zero_trust",
+                  "analytics_and_logs",
+                  "network_services",
+                  "media",
+                  "email_and_messaging",
+                  "cache_and_performance",
+                  "account_and_billing",
+                  "other",
+                ]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
           name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           scopes: Schema.optional(
             Schema.Union([

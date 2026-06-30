@@ -22,105 +22,58 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.optional(Schema.String),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    code: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Status" });
-
-export interface Cardinality {
-  /** The root of the variable subtree to monitor. For example, `/foo`. */
-  path?: string;
-  /** The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified. */
-  number?: number;
-}
-
-export const Cardinality: Schema.Schema<Cardinality> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    path: Schema.optional(Schema.String),
-    number: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Cardinality" });
-
-export interface EndCondition {
-  /** The cardinality of the `EndCondition`. */
-  cardinality?: Cardinality;
-}
-
-export const EndCondition: Schema.Schema<EndCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cardinality: Schema.optional(Cardinality),
-  }).annotate({ identifier: "EndCondition" });
-
-export interface Waiter {
-  /** [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`. */
-  timeout?: string;
-  /** Output only. If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set. */
-  done?: boolean;
-  /** Output only. If the waiter ended due to a failure or timeout, this value will be set. */
-  error?: Status;
-  /** Output only. The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter. */
-  createTime?: string;
-  /** The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name. */
+export interface Variable {
+  /** The string value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8. */
+  text?: string;
+  /** The binary value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648 (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set. */
+  value?: string;
+  /** Output only. The time of the last variable update. Timestamp will be UTC timestamp. */
+  updateTime?: string;
+  /** Output only. The current state of the variable. The variable state indicates the outcome of the `variables().watch` call and is visible through the `get` and `list` calls. */
+  state?: "VARIABLE_STATE_UNSPECIFIED" | "UPDATED" | "DELETED" | (string & {});
+  /** The name of the variable resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME] The `[PROJECT_ID]` must be a valid project ID, `[CONFIG_NAME]` must be a valid RuntimeConfig resource and `[VARIABLE_NAME]` follows Unix file system file path naming. The `[VARIABLE_NAME]` can contain ASCII letters, numbers, slashes and dashes. Slashes are used as path element separators and are not part of the `[VARIABLE_NAME]` itself, so `[VARIABLE_NAME]` must contain at least one non-slash character. Multiple slashes are coalesced into single slash character. Each path segment should match [0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression. The length of a `[VARIABLE_NAME]` must be less than 256 characters. Once you create a variable, you cannot change the variable name. */
   name?: string;
-  /** [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. */
-  success?: EndCondition;
-  /** [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout. */
-  failure?: EndCondition;
 }
 
-export const Waiter: Schema.Schema<Waiter> =
+export const Variable: Schema.Schema<Variable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    timeout: Schema.optional(Schema.String),
-    done: Schema.optional(Schema.Boolean),
-    error: Schema.optional(Status),
-    createTime: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    success: Schema.optional(EndCondition),
-    failure: Schema.optional(EndCondition),
-  }).annotate({ identifier: "Waiter" });
+  }).annotate({ identifier: "Variable" });
 
-export interface ListWaitersResponse {
+export interface ListVariablesResponse {
+  /** A list of variables and their values. The order of returned variable objects is arbitrary. */
+  variables?: ReadonlyArray<Variable>;
   /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
   nextPageToken?: string;
-  /** Found waiters in the project. */
-  waiters?: ReadonlyArray<Waiter>;
 }
 
-export const ListWaitersResponse: Schema.Schema<ListWaitersResponse> =
+export const ListVariablesResponse: Schema.Schema<ListVariablesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    variables: Schema.optional(Schema.Array(Variable)),
     nextPageToken: Schema.optional(Schema.String),
-    waiters: Schema.optional(Schema.Array(Waiter)),
-  }).annotate({ identifier: "ListWaitersResponse" });
+  }).annotate({ identifier: "ListVariablesResponse" });
 
 export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
 }
 
 export const Expr: Schema.Schema<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
-    expression: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
   }).annotate({ identifier: "Expr" });
 
 export interface Binding {
@@ -140,20 +93,132 @@ export const Binding: Schema.Schema<Binding> =
   }).annotate({ identifier: "Binding" });
 
 export interface Policy {
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: ReadonlyArray<Binding>;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
 }
 
 export const Policy: Schema.Schema<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(Binding)),
+    version: Schema.optional(Schema.Number),
+    etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "Policy" });
+
+export interface Cardinality {
+  /** The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified. */
+  number?: number;
+  /** The root of the variable subtree to monitor. For example, `/foo`. */
+  path?: string;
+}
+
+export const Cardinality: Schema.Schema<Cardinality> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    number: Schema.optional(Schema.Number),
+    path: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Cardinality" });
+
+export interface EndCondition {
+  /** The cardinality of the `EndCondition`. */
+  cardinality?: Cardinality;
+}
+
+export const EndCondition: Schema.Schema<EndCondition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cardinality: Schema.optional(Cardinality),
+  }).annotate({ identifier: "EndCondition" });
+
+export interface Status {
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+}
+
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Status" });
+
+export interface Waiter {
+  /** Output only. If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set. */
+  done?: boolean;
+  /** [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. */
+  success?: EndCondition;
+  /** Output only. If the waiter ended due to a failure or timeout, this value will be set. */
+  error?: Status;
+  /** The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name. */
+  name?: string;
+  /** [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`. */
+  timeout?: string;
+  /** [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout. */
+  failure?: EndCondition;
+  /** Output only. The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter. */
+  createTime?: string;
+}
+
+export const Waiter: Schema.Schema<Waiter> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    done: Schema.optional(Schema.Boolean),
+    success: Schema.optional(EndCondition),
+    error: Schema.optional(Status),
+    name: Schema.optional(Schema.String),
+    timeout: Schema.optional(Schema.String),
+    failure: Schema.optional(EndCondition),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Waiter" });
+
+export interface ListWaitersResponse {
+  /** Found waiters in the project. */
+  waiters?: ReadonlyArray<Waiter>;
+  /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
+  nextPageToken?: string;
+}
+
+export const ListWaitersResponse: Schema.Schema<ListWaitersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    waiters: Schema.optional(Schema.Array(Waiter)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWaitersResponse" });
+
+export interface SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+}
+
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
+
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface RuntimeConfig {
   /** An optional description of the RuntimeConfig object. */
@@ -168,72 +233,47 @@ export const RuntimeConfig: Schema.Schema<RuntimeConfig> =
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "RuntimeConfig" });
 
-export interface ListConfigsResponse {
-  /** A list of the configurations in the project. The order of returned objects is arbitrary; that is, it is not ordered in any particular way. */
-  configs?: ReadonlyArray<RuntimeConfig>;
-  /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
-  nextPageToken?: string;
-}
-
-export const ListConfigsResponse: Schema.Schema<ListConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    configs: Schema.optional(Schema.Array(RuntimeConfig)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListConfigsResponse" });
-
-export interface Variable {
-  /** The string value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8. */
-  text?: string;
-  /** The binary value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648 (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set. */
-  value?: string;
-  /** Output only. The current state of the variable. The variable state indicates the outcome of the `variables().watch` call and is visible through the `get` and `list` calls. */
-  state?: "VARIABLE_STATE_UNSPECIFIED" | "UPDATED" | "DELETED" | (string & {});
-  /** The name of the variable resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME] The `[PROJECT_ID]` must be a valid project ID, `[CONFIG_NAME]` must be a valid RuntimeConfig resource and `[VARIABLE_NAME]` follows Unix file system file path naming. The `[VARIABLE_NAME]` can contain ASCII letters, numbers, slashes and dashes. Slashes are used as path element separators and are not part of the `[VARIABLE_NAME]` itself, so `[VARIABLE_NAME]` must contain at least one non-slash character. Multiple slashes are coalesced into single slash character. Each path segment should match [0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression. The length of a `[VARIABLE_NAME]` must be less than 256 characters. Once you create a variable, you cannot change the variable name. */
-  name?: string;
-  /** Output only. The time of the last variable update. Timestamp will be UTC timestamp. */
-  updateTime?: string;
-}
-
-export const Variable: Schema.Schema<Variable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    text: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Variable" });
-
 export interface Operation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: Record<string, unknown>;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
 }
 
 export const Operation: Schema.Schema<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    done: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
     error: Schema.optional(Status),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Operation" });
 
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
+export interface ListConfigsResponse {
+  /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
+  nextPageToken?: string;
+  /** A list of the configurations in the project. The order of returned objects is arbitrary; that is, it is not ordered in any particular way. */
+  configs?: ReadonlyArray<RuntimeConfig>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const ListConfigsResponse: Schema.Schema<ListConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
+    nextPageToken: Schema.optional(Schema.String),
+    configs: Schema.optional(Schema.Array(RuntimeConfig)),
+  }).annotate({ identifier: "ListConfigsResponse" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface WatchVariableRequest {
   /** If specified, checks the current timestamp of the variable and if the current timestamp is newer than `newerThan` timestamp, the method returns immediately. If not specified or the variable has an older timestamp, the watcher waits for a the value to change before returning. */
@@ -244,46 +284,6 @@ export const WatchVariableRequest: Schema.Schema<WatchVariableRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newerThan: Schema.optional(Schema.String),
   }).annotate({ identifier: "WatchVariableRequest" });
-
-export interface ListVariablesResponse {
-  /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
-  nextPageToken?: string;
-  /** A list of variables and their values. The order of returned variable objects is arbitrary. */
-  variables?: ReadonlyArray<Variable>;
-}
-
-export const ListVariablesResponse: Schema.Schema<ListVariablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    variables: Schema.optional(Schema.Array(Variable)),
-  }).annotate({ identifier: "ListVariablesResponse" });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
-}
-
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(Policy),
-  }).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
 
 // ==========================================================================
 // Errors
@@ -339,77 +339,46 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface GetIamPolicyProjectsConfigsRequest {
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+export interface SetIamPolicyProjectsConfigsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
 }
 
-export const GetIamPolicyProjectsConfigsRequest =
+export const SetIamPolicyProjectsConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
     resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsConfigsRequest>;
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsConfigsRequest>;
 
-export type GetIamPolicyProjectsConfigsResponse = Policy;
-export const GetIamPolicyProjectsConfigsResponse =
+export type SetIamPolicyProjectsConfigsResponse = Policy;
+export const SetIamPolicyProjectsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsConfigs: API.OperationMethod<
-  GetIamPolicyProjectsConfigsRequest,
-  GetIamPolicyProjectsConfigsResponse,
-  GetIamPolicyProjectsConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsConfigsRequest,
-  output: GetIamPolicyProjectsConfigsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsConfigsRequest {
-  /** The RuntimeConfig resource to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
-  name: string;
-}
-
-export const DeleteProjectsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsConfigsRequest>;
-
-export type DeleteProjectsConfigsResponse = Empty;
-export const DeleteProjectsConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsConfigsError =
+export type SetIamPolicyProjectsConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a RuntimeConfig resource. */
-export const deleteProjectsConfigs: API.OperationMethod<
-  DeleteProjectsConfigsRequest,
-  DeleteProjectsConfigsResponse,
-  DeleteProjectsConfigsError,
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsConfigs: API.OperationMethod<
+  SetIamPolicyProjectsConfigsRequest,
+  SetIamPolicyProjectsConfigsResponse,
+  SetIamPolicyProjectsConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsConfigsRequest,
-  output: DeleteProjectsConfigsResponse,
+  input: SetIamPolicyProjectsConfigsRequest,
+  output: SetIamPolicyProjectsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -459,46 +428,112 @@ export const createProjectsConfigs: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SetIamPolicyProjectsConfigsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
+export interface GetProjectsConfigsRequest {
+  /** The name of the RuntimeConfig resource to retrieve, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
+  name: string;
 }
 
-export const SetIamPolicyProjectsConfigsRequest =
+export const GetProjectsConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsConfigsRequest>;
+  ) as unknown as Schema.Schema<GetProjectsConfigsRequest>;
 
-export type SetIamPolicyProjectsConfigsResponse = Policy;
-export const SetIamPolicyProjectsConfigsResponse =
+export type GetProjectsConfigsResponse = RuntimeConfig;
+export const GetProjectsConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RuntimeConfig;
+
+export type GetProjectsConfigsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets information about a RuntimeConfig resource. */
+export const getProjectsConfigs: API.OperationMethod<
+  GetProjectsConfigsRequest,
+  GetProjectsConfigsResponse,
+  GetProjectsConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsConfigsRequest,
+  output: GetProjectsConfigsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetIamPolicyProjectsConfigsRequest {
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+}
+
+export const GetIamPolicyProjectsConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsConfigsRequest>;
+
+export type GetIamPolicyProjectsConfigsResponse = Policy;
+export const GetIamPolicyProjectsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsConfigsError =
+export type GetIamPolicyProjectsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsConfigs: API.OperationMethod<
+  GetIamPolicyProjectsConfigsRequest,
+  GetIamPolicyProjectsConfigsResponse,
+  GetIamPolicyProjectsConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsConfigsRequest,
+  output: GetIamPolicyProjectsConfigsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface UpdateProjectsConfigsRequest {
+  /** The name of the RuntimeConfig resource to update, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
+  name: string;
+  /** Request body */
+  body?: RuntimeConfig;
+}
+
+export const UpdateProjectsConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RuntimeConfig).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateProjectsConfigsRequest>;
+
+export type UpdateProjectsConfigsResponse = RuntimeConfig;
+export const UpdateProjectsConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RuntimeConfig;
+
+export type UpdateProjectsConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsConfigs: API.OperationMethod<
-  SetIamPolicyProjectsConfigsRequest,
-  SetIamPolicyProjectsConfigsResponse,
-  SetIamPolicyProjectsConfigsError,
+/** Updates a RuntimeConfig resource. The configuration must exist beforehand. */
+export const updateProjectsConfigs: API.OperationMethod<
+  UpdateProjectsConfigsRequest,
+  UpdateProjectsConfigsResponse,
+  UpdateProjectsConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsConfigsRequest,
-  output: SetIamPolicyProjectsConfigsResponse,
+  input: UpdateProjectsConfigsRequest,
+  output: UpdateProjectsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -546,59 +581,55 @@ export const testIamPermissionsProjectsConfigs: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface UpdateProjectsConfigsRequest {
-  /** The name of the RuntimeConfig resource to update, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
+export interface DeleteProjectsConfigsRequest {
+  /** The RuntimeConfig resource to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
   name: string;
-  /** Request body */
-  body?: RuntimeConfig;
 }
 
-export const UpdateProjectsConfigsRequest =
+export const DeleteProjectsConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RuntimeConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsConfigsRequest>;
+  ) as unknown as Schema.Schema<DeleteProjectsConfigsRequest>;
 
-export type UpdateProjectsConfigsResponse = RuntimeConfig;
-export const UpdateProjectsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RuntimeConfig;
+export type DeleteProjectsConfigsResponse = Empty;
+export const DeleteProjectsConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UpdateProjectsConfigsError =
+export type DeleteProjectsConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates a RuntimeConfig resource. The configuration must exist beforehand. */
-export const updateProjectsConfigs: API.OperationMethod<
-  UpdateProjectsConfigsRequest,
-  UpdateProjectsConfigsResponse,
-  UpdateProjectsConfigsError,
+/** Deletes a RuntimeConfig resource. */
+export const deleteProjectsConfigs: API.OperationMethod<
+  DeleteProjectsConfigsRequest,
+  DeleteProjectsConfigsResponse,
+  DeleteProjectsConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateProjectsConfigsRequest,
-  output: UpdateProjectsConfigsResponse,
+  input: DeleteProjectsConfigsRequest,
+  output: DeleteProjectsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsConfigsRequest {
-  /** The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848) for this request, in the format `projects/[PROJECT_ID]`. */
-  parent: string;
-  /** Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous list request to get the next page of results. */
-  pageToken?: string;
   /** Specifies the number of results to return per page. If there are fewer elements than the specified number, returns all elements. */
   pageSize?: number;
+  /** Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848) for this request, in the format `projects/[PROJECT_ID]`. */
+  parent: string;
 }
 
 export const ListProjectsConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/configs" }),
     svc,
@@ -626,85 +657,435 @@ export const listProjectsConfigs: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GetProjectsConfigsRequest {
-  /** The name of the RuntimeConfig resource to retrieve, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
-  name: string;
+export interface TestIamPermissionsProjectsConfigsOperationsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
 }
 
-export const GetProjectsConfigsRequest =
+export const TestIamPermissionsProjectsConfigsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsConfigsRequest>;
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsConfigsOperationsRequest>;
 
-export type GetProjectsConfigsResponse = RuntimeConfig;
-export const GetProjectsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RuntimeConfig;
+export type TestIamPermissionsProjectsConfigsOperationsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsConfigsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type GetProjectsConfigsError = DefaultErrors | NotFound | Forbidden;
+export type TestIamPermissionsProjectsConfigsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Gets information about a RuntimeConfig resource. */
-export const getProjectsConfigs: API.OperationMethod<
-  GetProjectsConfigsRequest,
-  GetProjectsConfigsResponse,
-  GetProjectsConfigsError,
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsConfigsOperations: API.OperationMethod<
+  TestIamPermissionsProjectsConfigsOperationsRequest,
+  TestIamPermissionsProjectsConfigsOperationsResponse,
+  TestIamPermissionsProjectsConfigsOperationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsConfigsRequest,
-  output: GetProjectsConfigsResponse,
-  errors: [NotFound, Forbidden],
+  input: TestIamPermissionsProjectsConfigsOperationsRequest,
+  output: TestIamPermissionsProjectsConfigsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsConfigsWaitersRequest {
-  /** The fully-qualified name of the Waiter resource object to retrieve, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]` */
+export interface GetProjectsConfigsOperationsRequest {
+  /** The name of the operation resource. */
   name: string;
 }
 
-export const GetProjectsConfigsWaitersRequest =
+export const GetProjectsConfigsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsConfigsWaitersRequest>;
+  ) as unknown as Schema.Schema<GetProjectsConfigsOperationsRequest>;
 
-export type GetProjectsConfigsWaitersResponse = Waiter;
-export const GetProjectsConfigsWaitersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Waiter;
+export type GetProjectsConfigsOperationsResponse = Operation;
+export const GetProjectsConfigsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsConfigsWaitersError =
+export type GetProjectsConfigsOperationsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets information about a single waiter. */
-export const getProjectsConfigsWaiters: API.OperationMethod<
-  GetProjectsConfigsWaitersRequest,
-  GetProjectsConfigsWaitersResponse,
-  GetProjectsConfigsWaitersError,
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsConfigsOperations: API.OperationMethod<
+  GetProjectsConfigsOperationsRequest,
+  GetProjectsConfigsOperationsResponse,
+  GetProjectsConfigsOperationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsConfigsWaitersRequest,
-  output: GetProjectsConfigsWaitersResponse,
+  input: GetProjectsConfigsOperationsRequest,
+  output: GetProjectsConfigsOperationsResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface ListProjectsConfigsWaitersRequest {
-  /** Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous list request to get the next page of results. */
-  pageToken?: string;
+export interface CreateProjectsConfigsVariablesRequest {
+  /** An optional but recommended unique `request_id`. If the server receives two `create()` requests with the same `request_id`, then the second request will be ignored and the first resource created and stored in the backend is returned. Empty `request_id` fields are ignored. It is responsibility of the client to ensure uniqueness of the `request_id` strings. `request_id` strings are limited to 64 characters. */
+  requestId?: string;
+  /** The path to the RutimeConfig resource that this variable should belong to. The configuration must exist beforehand; the path must be in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
+  parent: string;
+  /** Request body */
+  body?: Variable;
+}
+
+export const CreateProjectsConfigsVariablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(Variable).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+parent}/variables",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsConfigsVariablesRequest>;
+
+export type CreateProjectsConfigsVariablesResponse = Variable;
+export const CreateProjectsConfigsVariablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Variable;
+
+export type CreateProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a variable within the given configuration. You cannot create a variable with a name that is a prefix of an existing variable name, or a name that has an existing variable name as a prefix. To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-get-variables) documentation. */
+export const createProjectsConfigsVariables: API.OperationMethod<
+  CreateProjectsConfigsVariablesRequest,
+  CreateProjectsConfigsVariablesResponse,
+  CreateProjectsConfigsVariablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsConfigsVariablesRequest,
+  output: CreateProjectsConfigsVariablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsConfigsVariablesRequest {
+  /** Filters variables by matching the specified filter. For example: `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`. */
+  filter?: string;
+  /** The flag indicates whether the user wants to return values of variables. If true, then only those variables that user has IAM GetVariable permission will be returned along with their values. */
+  returnValues?: boolean;
   /** Specifies the number of results to return per page. If there are fewer elements than the specified number, returns all elements. */
   pageSize?: number;
+  /** The path to the RuntimeConfig resource for which you want to list variables. The configuration must exist beforehand; the path must be in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
+  parent: string;
+  /** Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+}
+
+export const ListProjectsConfigsVariablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    returnValues: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnValues"),
+    ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/variables" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsConfigsVariablesRequest>;
+
+export type ListProjectsConfigsVariablesResponse = ListVariablesResponse;
+export const ListProjectsConfigsVariablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListVariablesResponse;
+
+export type ListProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists variables within given a configuration, matching any provided filters. This only lists variable names, not the values, unless `return_values` is true, in which case only variables that user has IAM permission to GetVariable will be returned. */
+export const listProjectsConfigsVariables: API.PaginatedOperationMethod<
+  ListProjectsConfigsVariablesRequest,
+  ListProjectsConfigsVariablesResponse,
+  ListProjectsConfigsVariablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsConfigsVariablesRequest,
+  output: ListProjectsConfigsVariablesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsConfigsVariablesRequest {
+  /** The name of the variable to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]` */
+  name: string;
+  /** Set to `true` to recursively delete multiple variables with the same prefix. */
+  recursive?: boolean;
+}
+
+export const DeleteProjectsConfigsVariablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    recursive: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recursive")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsConfigsVariablesRequest>;
+
+export type DeleteProjectsConfigsVariablesResponse = Empty;
+export const DeleteProjectsConfigsVariablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a variable or multiple variables. If you specify a variable name, then that variable is deleted. If you specify a prefix and `recursive` is true, then all variables with that prefix are deleted. You must set a `recursive` to true if you delete variables by prefix. */
+export const deleteProjectsConfigsVariables: API.OperationMethod<
+  DeleteProjectsConfigsVariablesRequest,
+  DeleteProjectsConfigsVariablesResponse,
+  DeleteProjectsConfigsVariablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsConfigsVariablesRequest,
+  output: DeleteProjectsConfigsVariablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsConfigsVariablesRequest {
+  /** The name of the variable to return, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]` */
+  name: string;
+}
+
+export const GetProjectsConfigsVariablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsConfigsVariablesRequest>;
+
+export type GetProjectsConfigsVariablesResponse = Variable;
+export const GetProjectsConfigsVariablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Variable;
+
+export type GetProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets information about a single variable. */
+export const getProjectsConfigsVariables: API.OperationMethod<
+  GetProjectsConfigsVariablesRequest,
+  GetProjectsConfigsVariablesResponse,
+  GetProjectsConfigsVariablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsConfigsVariablesRequest,
+  output: GetProjectsConfigsVariablesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface UpdateProjectsConfigsVariablesRequest {
+  /** The name of the variable to update, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]` */
+  name: string;
+  /** Request body */
+  body?: Variable;
+}
+
+export const UpdateProjectsConfigsVariablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Variable).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateProjectsConfigsVariablesRequest>;
+
+export type UpdateProjectsConfigsVariablesResponse = Variable;
+export const UpdateProjectsConfigsVariablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Variable;
+
+export type UpdateProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an existing variable with a new value. */
+export const updateProjectsConfigsVariables: API.OperationMethod<
+  UpdateProjectsConfigsVariablesRequest,
+  UpdateProjectsConfigsVariablesResponse,
+  UpdateProjectsConfigsVariablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateProjectsConfigsVariablesRequest,
+  output: UpdateProjectsConfigsVariablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsConfigsVariablesRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsConfigsVariablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsConfigsVariablesRequest>;
+
+export type TestIamPermissionsProjectsConfigsVariablesResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsConfigsVariablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsConfigsVariables: API.OperationMethod<
+  TestIamPermissionsProjectsConfigsVariablesRequest,
+  TestIamPermissionsProjectsConfigsVariablesResponse,
+  TestIamPermissionsProjectsConfigsVariablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsConfigsVariablesRequest,
+  output: TestIamPermissionsProjectsConfigsVariablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface WatchProjectsConfigsVariablesRequest {
+  /** The name of the variable to watch, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
+  name: string;
+  /** Request body */
+  body?: WatchVariableRequest;
+}
+
+export const WatchProjectsConfigsVariablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(WatchVariableRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta1/{+name}:watch", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<WatchProjectsConfigsVariablesRequest>;
+
+export type WatchProjectsConfigsVariablesResponse = Variable;
+export const WatchProjectsConfigsVariablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Variable;
+
+export type WatchProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Watches a specific variable and waits for a change in the variable's value. When there is a change, this method returns the new value or times out. If a variable is deleted while being watched, the `variableState` state is set to `DELETED` and the method returns the last known variable `value`. If you set the deadline for watching to a larger value than internal timeout (60 seconds), the current variable value is returned and the `variableState` will be `VARIABLE_STATE_UNSPECIFIED`. To learn more about creating a watcher, read the [Watching a Variable for Changes](/deployment-manager/runtime-configurator/watching-a-variable) documentation. */
+export const watchProjectsConfigsVariables: API.OperationMethod<
+  WatchProjectsConfigsVariablesRequest,
+  WatchProjectsConfigsVariablesResponse,
+  WatchProjectsConfigsVariablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: WatchProjectsConfigsVariablesRequest,
+  output: WatchProjectsConfigsVariablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsConfigsWaitersRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsConfigsWaitersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsConfigsWaitersRequest>;
+
+export type TestIamPermissionsProjectsConfigsWaitersResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsConfigsWaitersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsConfigsWaitersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsConfigsWaiters: API.OperationMethod<
+  TestIamPermissionsProjectsConfigsWaitersRequest,
+  TestIamPermissionsProjectsConfigsWaitersResponse,
+  TestIamPermissionsProjectsConfigsWaitersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsConfigsWaitersRequest,
+  output: TestIamPermissionsProjectsConfigsWaitersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsConfigsWaitersRequest {
   /** The path to the configuration for which you want to get a list of waiters. The configuration must exist beforehand; the path must be in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
   parent: string;
+  /** Specifies the number of results to return per page. If there are fewer elements than the specified number, returns all elements. */
+  pageSize?: number;
+  /** Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
 }
 
 export const ListProjectsConfigsWaitersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/waiters" }),
     svc,
@@ -733,42 +1114,6 @@ export const listProjectsConfigsWaiters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface DeleteProjectsConfigsWaitersRequest {
-  /** The Waiter resource to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]` */
-  name: string;
-}
-
-export const DeleteProjectsConfigsWaitersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsConfigsWaitersRequest>;
-
-export type DeleteProjectsConfigsWaitersResponse = Empty;
-export const DeleteProjectsConfigsWaitersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsConfigsWaitersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the waiter with the specified name. */
-export const deleteProjectsConfigsWaiters: API.OperationMethod<
-  DeleteProjectsConfigsWaitersRequest,
-  DeleteProjectsConfigsWaitersResponse,
-  DeleteProjectsConfigsWaitersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsConfigsWaitersRequest,
-  output: DeleteProjectsConfigsWaitersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsConfigsWaitersRequest {
@@ -817,417 +1162,72 @@ export const createProjectsConfigsWaiters: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface TestIamPermissionsProjectsConfigsWaitersRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsConfigsWaitersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsConfigsWaitersRequest>;
-
-export type TestIamPermissionsProjectsConfigsWaitersResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsConfigsWaitersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsConfigsWaitersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsConfigsWaiters: API.OperationMethod<
-  TestIamPermissionsProjectsConfigsWaitersRequest,
-  TestIamPermissionsProjectsConfigsWaitersResponse,
-  TestIamPermissionsProjectsConfigsWaitersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsConfigsWaitersRequest,
-  output: TestIamPermissionsProjectsConfigsWaitersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UpdateProjectsConfigsVariablesRequest {
-  /** The name of the variable to update, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]` */
+export interface DeleteProjectsConfigsWaitersRequest {
+  /** The Waiter resource to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]` */
   name: string;
-  /** Request body */
-  body?: Variable;
 }
 
-export const UpdateProjectsConfigsVariablesRequest =
+export const DeleteProjectsConfigsWaitersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Variable).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateProjectsConfigsVariablesRequest>;
-
-export type UpdateProjectsConfigsVariablesResponse = Variable;
-export const UpdateProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
-
-export type UpdateProjectsConfigsVariablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an existing variable with a new value. */
-export const updateProjectsConfigsVariables: API.OperationMethod<
-  UpdateProjectsConfigsVariablesRequest,
-  UpdateProjectsConfigsVariablesResponse,
-  UpdateProjectsConfigsVariablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateProjectsConfigsVariablesRequest,
-  output: UpdateProjectsConfigsVariablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface WatchProjectsConfigsVariablesRequest {
-  /** The name of the variable to watch, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
-  name: string;
-  /** Request body */
-  body?: WatchVariableRequest;
-}
-
-export const WatchProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(WatchVariableRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{+name}:watch", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<WatchProjectsConfigsVariablesRequest>;
-
-export type WatchProjectsConfigsVariablesResponse = Variable;
-export const WatchProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
-
-export type WatchProjectsConfigsVariablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Watches a specific variable and waits for a change in the variable's value. When there is a change, this method returns the new value or times out. If a variable is deleted while being watched, the `variableState` state is set to `DELETED` and the method returns the last known variable `value`. If you set the deadline for watching to a larger value than internal timeout (60 seconds), the current variable value is returned and the `variableState` will be `VARIABLE_STATE_UNSPECIFIED`. To learn more about creating a watcher, read the [Watching a Variable for Changes](/deployment-manager/runtime-configurator/watching-a-variable) documentation. */
-export const watchProjectsConfigsVariables: API.OperationMethod<
-  WatchProjectsConfigsVariablesRequest,
-  WatchProjectsConfigsVariablesResponse,
-  WatchProjectsConfigsVariablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: WatchProjectsConfigsVariablesRequest,
-  output: WatchProjectsConfigsVariablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsConfigsVariablesRequest {
-  /** The name of the variable to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]` */
-  name: string;
-  /** Set to `true` to recursively delete multiple variables with the same prefix. */
-  recursive?: boolean;
-}
-
-export const DeleteProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    recursive: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recursive")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsConfigsVariablesRequest>;
+  ) as unknown as Schema.Schema<DeleteProjectsConfigsWaitersRequest>;
 
-export type DeleteProjectsConfigsVariablesResponse = Empty;
-export const DeleteProjectsConfigsVariablesResponse =
+export type DeleteProjectsConfigsWaitersResponse = Empty;
+export const DeleteProjectsConfigsWaitersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsConfigsVariablesError =
+export type DeleteProjectsConfigsWaitersError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a variable or multiple variables. If you specify a variable name, then that variable is deleted. If you specify a prefix and `recursive` is true, then all variables with that prefix are deleted. You must set a `recursive` to true if you delete variables by prefix. */
-export const deleteProjectsConfigsVariables: API.OperationMethod<
-  DeleteProjectsConfigsVariablesRequest,
-  DeleteProjectsConfigsVariablesResponse,
-  DeleteProjectsConfigsVariablesError,
+/** Deletes the waiter with the specified name. */
+export const deleteProjectsConfigsWaiters: API.OperationMethod<
+  DeleteProjectsConfigsWaitersRequest,
+  DeleteProjectsConfigsWaitersResponse,
+  DeleteProjectsConfigsWaitersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsConfigsVariablesRequest,
-  output: DeleteProjectsConfigsVariablesResponse,
+  input: DeleteProjectsConfigsWaitersRequest,
+  output: DeleteProjectsConfigsWaitersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface TestIamPermissionsProjectsConfigsVariablesRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsConfigsVariablesRequest>;
-
-export type TestIamPermissionsProjectsConfigsVariablesResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsConfigsVariablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsConfigsVariables: API.OperationMethod<
-  TestIamPermissionsProjectsConfigsVariablesRequest,
-  TestIamPermissionsProjectsConfigsVariablesResponse,
-  TestIamPermissionsProjectsConfigsVariablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsConfigsVariablesRequest,
-  output: TestIamPermissionsProjectsConfigsVariablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsConfigsVariablesRequest {
-  /** The path to the RutimeConfig resource that this variable should belong to. The configuration must exist beforehand; the path must be in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
-  parent: string;
-  /** An optional but recommended unique `request_id`. If the server receives two `create()` requests with the same `request_id`, then the second request will be ignored and the first resource created and stored in the backend is returned. Empty `request_id` fields are ignored. It is responsibility of the client to ensure uniqueness of the `request_id` strings. `request_id` strings are limited to 64 characters. */
-  requestId?: string;
-  /** Request body */
-  body?: Variable;
-}
-
-export const CreateProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(Variable).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+parent}/variables",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsConfigsVariablesRequest>;
-
-export type CreateProjectsConfigsVariablesResponse = Variable;
-export const CreateProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
-
-export type CreateProjectsConfigsVariablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a variable within the given configuration. You cannot create a variable with a name that is a prefix of an existing variable name, or a name that has an existing variable name as a prefix. To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-get-variables) documentation. */
-export const createProjectsConfigsVariables: API.OperationMethod<
-  CreateProjectsConfigsVariablesRequest,
-  CreateProjectsConfigsVariablesResponse,
-  CreateProjectsConfigsVariablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsConfigsVariablesRequest,
-  output: CreateProjectsConfigsVariablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsConfigsVariablesRequest {
-  /** The name of the variable to return, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]` */
+export interface GetProjectsConfigsWaitersRequest {
+  /** The fully-qualified name of the Waiter resource object to retrieve, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]` */
   name: string;
 }
 
-export const GetProjectsConfigsVariablesRequest =
+export const GetProjectsConfigsWaitersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsConfigsVariablesRequest>;
+  ) as unknown as Schema.Schema<GetProjectsConfigsWaitersRequest>;
 
-export type GetProjectsConfigsVariablesResponse = Variable;
-export const GetProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
+export type GetProjectsConfigsWaitersResponse = Waiter;
+export const GetProjectsConfigsWaitersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Waiter;
 
-export type GetProjectsConfigsVariablesError =
+export type GetProjectsConfigsWaitersError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets information about a single variable. */
-export const getProjectsConfigsVariables: API.OperationMethod<
-  GetProjectsConfigsVariablesRequest,
-  GetProjectsConfigsVariablesResponse,
-  GetProjectsConfigsVariablesError,
+/** Gets information about a single waiter. */
+export const getProjectsConfigsWaiters: API.OperationMethod<
+  GetProjectsConfigsWaitersRequest,
+  GetProjectsConfigsWaitersResponse,
+  GetProjectsConfigsWaitersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsConfigsVariablesRequest,
-  output: GetProjectsConfigsVariablesResponse,
+  input: GetProjectsConfigsWaitersRequest,
+  output: GetProjectsConfigsWaitersResponse,
   errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsConfigsVariablesRequest {
-  /** Specifies the number of results to return per page. If there are fewer elements than the specified number, returns all elements. */
-  pageSize?: number;
-  /** The flag indicates whether the user wants to return values of variables. If true, then only those variables that user has IAM GetVariable permission will be returned along with their values. */
-  returnValues?: boolean;
-  /** The path to the RuntimeConfig resource for which you want to list variables. The configuration must exist beforehand; the path must be in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
-  parent: string;
-  /** Filters variables by matching the specified filter. For example: `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`. */
-  filter?: string;
-  /** Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous list request to get the next page of results. */
-  pageToken?: string;
-}
-
-export const ListProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    returnValues: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnValues"),
-    ),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+parent}/variables" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsConfigsVariablesRequest>;
-
-export type ListProjectsConfigsVariablesResponse = ListVariablesResponse;
-export const ListProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVariablesResponse;
-
-export type ListProjectsConfigsVariablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists variables within given a configuration, matching any provided filters. This only lists variable names, not the values, unless `return_values` is true, in which case only variables that user has IAM permission to GetVariable will be returned. */
-export const listProjectsConfigsVariables: API.PaginatedOperationMethod<
-  ListProjectsConfigsVariablesRequest,
-  ListProjectsConfigsVariablesResponse,
-  ListProjectsConfigsVariablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsConfigsVariablesRequest,
-  output: ListProjectsConfigsVariablesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsConfigsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetProjectsConfigsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsConfigsOperationsRequest>;
-
-export type GetProjectsConfigsOperationsResponse = Operation;
-export const GetProjectsConfigsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetProjectsConfigsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsConfigsOperations: API.OperationMethod<
-  GetProjectsConfigsOperationsRequest,
-  GetProjectsConfigsOperationsResponse,
-  GetProjectsConfigsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsConfigsOperationsRequest,
-  output: GetProjectsConfigsOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface TestIamPermissionsProjectsConfigsOperationsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsConfigsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsConfigsOperationsRequest>;
-
-export type TestIamPermissionsProjectsConfigsOperationsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsConfigsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsConfigsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsConfigsOperations: API.OperationMethod<
-  TestIamPermissionsProjectsConfigsOperationsRequest,
-  TestIamPermissionsProjectsConfigsOperationsResponse,
-  TestIamPermissionsProjectsConfigsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsConfigsOperationsRequest,
-  output: TestIamPermissionsProjectsConfigsOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

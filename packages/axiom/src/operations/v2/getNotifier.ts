@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const GetNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -50,7 +50,7 @@ export const GetNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     opsgenie: Schema.optional(
       Schema.Struct({
-        apiKey: Schema.optional(SensitiveString),
+        apiKey: Schema.optional(SensitiveOutputString),
         isEU: Schema.optional(Schema.Boolean),
       }),
     ),
@@ -71,6 +71,7 @@ export const GetNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   }),
+  updatedAt: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
 });
 export type GetNotifierOutput = typeof GetNotifierOutput.Type;

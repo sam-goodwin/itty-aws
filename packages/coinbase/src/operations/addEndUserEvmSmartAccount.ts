@@ -30,7 +30,7 @@ export type AddEndUserEvmSmartAccountOutput =
 
 // The operation
 /**
- * Add an EVM smart account to an end user
+ * Add EVM smart account to end user
  *
  * Creates an EVM smart account for an existing end user. The backend will create a new EVM EOA account to serve as the owner of the smart account.
  * This API is intended to be used by the developer's own backend, and is authenticated using the developer's CDP API key.

@@ -43,6 +43,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Azure Machine Learning Studio REST API operations.
+ *
+ * @param api-version - The client API version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -51,6 +53,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         userStorageAccountId: Schema.String,
@@ -123,6 +128,11 @@ export type WorkspacesCreateOrUpdateOutput =
 // The operation
 /**
  * Creates or updates a workspace with the specified parameters.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the machine learning workspace belongs.
+ * @param workspaceName - The name of the machine learning workspace.
  */
 export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -131,9 +141,11 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}",
@@ -149,15 +161,22 @@ export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
 // The operation
 /**
  * Deletes a machine learning workspace.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the machine learning workspace belongs.
+ * @param workspaceName - The name of the machine learning workspace.
  */
 export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesDeleteInput,
   outputSchema: WorkspacesDeleteOutput,
 }));
 // Input Schema
-export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}",
@@ -185,15 +204,20 @@ export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
 // The operation
 /**
  * Gets the properties of the specified machine learning workspace.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the machine learning workspace belongs.
+ * @param workspaceName - The name of the machine learning workspace.
  */
 export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetInput,
   outputSchema: WorkspacesGetOutput,
 }));
 // Input Schema
-export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearning/workspaces",
@@ -228,6 +252,9 @@ export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
 // The operation
 /**
  * Lists all the available machine learning workspaces under the specified subscription.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
  */
 export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesListInput,
@@ -235,7 +262,10 @@ export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WorkspacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces",
@@ -273,6 +303,10 @@ export type WorkspacesListByResourceGroupOutput =
 // The operation
 /**
  * Lists all the available machine learning workspaces under the specified resource group.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the machine learning workspace belongs.
  */
 export const WorkspacesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -281,7 +315,11 @@ export const WorkspacesListByResourceGroup =
   }));
 // Input Schema
 export const WorkspacesListWorkspaceKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}/listWorkspaceKeys",
@@ -303,6 +341,11 @@ export type WorkspacesListWorkspaceKeysOutput =
 // The operation
 /**
  * List the authorization keys associated with this workspace.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param workspaceName - The name of the machine learning workspace.
+ * @param resourceGroupName - The name of the resource group to which the machine learning workspace belongs.
  */
 export const WorkspacesListWorkspaceKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -312,7 +355,11 @@ export const WorkspacesListWorkspaceKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WorkspacesResyncStorageKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}/resyncStorageKeys",
@@ -331,6 +378,11 @@ export type WorkspacesResyncStorageKeysOutput =
 // The operation
 /**
  * Resync storage keys associated with this workspace.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param workspaceName - The name of the machine learning workspace.
+ * @param resourceGroupName - The name of the resource group to which the machine learning workspace belongs.
  */
 export const WorkspacesResyncStorageKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -340,6 +392,9 @@ export const WorkspacesResyncStorageKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
     Schema.Struct({
@@ -393,6 +448,11 @@ export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
 // The operation
 /**
  * Updates a machine learning workspace with the specified parameters.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the machine learning workspace belongs.
+ * @param workspaceName - The name of the machine learning workspace.
  */
 export const WorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesUpdateInput,

@@ -88,7 +88,7 @@ export type GetTaxCalculationsCalculationLineItemsOutput =
 
 // The operation
 /**
- * Retrieve a calculation's line items
+ * Retrieve a Calculation's line items
  *
  * <p>Retrieves the line items of a tax calculation as a collection, if the calculation hasn’t expired.</p>
  *

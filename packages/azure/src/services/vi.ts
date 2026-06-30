@@ -52,6 +52,7 @@ export const AccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         tenantId: Schema.optional(Schema.String),
@@ -198,6 +199,7 @@ export type AccountsCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param api-version - The API version to use for this operation.
  */
 export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -210,6 +212,7 @@ export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -229,6 +232,7 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param api-version - The API version to use for this operation.
  */
 export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -239,6 +243,7 @@ export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -276,6 +281,7 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param api-version - The API version to use for this operation.
  */
 export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -418,6 +424,7 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       tenantId: Schema.optional(Schema.String),
@@ -542,6 +549,7 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param api-version - The API version to use for this operation.
  */
 export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -553,6 +561,7 @@ export const GenerateAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     permissionType: Schema.Literals(["Contributor", "Reader"]),
     scope: Schema.Literals(["Video", "Account", "Project"]),
     videoId: Schema.optional(Schema.String),
@@ -579,6 +588,7 @@ export type GenerateAccessTokenOutput = typeof GenerateAccessTokenOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param api-version - The API version to use for this operation.
  */
 export const GenerateAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -590,6 +600,7 @@ export const GenerateExtensionAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     permissionType: Schema.Literals(["Contributor", "Reader"]),
     scope: Schema.Literals(["Video", "Account", "Project"]),
     extensionId: Schema.String,
@@ -619,6 +630,7 @@ export type GenerateExtensionAccessTokenOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param api-version - The API version to use for this operation.
  */
 export const GenerateExtensionAccessToken =
@@ -631,6 +643,7 @@ export const GenerateExtensionRestrictedViewerAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     scope: Schema.Literals(["Video", "Account", "Project"]),
     extensionId: Schema.String,
     videoId: Schema.optional(Schema.String),
@@ -659,6 +672,7 @@ export type GenerateExtensionRestrictedViewerAccessTokenOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param api-version - The API version to use for this operation.
  */
 export const GenerateExtensionRestrictedViewerAccessToken =
@@ -671,6 +685,7 @@ export const GenerateRestrictedViewerAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     scope: Schema.Literals(["Video", "Account", "Project"]),
     videoId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -698,6 +713,7 @@ export type GenerateRestrictedViewerAccessTokenOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param api-version - The API version to use for this operation.
  */
 export const GenerateRestrictedViewerAccessToken =
@@ -756,6 +772,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -835,6 +852,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  * @param properties - Resource properties.
  */
@@ -848,6 +866,7 @@ export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -872,6 +891,7 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDelete =
@@ -884,6 +904,7 @@ export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -926,6 +947,7 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGet =
@@ -938,6 +960,7 @@ export const PrivateEndpointConnectionsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -996,6 +1019,7 @@ export type PrivateEndpointConnectionsListByAccountOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  */
 export const PrivateEndpointConnectionsListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1007,6 +1031,8 @@ export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    groupId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1048,6 +1074,8 @@ export type PrivateLinkResourcesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
+ * @param groupId - The group ID of the private link resource.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1060,6 +1088,7 @@ export const PrivateLinkResourcesListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1118,6 +1147,7 @@ export type PrivateLinkResourcesListByAccountOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Azure Video Indexer account.
  */
 export const PrivateLinkResourcesListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

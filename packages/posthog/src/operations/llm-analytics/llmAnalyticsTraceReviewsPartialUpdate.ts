@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsTraceReviewsPartialUpdateInput =
@@ -27,7 +26,7 @@ export const LlmAnalyticsTraceReviewsPartialUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/llm_analytics/trace_reviews/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/trace_reviews/{id}/",
     }),
   );
 export type LlmAnalyticsTraceReviewsPartialUpdateInput =
@@ -38,6 +37,7 @@ export const LlmAnalyticsTraceReviewsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     trace_id: Schema.optional(Schema.String),
+    trace_url: Schema.optional(Schema.String),
     comment: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -111,5 +111,4 @@ export const llmAnalyticsTraceReviewsPartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsTraceReviewsPartialUpdateInput,
     outputSchema: LlmAnalyticsTraceReviewsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

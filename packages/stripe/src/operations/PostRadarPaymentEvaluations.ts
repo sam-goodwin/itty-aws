@@ -203,7 +203,14 @@ export const PostRadarPaymentEvaluationsOutput =
     signals: Schema.Struct({
       fraudulent_payment: Schema.Struct({
         evaluated_at: Schema.Number,
-        risk_level: Schema.Literals(["elevated", "highest", "normal"]),
+        risk_level: Schema.Literals([
+          "elevated",
+          "highest",
+          "low",
+          "normal",
+          "not_assessed",
+          "unknown",
+        ]),
         score: Schema.Number,
       }),
     }),

@@ -13,6 +13,9 @@ export const ListGroupClusterBackupSnapshotsInput =
     itemsPerPage: Schema.optional(Schema.Number),
     pageNum: Schema.optional(Schema.Number),
     pretty: Schema.optional(Schema.Boolean),
+    pointInTimeUtcSeconds: Schema.optional(Schema.Number),
+    oplogTs: Schema.optional(Schema.Number),
+    oplogInc: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -32,7 +35,7 @@ export type ListGroupClusterBackupSnapshotsOutput =
 /**
  * Return All Replica Set Cloud Backups
  *
- * Returns all snapshots of one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role or Project Backup Manager role.
+ * Returns all snapshots of one cluster from the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
@@ -43,6 +46,9 @@ export type ListGroupClusterBackupSnapshotsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster.
+ * @param pointInTimeUtcSeconds - Desired point in time, expressed as the number of seconds that have elapsed since the UNIX epoch. If specified, returns the closest snapshot created before that point in time. Mutually exclusive with `oplogTs` and `oplogInc`.
+ * @param oplogTs - Oplog timestamp that represents the desired point in time. This is the first part of an Oplog timestamp. Must be used with `oplogInc`. Mutually exclusive with `pointInTimeUtcSeconds`.
+ * @param oplogInc - Oplog operation number that represents the desired point in time. This is the second part of an Oplog timestamp. Must be used with `oplogTs`. Mutually exclusive with `pointInTimeUtcSeconds`.
  */
 export const listGroupClusterBackupSnapshots =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

@@ -325,7 +325,12 @@ export const AlertProcessingRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AlertsChangeStateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    scope: Schema.String.pipe(T.PathParam()),
+    alertId: Schema.String.pipe(T.PathParam()),
+    newState: Schema.Literals(["New", "Acknowledged", "Closed"]),
+    comments: Schema.optional(Schema.String),
+  },
 ).pipe(
   T.Http({
     method: "POST",
@@ -347,15 +352,72 @@ export type AlertsChangeStateOutput = typeof AlertsChangeStateOutput.Type;
 // The operation
 /**
  * Change the state of an alert. If scope is a deleted resource then please use scope as parent resource of the delete resource. For example if my alert id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/virtualMachines/vm1/providers/Microsoft.AlertsManagement/alerts/{alertId}' and 'vm1' is deleted then if you want to change state of this particular alert then use parent resource of scope. So in this example change state call will look like this: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AlertsManagement/alerts/{alertId}'.
+ *
+ * @param scope - scope here is resourceId for which alert is created.
+ * @param alertId - Unique ID of an alert instance.
+ * @param api-version - API version.
+ * @param newState - New state of the alert.
  */
 export const AlertsChangeState = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AlertsChangeStateInput,
   outputSchema: AlertsChangeStateOutput,
 }));
 // Input Schema
-export const AlertsGetAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AlertsGetAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  targetResource: Schema.optional(Schema.String),
+  targetResourceType: Schema.optional(Schema.String),
+  targetResourceGroup: Schema.optional(Schema.String),
+  monitorService: Schema.optional(
+    Schema.Literals([
+      "Application Insights",
+      "ActivityLog Administrative",
+      "ActivityLog Security",
+      "ActivityLog Recommendation",
+      "ActivityLog Policy",
+      "ActivityLog Autoscale",
+      "Log Analytics",
+      "Nagios",
+      "Platform",
+      "SCOM",
+      "ServiceHealth",
+      "SmartDetector",
+      "VM Insights",
+      "Zabbix",
+      "Resource Health",
+    ]),
+  ),
+  monitorCondition: Schema.optional(Schema.Literals(["Fired", "Resolved"])),
+  severity: Schema.optional(
+    Schema.Literals(["Sev0", "Sev1", "Sev2", "Sev3", "Sev4"]),
+  ),
+  alertState: Schema.optional(
+    Schema.Literals(["New", "Acknowledged", "Closed"]),
+  ),
+  alertRule: Schema.optional(Schema.String),
+  smartGroupId: Schema.optional(Schema.String),
+  includeContext: Schema.optional(Schema.Boolean),
+  includeEgressConfig: Schema.optional(Schema.Boolean),
+  pageCount: Schema.optional(Schema.Number),
+  sortBy: Schema.optional(
+    Schema.Literals([
+      "name",
+      "severity",
+      "alertState",
+      "monitorCondition",
+      "targetResource",
+      "targetResourceName",
+      "targetResourceGroup",
+      "targetResourceType",
+      "startDateTime",
+      "lastModifiedDateTime",
+    ]),
+  ),
+  sortOrder: Schema.optional(Schema.Literals(["asc", "desc"])),
+  select: Schema.optional(Schema.String),
+  timeRange: Schema.optional(Schema.Literals(["1h", "1d", "7d", "30d"])),
+  customTimeRange: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.AlertsManagement/alerts",
@@ -382,15 +444,36 @@ export type AlertsGetAllOutput = typeof AlertsGetAllOutput.Type;
 // The operation
 /**
  * List all existing alerts, where the results can be filtered on the basis of multiple parameters (e.g. time range). The results can then be sorted on the basis specific fields, with the default being lastModifiedDateTime.
+ *
+ * @param scope - scope here is resourceId for which alert is created.
+ * @param targetResource - Filter by target resource( which is full ARM ID) Default value is select all.
+ * @param targetResourceType - Filter by target resource type. Default value is select all.
+ * @param targetResourceGroup - Filter by target resource group name. Default value is select all.
+ * @param monitorService - Filter by monitor service which generates the alert instance. Default value is select all.
+ * @param monitorCondition - Filter by monitor condition which is either 'Fired' or 'Resolved'. Default value is to select all.
+ * @param severity - Filter by severity.  Default value is select all.
+ * @param alertState - Filter by state of the alert instance. Default value is to select all.
+ * @param alertRule - Filter by specific alert rule.  Default value is to select all.
+ * @param smartGroupId - Filter the alerts list by the Smart Group Id. Default value is none.
+ * @param includeContext - Include context which has contextual data specific to the monitor service. Default value is false'
+ * @param includeEgressConfig - Include egress config which would be used for displaying the content in portal.  Default value is 'false'.
+ * @param pageCount - Determines number of alerts returned per page in response. Permissible value is between 1 to 250. When the "includeContent"  filter is selected, maximum value allowed is 25. Default value is 25.
+ * @param sortBy - Sort the query results by input field,  Default value is 'lastModifiedDateTime'.
+ * @param sortOrder - Sort the query results order in either ascending or descending.  Default value is 'desc' for time fields and 'asc' for others.
+ * @param select - This filter allows to selection of the fields(comma separated) which would  be part of the essential section. This would allow to project only the  required fields rather than getting entire content.  Default is to fetch all the fields in the essentials section.
+ * @param timeRange - Filter by time range by below listed values. Default value is 1 day.
+ * @param customTimeRange - Filter by custom time range in the format <start-time>/<end-time>  where time is in (ISO-8601 format)'. Permissible values is within 30 days from  query time. Either timeRange or customTimeRange could be used but not both. Default is none.
+ * @param api-version - API version.
  */
 export const AlertsGetAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AlertsGetAllInput,
   outputSchema: AlertsGetAllOutput,
 }));
 // Input Schema
-export const AlertsGetByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AlertsGetByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  alertId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.AlertsManagement/alerts/{alertId}",
@@ -412,15 +495,20 @@ export type AlertsGetByIdOutput = typeof AlertsGetByIdOutput.Type;
  * Get a specific alert.
  *
  * Get information related to a specific alert. If scope is a deleted resource then please use scope as parent resource of the delete resource. For example if my alert id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/virtualMachines/vm1/providers/Microsoft.AlertsManagement/alerts/{alertId}' and 'vm1' is deleted then if you want to get alert by id then use parent resource of scope. So in this example get alert by id call will look like this: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AlertsManagement/alerts/{alertId}'.
+ *
+ * @param scope - scope here is resourceId for which alert is created.
+ * @param alertId - Unique ID of an alert instance.
+ * @param api-version - API version.
  */
 export const AlertsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AlertsGetByIdInput,
   outputSchema: AlertsGetByIdOutput,
 }));
 // Input Schema
-export const AlertsGetHistoryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AlertsGetHistoryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  alertId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.AlertsManagement/alerts/{alertId}/history",
@@ -443,6 +531,8 @@ export type AlertsGetHistoryOutput = typeof AlertsGetHistoryOutput.Type;
 /**
  * Get the history of an alert, which captures any monitor condition changes (Fired/Resolved), alert state changes (New/Acknowledged/Closed) and applied action rules for that particular alert. If scope is a deleted resource then please use scope as parent resource of the delete resource. For example if my alert id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/virtualMachines/vm1/providers/Microsoft.AlertsManagement/alerts/{alertId}' and 'vm1' is deleted then if you want to get history of this particular alert then use parent resource of scope. So in this example get history call will look like this: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AlertsManagement/alerts/{alertId}/history'.
  *
+ * @param scope - scope here is resourceId for which alert is created.
+ * @param alertId - Unique ID of an alert instance.
  * @param api-version - The API version to use for this operation.
  */
 export const AlertsGetHistory = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -450,9 +540,50 @@ export const AlertsGetHistory = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AlertsGetHistoryOutput,
 }));
 // Input Schema
-export const AlertsGetSummaryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AlertsGetSummaryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  groupby: Schema.Literals([
+    "severity",
+    "alertState",
+    "monitorCondition",
+    "monitorService",
+    "signalType",
+    "alertRule",
+  ]),
+  includeSmartGroupsCount: Schema.optional(Schema.Boolean),
+  targetResource: Schema.optional(Schema.String),
+  targetResourceType: Schema.optional(Schema.String),
+  targetResourceGroup: Schema.optional(Schema.String),
+  monitorService: Schema.optional(
+    Schema.Literals([
+      "Application Insights",
+      "ActivityLog Administrative",
+      "ActivityLog Security",
+      "ActivityLog Recommendation",
+      "ActivityLog Policy",
+      "ActivityLog Autoscale",
+      "Log Analytics",
+      "Nagios",
+      "Platform",
+      "SCOM",
+      "ServiceHealth",
+      "SmartDetector",
+      "VM Insights",
+      "Zabbix",
+      "Resource Health",
+    ]),
+  ),
+  monitorCondition: Schema.optional(Schema.Literals(["Fired", "Resolved"])),
+  severity: Schema.optional(
+    Schema.Literals(["Sev0", "Sev1", "Sev2", "Sev3", "Sev4"]),
+  ),
+  alertState: Schema.optional(
+    Schema.Literals(["New", "Acknowledged", "Closed"]),
+  ),
+  alertRule: Schema.optional(Schema.String),
+  timeRange: Schema.optional(Schema.Literals(["1h", "1d", "7d", "30d"])),
+  customTimeRange: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.AlertsManagement/alertsSummary",
@@ -474,15 +605,30 @@ export type AlertsGetSummaryOutput = typeof AlertsGetSummaryOutput.Type;
 // The operation
 /**
  * Get a summarized count of your alerts grouped by various parameters (e.g. grouping by 'Severity' returns the count of alerts for each severity).
+ *
+ * @param scope - scope here is resourceId for which alert is created.
+ * @param groupby - This parameter allows the result set to be grouped by input fields. For example, groupby=severity,alertstate.
+ * @param includeSmartGroupsCount - Include count of the SmartGroups as part of the summary. Default value is 'false'.
+ * @param targetResource - Filter by target resource( which is full ARM ID) Default value is select all.
+ * @param targetResourceType - Filter by target resource type. Default value is select all.
+ * @param targetResourceGroup - Filter by target resource group name. Default value is select all.
+ * @param monitorService - Filter by monitor service which generates the alert instance. Default value is select all.
+ * @param monitorCondition - Filter by monitor condition which is either 'Fired' or 'Resolved'. Default value is to select all.
+ * @param severity - Filter by severity.  Default value is select all.
+ * @param alertState - Filter by state of the alert instance. Default value is to select all.
+ * @param alertRule - Filter by specific alert rule.  Default value is to select all.
+ * @param timeRange - Filter by time range by below listed values. Default value is 1 day.
+ * @param customTimeRange - Filter by custom time range in the format <start-time>/<end-time>  where time is in (ISO-8601 format)'. Permissible values is within 30 days from  query time. Either timeRange or customTimeRange could be used but not both. Default is none.
+ * @param api-version - API version.
  */
 export const AlertsGetSummary = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AlertsGetSummaryInput,
   outputSchema: AlertsGetSummaryOutput,
 }));
 // Input Schema
-export const AlertsMetaDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AlertsMetaDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identifier: Schema.Literals(["MonitorServiceList"]),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AlertsManagement/alertsMetaData",
@@ -504,6 +650,9 @@ export type AlertsMetaDataOutput = typeof AlertsMetaDataOutput.Type;
 // The operation
 /**
  * List alerts meta data information based on value of identifier parameter.
+ *
+ * @param api-version - API version.
+ * @param identifier - Identification of the information to be retrieved by API call.
  */
 export const AlertsMetaData = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AlertsMetaDataInput,
@@ -543,6 +692,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * List all operations available through Azure Alerts Management Resource Provider.
+ *
+ * @param api-version - API version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -933,6 +1084,9 @@ export const PrometheusRuleGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SmartDetectorAlertRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    alertRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -1012,6 +1166,11 @@ export type SmartDetectorAlertRulesCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update a Smart Detector alert rule.
+ *
+ * @param subscriptionId - The Azure subscription Id.
+ * @param resourceGroupName - The name of the resource group.
+ * @param alertRuleName - The name of the alert rule.
+ * @param api-version - Client Api Version.
  */
 export const SmartDetectorAlertRulesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1020,7 +1179,11 @@ export const SmartDetectorAlertRulesCreateOrUpdate =
   }));
 // Input Schema
 export const SmartDetectorAlertRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    alertRuleName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
@@ -1039,6 +1202,11 @@ export type SmartDetectorAlertRulesDeleteOutput =
 // The operation
 /**
  * Delete an existing Smart Detector alert rule.
+ *
+ * @param subscriptionId - The Azure subscription Id.
+ * @param resourceGroupName - The name of the resource group.
+ * @param alertRuleName - The name of the alert rule.
+ * @param api-version - Client Api Version.
  */
 export const SmartDetectorAlertRulesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1047,7 +1215,12 @@ export const SmartDetectorAlertRulesDelete =
   }));
 // Input Schema
 export const SmartDetectorAlertRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    alertRuleName: Schema.String.pipe(T.PathParam()),
+    expandDetector: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
@@ -1072,6 +1245,12 @@ export type SmartDetectorAlertRulesGetOutput =
 // The operation
 /**
  * Get a specific Smart Detector alert rule.
+ *
+ * @param subscriptionId - The Azure subscription Id.
+ * @param resourceGroupName - The name of the resource group.
+ * @param alertRuleName - The name of the alert rule.
+ * @param api-version - Client Api Version.
+ * @param expandDetector - Indicates if Smart Detector should be expanded.
  */
 export const SmartDetectorAlertRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1081,7 +1260,10 @@ export const SmartDetectorAlertRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SmartDetectorAlertRulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    expandDetector: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/microsoft.alertsManagement/smartDetectorAlertRules",
@@ -1113,6 +1295,10 @@ export type SmartDetectorAlertRulesListOutput =
 // The operation
 /**
  * List all the existing Smart Detector alert rules within the subscription.
+ *
+ * @param subscriptionId - The Azure subscription Id.
+ * @param api-version - Client Api Version.
+ * @param expandDetector - Indicates if Smart Detector should be expanded.
  */
 export const SmartDetectorAlertRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1122,7 +1308,11 @@ export const SmartDetectorAlertRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SmartDetectorAlertRulesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    expandDetector: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules",
@@ -1154,6 +1344,11 @@ export type SmartDetectorAlertRulesListByResourceGroupOutput =
 // The operation
 /**
  * List all the existing Smart Detector alert rules within the subscription and resource group.
+ *
+ * @param subscriptionId - The Azure subscription Id.
+ * @param resourceGroupName - The name of the resource group.
+ * @param api-version - Client Api Version.
+ * @param expandDetector - Indicates if Smart Detector should be expanded.
  */
 export const SmartDetectorAlertRulesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1163,6 +1358,9 @@ export const SmartDetectorAlertRulesListByResourceGroup =
 // Input Schema
 export const SmartDetectorAlertRulesPatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    alertRuleName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1214,6 +1412,11 @@ export type SmartDetectorAlertRulesPatchOutput =
 // The operation
 /**
  * Patch a specific Smart Detector alert rule.
+ *
+ * @param subscriptionId - The Azure subscription Id.
+ * @param resourceGroupName - The name of the resource group.
+ * @param alertRuleName - The name of the alert rule.
+ * @param api-version - Client Api Version.
  */
 export const SmartDetectorAlertRulesPatch =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query echoMessagePartById($id: ID!) {\n  echoMessagePart {\n    byId(id: $id) {\n      data\n      echoMessage {\n        completedAt\n        echoChat {\n          agentMetadata\n          agentType\n          id\n          state\n          stats\n          title\n        }\n        echoTurn {\n          completedAt\n          createdAt\n          id\n        }\n        id\n        metadata\n        role\n        turnId\n        user {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          email\n          emailVerified\n          firstName\n          fullName\n          githubUsername\n          hasPassword\n          hasPendingUserInvitations\n          id\n          industry\n          isExpoAdmin\n          isLegacy\n          isSecondFactorAuthenticationEnabled\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          newEmailPendingVerification\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n      }\n      id\n      index\n      type\n    }\n  }\n}";
+  "query echoMessagePartById($id: ID!) {\n  echoMessagePart {\n    byId(id: $id) {\n      data\n      echoMessage {\n        completedAt\n        echoChat {\n          agentMetadata\n          agentType\n          id\n          state\n          stats\n          title\n        }\n        echoTurn {\n          completedAt\n          completionStatus\n          createdAt\n          error\n          id\n        }\n        id\n        metadata\n        role\n        turnId\n        user {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          email\n          emailVerified\n          firstName\n          fullName\n          githubUsername\n          hasPassword\n          hasPendingUserInvitations\n          id\n          industry\n          isExpoAdmin\n          isLegacy\n          isSecondFactorAuthenticationEnabled\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          newEmailPendingVerification\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n      }\n      id\n      index\n      type\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const EchoMessagePartByIdInput = Schema.Struct({
@@ -37,7 +37,11 @@ export const EchoMessagePartByIdOutput = Schema.NullOr(
       echoTurn: Schema.NullOr(
         Schema.Struct({
           completedAt: Schema.NullOr(Schema.String),
+          completionStatus: Schema.NullOr(
+            Schema.Literals(["CANCELLED", "COMPLETED", "ERROR"]),
+          ),
           createdAt: Schema.String,
+          error: Schema.NullOr(Schema.String),
           id: Schema.String,
         }),
       ),
@@ -69,7 +73,7 @@ export const EchoMessagePartByIdOutput = Schema.NullOr(
           lastName: Schema.NullOr(Schema.String),
           location: Schema.NullOr(Schema.String),
           newEmailPendingVerification: Schema.NullOr(Schema.String),
-          primaryAccountProfileImageUrl: Schema.NullOr(Schema.String),
+          primaryAccountProfileImageUrl: Schema.String,
           profilePhoto: Schema.String,
           twitterUsername: Schema.NullOr(Schema.String),
           username: Schema.String,

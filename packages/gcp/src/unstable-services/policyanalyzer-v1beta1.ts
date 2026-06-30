@@ -23,16 +23,16 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface GoogleCloudPolicyanalyzerV1beta1ObservationPeriod {
-  /** The observation start time. */
-  startTime?: string;
   /** The observation end time. */
   endTime?: string;
+  /** The observation start time. */
+  startTime?: string;
 }
 
 export const GoogleCloudPolicyanalyzerV1beta1ObservationPeriod: Schema.Schema<GoogleCloudPolicyanalyzerV1beta1ObservationPeriod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudPolicyanalyzerV1beta1ObservationPeriod",
   });
@@ -106,13 +106,61 @@ T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
 // Operations
 // ==========================================================================
 
+export interface QueryFoldersLocationsActivityTypesActivitiesRequest {
+  /** Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ */
+  parent: string;
+  /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
+  pageSize?: number;
+  /** Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=} */
+  filter?: string;
+  /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. */
+  pageToken?: string;
+}
+
+export const QueryFoldersLocationsActivityTypesActivitiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/activities:query" }),
+    svc,
+  ) as unknown as Schema.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>;
+
+export type QueryFoldersLocationsActivityTypesActivitiesResponse =
+  GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse;
+export const QueryFoldersLocationsActivityTypesActivitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse;
+
+export type QueryFoldersLocationsActivityTypesActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Queries policy activities on GCP resources. */
+export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperationMethod<
+  QueryFoldersLocationsActivityTypesActivitiesRequest,
+  QueryFoldersLocationsActivityTypesActivitiesResponse,
+  QueryFoldersLocationsActivityTypesActivitiesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: QueryFoldersLocationsActivityTypesActivitiesRequest,
+  output: QueryFoldersLocationsActivityTypesActivitiesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface QueryProjectsLocationsActivityTypesActivitiesRequest {
   /** Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=} */
   filter?: string;
-  /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
-  pageSize?: number;
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
+  /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
+  pageSize?: number;
   /** Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ */
   parent: string;
 }
@@ -120,8 +168,8 @@ export interface QueryProjectsLocationsActivityTypesActivitiesRequest {
 export const QueryProjectsLocationsActivityTypesActivitiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/activities:query" }),
@@ -155,22 +203,22 @@ export const queryProjectsLocationsActivityTypesActivities: API.PaginatedOperati
 }));
 
 export interface QueryOrganizationsLocationsActivityTypesActivitiesRequest {
-  /** Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ */
-  parent: string;
-  /** Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=} */
-  filter?: string;
   /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
   pageSize?: number;
+  /** Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=} */
+  filter?: string;
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
+  /** Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ */
+  parent: string;
 }
 
 export const QueryOrganizationsLocationsActivityTypesActivitiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/activities:query" }),
     svc,
@@ -195,54 +243,6 @@ export const queryOrganizationsLocationsActivityTypesActivities: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: QueryOrganizationsLocationsActivityTypesActivitiesRequest,
   output: QueryOrganizationsLocationsActivityTypesActivitiesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface QueryFoldersLocationsActivityTypesActivitiesRequest {
-  /** Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ */
-  parent: string;
-  /** Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=} */
-  filter?: string;
-  /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
-  pageSize?: number;
-  /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. */
-  pageToken?: string;
-}
-
-export const QueryFoldersLocationsActivityTypesActivitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+parent}/activities:query" }),
-    svc,
-  ) as unknown as Schema.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>;
-
-export type QueryFoldersLocationsActivityTypesActivitiesResponse =
-  GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse;
-export const QueryFoldersLocationsActivityTypesActivitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse;
-
-export type QueryFoldersLocationsActivityTypesActivitiesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Queries policy activities on GCP resources. */
-export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperationMethod<
-  QueryFoldersLocationsActivityTypesActivitiesRequest,
-  QueryFoldersLocationsActivityTypesActivitiesResponse,
-  QueryFoldersLocationsActivityTypesActivitiesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: QueryFoldersLocationsActivityTypesActivitiesRequest,
-  output: QueryFoldersLocationsActivityTypesActivitiesResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",

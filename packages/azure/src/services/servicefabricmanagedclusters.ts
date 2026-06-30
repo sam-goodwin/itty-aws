@@ -2161,7 +2161,7 @@ export type ManagedUnsupportedVMSizesGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
- * @param location - The location for the cluster code versions. This is different from cluster location.
+ * @param location - The location for the unsupported VM sizes. This is different from cluster location.
  * @param vmSize - VM Size name.
  */
 export const managedUnsupportedVMSizesGet =
@@ -2210,7 +2210,7 @@ export type ManagedUnsupportedVMSizesListOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
- * @param location - The location for the cluster code versions. This is different from cluster location.
+ * @param location - The location for the unsupported VM sizes. This is different from cluster location.
  */
 export const managedUnsupportedVMSizesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

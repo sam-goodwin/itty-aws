@@ -72,7 +72,7 @@ export const AkriConnectorCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AkriConnectorCreateOrUpdateInput =
@@ -131,7 +131,7 @@ export const AkriConnectorDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AkriConnectorDeleteInput = typeof AkriConnectorDeleteInput.Type;
@@ -167,7 +167,7 @@ export const AkriConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type AkriConnectorGetInput = typeof AkriConnectorGetInput.Type;
@@ -222,7 +222,7 @@ export const AkriConnectorListByTemplateInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AkriConnectorListByTemplateInput =
@@ -364,7 +364,7 @@ export const AkriConnectorTemplateCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AkriConnectorTemplateCreateOrUpdateInput =
@@ -420,7 +420,7 @@ export const AkriConnectorTemplateDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AkriConnectorTemplateDeleteInput =
@@ -459,7 +459,7 @@ export const AkriConnectorTemplateGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AkriConnectorTemplateGetInput =
@@ -515,7 +515,7 @@ export const AkriConnectorTemplateListByInstanceResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AkriConnectorTemplateListByInstanceResourceInput =
@@ -626,7 +626,7 @@ export const AkriServiceCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AkriServiceCreateOrUpdateInput =
@@ -684,7 +684,7 @@ export const AkriServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type AkriServiceDeleteInput = typeof AkriServiceDeleteInput.Type;
@@ -717,7 +717,7 @@ export const AkriServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type AkriServiceGetInput = typeof AkriServiceGetInput.Type;
@@ -768,7 +768,7 @@ export const AkriServiceListByInstanceResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AkriServiceListByInstanceResourceInput =
@@ -906,7 +906,7 @@ export const BrokerAuthenticationCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerAuthenticationCreateOrUpdateInput =
@@ -964,7 +964,7 @@ export const BrokerAuthenticationDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerAuthenticationDeleteInput =
@@ -1005,7 +1005,7 @@ export const BrokerAuthenticationGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerAuthenticationGetInput =
@@ -1063,7 +1063,7 @@ export const BrokerAuthenticationListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerAuthenticationListByResourceGroupInput =
@@ -1195,7 +1195,7 @@ export const BrokerAuthorizationCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerAuthorizationCreateOrUpdateInput =
@@ -1253,7 +1253,7 @@ export const BrokerAuthorizationDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerAuthorizationDeleteInput =
@@ -1294,7 +1294,7 @@ export const BrokerAuthorizationGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerAuthorizationGetInput =
@@ -1352,7 +1352,7 @@ export const BrokerAuthorizationListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerAuthorizationListByResourceGroupInput =
@@ -1644,6 +1644,9 @@ export const BrokerCreateOrUpdateInput =
             cpu: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
           }),
         ),
+        highPriorityMessagesBackpressureHandling: Schema.optional(
+          Schema.Literals(["Accept", "Reject"]),
+        ),
         memoryProfile: Schema.optional(
           Schema.Literals(["Tiny", "Low", "Medium", "High"]),
         ),
@@ -1779,7 +1782,7 @@ export const BrokerCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerCreateOrUpdateInput = typeof BrokerCreateOrUpdateInput.Type;
@@ -1833,7 +1836,7 @@ export const BrokerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type BrokerDeleteInput = typeof BrokerDeleteInput.Type;
@@ -1866,7 +1869,7 @@ export const BrokerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type BrokerGetInput = typeof BrokerGetInput.Type;
@@ -1917,7 +1920,7 @@ export const BrokerListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerListByResourceGroupInput =
@@ -2068,7 +2071,7 @@ export const BrokerListenerCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerListenerCreateOrUpdateInput =
@@ -2126,7 +2129,7 @@ export const BrokerListenerDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerListenerDeleteInput = typeof BrokerListenerDeleteInput.Type;
@@ -2166,7 +2169,7 @@ export const BrokerListenerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type BrokerListenerGetInput = typeof BrokerListenerGetInput.Type;
@@ -2220,7 +2223,7 @@ export const BrokerListenerListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BrokerListenerListByResourceGroupInput =
@@ -2424,7 +2427,7 @@ export const DataflowCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowCreateOrUpdateInput =
@@ -2482,7 +2485,7 @@ export const DataflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type DataflowDeleteInput = typeof DataflowDeleteInput.Type;
@@ -2815,7 +2818,7 @@ export const DataflowEndpointCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowEndpointCreateOrUpdateInput =
@@ -2871,7 +2874,7 @@ export const DataflowEndpointDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowEndpointDeleteInput =
@@ -2910,7 +2913,7 @@ export const DataflowEndpointGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowEndpointGetInput = typeof DataflowEndpointGetInput.Type;
@@ -2962,7 +2965,7 @@ export const DataflowEndpointListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowEndpointListByResourceGroupInput =
@@ -3032,7 +3035,7 @@ export const DataflowGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type DataflowGetInput = typeof DataflowGetInput.Type;
@@ -3158,7 +3161,7 @@ export const DataflowGraphCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowGraphCreateOrUpdateInput =
@@ -3217,7 +3220,7 @@ export const DataflowGraphDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowGraphDeleteInput = typeof DataflowGraphDeleteInput.Type;
@@ -3253,7 +3256,7 @@ export const DataflowGraphGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type DataflowGraphGetInput = typeof DataflowGraphGetInput.Type;
@@ -3308,7 +3311,7 @@ export const DataflowGraphListByDataflowProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowGraphListByDataflowProfileInput =
@@ -3379,7 +3382,7 @@ export const DataflowListByProfileResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowListByProfileResourceInput =
@@ -3509,7 +3512,7 @@ export const DataflowProfileCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowProfileCreateOrUpdateInput =
@@ -3565,7 +3568,7 @@ export const DataflowProfileDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowProfileDeleteInput = typeof DataflowProfileDeleteInput.Type;
@@ -3603,7 +3606,7 @@ export const DataflowProfileGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowProfileGetInput = typeof DataflowProfileGetInput.Type;
@@ -3655,7 +3658,7 @@ export const DataflowProfileListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type DataflowProfileListByResourceGroupInput =
@@ -3800,7 +3803,7 @@ export const InstanceCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type InstanceCreateOrUpdateInput =
@@ -3854,7 +3857,7 @@ export const InstanceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type InstanceDeleteInput = typeof InstanceDeleteInput.Type;
@@ -3885,7 +3888,7 @@ export const InstanceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type InstanceGetInput = typeof InstanceGetInput.Type;
@@ -3934,7 +3937,7 @@ export const InstanceListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type InstanceListByResourceGroupInput =
@@ -4001,7 +4004,7 @@ export const InstanceListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTOperations/instances",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type InstanceListBySubscriptionInput =
@@ -4090,7 +4093,7 @@ export const InstanceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type InstanceUpdateInput = typeof InstanceUpdateInput.Type;
@@ -4137,7 +4140,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.IoTOperations/operations",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -4229,7 +4232,7 @@ export const RegistryEndpointCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type RegistryEndpointCreateOrUpdateInput =
@@ -4285,7 +4288,7 @@ export const RegistryEndpointDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type RegistryEndpointDeleteInput =
@@ -4324,7 +4327,7 @@ export const RegistryEndpointGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type RegistryEndpointGetInput = typeof RegistryEndpointGetInput.Type;
@@ -4376,7 +4379,7 @@ export const RegistryEndpointListByInstanceResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type RegistryEndpointListByInstanceResourceInput =

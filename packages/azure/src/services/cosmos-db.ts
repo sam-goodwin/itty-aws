@@ -14,6 +14,7 @@ export const CassandraClustersCreateUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -40,6 +41,9 @@ export const CassandraClustersCreateUpdateInput =
           }),
         ),
         repairEnabled: Schema.optional(Schema.Boolean),
+        autoReplicate: Schema.optional(
+          Schema.Literals(["None", "SystemKeyspaces", "AllKeyspaces"]),
+        ),
         clientCertificates: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -75,6 +79,7 @@ export const CassandraClustersCreateUpdateInput =
             }),
           ),
         ),
+        externalDataCenters: Schema.optional(Schema.Array(Schema.String)),
         hoursBetweenBackups: Schema.optional(Schema.Number),
         deallocated: Schema.optional(Schema.Boolean),
         cassandraAuditLoggingEnabled: Schema.optional(Schema.Boolean),
@@ -86,15 +91,25 @@ export const CassandraClustersCreateUpdateInput =
             additionalErrorInfo: Schema.optional(Schema.String),
           }),
         ),
+        extensions: Schema.optional(Schema.Array(Schema.String)),
+        backupSchedules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              scheduleName: Schema.optional(Schema.String),
+              cronExpression: Schema.optional(Schema.String),
+              retentionInHours: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        scheduledEventStrategy: Schema.optional(
+          Schema.Literals(["Ignore", "StopAny", "StopByRack"]),
+        ),
         azureConnectionMethod: Schema.optional(
           Schema.Literals(["None", "VPN"]),
         ),
         privateLinkResourceId: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
@@ -108,7 +123,7 @@ export const CassandraClustersCreateUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraClustersCreateUpdateInput =
@@ -120,13 +135,18 @@ export const CassandraClustersCreateUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    identity: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -137,9 +157,10 @@ export type CassandraClustersCreateUpdateOutput =
 /**
  * Create or update a managed Cassandra cluster. When updating, you must specify all writable properties. To update only some properties, use PATCH.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
  */
 export const CassandraClustersCreateUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -151,11 +172,12 @@ export const CassandraClustersDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/deallocate",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraClustersDeallocateInput =
@@ -171,9 +193,11 @@ export type CassandraClustersDeallocateOutput =
 /**
  * Deallocate the Managed Cassandra Cluster and Associated Data Centers. Deallocation will deallocate the host virtual machine of this cluster, and reserved the data disk. This won't do anything on an already deallocated cluster. Use Start to restart the cluster.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
+ * @param x-ms-force-deallocate - Force to deallocate a cluster of Cluster Type Production. Force to deallocate a cluster of Cluster Type Production might cause data loss
  */
 export const CassandraClustersDeallocate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -186,11 +210,12 @@ export const CassandraClustersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraClustersDeleteInput =
@@ -206,9 +231,10 @@ export type CassandraClustersDeleteOutput =
 /**
  * Deletes a managed Cassandra cluster.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
  */
 export const CassandraClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -221,11 +247,12 @@ export const CassandraClustersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraClustersGetInput = typeof CassandraClustersGetInput.Type;
@@ -236,13 +263,18 @@ export const CassandraClustersGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    identity: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -252,9 +284,10 @@ export type CassandraClustersGetOutput = typeof CassandraClustersGetOutput.Type;
 /**
  * Get the properties of a managed Cassandra cluster.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
  */
 export const CassandraClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -267,6 +300,7 @@ export const CassandraClustersInvokeCommandInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     command: Schema.String,
     arguments: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     host: Schema.String,
@@ -276,7 +310,7 @@ export const CassandraClustersInvokeCommandInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/invokeCommand",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraClustersInvokeCommandInput =
@@ -292,9 +326,10 @@ export type CassandraClustersInvokeCommandOutput =
 /**
  * Invoke a command like nodetool for cassandra maintenance
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
  */
 export const CassandraClustersInvokeCommand =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -310,7 +345,7 @@ export const CassandraClustersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraClustersListByResourceGroupInput =
@@ -325,20 +360,34 @@ export const CassandraClustersListByResourceGroupOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          identity: Schema.optional(
+          systemData: Schema.optional(
             Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
               ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
             }),
           ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CassandraClustersListByResourceGroupOutput =
   typeof CassandraClustersListByResourceGroupOutput.Type;
@@ -347,9 +396,9 @@ export type CassandraClustersListByResourceGroupOutput =
 /**
  * List all managed Cassandra clusters in this resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const CassandraClustersListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -364,7 +413,7 @@ export const CassandraClustersListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/cassandraClusters",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraClustersListBySubscriptionInput =
@@ -379,20 +428,34 @@ export const CassandraClustersListBySubscriptionOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          identity: Schema.optional(
+          systemData: Schema.optional(
             Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
               ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
             }),
           ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CassandraClustersListBySubscriptionOutput =
   typeof CassandraClustersListBySubscriptionOutput.Type;
@@ -401,8 +464,8 @@ export type CassandraClustersListBySubscriptionOutput =
 /**
  * List all managed Cassandra clusters in this subscription.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const CassandraClustersListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -414,11 +477,12 @@ export const CassandraClustersStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/start",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraClustersStartInput =
@@ -434,9 +498,10 @@ export type CassandraClustersStartOutput =
 /**
  * Start the Managed Cassandra Cluster and Associated Data Centers. Start will start the host virtual machine of this cluster with reserved data disk. This won't do anything on an already running cluster. Use Deallocate to deallocate the cluster.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
  */
 export const CassandraClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -449,11 +514,12 @@ export const CassandraClustersStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/status",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraClustersStatusInput =
@@ -537,6 +603,7 @@ export const CassandraClustersStatusOutput =
                 memoryFreeKB: Schema.optional(Schema.Number),
                 memoryTotalKB: Schema.optional(Schema.Number),
                 cpuUsage: Schema.optional(Schema.Number),
+                isLatestModel: Schema.optional(Schema.Boolean),
               }),
             ),
           ),
@@ -551,9 +618,10 @@ export type CassandraClustersStatusOutput =
 /**
  * Gets the CPU, memory, and disk usage statistics for each Cassandra node in a cluster.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
  */
 export const CassandraClustersStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -566,6 +634,7 @@ export const CassandraClustersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -592,6 +661,9 @@ export const CassandraClustersUpdateInput =
           }),
         ),
         repairEnabled: Schema.optional(Schema.Boolean),
+        autoReplicate: Schema.optional(
+          Schema.Literals(["None", "SystemKeyspaces", "AllKeyspaces"]),
+        ),
         clientCertificates: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -627,6 +699,7 @@ export const CassandraClustersUpdateInput =
             }),
           ),
         ),
+        externalDataCenters: Schema.optional(Schema.Array(Schema.String)),
         hoursBetweenBackups: Schema.optional(Schema.Number),
         deallocated: Schema.optional(Schema.Boolean),
         cassandraAuditLoggingEnabled: Schema.optional(Schema.Boolean),
@@ -638,15 +711,25 @@ export const CassandraClustersUpdateInput =
             additionalErrorInfo: Schema.optional(Schema.String),
           }),
         ),
+        extensions: Schema.optional(Schema.Array(Schema.String)),
+        backupSchedules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              scheduleName: Schema.optional(Schema.String),
+              cronExpression: Schema.optional(Schema.String),
+              retentionInHours: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        scheduledEventStrategy: Schema.optional(
+          Schema.Literals(["Ignore", "StopAny", "StopByRack"]),
+        ),
         azureConnectionMethod: Schema.optional(
           Schema.Literals(["None", "VPN"]),
         ),
         privateLinkResourceId: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
@@ -660,7 +743,7 @@ export const CassandraClustersUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraClustersUpdateInput =
@@ -672,13 +755,18 @@ export const CassandraClustersUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    identity: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -689,9 +777,10 @@ export type CassandraClustersUpdateOutput =
 /**
  * Updates some of the properties of a managed Cassandra cluster.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
  */
 export const CassandraClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -704,6 +793,8 @@ export const CassandraDataCentersCreateUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    dataCenterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -763,14 +854,11 @@ export const CassandraDataCentersCreateUpdateInput =
         privateEndpointIpAddress: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraDataCentersCreateUpdateInput =
@@ -782,6 +870,20 @@ export const CassandraDataCentersCreateUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraDataCentersCreateUpdateOutput =
   typeof CassandraDataCentersCreateUpdateOutput.Type;
@@ -790,9 +892,11 @@ export type CassandraDataCentersCreateUpdateOutput =
 /**
  * Create or update a managed Cassandra data center. When updating, overwrite all properties. To update only some properties, use PATCH.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
+ * @param dataCenterName - Data center name in a managed Cassandra cluster.
  */
 export const CassandraDataCentersCreateUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -804,11 +908,13 @@ export const CassandraDataCentersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    dataCenterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraDataCentersDeleteInput =
@@ -824,9 +930,11 @@ export type CassandraDataCentersDeleteOutput =
 /**
  * Delete a managed Cassandra data center.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
+ * @param dataCenterName - Data center name in a managed Cassandra cluster.
  */
 export const CassandraDataCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -839,11 +947,13 @@ export const CassandraDataCentersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    dataCenterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraDataCentersGetInput =
@@ -855,6 +965,20 @@ export const CassandraDataCentersGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraDataCentersGetOutput =
   typeof CassandraDataCentersGetOutput.Type;
@@ -863,9 +987,11 @@ export type CassandraDataCentersGetOutput =
 /**
  * Get the properties of a managed Cassandra data center.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
+ * @param dataCenterName - Data center name in a managed Cassandra cluster.
  */
 export const CassandraDataCentersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -878,11 +1004,12 @@ export const CassandraDataCentersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraDataCentersListInput =
@@ -897,9 +1024,34 @@ export const CassandraDataCentersListOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CassandraDataCentersListOutput =
   typeof CassandraDataCentersListOutput.Type;
@@ -908,9 +1060,10 @@ export type CassandraDataCentersListOutput =
 /**
  * List all data centers in a particular managed Cassandra cluster.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
  */
 export const CassandraDataCentersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -923,6 +1076,8 @@ export const CassandraDataCentersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    dataCenterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -982,14 +1137,11 @@ export const CassandraDataCentersUpdateInput =
         privateEndpointIpAddress: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraDataCentersUpdateInput =
@@ -1001,6 +1153,20 @@ export const CassandraDataCentersUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraDataCentersUpdateOutput =
   typeof CassandraDataCentersUpdateOutput.Type;
@@ -1009,9 +1175,11 @@ export type CassandraDataCentersUpdateOutput =
 /**
  * Update some of the properties of a managed Cassandra data center.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - Managed Cassandra cluster name.
+ * @param dataCenterName - Data center name in a managed Cassandra cluster.
  */
 export const CassandraDataCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1024,6 +1192,8 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -1044,11 +1214,34 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesCreateUpdateCassandraKeyspaceInput =
@@ -1060,8 +1253,20 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesCreateUpdateCassandraKeyspaceOutput =
   typeof CassandraResourcesCreateUpdateCassandraKeyspaceOutput.Type;
@@ -1070,9 +1275,11 @@ export type CassandraResourcesCreateUpdateCassandraKeyspaceOutput =
 /**
  * Create or update an Azure Cosmos DB Cassandra keyspace
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesCreateUpdateCassandraKeyspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1080,10 +1287,150 @@ export const CassandraResourcesCreateUpdateCassandraKeyspace =
     outputSchema: CassandraResourcesCreateUpdateCassandraKeyspaceOutput,
   }));
 // Input Schema
+export const CassandraResourcesCreateUpdateCassandraRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        roleDefinitionId: Schema.optional(Schema.String),
+        scope: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type CassandraResourcesCreateUpdateCassandraRoleAssignmentInput =
+  typeof CassandraResourcesCreateUpdateCassandraRoleAssignmentInput.Type;
+
+// Output Schema
+export const CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput =
+  typeof CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Azure Cosmos DB Cassandra Role Assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const CassandraResourcesCreateUpdateCassandraRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CassandraResourcesCreateUpdateCassandraRoleAssignmentInput,
+    outputSchema: CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput,
+  }));
+// Input Schema
+export const CassandraResourcesCreateUpdateCassandraRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        roleName: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["BuiltInRole", "CustomRole"])),
+        assignableScopes: Schema.optional(Schema.Array(Schema.String)),
+        permissions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              dataActions: Schema.optional(Schema.Array(Schema.String)),
+              notDataActions: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type CassandraResourcesCreateUpdateCassandraRoleDefinitionInput =
+  typeof CassandraResourcesCreateUpdateCassandraRoleDefinitionInput.Type;
+
+// Output Schema
+export const CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput =
+  typeof CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Azure Cosmos DB Cassandra Role Definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const CassandraResourcesCreateUpdateCassandraRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CassandraResourcesCreateUpdateCassandraRoleDefinitionInput,
+    outputSchema: CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput,
+  }));
+// Input Schema
 export const CassandraResourcesCreateUpdateCassandraTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -1133,11 +1480,34 @@ export const CassandraResourcesCreateUpdateCassandraTableInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesCreateUpdateCassandraTableInput =
@@ -1149,8 +1519,20 @@ export const CassandraResourcesCreateUpdateCassandraTableOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesCreateUpdateCassandraTableOutput =
   typeof CassandraResourcesCreateUpdateCassandraTableOutput.Type;
@@ -1159,9 +1541,12 @@ export type CassandraResourcesCreateUpdateCassandraTableOutput =
 /**
  * Create or update an Azure Cosmos DB Cassandra Table
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
+ * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesCreateUpdateCassandraTable =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1173,11 +1558,13 @@ export const CassandraResourcesDeleteCassandraKeyspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesDeleteCassandraKeyspaceInput =
@@ -1193,9 +1580,11 @@ export type CassandraResourcesDeleteCassandraKeyspaceOutput =
 /**
  * Deletes an existing Azure Cosmos DB Cassandra keyspace.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesDeleteCassandraKeyspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1203,15 +1592,94 @@ export const CassandraResourcesDeleteCassandraKeyspace =
     outputSchema: CassandraResourcesDeleteCassandraKeyspaceOutput,
   }));
 // Input Schema
+export const CassandraResourcesDeleteCassandraRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type CassandraResourcesDeleteCassandraRoleAssignmentInput =
+  typeof CassandraResourcesDeleteCassandraRoleAssignmentInput.Type;
+
+// Output Schema
+export const CassandraResourcesDeleteCassandraRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CassandraResourcesDeleteCassandraRoleAssignmentOutput =
+  typeof CassandraResourcesDeleteCassandraRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const CassandraResourcesDeleteCassandraRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CassandraResourcesDeleteCassandraRoleAssignmentInput,
+    outputSchema: CassandraResourcesDeleteCassandraRoleAssignmentOutput,
+  }));
+// Input Schema
+export const CassandraResourcesDeleteCassandraRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type CassandraResourcesDeleteCassandraRoleDefinitionInput =
+  typeof CassandraResourcesDeleteCassandraRoleDefinitionInput.Type;
+
+// Output Schema
+export const CassandraResourcesDeleteCassandraRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CassandraResourcesDeleteCassandraRoleDefinitionOutput =
+  typeof CassandraResourcesDeleteCassandraRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Deletes an existing Azure Cosmos DB Cassandra Role Definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const CassandraResourcesDeleteCassandraRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CassandraResourcesDeleteCassandraRoleDefinitionInput,
+    outputSchema: CassandraResourcesDeleteCassandraRoleDefinitionOutput,
+  }));
+// Input Schema
 export const CassandraResourcesDeleteCassandraTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesDeleteCassandraTableInput =
@@ -1227,9 +1695,12 @@ export type CassandraResourcesDeleteCassandraTableOutput =
 /**
  * Deletes an existing Azure Cosmos DB Cassandra table.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
+ * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesDeleteCassandraTable =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1241,11 +1712,13 @@ export const CassandraResourcesGetCassandraKeyspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesGetCassandraKeyspaceInput =
@@ -1257,8 +1730,20 @@ export const CassandraResourcesGetCassandraKeyspaceOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesGetCassandraKeyspaceOutput =
   typeof CassandraResourcesGetCassandraKeyspaceOutput.Type;
@@ -1267,9 +1752,11 @@ export type CassandraResourcesGetCassandraKeyspaceOutput =
 /**
  * Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesGetCassandraKeyspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1281,11 +1768,13 @@ export const CassandraResourcesGetCassandraKeyspaceThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesGetCassandraKeyspaceThroughputInput =
@@ -1297,8 +1786,20 @@ export const CassandraResourcesGetCassandraKeyspaceThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesGetCassandraKeyspaceThroughputOutput =
   typeof CassandraResourcesGetCassandraKeyspaceThroughputOutput.Type;
@@ -1307,9 +1808,11 @@ export type CassandraResourcesGetCassandraKeyspaceThroughputOutput =
 /**
  * Gets the RUs per second of the Cassandra Keyspace under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesGetCassandraKeyspaceThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1317,15 +1820,130 @@ export const CassandraResourcesGetCassandraKeyspaceThroughput =
     outputSchema: CassandraResourcesGetCassandraKeyspaceThroughputOutput,
   }));
 // Input Schema
+export const CassandraResourcesGetCassandraRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type CassandraResourcesGetCassandraRoleAssignmentInput =
+  typeof CassandraResourcesGetCassandraRoleAssignmentInput.Type;
+
+// Output Schema
+export const CassandraResourcesGetCassandraRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CassandraResourcesGetCassandraRoleAssignmentOutput =
+  typeof CassandraResourcesGetCassandraRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Retrieves the properties of an existing Azure Cosmos DB Cassandra Role Assignment with the given Id.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const CassandraResourcesGetCassandraRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CassandraResourcesGetCassandraRoleAssignmentInput,
+    outputSchema: CassandraResourcesGetCassandraRoleAssignmentOutput,
+  }));
+// Input Schema
+export const CassandraResourcesGetCassandraRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type CassandraResourcesGetCassandraRoleDefinitionInput =
+  typeof CassandraResourcesGetCassandraRoleDefinitionInput.Type;
+
+// Output Schema
+export const CassandraResourcesGetCassandraRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CassandraResourcesGetCassandraRoleDefinitionOutput =
+  typeof CassandraResourcesGetCassandraRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Retrieves the properties of an existing Azure Cosmos DB Cassandra Role Definition with the given Id.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const CassandraResourcesGetCassandraRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CassandraResourcesGetCassandraRoleDefinitionInput,
+    outputSchema: CassandraResourcesGetCassandraRoleDefinitionOutput,
+  }));
+// Input Schema
 export const CassandraResourcesGetCassandraTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesGetCassandraTableInput =
@@ -1337,8 +1955,20 @@ export const CassandraResourcesGetCassandraTableOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesGetCassandraTableOutput =
   typeof CassandraResourcesGetCassandraTableOutput.Type;
@@ -1347,9 +1977,12 @@ export type CassandraResourcesGetCassandraTableOutput =
 /**
  * Gets the Cassandra table under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
+ * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesGetCassandraTable =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1361,11 +1994,14 @@ export const CassandraResourcesGetCassandraTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesGetCassandraTableThroughputInput =
@@ -1377,8 +2013,20 @@ export const CassandraResourcesGetCassandraTableThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesGetCassandraTableThroughputOutput =
   typeof CassandraResourcesGetCassandraTableThroughputOutput.Type;
@@ -1387,9 +2035,12 @@ export type CassandraResourcesGetCassandraTableThroughputOutput =
 /**
  * Gets the RUs per second of the Cassandra table under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
+ * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesGetCassandraTableThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1401,11 +2052,12 @@ export const CassandraResourcesListCassandraKeyspacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesListCassandraKeyspacesInput =
@@ -1420,11 +2072,34 @@ export const CassandraResourcesListCassandraKeyspacesOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CassandraResourcesListCassandraKeyspacesOutput =
   typeof CassandraResourcesListCassandraKeyspacesOutput.Type;
@@ -1433,9 +2108,10 @@ export type CassandraResourcesListCassandraKeyspacesOutput =
 /**
  * Lists the Cassandra keyspaces under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const CassandraResourcesListCassandraKeyspaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1443,15 +2119,155 @@ export const CassandraResourcesListCassandraKeyspaces =
     outputSchema: CassandraResourcesListCassandraKeyspacesOutput,
   }));
 // Input Schema
+export const CassandraResourcesListCassandraRoleAssignmentsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type CassandraResourcesListCassandraRoleAssignmentsInput =
+  typeof CassandraResourcesListCassandraRoleAssignmentsInput.Type;
+
+// Output Schema
+export const CassandraResourcesListCassandraRoleAssignmentsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type CassandraResourcesListCassandraRoleAssignmentsOutput =
+  typeof CassandraResourcesListCassandraRoleAssignmentsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the list of all Azure Cosmos DB Cassandra Role Assignments.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ */
+export const CassandraResourcesListCassandraRoleAssignments =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CassandraResourcesListCassandraRoleAssignmentsInput,
+    outputSchema: CassandraResourcesListCassandraRoleAssignmentsOutput,
+  }));
+// Input Schema
+export const CassandraResourcesListCassandraRoleDefinitionsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type CassandraResourcesListCassandraRoleDefinitionsInput =
+  typeof CassandraResourcesListCassandraRoleDefinitionsInput.Type;
+
+// Output Schema
+export const CassandraResourcesListCassandraRoleDefinitionsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type CassandraResourcesListCassandraRoleDefinitionsOutput =
+  typeof CassandraResourcesListCassandraRoleDefinitionsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the list of all Azure Cosmos DB Cassandra Role Definitions.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ */
+export const CassandraResourcesListCassandraRoleDefinitions =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CassandraResourcesListCassandraRoleDefinitionsInput,
+    outputSchema: CassandraResourcesListCassandraRoleDefinitionsOutput,
+  }));
+// Input Schema
 export const CassandraResourcesListCassandraTablesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesListCassandraTablesInput =
@@ -1466,11 +2282,34 @@ export const CassandraResourcesListCassandraTablesOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CassandraResourcesListCassandraTablesOutput =
   typeof CassandraResourcesListCassandraTablesOutput.Type;
@@ -1479,9 +2318,11 @@ export type CassandraResourcesListCassandraTablesOutput =
 /**
  * Lists the Cassandra table under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesListCassandraTables =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1493,11 +2334,13 @@ export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default/migrateToAutoscale",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
@@ -1509,8 +2352,20 @@ export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput =
   typeof CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput.Type;
@@ -1519,9 +2374,11 @@ export type CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput =
 /**
  * Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesMigrateCassandraKeyspaceToAutoscale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1533,11 +2390,13 @@ export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default/migrateToManualThroughput",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
@@ -1549,8 +2408,20 @@ export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput 
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput =
   typeof CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput.Type;
@@ -1559,9 +2430,11 @@ export type CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput =
 /**
  * Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual throughput
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1575,11 +2448,14 @@ export const CassandraResourcesMigrateCassandraTableToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default/migrateToAutoscale",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesMigrateCassandraTableToAutoscaleInput =
@@ -1591,8 +2467,20 @@ export const CassandraResourcesMigrateCassandraTableToAutoscaleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesMigrateCassandraTableToAutoscaleOutput =
   typeof CassandraResourcesMigrateCassandraTableToAutoscaleOutput.Type;
@@ -1601,9 +2489,12 @@ export type CassandraResourcesMigrateCassandraTableToAutoscaleOutput =
 /**
  * Migrate an Azure Cosmos DB Cassandra table from manual throughput to autoscale
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
+ * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesMigrateCassandraTableToAutoscale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1615,11 +2506,14 @@ export const CassandraResourcesMigrateCassandraTableToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default/migrateToManualThroughput",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesMigrateCassandraTableToManualThroughputInput =
@@ -1631,8 +2525,20 @@ export const CassandraResourcesMigrateCassandraTableToManualThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesMigrateCassandraTableToManualThroughputOutput =
   typeof CassandraResourcesMigrateCassandraTableToManualThroughputOutput.Type;
@@ -1641,9 +2547,12 @@ export type CassandraResourcesMigrateCassandraTableToManualThroughputOutput =
 /**
  * Migrate an Azure Cosmos DB Cassandra table from autoscale to manual throughput
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
+ * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesMigrateCassandraTableToManualThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1656,6 +2565,8 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         throughput: Schema.optional(Schema.Number),
@@ -1686,11 +2597,34 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
@@ -1702,8 +2636,20 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesUpdateCassandraKeyspaceThroughputOutput =
   typeof CassandraResourcesUpdateCassandraKeyspaceThroughputOutput.Type;
@@ -1712,9 +2658,11 @@ export type CassandraResourcesUpdateCassandraKeyspaceThroughputOutput =
 /**
  * Update RUs per second of an Azure Cosmos DB Cassandra Keyspace
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesUpdateCassandraKeyspaceThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1726,6 +2674,9 @@ export const CassandraResourcesUpdateCassandraTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    keyspaceName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         throughput: Schema.optional(Schema.Number),
@@ -1756,11 +2707,34 @@ export const CassandraResourcesUpdateCassandraTableThroughputInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CassandraResourcesUpdateCassandraTableThroughputInput =
@@ -1772,8 +2746,20 @@ export const CassandraResourcesUpdateCassandraTableThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type CassandraResourcesUpdateCassandraTableThroughputOutput =
   typeof CassandraResourcesUpdateCassandraTableThroughputOutput.Type;
@@ -1782,9 +2768,12 @@ export type CassandraResourcesUpdateCassandraTableThroughputOutput =
 /**
  * Update RUs per second of an Azure Cosmos DB Cassandra table
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param keyspaceName - Cosmos DB keyspace name.
+ * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesUpdateCassandraTableThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1796,11 +2785,14 @@ export const CollectionListMetricDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    collectionRid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CollectionListMetricDefinitionsInput =
@@ -1851,6 +2843,7 @@ export const CollectionListMetricDefinitionsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CollectionListMetricDefinitionsOutput =
   typeof CollectionListMetricDefinitionsOutput.Type;
@@ -1859,9 +2852,12 @@ export type CollectionListMetricDefinitionsOutput =
 /**
  * Retrieves metric definitions for the given collection.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param collectionRid - Cosmos DB collection rid.
  */
 export const CollectionListMetricDefinitions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1873,11 +2869,15 @@ export const CollectionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    collectionRid: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CollectionListMetricsInput = typeof CollectionListMetricsInput.Type;
@@ -1923,6 +2923,7 @@ export const CollectionListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CollectionListMetricsOutput =
   typeof CollectionListMetricsOutput.Type;
@@ -1931,9 +2932,13 @@ export type CollectionListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given database account and collection.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param collectionRid - Cosmos DB collection rid.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const CollectionListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1946,11 +2951,15 @@ export const CollectionListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    collectionRid: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/usages",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CollectionListUsagesInput = typeof CollectionListUsagesInput.Type;
@@ -1984,6 +2993,7 @@ export const CollectionListUsagesOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CollectionListUsagesOutput = typeof CollectionListUsagesOutput.Type;
 
@@ -1991,9 +3001,13 @@ export type CollectionListUsagesOutput = typeof CollectionListUsagesOutput.Type;
 /**
  * Retrieves the usages (most recent storage data) for the given collection.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param collectionRid - Cosmos DB collection rid.
+ * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
 export const CollectionListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2006,11 +3020,15 @@ export const CollectionPartitionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    collectionRid: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CollectionPartitionListMetricsInput =
@@ -2057,6 +3075,7 @@ export const CollectionPartitionListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CollectionPartitionListMetricsOutput =
   typeof CollectionPartitionListMetricsOutput.Type;
@@ -2065,9 +3084,13 @@ export type CollectionPartitionListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given collection, split by partition.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param collectionRid - Cosmos DB collection rid.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const CollectionPartitionListMetrics =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2079,11 +3102,15 @@ export const CollectionPartitionListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    collectionRid: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/usages",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CollectionPartitionListUsagesInput =
@@ -2118,6 +3145,7 @@ export const CollectionPartitionListUsagesOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CollectionPartitionListUsagesOutput =
   typeof CollectionPartitionListUsagesOutput.Type;
@@ -2126,9 +3154,13 @@ export type CollectionPartitionListUsagesOutput =
 /**
  * Retrieves the usages (most recent storage data) for the given collection, split by partition.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param collectionRid - Cosmos DB collection rid.
+ * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
 export const CollectionPartitionListUsages =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2140,11 +3172,16 @@ export const CollectionPartitionRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    region: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    collectionRid: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CollectionPartitionRegionListMetricsInput =
@@ -2191,6 +3228,7 @@ export const CollectionPartitionRegionListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CollectionPartitionRegionListMetricsOutput =
   typeof CollectionPartitionRegionListMetricsOutput.Type;
@@ -2199,9 +3237,14 @@ export type CollectionPartitionRegionListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given collection and region, split by partition.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param region - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param collectionRid - Cosmos DB collection rid.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const CollectionPartitionRegionListMetrics =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2213,11 +3256,16 @@ export const CollectionRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    region: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    collectionRid: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CollectionRegionListMetricsInput =
@@ -2264,6 +3312,7 @@ export const CollectionRegionListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CollectionRegionListMetricsOutput =
   typeof CollectionRegionListMetricsOutput.Type;
@@ -2272,9 +3321,14 @@ export type CollectionRegionListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given database account, collection and region.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param region - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param collectionRid - Cosmos DB collection rid.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const CollectionRegionListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2287,11 +3341,14 @@ export const DatabaseAccountRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    region: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountRegionListMetricsInput =
@@ -2338,6 +3395,7 @@ export const DatabaseAccountRegionListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseAccountRegionListMetricsOutput =
   typeof DatabaseAccountRegionListMetricsOutput.Type;
@@ -2346,9 +3404,12 @@ export type DatabaseAccountRegionListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given database account and region.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param region - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const DatabaseAccountRegionListMetrics =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2360,6 +3421,7 @@ export const DatabaseAccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     kind: Schema.optional(
       Schema.Literals(["GlobalDocumentDB", "MongoDB", "Parse"]),
     ),
@@ -2535,14 +3597,17 @@ export const DatabaseAccountsCreateOrUpdateInput =
         }),
       ),
       enablePartitionMerge: Schema.optional(Schema.Boolean),
+      enableBurstCapacity: Schema.optional(Schema.Boolean),
       minimalTlsVersion: Schema.optional(
         Schema.Literals(["Tls", "Tls11", "Tls12"]),
       ),
-      enableBurstCapacity: Schema.optional(Schema.Boolean),
       customerManagedKeyStatus: Schema.optional(Schema.String),
-      enablePerRegionPerPartitionAutoscale: Schema.optional(Schema.Boolean),
       enablePriorityBasedExecution: Schema.optional(Schema.Boolean),
       defaultPriorityLevel: Schema.optional(Schema.Literals(["High", "Low"])),
+      enablePerRegionPerPartitionAutoscale: Schema.optional(Schema.Boolean),
+      enforceHierarchicalPartitionKeyIdLastLevel: Schema.optional(
+        Schema.Boolean,
+      ),
     }),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2553,7 +3618,7 @@ export const DatabaseAccountsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsCreateOrUpdateInput =
@@ -2565,8 +3630,20 @@ export const DatabaseAccountsCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type DatabaseAccountsCreateOrUpdateOutput =
   typeof DatabaseAccountsCreateOrUpdateOutput.Type;
@@ -2575,9 +3652,10 @@ export type DatabaseAccountsCreateOrUpdateOutput =
 /**
  * Creates or updates an Azure Cosmos DB database account. The "Update" method is preferred when performing updates on an account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2589,11 +3667,12 @@ export const DatabaseAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsDeleteInput =
@@ -2609,9 +3688,10 @@ export type DatabaseAccountsDeleteOutput =
 /**
  * Deletes an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2624,6 +3704,7 @@ export const DatabaseAccountsFailoverPriorityChangeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     failoverPolicies: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2635,7 +3716,7 @@ export const DatabaseAccountsFailoverPriorityChangeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/failoverPriorityChange",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsFailoverPriorityChangeInput =
@@ -2651,9 +3732,10 @@ export type DatabaseAccountsFailoverPriorityChangeOutput =
 /**
  * Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsFailoverPriorityChange =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2665,11 +3747,12 @@ export const DatabaseAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsGetInput = typeof DatabaseAccountsGetInput.Type;
@@ -2680,8 +3763,20 @@ export const DatabaseAccountsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type DatabaseAccountsGetOutput = typeof DatabaseAccountsGetOutput.Type;
 
@@ -2689,9 +3784,10 @@ export type DatabaseAccountsGetOutput = typeof DatabaseAccountsGetOutput.Type;
 /**
  * Retrieves the properties of an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabaseAccountsGetInput,
@@ -2702,11 +3798,12 @@ export const DatabaseAccountsGetReadOnlyKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsGetReadOnlyKeysInput =
@@ -2725,9 +3822,10 @@ export type DatabaseAccountsGetReadOnlyKeysOutput =
 /**
  * Lists the read-only access keys for the specified Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsGetReadOnlyKeys =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2742,7 +3840,7 @@ export const DatabaseAccountsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/databaseAccounts",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsListInput = typeof DatabaseAccountsListInput.Type;
@@ -2756,11 +3854,34 @@ export const DatabaseAccountsListOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseAccountsListOutput = typeof DatabaseAccountsListOutput.Type;
 
@@ -2769,7 +3890,7 @@ export type DatabaseAccountsListOutput = typeof DatabaseAccountsListOutput.Type;
  * Lists all the Azure Cosmos DB database accounts available under the subscription.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const DatabaseAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2780,13 +3901,13 @@ export const DatabaseAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabaseAccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsListByResourceGroupInput =
@@ -2801,11 +3922,34 @@ export const DatabaseAccountsListByResourceGroupOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseAccountsListByResourceGroupOutput =
   typeof DatabaseAccountsListByResourceGroupOutput.Type;
@@ -2814,9 +3958,9 @@ export type DatabaseAccountsListByResourceGroupOutput =
 /**
  * Lists all the Azure Cosmos DB database accounts available under the given resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DatabaseAccountsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2828,11 +3972,12 @@ export const DatabaseAccountsListConnectionStringsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listConnectionStrings",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsListConnectionStringsInput =
@@ -2878,9 +4023,10 @@ export type DatabaseAccountsListConnectionStringsOutput =
 /**
  * Lists the connection strings for the specified Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsListConnectionStrings =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2892,11 +4038,12 @@ export const DatabaseAccountsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listKeys",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsListKeysInput =
@@ -2915,9 +4062,10 @@ export type DatabaseAccountsListKeysOutput =
 /**
  * Lists the access keys for the specified Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2930,11 +4078,12 @@ export const DatabaseAccountsListMetricDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metricDefinitions",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsListMetricDefinitionsInput =
@@ -2985,6 +4134,7 @@ export const DatabaseAccountsListMetricDefinitionsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseAccountsListMetricDefinitionsOutput =
   typeof DatabaseAccountsListMetricDefinitionsOutput.Type;
@@ -2993,9 +4143,10 @@ export type DatabaseAccountsListMetricDefinitionsOutput =
 /**
  * Retrieves metric definitions for the given database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsListMetricDefinitions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3007,11 +4158,13 @@ export const DatabaseAccountsListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsListMetricsInput =
@@ -3058,6 +4211,7 @@ export const DatabaseAccountsListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseAccountsListMetricsOutput =
   typeof DatabaseAccountsListMetricsOutput.Type;
@@ -3066,9 +4220,11 @@ export type DatabaseAccountsListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const DatabaseAccountsListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3081,11 +4237,12 @@ export const DatabaseAccountsListReadOnlyKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsListReadOnlyKeysInput =
@@ -3104,9 +4261,10 @@ export type DatabaseAccountsListReadOnlyKeysOutput =
 /**
  * Lists the read-only access keys for the specified Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsListReadOnlyKeys =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3118,11 +4276,13 @@ export const DatabaseAccountsListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/usages",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsListUsagesInput =
@@ -3157,6 +4317,7 @@ export const DatabaseAccountsListUsagesOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseAccountsListUsagesOutput =
   typeof DatabaseAccountsListUsagesOutput.Type;
@@ -3165,9 +4326,11 @@ export type DatabaseAccountsListUsagesOutput =
 /**
  * Retrieves the usages (most recent data) for the given database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
 export const DatabaseAccountsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3180,12 +4343,13 @@ export const DatabaseAccountsOfflineRegionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     region: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/offlineRegion",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsOfflineRegionInput =
@@ -3201,9 +4365,10 @@ export type DatabaseAccountsOfflineRegionOutput =
 /**
  * Offline the specified region for the specified Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsOfflineRegion =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3215,12 +4380,13 @@ export const DatabaseAccountsOnlineRegionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     region: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/onlineRegion",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsOnlineRegionInput =
@@ -3236,9 +4402,10 @@ export type DatabaseAccountsOnlineRegionOutput =
 /**
  * Online the specified region for the specified Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsOnlineRegion =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3250,6 +4417,7 @@ export const DatabaseAccountsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     keyKind: Schema.Literals([
       "primary",
       "secondary",
@@ -3260,7 +4428,7 @@ export const DatabaseAccountsRegenerateKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/regenerateKey",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsRegenerateKeyInput =
@@ -3276,9 +4444,10 @@ export type DatabaseAccountsRegenerateKeyOutput =
 /**
  * Regenerates an access key for the specified Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsRegenerateKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3290,6 +4459,7 @@ export const DatabaseAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
     identity: Schema.optional(
@@ -3468,21 +4638,24 @@ export const DatabaseAccountsUpdateInput =
           }),
         ),
         enablePartitionMerge: Schema.optional(Schema.Boolean),
+        enableBurstCapacity: Schema.optional(Schema.Boolean),
         minimalTlsVersion: Schema.optional(
           Schema.Literals(["Tls", "Tls11", "Tls12"]),
         ),
-        enableBurstCapacity: Schema.optional(Schema.Boolean),
         customerManagedKeyStatus: Schema.optional(Schema.String),
-        enablePerRegionPerPartitionAutoscale: Schema.optional(Schema.Boolean),
         enablePriorityBasedExecution: Schema.optional(Schema.Boolean),
         defaultPriorityLevel: Schema.optional(Schema.Literals(["High", "Low"])),
+        enablePerRegionPerPartitionAutoscale: Schema.optional(Schema.Boolean),
+        enforceHierarchicalPartitionKeyIdLastLevel: Schema.optional(
+          Schema.Boolean,
+        ),
       }),
     ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseAccountsUpdateInput =
@@ -3494,8 +4667,20 @@ export const DatabaseAccountsUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type DatabaseAccountsUpdateOutput =
   typeof DatabaseAccountsUpdateOutput.Type;
@@ -3504,9 +4689,10 @@ export type DatabaseAccountsUpdateOutput =
 /**
  * Updates the properties of an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3519,11 +4705,13 @@ export const DatabaseListMetricDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metricDefinitions",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseListMetricDefinitionsInput =
@@ -3574,6 +4762,7 @@ export const DatabaseListMetricDefinitionsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseListMetricDefinitionsOutput =
   typeof DatabaseListMetricDefinitionsOutput.Type;
@@ -3582,9 +4771,11 @@ export type DatabaseListMetricDefinitionsOutput =
 /**
  * Retrieves metric definitions for the given database.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseRid - Cosmos DB database rid.
  */
 export const DatabaseListMetricDefinitions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3596,11 +4787,14 @@ export const DatabaseListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseListMetricsInput = typeof DatabaseListMetricsInput.Type;
@@ -3646,6 +4840,7 @@ export const DatabaseListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseListMetricsOutput = typeof DatabaseListMetricsOutput.Type;
 
@@ -3653,9 +4848,12 @@ export type DatabaseListMetricsOutput = typeof DatabaseListMetricsOutput.Type;
 /**
  * Retrieves the metrics determined by the given filter for the given database account and database.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const DatabaseListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabaseListMetricsInput,
@@ -3666,11 +4864,14 @@ export const DatabaseListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/usages",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DatabaseListUsagesInput = typeof DatabaseListUsagesInput.Type;
@@ -3704,6 +4905,7 @@ export const DatabaseListUsagesOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseListUsagesOutput = typeof DatabaseListUsagesOutput.Type;
 
@@ -3711,9 +4913,12 @@ export type DatabaseListUsagesOutput = typeof DatabaseListUsagesOutput.Type;
 /**
  * Retrieves the usages (most recent data) for the given database.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
 export const DatabaseListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabaseListUsagesInput,
@@ -3723,15 +4928,21 @@ export const DatabaseListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals([
-          "Creating",
+          "Uninitialized",
+          "Initializing",
+          "InternallyReady",
+          "Online",
+          "Deleting",
           "Succeeded",
           "Failed",
           "Canceled",
           "Updating",
+          "Creating",
         ]),
       ),
     }),
@@ -3742,7 +4953,7 @@ export const FleetCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type FleetCreateInput = typeof FleetCreateInput.Type;
@@ -3773,9 +4984,10 @@ export type FleetCreateOutput = typeof FleetCreateOutput.Type;
 /**
  * Creates an Azure Cosmos DB fleet under a subscription.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  */
 export const FleetCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FleetCreateInput,
@@ -3785,11 +4997,12 @@ export const FleetCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type FleetDeleteInput = typeof FleetDeleteInput.Type;
@@ -3802,9 +5015,10 @@ export type FleetDeleteOutput = typeof FleetDeleteOutput.Type;
 /**
  * Deletes an existing Azure Cosmos DB Fleet.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  */
 export const FleetDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FleetDeleteInput,
@@ -3814,11 +5028,12 @@ export const FleetDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type FleetGetInput = typeof FleetGetInput.Type;
@@ -3849,9 +5064,10 @@ export type FleetGetOutput = typeof FleetGetOutput.Type;
 /**
  * Retrieves the properties of an existing Azure Cosmos DB fleet under a subscription
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  */
 export const FleetGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FleetGetInput,
@@ -3864,15 +5080,68 @@ export const FleetListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/fleets",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type FleetListInput = typeof FleetListInput.Type;
 
 // Output Schema
 export const FleetListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type FleetListOutput = typeof FleetListOutput.Type;
+
+// The operation
+/**
+ * Lists all the fleets under the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const FleetList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FleetListInput,
+  outputSchema: FleetListOutput,
+}));
+// Input Schema
+export const FleetListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type FleetListByResourceGroupInput =
+  typeof FleetListByResourceGroupInput.Type;
+
+// Output Schema
+export const FleetListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
@@ -3903,73 +5172,6 @@ export const FleetListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
       }),
     ),
-  ),
-  nextLink: Schema.optional(Schema.String),
-});
-export type FleetListOutput = typeof FleetListOutput.Type;
-
-// The operation
-/**
- * Lists all the fleets under the subscription.
- *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
- * @param api-version - The API version to use for this operation.
- */
-export const FleetList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: FleetListInput,
-  outputSchema: FleetListOutput,
-}));
-// Input Schema
-export const FleetListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets",
-      apiVersion: "2025-10-15",
-    }),
-  );
-export type FleetListByResourceGroupInput =
-  typeof FleetListByResourceGroupInput.Type;
-
-// Output Schema
-export const FleetListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type FleetListByResourceGroupOutput =
@@ -3979,9 +5181,9 @@ export type FleetListByResourceGroupOutput =
 /**
  * Lists all the fleets under the specified subscription and resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const FleetListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3994,15 +5196,23 @@ export const FleetspaceAccountCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    fleetName: Schema.String.pipe(T.PathParam()),
+    fleetspaceName: Schema.String.pipe(T.PathParam()),
+    fleetspaceAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
           Schema.Literals([
-            "Creating",
+            "Uninitialized",
+            "Initializing",
+            "InternallyReady",
+            "Online",
+            "Deleting",
             "Succeeded",
             "Failed",
             "Canceled",
             "Updating",
+            "Creating",
           ]),
         ),
         globalDatabaseAccountProperties: Schema.optional(
@@ -4017,7 +5227,7 @@ export const FleetspaceAccountCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type FleetspaceAccountCreateInput =
@@ -4051,9 +5261,12 @@ export type FleetspaceAccountCreateOutput =
 /**
  * Creates an Azure Cosmos DB fleetspace account under a fleetspace.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
+ * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
+ * @param fleetspaceAccountName - Cosmos DB fleetspace account name.
  */
 export const FleetspaceAccountCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4066,11 +5279,14 @@ export const FleetspaceAccountDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    fleetName: Schema.String.pipe(T.PathParam()),
+    fleetspaceName: Schema.String.pipe(T.PathParam()),
+    fleetspaceAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type FleetspaceAccountDeleteInput =
@@ -4086,9 +5302,12 @@ export type FleetspaceAccountDeleteOutput =
 /**
  * Removes an existing Azure Cosmos DB fleetspace account from a fleetspace.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
+ * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
+ * @param fleetspaceAccountName - Cosmos DB fleetspace account name.
  */
 export const FleetspaceAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4101,11 +5320,14 @@ export const FleetspaceAccountGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    fleetName: Schema.String.pipe(T.PathParam()),
+    fleetspaceName: Schema.String.pipe(T.PathParam()),
+    fleetspaceAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type FleetspaceAccountGetInput = typeof FleetspaceAccountGetInput.Type;
@@ -4137,9 +5359,12 @@ export type FleetspaceAccountGetOutput = typeof FleetspaceAccountGetOutput.Type;
 /**
  * Retrieves the properties of an existing Azure Cosmos DB fleetspace account under a fleetspace
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
+ * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
+ * @param fleetspaceAccountName - Cosmos DB fleetspace account name.
  */
 export const FleetspaceAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4152,11 +5377,13 @@ export const FleetspaceAccountListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    fleetName: Schema.String.pipe(T.PathParam()),
+    fleetspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type FleetspaceAccountListInput = typeof FleetspaceAccountListInput.Type;
@@ -4164,38 +5391,36 @@ export type FleetspaceAccountListInput = typeof FleetspaceAccountListInput.Type;
 // Output Schema
 export const FleetspaceAccountListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4206,9 +5431,11 @@ export type FleetspaceAccountListOutput =
 /**
  * Lists all the fleetspaces accounts  under a fleetspace.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
+ * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  */
 export const FleetspaceAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4220,15 +5447,22 @@ export const FleetspaceAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const FleetspaceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  fleetspaceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals([
-          "Creating",
+          "Uninitialized",
+          "Initializing",
+          "InternallyReady",
+          "Online",
+          "Deleting",
           "Succeeded",
           "Failed",
           "Canceled",
           "Updating",
+          "Creating",
         ]),
       ),
       fleetspaceApiKind: Schema.optional(Schema.Literals(["NoSQL"])),
@@ -4240,6 +5474,8 @@ export const FleetspaceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           minThroughput: Schema.optional(Schema.Number),
           maxThroughput: Schema.optional(Schema.Number),
+          dedicatedRUs: Schema.optional(Schema.Number),
+          maxConsumableRUs: Schema.optional(Schema.Number),
         }),
       ),
     }),
@@ -4248,7 +5484,7 @@ export const FleetspaceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type FleetspaceCreateInput = typeof FleetspaceCreateInput.Type;
@@ -4281,9 +5517,11 @@ export type FleetspaceCreateOutput = typeof FleetspaceCreateOutput.Type;
 /**
  * Creates an Azure Cosmos DB fleetspace under a fleet.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
+ * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  */
 export const FleetspaceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceCreateInput,
@@ -4293,11 +5531,13 @@ export const FleetspaceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  fleetspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type FleetspaceDeleteInput = typeof FleetspaceDeleteInput.Type;
@@ -4310,9 +5550,11 @@ export type FleetspaceDeleteOutput = typeof FleetspaceDeleteOutput.Type;
 /**
  * Deletes an existing Azure Cosmos DB Fleetspace.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
+ * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  */
 export const FleetspaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceDeleteInput,
@@ -4322,11 +5564,13 @@ export const FleetspaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  fleetspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type FleetspaceGetInput = typeof FleetspaceGetInput.Type;
@@ -4357,9 +5601,11 @@ export type FleetspaceGetOutput = typeof FleetspaceGetOutput.Type;
 /**
  * Retrieves the properties of an existing Azure Cosmos DB fleetspace under a fleet
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
+ * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  */
 export const FleetspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceGetInput,
@@ -4369,49 +5615,38 @@ export const FleetspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetspaceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type FleetspaceListInput = typeof FleetspaceListInput.Type;
 
 // Output Schema
 export const FleetspaceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -4421,9 +5656,10 @@ export type FleetspaceListOutput = typeof FleetspaceListOutput.Type;
 /**
  * Lists all the fleetspaces under a fleet.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  */
 export const FleetspaceList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceListInput,
@@ -4433,15 +5669,22 @@ export const FleetspaceList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
+  fleetspaceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals([
-          "Creating",
+          "Uninitialized",
+          "Initializing",
+          "InternallyReady",
+          "Online",
+          "Deleting",
           "Succeeded",
           "Failed",
           "Canceled",
           "Updating",
+          "Creating",
         ]),
       ),
       fleetspaceApiKind: Schema.optional(Schema.Literals(["NoSQL"])),
@@ -4453,6 +5696,8 @@ export const FleetspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           minThroughput: Schema.optional(Schema.Number),
           maxThroughput: Schema.optional(Schema.Number),
+          dedicatedRUs: Schema.optional(Schema.Number),
+          maxConsumableRUs: Schema.optional(Schema.Number),
         }),
       ),
     }),
@@ -4461,7 +5706,7 @@ export const FleetspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type FleetspaceUpdateInput = typeof FleetspaceUpdateInput.Type;
@@ -4494,9 +5739,11 @@ export type FleetspaceUpdateOutput = typeof FleetspaceUpdateOutput.Type;
 /**
  * Update the properties of an existing Azure Cosmos DB fleetspace under a fleet.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
+ * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  */
 export const FleetspaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceUpdateInput,
@@ -4506,15 +5753,21 @@ export const FleetspaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  fleetName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals([
-          "Creating",
+          "Uninitialized",
+          "Initializing",
+          "InternallyReady",
+          "Online",
+          "Deleting",
           "Succeeded",
           "Failed",
           "Canceled",
           "Updating",
+          "Creating",
         ]),
       ),
     }),
@@ -4523,7 +5776,7 @@ export const FleetUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type FleetUpdateInput = typeof FleetUpdateInput.Type;
@@ -4554,9 +5807,10 @@ export type FleetUpdateOutput = typeof FleetUpdateOutput.Type;
 /**
  * Updates the properties of an existing Azure Cosmos DB Fleet.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  */
 export const FleetUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FleetUpdateInput,
@@ -4567,6 +5821,8 @@ export const GremlinResourcesCreateUpdateGremlinDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -4595,11 +5851,34 @@ export const GremlinResourcesCreateUpdateGremlinDatabaseInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesCreateUpdateGremlinDatabaseInput =
@@ -4611,8 +5890,20 @@ export const GremlinResourcesCreateUpdateGremlinDatabaseOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesCreateUpdateGremlinDatabaseOutput =
   typeof GremlinResourcesCreateUpdateGremlinDatabaseOutput.Type;
@@ -4621,9 +5912,11 @@ export type GremlinResourcesCreateUpdateGremlinDatabaseOutput =
 /**
  * Create or update an Azure Cosmos DB Gremlin database
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesCreateUpdateGremlinDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4635,6 +5928,9 @@ export const GremlinResourcesCreateUpdateGremlinGraphInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    graphName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -4786,11 +6082,34 @@ export const GremlinResourcesCreateUpdateGremlinGraphInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesCreateUpdateGremlinGraphInput =
@@ -4802,8 +6121,20 @@ export const GremlinResourcesCreateUpdateGremlinGraphOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesCreateUpdateGremlinGraphOutput =
   typeof GremlinResourcesCreateUpdateGremlinGraphOutput.Type;
@@ -4812,9 +6143,12 @@ export type GremlinResourcesCreateUpdateGremlinGraphOutput =
 /**
  * Create or update an Azure Cosmos DB Gremlin graph
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesCreateUpdateGremlinGraph =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4822,15 +6156,154 @@ export const GremlinResourcesCreateUpdateGremlinGraph =
     outputSchema: GremlinResourcesCreateUpdateGremlinGraphOutput,
   }));
 // Input Schema
+export const GremlinResourcesCreateUpdateGremlinRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        roleDefinitionId: Schema.optional(Schema.String),
+        scope: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type GremlinResourcesCreateUpdateGremlinRoleAssignmentInput =
+  typeof GremlinResourcesCreateUpdateGremlinRoleAssignmentInput.Type;
+
+// Output Schema
+export const GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput =
+  typeof GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Azure Cosmos DB Gremlin Role Assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const GremlinResourcesCreateUpdateGremlinRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GremlinResourcesCreateUpdateGremlinRoleAssignmentInput,
+    outputSchema: GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput,
+  }));
+// Input Schema
+export const GremlinResourcesCreateUpdateGremlinRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        roleName: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["BuiltInRole", "CustomRole"])),
+        assignableScopes: Schema.optional(Schema.Array(Schema.String)),
+        permissions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              dataActions: Schema.optional(Schema.Array(Schema.String)),
+              notDataActions: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type GremlinResourcesCreateUpdateGremlinRoleDefinitionInput =
+  typeof GremlinResourcesCreateUpdateGremlinRoleDefinitionInput.Type;
+
+// Output Schema
+export const GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput =
+  typeof GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Azure Cosmos DB Gremlin Role Definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const GremlinResourcesCreateUpdateGremlinRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GremlinResourcesCreateUpdateGremlinRoleDefinitionInput,
+    outputSchema: GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput,
+  }));
+// Input Schema
 export const GremlinResourcesDeleteGremlinDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesDeleteGremlinDatabaseInput =
@@ -4846,9 +6319,11 @@ export type GremlinResourcesDeleteGremlinDatabaseOutput =
 /**
  * Deletes an existing Azure Cosmos DB Gremlin database.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesDeleteGremlinDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4860,11 +6335,14 @@ export const GremlinResourcesDeleteGremlinGraphInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    graphName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesDeleteGremlinGraphInput =
@@ -4880,9 +6358,12 @@ export type GremlinResourcesDeleteGremlinGraphOutput =
 /**
  * Deletes an existing Azure Cosmos DB Gremlin graph.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesDeleteGremlinGraph =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4890,15 +6371,93 @@ export const GremlinResourcesDeleteGremlinGraph =
     outputSchema: GremlinResourcesDeleteGremlinGraphOutput,
   }));
 // Input Schema
+export const GremlinResourcesDeleteGremlinRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type GremlinResourcesDeleteGremlinRoleAssignmentInput =
+  typeof GremlinResourcesDeleteGremlinRoleAssignmentInput.Type;
+
+// Output Schema
+export const GremlinResourcesDeleteGremlinRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GremlinResourcesDeleteGremlinRoleAssignmentOutput =
+  typeof GremlinResourcesDeleteGremlinRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Deletes an existing Azure Cosmos DB Gremlin Role Assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const GremlinResourcesDeleteGremlinRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GremlinResourcesDeleteGremlinRoleAssignmentInput,
+    outputSchema: GremlinResourcesDeleteGremlinRoleAssignmentOutput,
+  }));
+// Input Schema
+export const GremlinResourcesDeleteGremlinRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type GremlinResourcesDeleteGremlinRoleDefinitionInput =
+  typeof GremlinResourcesDeleteGremlinRoleDefinitionInput.Type;
+
+// Output Schema
+export const GremlinResourcesDeleteGremlinRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GremlinResourcesDeleteGremlinRoleDefinitionOutput =
+  typeof GremlinResourcesDeleteGremlinRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Deletes an existing Azure Cosmos DB Gremlin Role Definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const GremlinResourcesDeleteGremlinRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GremlinResourcesDeleteGremlinRoleDefinitionInput,
+    outputSchema: GremlinResourcesDeleteGremlinRoleDefinitionOutput,
+  }));
+// Input Schema
 export const GremlinResourcesGetGremlinDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesGetGremlinDatabaseInput =
@@ -4910,8 +6469,20 @@ export const GremlinResourcesGetGremlinDatabaseOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesGetGremlinDatabaseOutput =
   typeof GremlinResourcesGetGremlinDatabaseOutput.Type;
@@ -4920,9 +6491,11 @@ export type GremlinResourcesGetGremlinDatabaseOutput =
 /**
  * Gets the Gremlin databases under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesGetGremlinDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4934,11 +6507,13 @@ export const GremlinResourcesGetGremlinDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesGetGremlinDatabaseThroughputInput =
@@ -4950,8 +6525,20 @@ export const GremlinResourcesGetGremlinDatabaseThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesGetGremlinDatabaseThroughputOutput =
   typeof GremlinResourcesGetGremlinDatabaseThroughputOutput.Type;
@@ -4960,9 +6547,11 @@ export type GremlinResourcesGetGremlinDatabaseThroughputOutput =
 /**
  * Gets the RUs per second of the Gremlin database under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesGetGremlinDatabaseThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4974,11 +6563,14 @@ export const GremlinResourcesGetGremlinGraphInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    graphName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesGetGremlinGraphInput =
@@ -4990,8 +6582,20 @@ export const GremlinResourcesGetGremlinGraphOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesGetGremlinGraphOutput =
   typeof GremlinResourcesGetGremlinGraphOutput.Type;
@@ -5000,9 +6604,12 @@ export type GremlinResourcesGetGremlinGraphOutput =
 /**
  * Gets the Gremlin graph under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesGetGremlinGraph =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5014,11 +6621,14 @@ export const GremlinResourcesGetGremlinGraphThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    graphName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesGetGremlinGraphThroughputInput =
@@ -5030,8 +6640,20 @@ export const GremlinResourcesGetGremlinGraphThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesGetGremlinGraphThroughputOutput =
   typeof GremlinResourcesGetGremlinGraphThroughputOutput.Type;
@@ -5040,9 +6662,12 @@ export type GremlinResourcesGetGremlinGraphThroughputOutput =
 /**
  * Gets the Gremlin graph throughput under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesGetGremlinGraphThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5050,15 +6675,128 @@ export const GremlinResourcesGetGremlinGraphThroughput =
     outputSchema: GremlinResourcesGetGremlinGraphThroughputOutput,
   }));
 // Input Schema
+export const GremlinResourcesGetGremlinRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type GremlinResourcesGetGremlinRoleAssignmentInput =
+  typeof GremlinResourcesGetGremlinRoleAssignmentInput.Type;
+
+// Output Schema
+export const GremlinResourcesGetGremlinRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type GremlinResourcesGetGremlinRoleAssignmentOutput =
+  typeof GremlinResourcesGetGremlinRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Retrieves the properties of an existing Azure Cosmos DB Gremlin Role Assignment with the given Id.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const GremlinResourcesGetGremlinRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GremlinResourcesGetGremlinRoleAssignmentInput,
+    outputSchema: GremlinResourcesGetGremlinRoleAssignmentOutput,
+  }));
+// Input Schema
+export const GremlinResourcesGetGremlinRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type GremlinResourcesGetGremlinRoleDefinitionInput =
+  typeof GremlinResourcesGetGremlinRoleDefinitionInput.Type;
+
+// Output Schema
+export const GremlinResourcesGetGremlinRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type GremlinResourcesGetGremlinRoleDefinitionOutput =
+  typeof GremlinResourcesGetGremlinRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Retrieves the properties of an existing Azure Cosmos DB Gremlin Role Definition with the given Id.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const GremlinResourcesGetGremlinRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GremlinResourcesGetGremlinRoleDefinitionInput,
+    outputSchema: GremlinResourcesGetGremlinRoleDefinitionOutput,
+  }));
+// Input Schema
 export const GremlinResourcesListGremlinDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesListGremlinDatabasesInput =
@@ -5073,11 +6811,34 @@ export const GremlinResourcesListGremlinDatabasesOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type GremlinResourcesListGremlinDatabasesOutput =
   typeof GremlinResourcesListGremlinDatabasesOutput.Type;
@@ -5086,9 +6847,10 @@ export type GremlinResourcesListGremlinDatabasesOutput =
 /**
  * Lists the Gremlin databases under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const GremlinResourcesListGremlinDatabases =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5100,11 +6862,13 @@ export const GremlinResourcesListGremlinGraphsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesListGremlinGraphsInput =
@@ -5119,11 +6883,34 @@ export const GremlinResourcesListGremlinGraphsOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type GremlinResourcesListGremlinGraphsOutput =
   typeof GremlinResourcesListGremlinGraphsOutput.Type;
@@ -5132,9 +6919,11 @@ export type GremlinResourcesListGremlinGraphsOutput =
 /**
  * Lists the Gremlin graph under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesListGremlinGraphs =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5142,15 +6931,155 @@ export const GremlinResourcesListGremlinGraphs =
     outputSchema: GremlinResourcesListGremlinGraphsOutput,
   }));
 // Input Schema
+export const GremlinResourcesListGremlinRoleAssignmentsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type GremlinResourcesListGremlinRoleAssignmentsInput =
+  typeof GremlinResourcesListGremlinRoleAssignmentsInput.Type;
+
+// Output Schema
+export const GremlinResourcesListGremlinRoleAssignmentsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type GremlinResourcesListGremlinRoleAssignmentsOutput =
+  typeof GremlinResourcesListGremlinRoleAssignmentsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the list of all Azure Cosmos DB Gremlin Role Assignments.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ */
+export const GremlinResourcesListGremlinRoleAssignments =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GremlinResourcesListGremlinRoleAssignmentsInput,
+    outputSchema: GremlinResourcesListGremlinRoleAssignmentsOutput,
+  }));
+// Input Schema
+export const GremlinResourcesListGremlinRoleDefinitionsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type GremlinResourcesListGremlinRoleDefinitionsInput =
+  typeof GremlinResourcesListGremlinRoleDefinitionsInput.Type;
+
+// Output Schema
+export const GremlinResourcesListGremlinRoleDefinitionsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type GremlinResourcesListGremlinRoleDefinitionsOutput =
+  typeof GremlinResourcesListGremlinRoleDefinitionsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the list of all Azure Cosmos DB Gremlin Role Definitions.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ */
+export const GremlinResourcesListGremlinRoleDefinitions =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GremlinResourcesListGremlinRoleDefinitionsInput,
+    outputSchema: GremlinResourcesListGremlinRoleDefinitionsOutput,
+  }));
+// Input Schema
 export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
@@ -5162,8 +7091,20 @@ export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput =
   typeof GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput.Type;
@@ -5172,9 +7113,11 @@ export type GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput =
 /**
  * Migrate an Azure Cosmos DB Gremlin database from manual throughput to autoscale
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesMigrateGremlinDatabaseToAutoscale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5186,11 +7129,13 @@ export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
@@ -5202,8 +7147,20 @@ export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput =
   typeof GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput.Type;
@@ -5212,9 +7169,11 @@ export type GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput =
 /**
  * Migrate an Azure Cosmos DB Gremlin database from autoscale to manual throughput
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesMigrateGremlinDatabaseToManualThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5227,11 +7186,14 @@ export const GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    graphName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default/migrateToAutoscale",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
@@ -5243,8 +7205,20 @@ export const GremlinResourcesMigrateGremlinGraphToAutoscaleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesMigrateGremlinGraphToAutoscaleOutput =
   typeof GremlinResourcesMigrateGremlinGraphToAutoscaleOutput.Type;
@@ -5253,9 +7227,12 @@ export type GremlinResourcesMigrateGremlinGraphToAutoscaleOutput =
 /**
  * Migrate an Azure Cosmos DB Gremlin graph from manual throughput to autoscale
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesMigrateGremlinGraphToAutoscale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5267,11 +7244,14 @@ export const GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    graphName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default/migrateToManualThroughput",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
@@ -5283,8 +7263,20 @@ export const GremlinResourcesMigrateGremlinGraphToManualThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesMigrateGremlinGraphToManualThroughputOutput =
   typeof GremlinResourcesMigrateGremlinGraphToManualThroughputOutput.Type;
@@ -5293,9 +7285,12 @@ export type GremlinResourcesMigrateGremlinGraphToManualThroughputOutput =
 /**
  * Migrate an Azure Cosmos DB Gremlin graph from autoscale to manual throughput
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesMigrateGremlinGraphToManualThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5315,7 +7310,7 @@ export const GremlinResourcesRetrieveContinuousBackupInformationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/retrieveContinuousBackupInformation",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesRetrieveContinuousBackupInformationInput =
@@ -5337,12 +7332,12 @@ export type GremlinResourcesRetrieveContinuousBackupInformationOutput =
 /**
  * Retrieves continuous backup information for a gremlin graph.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
  * @param databaseName - Cosmos DB database name.
  * @param graphName - Cosmos DB graph name.
- * @param api-version - The API version to use for this operation.
  */
 export const GremlinResourcesRetrieveContinuousBackupInformation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5354,6 +7349,8 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         throughput: Schema.optional(Schema.Number),
@@ -5384,11 +7381,34 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughputInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesUpdateGremlinDatabaseThroughputInput =
@@ -5400,8 +7420,20 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesUpdateGremlinDatabaseThroughputOutput =
   typeof GremlinResourcesUpdateGremlinDatabaseThroughputOutput.Type;
@@ -5410,9 +7442,11 @@ export type GremlinResourcesUpdateGremlinDatabaseThroughputOutput =
 /**
  * Update RUs per second of an Azure Cosmos DB Gremlin database
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesUpdateGremlinDatabaseThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5424,6 +7458,9 @@ export const GremlinResourcesUpdateGremlinGraphThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    graphName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         throughput: Schema.optional(Schema.Number),
@@ -5454,11 +7491,34 @@ export const GremlinResourcesUpdateGremlinGraphThroughputInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GremlinResourcesUpdateGremlinGraphThroughputInput =
@@ -5470,8 +7530,20 @@ export const GremlinResourcesUpdateGremlinGraphThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type GremlinResourcesUpdateGremlinGraphThroughputOutput =
   typeof GremlinResourcesUpdateGremlinGraphThroughputOutput.Type;
@@ -5480,9 +7552,12 @@ export type GremlinResourcesUpdateGremlinGraphThroughputOutput =
 /**
  * Update RUs per second of an Azure Cosmos DB Gremlin graph
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesUpdateGremlinGraphThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5492,11 +7567,12 @@ export const GremlinResourcesUpdateGremlinGraphThroughput =
 // Input Schema
 export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type LocationsGetInput = typeof LocationsGetInput.Type;
@@ -5506,6 +7582,20 @@ export const LocationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type LocationsGetOutput = typeof LocationsGetOutput.Type;
 
@@ -5514,7 +7604,8 @@ export type LocationsGetOutput = typeof LocationsGetOutput.Type;
  * Get the properties of an existing Cosmos DB location
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
  */
 export const LocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LocationsGetInput,
@@ -5527,7 +7618,7 @@ export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type LocationsListInput = typeof LocationsListInput.Type;
@@ -5540,9 +7631,34 @@ export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type LocationsListOutput = typeof LocationsListOutput.Type;
 
@@ -5551,7 +7667,7 @@ export type LocationsListOutput = typeof LocationsListOutput.Type;
  * List Cosmos DB locations and their properties
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const LocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LocationsListInput,
@@ -5562,6 +7678,9 @@ export const MongoDBResourcesCreateUpdateMongoDBCollectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    collectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -5609,11 +7728,34 @@ export const MongoDBResourcesCreateUpdateMongoDBCollectionInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoDBCollectionInput =
@@ -5625,8 +7767,20 @@ export const MongoDBResourcesCreateUpdateMongoDBCollectionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesCreateUpdateMongoDBCollectionOutput =
   typeof MongoDBResourcesCreateUpdateMongoDBCollectionOutput.Type;
@@ -5635,9 +7789,12 @@ export type MongoDBResourcesCreateUpdateMongoDBCollectionOutput =
 /**
  * Create or update an Azure Cosmos DB MongoDB Collection
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesCreateUpdateMongoDBCollection =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5649,6 +7806,8 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -5677,11 +7836,34 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
@@ -5693,8 +7875,20 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesCreateUpdateMongoDBDatabaseOutput =
   typeof MongoDBResourcesCreateUpdateMongoDBDatabaseOutput.Type;
@@ -5703,9 +7897,11 @@ export type MongoDBResourcesCreateUpdateMongoDBDatabaseOutput =
 /**
  * Create or updates Azure Cosmos DB MongoDB database
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesCreateUpdateMongoDBDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5718,6 +7914,7 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    mongoRoleDefinitionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         roleName: Schema.optional(Schema.String),
@@ -5750,7 +7947,7 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
@@ -5762,6 +7959,20 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput =
   typeof MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput.Type;
@@ -5770,10 +7981,11 @@ export type MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput =
 /**
  * Creates or updates an Azure Cosmos DB Mongo Role Definition.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param mongoRoleDefinitionId - The ID for the Role Definition {dbName.roleName}.
  */
 export const MongoDBResourcesCreateUpdateMongoRoleDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5786,6 +7998,7 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    mongoUserDefinitionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         userName: Schema.optional(Schema.String),
@@ -5807,7 +8020,7 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
@@ -5819,6 +8032,20 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinitionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesCreateUpdateMongoUserDefinitionOutput =
   typeof MongoDBResourcesCreateUpdateMongoUserDefinitionOutput.Type;
@@ -5827,10 +8054,11 @@ export type MongoDBResourcesCreateUpdateMongoUserDefinitionOutput =
 /**
  * Creates or updates an Azure Cosmos DB Mongo User Definition.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param mongoUserDefinitionId - The ID for the User Definition {dbName.userName}.
  */
 export const MongoDBResourcesCreateUpdateMongoUserDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5842,11 +8070,14 @@ export const MongoDBResourcesDeleteMongoDBCollectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    collectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesDeleteMongoDBCollectionInput =
@@ -5862,9 +8093,12 @@ export type MongoDBResourcesDeleteMongoDBCollectionOutput =
 /**
  * Deletes an existing Azure Cosmos DB MongoDB Collection.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesDeleteMongoDBCollection =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5876,11 +8110,13 @@ export const MongoDBResourcesDeleteMongoDBDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesDeleteMongoDBDatabaseInput =
@@ -5896,9 +8132,11 @@ export type MongoDBResourcesDeleteMongoDBDatabaseOutput =
 /**
  * Deletes an existing Azure Cosmos DB MongoDB database.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesDeleteMongoDBDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5911,11 +8149,12 @@ export const MongoDBResourcesDeleteMongoRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    mongoRoleDefinitionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesDeleteMongoRoleDefinitionInput =
@@ -5931,10 +8170,11 @@ export type MongoDBResourcesDeleteMongoRoleDefinitionOutput =
 /**
  * Deletes an existing Azure Cosmos DB Mongo Role Definition.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param mongoRoleDefinitionId - The ID for the Role Definition {dbName.roleName}.
  */
 export const MongoDBResourcesDeleteMongoRoleDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5947,11 +8187,12 @@ export const MongoDBResourcesDeleteMongoUserDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    mongoUserDefinitionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesDeleteMongoUserDefinitionInput =
@@ -5967,10 +8208,11 @@ export type MongoDBResourcesDeleteMongoUserDefinitionOutput =
 /**
  * Deletes an existing Azure Cosmos DB Mongo User Definition.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param mongoUserDefinitionId - The ID for the User Definition {dbName.userName}.
  */
 export const MongoDBResourcesDeleteMongoUserDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5982,11 +8224,14 @@ export const MongoDBResourcesGetMongoDBCollectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    collectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesGetMongoDBCollectionInput =
@@ -5998,8 +8243,20 @@ export const MongoDBResourcesGetMongoDBCollectionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesGetMongoDBCollectionOutput =
   typeof MongoDBResourcesGetMongoDBCollectionOutput.Type;
@@ -6008,9 +8265,12 @@ export type MongoDBResourcesGetMongoDBCollectionOutput =
 /**
  * Gets the MongoDB collection under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesGetMongoDBCollection =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6022,11 +8282,14 @@ export const MongoDBResourcesGetMongoDBCollectionThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    collectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesGetMongoDBCollectionThroughputInput =
@@ -6038,8 +8301,20 @@ export const MongoDBResourcesGetMongoDBCollectionThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesGetMongoDBCollectionThroughputOutput =
   typeof MongoDBResourcesGetMongoDBCollectionThroughputOutput.Type;
@@ -6048,9 +8323,12 @@ export type MongoDBResourcesGetMongoDBCollectionThroughputOutput =
 /**
  * Gets the RUs per second of the MongoDB collection under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesGetMongoDBCollectionThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6062,11 +8340,13 @@ export const MongoDBResourcesGetMongoDBDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesGetMongoDBDatabaseInput =
@@ -6078,8 +8358,20 @@ export const MongoDBResourcesGetMongoDBDatabaseOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesGetMongoDBDatabaseOutput =
   typeof MongoDBResourcesGetMongoDBDatabaseOutput.Type;
@@ -6088,9 +8380,11 @@ export type MongoDBResourcesGetMongoDBDatabaseOutput =
 /**
  * Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesGetMongoDBDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6102,11 +8396,13 @@ export const MongoDBResourcesGetMongoDBDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesGetMongoDBDatabaseThroughputInput =
@@ -6118,8 +8414,20 @@ export const MongoDBResourcesGetMongoDBDatabaseThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesGetMongoDBDatabaseThroughputOutput =
   typeof MongoDBResourcesGetMongoDBDatabaseThroughputOutput.Type;
@@ -6128,9 +8436,11 @@ export type MongoDBResourcesGetMongoDBDatabaseThroughputOutput =
 /**
  * Gets the RUs per second of the MongoDB database under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesGetMongoDBDatabaseThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6143,11 +8453,12 @@ export const MongoDBResourcesGetMongoRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    mongoRoleDefinitionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesGetMongoRoleDefinitionInput =
@@ -6159,6 +8470,20 @@ export const MongoDBResourcesGetMongoRoleDefinitionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesGetMongoRoleDefinitionOutput =
   typeof MongoDBResourcesGetMongoRoleDefinitionOutput.Type;
@@ -6167,10 +8492,11 @@ export type MongoDBResourcesGetMongoRoleDefinitionOutput =
 /**
  * Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param mongoRoleDefinitionId - The ID for the Role Definition {dbName.roleName}.
  */
 export const MongoDBResourcesGetMongoRoleDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6183,11 +8509,12 @@ export const MongoDBResourcesGetMongoUserDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    mongoUserDefinitionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesGetMongoUserDefinitionInput =
@@ -6199,6 +8526,20 @@ export const MongoDBResourcesGetMongoUserDefinitionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesGetMongoUserDefinitionOutput =
   typeof MongoDBResourcesGetMongoUserDefinitionOutput.Type;
@@ -6207,10 +8548,11 @@ export type MongoDBResourcesGetMongoUserDefinitionOutput =
 /**
  * Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param mongoUserDefinitionId - The ID for the User Definition {dbName.userName}.
  */
 export const MongoDBResourcesGetMongoUserDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6222,11 +8564,13 @@ export const MongoDBResourcesListMongoDBCollectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesListMongoDBCollectionsInput =
@@ -6241,11 +8585,34 @@ export const MongoDBResourcesListMongoDBCollectionsOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type MongoDBResourcesListMongoDBCollectionsOutput =
   typeof MongoDBResourcesListMongoDBCollectionsOutput.Type;
@@ -6254,9 +8621,11 @@ export type MongoDBResourcesListMongoDBCollectionsOutput =
 /**
  * Lists the MongoDB collection under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesListMongoDBCollections =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6268,11 +8637,12 @@ export const MongoDBResourcesListMongoDBDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesListMongoDBDatabasesInput =
@@ -6287,11 +8657,34 @@ export const MongoDBResourcesListMongoDBDatabasesOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type MongoDBResourcesListMongoDBDatabasesOutput =
   typeof MongoDBResourcesListMongoDBDatabasesOutput.Type;
@@ -6300,9 +8693,10 @@ export type MongoDBResourcesListMongoDBDatabasesOutput =
 /**
  * Lists the MongoDB databases under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const MongoDBResourcesListMongoDBDatabases =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6319,7 +8713,7 @@ export const MongoDBResourcesListMongoRoleDefinitionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesListMongoRoleDefinitionsInput =
@@ -6334,9 +8728,34 @@ export const MongoDBResourcesListMongoRoleDefinitionsOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type MongoDBResourcesListMongoRoleDefinitionsOutput =
   typeof MongoDBResourcesListMongoRoleDefinitionsOutput.Type;
@@ -6345,10 +8764,10 @@ export type MongoDBResourcesListMongoRoleDefinitionsOutput =
 /**
  * Retrieves the list of all Azure Cosmos DB Mongo Role Definitions.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesListMongoRoleDefinitions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6365,7 +8784,7 @@ export const MongoDBResourcesListMongoUserDefinitionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesListMongoUserDefinitionsInput =
@@ -6380,9 +8799,34 @@ export const MongoDBResourcesListMongoUserDefinitionsOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type MongoDBResourcesListMongoUserDefinitionsOutput =
   typeof MongoDBResourcesListMongoUserDefinitionsOutput.Type;
@@ -6391,10 +8835,10 @@ export type MongoDBResourcesListMongoUserDefinitionsOutput =
 /**
  * Retrieves the list of all Azure Cosmos DB Mongo User Definition.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesListMongoUserDefinitions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6406,11 +8850,14 @@ export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    collectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default/migrateToAutoscale",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
@@ -6422,8 +8869,20 @@ export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput =
   typeof MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput.Type;
@@ -6432,9 +8891,12 @@ export type MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput =
 /**
  * Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesMigrateMongoDBCollectionToAutoscale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6446,11 +8908,14 @@ export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    collectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default/migrateToManualThroughput",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
@@ -6462,8 +8927,20 @@ export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput =
   typeof MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput.Type;
@@ -6472,9 +8949,12 @@ export type MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput =
 /**
  * Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6488,11 +8968,13 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
@@ -6504,8 +8986,20 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput =
   typeof MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput.Type;
@@ -6514,9 +9008,11 @@ export type MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput =
 /**
  * Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6528,11 +9024,13 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
@@ -6544,8 +9042,20 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput =
   typeof MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput.Type;
@@ -6554,9 +9064,11 @@ export type MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput =
 /**
  * Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6577,7 +9089,7 @@ export const MongoDBResourcesRetrieveContinuousBackupInformationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/retrieveContinuousBackupInformation",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesRetrieveContinuousBackupInformationInput =
@@ -6599,12 +9111,12 @@ export type MongoDBResourcesRetrieveContinuousBackupInformationOutput =
 /**
  * Retrieves continuous backup information for a Mongodb collection.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
  * @param databaseName - Cosmos DB database name.
  * @param collectionName - Cosmos DB collection name.
- * @param api-version - The API version to use for this operation.
  */
 export const MongoDBResourcesRetrieveContinuousBackupInformation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6616,6 +9128,9 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    collectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         throughput: Schema.optional(Schema.Number),
@@ -6646,11 +9161,34 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
@@ -6662,8 +9200,20 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesUpdateMongoDBCollectionThroughputOutput =
   typeof MongoDBResourcesUpdateMongoDBCollectionThroughputOutput.Type;
@@ -6672,9 +9222,12 @@ export type MongoDBResourcesUpdateMongoDBCollectionThroughputOutput =
 /**
  * Update the RUs per second of an Azure Cosmos DB MongoDB collection
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesUpdateMongoDBCollectionThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6686,6 +9239,8 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         throughput: Schema.optional(Schema.Number),
@@ -6716,11 +9271,34 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
@@ -6732,8 +9310,20 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput =
   typeof MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput.Type;
@@ -6742,9 +9332,11 @@ export type MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput =
 /**
  * Update RUs per second of the an Azure Cosmos DB MongoDB database
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesUpdateMongoDBDatabaseThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6752,10 +9344,475 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughput =
     outputSchema: MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput,
   }));
 // Input Schema
+export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        roleDefinitionId: Schema.optional(Schema.String),
+        scope: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput =
+  typeof MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput.Type;
+
+// Output Schema
+export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput =
+  typeof MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Azure Cosmos DB MongoMI Role Assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const MongoMIResourcesCreateUpdateMongoMIRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput,
+    outputSchema: MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput,
+  }));
+// Input Schema
+export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        roleName: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["BuiltInRole", "CustomRole"])),
+        assignableScopes: Schema.optional(Schema.Array(Schema.String)),
+        permissions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              dataActions: Schema.optional(Schema.Array(Schema.String)),
+              notDataActions: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput =
+  typeof MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput.Type;
+
+// Output Schema
+export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput =
+  typeof MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Azure Cosmos DB MongoMI Role Definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const MongoMIResourcesCreateUpdateMongoMIRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput,
+    outputSchema: MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput,
+  }));
+// Input Schema
+export const MongoMIResourcesDeleteMongoMIRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type MongoMIResourcesDeleteMongoMIRoleAssignmentInput =
+  typeof MongoMIResourcesDeleteMongoMIRoleAssignmentInput.Type;
+
+// Output Schema
+export const MongoMIResourcesDeleteMongoMIRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type MongoMIResourcesDeleteMongoMIRoleAssignmentOutput =
+  typeof MongoMIResourcesDeleteMongoMIRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Deletes an existing Azure Cosmos DB MongoMI Role Assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const MongoMIResourcesDeleteMongoMIRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: MongoMIResourcesDeleteMongoMIRoleAssignmentInput,
+    outputSchema: MongoMIResourcesDeleteMongoMIRoleAssignmentOutput,
+  }));
+// Input Schema
+export const MongoMIResourcesDeleteMongoMIRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type MongoMIResourcesDeleteMongoMIRoleDefinitionInput =
+  typeof MongoMIResourcesDeleteMongoMIRoleDefinitionInput.Type;
+
+// Output Schema
+export const MongoMIResourcesDeleteMongoMIRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type MongoMIResourcesDeleteMongoMIRoleDefinitionOutput =
+  typeof MongoMIResourcesDeleteMongoMIRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Deletes an existing Azure Cosmos DB MongoMI Role Definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const MongoMIResourcesDeleteMongoMIRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: MongoMIResourcesDeleteMongoMIRoleDefinitionInput,
+    outputSchema: MongoMIResourcesDeleteMongoMIRoleDefinitionOutput,
+  }));
+// Input Schema
+export const MongoMIResourcesGetMongoMIRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type MongoMIResourcesGetMongoMIRoleAssignmentInput =
+  typeof MongoMIResourcesGetMongoMIRoleAssignmentInput.Type;
+
+// Output Schema
+export const MongoMIResourcesGetMongoMIRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type MongoMIResourcesGetMongoMIRoleAssignmentOutput =
+  typeof MongoMIResourcesGetMongoMIRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Retrieves the properties of an existing Azure Cosmos DB MongoMI Role Assignment with the given Id.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const MongoMIResourcesGetMongoMIRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: MongoMIResourcesGetMongoMIRoleAssignmentInput,
+    outputSchema: MongoMIResourcesGetMongoMIRoleAssignmentOutput,
+  }));
+// Input Schema
+export const MongoMIResourcesGetMongoMIRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type MongoMIResourcesGetMongoMIRoleDefinitionInput =
+  typeof MongoMIResourcesGetMongoMIRoleDefinitionInput.Type;
+
+// Output Schema
+export const MongoMIResourcesGetMongoMIRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type MongoMIResourcesGetMongoMIRoleDefinitionOutput =
+  typeof MongoMIResourcesGetMongoMIRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Retrieves the properties of an existing Azure Cosmos DB MongoMI Role Definition with the given Id.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const MongoMIResourcesGetMongoMIRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: MongoMIResourcesGetMongoMIRoleDefinitionInput,
+    outputSchema: MongoMIResourcesGetMongoMIRoleDefinitionOutput,
+  }));
+// Input Schema
+export const MongoMIResourcesListMongoMIRoleAssignmentsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type MongoMIResourcesListMongoMIRoleAssignmentsInput =
+  typeof MongoMIResourcesListMongoMIRoleAssignmentsInput.Type;
+
+// Output Schema
+export const MongoMIResourcesListMongoMIRoleAssignmentsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type MongoMIResourcesListMongoMIRoleAssignmentsOutput =
+  typeof MongoMIResourcesListMongoMIRoleAssignmentsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the list of all Azure Cosmos DB MongoMI Role Assignments.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ */
+export const MongoMIResourcesListMongoMIRoleAssignments =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: MongoMIResourcesListMongoMIRoleAssignmentsInput,
+    outputSchema: MongoMIResourcesListMongoMIRoleAssignmentsOutput,
+  }));
+// Input Schema
+export const MongoMIResourcesListMongoMIRoleDefinitionsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type MongoMIResourcesListMongoMIRoleDefinitionsInput =
+  typeof MongoMIResourcesListMongoMIRoleDefinitionsInput.Type;
+
+// Output Schema
+export const MongoMIResourcesListMongoMIRoleDefinitionsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type MongoMIResourcesListMongoMIRoleDefinitionsOutput =
+  typeof MongoMIResourcesListMongoMIRoleDefinitionsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the list of all Azure Cosmos DB MongoMI Role Definitions.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ */
+export const MongoMIResourcesListMongoMIRoleDefinitions =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: MongoMIResourcesListMongoMIRoleDefinitionsInput,
+    outputSchema: MongoMIResourcesListMongoMIRoleDefinitionsOutput,
+  }));
+// Input Schema
 export const NotebookWorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    notebookWorkspaceName: Schema.Literals(["default"]).pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6763,7 +9820,7 @@ export const NotebookWorkspacesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type NotebookWorkspacesCreateOrUpdateInput =
@@ -6775,6 +9832,20 @@ export const NotebookWorkspacesCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type NotebookWorkspacesCreateOrUpdateOutput =
   typeof NotebookWorkspacesCreateOrUpdateOutput.Type;
@@ -6783,9 +9854,11 @@ export type NotebookWorkspacesCreateOrUpdateOutput =
 /**
  * Creates the notebook workspace for a Cosmos DB account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
 export const NotebookWorkspacesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6797,11 +9870,13 @@ export const NotebookWorkspacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    notebookWorkspaceName: Schema.Literals(["default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type NotebookWorkspacesDeleteInput =
@@ -6817,9 +9892,11 @@ export type NotebookWorkspacesDeleteOutput =
 /**
  * Deletes the notebook workspace for a Cosmos DB account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
 export const NotebookWorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6832,11 +9909,13 @@ export const NotebookWorkspacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    notebookWorkspaceName: Schema.Literals(["default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type NotebookWorkspacesGetInput = typeof NotebookWorkspacesGetInput.Type;
@@ -6847,6 +9926,20 @@ export const NotebookWorkspacesGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type NotebookWorkspacesGetOutput =
   typeof NotebookWorkspacesGetOutput.Type;
@@ -6855,9 +9948,11 @@ export type NotebookWorkspacesGetOutput =
 /**
  * Gets the notebook workspace for a Cosmos DB account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
 export const NotebookWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6870,11 +9965,12 @@ export const NotebookWorkspacesListByDatabaseAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type NotebookWorkspacesListByDatabaseAccountInput =
@@ -6889,9 +9985,34 @@ export const NotebookWorkspacesListByDatabaseAccountOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type NotebookWorkspacesListByDatabaseAccountOutput =
   typeof NotebookWorkspacesListByDatabaseAccountOutput.Type;
@@ -6900,9 +10021,10 @@ export type NotebookWorkspacesListByDatabaseAccountOutput =
 /**
  * Gets the notebook workspace resources of an existing Cosmos DB account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const NotebookWorkspacesListByDatabaseAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6914,11 +10036,13 @@ export const NotebookWorkspacesListConnectionInfoInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    notebookWorkspaceName: Schema.Literals(["default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/listConnectionInfo",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type NotebookWorkspacesListConnectionInfoInput =
@@ -6937,9 +10061,11 @@ export type NotebookWorkspacesListConnectionInfoOutput =
 /**
  * Retrieves the connection info for the notebook workspace
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
 export const NotebookWorkspacesListConnectionInfo =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6951,11 +10077,13 @@ export const NotebookWorkspacesRegenerateAuthTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    notebookWorkspaceName: Schema.Literals(["default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/regenerateAuthToken",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type NotebookWorkspacesRegenerateAuthTokenInput =
@@ -6971,9 +10099,11 @@ export type NotebookWorkspacesRegenerateAuthTokenOutput =
 /**
  * Regenerates the auth token for the notebook workspace
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
 export const NotebookWorkspacesRegenerateAuthToken =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6985,11 +10115,13 @@ export const NotebookWorkspacesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    notebookWorkspaceName: Schema.Literals(["default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/start",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type NotebookWorkspacesStartInput =
@@ -7005,9 +10137,11 @@ export type NotebookWorkspacesStartOutput =
 /**
  * Starts the notebook workspace
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
 export const NotebookWorkspacesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7022,27 +10156,25 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DocumentDB/operations",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            Provider: Schema.optional(Schema.String),
-            Resource: Schema.optional(Schema.String),
-            Operation: Schema.optional(Schema.String),
-            Description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      display: Schema.optional(
+        Schema.Struct({
+          Provider: Schema.optional(Schema.String),
+          Resource: Schema.optional(Schema.String),
+          Operation: Schema.optional(Schema.String),
+          Description: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -7063,11 +10195,16 @@ export const PartitionKeyRangeIdListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    collectionRid: Schema.String.pipe(T.PathParam()),
+    partitionKeyRangeId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PartitionKeyRangeIdListMetricsInput =
@@ -7114,6 +10251,7 @@ export const PartitionKeyRangeIdListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PartitionKeyRangeIdListMetricsOutput =
   typeof PartitionKeyRangeIdListMetricsOutput.Type;
@@ -7122,9 +10260,14 @@ export type PartitionKeyRangeIdListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given partition key range id.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param collectionRid - Cosmos DB collection rid.
+ * @param partitionKeyRangeId - Partition Key Range Id for which to get data.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const PartitionKeyRangeIdListMetrics =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7136,11 +10279,17 @@ export const PartitionKeyRangeIdRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    region: Schema.String.pipe(T.PathParam()),
+    databaseRid: Schema.String.pipe(T.PathParam()),
+    collectionRid: Schema.String.pipe(T.PathParam()),
+    partitionKeyRangeId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PartitionKeyRangeIdRegionListMetricsInput =
@@ -7187,6 +10336,7 @@ export const PartitionKeyRangeIdRegionListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PartitionKeyRangeIdRegionListMetricsOutput =
   typeof PartitionKeyRangeIdRegionListMetricsOutput.Type;
@@ -7195,9 +10345,15 @@ export type PartitionKeyRangeIdRegionListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given partition key range id and region.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param region - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param databaseRid - Cosmos DB database rid.
+ * @param collectionRid - Cosmos DB collection rid.
+ * @param partitionKeyRangeId - Partition Key Range Id for which to get data.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const PartitionKeyRangeIdRegionListMetrics =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7209,11 +10365,13 @@ export const PercentileListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/percentile/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PercentileListMetricsInput = typeof PercentileListMetricsInput.Type;
@@ -7259,6 +10417,7 @@ export const PercentileListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PercentileListMetricsOutput =
   typeof PercentileListMetricsOutput.Type;
@@ -7267,9 +10426,11 @@ export type PercentileListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given database account. This url is only for PBS and Replication Latency data
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const PercentileListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7282,11 +10443,15 @@ export const PercentileSourceTargetListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    sourceRegion: Schema.String.pipe(T.PathParam()),
+    targetRegion: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sourceRegion/{sourceRegion}/targetRegion/{targetRegion}/percentile/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PercentileSourceTargetListMetricsInput =
@@ -7333,6 +10498,7 @@ export const PercentileSourceTargetListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PercentileSourceTargetListMetricsOutput =
   typeof PercentileSourceTargetListMetricsOutput.Type;
@@ -7341,9 +10507,13 @@ export type PercentileSourceTargetListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given account, source and target region. This url is only for PBS and Replication Latency data
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param sourceRegion - Source region from which data is written. Cosmos DB region, with spaces between words and each word capitalized.
+ * @param targetRegion - Target region to which data is written. Cosmos DB region, with spaces between words and each word capitalized.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const PercentileSourceTargetListMetrics =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7355,11 +10525,14 @@ export const PercentileTargetListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    targetRegion: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/targetRegion/{targetRegion}/percentile/metrics",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PercentileTargetListMetricsInput =
@@ -7406,6 +10579,7 @@ export const PercentileTargetListMetricsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PercentileTargetListMetricsOutput =
   typeof PercentileTargetListMetricsOutput.Type;
@@ -7414,9 +10588,12 @@ export type PercentileTargetListMetricsOutput =
 /**
  * Retrieves the metrics determined by the given filter for the given account target region. This url is only for PBS and Replication Latency data
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param targetRegion - Target region to which data is written. Cosmos DB region, with spaces between words and each word capitalized.
+ * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const PercentileTargetListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7429,6 +10606,8 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         privateEndpoint: Schema.optional(
@@ -7451,7 +10630,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -7463,6 +10642,20 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type PrivateEndpointConnectionsCreateOrUpdateOutput =
   typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
@@ -7471,9 +10664,11 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
 /**
  * Approve or reject a private endpoint connection with a given name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7485,11 +10680,13 @@ export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -7505,9 +10702,11 @@ export type PrivateEndpointConnectionsDeleteOutput =
 /**
  * Deletes a private endpoint connection with a given name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7519,11 +10718,13 @@ export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -7535,6 +10736,20 @@ export const PrivateEndpointConnectionsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
@@ -7543,9 +10758,11 @@ export type PrivateEndpointConnectionsGetOutput =
 /**
  * Gets a private endpoint connection.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7557,11 +10774,12 @@ export const PrivateEndpointConnectionsListByDatabaseAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PrivateEndpointConnectionsListByDatabaseAccountInput =
@@ -7576,9 +10794,34 @@ export const PrivateEndpointConnectionsListByDatabaseAccountOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsListByDatabaseAccountOutput =
   typeof PrivateEndpointConnectionsListByDatabaseAccountOutput.Type;
@@ -7587,9 +10830,10 @@ export type PrivateEndpointConnectionsListByDatabaseAccountOutput =
 /**
  * List all private endpoint connections on a Cosmos DB account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const PrivateEndpointConnectionsListByDatabaseAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7601,11 +10845,13 @@ export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources/{groupName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -7617,6 +10863,20 @@ export const PrivateLinkResourcesGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
@@ -7625,9 +10885,11 @@ export type PrivateLinkResourcesGetOutput =
 /**
  * Gets the private link resources that need to be created for a Cosmos DB account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param groupName - The name of the private link resource.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7640,11 +10902,12 @@ export const PrivateLinkResourcesListByDatabaseAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type PrivateLinkResourcesListByDatabaseAccountInput =
@@ -7659,9 +10922,34 @@ export const PrivateLinkResourcesListByDatabaseAccountOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinkResourcesListByDatabaseAccountOutput =
   typeof PrivateLinkResourcesListByDatabaseAccountOutput.Type;
@@ -7670,9 +10958,10 @@ export type PrivateLinkResourcesListByDatabaseAccountOutput =
 /**
  * Gets the private link resources that need to be created for a Cosmos DB account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const PrivateLinkResourcesListByDatabaseAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7683,11 +10972,13 @@ export const PrivateLinkResourcesListByDatabaseAccount =
 export const RestorableDatabaseAccountsGetByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableDatabaseAccountsGetByLocationInput =
@@ -7696,38 +10987,23 @@ export type RestorableDatabaseAccountsGetByLocationInput =
 // Output Schema
 export const RestorableDatabaseAccountsGetByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        accountName: Schema.optional(Schema.String),
-        creationTime: Schema.optional(Schema.String),
-        deletionTime: Schema.optional(Schema.String),
-        oldestRestorableTime: Schema.optional(Schema.String),
-        apiType: Schema.optional(
-          Schema.Literals([
-            "MongoDB",
-            "Gremlin",
-            "Cassandra",
-            "Table",
-            "Sql",
-            "GremlinV2",
-          ]),
-        ),
-        restorableLocations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              locationName: Schema.optional(Schema.String),
-              regionalDatabaseAccountInstanceId: Schema.optional(Schema.String),
-              creationTime: Schema.optional(Schema.String),
-              deletionTime: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type RestorableDatabaseAccountsGetByLocationOutput =
   typeof RestorableDatabaseAccountsGetByLocationOutput.Type;
@@ -7737,7 +11013,9 @@ export type RestorableDatabaseAccountsGetByLocationOutput =
  * Retrieves the properties of an existing Azure Cosmos DB restorable database account.  This call requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read/*' permission.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
  */
 export const RestorableDatabaseAccountsGetByLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7752,7 +11030,7 @@ export const RestorableDatabaseAccountsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableDatabaseAccountsListInput =
@@ -7764,43 +11042,37 @@ export const RestorableDatabaseAccountsListOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              accountName: Schema.optional(Schema.String),
-              creationTime: Schema.optional(Schema.String),
-              deletionTime: Schema.optional(Schema.String),
-              oldestRestorableTime: Schema.optional(Schema.String),
-              apiType: Schema.optional(
-                Schema.Literals([
-                  "MongoDB",
-                  "Gremlin",
-                  "Cassandra",
-                  "Table",
-                  "Sql",
-                  "GremlinV2",
-                ]),
-              ),
-              restorableLocations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    locationName: Schema.optional(Schema.String),
-                    regionalDatabaseAccountInstanceId: Schema.optional(
-                      Schema.String,
-                    ),
-                    creationTime: Schema.optional(Schema.String),
-                    deletionTime: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableDatabaseAccountsListOutput =
   typeof RestorableDatabaseAccountsListOutput.Type;
@@ -7810,7 +11082,7 @@ export type RestorableDatabaseAccountsListOutput =
  * Lists all the restorable Azure Cosmos DB database accounts available under the subscription. This call requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read' permission.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const RestorableDatabaseAccountsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7821,11 +11093,12 @@ export const RestorableDatabaseAccountsList =
 export const RestorableDatabaseAccountsListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableDatabaseAccountsListByLocationInput =
@@ -7837,43 +11110,37 @@ export const RestorableDatabaseAccountsListByLocationOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              accountName: Schema.optional(Schema.String),
-              creationTime: Schema.optional(Schema.String),
-              deletionTime: Schema.optional(Schema.String),
-              oldestRestorableTime: Schema.optional(Schema.String),
-              apiType: Schema.optional(
-                Schema.Literals([
-                  "MongoDB",
-                  "Gremlin",
-                  "Cassandra",
-                  "Table",
-                  "Sql",
-                  "GremlinV2",
-                ]),
-              ),
-              restorableLocations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    locationName: Schema.optional(Schema.String),
-                    regionalDatabaseAccountInstanceId: Schema.optional(
-                      Schema.String,
-                    ),
-                    creationTime: Schema.optional(Schema.String),
-                    deletionTime: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableDatabaseAccountsListByLocationOutput =
   typeof RestorableDatabaseAccountsListByLocationOutput.Type;
@@ -7883,7 +11150,8 @@ export type RestorableDatabaseAccountsListByLocationOutput =
  * Lists all the restorable Azure Cosmos DB database accounts available under the subscription and in a region.  This call requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read' permission.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
  */
 export const RestorableDatabaseAccountsListByLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7894,11 +11162,13 @@ export const RestorableDatabaseAccountsListByLocation =
 export const RestorableGremlinDatabasesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinDatabases",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableGremlinDatabasesListInput =
@@ -7939,6 +11209,7 @@ export const RestorableGremlinDatabasesListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableGremlinDatabasesListOutput =
   typeof RestorableGremlinDatabasesListOutput.Type;
@@ -7948,7 +11219,9 @@ export type RestorableGremlinDatabasesListOutput =
  * Show the event feed of all mutations done on all the Azure Cosmos DB Gremlin databases under the restorable account. This helps in scenario where database was accidentally deleted to get the deletion time. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
  */
 export const RestorableGremlinDatabasesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7959,11 +11232,16 @@ export const RestorableGremlinDatabasesList =
 export const RestorableGremlinGraphsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
+    restorableGremlinDatabaseRid: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGraphs",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableGremlinGraphsListInput =
@@ -8004,6 +11282,7 @@ export const RestorableGremlinGraphsListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableGremlinGraphsListOutput =
   typeof RestorableGremlinGraphsListOutput.Type;
@@ -8013,7 +11292,12 @@ export type RestorableGremlinGraphsListOutput =
  * Show the event feed of all mutations done on all the Azure Cosmos DB Gremlin graphs under a specific database. This helps in scenario where container was accidentally deleted. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
+ * @param restorableGremlinDatabaseRid - The resource ID of the Gremlin database.
+ * @param startTime - Restorable Gremlin graphs event feed start time.
+ * @param endTime - Restorable Gremlin graphs event feed end time.
  */
 export const RestorableGremlinGraphsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8025,11 +11309,15 @@ export const RestorableGremlinGraphsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RestorableGremlinResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
+    restoreLocation: Schema.optional(Schema.String),
+    restoreTimestampInUtc: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinResources",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableGremlinResourcesListInput =
@@ -8049,6 +11337,7 @@ export const RestorableGremlinResourcesListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableGremlinResourcesListOutput =
   typeof RestorableGremlinResourcesListOutput.Type;
@@ -8058,7 +11347,11 @@ export type RestorableGremlinResourcesListOutput =
  * Return a list of gremlin database and graphs combo that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
+ * @param restoreLocation - The location where the restorable resources are located.
+ * @param restoreTimestampInUtc - The timestamp when the restorable resources existed.
  */
 export const RestorableGremlinResourcesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8069,11 +11362,16 @@ export const RestorableGremlinResourcesList =
 export const RestorableMongodbCollectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
+    restorableMongodbDatabaseRid: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbCollections",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableMongodbCollectionsListInput =
@@ -8114,6 +11412,7 @@ export const RestorableMongodbCollectionsListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableMongodbCollectionsListOutput =
   typeof RestorableMongodbCollectionsListOutput.Type;
@@ -8123,7 +11422,12 @@ export type RestorableMongodbCollectionsListOutput =
  * Show the event feed of all mutations done on all the Azure Cosmos DB MongoDB collections under a specific database.  This helps in scenario where container was accidentally deleted.  This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
+ * @param restorableMongodbDatabaseRid - The resource ID of the MongoDB database.
+ * @param startTime - Restorable MongoDB collections event feed start time.
+ * @param endTime - Restorable MongoDB collections event feed end time.
  */
 export const RestorableMongodbCollectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8134,11 +11438,13 @@ export const RestorableMongodbCollectionsList =
 export const RestorableMongodbDatabasesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbDatabases",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableMongodbDatabasesListInput =
@@ -8179,6 +11485,7 @@ export const RestorableMongodbDatabasesListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableMongodbDatabasesListOutput =
   typeof RestorableMongodbDatabasesListOutput.Type;
@@ -8188,7 +11495,9 @@ export type RestorableMongodbDatabasesListOutput =
  * Show the event feed of all mutations done on all the Azure Cosmos DB MongoDB databases under the restorable account.  This helps in scenario where database was accidentally deleted to get the deletion time.  This API requires  'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
  */
 export const RestorableMongodbDatabasesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8199,11 +11508,15 @@ export const RestorableMongodbDatabasesList =
 export const RestorableMongodbResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
+    restoreLocation: Schema.optional(Schema.String),
+    restoreTimestampInUtc: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbResources",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableMongodbResourcesListInput =
@@ -8223,6 +11536,7 @@ export const RestorableMongodbResourcesListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableMongodbResourcesListOutput =
   typeof RestorableMongodbResourcesListOutput.Type;
@@ -8232,7 +11546,11 @@ export type RestorableMongodbResourcesListOutput =
  * Return a list of database and collection combo that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
+ * @param restoreLocation - The location where the restorable resources are located.
+ * @param restoreTimestampInUtc - The timestamp when the restorable resources existed.
  */
 export const RestorableMongodbResourcesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8243,11 +11561,16 @@ export const RestorableMongodbResourcesList =
 export const RestorableSqlContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
+    restorableSqlDatabaseRid: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlContainers",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableSqlContainersListInput =
@@ -8494,9 +11817,6 @@ export const RestorableSqlContainersListOutput =
                           ),
                         }),
                       ),
-                      _rid: Schema.optional(Schema.String),
-                      _ts: Schema.optional(Schema.Number),
-                      _etag: Schema.optional(Schema.String),
                     }),
                   ),
                 }),
@@ -8509,6 +11829,7 @@ export const RestorableSqlContainersListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableSqlContainersListOutput =
   typeof RestorableSqlContainersListOutput.Type;
@@ -8518,7 +11839,12 @@ export type RestorableSqlContainersListOutput =
  * Show the event feed of all mutations done on all the Azure Cosmos DB SQL containers under a specific database.  This helps in scenario where container was accidentally deleted.  This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
+ * @param restorableSqlDatabaseRid - The resource ID of the SQL database.
+ * @param startTime - Restorable Sql containers event feed start time.
+ * @param endTime - Restorable Sql containers event feed end time.
  */
 export const RestorableSqlContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8530,11 +11856,13 @@ export const RestorableSqlContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RestorableSqlDatabasesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlDatabases",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableSqlDatabasesListInput =
@@ -8580,9 +11908,6 @@ export const RestorableSqlDatabasesListOutput =
                       createMode: Schema.optional(
                         Schema.Literals(["Default", "Restore"]),
                       ),
-                      _rid: Schema.optional(Schema.String),
-                      _ts: Schema.optional(Schema.Number),
-                      _etag: Schema.optional(Schema.String),
                     }),
                   ),
                 }),
@@ -8595,6 +11920,7 @@ export const RestorableSqlDatabasesListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableSqlDatabasesListOutput =
   typeof RestorableSqlDatabasesListOutput.Type;
@@ -8604,7 +11930,9 @@ export type RestorableSqlDatabasesListOutput =
  * Show the event feed of all mutations done on all the Azure Cosmos DB SQL databases under the restorable account.  This helps in scenario where database was accidentally deleted to get the deletion time.  This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
  */
 export const RestorableSqlDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8616,11 +11944,15 @@ export const RestorableSqlDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RestorableSqlResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
+    restoreLocation: Schema.optional(Schema.String),
+    restoreTimestampInUtc: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlResources",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableSqlResourcesListInput =
@@ -8640,6 +11972,7 @@ export const RestorableSqlResourcesListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableSqlResourcesListOutput =
   typeof RestorableSqlResourcesListOutput.Type;
@@ -8649,7 +11982,11 @@ export type RestorableSqlResourcesListOutput =
  * Return a list of database and container combo that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
+ * @param restoreLocation - The location where the restorable resources are located.
+ * @param restoreTimestampInUtc - The timestamp when the restorable resources existed.
  */
 export const RestorableSqlResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8661,11 +11998,15 @@ export const RestorableSqlResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RestorableTableResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
+    restoreLocation: Schema.optional(Schema.String),
+    restoreTimestampInUtc: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTableResources",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableTableResourcesListInput =
@@ -8683,6 +12024,7 @@ export const RestorableTableResourcesListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableTableResourcesListOutput =
   typeof RestorableTableResourcesListOutput.Type;
@@ -8692,7 +12034,11 @@ export type RestorableTableResourcesListOutput =
  * Return a list of tables that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
+ * @param restoreLocation - The location where the restorable resources are located.
+ * @param restoreTimestampInUtc - The timestamp when the restorable resources existed.
  */
 export const RestorableTableResourcesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8703,11 +12049,15 @@ export const RestorableTableResourcesList =
 export const RestorableTablesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    instanceId: Schema.String.pipe(T.PathParam()),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTables",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RestorableTablesListInput = typeof RestorableTablesListInput.Type;
@@ -8747,6 +12097,7 @@ export const RestorableTablesListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type RestorableTablesListOutput = typeof RestorableTablesListOutput.Type;
 
@@ -8755,7 +12106,11 @@ export type RestorableTablesListOutput = typeof RestorableTablesListOutput.Type;
  * Show the event feed of all mutations done on all the Azure Cosmos DB Tables. This helps in scenario where table was accidentally deleted. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - Cosmos DB region, with spaces between words and each word capitalized.
+ * @param instanceId - The instanceId GUID of a restorable database account.
+ * @param startTime - Restorable Tables event feed start time.
+ * @param endTime - Restorable Tables event feed end time.
  */
 export const RestorableTablesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8767,6 +12122,8 @@ export const RestorableTablesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ServiceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       instanceSize: Schema.optional(
@@ -8785,7 +12142,7 @@ export const ServiceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ServiceCreateInput = typeof ServiceCreateInput.Type;
@@ -8795,6 +12152,20 @@ export const ServiceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type ServiceCreateOutput = typeof ServiceCreateOutput.Type;
 
@@ -8802,9 +12173,11 @@ export type ServiceCreateOutput = typeof ServiceCreateOutput.Type;
 /**
  * Creates a service.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param serviceName - Cosmos DB service name.
  */
 export const ServiceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceCreateInput,
@@ -8814,11 +12187,13 @@ export const ServiceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ServiceDeleteInput = typeof ServiceDeleteInput.Type;
@@ -8831,9 +12206,11 @@ export type ServiceDeleteOutput = typeof ServiceDeleteOutput.Type;
 /**
  * Deletes service with the given serviceName.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param serviceName - Cosmos DB service name.
  */
 export const ServiceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceDeleteInput,
@@ -8843,11 +12220,13 @@ export const ServiceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ServiceGetInput = typeof ServiceGetInput.Type;
@@ -8857,6 +12236,20 @@ export const ServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type ServiceGetOutput = typeof ServiceGetOutput.Type;
 
@@ -8864,9 +12257,11 @@ export type ServiceGetOutput = typeof ServiceGetOutput.Type;
 /**
  * Gets the status of service.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param serviceName - Cosmos DB service name.
  */
 export const ServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceGetInput,
@@ -8876,11 +12271,12 @@ export const ServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServiceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services",
-    apiVersion: "2025-10-15",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ServiceListInput = typeof ServiceListInput.Type;
@@ -8893,9 +12289,34 @@ export const ServiceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type ServiceListOutput = typeof ServiceListOutput.Type;
 
@@ -8903,9 +12324,10 @@ export type ServiceListOutput = typeof ServiceListOutput.Type;
 /**
  * Gets the status of service.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const ServiceList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceListInput,
@@ -8916,6 +12338,9 @@ export const SqlResourcesCreateUpdateClientEncryptionKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    clientEncryptionKeyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8935,7 +12360,7 @@ export const SqlResourcesCreateUpdateClientEncryptionKeyInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesCreateUpdateClientEncryptionKeyInput =
@@ -8947,6 +12372,20 @@ export const SqlResourcesCreateUpdateClientEncryptionKeyOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesCreateUpdateClientEncryptionKeyOutput =
   typeof SqlResourcesCreateUpdateClientEncryptionKeyOutput.Type;
@@ -8955,9 +12394,12 @@ export type SqlResourcesCreateUpdateClientEncryptionKeyOutput =
 /**
  * Create or update a ClientEncryptionKey. This API is meant to be invoked via tools such as the Azure Powershell (instead of directly).
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param clientEncryptionKeyName - Cosmos DB ClientEncryptionKey name.
  */
 export const SqlResourcesCreateUpdateClientEncryptionKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8969,6 +12411,9 @@ export const SqlResourcesCreateUpdateSqlContainerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -9177,11 +12622,34 @@ export const SqlResourcesCreateUpdateSqlContainerInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlContainerInput =
@@ -9193,8 +12661,20 @@ export const SqlResourcesCreateUpdateSqlContainerOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesCreateUpdateSqlContainerOutput =
   typeof SqlResourcesCreateUpdateSqlContainerOutput.Type;
@@ -9203,9 +12683,12 @@ export type SqlResourcesCreateUpdateSqlContainerOutput =
 /**
  * Create or update an Azure Cosmos DB SQL container
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesCreateUpdateSqlContainer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9217,6 +12700,8 @@ export const SqlResourcesCreateUpdateSqlDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -9245,11 +12730,34 @@ export const SqlResourcesCreateUpdateSqlDatabaseInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlDatabaseInput =
@@ -9261,8 +12769,20 @@ export const SqlResourcesCreateUpdateSqlDatabaseOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesCreateUpdateSqlDatabaseOutput =
   typeof SqlResourcesCreateUpdateSqlDatabaseOutput.Type;
@@ -9271,9 +12791,11 @@ export type SqlResourcesCreateUpdateSqlDatabaseOutput =
 /**
  * Create or update an Azure Cosmos DB SQL database
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesCreateUpdateSqlDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9286,6 +12808,7 @@ export const SqlResourcesCreateUpdateSqlRoleAssignmentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         roleDefinitionId: Schema.optional(Schema.String),
@@ -9297,7 +12820,7 @@ export const SqlResourcesCreateUpdateSqlRoleAssignmentInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlRoleAssignmentInput =
@@ -9309,6 +12832,20 @@ export const SqlResourcesCreateUpdateSqlRoleAssignmentOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesCreateUpdateSqlRoleAssignmentOutput =
   typeof SqlResourcesCreateUpdateSqlRoleAssignmentOutput.Type;
@@ -9317,10 +12854,11 @@ export type SqlResourcesCreateUpdateSqlRoleAssignmentOutput =
 /**
  * Creates or updates an Azure Cosmos DB SQL Role Assignment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const SqlResourcesCreateUpdateSqlRoleAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9333,6 +12871,7 @@ export const SqlResourcesCreateUpdateSqlRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         roleName: Schema.optional(Schema.String),
@@ -9341,6 +12880,7 @@ export const SqlResourcesCreateUpdateSqlRoleDefinitionInput =
         permissions: Schema.optional(
           Schema.Array(
             Schema.Struct({
+              id: Schema.optional(Schema.String),
               dataActions: Schema.optional(Schema.Array(Schema.String)),
               notDataActions: Schema.optional(Schema.Array(Schema.String)),
             }),
@@ -9352,7 +12892,7 @@ export const SqlResourcesCreateUpdateSqlRoleDefinitionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlRoleDefinitionInput =
@@ -9364,6 +12904,20 @@ export const SqlResourcesCreateUpdateSqlRoleDefinitionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesCreateUpdateSqlRoleDefinitionOutput =
   typeof SqlResourcesCreateUpdateSqlRoleDefinitionOutput.Type;
@@ -9372,10 +12926,11 @@ export type SqlResourcesCreateUpdateSqlRoleDefinitionOutput =
 /**
  * Creates or updates an Azure Cosmos DB SQL Role Definition.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const SqlResourcesCreateUpdateSqlRoleDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9387,6 +12942,10 @@ export const SqlResourcesCreateUpdateSqlStoredProcedureInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    storedProcedureName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -9408,11 +12967,34 @@ export const SqlResourcesCreateUpdateSqlStoredProcedureInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlStoredProcedureInput =
@@ -9424,8 +13006,20 @@ export const SqlResourcesCreateUpdateSqlStoredProcedureOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesCreateUpdateSqlStoredProcedureOutput =
   typeof SqlResourcesCreateUpdateSqlStoredProcedureOutput.Type;
@@ -9434,9 +13028,13 @@ export type SqlResourcesCreateUpdateSqlStoredProcedureOutput =
 /**
  * Create or update an Azure Cosmos DB SQL storedProcedure
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
+ * @param storedProcedureName - Cosmos DB storedProcedure name.
  */
 export const SqlResourcesCreateUpdateSqlStoredProcedure =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9448,6 +13046,10 @@ export const SqlResourcesCreateUpdateSqlTriggerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    triggerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -9473,11 +13075,34 @@ export const SqlResourcesCreateUpdateSqlTriggerInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlTriggerInput =
@@ -9489,8 +13114,20 @@ export const SqlResourcesCreateUpdateSqlTriggerOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesCreateUpdateSqlTriggerOutput =
   typeof SqlResourcesCreateUpdateSqlTriggerOutput.Type;
@@ -9499,9 +13136,13 @@ export type SqlResourcesCreateUpdateSqlTriggerOutput =
 /**
  * Create or update an Azure Cosmos DB SQL trigger
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
+ * @param triggerName - Cosmos DB trigger name.
  */
 export const SqlResourcesCreateUpdateSqlTrigger =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9513,6 +13154,10 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    userDefinedFunctionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -9534,11 +13179,34 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
@@ -9550,8 +13218,20 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput =
   typeof SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput.Type;
@@ -9560,9 +13240,13 @@ export type SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput =
 /**
  * Create or update an Azure Cosmos DB SQL userDefinedFunction
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
+ * @param userDefinedFunctionName - Cosmos DB userDefinedFunction name.
  */
 export const SqlResourcesCreateUpdateSqlUserDefinedFunction =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9574,11 +13258,14 @@ export const SqlResourcesDeleteSqlContainerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesDeleteSqlContainerInput =
@@ -9594,9 +13281,12 @@ export type SqlResourcesDeleteSqlContainerOutput =
 /**
  * Deletes an existing Azure Cosmos DB SQL container.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesDeleteSqlContainer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9608,11 +13298,13 @@ export const SqlResourcesDeleteSqlDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesDeleteSqlDatabaseInput =
@@ -9628,9 +13320,11 @@ export type SqlResourcesDeleteSqlDatabaseOutput =
 /**
  * Deletes an existing Azure Cosmos DB SQL database.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesDeleteSqlDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9643,11 +13337,12 @@ export const SqlResourcesDeleteSqlRoleAssignmentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesDeleteSqlRoleAssignmentInput =
@@ -9663,10 +13358,11 @@ export type SqlResourcesDeleteSqlRoleAssignmentOutput =
 /**
  * Deletes an existing Azure Cosmos DB SQL Role Assignment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const SqlResourcesDeleteSqlRoleAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9679,11 +13375,12 @@ export const SqlResourcesDeleteSqlRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesDeleteSqlRoleDefinitionInput =
@@ -9699,10 +13396,11 @@ export type SqlResourcesDeleteSqlRoleDefinitionOutput =
 /**
  * Deletes an existing Azure Cosmos DB SQL Role Definition.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const SqlResourcesDeleteSqlRoleDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9714,11 +13412,15 @@ export const SqlResourcesDeleteSqlStoredProcedureInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    storedProcedureName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesDeleteSqlStoredProcedureInput =
@@ -9734,9 +13436,13 @@ export type SqlResourcesDeleteSqlStoredProcedureOutput =
 /**
  * Deletes an existing Azure Cosmos DB SQL storedProcedure.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
+ * @param storedProcedureName - Cosmos DB storedProcedure name.
  */
 export const SqlResourcesDeleteSqlStoredProcedure =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9748,11 +13454,15 @@ export const SqlResourcesDeleteSqlTriggerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    triggerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesDeleteSqlTriggerInput =
@@ -9768,9 +13478,13 @@ export type SqlResourcesDeleteSqlTriggerOutput =
 /**
  * Deletes an existing Azure Cosmos DB SQL trigger.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
+ * @param triggerName - Cosmos DB trigger name.
  */
 export const SqlResourcesDeleteSqlTrigger =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9782,11 +13496,15 @@ export const SqlResourcesDeleteSqlUserDefinedFunctionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    userDefinedFunctionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesDeleteSqlUserDefinedFunctionInput =
@@ -9802,9 +13520,13 @@ export type SqlResourcesDeleteSqlUserDefinedFunctionOutput =
 /**
  * Deletes an existing Azure Cosmos DB SQL userDefinedFunction.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
+ * @param userDefinedFunctionName - Cosmos DB userDefinedFunction name.
  */
 export const SqlResourcesDeleteSqlUserDefinedFunction =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9816,11 +13538,14 @@ export const SqlResourcesGetClientEncryptionKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    clientEncryptionKeyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesGetClientEncryptionKeyInput =
@@ -9832,6 +13557,20 @@ export const SqlResourcesGetClientEncryptionKeyOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesGetClientEncryptionKeyOutput =
   typeof SqlResourcesGetClientEncryptionKeyOutput.Type;
@@ -9840,9 +13579,12 @@ export type SqlResourcesGetClientEncryptionKeyOutput =
 /**
  * Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL database.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param clientEncryptionKeyName - Cosmos DB ClientEncryptionKey name.
  */
 export const SqlResourcesGetClientEncryptionKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9854,11 +13596,14 @@ export const SqlResourcesGetSqlContainerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesGetSqlContainerInput =
@@ -9870,8 +13615,20 @@ export const SqlResourcesGetSqlContainerOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesGetSqlContainerOutput =
   typeof SqlResourcesGetSqlContainerOutput.Type;
@@ -9880,9 +13637,12 @@ export type SqlResourcesGetSqlContainerOutput =
 /**
  * Gets the SQL container under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesGetSqlContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9895,11 +13655,14 @@ export const SqlResourcesGetSqlContainerThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesGetSqlContainerThroughputInput =
@@ -9911,8 +13674,20 @@ export const SqlResourcesGetSqlContainerThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesGetSqlContainerThroughputOutput =
   typeof SqlResourcesGetSqlContainerThroughputOutput.Type;
@@ -9921,9 +13696,12 @@ export type SqlResourcesGetSqlContainerThroughputOutput =
 /**
  * Gets the RUs per second of the SQL container under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesGetSqlContainerThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9935,11 +13713,13 @@ export const SqlResourcesGetSqlDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesGetSqlDatabaseInput =
@@ -9951,8 +13731,20 @@ export const SqlResourcesGetSqlDatabaseOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesGetSqlDatabaseOutput =
   typeof SqlResourcesGetSqlDatabaseOutput.Type;
@@ -9961,9 +13753,11 @@ export type SqlResourcesGetSqlDatabaseOutput =
 /**
  * Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesGetSqlDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9976,11 +13770,13 @@ export const SqlResourcesGetSqlDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesGetSqlDatabaseThroughputInput =
@@ -9992,8 +13788,20 @@ export const SqlResourcesGetSqlDatabaseThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesGetSqlDatabaseThroughputOutput =
   typeof SqlResourcesGetSqlDatabaseThroughputOutput.Type;
@@ -10002,9 +13810,11 @@ export type SqlResourcesGetSqlDatabaseThroughputOutput =
 /**
  * Gets the RUs per second of the SQL database under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesGetSqlDatabaseThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10017,11 +13827,12 @@ export const SqlResourcesGetSqlRoleAssignmentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesGetSqlRoleAssignmentInput =
@@ -10033,6 +13844,20 @@ export const SqlResourcesGetSqlRoleAssignmentOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesGetSqlRoleAssignmentOutput =
   typeof SqlResourcesGetSqlRoleAssignmentOutput.Type;
@@ -10041,10 +13866,11 @@ export type SqlResourcesGetSqlRoleAssignmentOutput =
 /**
  * Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment with the given Id.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const SqlResourcesGetSqlRoleAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10057,11 +13883,12 @@ export const SqlResourcesGetSqlRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesGetSqlRoleDefinitionInput =
@@ -10073,6 +13900,20 @@ export const SqlResourcesGetSqlRoleDefinitionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesGetSqlRoleDefinitionOutput =
   typeof SqlResourcesGetSqlRoleDefinitionOutput.Type;
@@ -10081,10 +13922,11 @@ export type SqlResourcesGetSqlRoleDefinitionOutput =
 /**
  * Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
+ * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const SqlResourcesGetSqlRoleDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10096,11 +13938,15 @@ export const SqlResourcesGetSqlStoredProcedureInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    storedProcedureName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesGetSqlStoredProcedureInput =
@@ -10112,8 +13958,20 @@ export const SqlResourcesGetSqlStoredProcedureOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesGetSqlStoredProcedureOutput =
   typeof SqlResourcesGetSqlStoredProcedureOutput.Type;
@@ -10122,9 +13980,13 @@ export type SqlResourcesGetSqlStoredProcedureOutput =
 /**
  * Gets the SQL storedProcedure under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
+ * @param storedProcedureName - Cosmos DB storedProcedure name.
  */
 export const SqlResourcesGetSqlStoredProcedure =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10136,11 +13998,15 @@ export const SqlResourcesGetSqlTriggerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    triggerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesGetSqlTriggerInput =
@@ -10152,8 +14018,20 @@ export const SqlResourcesGetSqlTriggerOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesGetSqlTriggerOutput =
   typeof SqlResourcesGetSqlTriggerOutput.Type;
@@ -10162,9 +14040,13 @@ export type SqlResourcesGetSqlTriggerOutput =
 /**
  * Gets the SQL trigger under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
+ * @param triggerName - Cosmos DB trigger name.
  */
 export const SqlResourcesGetSqlTrigger = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10177,11 +14059,15 @@ export const SqlResourcesGetSqlUserDefinedFunctionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    userDefinedFunctionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesGetSqlUserDefinedFunctionInput =
@@ -10193,8 +14079,20 @@ export const SqlResourcesGetSqlUserDefinedFunctionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesGetSqlUserDefinedFunctionOutput =
   typeof SqlResourcesGetSqlUserDefinedFunctionOutput.Type;
@@ -10203,9 +14101,13 @@ export type SqlResourcesGetSqlUserDefinedFunctionOutput =
 /**
  * Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
+ * @param userDefinedFunctionName - Cosmos DB userDefinedFunction name.
  */
 export const SqlResourcesGetSqlUserDefinedFunction =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10217,11 +14119,13 @@ export const SqlResourcesListClientEncryptionKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesListClientEncryptionKeysInput =
@@ -10236,9 +14140,34 @@ export const SqlResourcesListClientEncryptionKeysOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type SqlResourcesListClientEncryptionKeysOutput =
   typeof SqlResourcesListClientEncryptionKeysOutput.Type;
@@ -10247,9 +14176,11 @@ export type SqlResourcesListClientEncryptionKeysOutput =
 /**
  * Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL database.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesListClientEncryptionKeys =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10261,11 +14192,13 @@ export const SqlResourcesListSqlContainersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesListSqlContainersInput =
@@ -10280,11 +14213,34 @@ export const SqlResourcesListSqlContainersOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type SqlResourcesListSqlContainersOutput =
   typeof SqlResourcesListSqlContainersOutput.Type;
@@ -10293,9 +14249,11 @@ export type SqlResourcesListSqlContainersOutput =
 /**
  * Lists the SQL container under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesListSqlContainers =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10307,11 +14265,12 @@ export const SqlResourcesListSqlDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesListSqlDatabasesInput =
@@ -10326,11 +14285,34 @@ export const SqlResourcesListSqlDatabasesOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type SqlResourcesListSqlDatabasesOutput =
   typeof SqlResourcesListSqlDatabasesOutput.Type;
@@ -10339,9 +14321,10 @@ export type SqlResourcesListSqlDatabasesOutput =
 /**
  * Lists the SQL databases under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const SqlResourcesListSqlDatabases =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10358,7 +14341,7 @@ export const SqlResourcesListSqlRoleAssignmentsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesListSqlRoleAssignmentsInput =
@@ -10373,9 +14356,34 @@ export const SqlResourcesListSqlRoleAssignmentsOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type SqlResourcesListSqlRoleAssignmentsOutput =
   typeof SqlResourcesListSqlRoleAssignmentsOutput.Type;
@@ -10384,10 +14392,10 @@ export type SqlResourcesListSqlRoleAssignmentsOutput =
 /**
  * Retrieves the list of all Azure Cosmos DB SQL Role Assignments.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
  */
 export const SqlResourcesListSqlRoleAssignments =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10404,7 +14412,7 @@ export const SqlResourcesListSqlRoleDefinitionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesListSqlRoleDefinitionsInput =
@@ -10419,9 +14427,34 @@ export const SqlResourcesListSqlRoleDefinitionsOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type SqlResourcesListSqlRoleDefinitionsOutput =
   typeof SqlResourcesListSqlRoleDefinitionsOutput.Type;
@@ -10430,10 +14463,10 @@ export type SqlResourcesListSqlRoleDefinitionsOutput =
 /**
  * Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
- * @param api-version - The API version to use for this operation.
  */
 export const SqlResourcesListSqlRoleDefinitions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10445,11 +14478,14 @@ export const SqlResourcesListSqlStoredProceduresInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesListSqlStoredProceduresInput =
@@ -10464,11 +14500,34 @@ export const SqlResourcesListSqlStoredProceduresOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type SqlResourcesListSqlStoredProceduresOutput =
   typeof SqlResourcesListSqlStoredProceduresOutput.Type;
@@ -10477,9 +14536,12 @@ export type SqlResourcesListSqlStoredProceduresOutput =
 /**
  * Lists the SQL storedProcedure under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesListSqlStoredProcedures =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10491,11 +14553,14 @@ export const SqlResourcesListSqlTriggersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesListSqlTriggersInput =
@@ -10510,11 +14575,34 @@ export const SqlResourcesListSqlTriggersOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type SqlResourcesListSqlTriggersOutput =
   typeof SqlResourcesListSqlTriggersOutput.Type;
@@ -10523,9 +14611,12 @@ export type SqlResourcesListSqlTriggersOutput =
 /**
  * Lists the SQL trigger under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesListSqlTriggers = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10538,11 +14629,14 @@ export const SqlResourcesListSqlUserDefinedFunctionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesListSqlUserDefinedFunctionsInput =
@@ -10557,11 +14651,34 @@ export const SqlResourcesListSqlUserDefinedFunctionsOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type SqlResourcesListSqlUserDefinedFunctionsOutput =
   typeof SqlResourcesListSqlUserDefinedFunctionsOutput.Type;
@@ -10570,9 +14687,12 @@ export type SqlResourcesListSqlUserDefinedFunctionsOutput =
 /**
  * Lists the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesListSqlUserDefinedFunctions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10584,11 +14704,14 @@ export const SqlResourcesMigrateSqlContainerToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default/migrateToAutoscale",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesMigrateSqlContainerToAutoscaleInput =
@@ -10600,8 +14723,20 @@ export const SqlResourcesMigrateSqlContainerToAutoscaleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesMigrateSqlContainerToAutoscaleOutput =
   typeof SqlResourcesMigrateSqlContainerToAutoscaleOutput.Type;
@@ -10610,9 +14745,12 @@ export type SqlResourcesMigrateSqlContainerToAutoscaleOutput =
 /**
  * Migrate an Azure Cosmos DB SQL container from manual throughput to autoscale
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesMigrateSqlContainerToAutoscale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10624,11 +14762,14 @@ export const SqlResourcesMigrateSqlContainerToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default/migrateToManualThroughput",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesMigrateSqlContainerToManualThroughputInput =
@@ -10640,8 +14781,20 @@ export const SqlResourcesMigrateSqlContainerToManualThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesMigrateSqlContainerToManualThroughputOutput =
   typeof SqlResourcesMigrateSqlContainerToManualThroughputOutput.Type;
@@ -10650,9 +14803,12 @@ export type SqlResourcesMigrateSqlContainerToManualThroughputOutput =
 /**
  * Migrate an Azure Cosmos DB SQL container from autoscale to manual throughput
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesMigrateSqlContainerToManualThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10664,11 +14820,13 @@ export const SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
@@ -10680,8 +14838,20 @@ export const SqlResourcesMigrateSqlDatabaseToAutoscaleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesMigrateSqlDatabaseToAutoscaleOutput =
   typeof SqlResourcesMigrateSqlDatabaseToAutoscaleOutput.Type;
@@ -10690,9 +14860,11 @@ export type SqlResourcesMigrateSqlDatabaseToAutoscaleOutput =
 /**
  * Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesMigrateSqlDatabaseToAutoscale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10704,11 +14876,13 @@ export const SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
@@ -10720,8 +14894,20 @@ export const SqlResourcesMigrateSqlDatabaseToManualThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesMigrateSqlDatabaseToManualThroughputOutput =
   typeof SqlResourcesMigrateSqlDatabaseToManualThroughputOutput.Type;
@@ -10730,9 +14916,11 @@ export type SqlResourcesMigrateSqlDatabaseToManualThroughputOutput =
 /**
  * Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesMigrateSqlDatabaseToManualThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10752,7 +14940,7 @@ export const SqlResourcesRetrieveContinuousBackupInformationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/retrieveContinuousBackupInformation",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesRetrieveContinuousBackupInformationInput =
@@ -10774,12 +14962,12 @@ export type SqlResourcesRetrieveContinuousBackupInformationOutput =
 /**
  * Retrieves continuous backup information for a container resource.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
  * @param databaseName - Cosmos DB database name.
  * @param containerName - Cosmos DB container name.
- * @param api-version - The API version to use for this operation.
  */
 export const SqlResourcesRetrieveContinuousBackupInformation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10791,6 +14979,9 @@ export const SqlResourcesUpdateSqlContainerThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         throughput: Schema.optional(Schema.Number),
@@ -10821,11 +15012,34 @@ export const SqlResourcesUpdateSqlContainerThroughputInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesUpdateSqlContainerThroughputInput =
@@ -10837,8 +15051,20 @@ export const SqlResourcesUpdateSqlContainerThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesUpdateSqlContainerThroughputOutput =
   typeof SqlResourcesUpdateSqlContainerThroughputOutput.Type;
@@ -10847,9 +15073,12 @@ export type SqlResourcesUpdateSqlContainerThroughputOutput =
 /**
  * Update RUs per second of an Azure Cosmos DB SQL container
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
+ * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesUpdateSqlContainerThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10861,6 +15090,8 @@ export const SqlResourcesUpdateSqlDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         throughput: Schema.optional(Schema.Number),
@@ -10891,11 +15122,34 @@ export const SqlResourcesUpdateSqlDatabaseThroughputInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SqlResourcesUpdateSqlDatabaseThroughputInput =
@@ -10907,8 +15161,20 @@ export const SqlResourcesUpdateSqlDatabaseThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type SqlResourcesUpdateSqlDatabaseThroughputOutput =
   typeof SqlResourcesUpdateSqlDatabaseThroughputOutput.Type;
@@ -10917,9 +15183,11 @@ export type SqlResourcesUpdateSqlDatabaseThroughputOutput =
 /**
  * Update RUs per second of an Azure Cosmos DB SQL database
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesUpdateSqlDatabaseThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10931,6 +15199,8 @@ export const TableResourcesCreateUpdateTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         id: Schema.String,
@@ -10959,11 +15229,34 @@ export const TableResourcesCreateUpdateTableInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type TableResourcesCreateUpdateTableInput =
@@ -10975,8 +15268,20 @@ export const TableResourcesCreateUpdateTableOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TableResourcesCreateUpdateTableOutput =
   typeof TableResourcesCreateUpdateTableOutput.Type;
@@ -10985,9 +15290,11 @@ export type TableResourcesCreateUpdateTableOutput =
 /**
  * Create or update an Azure Cosmos DB Table
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesCreateUpdateTable =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10995,15 +15302,154 @@ export const TableResourcesCreateUpdateTable =
     outputSchema: TableResourcesCreateUpdateTableOutput,
   }));
 // Input Schema
+export const TableResourcesCreateUpdateTableRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        roleDefinitionId: Schema.optional(Schema.String),
+        scope: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type TableResourcesCreateUpdateTableRoleAssignmentInput =
+  typeof TableResourcesCreateUpdateTableRoleAssignmentInput.Type;
+
+// Output Schema
+export const TableResourcesCreateUpdateTableRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type TableResourcesCreateUpdateTableRoleAssignmentOutput =
+  typeof TableResourcesCreateUpdateTableRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Azure Cosmos DB Table Role Assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const TableResourcesCreateUpdateTableRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TableResourcesCreateUpdateTableRoleAssignmentInput,
+    outputSchema: TableResourcesCreateUpdateTableRoleAssignmentOutput,
+  }));
+// Input Schema
+export const TableResourcesCreateUpdateTableRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        roleName: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["BuiltInRole", "CustomRole"])),
+        assignableScopes: Schema.optional(Schema.Array(Schema.String)),
+        permissions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              dataActions: Schema.optional(Schema.Array(Schema.String)),
+              notDataActions: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type TableResourcesCreateUpdateTableRoleDefinitionInput =
+  typeof TableResourcesCreateUpdateTableRoleDefinitionInput.Type;
+
+// Output Schema
+export const TableResourcesCreateUpdateTableRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type TableResourcesCreateUpdateTableRoleDefinitionOutput =
+  typeof TableResourcesCreateUpdateTableRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Azure Cosmos DB Table Role Definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const TableResourcesCreateUpdateTableRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TableResourcesCreateUpdateTableRoleDefinitionInput,
+    outputSchema: TableResourcesCreateUpdateTableRoleDefinitionOutput,
+  }));
+// Input Schema
 export const TableResourcesDeleteTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type TableResourcesDeleteTableInput =
@@ -11019,9 +15465,11 @@ export type TableResourcesDeleteTableOutput =
 /**
  * Deletes an existing Azure Cosmos DB Table.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesDeleteTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -11030,15 +15478,93 @@ export const TableResourcesDeleteTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const TableResourcesDeleteTableRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type TableResourcesDeleteTableRoleAssignmentInput =
+  typeof TableResourcesDeleteTableRoleAssignmentInput.Type;
+
+// Output Schema
+export const TableResourcesDeleteTableRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type TableResourcesDeleteTableRoleAssignmentOutput =
+  typeof TableResourcesDeleteTableRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Deletes an existing Azure Cosmos DB Table Role Assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const TableResourcesDeleteTableRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TableResourcesDeleteTableRoleAssignmentInput,
+    outputSchema: TableResourcesDeleteTableRoleAssignmentOutput,
+  }));
+// Input Schema
+export const TableResourcesDeleteTableRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type TableResourcesDeleteTableRoleDefinitionInput =
+  typeof TableResourcesDeleteTableRoleDefinitionInput.Type;
+
+// Output Schema
+export const TableResourcesDeleteTableRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type TableResourcesDeleteTableRoleDefinitionOutput =
+  typeof TableResourcesDeleteTableRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Deletes an existing Azure Cosmos DB Table Role Definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const TableResourcesDeleteTableRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TableResourcesDeleteTableRoleDefinitionInput,
+    outputSchema: TableResourcesDeleteTableRoleDefinitionOutput,
+  }));
+// Input Schema
 export const TableResourcesGetTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type TableResourcesGetTableInput =
@@ -11050,8 +15576,20 @@ export const TableResourcesGetTableOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TableResourcesGetTableOutput =
   typeof TableResourcesGetTableOutput.Type;
@@ -11060,9 +15598,11 @@ export type TableResourcesGetTableOutput =
 /**
  * Gets the Tables under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesGetTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -11071,15 +15611,129 @@ export const TableResourcesGetTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const TableResourcesGetTableRoleAssignmentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type TableResourcesGetTableRoleAssignmentInput =
+  typeof TableResourcesGetTableRoleAssignmentInput.Type;
+
+// Output Schema
+export const TableResourcesGetTableRoleAssignmentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type TableResourcesGetTableRoleAssignmentOutput =
+  typeof TableResourcesGetTableRoleAssignmentOutput.Type;
+
+// The operation
+/**
+ * Retrieves the properties of an existing Azure Cosmos DB Table Role Assignment with the given Id.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleAssignmentId - The GUID for the Role Assignment.
+ */
+export const TableResourcesGetTableRoleAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TableResourcesGetTableRoleAssignmentInput,
+    outputSchema: TableResourcesGetTableRoleAssignmentOutput,
+  }));
+// Input Schema
+export const TableResourcesGetTableRoleDefinitionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    roleDefinitionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type TableResourcesGetTableRoleDefinitionInput =
+  typeof TableResourcesGetTableRoleDefinitionInput.Type;
+
+// Output Schema
+export const TableResourcesGetTableRoleDefinitionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type TableResourcesGetTableRoleDefinitionOutput =
+  typeof TableResourcesGetTableRoleDefinitionOutput.Type;
+
+// The operation
+/**
+ * Retrieves the properties of an existing Azure Cosmos DB Table Role Definition with the given Id.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param roleDefinitionId - The GUID for the Role Definition.
+ */
+export const TableResourcesGetTableRoleDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TableResourcesGetTableRoleDefinitionInput,
+    outputSchema: TableResourcesGetTableRoleDefinitionOutput,
+  }));
+// Input Schema
 export const TableResourcesGetTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type TableResourcesGetTableThroughputInput =
@@ -11091,8 +15745,20 @@ export const TableResourcesGetTableThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TableResourcesGetTableThroughputOutput =
   typeof TableResourcesGetTableThroughputOutput.Type;
@@ -11101,9 +15767,11 @@ export type TableResourcesGetTableThroughputOutput =
 /**
  * Gets the RUs per second of the Table under an existing Azure Cosmos DB database account with the provided name.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesGetTableThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11111,15 +15779,154 @@ export const TableResourcesGetTableThroughput =
     outputSchema: TableResourcesGetTableThroughputOutput,
   }));
 // Input Schema
+export const TableResourcesListTableRoleAssignmentsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type TableResourcesListTableRoleAssignmentsInput =
+  typeof TableResourcesListTableRoleAssignmentsInput.Type;
+
+// Output Schema
+export const TableResourcesListTableRoleAssignmentsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type TableResourcesListTableRoleAssignmentsOutput =
+  typeof TableResourcesListTableRoleAssignmentsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the list of all Azure Cosmos DB Table Role Assignments.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ */
+export const TableResourcesListTableRoleAssignments =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TableResourcesListTableRoleAssignmentsInput,
+    outputSchema: TableResourcesListTableRoleAssignmentsOutput,
+  }));
+// Input Schema
+export const TableResourcesListTableRoleDefinitionsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type TableResourcesListTableRoleDefinitionsInput =
+  typeof TableResourcesListTableRoleDefinitionsInput.Type;
+
+// Output Schema
+export const TableResourcesListTableRoleDefinitionsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type TableResourcesListTableRoleDefinitionsOutput =
+  typeof TableResourcesListTableRoleDefinitionsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the list of all Azure Cosmos DB Table Role Definitions.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ */
+export const TableResourcesListTableRoleDefinitions =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TableResourcesListTableRoleDefinitionsInput,
+    outputSchema: TableResourcesListTableRoleDefinitionsOutput,
+  }));
+// Input Schema
 export const TableResourcesListTablesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type TableResourcesListTablesInput =
@@ -11134,11 +15941,34 @@ export const TableResourcesListTablesOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type TableResourcesListTablesOutput =
   typeof TableResourcesListTablesOutput.Type;
@@ -11147,9 +15977,10 @@ export type TableResourcesListTablesOutput =
 /**
  * Lists the Tables under an existing Azure Cosmos DB database account.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
  */
 export const TableResourcesListTables = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -11162,11 +15993,13 @@ export const TableResourcesMigrateTableToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default/migrateToAutoscale",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type TableResourcesMigrateTableToAutoscaleInput =
@@ -11178,8 +16011,20 @@ export const TableResourcesMigrateTableToAutoscaleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TableResourcesMigrateTableToAutoscaleOutput =
   typeof TableResourcesMigrateTableToAutoscaleOutput.Type;
@@ -11188,9 +16033,11 @@ export type TableResourcesMigrateTableToAutoscaleOutput =
 /**
  * Migrate an Azure Cosmos DB Table from manual throughput to autoscale
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesMigrateTableToAutoscale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11202,11 +16049,13 @@ export const TableResourcesMigrateTableToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default/migrateToManualThroughput",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type TableResourcesMigrateTableToManualThroughputInput =
@@ -11218,8 +16067,20 @@ export const TableResourcesMigrateTableToManualThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TableResourcesMigrateTableToManualThroughputOutput =
   typeof TableResourcesMigrateTableToManualThroughputOutput.Type;
@@ -11228,9 +16089,11 @@ export type TableResourcesMigrateTableToManualThroughputOutput =
 /**
  * Migrate an Azure Cosmos DB Table from autoscale to manual throughput
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesMigrateTableToManualThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11249,7 +16112,7 @@ export const TableResourcesRetrieveContinuousBackupInformationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/retrieveContinuousBackupInformation",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type TableResourcesRetrieveContinuousBackupInformationInput =
@@ -11271,11 +16134,11 @@ export type TableResourcesRetrieveContinuousBackupInformationOutput =
 /**
  * Retrieves continuous backup information for a table.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
  * @param tableName - Cosmos DB table name.
- * @param api-version - The API version to use for this operation.
  */
 export const TableResourcesRetrieveContinuousBackupInformation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11287,6 +16150,8 @@ export const TableResourcesUpdateTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    tableName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resource: Schema.Struct({
         throughput: Schema.optional(Schema.Number),
@@ -11317,11 +16182,34 @@ export const TableResourcesUpdateTableThroughputInput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default",
-      apiVersion: "2025-10-15",
+      apiVersion: "2026-03-15",
     }),
   );
 export type TableResourcesUpdateTableThroughputInput =
@@ -11333,8 +16221,20 @@ export const TableResourcesUpdateTableThroughputOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TableResourcesUpdateTableThroughputOutput =
   typeof TableResourcesUpdateTableThroughputOutput.Type;
@@ -11343,9 +16243,11 @@ export type TableResourcesUpdateTableThroughputOutput =
 /**
  * Update RUs per second of an Azure Cosmos DB Table
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - Cosmos DB database account name.
+ * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesUpdateTableThroughput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

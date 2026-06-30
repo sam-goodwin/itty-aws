@@ -10,6 +10,257 @@ import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
+export const AdvancedPlatformMetricsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    advancedPlatformMetricsRuleType: Schema.Literals([
+      "ContainerLevelCapacityMetrics",
+    ]).pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        ruleType: Schema.optional(
+          Schema.Literals(["ContainerLevelCapacityMetrics"]),
+        ),
+        enabled: Schema.Boolean,
+        lastModifiedTime: Schema.optional(Schema.String),
+        metricsEmitted: Schema.optional(
+          Schema.Array(
+            Schema.Literals(["ContainerBlobCount", "ContainerUsedSize"]),
+          ),
+        ),
+        ruleConfig: Schema.Struct({
+          filterType: Schema.optional(
+            Schema.Literals([
+              "AllContainersFilter",
+              "ContainerPrefixFilter",
+              "ContainerListFilter",
+            ]),
+          ),
+          filterValues: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type AdvancedPlatformMetricsCreateOrUpdateInput =
+  typeof AdvancedPlatformMetricsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AdvancedPlatformMetricsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AdvancedPlatformMetricsCreateOrUpdateOutput =
+  typeof AdvancedPlatformMetricsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create or update the advanced platform metrics rule for the storage account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+ * @param advancedPlatformMetricsRuleType - The type of the advanced platform metrics rule.
+ */
+export const AdvancedPlatformMetricsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AdvancedPlatformMetricsCreateOrUpdateInput,
+    outputSchema: AdvancedPlatformMetricsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const AdvancedPlatformMetricsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    advancedPlatformMetricsRuleType: Schema.Literals([
+      "ContainerLevelCapacityMetrics",
+    ]).pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type AdvancedPlatformMetricsDeleteInput =
+  typeof AdvancedPlatformMetricsDeleteInput.Type;
+
+// Output Schema
+export const AdvancedPlatformMetricsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AdvancedPlatformMetricsDeleteOutput =
+  typeof AdvancedPlatformMetricsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete the advanced platform metrics rule for the storage account by rule type.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+ * @param advancedPlatformMetricsRuleType - The type of the advanced platform metrics rule.
+ */
+export const AdvancedPlatformMetricsDelete =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AdvancedPlatformMetricsDeleteInput,
+    outputSchema: AdvancedPlatformMetricsDeleteOutput,
+  }));
+// Input Schema
+export const AdvancedPlatformMetricsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    advancedPlatformMetricsRuleType: Schema.Literals([
+      "ContainerLevelCapacityMetrics",
+    ]).pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type AdvancedPlatformMetricsGetInput =
+  typeof AdvancedPlatformMetricsGetInput.Type;
+
+// Output Schema
+export const AdvancedPlatformMetricsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AdvancedPlatformMetricsGetOutput =
+  typeof AdvancedPlatformMetricsGetOutput.Type;
+
+// The operation
+/**
+ * Get the advanced platform metrics rule for the storage account by rule type.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+ * @param advancedPlatformMetricsRuleType - The type of the advanced platform metrics rule.
+ */
+export const AdvancedPlatformMetricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AdvancedPlatformMetricsGetInput,
+    outputSchema: AdvancedPlatformMetricsGetOutput,
+  }),
+);
+// Input Schema
+export const AdvancedPlatformMetricsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type AdvancedPlatformMetricsListInput =
+  typeof AdvancedPlatformMetricsListInput.Type;
+
+// Output Schema
+export const AdvancedPlatformMetricsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AdvancedPlatformMetricsListOutput =
+  typeof AdvancedPlatformMetricsListOutput.Type;
+
+// The operation
+/**
+ * List the advanced platform metrics rules associated with the storage account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+ */
+export const AdvancedPlatformMetricsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AdvancedPlatformMetricsListInput,
+    outputSchema: AdvancedPlatformMetricsListOutput,
+  }),
+);
+// Input Schema
 export const BlobContainersClearLegalHoldInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -23,7 +274,7 @@ export const BlobContainersClearLegalHoldInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersClearLegalHoldInput =
@@ -162,7 +413,7 @@ export const BlobContainersCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersCreateInput = typeof BlobContainersCreateInput.Type;
@@ -224,7 +475,7 @@ export const BlobContainersCreateOrUpdateImmutabilityPolicyInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersCreateOrUpdateImmutabilityPolicyInput =
@@ -281,7 +532,7 @@ export const BlobContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersDeleteInput = typeof BlobContainersDeleteInput.Type;
@@ -318,7 +569,7 @@ export const BlobContainersDeleteImmutabilityPolicyInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersDeleteImmutabilityPolicyInput =
@@ -382,7 +633,7 @@ export const BlobContainersExtendImmutabilityPolicyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersExtendImmutabilityPolicyInput =
@@ -440,7 +691,7 @@ export const BlobContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type BlobContainersGetInput = typeof BlobContainersGetInput.Type;
@@ -493,7 +744,7 @@ export const BlobContainersGetImmutabilityPolicyInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersGetImmutabilityPolicyInput =
@@ -555,7 +806,7 @@ export const BlobContainersLeaseInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersLeaseInput = typeof BlobContainersLeaseInput.Type;
@@ -595,7 +846,7 @@ export const BlobContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersListInput = typeof BlobContainersListInput.Type;
@@ -665,7 +916,7 @@ export const BlobContainersLockImmutabilityPolicyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersLockImmutabilityPolicyInput =
@@ -722,7 +973,7 @@ export const BlobContainersObjectLevelWormInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersObjectLevelWormInput =
@@ -763,7 +1014,7 @@ export const BlobContainersSetLegalHoldInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersSetLegalHoldInput =
@@ -903,7 +1154,7 @@ export const BlobContainersUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobContainersUpdateInput = typeof BlobContainersUpdateInput.Type;
@@ -996,7 +1247,7 @@ export const BlobInventoryPoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobInventoryPoliciesCreateOrUpdateInput =
@@ -1052,7 +1303,7 @@ export const BlobInventoryPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobInventoryPoliciesDeleteInput =
@@ -1091,7 +1342,7 @@ export const BlobInventoryPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobInventoryPoliciesGetInput =
@@ -1147,7 +1398,7 @@ export const BlobInventoryPoliciesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobInventoryPoliciesListInput =
@@ -1219,7 +1470,7 @@ export const BlobServicesGetServicePropertiesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobServicesGetServicePropertiesInput =
@@ -1272,7 +1523,7 @@ export const BlobServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type BlobServicesListInput = typeof BlobServicesListInput.Type;
@@ -1441,7 +1692,7 @@ export const BlobServicesSetServicePropertiesInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BlobServicesSetServicePropertiesInput =
@@ -1518,7 +1769,7 @@ export const ConnectorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type ConnectorsCreateInput = typeof ConnectorsCreateInput.Type;
@@ -1571,7 +1822,7 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type ConnectorsDeleteInput = typeof ConnectorsDeleteInput.Type;
@@ -1604,7 +1855,7 @@ export const ConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type ConnectorsGetInput = typeof ConnectorsGetInput.Type;
@@ -1655,7 +1906,7 @@ export const ConnectorsListByStorageAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ConnectorsListByStorageAccountInput =
@@ -1726,7 +1977,7 @@ export const ConnectorsTestExistingConnectionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}/testExistingConnection",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ConnectorsTestExistingConnectionInput =
@@ -1783,7 +2034,7 @@ export const ConnectorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type ConnectorsUpdateInput = typeof ConnectorsUpdateInput.Type;
@@ -1866,7 +2117,7 @@ export const DataSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type DataSharesCreateInput = typeof DataSharesCreateInput.Type;
@@ -1919,7 +2170,7 @@ export const DataSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type DataSharesDeleteInput = typeof DataSharesDeleteInput.Type;
@@ -1952,7 +2203,7 @@ export const DataSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type DataSharesGetInput = typeof DataSharesGetInput.Type;
@@ -2003,7 +2254,7 @@ export const DataSharesListByStorageAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type DataSharesListByStorageAccountInput =
@@ -2095,7 +2346,7 @@ export const DataSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type DataSharesUpdateInput = typeof DataSharesUpdateInput.Type;
@@ -2148,7 +2399,7 @@ export const DeletedAccountsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/deletedAccounts/{deletedAccountName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type DeletedAccountsGetInput = typeof DeletedAccountsGetInput.Type;
@@ -2197,7 +2448,7 @@ export const DeletedAccountsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/deletedAccounts",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type DeletedAccountsListInput = typeof DeletedAccountsListInput.Type;
@@ -2262,7 +2513,7 @@ export const EncryptionScopesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type EncryptionScopesGetInput = typeof EncryptionScopesGetInput.Type;
@@ -2317,7 +2568,7 @@ export const EncryptionScopesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type EncryptionScopesListInput = typeof EncryptionScopesListInput.Type;
@@ -2407,7 +2658,7 @@ export const EncryptionScopesPatchInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type EncryptionScopesPatchInput = typeof EncryptionScopesPatchInput.Type;
@@ -2481,7 +2732,7 @@ export const EncryptionScopesPutInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type EncryptionScopesPutInput = typeof EncryptionScopesPutInput.Type;
@@ -2533,7 +2784,7 @@ export const FileServicesGetServicePropertiesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type FileServicesGetServicePropertiesInput =
@@ -2587,7 +2838,7 @@ export const FileServicesGetServiceUsageInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type FileServicesGetServiceUsageInput =
@@ -2641,7 +2892,7 @@ export const FileServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type FileServicesListInput = typeof FileServicesListInput.Type;
@@ -2710,7 +2961,7 @@ export const FileServicesListServiceUsagesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type FileServicesListServiceUsagesInput =
@@ -2871,7 +3122,7 @@ export const FileServicesSetServicePropertiesInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type FileServicesSetServicePropertiesInput =
@@ -2990,7 +3241,7 @@ export const FileSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type FileSharesCreateInput = typeof FileSharesCreateInput.Type;
@@ -3045,7 +3296,7 @@ export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type FileSharesDeleteInput = typeof FileSharesDeleteInput.Type;
@@ -3081,7 +3332,7 @@ export const FileSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type FileSharesGetInput = typeof FileSharesGetInput.Type;
@@ -3139,7 +3390,7 @@ export const FileSharesLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/lease",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type FileSharesLeaseInput = typeof FileSharesLeaseInput.Type;
@@ -3178,7 +3429,7 @@ export const FileSharesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type FileSharesListInput = typeof FileSharesListInput.Type;
@@ -3240,7 +3491,7 @@ export const FileSharesRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type FileSharesRestoreInput = typeof FileSharesRestoreInput.Type;
@@ -3337,7 +3588,7 @@ export const FileSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type FileSharesUpdateInput = typeof FileSharesUpdateInput.Type;
@@ -3422,7 +3673,7 @@ export const LocalUsersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type LocalUsersCreateOrUpdateInput =
@@ -3478,7 +3729,7 @@ export const LocalUsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type LocalUsersDeleteInput = typeof LocalUsersDeleteInput.Type;
@@ -3511,7 +3762,7 @@ export const LocalUsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type LocalUsersGetInput = typeof LocalUsersGetInput.Type;
@@ -3564,7 +3815,7 @@ export const LocalUsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type LocalUsersListInput = typeof LocalUsersListInput.Type;
@@ -3623,7 +3874,7 @@ export const LocalUsersListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/listKeys",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type LocalUsersListKeysInput = typeof LocalUsersListKeysInput.Type;
@@ -3668,7 +3919,7 @@ export const LocalUsersRegeneratePasswordInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/regeneratePassword",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type LocalUsersRegeneratePasswordInput =
@@ -3916,7 +4167,7 @@ export const ManagementPoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagementPoliciesCreateOrUpdateInput =
@@ -3972,7 +4223,7 @@ export const ManagementPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagementPoliciesDeleteInput =
@@ -4011,7 +4262,7 @@ export const ManagementPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagementPoliciesGetInput = typeof ManagementPoliciesGetInput.Type;
@@ -4069,7 +4320,7 @@ export const NetworkSecurityPerimeterConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsGetInput =
@@ -4124,7 +4375,7 @@ export const NetworkSecurityPerimeterConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsListInput =
@@ -4196,7 +4447,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsReconcileInput =
@@ -4272,7 +4523,7 @@ export const ObjectReplicationPoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ObjectReplicationPoliciesCreateOrUpdateInput =
@@ -4328,7 +4579,7 @@ export const ObjectReplicationPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ObjectReplicationPoliciesDeleteInput =
@@ -4366,7 +4617,7 @@ export const ObjectReplicationPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ObjectReplicationPoliciesGetInput =
@@ -4421,7 +4672,7 @@ export const ObjectReplicationPoliciesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ObjectReplicationPoliciesListInput =
@@ -4489,7 +4740,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Storage/operations",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -4569,7 +4820,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -4607,7 +4858,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -4662,7 +4913,7 @@ export const PrivateEndpointConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -4753,7 +5004,7 @@ export const PrivateEndpointConnectionsPutInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PrivateEndpointConnectionsPutInput =
@@ -4808,7 +5059,7 @@ export const PrivateLinkResourcesListByStorageAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PrivateLinkResourcesListByStorageAccountInput =
@@ -4884,7 +5135,7 @@ export const QueueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type QueueCreateInput = typeof QueueCreateInput.Type;
@@ -4935,7 +5186,7 @@ export const QueueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type QueueDeleteInput = typeof QueueDeleteInput.Type;
@@ -4968,7 +5219,7 @@ export const QueueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type QueueGetInput = typeof QueueGetInput.Type;
@@ -5020,7 +5271,7 @@ export const QueueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type QueueListInput = typeof QueueListInput.Type;
@@ -5077,7 +5328,7 @@ export const QueueServicesGetServicePropertiesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type QueueServicesGetServicePropertiesInput =
@@ -5132,7 +5383,7 @@ export const QueueServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type QueueServicesListInput = typeof QueueServicesListInput.Type;
@@ -5231,7 +5482,7 @@ export const QueueServicesSetServicePropertiesInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type QueueServicesSetServicePropertiesInput =
@@ -5291,7 +5542,7 @@ export const QueueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type QueueUpdateInput = typeof QueueUpdateInput.Type;
@@ -5339,7 +5590,7 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SkusListInput = typeof SkusListInput.Type;
@@ -5432,7 +5683,7 @@ export const StorageAccountsAbortHierarchicalNamespaceMigrationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsAbortHierarchicalNamespaceMigrationInput =
@@ -5468,7 +5719,7 @@ export const StorageAccountsCheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsCheckNameAvailabilityInput =
@@ -5836,7 +6087,7 @@ export const StorageAccountsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsCreateInput = typeof StorageAccountsCreateInput.Type;
@@ -5919,7 +6170,7 @@ export const StorageAccountsCustomerInitiatedMigrationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsCustomerInitiatedMigrationInput =
@@ -5955,7 +6206,7 @@ export const StorageAccountsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
@@ -5992,7 +6243,7 @@ export const StorageAccountsFailoverInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsFailoverInput =
@@ -6031,7 +6282,7 @@ export const StorageAccountsGetCustomerInitiatedMigrationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/accountMigrations/{migrationName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsGetCustomerInitiatedMigrationInput =
@@ -6089,7 +6340,7 @@ export const StorageAccountsGetPropertiesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsGetPropertiesInput =
@@ -6145,7 +6396,7 @@ export const StorageAccountsHierarchicalNamespaceMigrationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsHierarchicalNamespaceMigrationInput =
@@ -6180,7 +6431,7 @@ export const StorageAccountsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsListInput = typeof StorageAccountsListInput.Type;
@@ -6252,7 +6503,7 @@ export const StorageAccountsListAccountSASInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listAccountSas",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsListAccountSASInput =
@@ -6289,7 +6540,7 @@ export const StorageAccountsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsListByResourceGroupInput =
@@ -6358,7 +6609,7 @@ export const StorageAccountsListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsListKeysInput =
@@ -6427,7 +6678,7 @@ export const StorageAccountsListServiceSASInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listServiceSas",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsListServiceSASInput =
@@ -6466,7 +6717,7 @@ export const StorageAccountsRegenerateKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsRegenerateKeyInput =
@@ -6520,7 +6771,7 @@ export const StorageAccountsRestoreBlobRangesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsRestoreBlobRangesInput =
@@ -6573,7 +6824,7 @@ export const StorageAccountsRevokeUserDelegationKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsRevokeUserDelegationKeysInput =
@@ -6932,7 +7183,7 @@ export const StorageAccountsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageAccountsUpdateInput = typeof StorageAccountsUpdateInput.Type;
@@ -6989,7 +7240,7 @@ export const StorageTaskAssignmentInstancesReportListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageTaskAssignmentInstancesReportListInput =
@@ -7124,7 +7375,7 @@ export const StorageTaskAssignmentsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageTaskAssignmentsCreateInput =
@@ -7180,7 +7431,7 @@ export const StorageTaskAssignmentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageTaskAssignmentsDeleteInput =
@@ -7218,7 +7469,7 @@ export const StorageTaskAssignmentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageTaskAssignmentsGetInput =
@@ -7276,7 +7527,7 @@ export const StorageTaskAssignmentsInstancesReportListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageTaskAssignmentsInstancesReportListInput =
@@ -7348,7 +7599,7 @@ export const StorageTaskAssignmentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageTaskAssignmentsListInput =
@@ -7420,7 +7671,7 @@ export const StorageTaskAssignmentsStopAssignmentInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/stopAssignment",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageTaskAssignmentsStopAssignmentInput =
@@ -7530,7 +7781,7 @@ export const StorageTaskAssignmentsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StorageTaskAssignmentsUpdateInput =
@@ -7604,7 +7855,7 @@ export const TableCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type TableCreateInput = typeof TableCreateInput.Type;
@@ -7655,7 +7906,7 @@ export const TableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type TableDeleteInput = typeof TableDeleteInput.Type;
@@ -7688,7 +7939,7 @@ export const TableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type TableGetInput = typeof TableGetInput.Type;
@@ -7738,7 +7989,7 @@ export const TableListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type TableListInput = typeof TableListInput.Type;
@@ -7793,7 +8044,7 @@ export const TableServicesGetServicePropertiesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type TableServicesGetServicePropertiesInput =
@@ -7848,7 +8099,7 @@ export const TableServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type TableServicesListInput = typeof TableServicesListInput.Type;
@@ -7947,7 +8198,7 @@ export const TableServicesSetServicePropertiesInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type TableServicesSetServicePropertiesInput =
@@ -8020,7 +8271,7 @@ export const TableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type TableUpdateInput = typeof TableUpdateInput.Type;
@@ -8070,7 +8321,7 @@ export const UsagesListByLocationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type UsagesListByLocationInput = typeof UsagesListByLocationInput.Type;

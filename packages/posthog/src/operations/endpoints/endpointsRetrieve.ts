@@ -25,7 +25,7 @@ export const EndpointsRetrieveOutput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
     query: Schema.optional(Schema.Unknown),
     is_active: Schema.optional(Schema.Boolean),
-    cache_age_seconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    data_freshness_seconds: Schema.optional(Schema.Number),
     endpoint_path: Schema.optional(Schema.String),
     url: Schema.optional(Schema.NullOr(Schema.String)),
     ui_url: Schema.optional(Schema.NullOr(Schema.String)),
@@ -62,7 +62,6 @@ export const EndpointsRetrieveOutput =
         reason: Schema.optional(Schema.NullOr(Schema.String)),
         last_materialized_at: Schema.optional(Schema.NullOr(Schema.String)),
         error: Schema.optional(Schema.String),
-        sync_frequency: Schema.optional(Schema.NullOr(Schema.String)),
         saved_query_id: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
@@ -77,28 +76,13 @@ export const EndpointsRetrieveOutput =
         }),
       ),
     ),
+    tags: Schema.optional(Schema.Array(Schema.String)),
     version: Schema.optional(Schema.Number),
     version_id: Schema.optional(Schema.String),
     endpoint_is_active: Schema.optional(Schema.Boolean),
     version_created_at: Schema.optional(Schema.String),
     version_updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-    version_created_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          uuid: Schema.optional(Schema.String),
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          role_at_organization: Schema.optional(Schema.Unknown),
-        }),
-      ),
-    ),
+    version_created_by: Schema.optional(Schema.Unknown),
   });
 export type EndpointsRetrieveOutput = typeof EndpointsRetrieveOutput.Type;
 

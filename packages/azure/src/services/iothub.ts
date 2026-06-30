@@ -12,6 +12,10 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const CertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         subject: Schema.optional(Schema.String),
@@ -65,6 +69,11 @@ export type CertificatesCreateOrUpdateOutput =
  *
  * Adds new or replaces existing certificate.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
+ * @param certificateName - The name of the certificate
  * @param If-Match - ETag of the Certificate. Do not specify for creating a brand new certificate. Required to update an existing certificate.
  */
 export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -75,7 +84,12 @@ export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}",
@@ -94,6 +108,11 @@ export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
  *
  * Deletes an existing X509 certificate or does nothing if it does not exist.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
+ * @param certificateName - The name of the certificate
  * @param If-Match - ETag of the Certificate.
  */
 export const CertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -102,7 +121,12 @@ export const CertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CertificatesGenerateVerificationCodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/generateVerificationCode",
@@ -141,6 +165,11 @@ export type CertificatesGenerateVerificationCodeOutput =
  *
  * Generates verification code for proof of possession flow. The verification code will be used to generate a leaf certificate.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
+ * @param certificateName - The name of the certificate
  * @param If-Match - ETag of the Certificate.
  */
 export const CertificatesGenerateVerificationCode =
@@ -149,9 +178,12 @@ export const CertificatesGenerateVerificationCode =
     outputSchema: CertificatesGenerateVerificationCodeOutput,
   }));
 // Input Schema
-export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}",
@@ -185,6 +217,12 @@ export type CertificatesGetOutput = typeof CertificatesGetOutput.Type;
  * Get the certificate.
  *
  * Returns the certificate.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
+ * @param certificateName - The name of the certificate
  */
 export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesGetInput,
@@ -192,7 +230,11 @@ export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CertificatesListByIotHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates",
@@ -235,6 +277,11 @@ export type CertificatesListByIotHubOutput =
  * Get the certificate list.
  *
  * Returns the list of certificates.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const CertificatesListByIotHub = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -245,6 +292,10 @@ export const CertificatesListByIotHub = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CertificatesVerifyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
     certificate: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -282,6 +333,11 @@ export type CertificatesVerifyOutput = typeof CertificatesVerifyOutput.Type;
  *
  * Verifies the certificate's private key possession by providing the leaf cert issued by the verifying pre uploaded certificate.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
+ * @param certificateName - The name of the certificate
  * @param If-Match - ETag of the Certificate.
  */
 export const CertificatesVerify = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -292,6 +348,7 @@ export const CertificatesVerify = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const IotHubManualFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iotHubName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     failoverRegion: Schema.String,
   }).pipe(
@@ -315,7 +372,9 @@ export type IotHubManualFailoverOutput = typeof IotHubManualFailoverOutput.Type;
  * Manually initiate a failover for the IoT Hub to its secondary region. To learn more, see https://aka.ms/manualfailover
  *
  * @param iotHubName - Name of the IoT hub to failover
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Name of the resource group containing the IoT hub resource
+ * @param api-version - The version of the API.
  */
 export const IotHubManualFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -326,6 +385,7 @@ export const IotHubManualFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IotHubResourceCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({
@@ -352,6 +412,9 @@ export type IotHubResourceCheckNameAvailabilityOutput =
  * Check if an IoT hub name is available
  *
  * Check if an IoT hub name is available.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
  */
 export const IotHubResourceCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -361,6 +424,9 @@ export const IotHubResourceCheckNameAvailability =
 // Input Schema
 export const IotHubResourceCreateEventHubConsumerGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     eventHubEndpointName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -394,6 +460,10 @@ export type IotHubResourceCreateEventHubConsumerGroupOutput =
  *
  * Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  * @param eventHubEndpointName - The name of the Event Hub-compatible endpoint in the IoT hub.
  * @param name - The name of the consumer group to add.
  */
@@ -405,6 +475,9 @@ export const IotHubResourceCreateEventHubConsumerGroup =
 // Input Schema
 export const IotHubResourceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     etag: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -797,6 +870,10 @@ export type IotHubResourceCreateOrUpdateOutput =
  *
  * Create or update the metadata of an Iot hub. The usual pattern to modify a property is to retrieve the IoT hub metadata and security metadata, and then combine them with the modified values in a new body to update the IoT hub. If certain properties are missing in the JSON, updating IoT Hub may cause these values to fallback to default, which may lead to unexpected behavior.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  * @param If-Match - ETag of the IoT Hub. Do not specify for creating a brand new IoT Hub. Required to update an existing IoT Hub.
  */
 export const IotHubResourceCreateOrUpdate =
@@ -806,7 +883,11 @@ export const IotHubResourceCreateOrUpdate =
   }));
 // Input Schema
 export const IotHubResourceDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
@@ -831,6 +912,11 @@ export type IotHubResourceDeleteOutput = typeof IotHubResourceDeleteOutput.Type;
  * Delete an IoT hub
  *
  * Delete an IoT hub.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const IotHubResourceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -841,6 +927,9 @@ export const IotHubResourceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IotHubResourceDeleteEventHubConsumerGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     eventHubEndpointName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -865,6 +954,10 @@ export type IotHubResourceDeleteEventHubConsumerGroupOutput =
  *
  * Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  * @param eventHubEndpointName - The name of the Event Hub-compatible endpoint in the IoT hub.
  * @param name - The name of the consumer group to delete.
  */
@@ -876,6 +969,9 @@ export const IotHubResourceDeleteEventHubConsumerGroup =
 // Input Schema
 export const IotHubResourceExportDevicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     exportBlobContainerUri: Schema.String,
     excludeKeys: Schema.Boolean,
     exportBlobName: Schema.optional(Schema.String),
@@ -941,6 +1037,11 @@ export type IotHubResourceExportDevicesOutput =
  * Exports all the device identities in the IoT hub identity registry to an Azure Storage blob container. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities
  *
  * Exports all the device identities in the IoT hub identity registry to an Azure Storage blob container. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const IotHubResourceExportDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -950,7 +1051,11 @@ export const IotHubResourceExportDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const IotHubResourceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -976,6 +1081,11 @@ export type IotHubResourceGetOutput = typeof IotHubResourceGetOutput.Type;
  * Get the non-security related metadata of an IoT hub
  *
  * Get the non-security related metadata of an IoT hub.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const IotHubResourceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IotHubResourceGetInput,
@@ -984,6 +1094,7 @@ export const IotHubResourceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const IotHubResourceGetEndpointHealthInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     iotHubName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1029,6 +1140,9 @@ export type IotHubResourceGetEndpointHealthOutput =
  * Get the health for routing endpoints
  *
  * Get the health for routing endpoints.
+ *
+ * @param subscriptionId - The subscription identifier.
+ * @param api-version - The version of the API.
  */
 export const IotHubResourceGetEndpointHealth =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1038,6 +1152,9 @@ export const IotHubResourceGetEndpointHealth =
 // Input Schema
 export const IotHubResourceGetEventHubConsumerGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     eventHubEndpointName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1068,6 +1185,10 @@ export type IotHubResourceGetEventHubConsumerGroupOutput =
  *
  * Get a consumer group from the Event Hub-compatible device-to-cloud endpoint for an IoT hub.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  * @param eventHubEndpointName - The name of the Event Hub-compatible endpoint in the IoT hub.
  * @param name - The name of the consumer group to retrieve.
  */
@@ -1079,6 +1200,9 @@ export const IotHubResourceGetEventHubConsumerGroup =
 // Input Schema
 export const IotHubResourceGetJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     jobId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1131,6 +1255,10 @@ export type IotHubResourceGetJobOutput = typeof IotHubResourceGetJobOutput.Type;
  *
  * Get the details of a job from an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  * @param jobId - The job identifier.
  */
 export const IotHubResourceGetJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1142,6 +1270,9 @@ export const IotHubResourceGetJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IotHubResourceGetKeysForKeyNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1186,6 +1317,10 @@ export type IotHubResourceGetKeysForKeyNameOutput =
  *
  * Get a shared access policy by name from an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  * @param keyName - The name of the shared access policy.
  */
 export const IotHubResourceGetKeysForKeyName =
@@ -1195,7 +1330,11 @@ export const IotHubResourceGetKeysForKeyName =
   }));
 // Input Schema
 export const IotHubResourceGetQuotaMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/quotaMetrics",
@@ -1227,6 +1366,11 @@ export type IotHubResourceGetQuotaMetricsOutput =
  * Get the quota metrics for an IoT hub
  *
  * Get the quota metrics for an IoT hub.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const IotHubResourceGetQuotaMetrics =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1235,7 +1379,11 @@ export const IotHubResourceGetQuotaMetrics =
   }));
 // Input Schema
 export const IotHubResourceGetStatsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubStats",
@@ -1260,6 +1408,11 @@ export type IotHubResourceGetStatsOutput =
  * Get the statistics from an IoT hub
  *
  * Get the statistics from an IoT hub.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const IotHubResourceGetStats = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1269,7 +1422,11 @@ export const IotHubResourceGetStats = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const IotHubResourceGetValidSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/skus",
@@ -1314,6 +1471,11 @@ export type IotHubResourceGetValidSkusOutput =
  * Get the list of valid SKUs for an IoT hub
  *
  * Get the list of valid SKUs for an IoT hub.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const IotHubResourceGetValidSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1324,6 +1486,9 @@ export const IotHubResourceGetValidSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IotHubResourceImportDevicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     inputBlobContainerUri: Schema.String,
     outputBlobContainerUri: Schema.String,
     inputBlobName: Schema.optional(Schema.String),
@@ -1390,6 +1555,11 @@ export type IotHubResourceImportDevicesOutput =
  * Import, update, or delete device identities in the IoT hub identity registry from a blob. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities
  *
  * Import, update, or delete device identities in the IoT hub identity registry from a blob. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const IotHubResourceImportDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1399,7 +1569,10 @@ export const IotHubResourceImportDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const IotHubResourceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs",
@@ -1433,6 +1606,10 @@ export type IotHubResourceListByResourceGroupOutput =
  * Get all the IoT hubs in a resource group
  *
  * Get all the IoT hubs in a resource group.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  */
 export const IotHubResourceListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1441,7 +1618,9 @@ export const IotHubResourceListByResourceGroup =
   }));
 // Input Schema
 export const IotHubResourceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/IotHubs",
@@ -1475,6 +1654,9 @@ export type IotHubResourceListBySubscriptionOutput =
  * Get all the IoT hubs in a subscription
  *
  * Get all the IoT hubs in a subscription.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
  */
 export const IotHubResourceListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1484,6 +1666,9 @@ export const IotHubResourceListBySubscription =
 // Input Schema
 export const IotHubResourceListEventHubConsumerGroupsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     eventHubEndpointName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1522,6 +1707,10 @@ export type IotHubResourceListEventHubConsumerGroupsOutput =
  *
  * Get a list of the consumer groups in the Event Hub-compatible device-to-cloud endpoint in an IoT hub.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  * @param eventHubEndpointName - The name of the Event Hub-compatible endpoint.
  */
 export const IotHubResourceListEventHubConsumerGroups =
@@ -1531,7 +1720,11 @@ export const IotHubResourceListEventHubConsumerGroups =
   }));
 // Input Schema
 export const IotHubResourceListJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs",
@@ -1590,6 +1783,11 @@ export type IotHubResourceListJobsOutput =
  * Get a list of all the jobs in an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry
  *
  * Get a list of all the jobs in an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const IotHubResourceListJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1599,7 +1797,11 @@ export const IotHubResourceListJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const IotHubResourceListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/listkeys",
@@ -1648,6 +1850,11 @@ export type IotHubResourceListKeysOutput =
  * Get the security metadata for an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security
  *
  * Get the security metadata for an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const IotHubResourceListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1659,6 +1866,7 @@ export const IotHubResourceListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const IotHubResourceTestAllRoutesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iotHubName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     routingSource: Schema.optional(
       Schema.Literals([
@@ -1738,7 +1946,9 @@ export type IotHubResourceTestAllRoutesOutput =
  * Test all routes configured in this Iot Hub
  *
  * @param iotHubName - IotHub to be tested
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - resource group which Iot Hub belongs to
+ * @param api-version - The version of the API.
  */
 export const IotHubResourceTestAllRoutes = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1750,6 +1960,7 @@ export const IotHubResourceTestAllRoutes = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const IotHubResourceTestRouteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iotHubName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     message: Schema.optional(
       Schema.Struct({
@@ -1840,7 +2051,9 @@ export type IotHubResourceTestRouteOutput =
  * Test the new route for this Iot Hub
  *
  * @param iotHubName - IotHub to be tested
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - resource group which Iot Hub belongs to
+ * @param api-version - The version of the API.
  */
 export const IotHubResourceTestRoute = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1851,6 +2064,7 @@ export const IotHubResourceTestRoute = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IotHubResourceUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Unknown),
@@ -1880,8 +2094,10 @@ export type IotHubResourceUpdateOutput = typeof IotHubResourceUpdateOutput.Type;
  *
  * Update an existing IoT Hub tags. to update other fields use the CreateOrUpdate method
  *
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group identifier.
  * @param resourceName - Name of iot hub to update.
+ * @param api-version - The version of the API.
  */
 export const IotHubResourceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1925,6 +2141,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available IoT Hub REST API operations.
+ *
+ * @param api-version - The version of the API.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -1932,7 +2150,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -1974,6 +2197,12 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * Delete private endpoint connection
  *
  * Delete private endpoint connection with the specified name
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1982,7 +2211,12 @@ export const PrivateEndpointConnectionsDelete =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -2024,6 +2258,12 @@ export type PrivateEndpointConnectionsGetOutput =
  * Get private endpoint connection
  *
  * Get private endpoint connection properties
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2032,7 +2272,11 @@ export const PrivateEndpointConnectionsGet =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections",
@@ -2076,6 +2320,11 @@ export type PrivateEndpointConnectionsListOutput =
  * List private endpoint connections
  *
  * List private endpoint connection properties
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const PrivateEndpointConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2085,6 +2334,10 @@ export const PrivateEndpointConnectionsList =
 // Input Schema
 export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2147,6 +2400,12 @@ export type PrivateEndpointConnectionsUpdateOutput =
  * Update private endpoint connection
  *
  * Update the status of a private endpoint connection with the specified name
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const PrivateEndpointConnectionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2155,7 +2414,12 @@ export const PrivateEndpointConnectionsUpdate =
   }));
 // Input Schema
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    groupId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateLinkResources/{groupId}",
@@ -2185,6 +2449,12 @@ export type PrivateLinkResourcesGetOutput =
  * Get the specified private link resource
  *
  * Get the specified private link resource for the given IotHub
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
+ * @param groupId - The name of the private link resource
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2194,7 +2464,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateLinkResources",
@@ -2230,6 +2504,11 @@ export type PrivateLinkResourcesListOutput =
  * List private link resources
  *
  * List private link resources for the given IotHub
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT hub.
+ * @param resourceName - The name of the IoT hub.
  */
 export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2239,7 +2518,9 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ResourceProviderCommonGetSubscriptionQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/usages",
@@ -2279,6 +2560,9 @@ export type ResourceProviderCommonGetSubscriptionQuotaOutput =
  * Get the number of iot hubs in the subscription
  *
  * Get the number of free and paid iot hubs in the subscription
+ *
+ * @param subscriptionId - The subscription identifier.
+ * @param api-version - The version of the API.
  */
 export const ResourceProviderCommonGetSubscriptionQuota =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

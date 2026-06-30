@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const GetIdentityVerificationSessionsInput =
@@ -33,7 +33,7 @@ export const GetIdentityVerificationSessionsOutput =
     data: Schema.Array(
       Schema.Struct({
         client_reference_id: Schema.NullOr(Schema.String),
-        client_secret: SensitiveNullableString,
+        client_secret: SensitiveOutputNullableString,
         created: Schema.Number,
         id: Schema.String,
         last_error: Schema.Unknown,

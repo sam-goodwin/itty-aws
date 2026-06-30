@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, Conflict } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const CreateProjectBranchRoleInput =
@@ -28,7 +28,7 @@ export const CreateProjectBranchRoleOutput =
     role: Schema.Struct({
       branch_id: Schema.String,
       name: Schema.String,
-      password: Schema.optional(SensitiveString),
+      password: Schema.optional(SensitiveOutputString),
       protected: Schema.optional(Schema.Boolean),
       authentication_method: Schema.optional(Schema.String),
       created_at: Schema.String,
@@ -101,9 +101,7 @@ export type CreateProjectBranchRoleOutput =
  * Create role
  *
  * Creates a Postgres role in the specified branch.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
- * For related information, see [Manage roles](https://neon.tech/docs/manage/roles/).
+ * For related information, see [Manage roles](https://neon.com/docs/manage/roles/).
  * Connections established to the active compute endpoint will be dropped.
  * If the compute endpoint is idle, the endpoint becomes active for a short period of time and is suspended afterward.
  *

@@ -471,6 +471,7 @@ export const DataMaskingPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
+    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         dataMaskingState: Schema.Literals(["Disabled", "Enabled"]),
@@ -511,6 +512,7 @@ export type DataMaskingPoliciesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
+ * @param dataMaskingPolicyName - The name of the data masking policy for which the masking rule applies.
  */
 export const DataMaskingPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -524,6 +526,7 @@ export const DataMaskingPoliciesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
+    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -553,6 +556,7 @@ export type DataMaskingPoliciesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
+ * @param dataMaskingPolicyName - The name of the data masking policy for which the masking rule applies.
  */
 export const DataMaskingPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -567,6 +571,7 @@ export const DataMaskingRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
+    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     dataMaskingRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -622,6 +627,7 @@ export type DataMaskingRulesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
+ * @param dataMaskingPolicyName - The name of the data masking policy for which the masking rule applies.
  * @param dataMaskingRuleName - The name of the data masking rule.
  */
 export const DataMaskingRulesCreateOrUpdate =
@@ -636,6 +642,7 @@ export const DataMaskingRulesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
+    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     dataMaskingRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -664,6 +671,7 @@ export type DataMaskingRulesGetOutput = typeof DataMaskingRulesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
+ * @param dataMaskingPolicyName - The name of the data masking policy for which the masking rule applies.
  * @param dataMaskingRuleName - The name of the data masking rule.
  */
 export const DataMaskingRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -677,6 +685,7 @@ export const DataMaskingRulesListBySqlPoolInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
+    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -712,6 +721,7 @@ export type DataMaskingRulesListBySqlPoolOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  * @param sqlPoolName - SQL pool name
+ * @param dataMaskingPolicyName - The name of the data masking policy for which the masking rule applies.
  */
 export const DataMaskingRulesListBySqlPool =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -875,6 +885,7 @@ export const IntegrationRuntimeAuthKeysListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -904,6 +915,7 @@ export type IntegrationRuntimeAuthKeysListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimeAuthKeysList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -916,6 +928,7 @@ export const IntegrationRuntimeAuthKeysRegenerateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.optional(Schema.Literals(["authKey1", "authKey2"])),
   }).pipe(
     T.Http({
@@ -946,6 +959,7 @@ export type IntegrationRuntimeAuthKeysRegenerateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimeAuthKeysRegenerate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -958,6 +972,7 @@ export const IntegrationRuntimeConnectionInfosGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -991,6 +1006,7 @@ export type IntegrationRuntimeConnectionInfosGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimeConnectionInfosGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1003,6 +1019,7 @@ export const IntegrationRuntimeCredentialsSyncInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1029,6 +1046,7 @@ export type IntegrationRuntimeCredentialsSyncOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimeCredentialsSync =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1041,6 +1059,7 @@ export const IntegrationRuntimeMonitoringDataListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1083,6 +1102,7 @@ export type IntegrationRuntimeMonitoringDataListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimeMonitoringDataList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1095,6 +1115,7 @@ export const IntegrationRuntimeNodeIpAddressGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1124,6 +1145,7 @@ export type IntegrationRuntimeNodeIpAddressGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  * @param nodeName - Integration runtime node name
  */
 export const IntegrationRuntimeNodeIpAddressGet =
@@ -1137,6 +1159,7 @@ export const IntegrationRuntimeNodesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1164,6 +1187,7 @@ export type IntegrationRuntimeNodesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  * @param nodeName - Integration runtime node name
  */
 export const IntegrationRuntimeNodesDelete =
@@ -1177,6 +1201,7 @@ export const IntegrationRuntimeNodesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1235,6 +1260,7 @@ export type IntegrationRuntimeNodesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  * @param nodeName - Integration runtime node name
  */
 export const IntegrationRuntimeNodesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1249,6 +1275,7 @@ export const IntegrationRuntimeNodesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
     concurrentJobsLimit: Schema.optional(Schema.Number),
   }).pipe(
@@ -1308,6 +1335,7 @@ export type IntegrationRuntimeNodesUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  * @param nodeName - Integration runtime node name
  */
 export const IntegrationRuntimeNodesUpdate =
@@ -1321,6 +1349,7 @@ export const IntegrationRuntimeObjectMetadataListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     metadataPath: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1365,6 +1394,7 @@ export type IntegrationRuntimeObjectMetadataListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimeObjectMetadataList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1377,6 +1407,7 @@ export const IntegrationRuntimeObjectMetadataRefreshInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1408,6 +1439,7 @@ export type IntegrationRuntimeObjectMetadataRefreshOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimeObjectMetadataRefresh =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1420,6 +1452,7 @@ export const IntegrationRuntimesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       type: Schema.Literals(["Managed", "SelfHosted"]),
       description: Schema.optional(Schema.String),
@@ -1454,6 +1487,7 @@ export type IntegrationRuntimesCreateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  * @param If-Match - ETag of the integration runtime entity. Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
 export const IntegrationRuntimesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1468,6 +1502,7 @@ export const IntegrationRuntimesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1494,6 +1529,7 @@ export type IntegrationRuntimesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1507,6 +1543,7 @@ export const IntegrationRuntimesDisableInteractiveQueryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1531,6 +1568,7 @@ export type IntegrationRuntimesDisableInteractiveQueryOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimesDisableInteractiveQuery =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1543,6 +1581,7 @@ export const IntegrationRuntimesEnableInteractiveQueryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1567,6 +1606,7 @@ export type IntegrationRuntimesEnableInteractiveQueryOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimesEnableInteractiveQuery =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1579,6 +1619,7 @@ export const IntegrationRuntimesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1609,6 +1650,7 @@ export type IntegrationRuntimesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  * @param If-None-Match - ETag of the integration runtime entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
 export const IntegrationRuntimesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1670,6 +1712,7 @@ export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1718,6 +1761,7 @@ export type IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimesListOutboundNetworkDependenciesEndpoints =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1732,6 +1776,7 @@ export const IntegrationRuntimesStartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1778,6 +1823,7 @@ export type IntegrationRuntimesStartOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1791,6 +1837,7 @@ export const IntegrationRuntimesStopInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1817,6 +1864,7 @@ export type IntegrationRuntimesStopOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1830,6 +1878,7 @@ export const IntegrationRuntimeStatusGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1876,6 +1925,7 @@ export type IntegrationRuntimeStatusGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimeStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1889,6 +1939,7 @@ export const IntegrationRuntimesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     autoUpdate: Schema.optional(Schema.Literals(["On", "Off"])),
     updateDelayOffset: Schema.optional(Schema.String),
   }).pipe(
@@ -1921,6 +1972,7 @@ export type IntegrationRuntimesUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1934,6 +1986,7 @@ export const IntegrationRuntimesUpgradeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    integrationRuntimeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1960,6 +2013,7 @@ export type IntegrationRuntimesUpgradeOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param integrationRuntimeName - Integration runtime name
  */
 export const IntegrationRuntimesUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1973,6 +2027,7 @@ export const IpFirewallRulesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    ruleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         endIpAddress: Schema.optional(Schema.String),
@@ -2016,6 +2071,7 @@ export type IpFirewallRulesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param ruleName - The IP firewall rule name
  */
 export const IpFirewallRulesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2028,6 +2084,7 @@ export const IpFirewallRulesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    ruleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2055,6 +2112,7 @@ export type IpFirewallRulesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param ruleName - The IP firewall rule name
  */
 export const IpFirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2068,6 +2126,7 @@ export const IpFirewallRulesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    ruleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2094,6 +2153,7 @@ export type IpFirewallRulesGetOutput = typeof IpFirewallRulesGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param ruleName - The IP firewall rule name
  */
 export const IpFirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IpFirewallRulesGetInput,
@@ -2209,6 +2269,7 @@ export const KeysCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         isActiveCMK: Schema.optional(Schema.Boolean),
@@ -2241,6 +2302,7 @@ export type KeysCreateOrUpdateOutput = typeof KeysCreateOrUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param keyName - The name of the workspace key
  */
 export const KeysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: KeysCreateOrUpdateInput,
@@ -2251,6 +2313,7 @@ export const KeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  keyName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -2276,6 +2339,7 @@ export type KeysDeleteOutput = typeof KeysDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param keyName - The name of the workspace key
  */
 export const KeysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: KeysDeleteInput,
@@ -2286,6 +2350,7 @@ export const KeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  keyName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2311,6 +2376,7 @@ export type KeysGetOutput = typeof KeysGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param keyName - The name of the workspace key
  */
 export const KeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: KeysGetInput,
@@ -2412,6 +2478,7 @@ export const LibrariesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LibraryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  libraryName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2439,6 +2506,7 @@ export type LibraryGetOutput = typeof LibraryGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param libraryName - Library name
  * @param workspaceName - The name of the workspace.
  */
 export const LibraryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2696,6 +2764,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         privateEndpoint: Schema.optional(
@@ -2736,6 +2808,12 @@ export type PrivateEndpointConnectionsCreateOutput =
 // The operation
 /**
  * Approve or reject a private endpoint connection.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  * @param properties - Private endpoint connection properties.
  */
 export const PrivateEndpointConnectionsCreate =
@@ -2745,7 +2823,12 @@ export const PrivateEndpointConnectionsCreate =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -2764,6 +2847,12 @@ export type PrivateEndpointConnectionsDeleteOutput =
 // The operation
 /**
  * Delete a private endpoint connection.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2772,7 +2861,12 @@ export const PrivateEndpointConnectionsDelete =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -2795,6 +2889,12 @@ export type PrivateEndpointConnectionsGetOutput =
 // The operation
 /**
  * Gets a private endpoint connection.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2850,7 +2950,12 @@ export const PrivateEndpointConnectionsList =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsPrivateLinkHubGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    privateLinkHubName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -2890,6 +2995,12 @@ export type PrivateEndpointConnectionsPrivateLinkHubGetOutput =
 // The operation
 /**
  * Get all PrivateEndpointConnection in the PrivateLinkHub by name
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param privateLinkHubName - Name of the privateLinkHub
+ * @param privateEndpointConnectionName - Name of the privateEndpointConnection
  */
 export const PrivateEndpointConnectionsPrivateLinkHubGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2898,7 +3009,11 @@ export const PrivateEndpointConnectionsPrivateLinkHubGet =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsPrivateLinkHubListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    privateLinkHubName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections",
@@ -2945,6 +3060,11 @@ export type PrivateEndpointConnectionsPrivateLinkHubListOutput =
 // The operation
 /**
  * Get all PrivateEndpointConnections in the PrivateLinkHub
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param privateLinkHubName - Name of the privateLinkHub
  */
 export const PrivateEndpointConnectionsPrivateLinkHubList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2956,6 +3076,8 @@ export const PrivateLinkHubPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    privateLinkHubName: Schema.String.pipe(T.PathParam()),
+    privateLinkResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2985,6 +3107,8 @@ export type PrivateLinkHubPrivateLinkResourcesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param privateLinkHubName - The name of the private link hub
+ * @param privateLinkResourceName - The name of the private link resource
  */
 export const PrivateLinkHubPrivateLinkResourcesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2996,6 +3120,7 @@ export const PrivateLinkHubPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    privateLinkHubName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3032,6 +3157,7 @@ export type PrivateLinkHubPrivateLinkResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param privateLinkHubName - The name of the private link hub
  */
 export const PrivateLinkHubPrivateLinkResourcesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3041,6 +3167,9 @@ export const PrivateLinkHubPrivateLinkResourcesList =
 // Input Schema
 export const PrivateLinkHubsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    privateLinkHubName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(Schema.String),
@@ -3095,6 +3224,11 @@ export type PrivateLinkHubsCreateOrUpdateOutput =
 // The operation
 /**
  * Creates or updates a privateLinkHub
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param privateLinkHubName - Name of the privateLinkHub
  */
 export const PrivateLinkHubsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3103,7 +3237,11 @@ export const PrivateLinkHubsCreateOrUpdate =
   }));
 // Input Schema
 export const PrivateLinkHubsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    privateLinkHubName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
@@ -3121,6 +3259,11 @@ export type PrivateLinkHubsDeleteOutput =
 // The operation
 /**
  * Deletes a privateLinkHub
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param privateLinkHubName - Name of the privateLinkHub
  */
 export const PrivateLinkHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3130,7 +3273,11 @@ export const PrivateLinkHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkHubsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    privateLinkHubName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
@@ -3151,6 +3298,11 @@ export type PrivateLinkHubsGetOutput = typeof PrivateLinkHubsGetOutput.Type;
 // The operation
 /**
  * Gets a privateLinkHub
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param privateLinkHubName - Name of the privateLinkHub
  */
 export const PrivateLinkHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PrivateLinkHubsGetInput,
@@ -3198,7 +3350,10 @@ export const PrivateLinkHubsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PrivateLinkHubsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs",
@@ -3228,6 +3383,10 @@ export type PrivateLinkHubsListByResourceGroupOutput =
 // The operation
 /**
  * Returns a list of privateLinkHubs in a resource group
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const PrivateLinkHubsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3237,6 +3396,9 @@ export const PrivateLinkHubsListByResourceGroup =
 // Input Schema
 export const PrivateLinkHubsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    privateLinkHubName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -3260,6 +3422,11 @@ export type PrivateLinkHubsUpdateOutput =
 // The operation
 /**
  * Updates a privateLinkHub
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param privateLinkHubName - Name of the privateLinkHub
  */
 export const PrivateLinkHubsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3273,6 +3440,7 @@ export const PrivateLinkResourcesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
+    privateLinkResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3303,6 +3471,7 @@ export type PrivateLinkResourcesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
+ * @param privateLinkResourceName - The name of the private link resource
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

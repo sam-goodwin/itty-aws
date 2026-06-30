@@ -10,6 +10,419 @@ import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
+export const AccessBridgesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessBridgeName: Schema.Literals([
+      "Bastion",
+      "PrivateVault",
+      "StorageDashboard",
+    ]).pipe(T.PathParam()),
+    properties: Schema.Struct({
+      ipv4ConnectedPrefix: Schema.optional(Schema.String),
+      ipv6ConnectedPrefix: Schema.optional(Schema.String),
+      networkId: Schema.String,
+      securityRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            direction: Schema.Literals(["Inbound", "Outbound"]),
+            ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
+            ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
+            port: Schema.String,
+          }),
+        ),
+      ),
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Running", "Degraded", "Failed"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      endpoints: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            fqdn: Schema.optional(Schema.String),
+            ipv4Address: Schema.optional(Schema.String),
+            ipv6Address: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      protocol: Schema.optional(Schema.Literals(["TCP", "UDP"])),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Canceled",
+          "Failed",
+          "Provisioning",
+          "Succeeded",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges/{accessBridgeName}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type AccessBridgesCreateOrUpdateInput =
+  typeof AccessBridgesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AccessBridgesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AccessBridgesCreateOrUpdateOutput =
+  typeof AccessBridgesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create a new access bridge or update the properties of the existing access bridge.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accessBridgeName - The name of the access bridge.
+ */
+export const AccessBridgesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AccessBridgesCreateOrUpdateInput,
+    outputSchema: AccessBridgesCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const AccessBridgesDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessBridgeName: Schema.Literals([
+      "Bastion",
+      "PrivateVault",
+      "StorageDashboard",
+    ]).pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges/{accessBridgeName}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type AccessBridgesDeleteInput = typeof AccessBridgesDeleteInput.Type;
+
+// Output Schema
+export const AccessBridgesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AccessBridgesDeleteOutput = typeof AccessBridgesDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete the specified access bridge.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accessBridgeName - The name of the access bridge.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
+ */
+export const AccessBridgesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AccessBridgesDeleteInput,
+  outputSchema: AccessBridgesDeleteOutput,
+}));
+// Input Schema
+export const AccessBridgesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accessBridgeName: Schema.Literals([
+    "Bastion",
+    "PrivateVault",
+    "StorageDashboard",
+  ]).pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges/{accessBridgeName}",
+    apiVersion: "2026-07-01",
+  }),
+);
+export type AccessBridgesGetInput = typeof AccessBridgesGetInput.Type;
+
+// Output Schema
+export const AccessBridgesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  },
+);
+export type AccessBridgesGetOutput = typeof AccessBridgesGetOutput.Type;
+
+// The operation
+/**
+ * Get the properties of the provided access bridge.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accessBridgeName - The name of the access bridge.
+ */
+export const AccessBridgesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AccessBridgesGetInput,
+  outputSchema: AccessBridgesGetOutput,
+}));
+// Input Schema
+export const AccessBridgesListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type AccessBridgesListByResourceGroupInput =
+  typeof AccessBridgesListByResourceGroupInput.Type;
+
+// Output Schema
+export const AccessBridgesListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AccessBridgesListByResourceGroupOutput =
+  typeof AccessBridgesListByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Get a list of access bridges in the provided resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
+ */
+export const AccessBridgesListByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AccessBridgesListByResourceGroupInput,
+    outputSchema: AccessBridgesListByResourceGroupOutput,
+  }));
+// Input Schema
+export const AccessBridgesListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/accessBridges",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type AccessBridgesListBySubscriptionInput =
+  typeof AccessBridgesListBySubscriptionInput.Type;
+
+// Output Schema
+export const AccessBridgesListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AccessBridgesListBySubscriptionOutput =
+  typeof AccessBridgesListBySubscriptionOutput.Type;
+
+// The operation
+/**
+ * Get a list of access bridges in the provided subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
+ */
+export const AccessBridgesListBySubscription =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AccessBridgesListBySubscriptionInput,
+    outputSchema: AccessBridgesListBySubscriptionOutput,
+  }));
+// Input Schema
+export const AccessBridgesUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessBridgeName: Schema.Literals([
+      "Bastion",
+      "PrivateVault",
+      "StorageDashboard",
+    ]).pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        securityRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              description: Schema.optional(Schema.String),
+              direction: Schema.Literals(["Inbound", "Outbound"]),
+              ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
+              ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
+              port: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges/{accessBridgeName}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type AccessBridgesUpdateInput = typeof AccessBridgesUpdateInput.Type;
+
+// Output Schema
+export const AccessBridgesUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AccessBridgesUpdateOutput = typeof AccessBridgesUpdateOutput.Type;
+
+// The operation
+/**
+ * Update properties of the provided access bridge, or update tags associated with the access bridge. Properties and tag updates can be done independently.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accessBridgeName - The name of the access bridge.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
+ */
+export const AccessBridgesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AccessBridgesUpdateInput,
+  outputSchema: AccessBridgesUpdateOutput,
+}));
+// Input Schema
 export const AgentPoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -147,7 +560,7 @@ export const AgentPoolsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AgentPoolsCreateOrUpdateInput =
@@ -186,6 +599,8 @@ export type AgentPoolsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param agentPoolName - The name of the Kubernetes cluster agent pool.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const AgentPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -203,7 +618,7 @@ export const AgentPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type AgentPoolsDeleteInput = typeof AgentPoolsDeleteInput.Type;
@@ -221,6 +636,8 @@ export type AgentPoolsDeleteOutput = typeof AgentPoolsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param agentPoolName - The name of the Kubernetes cluster agent pool.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const AgentPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolsDeleteInput,
@@ -236,7 +653,7 @@ export const AgentPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type AgentPoolsGetInput = typeof AgentPoolsGetInput.Type;
@@ -283,11 +700,13 @@ export const AgentPoolsListByKubernetesClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type AgentPoolsListByKubernetesClusterInput =
@@ -340,6 +759,8 @@ export type AgentPoolsListByKubernetesClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const AgentPoolsListByKubernetesCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -380,7 +801,7 @@ export const AgentPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type AgentPoolsUpdateInput = typeof AgentPoolsUpdateInput.Type;
@@ -418,6 +839,8 @@ export type AgentPoolsUpdateOutput = typeof AgentPoolsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param agentPoolName - The name of the Kubernetes cluster agent pool.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const AgentPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolsUpdateInput,
@@ -487,7 +910,7 @@ export const BareMetalMachineKeySetsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachineKeySetsCreateOrUpdateInput =
@@ -526,6 +949,8 @@ export type BareMetalMachineKeySetsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bareMetalMachineKeySetName - The name of the bare metal machine key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachineKeySetsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -543,7 +968,7 @@ export const BareMetalMachineKeySetsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachineKeySetsDeleteInput =
@@ -564,6 +989,8 @@ export type BareMetalMachineKeySetsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bareMetalMachineKeySetName - The name of the bare metal machine key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachineKeySetsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -581,7 +1008,7 @@ export const BareMetalMachineKeySetsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachineKeySetsGetInput =
@@ -633,11 +1060,13 @@ export const BareMetalMachineKeySetsListByClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachineKeySetsListByClusterInput =
@@ -690,6 +1119,8 @@ export type BareMetalMachineKeySetsListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BareMetalMachineKeySetsListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -726,7 +1157,7 @@ export const BareMetalMachineKeySetsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachineKeySetsUpdateInput =
@@ -765,6 +1196,8 @@ export type BareMetalMachineKeySetsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bareMetalMachineKeySetName - The name of the bare metal machine key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachineKeySetsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -782,7 +1215,7 @@ export const BareMetalMachinesCordonInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/cordon",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesCordonInput =
@@ -862,6 +1295,8 @@ export const BareMetalMachinesCreateOrUpdateInput =
         ),
       ),
       associatedResourceIds: Schema.optional(Schema.Array(Schema.String)),
+      bmcIpv4Address: Schema.optional(Schema.String),
+      bmcIpv6Address: Schema.optional(Schema.String),
       caCertificate: Schema.optional(
         Schema.Struct({
           hash: Schema.optional(Schema.String),
@@ -927,6 +1362,12 @@ export const BareMetalMachinesCreateOrUpdateInput =
       kubernetesVersion: Schema.optional(Schema.String),
       machineClusterVersion: Schema.optional(Schema.String),
       machineRoles: Schema.optional(Schema.Array(Schema.String)),
+      monitoringConfigurationStatus: Schema.optional(
+        Schema.Struct({
+          logLevel: Schema.optional(Schema.Literals(["Default", "Nexus"])),
+          metricsLevel: Schema.optional(Schema.Literals(["Default", "Nexus"])),
+        }),
+      ),
       oamIpv4Address: Schema.optional(Schema.String),
       oamIpv6Address: Schema.optional(Schema.String),
       osImage: Schema.optional(Schema.String),
@@ -934,8 +1375,27 @@ export const BareMetalMachinesCreateOrUpdateInput =
       readyState: Schema.optional(Schema.Literals(["True", "False"])),
       runtimeProtectionStatus: Schema.optional(
         Schema.Struct({
+          agentHealthStatus: Schema.optional(
+            Schema.Literals(["Healthy", "Unhealthy"]),
+          ),
+          agentHealthStatusIssues: Schema.optional(Schema.Array(Schema.String)),
+          agentLicenseStatus: Schema.optional(
+            Schema.Literals(["Licensed", "Unlicensed"]),
+          ),
+          definitionUpdateMode: Schema.optional(
+            Schema.Literals(["Automatic", "None"]),
+          ),
           definitionsLastUpdated: Schema.optional(Schema.String),
           definitionsVersion: Schema.optional(Schema.String),
+          enforcementLevel: Schema.optional(
+            Schema.Literals([
+              "Audit",
+              "Disabled",
+              "OnDemand",
+              "Passive",
+              "RealTime",
+            ]),
+          ),
           scanCompletedTime: Schema.optional(Schema.String),
           scanScheduledTime: Schema.optional(Schema.String),
           scanStartedTime: Schema.optional(Schema.String),
@@ -984,7 +1444,7 @@ export const BareMetalMachinesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesCreateOrUpdateInput =
@@ -1022,6 +1482,8 @@ export type BareMetalMachinesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1038,7 +1500,7 @@ export const BareMetalMachinesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesDeleteInput =
@@ -1058,6 +1520,8 @@ export type BareMetalMachinesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1075,7 +1539,7 @@ export const BareMetalMachinesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesGetInput = typeof BareMetalMachinesGetInput.Type;
@@ -1123,11 +1587,13 @@ export const BareMetalMachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesListByResourceGroupInput =
@@ -1179,6 +1645,8 @@ export type BareMetalMachinesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BareMetalMachinesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1189,11 +1657,13 @@ export const BareMetalMachinesListByResourceGroup =
 export const BareMetalMachinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/bareMetalMachines",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesListBySubscriptionInput =
@@ -1244,6 +1714,8 @@ export type BareMetalMachinesListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BareMetalMachinesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1261,7 +1733,7 @@ export const BareMetalMachinesPowerOffInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/powerOff",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesPowerOffInput =
@@ -1294,11 +1766,12 @@ export const BareMetalMachinesReimageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
+    safeguardMode: Schema.optional(Schema.Literals(["All", "None"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/reimage",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesReimageInput =
@@ -1347,7 +1820,7 @@ export const BareMetalMachinesReplaceInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/replace",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesReplaceInput =
@@ -1384,7 +1857,7 @@ export const BareMetalMachinesRestartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/restart",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesRestartInput =
@@ -1424,7 +1897,7 @@ export const BareMetalMachinesRunCommandInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runCommand",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesRunCommandInput =
@@ -1468,7 +1941,7 @@ export const BareMetalMachinesRunDataExtractsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtracts",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesRunDataExtractsInput =
@@ -1511,7 +1984,7 @@ export const BareMetalMachinesRunDataExtractsRestrictedInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtractsRestricted",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesRunDataExtractsRestrictedInput =
@@ -1554,7 +2027,7 @@ export const BareMetalMachinesRunReadCommandsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runReadCommands",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesRunReadCommandsInput =
@@ -1590,7 +2063,7 @@ export const BareMetalMachinesStartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/start",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesStartInput =
@@ -1627,7 +2100,7 @@ export const BareMetalMachinesUncordonInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/uncordon",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesUncordonInput =
@@ -1670,7 +2143,7 @@ export const BareMetalMachinesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BareMetalMachinesUpdateInput =
@@ -1708,6 +2181,8 @@ export type BareMetalMachinesUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1776,7 +2251,7 @@ export const BmcKeySetsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BmcKeySetsCreateOrUpdateInput =
@@ -1815,6 +2290,8 @@ export type BmcKeySetsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bmcKeySetName - The name of the baseboard management controller key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BmcKeySetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1832,7 +2309,7 @@ export const BmcKeySetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type BmcKeySetsDeleteInput = typeof BmcKeySetsDeleteInput.Type;
@@ -1850,6 +2327,8 @@ export type BmcKeySetsDeleteOutput = typeof BmcKeySetsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bmcKeySetName - The name of the baseboard management controller key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BmcKeySetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BmcKeySetsDeleteInput,
@@ -1865,7 +2344,7 @@ export const BmcKeySetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type BmcKeySetsGetInput = typeof BmcKeySetsGetInput.Type;
@@ -1912,11 +2391,13 @@ export const BmcKeySetsListByClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type BmcKeySetsListByClusterInput =
@@ -1969,6 +2450,8 @@ export type BmcKeySetsListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BmcKeySetsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2004,7 +2487,7 @@ export const BmcKeySetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type BmcKeySetsUpdateInput = typeof BmcKeySetsUpdateInput.Type;
@@ -2042,6 +2525,8 @@ export type BmcKeySetsUpdateOutput = typeof BmcKeySetsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bmcKeySetName - The name of the baseboard management controller key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BmcKeySetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BmcKeySetsUpdateInput,
@@ -2110,6 +2595,9 @@ export const CloudServicesNetworksCreateOrUpdateInput =
                 "Available",
                 "ExpandingVolume",
                 "ExpansionFailed",
+                "Initializing",
+                "None",
+                "Repairing",
               ]),
             ),
             statusMessage: Schema.optional(Schema.String),
@@ -2141,7 +2629,7 @@ export const CloudServicesNetworksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type CloudServicesNetworksCreateOrUpdateInput =
@@ -2179,6 +2667,8 @@ export type CloudServicesNetworksCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudServicesNetworkName - The name of the cloud services network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const CloudServicesNetworksCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2195,7 +2685,7 @@ export const CloudServicesNetworksDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type CloudServicesNetworksDeleteInput =
@@ -2215,6 +2705,8 @@ export type CloudServicesNetworksDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudServicesNetworkName - The name of the cloud services network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const CloudServicesNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2232,7 +2724,7 @@ export const CloudServicesNetworksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type CloudServicesNetworksGetInput =
@@ -2282,11 +2774,13 @@ export const CloudServicesNetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type CloudServicesNetworksListByResourceGroupInput =
@@ -2338,6 +2832,8 @@ export type CloudServicesNetworksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const CloudServicesNetworksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2348,11 +2844,13 @@ export const CloudServicesNetworksListByResourceGroup =
 export const CloudServicesNetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/cloudServicesNetworks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type CloudServicesNetworksListBySubscriptionInput =
@@ -2403,6 +2901,8 @@ export type CloudServicesNetworksListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const CloudServicesNetworksListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2447,7 +2947,7 @@ export const CloudServicesNetworksUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type CloudServicesNetworksUpdateInput =
@@ -2485,6 +2985,8 @@ export type CloudServicesNetworksUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudServicesNetworkName - The name of the cloud services network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const CloudServicesNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2543,6 +3045,11 @@ export const ClusterManagersCreateOrUpdateInput =
           "Updating",
         ]),
       ),
+      relayConfiguration: Schema.optional(
+        Schema.Struct({
+          relayNamespaceId: Schema.optional(Schema.String),
+        }),
+      ),
       vmSize: Schema.optional(Schema.String),
     }),
     etag: Schema.optional(Schema.String),
@@ -2567,13 +3074,14 @@ export const ClusterManagersCreateOrUpdateInput =
         ),
       }),
     ),
+    kind: Schema.optional(Schema.Literals(["Nexus", "AzureLocal"])),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClusterManagersCreateOrUpdateInput =
@@ -2611,6 +3119,8 @@ export type ClusterManagersCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterManagerName - The name of the cluster manager.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClusterManagersCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2627,7 +3137,7 @@ export const ClusterManagersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClusterManagersDeleteInput = typeof ClusterManagersDeleteInput.Type;
@@ -2646,6 +3156,8 @@ export type ClusterManagersDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterManagerName - The name of the cluster manager.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClusterManagersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2663,7 +3175,7 @@ export const ClusterManagersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClusterManagersGetInput = typeof ClusterManagersGetInput.Type;
@@ -2709,11 +3221,13 @@ export const ClusterManagersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClusterManagersListByResourceGroupInput =
@@ -2765,6 +3279,8 @@ export type ClusterManagersListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ClusterManagersListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2775,11 +3291,13 @@ export const ClusterManagersListByResourceGroup =
 export const ClusterManagersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/clusterManagers",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClusterManagersListBySubscriptionInput =
@@ -2830,6 +3348,8 @@ export type ClusterManagersListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ClusterManagersListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2868,7 +3388,7 @@ export const ClusterManagersUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClusterManagersUpdateInput = typeof ClusterManagersUpdateInput.Type;
@@ -2905,6 +3425,8 @@ export type ClusterManagersUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterManagerName - The name of the cluster manager.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClusterManagersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2912,6 +3434,45 @@ export const ClusterManagersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: ClusterManagersUpdateOutput,
   }),
 );
+// Input Schema
+export const ClusterManagersUpdateRelayPrivateEndpointConnectionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterManagerName: Schema.String.pipe(T.PathParam()),
+    connectionState: Schema.Literals(["Approved", "Rejected"]),
+    description: Schema.optional(Schema.String),
+    privateEndpointResourceId: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}/updateRelayPrivateEndpointConnection",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type ClusterManagersUpdateRelayPrivateEndpointConnectionInput =
+  typeof ClusterManagersUpdateRelayPrivateEndpointConnectionInput.Type;
+
+// Output Schema
+export const ClusterManagersUpdateRelayPrivateEndpointConnectionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ClusterManagersUpdateRelayPrivateEndpointConnectionOutput =
+  typeof ClusterManagersUpdateRelayPrivateEndpointConnectionOutput.Type;
+
+// The operation
+/**
+ * Update the private endpoint connection for the Azure Relay namespace managed by the specified cluster manager. Use this operation to approve or reject a pending private endpoint connection request for the relay namespace managed by the cluster manager.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterManagerName - The name of the cluster manager.
+ */
+export const ClusterManagersUpdateRelayPrivateEndpointConnection =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ClusterManagersUpdateRelayPrivateEndpointConnectionInput,
+    outputSchema: ClusterManagersUpdateRelayPrivateEndpointConnectionOutput,
+  }));
 // Input Schema
 export const ClustersContinueUpdateVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2921,11 +3482,12 @@ export const ClustersContinueUpdateVersionInput =
     machineGroupTargetingMode: Schema.optional(
       Schema.Literals(["AlphaByRack"]),
     ),
+    safeguardMode: Schema.optional(Schema.Literals(["All", "None"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/continueUpdateVersion",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClustersContinueUpdateVersionInput =
@@ -3058,6 +3620,7 @@ export const ClustersCreateOrUpdateInput =
                     "BareMetalMachineRunCommand",
                     "BareMetalMachineRunDataExtracts",
                     "BareMetalMachineRunReadCommands",
+                    "ClusterSupportAdministrativeActions",
                     "StorageRunReadCommands",
                     "BareMetalMachineRunDataExtractsRestricted",
                   ]),
@@ -3125,6 +3688,9 @@ export const ClustersCreateOrUpdateInput =
       networkFabricId: Schema.String,
       runtimeProtectionConfiguration: Schema.optional(
         Schema.Struct({
+          definitionUpdateMode: Schema.optional(
+            Schema.Literals(["Automatic", "None"]),
+          ),
           enforcementLevel: Schema.optional(
             Schema.Literals([
               "Audit",
@@ -3263,6 +3829,8 @@ export const ClustersCreateOrUpdateInput =
           type: Schema.Literals(["EdgeZone", "CustomLocation"]),
         }),
       ),
+      lastSuccessfulVersionUpdateTime: Schema.optional(Schema.String),
+      managedCredentials: Schema.optional(Schema.Array(Schema.String)),
       manualActionCount: Schema.optional(Schema.Number),
       supportExpiryDate: Schema.optional(Schema.String),
       workloadResourceIds: Schema.optional(Schema.Array(Schema.String)),
@@ -3303,13 +3871,14 @@ export const ClustersCreateOrUpdateInput =
         ),
       }),
     ),
+    kind: Schema.optional(Schema.Literals(["Nexus", "AzureLocal"])),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -3347,6 +3916,8 @@ export type ClustersCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3363,7 +3934,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -3380,6 +3951,8 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
@@ -3395,7 +3968,7 @@ export const ClustersDeployInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/deploy",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type ClustersDeployInput = typeof ClustersDeployInput.Type;
@@ -3426,7 +3999,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -3467,15 +4040,57 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
+export const ClustersInspectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  additionalActions: Schema.optional(
+    Schema.Array(Schema.Literals(["ResetHardware"])),
+  ),
+  filterDevices: Schema.optional(
+    Schema.Struct({
+      bareMetalMachineNames: Schema.optional(Schema.Array(Schema.String)),
+      rackNames: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/inspect",
+    apiVersion: "2026-07-01",
+  }),
+);
+export type ClustersInspectInput = typeof ClustersInspectInput.Type;
+
+// Output Schema
+export const ClustersInspectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ClustersInspectOutput = typeof ClustersInspectOutput.Type;
+
+// The operation
+/**
+ * Trigger an inspection of the cluster to perform validation and optional corrective actions based on the supplied additional actions and filters.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ */
+export const ClustersInspect = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ClustersInspectInput,
+  outputSchema: ClustersInspectOutput,
+}));
+// Input Schema
 export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -3527,6 +4142,8 @@ export type ClustersListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3538,11 +4155,13 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/clusters",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClustersListBySubscriptionInput =
@@ -3593,11 +4212,51 @@ export type ClustersListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ClustersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ClustersListBySubscriptionInput,
     outputSchema: ClustersListBySubscriptionOutput,
+  }),
+);
+// Input Schema
+export const ClustersRotateCredentialInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    credentials: Schema.Array(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/rotateCredential",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type ClustersRotateCredentialInput =
+  typeof ClustersRotateCredentialInput.Type;
+
+// Output Schema
+export const ClustersRotateCredentialOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ClustersRotateCredentialOutput =
+  typeof ClustersRotateCredentialOutput.Type;
+
+// The operation
+/**
+ * Rotate the specified cluster credential.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ */
+export const ClustersRotateCredential = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ClustersRotateCredentialInput,
+    outputSchema: ClustersRotateCredentialOutput,
   }),
 );
 // Input Schema
@@ -3611,7 +4270,7 @@ export const ClustersScanRuntimeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/scanRuntime",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClustersScanRuntimeInput = typeof ClustersScanRuntimeInput.Type;
@@ -3669,32 +4328,36 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Array(
               Schema.Struct({
                 bmcConnectionString: Schema.optional(Schema.String),
-                bmcCredentials: Schema.Struct({
-                  password: SensitiveString,
-                  username: Schema.String,
-                }),
-                bmcMacAddress: Schema.String,
-                bootMacAddress: Schema.String,
+                bmcCredentials: Schema.optional(
+                  Schema.Struct({
+                    password: Schema.optional(SensitiveString),
+                    username: Schema.optional(Schema.String),
+                  }),
+                ),
+                bmcMacAddress: Schema.optional(Schema.String),
+                bootMacAddress: Schema.optional(Schema.String),
                 machineDetails: Schema.optional(Schema.String),
                 machineName: Schema.optional(Schema.String),
-                rackSlot: Schema.Number,
-                serialNumber: Schema.String,
+                rackSlot: Schema.optional(Schema.Number),
+                serialNumber: Schema.optional(Schema.String),
               }),
             ),
           ),
-          networkRackId: Schema.String,
+          networkRackId: Schema.optional(Schema.String),
           rackLocation: Schema.optional(Schema.String),
-          rackSerialNumber: Schema.String,
-          rackSkuId: Schema.String,
+          rackSerialNumber: Schema.optional(Schema.String),
+          rackSkuId: Schema.optional(Schema.String),
           storageApplianceConfigurationData: Schema.optional(
             Schema.Array(
               Schema.Struct({
-                adminCredentials: Schema.Struct({
-                  password: SensitiveString,
-                  username: Schema.String,
-                }),
-                rackSlot: Schema.Number,
-                serialNumber: Schema.String,
+                adminCredentials: Schema.optional(
+                  Schema.Struct({
+                    password: Schema.optional(SensitiveString),
+                    username: Schema.optional(Schema.String),
+                  }),
+                ),
+                rackSlot: Schema.optional(Schema.Number),
+                serialNumber: Schema.optional(Schema.String),
                 storageApplianceName: Schema.optional(Schema.String),
               }),
             ),
@@ -3720,10 +4383,10 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       clusterLocation: Schema.optional(Schema.String),
       clusterServicePrincipal: Schema.optional(
         Schema.Struct({
-          applicationId: Schema.String,
-          password: SensitiveString,
-          principalId: Schema.String,
-          tenantId: Schema.String,
+          applicationId: Schema.optional(Schema.String),
+          password: Schema.optional(SensitiveString),
+          principalId: Schema.optional(Schema.String),
+          tenantId: Schema.optional(Schema.String),
         }),
       ),
       commandOutputSettings: Schema.optional(
@@ -3761,6 +4424,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     "BareMetalMachineRunCommand",
                     "BareMetalMachineRunDataExtracts",
                     "BareMetalMachineRunReadCommands",
+                    "ClusterSupportAdministrativeActions",
                     "StorageRunReadCommands",
                     "BareMetalMachineRunDataExtractsRestricted",
                   ]),
@@ -3773,9 +4437,11 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       computeDeploymentThreshold: Schema.optional(
         Schema.Struct({
-          grouping: Schema.Literals(["PerCluster", "PerRack"]),
-          type: Schema.Literals(["CountSuccess", "PercentSuccess"]),
-          value: Schema.Number,
+          grouping: Schema.optional(Schema.Literals(["PerCluster", "PerRack"])),
+          type: Schema.optional(
+            Schema.Literals(["CountSuccess", "PercentSuccess"]),
+          ),
+          value: Schema.optional(Schema.Number),
         }),
       ),
       computeRackDefinitions: Schema.optional(
@@ -3786,32 +4452,36 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.Array(
                 Schema.Struct({
                   bmcConnectionString: Schema.optional(Schema.String),
-                  bmcCredentials: Schema.Struct({
-                    password: SensitiveString,
-                    username: Schema.String,
-                  }),
-                  bmcMacAddress: Schema.String,
-                  bootMacAddress: Schema.String,
+                  bmcCredentials: Schema.optional(
+                    Schema.Struct({
+                      password: Schema.optional(SensitiveString),
+                      username: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  bmcMacAddress: Schema.optional(Schema.String),
+                  bootMacAddress: Schema.optional(Schema.String),
                   machineDetails: Schema.optional(Schema.String),
                   machineName: Schema.optional(Schema.String),
-                  rackSlot: Schema.Number,
-                  serialNumber: Schema.String,
+                  rackSlot: Schema.optional(Schema.Number),
+                  serialNumber: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            networkRackId: Schema.String,
+            networkRackId: Schema.optional(Schema.String),
             rackLocation: Schema.optional(Schema.String),
-            rackSerialNumber: Schema.String,
-            rackSkuId: Schema.String,
+            rackSerialNumber: Schema.optional(Schema.String),
+            rackSkuId: Schema.optional(Schema.String),
             storageApplianceConfigurationData: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  adminCredentials: Schema.Struct({
-                    password: SensitiveString,
-                    username: Schema.String,
-                  }),
-                  rackSlot: Schema.Number,
-                  serialNumber: Schema.String,
+                  adminCredentials: Schema.optional(
+                    Schema.Struct({
+                      password: Schema.optional(SensitiveString),
+                      username: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  rackSlot: Schema.optional(Schema.Number),
+                  serialNumber: Schema.optional(Schema.String),
                   storageApplianceName: Schema.optional(Schema.String),
                 }),
               ),
@@ -3821,6 +4491,9 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       runtimeProtectionConfiguration: Schema.optional(
         Schema.Struct({
+          definitionUpdateMode: Schema.optional(
+            Schema.Literals(["Automatic", "None"]),
+          ),
           enforcementLevel: Schema.optional(
             Schema.Literals([
               "Audit",
@@ -3834,7 +4507,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       secretArchive: Schema.optional(
         Schema.Struct({
-          keyVaultId: Schema.String,
+          keyVaultId: Schema.optional(Schema.String),
           useKeyVault: Schema.optional(Schema.Literals(["True", "False"])),
         }),
       ),
@@ -3857,9 +4530,13 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       updateStrategy: Schema.optional(
         Schema.Struct({
           maxUnavailable: Schema.optional(Schema.Number),
-          strategyType: Schema.Literals(["Rack", "PauseAfterRack"]),
-          thresholdType: Schema.Literals(["CountSuccess", "PercentSuccess"]),
-          thresholdValue: Schema.Number,
+          strategyType: Schema.optional(
+            Schema.Literals(["Rack", "PauseAfterRack"]),
+          ),
+          thresholdType: Schema.optional(
+            Schema.Literals(["CountSuccess", "PercentSuccess"]),
+          ),
+          thresholdValue: Schema.optional(Schema.Number),
           waitTimeMinutes: Schema.optional(Schema.Number),
         }),
       ),
@@ -3877,7 +4554,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -3912,6 +4589,8 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
@@ -3923,12 +4602,13 @@ export const ClustersUpdateVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    safeguardMode: Schema.optional(Schema.Literals(["All", "None"])),
     targetClusterVersion: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/updateVersion",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ClustersUpdateVersionInput = typeof ClustersUpdateVersionInput.Type;
@@ -3992,7 +4672,7 @@ export const ConsolesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ConsolesCreateOrUpdateInput =
@@ -4031,6 +4711,8 @@ export type ConsolesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  * @param consoleName - The name of the virtual machine console.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ConsolesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4048,7 +4730,7 @@ export const ConsolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type ConsolesDeleteInput = typeof ConsolesDeleteInput.Type;
@@ -4066,6 +4748,8 @@ export type ConsolesDeleteOutput = typeof ConsolesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  * @param consoleName - The name of the virtual machine console.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ConsolesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConsolesDeleteInput,
@@ -4081,7 +4765,7 @@ export const ConsolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type ConsolesGetInput = typeof ConsolesGetInput.Type;
@@ -4128,11 +4812,13 @@ export const ConsolesListByVirtualMachineInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type ConsolesListByVirtualMachineInput =
@@ -4185,6 +4871,8 @@ export type ConsolesListByVirtualMachineOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ConsolesListByVirtualMachine =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4203,7 +4891,7 @@ export const ConsolesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       expiration: Schema.optional(Schema.String),
       sshPublicKey: Schema.optional(
         Schema.Struct({
-          keyData: Schema.String,
+          keyData: Schema.optional(Schema.String),
         }),
       ),
     }),
@@ -4213,7 +4901,7 @@ export const ConsolesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type ConsolesUpdateInput = typeof ConsolesUpdateInput.Type;
@@ -4249,6 +4937,8 @@ export type ConsolesUpdateOutput = typeof ConsolesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  * @param consoleName - The name of the virtual machine console.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ConsolesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConsolesUpdateInput,
@@ -4299,7 +4989,7 @@ export const KubernetesClusterFeaturesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClusterFeaturesCreateOrUpdateInput =
@@ -4338,6 +5028,8 @@ export type KubernetesClusterFeaturesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param featureName - The name of the feature.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClusterFeaturesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4355,7 +5047,7 @@ export const KubernetesClusterFeaturesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClusterFeaturesDeleteInput =
@@ -4376,6 +5068,8 @@ export type KubernetesClusterFeaturesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param featureName - The name of the feature.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClusterFeaturesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4393,7 +5087,7 @@ export const KubernetesClusterFeaturesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClusterFeaturesGetInput =
@@ -4444,11 +5138,13 @@ export const KubernetesClusterFeaturesListByKubernetesClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClusterFeaturesListByKubernetesClusterInput =
@@ -4501,6 +5197,8 @@ export type KubernetesClusterFeaturesListByKubernetesClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesClusterFeaturesListByKubernetesCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4531,7 +5229,7 @@ export const KubernetesClusterFeaturesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClusterFeaturesUpdateInput =
@@ -4570,6 +5268,8 @@ export type KubernetesClusterFeaturesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param featureName - The name of the feature.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClusterFeaturesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4987,7 +5687,7 @@ export const KubernetesClustersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClustersCreateOrUpdateInput =
@@ -5025,6 +5725,8 @@ export type KubernetesClustersCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClustersCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5041,7 +5743,7 @@ export const KubernetesClustersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClustersDeleteInput =
@@ -5061,6 +5763,8 @@ export type KubernetesClustersDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5078,7 +5782,7 @@ export const KubernetesClustersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClustersGetInput = typeof KubernetesClustersGetInput.Type;
@@ -5127,11 +5831,13 @@ export const KubernetesClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClustersListByResourceGroupInput =
@@ -5183,6 +5889,8 @@ export type KubernetesClustersListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesClustersListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5193,11 +5901,13 @@ export const KubernetesClustersListByResourceGroup =
 export const KubernetesClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/kubernetesClusters",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClustersListBySubscriptionInput =
@@ -5248,6 +5958,8 @@ export type KubernetesClustersListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesClustersListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5265,7 +5977,7 @@ export const KubernetesClustersRestartNodeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/restartNode",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClustersRestartNodeInput =
@@ -5334,7 +6046,7 @@ export const KubernetesClustersUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type KubernetesClustersUpdateInput =
@@ -5372,11 +6084,380 @@ export type KubernetesClustersUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: KubernetesClustersUpdateInput,
     outputSchema: KubernetesClustersUpdateOutput,
+  }),
+);
+// Input Schema
+export const KubernetesVersionsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    kubernetesVersionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      values: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Accepted", "Canceled", "Failed", "Succeeded"]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions/{kubernetesVersionName}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type KubernetesVersionsCreateOrUpdateInput =
+  typeof KubernetesVersionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const KubernetesVersionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type KubernetesVersionsCreateOrUpdateOutput =
+  typeof KubernetesVersionsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create the Kubernetes version resource or update its tags. This resource is system managed and should only be created with the name "default".
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param kubernetesVersionName - The name of the Kubernetes version resource.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
+ */
+export const KubernetesVersionsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: KubernetesVersionsCreateOrUpdateInput,
+    outputSchema: KubernetesVersionsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const KubernetesVersionsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    kubernetesVersionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions/{kubernetesVersionName}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type KubernetesVersionsDeleteInput =
+  typeof KubernetesVersionsDeleteInput.Type;
+
+// Output Schema
+export const KubernetesVersionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type KubernetesVersionsDeleteOutput =
+  typeof KubernetesVersionsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete the specified Kubernetes version resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param kubernetesVersionName - The name of the Kubernetes version resource.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
+ */
+export const KubernetesVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: KubernetesVersionsDeleteInput,
+    outputSchema: KubernetesVersionsDeleteOutput,
+  }),
+);
+// Input Schema
+export const KubernetesVersionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    kubernetesVersionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions/{kubernetesVersionName}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type KubernetesVersionsGetInput = typeof KubernetesVersionsGetInput.Type;
+
+// Output Schema
+export const KubernetesVersionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type KubernetesVersionsGetOutput =
+  typeof KubernetesVersionsGetOutput.Type;
+
+// The operation
+/**
+ * Retrieve the Kubernetes version resource that describes the available Kubernetes versions for deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param kubernetesVersionName - The name of the Kubernetes version resource.
+ */
+export const KubernetesVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: KubernetesVersionsGetInput,
+    outputSchema: KubernetesVersionsGetOutput,
+  }),
+);
+// Input Schema
+export const KubernetesVersionsListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type KubernetesVersionsListByResourceGroupInput =
+  typeof KubernetesVersionsListByResourceGroupInput.Type;
+
+// Output Schema
+export const KubernetesVersionsListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type KubernetesVersionsListByResourceGroupOutput =
+  typeof KubernetesVersionsListByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Get a list of Kubernetes version resources in the provided resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
+ */
+export const KubernetesVersionsListByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: KubernetesVersionsListByResourceGroupInput,
+    outputSchema: KubernetesVersionsListByResourceGroupOutput,
+  }));
+// Input Schema
+export const KubernetesVersionsListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/kubernetesVersions",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type KubernetesVersionsListBySubscriptionInput =
+  typeof KubernetesVersionsListBySubscriptionInput.Type;
+
+// Output Schema
+export const KubernetesVersionsListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type KubernetesVersionsListBySubscriptionOutput =
+  typeof KubernetesVersionsListBySubscriptionOutput.Type;
+
+// The operation
+/**
+ * Get a list of Kubernetes version resources in the provided subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
+ */
+export const KubernetesVersionsListBySubscription =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: KubernetesVersionsListBySubscriptionInput,
+    outputSchema: KubernetesVersionsListBySubscriptionOutput,
+  }));
+// Input Schema
+export const KubernetesVersionsUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    kubernetesVersionName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions/{kubernetesVersionName}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type KubernetesVersionsUpdateInput =
+  typeof KubernetesVersionsUpdateInput.Type;
+
+// Output Schema
+export const KubernetesVersionsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type KubernetesVersionsUpdateOutput =
+  typeof KubernetesVersionsUpdateOutput.Type;
+
+// The operation
+/**
+ * Update tags associated with the Kubernetes version resource. No other properties are supported for update.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param kubernetesVersionName - The name of the Kubernetes version resource.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
+ */
+export const KubernetesVersionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: KubernetesVersionsUpdateInput,
+    outputSchema: KubernetesVersionsUpdateOutput,
   }),
 );
 // Input Schema
@@ -5424,7 +6505,7 @@ export const L2NetworksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type L2NetworksCreateOrUpdateInput =
@@ -5462,6 +6543,8 @@ export type L2NetworksCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2NetworkName - The name of the L2 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L2NetworksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5478,7 +6561,7 @@ export const L2NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type L2NetworksDeleteInput = typeof L2NetworksDeleteInput.Type;
@@ -5495,6 +6578,8 @@ export type L2NetworksDeleteOutput = typeof L2NetworksDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2NetworkName - The name of the L2 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L2NetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L2NetworksDeleteInput,
@@ -5509,7 +6594,7 @@ export const L2NetworksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type L2NetworksGetInput = typeof L2NetworksGetInput.Type;
@@ -5554,11 +6639,13 @@ export const L2NetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type L2NetworksListByResourceGroupInput =
@@ -5610,6 +6697,8 @@ export type L2NetworksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L2NetworksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5620,11 +6709,13 @@ export const L2NetworksListByResourceGroup =
 export const L2NetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/l2Networks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type L2NetworksListBySubscriptionInput =
@@ -5675,6 +6766,8 @@ export type L2NetworksListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L2NetworksListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5691,7 +6784,7 @@ export const L2NetworksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type L2NetworksUpdateInput = typeof L2NetworksUpdateInput.Type;
@@ -5728,6 +6821,8 @@ export type L2NetworksUpdateOutput = typeof L2NetworksUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2NetworkName - The name of the L2 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L2NetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L2NetworksUpdateInput,
@@ -5785,7 +6880,7 @@ export const L3NetworksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type L3NetworksCreateOrUpdateInput =
@@ -5823,6 +6918,8 @@ export type L3NetworksCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3NetworkName - The name of the L3 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L3NetworksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5839,7 +6936,7 @@ export const L3NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type L3NetworksDeleteInput = typeof L3NetworksDeleteInput.Type;
@@ -5856,6 +6953,8 @@ export type L3NetworksDeleteOutput = typeof L3NetworksDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3NetworkName - The name of the L3 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L3NetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L3NetworksDeleteInput,
@@ -5870,7 +6969,7 @@ export const L3NetworksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type L3NetworksGetInput = typeof L3NetworksGetInput.Type;
@@ -5915,11 +7014,13 @@ export const L3NetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type L3NetworksListByResourceGroupInput =
@@ -5971,6 +7072,8 @@ export type L3NetworksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L3NetworksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5981,11 +7084,13 @@ export const L3NetworksListByResourceGroup =
 export const L3NetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/l3Networks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type L3NetworksListBySubscriptionInput =
@@ -6036,6 +7141,8 @@ export type L3NetworksListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L3NetworksListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6052,7 +7159,7 @@ export const L3NetworksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type L3NetworksUpdateInput = typeof L3NetworksUpdateInput.Type;
@@ -6089,6 +7196,8 @@ export type L3NetworksUpdateOutput = typeof L3NetworksUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3NetworkName - The name of the L3 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L3NetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L3NetworksUpdateInput,
@@ -6130,7 +7239,7 @@ export const MetricsConfigurationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type MetricsConfigurationsCreateOrUpdateInput =
@@ -6169,6 +7278,8 @@ export type MetricsConfigurationsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param metricsConfigurationName - The name of the metrics configuration for the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const MetricsConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6186,7 +7297,7 @@ export const MetricsConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type MetricsConfigurationsDeleteInput =
@@ -6207,6 +7318,8 @@ export type MetricsConfigurationsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param metricsConfigurationName - The name of the metrics configuration for the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const MetricsConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6225,7 +7338,7 @@ export const MetricsConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type MetricsConfigurationsGetInput =
@@ -6277,11 +7390,13 @@ export const MetricsConfigurationsListByClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type MetricsConfigurationsListByClusterInput =
@@ -6334,6 +7449,8 @@ export type MetricsConfigurationsListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const MetricsConfigurationsListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6358,7 +7475,7 @@ export const MetricsConfigurationsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type MetricsConfigurationsUpdateInput =
@@ -6397,6 +7514,8 @@ export type MetricsConfigurationsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param metricsConfigurationName - The name of the metrics configuration for the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const MetricsConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6411,7 +7530,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.NetworkCloud/operations",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -6489,7 +7608,7 @@ export const RacksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type RacksCreateOrUpdateInput = typeof RacksCreateOrUpdateInput.Type;
@@ -6525,6 +7644,8 @@ export type RacksCreateOrUpdateOutput = typeof RacksCreateOrUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param rackName - The name of the rack.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const RacksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RacksCreateOrUpdateInput,
@@ -6539,7 +7660,7 @@ export const RacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type RacksDeleteInput = typeof RacksDeleteInput.Type;
@@ -6556,6 +7677,8 @@ export type RacksDeleteOutput = typeof RacksDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param rackName - The name of the rack.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const RacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RacksDeleteInput,
@@ -6570,7 +7693,7 @@ export const RacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type RacksGetInput = typeof RacksGetInput.Type;
@@ -6618,7 +7741,7 @@ export const RackSkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/rackSkus/{rackSkuName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type RackSkusGetInput = typeof RackSkusGetInput.Type;
@@ -6665,7 +7788,7 @@ export const RackSkusListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/rackSkus",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type RackSkusListBySubscriptionInput =
@@ -6728,11 +7851,13 @@ export const RacksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type RacksListByResourceGroupInput =
@@ -6784,6 +7909,8 @@ export type RacksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const RacksListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6795,11 +7922,13 @@ export const RacksListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RacksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/racks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type RacksListBySubscriptionInput =
@@ -6850,6 +7979,8 @@ export type RacksListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const RacksListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6873,7 +8004,7 @@ export const RacksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type RacksUpdateInput = typeof RacksUpdateInput.Type;
@@ -6908,6 +8039,8 @@ export type RacksUpdateOutput = typeof RacksUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param rackName - The name of the rack.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const RacksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RacksUpdateInput,
@@ -6941,9 +8074,23 @@ export const StorageAppliancesCreateOrUpdateInput =
         Schema.Literals(["Available", "Degraded", "Error", "Provisioning"]),
       ),
       detailedStatusMessage: Schema.optional(Schema.String),
+      expansionShelves: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            model: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
       managementIpv4Address: Schema.optional(Schema.String),
       manufacturer: Schema.optional(Schema.String),
       model: Schema.optional(Schema.String),
+      monitoringConfigurationStatus: Schema.optional(
+        Schema.Struct({
+          logLevel: Schema.optional(Schema.Literals(["Default", "Nexus"])),
+          metricsLevel: Schema.optional(Schema.Literals(["Default", "Nexus"])),
+        }),
+      ),
       remoteVendorManagementFeature: Schema.optional(
         Schema.Literals(["Supported", "Unsupported"]),
       ),
@@ -6990,7 +8137,7 @@ export const StorageAppliancesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type StorageAppliancesCreateOrUpdateInput =
@@ -7028,6 +8175,8 @@ export type StorageAppliancesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageApplianceName - The name of the storage appliance.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const StorageAppliancesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7044,7 +8193,7 @@ export const StorageAppliancesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type StorageAppliancesDeleteInput =
@@ -7064,6 +8213,8 @@ export type StorageAppliancesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageApplianceName - The name of the storage appliance.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const StorageAppliancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7081,7 +8232,7 @@ export const StorageAppliancesDisableRemoteVendorManagementInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/disableRemoteVendorManagement",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type StorageAppliancesDisableRemoteVendorManagementInput =
@@ -7118,7 +8269,7 @@ export const StorageAppliancesEnableRemoteVendorManagementInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/enableRemoteVendorManagement",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type StorageAppliancesEnableRemoteVendorManagementInput =
@@ -7154,7 +8305,7 @@ export const StorageAppliancesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type StorageAppliancesGetInput = typeof StorageAppliancesGetInput.Type;
@@ -7202,11 +8353,13 @@ export const StorageAppliancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type StorageAppliancesListByResourceGroupInput =
@@ -7258,6 +8411,8 @@ export type StorageAppliancesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const StorageAppliancesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7268,11 +8423,13 @@ export const StorageAppliancesListByResourceGroup =
 export const StorageAppliancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/storageAppliances",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type StorageAppliancesListBySubscriptionInput =
@@ -7323,6 +8480,8 @@ export type StorageAppliancesListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const StorageAppliancesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7346,7 +8505,7 @@ export const StorageAppliancesRunReadCommandsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/runReadCommands",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type StorageAppliancesRunReadCommandsInput =
@@ -7388,7 +8547,7 @@ export const StorageAppliancesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type StorageAppliancesUpdateInput =
@@ -7426,6 +8585,8 @@ export type StorageAppliancesUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageApplianceName - The name of the storage appliance.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const StorageAppliancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7479,7 +8640,7 @@ export const TrunkedNetworksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type TrunkedNetworksCreateOrUpdateInput =
@@ -7517,6 +8678,8 @@ export type TrunkedNetworksCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trunkedNetworkName - The name of the trunked network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const TrunkedNetworksCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7533,7 +8696,7 @@ export const TrunkedNetworksDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type TrunkedNetworksDeleteInput = typeof TrunkedNetworksDeleteInput.Type;
@@ -7552,6 +8715,8 @@ export type TrunkedNetworksDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trunkedNetworkName - The name of the trunked network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const TrunkedNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7569,7 +8734,7 @@ export const TrunkedNetworksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type TrunkedNetworksGetInput = typeof TrunkedNetworksGetInput.Type;
@@ -7615,11 +8780,13 @@ export const TrunkedNetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type TrunkedNetworksListByResourceGroupInput =
@@ -7671,6 +8838,8 @@ export type TrunkedNetworksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const TrunkedNetworksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7681,11 +8850,13 @@ export const TrunkedNetworksListByResourceGroup =
 export const TrunkedNetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/trunkedNetworks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type TrunkedNetworksListBySubscriptionInput =
@@ -7736,6 +8907,8 @@ export type TrunkedNetworksListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const TrunkedNetworksListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7753,7 +8926,7 @@ export const TrunkedNetworksUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type TrunkedNetworksUpdateInput = typeof TrunkedNetworksUpdateInput.Type;
@@ -7790,6 +8963,8 @@ export type TrunkedNetworksUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trunkedNetworkName - The name of the trunked network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const TrunkedNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7809,7 +8984,7 @@ export const VirtualMachinesAssignRelayInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/assignRelay",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesAssignRelayInput =
@@ -7985,7 +9160,7 @@ export const VirtualMachinesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesCreateOrUpdateInput =
@@ -8023,6 +9198,8 @@ export type VirtualMachinesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8039,7 +9216,7 @@ export const VirtualMachinesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
@@ -8058,6 +9235,8 @@ export type VirtualMachinesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8075,7 +9254,7 @@ export const VirtualMachinesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
@@ -8121,11 +9300,13 @@ export const VirtualMachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesListByResourceGroupInput =
@@ -8177,6 +9358,8 @@ export type VirtualMachinesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const VirtualMachinesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8187,11 +9370,13 @@ export const VirtualMachinesListByResourceGroup =
 export const VirtualMachinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/virtualMachines",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesListBySubscriptionInput =
@@ -8242,6 +9427,8 @@ export type VirtualMachinesListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const VirtualMachinesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8259,7 +9446,7 @@ export const VirtualMachinesPowerOffInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/powerOff",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesPowerOffInput =
@@ -8296,7 +9483,7 @@ export const VirtualMachinesReimageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/reimage",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesReimageInput =
@@ -8333,7 +9520,7 @@ export const VirtualMachinesRestartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/restart",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesRestartInput =
@@ -8370,7 +9557,7 @@ export const VirtualMachinesStartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/start",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -8426,9 +9613,9 @@ export const VirtualMachinesUpdateInput =
       Schema.Struct({
         vmImageRepositoryCredentials: Schema.optional(
           Schema.Struct({
-            password: SensitiveString,
-            registryUrl: Schema.String,
-            username: Schema.String,
+            password: Schema.optional(SensitiveString),
+            registryUrl: Schema.optional(Schema.String),
+            username: Schema.optional(Schema.String),
           }),
         ),
       }),
@@ -8438,7 +9625,7 @@ export const VirtualMachinesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
@@ -8475,6 +9662,8 @@ export type VirtualMachinesUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8492,6 +9681,7 @@ export const VolumesCreateOrUpdateInput =
       sizeMiB: Schema.Number,
       storageApplianceId: Schema.optional(Schema.String),
       allocatedSizeMiB: Schema.optional(Schema.Number),
+      assignedStorageApplianceId: Schema.optional(Schema.String),
       attachedTo: Schema.optional(Schema.Array(Schema.String)),
       detailedStatus: Schema.optional(
         Schema.Literals(["Active", "Error", "Provisioning"]),
@@ -8519,7 +9709,7 @@ export const VolumesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VolumesCreateOrUpdateInput = typeof VolumesCreateOrUpdateInput.Type;
@@ -8556,6 +9746,8 @@ export type VolumesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param volumeName - The name of the volume.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VolumesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8572,7 +9764,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
@@ -8589,6 +9781,8 @@ export type VolumesDeleteOutput = typeof VolumesDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param volumeName - The name of the volume.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VolumesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VolumesDeleteInput,
@@ -8603,7 +9797,7 @@ export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type VolumesGetInput = typeof VolumesGetInput.Type;
@@ -8648,11 +9842,13 @@ export const VolumesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VolumesListByResourceGroupInput =
@@ -8704,6 +9900,8 @@ export type VolumesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const VolumesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8715,11 +9913,13 @@ export const VolumesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const VolumesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/volumes",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VolumesListBySubscriptionInput =
@@ -8770,6 +9970,8 @@ export type VolumesListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const VolumesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8787,7 +9989,7 @@ export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
 );
 export type VolumesUpdateInput = typeof VolumesUpdateInput.Type;
@@ -8822,6 +10024,8 @@ export type VolumesUpdateOutput = typeof VolumesUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param volumeName - The name of the volume.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VolumesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VolumesUpdateInput,

@@ -22,6 +22,7 @@ export const DirectoryUsersControllerFindOutput =
     email: Schema.optional(Schema.NullOr(Schema.String)),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
     last_name: Schema.optional(Schema.NullOr(Schema.String)),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
     emails: Schema.optional(
       Schema.Array(
         Schema.Struct({

@@ -22,60 +22,6 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface MethodDetails {
-  /** Output only. The path for the method such as `products/v1/productInputs.insert` */
-  path?: string;
-  /** Output only. The API version that the method belongs to. */
-  version?: string;
-  /** Output only. The sub-API that the method belongs to. */
-  subapi?: string;
-  /** Output only. The name of the method for example `products.list`. */
-  method?: string;
-}
-
-export const MethodDetails: Schema.Schema<MethodDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    path: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-    subapi: Schema.optional(Schema.String),
-    method: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MethodDetails" });
-
-export interface QuotaGroup {
-  /** Output only. List of all methods group quota applies to. */
-  methodDetails?: ReadonlyArray<MethodDetails>;
-  /** Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at at 12:00 PM midday UTC. */
-  quotaUsage?: string;
-  /** Output only. The maximum number of calls allowed per day for the group. */
-  quotaLimit?: string;
-  /** Output only. The maximum number of calls allowed per minute for the group. */
-  quotaMinuteLimit?: string;
-  /** Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Note: There is no guarantee on the format of {group} */
-  name?: string;
-}
-
-export const QuotaGroup: Schema.Schema<QuotaGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    methodDetails: Schema.optional(Schema.Array(MethodDetails)),
-    quotaUsage: Schema.optional(Schema.String),
-    quotaLimit: Schema.optional(Schema.String),
-    quotaMinuteLimit: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "QuotaGroup" });
-
-export interface ListQuotaGroupsResponse {
-  /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
-  quotaGroups?: ReadonlyArray<QuotaGroup>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListQuotaGroupsResponse: Schema.Schema<ListQuotaGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    quotaGroups: Schema.optional(Schema.Array(QuotaGroup)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListQuotaGroupsResponse" });
-
 export interface ProductChange {
   /** The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``) */
   oldValue?: string;
@@ -117,38 +63,96 @@ export const ProductChange: Schema.Schema<ProductChange> =
   }).annotate({ identifier: "ProductChange" });
 
 export interface ProductStatusChangeMessage {
+  /** A message to describe the change that happened to the product */
+  changes?: ReadonlyArray<ProductChange>;
+  /** The product id. */
+  resourceId?: string;
+  /** The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications. */
+  eventTime?: string;
+  /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
+  expirationTime?: string;
+  /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
+  account?: string;
+  /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
+  managingAccount?: string;
+  /** The resource that changed, in this case it will always be `Product`. */
+  resourceType?:
+    | "RESOURCE_UNSPECIFIED"
+    | "PRODUCT"
+    | "ACCOUNT_SERVICE"
+    | (string & {});
   /** The attribute in the resource that changed, in this case it will be always `Status`. */
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
   /** The product name. Format: `accounts/{account}/products/{product}` */
   resource?: string;
-  /** The resource that changed, in this case it will always be `Product`. */
-  resourceType?: "RESOURCE_UNSPECIFIED" | "PRODUCT" | (string & {});
-  /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
-  managingAccount?: string;
-  /** A message to describe the change that happened to the product */
-  changes?: ReadonlyArray<ProductChange>;
-  /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
-  expirationTime?: string;
-  /** The product id. */
-  resourceId?: string;
-  /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
-  account?: string;
-  /** The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications. */
-  eventTime?: string;
 }
 
 export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    resourceId: Schema.optional(Schema.String),
+    eventTime: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    managingAccount: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
     attribute: Schema.optional(Schema.String),
     resource: Schema.optional(Schema.String),
-    resourceType: Schema.optional(Schema.String),
-    managingAccount: Schema.optional(Schema.String),
-    changes: Schema.optional(Schema.Array(ProductChange)),
-    expirationTime: Schema.optional(Schema.String),
-    resourceId: Schema.optional(Schema.String),
-    account: Schema.optional(Schema.String),
-    eventTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductStatusChangeMessage" });
+
+export interface MethodDetails {
+  /** Output only. The name of the method for example `products.list`. */
+  method?: string;
+  /** Output only. The API version that the method belongs to. */
+  version?: string;
+  /** Output only. The sub-API that the method belongs to. */
+  subapi?: string;
+  /** Output only. The path for the method such as `products/v1/productInputs.insert` */
+  path?: string;
+}
+
+export const MethodDetails: Schema.Schema<MethodDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    method: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    subapi: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MethodDetails" });
+
+export interface QuotaGroup {
+  /** Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at at 12:00 PM midday UTC. */
+  quotaUsage?: string;
+  /** Output only. The maximum number of calls allowed per day for the group. */
+  quotaLimit?: string;
+  /** Output only. List of all methods group quota applies to. */
+  methodDetails?: ReadonlyArray<MethodDetails>;
+  /** Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Note: There is no guarantee on the format of {group} */
+  name?: string;
+  /** Output only. The maximum number of calls allowed per minute for the group. */
+  quotaMinuteLimit?: string;
+}
+
+export const QuotaGroup: Schema.Schema<QuotaGroup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quotaUsage: Schema.optional(Schema.String),
+    quotaLimit: Schema.optional(Schema.String),
+    methodDetails: Schema.optional(Schema.Array(MethodDetails)),
+    name: Schema.optional(Schema.String),
+    quotaMinuteLimit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QuotaGroup" });
+
+export interface ListQuotaGroupsResponse {
+  /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
+  quotaGroups?: ReadonlyArray<QuotaGroup>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListQuotaGroupsResponse: Schema.Schema<ListQuotaGroupsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quotaGroups: Schema.optional(Schema.Array(QuotaGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListQuotaGroupsResponse" });
 
 // ==========================================================================
 // Errors

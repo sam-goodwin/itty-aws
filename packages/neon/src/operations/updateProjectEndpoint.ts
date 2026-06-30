@@ -157,10 +157,8 @@ export type UpdateProjectEndpointOutput =
  * Update compute endpoint
  *
  * Updates the specified compute endpoint.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain an `endpoint_id` and `branch_id` by listing your project's compute endpoints.
  * An `endpoint_id` has an `ep-` prefix. A `branch_id` has a `br-` prefix.
- * For more information about compute endpoints, see [Manage computes](https://neon.tech/docs/manage/endpoints/).
+ * For more information about compute endpoints, see [Manage computes](https://neon.com/docs/manage/endpoints/).
  * If the returned list of operations is not empty, the compute endpoint is not ready to use.
  * The client must wait for the last operation to finish before using the compute endpoint.
  * If the compute endpoint was idle before the update, it becomes active for a short period of time,

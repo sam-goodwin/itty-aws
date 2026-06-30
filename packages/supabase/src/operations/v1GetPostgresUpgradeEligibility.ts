@@ -53,6 +53,7 @@ export const V1GetPostgresUpgradeEligibilityOutput =
     unsupported_extensions: Schema.Array(Schema.String),
     user_defined_objects_in_internal_schemas: Schema.Array(Schema.String),
     validation_errors: Schema.Array(Schema.Unknown),
+    warnings: Schema.Array(Schema.Unknown),
   });
 export type V1GetPostgresUpgradeEligibilityOutput =
   typeof V1GetPostgresUpgradeEligibilityOutput.Type;

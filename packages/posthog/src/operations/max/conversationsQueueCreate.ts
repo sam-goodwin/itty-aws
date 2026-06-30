@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsQueueCreateInput =
@@ -13,6 +12,7 @@ export const ConversationsQueueCreateInput =
       Schema.Literals(["idle", "in_progress", "canceling"]),
     ),
     title: Schema.optional(Schema.NullOr(Schema.String)),
+    topic: Schema.optional(Schema.Unknown),
     user: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -43,14 +43,16 @@ export const ConversationsQueueCreateInput =
     ),
     has_unsupported_content: Schema.optional(Schema.Boolean),
     agent_mode: Schema.optional(Schema.NullOr(Schema.String)),
+    agent_runtime: Schema.optional(Schema.Literals(["langgraph", "sandbox"])),
     is_sandbox: Schema.optional(Schema.Boolean),
     pending_approvals: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    task: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/conversations/{conversation}/queue/",
+      path: "/api/projects/{project_id}/conversations/{conversation}/queue/",
     }),
   );
 export type ConversationsQueueCreateInput =
@@ -64,6 +66,7 @@ export const ConversationsQueueCreateOutput =
       Schema.Literals(["idle", "in_progress", "canceling"]),
     ),
     title: Schema.optional(Schema.NullOr(Schema.String)),
+    topic: Schema.optional(Schema.Unknown),
     user: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -94,10 +97,12 @@ export const ConversationsQueueCreateOutput =
     ),
     has_unsupported_content: Schema.optional(Schema.Boolean),
     agent_mode: Schema.optional(Schema.NullOr(Schema.String)),
+    agent_runtime: Schema.optional(Schema.Literals(["langgraph", "sandbox"])),
     is_sandbox: Schema.optional(Schema.Boolean),
     pending_approvals: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    task: Schema.optional(Schema.Unknown),
   });
 export type ConversationsQueueCreateOutput =
   typeof ConversationsQueueCreateOutput.Type;
@@ -112,6 +117,5 @@ export const conversationsQueueCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ConversationsQueueCreateInput,
     outputSchema: ConversationsQueueCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

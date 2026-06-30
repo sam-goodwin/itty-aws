@@ -26,6 +26,7 @@ export const LogsValuesRetrieveOutput =
         Schema.Struct({
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
+          count: Schema.optional(Schema.Number),
         }),
       ),
     ),

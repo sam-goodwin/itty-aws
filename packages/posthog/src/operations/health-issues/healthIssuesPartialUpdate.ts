@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const HealthIssuesPartialUpdateInput =
@@ -12,14 +11,14 @@ export const HealthIssuesPartialUpdateInput =
     severity: Schema.optional(Schema.Literals(["critical", "warning", "info"])),
     status: Schema.optional(Schema.Literals(["active", "resolved"])),
     dismissed: Schema.optional(Schema.Boolean),
-    payload: Schema.optional(Schema.Unknown),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/health_issues/{id}/",
+      path: "/api/projects/{project_id}/health_issues/{id}/",
     }),
   );
 export type HealthIssuesPartialUpdateInput =
@@ -33,7 +32,7 @@ export const HealthIssuesPartialUpdateOutput =
     severity: Schema.optional(Schema.Literals(["critical", "warning", "info"])),
     status: Schema.optional(Schema.Literals(["active", "resolved"])),
     dismissed: Schema.optional(Schema.Boolean),
-    payload: Schema.optional(Schema.Unknown),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -51,6 +50,5 @@ export const healthIssuesPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: HealthIssuesPartialUpdateInput,
     outputSchema: HealthIssuesPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

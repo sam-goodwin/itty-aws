@@ -1,8 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const LlmAnalyticsProviderKeysCreateInput =
@@ -17,6 +16,7 @@ export const LlmAnalyticsProviderKeysCreateInput =
         "openrouter",
         "fireworks",
         "azure_openai",
+        "together_ai",
       ]),
     ),
     name: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export const LlmAnalyticsProviderKeysCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/llm_analytics/provider_keys/",
+      path: "/api/projects/{project_id}/llm_analytics/provider_keys/",
     }),
   );
 export type LlmAnalyticsProviderKeysCreateInput =
@@ -71,6 +71,7 @@ export const LlmAnalyticsProviderKeysCreateOutput =
         "openrouter",
         "fireworks",
         "azure_openai",
+        "together_ai",
       ]),
     ),
     name: Schema.optional(Schema.String),
@@ -78,7 +79,7 @@ export const LlmAnalyticsProviderKeysCreateOutput =
       Schema.Literals(["unknown", "ok", "invalid", "error"]),
     ),
     error_message: Schema.optional(Schema.NullOr(Schema.String)),
-    api_key: Schema.optional(SensitiveString),
+    api_key: Schema.optional(SensitiveOutputString),
     api_key_masked: Schema.optional(Schema.String),
     azure_endpoint: Schema.optional(Schema.String),
     api_version: Schema.optional(Schema.String),
@@ -117,5 +118,4 @@ export const llmAnalyticsProviderKeysCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsProviderKeysCreateInput,
     outputSchema: LlmAnalyticsProviderKeysCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

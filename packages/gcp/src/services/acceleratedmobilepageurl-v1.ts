@@ -22,7 +22,38 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface AmpUrl {
+  /** The AMP URL pointing to the publisher's web server. */
+  ampUrl?: string;
+  /** The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google AMP Cache. */
+  cdnAmpUrl?: string;
+  /** The original non-AMP URL. */
+  originalUrl?: string;
+}
+
+export const AmpUrl: Schema.Schema<AmpUrl> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ampUrl: Schema.optional(Schema.String),
+    cdnAmpUrl: Schema.optional(Schema.String),
+    originalUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AmpUrl" });
+
+export interface BatchGetAmpUrlsRequest {
+  /** The lookup_strategy being requested. */
+  lookupStrategy?: "FETCH_LIVE_DOC" | "IN_INDEX_DOC" | (string & {});
+  /** List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per lookup (see [Usage Limits](/amp/cache/reference/limits)). */
+  urls?: ReadonlyArray<string>;
+}
+
+export const BatchGetAmpUrlsRequest: Schema.Schema<BatchGetAmpUrlsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lookupStrategy: Schema.optional(Schema.String),
+    urls: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchGetAmpUrlsRequest" });
+
 export interface AmpUrlError {
+  /** The original non-AMP URL. */
+  originalUrl?: string;
   /** The error code of an API call. */
   errorCode?:
     | "ERROR_CODE_UNSPECIFIED"
@@ -34,45 +65,14 @@ export interface AmpUrlError {
     | (string & {});
   /** An optional descriptive error message. */
   errorMessage?: string;
-  /** The original non-AMP URL. */
-  originalUrl?: string;
 }
 
 export const AmpUrlError: Schema.Schema<AmpUrlError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalUrl: Schema.optional(Schema.String),
     errorCode: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
-    originalUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "AmpUrlError" });
-
-export interface BatchGetAmpUrlsRequest {
-  /** List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per lookup (see [Usage Limits](/amp/cache/reference/limits)). */
-  urls?: ReadonlyArray<string>;
-  /** The lookup_strategy being requested. */
-  lookupStrategy?: "FETCH_LIVE_DOC" | "IN_INDEX_DOC" | (string & {});
-}
-
-export const BatchGetAmpUrlsRequest: Schema.Schema<BatchGetAmpUrlsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    urls: Schema.optional(Schema.Array(Schema.String)),
-    lookupStrategy: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BatchGetAmpUrlsRequest" });
-
-export interface AmpUrl {
-  /** The original non-AMP URL. */
-  originalUrl?: string;
-  /** The AMP URL pointing to the publisher's web server. */
-  ampUrl?: string;
-  /** The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google AMP Cache. */
-  cdnAmpUrl?: string;
-}
-
-export const AmpUrl: Schema.Schema<AmpUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originalUrl: Schema.optional(Schema.String),
-    ampUrl: Schema.optional(Schema.String),
-    cdnAmpUrl: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AmpUrl" });
 
 export interface BatchGetAmpUrlsResponse {
   /** For each URL in BatchAmpUrlsRequest, the URL response. The response might not be in the same order as URLs in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only once. */

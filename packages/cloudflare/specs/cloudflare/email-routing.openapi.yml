@@ -597,6 +597,13 @@ paths:
                       - unlocked
                     description: Show the state of your account, and the type or configuration
                       error.
+                  support_subaddress:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Whether subaddressing (plus-addressing) is honored when matching
+                      incoming mail against routing rules.
                   tag:
                     type: string
                     description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
@@ -670,6 +677,13 @@ paths:
                       - unlocked
                     description: Show the state of your account, and the type or configuration
                       error.
+                  support_subaddress:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Whether subaddressing (plus-addressing) is honored when matching
+                      incoming mail against routing rules.
                   tag:
                     type: string
                     description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
@@ -797,6 +811,13 @@ paths:
                       - unlocked
                     description: Show the state of your account, and the type or configuration
                       error.
+                  support_subaddress:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Whether subaddressing (plus-addressing) is honored when matching
+                      incoming mail against routing rules.
                   tag:
                     type: string
                     description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
@@ -868,6 +889,13 @@ paths:
                       - unlocked
                     description: Show the state of your account, and the type or configuration
                       error.
+                  support_subaddress:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Whether subaddressing (plus-addressing) is honored when matching
+                      incoming mail against routing rules.
                   tag:
                     type: string
                     description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
@@ -939,6 +967,13 @@ paths:
                       - unlocked
                     description: Show the state of your account, and the type or configuration
                       error.
+                  support_subaddress:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Whether subaddressing (plus-addressing) is honored when matching
+                      incoming mail against routing rules.
                   tag:
                     type: string
                     description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
@@ -1282,107 +1317,6 @@ paths:
         EmailRoutingRuleNotFound:
           - status: 404
   /zones/{zone_id}/email/routing/rules:
-    get:
-      operationId: listRules
-      description: "Lists existing routing rules.  @example ```ts // Automatically
-        fetches more pages as needed. for await (const emailRoutingRule of
-        client.emailRouting.rules.list( { zone_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
-      parameters:
-        - name: zone_id
-          in: path
-          required: true
-          description: "Path param: Identifier."
-          schema:
-            type: string
-        - name: page
-          in: query
-          required: false
-          schema:
-            type: number
-        - name: per_page
-          in: query
-          required: false
-          schema:
-            type: number
-        - name: enabled
-          in: query
-          required: false
-          description: "Query param: Filter by enabled routing rules."
-          schema:
-            type: boolean
-            enum:
-              - true
-              - false
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    description: Routing rule identifier.
-                  actions:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          enum:
-                            - drop
-                            - forward
-                            - worker
-                          description: Type of supported action.
-                        value:
-                          type: array
-                          items:
-                            type: string
-                      required:
-                        - type
-                    description: List actions patterns.
-                  enabled:
-                    type: boolean
-                    enum:
-                      - true
-                      - false
-                    description: Routing rule status.
-                  matchers:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          enum:
-                            - all
-                            - literal
-                          description: Type of matcher.
-                        field:
-                          type: string
-                          enum:
-                            - to
-                          description: Field for type matcher.
-                        value:
-                          type: string
-                          description: Value for matcher.
-                      required:
-                        - type
-                    description: Matching patterns to forward to your actions.
-                  name:
-                    type: string
-                    description: Routing rule name.
-                  priority:
-                    type: number
-                    description: Priority of the routing rule.
-                  tag:
-                    type: string
-                    description: "@deprecated Routing rule tag. (Deprecated, replaced by routing
-                      rule identifier)"
-      x-distilled-pagination-class: EmailRoutingRulesV4PagePaginationArray
     post:
       operationId: createRule
       description: "Rules consist of a set of criteria for matching emails (such as an

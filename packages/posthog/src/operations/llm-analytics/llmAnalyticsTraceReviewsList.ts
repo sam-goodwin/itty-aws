@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsTraceReviewsListInput =
@@ -18,7 +17,7 @@ export const LlmAnalyticsTraceReviewsListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/llm_analytics/trace_reviews/",
+      path: "/api/projects/{project_id}/llm_analytics/trace_reviews/",
     }),
   );
 export type LlmAnalyticsTraceReviewsListInput =
@@ -35,6 +34,7 @@ export const LlmAnalyticsTraceReviewsListOutput =
         Schema.Struct({
           id: Schema.optional(Schema.String),
           trace_id: Schema.optional(Schema.String),
+          trace_url: Schema.optional(Schema.String),
           comment: Schema.optional(Schema.NullOr(Schema.String)),
           created_at: Schema.optional(Schema.String),
           updated_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -122,5 +122,4 @@ export const llmAnalyticsTraceReviewsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsTraceReviewsListInput,
     outputSchema: LlmAnalyticsTraceReviewsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

@@ -32,7 +32,12 @@ export const GetMandatesMandateOutput =
     }),
     id: Schema.String,
     livemode: Schema.Boolean,
-    multi_use: Schema.optional(Schema.Struct({})),
+    multi_use: Schema.optional(
+      Schema.Struct({
+        amount: Schema.optional(Schema.Number),
+        currency: Schema.optional(Schema.String),
+      }),
+    ),
     object: Schema.Literals(["mandate"]),
     on_behalf_of: Schema.optional(Schema.String),
     payment_method: Schema.Unknown,
@@ -128,6 +133,26 @@ export const GetMandatesMandateOutput =
           start_date: Schema.NullOr(Schema.String),
         }),
       ),
+      pix: Schema.optional(
+        Schema.Struct({
+          amount_includes_iof: Schema.optional(
+            Schema.Literals(["always", "never"]),
+          ),
+          amount_type: Schema.optional(Schema.Literals(["fixed", "maximum"])),
+          end_date: Schema.optional(Schema.String),
+          payment_schedule: Schema.optional(
+            Schema.Literals([
+              "halfyearly",
+              "monthly",
+              "quarterly",
+              "weekly",
+              "yearly",
+            ]),
+          ),
+          reference: Schema.optional(Schema.String),
+          start_date: Schema.optional(Schema.String),
+        }),
+      ),
       revolut_pay: Schema.optional(Schema.Struct({})),
       sepa_debit: Schema.optional(
         Schema.Struct({
@@ -135,6 +160,7 @@ export const GetMandatesMandateOutput =
           url: Schema.String,
         }),
       ),
+      twint: Schema.optional(Schema.Struct({})),
       type: Schema.String,
       upi: Schema.optional(
         Schema.Struct({

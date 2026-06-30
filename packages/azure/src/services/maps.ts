@@ -13,6 +13,7 @@ export const AccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     sku: Schema.Struct({
       name: Schema.Literals(["S0", "S1", "G2"]),
       tier: Schema.optional(Schema.String),
@@ -135,6 +136,7 @@ export type AccountsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
  */
 export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -146,6 +148,7 @@ export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -166,6 +169,7 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
  */
 export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
@@ -175,6 +179,7 @@ export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -199,6 +204,7 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
  */
 export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
@@ -298,6 +304,7 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -325,6 +332,7 @@ export type AccountsListKeysOutput = typeof AccountsListKeysOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
  */
 export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsListKeysInput,
@@ -334,6 +342,7 @@ export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AccountsListSasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   signingKey: Schema.Literals([
     "primaryKey",
     "secondaryKey",
@@ -369,6 +378,7 @@ export type AccountsListSasOutput = typeof AccountsListSasOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
  */
 export const AccountsListSas = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsListSasInput,
@@ -379,6 +389,7 @@ export const AccountsRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     keyType: Schema.Literals(["primary", "secondary"]),
   }).pipe(
     T.Http({
@@ -408,6 +419,7 @@ export type AccountsRegenerateKeysOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
  */
 export const AccountsRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -419,6 +431,7 @@ export const AccountsRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   kind: Schema.optional(Schema.Literals(["Gen1", "Gen2"])),
   sku: Schema.optional(
@@ -525,6 +538,7 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
  */
 export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
@@ -535,6 +549,8 @@ export const CreatorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    creatorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(Schema.String),
       storageUnits: Schema.Number,
@@ -582,6 +598,8 @@ export type CreatorsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
+ * @param creatorName - The name of the Maps Creator instance.
  */
 export const CreatorsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -593,6 +611,8 @@ export const CreatorsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CreatorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  creatorName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -613,6 +633,8 @@ export type CreatorsDeleteOutput = typeof CreatorsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
+ * @param creatorName - The name of the Maps Creator instance.
  */
 export const CreatorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreatorsDeleteInput,
@@ -622,6 +644,8 @@ export const CreatorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const CreatorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  creatorName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -646,6 +670,8 @@ export type CreatorsGetOutput = typeof CreatorsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
+ * @param creatorName - The name of the Maps Creator instance.
  */
 export const CreatorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreatorsGetInput,
@@ -656,6 +682,7 @@ export const CreatorsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -689,6 +716,7 @@ export type CreatorsListByAccountOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
  */
 export const CreatorsListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -700,6 +728,8 @@ export const CreatorsListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CreatorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  creatorName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
     Schema.Struct({
@@ -731,6 +761,8 @@ export type CreatorsUpdateOutput = typeof CreatorsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the Maps Account.
+ * @param creatorName - The name of the Maps Creator instance.
  */
 export const CreatorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreatorsUpdateInput,

@@ -38,6 +38,7 @@ export const LogsAlertsEventsListOutput =
               "snooze",
               "unsnooze",
               "threshold_change",
+              "broken_config",
             ]),
           ),
           state_before: Schema.optional(Schema.String),

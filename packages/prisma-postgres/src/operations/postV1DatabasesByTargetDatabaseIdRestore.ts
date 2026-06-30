@@ -98,6 +98,7 @@ export const PostV1DatabasesByTargetDatabaseIdRestoreOutput =
         databaseId: Schema.String,
         backupId: Schema.String,
       }),
+      branchId: Schema.NullOr(Schema.String),
     }),
   });
 export type PostV1DatabasesByTargetDatabaseIdRestoreOutput =

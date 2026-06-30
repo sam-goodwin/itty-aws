@@ -42,17 +42,11 @@ export const SessionRecordingsPartialUpdateInput =
     ongoing: Schema.optional(Schema.Boolean),
     activity_score: Schema.optional(Schema.NullOr(Schema.Number)),
     has_summary: Schema.optional(Schema.Boolean),
-    summary_outcome: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-          success: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        }),
-      ),
-    ),
+    summary_outcome: Schema.optional(Schema.Unknown),
     external_references: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    matches_filters: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -100,17 +94,11 @@ export const SessionRecordingsPartialUpdateOutput =
     ongoing: Schema.optional(Schema.Boolean),
     activity_score: Schema.optional(Schema.NullOr(Schema.Number)),
     has_summary: Schema.optional(Schema.Boolean),
-    summary_outcome: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-          success: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        }),
-      ),
-    ),
+    summary_outcome: Schema.optional(Schema.Unknown),
     external_references: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    matches_filters: Schema.optional(Schema.Boolean),
   });
 export type SessionRecordingsPartialUpdateOutput =
   typeof SessionRecordingsPartialUpdateOutput.Type;

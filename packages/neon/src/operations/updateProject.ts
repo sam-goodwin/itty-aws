@@ -171,6 +171,9 @@ export const UpdateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.optional(Schema.String),
     maintenance_scheduled_for: Schema.optional(Schema.String),
     hipaa_enabled_at: Schema.optional(Schema.String),
+    effective_project_permission: Schema.optional(
+      Schema.NullOr(Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"])),
+    ),
   }),
   operations: Schema.Array(
     Schema.Struct({
@@ -238,7 +241,7 @@ export type UpdateProjectOutput = typeof UpdateProjectOutput.Type;
  * Update project
  *
  * Updates the specified project.
- * You can obtain a `project_id` by listing the projects for your Neon account.
+ * Configurable properties include the project name, default compute settings, history retention period, and IP allowlist.
  *
  * @param project_id - The Neon project ID
  */

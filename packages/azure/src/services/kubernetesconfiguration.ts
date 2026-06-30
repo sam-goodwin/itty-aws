@@ -16,6 +16,7 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       extensionType: Schema.optional(Schema.String),
@@ -177,6 +178,7 @@ export type ExtensionsCreateOutput = typeof ExtensionsCreateOutput.Type;
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param extensionName - Name of the Extension.
  * @param api-version - The API version to use for this operation.
  */
 export const ExtensionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -190,6 +192,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
   forceDelete: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
@@ -213,6 +216,7 @@ export type ExtensionsDeleteOutput = typeof ExtensionsDeleteOutput.Type;
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param extensionName - Name of the Extension.
  * @param api-version - The API version to use for this operation.
  * @param forceDelete - Delete the extension resource in Azure - not the normal asynchronous delete.
  */
@@ -227,6 +231,7 @@ export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -253,6 +258,7 @@ export type ExtensionsGetOutput = typeof ExtensionsGetOutput.Type;
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param extensionName - Name of the Extension.
  * @param api-version - The API version to use for this operation.
  */
 export const ExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -312,6 +318,7 @@ export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
@@ -353,6 +360,7 @@ export type ExtensionsUpdateOutput = typeof ExtensionsUpdateOutput.Type;
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param extensionName - Name of the Extension.
  * @param api-version - The API version to use for this operation.
  */
 export const ExtensionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -367,6 +375,7 @@ export const FluxConfigOperationStatusGetInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    fluxConfigurationName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -433,6 +442,7 @@ export type FluxConfigOperationStatusGetOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param fluxConfigurationName - Name of the Flux Configuration.
  * @param api-version - The API version to use for this operation.
  * @param operationId - operation Id
  */
@@ -449,6 +459,7 @@ export const FluxConfigurationsCreateOrUpdateInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    fluxConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         scope: Schema.optional(Schema.Literals(["cluster", "namespace"])),
@@ -732,6 +743,7 @@ export type FluxConfigurationsCreateOrUpdateOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param fluxConfigurationName - Name of the Flux Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const FluxConfigurationsCreateOrUpdate =
@@ -747,6 +759,7 @@ export const FluxConfigurationsDeleteInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    fluxConfigurationName: Schema.String.pipe(T.PathParam()),
     forceDelete: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -773,6 +786,7 @@ export type FluxConfigurationsDeleteOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param fluxConfigurationName - Name of the Flux Configuration.
  * @param api-version - The API version to use for this operation.
  * @param forceDelete - Delete the extension resource in Azure - not the normal asynchronous delete.
  */
@@ -790,6 +804,7 @@ export const FluxConfigurationsGetInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    fluxConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -818,6 +833,7 @@ export type FluxConfigurationsGetOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param fluxConfigurationName - Name of the Flux Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const FluxConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -886,6 +902,7 @@ export const FluxConfigurationsUpdateInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    fluxConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         sourceKind: Schema.optional(
@@ -1055,6 +1072,7 @@ export type FluxConfigurationsUpdateOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param fluxConfigurationName - Name of the Flux Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const FluxConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1116,6 +1134,7 @@ export const OperationStatusGetInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    extensionName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1180,6 +1199,7 @@ export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param extensionName - Name of the Extension.
  * @param api-version - The API version to use for this operation.
  * @param operationId - operation Id
  */
@@ -1279,6 +1299,7 @@ export const SourceControlConfigurationsCreateOrUpdateInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    sourceControlConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         repositoryUrl: Schema.optional(Schema.String),
@@ -1373,6 +1394,7 @@ export type SourceControlConfigurationsCreateOrUpdateOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param sourceControlConfigurationName - Name of the Source Control Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const SourceControlConfigurationsCreateOrUpdate =
@@ -1388,6 +1410,7 @@ export const SourceControlConfigurationsDeleteInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    sourceControlConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1413,6 +1436,7 @@ export type SourceControlConfigurationsDeleteOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param sourceControlConfigurationName - Name of the Source Control Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const SourceControlConfigurationsDelete =
@@ -1428,6 +1452,7 @@ export const SourceControlConfigurationsGetInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    sourceControlConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1457,6 +1482,7 @@ export type SourceControlConfigurationsGetOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param sourceControlConfigurationName - Name of the Source Control Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const SourceControlConfigurationsGet =

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation build($buildId: ID) {\n  build(buildId: $buildId) {\n    cancel {\n      activityTimestamp\n      actor {\n        created\n        displayName\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      app {\n        appStoreUrl\n        assetLimitPerUpdateGroup\n        buildProfiles\n        buildsReleaseChannels\n        description\n        environmentVariableEnvironments\n        fullName\n        githubUrl\n        iconUrl\n        id\n        internalDistributionBuildPrivacy\n        isDeleting\n        isDeprecated\n        isLikedByMe\n        lastDeletionAttemptTime\n        lastPublishedTime\n        latestActivity\n        latestReleaseId\n        likeCount\n        name\n        packageName\n        packageUsername\n        playStoreUrl\n        privacy\n        privacySetting\n        published\n        pushSecurityEnabled\n        releaseChannels\n        requiresAccessTokenForPushSecurity\n        resourceClassExperiment\n        scopeKey\n        sdkVersion\n        slug\n        suggestedDevDomainName\n        trendScore\n        updated\n        username\n      }\n      appBuildVersion\n      appIdentifier\n      appVersion\n      artifacts {\n        applicationArchiveUrl\n        buildArtifactsUrl\n        buildUrl\n        fingerprintUrl\n        xcodeBuildLogsUrl\n      }\n      buildMode\n      buildProfile\n      cancelingActor {\n        created\n        displayName\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      channel\n      cliVersion\n      completedAt\n      createdAt\n      customNodeVersion\n      customWorkflowName\n      deployment {\n        id\n      }\n      developmentClient\n      distribution\n      enqueuedAt\n      error {\n        buildPhase\n        docsUrl\n        errorCode\n        message\n      }\n      estimatedWaitTimeLeftSeconds\n      expirationDate\n      fingerprint {\n        buildCount\n        createdAt\n        debugInfoUrl\n        hash\n        id\n        updateCount\n        updatedAt\n      }\n      gitCommitHash\n      gitCommitMessage\n      gitRef\n      githubRepositoryOwnerAndName\n      id\n      initialQueuePosition\n      initiatingActor {\n        created\n        displayName\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      iosEnterpriseProvisioning\n      isForIosSimulator\n      isGitWorkingTreeDirty\n      isWaived\n      logFiles\n      maxBuildTimeSeconds\n      maxRetryTimeMinutes\n      message\n      metrics {\n        buildDuration\n        buildQueueTime\n        buildWaitTime\n      }\n      platform\n      priority\n      project {\n        description\n        fullName\n        iconUrl\n        id\n        name\n        published\n        slug\n        updated\n        username\n      }\n      projectMetadataFileUrl\n      projectRootDirectory\n      provisioningStartedAt\n      queuePosition\n      reactNativeVersion\n      releaseChannel\n      requiredPackageManager\n      resolvedEnvironment\n      resourceClass\n      resourceClassDisplayName\n      runFromCI\n      runtime {\n        createdAt\n        firstBuildCreatedAt\n        id\n        isFingerprint\n        updatedAt\n        version\n      }\n      runtimeVersion\n      sdkVersion\n      selectedImage\n      status\n      submissions {\n        activityTimestamp\n        archiveUrl\n        canRetry\n        completedAt\n        createdAt\n        id\n        logFiles\n        logsUrl\n        maxRetryTimeMinutes\n        platform\n        priority\n        status\n        updatedAt\n      }\n      updateChannel {\n        appId\n        branchMapping\n        createdAt\n        id\n        isPaused\n        lastDeletionAttemptTime\n        name\n        updatedAt\n      }\n      updatedAt\n      waiverType\n      workerStartedAt\n      workflowJob {\n        createdAt\n        environment\n        id\n        key\n        name\n        outputs\n        requiredJobKeys\n        status\n        type\n        updatedAt\n      }\n    }\n  }\n}";
+  "mutation build($buildId: ID) {\n  build(buildId: $buildId) {\n    cancel {\n      activityTimestamp\n      actor {\n        created\n        displayName\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      app {\n        appStoreConnectWorkflowConnectionStatus\n        appStoreUrl\n        assetLimitPerUpdateGroup\n        buildProfiles\n        buildsReleaseChannels\n        description\n        environmentVariableEnvironments\n        fullName\n        githubUrl\n        iconUrl\n        id\n        internalDistributionBuildPrivacy\n        isDeleting\n        isDeprecated\n        isLikedByMe\n        lastDeletionAttemptTime\n        lastPublishedTime\n        latestActivity\n        latestReleaseId\n        likeCount\n        name\n        packageName\n        packageUsername\n        playStoreUrl\n        privacy\n        privacySetting\n        published\n        pushSecurityEnabled\n        releaseChannels\n        requiresAccessTokenForPushSecurity\n        resourceClassExperiment\n        scopeKey\n        sdkVersion\n        slug\n        suggestedDevDomainName\n        trendScore\n        updated\n        username\n      }\n      appBuildVersion\n      appIdentifier\n      appVersion\n      artifacts {\n        applicationArchiveUrl\n        buildArtifactsUrl\n        buildUrl\n        fingerprintUrl\n        xcodeBuildLogsUrl\n      }\n      buildMode\n      buildProfile\n      cancelingActor {\n        created\n        displayName\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      channel\n      cliVersion\n      completedAt\n      createdAt\n      customNodeVersion\n      customWorkflowName\n      deployment {\n        id\n      }\n      developmentClient\n      distribution\n      embeddedUpdate {\n        channel\n        createdAt\n        id\n        platform\n        runtimeVersion\n        signedAssetUrl\n      }\n      enqueuedAt\n      error {\n        buildPhase\n        docsUrl\n        errorCode\n        message\n      }\n      estimatedWaitTimeLeftSeconds\n      expirationDate\n      fingerprint {\n        buildCount\n        createdAt\n        debugInfoUrl\n        hash\n        id\n        updateCount\n        updatedAt\n      }\n      gitCommitHash\n      gitCommitMessage\n      gitRef\n      githubRepositoryOwnerAndName\n      id\n      initialQueuePosition\n      initiatingActor {\n        created\n        displayName\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      iosEnterpriseProvisioning\n      isForIosSimulator\n      isGitWorkingTreeDirty\n      isWaived\n      logFiles\n      maxBuildTimeSeconds\n      maxRetryTimeMinutes\n      message\n      metrics {\n        buildDuration\n        buildQueueTime\n        buildWaitTime\n      }\n      platform\n      priority\n      project {\n        description\n        fullName\n        iconUrl\n        id\n        name\n        published\n        slug\n        updated\n        username\n      }\n      projectMetadataFileUrl\n      projectRootDirectory\n      provisioningStartedAt\n      queuePosition\n      reactNativeVersion\n      releaseChannel\n      requiredPackageManager\n      resolvedEnvironment\n      resolvedImage\n      resourceClass\n      resourceClassDisplayName\n      runFromCI\n      runtime {\n        createdAt\n        firstBuildCreatedAt\n        id\n        isFingerprint\n        updatedAt\n        version\n      }\n      runtimeVersion\n      sdkVersion\n      selectedImage\n      status\n      submissions {\n        activityTimestamp\n        archiveUrl\n        canRetry\n        completedAt\n        createdAt\n        id\n        logFiles\n        logsUrl\n        maxRetryTimeMinutes\n        platform\n        priority\n        status\n        updatedAt\n      }\n      updateChannel {\n        appId\n        branchMapping\n        createdAt\n        id\n        isPaused\n        lastDeletionAttemptTime\n        name\n        updatedAt\n      }\n      updatedAt\n      waiverType\n      workerStartedAt\n      workflowJob {\n        createdAt\n        environment\n        id\n        key\n        name\n        outputs\n        requiredJobKeys\n        status\n        type\n        updatedAt\n      }\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const BuildInput = Schema.Struct({
@@ -33,6 +33,11 @@ export const BuildOutput = Schema.Struct({
       }),
     ),
     app: Schema.Struct({
+      appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+        "HAS_WORKFLOWS_IS_CONNECTED",
+        "HAS_WORKFLOWS_MISSING_CONNECTION",
+        "NO_APP_STORE_CONNECT_WORKFLOWS",
+      ]),
       appStoreUrl: Schema.NullOr(Schema.String),
       assetLimitPerUpdateGroup: Schema.Number,
       buildProfiles: Schema.Array(Schema.String),
@@ -112,6 +117,16 @@ export const BuildOutput = Schema.Struct({
     distribution: Schema.NullOr(
       Schema.Literals(["INTERNAL", "SIMULATOR", "STORE"]),
     ),
+    embeddedUpdate: Schema.NullOr(
+      Schema.Struct({
+        channel: Schema.String,
+        createdAt: Schema.String,
+        id: Schema.String,
+        platform: Schema.Literals(["ANDROID", "IOS"]),
+        runtimeVersion: Schema.String,
+        signedAssetUrl: Schema.String,
+      }),
+    ),
     enqueuedAt: Schema.NullOr(Schema.String),
     error: Schema.NullOr(
       Schema.Struct({
@@ -132,6 +147,7 @@ export const BuildOutput = Schema.Struct({
             "EAS_BUILD_INTERNAL",
             "FAIL_BUILD",
             "FIX_GRADLEW",
+            "GRADLE_BUILD_PROFILE",
             "INSTALL_CUSTOM_TOOLS",
             "INSTALL_DEPENDENCIES",
             "INSTALL_PODS",
@@ -140,6 +156,7 @@ export const BuildOutput = Schema.Struct({
             "ON_BUILD_ERROR_HOOK",
             "ON_BUILD_SUCCESS_HOOK",
             "PARSE_CUSTOM_WORKFLOW_CONFIG",
+            "PARSE_XCACTIVITYLOG",
             "POST_INSTALL_HOOK",
             "PREBUILD",
             "PREPARE_ARTIFACTS",
@@ -237,6 +254,7 @@ export const BuildOutput = Schema.Struct({
     releaseChannel: Schema.NullOr(Schema.String),
     requiredPackageManager: Schema.NullOr(Schema.String),
     resolvedEnvironment: Schema.NullOr(Schema.Unknown),
+    resolvedImage: Schema.NullOr(Schema.String),
     resourceClass: Schema.Literals([
       "ANDROID_DEFAULT",
       "ANDROID_LARGE",
@@ -340,6 +358,7 @@ export const BuildOutput = Schema.Struct({
         ]),
         type: Schema.Literals([
           "APPLE_DEVICE_REGISTRATION_REQUEST",
+          "BRANCH_DELETE",
           "BUILD",
           "CUSTOM",
           "DEPLOY",

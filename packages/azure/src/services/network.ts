@@ -59,7 +59,7 @@ export const AdminRuleCollectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AdminRuleCollectionsCreateOrUpdateInput =
@@ -105,7 +105,7 @@ export const AdminRuleCollectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AdminRuleCollectionsDeleteInput =
@@ -147,7 +147,7 @@ export const AdminRuleCollectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AdminRuleCollectionsGetInput =
@@ -194,7 +194,7 @@ export const AdminRuleCollectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AdminRuleCollectionsListInput =
@@ -266,7 +266,7 @@ export const AdminRulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AdminRulesCreateOrUpdateInput =
@@ -314,7 +314,7 @@ export const AdminRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type AdminRulesDeleteInput = typeof AdminRulesDeleteInput.Type;
@@ -352,7 +352,7 @@ export const AdminRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type AdminRulesGetInput = typeof AdminRulesGetInput.Type;
@@ -395,7 +395,7 @@ export const AdminRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type AdminRulesListInput = typeof AdminRulesListInput.Type;
@@ -442,7 +442,7 @@ export const ApplicationGatewayPrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewayPrivateEndpointConnectionsDeleteInput =
@@ -480,7 +480,7 @@ export const ApplicationGatewayPrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewayPrivateEndpointConnectionsGetInput =
@@ -519,7 +519,7 @@ export const ApplicationGatewayPrivateEndpointConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewayPrivateEndpointConnectionsListInput =
@@ -597,7 +597,7 @@ export const ApplicationGatewayPrivateEndpointConnectionsUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewayPrivateEndpointConnectionsUpdateInput =
@@ -636,7 +636,7 @@ export const ApplicationGatewayPrivateLinkResourcesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateLinkResources",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewayPrivateLinkResourcesListInput =
@@ -680,7 +680,7 @@ export const ApplicationGatewaysBackendHealthInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendhealth",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysBackendHealthInput =
@@ -785,7 +785,7 @@ export const ApplicationGatewaysBackendHealthOnDemandInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/getBackendHealthOnDemand",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysBackendHealthOnDemandInput =
@@ -1233,7 +1233,7 @@ export const ApplicationGatewaysCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysCreateOrUpdateInput =
@@ -1275,7 +1275,7 @@ export const ApplicationGatewaysDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysDeleteInput =
@@ -1312,7 +1312,7 @@ export const ApplicationGatewaysGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysGetInput =
@@ -1354,7 +1354,7 @@ export const ApplicationGatewaysGetSslPredefinedPolicyInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies/{predefinedPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysGetSslPredefinedPolicyInput =
@@ -1390,7 +1390,7 @@ export const ApplicationGatewaysListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysListInput =
@@ -1435,7 +1435,7 @@ export const ApplicationGatewaysListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysListAllInput =
@@ -1479,7 +1479,7 @@ export const ApplicationGatewaysListAvailableRequestHeadersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableRequestHeaders",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysListAvailableRequestHeadersInput =
@@ -1511,7 +1511,7 @@ export const ApplicationGatewaysListAvailableResponseHeadersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableResponseHeaders",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysListAvailableResponseHeadersInput =
@@ -1543,7 +1543,7 @@ export const ApplicationGatewaysListAvailableServerVariablesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableServerVariables",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysListAvailableServerVariablesInput =
@@ -1575,7 +1575,7 @@ export const ApplicationGatewaysListAvailableSslOptionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysListAvailableSslOptionsInput =
@@ -1613,7 +1613,7 @@ export const ApplicationGatewaysListAvailableSslPredefinedPoliciesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysListAvailableSslPredefinedPoliciesInput =
@@ -1652,7 +1652,7 @@ export const ApplicationGatewaysListAvailableWafRuleSetsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysListAvailableWafRuleSetsInput =
@@ -1698,7 +1698,7 @@ export const ApplicationGatewaysStartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/start",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysStartInput =
@@ -1735,7 +1735,7 @@ export const ApplicationGatewaysStopInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/stop",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysStopInput =
@@ -1773,7 +1773,7 @@ export const ApplicationGatewaysUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewaysUpdateTagsInput =
@@ -1815,7 +1815,7 @@ export const ApplicationGatewayWafDynamicManifestsDefaultGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/applicationGatewayWafDynamicManifests/dafault",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewayWafDynamicManifestsDefaultGetInput =
@@ -1853,7 +1853,7 @@ export const ApplicationGatewayWafDynamicManifestsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/applicationGatewayWafDynamicManifests",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationGatewayWafDynamicManifestsGetInput =
@@ -1918,7 +1918,7 @@ export const ApplicationSecurityGroupsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationSecurityGroupsCreateOrUpdateInput =
@@ -1960,7 +1960,7 @@ export const ApplicationSecurityGroupsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationSecurityGroupsDeleteInput =
@@ -1996,7 +1996,7 @@ export const ApplicationSecurityGroupsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationSecurityGroupsGetInput =
@@ -2037,7 +2037,7 @@ export const ApplicationSecurityGroupsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationSecurityGroupsListInput =
@@ -2081,7 +2081,7 @@ export const ApplicationSecurityGroupsListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationSecurityGroups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationSecurityGroupsListAllInput =
@@ -2127,7 +2127,7 @@ export const ApplicationSecurityGroupsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ApplicationSecurityGroupsUpdateTagsInput =
@@ -2169,7 +2169,7 @@ export const AvailableDelegationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availableDelegations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AvailableDelegationsListInput =
@@ -2215,7 +2215,7 @@ export const AvailableEndpointServicesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/virtualNetworkAvailableEndpointServices",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AvailableEndpointServicesListInput =
@@ -2256,7 +2256,7 @@ export const AvailablePrivateEndpointTypesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availablePrivateEndpointTypes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AvailablePrivateEndpointTypesListInput =
@@ -2302,7 +2302,7 @@ export const AvailablePrivateEndpointTypesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availablePrivateEndpointTypes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AvailablePrivateEndpointTypesListByResourceGroupInput =
@@ -2349,7 +2349,7 @@ export const AvailableResourceGroupDelegationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availableDelegations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AvailableResourceGroupDelegationsListInput =
@@ -2395,7 +2395,7 @@ export const AvailableServiceAliasesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availableServiceAliases",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AvailableServiceAliasesListInput =
@@ -2441,7 +2441,7 @@ export const AvailableServiceAliasesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availableServiceAliases",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AvailableServiceAliasesListByResourceGroupInput =
@@ -2485,7 +2485,7 @@ export const AzureFirewallFqdnTagsListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureFirewallFqdnTags",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AzureFirewallFqdnTagsListAllInput =
@@ -2526,6 +2526,7 @@ export const AzureFirewallsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureFirewallName: Schema.String.pipe(T.PathParam()),
+    createAfcControlPlane: Schema.optional(Schema.Boolean),
     properties: Schema.optional(
       Schema.Struct({
         applicationRuleCollections: Schema.optional(
@@ -2626,6 +2627,11 @@ export const AzureFirewallsCreateOrUpdateInput =
             maxCapacity: Schema.optional(Schema.NullOr(Schema.Number)),
           }),
         ),
+        afcConfiguration: Schema.optional(
+          Schema.Struct({
+            serviceEndpoint: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     extendedLocation: Schema.optional(
@@ -2645,7 +2651,7 @@ export const AzureFirewallsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AzureFirewallsCreateOrUpdateInput =
@@ -2671,6 +2677,7 @@ export type AzureFirewallsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureFirewallName - The name of the Azure Firewall.
+ * @param createAfcControlPlane - When set to true, creates an AFC control plane for the Azure Firewall.
  */
 export const AzureFirewallsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2687,7 +2694,7 @@ export const AzureFirewallsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AzureFirewallsDeleteInput = typeof AzureFirewallsDeleteInput.Type;
@@ -2723,7 +2730,7 @@ export const AzureFirewallsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type AzureFirewallsGetInput = typeof AzureFirewallsGetInput.Type;
@@ -2761,7 +2768,7 @@ export const AzureFirewallsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AzureFirewallsListInput = typeof AzureFirewallsListInput.Type;
@@ -2802,7 +2809,7 @@ export const AzureFirewallsListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureFirewalls",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AzureFirewallsListAllInput = typeof AzureFirewallsListAllInput.Type;
@@ -2847,7 +2854,7 @@ export const AzureFirewallsListLearnedPrefixesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}/learnedIPPrefixes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AzureFirewallsListLearnedPrefixesInput =
@@ -2909,7 +2916,7 @@ export const AzureFirewallsPacketCaptureInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}/packetCapture",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AzureFirewallsPacketCaptureInput =
@@ -2970,7 +2977,7 @@ export const AzureFirewallsPacketCaptureOperationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}/packetCaptureOperation",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AzureFirewallsPacketCaptureOperationInput =
@@ -3023,7 +3030,7 @@ export const AzureFirewallsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls/{azureFirewallName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AzureFirewallsUpdateTagsInput =
@@ -3128,7 +3135,7 @@ export const BastionHostsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type BastionHostsCreateOrUpdateInput =
@@ -3171,7 +3178,7 @@ export const BastionHostsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type BastionHostsDeleteInput = typeof BastionHostsDeleteInput.Type;
@@ -3202,7 +3209,7 @@ export const BastionHostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type BastionHostsGetInput = typeof BastionHostsGetInput.Type;
@@ -3237,7 +3244,7 @@ export const BastionHostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/bastionHosts",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type BastionHostsListInput = typeof BastionHostsListInput.Type;
@@ -3279,7 +3286,7 @@ export const BastionHostsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type BastionHostsListByResourceGroupInput =
@@ -3326,7 +3333,7 @@ export const BastionHostsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type BastionHostsUpdateTagsInput =
@@ -3368,7 +3375,7 @@ export const BgpServiceCommunitiesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/bgpServiceCommunities",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type BgpServiceCommunitiesListInput =
@@ -3414,7 +3421,7 @@ export const CheckDnsNameAvailabilityInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkDnsNameAvailability",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type CheckDnsNameAvailabilityInput =
@@ -3443,6 +3450,209 @@ export const CheckDnsNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: CheckDnsNameAvailabilityOutput,
   }),
 );
+// Input Schema
+export const CommitsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkManagerName: Schema.String.pipe(T.PathParam()),
+    commitName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Failed",
+            "Succeeded",
+            "Canceled",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        resourceGuid: Schema.optional(Schema.String),
+        commitType: Schema.Literals([
+          "SecurityAdmin",
+          "Connectivity",
+          "SecurityUser",
+          "Routing",
+        ]),
+        configurationIds: Schema.optional(Schema.Array(Schema.String)),
+        targetLocations: Schema.Array(Schema.String),
+        activeLocations: Schema.optional(Schema.Array(Schema.String)),
+        forceUpdateTag: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/commits/{commitName}",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type CommitsCreateOrUpdateInput = typeof CommitsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const CommitsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  });
+export type CommitsCreateOrUpdateOutput =
+  typeof CommitsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates a commit.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkManagerName - The name of the network manager.
+ * @param commitName - The name of the commit.
+ */
+export const CommitsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CommitsCreateOrUpdateInput,
+    outputSchema: CommitsCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const CommitsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkManagerName: Schema.String.pipe(T.PathParam()),
+  commitName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/commits/{commitName}",
+    apiVersion: "2025-07-01",
+  }),
+);
+export type CommitsDeleteInput = typeof CommitsDeleteInput.Type;
+
+// Output Schema
+export const CommitsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CommitsDeleteOutput = typeof CommitsDeleteOutput.Type;
+
+// The operation
+/**
+ * Deletes a commit.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkManagerName - The name of the network manager.
+ * @param commitName - The name of the commit.
+ */
+export const CommitsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CommitsDeleteInput,
+  outputSchema: CommitsDeleteOutput,
+}));
+// Input Schema
+export const CommitsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkManagerName: Schema.String.pipe(T.PathParam()),
+  commitName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/commits/{commitName}",
+    apiVersion: "2025-07-01",
+  }),
+);
+export type CommitsGetInput = typeof CommitsGetInput.Type;
+
+// Output Schema
+export const CommitsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+});
+export type CommitsGetOutput = typeof CommitsGetOutput.Type;
+
+// The operation
+/**
+ * Gets the specified commit.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkManagerName - The name of the network manager.
+ * @param commitName - The name of the commit.
+ */
+export const CommitsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CommitsGetInput,
+  outputSchema: CommitsGetOutput,
+}));
+// Input Schema
+export const CommitsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkManagerName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/commits",
+    apiVersion: "2025-07-01",
+  }),
+);
+export type CommitsListInput = typeof CommitsListInput.Type;
+
+// Output Schema
+export const CommitsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      etag: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type CommitsListOutput = typeof CommitsListOutput.Type;
+
+// The operation
+/**
+ * Lists all commits for the specified network manager.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkManagerName - The name of the network manager.
+ * @param $top - An optional query parameter which specifies the maximum number of records to be returned by the server.
+ * @param $skipToken - SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
+ */
+export const CommitsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CommitsListInput,
+  outputSchema: CommitsListOutput,
+}));
 // Input Schema
 export const ConfigurationPolicyGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3495,7 +3705,7 @@ export const ConfigurationPolicyGroupsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}/configurationPolicyGroups/{configurationPolicyGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConfigurationPolicyGroupsCreateOrUpdateInput =
@@ -3535,7 +3745,7 @@ export const ConfigurationPolicyGroupsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}/configurationPolicyGroups/{configurationPolicyGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConfigurationPolicyGroupsDeleteInput =
@@ -3573,7 +3783,7 @@ export const ConfigurationPolicyGroupsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}/configurationPolicyGroups/{configurationPolicyGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConfigurationPolicyGroupsGetInput =
@@ -3612,7 +3822,7 @@ export const ConfigurationPolicyGroupsListByVpnServerConfigurationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}/configurationPolicyGroups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConfigurationPolicyGroupsListByVpnServerConfigurationInput =
@@ -3820,7 +4030,7 @@ export const ConnectionMonitorsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConnectionMonitorsCreateOrUpdateInput =
@@ -3866,7 +4076,7 @@ export const ConnectionMonitorsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConnectionMonitorsDeleteInput =
@@ -3905,7 +4115,7 @@ export const ConnectionMonitorsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConnectionMonitorsGetInput = typeof ConnectionMonitorsGetInput.Type;
@@ -3949,7 +4159,7 @@ export const ConnectionMonitorsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConnectionMonitorsListInput =
@@ -4001,7 +4211,7 @@ export const ConnectionMonitorsStopInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/stop",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConnectionMonitorsStopInput =
@@ -4041,7 +4251,7 @@ export const ConnectionMonitorsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConnectionMonitorsUpdateTagsInput =
@@ -4076,6 +4286,259 @@ export const ConnectionMonitorsUpdateTags =
     inputSchema: ConnectionMonitorsUpdateTagsInput,
     outputSchema: ConnectionMonitorsUpdateTagsOutput,
   }));
+// Input Schema
+export const ConnectionPoliciesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHubName: Schema.String.pipe(T.PathParam()),
+    connectionPolicyName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        enableInternetSecurity: Schema.optional(Schema.Boolean),
+        routingConfiguration: Schema.optional(
+          Schema.Struct({
+            associatedRouteTable: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            propagatedRouteTables: Schema.optional(
+              Schema.Struct({
+                labels: Schema.optional(Schema.Array(Schema.String)),
+                ids: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            vnetRoutes: Schema.optional(
+              Schema.Struct({
+                staticRoutesConfig: Schema.optional(
+                  Schema.Struct({
+                    propagateStaticRoutes: Schema.optional(Schema.Boolean),
+                    vnetLocalRouteOverrideCriteria: Schema.optional(
+                      Schema.Literals(["Contains", "Equal"]),
+                    ),
+                  }),
+                ),
+                staticRoutes: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      addressPrefixes: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      nextHopIpAddress: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                bgpConnections: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            inboundRouteMap: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            outboundRouteMap: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Failed",
+            "Succeeded",
+            "Canceled",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        associatedConnections: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/connectionPolicies/{connectionPolicyName}",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ConnectionPoliciesCreateOrUpdateInput =
+  typeof ConnectionPoliciesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ConnectionPoliciesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  });
+export type ConnectionPoliciesCreateOrUpdateOutput =
+  typeof ConnectionPoliciesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates a ConnectionPolicy if it doesn't exist else updates the existing one.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHubName - The name of the VirtualHub.
+ * @param connectionPolicyName - The name of the ConnectionPolicy that is unique within a VirtualHub. This name can be used to access the resource.
+ */
+export const ConnectionPoliciesCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConnectionPoliciesCreateOrUpdateInput,
+    outputSchema: ConnectionPoliciesCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const ConnectionPoliciesDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHubName: Schema.String.pipe(T.PathParam()),
+    connectionPolicyName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/connectionPolicies/{connectionPolicyName}",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ConnectionPoliciesDeleteInput =
+  typeof ConnectionPoliciesDeleteInput.Type;
+
+// Output Schema
+export const ConnectionPoliciesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ConnectionPoliciesDeleteOutput =
+  typeof ConnectionPoliciesDeleteOutput.Type;
+
+// The operation
+/**
+ * Deletes a ConnectionPolicy.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHubName - The name of the VirtualHub.
+ * @param connectionPolicyName - The name of the ConnectionPolicy that is unique within a VirtualHub. This name can be used to access the resource.
+ */
+export const ConnectionPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ConnectionPoliciesDeleteInput,
+    outputSchema: ConnectionPoliciesDeleteOutput,
+  }),
+);
+// Input Schema
+export const ConnectionPoliciesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHubName: Schema.String.pipe(T.PathParam()),
+    connectionPolicyName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/connectionPolicies/{connectionPolicyName}",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ConnectionPoliciesGetInput = typeof ConnectionPoliciesGetInput.Type;
+
+// Output Schema
+export const ConnectionPoliciesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  });
+export type ConnectionPoliciesGetOutput =
+  typeof ConnectionPoliciesGetOutput.Type;
+
+// The operation
+/**
+ * Retrieves the details of a ConnectionPolicy.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHubName - The name of the VirtualHub.
+ * @param connectionPolicyName - The name of the ConnectionPolicy that is unique within a VirtualHub. This name can be used to access the resource.
+ */
+export const ConnectionPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ConnectionPoliciesGetInput,
+    outputSchema: ConnectionPoliciesGetOutput,
+  }),
+);
+// Input Schema
+export const ConnectionPoliciesListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHubName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/connectionPolicies",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ConnectionPoliciesListInput =
+  typeof ConnectionPoliciesListInput.Type;
+
+// Output Schema
+export const ConnectionPoliciesListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        etag: Schema.optional(Schema.String),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ConnectionPoliciesListOutput =
+  typeof ConnectionPoliciesListOutput.Type;
+
+// The operation
+/**
+ * Retrieves the details of all ConnectionPolicies.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHubName - The name of the VirtualHub.
+ */
+export const ConnectionPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ConnectionPoliciesListInput,
+    outputSchema: ConnectionPoliciesListOutput,
+  }),
+);
 // Input Schema
 export const ConnectivityConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4155,7 +4618,7 @@ export const ConnectivityConfigurationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConnectivityConfigurationsCreateOrUpdateInput =
@@ -4199,7 +4662,7 @@ export const ConnectivityConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConnectivityConfigurationsDeleteInput =
@@ -4238,7 +4701,7 @@ export const ConnectivityConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConnectivityConfigurationsGetInput =
@@ -4282,7 +4745,7 @@ export const ConnectivityConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ConnectivityConfigurationsListInput =
@@ -4412,7 +4875,7 @@ export const CustomIPPrefixesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type CustomIPPrefixesCreateOrUpdateInput =
@@ -4454,7 +4917,7 @@ export const CustomIPPrefixesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type CustomIPPrefixesDeleteInput =
@@ -4492,7 +4955,7 @@ export const CustomIPPrefixesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type CustomIPPrefixesGetInput = typeof CustomIPPrefixesGetInput.Type;
@@ -4531,7 +4994,7 @@ export const CustomIPPrefixesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type CustomIPPrefixesListInput = typeof CustomIPPrefixesListInput.Type;
@@ -4574,7 +5037,7 @@ export const CustomIPPrefixesListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/customIpPrefixes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type CustomIPPrefixesListAllInput =
@@ -4621,7 +5084,7 @@ export const CustomIPPrefixesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type CustomIPPrefixesUpdateTagsInput =
@@ -4688,6 +5151,13 @@ export const DdosCustomPoliciesCreateOrUpdateInput =
             }),
           ),
         ),
+        publicIPAddresses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
       }),
     ),
     etag: Schema.optional(Schema.String),
@@ -4700,7 +5170,7 @@ export const DdosCustomPoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DdosCustomPoliciesCreateOrUpdateInput =
@@ -4742,7 +5212,7 @@ export const DdosCustomPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DdosCustomPoliciesDeleteInput =
@@ -4779,7 +5249,7 @@ export const DdosCustomPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DdosCustomPoliciesGetInput = typeof DdosCustomPoliciesGetInput.Type;
@@ -4812,6 +5282,96 @@ export const DdosCustomPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const DdosCustomPoliciesListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type DdosCustomPoliciesListInput =
+  typeof DdosCustomPoliciesListInput.Type;
+
+// Output Schema
+export const DdosCustomPoliciesListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type DdosCustomPoliciesListOutput =
+  typeof DdosCustomPoliciesListOutput.Type;
+
+// The operation
+/**
+ * Gets all the DDoS custom policies in a resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const DdosCustomPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: DdosCustomPoliciesListInput,
+    outputSchema: DdosCustomPoliciesListOutput,
+  }),
+);
+// Input Schema
+export const DdosCustomPoliciesListAllInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ddosCustomPolicies",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type DdosCustomPoliciesListAllInput =
+  typeof DdosCustomPoliciesListAllInput.Type;
+
+// Output Schema
+export const DdosCustomPoliciesListAllOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type DdosCustomPoliciesListAllOutput =
+  typeof DdosCustomPoliciesListAllOutput.Type;
+
+// The operation
+/**
+ * Gets all the DDoS custom policies in a subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const DdosCustomPoliciesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: DdosCustomPoliciesListAllInput,
+    outputSchema: DdosCustomPoliciesListAllOutput,
+  }),
+);
+// Input Schema
 export const DdosCustomPoliciesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4822,7 +5382,7 @@ export const DdosCustomPoliciesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DdosCustomPoliciesUpdateTagsInput =
@@ -4890,17 +5450,17 @@ export const DdosProtectionPlansCreateOrUpdateInput =
         ),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DdosProtectionPlansCreateOrUpdateInput =
@@ -4942,7 +5502,7 @@ export const DdosProtectionPlansDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DdosProtectionPlansDeleteInput =
@@ -4979,7 +5539,7 @@ export const DdosProtectionPlansGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DdosProtectionPlansGetInput =
@@ -5020,7 +5580,7 @@ export const DdosProtectionPlansListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ddosProtectionPlans",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DdosProtectionPlansListInput =
@@ -5065,7 +5625,7 @@ export const DdosProtectionPlansListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DdosProtectionPlansListByResourceGroupInput =
@@ -5112,7 +5672,7 @@ export const DdosProtectionPlansUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DdosProtectionPlansUpdateTagsInput =
@@ -5156,7 +5716,7 @@ export const DefaultSecurityRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules/{defaultSecurityRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DefaultSecurityRulesGetInput =
@@ -5196,7 +5756,7 @@ export const DefaultSecurityRulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DefaultSecurityRulesListInput =
@@ -5256,7 +5816,7 @@ export const DeleteBastionShareableLinkInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DeleteBastionShareableLinkInput =
@@ -5294,7 +5854,7 @@ export const DeleteBastionShareableLinkByTokenInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinksByToken",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DeleteBastionShareableLinkByTokenInput =
@@ -5331,7 +5891,7 @@ export const DisconnectActiveSessionsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DisconnectActiveSessionsInput =
@@ -5510,7 +6070,7 @@ export const DscpConfigurationCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DscpConfigurationCreateOrUpdateInput =
@@ -5552,7 +6112,7 @@ export const DscpConfigurationDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DscpConfigurationDeleteInput =
@@ -5589,7 +6149,7 @@ export const DscpConfigurationGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DscpConfigurationGetInput = typeof DscpConfigurationGetInput.Type;
@@ -5629,7 +6189,7 @@ export const DscpConfigurationListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DscpConfigurationListInput = typeof DscpConfigurationListInput.Type;
@@ -5673,7 +6233,7 @@ export const DscpConfigurationListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dscpConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DscpConfigurationListAllInput =
@@ -5742,7 +6302,7 @@ export const ExpressRouteCircuitAuthorizationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitAuthorizationsCreateOrUpdateInput =
@@ -5782,7 +6342,7 @@ export const ExpressRouteCircuitAuthorizationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitAuthorizationsDeleteInput =
@@ -5820,7 +6380,7 @@ export const ExpressRouteCircuitAuthorizationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitAuthorizationsGetInput =
@@ -5859,7 +6419,7 @@ export const ExpressRouteCircuitAuthorizationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitAuthorizationsListInput =
@@ -5944,7 +6504,7 @@ export const ExpressRouteCircuitConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitConnectionsCreateOrUpdateInput =
@@ -5986,7 +6546,7 @@ export const ExpressRouteCircuitConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitConnectionsDeleteInput =
@@ -6026,7 +6586,7 @@ export const ExpressRouteCircuitConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitConnectionsGetInput =
@@ -6067,7 +6627,7 @@ export const ExpressRouteCircuitConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitConnectionsListInput =
@@ -6277,7 +6837,7 @@ export const ExpressRouteCircuitPeeringsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitPeeringsCreateOrUpdateInput =
@@ -6317,7 +6877,7 @@ export const ExpressRouteCircuitPeeringsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitPeeringsDeleteInput =
@@ -6355,7 +6915,7 @@ export const ExpressRouteCircuitPeeringsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitPeeringsGetInput =
@@ -6394,7 +6954,7 @@ export const ExpressRouteCircuitPeeringsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitPeeringsListInput =
@@ -6513,7 +7073,7 @@ export const ExpressRouteCircuitsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsCreateOrUpdateInput =
@@ -6555,7 +7115,7 @@ export const ExpressRouteCircuitsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsDeleteInput =
@@ -6592,7 +7152,7 @@ export const ExpressRouteCircuitsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsGetInput =
@@ -6626,6 +7186,215 @@ export const ExpressRouteCircuitsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetailsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    circuitName: Schema.String.pipe(T.PathParam()),
+    failoverTestType: Schema.optional(Schema.String),
+    fetchLatest: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/getCircuitLinkFailoverAllTestsDetails",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetailsInput =
+  typeof ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetailsInput.Type;
+
+// Output Schema
+export const ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.Struct({
+      status: Schema.optional(
+        Schema.Literals([
+          "NotStarted",
+          "Starting",
+          "Running",
+          "StartFailed",
+          "Stopping",
+          "Completed",
+          "StopFailed",
+          "Invalid",
+          "Expired",
+        ]),
+      ),
+      startTime: Schema.optional(Schema.String),
+      endTime: Schema.optional(Schema.String),
+      testGuid: Schema.optional(Schema.String),
+      testType: Schema.optional(
+        Schema.Literals(["SingleSiteFailover", "MultiSiteFailover", "All"]),
+      ),
+      issues: Schema.optional(Schema.Array(Schema.String)),
+      wasSimulationSuccessful: Schema.optional(Schema.Boolean),
+      circuitTestCategory: Schema.optional(
+        Schema.Literals(["BgpDisconnect", "ASPathPrepend"]),
+      ),
+      linkType: Schema.optional(Schema.Literals(["Primary", "Secondary"])),
+      bgpStatus: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
+            link: Schema.optional(Schema.Literals(["Primary", "Secondary"])),
+            status: Schema.optional(
+              Schema.Literals(["Undefined", "Connected", "Disconnected"]),
+            ),
+            checkTimeUtc: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  );
+export type ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetailsOutput =
+  typeof ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetailsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the details of all the link failover tests performed on the express route circuit.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param circuitName - The name of express route circuit.
+ * @param failoverTestType - The type of failover test.
+ * @param fetchLatest - Fetch only the latest tests.
+ */
+export const ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetails =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetailsInput,
+    outputSchema:
+      ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetailsOutput,
+  }));
+// Input Schema
+export const ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetailsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    circuitName: Schema.String.pipe(T.PathParam()),
+    linkType: Schema.String,
+    circuitTestCategory: Schema.String,
+    failoverTestId: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/getCircuitLinkFailoverSingleTestDetails",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetailsInput =
+  typeof ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetailsInput.Type;
+
+// Output Schema
+export const ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.Struct({
+      startTimeUtc: Schema.optional(Schema.String),
+      endTimeUtc: Schema.optional(Schema.String),
+      status: Schema.optional(
+        Schema.Literals([
+          "NotStarted",
+          "Starting",
+          "Running",
+          "StartFailed",
+          "Stopping",
+          "Completed",
+          "StopFailed",
+          "Invalid",
+          "Expired",
+        ]),
+      ),
+      wasSimulationSuccessful: Schema.optional(Schema.Boolean),
+      linkType: Schema.optional(Schema.Literals(["Primary", "Secondary"])),
+      circuitTestCategory: Schema.optional(
+        Schema.Literals(["BgpDisconnect", "ASPathPrepend"]),
+      ),
+      isSimulationVerified: Schema.optional(Schema.Boolean),
+      redundantRoutes: Schema.optional(
+        Schema.Struct({
+          beforeSimulation: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                route: Schema.optional(Schema.String),
+                nextHop: Schema.optional(Schema.String),
+                primaryASPath: Schema.optional(Schema.String),
+                secondaryASPath: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          duringSimulation: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                route: Schema.optional(Schema.String),
+                nextHop: Schema.optional(Schema.String),
+                primaryASPath: Schema.optional(Schema.String),
+                secondaryASPath: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      nonRedundantRoutes: Schema.optional(
+        Schema.Struct({
+          beforeSimulation: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                route: Schema.optional(Schema.String),
+                nextHop: Schema.optional(Schema.String),
+                primaryASPath: Schema.optional(Schema.String),
+                secondaryASPath: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          duringSimulation: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                route: Schema.optional(Schema.String),
+                nextHop: Schema.optional(Schema.String),
+                primaryASPath: Schema.optional(Schema.String),
+                secondaryASPath: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      bgpStatus: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
+            link: Schema.optional(Schema.Literals(["Primary", "Secondary"])),
+            status: Schema.optional(
+              Schema.Literals(["Undefined", "Connected", "Disconnected"]),
+            ),
+            checkTimeUtc: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  );
+export type ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetailsOutput =
+  typeof ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetailsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the details of a particular link failover test performed on the express route circuit.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param circuitName - The name of express route circuit.
+ * @param linkType - The link type.
+ * @param circuitTestCategory - The circuit test category.
+ * @param failoverTestId - The unique Guid value which identifies the test.
+ */
+export const ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetails =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema:
+      ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetailsInput,
+    outputSchema:
+      ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetailsOutput,
+  }));
+// Input Schema
 export const ExpressRouteCircuitsGetPeeringStatsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6636,7 +7405,7 @@ export const ExpressRouteCircuitsGetPeeringStatsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/stats",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsGetPeeringStatsInput =
@@ -6678,7 +7447,7 @@ export const ExpressRouteCircuitsGetStatsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/stats",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsGetStatsInput =
@@ -6718,7 +7487,7 @@ export const ExpressRouteCircuitsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsListInput =
@@ -6763,7 +7532,7 @@ export const ExpressRouteCircuitsListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteCircuits",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsListAllInput =
@@ -6811,7 +7580,7 @@ export const ExpressRouteCircuitsListArpTableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/arpTables/{devicePath}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsListArpTableInput =
@@ -6861,7 +7630,7 @@ export const ExpressRouteCircuitsListRoutesTableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/routeTables/{devicePath}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsListRoutesTableInput =
@@ -6912,7 +7681,7 @@ export const ExpressRouteCircuitsListRoutesTableSummaryInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/routeTablesSummary/{devicePath}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsListRoutesTableSummaryInput =
@@ -6952,6 +7721,86 @@ export const ExpressRouteCircuitsListRoutesTableSummary =
     outputSchema: ExpressRouteCircuitsListRoutesTableSummaryOutput,
   }));
 // Input Schema
+export const ExpressRouteCircuitsStartCircuitLinkFailoverTestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    circuitName: Schema.String.pipe(T.PathParam()),
+    linkType: Schema.String,
+    circuitTestCategory: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/startCircuitLinkFailoverTest",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ExpressRouteCircuitsStartCircuitLinkFailoverTestInput =
+  typeof ExpressRouteCircuitsStartCircuitLinkFailoverTestInput.Type;
+
+// Output Schema
+export const ExpressRouteCircuitsStartCircuitLinkFailoverTestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export type ExpressRouteCircuitsStartCircuitLinkFailoverTestOutput =
+  typeof ExpressRouteCircuitsStartCircuitLinkFailoverTestOutput.Type;
+
+// The operation
+/**
+ * Starts link failover simulation on the express route circuit for the specified link type and test category.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param circuitName - The name of express route circuit.
+ * @param linkType - The link type.
+ * @param circuitTestCategory - The circuit test category.
+ */
+export const ExpressRouteCircuitsStartCircuitLinkFailoverTest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExpressRouteCircuitsStartCircuitLinkFailoverTestInput,
+    outputSchema: ExpressRouteCircuitsStartCircuitLinkFailoverTestOutput,
+  }));
+// Input Schema
+export const ExpressRouteCircuitsStopCircuitLinkFailoverTestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    circuitName: Schema.String.pipe(T.PathParam()),
+    circuitTestCategory: Schema.optional(Schema.String),
+    linkType: Schema.optional(Schema.String),
+    wasSimulationSuccessful: Schema.optional(Schema.Boolean),
+    isVerified: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/stopCircuitLinkFailoverTest",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ExpressRouteCircuitsStopCircuitLinkFailoverTestInput =
+  typeof ExpressRouteCircuitsStopCircuitLinkFailoverTestInput.Type;
+
+// Output Schema
+export const ExpressRouteCircuitsStopCircuitLinkFailoverTestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export type ExpressRouteCircuitsStopCircuitLinkFailoverTestOutput =
+  typeof ExpressRouteCircuitsStopCircuitLinkFailoverTestOutput.Type;
+
+// The operation
+/**
+ * Stops link failover simulation on the express route circuit.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param circuitName - The name of express route circuit.
+ */
+export const ExpressRouteCircuitsStopCircuitLinkFailoverTest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExpressRouteCircuitsStopCircuitLinkFailoverTestInput,
+    outputSchema: ExpressRouteCircuitsStopCircuitLinkFailoverTestOutput,
+  }));
+// Input Schema
 export const ExpressRouteCircuitsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6962,7 +7811,7 @@ export const ExpressRouteCircuitsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCircuitsUpdateTagsInput =
@@ -7091,7 +7940,7 @@ export const ExpressRouteConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteConnectionsCreateOrUpdateInput =
@@ -7131,7 +7980,7 @@ export const ExpressRouteConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteConnectionsDeleteInput =
@@ -7169,7 +8018,7 @@ export const ExpressRouteConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteConnectionsGetInput =
@@ -7209,7 +8058,7 @@ export const ExpressRouteConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteConnectionsListInput =
@@ -7388,7 +8237,7 @@ export const ExpressRouteCrossConnectionPeeringsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionPeeringsCreateOrUpdateInput =
@@ -7428,7 +8277,7 @@ export const ExpressRouteCrossConnectionPeeringsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionPeeringsDeleteInput =
@@ -7466,7 +8315,7 @@ export const ExpressRouteCrossConnectionPeeringsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionPeeringsGetInput =
@@ -7505,7 +8354,7 @@ export const ExpressRouteCrossConnectionPeeringsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionPeeringsListInput =
@@ -7594,7 +8443,7 @@ export const ExpressRouteCrossConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionsCreateOrUpdateInput =
@@ -7636,7 +8485,7 @@ export const ExpressRouteCrossConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionsGetInput =
@@ -7677,7 +8526,7 @@ export const ExpressRouteCrossConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteCrossConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionsListInput =
@@ -7725,7 +8574,7 @@ export const ExpressRouteCrossConnectionsListArpTableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/arpTables/{devicePath}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionsListArpTableInput =
@@ -7772,7 +8621,7 @@ export const ExpressRouteCrossConnectionsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionsListByResourceGroupInput =
@@ -7820,7 +8669,7 @@ export const ExpressRouteCrossConnectionsListRoutesTableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/routeTables/{devicePath}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionsListRoutesTableInput =
@@ -7871,7 +8720,7 @@ export const ExpressRouteCrossConnectionsListRoutesTableSummaryInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/routeTablesSummary/{devicePath}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionsListRoutesTableSummaryInput =
@@ -7920,7 +8769,7 @@ export const ExpressRouteCrossConnectionsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteCrossConnectionsUpdateTagsInput =
@@ -8004,7 +8853,7 @@ export const ExpressRouteGatewaysCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteGatewaysCreateOrUpdateInput =
@@ -8046,7 +8895,7 @@ export const ExpressRouteGatewaysDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteGatewaysDeleteInput =
@@ -8083,7 +8932,7 @@ export const ExpressRouteGatewaysGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteGatewaysGetInput =
@@ -8117,6 +8966,307 @@ export const ExpressRouteGatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ExpressRouteGatewaysGetFailoverAllTestsDetailsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    expressRouteGatewayName: Schema.String.pipe(T.PathParam()),
+    type: Schema.optional(Schema.String),
+    fetchLatest: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/getFailoverAllTestsDetails",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ExpressRouteGatewaysGetFailoverAllTestsDetailsInput =
+  typeof ExpressRouteGatewaysGetFailoverAllTestsDetailsInput.Type;
+
+// Output Schema
+export const ExpressRouteGatewaysGetFailoverAllTestsDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.Struct({
+      peeringLocation: Schema.optional(Schema.String),
+      circuits: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            nrpResourceUri: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            connectionName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      status: Schema.optional(
+        Schema.Literals([
+          "NotStarted",
+          "Starting",
+          "Running",
+          "StartFailed",
+          "Stopping",
+          "Completed",
+          "StopFailed",
+          "Invalid",
+          "Expired",
+        ]),
+      ),
+      startTime: Schema.optional(Schema.String),
+      endTime: Schema.optional(Schema.String),
+      connections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            nrpResourceUri: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Literals(["Connected", "Disconnected"]),
+            ),
+            lastUpdatedTime: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      testGuid: Schema.optional(Schema.String),
+      testType: Schema.optional(
+        Schema.Literals(["SingleSiteFailover", "MultiSiteFailover", "All"]),
+      ),
+      issues: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  );
+export type ExpressRouteGatewaysGetFailoverAllTestsDetailsOutput =
+  typeof ExpressRouteGatewaysGetFailoverAllTestsDetailsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the details of all the failover tests performed on the ExpressRoute gateway for different peering locations.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param expressRouteGatewayName - The name of the ExpressRoute gateway.
+ * @param type - The type of failover test.
+ * @param fetchLatest - Fetch only the latest tests for each peering location.
+ */
+export const ExpressRouteGatewaysGetFailoverAllTestsDetails =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExpressRouteGatewaysGetFailoverAllTestsDetailsInput,
+    outputSchema: ExpressRouteGatewaysGetFailoverAllTestsDetailsOutput,
+  }));
+// Input Schema
+export const ExpressRouteGatewaysGetFailoverSingleTestDetailsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    expressRouteGatewayName: Schema.String.pipe(T.PathParam()),
+    peeringLocation: Schema.String,
+    failoverTestId: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/getFailoverSingleTestDetails",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ExpressRouteGatewaysGetFailoverSingleTestDetailsInput =
+  typeof ExpressRouteGatewaysGetFailoverSingleTestDetailsInput.Type;
+
+// Output Schema
+export const ExpressRouteGatewaysGetFailoverSingleTestDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.Struct({
+      peeringLocation: Schema.optional(Schema.String),
+      status: Schema.optional(
+        Schema.Literals([
+          "NotStarted",
+          "Starting",
+          "Running",
+          "StartFailed",
+          "Stopping",
+          "Completed",
+          "StopFailed",
+          "Invalid",
+          "Expired",
+        ]),
+      ),
+      startTimeUtc: Schema.optional(Schema.String),
+      endTimeUtc: Schema.optional(Schema.String),
+      redundantRoutes: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            peeringLocations: Schema.optional(Schema.Array(Schema.String)),
+            routes: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      ),
+      nonRedundantRoutes: Schema.optional(Schema.Array(Schema.String)),
+      wasSimulationSuccessful: Schema.optional(Schema.Boolean),
+      failoverConnectionDetails: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            failoverConnectionName: Schema.optional(Schema.String),
+            failoverLocation: Schema.optional(Schema.String),
+            isVerified: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      ),
+    }),
+  );
+export type ExpressRouteGatewaysGetFailoverSingleTestDetailsOutput =
+  typeof ExpressRouteGatewaysGetFailoverSingleTestDetailsOutput.Type;
+
+// The operation
+/**
+ * Retrieves the details of a particular failover test performed on the ExpressRoute gateway based on the test Guid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param expressRouteGatewayName - The name of the ExpressRoute gateway.
+ * @param peeringLocation - Peering location of the test.
+ * @param failoverTestId - The unique Guid value which identifies the test.
+ */
+export const ExpressRouteGatewaysGetFailoverSingleTestDetails =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExpressRouteGatewaysGetFailoverSingleTestDetailsInput,
+    outputSchema: ExpressRouteGatewaysGetFailoverSingleTestDetailsOutput,
+  }));
+// Input Schema
+export const ExpressRouteGatewaysGetResiliencyInformationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    expressRouteGatewayName: Schema.String.pipe(T.PathParam()),
+    attemptRefresh: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/getResiliencyInformation",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ExpressRouteGatewaysGetResiliencyInformationInput =
+  typeof ExpressRouteGatewaysGetResiliencyInformationInput.Type;
+
+// Output Schema
+export const ExpressRouteGatewaysGetResiliencyInformationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    overallScore: Schema.optional(Schema.String),
+    scoreChange: Schema.optional(Schema.String),
+    minScoreFromRecommendations: Schema.optional(Schema.String),
+    maxScoreFromRecommendations: Schema.optional(Schema.String),
+    lastComputedTime: Schema.optional(Schema.String),
+    nextEligibleComputeTime: Schema.optional(Schema.String),
+    components: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          currentScore: Schema.optional(Schema.String),
+          maxScore: Schema.optional(Schema.String),
+          recommendations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                recommendationTitle: Schema.optional(Schema.String),
+                recommendationId: Schema.optional(Schema.String),
+                severity: Schema.optional(Schema.String),
+                recommendationText: Schema.optional(Schema.String),
+                callToActionText: Schema.optional(Schema.String),
+                callToActionLink: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    ),
+  });
+export type ExpressRouteGatewaysGetResiliencyInformationOutput =
+  typeof ExpressRouteGatewaysGetResiliencyInformationOutput.Type;
+
+// The operation
+/**
+ * Retrieves the resiliency information for the ExpressRoute gateway.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param expressRouteGatewayName - The name of the ExpressRoute gateway.
+ * @param attemptRefresh - Whether to attempt a refresh of the resiliency information.
+ */
+export const ExpressRouteGatewaysGetResiliencyInformation =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExpressRouteGatewaysGetResiliencyInformationInput,
+    outputSchema: ExpressRouteGatewaysGetResiliencyInformationOutput,
+  }));
+// Input Schema
+export const ExpressRouteGatewaysGetRoutesInformationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    expressRouteGatewayName: Schema.String.pipe(T.PathParam()),
+    attemptRefresh: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/getRoutesInformation",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ExpressRouteGatewaysGetRoutesInformationInput =
+  typeof ExpressRouteGatewaysGetRoutesInformationInput.Type;
+
+// Output Schema
+export const ExpressRouteGatewaysGetRoutesInformationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastComputedTime: Schema.optional(Schema.String),
+    nextEligibleComputeTime: Schema.optional(Schema.String),
+    routeSetVersion: Schema.optional(Schema.String),
+    routeSets: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          locations: Schema.optional(Schema.Array(Schema.String)),
+          details: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Array(
+                Schema.Struct({
+                  circuit: Schema.optional(Schema.String),
+                  pri: Schema.optional(Schema.String),
+                  sec: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          ),
+        }),
+      ),
+    ),
+    circuitsMetadataMap: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          link: Schema.optional(Schema.String),
+          location: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+export type ExpressRouteGatewaysGetRoutesInformationOutput =
+  typeof ExpressRouteGatewaysGetRoutesInformationOutput.Type;
+
+// The operation
+/**
+ * Retrieves the route sets information for the ExpressRoute gateway.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param expressRouteGatewayName - The name of the ExpressRoute gateway.
+ * @param attemptRefresh - Whether to attempt a refresh of the route sets.
+ */
+export const ExpressRouteGatewaysGetRoutesInformation =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExpressRouteGatewaysGetRoutesInformationInput,
+    outputSchema: ExpressRouteGatewaysGetRoutesInformationOutput,
+  }));
+// Input Schema
 export const ExpressRouteGatewaysListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8125,7 +9275,7 @@ export const ExpressRouteGatewaysListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteGatewaysListByResourceGroupInput =
@@ -8170,7 +9320,7 @@ export const ExpressRouteGatewaysListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteGatewaysListBySubscriptionInput =
@@ -8207,6 +9357,94 @@ export const ExpressRouteGatewaysListBySubscription =
     outputSchema: ExpressRouteGatewaysListBySubscriptionOutput,
   }));
 // Input Schema
+export const ExpressRouteGatewaysStartSiteFailoverTestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    expressRouteGatewayName: Schema.String.pipe(T.PathParam()),
+    peeringLocation: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/startSiteFailoverTest",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ExpressRouteGatewaysStartSiteFailoverTestInput =
+  typeof ExpressRouteGatewaysStartSiteFailoverTestInput.Type;
+
+// Output Schema
+export const ExpressRouteGatewaysStartSiteFailoverTestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export type ExpressRouteGatewaysStartSiteFailoverTestOutput =
+  typeof ExpressRouteGatewaysStartSiteFailoverTestOutput.Type;
+
+// The operation
+/**
+ * Starts failover simulation on the ExpressRoute gateway for the specified peering location.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param expressRouteGatewayName - The name of the ExpressRoute gateway.
+ * @param peeringLocation - Peering location of the test.
+ */
+export const ExpressRouteGatewaysStartSiteFailoverTest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExpressRouteGatewaysStartSiteFailoverTestInput,
+    outputSchema: ExpressRouteGatewaysStartSiteFailoverTestOutput,
+  }));
+// Input Schema
+export const ExpressRouteGatewaysStopSiteFailoverTestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    expressRouteGatewayName: Schema.String.pipe(T.PathParam()),
+    peeringLocation: Schema.optional(Schema.String),
+    wasSimulationSuccessful: Schema.optional(Schema.Boolean),
+    details: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          failoverConnectionName: Schema.optional(Schema.String),
+          failoverLocation: Schema.optional(Schema.String),
+          isVerified: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/stopSiteFailoverTest",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type ExpressRouteGatewaysStopSiteFailoverTestInput =
+  typeof ExpressRouteGatewaysStopSiteFailoverTestInput.Type;
+
+// Output Schema
+export const ExpressRouteGatewaysStopSiteFailoverTestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export type ExpressRouteGatewaysStopSiteFailoverTestOutput =
+  typeof ExpressRouteGatewaysStopSiteFailoverTestOutput.Type;
+
+// The operation
+/**
+ * Stops failover simulation on the ExpressRoute gateway for the specified peering location.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param expressRouteGatewayName - The name of the ExpressRoute gateway.
+ * @param peeringLocation - Peering location of the test
+ * @param wasSimulationSuccessful - Whether the failover simulation was successful or not
+ * @param details - List of all the failover connections for this peering location
+ */
+export const ExpressRouteGatewaysStopSiteFailoverTest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExpressRouteGatewaysStopSiteFailoverTestInput,
+    outputSchema: ExpressRouteGatewaysStopSiteFailoverTestOutput,
+  }));
+// Input Schema
 export const ExpressRouteGatewaysUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8217,7 +9455,7 @@ export const ExpressRouteGatewaysUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteGatewaysUpdateTagsInput =
@@ -8261,7 +9499,7 @@ export const ExpressRouteLinksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links/{linkName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteLinksGetInput = typeof ExpressRouteLinksGetInput.Type;
@@ -8299,7 +9537,7 @@ export const ExpressRouteLinksListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteLinksListInput = typeof ExpressRouteLinksListInput.Type;
@@ -8365,7 +9603,7 @@ export const ExpressRoutePortAuthorizationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortAuthorizationsCreateOrUpdateInput =
@@ -8405,7 +9643,7 @@ export const ExpressRoutePortAuthorizationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortAuthorizationsDeleteInput =
@@ -8443,7 +9681,7 @@ export const ExpressRoutePortAuthorizationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortAuthorizationsGetInput =
@@ -8482,7 +9720,7 @@ export const ExpressRoutePortAuthorizationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortAuthorizationsListInput =
@@ -8593,7 +9831,7 @@ export const ExpressRoutePortsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortsCreateOrUpdateInput =
@@ -8635,7 +9873,7 @@ export const ExpressRoutePortsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortsDeleteInput =
@@ -8673,7 +9911,7 @@ export const ExpressRoutePortsGenerateLOAInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/generateLoa",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortsGenerateLOAInput =
@@ -8711,7 +9949,7 @@ export const ExpressRoutePortsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortsGetInput = typeof ExpressRoutePortsGetInput.Type;
@@ -8750,7 +9988,7 @@ export const ExpressRoutePortsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePorts",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortsListInput = typeof ExpressRoutePortsListInput.Type;
@@ -8794,7 +10032,7 @@ export const ExpressRoutePortsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortsListByResourceGroupInput =
@@ -8839,7 +10077,7 @@ export const ExpressRoutePortsLocationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations/{locationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortsLocationsGetInput =
@@ -8878,7 +10116,7 @@ export const ExpressRoutePortsLocationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortsLocationsListInput =
@@ -8924,7 +10162,7 @@ export const ExpressRoutePortsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRoutePortsUpdateTagsInput =
@@ -8967,7 +10205,7 @@ export const ExpressRouteProviderPortInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteProviderPorts/{providerport}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteProviderPortInput =
@@ -9008,7 +10246,7 @@ export const ExpressRouteProviderPortsLocationListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteProviderPorts",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteProviderPortsLocationListInput =
@@ -9052,7 +10290,7 @@ export const ExpressRouteServiceProvidersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteServiceProviders",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ExpressRouteServiceProvidersListInput =
@@ -9301,7 +10539,7 @@ export const FirewallPoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPoliciesCreateOrUpdateInput =
@@ -9343,7 +10581,7 @@ export const FirewallPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPoliciesDeleteInput =
@@ -9381,7 +10619,7 @@ export const FirewallPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPoliciesGetInput = typeof FirewallPoliciesGetInput.Type;
@@ -9420,7 +10658,7 @@ export const FirewallPoliciesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPoliciesListInput = typeof FirewallPoliciesListInput.Type;
@@ -9463,7 +10701,7 @@ export const FirewallPoliciesListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/firewallPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPoliciesListAllInput =
@@ -9510,7 +10748,7 @@ export const FirewallPoliciesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPoliciesUpdateTagsInput =
@@ -9554,7 +10792,7 @@ export const FirewallPolicyDeploymentsDeployInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/deploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyDeploymentsDeployInput =
@@ -9721,7 +10959,7 @@ export const FirewallPolicyDraftsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/firewallPolicyDrafts/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyDraftsCreateOrUpdateInput =
@@ -9763,7 +11001,7 @@ export const FirewallPolicyDraftsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/firewallPolicyDrafts/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyDraftsDeleteInput =
@@ -9800,7 +11038,7 @@ export const FirewallPolicyDraftsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/firewallPolicyDrafts/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyDraftsGetInput =
@@ -9844,7 +11082,7 @@ export const FirewallPolicyIdpsSignaturesFilterValuesListInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/listIdpsFilterOptions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyIdpsSignaturesFilterValuesListInput =
@@ -9899,7 +11137,7 @@ export const FirewallPolicyIdpsSignaturesListInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/listIdpsSignatures",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyIdpsSignaturesListInput =
@@ -9954,7 +11192,7 @@ export const FirewallPolicyIdpsSignaturesOverridesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyIdpsSignaturesOverridesGetInput =
@@ -9994,7 +11232,7 @@ export const FirewallPolicyIdpsSignaturesOverridesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyIdpsSignaturesOverridesListInput =
@@ -10050,7 +11288,7 @@ export const FirewallPolicyIdpsSignaturesOverridesPatchInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyIdpsSignaturesOverridesPatchInput =
@@ -10100,7 +11338,7 @@ export const FirewallPolicyIdpsSignaturesOverridesPutInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyIdpsSignaturesOverridesPutInput =
@@ -10161,7 +11399,7 @@ export const FirewallPolicyRuleCollectionGroupDraftsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}/ruleCollectionGroupDrafts/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyRuleCollectionGroupDraftsCreateOrUpdateInput =
@@ -10201,7 +11439,7 @@ export const FirewallPolicyRuleCollectionGroupDraftsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}/ruleCollectionGroupDrafts/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyRuleCollectionGroupDraftsDeleteInput =
@@ -10239,7 +11477,7 @@ export const FirewallPolicyRuleCollectionGroupDraftsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}/ruleCollectionGroupDrafts/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyRuleCollectionGroupDraftsGetInput =
@@ -10310,7 +11548,7 @@ export const FirewallPolicyRuleCollectionGroupsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyRuleCollectionGroupsCreateOrUpdateInput =
@@ -10350,7 +11588,7 @@ export const FirewallPolicyRuleCollectionGroupsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyRuleCollectionGroupsDeleteInput =
@@ -10388,7 +11626,7 @@ export const FirewallPolicyRuleCollectionGroupsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyRuleCollectionGroupsGetInput =
@@ -10427,7 +11665,7 @@ export const FirewallPolicyRuleCollectionGroupsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FirewallPolicyRuleCollectionGroupsListInput =
@@ -10545,7 +11783,7 @@ export const FlowLogsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FlowLogsCreateOrUpdateInput =
@@ -10589,7 +11827,7 @@ export const FlowLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type FlowLogsDeleteInput = typeof FlowLogsDeleteInput.Type;
@@ -10622,7 +11860,7 @@ export const FlowLogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type FlowLogsGetInput = typeof FlowLogsGetInput.Type;
@@ -10660,7 +11898,7 @@ export const FlowLogsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type FlowLogsListInput = typeof FlowLogsListInput.Type;
@@ -10705,7 +11943,7 @@ export const FlowLogsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type FlowLogsUpdateTagsInput = typeof FlowLogsUpdateTagsInput.Type;
@@ -10750,7 +11988,7 @@ export const GeneratevirtualwanvpnserverconfigurationvpnprofileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/generateVpnProfile",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type GeneratevirtualwanvpnserverconfigurationvpnprofileInput =
@@ -10789,7 +12027,7 @@ export const GetActiveSessionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type GetActiveSessionsInput = typeof GetActiveSessionsInput.Type;
@@ -10855,7 +12093,7 @@ export const GetBastionShareableLinkInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type GetBastionShareableLinkInput =
@@ -10940,7 +12178,7 @@ export const HubRouteTablesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables/{routeTableName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type HubRouteTablesCreateOrUpdateInput =
@@ -10980,7 +12218,7 @@ export const HubRouteTablesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables/{routeTableName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type HubRouteTablesDeleteInput = typeof HubRouteTablesDeleteInput.Type;
@@ -11018,7 +12256,7 @@ export const HubRouteTablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables/{routeTableName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type HubRouteTablesGetInput = typeof HubRouteTablesGetInput.Type;
@@ -11054,7 +12292,7 @@ export const HubRouteTablesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type HubRouteTablesListInput = typeof HubRouteTablesListInput.Type;
@@ -11100,6 +12338,11 @@ export const HubVirtualNetworkConnectionsCreateOrUpdateInput =
         ),
         allowHubToRemoteVnetTransit: Schema.optional(Schema.Boolean),
         allowRemoteVnetToUseHubVnetGateways: Schema.optional(Schema.Boolean),
+        connectionPolicy: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
         enableInternetSecurity: Schema.optional(Schema.Boolean),
         routingConfiguration: Schema.optional(
           Schema.Struct({
@@ -11181,7 +12424,7 @@ export const HubVirtualNetworkConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type HubVirtualNetworkConnectionsCreateOrUpdateInput =
@@ -11220,7 +12463,7 @@ export const HubVirtualNetworkConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type HubVirtualNetworkConnectionsDeleteInput =
@@ -11257,7 +12500,7 @@ export const HubVirtualNetworkConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type HubVirtualNetworkConnectionsGetInput =
@@ -11295,7 +12538,7 @@ export const HubVirtualNetworkConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type HubVirtualNetworkConnectionsListInput =
@@ -11381,7 +12624,7 @@ export const InboundNatRulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type InboundNatRulesCreateOrUpdateInput =
@@ -11421,7 +12664,7 @@ export const InboundNatRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type InboundNatRulesDeleteInput = typeof InboundNatRulesDeleteInput.Type;
@@ -11460,7 +12703,7 @@ export const InboundNatRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type InboundNatRulesGetInput = typeof InboundNatRulesGetInput.Type;
@@ -11497,7 +12740,7 @@ export const InboundNatRulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type InboundNatRulesListInput = typeof InboundNatRulesListInput.Type;
@@ -11570,7 +12813,7 @@ export const InboundSecurityRuleCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/inboundSecurityRules/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type InboundSecurityRuleCreateOrUpdateInput =
@@ -11610,7 +12853,7 @@ export const InboundSecurityRuleGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/inboundSecurityRules/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type InboundSecurityRuleGetInput =
@@ -11640,6 +12883,343 @@ export const InboundSecurityRuleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: InboundSecurityRuleGetOutput,
   }),
 );
+// Input Schema
+export const InterconnectGroupsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    interconnectGroupName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        scope: Schema.optional(Schema.Literals(["None", "InfiniBand"])),
+        subgroups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Failed",
+            "Succeeded",
+            "Canceled",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        resourceGuid: Schema.optional(Schema.String),
+        subgroupProfile: Schema.Struct({
+          vmSize: Schema.String,
+          scope: Schema.optional(Schema.Literals(["None", "VerticalConnect"])),
+          size: Schema.optional(Schema.Number),
+        }),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/interconnectGroups/{interconnectGroupName}",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type InterconnectGroupsCreateOrUpdateInput =
+  typeof InterconnectGroupsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const InterconnectGroupsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+export type InterconnectGroupsCreateOrUpdateOutput =
+  typeof InterconnectGroupsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an interconnect group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param interconnectGroupName - The name of the interconnect group.
+ */
+export const InterconnectGroupsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: InterconnectGroupsCreateOrUpdateInput,
+    outputSchema: InterconnectGroupsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const InterconnectGroupsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    interconnectGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/interconnectGroups/{interconnectGroupName}",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type InterconnectGroupsDeleteInput =
+  typeof InterconnectGroupsDeleteInput.Type;
+
+// Output Schema
+export const InterconnectGroupsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type InterconnectGroupsDeleteOutput =
+  typeof InterconnectGroupsDeleteOutput.Type;
+
+// The operation
+/**
+ * Deletes the specified interconnect group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param interconnectGroupName - The name of the interconnect group.
+ */
+export const InterconnectGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: InterconnectGroupsDeleteInput,
+    outputSchema: InterconnectGroupsDeleteOutput,
+  }),
+);
+// Input Schema
+export const InterconnectGroupsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    interconnectGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/interconnectGroups/{interconnectGroupName}",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type InterconnectGroupsGetInput = typeof InterconnectGroupsGetInput.Type;
+
+// Output Schema
+export const InterconnectGroupsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+export type InterconnectGroupsGetOutput =
+  typeof InterconnectGroupsGetOutput.Type;
+
+// The operation
+/**
+ * Gets information about the specified interconnect group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param interconnectGroupName - The name of the interconnect group.
+ */
+export const InterconnectGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: InterconnectGroupsGetInput,
+    outputSchema: InterconnectGroupsGetOutput,
+  }),
+);
+// Input Schema
+export const InterconnectGroupsGetNodeAvailabilityInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    interconnectGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/interconnectGroups/{interconnectGroupName}/nodeAvailability",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type InterconnectGroupsGetNodeAvailabilityInput =
+  typeof InterconnectGroupsGetNodeAvailabilityInput.Type;
+
+// Output Schema
+export const InterconnectGroupsGetNodeAvailabilityOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subgroupsNodeAvailability: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          internalSubgroupId: Schema.optional(Schema.String),
+          inServiceNodeCount: Schema.optional(Schema.Number),
+          inUseNodeCount: Schema.optional(Schema.Number),
+          count: Schema.optional(Schema.Number),
+        }),
+      ),
+    ),
+  });
+export type InterconnectGroupsGetNodeAvailabilityOutput =
+  typeof InterconnectGroupsGetNodeAvailabilityOutput.Type;
+
+// The operation
+/**
+ * Gets node availability for all subgroups in the specified interconnect group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param interconnectGroupName - The name of the interconnect group.
+ */
+export const InterconnectGroupsGetNodeAvailability =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: InterconnectGroupsGetNodeAvailabilityInput,
+    outputSchema: InterconnectGroupsGetNodeAvailabilityOutput,
+  }));
+// Input Schema
+export const InterconnectGroupsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/interconnectGroups",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type InterconnectGroupsListInput =
+  typeof InterconnectGroupsListInput.Type;
+
+// Output Schema
+export const InterconnectGroupsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type InterconnectGroupsListOutput =
+  typeof InterconnectGroupsListOutput.Type;
+
+// The operation
+/**
+ * Gets all interconnect groups in a resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const InterconnectGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: InterconnectGroupsListInput,
+    outputSchema: InterconnectGroupsListOutput,
+  }),
+);
+// Input Schema
+export const InterconnectGroupsListAllInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/interconnectGroups",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type InterconnectGroupsListAllInput =
+  typeof InterconnectGroupsListAllInput.Type;
+
+// Output Schema
+export const InterconnectGroupsListAllOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type InterconnectGroupsListAllOutput =
+  typeof InterconnectGroupsListAllOutput.Type;
+
+// The operation
+/**
+ * Gets all interconnect groups in a subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const InterconnectGroupsListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: InterconnectGroupsListAllInput,
+    outputSchema: InterconnectGroupsListAllOutput,
+  }),
+);
+// Input Schema
+export const InterconnectGroupsUpdateTagsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    interconnectGroupName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/interconnectGroups/{interconnectGroupName}",
+      apiVersion: "2025-07-01",
+    }),
+  );
+export type InterconnectGroupsUpdateTagsInput =
+  typeof InterconnectGroupsUpdateTagsInput.Type;
+
+// Output Schema
+export const InterconnectGroupsUpdateTagsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+export type InterconnectGroupsUpdateTagsOutput =
+  typeof InterconnectGroupsUpdateTagsOutput.Type;
+
+// The operation
+/**
+ * Updates interconnect group tags.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param interconnectGroupName - The name of the interconnect group.
+ * @param tags - Resource tags.
+ */
+export const InterconnectGroupsUpdateTags =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: InterconnectGroupsUpdateTagsInput,
+    outputSchema: InterconnectGroupsUpdateTagsOutput,
+  }));
 // Input Schema
 export const IpAllocationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -11678,7 +13258,7 @@ export const IpAllocationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IpAllocationsCreateOrUpdateInput =
@@ -11721,7 +13301,7 @@ export const IpAllocationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IpAllocationsDeleteInput = typeof IpAllocationsDeleteInput.Type;
@@ -11754,7 +13334,7 @@ export const IpAllocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type IpAllocationsGetInput = typeof IpAllocationsGetInput.Type;
@@ -11794,7 +13374,7 @@ export const IpAllocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/IpAllocations",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type IpAllocationsListInput = typeof IpAllocationsListInput.Type;
@@ -11835,7 +13415,7 @@ export const IpAllocationsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IpAllocationsListByResourceGroupInput =
@@ -11882,7 +13462,7 @@ export const IpAllocationsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IpAllocationsUpdateTagsInput =
@@ -11948,7 +13528,7 @@ export const IpamPoolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type IpamPoolsCreateInput = typeof IpamPoolsCreateInput.Type;
@@ -12000,7 +13580,7 @@ export const IpamPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type IpamPoolsDeleteInput = typeof IpamPoolsDeleteInput.Type;
@@ -12034,7 +13614,7 @@ export const IpamPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type IpamPoolsGetInput = typeof IpamPoolsGetInput.Type;
@@ -12086,7 +13666,7 @@ export const IpamPoolsGetPoolUsageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}/getPoolUsage",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IpamPoolsGetPoolUsageInput = typeof IpamPoolsGetPoolUsageInput.Type;
@@ -12144,7 +13724,7 @@ export const IpamPoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type IpamPoolsListInput = typeof IpamPoolsListInput.Type;
@@ -12205,7 +13785,7 @@ export const IpamPoolsListAssociatedResourcesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}/listAssociatedResources",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IpamPoolsListAssociatedResourcesInput =
@@ -12264,7 +13844,7 @@ export const IpamPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type IpamPoolsUpdateInput = typeof IpamPoolsUpdateInput.Type;
@@ -12351,7 +13931,7 @@ export const IpGroupsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IpGroupsCreateOrUpdateInput =
@@ -12393,7 +13973,7 @@ export const IpGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type IpGroupsDeleteInput = typeof IpGroupsDeleteInput.Type;
@@ -12425,7 +14005,7 @@ export const IpGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type IpGroupsGetInput = typeof IpGroupsGetInput.Type;
@@ -12461,7 +14041,7 @@ export const IpGroupsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ipGroups",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type IpGroupsListInput = typeof IpGroupsListInput.Type;
@@ -12501,7 +14081,7 @@ export const IpGroupsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IpGroupsListByResourceGroupInput =
@@ -12549,7 +14129,7 @@ export const IpGroupsUpdateGroupsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IpGroupsUpdateGroupsInput = typeof IpGroupsUpdateGroupsInput.Type;
@@ -12594,7 +14174,7 @@ export const ListActiveConnectivityConfigurationsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/listActiveConnectivityConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ListActiveConnectivityConfigurationsInput =
@@ -12727,7 +14307,7 @@ export const ListActiveSecurityAdminRulesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/listActiveSecurityAdminRules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ListActiveSecurityAdminRulesInput =
@@ -12813,7 +14393,7 @@ export const ListNetworkManagerEffectiveConnectivityConfigurationsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listNetworkManagerEffectiveConnectivityConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ListNetworkManagerEffectiveConnectivityConfigurationsInput =
@@ -12945,7 +14525,7 @@ export const ListNetworkManagerEffectiveSecurityAdminRulesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listNetworkManagerEffectiveSecurityAdminRules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ListNetworkManagerEffectiveSecurityAdminRulesInput =
@@ -13144,7 +14724,7 @@ export const LoadBalancerBackendAddressPoolsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerBackendAddressPoolsCreateOrUpdateInput =
@@ -13184,7 +14764,7 @@ export const LoadBalancerBackendAddressPoolsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerBackendAddressPoolsDeleteInput =
@@ -13222,7 +14802,7 @@ export const LoadBalancerBackendAddressPoolsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerBackendAddressPoolsGetInput =
@@ -13261,7 +14841,7 @@ export const LoadBalancerBackendAddressPoolsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerBackendAddressPoolsListInput =
@@ -13305,7 +14885,7 @@ export const LoadBalancerFrontendIPConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations/{frontendIPConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerFrontendIPConfigurationsGetInput =
@@ -13344,7 +14924,7 @@ export const LoadBalancerFrontendIPConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerFrontendIPConfigurationsListInput =
@@ -13388,7 +14968,7 @@ export const LoadBalancerLoadBalancingRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules/{loadBalancingRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerLoadBalancingRulesGetInput =
@@ -13428,7 +15008,7 @@ export const LoadBalancerLoadBalancingRulesHealthInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules/{loadBalancingRuleName}/health",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerLoadBalancingRulesHealthInput =
@@ -13477,7 +15057,7 @@ export const LoadBalancerLoadBalancingRulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerLoadBalancingRulesListInput =
@@ -13520,7 +15100,7 @@ export const LoadBalancerNetworkInterfacesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/networkInterfaces",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerNetworkInterfacesListInput =
@@ -13568,7 +15148,7 @@ export const LoadBalancerOutboundRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/outboundRules/{outboundRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerOutboundRulesGetInput =
@@ -13607,7 +15187,7 @@ export const LoadBalancerOutboundRulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/outboundRules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerOutboundRulesListInput =
@@ -13651,7 +15231,7 @@ export const LoadBalancerProbesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerProbesGetInput = typeof LoadBalancerProbesGetInput.Type;
@@ -13690,7 +15270,7 @@ export const LoadBalancerProbesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancerProbesListInput =
@@ -13819,7 +15399,7 @@ export const LoadBalancersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancersCreateOrUpdateInput =
@@ -13862,7 +15442,7 @@ export const LoadBalancersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancersDeleteInput = typeof LoadBalancersDeleteInput.Type;
@@ -13891,11 +15471,12 @@ export const LoadBalancersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   loadBalancerName: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
+  detailLevel: Schema.optional(Schema.Literals(["Reduced"])),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type LoadBalancersGetInput = typeof LoadBalancersGetInput.Type;
@@ -13921,6 +15502,7 @@ export type LoadBalancersGetOutput = typeof LoadBalancersGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param loadBalancerName - The name of the load balancer.
  * @param $expand - Expands referenced resources.
+ * @param detailLevel - Controls verbosity of the returned load balancer resource. When set to 'Reduced', read-only back-reference collections (e.g., rules referencing frontendIPConfigurations) are omitted from the response.
  */
 export const LoadBalancersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LoadBalancersGetInput,
@@ -13936,7 +15518,7 @@ export const LoadBalancersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type LoadBalancersListInput = typeof LoadBalancersListInput.Type;
@@ -13977,7 +15559,7 @@ export const LoadBalancersListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/loadBalancers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancersListAllInput = typeof LoadBalancersListAllInput.Type;
@@ -14028,7 +15610,7 @@ export const LoadBalancersListInboundNatRulePortMappingsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancersListInboundNatRulePortMappingsInput =
@@ -14078,7 +15660,7 @@ export const LoadBalancersMigrateToIpBasedInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/migrateToIpBased",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancersMigrateToIpBasedInput =
@@ -14130,7 +15712,7 @@ export const LoadBalancersSwapPublicIpAddressesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/setLoadBalancerFrontendPublicIpAddresses",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancersSwapPublicIpAddressesInput =
@@ -14166,7 +15748,7 @@ export const LoadBalancersUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LoadBalancersUpdateTagsInput =
@@ -14272,7 +15854,7 @@ export const LocalNetworkGatewaysCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LocalNetworkGatewaysCreateOrUpdateInput =
@@ -14314,7 +15896,7 @@ export const LocalNetworkGatewaysDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LocalNetworkGatewaysDeleteInput =
@@ -14351,7 +15933,7 @@ export const LocalNetworkGatewaysGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LocalNetworkGatewaysGetInput =
@@ -14393,7 +15975,7 @@ export const LocalNetworkGatewaysListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LocalNetworkGatewaysListInput =
@@ -14441,7 +16023,7 @@ export const LocalNetworkGatewaysUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LocalNetworkGatewaysUpdateTagsInput =
@@ -14516,7 +16098,7 @@ export const ManagementGroupNetworkManagerConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ManagementGroupNetworkManagerConnectionsCreateOrUpdateInput =
@@ -14555,7 +16137,7 @@ export const ManagementGroupNetworkManagerConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ManagementGroupNetworkManagerConnectionsDeleteInput =
@@ -14589,7 +16171,7 @@ export const ManagementGroupNetworkManagerConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ManagementGroupNetworkManagerConnectionsGetInput =
@@ -14629,7 +16211,7 @@ export const ManagementGroupNetworkManagerConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ManagementGroupNetworkManagerConnectionsListInput =
@@ -14719,6 +16301,9 @@ export const NatGatewaysCreateOrUpdateInput =
             id: Schema.optional(Schema.String),
           }),
         ),
+        nat64: Schema.optional(
+          Schema.Literals(["None", "Enabled", "Disabled"]),
+        ),
         resourceGuid: Schema.optional(Schema.String),
         provisioningState: Schema.optional(
           Schema.Literals([
@@ -14748,7 +16333,7 @@ export const NatGatewaysCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NatGatewaysCreateOrUpdateInput =
@@ -14792,7 +16377,7 @@ export const NatGatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type NatGatewaysDeleteInput = typeof NatGatewaysDeleteInput.Type;
@@ -14824,7 +16409,7 @@ export const NatGatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type NatGatewaysGetInput = typeof NatGatewaysGetInput.Type;
@@ -14861,7 +16446,7 @@ export const NatGatewaysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type NatGatewaysListInput = typeof NatGatewaysListInput.Type;
@@ -14901,7 +16486,7 @@ export const NatGatewaysListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/natGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NatGatewaysListAllInput = typeof NatGatewaysListAllInput.Type;
@@ -14944,7 +16529,7 @@ export const NatGatewaysUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways/{natGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NatGatewaysUpdateTagsInput = typeof NatGatewaysUpdateTagsInput.Type;
@@ -15038,7 +16623,7 @@ export const NatRulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NatRulesCreateOrUpdateInput =
@@ -15078,7 +16663,7 @@ export const NatRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type NatRulesDeleteInput = typeof NatRulesDeleteInput.Type;
@@ -15111,7 +16696,7 @@ export const NatRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type NatRulesGetInput = typeof NatRulesGetInput.Type;
@@ -15146,7 +16731,7 @@ export const NatRulesListByVpnGatewayInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NatRulesListByVpnGatewayInput =
@@ -15228,7 +16813,7 @@ export const NetworkGroupsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkGroupsCreateOrUpdateInput =
@@ -15274,7 +16859,7 @@ export const NetworkGroupsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkGroupsDeleteInput = typeof NetworkGroupsDeleteInput.Type;
@@ -15309,7 +16894,7 @@ export const NetworkGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type NetworkGroupsGetInput = typeof NetworkGroupsGetInput.Type;
@@ -15352,7 +16937,7 @@ export const NetworkGroupsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type NetworkGroupsListInput = typeof NetworkGroupsListInput.Type;
@@ -15398,7 +16983,7 @@ export const NetworkInterfaceIPConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfaceIPConfigurationsGetInput =
@@ -15437,7 +17022,7 @@ export const NetworkInterfaceIPConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/ipConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfaceIPConfigurationsListInput =
@@ -15480,7 +17065,7 @@ export const NetworkInterfaceLoadBalancersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/loadBalancers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfaceLoadBalancersListInput =
@@ -15638,7 +17223,7 @@ export const NetworkInterfacesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesCreateOrUpdateInput =
@@ -15680,7 +17265,7 @@ export const NetworkInterfacesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesDeleteInput =
@@ -15718,7 +17303,7 @@ export const NetworkInterfacesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesGetInput = typeof NetworkInterfacesGetInput.Type;
@@ -15763,7 +17348,7 @@ export const NetworkInterfacesGetCloudServiceNetworkInterfaceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesGetCloudServiceNetworkInterfaceInput =
@@ -15808,7 +17393,7 @@ export const NetworkInterfacesGetEffectiveRouteTableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveRouteTable",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesGetEffectiveRouteTableInput =
@@ -15838,6 +17423,7 @@ export const NetworkInterfacesGetEffectiveRouteTableOutput =
             "VnetLocal",
             "Internet",
             "VirtualAppliance",
+            "VirtualApplianceEcmp",
             "None",
           ]),
         ),
@@ -15871,7 +17457,7 @@ export const NetworkInterfacesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesListInput = typeof NetworkInterfacesListInput.Type;
@@ -15915,7 +17501,7 @@ export const NetworkInterfacesListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkInterfaces",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesListAllInput =
@@ -15961,7 +17547,7 @@ export const NetworkInterfacesListCloudServiceNetworkInterfacesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/cloudServices/{cloudServiceName}/networkInterfaces",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesListCloudServiceNetworkInterfacesInput =
@@ -16009,7 +17595,7 @@ export const NetworkInterfacesListCloudServiceRoleInstanceNetworkInterfacesInput
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesListCloudServiceRoleInstanceNetworkInterfacesInput =
@@ -16059,7 +17645,7 @@ export const NetworkInterfacesListEffectiveNetworkSecurityGroupsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveNetworkSecurityGroups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesListEffectiveNetworkSecurityGroupsInput =
@@ -16162,7 +17748,7 @@ export const NetworkInterfacesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfacesUpdateTagsInput =
@@ -16233,7 +17819,7 @@ export const NetworkInterfaceTapConfigurationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfaceTapConfigurationsCreateOrUpdateInput =
@@ -16273,7 +17859,7 @@ export const NetworkInterfaceTapConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfaceTapConfigurationsDeleteInput =
@@ -16311,7 +17897,7 @@ export const NetworkInterfaceTapConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfaceTapConfigurationsGetInput =
@@ -16350,7 +17936,7 @@ export const NetworkInterfaceTapConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkInterfaceTapConfigurationsListInput =
@@ -16402,7 +17988,7 @@ export const NetworkManagerCommitsPostInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/commit",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagerCommitsPostInput =
@@ -16462,7 +18048,7 @@ export const NetworkManagerDeploymentStatusListInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/listDeploymentStatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagerDeploymentStatusListInput =
@@ -16560,7 +18146,7 @@ export const NetworkManagerRoutingConfigurationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagerRoutingConfigurationsCreateOrUpdateInput =
@@ -16604,7 +18190,7 @@ export const NetworkManagerRoutingConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagerRoutingConfigurationsDeleteInput =
@@ -16643,7 +18229,7 @@ export const NetworkManagerRoutingConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagerRoutingConfigurationsGetInput =
@@ -16687,7 +18273,7 @@ export const NetworkManagerRoutingConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagerRoutingConfigurationsListInput =
@@ -16794,7 +18380,7 @@ export const NetworkManagersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagersCreateOrUpdateInput =
@@ -16837,7 +18423,7 @@ export const NetworkManagersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagersDeleteInput = typeof NetworkManagersDeleteInput.Type;
@@ -16874,7 +18460,7 @@ export const NetworkManagersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagersGetInput = typeof NetworkManagersGetInput.Type;
@@ -16914,7 +18500,7 @@ export const NetworkManagersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagersListInput = typeof NetworkManagersListInput.Type;
@@ -16959,7 +18545,7 @@ export const NetworkManagersListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagersListBySubscriptionInput =
@@ -17007,7 +18593,7 @@ export const NetworkManagersPatchInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkManagersPatchInput = typeof NetworkManagersPatchInput.Type;
@@ -17083,7 +18669,7 @@ export const NetworkProfilesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkProfilesCreateOrUpdateInput =
@@ -17125,7 +18711,7 @@ export const NetworkProfilesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkProfilesDeleteInput = typeof NetworkProfilesDeleteInput.Type;
@@ -17162,7 +18748,7 @@ export const NetworkProfilesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkProfilesGetInput = typeof NetworkProfilesGetInput.Type;
@@ -17201,7 +18787,7 @@ export const NetworkProfilesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkProfilesListInput = typeof NetworkProfilesListInput.Type;
@@ -17242,7 +18828,7 @@ export const NetworkProfilesListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkProfiles",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkProfilesListAllInput =
@@ -17289,7 +18875,7 @@ export const NetworkProfilesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkProfilesUpdateTagsInput =
@@ -17402,7 +18988,7 @@ export const NetworkSecurityGroupsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityGroupsCreateOrUpdateInput =
@@ -17444,7 +19030,7 @@ export const NetworkSecurityGroupsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityGroupsDeleteInput =
@@ -17482,7 +19068,7 @@ export const NetworkSecurityGroupsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityGroupsGetInput =
@@ -17525,7 +19111,7 @@ export const NetworkSecurityGroupsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityGroupsListInput =
@@ -17570,7 +19156,7 @@ export const NetworkSecurityGroupsListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkSecurityGroups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityGroupsListAllInput =
@@ -17616,7 +19202,7 @@ export const NetworkSecurityGroupsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityGroupsUpdateTagsInput =
@@ -17697,7 +19283,7 @@ export const NetworkSecurityPerimeterAccessRulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}/accessRules/{accessRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAccessRulesCreateOrUpdateInput =
@@ -17755,7 +19341,7 @@ export const NetworkSecurityPerimeterAccessRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}/accessRules/{accessRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAccessRulesDeleteInput =
@@ -17795,7 +19381,7 @@ export const NetworkSecurityPerimeterAccessRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}/accessRules/{accessRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAccessRulesGetInput =
@@ -17854,7 +19440,7 @@ export const NetworkSecurityPerimeterAccessRulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}/accessRules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAccessRulesListInput =
@@ -17928,7 +19514,7 @@ export const NetworkSecurityPerimeterAccessRulesReconcileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}/accessRules/{accessRuleName}/reconcile",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAccessRulesReconcileInput =
@@ -17965,7 +19551,7 @@ export const NetworkSecurityPerimeterAssociableResourceTypesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/perimeterAssociableResourceTypes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAssociableResourceTypesListInput =
@@ -17981,6 +19567,12 @@ export const NetworkSecurityPerimeterAssociableResourceTypesListOutput =
             displayName: Schema.optional(Schema.String),
             resourceType: Schema.optional(Schema.String),
             publicDnsZones: Schema.optional(Schema.Array(Schema.String)),
+            serviceTags: Schema.optional(Schema.Array(Schema.String)),
+            readinessState: Schema.optional(
+              Schema.Literals(["Onboarding", "Preview", "GA", "NotReady"]),
+            ),
+            outboundSupported: Schema.optional(Schema.Boolean),
+            description: Schema.optional(Schema.String),
           }),
         ),
         name: Schema.optional(Schema.String),
@@ -18045,7 +19637,7 @@ export const NetworkSecurityPerimeterAssociationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAssociationsCreateOrUpdateInput =
@@ -18101,7 +19693,7 @@ export const NetworkSecurityPerimeterAssociationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAssociationsDeleteInput =
@@ -18139,7 +19731,7 @@ export const NetworkSecurityPerimeterAssociationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAssociationsGetInput =
@@ -18196,7 +19788,7 @@ export const NetworkSecurityPerimeterAssociationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAssociationsListInput =
@@ -18268,7 +19860,7 @@ export const NetworkSecurityPerimeterAssociationsReconcileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}/reconcile",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterAssociationsReconcileInput =
@@ -18306,7 +19898,7 @@ export const NetworkSecurityPerimeterLinkReferencesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/linkReferences/{linkReferenceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLinkReferencesDeleteInput =
@@ -18344,7 +19936,7 @@ export const NetworkSecurityPerimeterLinkReferencesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/linkReferences/{linkReferenceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLinkReferencesGetInput =
@@ -18401,7 +19993,7 @@ export const NetworkSecurityPerimeterLinkReferencesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/linkReferences",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLinkReferencesListInput =
@@ -18499,7 +20091,7 @@ export const NetworkSecurityPerimeterLinksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/links/{linkName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLinksCreateOrUpdateInput =
@@ -18555,7 +20147,7 @@ export const NetworkSecurityPerimeterLinksDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/links/{linkName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLinksDeleteInput =
@@ -18593,7 +20185,7 @@ export const NetworkSecurityPerimeterLinksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/links/{linkName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLinksGetInput =
@@ -18650,7 +20242,7 @@ export const NetworkSecurityPerimeterLinksListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/links",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLinksListInput =
@@ -18728,7 +20320,7 @@ export const NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/loggingConfigurations/{loggingConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateInput =
@@ -18786,7 +20378,7 @@ export const NetworkSecurityPerimeterLoggingConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/loggingConfigurations/{loggingConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLoggingConfigurationsDeleteInput =
@@ -18824,7 +20416,7 @@ export const NetworkSecurityPerimeterLoggingConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/loggingConfigurations/{loggingConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLoggingConfigurationsGetInput =
@@ -18879,7 +20471,7 @@ export const NetworkSecurityPerimeterLoggingConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/loggingConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterLoggingConfigurationsListInput =
@@ -18948,7 +20540,7 @@ export const NetworkSecurityPerimeterOperationStatusesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/networkSecurityPerimeterOperationStatuses/{operationId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterOperationStatusesGetInput =
@@ -19045,7 +20637,7 @@ export const NetworkSecurityPerimeterProfilesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterProfilesCreateOrUpdateInput =
@@ -19101,7 +20693,7 @@ export const NetworkSecurityPerimeterProfilesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterProfilesDeleteInput =
@@ -19139,7 +20731,7 @@ export const NetworkSecurityPerimeterProfilesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterProfilesGetInput =
@@ -19196,7 +20788,7 @@ export const NetworkSecurityPerimeterProfilesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterProfilesListInput =
@@ -19284,7 +20876,7 @@ export const NetworkSecurityPerimetersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimetersCreateOrUpdateInput =
@@ -19339,7 +20931,7 @@ export const NetworkSecurityPerimetersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimetersDeleteInput =
@@ -19375,7 +20967,7 @@ export const NetworkSecurityPerimeterServiceTagsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/nspServiceTags",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimeterServiceTagsListInput =
@@ -19417,7 +21009,7 @@ export const NetworkSecurityPerimetersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimetersGetInput =
@@ -19472,7 +21064,7 @@ export const NetworkSecurityPerimetersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimetersListInput =
@@ -19542,7 +21134,7 @@ export const NetworkSecurityPerimetersListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkSecurityPerimeters",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimetersListBySubscriptionInput =
@@ -19613,7 +21205,7 @@ export const NetworkSecurityPerimetersPatchInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkSecurityPerimetersPatchInput =
@@ -19750,7 +21342,7 @@ export const NetworkVirtualApplianceConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/networkVirtualApplianceConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualApplianceConnectionsCreateOrUpdateInput =
@@ -19789,7 +21381,7 @@ export const NetworkVirtualApplianceConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/networkVirtualApplianceConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualApplianceConnectionsDeleteInput =
@@ -19826,7 +21418,7 @@ export const NetworkVirtualApplianceConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/networkVirtualApplianceConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualApplianceConnectionsGetInput =
@@ -19864,7 +21456,7 @@ export const NetworkVirtualApplianceConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/networkVirtualApplianceConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualApplianceConnectionsListInput =
@@ -20096,7 +21688,7 @@ export const NetworkVirtualAppliancesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualAppliancesCreateOrUpdateInput =
@@ -20138,7 +21730,7 @@ export const NetworkVirtualAppliancesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualAppliancesDeleteInput =
@@ -20175,7 +21767,7 @@ export const NetworkVirtualAppliancesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualAppliancesGetInput =
@@ -20222,7 +21814,7 @@ export const NetworkVirtualAppliancesGetBootDiagnosticLogsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/getBootDiagnosticLogs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualAppliancesGetBootDiagnosticLogsInput =
@@ -20258,7 +21850,7 @@ export const NetworkVirtualAppliancesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualAppliances",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualAppliancesListInput =
@@ -20302,7 +21894,7 @@ export const NetworkVirtualAppliancesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualAppliancesListByResourceGroupInput =
@@ -20349,7 +21941,7 @@ export const NetworkVirtualAppliancesReimageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/reimage",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualAppliancesReimageInput =
@@ -20388,7 +21980,7 @@ export const NetworkVirtualAppliancesRestartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/restart",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualAppliancesRestartInput =
@@ -20427,7 +22019,7 @@ export const NetworkVirtualAppliancesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkVirtualAppliancesUpdateTagsInput =
@@ -20501,7 +22093,7 @@ export const NetworkWatchersCheckConnectivityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectivityCheck",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersCheckConnectivityInput =
@@ -20704,7 +22296,7 @@ export const NetworkWatchersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersCreateOrUpdateInput =
@@ -20746,7 +22338,7 @@ export const NetworkWatchersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersDeleteInput = typeof NetworkWatchersDeleteInput.Type;
@@ -20782,7 +22374,7 @@ export const NetworkWatchersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersGetInput = typeof NetworkWatchersGetInput.Type;
@@ -20830,7 +22422,7 @@ export const NetworkWatchersGetAzureReachabilityReportInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/azureReachabilityReport",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersGetAzureReachabilityReportInput =
@@ -20888,7 +22480,7 @@ export const NetworkWatchersGetFlowLogStatusInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryFlowLogStatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersGetFlowLogStatusInput =
@@ -20993,7 +22585,7 @@ export const NetworkWatchersGetNetworkConfigurationDiagnosticInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/networkConfigurationDiagnostic",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersGetNetworkConfigurationDiagnosticInput =
@@ -21084,7 +22676,7 @@ export const NetworkWatchersGetNextHopInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/nextHop",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersGetNextHopInput =
@@ -21100,6 +22692,7 @@ export const NetworkWatchersGetNextHopOutput =
         "VirtualNetworkGateway",
         "VnetLocal",
         "HyperNetGateway",
+        "VirtualApplianceEcmp",
         "None",
       ]),
     ),
@@ -21145,7 +22738,7 @@ export const NetworkWatchersGetTopologyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/topology",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersGetTopologyInput =
@@ -21211,7 +22804,7 @@ export const NetworkWatchersGetTroubleshootingInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/troubleshoot",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersGetTroubleshootingInput =
@@ -21272,7 +22865,7 @@ export const NetworkWatchersGetTroubleshootingResultInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryTroubleshootResult",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersGetTroubleshootingResultInput =
@@ -21333,7 +22926,7 @@ export const NetworkWatchersGetVMSecurityRulesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/securityGroupView",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersGetVMSecurityRulesInput =
@@ -21448,7 +23041,7 @@ export const NetworkWatchersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersListInput = typeof NetworkWatchersListInput.Type;
@@ -21491,7 +23084,7 @@ export const NetworkWatchersListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkWatchers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersListAllInput =
@@ -21543,7 +23136,7 @@ export const NetworkWatchersListAvailableProvidersInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/availableProvidersList",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersListAvailableProvidersInput =
@@ -21657,7 +23250,7 @@ export const NetworkWatchersSetFlowLogConfigurationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/configureFlowLog",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersSetFlowLogConfigurationInput =
@@ -21750,7 +23343,7 @@ export const NetworkWatchersUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersUpdateTagsInput =
@@ -21802,7 +23395,7 @@ export const NetworkWatchersVerifyIPFlowInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/ipFlowVerify",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type NetworkWatchersVerifyIPFlowInput =
@@ -21839,7 +23432,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Network/operations",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -21987,7 +23580,7 @@ export const P2sVpnGatewaysCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type P2sVpnGatewaysCreateOrUpdateInput =
@@ -22029,7 +23622,7 @@ export const P2sVpnGatewaysDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type P2sVpnGatewaysDeleteInput = typeof P2sVpnGatewaysDeleteInput.Type;
@@ -22065,7 +23658,7 @@ export const P2sVpnGatewaysDisconnectP2sVpnConnectionsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{p2sVpnGatewayName}/disconnectP2sVpnConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type P2sVpnGatewaysDisconnectP2sVpnConnectionsInput =
@@ -22104,7 +23697,7 @@ export const P2sVpnGatewaysGenerateVpnProfileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/generatevpnprofile",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type P2sVpnGatewaysGenerateVpnProfileInput =
@@ -22143,7 +23736,7 @@ export const P2sVpnGatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type P2sVpnGatewaysGetInput = typeof P2sVpnGatewaysGetInput.Type;
@@ -22182,7 +23775,7 @@ export const P2sVpnGatewaysGetP2sVpnConnectionHealthInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealth",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type P2sVpnGatewaysGetP2sVpnConnectionHealthInput =
@@ -22226,7 +23819,7 @@ export const P2sVpnGatewaysGetP2sVpnConnectionHealthDetailedInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealthDetailed",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type P2sVpnGatewaysGetP2sVpnConnectionHealthDetailedInput =
@@ -22262,7 +23855,7 @@ export const P2sVpnGatewaysListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/p2svpnGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type P2sVpnGatewaysListInput = typeof P2sVpnGatewaysListInput.Type;
@@ -22303,7 +23896,7 @@ export const P2sVpnGatewaysListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type P2sVpnGatewaysListByResourceGroupInput =
@@ -22349,7 +23942,7 @@ export const P2SVpnGatewaysResetInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/reset",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type P2SVpnGatewaysResetInput = typeof P2SVpnGatewaysResetInput.Type;
@@ -22389,7 +23982,7 @@ export const P2sVpnGatewaysUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type P2sVpnGatewaysUpdateTagsInput =
@@ -22472,7 +24065,7 @@ export const PacketCapturesCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PacketCapturesCreateInput = typeof PacketCapturesCreateInput.Type;
@@ -22553,7 +24146,7 @@ export const PacketCapturesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PacketCapturesDeleteInput = typeof PacketCapturesDeleteInput.Type;
@@ -22591,7 +24184,7 @@ export const PacketCapturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type PacketCapturesGetInput = typeof PacketCapturesGetInput.Type;
@@ -22670,7 +24263,7 @@ export const PacketCapturesGetStatusInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/queryStatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PacketCapturesGetStatusInput =
@@ -22727,7 +24320,7 @@ export const PacketCapturesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PacketCapturesListInput = typeof PacketCapturesListInput.Type;
@@ -22816,7 +24409,7 @@ export const PacketCapturesStopInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/stop",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PacketCapturesStopInput = typeof PacketCapturesStopInput.Type;
@@ -22851,7 +24444,7 @@ export const PeerExpressRouteCircuitConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/peerConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PeerExpressRouteCircuitConnectionsGetInput =
@@ -22892,7 +24485,7 @@ export const PeerExpressRouteCircuitConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/peerConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PeerExpressRouteCircuitConnectionsListInput =
@@ -22989,7 +24582,7 @@ export const PrivateDnsZoneGroupsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateDnsZoneGroupsCreateOrUpdateInput =
@@ -23029,7 +24622,7 @@ export const PrivateDnsZoneGroupsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateDnsZoneGroupsDeleteInput =
@@ -23068,7 +24661,7 @@ export const PrivateDnsZoneGroupsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateDnsZoneGroupsGetInput =
@@ -23108,7 +24701,7 @@ export const PrivateDnsZoneGroupsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateDnsZoneGroupsListInput =
@@ -23233,6 +24826,7 @@ export const PrivateEndpointsCreateOrUpdateInput =
           ),
         ),
         customNetworkInterfaceName: Schema.optional(Schema.String),
+        billingSku: Schema.optional(Schema.Literals(["PayAsYouGo", "Fixed"])),
       }),
     ),
     extendedLocation: Schema.optional(
@@ -23251,7 +24845,7 @@ export const PrivateEndpointsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateEndpointsCreateOrUpdateInput =
@@ -23293,7 +24887,7 @@ export const PrivateEndpointsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateEndpointsDeleteInput =
@@ -23331,7 +24925,7 @@ export const PrivateEndpointsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateEndpointsGetInput = typeof PrivateEndpointsGetInput.Type;
@@ -23370,7 +24964,7 @@ export const PrivateEndpointsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateEndpointsListInput = typeof PrivateEndpointsListInput.Type;
@@ -23413,7 +25007,7 @@ export const PrivateEndpointsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateEndpoints",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateEndpointsListBySubscriptionInput =
@@ -23458,7 +25052,7 @@ export const PrivateLinkServicesCheckPrivateLinkServiceVisibilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesCheckPrivateLinkServiceVisibilityInput =
@@ -23496,7 +25090,7 @@ export const PrivateLinkServicesCheckPrivateLinkServiceVisibilityByResourceGroup
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesCheckPrivateLinkServiceVisibilityByResourceGroupInput =
@@ -23611,7 +25205,7 @@ export const PrivateLinkServicesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesCreateOrUpdateInput =
@@ -23653,7 +25247,7 @@ export const PrivateLinkServicesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesDeleteInput =
@@ -23691,7 +25285,7 @@ export const PrivateLinkServicesDeletePrivateEndpointConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesDeletePrivateEndpointConnectionInput =
@@ -23729,7 +25323,7 @@ export const PrivateLinkServicesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesGetInput =
@@ -23775,7 +25369,7 @@ export const PrivateLinkServicesGetPrivateEndpointConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesGetPrivateEndpointConnectionInput =
@@ -23814,7 +25408,7 @@ export const PrivateLinkServicesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesListInput =
@@ -23860,7 +25454,7 @@ export const PrivateLinkServicesListAutoApprovedPrivateLinkServicesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesListAutoApprovedPrivateLinkServicesInput =
@@ -23902,7 +25496,7 @@ export const PrivateLinkServicesListAutoApprovedPrivateLinkServicesByResourceGro
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesListAutoApprovedPrivateLinkServicesByResourceGroupInput =
@@ -23945,7 +25539,7 @@ export const PrivateLinkServicesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateLinkServices",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesListBySubscriptionInput =
@@ -23990,7 +25584,7 @@ export const PrivateLinkServicesListPrivateEndpointConnectionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesListPrivateEndpointConnectionsInput =
@@ -24069,7 +25663,7 @@ export const PrivateLinkServicesUpdatePrivateEndpointConnectionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PrivateLinkServicesUpdatePrivateEndpointConnectionInput =
@@ -24140,6 +25734,11 @@ export const PublicIPAddressesCreateOrUpdateInput =
                 "Enabled",
                 "Disabled",
               ]),
+            ),
+            ddosCustomPolicy: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
             ),
             ddosProtectionPlan: Schema.optional(
               Schema.Struct({
@@ -24232,7 +25831,7 @@ export const PublicIPAddressesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesCreateOrUpdateInput =
@@ -24274,7 +25873,7 @@ export const PublicIPAddressesDdosProtectionStatusInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}/ddosProtectionStatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesDdosProtectionStatusInput =
@@ -24315,7 +25914,7 @@ export const PublicIPAddressesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesDeleteInput =
@@ -24353,7 +25952,7 @@ export const PublicIPAddressesDisassociateCloudServiceReservedPublicIpInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}/disassociateCloudServiceReservedPublicIp",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesDisassociateCloudServiceReservedPublicIpInput =
@@ -24397,7 +25996,7 @@ export const PublicIPAddressesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesGetInput = typeof PublicIPAddressesGetInput.Type;
@@ -24444,7 +26043,7 @@ export const PublicIPAddressesGetCloudServicePublicIPAddressInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesGetCloudServicePublicIPAddressInput =
@@ -24490,7 +26089,7 @@ export const PublicIPAddressesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesListInput = typeof PublicIPAddressesListInput.Type;
@@ -24534,7 +26133,7 @@ export const PublicIPAddressesListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPAddresses",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesListAllInput =
@@ -24580,7 +26179,7 @@ export const PublicIPAddressesListCloudServicePublicIPAddressesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/cloudServices/{cloudServiceName}/publicipaddresses",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesListCloudServicePublicIPAddressesInput =
@@ -24630,7 +26229,7 @@ export const PublicIPAddressesListCloudServiceRoleInstancePublicIPAddressesInput
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesListCloudServiceRoleInstancePublicIPAddressesInput =
@@ -24683,7 +26282,7 @@ export const PublicIPAddressesReserveCloudServicePublicIpAddressInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}/reserveCloudServicePublicIpAddress",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesReserveCloudServicePublicIpAddressInput =
@@ -24726,7 +26325,7 @@ export const PublicIPAddressesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPAddressesUpdateTagsInput =
@@ -24843,7 +26442,7 @@ export const PublicIPPrefixesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPPrefixesCreateOrUpdateInput =
@@ -24885,7 +26484,7 @@ export const PublicIPPrefixesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPPrefixesDeleteInput =
@@ -24923,7 +26522,7 @@ export const PublicIPPrefixesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPPrefixesGetInput = typeof PublicIPPrefixesGetInput.Type;
@@ -24962,7 +26561,7 @@ export const PublicIPPrefixesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPPrefixesListInput = typeof PublicIPPrefixesListInput.Type;
@@ -25005,7 +26604,7 @@ export const PublicIPPrefixesListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPPrefixes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPPrefixesListAllInput =
@@ -25052,7 +26651,7 @@ export const PublicIPPrefixesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PublicIPPrefixesUpdateTagsInput =
@@ -25112,7 +26711,7 @@ export const PutBastionShareableLinkInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type PutBastionShareableLinkInput =
@@ -25203,7 +26802,7 @@ export const ReachabilityAnalysisIntentsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisIntents/{reachabilityAnalysisIntentName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ReachabilityAnalysisIntentsCreateInput =
@@ -25261,7 +26860,7 @@ export const ReachabilityAnalysisIntentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisIntents/{reachabilityAnalysisIntentName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ReachabilityAnalysisIntentsDeleteInput =
@@ -25301,7 +26900,7 @@ export const ReachabilityAnalysisIntentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisIntents/{reachabilityAnalysisIntentName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ReachabilityAnalysisIntentsGetInput =
@@ -25363,7 +26962,7 @@ export const ReachabilityAnalysisIntentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisIntents",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ReachabilityAnalysisIntentsListInput =
@@ -25486,7 +27085,7 @@ export const ReachabilityAnalysisRunsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisRuns/{reachabilityAnalysisRunName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ReachabilityAnalysisRunsCreateInput =
@@ -25544,7 +27143,7 @@ export const ReachabilityAnalysisRunsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisRuns/{reachabilityAnalysisRunName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ReachabilityAnalysisRunsDeleteInput =
@@ -25584,7 +27183,7 @@ export const ReachabilityAnalysisRunsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisRuns/{reachabilityAnalysisRunName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ReachabilityAnalysisRunsGetInput =
@@ -25647,7 +27246,7 @@ export const ReachabilityAnalysisRunsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisRuns",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ReachabilityAnalysisRunsListInput =
@@ -25723,7 +27322,7 @@ export const ResourceNavigationLinksListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/resourceNavigationLinks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ResourceNavigationLinksListInput =
@@ -25790,7 +27389,7 @@ export const RouteFilterRulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteFilterRulesCreateOrUpdateInput =
@@ -25830,7 +27429,7 @@ export const RouteFilterRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteFilterRulesDeleteInput =
@@ -25869,7 +27468,7 @@ export const RouteFilterRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteFilterRulesGetInput = typeof RouteFilterRulesGetInput.Type;
@@ -25905,7 +27504,7 @@ export const RouteFilterRulesListByRouteFilterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteFilterRulesListByRouteFilterInput =
@@ -25989,7 +27588,7 @@ export const RouteFiltersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteFiltersCreateOrUpdateInput =
@@ -26032,7 +27631,7 @@ export const RouteFiltersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteFiltersDeleteInput = typeof RouteFiltersDeleteInput.Type;
@@ -26064,7 +27663,7 @@ export const RouteFiltersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RouteFiltersGetInput = typeof RouteFiltersGetInput.Type;
@@ -26100,7 +27699,7 @@ export const RouteFiltersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeFilters",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RouteFiltersListInput = typeof RouteFiltersListInput.Type;
@@ -26142,7 +27741,7 @@ export const RouteFiltersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteFiltersListByResourceGroupInput =
@@ -26189,7 +27788,7 @@ export const RouteFiltersUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteFiltersUpdateTagsInput =
@@ -26314,7 +27913,7 @@ export const RouteMapsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps/{routeMapName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteMapsCreateOrUpdateInput =
@@ -26356,7 +27955,7 @@ export const RouteMapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps/{routeMapName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RouteMapsDeleteInput = typeof RouteMapsDeleteInput.Type;
@@ -26389,7 +27988,7 @@ export const RouteMapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps/{routeMapName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RouteMapsGetInput = typeof RouteMapsGetInput.Type;
@@ -26425,7 +28024,7 @@ export const RouteMapsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RouteMapsListInput = typeof RouteMapsListInput.Type;
@@ -26471,9 +28070,15 @@ export const RoutesCreateOrUpdateInput =
           "VnetLocal",
           "Internet",
           "VirtualAppliance",
+          "VirtualApplianceEcmp",
           "None",
         ]),
         nextHopIpAddress: Schema.optional(Schema.String),
+        nextHop: Schema.optional(
+          Schema.Struct({
+            nextHopIpAddresses: Schema.Array(Schema.String),
+          }),
+        ),
         provisioningState: Schema.optional(
           Schema.Literals([
             "Failed",
@@ -26494,7 +28099,7 @@ export const RoutesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RoutesCreateOrUpdateInput = typeof RoutesCreateOrUpdateInput.Type;
@@ -26532,7 +28137,7 @@ export const RoutesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RoutesDeleteInput = typeof RoutesDeleteInput.Type;
@@ -26565,7 +28170,7 @@ export const RoutesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RoutesGetInput = typeof RoutesGetInput.Type;
@@ -26599,7 +28204,7 @@ export const RoutesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RoutesListInput = typeof RoutesListInput.Type;
@@ -26651,6 +28256,7 @@ export const RouteTablesCreateOrUpdateInput =
           ),
         ),
         disableBgpRoutePropagation: Schema.optional(Schema.Boolean),
+        disablePeeringRoute: Schema.optional(Schema.Literals(["None", "All"])),
         provisioningState: Schema.optional(
           Schema.Literals([
             "Failed",
@@ -26674,7 +28280,7 @@ export const RouteTablesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteTablesCreateOrUpdateInput =
@@ -26718,7 +28324,7 @@ export const RouteTablesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RouteTablesDeleteInput = typeof RouteTablesDeleteInput.Type;
@@ -26750,7 +28356,7 @@ export const RouteTablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RouteTablesGetInput = typeof RouteTablesGetInput.Type;
@@ -26787,7 +28393,7 @@ export const RouteTablesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RouteTablesListInput = typeof RouteTablesListInput.Type;
@@ -26827,7 +28433,7 @@ export const RouteTablesListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeTables",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteTablesListAllInput = typeof RouteTablesListAllInput.Type;
@@ -26870,7 +28476,7 @@ export const RouteTablesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RouteTablesUpdateTagsInput = typeof RouteTablesUpdateTagsInput.Type;
@@ -26940,7 +28546,7 @@ export const RoutingIntentCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RoutingIntentCreateOrUpdateInput =
@@ -26981,7 +28587,7 @@ export const RoutingIntentDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RoutingIntentDeleteInput = typeof RoutingIntentDeleteInput.Type;
@@ -27015,7 +28621,7 @@ export const RoutingIntentGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RoutingIntentGetInput = typeof RoutingIntentGetInput.Type;
@@ -27053,7 +28659,7 @@ export const RoutingIntentListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RoutingIntentListInput = typeof RoutingIntentListInput.Type;
@@ -27137,7 +28743,7 @@ export const RoutingRuleCollectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RoutingRuleCollectionsCreateOrUpdateInput =
@@ -27183,7 +28789,7 @@ export const RoutingRuleCollectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RoutingRuleCollectionsDeleteInput =
@@ -27224,7 +28830,7 @@ export const RoutingRuleCollectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RoutingRuleCollectionsGetInput =
@@ -27271,7 +28877,7 @@ export const RoutingRuleCollectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RoutingRuleCollectionsListInput =
@@ -27372,7 +28978,7 @@ export const RoutingRulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RoutingRulesCreateOrUpdateInput =
@@ -27421,7 +29027,7 @@ export const RoutingRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type RoutingRulesDeleteInput = typeof RoutingRulesDeleteInput.Type;
@@ -27459,7 +29065,7 @@ export const RoutingRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RoutingRulesGetInput = typeof RoutingRulesGetInput.Type;
@@ -27502,7 +29108,7 @@ export const RoutingRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type RoutingRulesListInput = typeof RoutingRulesListInput.Type;
@@ -27585,7 +29191,7 @@ export const ScopeConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/scopeConnections/{scopeConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ScopeConnectionsCreateOrUpdateInput =
@@ -27628,7 +29234,7 @@ export const ScopeConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/scopeConnections/{scopeConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ScopeConnectionsDeleteInput =
@@ -27667,7 +29273,7 @@ export const ScopeConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/scopeConnections/{scopeConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ScopeConnectionsGetInput = typeof ScopeConnectionsGetInput.Type;
@@ -27708,7 +29314,7 @@ export const ScopeConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/scopeConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ScopeConnectionsListInput = typeof ScopeConnectionsListInput.Type;
@@ -27796,7 +29402,7 @@ export const SecurityAdminConfigurationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityAdminConfigurationsCreateOrUpdateInput =
@@ -27840,7 +29446,7 @@ export const SecurityAdminConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityAdminConfigurationsDeleteInput =
@@ -27879,7 +29485,7 @@ export const SecurityAdminConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityAdminConfigurationsGetInput =
@@ -27923,7 +29529,7 @@ export const SecurityAdminConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityAdminConfigurationsListInput =
@@ -28007,7 +29613,7 @@ export const SecurityPartnerProvidersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityPartnerProvidersCreateOrUpdateInput =
@@ -28049,7 +29655,7 @@ export const SecurityPartnerProvidersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityPartnerProvidersDeleteInput =
@@ -28085,7 +29691,7 @@ export const SecurityPartnerProvidersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityPartnerProvidersGetInput =
@@ -28126,7 +29732,7 @@ export const SecurityPartnerProvidersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/securityPartnerProviders",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityPartnerProvidersListInput =
@@ -28170,7 +29776,7 @@ export const SecurityPartnerProvidersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityPartnerProvidersListByResourceGroupInput =
@@ -28217,7 +29823,7 @@ export const SecurityPartnerProvidersUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityPartnerProvidersUpdateTagsInput =
@@ -28319,7 +29925,7 @@ export const SecurityRulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityRulesCreateOrUpdateInput =
@@ -28360,7 +29966,7 @@ export const SecurityRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityRulesDeleteInput = typeof SecurityRulesDeleteInput.Type;
@@ -28394,7 +30000,7 @@ export const SecurityRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SecurityRulesGetInput = typeof SecurityRulesGetInput.Type;
@@ -28432,7 +30038,7 @@ export const SecurityRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SecurityRulesListInput = typeof SecurityRulesListInput.Type;
@@ -28507,7 +30113,7 @@ export const SecurityUserConfigurationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserConfigurationsCreateOrUpdateInput =
@@ -28551,7 +30157,7 @@ export const SecurityUserConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserConfigurationsDeleteInput =
@@ -28590,7 +30196,7 @@ export const SecurityUserConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserConfigurationsGetInput =
@@ -28634,7 +30240,7 @@ export const SecurityUserConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserConfigurationsListInput =
@@ -28723,7 +30329,7 @@ export const SecurityUserRuleCollectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserRuleCollectionsCreateOrUpdateInput =
@@ -28769,7 +30375,7 @@ export const SecurityUserRuleCollectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserRuleCollectionsDeleteInput =
@@ -28810,7 +30416,7 @@ export const SecurityUserRuleCollectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserRuleCollectionsGetInput =
@@ -28856,7 +30462,7 @@ export const SecurityUserRuleCollectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserRuleCollectionsListInput =
@@ -28966,7 +30572,7 @@ export const SecurityUserRulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserRulesCreateOrUpdateInput =
@@ -29014,7 +30620,7 @@ export const SecurityUserRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserRulesDeleteInput =
@@ -29058,7 +30664,7 @@ export const SecurityUserRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserRulesGetInput = typeof SecurityUserRulesGetInput.Type;
@@ -29105,7 +30711,7 @@ export const SecurityUserRulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SecurityUserRulesListInput = typeof SecurityUserRulesListInput.Type;
@@ -29156,7 +30762,7 @@ export const ServiceAssociationLinksListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/serviceAssociationLinks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceAssociationLinksListInput =
@@ -29241,7 +30847,7 @@ export const ServiceEndpointPoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceEndpointPoliciesCreateOrUpdateInput =
@@ -29283,7 +30889,7 @@ export const ServiceEndpointPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceEndpointPoliciesDeleteInput =
@@ -29320,7 +30926,7 @@ export const ServiceEndpointPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceEndpointPoliciesGetInput =
@@ -29362,7 +30968,7 @@ export const ServiceEndpointPoliciesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/serviceEndpointPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceEndpointPoliciesListInput =
@@ -29407,7 +31013,7 @@ export const ServiceEndpointPoliciesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceEndpointPoliciesListByResourceGroupInput =
@@ -29454,7 +31060,7 @@ export const ServiceEndpointPoliciesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceEndpointPoliciesUpdateTagsInput =
@@ -29518,7 +31124,7 @@ export const ServiceEndpointPolicyDefinitionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceEndpointPolicyDefinitionsCreateOrUpdateInput =
@@ -29558,7 +31164,7 @@ export const ServiceEndpointPolicyDefinitionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceEndpointPolicyDefinitionsDeleteInput =
@@ -29596,7 +31202,7 @@ export const ServiceEndpointPolicyDefinitionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceEndpointPolicyDefinitionsGetInput =
@@ -29635,7 +31241,7 @@ export const ServiceEndpointPolicyDefinitionsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceEndpointPolicyDefinitionsListByResourceGroupInput =
@@ -29738,7 +31344,7 @@ export const ServiceGatewaysCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceGatewaysCreateOrUpdateInput =
@@ -29792,7 +31398,7 @@ export const ServiceGatewaysDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceGatewaysDeleteInput = typeof ServiceGatewaysDeleteInput.Type;
@@ -29828,7 +31434,7 @@ export const ServiceGatewaysGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceGatewaysGetInput = typeof ServiceGatewaysGetInput.Type;
@@ -29879,7 +31485,7 @@ export const ServiceGatewaysGetAddressLocationsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}/addressLocations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceGatewaysGetAddressLocationsInput =
@@ -29930,7 +31536,7 @@ export const ServiceGatewaysGetServicesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}/services",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceGatewaysGetServicesInput =
@@ -29989,7 +31595,7 @@ export const ServiceGatewaysListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceGatewaysListInput = typeof ServiceGatewaysListInput.Type;
@@ -30052,7 +31658,7 @@ export const ServiceGatewaysListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/serviceGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceGatewaysListAllInput =
@@ -30139,7 +31745,7 @@ export const ServiceGatewaysUpdateAddressLocationsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}/updateAddressLocations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceGatewaysUpdateAddressLocationsInput =
@@ -30209,7 +31815,7 @@ export const ServiceGatewaysUpdateServicesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}/updateServices",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceGatewaysUpdateServicesInput =
@@ -30249,7 +31855,7 @@ export const ServiceGatewaysUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceGatewaysUpdateTagsInput =
@@ -30306,7 +31912,7 @@ export const ServiceTagInformationListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTagDetails",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceTagInformationListInput =
@@ -30360,7 +31966,7 @@ export const ServiceTagsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTags",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type ServiceTagsListInput = typeof ServiceTagsListInput.Type;
@@ -30437,7 +32043,7 @@ export const StaticCidrsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}/staticCidrs/{staticCidrName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type StaticCidrsCreateInput = typeof StaticCidrsCreateInput.Type;
@@ -30492,7 +32098,7 @@ export const StaticCidrsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}/staticCidrs/{staticCidrName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type StaticCidrsDeleteInput = typeof StaticCidrsDeleteInput.Type;
@@ -30527,7 +32133,7 @@ export const StaticCidrsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}/staticCidrs/{staticCidrName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type StaticCidrsGetInput = typeof StaticCidrsGetInput.Type;
@@ -30584,7 +32190,7 @@ export const StaticCidrsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}/staticCidrs",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type StaticCidrsListInput = typeof StaticCidrsListInput.Type;
@@ -30681,7 +32287,7 @@ export const StaticMembersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}/staticMembers/{staticMemberName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type StaticMembersCreateOrUpdateInput =
@@ -30727,7 +32333,7 @@ export const StaticMembersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}/staticMembers/{staticMemberName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type StaticMembersDeleteInput = typeof StaticMembersDeleteInput.Type;
@@ -30763,7 +32369,7 @@ export const StaticMembersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}/staticMembers/{staticMemberName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type StaticMembersGetInput = typeof StaticMembersGetInput.Type;
@@ -30808,7 +32414,7 @@ export const StaticMembersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}/staticMembers",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type StaticMembersListInput = typeof StaticMembersListInput.Type;
@@ -30843,6 +32449,79 @@ export type StaticMembersListOutput = typeof StaticMembersListOutput.Type;
 export const StaticMembersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StaticMembersListInput,
   outputSchema: StaticMembersListOutput,
+}));
+// Input Schema
+export const SubgroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  interconnectGroupName: Schema.String.pipe(T.PathParam()),
+  subgroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/interconnectGroups/{interconnectGroupName}/subgroups/{subgroupName}",
+    apiVersion: "2025-07-01",
+  }),
+);
+export type SubgroupsGetInput = typeof SubgroupsGetInput.Type;
+
+// Output Schema
+export const SubgroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+export type SubgroupsGetOutput = typeof SubgroupsGetOutput.Type;
+
+// The operation
+/**
+ * Gets the specified subgroup in an interconnect group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param interconnectGroupName - The name of the interconnect group.
+ * @param subgroupName - The name of the subgroup.
+ */
+export const SubgroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SubgroupsGetInput,
+  outputSchema: SubgroupsGetOutput,
+}));
+// Input Schema
+export const SubgroupsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  interconnectGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/interconnectGroups/{interconnectGroupName}/subgroups",
+    apiVersion: "2025-07-01",
+  }),
+);
+export type SubgroupsListInput = typeof SubgroupsListInput.Type;
+
+// Output Schema
+export const SubgroupsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type SubgroupsListOutput = typeof SubgroupsListOutput.Type;
+
+// The operation
+/**
+ * Gets all subgroups in an interconnect group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param interconnectGroupName - The name of the interconnect group.
+ */
+export const SubgroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SubgroupsListInput,
+  outputSchema: SubgroupsListOutput,
 }));
 // Input Schema
 export const SubnetsCreateOrUpdateInput =
@@ -31031,7 +32710,7 @@ export const SubnetsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SubnetsCreateOrUpdateInput = typeof SubnetsCreateOrUpdateInput.Type;
@@ -31070,7 +32749,7 @@ export const SubnetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SubnetsDeleteInput = typeof SubnetsDeleteInput.Type;
@@ -31104,7 +32783,7 @@ export const SubnetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SubnetsGetInput = typeof SubnetsGetInput.Type;
@@ -31139,7 +32818,7 @@ export const SubnetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SubnetsListInput = typeof SubnetsListInput.Type;
@@ -31198,7 +32877,7 @@ export const SubnetsPrepareNetworkPoliciesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/prepareNetworkPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SubnetsPrepareNetworkPoliciesInput =
@@ -31237,7 +32916,7 @@ export const SubnetsUnprepareNetworkPoliciesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/unprepareNetworkPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SubnetsUnprepareNetworkPoliciesInput =
@@ -31306,7 +32985,7 @@ export const SubscriptionNetworkManagerConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SubscriptionNetworkManagerConnectionsCreateOrUpdateInput =
@@ -31345,7 +33024,7 @@ export const SubscriptionNetworkManagerConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SubscriptionNetworkManagerConnectionsDeleteInput =
@@ -31379,7 +33058,7 @@ export const SubscriptionNetworkManagerConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SubscriptionNetworkManagerConnectionsGetInput =
@@ -31419,7 +33098,7 @@ export const SubscriptionNetworkManagerConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SubscriptionNetworkManagerConnectionsListInput =
@@ -31465,7 +33144,7 @@ export const SupportedSecurityProvidersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SupportedSecurityProvidersInput =
@@ -31510,7 +33189,7 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/usages",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type UsagesListInput = typeof UsagesListInput.Type;
@@ -31588,7 +33267,7 @@ export const VerifierWorkspacesCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VerifierWorkspacesCreateInput =
@@ -31646,7 +33325,7 @@ export const VerifierWorkspacesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VerifierWorkspacesDeleteInput =
@@ -31686,7 +33365,7 @@ export const VerifierWorkspacesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VerifierWorkspacesGetInput = typeof VerifierWorkspacesGetInput.Type;
@@ -31746,7 +33425,7 @@ export const VerifierWorkspacesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VerifierWorkspacesListInput =
@@ -31828,7 +33507,7 @@ export const VerifierWorkspacesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VerifierWorkspacesUpdateInput =
@@ -31893,7 +33572,7 @@ export const VipSwapCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/microsoft.Compute/cloudServices/{resourceName}/providers/Microsoft.Network/cloudServiceSlots/{singletonResource}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VipSwapCreateInput = typeof VipSwapCreateInput.Type;
@@ -31925,7 +33604,7 @@ export const VipSwapGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/microsoft.Compute/cloudServices/{resourceName}/providers/Microsoft.Network/cloudServiceSlots/{singletonResource}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VipSwapGetInput = typeof VipSwapGetInput.Type;
@@ -31960,7 +33639,7 @@ export const VipSwapListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/microsoft.Compute/cloudServices/{resourceName}/providers/Microsoft.Network/cloudServiceSlots",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VipSwapListInput = typeof VipSwapListInput.Type;
@@ -32031,7 +33710,7 @@ export const VirtualApplianceSitesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualApplianceSitesCreateOrUpdateInput =
@@ -32071,7 +33750,7 @@ export const VirtualApplianceSitesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualApplianceSitesDeleteInput =
@@ -32110,7 +33789,7 @@ export const VirtualApplianceSitesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualApplianceSitesGetInput =
@@ -32150,7 +33829,7 @@ export const VirtualApplianceSitesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualApplianceSitesListInput =
@@ -32193,7 +33872,7 @@ export const VirtualApplianceSkusGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualApplianceSkus/{skuName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualApplianceSkusGetInput =
@@ -32233,7 +33912,7 @@ export const VirtualApplianceSkusListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualApplianceSkus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualApplianceSkusListInput =
@@ -32303,6 +33982,67 @@ export const VirtualHubBgpConnectionCreateOrUpdateInput =
             "NotConnected",
           ]),
         ),
+        routingConfiguration: Schema.optional(
+          Schema.Struct({
+            associatedRouteTable: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            propagatedRouteTables: Schema.optional(
+              Schema.Struct({
+                labels: Schema.optional(Schema.Array(Schema.String)),
+                ids: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            vnetRoutes: Schema.optional(
+              Schema.Struct({
+                staticRoutesConfig: Schema.optional(
+                  Schema.Struct({
+                    propagateStaticRoutes: Schema.optional(Schema.Boolean),
+                    vnetLocalRouteOverrideCriteria: Schema.optional(
+                      Schema.Literals(["Contains", "Equal"]),
+                    ),
+                  }),
+                ),
+                staticRoutes: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      addressPrefixes: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      nextHopIpAddress: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                bgpConnections: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            inboundRouteMap: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            outboundRouteMap: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
       }),
     ),
     etag: Schema.optional(Schema.String),
@@ -32312,7 +34052,7 @@ export const VirtualHubBgpConnectionCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubBgpConnectionCreateOrUpdateInput =
@@ -32352,7 +34092,7 @@ export const VirtualHubBgpConnectionDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubBgpConnectionDeleteInput =
@@ -32390,7 +34130,7 @@ export const VirtualHubBgpConnectionGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubBgpConnectionGetInput =
@@ -32430,7 +34170,7 @@ export const VirtualHubBgpConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubBgpConnectionsListInput =
@@ -32474,7 +34214,7 @@ export const VirtualHubBgpConnectionsListAdvertisedRoutesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/advertisedRoutes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubBgpConnectionsListAdvertisedRoutesInput =
@@ -32525,7 +34265,7 @@ export const VirtualHubBgpConnectionsListLearnedRoutesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{hubName}/bgpConnections/{connectionName}/learnedRoutes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubBgpConnectionsListLearnedRoutesInput =
@@ -32611,7 +34351,7 @@ export const VirtualHubIpConfigurationCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations/{ipConfigName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubIpConfigurationCreateOrUpdateInput =
@@ -32651,7 +34391,7 @@ export const VirtualHubIpConfigurationDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations/{ipConfigName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubIpConfigurationDeleteInput =
@@ -32689,7 +34429,7 @@ export const VirtualHubIpConfigurationGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations/{ipConfigName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubIpConfigurationGetInput =
@@ -32728,7 +34468,7 @@ export const VirtualHubIpConfigurationListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubIpConfigurationListInput =
@@ -32800,7 +34540,7 @@ export const VirtualHubRouteTableV2sCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables/{routeTableName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubRouteTableV2sCreateOrUpdateInput =
@@ -32840,7 +34580,7 @@ export const VirtualHubRouteTableV2sDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables/{routeTableName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubRouteTableV2sDeleteInput =
@@ -32878,7 +34618,7 @@ export const VirtualHubRouteTableV2sGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables/{routeTableName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubRouteTableV2sGetInput =
@@ -32918,7 +34658,7 @@ export const VirtualHubRouteTableV2sListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubRouteTableV2sListInput =
@@ -33073,7 +34813,7 @@ export const VirtualHubsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubsCreateOrUpdateInput =
@@ -33117,7 +34857,7 @@ export const VirtualHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VirtualHubsDeleteInput = typeof VirtualHubsDeleteInput.Type;
@@ -33148,7 +34888,7 @@ export const VirtualHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VirtualHubsGetInput = typeof VirtualHubsGetInput.Type;
@@ -33188,7 +34928,7 @@ export const VirtualHubsGetEffectiveVirtualHubRoutesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/effectiveRoutes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubsGetEffectiveVirtualHubRoutesInput =
@@ -33238,7 +34978,7 @@ export const VirtualHubsGetInboundRoutesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/inboundRoutes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubsGetInboundRoutesInput =
@@ -33287,7 +35027,7 @@ export const VirtualHubsGetOutboundRoutesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/outboundRoutes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubsGetOutboundRoutesInput =
@@ -33330,7 +35070,7 @@ export const VirtualHubsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualHubs",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VirtualHubsListInput = typeof VirtualHubsListInput.Type;
@@ -33370,7 +35110,7 @@ export const VirtualHubsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubsListByResourceGroupInput =
@@ -33417,7 +35157,7 @@ export const VirtualHubsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualHubsUpdateTagsInput = typeof VirtualHubsUpdateTagsInput.Type;
@@ -33458,13 +35198,16 @@ export const VirtualNetworkAppliancesCreateOrUpdateInput =
     virtualNetworkApplianceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
-        bandwidthInGbps: Schema.optional(Schema.String),
+        bandwidthInGbps: Schema.optional(Schema.Number),
         ipConfigurations: Schema.optional(
           Schema.Array(
             Schema.Struct({
               id: Schema.optional(Schema.String),
             }),
           ),
+        ),
+        privateIPAddressVersion: Schema.optional(
+          Schema.Literals(["IPv4", "DualStack"]),
         ),
         provisioningState: Schema.optional(
           Schema.Literals([
@@ -33494,7 +35237,7 @@ export const VirtualNetworkAppliancesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkAppliances/{virtualNetworkApplianceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkAppliancesCreateOrUpdateInput =
@@ -33536,7 +35279,7 @@ export const VirtualNetworkAppliancesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkAppliances/{virtualNetworkApplianceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkAppliancesDeleteInput =
@@ -33572,7 +35315,7 @@ export const VirtualNetworkAppliancesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkAppliances/{virtualNetworkApplianceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkAppliancesGetInput =
@@ -33614,7 +35357,7 @@ export const VirtualNetworkAppliancesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkAppliances",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkAppliancesListInput =
@@ -33658,7 +35401,7 @@ export const VirtualNetworkAppliancesListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworkAppliances",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkAppliancesListAllInput =
@@ -33704,7 +35447,7 @@ export const VirtualNetworkAppliancesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkAppliances/{virtualNetworkApplianceName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkAppliancesUpdateTagsInput =
@@ -33942,6 +35685,67 @@ export const VirtualNetworkGatewayConnectionsCreateOrUpdateInput =
           ),
         }),
       ),
+      routingConfiguration: Schema.optional(
+        Schema.Struct({
+          associatedRouteTable: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+          propagatedRouteTables: Schema.optional(
+            Schema.Struct({
+              labels: Schema.optional(Schema.Array(Schema.String)),
+              ids: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+          vnetRoutes: Schema.optional(
+            Schema.Struct({
+              staticRoutesConfig: Schema.optional(
+                Schema.Struct({
+                  propagateStaticRoutes: Schema.optional(Schema.Boolean),
+                  vnetLocalRouteOverrideCriteria: Schema.optional(
+                    Schema.Literals(["Contains", "Equal"]),
+                  ),
+                }),
+              ),
+              staticRoutes: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    addressPrefixes: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    nextHopIpAddress: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              bgpConnections: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+          inboundRouteMap: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+          outboundRouteMap: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
     }),
     etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -33953,7 +35757,7 @@ export const VirtualNetworkGatewayConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsCreateOrUpdateInput =
@@ -33995,7 +35799,7 @@ export const VirtualNetworkGatewayConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsDeleteInput =
@@ -34031,7 +35835,7 @@ export const VirtualNetworkGatewayConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsGetInput =
@@ -34073,7 +35877,7 @@ export const VirtualNetworkGatewayConnectionsGetIkeSasInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/getikesas",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsGetIkeSasInput =
@@ -34109,7 +35913,7 @@ export const VirtualNetworkGatewayConnectionsGetSharedKeyInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsGetSharedKeyInput =
@@ -34146,7 +35950,7 @@ export const VirtualNetworkGatewayConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsListInput =
@@ -34192,7 +35996,7 @@ export const VirtualNetworkGatewayConnectionsResetConnectionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/resetconnection",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsResetConnectionInput =
@@ -34229,7 +36033,7 @@ export const VirtualNetworkGatewayConnectionsResetSharedKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey/reset",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsResetSharedKeyInput =
@@ -34269,7 +36073,7 @@ export const VirtualNetworkGatewayConnectionsSetSharedKeyInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsSetSharedKeyInput =
@@ -34308,7 +36112,7 @@ export const VirtualNetworkGatewayConnectionsStartPacketCaptureInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/startPacketCapture",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsStartPacketCaptureInput =
@@ -34345,7 +36149,7 @@ export const VirtualNetworkGatewayConnectionsStopPacketCaptureInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/stopPacketCapture",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsStopPacketCaptureInput =
@@ -34382,7 +36186,7 @@ export const VirtualNetworkGatewayConnectionsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayConnectionsUpdateTagsInput =
@@ -34462,7 +36266,7 @@ export const VirtualNetworkGatewayNatRulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules/{natRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayNatRulesCreateOrUpdateInput =
@@ -34502,7 +36306,7 @@ export const VirtualNetworkGatewayNatRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules/{natRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayNatRulesDeleteInput =
@@ -34540,7 +36344,7 @@ export const VirtualNetworkGatewayNatRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules/{natRuleName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayNatRulesGetInput =
@@ -34579,7 +36383,7 @@ export const VirtualNetworkGatewayNatRulesListByVirtualNetworkGatewayInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewayNatRulesListByVirtualNetworkGatewayInput =
@@ -34970,7 +36774,7 @@ export const VirtualNetworkGatewaysCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysCreateOrUpdateInput =
@@ -35012,7 +36816,7 @@ export const VirtualNetworkGatewaysDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysDeleteInput =
@@ -35049,7 +36853,7 @@ export const VirtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnections
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/disconnectVirtualNetworkGatewayVpnConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnectionsInput =
@@ -35094,7 +36898,7 @@ export const VirtualNetworkGatewaysGeneratevpnclientpackageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnclientpackage",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGeneratevpnclientpackageInput =
@@ -35136,7 +36940,7 @@ export const VirtualNetworkGatewaysGenerateVpnProfileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnprofile",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGenerateVpnProfileInput =
@@ -35172,7 +36976,7 @@ export const VirtualNetworkGatewaysGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetInput =
@@ -35216,7 +37020,7 @@ export const VirtualNetworkGatewaysGetAdvertisedRoutesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getAdvertisedRoutes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetAdvertisedRoutesInput =
@@ -35268,7 +37072,7 @@ export const VirtualNetworkGatewaysGetBgpPeerStatusInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetBgpPeerStatusInput =
@@ -35330,7 +37134,7 @@ export const VirtualNetworkGatewaysGetFailoverAllTestDetailsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getFailoverAllTestsDetails",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetFailoverAllTestDetailsInput =
@@ -35415,7 +37219,7 @@ export const VirtualNetworkGatewaysGetFailoverSingleTestDetailsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getFailoverSingleTestDetails",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetFailoverSingleTestDetailsInput =
@@ -35491,7 +37295,7 @@ export const VirtualNetworkGatewaysGetLearnedRoutesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getLearnedRoutes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetLearnedRoutesInput =
@@ -35542,7 +37346,7 @@ export const VirtualNetworkGatewaysGetResiliencyInformationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getResiliencyInformation",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetResiliencyInformationInput =
@@ -35608,7 +37412,7 @@ export const VirtualNetworkGatewaysGetRoutesInformationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getRoutesInformation",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetRoutesInformationInput =
@@ -35679,7 +37483,7 @@ export const VirtualNetworkGatewaysGetVpnclientConnectionHealthInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getVpnClientConnectionHealth",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetVpnclientConnectionHealthInput =
@@ -35734,7 +37538,7 @@ export const VirtualNetworkGatewaysGetVpnclientIpsecParametersInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnclientipsecparameters",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetVpnclientIpsecParametersInput =
@@ -35830,7 +37634,7 @@ export const VirtualNetworkGatewaysGetVpnProfilePackageUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnprofilepackageurl",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysGetVpnProfilePackageUrlInput =
@@ -35866,7 +37670,7 @@ export const VirtualNetworkGatewaysInvokeAbortMigrationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/abortMigration",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysInvokeAbortMigrationInput =
@@ -35902,7 +37706,7 @@ export const VirtualNetworkGatewaysInvokeCommitMigrationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/commitMigration",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysInvokeCommitMigrationInput =
@@ -35938,7 +37742,7 @@ export const VirtualNetworkGatewaysInvokeExecuteMigrationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/executeMigration",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysInvokeExecuteMigrationInput =
@@ -35976,7 +37780,7 @@ export const VirtualNetworkGatewaysInvokePrepareMigrationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/prepareMigration",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysInvokePrepareMigrationInput =
@@ -36011,7 +37815,7 @@ export const VirtualNetworkGatewaysListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysListInput =
@@ -36058,7 +37862,7 @@ export const VirtualNetworkGatewaysListConnectionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/connections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysListConnectionsInput =
@@ -36105,7 +37909,7 @@ export const VirtualNetworkGatewaysListRadiusSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/listRadiusSecrets",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysListRadiusSecretsInput =
@@ -36150,7 +37954,7 @@ export const VirtualNetworkGatewaysResetInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/reset",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysResetInput =
@@ -36194,7 +37998,7 @@ export const VirtualNetworkGatewaysResetVpnClientSharedKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/resetvpnclientsharedkey",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysResetVpnClientSharedKeyInput =
@@ -36289,7 +38093,7 @@ export const VirtualNetworkGatewaysSetVpnclientIpsecParametersInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/setvpnclientipsecparameters",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysSetVpnclientIpsecParametersInput =
@@ -36386,7 +38190,7 @@ export const VirtualNetworkGatewaysStartExpressRouteSiteFailoverSimulationInput 
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/startSiteFailoverTest",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysStartExpressRouteSiteFailoverSimulationInput =
@@ -36426,7 +38230,7 @@ export const VirtualNetworkGatewaysStartPacketCaptureInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/startPacketCapture",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysStartPacketCaptureInput =
@@ -36473,7 +38277,7 @@ export const VirtualNetworkGatewaysStopExpressRouteSiteFailoverSimulationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/stopSiteFailoverTest",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysStopExpressRouteSiteFailoverSimulationInput =
@@ -36512,7 +38316,7 @@ export const VirtualNetworkGatewaysStopPacketCaptureInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/stopPacketCapture",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysStopPacketCaptureInput =
@@ -36548,7 +38352,7 @@ export const VirtualNetworkGatewaysSupportedVpnDevicesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/supportedvpndevices",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysSupportedVpnDevicesInput =
@@ -36585,7 +38389,7 @@ export const VirtualNetworkGatewaysUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysUpdateTagsInput =
@@ -36631,7 +38435,7 @@ export const VirtualNetworkGatewaysVpnDeviceConfigurationScriptInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/vpndeviceconfigurationscript",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkGatewaysVpnDeviceConfigurationScriptInput =
@@ -36806,7 +38610,7 @@ export const VirtualNetworkPeeringsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkPeeringsCreateOrUpdateInput =
@@ -36847,7 +38651,7 @@ export const VirtualNetworkPeeringsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkPeeringsDeleteInput =
@@ -36885,7 +38689,7 @@ export const VirtualNetworkPeeringsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkPeeringsGetInput =
@@ -36925,7 +38729,7 @@ export const VirtualNetworkPeeringsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkPeeringsListInput =
@@ -36970,7 +38774,7 @@ export const VirtualNetworksCheckIPAddressAvailabilityInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/checkIPAddressAvailability",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworksCheckIPAddressAvailabilityInput =
@@ -37109,6 +38913,26 @@ export const VirtualNetworksCreateOrUpdateInput =
             id: Schema.optional(Schema.String),
           }),
         ),
+        summarizedGatewayPrefixes: Schema.optional(
+          Schema.Struct({
+            addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
+            ipamPoolPrefixAllocations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  pool: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  numberOfIpAddresses: Schema.optional(Schema.String),
+                  allocatedAddressPrefixes: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
       }),
     ),
     extendedLocation: Schema.optional(
@@ -37127,7 +38951,7 @@ export const VirtualNetworksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworksCreateOrUpdateInput =
@@ -37169,7 +38993,7 @@ export const VirtualNetworksDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
@@ -37206,7 +39030,7 @@ export const VirtualNetworksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworksGetInput = typeof VirtualNetworksGetInput.Type;
@@ -37245,7 +39069,7 @@ export const VirtualNetworksListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworksListInput = typeof VirtualNetworksListInput.Type;
@@ -37286,7 +39110,7 @@ export const VirtualNetworksListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworksListAllInput =
@@ -37334,7 +39158,7 @@ export const VirtualNetworksListDdosProtectionStatusInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/ddosProtectionStatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworksListDdosProtectionStatusInput =
@@ -37384,7 +39208,7 @@ export const VirtualNetworksListUsageInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/usages",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworksListUsageInput =
@@ -37438,7 +39262,7 @@ export const VirtualNetworksUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworksUpdateTagsInput =
@@ -37521,7 +39345,7 @@ export const VirtualNetworkTapsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkTapsCreateOrUpdateInput =
@@ -37563,7 +39387,7 @@ export const VirtualNetworkTapsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkTapsDeleteInput =
@@ -37600,7 +39424,7 @@ export const VirtualNetworkTapsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkTapsGetInput = typeof VirtualNetworkTapsGetInput.Type;
@@ -37640,7 +39464,7 @@ export const VirtualNetworkTapsListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworkTaps",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkTapsListAllInput =
@@ -37685,7 +39509,7 @@ export const VirtualNetworkTapsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkTapsListByResourceGroupInput =
@@ -37732,7 +39556,7 @@ export const VirtualNetworkTapsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualNetworkTapsUpdateTagsInput =
@@ -37795,7 +39619,7 @@ export const VirtualRouterPeeringsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualRouterPeeringsCreateOrUpdateInput =
@@ -37835,7 +39659,7 @@ export const VirtualRouterPeeringsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualRouterPeeringsDeleteInput =
@@ -37874,7 +39698,7 @@ export const VirtualRouterPeeringsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualRouterPeeringsGetInput =
@@ -37914,7 +39738,7 @@ export const VirtualRouterPeeringsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualRouterPeeringsListInput =
@@ -37997,7 +39821,7 @@ export const VirtualRoutersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualRoutersCreateOrUpdateInput =
@@ -38039,7 +39863,7 @@ export const VirtualRoutersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualRoutersDeleteInput = typeof VirtualRoutersDeleteInput.Type;
@@ -38076,7 +39900,7 @@ export const VirtualRoutersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VirtualRoutersGetInput = typeof VirtualRoutersGetInput.Type;
@@ -38114,7 +39938,7 @@ export const VirtualRoutersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualRouters",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualRoutersListInput = typeof VirtualRoutersListInput.Type;
@@ -38155,7 +39979,7 @@ export const VirtualRoutersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualRoutersListByResourceGroupInput =
@@ -38242,7 +40066,7 @@ export const VirtualWansCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualWansCreateOrUpdateInput =
@@ -38286,7 +40110,7 @@ export const VirtualWansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VirtualWansDeleteInput = typeof VirtualWansDeleteInput.Type;
@@ -38317,7 +40141,7 @@ export const VirtualWansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VirtualWansGetInput = typeof VirtualWansGetInput.Type;
@@ -38352,7 +40176,7 @@ export const VirtualWansListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualWans",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VirtualWansListInput = typeof VirtualWansListInput.Type;
@@ -38392,7 +40216,7 @@ export const VirtualWansListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualWansListByResourceGroupInput =
@@ -38439,7 +40263,7 @@ export const VirtualWansUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VirtualWansUpdateTagsInput = typeof VirtualWansUpdateTagsInput.Type;
@@ -38668,7 +40492,7 @@ export const VpnConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnConnectionsCreateOrUpdateInput =
@@ -38708,7 +40532,7 @@ export const VpnConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnConnectionsDeleteInput = typeof VpnConnectionsDeleteInput.Type;
@@ -38746,7 +40570,7 @@ export const VpnConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VpnConnectionsGetInput = typeof VpnConnectionsGetInput.Type;
@@ -38782,7 +40606,7 @@ export const VpnConnectionsListByVpnGatewayInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnConnectionsListByVpnGatewayInput =
@@ -38828,7 +40652,7 @@ export const VpnConnectionsStartPacketCaptureInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/startpacketcapture",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnConnectionsStartPacketCaptureInput =
@@ -38868,7 +40692,7 @@ export const VpnConnectionsStopPacketCaptureInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{vpnConnectionName}/stoppacketcapture",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnConnectionsStopPacketCaptureInput =
@@ -38979,7 +40803,7 @@ export const VpnGatewaysCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnGatewaysCreateOrUpdateInput =
@@ -39023,7 +40847,7 @@ export const VpnGatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VpnGatewaysDeleteInput = typeof VpnGatewaysDeleteInput.Type;
@@ -39054,7 +40878,7 @@ export const VpnGatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VpnGatewaysGetInput = typeof VpnGatewaysGetInput.Type;
@@ -39089,7 +40913,7 @@ export const VpnGatewaysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/vpnGateways",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VpnGatewaysListInput = typeof VpnGatewaysListInput.Type;
@@ -39129,7 +40953,7 @@ export const VpnGatewaysListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnGatewaysListByResourceGroupInput =
@@ -39175,7 +40999,7 @@ export const VpnGatewaysResetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/reset",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VpnGatewaysResetInput = typeof VpnGatewaysResetInput.Type;
@@ -39217,7 +41041,7 @@ export const VpnGatewaysStartPacketCaptureInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/startpacketcapture",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnGatewaysStartPacketCaptureInput =
@@ -39254,7 +41078,7 @@ export const VpnGatewaysStopPacketCaptureInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/stoppacketcapture",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnGatewaysStopPacketCaptureInput =
@@ -39291,7 +41115,7 @@ export const VpnGatewaysUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnGatewaysUpdateTagsInput = typeof VpnGatewaysUpdateTagsInput.Type;
@@ -39336,7 +41160,7 @@ export const VpnLinkConnectionsGetAllSharedKeysInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/sharedKeys",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnLinkConnectionsGetAllSharedKeysInput =
@@ -39383,7 +41207,7 @@ export const VpnLinkConnectionsGetDefaultSharedKeyInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/sharedKeys/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnLinkConnectionsGetDefaultSharedKeyInput =
@@ -39425,7 +41249,7 @@ export const VpnLinkConnectionsGetIkeSasInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/getikesas",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnLinkConnectionsGetIkeSasInput =
@@ -39465,7 +41289,7 @@ export const VpnLinkConnectionsListByVpnConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnLinkConnectionsListByVpnConnectionInput =
@@ -39511,7 +41335,7 @@ export const VpnLinkConnectionsListDefaultSharedKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/sharedKeys/default/listSharedKey",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnLinkConnectionsListDefaultSharedKeyInput =
@@ -39553,7 +41377,7 @@ export const VpnLinkConnectionsResetConnectionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/resetconnection",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnLinkConnectionsResetConnectionInput =
@@ -39611,7 +41435,7 @@ export const VpnLinkConnectionsSetOrInitDefaultSharedKeyInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/sharedKeys/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnLinkConnectionsSetOrInitDefaultSharedKeyInput =
@@ -39651,7 +41475,7 @@ export const VpnServerConfigurationsAssociatedWithVirtualWanListInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnServerConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnServerConfigurationsAssociatedWithVirtualWanListInput =
@@ -39845,7 +41669,7 @@ export const VpnServerConfigurationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnServerConfigurationsCreateOrUpdateInput =
@@ -39887,7 +41711,7 @@ export const VpnServerConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnServerConfigurationsDeleteInput =
@@ -39923,7 +41747,7 @@ export const VpnServerConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnServerConfigurationsGetInput =
@@ -39964,7 +41788,7 @@ export const VpnServerConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/vpnServerConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnServerConfigurationsListInput =
@@ -40009,7 +41833,7 @@ export const VpnServerConfigurationsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnServerConfigurationsListByResourceGroupInput =
@@ -40055,7 +41879,7 @@ export const VpnServerConfigurationsListRadiusSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}/listRadiusSecrets",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnServerConfigurationsListRadiusSecretsInput =
@@ -40100,7 +41924,7 @@ export const VpnServerConfigurationsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnServerConfigurationsUpdateTagsInput =
@@ -40145,7 +41969,7 @@ export const VpnSiteLinkConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnSiteLinkConnectionsGetInput =
@@ -40186,7 +42010,7 @@ export const VpnSiteLinksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}/vpnSiteLinks/{vpnSiteLinkName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VpnSiteLinksGetInput = typeof VpnSiteLinksGetInput.Type;
@@ -40221,7 +42045,7 @@ export const VpnSiteLinksListByVpnSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}/vpnSiteLinks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnSiteLinksListByVpnSiteInput =
@@ -40267,7 +42091,7 @@ export const VpnSitesConfigurationDownloadInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnSitesConfigurationDownloadInput =
@@ -40399,7 +42223,7 @@ export const VpnSitesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnSitesCreateOrUpdateInput =
@@ -40441,7 +42265,7 @@ export const VpnSitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VpnSitesDeleteInput = typeof VpnSitesDeleteInput.Type;
@@ -40472,7 +42296,7 @@ export const VpnSitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VpnSitesGetInput = typeof VpnSitesGetInput.Type;
@@ -40507,7 +42331,7 @@ export const VpnSitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/vpnSites",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type VpnSitesListInput = typeof VpnSitesListInput.Type;
@@ -40547,7 +42371,7 @@ export const VpnSitesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnSitesListByResourceGroupInput =
@@ -40595,7 +42419,7 @@ export const VpnSitesUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type VpnSitesUpdateTagsInput = typeof VpnSitesUpdateTagsInput.Type;
@@ -40675,7 +42499,7 @@ export const WebApplicationFirewallPoliciesCreateOrUpdateInput =
               }),
             ),
             jsChallengeCookieExpirationInMins: Schema.optional(Schema.Number),
-            captchaCookieExpirationInMins: Schema.optional(Schema.Number),
+            captchaExpirationInMins: Schema.optional(Schema.Number),
           }),
         ),
         customRules: Schema.optional(
@@ -40978,7 +42802,7 @@ export const WebApplicationFirewallPoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WebApplicationFirewallPoliciesCreateOrUpdateInput =
@@ -41020,7 +42844,7 @@ export const WebApplicationFirewallPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WebApplicationFirewallPoliciesDeleteInput =
@@ -41056,7 +42880,7 @@ export const WebApplicationFirewallPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WebApplicationFirewallPoliciesGetInput =
@@ -41097,7 +42921,7 @@ export const WebApplicationFirewallPoliciesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WebApplicationFirewallPoliciesListInput =
@@ -41141,7 +42965,7 @@ export const WebApplicationFirewallPoliciesListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WebApplicationFirewallPoliciesListAllInput =
@@ -41185,7 +43009,7 @@ export const WebCategoriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureWebCategories/{name}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2025-07-01",
   }),
 );
 export type WebCategoriesGetInput = typeof WebCategoriesGetInput.Type;
@@ -41222,7 +43046,7 @@ export const WebCategoriesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureWebCategories",
-      apiVersion: "2025-05-01",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WebCategoriesListBySubscriptionInput =

@@ -8,6 +8,8 @@ export const GetV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   projectId: Schema.optional(Schema.String),
+  branchId: Schema.optional(Schema.String),
+  branchGitName: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "GET", path: "/v1/databases" }));
 export type GetV1DatabasesInput = typeof GetV1DatabasesInput.Type;
 
@@ -84,6 +86,7 @@ export const GetV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
       ),
       source: Schema.Unknown,
+      branchId: Schema.NullOr(Schema.String),
     }),
   ),
   pagination: Schema.Struct({

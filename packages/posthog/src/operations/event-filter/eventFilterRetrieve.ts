@@ -1,17 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const EventFilterRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/environments/{project_id}/event_filter/",
-    }),
+    T.Http({ method: "GET", path: "/api/projects/{project_id}/event_filter/" }),
   );
 export type EventFilterRetrieveInput = typeof EventFilterRetrieveInput.Type;
 
@@ -20,7 +16,7 @@ export const EventFilterRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.Literals(["disabled", "dry_run", "live"])),
-    filter_tree: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    filter_tree: Schema.optional(Schema.Unknown),
     test_cases: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
@@ -36,5 +32,4 @@ export type EventFilterRetrieveOutput = typeof EventFilterRetrieveOutput.Type;
 export const eventFilterRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EventFilterRetrieveInput,
   outputSchema: EventFilterRetrieveOutput,
-  errors: [Forbidden, NotFound] as const,
 }));

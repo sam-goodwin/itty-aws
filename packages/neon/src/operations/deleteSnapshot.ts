@@ -22,7 +22,7 @@ export type DeleteSnapshotOutput = typeof DeleteSnapshotOutput.Type;
 /**
  * Delete snapshot
  *
- * Delete the specified snapshot.
+ * Deletes the specified snapshot.
  * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID

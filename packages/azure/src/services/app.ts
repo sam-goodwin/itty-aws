@@ -1843,9 +1843,9 @@ export type AvailableWorkloadProfilesGetOutput =
  *
  * Get all available workload profiles for a location.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
  */
 export const AvailableWorkloadProfilesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1909,9 +1909,9 @@ export type BillingMetersGetOutput = typeof BillingMetersGetOutput.Type;
  *
  * Get all billingMeters for a location.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
  */
 export const BillingMetersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BillingMetersGetInput,
@@ -1995,12 +1995,11 @@ export type CertificatesCreateOrUpdateOutput =
 /**
  * Create or Update a Certificate.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
  * @param certificateName - Name of the Certificate.
- * @param api-version - The API version to use for this operation.
- * @param properties - Certificate resource specific properties
  */
 export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2032,11 +2031,11 @@ export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
 /**
  * Deletes the specified Certificate.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
  * @param certificateName - Name of the Certificate.
- * @param api-version - The API version to use for this operation.
  */
 export const CertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesDeleteInput,
@@ -2083,11 +2082,11 @@ export type CertificatesGetOutput = typeof CertificatesGetOutput.Type;
 /**
  * Get the specified Certificate.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
  * @param certificateName - Name of the Certificate.
- * @param api-version - The API version to use for this operation.
  */
 export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesGetInput,
@@ -2150,10 +2149,10 @@ export type CertificatesListOutput = typeof CertificatesListOutput.Type;
 /**
  * Get the Certificates in a given managed environment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
- * @param api-version - The API version to use for this operation.
  */
 export const CertificatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesListInput,
@@ -2205,12 +2204,11 @@ export type CertificatesUpdateOutput = typeof CertificatesUpdateOutput.Type;
  *
  * Patches a certificate. Currently only patching of tags is supported
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
  * @param certificateName - Name of the Certificate.
- * @param api-version - The API version to use for this operation.
- * @param tags - Application-specific metadata in the form of key-value pairs.
  */
 export const CertificatesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesUpdateInput,
@@ -2294,12 +2292,11 @@ export type ConnectedEnvironmentsCertificatesCreateOrUpdateOutput =
 /**
  * Create or Update a Certificate.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the Connected Environment.
  * @param certificateName - Name of the Certificate.
- * @param api-version - The API version to use for this operation.
- * @param properties - Certificate resource specific properties
  */
 export const ConnectedEnvironmentsCertificatesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2333,11 +2330,11 @@ export type ConnectedEnvironmentsCertificatesDeleteOutput =
 /**
  * Deletes the specified Certificate.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the Connected Environment.
  * @param certificateName - Name of the Certificate.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsCertificatesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2389,11 +2386,11 @@ export type ConnectedEnvironmentsCertificatesGetOutput =
 /**
  * Get the specified Certificate.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the Connected Environment.
  * @param certificateName - Name of the Certificate.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsCertificatesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2459,10 +2456,10 @@ export type ConnectedEnvironmentsCertificatesListOutput =
 /**
  * Get the Certificates in a given connected environment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the Connected Environment.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsCertificatesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2517,12 +2514,11 @@ export type ConnectedEnvironmentsCertificatesUpdateOutput =
  *
  * Patches a certificate. Currently only patching of tags is supported
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the Connected Environment.
  * @param certificateName - Name of the Certificate.
- * @param api-version - The API version to use for this operation.
- * @param tags - Application-specific metadata in the form of key-value pairs.
  */
 export const ConnectedEnvironmentsCertificatesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2563,10 +2559,10 @@ export type ConnectedEnvironmentsCheckNameAvailabilityOutput =
  *
  * Checks if resource connectedEnvironmentName is available.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param connectedEnvironmentName - Name of the Managed Environment.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectedEnvironmentName - Name of the connectedEnvironment.
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
@@ -2581,12 +2577,6 @@ export const ConnectedEnvironmentsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectedEnvironmentName: Schema.String.pipe(T.PathParam()),
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["CustomLocation"])),
-      }),
-    ),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -2622,6 +2612,12 @@ export const ConnectedEnvironmentsCreateOrUpdateInput =
             subjectName: Schema.optional(Schema.String),
           }),
         ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["CustomLocation"])),
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2664,10 +2660,10 @@ export type ConnectedEnvironmentsCreateOrUpdateOutput =
 /**
  * Creates or updates an connectedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the connectedEnvironment.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2760,12 +2756,11 @@ export type ConnectedEnvironmentsDaprComponentsCreateOrUpdateOutput =
  *
  * Creates or updates a Dapr Component in a connected environment.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param connectedEnvironmentName - Name of the connected environment.
- * @param componentName - Name of the Dapr Component.
  * @param api-version - The API version to use for this operation.
- * @param properties - Dapr Component resource specific properties
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectedEnvironmentName - Name of the connectedEnvironment.
+ * @param componentName - Name of the Dapr Component.
  */
 export const ConnectedEnvironmentsDaprComponentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2801,11 +2796,11 @@ export type ConnectedEnvironmentsDaprComponentsDeleteOutput =
  *
  * Delete a Dapr Component from a connected environment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the connected environment.
  * @param componentName - Name of the Dapr Component.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsDaprComponentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2857,11 +2852,11 @@ export type ConnectedEnvironmentsDaprComponentsGetOutput =
 /**
  * Get a dapr component.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the connected environment.
  * @param componentName - Name of the Dapr Component.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsDaprComponentsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2927,10 +2922,10 @@ export type ConnectedEnvironmentsDaprComponentsListOutput =
 /**
  * Get the Dapr Components for a connected environment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the connected environment.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsDaprComponentsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2971,11 +2966,11 @@ export type ConnectedEnvironmentsDaprComponentsListSecretsOutput =
 /**
  * List secrets for a dapr component
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the connected environment.
  * @param componentName - Name of the Dapr Component.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsDaprComponentsListSecrets =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3008,10 +3003,10 @@ export type ConnectedEnvironmentsDeleteOutput =
 /**
  * Delete an connectedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the connectedEnvironment.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3063,10 +3058,10 @@ export type ConnectedEnvironmentsGetOutput =
 /**
  * Get the properties of an connectedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the connectedEnvironment.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3092,38 +3087,36 @@ export type ConnectedEnvironmentsListByResourceGroupInput =
 // Output Schema
 export const ConnectedEnvironmentsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3134,9 +3127,9 @@ export type ConnectedEnvironmentsListByResourceGroupOutput =
 /**
  * Get all connectedEnvironments in a resource group.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ConnectedEnvironmentsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3160,38 +3153,36 @@ export type ConnectedEnvironmentsListBySubscriptionInput =
 // Output Schema
 export const ConnectedEnvironmentsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3202,8 +3193,8 @@ export type ConnectedEnvironmentsListBySubscriptionOutput =
 /**
  * Get all connectedEnvironments for a subscription.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ConnectedEnvironmentsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3219,6 +3210,16 @@ export const ConnectedEnvironmentsStoragesCreateOrUpdateInput =
     storageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+        deploymentErrors: Schema.optional(Schema.String),
         azureFile: Schema.optional(
           Schema.Struct({
             accountName: Schema.optional(Schema.String),
@@ -3235,16 +3236,6 @@ export const ConnectedEnvironmentsStoragesCreateOrUpdateInput =
             shareName: Schema.optional(Schema.String),
           }),
         ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "InProgress",
-            "Deleting",
-          ]),
-        ),
-        deploymentErrors: Schema.optional(Schema.String),
       }),
     ),
   }).pipe(
@@ -3285,11 +3276,11 @@ export type ConnectedEnvironmentsStoragesCreateOrUpdateOutput =
 /**
  * Create or update storage for a connectedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param connectedEnvironmentName - Name of the Environment.
- * @param storageName - Name of the storage.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectedEnvironmentName - Name of the connectedEnvironment.
+ * @param storageName - Name of the storage.
  */
 export const ConnectedEnvironmentsStoragesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3323,11 +3314,11 @@ export type ConnectedEnvironmentsStoragesDeleteOutput =
 /**
  * Delete storage for a connectedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param connectedEnvironmentName - Name of the Environment.
- * @param storageName - Name of the storage.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectedEnvironmentName - Name of the connectedEnvironment.
+ * @param storageName - Name of the storage.
  */
 export const ConnectedEnvironmentsStoragesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3379,11 +3370,11 @@ export type ConnectedEnvironmentsStoragesGetOutput =
 /**
  * Get storage for a connectedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param connectedEnvironmentName - Name of the Environment.
- * @param storageName - Name of the storage.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectedEnvironmentName - Name of the connectedEnvironment.
+ * @param storageName - Name of the storage.
  */
 export const ConnectedEnvironmentsStoragesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3448,10 +3439,10 @@ export type ConnectedEnvironmentsStoragesListOutput =
 /**
  * Get all storages for a connectedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param connectedEnvironmentName - Name of the Environment.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectedEnvironmentName - Name of the connectedEnvironment.
  */
 export const ConnectedEnvironmentsStoragesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3505,10 +3496,10 @@ export type ConnectedEnvironmentsUpdateOutput =
  *
  * Patches a Managed Environment. Only patching of tags is supported currently
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectedEnvironmentName - Name of the connectedEnvironment.
- * @param api-version - The API version to use for this operation.
  */
 export const ConnectedEnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3850,11 +3841,11 @@ export type ContainerAppsAuthConfigsCreateOrUpdateOutput =
 /**
  * Create or update the AuthConfig for a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param authConfigName - Name of the Container App AuthConfig.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsAuthConfigsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3888,11 +3879,11 @@ export type ContainerAppsAuthConfigsDeleteOutput =
 /**
  * Delete a Container App AuthConfig.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param authConfigName - Name of the Container App AuthConfig.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsAuthConfigsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3944,11 +3935,11 @@ export type ContainerAppsAuthConfigsGetOutput =
 /**
  * Get a AuthConfig of a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param authConfigName - Name of the Container App AuthConfig.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsAuthConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4015,10 +4006,10 @@ export type ContainerAppsAuthConfigsListByContainerAppOutput =
 /**
  * Get the Container App AuthConfigs in a given resource group.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsAuthConfigsListByContainerApp =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4031,37 +4022,6 @@ export const ContainerAppsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerAppName: Schema.String.pipe(T.PathParam()),
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["CustomLocation"])),
-      }),
-    ),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                principalId: Schema.optional(Schema.String),
-                clientId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
-    managedBy: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.Literals(["workflowapp", "functionapp"])),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -4234,7 +4194,7 @@ export const ContainerAppsCreateOrUpdateInput =
                 Schema.Struct({
                   identity: Schema.String,
                   lifecycle: Schema.optional(
-                    Schema.Literals(["Init", "Main", "None", "All"]),
+                    Schema.Literals(["None", "Main", "Init", "All"]),
                   ),
                 }),
               ),
@@ -4442,6 +4402,35 @@ export const ContainerAppsCreateOrUpdateInput =
         eventStreamEndpoint: Schema.optional(Schema.String),
       }),
     ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.Literals(["workflowapp", "functionapp"])),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -4482,10 +4471,10 @@ export type ContainerAppsCreateOrUpdateOutput =
 /**
  * Create or update a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4517,10 +4506,10 @@ export type ContainerAppsDeleteOutput = typeof ContainerAppsDeleteOutput.Type;
 /**
  * Delete a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContainerAppsDeleteInput,
@@ -4571,11 +4560,11 @@ export type ContainerAppsDiagnosticsGetDetectorOutput =
 /**
  * Get a diagnostics result of a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
- * @param detectorName - Name of the Container App Detector.
- * @param api-version - The API version to use for this operation.
+ * @param detectorName - Name of the detector.
  */
 export const ContainerAppsDiagnosticsGetDetector =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4627,11 +4616,11 @@ export type ContainerAppsDiagnosticsGetRevisionOutput =
 /**
  * Get a revision of a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
- * @param revisionName - Name of the Container App Revision.
- * @param api-version - The API version to use for this operation.
+ * @param revisionName - Name of the detector.
  */
 export const ContainerAppsDiagnosticsGetRevision =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4682,10 +4671,10 @@ export type ContainerAppsDiagnosticsGetRootOutput =
 /**
  * Get the properties of a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsDiagnosticsGetRoot =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4751,10 +4740,10 @@ export type ContainerAppsDiagnosticsListDetectorsOutput =
 /**
  * Get the list of diagnostics for a given Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param containerAppName - Name of the Container App for which detector info is needed.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param containerAppName - Name of the Container App.
  */
 export const ContainerAppsDiagnosticsListDetectors =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4821,10 +4810,12 @@ export type ContainerAppsDiagnosticsListRevisionsOutput =
 /**
  * Get the Revisions for a given Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param containerAppName - Name of the Container App for which Revisions are needed.
+ * A synchronous resource action.
+ *
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param containerAppName - Name of the Container App.
  * @param $filter - The filter to apply on the operation.
  */
 export const ContainerAppsDiagnosticsListRevisions =
@@ -4874,10 +4865,10 @@ export type ContainerAppsGetOutput = typeof ContainerAppsGetOutput.Type;
 /**
  * Get the properties of a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContainerAppsGetInput,
@@ -4927,9 +4918,9 @@ export type ContainerAppsGetAuthTokenOutput =
 /**
  * Get auth token for a container app
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  */
 export const ContainerAppsGetAuthToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4996,9 +4987,9 @@ export type ContainerAppsListByResourceGroupOutput =
 /**
  * Get the Container Apps in a given resource group.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ContainerAppsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5062,8 +5053,8 @@ export type ContainerAppsListBySubscriptionOutput =
 /**
  * Get the Container Apps in a given subscription.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ContainerAppsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5127,11 +5118,11 @@ export type ContainerAppsListCustomHostNameAnalysisOutput =
 /**
  * Analyzes a custom hostname for a Container App
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param customHostname - Custom hostname.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsListCustomHostNameAnalysis =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5173,9 +5164,9 @@ export type ContainerAppsListSecretsOutput =
 /**
  * List secrets for a container app
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  */
 export const ContainerAppsListSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5230,12 +5221,12 @@ export type ContainerAppsRevisionReplicasGetReplicaOutput =
 /**
  * Get a replica for a Container App Revision.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param revisionName - Name of the Container App Revision.
  * @param replicaName - Name of the Container App Revision Replica.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsRevisionReplicasGetReplica =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5301,11 +5292,11 @@ export type ContainerAppsRevisionReplicasListReplicasOutput =
 /**
  * List replicas for a Container App Revision.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param revisionName - Name of the Container App Revision.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsRevisionReplicasListReplicas =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5339,11 +5330,11 @@ export type ContainerAppsRevisionsActivateRevisionOutput =
 /**
  * Activates a revision for a Container App
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param revisionName - Name of the Container App Revision.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsRevisionsActivateRevision =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5377,11 +5368,11 @@ export type ContainerAppsRevisionsDeactivateRevisionOutput =
 /**
  * Deactivates a revision for a Container App
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param revisionName - Name of the Container App Revision.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsRevisionsDeactivateRevision =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5433,11 +5424,11 @@ export type ContainerAppsRevisionsGetRevisionOutput =
 /**
  * Get a revision of a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param revisionName - Name of the Container App Revision.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsRevisionsGetRevision =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5504,10 +5495,10 @@ export type ContainerAppsRevisionsListRevisionsOutput =
 /**
  * Get the Revisions for a given Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param containerAppName - Name of the Container App for which Revisions are needed.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param containerAppName - Name of the Container App.
  * @param $filter - The filter to apply on the operation.
  */
 export const ContainerAppsRevisionsListRevisions =
@@ -5542,11 +5533,11 @@ export type ContainerAppsRevisionsRestartRevisionOutput =
 /**
  * Restarts a revision for a Container App
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param revisionName - Name of the Container App Revision.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsRevisionsRestartRevision =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5558,29 +5549,7 @@ export const ContainerAppsSessionPoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                principalId: Schema.optional(Schema.String),
-                clientId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
+    sessionPoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         environmentId: Schema.optional(Schema.String),
@@ -5687,6 +5656,27 @@ export const ContainerAppsSessionPoolsCreateOrUpdateInput =
         ),
       }),
     ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -5729,9 +5719,10 @@ export type ContainerAppsSessionPoolsCreateOrUpdateOutput =
  *
  * Create or update a session pool with the given properties.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param sessionPoolName - Name of the session pool.
  */
 export const ContainerAppsSessionPoolsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5743,6 +5734,7 @@ export const ContainerAppsSessionPoolsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sessionPoolName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5765,9 +5757,10 @@ export type ContainerAppsSessionPoolsDeleteOutput =
  *
  * Delete the session pool with the given name.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param sessionPoolName - Name of the session pool.
  */
 export const ContainerAppsSessionPoolsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5779,6 +5772,7 @@ export const ContainerAppsSessionPoolsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sessionPoolName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5817,9 +5811,10 @@ export type ContainerAppsSessionPoolsGetOutput =
 /**
  * Get the properties of a session pool.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param sessionPoolName - Name of the session pool.
  */
 export const ContainerAppsSessionPoolsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5884,9 +5879,9 @@ export type ContainerAppsSessionPoolsListByResourceGroupOutput =
 /**
  * Get the session pools in a given resource group of a subscription.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsSessionPoolsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5950,8 +5945,8 @@ export type ContainerAppsSessionPoolsListBySubscriptionOutput =
 /**
  * Get the session pools in a given subscription.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ContainerAppsSessionPoolsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5963,6 +5958,7 @@ export const ContainerAppsSessionPoolsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sessionPoolName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
@@ -5975,14 +5971,12 @@ export const ContainerAppsSessionPoolsUpdateInput =
           "SystemAssigned,UserAssigned",
         ]),
         userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                principalId: Schema.optional(Schema.String),
-                clientId: Schema.optional(Schema.String),
-              }),
-            ),
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
           ),
         ),
       }),
@@ -6107,9 +6101,10 @@ export type ContainerAppsSessionPoolsUpdateOutput =
  *
  * Patches a session pool using JSON merge patch
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param sessionPoolName - Name of the session pool.
  */
 export const ContainerAppsSessionPoolsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6197,11 +6192,11 @@ export type ContainerAppsSourceControlsCreateOrUpdateOutput =
 /**
  * Create or update the SourceControl for a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param sourceControlName - Name of the Container App SourceControl.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsSourceControlsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6235,11 +6230,11 @@ export type ContainerAppsSourceControlsDeleteOutput =
 /**
  * Delete a Container App SourceControl.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param sourceControlName - Name of the Container App SourceControl.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsSourceControlsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6291,11 +6286,11 @@ export type ContainerAppsSourceControlsGetOutput =
 /**
  * Get a SourceControl of a Container App.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  * @param sourceControlName - Name of the Container App SourceControl.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsSourceControlsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6361,10 +6356,10 @@ export type ContainerAppsSourceControlsListByContainerAppOutput =
 /**
  * Get the Container App SourceControls in a given resource group.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsSourceControlsListByContainerApp =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6413,9 +6408,9 @@ export type ContainerAppsStartOutput = typeof ContainerAppsStartOutput.Type;
 /**
  * Start a container app
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  */
 export const ContainerAppsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6465,9 +6460,9 @@ export type ContainerAppsStopOutput = typeof ContainerAppsStopOutput.Type;
 /**
  * Stop a container app
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
  */
 export const ContainerAppsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6480,37 +6475,6 @@ export const ContainerAppsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerAppName: Schema.String.pipe(T.PathParam()),
-    extendedLocation: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["CustomLocation"])),
-      }),
-    ),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                principalId: Schema.optional(Schema.String),
-                clientId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
-    managedBy: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.Literals(["workflowapp", "functionapp"])),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -6683,7 +6647,7 @@ export const ContainerAppsUpdateInput =
                 Schema.Struct({
                   identity: Schema.String,
                   lifecycle: Schema.optional(
-                    Schema.Literals(["Init", "Main", "None", "All"]),
+                    Schema.Literals(["None", "Main", "Init", "All"]),
                   ),
                 }),
               ),
@@ -6891,6 +6855,35 @@ export const ContainerAppsUpdateInput =
         eventStreamEndpoint: Schema.optional(Schema.String),
       }),
     ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.Literals(["workflowapp", "functionapp"])),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -6931,10 +6924,10 @@ export type ContainerAppsUpdateOutput = typeof ContainerAppsUpdateOutput.Type;
  *
  * Patches a Container App using JSON Merge Patch
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerAppName - Name of the Container App.
- * @param api-version - The API version to use for this operation.
  */
 export const ContainerAppsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContainerAppsUpdateInput,
@@ -7026,12 +7019,11 @@ export type DaprComponentsCreateOrUpdateOutput =
  *
  * Creates or updates a Dapr Component in a Managed Environment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
  * @param componentName - Name of the Dapr Component.
- * @param api-version - The API version to use for this operation.
- * @param properties - Dapr Component resource specific properties
  */
 export const DaprComponentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7065,11 +7057,11 @@ export type DaprComponentsDeleteOutput = typeof DaprComponentsDeleteOutput.Type;
  *
  * Delete a Dapr Component from a Managed Environment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
  * @param componentName - Name of the Dapr Component.
- * @param api-version - The API version to use for this operation.
  */
 export const DaprComponentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7121,11 +7113,11 @@ export type DaprComponentsGetOutput = typeof DaprComponentsGetOutput.Type;
 /**
  * Get a dapr component.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
  * @param componentName - Name of the Dapr Component.
- * @param api-version - The API version to use for this operation.
  */
 export const DaprComponentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DaprComponentsGetInput,
@@ -7188,10 +7180,10 @@ export type DaprComponentsListOutput = typeof DaprComponentsListOutput.Type;
 /**
  * Get the Dapr Components for a managed environment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
- * @param api-version - The API version to use for this operation.
  */
 export const DaprComponentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DaprComponentsListInput,
@@ -7231,11 +7223,11 @@ export type DaprComponentsListSecretsOutput =
 /**
  * List secrets for a dapr component
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
  * @param componentName - Name of the Dapr Component.
- * @param api-version - The API version to use for this operation.
  */
 export const DaprComponentsListSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7267,8 +7259,8 @@ export type GetCustomDomainVerificationIdOutput =
 /**
  * Get the verification id of a subscription used for verifying custom domains
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GetCustomDomainVerificationId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7281,6 +7273,7 @@ export const HttpRouteConfigCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
+    httpRouteName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -7389,10 +7382,11 @@ export type HttpRouteConfigCreateOrUpdateOutput =
 /**
  * Create or Update a Http Route Config.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the managed environment.
+ * @param httpRouteName - Name of the Http Route Config.
  */
 export const HttpRouteConfigCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7405,6 +7399,7 @@ export const HttpRouteConfigDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
+    httpRouteName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -7424,10 +7419,13 @@ export type HttpRouteConfigDeleteOutput =
 /**
  * Deletes the specified Http Route Config.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
+ * Deletes the specified Managed Http Route.
+ *
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Environment.
+ * @param httpRouteName - Name of the Http Route Config Resource.
  */
 export const HttpRouteConfigDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7441,6 +7439,7 @@ export const HttpRouteConfigGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
+    httpRouteName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7477,10 +7476,13 @@ export type HttpRouteConfigGetOutput = typeof HttpRouteConfigGetOutput.Type;
 /**
  * Get the specified Http Route Config.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
+ * Get the specified Managed Http Route Config.
+ *
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the managed environment.
+ * @param httpRouteName - Name of the Http Route Config.
  */
 export const HttpRouteConfigGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HttpRouteConfigGetInput,
@@ -7543,10 +7545,12 @@ export type HttpRouteConfigListOutput = typeof HttpRouteConfigListOutput.Type;
 /**
  * List the Http Route Configs in a given managed environment.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
+ * Get the Managed Http Routes in a given managed environment.
+ *
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the managed environment.
  */
 export const HttpRouteConfigList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HttpRouteConfigListInput,
@@ -7666,13 +7670,13 @@ export type HttpRouteConfigUpdateOutput =
 /**
  * Update tags of a Http Route Config object
  *
- * Patches a Http Route Config resource. Only patching of tags is supported
+ * Patches an http route config resource. Only patching of tags is supported
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
- * @param httpRouteName - Name of the Http Route Config Resource.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Environment.
+ * @param httpRouteName - Name of the Http Route Config Resource.
  */
 export const HttpRouteConfigUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7767,11 +7771,11 @@ export type JavaComponentsCreateOrUpdateOutput =
  *
  * Creates or updates a Java Component in a Managed Environment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
+ * @param environmentName - Name of the managed environment.
  * @param name - Name of the Java Component.
- * @param api-version - The API version to use for this operation.
  */
 export const JavaComponentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7805,11 +7809,11 @@ export type JavaComponentsDeleteOutput = typeof JavaComponentsDeleteOutput.Type;
  *
  * Delete a Java Component.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
+ * @param environmentName - Name of the managed environment.
  * @param name - Name of the Java Component.
- * @param api-version - The API version to use for this operation.
  */
 export const JavaComponentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7861,11 +7865,11 @@ export type JavaComponentsGetOutput = typeof JavaComponentsGetOutput.Type;
 /**
  * Get a Java Component.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
+ * @param environmentName - Name of the managed environment.
  * @param name - Name of the Java Component.
- * @param api-version - The API version to use for this operation.
  */
 export const JavaComponentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JavaComponentsGetInput,
@@ -7928,10 +7932,10 @@ export type JavaComponentsListOutput = typeof JavaComponentsListOutput.Type;
 /**
  * Get the Java Components for a managed environment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
- * @param api-version - The API version to use for this operation.
+ * @param environmentName - Name of the managed environment.
  */
 export const JavaComponentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JavaComponentsListInput,
@@ -8022,11 +8026,11 @@ export type JavaComponentsUpdateOutput = typeof JavaComponentsUpdateOutput.Type;
  *
  * Patches a Java Component using JSON Merge Patch
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
+ * @param environmentName - Name of the managed environment.
  * @param name - Name of the Java Component.
- * @param api-version - The API version to use for this operation.
  */
 export const JavaComponentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8038,6 +8042,8 @@ export const JavaComponentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const JobExecutionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  jobExecutionName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -8049,80 +8055,21 @@ export type JobExecutionInput = typeof JobExecutionInput.Type;
 
 // Output Schema
 export const JobExecutionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  properties: Schema.optional(
+  systemData: Schema.optional(
     Schema.Struct({
-      status: Schema.optional(
-        Schema.Literals([
-          "Running",
-          "Processing",
-          "Stopped",
-          "Degraded",
-          "Failed",
-          "Unknown",
-          "Succeeded",
-        ]),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
       ),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      template: Schema.optional(
-        Schema.Struct({
-          containers: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                image: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                command: Schema.optional(Schema.Array(Schema.String)),
-                args: Schema.optional(Schema.Array(Schema.String)),
-                env: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      value: Schema.optional(Schema.String),
-                      secretRef: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                resources: Schema.optional(
-                  Schema.Struct({
-                    cpu: Schema.optional(Schema.Number),
-                    memory: Schema.optional(Schema.String),
-                    ephemeralStorage: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-          initContainers: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                image: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                command: Schema.optional(Schema.Array(Schema.String)),
-                args: Schema.optional(Schema.Array(Schema.String)),
-                env: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      value: Schema.optional(Schema.String),
-                      secretRef: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                resources: Schema.optional(
-                  Schema.Struct({
-                    cpu: Schema.optional(Schema.Number),
-                    memory: Schema.optional(Schema.String),
-                    ephemeralStorage: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-        }),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
       ),
+      lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
 });
@@ -8132,9 +8079,11 @@ export type JobExecutionOutput = typeof JobExecutionOutput.Type;
 /**
  * Get details of a single job execution
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Job Name
+ * @param jobExecutionName - Job execution name.
  */
 export const JobExecution = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobExecutionInput,
@@ -8145,29 +8094,7 @@ export const JobsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                principalId: Schema.optional(Schema.String),
-                clientId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
+    jobName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -8257,7 +8184,7 @@ export const JobsCreateOrUpdateInput =
                 Schema.Struct({
                   identity: Schema.String,
                   lifecycle: Schema.optional(
-                    Schema.Literals(["Init", "Main", "None", "All"]),
+                    Schema.Literals(["None", "Main", "Init", "All"]),
                   ),
                 }),
               ),
@@ -8367,6 +8294,27 @@ export const JobsCreateOrUpdateInput =
         eventStreamEndpoint: Schema.optional(Schema.String),
       }),
     ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -8405,9 +8353,10 @@ export type JobsCreateOrUpdateOutput = typeof JobsCreateOrUpdateOutput.Type;
 /**
  * Create or Update a Container Apps Job.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Job Name
  */
 export const JobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsCreateOrUpdateInput,
@@ -8417,6 +8366,7 @@ export const JobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -8434,9 +8384,10 @@ export type JobsDeleteOutput = typeof JobsDeleteOutput.Type;
 /**
  * Delete a Container Apps Job.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Job Name
  */
 export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsDeleteInput,
@@ -8447,6 +8398,7 @@ export const JobsExecutionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    jobName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -8462,80 +8414,31 @@ export const JobsExecutionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
         id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
-        properties: Schema.optional(
+        systemData: Schema.optional(
           Schema.Struct({
-            status: Schema.optional(
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
               Schema.Literals([
-                "Running",
-                "Processing",
-                "Stopped",
-                "Degraded",
-                "Failed",
-                "Unknown",
-                "Succeeded",
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
               ]),
             ),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            template: Schema.optional(
-              Schema.Struct({
-                containers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      image: Schema.optional(Schema.String),
-                      name: Schema.optional(Schema.String),
-                      command: Schema.optional(Schema.Array(Schema.String)),
-                      args: Schema.optional(Schema.Array(Schema.String)),
-                      env: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            secretRef: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      resources: Schema.optional(
-                        Schema.Struct({
-                          cpu: Schema.optional(Schema.Number),
-                          memory: Schema.optional(Schema.String),
-                          ephemeralStorage: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                initContainers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      image: Schema.optional(Schema.String),
-                      name: Schema.optional(Schema.String),
-                      command: Schema.optional(Schema.Array(Schema.String)),
-                      args: Schema.optional(Schema.Array(Schema.String)),
-                      env: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            secretRef: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      resources: Schema.optional(
-                        Schema.Struct({
-                          cpu: Schema.optional(Schema.Number),
-                          memory: Schema.optional(Schema.String),
-                          ephemeralStorage: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
             ),
+            lastModifiedAt: Schema.optional(Schema.String),
           }),
         ),
       }),
@@ -8548,9 +8451,10 @@ export type JobsExecutionsListOutput = typeof JobsExecutionsListOutput.Type;
 /**
  * Get a Container Apps Job's executions
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Job Name
  * @param $filter - The filter to apply on the operation.
  */
 export const JobsExecutionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8561,6 +8465,7 @@ export const JobsExecutionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -8596,9 +8501,10 @@ export type JobsGetOutput = typeof JobsGetOutput.Type;
 /**
  * Get the properties of a Container Apps Job.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Job Name
  */
 export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsGetInput,
@@ -8647,11 +8553,11 @@ export type JobsGetDetectorOutput = typeof JobsGetDetectorOutput.Type;
  *
  * Get the diagnostics data for a Container App Job.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param jobName - Job Name
- * @param detectorName - Name of the Container App Job detector.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Name of the Container App Job.
+ * @param detectorName - Proxy API Name for Container App Job.
  */
 export const JobsGetDetector = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsGetDetectorInput,
@@ -8715,9 +8621,9 @@ export type JobsListByResourceGroupOutput =
 /**
  * Get the Container Apps Jobs in a given resource group.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const JobsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8782,8 +8688,8 @@ export type JobsListBySubscriptionOutput =
 /**
  * Get the Container Apps Jobs in a given subscription.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const JobsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8851,10 +8757,10 @@ export type JobsListDetectorsOutput = typeof JobsListDetectorsOutput.Type;
  *
  * Get the list of diagnostics for a Container App Job.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param jobName - Job Name
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Name of the Container App Job.
  */
 export const JobsListDetectors = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsListDetectorsInput,
@@ -8864,6 +8770,7 @@ export const JobsListDetectors = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const JobsListSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -8890,9 +8797,10 @@ export type JobsListSecretsOutput = typeof JobsListSecretsOutput.Type;
 /**
  * List secrets for a container apps job
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Job Name
  */
 export const JobsListSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsListSecretsInput,
@@ -8939,11 +8847,13 @@ export type JobsProxyGetOutput = typeof JobsProxyGetOutput.Type;
 /**
  * Get the properties of a Container App Job.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * Get the properties for a given Container App Job.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - Job Name
  * @param apiName - Proxy API Name for Container App Job.
- * @param api-version - The API version to use for this operation.
  */
 export const JobsProxyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsProxyGetInput,
@@ -8953,6 +8863,7 @@ export const JobsProxyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const JobsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
   containers: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -9025,9 +8936,10 @@ export type JobsStartOutput = typeof JobsStartOutput.Type;
 /**
  * Start a Container Apps Job
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Job Name
  */
 export const JobsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsStartInput,
@@ -9038,6 +8950,8 @@ export const JobsStopExecutionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    jobName: Schema.String.pipe(T.PathParam()),
+    jobExecutionName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -9056,9 +8970,11 @@ export type JobsStopExecutionOutput = typeof JobsStopExecutionOutput.Type;
 /**
  * Terminates execution of a running container apps job
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Job Name
+ * @param jobExecutionName - Job execution name.
  */
 export const JobsStopExecution = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsStopExecutionInput,
@@ -9069,6 +8985,7 @@ export const JobsStopMultipleExecutionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    jobName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -9084,80 +9001,31 @@ export const JobsStopMultipleExecutionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
         id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
-        properties: Schema.optional(
+        systemData: Schema.optional(
           Schema.Struct({
-            status: Schema.optional(
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
               Schema.Literals([
-                "Running",
-                "Processing",
-                "Stopped",
-                "Degraded",
-                "Failed",
-                "Unknown",
-                "Succeeded",
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
               ]),
             ),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            template: Schema.optional(
-              Schema.Struct({
-                containers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      image: Schema.optional(Schema.String),
-                      name: Schema.optional(Schema.String),
-                      command: Schema.optional(Schema.Array(Schema.String)),
-                      args: Schema.optional(Schema.Array(Schema.String)),
-                      env: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            secretRef: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      resources: Schema.optional(
-                        Schema.Struct({
-                          cpu: Schema.optional(Schema.Number),
-                          memory: Schema.optional(Schema.String),
-                          ephemeralStorage: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                initContainers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      image: Schema.optional(Schema.String),
-                      name: Schema.optional(Schema.String),
-                      command: Schema.optional(Schema.Array(Schema.String)),
-                      args: Schema.optional(Schema.Array(Schema.String)),
-                      env: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            secretRef: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      resources: Schema.optional(
-                        Schema.Struct({
-                          cpu: Schema.optional(Schema.Number),
-                          memory: Schema.optional(Schema.String),
-                          ephemeralStorage: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
             ),
+            lastModifiedAt: Schema.optional(Schema.String),
           }),
         ),
       }),
@@ -9171,9 +9039,10 @@ export type JobsStopMultipleExecutionsOutput =
 /**
  * Terminates execution of a running container apps job
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Job Name
  */
 export const JobsStopMultipleExecutions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9185,6 +9054,7 @@ export const JobsStopMultipleExecutions = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
   identity: Schema.optional(
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
@@ -9196,14 +9066,12 @@ export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "SystemAssigned,UserAssigned",
       ]),
       userAssignedIdentities: Schema.optional(
-        Schema.NullOr(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
         ),
       ),
     }),
@@ -9286,7 +9154,7 @@ export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.Struct({
                 identity: Schema.String,
                 lifecycle: Schema.optional(
-                  Schema.Literals(["Init", "Main", "None", "All"]),
+                  Schema.Literals(["None", "Main", "Init", "All"]),
                 ),
               }),
             ),
@@ -9433,9 +9301,10 @@ export type JobsUpdateOutput = typeof JobsUpdateOutput.Type;
  *
  * Patches a Container Apps Job using JSON Merge Patch
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param jobName - Job Name
  */
 export const JobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsUpdateInput,
@@ -9446,6 +9315,8 @@ export const LogicAppsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    containerAppName: Schema.String.pipe(T.PathParam()),
+    logicAppName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9484,9 +9355,11 @@ export type LogicAppsCreateOrUpdateOutput =
 /**
  * Create or update a Logic App extension resource
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param containerAppName - Name of the Container App.
+ * @param logicAppName - Name of the Logic App, the extension resource.
  */
 export const LogicAppsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9498,6 +9371,8 @@ export const LogicAppsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LogicAppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerAppName: Schema.String.pipe(T.PathParam()),
+  logicAppName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -9515,9 +9390,11 @@ export type LogicAppsDeleteOutput = typeof LogicAppsDeleteOutput.Type;
 /**
  * Deletes a Logic App extension resource
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param containerAppName - Name of the Container App.
+ * @param logicAppName - Name of the Logic App, the extension resource.
  */
 export const LogicAppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LogicAppsDeleteInput,
@@ -9527,6 +9404,8 @@ export const LogicAppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const LogicAppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  containerAppName: Schema.String.pipe(T.PathParam()),
+  logicAppName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -9562,9 +9441,11 @@ export type LogicAppsGetOutput = typeof LogicAppsGetOutput.Type;
 /**
  * Gets a logic app extension resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param containerAppName - Name of the Container App.
+ * @param logicAppName - Name of the Logic App, the extension resource.
  */
 export const LogicAppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LogicAppsGetInput,
@@ -9575,6 +9456,8 @@ export const LogicAppsGetWorkflowInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    containerAppName: Schema.String.pipe(T.PathParam()),
+    logicAppName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -9612,10 +9495,12 @@ export type LogicAppsGetWorkflowOutput = typeof LogicAppsGetWorkflowOutput.Type;
 /**
  * Get workflow information by its name
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param containerAppName - Name of the Container App.
+ * @param logicAppName - Name of the Logic App, the extension resource.
  * @param workflowName - Workflow name.
- * @param api-version - The API version to use for this operation.
  */
 export const LogicAppsGetWorkflow = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9628,6 +9513,8 @@ export const LogicAppsListWorkflowsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    containerAppName: Schema.String.pipe(T.PathParam()),
+    logicAppName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -9681,9 +9568,11 @@ export type LogicAppsListWorkflowsOutput =
 /**
  * List the workflows for a logic app.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param containerAppName - Name of the Container App.
+ * @param logicAppName - Name of the Logic App, the extension resource.
  */
 export const LogicAppsListWorkflows = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9696,6 +9585,8 @@ export const LogicAppsListWorkflowsConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    containerAppName: Schema.String.pipe(T.PathParam()),
+    logicAppName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -9734,9 +9625,11 @@ export type LogicAppsListWorkflowsConnectionsOutput =
 /**
  * Gets logic app's connections.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param containerAppName - Name of the Container App.
+ * @param logicAppName - Name of the Logic App, the extension resource.
  */
 export const LogicAppsListWorkflowsConnections =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9807,11 +9700,11 @@ export type MaintenanceConfigurationsCreateOrUpdateOutput =
 /**
  * Create or update the maintenance configuration for Managed Environment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - The name of the Managed Environment.
- * @param configName - The name of the maintenance configuration.
- * @param api-version - The API version to use for this operation.
+ * @param environmentName - Name of the managed environment.
+ * @param configName - Name of the Maintenance Configuration.
  */
 export const MaintenanceConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9845,11 +9738,11 @@ export type MaintenanceConfigurationsDeleteOutput =
 /**
  * Deletes the maintenance configuration of a ManagedEnvironment .
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - The name of the Managed Environment.
- * @param configName - The name of the maintenance configuration.
- * @param api-version - The API version to use for this operation.
+ * @param environmentName - Name of the managed environment.
+ * @param configName - Name of the Maintenance Configuration.
  */
 export const MaintenanceConfigurationsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9901,11 +9794,11 @@ export type MaintenanceConfigurationsGetOutput =
 /**
  * Gets the maintenance configuration of a ManagedEnvironment .
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - The name of the Managed Environment.
- * @param configName - The name of the maintenance configuration.
- * @param api-version - The API version to use for this operation.
+ * @param environmentName - Name of the managed environment.
+ * @param configName - Name of the Maintenance Configuration.
  */
 export const MaintenanceConfigurationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9931,38 +9824,36 @@ export type MaintenanceConfigurationsListInput =
 // Output Schema
 export const MaintenanceConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -9973,10 +9864,10 @@ export type MaintenanceConfigurationsListOutput =
 /**
  * Gets all maintenance configurations in the specified Managed Environment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - The name of the Managed Environment.
- * @param api-version - The API version to use for this operation.
+ * @param environmentName - Name of the managed environment.
  */
 export const MaintenanceConfigurationsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10050,12 +9941,11 @@ export type ManagedCertificatesCreateOrUpdateOutput =
 /**
  * Create or Update a Managed Certificate.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Managed Environment.
  * @param managedCertificateName - Name of the Managed Certificate.
- * @param api-version - The API version to use for this operation.
- * @param properties - Certificate resource specific properties
  */
 export const ManagedCertificatesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10089,11 +9979,11 @@ export type ManagedCertificatesDeleteOutput =
 /**
  * Deletes the specified Managed Certificate.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
- * @param managedCertificateName - Name of the Managed Certificate.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Environment.
+ * @param managedCertificateName - Name of the Managed Certificate.
  */
 export const ManagedCertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10146,11 +10036,11 @@ export type ManagedCertificatesGetOutput =
 /**
  * Get the specified Managed Certificate.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
- * @param managedCertificateName - Name of the Managed Certificate.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Environment.
+ * @param managedCertificateName - Name of the Managed Certificate.
  */
 export const ManagedCertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10217,10 +10107,10 @@ export type ManagedCertificatesListOutput =
 /**
  * Get the Managed Certificates in a given managed environment.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Environment.
  */
 export const ManagedCertificatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10276,12 +10166,11 @@ export type ManagedCertificatesUpdateOutput =
  *
  * Patches a managed certificate. Oly patching of tags is supported
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
- * @param managedCertificateName - Name of the Managed Certificate.
  * @param api-version - The API version to use for this operation.
- * @param tags - Application-specific metadata in the form of key-value pairs.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Environment.
+ * @param managedCertificateName - Name of the Managed Certificate.
  */
 export const ManagedCertificatesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10336,11 +10225,11 @@ export type ManagedEnvironmentDiagnosticsGetDetectorOutput =
  *
  * Get the diagnostics data for a Managed Environment used to host container apps.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Environment.
- * @param detectorName - Name of the Managed Environment detector.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Managed Environment.
+ * @param detectorName - Name of the detector.
  */
 export const ManagedEnvironmentDiagnosticsGetDetector =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10408,10 +10297,10 @@ export type ManagedEnvironmentDiagnosticsListDetectorsOutput =
  *
  * Get the list of diagnostics for a Managed Environment used to host container apps.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Environment.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Managed Environment.
  */
 export const ManagedEnvironmentDiagnosticsListDetectors =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10458,23 +10347,6 @@ export const ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateInput =
         ),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -10513,12 +10385,11 @@ export type ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateOutput =
 /**
  * Update the state of a private endpoint connection for a given managed environment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
- * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
- * @param api-version - The API version to use for this operation.
- * @param properties - Resource properties.
+ * @param environmentName - Name of the managed environment.
+ * @param privateEndpointConnectionName - Name of the Private Endpoint Connection.
  */
 export const ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10554,11 +10425,11 @@ export type ManagedEnvironmentPrivateEndpointConnectionsDeleteOutput =
 /**
  * Delete a private endpoint connection for a given managed environment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
- * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
- * @param api-version - The API version to use for this operation.
+ * @param environmentName - Name of the managed environment.
+ * @param privateEndpointConnectionName - Name of the Private Endpoint Connection.
  */
 export const ManagedEnvironmentPrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10610,11 +10481,11 @@ export type ManagedEnvironmentPrivateEndpointConnectionsGetOutput =
 /**
  * Get a private endpoint connection for a given managed environment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
- * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
- * @param api-version - The API version to use for this operation.
+ * @param environmentName - Name of the managed environment.
+ * @param privateEndpointConnectionName - Name of the Private Endpoint Connection.
  */
 export const ManagedEnvironmentPrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10640,38 +10511,36 @@ export type ManagedEnvironmentPrivateEndpointConnectionsListInput =
 // Output Schema
 export const ManagedEnvironmentPrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -10682,10 +10551,10 @@ export type ManagedEnvironmentPrivateEndpointConnectionsListOutput =
 /**
  * List private endpoint connections for a given managed environment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
- * @param api-version - The API version to use for this operation.
+ * @param environmentName - Name of the managed environment.
  */
 export const ManagedEnvironmentPrivateEndpointConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10711,38 +10580,36 @@ export type ManagedEnvironmentPrivateLinkResourcesListInput =
 // Output Schema
 export const ManagedEnvironmentPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -10753,10 +10620,10 @@ export type ManagedEnvironmentPrivateLinkResourcesListOutput =
 /**
  * List private link resources for a given managed environment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
- * @param api-version - The API version to use for this operation.
+ * @param environmentName - Name of the managed environment.
  */
 export const ManagedEnvironmentPrivateLinkResourcesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10769,30 +10636,6 @@ export const ManagedEnvironmentsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
-    kind: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                principalId: Schema.optional(Schema.String),
-                clientId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -10938,6 +10781,28 @@ export const ManagedEnvironmentsCreateOrUpdateInput =
         ),
       }),
     ),
+    kind: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -10980,10 +10845,10 @@ export type ManagedEnvironmentsCreateOrUpdateOutput =
  *
  * Creates or updates a Managed Environment used to host container apps.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Environment.
- * @param api-version - The API version to use for this operation.
  */
 export const ManagedEnvironmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11018,10 +10883,10 @@ export type ManagedEnvironmentsDeleteOutput =
  *
  * Delete a Managed Environment if it does not have any container apps.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Environment.
- * @param api-version - The API version to use for this operation.
  */
 export const ManagedEnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -11075,10 +10940,10 @@ export type ManagedEnvironmentsDiagnosticsGetRootOutput =
  *
  * Get the properties of a Managed Environment used to host container apps.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Environment.
- * @param api-version - The API version to use for this operation.
  */
 export const ManagedEnvironmentsDiagnosticsGetRoot =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11131,10 +10996,10 @@ export type ManagedEnvironmentsGetOutput =
  *
  * Get the properties of a Managed Environment used to host container apps.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Environment.
- * @param api-version - The API version to use for this operation.
  */
 export const ManagedEnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -11188,10 +11053,10 @@ export type ManagedEnvironmentsGetAuthTokenOutput =
  *
  * Checks if resource name is available.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Environment.
  */
 export const ManagedEnvironmentsGetAuthToken =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11258,9 +11123,9 @@ export type ManagedEnvironmentsListByResourceGroupOutput =
  *
  * Get all the Managed Environments in a resource group.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ManagedEnvironmentsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11326,8 +11191,8 @@ export type ManagedEnvironmentsListBySubscriptionOutput =
  *
  * Get all Managed Environments for a subscription.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ManagedEnvironmentsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11395,10 +11260,10 @@ export type ManagedEnvironmentsListWorkloadProfileStatesOutput =
  *
  * Get all workload Profile States for a Managed Environment.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param environmentName - Name of the Managed Environment.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Environment.
  */
 export const ManagedEnvironmentsListWorkloadProfileStates =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11479,11 +11344,11 @@ export type ManagedEnvironmentsStoragesCreateOrUpdateOutput =
 /**
  * Create or update storage for a managedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Environment.
  * @param storageName - Name of the storage.
- * @param api-version - The API version to use for this operation.
  */
 export const ManagedEnvironmentsStoragesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11517,11 +11382,11 @@ export type ManagedEnvironmentsStoragesDeleteOutput =
 /**
  * Delete storage for a managedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Environment.
  * @param storageName - Name of the storage.
- * @param api-version - The API version to use for this operation.
  */
 export const ManagedEnvironmentsStoragesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11573,11 +11438,11 @@ export type ManagedEnvironmentsStoragesGetOutput =
 /**
  * Get storage for a managedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Environment.
  * @param storageName - Name of the storage.
- * @param api-version - The API version to use for this operation.
  */
 export const ManagedEnvironmentsStoragesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11642,10 +11507,10 @@ export type ManagedEnvironmentsStoragesListOutput =
 /**
  * Get all storages for a managedEnvironment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Environment.
- * @param api-version - The API version to use for this operation.
  */
 export const ManagedEnvironmentsStoragesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11658,30 +11523,6 @@ export const ManagedEnvironmentsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
-    kind: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                principalId: Schema.optional(Schema.String),
-                clientId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -11827,6 +11668,28 @@ export const ManagedEnvironmentsUpdateInput =
         ),
       }),
     ),
+    kind: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -11869,10 +11732,10 @@ export type ManagedEnvironmentsUpdateOutput =
  *
  * Patches a Managed Environment using JSON Merge Patch
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Environment.
- * @param api-version - The API version to use for this operation.
  */
 export const ManagedEnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -11899,18 +11762,16 @@ export type ManagedEnvironmentUsagesListInput =
 // Output Schema
 export const ManagedEnvironmentUsagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          unit: Schema.Literals(["Count"]),
-          currentValue: Schema.Number,
-          limit: Schema.Number,
-          name: Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
+    value: Schema.Array(
+      Schema.Struct({
+        unit: Schema.Literals(["Count"]),
+        currentValue: Schema.Number,
+        limit: Schema.Number,
+        name: Schema.Struct({
+          value: Schema.optional(Schema.String),
+          localizedValue: Schema.optional(Schema.String),
         }),
-      ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -11921,10 +11782,10 @@ export type ManagedEnvironmentUsagesListOutput =
 /**
  * Gets the current usage information as well as the limits for environment.
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param environmentName - Name of the Environment.
- * @param api-version - The API version to use for this operation.
  */
 export const ManagedEnvironmentUsagesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11965,10 +11826,10 @@ export type NamespacesCheckNameAvailabilityOutput =
  *
  * Checks if resource name is available.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param environmentName - Name of the Managed Environment.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Environment.
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
@@ -11991,22 +11852,20 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      isDataAction: Schema.optional(Schema.Boolean),
+      display: Schema.optional(
+        Schema.Struct({
+          provider: Schema.optional(Schema.String),
+          resource: Schema.optional(Schema.String),
+          operation: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+      origin: Schema.optional(Schema.String),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -12091,8 +11950,8 @@ export const SupportedAgentModelsListByLocation =
   }));
 // Input Schema
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -12104,18 +11963,16 @@ export type UsagesListInput = typeof UsagesListInput.Type;
 
 // Output Schema
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        unit: Schema.Literals(["Count"]),
-        currentValue: Schema.Number,
-        limit: Schema.Number,
-        name: Schema.Struct({
-          value: Schema.optional(Schema.String),
-          localizedValue: Schema.optional(Schema.String),
-        }),
+  value: Schema.Array(
+    Schema.Struct({
+      unit: Schema.Literals(["Count"]),
+      currentValue: Schema.Number,
+      limit: Schema.Number,
+      name: Schema.Struct({
+        value: Schema.optional(Schema.String),
+        localizedValue: Schema.optional(Schema.String),
       }),
-    ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -12125,9 +11982,9 @@ export type UsagesListOutput = typeof UsagesListOutput.Type;
 /**
  * Gets, for the specified location, the current resource usage information as well as the limits under the subscription.
  *
- * @param location - The location for which resource usage is queried.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The location for which resource usage is queried.
  */
 export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,

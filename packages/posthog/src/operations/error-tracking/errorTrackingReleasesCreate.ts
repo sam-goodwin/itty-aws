@@ -7,13 +7,12 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const ErrorTrackingReleasesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.optional(Schema.String),
-    hash_id: Schema.optional(Schema.String),
-    team_id: Schema.optional(Schema.Number),
-    created_at: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    version: Schema.optional(Schema.String),
-    project: Schema.optional(Schema.String),
+    version: Schema.String,
+    project: Schema.String,
+    hash_id: Schema.optional(Schema.NullOr(Schema.String)),
+    metadata: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -30,7 +29,9 @@ export const ErrorTrackingReleasesCreateOutput =
     hash_id: Schema.optional(Schema.String),
     team_id: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    metadata: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
     version: Schema.optional(Schema.String),
     project: Schema.optional(Schema.String),
   });

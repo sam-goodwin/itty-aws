@@ -25,11 +25,9 @@ export const ErrorTrackingSymbolSetsRetrieveOutput =
     team_id: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
     last_used: Schema.optional(Schema.NullOr(Schema.String)),
-    storage_ptr: Schema.optional(Schema.NullOr(Schema.String)),
     failure_reason: Schema.optional(Schema.NullOr(Schema.String)),
-    release: Schema.optional(
-      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
+    has_uploaded_file: Schema.optional(Schema.Boolean),
+    release: Schema.optional(Schema.Unknown),
   });
 export type ErrorTrackingSymbolSetsRetrieveOutput =
   typeof ErrorTrackingSymbolSetsRetrieveOutput.Type;
@@ -37,7 +35,6 @@ export type ErrorTrackingSymbolSetsRetrieveOutput =
 // The operation
 /**
  *
- * @param id - A UUID string identifying this error tracking symbol set.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingSymbolSetsRetrieve =

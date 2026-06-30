@@ -22,27 +22,98 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface GoogleCloudChannelV1alpha1ReportStatus {
-  /** The report generation's start time. */
-  startTime?: string;
-  /** The current state of the report generation process. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "STARTED"
-    | "WRITING"
-    | "AVAILABLE"
-    | "FAILED"
-    | (string & {});
-  /** The report generation's completion time. */
-  endTime?: string;
+export interface GoogleCloudChannelV1StartPaidServiceRequest {
+  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
+  requestId?: string;
 }
 
-export const GoogleCloudChannelV1alpha1ReportStatus: Schema.Schema<GoogleCloudChannelV1alpha1ReportStatus> =
+export const GoogleCloudChannelV1StartPaidServiceRequest: Schema.Schema<GoogleCloudChannelV1StartPaidServiceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ReportStatus" });
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1StartPaidServiceRequest" });
+
+export interface GoogleCloudChannelV1SuspendEntitlementRequest {
+  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
+  requestId?: string;
+}
+
+export const GoogleCloudChannelV1SuspendEntitlementRequest: Schema.Schema<GoogleCloudChannelV1SuspendEntitlementRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1SuspendEntitlementRequest" });
+
+export interface GoogleCloudChannelV1alpha1ProvisionedService {
+  /** Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount. */
+  provisioningId?: string;
+  /** Output only. The product pertaining to the provisioning resource as specified in the Offer. */
+  productId?: string;
+  /** Output only. The SKU pertaining to the provisioning resource as specified in the Offer. */
+  skuId?: string;
+}
+
+export const GoogleCloudChannelV1alpha1ProvisionedService: Schema.Schema<GoogleCloudChannelV1alpha1ProvisionedService> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    skuId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ProvisionedService" });
+
+export interface GoogleCloudChannelV1ContactInfo {
+  /** The customer account contact's last name. Optional for Team customers. */
+  lastName?: string;
+  /** Optional. The customer account contact's job title. */
+  title?: string;
+  /** The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers. */
+  email?: string;
+  /** The customer account's contact phone number. */
+  phone?: string;
+  /** The customer account contact's first name. Optional for Team customers. */
+  firstName?: string;
+  /** Output only. The customer account contact's display name, formatted as a combination of the customer's first and last name. */
+  displayName?: string;
+}
+
+export const GoogleCloudChannelV1ContactInfo: Schema.Schema<GoogleCloudChannelV1ContactInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastName: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    phone: Schema.optional(Schema.String),
+    firstName: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ContactInfo" });
+
+export interface GoogleCloudChannelV1BillingAccount {
+  /** Output only. The CLDR region code. */
+  regionCode?: string;
+  /** Output only. The time when this billing account was created. */
+  createTime?: string;
+  /** Output only. The 3-letter currency code defined in ISO 4217. */
+  currencyCode?: string;
+  /** Output only. Resource name of the billing account. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. */
+  name?: string;
+  /** Display name of the billing account. */
+  displayName?: string;
+}
+
+export const GoogleCloudChannelV1BillingAccount: Schema.Schema<GoogleCloudChannelV1BillingAccount> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1BillingAccount" });
+
+export interface GoogleCloudChannelV1BillingAccountPurchaseInfo {
+  /** The billing account resource. */
+  billingAccount?: GoogleCloudChannelV1BillingAccount;
+}
+
+export const GoogleCloudChannelV1BillingAccountPurchaseInfo: Schema.Schema<GoogleCloudChannelV1BillingAccountPurchaseInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccount: Schema.optional(GoogleCloudChannelV1BillingAccount),
+  }).annotate({ identifier: "GoogleCloudChannelV1BillingAccountPurchaseInfo" });
 
 export interface GoogleCloudChannelV1Period {
   /** Total duration of Period Type defined. */
@@ -63,6 +134,14 @@ export const GoogleCloudChannelV1Period: Schema.Schema<GoogleCloudChannelV1Perio
   }).annotate({ identifier: "GoogleCloudChannelV1Period" });
 
 export interface GoogleCloudChannelV1Plan {
+  /** Describes how frequently the reseller will be billed, such as once per month. */
+  paymentCycle?: GoogleCloudChannelV1Period;
+  /** Specifies when the payment needs to happen. */
+  paymentType?:
+    | "PAYMENT_TYPE_UNSPECIFIED"
+    | "PREPAY"
+    | "POSTPAY"
+    | (string & {});
   /** Describes how a reseller will be billed. */
   paymentPlan?:
     | "PAYMENT_PLAN_UNSPECIFIED"
@@ -76,258 +155,217 @@ export interface GoogleCloudChannelV1Plan {
   trialPeriod?: GoogleCloudChannelV1Period;
   /** Reseller Billing account to charge after an offer transaction. Only present for Google Cloud offers. */
   billingAccount?: string;
-  /** Specifies when the payment needs to happen. */
-  paymentType?:
-    | "PAYMENT_TYPE_UNSPECIFIED"
-    | "PREPAY"
-    | "POSTPAY"
-    | (string & {});
-  /** Describes how frequently the reseller will be billed, such as once per month. */
-  paymentCycle?: GoogleCloudChannelV1Period;
 }
 
 export const GoogleCloudChannelV1Plan: Schema.Schema<GoogleCloudChannelV1Plan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    paymentCycle: Schema.optional(GoogleCloudChannelV1Period),
+    paymentType: Schema.optional(Schema.String),
     paymentPlan: Schema.optional(Schema.String),
     trialPeriod: Schema.optional(GoogleCloudChannelV1Period),
     billingAccount: Schema.optional(Schema.String),
-    paymentType: Schema.optional(Schema.String),
-    paymentCycle: Schema.optional(GoogleCloudChannelV1Period),
   }).annotate({ identifier: "GoogleCloudChannelV1Plan" });
 
-export interface GoogleCloudChannelV1Column {
-  /** The unique name of the column (for example, customer_domain, channel_partner, customer_cost). You can use column IDs in RunReportJobRequest.filter. To see all reports and their columns, call CloudChannelReportsService.ListReports. */
-  columnId?: string;
-  /** The column's display name. */
-  displayName?: string;
-  /** The type of the values for this column. */
-  dataType?:
-    | "DATA_TYPE_UNSPECIFIED"
-    | "STRING"
-    | "INT"
-    | "DECIMAL"
-    | "MONEY"
-    | "DATE"
-    | "DATE_TIME"
-    | (string & {});
+export interface GoogleTypePostalAddress {
+  /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
+  administrativeArea?: string;
+  /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
+  sublocality?: string;
+  /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
+  revision?: number;
+  /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
+  sortingCode?: string;
+  /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
+  locality?: string;
+  /** Optional. The name of the organization at the address. */
+  organization?: string;
+  /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
+  postalCode?: string;
+  /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
+  addressLines?: ReadonlyArray<string>;
+  /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
+  recipients?: ReadonlyArray<string>;
+  /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
+  languageCode?: string;
+  /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
+  regionCode?: string;
 }
 
-export const GoogleCloudChannelV1Column: Schema.Schema<GoogleCloudChannelV1Column> =
+export const GoogleTypePostalAddress: Schema.Schema<GoogleTypePostalAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    columnId: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    dataType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1Column" });
+    administrativeArea: Schema.optional(Schema.String),
+    sublocality: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.Number),
+    sortingCode: Schema.optional(Schema.String),
+    locality: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.String),
+    postalCode: Schema.optional(Schema.String),
+    addressLines: Schema.optional(Schema.Array(Schema.String)),
+    recipients: Schema.optional(Schema.Array(Schema.String)),
+    languageCode: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypePostalAddress" });
 
-export interface GoogleCloudChannelV1Report {
-  /** Required. The report's resource name. Specifies the account and report used to generate report data. The report_id identifier is a UID (for example, `613bf59q`). Name uses the format: accounts/{account_id}/reports/{report_id} */
+export interface GoogleCloudChannelV1EduData {
+  /** Designated institute type of customer. */
+  instituteType?:
+    | "INSTITUTE_TYPE_UNSPECIFIED"
+    | "K12"
+    | "UNIVERSITY"
+    | (string & {});
+  /** Size of the institute. */
+  instituteSize?:
+    | "INSTITUTE_SIZE_UNSPECIFIED"
+    | "SIZE_1_100"
+    | "SIZE_101_500"
+    | "SIZE_501_1000"
+    | "SIZE_1001_2000"
+    | "SIZE_2001_5000"
+    | "SIZE_5001_10000"
+    | "SIZE_10001_OR_MORE"
+    | (string & {});
+  /** Web address for the edu customer's institution. */
+  website?: string;
+}
+
+export const GoogleCloudChannelV1EduData: Schema.Schema<GoogleCloudChannelV1EduData> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instituteType: Schema.optional(Schema.String),
+    instituteSize: Schema.optional(Schema.String),
+    website: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1EduData" });
+
+export interface GoogleCloudChannelV1CloudIdentityInfo {
+  /** Output only. URI of Customer's Admin console dashboard. */
+  adminConsoleUri?: string;
+  /** Output only. The primary domain name. */
+  primaryDomain?: string;
+  /** Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers. */
+  isDomainVerified?: boolean;
+  /** Phone number associated with the Cloud Identity. */
+  phoneNumber?: string;
+  /** The alternate email. */
+  alternateEmail?: string;
+  /** Language code. */
+  languageCode?: string;
+  /** CustomerType indicates verification type needed for using services. */
+  customerType?:
+    | "CUSTOMER_TYPE_UNSPECIFIED"
+    | "DOMAIN"
+    | "TEAM"
+    | (string & {});
+  /** Edu information about the customer. */
+  eduData?: GoogleCloudChannelV1EduData;
+}
+
+export const GoogleCloudChannelV1CloudIdentityInfo: Schema.Schema<GoogleCloudChannelV1CloudIdentityInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adminConsoleUri: Schema.optional(Schema.String),
+    primaryDomain: Schema.optional(Schema.String),
+    isDomainVerified: Schema.optional(Schema.Boolean),
+    phoneNumber: Schema.optional(Schema.String),
+    alternateEmail: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    customerType: Schema.optional(Schema.String),
+    eduData: Schema.optional(GoogleCloudChannelV1EduData),
+  }).annotate({ identifier: "GoogleCloudChannelV1CloudIdentityInfo" });
+
+export interface GoogleCloudChannelV1Customer {
+  /** Output only. Time when the customer was created. */
+  createTime?: string;
+  /** Required. Name of the organization that the customer entity represents. */
+  orgDisplayName?: string;
+  /** Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer. */
+  correlationId?: string;
+  /** Required. The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code. */
+  orgPostalAddress?: GoogleTypePostalAddress;
+  /** Required. The customer's primary domain. Must match the primary contact email's domain. */
+  domain?: string;
+  /** Primary contact info. */
+  primaryContactInfo?: GoogleCloudChannelV1ContactInfo;
+  /** Output only. Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer. */
+  cloudIdentityInfo?: GoogleCloudChannelV1CloudIdentityInfo;
+  /** Output only. The customer's Cloud Identity ID if the customer has a Cloud Identity resource. */
+  cloudIdentityId?: string;
+  /** Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
   name?: string;
-  /** The list of columns included in the report. This defines the schema of the report results. */
-  columns?: ReadonlyArray<GoogleCloudChannelV1Column>;
-  /** A human-readable name for this report. */
-  displayName?: string;
-  /** A description of other aspects of the report, such as the products it supports. */
-  description?: string;
+  /** Optional. Indicate if a customer is attesting about the correctness of provided information. Only required if creating a GCP Entitlement. NOTE: This field will be mandatory for all new GCP customers starting Aug 31st, 2026 and this field will also be required for all existing customers purchasing new GCP Entitlements. */
+  customerAttestationState?:
+    | "CUSTOMER_ATTESTATION_STATE_UNSPECIFIED"
+    | "EXEMPT"
+    | "NON_EXEMPT_AND_INFO_VERIFIED"
+    | (string & {});
+  /** Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers. */
+  alternateEmail?: string;
+  /** Output only. Time when the customer was updated. */
+  updateTime?: string;
+  /** Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. */
+  languageCode?: string;
+  /** Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer. */
+  channelPartnerId?: string;
 }
 
-export const GoogleCloudChannelV1Report: Schema.Schema<GoogleCloudChannelV1Report> =
+export const GoogleCloudChannelV1Customer: Schema.Schema<GoogleCloudChannelV1Customer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    orgDisplayName: Schema.optional(Schema.String),
+    correlationId: Schema.optional(Schema.String),
+    orgPostalAddress: Schema.optional(GoogleTypePostalAddress),
+    domain: Schema.optional(Schema.String),
+    primaryContactInfo: Schema.optional(GoogleCloudChannelV1ContactInfo),
+    cloudIdentityInfo: Schema.optional(GoogleCloudChannelV1CloudIdentityInfo),
+    cloudIdentityId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    columns: Schema.optional(Schema.Array(GoogleCloudChannelV1Column)),
-    displayName: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1Report" });
-
-export interface GoogleCloudChannelV1ListReportsResponse {
-  /** The reports available to the partner. */
-  reports?: ReadonlyArray<GoogleCloudChannelV1Report>;
-  /** Pass this token to FetchReportResultsRequest.page_token to retrieve the next page of results. */
-  nextPageToken?: string;
-}
-
-export const GoogleCloudChannelV1ListReportsResponse: Schema.Schema<GoogleCloudChannelV1ListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    reports: Schema.optional(Schema.Array(GoogleCloudChannelV1Report)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ListReportsResponse" });
-
-export interface GoogleTypeMoney {
-  /** The three-letter currency code defined in ISO 4217. */
-  currencyCode?: string;
-  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
-  units?: string;
-  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
-  nanos?: number;
-}
-
-export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    currencyCode: Schema.optional(Schema.String),
-    units: Schema.optional(Schema.String),
-    nanos: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "GoogleTypeMoney" });
-
-export interface GoogleCloudChannelV1DiscountComponent {
-  /** Discount percentage, represented as decimal. For example, a 20% discount will be represented as 0.2. */
-  discountPercentage?: number;
-  /** Fixed value discount. */
-  discountAbsolute?: GoogleTypeMoney;
-  /** Type of the discount. */
-  discountType?:
-    | "DISCOUNT_TYPE_UNSPECIFIED"
-    | "REGIONAL_DISCOUNT"
-    | "PROMOTIONAL_DISCOUNT"
-    | "SALES_DISCOUNT"
-    | "RESELLER_MARGIN"
-    | "DEAL_CODE"
-    | (string & {});
-}
-
-export const GoogleCloudChannelV1DiscountComponent: Schema.Schema<GoogleCloudChannelV1DiscountComponent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    discountPercentage: Schema.optional(Schema.Number),
-    discountAbsolute: Schema.optional(GoogleTypeMoney),
-    discountType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1DiscountComponent" });
-
-export interface GoogleCloudChannelV1Price {
-  /** Base price. */
-  basePrice?: GoogleTypeMoney;
-  /** Discount percentage, represented as decimal. For example, a 20% discount will be represent as 0.2. */
-  discount?: number;
-  /** The time period with respect to which base and effective prices are defined. Example: 1 month, 6 months, 1 year, etc. */
-  pricePeriod?: GoogleCloudChannelV1Period;
-  /** Link to external price list, such as link to Google Voice rate card. */
-  externalPriceUri?: string;
-  /** Effective Price after applying the discounts. */
-  effectivePrice?: GoogleTypeMoney;
-  /** Breakdown of the discount into its components. This will be empty if there is no discount present. */
-  discountComponents?: ReadonlyArray<GoogleCloudChannelV1DiscountComponent>;
-}
-
-export const GoogleCloudChannelV1Price: Schema.Schema<GoogleCloudChannelV1Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    basePrice: Schema.optional(GoogleTypeMoney),
-    discount: Schema.optional(Schema.Number),
-    pricePeriod: Schema.optional(GoogleCloudChannelV1Period),
-    externalPriceUri: Schema.optional(Schema.String),
-    effectivePrice: Schema.optional(GoogleTypeMoney),
-    discountComponents: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1DiscountComponent),
-    ),
-  }).annotate({ identifier: "GoogleCloudChannelV1Price" });
-
-export interface GoogleCloudChannelV1PriceTier {
-  /** Last resource for which the tier price applies. */
-  lastResource?: number;
-  /** Price of the tier. */
-  price?: GoogleCloudChannelV1Price;
-  /** First resource for which the tier price applies. */
-  firstResource?: number;
-}
-
-export const GoogleCloudChannelV1PriceTier: Schema.Schema<GoogleCloudChannelV1PriceTier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    lastResource: Schema.optional(Schema.Number),
-    price: Schema.optional(GoogleCloudChannelV1Price),
-    firstResource: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "GoogleCloudChannelV1PriceTier" });
-
-export interface GoogleCloudChannelV1PricePhase {
-  /** Defines the phase period type. */
-  periodType?:
-    | "PERIOD_TYPE_UNSPECIFIED"
-    | "DAY"
-    | "MONTH"
-    | "YEAR"
-    | (string & {});
-  /** Defines first period for the phase. */
-  lastPeriod?: number;
-  /** Price by the resource tiers. */
-  priceTiers?: ReadonlyArray<GoogleCloudChannelV1PriceTier>;
-  /** Defines first period for the phase. */
-  firstPeriod?: number;
-  /** Price of the phase. Present if there are no price tiers. */
-  price?: GoogleCloudChannelV1Price;
-}
-
-export const GoogleCloudChannelV1PricePhase: Schema.Schema<GoogleCloudChannelV1PricePhase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    periodType: Schema.optional(Schema.String),
-    lastPeriod: Schema.optional(Schema.Number),
-    priceTiers: Schema.optional(Schema.Array(GoogleCloudChannelV1PriceTier)),
-    firstPeriod: Schema.optional(Schema.Number),
-    price: Schema.optional(GoogleCloudChannelV1Price),
-  }).annotate({ identifier: "GoogleCloudChannelV1PricePhase" });
-
-export interface GoogleCloudChannelV1PriceByResource {
-  /** Specifies the price by time range. */
-  pricePhases?: ReadonlyArray<GoogleCloudChannelV1PricePhase>;
-  /** Price of the Offer. Present if there are no price phases. */
-  price?: GoogleCloudChannelV1Price;
-  /** Resource Type. Example: SEAT */
-  resourceType?:
-    | "RESOURCE_TYPE_UNSPECIFIED"
-    | "SEAT"
-    | "MAU"
-    | "GB"
-    | "LICENSED_USER"
-    | "MINUTES"
-    | "IAAS_USAGE"
-    | "SUBSCRIPTION"
-    | (string & {});
-}
-
-export const GoogleCloudChannelV1PriceByResource: Schema.Schema<GoogleCloudChannelV1PriceByResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pricePhases: Schema.optional(Schema.Array(GoogleCloudChannelV1PricePhase)),
-    price: Schema.optional(GoogleCloudChannelV1Price),
-    resourceType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1PriceByResource" });
+    customerAttestationState: Schema.optional(Schema.String),
+    alternateEmail: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    channelPartnerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1Customer" });
 
 export interface GoogleCloudChannelV1Media {
-  /** URL of the media. */
-  content?: string;
   /** Type of the media. */
   type?: "MEDIA_TYPE_UNSPECIFIED" | "MEDIA_TYPE_IMAGE" | (string & {});
   /** Title of the media. */
   title?: string;
+  /** URL of the media. */
+  content?: string;
 }
 
 export const GoogleCloudChannelV1Media: Schema.Schema<GoogleCloudChannelV1Media> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    content: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1Media" });
 
 export interface GoogleCloudChannelV1MarketingInfo {
-  /** Human readable name. */
-  displayName?: string;
   /** Default logo. */
   defaultLogo?: GoogleCloudChannelV1Media;
   /** Human readable description. Description can contain HTML. */
   description?: string;
+  /** Human readable name. */
+  displayName?: string;
 }
 
 export const GoogleCloudChannelV1MarketingInfo: Schema.Schema<GoogleCloudChannelV1MarketingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
     defaultLogo: Schema.optional(GoogleCloudChannelV1Media),
     description: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1MarketingInfo" });
 
 export interface GoogleCloudChannelV1Product {
-  /** Resource Name of the Product. Format: products/{product_id} */
-  name?: string;
   /** Marketing information for the product. */
   marketingInfo?: GoogleCloudChannelV1MarketingInfo;
+  /** Resource Name of the Product. Format: products/{product_id} */
+  name?: string;
 }
 
 export const GoogleCloudChannelV1Product: Schema.Schema<GoogleCloudChannelV1Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
     marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
+    name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1Product" });
 
 export interface GoogleCloudChannelV1Sku {
@@ -346,150 +384,92 @@ export const GoogleCloudChannelV1Sku: Schema.Schema<GoogleCloudChannelV1Sku> =
     product: Schema.optional(GoogleCloudChannelV1Product),
   }).annotate({ identifier: "GoogleCloudChannelV1Sku" });
 
-export interface GoogleCloudChannelV1CustomerConstraints {
-  /** Allowed geographical regions of the customer. */
-  allowedRegions?: ReadonlyArray<string>;
-  /** Allowed Customer Type. */
-  allowedCustomerTypes?: ReadonlyArray<
-    "CUSTOMER_TYPE_UNSPECIFIED" | "DOMAIN" | "TEAM" | (string & {})
-  >;
-  /** Allowed Promotional Order Type. Present for Promotional offers. */
-  promotionalOrderTypes?: ReadonlyArray<
-    | "PROMOTIONAL_TYPE_UNSPECIFIED"
-    | "NEW_UPGRADE"
-    | "TRANSFER"
-    | "PROMOTION_SWITCH"
-    | (string & {})
-  >;
-}
-
-export const GoogleCloudChannelV1CustomerConstraints: Schema.Schema<GoogleCloudChannelV1CustomerConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    allowedRegions: Schema.optional(Schema.Array(Schema.String)),
-    allowedCustomerTypes: Schema.optional(Schema.Array(Schema.String)),
-    promotionalOrderTypes: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "GoogleCloudChannelV1CustomerConstraints" });
-
-export interface GoogleCloudChannelV1Constraints {
-  /** Represents constraints required to purchase the Offer for a customer. */
-  customerConstraints?: GoogleCloudChannelV1CustomerConstraints;
-}
-
-export const GoogleCloudChannelV1Constraints: Schema.Schema<GoogleCloudChannelV1Constraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customerConstraints: Schema.optional(
-      GoogleCloudChannelV1CustomerConstraints,
-    ),
-  }).annotate({ identifier: "GoogleCloudChannelV1Constraints" });
-
-export interface GoogleCloudChannelV1Value {
-  /** Represents a double value. */
-  doubleValue?: number;
-  /** Represents an 'Any' proto value. */
-  protoValue?: Record<string, unknown>;
-  /** Represents an int64 value. */
-  int64Value?: string;
-  /** Represents a boolean value. */
-  boolValue?: boolean;
-  /** Represents a string value. */
-  stringValue?: string;
-}
-
-export const GoogleCloudChannelV1Value: Schema.Schema<GoogleCloudChannelV1Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    doubleValue: Schema.optional(Schema.Number),
-    protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    int64Value: Schema.optional(Schema.String),
-    boolValue: Schema.optional(Schema.Boolean),
-    stringValue: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1Value" });
-
-export interface GoogleCloudChannelV1ParameterDefinition {
-  /** Name of the parameter. */
-  name?: string;
-  /** Maximum value of the parameter, if applicable. Inclusive. For example, maximum seats when purchasing Google Workspace Business Standard. Applicable to INT64 and DOUBLE parameter types. */
-  maxValue?: GoogleCloudChannelV1Value;
-  /** If not empty, parameter values must be drawn from this list. For example, [us-west1, us-west2, ...] Applicable to STRING parameter type. */
-  allowedValues?: ReadonlyArray<GoogleCloudChannelV1Value>;
-  /** Data type of the parameter. Minimal value, Maximum value and allowed values will use specified data type here. */
-  parameterType?:
-    | "PARAMETER_TYPE_UNSPECIFIED"
-    | "INT64"
-    | "STRING"
-    | "DOUBLE"
-    | "BOOLEAN"
-    | (string & {});
-  /** Minimal value of the parameter, if applicable. Inclusive. For example, minimal commitment when purchasing Anthos is 0.01. Applicable to INT64 and DOUBLE parameter types. */
-  minValue?: GoogleCloudChannelV1Value;
-  /** If set to true, parameter is optional to purchase this Offer. */
-  optional?: boolean;
-}
-
-export const GoogleCloudChannelV1ParameterDefinition: Schema.Schema<GoogleCloudChannelV1ParameterDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    maxValue: Schema.optional(GoogleCloudChannelV1Value),
-    allowedValues: Schema.optional(Schema.Array(GoogleCloudChannelV1Value)),
-    parameterType: Schema.optional(Schema.String),
-    minValue: Schema.optional(GoogleCloudChannelV1Value),
-    optional: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "GoogleCloudChannelV1ParameterDefinition" });
-
-export interface GoogleCloudChannelV1Offer {
-  /** Start of the Offer validity time. */
-  startTime?: string;
-  /** Price for each monetizable resource type. */
-  priceByResources?: ReadonlyArray<GoogleCloudChannelV1PriceByResource>;
-  /** The deal code of the offer to get a special promotion or discount. */
-  dealCode?: string;
-  /** Resource Name of the Offer. Format: accounts/{account_id}/offers/{offer_id} */
-  name?: string;
-  /** Marketing information for the Offer. */
-  marketingInfo?: GoogleCloudChannelV1MarketingInfo;
-  /** SKU the offer is associated with. */
+export interface GoogleCloudChannelV1PurchasableSku {
+  /** SKU */
   sku?: GoogleCloudChannelV1Sku;
-  /** Describes the payment plan for the Offer. */
-  plan?: GoogleCloudChannelV1Plan;
-  /** Constraints on transacting the Offer. */
-  constraints?: GoogleCloudChannelV1Constraints;
-  /** Output only. End of the Offer validity time. */
-  endTime?: string;
-  /** Parameters required to use current Offer to purchase. */
-  parameterDefinitions?: ReadonlyArray<GoogleCloudChannelV1ParameterDefinition>;
 }
 
-export const GoogleCloudChannelV1Offer: Schema.Schema<GoogleCloudChannelV1Offer> =
+export const GoogleCloudChannelV1PurchasableSku: Schema.Schema<GoogleCloudChannelV1PurchasableSku> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(Schema.String),
-    priceByResources: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1PriceByResource),
-    ),
-    dealCode: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
     sku: Schema.optional(GoogleCloudChannelV1Sku),
-    plan: Schema.optional(GoogleCloudChannelV1Plan),
-    constraints: Schema.optional(GoogleCloudChannelV1Constraints),
-    endTime: Schema.optional(Schema.String),
-    parameterDefinitions: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1ParameterDefinition),
-    ),
-  }).annotate({ identifier: "GoogleCloudChannelV1Offer" });
+  }).annotate({ identifier: "GoogleCloudChannelV1PurchasableSku" });
 
-export interface GoogleCloudChannelV1ListOffersResponse {
-  /** The list of Offers requested. The pricing information for each Offer only includes the base price. Effective prices and discounts aren't populated. */
-  offers?: ReadonlyArray<GoogleCloudChannelV1Offer>;
-  /** A token to retrieve the next page of results. */
-  nextPageToken?: string;
+export interface GoogleCloudChannelV1alpha1ReportStatus {
+  /** The current state of the report generation process. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "STARTED"
+    | "WRITING"
+    | "AVAILABLE"
+    | "FAILED"
+    | (string & {});
+  /** The report generation's start time. */
+  startTime?: string;
+  /** The report generation's completion time. */
+  endTime?: string;
 }
 
-export const GoogleCloudChannelV1ListOffersResponse: Schema.Schema<GoogleCloudChannelV1ListOffersResponse> =
+export const GoogleCloudChannelV1alpha1ReportStatus: Schema.Schema<GoogleCloudChannelV1alpha1ReportStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    offers: Schema.optional(Schema.Array(GoogleCloudChannelV1Offer)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ListOffersResponse" });
+    state: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ReportStatus" });
+
+export interface GoogleCloudChannelV1alpha1ReportJob {
+  /** Required. The resource name of a report job. Name uses the format: `accounts/{account_id}/reportJobs/{report_job_id}` */
+  name?: string;
+  /** The current status of report generation. */
+  reportStatus?: GoogleCloudChannelV1alpha1ReportStatus;
+}
+
+export const GoogleCloudChannelV1alpha1ReportJob: Schema.Schema<GoogleCloudChannelV1alpha1ReportJob> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    reportStatus: Schema.optional(GoogleCloudChannelV1alpha1ReportStatus),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ReportJob" });
+
+export interface GoogleCloudChannelV1alpha1CustomerEvent {
+  /** Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
+  customer?: string;
+  /** Type of event which happened for the customer. */
+  eventType?:
+    | "TYPE_UNSPECIFIED"
+    | "PRIMARY_DOMAIN_CHANGED"
+    | "PRIMARY_DOMAIN_VERIFIED"
+    | (string & {});
+}
+
+export const GoogleCloudChannelV1alpha1CustomerEvent: Schema.Schema<GoogleCloudChannelV1alpha1CustomerEvent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customer: Schema.optional(Schema.String),
+    eventType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1CustomerEvent" });
+
+export interface GoogleCloudChannelV1alpha1OpportunityEvent {
+  /** Resource name of the partner. Format: partners/{partner} */
+  partner?: string;
+  /** Resource name of the opportunity. Format: opportunities/{opportunity} */
+  opportunity?: string;
+  /** Type of event which happened for the opportunity. */
+  eventType?:
+    | "TYPE_UNSPECIFIED"
+    | "CREATED"
+    | "UPDATED"
+    | "PARTNER_DETACHED"
+    | (string & {});
+}
+
+export const GoogleCloudChannelV1alpha1OpportunityEvent: Schema.Schema<GoogleCloudChannelV1alpha1OpportunityEvent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partner: Schema.optional(Schema.String),
+    opportunity: Schema.optional(Schema.String),
+    eventType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1OpportunityEvent" });
 
 export interface GoogleCloudChannelV1alpha1EntitlementEvent {
+  /** Resource name of an entitlement of the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+  entitlement?: string;
   /** Type of event which happened for the entitlement. */
   eventType?:
     | "TYPE_UNSPECIFIED"
@@ -506,330 +486,213 @@ export interface GoogleCloudChannelV1alpha1EntitlementEvent {
     | "LICENSE_ASSIGNMENT_CHANGED"
     | "LICENSE_CAP_CHANGED"
     | (string & {});
-  /** Resource name of an entitlement of the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
-  entitlement?: string;
 }
 
 export const GoogleCloudChannelV1alpha1EntitlementEvent: Schema.Schema<GoogleCloudChannelV1alpha1EntitlementEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eventType: Schema.optional(Schema.String),
     entitlement: Schema.optional(Schema.String),
+    eventType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1EntitlementEvent" });
 
-export interface GoogleTypeDate {
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
-}
-
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    month: Schema.optional(Schema.Number),
-    day: Schema.optional(Schema.Number),
-    year: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "GoogleTypeDate" });
-
-export interface GoogleTypeTimeZone {
-  /** IANA Time Zone Database time zone. For example "America/New_York". */
-  id?: string;
-  /** Optional. IANA Time Zone Database version number. For example "2019a". */
-  version?: string;
-}
-
-export const GoogleTypeTimeZone: Schema.Schema<GoogleTypeTimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleTypeTimeZone" });
-
-export interface GoogleTypeDateTime {
-  /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
-  day?: number;
-  /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
-  utcOffset?: string;
-  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
-  seconds?: number;
-  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
-  month?: number;
-  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
-  year?: number;
-  /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  hours?: number;
-  /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
-  minutes?: number;
-  /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
-  nanos?: number;
-  /** Time zone. */
-  timeZone?: GoogleTypeTimeZone;
-}
-
-export const GoogleTypeDateTime: Schema.Schema<GoogleTypeDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    day: Schema.optional(Schema.Number),
-    utcOffset: Schema.optional(Schema.String),
-    seconds: Schema.optional(Schema.Number),
-    month: Schema.optional(Schema.Number),
-    year: Schema.optional(Schema.Number),
-    hours: Schema.optional(Schema.Number),
-    minutes: Schema.optional(Schema.Number),
-    nanos: Schema.optional(Schema.Number),
-    timeZone: Schema.optional(GoogleTypeTimeZone),
-  }).annotate({ identifier: "GoogleTypeDateTime" });
-
-export interface GoogleCloudChannelV1DateRange {
-  /** The earliest invoice date (inclusive). If this value is not the first day of a month, this will move it back to the first day of the given month. */
-  invoiceStartDate?: GoogleTypeDate;
-  /** The earliest usage date time (inclusive). If you use time groupings (daily, weekly, etc), each group uses midnight to midnight (Pacific time). The usage start date is rounded down to include all usage from the specified date. We recommend that clients pass `usage_start_date_time` in Pacific time. */
-  usageStartDateTime?: GoogleTypeDateTime;
-  /** The latest usage date time (exclusive). If you use time groupings (daily, weekly, etc), each group uses midnight to midnight (Pacific time). The usage end date is rounded down to include all usage from the specified date. We recommend that clients pass `usage_start_date_time` in Pacific time. */
-  usageEndDateTime?: GoogleTypeDateTime;
-  /** The latest invoice date (inclusive). If this value is not the last day of a month, this will move it forward to the last day of the given month. */
-  invoiceEndDate?: GoogleTypeDate;
-}
-
-export const GoogleCloudChannelV1DateRange: Schema.Schema<GoogleCloudChannelV1DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    invoiceStartDate: Schema.optional(GoogleTypeDate),
-    usageStartDateTime: Schema.optional(GoogleTypeDateTime),
-    usageEndDateTime: Schema.optional(GoogleTypeDateTime),
-    invoiceEndDate: Schema.optional(GoogleTypeDate),
-  }).annotate({ identifier: "GoogleCloudChannelV1DateRange" });
-
-export interface GoogleCloudChannelV1RunReportJobRequest {
-  /** Optional. The BCP-47 language code, such as "en-US". If specified, the response is localized to the corresponding language code if the original data sources support it. Default is "en-US". */
-  languageCode?: string;
-  /** Optional. The range of usage or invoice dates to include in the result. */
-  dateRange?: GoogleCloudChannelV1DateRange;
-  /** Optional. A structured string that defines conditions on dimension columns to restrict the report output. Filters support logical operators (AND, OR, NOT) and conditional operators (=, !=, <, >, <=, and >=) using `column_id` as keys. For example: `(customer:"accounts/C123abc/customers/S456def" OR customer:"accounts/C123abc/customers/S789ghi") AND invoice_start_date.year >= 2022` */
-  filter?: string;
-}
-
-export const GoogleCloudChannelV1RunReportJobRequest: Schema.Schema<GoogleCloudChannelV1RunReportJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    languageCode: Schema.optional(Schema.String),
-    dateRange: Schema.optional(GoogleCloudChannelV1DateRange),
-    filter: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1RunReportJobRequest" });
-
-export interface GoogleCloudChannelV1EduData {
-  /** Size of the institute. */
-  instituteSize?:
-    | "INSTITUTE_SIZE_UNSPECIFIED"
-    | "SIZE_1_100"
-    | "SIZE_101_500"
-    | "SIZE_501_1000"
-    | "SIZE_1001_2000"
-    | "SIZE_2001_5000"
-    | "SIZE_5001_10000"
-    | "SIZE_10001_OR_MORE"
+export interface GoogleCloudChannelV1alpha1ChannelPartnerEvent {
+  /** Type of event which happened for the channel partner. */
+  eventType?:
+    | "TYPE_UNSPECIFIED"
+    | "LINK_STATE_CHANGED"
+    | "PARTNER_ADVANTAGE_INFO_CHANGED"
     | (string & {});
-  /** Designated institute type of customer. */
-  instituteType?:
-    | "INSTITUTE_TYPE_UNSPECIFIED"
-    | "K12"
-    | "UNIVERSITY"
-    | (string & {});
-  /** Web address for the edu customer's institution. */
-  website?: string;
+  /** Resource name for the Channel Partner Link. Channel_partner uses the format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id} */
+  channelPartner?: string;
 }
 
-export const GoogleCloudChannelV1EduData: Schema.Schema<GoogleCloudChannelV1EduData> =
+export const GoogleCloudChannelV1alpha1ChannelPartnerEvent: Schema.Schema<GoogleCloudChannelV1alpha1ChannelPartnerEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    instituteSize: Schema.optional(Schema.String),
-    instituteType: Schema.optional(Schema.String),
-    website: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1EduData" });
+    eventType: Schema.optional(Schema.String),
+    channelPartner: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ChannelPartnerEvent" });
 
-export interface GoogleCloudChannelV1CloudIdentityInfo {
-  /** Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers. */
-  isDomainVerified?: boolean;
-  /** Edu information about the customer. */
-  eduData?: GoogleCloudChannelV1EduData;
-  /** Phone number associated with the Cloud Identity. */
-  phoneNumber?: string;
-  /** Output only. URI of Customer's Admin console dashboard. */
-  adminConsoleUri?: string;
-  /** The alternate email. */
-  alternateEmail?: string;
-  /** Language code. */
-  languageCode?: string;
-  /** CustomerType indicates verification type needed for using services. */
-  customerType?:
-    | "CUSTOMER_TYPE_UNSPECIFIED"
-    | "DOMAIN"
-    | "TEAM"
-    | (string & {});
-  /** Output only. The primary domain name. */
-  primaryDomain?: string;
+export interface GoogleCloudChannelV1alpha1SubscriberEvent {
+  /** Customer event sent as part of Pub/Sub event to partners. */
+  customerEvent?: GoogleCloudChannelV1alpha1CustomerEvent;
+  /** Opportunity event sent as part of Pub/Sub event to partners/integrators. */
+  opportunityEvent?: GoogleCloudChannelV1alpha1OpportunityEvent;
+  /** Entitlement event sent as part of Pub/Sub event to partners. */
+  entitlementEvent?: GoogleCloudChannelV1alpha1EntitlementEvent;
+  /** Channel Partner event sent as part of Pub/Sub event to partners. */
+  channelPartnerEvent?: GoogleCloudChannelV1alpha1ChannelPartnerEvent;
 }
 
-export const GoogleCloudChannelV1CloudIdentityInfo: Schema.Schema<GoogleCloudChannelV1CloudIdentityInfo> =
+export const GoogleCloudChannelV1alpha1SubscriberEvent: Schema.Schema<GoogleCloudChannelV1alpha1SubscriberEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    isDomainVerified: Schema.optional(Schema.Boolean),
-    eduData: Schema.optional(GoogleCloudChannelV1EduData),
-    phoneNumber: Schema.optional(Schema.String),
-    adminConsoleUri: Schema.optional(Schema.String),
-    alternateEmail: Schema.optional(Schema.String),
-    languageCode: Schema.optional(Schema.String),
-    customerType: Schema.optional(Schema.String),
-    primaryDomain: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1CloudIdentityInfo" });
-
-export interface GoogleCloudChannelV1ChannelPartnerLink {
-  /** Output only. Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination. */
-  publicId?: string;
-  /** Required. Cloud Identity ID of the linked reseller. */
-  resellerCloudIdentityId?: string;
-  /** Output only. Timestamp of when the channel partner link is created. */
-  createTime?: string;
-  /** Output only. Timestamp of when the channel partner link is updated. */
-  updateTime?: string;
-  /** Output only. Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}. */
-  name?: string;
-  /** Required. State of the channel partner link. */
-  linkState?:
-    | "CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED"
-    | "INVITED"
-    | "ACTIVE"
-    | "REVOKED"
-    | "SUSPENDED"
-    | (string & {});
-  /** Output only. Cloud Identity info of the channel partner (IR). */
-  channelPartnerCloudIdentityInfo?: GoogleCloudChannelV1CloudIdentityInfo;
-  /** Output only. URI of the web page where partner accepts the link invitation. */
-  inviteLinkUri?: string;
-}
-
-export const GoogleCloudChannelV1ChannelPartnerLink: Schema.Schema<GoogleCloudChannelV1ChannelPartnerLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    publicId: Schema.optional(Schema.String),
-    resellerCloudIdentityId: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    linkState: Schema.optional(Schema.String),
-    channelPartnerCloudIdentityInfo: Schema.optional(
-      GoogleCloudChannelV1CloudIdentityInfo,
+    customerEvent: Schema.optional(GoogleCloudChannelV1alpha1CustomerEvent),
+    opportunityEvent: Schema.optional(
+      GoogleCloudChannelV1alpha1OpportunityEvent,
     ),
-    inviteLinkUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ChannelPartnerLink" });
+    entitlementEvent: Schema.optional(
+      GoogleCloudChannelV1alpha1EntitlementEvent,
+    ),
+    channelPartnerEvent: Schema.optional(
+      GoogleCloudChannelV1alpha1ChannelPartnerEvent,
+    ),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1SubscriberEvent" });
 
-export interface GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
-  /** Required. The channel partner link to update. Only channel_partner_link.link_state is allowed for updates. */
-  channelPartnerLink?: GoogleCloudChannelV1ChannelPartnerLink;
-  /** Required. The update mask that applies to the resource. The only allowable value for an update mask is channel_partner_link.link_state. */
-  updateMask?: string;
+export interface GoogleCloudChannelV1TransferEligibility {
+  /** Whether reseller is eligible to transfer the SKU. */
+  isEligible?: boolean;
+  /** Localized description if reseller is not eligible to transfer the SKU. */
+  description?: string;
+  /** Specified the reason for ineligibility. */
+  ineligibilityReason?:
+    | "REASON_UNSPECIFIED"
+    | "PENDING_TOS_ACCEPTANCE"
+    | "SKU_NOT_ELIGIBLE"
+    | "SKU_SUSPENDED"
+    | "CHANNEL_PARTNER_NOT_AUTHORIZED_FOR_SKU"
+    | (string & {});
 }
 
-export const GoogleCloudChannelV1UpdateChannelPartnerLinkRequest: Schema.Schema<GoogleCloudChannelV1UpdateChannelPartnerLinkRequest> =
+export const GoogleCloudChannelV1TransferEligibility: Schema.Schema<GoogleCloudChannelV1TransferEligibility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    channelPartnerLink: Schema.optional(GoogleCloudChannelV1ChannelPartnerLink),
-    updateMask: Schema.optional(Schema.String),
+    isEligible: Schema.optional(Schema.Boolean),
+    description: Schema.optional(Schema.String),
+    ineligibilityReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1TransferEligibility" });
+
+export interface GoogleTypeMoney {
+  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
+  nanos?: number;
+  /** The three-letter currency code defined in ISO 4217. */
+  currencyCode?: string;
+  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
+  units?: string;
+}
+
+export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nanos: Schema.optional(Schema.Number),
+    currencyCode: Schema.optional(Schema.String),
+    units: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypeMoney" });
+
+export interface GoogleCloudChannelV1DiscountComponent {
+  /** Type of the discount. */
+  discountType?:
+    | "DISCOUNT_TYPE_UNSPECIFIED"
+    | "REGIONAL_DISCOUNT"
+    | "PROMOTIONAL_DISCOUNT"
+    | "SALES_DISCOUNT"
+    | "RESELLER_MARGIN"
+    | "DEAL_CODE"
+    | (string & {});
+  /** Discount percentage, represented as decimal. For example, a 20% discount will be represented as 0.2. */
+  discountPercentage?: number;
+  /** Fixed value discount. */
+  discountAbsolute?: GoogleTypeMoney;
+}
+
+export const GoogleCloudChannelV1DiscountComponent: Schema.Schema<GoogleCloudChannelV1DiscountComponent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discountType: Schema.optional(Schema.String),
+    discountPercentage: Schema.optional(Schema.Number),
+    discountAbsolute: Schema.optional(GoogleTypeMoney),
+  }).annotate({ identifier: "GoogleCloudChannelV1DiscountComponent" });
+
+export interface GoogleCloudChannelV1Price {
+  /** Breakdown of the discount into its components. This will be empty if there is no discount present. */
+  discountComponents?: ReadonlyArray<GoogleCloudChannelV1DiscountComponent>;
+  /** The time period with respect to which base and effective prices are defined. Example: 1 month, 6 months, 1 year, etc. */
+  pricePeriod?: GoogleCloudChannelV1Period;
+  /** Base price. */
+  basePrice?: GoogleTypeMoney;
+  /** Link to external price list, such as link to Google Voice rate card. */
+  externalPriceUri?: string;
+  /** Discount percentage, represented as decimal. For example, a 20% discount will be represent as 0.2. */
+  discount?: number;
+  /** Effective Price after applying the discounts. */
+  effectivePrice?: GoogleTypeMoney;
+}
+
+export const GoogleCloudChannelV1Price: Schema.Schema<GoogleCloudChannelV1Price> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discountComponents: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1DiscountComponent),
+    ),
+    pricePeriod: Schema.optional(GoogleCloudChannelV1Period),
+    basePrice: Schema.optional(GoogleTypeMoney),
+    externalPriceUri: Schema.optional(Schema.String),
+    discount: Schema.optional(Schema.Number),
+    effectivePrice: Schema.optional(GoogleTypeMoney),
+  }).annotate({ identifier: "GoogleCloudChannelV1Price" });
+
+export interface GoogleCloudChannelV1BillableSku {
+  /** Resource name of Billable SKU. Format: billableSkus/{sku}. Example: billableSkus/6E1B-6634-470F". */
+  sku?: string;
+  /** Resource name of Service which contains Repricing SKU. Format: services/{service}. Example: "services/B7D9-FDCB-15D8". */
+  service?: string;
+  /** Unique human readable name for the Service. */
+  serviceDisplayName?: string;
+  /** Unique human readable name for the SKU. */
+  skuDisplayName?: string;
+}
+
+export const GoogleCloudChannelV1BillableSku: Schema.Schema<GoogleCloudChannelV1BillableSku> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.String),
+    service: Schema.optional(Schema.String),
+    serviceDisplayName: Schema.optional(Schema.String),
+    skuDisplayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1BillableSku" });
+
+export interface GoogleCloudChannelV1ListSkuGroupBillableSkusResponse {
+  /** The list of billable SKUs in the requested SKU group. */
+  billableSkus?: ReadonlyArray<GoogleCloudChannelV1BillableSku>;
+  /** A token to retrieve the next page of results. Pass to ListSkuGroupBillableSkusRequest.page_token to obtain that page. */
+  nextPageToken?: string;
+}
+
+export const GoogleCloudChannelV1ListSkuGroupBillableSkusResponse: Schema.Schema<GoogleCloudChannelV1ListSkuGroupBillableSkusResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billableSkus: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1BillableSku),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({
-    identifier: "GoogleCloudChannelV1UpdateChannelPartnerLinkRequest",
+    identifier: "GoogleCloudChannelV1ListSkuGroupBillableSkusResponse",
   });
 
-export interface GoogleCloudChannelV1UnregisterSubscriberRequest {
-  /** Required. Service account to unregister from subscriber access to the topic. */
-  serviceAccount?: string;
-  /** Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. */
-  integrator?: string;
-  /** Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. */
-  account?: string;
-}
-
-export const GoogleCloudChannelV1UnregisterSubscriberRequest: Schema.Schema<GoogleCloudChannelV1UnregisterSubscriberRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serviceAccount: Schema.optional(Schema.String),
-    integrator: Schema.optional(Schema.String),
-    account: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1UnregisterSubscriberRequest",
-  });
-
-export interface GoogleCloudChannelV1alpha1TrialSettings {
-  /** Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com). */
-  endTime?: string;
-  /** Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial. */
-  trial?: boolean;
-}
-
-export const GoogleCloudChannelV1alpha1TrialSettings: Schema.Schema<GoogleCloudChannelV1alpha1TrialSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String),
-    trial: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1TrialSettings" });
-
-export interface GoogleCloudChannelV1PurchasableOffer {
-  /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
-  priceReferenceId?: string;
-  /** Offer. */
-  offer?: GoogleCloudChannelV1Offer;
-}
-
-export const GoogleCloudChannelV1PurchasableOffer: Schema.Schema<GoogleCloudChannelV1PurchasableOffer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    priceReferenceId: Schema.optional(Schema.String),
-    offer: Schema.optional(GoogleCloudChannelV1Offer),
-  }).annotate({ identifier: "GoogleCloudChannelV1PurchasableOffer" });
-
-export interface GoogleCloudChannelV1ListPurchasableOffersResponse {
+export interface GoogleCloudChannelV1ListSkusResponse {
+  /** The list of SKUs requested. */
+  skus?: ReadonlyArray<GoogleCloudChannelV1Sku>;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
-  /** The list of Offers requested. */
-  purchasableOffers?: ReadonlyArray<GoogleCloudChannelV1PurchasableOffer>;
 }
 
-export const GoogleCloudChannelV1ListPurchasableOffersResponse: Schema.Schema<GoogleCloudChannelV1ListPurchasableOffersResponse> =
+export const GoogleCloudChannelV1ListSkusResponse: Schema.Schema<GoogleCloudChannelV1ListSkusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skus: Schema.optional(Schema.Array(GoogleCloudChannelV1Sku)),
     nextPageToken: Schema.optional(Schema.String),
-    purchasableOffers: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1PurchasableOffer),
-    ),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1ListPurchasableOffersResponse",
+  }).annotate({ identifier: "GoogleCloudChannelV1ListSkusResponse" });
+
+export interface GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity {}
+
+export const GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity: Schema.Schema<GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity",
   });
 
-export interface GoogleCloudChannelV1Parameter {
-  /** Name of the parameter. */
-  name?: string;
-  /** Value of the parameter. */
-  value?: GoogleCloudChannelV1Value;
-  /** Output only. Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active. */
-  editable?: boolean;
+export interface GoogleCloudChannelV1UnregisterSubscriberResponse {
+  /** Name of the topic the service account subscriber access was removed from. */
+  topic?: string;
 }
 
-export const GoogleCloudChannelV1Parameter: Schema.Schema<GoogleCloudChannelV1Parameter> =
+export const GoogleCloudChannelV1UnregisterSubscriberResponse: Schema.Schema<GoogleCloudChannelV1UnregisterSubscriberResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    value: Schema.optional(GoogleCloudChannelV1Value),
-    editable: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "GoogleCloudChannelV1Parameter" });
+    topic: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1UnregisterSubscriberResponse",
+  });
 
-export interface GoogleCloudChannelV1ChangeParametersRequest {
-  /** Optional. Purchase order ID provided by the reseller. */
-  purchaseOrderId?: string;
-  /** Required. Entitlement parameters to update. You can only change editable parameters. To view the available Parameters for a request, refer to the Offer.parameter_definitions from the desired offer. */
-  parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
-  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
-  requestId?: string;
-}
-
-export const GoogleCloudChannelV1ChangeParametersRequest: Schema.Schema<GoogleCloudChannelV1ChangeParametersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    purchaseOrderId: Schema.optional(Schema.String),
-    parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
-    requestId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ChangeParametersRequest" });
-
-export interface GoogleCloudChannelV1alpha1Column {
-  /** The unique name of the column (for example, customer_domain, channel_partner, customer_cost). You can use column IDs in RunReportJobRequest.filter. To see all reports and their columns, call CloudChannelReportsService.ListReports. */
-  columnId?: string;
-  /** The column's display name. */
-  displayName?: string;
+export interface GoogleCloudChannelV1Column {
   /** The type of the values for this column. */
   dataType?:
     | "DATA_TYPE_UNSPECIFIED"
@@ -840,439 +703,93 @@ export interface GoogleCloudChannelV1alpha1Column {
     | "DATE"
     | "DATE_TIME"
     | (string & {});
+  /** The unique name of the column (for example, customer_domain, channel_partner, customer_cost). You can use column IDs in RunReportJobRequest.filter. To see all reports and their columns, call CloudChannelReportsService.ListReports. */
+  columnId?: string;
+  /** The column's display name. */
+  displayName?: string;
 }
 
-export const GoogleCloudChannelV1alpha1Column: Schema.Schema<GoogleCloudChannelV1alpha1Column> =
+export const GoogleCloudChannelV1Column: Schema.Schema<GoogleCloudChannelV1Column> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataType: Schema.optional(Schema.String),
     columnId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
-    dataType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Column" });
+  }).annotate({ identifier: "GoogleCloudChannelV1Column" });
 
-export interface GoogleCloudChannelV1alpha1Report {
-  /** A human-readable name for this report. */
-  displayName?: string;
+export interface GoogleCloudChannelV1Report {
   /** Required. The report's resource name. Specifies the account and report used to generate report data. The report_id identifier is a UID (for example, `613bf59q`). Name uses the format: accounts/{account_id}/reports/{report_id} */
   name?: string;
+  /** A human-readable name for this report. */
+  displayName?: string;
   /** The list of columns included in the report. This defines the schema of the report results. */
-  columns?: ReadonlyArray<GoogleCloudChannelV1alpha1Column>;
+  columns?: ReadonlyArray<GoogleCloudChannelV1Column>;
   /** A description of other aspects of the report, such as the products it supports. */
   description?: string;
 }
 
-export const GoogleCloudChannelV1alpha1Report: Schema.Schema<GoogleCloudChannelV1alpha1Report> =
+export const GoogleCloudChannelV1Report: Schema.Schema<GoogleCloudChannelV1Report> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    columns: Schema.optional(Schema.Array(GoogleCloudChannelV1alpha1Column)),
+    displayName: Schema.optional(Schema.String),
+    columns: Schema.optional(Schema.Array(GoogleCloudChannelV1Column)),
     description: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Report" });
+  }).annotate({ identifier: "GoogleCloudChannelV1Report" });
 
-export interface GoogleCloudChannelV1alpha1DateRange {
-  /** The earliest usage date time (inclusive). If you use time groupings (daily, weekly, etc), each group uses midnight to midnight (Pacific time). The usage start date is rounded down to include all usage from the specified date. We recommend that clients pass `usage_start_date_time` in Pacific time. */
-  usageStartDateTime?: GoogleTypeDateTime;
-  /** The latest usage date time (exclusive). If you use time groupings (daily, weekly, etc), each group uses midnight to midnight (Pacific time). The usage end date is rounded down to include all usage from the specified date. We recommend that clients pass `usage_start_date_time` in Pacific time. */
-  usageEndDateTime?: GoogleTypeDateTime;
-  /** The latest invoice date (inclusive). If this value is not the last day of a month, this will move it forward to the last day of the given month. */
-  invoiceEndDate?: GoogleTypeDate;
-  /** The earliest invoice date (inclusive). If this value is not the first day of a month, this will move it back to the first day of the given month. */
-  invoiceStartDate?: GoogleTypeDate;
-}
-
-export const GoogleCloudChannelV1alpha1DateRange: Schema.Schema<GoogleCloudChannelV1alpha1DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    usageStartDateTime: Schema.optional(GoogleTypeDateTime),
-    usageEndDateTime: Schema.optional(GoogleTypeDateTime),
-    invoiceEndDate: Schema.optional(GoogleTypeDate),
-    invoiceStartDate: Schema.optional(GoogleTypeDate),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1DateRange" });
-
-export interface GoogleCloudChannelV1alpha1ReportResultsMetadata {
-  /** Details of the completed report. */
-  report?: GoogleCloudChannelV1alpha1Report;
-  /** The usage dates immediately preceding `date_range` with the same duration. Use this to calculate trending usage and costs. This is only populated if you request trending data. For example, if `date_range` is July 1-15, `preceding_date_range` will be June 16-30. */
-  precedingDateRange?: GoogleCloudChannelV1alpha1DateRange;
-  /** The total number of rows of data in the final report. */
-  rowCount?: string;
-  /** The date range of reported usage. */
-  dateRange?: GoogleCloudChannelV1alpha1DateRange;
-}
-
-export const GoogleCloudChannelV1alpha1ReportResultsMetadata: Schema.Schema<GoogleCloudChannelV1alpha1ReportResultsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    report: Schema.optional(GoogleCloudChannelV1alpha1Report),
-    precedingDateRange: Schema.optional(GoogleCloudChannelV1alpha1DateRange),
-    rowCount: Schema.optional(Schema.String),
-    dateRange: Schema.optional(GoogleCloudChannelV1alpha1DateRange),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1alpha1ReportResultsMetadata",
-  });
-
-export interface GoogleCloudChannelV1alpha1OpportunityEvent {
-  /** Resource name of the partner. Format: partners/{partner} */
-  partner?: string;
-  /** Type of event which happened for the opportunity. */
-  eventType?:
-    | "TYPE_UNSPECIFIED"
-    | "CREATED"
-    | "UPDATED"
-    | "PARTNER_DETACHED"
-    | (string & {});
-  /** Resource name of the opportunity. Format: opportunities/{opportunity} */
-  opportunity?: string;
-}
-
-export const GoogleCloudChannelV1alpha1OpportunityEvent: Schema.Schema<GoogleCloudChannelV1alpha1OpportunityEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    partner: Schema.optional(Schema.String),
-    eventType: Schema.optional(Schema.String),
-    opportunity: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1OpportunityEvent" });
-
-export interface GoogleTypePostalAddress {
-  /** Optional. The name of the organization at the address. */
-  organization?: string;
-  /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
-  revision?: number;
-  /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
-  sortingCode?: string;
-  /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
-  locality?: string;
-  /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: ReadonlyArray<string>;
-  /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
-  postalCode?: string;
-  /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
-  languageCode?: string;
-  /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
-  administrativeArea?: string;
-  /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
-  regionCode?: string;
-  /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
-  sublocality?: string;
-  /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: ReadonlyArray<string>;
-}
-
-export const GoogleTypePostalAddress: Schema.Schema<GoogleTypePostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.optional(Schema.String),
-    revision: Schema.optional(Schema.Number),
-    sortingCode: Schema.optional(Schema.String),
-    locality: Schema.optional(Schema.String),
-    addressLines: Schema.optional(Schema.Array(Schema.String)),
-    postalCode: Schema.optional(Schema.String),
-    languageCode: Schema.optional(Schema.String),
-    administrativeArea: Schema.optional(Schema.String),
-    regionCode: Schema.optional(Schema.String),
-    sublocality: Schema.optional(Schema.String),
-    recipients: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "GoogleTypePostalAddress" });
-
-export interface GoogleCloudChannelV1ContactInfo {
-  /** The customer account's contact phone number. */
-  phone?: string;
-  /** Optional. The customer account contact's job title. */
-  title?: string;
-  /** The customer account contact's last name. Optional for Team customers. */
-  lastName?: string;
-  /** The customer account contact's first name. Optional for Team customers. */
-  firstName?: string;
-  /** The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers. */
-  email?: string;
-  /** Output only. The customer account contact's display name, formatted as a combination of the customer's first and last name. */
-  displayName?: string;
-}
-
-export const GoogleCloudChannelV1ContactInfo: Schema.Schema<GoogleCloudChannelV1ContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    phone: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    lastName: Schema.optional(Schema.String),
-    firstName: Schema.optional(Schema.String),
-    email: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ContactInfo" });
-
-export interface GoogleCloudChannelV1Customer {
-  /** Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
-  name?: string;
-  /** Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers. */
-  alternateEmail?: string;
-  /** Required. The customer's primary domain. Must match the primary contact email's domain. */
-  domain?: string;
-  /** Required. Name of the organization that the customer entity represents. */
-  orgDisplayName?: string;
-  /** Required. The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code. */
-  orgPostalAddress?: GoogleTypePostalAddress;
-  /** Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer. */
-  channelPartnerId?: string;
-  /** Output only. Time when the customer was created. */
-  createTime?: string;
-  /** Output only. Time when the customer was updated. */
-  updateTime?: string;
-  /** Optional. Indicate if a customer is attesting about the correctness of provided information. Only required if creating a GCP Entitlement. */
-  customerAttestationState?:
-    | "CUSTOMER_ATTESTATION_STATE_UNSPECIFIED"
-    | "EXEMPT"
-    | "NON_EXEMPT_AND_INFO_VERIFIED"
-    | (string & {});
-  /** Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer. */
-  correlationId?: string;
-  /** Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. */
-  languageCode?: string;
-  /** Primary contact info. */
-  primaryContactInfo?: GoogleCloudChannelV1ContactInfo;
-  /** Output only. The customer's Cloud Identity ID if the customer has a Cloud Identity resource. */
-  cloudIdentityId?: string;
-  /** Output only. Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer. */
-  cloudIdentityInfo?: GoogleCloudChannelV1CloudIdentityInfo;
-}
-
-export const GoogleCloudChannelV1Customer: Schema.Schema<GoogleCloudChannelV1Customer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    alternateEmail: Schema.optional(Schema.String),
-    domain: Schema.optional(Schema.String),
-    orgDisplayName: Schema.optional(Schema.String),
-    orgPostalAddress: Schema.optional(GoogleTypePostalAddress),
-    channelPartnerId: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    customerAttestationState: Schema.optional(Schema.String),
-    correlationId: Schema.optional(Schema.String),
-    languageCode: Schema.optional(Schema.String),
-    primaryContactInfo: Schema.optional(GoogleCloudChannelV1ContactInfo),
-    cloudIdentityId: Schema.optional(Schema.String),
-    cloudIdentityInfo: Schema.optional(GoogleCloudChannelV1CloudIdentityInfo),
-  }).annotate({ identifier: "GoogleCloudChannelV1Customer" });
-
-export interface GoogleCloudChannelV1ListCustomersResponse {
-  /** A token to retrieve the next page of results. Pass to ListCustomersRequest.page_token to obtain that page. */
+export interface GoogleCloudChannelV1ListReportsResponse {
+  /** The reports available to the partner. */
+  reports?: ReadonlyArray<GoogleCloudChannelV1Report>;
+  /** Pass this token to FetchReportResultsRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
-  /** The customers belonging to a reseller or distributor. */
-  customers?: ReadonlyArray<GoogleCloudChannelV1Customer>;
 }
 
-export const GoogleCloudChannelV1ListCustomersResponse: Schema.Schema<GoogleCloudChannelV1ListCustomersResponse> =
+export const GoogleCloudChannelV1ListReportsResponse: Schema.Schema<GoogleCloudChannelV1ListReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reports: Schema.optional(Schema.Array(GoogleCloudChannelV1Report)),
     nextPageToken: Schema.optional(Schema.String),
-    customers: Schema.optional(Schema.Array(GoogleCloudChannelV1Customer)),
-  }).annotate({ identifier: "GoogleCloudChannelV1ListCustomersResponse" });
-
-export interface GoogleCloudChannelV1TransferEligibility {
-  /** Whether reseller is eligible to transfer the SKU. */
-  isEligible?: boolean;
-  /** Specified the reason for ineligibility. */
-  ineligibilityReason?:
-    | "REASON_UNSPECIFIED"
-    | "PENDING_TOS_ACCEPTANCE"
-    | "SKU_NOT_ELIGIBLE"
-    | "SKU_SUSPENDED"
-    | "CHANNEL_PARTNER_NOT_AUTHORIZED_FOR_SKU"
-    | (string & {});
-  /** Localized description if reseller is not eligible to transfer the SKU. */
-  description?: string;
-}
-
-export const GoogleCloudChannelV1TransferEligibility: Schema.Schema<GoogleCloudChannelV1TransferEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    isEligible: Schema.optional(Schema.Boolean),
-    ineligibilityReason: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1TransferEligibility" });
+  }).annotate({ identifier: "GoogleCloudChannelV1ListReportsResponse" });
 
 export interface GoogleCloudChannelV1TransferableSku {
+  /** The SKU pertaining to the provisioning resource as specified in the Offer. */
+  sku?: GoogleCloudChannelV1Sku;
   /** Describes the transfer eligibility of a SKU. */
   transferEligibility?: GoogleCloudChannelV1TransferEligibility;
   /** Optional. The customer to transfer has an entitlement with the populated legacy SKU. */
   legacySku?: GoogleCloudChannelV1Sku;
-  /** The SKU pertaining to the provisioning resource as specified in the Offer. */
-  sku?: GoogleCloudChannelV1Sku;
 }
 
 export const GoogleCloudChannelV1TransferableSku: Schema.Schema<GoogleCloudChannelV1TransferableSku> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(GoogleCloudChannelV1Sku),
     transferEligibility: Schema.optional(
       GoogleCloudChannelV1TransferEligibility,
     ),
     legacySku: Schema.optional(GoogleCloudChannelV1Sku),
-    sku: Schema.optional(GoogleCloudChannelV1Sku),
   }).annotate({ identifier: "GoogleCloudChannelV1TransferableSku" });
 
 export interface GoogleCloudChannelV1ListTransferableSkusResponse {
-  /** Information about existing SKUs for a customer that needs a transfer. */
-  transferableSkus?: ReadonlyArray<GoogleCloudChannelV1TransferableSku>;
   /** A token to retrieve the next page of results. Pass to ListTransferableSkusRequest.page_token to obtain that page. */
   nextPageToken?: string;
+  /** Information about existing SKUs for a customer that needs a transfer. */
+  transferableSkus?: ReadonlyArray<GoogleCloudChannelV1TransferableSku>;
 }
 
 export const GoogleCloudChannelV1ListTransferableSkusResponse: Schema.Schema<GoogleCloudChannelV1ListTransferableSkusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
     transferableSkus: Schema.optional(
       Schema.Array(GoogleCloudChannelV1TransferableSku),
     ),
-    nextPageToken: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudChannelV1ListTransferableSkusResponse",
   });
 
-export interface GoogleCloudChannelV1TransferableOffer {
-  /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
-  priceReferenceId?: string;
-  /** Offer with parameter constraints updated to allow the Transfer. */
-  offer?: GoogleCloudChannelV1Offer;
-}
-
-export const GoogleCloudChannelV1TransferableOffer: Schema.Schema<GoogleCloudChannelV1TransferableOffer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    priceReferenceId: Schema.optional(Schema.String),
-    offer: Schema.optional(GoogleCloudChannelV1Offer),
-  }).annotate({ identifier: "GoogleCloudChannelV1TransferableOffer" });
-
-export interface GoogleCloudChannelV1ChangeOfferRequest {
-  /** Optional. The billing account resource name that is used to pay for this entitlement when setting up billing on a trial subscription. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts. */
-  billingAccount?: string;
-  /** Optional. Purchase order id provided by the reseller. */
-  purchaseOrderId?: string;
-  /** Optional. Parameters needed to purchase the Offer. To view the available Parameters refer to the Offer.parameter_definitions from the desired offer. */
-  parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
-  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
-  requestId?: string;
-  /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
-  priceReferenceId?: string;
-  /** Required. New Offer. Format: accounts/{account_id}/offers/{offer_id}. */
-  offer?: string;
-}
-
-export const GoogleCloudChannelV1ChangeOfferRequest: Schema.Schema<GoogleCloudChannelV1ChangeOfferRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingAccount: Schema.optional(Schema.String),
-    purchaseOrderId: Schema.optional(Schema.String),
-    parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
-    requestId: Schema.optional(Schema.String),
-    priceReferenceId: Schema.optional(Schema.String),
-    offer: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ChangeOfferRequest" });
-
-export interface GoogleCloudChannelV1AdminUser {
-  /** Family name of the admin user. */
-  familyName?: string;
-  /** Primary email of the admin user. */
-  email?: string;
-  /** Given name of the admin user. */
-  givenName?: string;
-}
-
-export const GoogleCloudChannelV1AdminUser: Schema.Schema<GoogleCloudChannelV1AdminUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    familyName: Schema.optional(Schema.String),
-    email: Schema.optional(Schema.String),
-    givenName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1AdminUser" });
-
-export interface GoogleCloudChannelV1alpha1AssociationInfo {
-  /** The name of the base entitlement, for which this entitlement is an add-on. */
-  baseEntitlement?: string;
-}
-
-export const GoogleCloudChannelV1alpha1AssociationInfo: Schema.Schema<GoogleCloudChannelV1alpha1AssociationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    baseEntitlement: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1AssociationInfo" });
-
-export interface GoogleCloudChannelV1alpha1ReportJob {
-  /** Required. The resource name of a report job. Name uses the format: `accounts/{account_id}/reportJobs/{report_job_id}` */
-  name?: string;
-  /** The current status of report generation. */
-  reportStatus?: GoogleCloudChannelV1alpha1ReportStatus;
-}
-
-export const GoogleCloudChannelV1alpha1ReportJob: Schema.Schema<GoogleCloudChannelV1alpha1ReportJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    reportStatus: Schema.optional(GoogleCloudChannelV1alpha1ReportStatus),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ReportJob" });
-
-export interface GoogleCloudChannelV1alpha1RunReportJobResponse {
-  /** Pass `report_job.name` to FetchReportResultsRequest.report_job to retrieve the report's results. */
-  reportJob?: GoogleCloudChannelV1alpha1ReportJob;
-  /** The metadata for the report's results (display name, columns, row count, and date range). If you view this before the operation finishes, you may see incomplete data. */
-  reportMetadata?: GoogleCloudChannelV1alpha1ReportResultsMetadata;
-}
-
-export const GoogleCloudChannelV1alpha1RunReportJobResponse: Schema.Schema<GoogleCloudChannelV1alpha1RunReportJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    reportJob: Schema.optional(GoogleCloudChannelV1alpha1ReportJob),
-    reportMetadata: Schema.optional(
-      GoogleCloudChannelV1alpha1ReportResultsMetadata,
-    ),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1RunReportJobResponse" });
-
-export interface GoogleProtobufEmpty {}
-
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleProtobufEmpty",
-  });
-
-export interface GoogleCloudChannelV1ListTransferableOffersRequest {
-  /** Customer's Cloud Identity ID */
-  cloudIdentityId?: string;
-  /** A reseller should create a customer and use the resource name of that customer here. */
-  customerName?: string;
-  /** A token for a page of results other than the first page. Obtained using ListTransferableOffersResponse.next_page_token of the previous CloudChannelService.ListTransferableOffers call. */
-  pageToken?: string;
-  /** Required. The SKU to look up Offers for. */
-  sku?: string;
-  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
-  languageCode?: string;
-  /** Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 offers. The maximum value is 1000; the server will coerce values above 1000. */
-  pageSize?: number;
-  /** Optional. The Billing Account to look up Offers for. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts. */
-  billingAccount?: string;
-}
-
-export const GoogleCloudChannelV1ListTransferableOffersRequest: Schema.Schema<GoogleCloudChannelV1ListTransferableOffersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cloudIdentityId: Schema.optional(Schema.String),
-    customerName: Schema.optional(Schema.String),
-    pageToken: Schema.optional(Schema.String),
-    sku: Schema.optional(Schema.String),
-    languageCode: Schema.optional(Schema.String),
-    pageSize: Schema.optional(Schema.Number),
-    billingAccount: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1ListTransferableOffersRequest",
-  });
-
-export interface GoogleCloudChannelV1ActivateEntitlementRequest {
-  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
-  requestId?: string;
-}
-
-export const GoogleCloudChannelV1ActivateEntitlementRequest: Schema.Schema<GoogleCloudChannelV1ActivateEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ActivateEntitlementRequest" });
-
-export interface GoogleCloudChannelV1CancelEntitlementRequest {
-  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
-  requestId?: string;
-}
-
-export const GoogleCloudChannelV1CancelEntitlementRequest: Schema.Schema<GoogleCloudChannelV1CancelEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1CancelEntitlementRequest" });
-
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: ReadonlyArray<Record<string, unknown>>;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
 }
 
 export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
@@ -1280,153 +797,24 @@ export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
-    message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleRpcStatus" });
 
-export interface GoogleLongrunningOperation {
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: GoogleRpcStatus;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
+export interface GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
+  /** Required. Domain to fetch for Cloud Identity account customers, including domain and team customers. For team customers, please use the domain for their emails. */
+  domain?: string;
+  /** Optional. Primary admin email to fetch for Cloud Identity account team customer. */
+  primaryAdminEmail?: string;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest: Schema.Schema<GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    error: Schema.optional(GoogleRpcStatus),
-    name: Schema.optional(Schema.String),
-    done: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "GoogleLongrunningOperation" });
-
-export interface GoogleCloudChannelV1BillingAccount {
-  /** Output only. The 3-letter currency code defined in ISO 4217. */
-  currencyCode?: string;
-  /** Output only. The CLDR region code. */
-  regionCode?: string;
-  /** Display name of the billing account. */
-  displayName?: string;
-  /** Output only. Resource name of the billing account. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. */
-  name?: string;
-  /** Output only. The time when this billing account was created. */
-  createTime?: string;
-}
-
-export const GoogleCloudChannelV1BillingAccount: Schema.Schema<GoogleCloudChannelV1BillingAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    currencyCode: Schema.optional(Schema.String),
-    regionCode: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1BillingAccount" });
-
-export interface GoogleCloudChannelV1BillingAccountPurchaseInfo {
-  /** The billing account resource. */
-  billingAccount?: GoogleCloudChannelV1BillingAccount;
-}
-
-export const GoogleCloudChannelV1BillingAccountPurchaseInfo: Schema.Schema<GoogleCloudChannelV1BillingAccountPurchaseInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingAccount: Schema.optional(GoogleCloudChannelV1BillingAccount),
-  }).annotate({ identifier: "GoogleCloudChannelV1BillingAccountPurchaseInfo" });
-
-export interface GoogleCloudChannelV1SkuPurchaseGroup {
-  /** List of billing accounts that are eligible to purhcase these SKUs. */
-  billingAccountPurchaseInfos?: ReadonlyArray<GoogleCloudChannelV1BillingAccountPurchaseInfo>;
-  /** Resource names of the SKUs included in this group. Format: products/{product_id}/skus/{sku_id}. */
-  skus?: ReadonlyArray<string>;
-}
-
-export const GoogleCloudChannelV1SkuPurchaseGroup: Schema.Schema<GoogleCloudChannelV1SkuPurchaseGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingAccountPurchaseInfos: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1BillingAccountPurchaseInfo),
-    ),
-    skus: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "GoogleCloudChannelV1SkuPurchaseGroup" });
-
-export interface GoogleCloudChannelV1QueryEligibleBillingAccountsResponse {
-  /** List of SKU purchase groups where each group represents a set of SKUs that must be purchased using the same billing account. Each SKU from [QueryEligibleBillingAccountsRequest.skus] will appear in exactly one SKU group. */
-  skuPurchaseGroups?: ReadonlyArray<GoogleCloudChannelV1SkuPurchaseGroup>;
-}
-
-export const GoogleCloudChannelV1QueryEligibleBillingAccountsResponse: Schema.Schema<GoogleCloudChannelV1QueryEligibleBillingAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    skuPurchaseGroups: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1SkuPurchaseGroup),
-    ),
+    domain: Schema.optional(Schema.String),
+    primaryAdminEmail: Schema.optional(Schema.String),
   }).annotate({
-    identifier: "GoogleCloudChannelV1QueryEligibleBillingAccountsResponse",
+    identifier: "GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest",
   });
-
-export interface GoogleCloudChannelV1RenewalSettings {
-  /** Describes how frequently the reseller will be billed, such as once per month. */
-  paymentCycle?: GoogleCloudChannelV1Period;
-  /** If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time. */
-  resizeUnitCount?: boolean;
-  /** If false, the plan will be completed at the end date. */
-  enableRenewal?: boolean;
-  /** Describes how a reseller will be billed. */
-  paymentPlan?:
-    | "PAYMENT_PLAN_UNSPECIFIED"
-    | "COMMITMENT"
-    | "FLEXIBLE"
-    | "FREE"
-    | "TRIAL"
-    | "OFFLINE"
-    | (string & {});
-}
-
-export const GoogleCloudChannelV1RenewalSettings: Schema.Schema<GoogleCloudChannelV1RenewalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    paymentCycle: Schema.optional(GoogleCloudChannelV1Period),
-    resizeUnitCount: Schema.optional(Schema.Boolean),
-    enableRenewal: Schema.optional(Schema.Boolean),
-    paymentPlan: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1RenewalSettings" });
-
-export interface GoogleCloudChannelV1ChangeRenewalSettingsRequest {
-  /** Required. New renewal settings. */
-  renewalSettings?: GoogleCloudChannelV1RenewalSettings;
-  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
-  requestId?: string;
-}
-
-export const GoogleCloudChannelV1ChangeRenewalSettingsRequest: Schema.Schema<GoogleCloudChannelV1ChangeRenewalSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    renewalSettings: Schema.optional(GoogleCloudChannelV1RenewalSettings),
-    requestId: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1ChangeRenewalSettingsRequest",
-  });
-
-export interface GoogleCloudChannelV1SkuGroupCondition {
-  /** Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041". */
-  skuGroup?: string;
-}
-
-export const GoogleCloudChannelV1SkuGroupCondition: Schema.Schema<GoogleCloudChannelV1SkuGroupCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    skuGroup: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1SkuGroupCondition" });
-
-export interface GoogleCloudChannelV1RepricingCondition {
-  /** SKU Group condition for override. */
-  skuGroupCondition?: GoogleCloudChannelV1SkuGroupCondition;
-}
-
-export const GoogleCloudChannelV1RepricingCondition: Schema.Schema<GoogleCloudChannelV1RepricingCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    skuGroupCondition: Schema.optional(GoogleCloudChannelV1SkuGroupCondition),
-  }).annotate({ identifier: "GoogleCloudChannelV1RepricingCondition" });
 
 export interface GoogleTypeDecimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
@@ -1448,6 +836,75 @@ export const GoogleCloudChannelV1PercentageAdjustment: Schema.Schema<GoogleCloud
     percentage: Schema.optional(GoogleTypeDecimal),
   }).annotate({ identifier: "GoogleCloudChannelV1PercentageAdjustment" });
 
+export interface GoogleCloudChannelV1ChannelPartnerLink {
+  /** Output only. Timestamp of when the channel partner link is updated. */
+  updateTime?: string;
+  /** Output only. Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination. */
+  publicId?: string;
+  /** Output only. Cloud Identity info of the channel partner (IR). */
+  channelPartnerCloudIdentityInfo?: GoogleCloudChannelV1CloudIdentityInfo;
+  /** Output only. Timestamp of when the channel partner link is created. */
+  createTime?: string;
+  /** Output only. Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}. */
+  name?: string;
+  /** Required. Cloud Identity ID of the linked reseller. */
+  resellerCloudIdentityId?: string;
+  /** Required. State of the channel partner link. */
+  linkState?:
+    | "CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED"
+    | "INVITED"
+    | "ACTIVE"
+    | "REVOKED"
+    | "SUSPENDED"
+    | (string & {});
+  /** Output only. URI of the web page where partner accepts the link invitation. */
+  inviteLinkUri?: string;
+}
+
+export const GoogleCloudChannelV1ChannelPartnerLink: Schema.Schema<GoogleCloudChannelV1ChannelPartnerLink> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    publicId: Schema.optional(Schema.String),
+    channelPartnerCloudIdentityInfo: Schema.optional(
+      GoogleCloudChannelV1CloudIdentityInfo,
+    ),
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    resellerCloudIdentityId: Schema.optional(Schema.String),
+    linkState: Schema.optional(Schema.String),
+    inviteLinkUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ChannelPartnerLink" });
+
+export interface GoogleCloudChannelV1ListChannelPartnerLinksResponse {
+  /** A token to retrieve the next page of results. Pass to ListChannelPartnerLinksRequest.page_token to obtain that page. */
+  nextPageToken?: string;
+  /** The Channel partner links for a reseller. */
+  channelPartnerLinks?: ReadonlyArray<GoogleCloudChannelV1ChannelPartnerLink>;
+}
+
+export const GoogleCloudChannelV1ListChannelPartnerLinksResponse: Schema.Schema<GoogleCloudChannelV1ListChannelPartnerLinksResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    channelPartnerLinks: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1ChannelPartnerLink),
+    ),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1ListChannelPartnerLinksResponse",
+  });
+
+export interface GoogleCloudChannelV1SkuGroup {
+  /** Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041". */
+  name?: string;
+  /** Unique human readable identifier for the SKU group. */
+  displayName?: string;
+}
+
+export const GoogleCloudChannelV1SkuGroup: Schema.Schema<GoogleCloudChannelV1SkuGroup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1SkuGroup" });
+
 export interface GoogleCloudChannelV1RepricingAdjustment {
   /** Flat markup or markdown on an entire bill. */
   percentageAdjustment?: GoogleCloudChannelV1PercentageAdjustment;
@@ -1460,61 +917,128 @@ export const GoogleCloudChannelV1RepricingAdjustment: Schema.Schema<GoogleCloudC
     ),
   }).annotate({ identifier: "GoogleCloudChannelV1RepricingAdjustment" });
 
-export interface GoogleCloudChannelV1ConditionalOverride {
-  /** Required. Specifies the condition which, if met, will apply the override. */
-  repricingCondition?: GoogleCloudChannelV1RepricingCondition;
-  /** Required. The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs. */
-  rebillingBasis?:
-    | "REBILLING_BASIS_UNSPECIFIED"
-    | "COST_AT_LIST"
-    | "DIRECT_CUSTOMER_COST"
-    | (string & {});
-  /** Required. Information about the applied override's adjustment. */
-  adjustment?: GoogleCloudChannelV1RepricingAdjustment;
+export interface GoogleCloudChannelV1ProvisionedService {
+  /** Output only. The SKU pertaining to the provisioning resource as specified in the Offer. */
+  skuId?: string;
+  /** Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount. */
+  provisioningId?: string;
+  /** Output only. The product pertaining to the provisioning resource as specified in the Offer. */
+  productId?: string;
 }
 
-export const GoogleCloudChannelV1ConditionalOverride: Schema.Schema<GoogleCloudChannelV1ConditionalOverride> =
+export const GoogleCloudChannelV1ProvisionedService: Schema.Schema<GoogleCloudChannelV1ProvisionedService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    repricingCondition: Schema.optional(GoogleCloudChannelV1RepricingCondition),
-    rebillingBasis: Schema.optional(Schema.String),
-    adjustment: Schema.optional(GoogleCloudChannelV1RepricingAdjustment),
-  }).annotate({ identifier: "GoogleCloudChannelV1ConditionalOverride" });
+    skuId: Schema.optional(Schema.String),
+    provisioningId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ProvisionedService" });
 
-export interface GoogleCloudChannelV1StartPaidServiceRequest {
+export interface GoogleCloudChannelV1FetchReportResultsRequest {
+  /** Optional. Requested page size of the report. The server may return fewer results than requested. If you don't specify a page size, the server uses a sensible default (may change over time). The maximum value is 30,000; the server will change larger values to 30,000. */
+  pageSize?: number;
+  /** Optional. A token that specifies a page of results beyond the first page. Obtained through FetchReportResultsResponse.next_page_token of the previous CloudChannelReportsService.FetchReportResults call. */
+  pageToken?: string;
+  /** Optional. List of keys specifying which report partitions to return. If empty, returns all partitions. */
+  partitionKeys?: ReadonlyArray<string>;
+}
+
+export const GoogleCloudChannelV1FetchReportResultsRequest: Schema.Schema<GoogleCloudChannelV1FetchReportResultsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+    partitionKeys: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudChannelV1FetchReportResultsRequest" });
+
+export interface GoogleCloudChannelV1AdminUser {
+  /** Primary email of the admin user. */
+  email?: string;
+  /** Given name of the admin user. */
+  givenName?: string;
+  /** Family name of the admin user. */
+  familyName?: string;
+}
+
+export const GoogleCloudChannelV1AdminUser: Schema.Schema<GoogleCloudChannelV1AdminUser> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+    givenName: Schema.optional(Schema.String),
+    familyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1AdminUser" });
+
+export interface GoogleCloudChannelV1ActivateEntitlementRequest {
   /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
   requestId?: string;
 }
 
-export const GoogleCloudChannelV1StartPaidServiceRequest: Schema.Schema<GoogleCloudChannelV1StartPaidServiceRequest> =
+export const GoogleCloudChannelV1ActivateEntitlementRequest: Schema.Schema<GoogleCloudChannelV1ActivateEntitlementRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1StartPaidServiceRequest" });
+  }).annotate({ identifier: "GoogleCloudChannelV1ActivateEntitlementRequest" });
 
-export interface GoogleCloudChannelV1SkuGroup {
-  /** Unique human readable identifier for the SKU group. */
+export interface GoogleCloudChannelV1alpha1Column {
+  /** The type of the values for this column. */
+  dataType?:
+    | "DATA_TYPE_UNSPECIFIED"
+    | "STRING"
+    | "INT"
+    | "DECIMAL"
+    | "MONEY"
+    | "DATE"
+    | "DATE_TIME"
+    | (string & {});
+  /** The unique name of the column (for example, customer_domain, channel_partner, customer_cost). You can use column IDs in RunReportJobRequest.filter. To see all reports and their columns, call CloudChannelReportsService.ListReports. */
+  columnId?: string;
+  /** The column's display name. */
   displayName?: string;
-  /** Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041". */
-  name?: string;
 }
 
-export const GoogleCloudChannelV1SkuGroup: Schema.Schema<GoogleCloudChannelV1SkuGroup> =
+export const GoogleCloudChannelV1alpha1Column: Schema.Schema<GoogleCloudChannelV1alpha1Column> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataType: Schema.optional(Schema.String),
+    columnId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1SkuGroup" });
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Column" });
 
-export interface GoogleCloudChannelV1ListSkuGroupsResponse {
-  /** The list of SKU groups requested. */
-  skuGroups?: ReadonlyArray<GoogleCloudChannelV1SkuGroup>;
-  /** A token to retrieve the next page of results. Pass to ListSkuGroupsRequest.page_token to obtain that page. */
-  nextPageToken?: string;
+export interface GoogleCloudChannelV1alpha1Report {
+  /** Required. The report's resource name. Specifies the account and report used to generate report data. The report_id identifier is a UID (for example, `613bf59q`). Name uses the format: accounts/{account_id}/reports/{report_id} */
+  name?: string;
+  /** A human-readable name for this report. */
+  displayName?: string;
+  /** The list of columns included in the report. This defines the schema of the report results. */
+  columns?: ReadonlyArray<GoogleCloudChannelV1alpha1Column>;
+  /** A description of other aspects of the report, such as the products it supports. */
+  description?: string;
 }
 
-export const GoogleCloudChannelV1ListSkuGroupsResponse: Schema.Schema<GoogleCloudChannelV1ListSkuGroupsResponse> =
+export const GoogleCloudChannelV1alpha1Report: Schema.Schema<GoogleCloudChannelV1alpha1Report> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    skuGroups: Schema.optional(Schema.Array(GoogleCloudChannelV1SkuGroup)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ListSkuGroupsResponse" });
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    columns: Schema.optional(Schema.Array(GoogleCloudChannelV1alpha1Column)),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Report" });
+
+export interface GoogleCloudChannelV1ReportStatus {
+  /** The report generation's start time. */
+  startTime?: string;
+  /** The current state of the report generation process. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "STARTED"
+    | "WRITING"
+    | "AVAILABLE"
+    | "FAILED"
+    | (string & {});
+  /** The report generation's completion time. */
+  endTime?: string;
+}
+
+export const GoogleCloudChannelV1ReportStatus: Schema.Schema<GoogleCloudChannelV1ReportStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ReportStatus" });
 
 export interface GoogleCloudChannelV1CustomerEvent {
   /** Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
@@ -1573,563 +1097,552 @@ export const GoogleCloudChannelV1SubscriberEvent: Schema.Schema<GoogleCloudChann
     entitlementEvent: Schema.optional(GoogleCloudChannelV1EntitlementEvent),
   }).annotate({ identifier: "GoogleCloudChannelV1SubscriberEvent" });
 
-export interface GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity {}
-
-export const GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity: Schema.Schema<GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity",
-  });
-
-export interface GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
-  /** Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
-  entitlement?: string;
+export interface GoogleCloudChannelV1ImportCustomerRequest {
+  /** Required. Customer's primary admin email. */
+  primaryAdminEmail?: string;
+  /** Required. Choose to overwrite an existing customer if found. This must be set to true if there is an existing customer with a conflicting region code or domain. */
+  overwriteIfExists?: boolean;
+  /** Optional. Cloud Identity ID of a channel partner who will be the direct reseller for the customer's order. This field is required for 2-tier transfer scenarios and can be provided via the request Parent binding as well. */
+  channelPartnerId?: string;
+  /** Required. Customer domain. */
+  domain?: string;
+  /** Optional. The super admin of the resold customer generates this token to authorize a reseller to access their Cloud Identity and purchase entitlements on their behalf. You can omit this token after authorization. See https://support.google.com/a/answer/7643790 for more details. */
+  authToken?: string;
+  /** Required. Customer's Cloud Identity ID */
+  cloudIdentityId?: string;
+  /** Optional. Specifies the customer that will receive imported Cloud Identity information. Format: accounts/{account_id}/customers/{customer_id} */
+  customer?: string;
 }
 
-export const GoogleCloudChannelV1RepricingConfigEntitlementGranularity: Schema.Schema<GoogleCloudChannelV1RepricingConfigEntitlementGranularity> =
+export const GoogleCloudChannelV1ImportCustomerRequest: Schema.Schema<GoogleCloudChannelV1ImportCustomerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entitlement: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1RepricingConfigEntitlementGranularity",
-  });
+    primaryAdminEmail: Schema.optional(Schema.String),
+    overwriteIfExists: Schema.optional(Schema.Boolean),
+    channelPartnerId: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+    authToken: Schema.optional(Schema.String),
+    cloudIdentityId: Schema.optional(Schema.String),
+    customer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ImportCustomerRequest" });
 
-export interface GoogleCloudChannelV1RepricingConfig {
-  /** Required. The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries. */
-  effectiveInvoiceMonth?: GoogleTypeDate;
-  /** Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead. */
-  channelPartnerGranularity?: GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity;
-  /** The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis. */
-  conditionalOverrides?: ReadonlyArray<GoogleCloudChannelV1ConditionalOverride>;
-  /** Required. Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig. */
-  entitlementGranularity?: GoogleCloudChannelV1RepricingConfigEntitlementGranularity;
-  /** Required. The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply. */
-  rebillingBasis?:
-    | "REBILLING_BASIS_UNSPECIFIED"
-    | "COST_AT_LIST"
-    | "DIRECT_CUSTOMER_COST"
-    | (string & {});
-  /** Required. Information about the adjustment. */
-  adjustment?: GoogleCloudChannelV1RepricingAdjustment;
+export interface GoogleTypeTimeZone {
+  /** IANA Time Zone Database time zone. For example "America/New_York". */
+  id?: string;
+  /** Optional. IANA Time Zone Database version number. For example "2019a". */
+  version?: string;
 }
 
-export const GoogleCloudChannelV1RepricingConfig: Schema.Schema<GoogleCloudChannelV1RepricingConfig> =
+export const GoogleTypeTimeZone: Schema.Schema<GoogleTypeTimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    effectiveInvoiceMonth: Schema.optional(GoogleTypeDate),
-    channelPartnerGranularity: Schema.optional(
-      GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity,
-    ),
-    conditionalOverrides: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1ConditionalOverride),
-    ),
-    entitlementGranularity: Schema.optional(
-      GoogleCloudChannelV1RepricingConfigEntitlementGranularity,
-    ),
-    rebillingBasis: Schema.optional(Schema.String),
-    adjustment: Schema.optional(GoogleCloudChannelV1RepricingAdjustment),
-  }).annotate({ identifier: "GoogleCloudChannelV1RepricingConfig" });
+    id: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypeTimeZone" });
 
-export interface GoogleCloudChannelV1CustomerRepricingConfig {
-  /** Required. The configuration for bill modifications made by a reseller before sending it to customers. */
-  repricingConfig?: GoogleCloudChannelV1RepricingConfig;
-  /** Output only. Timestamp of an update to the repricing rule. If `update_time` is after RepricingConfig.effective_invoice_month then it indicates this was set mid-month. */
-  updateTime?: string;
-  /** Output only. Resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}. */
-  name?: string;
+export interface GoogleTypeDateTime {
+  /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  hours?: number;
+  /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
+  minutes?: number;
+  /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
+  nanos?: number;
+  /** Time zone. */
+  timeZone?: GoogleTypeTimeZone;
+  /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
+  day?: number;
+  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
+  seconds?: number;
+  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
+  month?: number;
+  /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
+  utcOffset?: string;
+  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
+  year?: number;
 }
 
-export const GoogleCloudChannelV1CustomerRepricingConfig: Schema.Schema<GoogleCloudChannelV1CustomerRepricingConfig> =
+export const GoogleTypeDateTime: Schema.Schema<GoogleTypeDateTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    repricingConfig: Schema.optional(GoogleCloudChannelV1RepricingConfig),
-    updateTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1CustomerRepricingConfig" });
+    hours: Schema.optional(Schema.Number),
+    minutes: Schema.optional(Schema.Number),
+    nanos: Schema.optional(Schema.Number),
+    timeZone: Schema.optional(GoogleTypeTimeZone),
+    day: Schema.optional(Schema.Number),
+    seconds: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+    utcOffset: Schema.optional(Schema.String),
+    year: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleTypeDateTime" });
 
-export interface GoogleCloudChannelV1ListCustomerRepricingConfigsResponse {
-  /** The repricing configs for this channel partner. */
-  customerRepricingConfigs?: ReadonlyArray<GoogleCloudChannelV1CustomerRepricingConfig>;
-  /** A token to retrieve the next page of results. Pass to ListCustomerRepricingConfigsRequest.page_token to obtain that page. */
-  nextPageToken?: string;
+export interface GoogleTypeDate {
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
 }
 
-export const GoogleCloudChannelV1ListCustomerRepricingConfigsResponse: Schema.Schema<GoogleCloudChannelV1ListCustomerRepricingConfigsResponse> =
+export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customerRepricingConfigs: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1CustomerRepricingConfig),
-    ),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1ListCustomerRepricingConfigsResponse",
-  });
+    month: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
+    year: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleTypeDate" });
 
-export interface GoogleLongrunningCancelOperationRequest {}
-
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleLongrunningCancelOperationRequest",
-  });
-
-export interface GoogleCloudChannelV1PurchasableSku {
-  /** SKU */
-  sku?: GoogleCloudChannelV1Sku;
+export interface GoogleCloudChannelV1ReportValue {
+  /** A value of type `int`. */
+  intValue?: string;
+  /** A value of type `google.type.DateTime` (year, month, day, hour, minute, second, and UTC offset or timezone.) */
+  dateTimeValue?: GoogleTypeDateTime;
+  /** A value of type `google.type.Decimal`, representing non-integer numeric values. */
+  decimalValue?: GoogleTypeDecimal;
+  /** A value of type `string`. */
+  stringValue?: string;
+  /** A value of type `google.type.Date` (year, month, day). */
+  dateValue?: GoogleTypeDate;
+  /** A value of type `google.type.Money` (currency code, whole units, decimal units). */
+  moneyValue?: GoogleTypeMoney;
 }
 
-export const GoogleCloudChannelV1PurchasableSku: Schema.Schema<GoogleCloudChannelV1PurchasableSku> =
+export const GoogleCloudChannelV1ReportValue: Schema.Schema<GoogleCloudChannelV1ReportValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sku: Schema.optional(GoogleCloudChannelV1Sku),
-  }).annotate({ identifier: "GoogleCloudChannelV1PurchasableSku" });
+    intValue: Schema.optional(Schema.String),
+    dateTimeValue: Schema.optional(GoogleTypeDateTime),
+    decimalValue: Schema.optional(GoogleTypeDecimal),
+    stringValue: Schema.optional(Schema.String),
+    dateValue: Schema.optional(GoogleTypeDate),
+    moneyValue: Schema.optional(GoogleTypeMoney),
+  }).annotate({ identifier: "GoogleCloudChannelV1ReportValue" });
 
-export interface GoogleCloudChannelV1ListPurchasableSkusResponse {
-  /** The list of SKUs requested. */
-  purchasableSkus?: ReadonlyArray<GoogleCloudChannelV1PurchasableSku>;
-  /** A token to retrieve the next page of results. */
-  nextPageToken?: string;
-}
-
-export const GoogleCloudChannelV1ListPurchasableSkusResponse: Schema.Schema<GoogleCloudChannelV1ListPurchasableSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    purchasableSkus: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1PurchasableSku),
-    ),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1ListPurchasableSkusResponse",
-  });
-
-export interface GoogleCloudChannelV1alpha1Value {
-  /** Represents an int64 value. */
-  int64Value?: string;
+export interface GoogleCloudChannelV1Value {
   /** Represents a boolean value. */
   boolValue?: boolean;
   /** Represents a string value. */
   stringValue?: string;
   /** Represents a double value. */
   doubleValue?: number;
+  /** Represents an int64 value. */
+  int64Value?: string;
   /** Represents an 'Any' proto value. */
   protoValue?: Record<string, unknown>;
 }
 
-export const GoogleCloudChannelV1alpha1Value: Schema.Schema<GoogleCloudChannelV1alpha1Value> =
+export const GoogleCloudChannelV1Value: Schema.Schema<GoogleCloudChannelV1Value> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    int64Value: Schema.optional(Schema.String),
     boolValue: Schema.optional(Schema.Boolean),
     stringValue: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
+    int64Value: Schema.optional(Schema.String),
     protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Value" });
+  }).annotate({ identifier: "GoogleCloudChannelV1Value" });
 
-export interface GoogleCloudChannelV1alpha1Parameter {
-  /** Value of the parameter. */
-  value?: GoogleCloudChannelV1alpha1Value;
+export interface GoogleCloudChannelV1Parameter {
   /** Output only. Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active. */
   editable?: boolean;
+  /** Value of the parameter. */
+  value?: GoogleCloudChannelV1Value;
   /** Name of the parameter. */
   name?: string;
 }
 
-export const GoogleCloudChannelV1alpha1Parameter: Schema.Schema<GoogleCloudChannelV1alpha1Parameter> =
+export const GoogleCloudChannelV1Parameter: Schema.Schema<GoogleCloudChannelV1Parameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(GoogleCloudChannelV1alpha1Value),
     editable: Schema.optional(Schema.Boolean),
+    value: Schema.optional(GoogleCloudChannelV1Value),
     name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Parameter" });
+  }).annotate({ identifier: "GoogleCloudChannelV1Parameter" });
 
-export interface GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
-  /** Required. Domain to fetch for Cloud Identity account customers, including domain and team customers. For team customers, please use the domain for their emails. */
-  domain?: string;
-  /** Optional. Primary admin email to fetch for Cloud Identity account team customer. */
-  primaryAdminEmail?: string;
-}
-
-export const GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest: Schema.Schema<GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domain: Schema.optional(Schema.String),
-    primaryAdminEmail: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest",
-  });
-
-export interface GoogleLongrunningListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<GoogleLongrunningOperation>;
-}
-
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
-
-export interface GoogleCloudChannelV1AssociationInfo {
-  /** The name of the base entitlement, for which this entitlement is an add-on. */
-  baseEntitlement?: string;
-}
-
-export const GoogleCloudChannelV1AssociationInfo: Schema.Schema<GoogleCloudChannelV1AssociationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    baseEntitlement: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1AssociationInfo" });
-
-export interface GoogleCloudChannelV1CommitmentSettings {
-  /** Output only. Commitment end timestamp. */
-  endTime?: string;
-  /** Output only. Commitment start timestamp. */
-  startTime?: string;
-  /** Optional. Renewal settings applicable for a commitment-based Offer. */
-  renewalSettings?: GoogleCloudChannelV1RenewalSettings;
-}
-
-export const GoogleCloudChannelV1CommitmentSettings: Schema.Schema<GoogleCloudChannelV1CommitmentSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    renewalSettings: Schema.optional(GoogleCloudChannelV1RenewalSettings),
-  }).annotate({ identifier: "GoogleCloudChannelV1CommitmentSettings" });
-
-export interface GoogleCloudChannelV1ProvisionedService {
-  /** Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount. */
-  provisioningId?: string;
-  /** Output only. The product pertaining to the provisioning resource as specified in the Offer. */
-  productId?: string;
-  /** Output only. The SKU pertaining to the provisioning resource as specified in the Offer. */
-  skuId?: string;
-}
-
-export const GoogleCloudChannelV1ProvisionedService: Schema.Schema<GoogleCloudChannelV1ProvisionedService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    provisioningId: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    skuId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ProvisionedService" });
-
-export interface GoogleCloudChannelV1TrialSettings {
-  /** Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial. */
-  trial?: boolean;
-  /** Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com). */
-  endTime?: string;
-}
-
-export const GoogleCloudChannelV1TrialSettings: Schema.Schema<GoogleCloudChannelV1TrialSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    trial: Schema.optional(Schema.Boolean),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1TrialSettings" });
-
-export interface GoogleCloudChannelV1Entitlement {
-  /** Association information to other entitlements. */
-  associationInfo?: GoogleCloudChannelV1AssociationInfo;
-  /** Optional. The billing account resource name that is used to pay for this entitlement. */
+export interface GoogleCloudChannelV1ChangeOfferRequest {
+  /** Optional. Purchase order id provided by the reseller. */
+  purchaseOrderId?: string;
+  /** Required. New Offer. Format: accounts/{account_id}/offers/{offer_id}. */
+  offer?: string;
+  /** Optional. The billing account resource name that is used to pay for this entitlement when setting up billing on a trial subscription. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts. */
   billingAccount?: string;
-  /** Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount. */
+  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
+  requestId?: string;
+  /** Optional. Parameters needed to purchase the Offer. To view the available Parameters refer to the Offer.parameter_definitions from the desired offer. */
   parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
   /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
   priceReferenceId?: string;
-  /** Output only. The time at which the entitlement is created. */
-  createTime?: string;
-  /** Output only. The time at which the entitlement is updated. */
-  updateTime?: string;
-  /** Output only. Enumerable of all current suspension reasons for an entitlement. */
-  suspensionReasons?: ReadonlyArray<
-    | "SUSPENSION_REASON_UNSPECIFIED"
-    | "RESELLER_INITIATED"
-    | "TRIAL_ENDED"
-    | "RENEWAL_WITH_TYPE_CANCEL"
-    | "PENDING_TOS_ACCEPTANCE"
-    | "OTHER"
-    | (string & {})
-  >;
-  /** Output only. Current provisioning state of the entitlement. */
-  provisioningState?:
-    | "PROVISIONING_STATE_UNSPECIFIED"
-    | "ACTIVE"
-    | "SUSPENDED"
-    | (string & {});
-  /** Commitment settings for a commitment-based Offer. Required for commitment based offers. */
-  commitmentSettings?: GoogleCloudChannelV1CommitmentSettings;
-  /** Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements. */
-  purchaseOrderId?: string;
-  /** Output only. Service provisioning details for the entitlement. */
-  provisionedService?: GoogleCloudChannelV1ProvisionedService;
-  /** Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}. */
-  offer?: string;
-  /** Output only. Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}. */
-  name?: string;
-  /** Output only. Settings for trial offers. */
-  trialSettings?: GoogleCloudChannelV1TrialSettings;
 }
 
-export const GoogleCloudChannelV1Entitlement: Schema.Schema<GoogleCloudChannelV1Entitlement> =
+export const GoogleCloudChannelV1ChangeOfferRequest: Schema.Schema<GoogleCloudChannelV1ChangeOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    associationInfo: Schema.optional(GoogleCloudChannelV1AssociationInfo),
+    purchaseOrderId: Schema.optional(Schema.String),
+    offer: Schema.optional(Schema.String),
     billingAccount: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
     priceReferenceId: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
-    provisioningState: Schema.optional(Schema.String),
-    commitmentSettings: Schema.optional(GoogleCloudChannelV1CommitmentSettings),
-    purchaseOrderId: Schema.optional(Schema.String),
-    provisionedService: Schema.optional(GoogleCloudChannelV1ProvisionedService),
-    offer: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    trialSettings: Schema.optional(GoogleCloudChannelV1TrialSettings),
-  }).annotate({ identifier: "GoogleCloudChannelV1Entitlement" });
+  }).annotate({ identifier: "GoogleCloudChannelV1ChangeOfferRequest" });
 
-export interface GoogleCloudChannelV1TransferEntitlementsRequest {
-  /** Required. The new entitlements to create or transfer. */
-  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
-  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
-  requestId?: string;
-  /** The super admin of the resold customer generates this token to authorize a reseller to access their Cloud Identity and purchase entitlements on their behalf. You can omit this token after authorization. See https://support.google.com/a/answer/7643790 for more details. */
-  authToken?: string;
-}
-
-export const GoogleCloudChannelV1TransferEntitlementsRequest: Schema.Schema<GoogleCloudChannelV1TransferEntitlementsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entitlements: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1Entitlement),
-    ),
-    requestId: Schema.optional(Schema.String),
-    authToken: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1TransferEntitlementsRequest",
-  });
-
-export interface GoogleCloudChannelV1ReportValue {
-  /** A value of type `google.type.Money` (currency code, whole units, decimal units). */
-  moneyValue?: GoogleTypeMoney;
-  /** A value of type `string`. */
-  stringValue?: string;
-  /** A value of type `google.type.Date` (year, month, day). */
-  dateValue?: GoogleTypeDate;
-  /** A value of type `google.type.DateTime` (year, month, day, hour, minute, second, and UTC offset or timezone.) */
-  dateTimeValue?: GoogleTypeDateTime;
-  /** A value of type `int`. */
-  intValue?: string;
-  /** A value of type `google.type.Decimal`, representing non-integer numeric values. */
-  decimalValue?: GoogleTypeDecimal;
-}
-
-export const GoogleCloudChannelV1ReportValue: Schema.Schema<GoogleCloudChannelV1ReportValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    moneyValue: Schema.optional(GoogleTypeMoney),
-    stringValue: Schema.optional(Schema.String),
-    dateValue: Schema.optional(GoogleTypeDate),
-    dateTimeValue: Schema.optional(GoogleTypeDateTime),
-    intValue: Schema.optional(Schema.String),
-    decimalValue: Schema.optional(GoogleTypeDecimal),
-  }).annotate({ identifier: "GoogleCloudChannelV1ReportValue" });
-
-export interface GoogleCloudChannelV1Row {
-  /** The list of values in the row. */
-  values?: ReadonlyArray<GoogleCloudChannelV1ReportValue>;
-  /** The key for the partition this row belongs to. This field is empty if the report is not partitioned. */
-  partitionKey?: string;
-}
-
-export const GoogleCloudChannelV1Row: Schema.Schema<GoogleCloudChannelV1Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    values: Schema.optional(Schema.Array(GoogleCloudChannelV1ReportValue)),
-    partitionKey: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1Row" });
-
-export interface GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
-  /** Required. The entitlements to transfer to Google. */
-  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
-  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
-  requestId?: string;
-}
-
-export const GoogleCloudChannelV1TransferEntitlementsToGoogleRequest: Schema.Schema<GoogleCloudChannelV1TransferEntitlementsToGoogleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entitlements: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1Entitlement),
-    ),
-    requestId: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1TransferEntitlementsToGoogleRequest",
-  });
-
-export interface GoogleCloudChannelV1ListProductsResponse {
-  /** List of Products requested. */
-  products?: ReadonlyArray<GoogleCloudChannelV1Product>;
-  /** A token to retrieve the next page of results. */
-  nextPageToken?: string;
-}
-
-export const GoogleCloudChannelV1ListProductsResponse: Schema.Schema<GoogleCloudChannelV1ListProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    products: Schema.optional(Schema.Array(GoogleCloudChannelV1Product)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ListProductsResponse" });
-
-export interface GoogleCloudChannelV1SuspendEntitlementRequest {
-  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
-  requestId?: string;
-}
-
-export const GoogleCloudChannelV1SuspendEntitlementRequest: Schema.Schema<GoogleCloudChannelV1SuspendEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1SuspendEntitlementRequest" });
-
-export interface GoogleCloudChannelV1BillableSku {
-  /** Resource name of Billable SKU. Format: billableSkus/{sku}. Example: billableSkus/6E1B-6634-470F". */
-  sku?: string;
-  /** Unique human readable name for the SKU. */
-  skuDisplayName?: string;
-  /** Resource name of Service which contains Repricing SKU. Format: services/{service}. Example: "services/B7D9-FDCB-15D8". */
-  service?: string;
-  /** Unique human readable name for the Service. */
-  serviceDisplayName?: string;
-}
-
-export const GoogleCloudChannelV1BillableSku: Schema.Schema<GoogleCloudChannelV1BillableSku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sku: Schema.optional(Schema.String),
-    skuDisplayName: Schema.optional(Schema.String),
-    service: Schema.optional(Schema.String),
-    serviceDisplayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1BillableSku" });
-
-export interface GoogleCloudChannelV1alpha1ProvisionedService {
-  /** Output only. The product pertaining to the provisioning resource as specified in the Offer. */
-  productId?: string;
-  /** Output only. The SKU pertaining to the provisioning resource as specified in the Offer. */
-  skuId?: string;
-  /** Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount. */
-  provisioningId?: string;
-}
-
-export const GoogleCloudChannelV1alpha1ProvisionedService: Schema.Schema<GoogleCloudChannelV1alpha1ProvisionedService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    productId: Schema.optional(Schema.String),
-    skuId: Schema.optional(Schema.String),
-    provisioningId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ProvisionedService" });
-
-export interface GoogleCloudChannelV1ReportResultsMetadata {
-  /** Details of the completed report. */
-  report?: GoogleCloudChannelV1Report;
-  /** The usage dates immediately preceding `date_range` with the same duration. Use this to calculate trending usage and costs. This is only populated if you request trending data. For example, if `date_range` is July 1-15, `preceding_date_range` will be June 16-30. */
-  precedingDateRange?: GoogleCloudChannelV1DateRange;
-  /** The total number of rows of data in the final report. */
-  rowCount?: string;
-  /** The date range of reported usage. */
-  dateRange?: GoogleCloudChannelV1DateRange;
-}
-
-export const GoogleCloudChannelV1ReportResultsMetadata: Schema.Schema<GoogleCloudChannelV1ReportResultsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    report: Schema.optional(GoogleCloudChannelV1Report),
-    precedingDateRange: Schema.optional(GoogleCloudChannelV1DateRange),
-    rowCount: Schema.optional(Schema.String),
-    dateRange: Schema.optional(GoogleCloudChannelV1DateRange),
-  }).annotate({ identifier: "GoogleCloudChannelV1ReportResultsMetadata" });
-
-export interface GoogleCloudChannelV1ReportStatus {
-  /** The report generation's start time. */
-  startTime?: string;
-  /** The report generation's completion time. */
-  endTime?: string;
-  /** The current state of the report generation process. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "STARTED"
-    | "WRITING"
-    | "AVAILABLE"
-    | "FAILED"
-    | (string & {});
-}
-
-export const GoogleCloudChannelV1ReportStatus: Schema.Schema<GoogleCloudChannelV1ReportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ReportStatus" });
-
-export interface GoogleCloudChannelV1ReportJob {
-  /** Required. The resource name of a report job. Name uses the format: `accounts/{account_id}/reportJobs/{report_job_id}` */
-  name?: string;
-  /** The current status of report generation. */
-  reportStatus?: GoogleCloudChannelV1ReportStatus;
-}
-
-export const GoogleCloudChannelV1ReportJob: Schema.Schema<GoogleCloudChannelV1ReportJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    reportStatus: Schema.optional(GoogleCloudChannelV1ReportStatus),
-  }).annotate({ identifier: "GoogleCloudChannelV1ReportJob" });
-
-export interface GoogleCloudChannelV1RunReportJobResponse {
-  /** Pass `report_job.name` to FetchReportResultsRequest.report_job to retrieve the report's results. */
-  reportJob?: GoogleCloudChannelV1ReportJob;
-  /** The metadata for the report's results (display name, columns, row count, and date range). If you view this before the operation finishes, you may see incomplete data. */
-  reportMetadata?: GoogleCloudChannelV1ReportResultsMetadata;
-}
-
-export const GoogleCloudChannelV1RunReportJobResponse: Schema.Schema<GoogleCloudChannelV1RunReportJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    reportJob: Schema.optional(GoogleCloudChannelV1ReportJob),
-    reportMetadata: Schema.optional(GoogleCloudChannelV1ReportResultsMetadata),
-  }).annotate({ identifier: "GoogleCloudChannelV1RunReportJobResponse" });
-
-export interface GoogleCloudChannelV1RegisterSubscriberRequest {
-  /** Required. Service account that provides subscriber access to the registered topic. */
-  serviceAccount?: string;
+export interface GoogleCloudChannelV1UnregisterSubscriberRequest {
   /** Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. */
   integrator?: string;
+  /** Required. Service account to unregister from subscriber access to the topic. */
+  serviceAccount?: string;
   /** Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. */
   account?: string;
 }
 
-export const GoogleCloudChannelV1RegisterSubscriberRequest: Schema.Schema<GoogleCloudChannelV1RegisterSubscriberRequest> =
+export const GoogleCloudChannelV1UnregisterSubscriberRequest: Schema.Schema<GoogleCloudChannelV1UnregisterSubscriberRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serviceAccount: Schema.optional(Schema.String),
     integrator: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1RegisterSubscriberRequest" });
+  }).annotate({
+    identifier: "GoogleCloudChannelV1UnregisterSubscriberRequest",
+  });
 
-export interface GoogleCloudChannelV1alpha1Period {
-  /** Total duration of Period Type defined. */
-  duration?: number;
-  /** Period Type. */
+export interface GoogleCloudChannelV1TrialSettings {
+  /** Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com). */
+  endTime?: string;
+  /** Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial. */
+  trial?: boolean;
+}
+
+export const GoogleCloudChannelV1TrialSettings: Schema.Schema<GoogleCloudChannelV1TrialSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    trial: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudChannelV1TrialSettings" });
+
+export interface GoogleCloudChannelV1PriceTier {
+  /** First resource for which the tier price applies. */
+  firstResource?: number;
+  /** Last resource for which the tier price applies. */
+  lastResource?: number;
+  /** Price of the tier. */
+  price?: GoogleCloudChannelV1Price;
+}
+
+export const GoogleCloudChannelV1PriceTier: Schema.Schema<GoogleCloudChannelV1PriceTier> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstResource: Schema.optional(Schema.Number),
+    lastResource: Schema.optional(Schema.Number),
+    price: Schema.optional(GoogleCloudChannelV1Price),
+  }).annotate({ identifier: "GoogleCloudChannelV1PriceTier" });
+
+export interface GoogleCloudChannelV1PricePhase {
+  /** Defines the phase period type. */
   periodType?:
     | "PERIOD_TYPE_UNSPECIFIED"
     | "DAY"
     | "MONTH"
     | "YEAR"
     | (string & {});
+  /** Defines first period for the phase. */
+  firstPeriod?: number;
+  /** Price by the resource tiers. */
+  priceTiers?: ReadonlyArray<GoogleCloudChannelV1PriceTier>;
+  /** Defines first period for the phase. */
+  lastPeriod?: number;
+  /** Price of the phase. Present if there are no price tiers. */
+  price?: GoogleCloudChannelV1Price;
 }
 
-export const GoogleCloudChannelV1alpha1Period: Schema.Schema<GoogleCloudChannelV1alpha1Period> =
+export const GoogleCloudChannelV1PricePhase: Schema.Schema<GoogleCloudChannelV1PricePhase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    duration: Schema.optional(Schema.Number),
     periodType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Period" });
+    firstPeriod: Schema.optional(Schema.Number),
+    priceTiers: Schema.optional(Schema.Array(GoogleCloudChannelV1PriceTier)),
+    lastPeriod: Schema.optional(Schema.Number),
+    price: Schema.optional(GoogleCloudChannelV1Price),
+  }).annotate({ identifier: "GoogleCloudChannelV1PricePhase" });
 
-export interface GoogleCloudChannelV1alpha1RenewalSettings {
-  /** If true, disables commitment-based offer on renewal and switches to flexible or pay as you go. Deprecated: Use `payment_plan` instead. */
-  disableCommitment?: boolean;
-  /** Describes how frequently the reseller will be billed, such as once per month. */
-  paymentCycle?: GoogleCloudChannelV1alpha1Period;
+export interface GoogleCloudChannelV1PriceByResource {
+  /** Price of the Offer. Present if there are no price phases. */
+  price?: GoogleCloudChannelV1Price;
+  /** Specifies the price by time range. */
+  pricePhases?: ReadonlyArray<GoogleCloudChannelV1PricePhase>;
+  /** Resource Type. Example: SEAT */
+  resourceType?:
+    | "RESOURCE_TYPE_UNSPECIFIED"
+    | "SEAT"
+    | "MAU"
+    | "GB"
+    | "LICENSED_USER"
+    | "MINUTES"
+    | "IAAS_USAGE"
+    | "SUBSCRIPTION"
+    | "AI_CREDITS"
+    | (string & {});
+}
+
+export const GoogleCloudChannelV1PriceByResource: Schema.Schema<GoogleCloudChannelV1PriceByResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    price: Schema.optional(GoogleCloudChannelV1Price),
+    pricePhases: Schema.optional(Schema.Array(GoogleCloudChannelV1PricePhase)),
+    resourceType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1PriceByResource" });
+
+export interface GoogleCloudChannelV1ParameterDefinition {
+  /** Data type of the parameter. Minimal value, Maximum value and allowed values will use specified data type here. */
+  parameterType?:
+    | "PARAMETER_TYPE_UNSPECIFIED"
+    | "INT64"
+    | "STRING"
+    | "DOUBLE"
+    | "BOOLEAN"
+    | (string & {});
+  /** Name of the parameter. */
+  name?: string;
+  /** Maximum value of the parameter, if applicable. Inclusive. For example, maximum seats when purchasing Google Workspace Business Standard. Applicable to INT64 and DOUBLE parameter types. */
+  maxValue?: GoogleCloudChannelV1Value;
+  /** If not empty, parameter values must be drawn from this list. For example, [us-west1, us-west2, ...] Applicable to STRING parameter type. */
+  allowedValues?: ReadonlyArray<GoogleCloudChannelV1Value>;
+  /** Minimal value of the parameter, if applicable. Inclusive. For example, minimal commitment when purchasing Anthos is 0.01. Applicable to INT64 and DOUBLE parameter types. */
+  minValue?: GoogleCloudChannelV1Value;
+  /** If set to true, parameter is optional to purchase this Offer. */
+  optional?: boolean;
+}
+
+export const GoogleCloudChannelV1ParameterDefinition: Schema.Schema<GoogleCloudChannelV1ParameterDefinition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameterType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    maxValue: Schema.optional(GoogleCloudChannelV1Value),
+    allowedValues: Schema.optional(Schema.Array(GoogleCloudChannelV1Value)),
+    minValue: Schema.optional(GoogleCloudChannelV1Value),
+    optional: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudChannelV1ParameterDefinition" });
+
+export interface GoogleCloudChannelV1CustomerConstraints {
+  /** Allowed Customer Type. */
+  allowedCustomerTypes?: ReadonlyArray<
+    "CUSTOMER_TYPE_UNSPECIFIED" | "DOMAIN" | "TEAM" | (string & {})
+  >;
+  /** Allowed geographical regions of the customer. */
+  allowedRegions?: ReadonlyArray<string>;
+  /** Allowed Promotional Order Type. Present for Promotional offers. */
+  promotionalOrderTypes?: ReadonlyArray<
+    | "PROMOTIONAL_TYPE_UNSPECIFIED"
+    | "NEW_UPGRADE"
+    | "TRANSFER"
+    | "PROMOTION_SWITCH"
+    | (string & {})
+  >;
+}
+
+export const GoogleCloudChannelV1CustomerConstraints: Schema.Schema<GoogleCloudChannelV1CustomerConstraints> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedCustomerTypes: Schema.optional(Schema.Array(Schema.String)),
+    allowedRegions: Schema.optional(Schema.Array(Schema.String)),
+    promotionalOrderTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudChannelV1CustomerConstraints" });
+
+export interface GoogleCloudChannelV1Constraints {
+  /** Represents constraints required to purchase the Offer for a customer. */
+  customerConstraints?: GoogleCloudChannelV1CustomerConstraints;
+}
+
+export const GoogleCloudChannelV1Constraints: Schema.Schema<GoogleCloudChannelV1Constraints> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerConstraints: Schema.optional(
+      GoogleCloudChannelV1CustomerConstraints,
+    ),
+  }).annotate({ identifier: "GoogleCloudChannelV1Constraints" });
+
+export interface GoogleCloudChannelV1Offer {
+  /** Describes the payment plan for the Offer. */
+  plan?: GoogleCloudChannelV1Plan;
+  /** Price for each monetizable resource type. */
+  priceByResources?: ReadonlyArray<GoogleCloudChannelV1PriceByResource>;
+  /** Output only. End of the Offer validity time. */
+  endTime?: string;
+  /** Parameters required to use current Offer to purchase. */
+  parameterDefinitions?: ReadonlyArray<GoogleCloudChannelV1ParameterDefinition>;
+  /** Start of the Offer validity time. */
+  startTime?: string;
+  /** Marketing information for the Offer. */
+  marketingInfo?: GoogleCloudChannelV1MarketingInfo;
+  /** Constraints on transacting the Offer. */
+  constraints?: GoogleCloudChannelV1Constraints;
+  /** Resource Name of the Offer. Format: accounts/{account_id}/offers/{offer_id} */
+  name?: string;
+  /** The deal code of the offer to get a special promotion or discount. */
+  dealCode?: string;
+  /** SKU the offer is associated with. */
+  sku?: GoogleCloudChannelV1Sku;
+}
+
+export const GoogleCloudChannelV1Offer: Schema.Schema<GoogleCloudChannelV1Offer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    plan: Schema.optional(GoogleCloudChannelV1Plan),
+    priceByResources: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1PriceByResource),
+    ),
+    endTime: Schema.optional(Schema.String),
+    parameterDefinitions: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1ParameterDefinition),
+    ),
+    startTime: Schema.optional(Schema.String),
+    marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
+    constraints: Schema.optional(GoogleCloudChannelV1Constraints),
+    name: Schema.optional(Schema.String),
+    dealCode: Schema.optional(Schema.String),
+    sku: Schema.optional(GoogleCloudChannelV1Sku),
+  }).annotate({ identifier: "GoogleCloudChannelV1Offer" });
+
+export interface GoogleCloudChannelV1CloudIdentityCustomerAccount {
+  /** Returns true if a Cloud Identity account exists for a specific domain. */
+  existing?: boolean;
+  /** Returns true if the Cloud Identity account is associated with a customer of the Channel Services partner (with active subscriptions or purchase consents). */
+  owned?: boolean;
+  /** If existing = true, and is 2-tier customer, the channel partner of the customer. */
+  channelPartnerCloudIdentityId?: string;
+  /** If owned = true, the name of the customer that owns the Cloud Identity account. Customer_name uses the format: accounts/{account_id}/customers/{customer_id} */
+  customerName?: string;
+  /** If existing = true, the type of the customer. */
+  customerType?:
+    | "CUSTOMER_TYPE_UNSPECIFIED"
+    | "DOMAIN"
+    | "TEAM"
+    | (string & {});
+  /** If existing = true, the Cloud Identity ID of the customer. */
+  customerCloudIdentityId?: string;
+}
+
+export const GoogleCloudChannelV1CloudIdentityCustomerAccount: Schema.Schema<GoogleCloudChannelV1CloudIdentityCustomerAccount> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    existing: Schema.optional(Schema.Boolean),
+    owned: Schema.optional(Schema.Boolean),
+    channelPartnerCloudIdentityId: Schema.optional(Schema.String),
+    customerName: Schema.optional(Schema.String),
+    customerType: Schema.optional(Schema.String),
+    customerCloudIdentityId: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1CloudIdentityCustomerAccount",
+  });
+
+export interface GoogleCloudChannelV1ListSubscribersResponse {
+  /** List of service accounts which have subscriber access to the topic. */
+  serviceAccounts?: ReadonlyArray<string>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** Name of the topic registered with the reseller. */
+  topic?: string;
+}
+
+export const GoogleCloudChannelV1ListSubscribersResponse: Schema.Schema<GoogleCloudChannelV1ListSubscribersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccounts: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    topic: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListSubscribersResponse" });
+
+export interface GoogleCloudChannelV1alpha1Value {
+  /** Represents a double value. */
+  doubleValue?: number;
+  /** Represents an int64 value. */
+  int64Value?: string;
+  /** Represents an 'Any' proto value. */
+  protoValue?: Record<string, unknown>;
+  /** Represents a boolean value. */
+  boolValue?: boolean;
+  /** Represents a string value. */
+  stringValue?: string;
+}
+
+export const GoogleCloudChannelV1alpha1Value: Schema.Schema<GoogleCloudChannelV1alpha1Value> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    doubleValue: Schema.optional(Schema.Number),
+    int64Value: Schema.optional(Schema.String),
+    protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    boolValue: Schema.optional(Schema.Boolean),
+    stringValue: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Value" });
+
+export interface GoogleCloudChannelV1EntitlementChange {
+  /** e.g. purchase_number change reason, entered by CRS. */
+  otherChangeReason?: string;
+  /** Cancellation reason for the Entitlement. */
+  cancellationReason?:
+    | "CANCELLATION_REASON_UNSPECIFIED"
+    | "SERVICE_TERMINATED"
+    | "RELATIONSHIP_ENDED"
+    | "PARTIAL_TRANSFER"
+    | (string & {});
+  /** Operator type responsible for the change. */
+  operatorType?:
+    | "OPERATOR_TYPE_UNSPECIFIED"
+    | "CUSTOMER_SERVICE_REPRESENTATIVE"
+    | "SYSTEM"
+    | "CUSTOMER"
+    | "RESELLER"
+    | (string & {});
+  /** The Entitlement's activation reason */
+  activationReason?:
+    | "ACTIVATION_REASON_UNSPECIFIED"
+    | "RESELLER_REVOKED_SUSPENSION"
+    | "CUSTOMER_ACCEPTED_PENDING_TOS"
+    | "RENEWAL_SETTINGS_CHANGED"
+    | "OTHER_ACTIVATION_REASON"
+    | (string & {});
+  /** The change action type. */
+  changeType?:
+    | "CHANGE_TYPE_UNSPECIFIED"
+    | "CREATED"
+    | "PRICE_PLAN_SWITCHED"
+    | "COMMITMENT_CHANGED"
+    | "RENEWED"
+    | "SUSPENDED"
+    | "ACTIVATED"
+    | "CANCELLED"
+    | "SKU_CHANGED"
+    | "RENEWAL_SETTING_CHANGED"
+    | "PAID_SUBSCRIPTION_STARTED"
+    | "LICENSE_CAP_CHANGED"
+    | "SUSPENSION_DETAILS_CHANGED"
+    | "TRIAL_END_DATE_EXTENDED"
+    | "TRIAL_STARTED"
+    | (string & {});
+  /** The submitted time of the change. */
+  createTime?: string;
+  /** Extended parameters, such as: purchase_order_number, gcp_details; internal_correlation_id, long_running_operation_id, order_id; etc. */
+  parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
+  /** Service provisioned for an Entitlement. */
+  provisionedService?: GoogleCloudChannelV1ProvisionedService;
+  /** Required. Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+  entitlement?: string;
+  /** Required. Resource name of the Offer at the time of change. Takes the form: accounts/{account_id}/offers/{offer_id}. */
+  offer?: string;
+  /** Suspension reason for the Entitlement. */
+  suspensionReason?:
+    | "SUSPENSION_REASON_UNSPECIFIED"
+    | "RESELLER_INITIATED"
+    | "TRIAL_ENDED"
+    | "RENEWAL_WITH_TYPE_CANCEL"
+    | "PENDING_TOS_ACCEPTANCE"
+    | "OTHER"
+    | (string & {});
+  /** Human-readable identifier that shows what operator made a change. When the operator_type is RESELLER, this is the user's email address. For all other operator types, this is empty. */
+  operator?: string;
+}
+
+export const GoogleCloudChannelV1EntitlementChange: Schema.Schema<GoogleCloudChannelV1EntitlementChange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    otherChangeReason: Schema.optional(Schema.String),
+    cancellationReason: Schema.optional(Schema.String),
+    operatorType: Schema.optional(Schema.String),
+    activationReason: Schema.optional(Schema.String),
+    changeType: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
+    provisionedService: Schema.optional(GoogleCloudChannelV1ProvisionedService),
+    entitlement: Schema.optional(Schema.String),
+    offer: Schema.optional(Schema.String),
+    suspensionReason: Schema.optional(Schema.String),
+    operator: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1EntitlementChange" });
+
+export interface GoogleCloudChannelV1RenewalSettings {
   /** If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time. */
   resizeUnitCount?: boolean;
-  /** Set if enable_renewal=true. Deprecated: Use `payment_cycle` instead. */
-  paymentOption?:
-    | "PAYMENT_OPTION_UNSPECIFIED"
-    | "ANNUAL"
-    | "MONTHLY"
-    | (string & {});
+  /** Describes how frequently the reseller will be billed, such as once per month. */
+  paymentCycle?: GoogleCloudChannelV1Period;
   /** If false, the plan will be completed at the end date. */
   enableRenewal?: boolean;
-  /** Output only. The offer resource name that the entitlement will renew on at the end date. Takes the form: accounts/{account_id}/offers/{offer_id}. */
-  scheduledRenewalOffer?: string;
   /** Describes how a reseller will be billed. */
   paymentPlan?:
     | "PAYMENT_PLAN_UNSPECIFIED"
@@ -2141,39 +1654,42 @@ export interface GoogleCloudChannelV1alpha1RenewalSettings {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1alpha1RenewalSettings: Schema.Schema<GoogleCloudChannelV1alpha1RenewalSettings> =
+export const GoogleCloudChannelV1RenewalSettings: Schema.Schema<GoogleCloudChannelV1RenewalSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    disableCommitment: Schema.optional(Schema.Boolean),
-    paymentCycle: Schema.optional(GoogleCloudChannelV1alpha1Period),
     resizeUnitCount: Schema.optional(Schema.Boolean),
-    paymentOption: Schema.optional(Schema.String),
+    paymentCycle: Schema.optional(GoogleCloudChannelV1Period),
     enableRenewal: Schema.optional(Schema.Boolean),
-    scheduledRenewalOffer: Schema.optional(Schema.String),
     paymentPlan: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1RenewalSettings" });
+  }).annotate({ identifier: "GoogleCloudChannelV1RenewalSettings" });
 
-export interface GoogleCloudChannelV1OperationMetadata {
-  /** The RPC that initiated this Long Running Operation. */
-  operationType?:
-    | "OPERATION_TYPE_UNSPECIFIED"
-    | "CREATE_ENTITLEMENT"
-    | "CHANGE_RENEWAL_SETTINGS"
-    | "START_PAID_SERVICE"
-    | "ACTIVATE_ENTITLEMENT"
-    | "SUSPEND_ENTITLEMENT"
-    | "CANCEL_ENTITLEMENT"
-    | "TRANSFER_ENTITLEMENTS"
-    | "TRANSFER_ENTITLEMENTS_TO_GOOGLE"
-    | "CHANGE_OFFER"
-    | "CHANGE_PARAMETERS"
-    | "PROVISION_CLOUD_IDENTITY"
-    | (string & {});
+export interface GoogleCloudChannelV1SkuPurchaseGroup {
+  /** List of billing accounts that are eligible to purhcase these SKUs. */
+  billingAccountPurchaseInfos?: ReadonlyArray<GoogleCloudChannelV1BillingAccountPurchaseInfo>;
+  /** Resource names of the SKUs included in this group. Format: products/{product_id}/skus/{sku_id}. */
+  skus?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudChannelV1OperationMetadata: Schema.Schema<GoogleCloudChannelV1OperationMetadata> =
+export const GoogleCloudChannelV1SkuPurchaseGroup: Schema.Schema<GoogleCloudChannelV1SkuPurchaseGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operationType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1OperationMetadata" });
+    billingAccountPurchaseInfos: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1BillingAccountPurchaseInfo),
+    ),
+    skus: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudChannelV1SkuPurchaseGroup" });
+
+export interface GoogleCloudChannelV1QueryEligibleBillingAccountsResponse {
+  /** List of SKU purchase groups where each group represents a set of SKUs that must be purchased using the same billing account. Each SKU from [QueryEligibleBillingAccountsRequest.skus] will appear in exactly one SKU group. */
+  skuPurchaseGroups?: ReadonlyArray<GoogleCloudChannelV1SkuPurchaseGroup>;
+}
+
+export const GoogleCloudChannelV1QueryEligibleBillingAccountsResponse: Schema.Schema<GoogleCloudChannelV1QueryEligibleBillingAccountsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skuPurchaseGroups: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1SkuPurchaseGroup),
+    ),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1QueryEligibleBillingAccountsResponse",
+  });
 
 export interface GoogleCloudChannelV1alpha1OperationMetadata {
   /** The RPC that initiated this Long Running Operation. */
@@ -2201,286 +1717,247 @@ export const GoogleCloudChannelV1alpha1OperationMetadata: Schema.Schema<GoogleCl
     operationType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1OperationMetadata" });
 
+export interface GoogleCloudChannelV1ListSkuGroupsResponse {
+  /** The list of SKU groups requested. */
+  skuGroups?: ReadonlyArray<GoogleCloudChannelV1SkuGroup>;
+  /** A token to retrieve the next page of results. Pass to ListSkuGroupsRequest.page_token to obtain that page. */
+  nextPageToken?: string;
+}
+
+export const GoogleCloudChannelV1ListSkuGroupsResponse: Schema.Schema<GoogleCloudChannelV1ListSkuGroupsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skuGroups: Schema.optional(Schema.Array(GoogleCloudChannelV1SkuGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListSkuGroupsResponse" });
+
+export interface GoogleCloudChannelV1alpha1Period {
+  /** Total duration of Period Type defined. */
+  duration?: number;
+  /** Period Type. */
+  periodType?:
+    | "PERIOD_TYPE_UNSPECIFIED"
+    | "DAY"
+    | "MONTH"
+    | "YEAR"
+    | (string & {});
+}
+
+export const GoogleCloudChannelV1alpha1Period: Schema.Schema<GoogleCloudChannelV1alpha1Period> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duration: Schema.optional(Schema.Number),
+    periodType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Period" });
+
+export interface GoogleCloudChannelV1alpha1RenewalSettings {
+  /** If false, the plan will be completed at the end date. */
+  enableRenewal?: boolean;
+  /** If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time. */
+  resizeUnitCount?: boolean;
+  /** Describes how a reseller will be billed. */
+  paymentPlan?:
+    | "PAYMENT_PLAN_UNSPECIFIED"
+    | "COMMITMENT"
+    | "FLEXIBLE"
+    | "FREE"
+    | "TRIAL"
+    | "OFFLINE"
+    | (string & {});
+  /** Describes how frequently the reseller will be billed, such as once per month. */
+  paymentCycle?: GoogleCloudChannelV1alpha1Period;
+  /** If true, disables commitment-based offer on renewal and switches to flexible or pay as you go. Deprecated: Use `payment_plan` instead. */
+  disableCommitment?: boolean;
+  /** Set if enable_renewal=true. Deprecated: Use `payment_cycle` instead. */
+  paymentOption?:
+    | "PAYMENT_OPTION_UNSPECIFIED"
+    | "ANNUAL"
+    | "MONTHLY"
+    | (string & {});
+  /** Output only. The offer resource name that the entitlement will renew on at the end date. Takes the form: accounts/{account_id}/offers/{offer_id}. */
+  scheduledRenewalOffer?: string;
+}
+
+export const GoogleCloudChannelV1alpha1RenewalSettings: Schema.Schema<GoogleCloudChannelV1alpha1RenewalSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableRenewal: Schema.optional(Schema.Boolean),
+    resizeUnitCount: Schema.optional(Schema.Boolean),
+    paymentPlan: Schema.optional(Schema.String),
+    paymentCycle: Schema.optional(GoogleCloudChannelV1alpha1Period),
+    disableCommitment: Schema.optional(Schema.Boolean),
+    paymentOption: Schema.optional(Schema.String),
+    scheduledRenewalOffer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1RenewalSettings" });
+
+export interface GoogleCloudChannelV1ListEntitlementChangesResponse {
+  /** The list of entitlement changes. */
+  entitlementChanges?: ReadonlyArray<GoogleCloudChannelV1EntitlementChange>;
+  /** A token to list the next page of results. */
+  nextPageToken?: string;
+}
+
+export const GoogleCloudChannelV1ListEntitlementChangesResponse: Schema.Schema<GoogleCloudChannelV1ListEntitlementChangesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlementChanges: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1EntitlementChange),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1ListEntitlementChangesResponse",
+  });
+
 export interface GoogleCloudChannelV1alpha1CommitmentSettings {
-  /** Optional. Renewal settings applicable for a commitment-based Offer. */
-  renewalSettings?: GoogleCloudChannelV1alpha1RenewalSettings;
-  /** Output only. Commitment start timestamp. */
-  startTime?: string;
   /** Output only. Commitment end timestamp. */
   endTime?: string;
+  /** Output only. Commitment start timestamp. */
+  startTime?: string;
+  /** Optional. Renewal settings applicable for a commitment-based Offer. */
+  renewalSettings?: GoogleCloudChannelV1alpha1RenewalSettings;
 }
 
 export const GoogleCloudChannelV1alpha1CommitmentSettings: Schema.Schema<GoogleCloudChannelV1alpha1CommitmentSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    renewalSettings: Schema.optional(GoogleCloudChannelV1alpha1RenewalSettings),
-    startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    renewalSettings: Schema.optional(GoogleCloudChannelV1alpha1RenewalSettings),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1CommitmentSettings" });
 
-export interface GoogleCloudChannelV1alpha1Entitlement {
-  /** Association information to other entitlements. */
-  associationInfo?: GoogleCloudChannelV1alpha1AssociationInfo;
-  /** Optional. The billing account resource name that is used to pay for this entitlement. */
-  billingAccount?: string;
-  /** Maximum number of units for a non commitment-based Offer, such as Flexible, Trial or Free entitlements. For commitment-based entitlements, this is a read-only field, which only the internal support team can update. Deprecated: Use `parameters` instead. */
-  maxUnits?: number;
-  /** Output only. The time at which the entitlement is created. */
-  createTime?: string;
-  /** Output only. The time at which the entitlement is updated. */
-  updateTime?: string;
-  /** Output only. Enumerable of all current suspension reasons for an entitlement. */
-  suspensionReasons?: ReadonlyArray<
-    | "SUSPENSION_REASON_UNSPECIFIED"
-    | "RESELLER_INITIATED"
-    | "TRIAL_ENDED"
-    | "RENEWAL_WITH_TYPE_CANCEL"
-    | "PENDING_TOS_ACCEPTANCE"
-    | "OTHER"
-    | (string & {})
-  >;
-  /** The current number of users that are assigned a license for the product defined in provisioned_service.skuId. Read-only. Deprecated: Use `parameters` instead. */
-  assignedUnits?: number;
-  /** Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount. */
-  parameters?: ReadonlyArray<GoogleCloudChannelV1alpha1Parameter>;
-  /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
-  priceReferenceId?: string;
-  /** Commitment settings for a commitment-based Offer. Required for commitment based offers. */
-  commitmentSettings?: GoogleCloudChannelV1alpha1CommitmentSettings;
-  /** Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements. */
-  purchaseOrderId?: string;
-  /** Output only. Current provisioning state of the entitlement. */
-  provisioningState?:
-    | "PROVISIONING_STATE_UNSPECIFIED"
-    | "ACTIVE"
-    | "CANCELED"
-    | "COMPLETE"
-    | "PENDING"
-    | "SUSPENDED"
+export interface GoogleCloudChannelV1SkuGroupCondition {
+  /** Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041". */
+  skuGroup?: string;
+}
+
+export const GoogleCloudChannelV1SkuGroupCondition: Schema.Schema<GoogleCloudChannelV1SkuGroupCondition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skuGroup: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1SkuGroupCondition" });
+
+export interface GoogleCloudChannelV1RepricingCondition {
+  /** SKU Group condition for override. */
+  skuGroupCondition?: GoogleCloudChannelV1SkuGroupCondition;
+}
+
+export const GoogleCloudChannelV1RepricingCondition: Schema.Schema<GoogleCloudChannelV1RepricingCondition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skuGroupCondition: Schema.optional(GoogleCloudChannelV1SkuGroupCondition),
+  }).annotate({ identifier: "GoogleCloudChannelV1RepricingCondition" });
+
+export interface GoogleCloudChannelV1ConditionalOverride {
+  /** Required. The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs. */
+  rebillingBasis?:
+    | "REBILLING_BASIS_UNSPECIFIED"
+    | "COST_AT_LIST"
+    | "DIRECT_CUSTOMER_COST"
     | (string & {});
-  /** Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}. */
-  offer?: string;
-  /** Output only. Service provisioning details for the entitlement. */
-  provisionedService?: GoogleCloudChannelV1alpha1ProvisionedService;
-  /** Cloud Identity ID of a channel partner who will be the direct reseller for the customer's order. This field is generally used in 2-tier ordering, where the order is placed by a top-level distributor on behalf of their channel partner or reseller. Required for distributors. Deprecated: `channel_partner_id` has been moved to the Customer. */
-  channelPartnerId?: string;
-  /** Number of units for a commitment-based Offer. For example, for seat-based Offers, this would be the number of seats; for license-based Offers, this would be the number of licenses. Required for creating commitment-based Offers. Deprecated: Use `parameters` instead. */
-  numUnits?: number;
-  /** Output only. Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}. */
+  /** Required. Specifies the condition which, if met, will apply the override. */
+  repricingCondition?: GoogleCloudChannelV1RepricingCondition;
+  /** Required. Information about the applied override's adjustment. */
+  adjustment?: GoogleCloudChannelV1RepricingAdjustment;
+}
+
+export const GoogleCloudChannelV1ConditionalOverride: Schema.Schema<GoogleCloudChannelV1ConditionalOverride> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rebillingBasis: Schema.optional(Schema.String),
+    repricingCondition: Schema.optional(GoogleCloudChannelV1RepricingCondition),
+    adjustment: Schema.optional(GoogleCloudChannelV1RepricingAdjustment),
+  }).annotate({ identifier: "GoogleCloudChannelV1ConditionalOverride" });
+
+export interface GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
+  /** Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+  entitlement?: string;
+}
+
+export const GoogleCloudChannelV1RepricingConfigEntitlementGranularity: Schema.Schema<GoogleCloudChannelV1RepricingConfigEntitlementGranularity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlement: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1RepricingConfigEntitlementGranularity",
+  });
+
+export interface GoogleCloudChannelV1RepricingConfig {
+  /** Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead. */
+  channelPartnerGranularity?: GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity;
+  /** Required. The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries. */
+  effectiveInvoiceMonth?: GoogleTypeDate;
+  /** Required. The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply. */
+  rebillingBasis?:
+    | "REBILLING_BASIS_UNSPECIFIED"
+    | "COST_AT_LIST"
+    | "DIRECT_CUSTOMER_COST"
+    | (string & {});
+  /** The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis. */
+  conditionalOverrides?: ReadonlyArray<GoogleCloudChannelV1ConditionalOverride>;
+  /** Required. Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig. */
+  entitlementGranularity?: GoogleCloudChannelV1RepricingConfigEntitlementGranularity;
+  /** Required. Information about the adjustment. */
+  adjustment?: GoogleCloudChannelV1RepricingAdjustment;
+}
+
+export const GoogleCloudChannelV1RepricingConfig: Schema.Schema<GoogleCloudChannelV1RepricingConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelPartnerGranularity: Schema.optional(
+      GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity,
+    ),
+    effectiveInvoiceMonth: Schema.optional(GoogleTypeDate),
+    rebillingBasis: Schema.optional(Schema.String),
+    conditionalOverrides: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1ConditionalOverride),
+    ),
+    entitlementGranularity: Schema.optional(
+      GoogleCloudChannelV1RepricingConfigEntitlementGranularity,
+    ),
+    adjustment: Schema.optional(GoogleCloudChannelV1RepricingAdjustment),
+  }).annotate({ identifier: "GoogleCloudChannelV1RepricingConfig" });
+
+export interface GoogleCloudChannelV1CustomerRepricingConfig {
+  /** Required. The configuration for bill modifications made by a reseller before sending it to customers. */
+  repricingConfig?: GoogleCloudChannelV1RepricingConfig;
+  /** Output only. Timestamp of an update to the repricing rule. If `update_time` is after RepricingConfig.effective_invoice_month then it indicates this was set mid-month. */
+  updateTime?: string;
+  /** Output only. Resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}. */
   name?: string;
-  /** Output only. Settings for trial offers. */
-  trialSettings?: GoogleCloudChannelV1alpha1TrialSettings;
 }
 
-export const GoogleCloudChannelV1alpha1Entitlement: Schema.Schema<GoogleCloudChannelV1alpha1Entitlement> =
+export const GoogleCloudChannelV1CustomerRepricingConfig: Schema.Schema<GoogleCloudChannelV1CustomerRepricingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    associationInfo: Schema.optional(GoogleCloudChannelV1alpha1AssociationInfo),
-    billingAccount: Schema.optional(Schema.String),
-    maxUnits: Schema.optional(Schema.Number),
-    createTime: Schema.optional(Schema.String),
+    repricingConfig: Schema.optional(GoogleCloudChannelV1RepricingConfig),
     updateTime: Schema.optional(Schema.String),
-    suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
-    assignedUnits: Schema.optional(Schema.Number),
-    parameters: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1alpha1Parameter),
-    ),
-    priceReferenceId: Schema.optional(Schema.String),
-    commitmentSettings: Schema.optional(
-      GoogleCloudChannelV1alpha1CommitmentSettings,
-    ),
-    purchaseOrderId: Schema.optional(Schema.String),
-    provisioningState: Schema.optional(Schema.String),
-    offer: Schema.optional(Schema.String),
-    provisionedService: Schema.optional(
-      GoogleCloudChannelV1alpha1ProvisionedService,
-    ),
-    channelPartnerId: Schema.optional(Schema.String),
-    numUnits: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
-    trialSettings: Schema.optional(GoogleCloudChannelV1alpha1TrialSettings),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Entitlement" });
+  }).annotate({ identifier: "GoogleCloudChannelV1CustomerRepricingConfig" });
 
-export interface GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
-  /** The transferred entitlements. */
-  entitlements?: ReadonlyArray<GoogleCloudChannelV1alpha1Entitlement>;
+export interface GoogleCloudChannelV1DateRange {
+  /** The earliest usage date time (inclusive). If you use time groupings (daily, weekly, etc), each group uses midnight to midnight (Pacific time). The usage start date is rounded down to include all usage from the specified date. We recommend that clients pass `usage_start_date_time` in Pacific time. */
+  usageStartDateTime?: GoogleTypeDateTime;
+  /** The latest usage date time (exclusive). If you use time groupings (daily, weekly, etc), each group uses midnight to midnight (Pacific time). The usage end date is rounded down to include all usage from the specified date. We recommend that clients pass `usage_start_date_time` in Pacific time. */
+  usageEndDateTime?: GoogleTypeDateTime;
+  /** The earliest invoice date (inclusive). If this value is not the first day of a month, this will move it back to the first day of the given month. */
+  invoiceStartDate?: GoogleTypeDate;
+  /** The latest invoice date (inclusive). If this value is not the last day of a month, this will move it forward to the last day of the given month. */
+  invoiceEndDate?: GoogleTypeDate;
 }
 
-export const GoogleCloudChannelV1alpha1TransferEntitlementsResponse: Schema.Schema<GoogleCloudChannelV1alpha1TransferEntitlementsResponse> =
+export const GoogleCloudChannelV1DateRange: Schema.Schema<GoogleCloudChannelV1DateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entitlements: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1alpha1Entitlement),
-    ),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1alpha1TransferEntitlementsResponse",
-  });
-
-export interface GoogleCloudChannelV1FetchReportResultsResponse {
-  /** The metadata for the report results (display name, columns, row count, and date ranges). */
-  reportMetadata?: GoogleCloudChannelV1ReportResultsMetadata;
-  /** The report's lists of values. Each row follows the settings and ordering of the columns from `report_metadata`. */
-  rows?: ReadonlyArray<GoogleCloudChannelV1Row>;
-  /** Pass this token to FetchReportResultsRequest.page_token to retrieve the next page of results. */
-  nextPageToken?: string;
-}
-
-export const GoogleCloudChannelV1FetchReportResultsResponse: Schema.Schema<GoogleCloudChannelV1FetchReportResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    reportMetadata: Schema.optional(GoogleCloudChannelV1ReportResultsMetadata),
-    rows: Schema.optional(Schema.Array(GoogleCloudChannelV1Row)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1FetchReportResultsResponse" });
-
-export interface GoogleCloudChannelV1ProvisionCloudIdentityRequest {
-  /** CloudIdentity-specific customer information. */
-  cloudIdentityInfo?: GoogleCloudChannelV1CloudIdentityInfo;
-  /** Validate the request and preview the review, but do not post it. */
-  validateOnly?: boolean;
-  /** Admin user information. */
-  user?: GoogleCloudChannelV1AdminUser;
-}
-
-export const GoogleCloudChannelV1ProvisionCloudIdentityRequest: Schema.Schema<GoogleCloudChannelV1ProvisionCloudIdentityRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cloudIdentityInfo: Schema.optional(GoogleCloudChannelV1CloudIdentityInfo),
-    validateOnly: Schema.optional(Schema.Boolean),
-    user: Schema.optional(GoogleCloudChannelV1AdminUser),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1ProvisionCloudIdentityRequest",
-  });
-
-export interface GoogleCloudChannelV1ListEntitlementsResponse {
-  /** A token to list the next page of results. Pass to ListEntitlementsRequest.page_token to obtain that page. */
-  nextPageToken?: string;
-  /** The reseller customer's entitlements. */
-  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
-}
-
-export const GoogleCloudChannelV1ListEntitlementsResponse: Schema.Schema<GoogleCloudChannelV1ListEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    entitlements: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1Entitlement),
-    ),
-  }).annotate({ identifier: "GoogleCloudChannelV1ListEntitlementsResponse" });
-
-export interface GoogleCloudChannelV1ListSubscribersResponse {
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** Name of the topic registered with the reseller. */
-  topic?: string;
-  /** List of service accounts which have subscriber access to the topic. */
-  serviceAccounts?: ReadonlyArray<string>;
-}
-
-export const GoogleCloudChannelV1ListSubscribersResponse: Schema.Schema<GoogleCloudChannelV1ListSubscribersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    topic: Schema.optional(Schema.String),
-    serviceAccounts: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "GoogleCloudChannelV1ListSubscribersResponse" });
-
-export interface GoogleCloudChannelV1TransferEntitlementsResponse {
-  /** The transferred entitlements. */
-  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
-}
-
-export const GoogleCloudChannelV1TransferEntitlementsResponse: Schema.Schema<GoogleCloudChannelV1TransferEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entitlements: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1Entitlement),
-    ),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1TransferEntitlementsResponse",
-  });
-
-export interface GoogleCloudChannelV1FetchReportResultsRequest {
-  /** Optional. Requested page size of the report. The server may return fewer results than requested. If you don't specify a page size, the server uses a sensible default (may change over time). The maximum value is 30,000; the server will change larger values to 30,000. */
-  pageSize?: number;
-  /** Optional. List of keys specifying which report partitions to return. If empty, returns all partitions. */
-  partitionKeys?: ReadonlyArray<string>;
-  /** Optional. A token that specifies a page of results beyond the first page. Obtained through FetchReportResultsResponse.next_page_token of the previous CloudChannelReportsService.FetchReportResults call. */
-  pageToken?: string;
-}
-
-export const GoogleCloudChannelV1FetchReportResultsRequest: Schema.Schema<GoogleCloudChannelV1FetchReportResultsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number),
-    partitionKeys: Schema.optional(Schema.Array(Schema.String)),
-    pageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1FetchReportResultsRequest" });
-
-export interface GoogleCloudChannelV1ImportCustomerRequest {
-  /** Optional. Cloud Identity ID of a channel partner who will be the direct reseller for the customer's order. This field is required for 2-tier transfer scenarios and can be provided via the request Parent binding as well. */
-  channelPartnerId?: string;
-  /** Required. Customer's primary admin email. */
-  primaryAdminEmail?: string;
-  /** Optional. Specifies the customer that will receive imported Cloud Identity information. Format: accounts/{account_id}/customers/{customer_id} */
-  customer?: string;
-  /** Required. Customer domain. */
-  domain?: string;
-  /** Required. Choose to overwrite an existing customer if found. This must be set to true if there is an existing customer with a conflicting region code or domain. */
-  overwriteIfExists?: boolean;
-  /** Required. Customer's Cloud Identity ID */
-  cloudIdentityId?: string;
-  /** Optional. The super admin of the resold customer generates this token to authorize a reseller to access their Cloud Identity and purchase entitlements on their behalf. You can omit this token after authorization. See https://support.google.com/a/answer/7643790 for more details. */
-  authToken?: string;
-}
-
-export const GoogleCloudChannelV1ImportCustomerRequest: Schema.Schema<GoogleCloudChannelV1ImportCustomerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    channelPartnerId: Schema.optional(Schema.String),
-    primaryAdminEmail: Schema.optional(Schema.String),
-    customer: Schema.optional(Schema.String),
-    domain: Schema.optional(Schema.String),
-    overwriteIfExists: Schema.optional(Schema.Boolean),
-    cloudIdentityId: Schema.optional(Schema.String),
-    authToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ImportCustomerRequest" });
+    usageStartDateTime: Schema.optional(GoogleTypeDateTime),
+    usageEndDateTime: Schema.optional(GoogleTypeDateTime),
+    invoiceStartDate: Schema.optional(GoogleTypeDate),
+    invoiceEndDate: Schema.optional(GoogleTypeDate),
+  }).annotate({ identifier: "GoogleCloudChannelV1DateRange" });
 
 export interface GoogleCloudChannelV1ChannelPartnerRepricingConfig {
-  /** Output only. Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. */
-  name?: string;
   /** Required. The configuration for bill modifications made by a reseller before sending it to ChannelPartner. */
   repricingConfig?: GoogleCloudChannelV1RepricingConfig;
+  /** Output only. Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. */
+  name?: string;
   /** Output only. Timestamp of an update to the repricing rule. If `update_time` is after RepricingConfig.effective_invoice_month then it indicates this was set mid-month. */
   updateTime?: string;
 }
 
 export const GoogleCloudChannelV1ChannelPartnerRepricingConfig: Schema.Schema<GoogleCloudChannelV1ChannelPartnerRepricingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
     repricingConfig: Schema.optional(GoogleCloudChannelV1RepricingConfig),
+    name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudChannelV1ChannelPartnerRepricingConfig",
-  });
-
-export interface GoogleCloudChannelV1alpha1CustomerEvent {
-  /** Type of event which happened for the customer. */
-  eventType?:
-    | "TYPE_UNSPECIFIED"
-    | "PRIMARY_DOMAIN_CHANGED"
-    | "PRIMARY_DOMAIN_VERIFIED"
-    | (string & {});
-  /** Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
-  customer?: string;
-}
-
-export const GoogleCloudChannelV1alpha1CustomerEvent: Schema.Schema<GoogleCloudChannelV1alpha1CustomerEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eventType: Schema.optional(Schema.String),
-    customer: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1CustomerEvent" });
-
-export interface GoogleCloudChannelV1UnregisterSubscriberResponse {
-  /** Name of the topic the service account subscriber access was removed from. */
-  topic?: string;
-}
-
-export const GoogleCloudChannelV1UnregisterSubscriberResponse: Schema.Schema<GoogleCloudChannelV1UnregisterSubscriberResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    topic: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudChannelV1UnregisterSubscriberResponse",
   });
 
 export interface GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse {
@@ -2501,152 +1978,524 @@ export const GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse: Sch
       "GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse",
   });
 
-export interface GoogleCloudChannelV1CloudIdentityCustomerAccount {
-  /** If owned = true, the name of the customer that owns the Cloud Identity account. Customer_name uses the format: accounts/{account_id}/customers/{customer_id} */
-  customerName?: string;
-  /** If existing = true, the type of the customer. */
-  customerType?:
-    | "CUSTOMER_TYPE_UNSPECIFIED"
-    | "DOMAIN"
-    | "TEAM"
-    | (string & {});
-  /** Returns true if a Cloud Identity account exists for a specific domain. */
-  existing?: boolean;
-  /** If existing = true, and is 2-tier customer, the channel partner of the customer. */
-  channelPartnerCloudIdentityId?: string;
-  /** Returns true if the Cloud Identity account is associated with a customer of the Channel Services partner (with active subscriptions or purchase consents). */
-  owned?: boolean;
-  /** If existing = true, the Cloud Identity ID of the customer. */
-  customerCloudIdentityId?: string;
+export interface GoogleCloudChannelV1alpha1DateRange {
+  /** The earliest usage date time (inclusive). If you use time groupings (daily, weekly, etc), each group uses midnight to midnight (Pacific time). The usage start date is rounded down to include all usage from the specified date. We recommend that clients pass `usage_start_date_time` in Pacific time. */
+  usageStartDateTime?: GoogleTypeDateTime;
+  /** The latest usage date time (exclusive). If you use time groupings (daily, weekly, etc), each group uses midnight to midnight (Pacific time). The usage end date is rounded down to include all usage from the specified date. We recommend that clients pass `usage_start_date_time` in Pacific time. */
+  usageEndDateTime?: GoogleTypeDateTime;
+  /** The earliest invoice date (inclusive). If this value is not the first day of a month, this will move it back to the first day of the given month. */
+  invoiceStartDate?: GoogleTypeDate;
+  /** The latest invoice date (inclusive). If this value is not the last day of a month, this will move it forward to the last day of the given month. */
+  invoiceEndDate?: GoogleTypeDate;
 }
 
-export const GoogleCloudChannelV1CloudIdentityCustomerAccount: Schema.Schema<GoogleCloudChannelV1CloudIdentityCustomerAccount> =
+export const GoogleCloudChannelV1alpha1DateRange: Schema.Schema<GoogleCloudChannelV1alpha1DateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customerName: Schema.optional(Schema.String),
-    customerType: Schema.optional(Schema.String),
-    existing: Schema.optional(Schema.Boolean),
-    channelPartnerCloudIdentityId: Schema.optional(Schema.String),
-    owned: Schema.optional(Schema.Boolean),
-    customerCloudIdentityId: Schema.optional(Schema.String),
+    usageStartDateTime: Schema.optional(GoogleTypeDateTime),
+    usageEndDateTime: Schema.optional(GoogleTypeDateTime),
+    invoiceStartDate: Schema.optional(GoogleTypeDate),
+    invoiceEndDate: Schema.optional(GoogleTypeDate),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1DateRange" });
+
+export interface GoogleCloudChannelV1alpha1ReportResultsMetadata {
+  /** Details of the completed report. */
+  report?: GoogleCloudChannelV1alpha1Report;
+  /** The total number of rows of data in the final report. */
+  rowCount?: string;
+  /** The date range of reported usage. */
+  dateRange?: GoogleCloudChannelV1alpha1DateRange;
+  /** The usage dates immediately preceding `date_range` with the same duration. Use this to calculate trending usage and costs. This is only populated if you request trending data. For example, if `date_range` is July 1-15, `preceding_date_range` will be June 16-30. */
+  precedingDateRange?: GoogleCloudChannelV1alpha1DateRange;
+}
+
+export const GoogleCloudChannelV1alpha1ReportResultsMetadata: Schema.Schema<GoogleCloudChannelV1alpha1ReportResultsMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    report: Schema.optional(GoogleCloudChannelV1alpha1Report),
+    rowCount: Schema.optional(Schema.String),
+    dateRange: Schema.optional(GoogleCloudChannelV1alpha1DateRange),
+    precedingDateRange: Schema.optional(GoogleCloudChannelV1alpha1DateRange),
   }).annotate({
-    identifier: "GoogleCloudChannelV1CloudIdentityCustomerAccount",
+    identifier: "GoogleCloudChannelV1alpha1ReportResultsMetadata",
   });
 
-export interface GoogleCloudChannelV1ListChannelPartnerLinksResponse {
-  /** The Channel partner links for a reseller. */
-  channelPartnerLinks?: ReadonlyArray<GoogleCloudChannelV1ChannelPartnerLink>;
-  /** A token to retrieve the next page of results. Pass to ListChannelPartnerLinksRequest.page_token to obtain that page. */
+export interface GoogleCloudChannelV1alpha1RunReportJobResponse {
+  /** The metadata for the report's results (display name, columns, row count, and date range). If you view this before the operation finishes, you may see incomplete data. */
+  reportMetadata?: GoogleCloudChannelV1alpha1ReportResultsMetadata;
+  /** Pass `report_job.name` to FetchReportResultsRequest.report_job to retrieve the report's results. */
+  reportJob?: GoogleCloudChannelV1alpha1ReportJob;
+}
+
+export const GoogleCloudChannelV1alpha1RunReportJobResponse: Schema.Schema<GoogleCloudChannelV1alpha1RunReportJobResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportMetadata: Schema.optional(
+      GoogleCloudChannelV1alpha1ReportResultsMetadata,
+    ),
+    reportJob: Schema.optional(GoogleCloudChannelV1alpha1ReportJob),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1RunReportJobResponse" });
+
+export interface GoogleCloudChannelV1ListCustomersResponse {
+  /** The customers belonging to a reseller or distributor. */
+  customers?: ReadonlyArray<GoogleCloudChannelV1Customer>;
+  /** A token to retrieve the next page of results. Pass to ListCustomersRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListChannelPartnerLinksResponse: Schema.Schema<GoogleCloudChannelV1ListChannelPartnerLinksResponse> =
+export const GoogleCloudChannelV1ListCustomersResponse: Schema.Schema<GoogleCloudChannelV1ListCustomersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    channelPartnerLinks: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1ChannelPartnerLink),
+    customers: Schema.optional(Schema.Array(GoogleCloudChannelV1Customer)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListCustomersResponse" });
+
+export interface GoogleLongrunningOperation {
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: GoogleRpcStatus;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+}
+
+export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
+
+export interface GoogleLongrunningListOperationsResponse {
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
+
+export interface GoogleCloudChannelV1Row {
+  /** The key for the partition this row belongs to. This field is empty if the report is not partitioned. */
+  partitionKey?: string;
+  /** The list of values in the row. */
+  values?: ReadonlyArray<GoogleCloudChannelV1ReportValue>;
+}
+
+export const GoogleCloudChannelV1Row: Schema.Schema<GoogleCloudChannelV1Row> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partitionKey: Schema.optional(Schema.String),
+    values: Schema.optional(Schema.Array(GoogleCloudChannelV1ReportValue)),
+  }).annotate({ identifier: "GoogleCloudChannelV1Row" });
+
+export interface GoogleCloudChannelV1OperationMetadata {
+  /** The RPC that initiated this Long Running Operation. */
+  operationType?:
+    | "OPERATION_TYPE_UNSPECIFIED"
+    | "CREATE_ENTITLEMENT"
+    | "CHANGE_RENEWAL_SETTINGS"
+    | "START_PAID_SERVICE"
+    | "ACTIVATE_ENTITLEMENT"
+    | "SUSPEND_ENTITLEMENT"
+    | "CANCEL_ENTITLEMENT"
+    | "TRANSFER_ENTITLEMENTS"
+    | "TRANSFER_ENTITLEMENTS_TO_GOOGLE"
+    | "CHANGE_OFFER"
+    | "CHANGE_PARAMETERS"
+    | "PROVISION_CLOUD_IDENTITY"
+    | (string & {});
+}
+
+export const GoogleCloudChannelV1OperationMetadata: Schema.Schema<GoogleCloudChannelV1OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1OperationMetadata" });
+
+export interface GoogleCloudChannelV1RunReportJobRequest {
+  /** Optional. The range of usage or invoice dates to include in the result. */
+  dateRange?: GoogleCloudChannelV1DateRange;
+  /** Optional. A structured string that defines conditions on dimension columns to restrict the report output. Filters support logical operators (AND, OR, NOT) and conditional operators (=, !=, <, >, <=, and >=) using `column_id` as keys. For example: `(customer:"accounts/C123abc/customers/S456def" OR customer:"accounts/C123abc/customers/S789ghi") AND invoice_start_date.year >= 2022` */
+  filter?: string;
+  /** Optional. The BCP-47 language code, such as "en-US". If specified, the response is localized to the corresponding language code if the original data sources support it. Default is "en-US". */
+  languageCode?: string;
+}
+
+export const GoogleCloudChannelV1RunReportJobRequest: Schema.Schema<GoogleCloudChannelV1RunReportJobRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dateRange: Schema.optional(GoogleCloudChannelV1DateRange),
+    filter: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1RunReportJobRequest" });
+
+export interface GoogleCloudChannelV1ListCustomerRepricingConfigsResponse {
+  /** The repricing configs for this channel partner. */
+  customerRepricingConfigs?: ReadonlyArray<GoogleCloudChannelV1CustomerRepricingConfig>;
+  /** A token to retrieve the next page of results. Pass to ListCustomerRepricingConfigsRequest.page_token to obtain that page. */
+  nextPageToken?: string;
+}
+
+export const GoogleCloudChannelV1ListCustomerRepricingConfigsResponse: Schema.Schema<GoogleCloudChannelV1ListCustomerRepricingConfigsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerRepricingConfigs: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1CustomerRepricingConfig),
     ),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({
-    identifier: "GoogleCloudChannelV1ListChannelPartnerLinksResponse",
+    identifier: "GoogleCloudChannelV1ListCustomerRepricingConfigsResponse",
   });
 
-export interface GoogleCloudChannelV1EntitlementChange {
-  /** Cancellation reason for the Entitlement. */
-  cancellationReason?:
-    | "CANCELLATION_REASON_UNSPECIFIED"
-    | "SERVICE_TERMINATED"
-    | "RELATIONSHIP_ENDED"
-    | "PARTIAL_TRANSFER"
+export interface GoogleCloudChannelV1CancelEntitlementRequest {
+  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
+  requestId?: string;
+}
+
+export const GoogleCloudChannelV1CancelEntitlementRequest: Schema.Schema<GoogleCloudChannelV1CancelEntitlementRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1CancelEntitlementRequest" });
+
+export interface GoogleProtobufEmpty {}
+
+export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleProtobufEmpty",
+  });
+
+export interface GoogleCloudChannelV1alpha1Parameter {
+  /** Name of the parameter. */
+  name?: string;
+  /** Output only. Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active. */
+  editable?: boolean;
+  /** Value of the parameter. */
+  value?: GoogleCloudChannelV1alpha1Value;
+}
+
+export const GoogleCloudChannelV1alpha1Parameter: Schema.Schema<GoogleCloudChannelV1alpha1Parameter> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    editable: Schema.optional(Schema.Boolean),
+    value: Schema.optional(GoogleCloudChannelV1alpha1Value),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Parameter" });
+
+export interface GoogleCloudChannelV1ChangeRenewalSettingsRequest {
+  /** Required. New renewal settings. */
+  renewalSettings?: GoogleCloudChannelV1RenewalSettings;
+  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
+  requestId?: string;
+}
+
+export const GoogleCloudChannelV1ChangeRenewalSettingsRequest: Schema.Schema<GoogleCloudChannelV1ChangeRenewalSettingsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    renewalSettings: Schema.optional(GoogleCloudChannelV1RenewalSettings),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1ChangeRenewalSettingsRequest",
+  });
+
+export interface GoogleCloudChannelV1PurchasableOffer {
+  /** Offer. */
+  offer?: GoogleCloudChannelV1Offer;
+  /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
+  priceReferenceId?: string;
+}
+
+export const GoogleCloudChannelV1PurchasableOffer: Schema.Schema<GoogleCloudChannelV1PurchasableOffer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offer: Schema.optional(GoogleCloudChannelV1Offer),
+    priceReferenceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1PurchasableOffer" });
+
+export interface GoogleCloudChannelV1ListPurchasableOffersResponse {
+  /** The list of Offers requested. */
+  purchasableOffers?: ReadonlyArray<GoogleCloudChannelV1PurchasableOffer>;
+  /** A token to retrieve the next page of results. */
+  nextPageToken?: string;
+}
+
+export const GoogleCloudChannelV1ListPurchasableOffersResponse: Schema.Schema<GoogleCloudChannelV1ListPurchasableOffersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    purchasableOffers: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1PurchasableOffer),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1ListPurchasableOffersResponse",
+  });
+
+export interface GoogleCloudChannelV1alpha1AssociationInfo {
+  /** The name of the base entitlement, for which this entitlement is an add-on. */
+  baseEntitlement?: string;
+}
+
+export const GoogleCloudChannelV1alpha1AssociationInfo: Schema.Schema<GoogleCloudChannelV1alpha1AssociationInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseEntitlement: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1AssociationInfo" });
+
+export interface GoogleCloudChannelV1alpha1TrialSettings {
+  /** Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com). */
+  endTime?: string;
+  /** Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial. */
+  trial?: boolean;
+}
+
+export const GoogleCloudChannelV1alpha1TrialSettings: Schema.Schema<GoogleCloudChannelV1alpha1TrialSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    trial: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1TrialSettings" });
+
+export interface GoogleCloudChannelV1alpha1Entitlement {
+  /** The current number of users that are assigned a license for the product defined in provisioned_service.skuId. Read-only. Deprecated: Use `parameters` instead. */
+  assignedUnits?: number;
+  /** Association information to other entitlements. */
+  associationInfo?: GoogleCloudChannelV1alpha1AssociationInfo;
+  /** Output only. Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}. */
+  name?: string;
+  /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
+  priceReferenceId?: string;
+  /** Cloud Identity ID of a channel partner who will be the direct reseller for the customer's order. This field is generally used in 2-tier ordering, where the order is placed by a top-level distributor on behalf of their channel partner or reseller. Required for distributors. Deprecated: `channel_partner_id` has been moved to the Customer. */
+  channelPartnerId?: string;
+  /** Optional. The billing account resource name that is used to pay for this entitlement. */
+  billingAccount?: string;
+  /** Output only. The time at which the entitlement is updated. */
+  updateTime?: string;
+  /** Output only. Current provisioning state of the entitlement. */
+  provisioningState?:
+    | "PROVISIONING_STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "CANCELED"
+    | "COMPLETE"
+    | "PENDING"
+    | "SUSPENDED"
     | (string & {});
-  /** Required. Resource name of the Offer at the time of change. Takes the form: accounts/{account_id}/offers/{offer_id}. */
+  /** Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}. */
   offer?: string;
-  /** Service provisioned for an Entitlement. */
-  provisionedService?: GoogleCloudChannelV1ProvisionedService;
-  /** Suspension reason for the Entitlement. */
-  suspensionReason?:
+  /** Number of units for a commitment-based Offer. For example, for seat-based Offers, this would be the number of seats; for license-based Offers, this would be the number of licenses. Required for creating commitment-based Offers. Deprecated: Use `parameters` instead. */
+  numUnits?: number;
+  /** Maximum number of units for a non commitment-based Offer, such as Flexible, Trial or Free entitlements. For commitment-based entitlements, this is a read-only field, which only the internal support team can update. Deprecated: Use `parameters` instead. */
+  maxUnits?: number;
+  /** Output only. Enumerable of all current suspension reasons for an entitlement. */
+  suspensionReasons?: ReadonlyArray<
     | "SUSPENSION_REASON_UNSPECIFIED"
     | "RESELLER_INITIATED"
     | "TRIAL_ENDED"
     | "RENEWAL_WITH_TYPE_CANCEL"
     | "PENDING_TOS_ACCEPTANCE"
     | "OTHER"
-    | (string & {});
-  /** The submitted time of the change. */
+    | (string & {})
+  >;
+  /** Output only. Settings for trial offers. */
+  trialSettings?: GoogleCloudChannelV1alpha1TrialSettings;
+  /** Output only. The time at which the entitlement is created. */
   createTime?: string;
-  /** Extended parameters, such as: purchase_order_number, gcp_details; internal_correlation_id, long_running_operation_id, order_id; etc. */
-  parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
-  /** Human-readable identifier that shows what operator made a change. When the operator_type is RESELLER, this is the user's email address. For all other operator types, this is empty. */
-  operator?: string;
-  /** The Entitlement's activation reason */
-  activationReason?:
-    | "ACTIVATION_REASON_UNSPECIFIED"
-    | "RESELLER_REVOKED_SUSPENSION"
-    | "CUSTOMER_ACCEPTED_PENDING_TOS"
-    | "RENEWAL_SETTINGS_CHANGED"
-    | "OTHER_ACTIVATION_REASON"
-    | (string & {});
-  /** e.g. purchase_number change reason, entered by CRS. */
-  otherChangeReason?: string;
-  /** Operator type responsible for the change. */
-  operatorType?:
-    | "OPERATOR_TYPE_UNSPECIFIED"
-    | "CUSTOMER_SERVICE_REPRESENTATIVE"
-    | "SYSTEM"
-    | "CUSTOMER"
-    | "RESELLER"
-    | (string & {});
-  /** Required. Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
-  entitlement?: string;
-  /** The change action type. */
-  changeType?:
-    | "CHANGE_TYPE_UNSPECIFIED"
-    | "CREATED"
-    | "PRICE_PLAN_SWITCHED"
-    | "COMMITMENT_CHANGED"
-    | "RENEWED"
-    | "SUSPENDED"
-    | "ACTIVATED"
-    | "CANCELLED"
-    | "SKU_CHANGED"
-    | "RENEWAL_SETTING_CHANGED"
-    | "PAID_SUBSCRIPTION_STARTED"
-    | "LICENSE_CAP_CHANGED"
-    | "SUSPENSION_DETAILS_CHANGED"
-    | "TRIAL_END_DATE_EXTENDED"
-    | "TRIAL_STARTED"
-    | (string & {});
+  /** Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount. */
+  parameters?: ReadonlyArray<GoogleCloudChannelV1alpha1Parameter>;
+  /** Output only. Service provisioning details for the entitlement. */
+  provisionedService?: GoogleCloudChannelV1alpha1ProvisionedService;
+  /** Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements. */
+  purchaseOrderId?: string;
+  /** Commitment settings for a commitment-based Offer. Required for commitment based offers. */
+  commitmentSettings?: GoogleCloudChannelV1alpha1CommitmentSettings;
 }
 
-export const GoogleCloudChannelV1EntitlementChange: Schema.Schema<GoogleCloudChannelV1EntitlementChange> =
+export const GoogleCloudChannelV1alpha1Entitlement: Schema.Schema<GoogleCloudChannelV1alpha1Entitlement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cancellationReason: Schema.optional(Schema.String),
+    assignedUnits: Schema.optional(Schema.Number),
+    associationInfo: Schema.optional(GoogleCloudChannelV1alpha1AssociationInfo),
+    name: Schema.optional(Schema.String),
+    priceReferenceId: Schema.optional(Schema.String),
+    channelPartnerId: Schema.optional(Schema.String),
+    billingAccount: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
     offer: Schema.optional(Schema.String),
+    numUnits: Schema.optional(Schema.Number),
+    maxUnits: Schema.optional(Schema.Number),
+    suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
+    trialSettings: Schema.optional(GoogleCloudChannelV1alpha1TrialSettings),
+    createTime: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1alpha1Parameter),
+    ),
+    provisionedService: Schema.optional(
+      GoogleCloudChannelV1alpha1ProvisionedService,
+    ),
+    purchaseOrderId: Schema.optional(Schema.String),
+    commitmentSettings: Schema.optional(
+      GoogleCloudChannelV1alpha1CommitmentSettings,
+    ),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Entitlement" });
+
+export interface GoogleCloudChannelV1ReportResultsMetadata {
+  /** Details of the completed report. */
+  report?: GoogleCloudChannelV1Report;
+  /** The total number of rows of data in the final report. */
+  rowCount?: string;
+  /** The date range of reported usage. */
+  dateRange?: GoogleCloudChannelV1DateRange;
+  /** The usage dates immediately preceding `date_range` with the same duration. Use this to calculate trending usage and costs. This is only populated if you request trending data. For example, if `date_range` is July 1-15, `preceding_date_range` will be June 16-30. */
+  precedingDateRange?: GoogleCloudChannelV1DateRange;
+}
+
+export const GoogleCloudChannelV1ReportResultsMetadata: Schema.Schema<GoogleCloudChannelV1ReportResultsMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    report: Schema.optional(GoogleCloudChannelV1Report),
+    rowCount: Schema.optional(Schema.String),
+    dateRange: Schema.optional(GoogleCloudChannelV1DateRange),
+    precedingDateRange: Schema.optional(GoogleCloudChannelV1DateRange),
+  }).annotate({ identifier: "GoogleCloudChannelV1ReportResultsMetadata" });
+
+export interface GoogleCloudChannelV1ReportJob {
+  /** Required. The resource name of a report job. Name uses the format: `accounts/{account_id}/reportJobs/{report_job_id}` */
+  name?: string;
+  /** The current status of report generation. */
+  reportStatus?: GoogleCloudChannelV1ReportStatus;
+}
+
+export const GoogleCloudChannelV1ReportJob: Schema.Schema<GoogleCloudChannelV1ReportJob> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    reportStatus: Schema.optional(GoogleCloudChannelV1ReportStatus),
+  }).annotate({ identifier: "GoogleCloudChannelV1ReportJob" });
+
+export interface GoogleCloudChannelV1TransferableOffer {
+  /** Offer with parameter constraints updated to allow the Transfer. */
+  offer?: GoogleCloudChannelV1Offer;
+  /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
+  priceReferenceId?: string;
+}
+
+export const GoogleCloudChannelV1TransferableOffer: Schema.Schema<GoogleCloudChannelV1TransferableOffer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offer: Schema.optional(GoogleCloudChannelV1Offer),
+    priceReferenceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1TransferableOffer" });
+
+export interface GoogleCloudChannelV1ListOffersResponse {
+  /** A token to retrieve the next page of results. */
+  nextPageToken?: string;
+  /** The list of Offers requested. The pricing information for each Offer only includes the base price. Effective prices and discounts aren't populated. */
+  offers?: ReadonlyArray<GoogleCloudChannelV1Offer>;
+}
+
+export const GoogleCloudChannelV1ListOffersResponse: Schema.Schema<GoogleCloudChannelV1ListOffersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    offers: Schema.optional(Schema.Array(GoogleCloudChannelV1Offer)),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListOffersResponse" });
+
+export interface GoogleCloudChannelV1AssociationInfo {
+  /** The name of the base entitlement, for which this entitlement is an add-on. */
+  baseEntitlement?: string;
+}
+
+export const GoogleCloudChannelV1AssociationInfo: Schema.Schema<GoogleCloudChannelV1AssociationInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseEntitlement: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1AssociationInfo" });
+
+export interface GoogleCloudChannelV1CommitmentSettings {
+  /** Output only. Commitment start timestamp. */
+  startTime?: string;
+  /** Optional. Renewal settings applicable for a commitment-based Offer. */
+  renewalSettings?: GoogleCloudChannelV1RenewalSettings;
+  /** Output only. Commitment end timestamp. */
+  endTime?: string;
+}
+
+export const GoogleCloudChannelV1CommitmentSettings: Schema.Schema<GoogleCloudChannelV1CommitmentSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    renewalSettings: Schema.optional(GoogleCloudChannelV1RenewalSettings),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1CommitmentSettings" });
+
+export interface GoogleCloudChannelV1Entitlement {
+  /** Association information to other entitlements. */
+  associationInfo?: GoogleCloudChannelV1AssociationInfo;
+  /** Output only. Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}. */
+  name?: string;
+  /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
+  priceReferenceId?: string;
+  /** Optional. The billing account resource name that is used to pay for this entitlement. */
+  billingAccount?: string;
+  /** Output only. The time at which the entitlement is updated. */
+  updateTime?: string;
+  /** Output only. Current provisioning state of the entitlement. */
+  provisioningState?:
+    | "PROVISIONING_STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "SUSPENDED"
+    | (string & {});
+  /** Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}. */
+  offer?: string;
+  /** Output only. Settings for trial offers. */
+  trialSettings?: GoogleCloudChannelV1TrialSettings;
+  /** Output only. Enumerable of all current suspension reasons for an entitlement. */
+  suspensionReasons?: ReadonlyArray<
+    | "SUSPENSION_REASON_UNSPECIFIED"
+    | "RESELLER_INITIATED"
+    | "TRIAL_ENDED"
+    | "RENEWAL_WITH_TYPE_CANCEL"
+    | "PENDING_TOS_ACCEPTANCE"
+    | "OTHER"
+    | (string & {})
+  >;
+  /** Output only. Service provisioning details for the entitlement. */
+  provisionedService?: GoogleCloudChannelV1ProvisionedService;
+  /** Output only. The time at which the entitlement is created. */
+  createTime?: string;
+  /** Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount. */
+  parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
+  /** Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements. */
+  purchaseOrderId?: string;
+  /** Commitment settings for a commitment-based Offer. Required for commitment based offers. */
+  commitmentSettings?: GoogleCloudChannelV1CommitmentSettings;
+}
+
+export const GoogleCloudChannelV1Entitlement: Schema.Schema<GoogleCloudChannelV1Entitlement> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    associationInfo: Schema.optional(GoogleCloudChannelV1AssociationInfo),
+    name: Schema.optional(Schema.String),
+    priceReferenceId: Schema.optional(Schema.String),
+    billingAccount: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    offer: Schema.optional(Schema.String),
+    trialSettings: Schema.optional(GoogleCloudChannelV1TrialSettings),
+    suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
     provisionedService: Schema.optional(GoogleCloudChannelV1ProvisionedService),
-    suspensionReason: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
-    operator: Schema.optional(Schema.String),
-    activationReason: Schema.optional(Schema.String),
-    otherChangeReason: Schema.optional(Schema.String),
-    operatorType: Schema.optional(Schema.String),
-    entitlement: Schema.optional(Schema.String),
-    changeType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1EntitlementChange" });
+    purchaseOrderId: Schema.optional(Schema.String),
+    commitmentSettings: Schema.optional(GoogleCloudChannelV1CommitmentSettings),
+  }).annotate({ identifier: "GoogleCloudChannelV1Entitlement" });
 
-export interface GoogleCloudChannelV1ListSkuGroupBillableSkusResponse {
-  /** The list of billable SKUs in the requested SKU group. */
-  billableSkus?: ReadonlyArray<GoogleCloudChannelV1BillableSku>;
-  /** A token to retrieve the next page of results. Pass to ListSkuGroupBillableSkusRequest.page_token to obtain that page. */
-  nextPageToken?: string;
+export interface GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
+  /** Required. The entitlements to transfer to Google. */
+  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
+  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
+  requestId?: string;
 }
 
-export const GoogleCloudChannelV1ListSkuGroupBillableSkusResponse: Schema.Schema<GoogleCloudChannelV1ListSkuGroupBillableSkusResponse> =
+export const GoogleCloudChannelV1TransferEntitlementsToGoogleRequest: Schema.Schema<GoogleCloudChannelV1TransferEntitlementsToGoogleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billableSkus: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1BillableSku),
+    entitlements: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1Entitlement),
     ),
-    nextPageToken: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
   }).annotate({
-    identifier: "GoogleCloudChannelV1ListSkuGroupBillableSkusResponse",
+    identifier: "GoogleCloudChannelV1TransferEntitlementsToGoogleRequest",
   });
 
 export interface GoogleCloudChannelV1CreateEntitlementRequest {
@@ -2662,47 +2511,162 @@ export const GoogleCloudChannelV1CreateEntitlementRequest: Schema.Schema<GoogleC
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1CreateEntitlementRequest" });
 
-export interface GoogleCloudChannelV1alpha1ChannelPartnerEvent {
-  /** Type of event which happened for the channel partner. */
-  eventType?:
-    | "TYPE_UNSPECIFIED"
-    | "LINK_STATE_CHANGED"
-    | "PARTNER_ADVANTAGE_INFO_CHANGED"
-    | (string & {});
-  /** Resource name for the Channel Partner Link. Channel_partner uses the format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id} */
-  channelPartner?: string;
+export interface GoogleCloudChannelV1ListTransferableOffersRequest {
+  /** Customer's Cloud Identity ID */
+  cloudIdentityId?: string;
+  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
+  languageCode?: string;
+  /** A reseller should create a customer and use the resource name of that customer here. */
+  customerName?: string;
+  /** A token for a page of results other than the first page. Obtained using ListTransferableOffersResponse.next_page_token of the previous CloudChannelService.ListTransferableOffers call. */
+  pageToken?: string;
+  /** Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 offers. The maximum value is 1000; the server will coerce values above 1000. */
+  pageSize?: number;
+  /** Optional. The Billing Account to look up Offers for. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts. */
+  billingAccount?: string;
+  /** Required. The SKU to look up Offers for. */
+  sku?: string;
 }
 
-export const GoogleCloudChannelV1alpha1ChannelPartnerEvent: Schema.Schema<GoogleCloudChannelV1alpha1ChannelPartnerEvent> =
+export const GoogleCloudChannelV1ListTransferableOffersRequest: Schema.Schema<GoogleCloudChannelV1ListTransferableOffersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eventType: Schema.optional(Schema.String),
-    channelPartner: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ChannelPartnerEvent" });
+    cloudIdentityId: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    customerName: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    billingAccount: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1ListTransferableOffersRequest",
+  });
 
-export interface GoogleCloudChannelV1alpha1SubscriberEvent {
-  /** Customer event sent as part of Pub/Sub event to partners. */
-  customerEvent?: GoogleCloudChannelV1alpha1CustomerEvent;
-  /** Entitlement event sent as part of Pub/Sub event to partners. */
-  entitlementEvent?: GoogleCloudChannelV1alpha1EntitlementEvent;
-  /** Channel Partner event sent as part of Pub/Sub event to partners. */
-  channelPartnerEvent?: GoogleCloudChannelV1alpha1ChannelPartnerEvent;
-  /** Opportunity event sent as part of Pub/Sub event to partners/integrators. */
-  opportunityEvent?: GoogleCloudChannelV1alpha1OpportunityEvent;
+export interface GoogleCloudChannelV1RegisterSubscriberRequest {
+  /** Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. */
+  integrator?: string;
+  /** Required. Service account that provides subscriber access to the registered topic. */
+  serviceAccount?: string;
+  /** Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. */
+  account?: string;
 }
 
-export const GoogleCloudChannelV1alpha1SubscriberEvent: Schema.Schema<GoogleCloudChannelV1alpha1SubscriberEvent> =
+export const GoogleCloudChannelV1RegisterSubscriberRequest: Schema.Schema<GoogleCloudChannelV1RegisterSubscriberRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customerEvent: Schema.optional(GoogleCloudChannelV1alpha1CustomerEvent),
-    entitlementEvent: Schema.optional(
-      GoogleCloudChannelV1alpha1EntitlementEvent,
+    integrator: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1RegisterSubscriberRequest" });
+
+export interface GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
+  /** Required. The channel partner link to update. Only channel_partner_link.link_state is allowed for updates. */
+  channelPartnerLink?: GoogleCloudChannelV1ChannelPartnerLink;
+  /** Required. The update mask that applies to the resource. The only allowable value for an update mask is channel_partner_link.link_state. */
+  updateMask?: string;
+}
+
+export const GoogleCloudChannelV1UpdateChannelPartnerLinkRequest: Schema.Schema<GoogleCloudChannelV1UpdateChannelPartnerLinkRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelPartnerLink: Schema.optional(GoogleCloudChannelV1ChannelPartnerLink),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1UpdateChannelPartnerLinkRequest",
+  });
+
+export interface GoogleCloudChannelV1ListEntitlementsResponse {
+  /** The reseller customer's entitlements. */
+  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
+  /** A token to list the next page of results. Pass to ListEntitlementsRequest.page_token to obtain that page. */
+  nextPageToken?: string;
+}
+
+export const GoogleCloudChannelV1ListEntitlementsResponse: Schema.Schema<GoogleCloudChannelV1ListEntitlementsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlements: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1Entitlement),
     ),
-    channelPartnerEvent: Schema.optional(
-      GoogleCloudChannelV1alpha1ChannelPartnerEvent,
-    ),
-    opportunityEvent: Schema.optional(
-      GoogleCloudChannelV1alpha1OpportunityEvent,
-    ),
-  }).annotate({ identifier: "GoogleCloudChannelV1alpha1SubscriberEvent" });
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListEntitlementsResponse" });
+
+export interface GoogleLongrunningCancelOperationRequest {}
+
+export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleLongrunningCancelOperationRequest",
+  });
+
+export interface GoogleCloudChannelV1FetchReportResultsResponse {
+  /** The metadata for the report results (display name, columns, row count, and date ranges). */
+  reportMetadata?: GoogleCloudChannelV1ReportResultsMetadata;
+  /** The report's lists of values. Each row follows the settings and ordering of the columns from `report_metadata`. */
+  rows?: ReadonlyArray<GoogleCloudChannelV1Row>;
+  /** Pass this token to FetchReportResultsRequest.page_token to retrieve the next page of results. */
+  nextPageToken?: string;
+}
+
+export const GoogleCloudChannelV1FetchReportResultsResponse: Schema.Schema<GoogleCloudChannelV1FetchReportResultsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportMetadata: Schema.optional(GoogleCloudChannelV1ReportResultsMetadata),
+    rows: Schema.optional(Schema.Array(GoogleCloudChannelV1Row)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1FetchReportResultsResponse" });
+
+export interface GoogleCloudChannelV1ProvisionCloudIdentityRequest {
+  /** Validate the request and preview the review, but do not post it. */
+  validateOnly?: boolean;
+  /** Admin user information. */
+  user?: GoogleCloudChannelV1AdminUser;
+  /** CloudIdentity-specific customer information. */
+  cloudIdentityInfo?: GoogleCloudChannelV1CloudIdentityInfo;
+}
+
+export const GoogleCloudChannelV1ProvisionCloudIdentityRequest: Schema.Schema<GoogleCloudChannelV1ProvisionCloudIdentityRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    user: Schema.optional(GoogleCloudChannelV1AdminUser),
+    cloudIdentityInfo: Schema.optional(GoogleCloudChannelV1CloudIdentityInfo),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1ProvisionCloudIdentityRequest",
+  });
+
+export interface GoogleCloudChannelV1ListTransferableSkusRequest {
+  /** Customer's Cloud Identity ID */
+  cloudIdentityId?: string;
+  /** The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". Optional. */
+  languageCode?: string;
+  /** A reseller is required to create a customer and use the resource name of the created customer here. Customer_name uses the format: accounts/{account_id}/customers/{customer_id} */
+  customerName?: string;
+  /** A token for a page of results other than the first page. Obtained using ListTransferableSkusResponse.next_page_token of the previous CloudChannelService.ListTransferableSkus call. Optional. */
+  pageToken?: string;
+  /** Optional. The super admin of the resold customer generates this token to authorize a reseller to access their Cloud Identity and purchase entitlements on their behalf. You can omit this token after authorization. See https://support.google.com/a/answer/7643790 for more details. */
+  authToken?: string;
+  /** The requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 SKUs. The maximum value is 1000; the server will coerce values above 1000. Optional. */
+  pageSize?: number;
+}
+
+export const GoogleCloudChannelV1ListTransferableSkusRequest: Schema.Schema<GoogleCloudChannelV1ListTransferableSkusRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudIdentityId: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    customerName: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+    authToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1ListTransferableSkusRequest",
+  });
+
+export interface GoogleCloudChannelV1ListProductsResponse {
+  /** List of Products requested. */
+  products?: ReadonlyArray<GoogleCloudChannelV1Product>;
+  /** A token to retrieve the next page of results. */
+  nextPageToken?: string;
+}
+
+export const GoogleCloudChannelV1ListProductsResponse: Schema.Schema<GoogleCloudChannelV1ListProductsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    products: Schema.optional(Schema.Array(GoogleCloudChannelV1Product)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListProductsResponse" });
 
 export interface GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse {
   /** The Cloud Identity accounts associated with the domain. */
@@ -2718,44 +2682,24 @@ export const GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse: Schema
     identifier: "GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse",
   });
 
-export interface GoogleCloudChannelV1ListSkusResponse {
-  /** The list of SKUs requested. */
-  skus?: ReadonlyArray<GoogleCloudChannelV1Sku>;
-  /** A token to retrieve the next page of results. */
-  nextPageToken?: string;
-}
-
-export const GoogleCloudChannelV1ListSkusResponse: Schema.Schema<GoogleCloudChannelV1ListSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    skus: Schema.optional(Schema.Array(GoogleCloudChannelV1Sku)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudChannelV1ListSkusResponse" });
-
-export interface GoogleCloudChannelV1ListTransferableSkusRequest {
-  /** The requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 SKUs. The maximum value is 1000; the server will coerce values above 1000. Optional. */
-  pageSize?: number;
-  /** A reseller is required to create a customer and use the resource name of the created customer here. Customer_name uses the format: accounts/{account_id}/customers/{customer_id} */
-  customerName?: string;
-  /** Customer's Cloud Identity ID */
-  cloudIdentityId?: string;
-  /** Optional. The super admin of the resold customer generates this token to authorize a reseller to access their Cloud Identity and purchase entitlements on their behalf. You can omit this token after authorization. See https://support.google.com/a/answer/7643790 for more details. */
+export interface GoogleCloudChannelV1TransferEntitlementsRequest {
+  /** Required. The new entitlements to create or transfer. */
+  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
+  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
+  requestId?: string;
+  /** The super admin of the resold customer generates this token to authorize a reseller to access their Cloud Identity and purchase entitlements on their behalf. You can omit this token after authorization. See https://support.google.com/a/answer/7643790 for more details. */
   authToken?: string;
-  /** A token for a page of results other than the first page. Obtained using ListTransferableSkusResponse.next_page_token of the previous CloudChannelService.ListTransferableSkus call. Optional. */
-  pageToken?: string;
-  /** The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". Optional. */
-  languageCode?: string;
 }
 
-export const GoogleCloudChannelV1ListTransferableSkusRequest: Schema.Schema<GoogleCloudChannelV1ListTransferableSkusRequest> =
+export const GoogleCloudChannelV1TransferEntitlementsRequest: Schema.Schema<GoogleCloudChannelV1TransferEntitlementsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number),
-    customerName: Schema.optional(Schema.String),
-    cloudIdentityId: Schema.optional(Schema.String),
+    entitlements: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1Entitlement),
+    ),
+    requestId: Schema.optional(Schema.String),
     authToken: Schema.optional(Schema.String),
-    pageToken: Schema.optional(Schema.String),
-    languageCode: Schema.optional(Schema.String),
   }).annotate({
-    identifier: "GoogleCloudChannelV1ListTransferableSkusRequest",
+    identifier: "GoogleCloudChannelV1TransferEntitlementsRequest",
   });
 
 export interface GoogleCloudChannelV1RegisterSubscriberResponse {
@@ -2767,6 +2711,36 @@ export const GoogleCloudChannelV1RegisterSubscriberResponse: Schema.Schema<Googl
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1RegisterSubscriberResponse" });
+
+export interface GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
+  /** The transferred entitlements. */
+  entitlements?: ReadonlyArray<GoogleCloudChannelV1alpha1Entitlement>;
+}
+
+export const GoogleCloudChannelV1alpha1TransferEntitlementsResponse: Schema.Schema<GoogleCloudChannelV1alpha1TransferEntitlementsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlements: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1alpha1Entitlement),
+    ),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1alpha1TransferEntitlementsResponse",
+  });
+
+export interface GoogleCloudChannelV1ChangeParametersRequest {
+  /** Required. Entitlement parameters to update. You can only change editable parameters. To view the available Parameters for a request, refer to the Offer.parameter_definitions from the desired offer. */
+  parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
+  /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
+  requestId?: string;
+  /** Optional. Purchase order ID provided by the reseller. */
+  purchaseOrderId?: string;
+}
+
+export const GoogleCloudChannelV1ChangeParametersRequest: Schema.Schema<GoogleCloudChannelV1ChangeParametersRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
+    requestId: Schema.optional(Schema.String),
+    purchaseOrderId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ChangeParametersRequest" });
 
 export interface GoogleCloudChannelV1ListTransferableOffersResponse {
   /** Information about Offers for a customer that can be used for transfer. */
@@ -2785,21 +2759,48 @@ export const GoogleCloudChannelV1ListTransferableOffersResponse: Schema.Schema<G
     identifier: "GoogleCloudChannelV1ListTransferableOffersResponse",
   });
 
-export interface GoogleCloudChannelV1ListEntitlementChangesResponse {
-  /** The list of entitlement changes. */
-  entitlementChanges?: ReadonlyArray<GoogleCloudChannelV1EntitlementChange>;
-  /** A token to list the next page of results. */
+export interface GoogleCloudChannelV1TransferEntitlementsResponse {
+  /** The transferred entitlements. */
+  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
+}
+
+export const GoogleCloudChannelV1TransferEntitlementsResponse: Schema.Schema<GoogleCloudChannelV1TransferEntitlementsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlements: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1Entitlement),
+    ),
+  }).annotate({
+    identifier: "GoogleCloudChannelV1TransferEntitlementsResponse",
+  });
+
+export interface GoogleCloudChannelV1RunReportJobResponse {
+  /** Pass `report_job.name` to FetchReportResultsRequest.report_job to retrieve the report's results. */
+  reportJob?: GoogleCloudChannelV1ReportJob;
+  /** The metadata for the report's results (display name, columns, row count, and date range). If you view this before the operation finishes, you may see incomplete data. */
+  reportMetadata?: GoogleCloudChannelV1ReportResultsMetadata;
+}
+
+export const GoogleCloudChannelV1RunReportJobResponse: Schema.Schema<GoogleCloudChannelV1RunReportJobResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportJob: Schema.optional(GoogleCloudChannelV1ReportJob),
+    reportMetadata: Schema.optional(GoogleCloudChannelV1ReportResultsMetadata),
+  }).annotate({ identifier: "GoogleCloudChannelV1RunReportJobResponse" });
+
+export interface GoogleCloudChannelV1ListPurchasableSkusResponse {
+  /** The list of SKUs requested. */
+  purchasableSkus?: ReadonlyArray<GoogleCloudChannelV1PurchasableSku>;
+  /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListEntitlementChangesResponse: Schema.Schema<GoogleCloudChannelV1ListEntitlementChangesResponse> =
+export const GoogleCloudChannelV1ListPurchasableSkusResponse: Schema.Schema<GoogleCloudChannelV1ListPurchasableSkusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entitlementChanges: Schema.optional(
-      Schema.Array(GoogleCloudChannelV1EntitlementChange),
+    purchasableSkus: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1PurchasableSku),
     ),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({
-    identifier: "GoogleCloudChannelV1ListEntitlementChangesResponse",
+    identifier: "GoogleCloudChannelV1ListPurchasableSkusResponse",
   });
 
 // ==========================================================================
@@ -2856,52 +2857,34 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface ListOperationsRequest {
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The standard list page token. */
-  pageToken?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-  /** The name of the operation's parent resource. */
+export interface GetOperationsRequest {
+  /** The name of the operation resource. */
   name: string;
-  /** The standard list filter. */
-  filter?: string;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("returnPartialSuccess"),
-  ),
+export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
-  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<ListOperationsRequest>;
+) as unknown as Schema.Schema<GetOperationsRequest>;
 
-export type ListOperationsResponse = GoogleLongrunningListOperationsResponse;
-export const ListOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+export type GetOperationsResponse = GoogleLongrunningOperation;
+export const GetOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listOperations: API.PaginatedOperationMethod<
-  ListOperationsRequest,
-  ListOperationsResponse,
-  ListOperationsError,
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getOperations: API.OperationMethod<
+  GetOperationsRequest,
+  GetOperationsResponse,
+  GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOperationsRequest,
+  output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface DeleteOperationsRequest {
@@ -2938,36 +2921,6 @@ export const deleteOperations: API.OperationMethod<
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
-
-export type GetOperationsResponse = GoogleLongrunningOperation;
-export const GetOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getOperations: API.OperationMethod<
-  GetOperationsRequest,
-  GetOperationsResponse,
-  GetOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: GetOperationsResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelOperationsRequest {
@@ -3008,6 +2961,194 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListOperationsRequest {
+  /** The standard list page size. */
+  pageSize?: number;
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** The standard list filter. */
+  filter?: string;
+}
+
+export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  name: Schema.String.pipe(T.HttpPath("name")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("returnPartialSuccess"),
+  ),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<ListOperationsRequest>;
+
+export type ListOperationsResponse = GoogleLongrunningListOperationsResponse;
+export const ListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listOperations: API.PaginatedOperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ListProductsRequest {
+  /** Optional. A token for a page of results other than the first page. */
+  pageToken?: string;
+  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 Products. The maximum value is 1000; the server will coerce values above 1000. */
+  pageSize?: number;
+  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
+  languageCode?: string;
+  /** Required. The resource name of the reseller account. Format: accounts/{account_id}. */
+  account?: string;
+}
+
+export const ListProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  languageCode: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("languageCode"),
+  ),
+  account: Schema.optional(Schema.String).pipe(T.HttpQuery("account")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/products" }),
+  svc,
+) as unknown as Schema.Schema<ListProductsRequest>;
+
+export type ListProductsResponse = GoogleCloudChannelV1ListProductsResponse;
+export const ListProductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListProductsResponse;
+
+export type ListProductsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists the Products the reseller is authorized to sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
+export const listProducts: API.PaginatedOperationMethod<
+  ListProductsRequest,
+  ListProductsResponse,
+  ListProductsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProductsRequest,
+  output: ListProductsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ListProductsSkusRequest {
+  /** Required. The resource name of the Product to list SKUs for. Parent uses the format: products/{product_id}. Supports products/- to retrieve SKUs for all products. */
+  parent: string;
+  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
+  languageCode?: string;
+  /** Optional. A token for a page of results other than the first page. Optional. */
+  pageToken?: string;
+  /** Required. Resource name of the reseller. Format: accounts/{account_id}. */
+  account?: string;
+  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 SKUs. The maximum value is 1000; the server will coerce values above 1000. */
+  pageSize?: number;
+}
+
+export const ListProductsSkusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    languageCode: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("languageCode"),
+    ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    account: Schema.optional(Schema.String).pipe(T.HttpQuery("account")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/skus" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProductsSkusRequest>;
+
+export type ListProductsSkusResponse = GoogleCloudChannelV1ListSkusResponse;
+export const ListProductsSkusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListSkusResponse;
+
+export type ListProductsSkusError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists the SKUs for a product the reseller is authorized to sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
+export const listProductsSkus: API.PaginatedOperationMethod<
+  ListProductsSkusRequest,
+  ListProductsSkusResponse,
+  ListProductsSkusError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProductsSkusRequest,
+  output: ListProductsSkusResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CheckCloudIdentityAccountsExistAccountsRequest {
+  /** Required. The reseller account's resource name. Parent uses the format: accounts/{account_id} */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest;
+}
+
+export const CheckCloudIdentityAccountsExistAccountsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(
+      GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest,
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}:checkCloudIdentityAccountsExist",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CheckCloudIdentityAccountsExistAccountsRequest>;
+
+export type CheckCloudIdentityAccountsExistAccountsResponse =
+  GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse;
+export const CheckCloudIdentityAccountsExistAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse;
+
+export type CheckCloudIdentityAccountsExistAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Confirms the existence of Cloud Identity accounts based on the domain and if the Cloud Identity accounts are owned by the reseller. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * INVALID_VALUE: Invalid domain value in the request. Return value: A list of CloudIdentityCustomerAccount resources for the domain (may be empty) Note: in the v1alpha1 version of the API, a NOT_FOUND error returns if no CloudIdentityCustomerAccount resources match the domain. */
+export const checkCloudIdentityAccountsExistAccounts: API.OperationMethod<
+  CheckCloudIdentityAccountsExistAccountsRequest,
+  CheckCloudIdentityAccountsExistAccountsResponse,
+  CheckCloudIdentityAccountsExistAccountsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CheckCloudIdentityAccountsExistAccountsRequest,
+  output: CheckCloudIdentityAccountsExistAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -3095,49 +3236,49 @@ export const unregisterAccounts: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CheckCloudIdentityAccountsExistAccountsRequest {
-  /** Required. The reseller account's resource name. Parent uses the format: accounts/{account_id} */
+export interface ListTransferableOffersAccountsRequest {
+  /** Required. The resource name of the reseller's account. */
   parent: string;
   /** Request body */
-  body?: GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest;
+  body?: GoogleCloudChannelV1ListTransferableOffersRequest;
 }
 
-export const CheckCloudIdentityAccountsExistAccountsRequest =
+export const ListTransferableOffersAccountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
-      GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest,
+      GoogleCloudChannelV1ListTransferableOffersRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+parent}:checkCloudIdentityAccountsExist",
+      path: "v1/{+parent}:listTransferableOffers",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckCloudIdentityAccountsExistAccountsRequest>;
+  ) as unknown as Schema.Schema<ListTransferableOffersAccountsRequest>;
 
-export type CheckCloudIdentityAccountsExistAccountsResponse =
-  GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse;
-export const CheckCloudIdentityAccountsExistAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse;
+export type ListTransferableOffersAccountsResponse =
+  GoogleCloudChannelV1ListTransferableOffersResponse;
+export const ListTransferableOffersAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListTransferableOffersResponse;
 
-export type CheckCloudIdentityAccountsExistAccountsError =
+export type ListTransferableOffersAccountsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Confirms the existence of Cloud Identity accounts based on the domain and if the Cloud Identity accounts are owned by the reseller. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * INVALID_VALUE: Invalid domain value in the request. Return value: A list of CloudIdentityCustomerAccount resources for the domain (may be empty) Note: in the v1alpha1 version of the API, a NOT_FOUND error returns if no CloudIdentityCustomerAccount resources match the domain. */
-export const checkCloudIdentityAccountsExistAccounts: API.OperationMethod<
-  CheckCloudIdentityAccountsExistAccountsRequest,
-  CheckCloudIdentityAccountsExistAccountsResponse,
-  CheckCloudIdentityAccountsExistAccountsError,
+/** List TransferableOffers of a customer based on Cloud Identity ID or Customer Name in the request. Use this method when a reseller gets the entitlement information of an unowned customer. The reseller should provide the customer's Cloud Identity ID or Customer Name. Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong to the reseller and has no auth token. * The customer provided incorrect reseller information when generating auth token. * The reseller account making the request is different from the reseller account in the query. * The reseller is not authorized to transact on this Product. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of TransferableOffer for the given customer and SKU. */
+export const listTransferableOffersAccounts: API.OperationMethod<
+  ListTransferableOffersAccountsRequest,
+  ListTransferableOffersAccountsResponse,
+  ListTransferableOffersAccountsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CheckCloudIdentityAccountsExistAccountsRequest,
-  output: CheckCloudIdentityAccountsExistAccountsResponse,
+  input: ListTransferableOffersAccountsRequest,
+  output: ListTransferableOffersAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -3187,52 +3328,6 @@ export const listTransferableSkusAccounts: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListTransferableOffersAccountsRequest {
-  /** Required. The resource name of the reseller's account. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1ListTransferableOffersRequest;
-}
-
-export const ListTransferableOffersAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(
-      GoogleCloudChannelV1ListTransferableOffersRequest,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}:listTransferableOffers",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListTransferableOffersAccountsRequest>;
-
-export type ListTransferableOffersAccountsResponse =
-  GoogleCloudChannelV1ListTransferableOffersResponse;
-export const ListTransferableOffersAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListTransferableOffersResponse;
-
-export type ListTransferableOffersAccountsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** List TransferableOffers of a customer based on Cloud Identity ID or Customer Name in the request. Use this method when a reseller gets the entitlement information of an unowned customer. The reseller should provide the customer's Cloud Identity ID or Customer Name. Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong to the reseller and has no auth token. * The customer provided incorrect reseller information when generating auth token. * The reseller account making the request is different from the reseller account in the query. * The reseller is not authorized to transact on this Product. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of TransferableOffer for the given customer and SKU. */
-export const listTransferableOffersAccounts: API.OperationMethod<
-  ListTransferableOffersAccountsRequest,
-  ListTransferableOffersAccountsResponse,
-  ListTransferableOffersAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListTransferableOffersAccountsRequest,
-  output: ListTransferableOffersAccountsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface ListSubscribersAccountsRequest {
   /** Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. */
   account: string;
@@ -3271,6 +3366,60 @@ export const listSubscribersAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscribersAccountsRequest,
   output: ListSubscribersAccountsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ListAccountsOffersRequest {
+  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 500 Offers. The maximum value is 1000; the server will coerce values above 1000. */
+  pageSize?: number;
+  /** Optional. A boolean flag that determines if a response returns future offers 30 days from now. If the show_future_offers is true, the response will only contain offers that are scheduled to be available 30 days from now. */
+  showFutureOffers?: boolean;
+  /** Optional. The expression to filter results by name (name of the Offer), sku.name (name of the SKU), or sku.product.name (name of the Product). Example 1: sku.product.name=products/p1 AND sku.name!=products/p1/skus/s1 Example 2: name=accounts/a1/offers/o1 */
+  filter?: string;
+  /** Required. The resource name of the reseller account from which to list Offers. Parent uses the format: accounts/{account_id}. */
+  parent: string;
+  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
+  languageCode?: string;
+  /** Optional. A token for a page of results other than the first page. */
+  pageToken?: string;
+}
+
+export const ListAccountsOffersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    showFutureOffers: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("showFutureOffers"),
+    ),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    languageCode: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("languageCode"),
+    ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/offers" }),
+    svc,
+  ) as unknown as Schema.Schema<ListAccountsOffersRequest>;
+
+export type ListAccountsOffersResponse = GoogleCloudChannelV1ListOffersResponse;
+export const ListAccountsOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListOffersResponse;
+
+export type ListAccountsOffersError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists the Offers the reseller can sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
+export const listAccountsOffers: API.PaginatedOperationMethod<
+  ListAccountsOffersRequest,
+  ListAccountsOffersResponse,
+  ListAccountsOffersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAccountsOffersRequest,
+  output: ListAccountsOffersResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -3322,22 +3471,22 @@ export const runAccountsReports: API.OperationMethod<
 export interface ListAccountsReportsRequest {
   /** Optional. A token that specifies a page of results beyond the first page. Obtained through ListReportsResponse.next_page_token of the previous CloudChannelReportsService.ListReports call. */
   pageToken?: string;
-  /** Optional. The BCP-47 language code, such as "en-US". If specified, the response is localized to the corresponding language code if the original data sources support it. Default is "en-US". */
-  languageCode?: string;
   /** Required. The resource name of the partner account to list available reports for. Parent uses the format: accounts/{account_id} */
   parent: string;
   /** Optional. Requested page size of the report. The server might return fewer results than requested. If unspecified, returns 20 reports. The maximum value is 100. */
   pageSize?: number;
+  /** Optional. The BCP-47 language code, such as "en-US". If specified, the response is localized to the corresponding language code if the original data sources support it. Default is "en-US". */
+  languageCode?: string;
 }
 
 export const ListAccountsReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/reports" }),
     svc,
@@ -3366,55 +3515,280 @@ export const listAccountsReports: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GetAccountsCustomersRequest {
+export interface FetchReportResultsAccountsReportJobsRequest {
+  /** Required. The report job created by CloudChannelReportsService.RunReportJob. Report_job uses the format: accounts/{account_id}/reportJobs/{report_job_id} */
+  reportJob: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1FetchReportResultsRequest;
+}
+
+export const FetchReportResultsAccountsReportJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportJob: Schema.String.pipe(T.HttpPath("reportJob")),
+    body: Schema.optional(GoogleCloudChannelV1FetchReportResultsRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+reportJob}:fetchReportResults",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<FetchReportResultsAccountsReportJobsRequest>;
+
+export type FetchReportResultsAccountsReportJobsResponse =
+  GoogleCloudChannelV1FetchReportResultsResponse;
+export const FetchReportResultsAccountsReportJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1FetchReportResultsResponse;
+
+export type FetchReportResultsAccountsReportJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Retrieves data generated by CloudChannelReportsService.RunReportJob. Deprecated: Please use [Export Channel Services data to BigQuery](https://cloud.google.com/channel/docs/rebilling/export-data-to-bigquery) instead. */
+export const fetchReportResultsAccountsReportJobs: API.OperationMethod<
+  FetchReportResultsAccountsReportJobsRequest,
+  FetchReportResultsAccountsReportJobsResponse,
+  FetchReportResultsAccountsReportJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: FetchReportResultsAccountsReportJobsRequest,
+  output: FetchReportResultsAccountsReportJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListAccountsChannelPartnerLinksRequest {
+  /** Optional. A token for a page of results other than the first page. Obtained using ListChannelPartnerLinksResponse.next_page_token of the previous CloudChannelService.ListChannelPartnerLinks call. */
+  pageToken?: string;
+  /** Required. The resource name of the reseller account for listing channel partner links. Parent uses the format: accounts/{account_id} */
+  parent: string;
+  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, server will pick a default size (25). The maximum value is 200; the server will coerce values above 200. */
+  pageSize?: number;
+  /** Optional. The level of granularity the ChannelPartnerLink will display. */
+  view?: "UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
+}
+
+export const ListAccountsChannelPartnerLinksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/channelPartnerLinks" }),
+    svc,
+  ) as unknown as Schema.Schema<ListAccountsChannelPartnerLinksRequest>;
+
+export type ListAccountsChannelPartnerLinksResponse =
+  GoogleCloudChannelV1ListChannelPartnerLinksResponse;
+export const ListAccountsChannelPartnerLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListChannelPartnerLinksResponse;
+
+export type ListAccountsChannelPartnerLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List ChannelPartnerLinks belonging to a distributor. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: The list of the distributor account's ChannelPartnerLink resources. */
+export const listAccountsChannelPartnerLinks: API.PaginatedOperationMethod<
+  ListAccountsChannelPartnerLinksRequest,
+  ListAccountsChannelPartnerLinksResponse,
+  ListAccountsChannelPartnerLinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAccountsChannelPartnerLinksRequest,
+  output: ListAccountsChannelPartnerLinksResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface PatchAccountsChannelPartnerLinksRequest {
+  /** Required. The resource name of the channel partner link to cancel. Name uses the format: accounts/{account_id}/channelPartnerLinks/{id} where {id} is the Cloud Identity ID of the partner. */
+  name: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1UpdateChannelPartnerLinkRequest;
+}
+
+export const PatchAccountsChannelPartnerLinksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(
+      GoogleCloudChannelV1UpdateChannelPartnerLinkRequest,
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchAccountsChannelPartnerLinksRequest>;
+
+export type PatchAccountsChannelPartnerLinksResponse =
+  GoogleCloudChannelV1ChannelPartnerLink;
+export const PatchAccountsChannelPartnerLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
+
+export type PatchAccountsChannelPartnerLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a channel partner link. Distributors call this method to change a link's status. For example, to suspend a partner link. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Link state cannot change from invited to active or suspended. * Cannot send reseller_cloud_identity_id, invite_url, or name in update mask. * NOT_FOUND: ChannelPartnerLink resource not found. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The updated ChannelPartnerLink resource. */
+export const patchAccountsChannelPartnerLinks: API.OperationMethod<
+  PatchAccountsChannelPartnerLinksRequest,
+  PatchAccountsChannelPartnerLinksResponse,
+  PatchAccountsChannelPartnerLinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAccountsChannelPartnerLinksRequest,
+  output: PatchAccountsChannelPartnerLinksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetAccountsChannelPartnerLinksRequest {
+  /** Required. The resource name of the channel partner link to retrieve. Name uses the format: accounts/{account_id}/channelPartnerLinks/{id} where {id} is the Cloud Identity ID of the partner. */
+  name: string;
+  /** Optional. The level of granularity the ChannelPartnerLink will display. */
+  view?: "UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
+}
+
+export const GetAccountsChannelPartnerLinksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetAccountsChannelPartnerLinksRequest>;
+
+export type GetAccountsChannelPartnerLinksResponse =
+  GoogleCloudChannelV1ChannelPartnerLink;
+export const GetAccountsChannelPartnerLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
+
+export type GetAccountsChannelPartnerLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return value: The ChannelPartnerLink resource. */
+export const getAccountsChannelPartnerLinks: API.OperationMethod<
+  GetAccountsChannelPartnerLinksRequest,
+  GetAccountsChannelPartnerLinksResponse,
+  GetAccountsChannelPartnerLinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAccountsChannelPartnerLinksRequest,
+  output: GetAccountsChannelPartnerLinksResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateAccountsChannelPartnerLinksRequest {
+  /** Required. Create a channel partner link for the provided reseller account's resource name. Parent uses the format: accounts/{account_id} */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1ChannelPartnerLink;
+}
+
+export const CreateAccountsChannelPartnerLinksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(GoogleCloudChannelV1ChannelPartnerLink).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/channelPartnerLinks",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateAccountsChannelPartnerLinksRequest>;
+
+export type CreateAccountsChannelPartnerLinksResponse =
+  GoogleCloudChannelV1ChannelPartnerLink;
+export const CreateAccountsChannelPartnerLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
+
+export type CreateAccountsChannelPartnerLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Initiates a channel partner link between a distributor and a reseller, or between resellers in an n-tier reseller channel. Invited partners need to follow the invite_link_uri provided in the response to accept. After accepting the invitation, a link is set up between the two parties. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * ALREADY_EXISTS: The ChannelPartnerLink sent in the request already exists. * NOT_FOUND: No Cloud Identity customer exists for provided domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The new ChannelPartnerLink resource. */
+export const createAccountsChannelPartnerLinks: API.OperationMethod<
+  CreateAccountsChannelPartnerLinksRequest,
+  CreateAccountsChannelPartnerLinksResponse,
+  CreateAccountsChannelPartnerLinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAccountsChannelPartnerLinksRequest,
+  output: CreateAccountsChannelPartnerLinksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetAccountsChannelPartnerLinksCustomersRequest {
   /** Required. The resource name of the customer to retrieve. Name uses the format: accounts/{account_id}/customers/{customer_id} */
   name: string;
 }
 
-export const GetAccountsCustomersRequest =
+export const GetAccountsChannelPartnerLinksCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsCustomersRequest>;
+  ) as unknown as Schema.Schema<GetAccountsChannelPartnerLinksCustomersRequest>;
 
-export type GetAccountsCustomersResponse = GoogleCloudChannelV1Customer;
-export const GetAccountsCustomersResponse =
+export type GetAccountsChannelPartnerLinksCustomersResponse =
+  GoogleCloudChannelV1Customer;
+export const GetAccountsChannelPartnerLinksCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
 
-export type GetAccountsCustomersError = DefaultErrors | NotFound | Forbidden;
+export type GetAccountsChannelPartnerLinksCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource. */
-export const getAccountsCustomers: API.OperationMethod<
-  GetAccountsCustomersRequest,
-  GetAccountsCustomersResponse,
-  GetAccountsCustomersError,
+export const getAccountsChannelPartnerLinksCustomers: API.OperationMethod<
+  GetAccountsChannelPartnerLinksCustomersRequest,
+  GetAccountsChannelPartnerLinksCustomersResponse,
+  GetAccountsChannelPartnerLinksCustomersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAccountsCustomersRequest,
-  output: GetAccountsCustomersResponse,
+  input: GetAccountsChannelPartnerLinksCustomersRequest,
+  output: GetAccountsChannelPartnerLinksCustomersResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface DeleteAccountsCustomersRequest {
+export interface DeleteAccountsChannelPartnerLinksCustomersRequest {
   /** Required. The resource name of the customer to delete. */
   name: string;
 }
 
-export const DeleteAccountsCustomersRequest =
+export const DeleteAccountsChannelPartnerLinksCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsCustomersRequest>;
+  ) as unknown as Schema.Schema<DeleteAccountsChannelPartnerLinksCustomersRequest>;
 
-export type DeleteAccountsCustomersResponse = GoogleProtobufEmpty;
-export const DeleteAccountsCustomersResponse =
+export type DeleteAccountsChannelPartnerLinksCustomersResponse =
+  GoogleProtobufEmpty;
+export const DeleteAccountsChannelPartnerLinksCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteAccountsCustomersError =
+export type DeleteAccountsChannelPartnerLinksCustomersError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -3422,216 +3796,104 @@ export type DeleteAccountsCustomersError =
   | Conflict;
 
 /** Deletes the given Customer permanently. Possible error codes: * PERMISSION_DENIED: The account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No Customer resource found for the name in the request. */
-export const deleteAccountsCustomers: API.OperationMethod<
-  DeleteAccountsCustomersRequest,
-  DeleteAccountsCustomersResponse,
-  DeleteAccountsCustomersError,
+export const deleteAccountsChannelPartnerLinksCustomers: API.OperationMethod<
+  DeleteAccountsChannelPartnerLinksCustomersRequest,
+  DeleteAccountsChannelPartnerLinksCustomersResponse,
+  DeleteAccountsChannelPartnerLinksCustomersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAccountsCustomersRequest,
-  output: DeleteAccountsCustomersResponse,
+  input: DeleteAccountsChannelPartnerLinksCustomersRequest,
+  output: DeleteAccountsChannelPartnerLinksCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface TransferEntitlementsToGoogleAccountsCustomersRequest {
-  /** Required. The resource name of the reseller's customer account where the entitlements transfer from. Parent uses the format: accounts/{account_id}/customers/{customer_id} */
+export interface ImportAccountsChannelPartnerLinksCustomersRequest {
+  /** Required. The resource name of the reseller's account. Parent takes the format: accounts/{account_id} or accounts/{account_id}/channelPartnerLinks/{channel_partner_id} */
   parent: string;
   /** Request body */
-  body?: GoogleCloudChannelV1TransferEntitlementsToGoogleRequest;
+  body?: GoogleCloudChannelV1ImportCustomerRequest;
 }
 
-export const TransferEntitlementsToGoogleAccountsCustomersRequest =
+export const ImportAccountsChannelPartnerLinksCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(
-      GoogleCloudChannelV1TransferEntitlementsToGoogleRequest,
-    ).pipe(T.HttpBody()),
+    body: Schema.optional(GoogleCloudChannelV1ImportCustomerRequest).pipe(
+      T.HttpBody(),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+parent}:transferEntitlementsToGoogle",
+      path: "v1/{+parent}/customers:import",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TransferEntitlementsToGoogleAccountsCustomersRequest>;
+  ) as unknown as Schema.Schema<ImportAccountsChannelPartnerLinksCustomersRequest>;
 
-export type TransferEntitlementsToGoogleAccountsCustomersResponse =
-  GoogleLongrunningOperation;
-export const TransferEntitlementsToGoogleAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+export type ImportAccountsChannelPartnerLinksCustomersResponse =
+  GoogleCloudChannelV1Customer;
+export const ImportAccountsChannelPartnerLinksCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
 
-export type TransferEntitlementsToGoogleAccountsCustomersError =
+export type ImportAccountsChannelPartnerLinksCustomersError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Transfers customer entitlements from their current reseller to Google. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer or offer resource was not found. * ALREADY_EXISTS: The SKU was already transferred for the customer. * CONDITION_NOT_MET or FAILED_PRECONDITION: * The SKU requires domain verification to transfer, but the domain is not verified. * An Add-On SKU (example, Vault or Drive) is missing the pre-requisite SKU (example, G Suite Basic). * (Developer accounts only) Reseller and resold domain must meet the following naming requirements: * Domain names must start with goog-test. * Domain names must include the reseller domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The response will contain google.protobuf.Empty on success. The Operation metadata will contain an instance of OperationMetadata. */
-export const transferEntitlementsToGoogleAccountsCustomers: API.OperationMethod<
-  TransferEntitlementsToGoogleAccountsCustomersRequest,
-  TransferEntitlementsToGoogleAccountsCustomersResponse,
-  TransferEntitlementsToGoogleAccountsCustomersError,
+/** Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is true, it will update that Customer's data. Possible error codes: * PERMISSION_DENIED: * The reseller account making the request is different from the reseller account in the API request. * You are not authorized to import the customer. See https://support.google.com/channelservices/answer/9759265 * NOT_FOUND: Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has conflicting critical fields. Requires an overwrite. Return value: The Customer. */
+export const importAccountsChannelPartnerLinksCustomers: API.OperationMethod<
+  ImportAccountsChannelPartnerLinksCustomersRequest,
+  ImportAccountsChannelPartnerLinksCustomersResponse,
+  ImportAccountsChannelPartnerLinksCustomersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TransferEntitlementsToGoogleAccountsCustomersRequest,
-  output: TransferEntitlementsToGoogleAccountsCustomersResponse,
+  input: ImportAccountsChannelPartnerLinksCustomersRequest,
+  output: ImportAccountsChannelPartnerLinksCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListPurchasableSkusAccountsCustomersRequest {
-  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 SKUs. The maximum value is 1000; the server will coerce values above 1000. */
-  pageSize?: number;
-  /** Required. List SKUs belonging to this Product. Format: products/{product_id}. Supports products/- to retrieve SKUs for all products. */
-  "createEntitlementPurchase.product"?: string;
-  /** Required. Change Type for the entitlement. */
-  "changeOfferPurchase.changeType"?:
-    | "CHANGE_TYPE_UNSPECIFIED"
-    | "UPGRADE"
-    | "DOWNGRADE"
-    | (string & {});
-  /** Required. The resource name of the customer to list SKUs for. Format: accounts/{account_id}/customers/{customer_id}. */
-  customer: string;
-  /** Required. Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
-  "changeOfferPurchase.entitlement"?: string;
-  /** Optional. A token for a page of results other than the first page. */
-  pageToken?: string;
-  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
-  languageCode?: string;
-}
-
-export const ListPurchasableSkusAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    "createEntitlementPurchase.product": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("createEntitlementPurchase.product"),
-    ),
-    "changeOfferPurchase.changeType": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("changeOfferPurchase.changeType"),
-    ),
-    customer: Schema.String.pipe(T.HttpPath("customer")),
-    "changeOfferPurchase.entitlement": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("changeOfferPurchase.entitlement"),
-    ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    languageCode: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("languageCode"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+customer}:listPurchasableSkus" }),
-    svc,
-  ) as unknown as Schema.Schema<ListPurchasableSkusAccountsCustomersRequest>;
-
-export type ListPurchasableSkusAccountsCustomersResponse =
-  GoogleCloudChannelV1ListPurchasableSkusResponse;
-export const ListPurchasableSkusAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListPurchasableSkusResponse;
-
-export type ListPurchasableSkusAccountsCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the following: * SKUs that you can purchase for a customer * SKUs that you can upgrade or downgrade for an entitlement. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
-export const listPurchasableSkusAccountsCustomers: API.PaginatedOperationMethod<
-  ListPurchasableSkusAccountsCustomersRequest,
-  ListPurchasableSkusAccountsCustomersResponse,
-  ListPurchasableSkusAccountsCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListPurchasableSkusAccountsCustomersRequest,
-  output: ListPurchasableSkusAccountsCustomersResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ProvisionCloudIdentityAccountsCustomersRequest {
-  /** Required. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
-  customer: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1ProvisionCloudIdentityRequest;
-}
-
-export const ProvisionCloudIdentityAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customer: Schema.String.pipe(T.HttpPath("customer")),
-    body: Schema.optional(
-      GoogleCloudChannelV1ProvisionCloudIdentityRequest,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+customer}:provisionCloudIdentity",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ProvisionCloudIdentityAccountsCustomersRequest>;
-
-export type ProvisionCloudIdentityAccountsCustomersResponse =
-  GoogleLongrunningOperation;
-export const ProvisionCloudIdentityAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type ProvisionCloudIdentityAccountsCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a Cloud Identity for the given customer using the customer's information, or the information provided here. Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong to the reseller. * You are not authorized to provision cloud identity id. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The customer's primary email already exists. Retry after changing the customer's primary contact email. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata contains an instance of OperationMetadata. */
-export const provisionCloudIdentityAccountsCustomers: API.OperationMethod<
-  ProvisionCloudIdentityAccountsCustomersRequest,
-  ProvisionCloudIdentityAccountsCustomersResponse,
-  ProvisionCloudIdentityAccountsCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ProvisionCloudIdentityAccountsCustomersRequest,
-  output: ProvisionCloudIdentityAccountsCustomersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAccountsCustomersRequest {
-  /** Optional. A token identifying a page of results other than the first page. Obtained through ListCustomersResponse.next_page_token of the previous CloudChannelService.ListCustomers call. */
-  pageToken?: string;
-  /** Optional. Filters applied to the [CloudChannelService.ListCustomers] results. See https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers for more information. */
-  filter?: string;
+export interface ListAccountsChannelPartnerLinksCustomersRequest {
   /** Required. The resource name of the reseller account to list customers from. Parent uses the format: accounts/{account_id}. */
   parent: string;
   /** Optional. The maximum number of customers to return. The service may return fewer than this value. If unspecified, returns at most 10 customers. The maximum value is 50. */
   pageSize?: number;
+  /** Optional. Filters applied to the [CloudChannelService.ListCustomers] results. See https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers for more information. */
+  filter?: string;
+  /** Optional. A token identifying a page of results other than the first page. Obtained through ListCustomersResponse.next_page_token of the previous CloudChannelService.ListCustomers call. */
+  pageToken?: string;
 }
 
-export const ListAccountsCustomersRequest =
+export const ListAccountsChannelPartnerLinksCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/customers" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsCustomersRequest>;
+  ) as unknown as Schema.Schema<ListAccountsChannelPartnerLinksCustomersRequest>;
 
-export type ListAccountsCustomersResponse =
+export type ListAccountsChannelPartnerLinksCustomersResponse =
   GoogleCloudChannelV1ListCustomersResponse;
-export const ListAccountsCustomersResponse =
+export const ListAccountsChannelPartnerLinksCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListCustomersResponse;
 
-export type ListAccountsCustomersError = DefaultErrors | NotFound | Forbidden;
+export type ListAccountsChannelPartnerLinksCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List Customers. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no customers. */
-export const listAccountsCustomers: API.PaginatedOperationMethod<
-  ListAccountsCustomersRequest,
-  ListAccountsCustomersResponse,
-  ListAccountsCustomersError,
+export const listAccountsChannelPartnerLinksCustomers: API.PaginatedOperationMethod<
+  ListAccountsChannelPartnerLinksCustomersRequest,
+  ListAccountsChannelPartnerLinksCustomersResponse,
+  ListAccountsChannelPartnerLinksCustomersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsCustomersRequest,
-  output: ListAccountsCustomersResponse,
+  input: ListAccountsChannelPartnerLinksCustomersRequest,
+  output: ListAccountsChannelPartnerLinksCustomersResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -3639,47 +3901,326 @@ export const listAccountsCustomers: API.PaginatedOperationMethod<
   },
 }));
 
-export interface QueryEligibleBillingAccountsAccountsCustomersRequest {
-  /** Required. The resource name of the customer to list eligible billing accounts for. Format: accounts/{account_id}/customers/{customer_id}. */
-  customer: string;
-  /** Required. List of SKUs to list eligible billing accounts for. At least one SKU is required. Format: products/{product_id}/skus/{sku_id}. */
-  skus?: string[];
+export interface PatchAccountsChannelPartnerLinksCustomersRequest {
+  /** Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
+  name: string;
+  /** The update mask that applies to the resource. Optional. */
+  updateMask?: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1Customer;
 }
 
-export const QueryEligibleBillingAccountsAccountsCustomersRequest =
+export const PatchAccountsChannelPartnerLinksCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customer: Schema.String.pipe(T.HttpPath("customer")),
-    skus: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("skus"),
-    ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchAccountsChannelPartnerLinksCustomersRequest>;
+
+export type PatchAccountsChannelPartnerLinksCustomersResponse =
+  GoogleCloudChannelV1Customer;
+export const PatchAccountsChannelPartnerLinksCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+
+export type PatchAccountsChannelPartnerLinksCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an existing Customer resource for the reseller or distributor. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated Customer resource. */
+export const patchAccountsChannelPartnerLinksCustomers: API.OperationMethod<
+  PatchAccountsChannelPartnerLinksCustomersRequest,
+  PatchAccountsChannelPartnerLinksCustomersResponse,
+  PatchAccountsChannelPartnerLinksCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAccountsChannelPartnerLinksCustomersRequest,
+  output: PatchAccountsChannelPartnerLinksCustomersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateAccountsChannelPartnerLinksCustomersRequest {
+  /** Required. The resource name of reseller account in which to create the customer. Parent uses the format: accounts/{account_id} */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1Customer;
+}
+
+export const CreateAccountsChannelPartnerLinksCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/customers", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateAccountsChannelPartnerLinksCustomersRequest>;
+
+export type CreateAccountsChannelPartnerLinksCustomersResponse =
+  GoogleCloudChannelV1Customer;
+export const CreateAccountsChannelPartnerLinksCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+
+export type CreateAccountsChannelPartnerLinksCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: * The reseller account making the request is different from the reseller account in the API request. * You are not authorized to create a customer. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource. */
+export const createAccountsChannelPartnerLinksCustomers: API.OperationMethod<
+  CreateAccountsChannelPartnerLinksCustomersRequest,
+  CreateAccountsChannelPartnerLinksCustomersResponse,
+  CreateAccountsChannelPartnerLinksCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAccountsChannelPartnerLinksCustomersRequest,
+  output: CreateAccountsChannelPartnerLinksCustomersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest {
+  /** Required. The resource name of the ChannelPartner that will receive the repricing config. Parent uses the format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id} */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+}
+
+export const CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(
+      GoogleCloudChannelV1ChannelPartnerRepricingConfig,
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/channelPartnerRepricingConfigs",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
+
+export type CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
+  GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+export const CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+
+export type CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+
+/** Creates a ChannelPartnerRepricingConfig. Call this method to set modifications for a specific ChannelPartner's bill. You can only create configs if the RepricingConfig.effective_invoice_month is a future month. If needed, you can create a config for the current month, with some restrictions. When creating a config for a future month, make sure there are no existing configs for that RepricingConfig.effective_invoice_month. The following restrictions are for creating configs in the current month. * This functionality is reserved for recovering from an erroneous config, and should not be used for regular business cases. * The new config will not modify exports used with other configs. Changes to the config may be immediate, but may take up to 24 hours. * There is a limit of ten configs for any ChannelPartner or RepricingConfig.EntitlementGranularity.entitlement, for any RepricingConfig.effective_invoice_month. * The contained ChannelPartnerRepricingConfig.repricing_config value must be different from the value used in the current config for a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * INVALID_ARGUMENT: Missing or invalid required parameters in the request. Also displays if the updated config is for the current month or past months. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is not associated with the given account. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the updated ChannelPartnerRepricingConfig resource, otherwise returns an error. */
+export const createAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.OperationMethod<
+  CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
+  CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
+  CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
+  output:
+    CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest {
+  /** Optional. A filter for [CloudChannelService.ListChannelPartnerRepricingConfigs] results (channel_partner_link only). You can use this filter when you support a BatchGet-like query. To use the filter, you must set `parent=accounts/{account_id}/channelPartnerLinks/-`. Example: `channel_partner_link = accounts/account_id/channelPartnerLinks/c1` OR `channel_partner_link = accounts/account_id/channelPartnerLinks/c2`. */
+  filter?: string;
+  /** Required. The resource name of the account's ChannelPartnerLink. Parent uses the format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}. Supports accounts/{account_id}/channelPartnerLinks/- to retrieve configs for all channel partners. */
+  parent: string;
+  /** Optional. The maximum number of repricing configs to return. The service may return fewer than this value. If unspecified, returns a maximum of 50 rules. The maximum value is 100; values above 100 will be coerced to 100. */
+  pageSize?: number;
+  /** Optional. A token identifying a page of results beyond the first page. Obtained through ListChannelPartnerRepricingConfigsResponse.next_page_token of the previous CloudChannelService.ListChannelPartnerRepricingConfigs call. */
+  pageToken?: string;
+}
+
+export const ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/{+customer}:queryEligibleBillingAccounts",
+      path: "v1/{+parent}/channelPartnerRepricingConfigs",
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryEligibleBillingAccountsAccountsCustomersRequest>;
+  ) as unknown as Schema.Schema<ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
 
-export type QueryEligibleBillingAccountsAccountsCustomersResponse =
-  GoogleCloudChannelV1QueryEligibleBillingAccountsResponse;
-export const QueryEligibleBillingAccountsAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1QueryEligibleBillingAccountsResponse;
+export type ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
+  GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse;
+export const ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse;
 
-export type QueryEligibleBillingAccountsAccountsCustomersError =
+export type ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Lists information about how a Reseller modifies their bill before sending it to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is not associated with the given account. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resources. The data for each resource is displayed in the ascending order of: * Channel Partner ID * RepricingConfig.effective_invoice_month * ChannelPartnerRepricingConfig.update_time If unsuccessful, returns an error. */
+export const listAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.PaginatedOperationMethod<
+  ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
+  ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
+  ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
+  output: ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest {
+  /** Output only. Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. */
+  name: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+}
+
+export const PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(
+      GoogleCloudChannelV1ChannelPartnerRepricingConfig,
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
+
+export type PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
+  GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+export const PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+
+export type PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+
+/** Updates a ChannelPartnerRepricingConfig. Call this method to set modifications for a specific ChannelPartner's bill. This method overwrites the existing CustomerRepricingConfig. You can only update configs if the RepricingConfig.effective_invoice_month is a future month. To make changes to configs for the current month, use CreateChannelPartnerRepricingConfig, taking note of its restrictions. You cannot update the RepricingConfig.effective_invoice_month. When updating a config in the future: * This config must already exist. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * INVALID_ARGUMENT: Missing or invalid required parameters in the request. Also displays if the updated config is for the current month or past months. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is not associated with the given account. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the updated ChannelPartnerRepricingConfig resource, otherwise returns an error. */
+export const patchAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.OperationMethod<
+  PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
+  PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
+  PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
+  output:
+    PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest {
+  /** Required. The resource name of the ChannelPartnerRepricingConfig Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. */
+  name: string;
+}
+
+export const GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
+
+export type GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
+  GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+export const GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+
+export type GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists the billing accounts that are eligible to purchase particular SKUs for a given customer. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: Based on the provided list of SKUs, returns a list of SKU groups that must be purchased using the same billing account and the billing accounts eligible to purchase each SKU group. */
-export const queryEligibleBillingAccountsAccountsCustomers: API.OperationMethod<
-  QueryEligibleBillingAccountsAccountsCustomersRequest,
-  QueryEligibleBillingAccountsAccountsCustomersResponse,
-  QueryEligibleBillingAccountsAccountsCustomersError,
+/** Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns an error. */
+export const getAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.OperationMethod<
+  GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
+  GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
+  GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: QueryEligibleBillingAccountsAccountsCustomersRequest,
-  output: QueryEligibleBillingAccountsAccountsCustomersResponse,
+  input: GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
+  output: GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest {
+  /** Required. The resource name of the channel partner repricing config rule to delete. */
+  name: string;
+}
+
+export const DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
+
+export type DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
+  GoogleProtobufEmpty;
+export const DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+
+export type DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+
+/** Deletes the given ChannelPartnerRepricingConfig permanently. You can only delete configs if their RepricingConfig.effective_invoice_month is set to a date after the current month. Possible error codes: * PERMISSION_DENIED: The account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The ChannelPartnerRepricingConfig is active or in the past. * NOT_FOUND: No ChannelPartnerRepricingConfig found for the name in the request. */
+export const deleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.OperationMethod<
+  DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
+  DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
+  DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
+  output:
+    DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateAccountsCustomersRequest {
+  /** Required. The resource name of reseller account in which to create the customer. Parent uses the format: accounts/{account_id} */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1Customer;
+}
+
+export const CreateAccountsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/customers", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateAccountsCustomersRequest>;
+
+export type CreateAccountsCustomersResponse = GoogleCloudChannelV1Customer;
+export const CreateAccountsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+
+export type CreateAccountsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: * The reseller account making the request is different from the reseller account in the API request. * You are not authorized to create a customer. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource. */
+export const createAccountsCustomers: API.OperationMethod<
+  CreateAccountsCustomersRequest,
+  CreateAccountsCustomersResponse,
+  CreateAccountsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAccountsCustomersRequest,
+  output: CreateAccountsCustomersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TransferEntitlementsAccountsCustomersRequest {
@@ -3728,74 +4269,126 @@ export const transferEntitlementsAccountsCustomers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListPurchasableOffersAccountsCustomersRequest {
-  /** Optional. Resource name of the new target SKU. Provide this SKU when upgrading or downgrading an entitlement. Format: products/{product_id}/skus/{sku_id} */
-  "changeOfferPurchase.newSku"?: string;
-  /** Optional. Billing account that the result should be restricted to. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. */
-  "createEntitlementPurchase.billingAccount"?: string;
-  /** Required. The resource name of the customer to list Offers for. Format: accounts/{account_id}/customers/{customer_id}. */
+export interface ProvisionCloudIdentityAccountsCustomersRequest {
+  /** Required. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
   customer: string;
-  /** Required. Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
-  "changeOfferPurchase.entitlement"?: string;
-  /** Optional. A token for a page of results other than the first page. */
-  pageToken?: string;
-  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 Offers. The maximum value is 1000; the server will coerce values above 1000. */
-  pageSize?: number;
-  /** Optional. Resource name of the new target Billing Account. Provide this Billing Account when setting up billing for a trial subscription. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts. */
-  "changeOfferPurchase.billingAccount"?: string;
-  /** Required. SKU that the result should be restricted to. Format: products/{product_id}/skus/{sku_id}. */
-  "createEntitlementPurchase.sku"?: string;
-  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
-  languageCode?: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1ProvisionCloudIdentityRequest;
 }
 
-export const ListPurchasableOffersAccountsCustomersRequest =
+export const ProvisionCloudIdentityAccountsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "changeOfferPurchase.newSku": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("changeOfferPurchase.newSku"),
-    ),
-    "createEntitlementPurchase.billingAccount": Schema.optional(
-      Schema.String,
-    ).pipe(T.HttpQuery("createEntitlementPurchase.billingAccount")),
     customer: Schema.String.pipe(T.HttpPath("customer")),
-    "changeOfferPurchase.entitlement": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("changeOfferPurchase.entitlement"),
-    ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    "changeOfferPurchase.billingAccount": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("changeOfferPurchase.billingAccount"),
-    ),
-    "createEntitlementPurchase.sku": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("createEntitlementPurchase.sku"),
-    ),
-    languageCode: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("languageCode"),
-    ),
+    body: Schema.optional(
+      GoogleCloudChannelV1ProvisionCloudIdentityRequest,
+    ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+customer}:listPurchasableOffers" }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+customer}:provisionCloudIdentity",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<ListPurchasableOffersAccountsCustomersRequest>;
+  ) as unknown as Schema.Schema<ProvisionCloudIdentityAccountsCustomersRequest>;
 
-export type ListPurchasableOffersAccountsCustomersResponse =
-  GoogleCloudChannelV1ListPurchasableOffersResponse;
-export const ListPurchasableOffersAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListPurchasableOffersResponse;
+export type ProvisionCloudIdentityAccountsCustomersResponse =
+  GoogleLongrunningOperation;
+export const ProvisionCloudIdentityAccountsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ListPurchasableOffersAccountsCustomersError =
+export type ProvisionCloudIdentityAccountsCustomersError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists the following: * Offers that you can purchase for a customer. * Offers that you can change for an entitlement. Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong to the reseller * The reseller is not authorized to transact on this Product. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
-export const listPurchasableOffersAccountsCustomers: API.PaginatedOperationMethod<
-  ListPurchasableOffersAccountsCustomersRequest,
-  ListPurchasableOffersAccountsCustomersResponse,
-  ListPurchasableOffersAccountsCustomersError,
+/** Creates a Cloud Identity for the given customer using the customer's information, or the information provided here. Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong to the reseller. * You are not authorized to provision cloud identity id. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The customer's primary email already exists. Retry after changing the customer's primary contact email. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata contains an instance of OperationMetadata. */
+export const provisionCloudIdentityAccountsCustomers: API.OperationMethod<
+  ProvisionCloudIdentityAccountsCustomersRequest,
+  ProvisionCloudIdentityAccountsCustomersResponse,
+  ProvisionCloudIdentityAccountsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ProvisionCloudIdentityAccountsCustomersRequest,
+  output: ProvisionCloudIdentityAccountsCustomersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteAccountsCustomersRequest {
+  /** Required. The resource name of the customer to delete. */
+  name: string;
+}
+
+export const DeleteAccountsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAccountsCustomersRequest>;
+
+export type DeleteAccountsCustomersResponse = GoogleProtobufEmpty;
+export const DeleteAccountsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+
+export type DeleteAccountsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes the given Customer permanently. Possible error codes: * PERMISSION_DENIED: The account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No Customer resource found for the name in the request. */
+export const deleteAccountsCustomers: API.OperationMethod<
+  DeleteAccountsCustomersRequest,
+  DeleteAccountsCustomersResponse,
+  DeleteAccountsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAccountsCustomersRequest,
+  output: DeleteAccountsCustomersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListAccountsCustomersRequest {
+  /** Optional. A token identifying a page of results other than the first page. Obtained through ListCustomersResponse.next_page_token of the previous CloudChannelService.ListCustomers call. */
+  pageToken?: string;
+  /** Optional. Filters applied to the [CloudChannelService.ListCustomers] results. See https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers for more information. */
+  filter?: string;
+  /** Required. The resource name of the reseller account to list customers from. Parent uses the format: accounts/{account_id}. */
+  parent: string;
+  /** Optional. The maximum number of customers to return. The service may return fewer than this value. If unspecified, returns at most 10 customers. The maximum value is 50. */
+  pageSize?: number;
+}
+
+export const ListAccountsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/customers" }),
+    svc,
+  ) as unknown as Schema.Schema<ListAccountsCustomersRequest>;
+
+export type ListAccountsCustomersResponse =
+  GoogleCloudChannelV1ListCustomersResponse;
+export const ListAccountsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListCustomersResponse;
+
+export type ListAccountsCustomersError = DefaultErrors | NotFound | Forbidden;
+
+/** List Customers. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no customers. */
+export const listAccountsCustomers: API.PaginatedOperationMethod<
+  ListAccountsCustomersRequest,
+  ListAccountsCustomersResponse,
+  ListAccountsCustomersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListPurchasableOffersAccountsCustomersRequest,
-  output: ListPurchasableOffersAccountsCustomersResponse,
+  input: ListAccountsCustomersRequest,
+  output: ListAccountsCustomersResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -3803,42 +4396,134 @@ export const listPurchasableOffersAccountsCustomers: API.PaginatedOperationMetho
   },
 }));
 
-export interface CreateAccountsCustomersRequest {
-  /** Required. The resource name of reseller account in which to create the customer. Parent uses the format: accounts/{account_id} */
-  parent: string;
+export interface PatchAccountsCustomersRequest {
+  /** Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
+  name: string;
+  /** The update mask that applies to the resource. Optional. */
+  updateMask?: string;
   /** Request body */
   body?: GoogleCloudChannelV1Customer;
 }
 
-export const CreateAccountsCustomersRequest =
+export const PatchAccountsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/customers", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsCustomersRequest>;
+  ) as unknown as Schema.Schema<PatchAccountsCustomersRequest>;
 
-export type CreateAccountsCustomersResponse = GoogleCloudChannelV1Customer;
-export const CreateAccountsCustomersResponse =
+export type PatchAccountsCustomersResponse = GoogleCloudChannelV1Customer;
+export const PatchAccountsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
 
-export type CreateAccountsCustomersError =
+export type PatchAccountsCustomersError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: * The reseller account making the request is different from the reseller account in the API request. * You are not authorized to create a customer. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource. */
-export const createAccountsCustomers: API.OperationMethod<
-  CreateAccountsCustomersRequest,
-  CreateAccountsCustomersResponse,
-  CreateAccountsCustomersError,
+/** Updates an existing Customer resource for the reseller or distributor. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated Customer resource. */
+export const patchAccountsCustomers: API.OperationMethod<
+  PatchAccountsCustomersRequest,
+  PatchAccountsCustomersResponse,
+  PatchAccountsCustomersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateAccountsCustomersRequest,
-  output: CreateAccountsCustomersResponse,
+  input: PatchAccountsCustomersRequest,
+  output: PatchAccountsCustomersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface QueryEligibleBillingAccountsAccountsCustomersRequest {
+  /** Required. The resource name of the customer to list eligible billing accounts for. Format: accounts/{account_id}/customers/{customer_id}. */
+  customer: string;
+  /** Required. List of SKUs to list eligible billing accounts for. At least one SKU is required. Format: products/{product_id}/skus/{sku_id}. */
+  skus?: string[];
+}
+
+export const QueryEligibleBillingAccountsAccountsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customer: Schema.String.pipe(T.HttpPath("customer")),
+    skus: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("skus"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+customer}:queryEligibleBillingAccounts",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<QueryEligibleBillingAccountsAccountsCustomersRequest>;
+
+export type QueryEligibleBillingAccountsAccountsCustomersResponse =
+  GoogleCloudChannelV1QueryEligibleBillingAccountsResponse;
+export const QueryEligibleBillingAccountsAccountsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1QueryEligibleBillingAccountsResponse;
+
+export type QueryEligibleBillingAccountsAccountsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the billing accounts that are eligible to purchase particular SKUs for a given customer. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: Based on the provided list of SKUs, returns a list of SKU groups that must be purchased using the same billing account and the billing accounts eligible to purchase each SKU group. */
+export const queryEligibleBillingAccountsAccountsCustomers: API.OperationMethod<
+  QueryEligibleBillingAccountsAccountsCustomersRequest,
+  QueryEligibleBillingAccountsAccountsCustomersResponse,
+  QueryEligibleBillingAccountsAccountsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: QueryEligibleBillingAccountsAccountsCustomersRequest,
+  output: QueryEligibleBillingAccountsAccountsCustomersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface TransferEntitlementsToGoogleAccountsCustomersRequest {
+  /** Required. The resource name of the reseller's customer account where the entitlements transfer from. Parent uses the format: accounts/{account_id}/customers/{customer_id} */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1TransferEntitlementsToGoogleRequest;
+}
+
+export const TransferEntitlementsToGoogleAccountsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(
+      GoogleCloudChannelV1TransferEntitlementsToGoogleRequest,
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}:transferEntitlementsToGoogle",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TransferEntitlementsToGoogleAccountsCustomersRequest>;
+
+export type TransferEntitlementsToGoogleAccountsCustomersResponse =
+  GoogleLongrunningOperation;
+export const TransferEntitlementsToGoogleAccountsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type TransferEntitlementsToGoogleAccountsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Transfers customer entitlements from their current reseller to Google. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer or offer resource was not found. * ALREADY_EXISTS: The SKU was already transferred for the customer. * CONDITION_NOT_MET or FAILED_PRECONDITION: * The SKU requires domain verification to transfer, but the domain is not verified. * An Add-On SKU (example, Vault or Drive) is missing the pre-requisite SKU (example, G Suite Basic). * (Developer accounts only) Reseller and resold domain must meet the following naming requirements: * Domain names must start with goog-test. * Domain names must include the reseller domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The response will contain google.protobuf.Empty on success. The Operation metadata will contain an instance of OperationMetadata. */
+export const transferEntitlementsToGoogleAccountsCustomers: API.OperationMethod<
+  TransferEntitlementsToGoogleAccountsCustomersRequest,
+  TransferEntitlementsToGoogleAccountsCustomersResponse,
+  TransferEntitlementsToGoogleAccountsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TransferEntitlementsToGoogleAccountsCustomersRequest,
+  output: TransferEntitlementsToGoogleAccountsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -3887,65 +4572,270 @@ export const importAccountsCustomers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchAccountsCustomersRequest {
-  /** Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
+export interface GetAccountsCustomersRequest {
+  /** Required. The resource name of the customer to retrieve. Name uses the format: accounts/{account_id}/customers/{customer_id} */
   name: string;
-  /** The update mask that applies to the resource. Optional. */
-  updateMask?: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1Customer;
 }
 
-export const PatchAccountsCustomersRequest =
+export const GetAccountsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountsCustomersRequest>;
+  ) as unknown as Schema.Schema<GetAccountsCustomersRequest>;
 
-export type PatchAccountsCustomersResponse = GoogleCloudChannelV1Customer;
-export const PatchAccountsCustomersResponse =
+export type GetAccountsCustomersResponse = GoogleCloudChannelV1Customer;
+export const GetAccountsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
 
-export type PatchAccountsCustomersError =
+export type GetAccountsCustomersError = DefaultErrors | NotFound | Forbidden;
+
+/** Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource. */
+export const getAccountsCustomers: API.OperationMethod<
+  GetAccountsCustomersRequest,
+  GetAccountsCustomersResponse,
+  GetAccountsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAccountsCustomersRequest,
+  output: GetAccountsCustomersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListPurchasableOffersAccountsCustomersRequest {
+  /** Optional. Resource name of the new target Billing Account. Provide this Billing Account when setting up billing for a trial subscription. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts. */
+  "changeOfferPurchase.billingAccount"?: string;
+  /** Required. The resource name of the customer to list Offers for. Format: accounts/{account_id}/customers/{customer_id}. */
+  customer: string;
+  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
+  languageCode?: string;
+  /** Optional. Resource name of the new target SKU. Provide this SKU when upgrading or downgrading an entitlement. Format: products/{product_id}/skus/{sku_id} */
+  "changeOfferPurchase.newSku"?: string;
+  /** Optional. A token for a page of results other than the first page. */
+  pageToken?: string;
+  /** Optional. Billing account that the result should be restricted to. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. */
+  "createEntitlementPurchase.billingAccount"?: string;
+  /** Required. SKU that the result should be restricted to. Format: products/{product_id}/skus/{sku_id}. */
+  "createEntitlementPurchase.sku"?: string;
+  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 Offers. The maximum value is 1000; the server will coerce values above 1000. */
+  pageSize?: number;
+  /** Required. Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+  "changeOfferPurchase.entitlement"?: string;
+}
+
+export const ListPurchasableOffersAccountsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "changeOfferPurchase.billingAccount": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("changeOfferPurchase.billingAccount"),
+    ),
+    customer: Schema.String.pipe(T.HttpPath("customer")),
+    languageCode: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("languageCode"),
+    ),
+    "changeOfferPurchase.newSku": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("changeOfferPurchase.newSku"),
+    ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    "createEntitlementPurchase.billingAccount": Schema.optional(
+      Schema.String,
+    ).pipe(T.HttpQuery("createEntitlementPurchase.billingAccount")),
+    "createEntitlementPurchase.sku": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("createEntitlementPurchase.sku"),
+    ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    "changeOfferPurchase.entitlement": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("changeOfferPurchase.entitlement"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+customer}:listPurchasableOffers" }),
+    svc,
+  ) as unknown as Schema.Schema<ListPurchasableOffersAccountsCustomersRequest>;
+
+export type ListPurchasableOffersAccountsCustomersResponse =
+  GoogleCloudChannelV1ListPurchasableOffersResponse;
+export const ListPurchasableOffersAccountsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListPurchasableOffersResponse;
+
+export type ListPurchasableOffersAccountsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the following: * Offers that you can purchase for a customer. * Offers that you can change for an entitlement. Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong to the reseller * The reseller is not authorized to transact on this Product. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
+export const listPurchasableOffersAccountsCustomers: API.PaginatedOperationMethod<
+  ListPurchasableOffersAccountsCustomersRequest,
+  ListPurchasableOffersAccountsCustomersResponse,
+  ListPurchasableOffersAccountsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPurchasableOffersAccountsCustomersRequest,
+  output: ListPurchasableOffersAccountsCustomersResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ListPurchasableSkusAccountsCustomersRequest {
+  /** Required. The resource name of the customer to list SKUs for. Format: accounts/{account_id}/customers/{customer_id}. */
+  customer: string;
+  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
+  languageCode?: string;
+  /** Optional. A token for a page of results other than the first page. */
+  pageToken?: string;
+  /** Required. List SKUs belonging to this Product. Format: products/{product_id}. Supports products/- to retrieve SKUs for all products. */
+  "createEntitlementPurchase.product"?: string;
+  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 SKUs. The maximum value is 1000; the server will coerce values above 1000. */
+  pageSize?: number;
+  /** Required. Change Type for the entitlement. */
+  "changeOfferPurchase.changeType"?:
+    | "CHANGE_TYPE_UNSPECIFIED"
+    | "UPGRADE"
+    | "DOWNGRADE"
+    | (string & {});
+  /** Required. Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+  "changeOfferPurchase.entitlement"?: string;
+}
+
+export const ListPurchasableSkusAccountsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customer: Schema.String.pipe(T.HttpPath("customer")),
+    languageCode: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("languageCode"),
+    ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    "createEntitlementPurchase.product": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("createEntitlementPurchase.product"),
+    ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    "changeOfferPurchase.changeType": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("changeOfferPurchase.changeType"),
+    ),
+    "changeOfferPurchase.entitlement": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("changeOfferPurchase.entitlement"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+customer}:listPurchasableSkus" }),
+    svc,
+  ) as unknown as Schema.Schema<ListPurchasableSkusAccountsCustomersRequest>;
+
+export type ListPurchasableSkusAccountsCustomersResponse =
+  GoogleCloudChannelV1ListPurchasableSkusResponse;
+export const ListPurchasableSkusAccountsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListPurchasableSkusResponse;
+
+export type ListPurchasableSkusAccountsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the following: * SKUs that you can purchase for a customer * SKUs that you can upgrade or downgrade for an entitlement. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
+export const listPurchasableSkusAccountsCustomers: API.PaginatedOperationMethod<
+  ListPurchasableSkusAccountsCustomersRequest,
+  ListPurchasableSkusAccountsCustomersResponse,
+  ListPurchasableSkusAccountsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPurchasableSkusAccountsCustomersRequest,
+  output: ListPurchasableSkusAccountsCustomersResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetAccountsCustomersCustomerRepricingConfigsRequest {
+  /** Required. The resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}. */
+  name: string;
+}
+
+export const GetAccountsCustomersCustomerRepricingConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetAccountsCustomersCustomerRepricingConfigsRequest>;
+
+export type GetAccountsCustomersCustomerRepricingConfigsResponse =
+  GoogleCloudChannelV1CustomerRepricingConfig;
+export const GetAccountsCustomersCustomerRepricingConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1CustomerRepricingConfig;
+
+export type GetAccountsCustomersCustomerRepricingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets information about how a Reseller modifies their bill before sending it to a Customer. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The CustomerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the CustomerRepricingConfig resource, otherwise returns an error. */
+export const getAccountsCustomersCustomerRepricingConfigs: API.OperationMethod<
+  GetAccountsCustomersCustomerRepricingConfigsRequest,
+  GetAccountsCustomersCustomerRepricingConfigsResponse,
+  GetAccountsCustomersCustomerRepricingConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAccountsCustomersCustomerRepricingConfigsRequest,
+  output: GetAccountsCustomersCustomerRepricingConfigsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteAccountsCustomersCustomerRepricingConfigsRequest {
+  /** Required. The resource name of the customer repricing config rule to delete. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}. */
+  name: string;
+}
+
+export const DeleteAccountsCustomersCustomerRepricingConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAccountsCustomersCustomerRepricingConfigsRequest>;
+
+export type DeleteAccountsCustomersCustomerRepricingConfigsResponse =
+  GoogleProtobufEmpty;
+export const DeleteAccountsCustomersCustomerRepricingConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+
+export type DeleteAccountsCustomersCustomerRepricingConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates an existing Customer resource for the reseller or distributor. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated Customer resource. */
-export const patchAccountsCustomers: API.OperationMethod<
-  PatchAccountsCustomersRequest,
-  PatchAccountsCustomersResponse,
-  PatchAccountsCustomersError,
+/** Deletes the given CustomerRepricingConfig permanently. You can only delete configs if their RepricingConfig.effective_invoice_month is set to a date after the current month. Possible error codes: * PERMISSION_DENIED: The account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The CustomerRepricingConfig is active or in the past. * NOT_FOUND: No CustomerRepricingConfig found for the name in the request. */
+export const deleteAccountsCustomersCustomerRepricingConfigs: API.OperationMethod<
+  DeleteAccountsCustomersCustomerRepricingConfigsRequest,
+  DeleteAccountsCustomersCustomerRepricingConfigsResponse,
+  DeleteAccountsCustomersCustomerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAccountsCustomersRequest,
-  output: PatchAccountsCustomersResponse,
+  input: DeleteAccountsCustomersCustomerRepricingConfigsRequest,
+  output: DeleteAccountsCustomersCustomerRepricingConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsCustomersCustomerRepricingConfigsRequest {
-  /** Optional. A token identifying a page of results beyond the first page. Obtained through ListCustomerRepricingConfigsResponse.next_page_token of the previous CloudChannelService.ListCustomerRepricingConfigs call. */
-  pageToken?: string;
-  /** Optional. A filter for [CloudChannelService.ListCustomerRepricingConfigs] results (customer only). You can use this filter when you support a BatchGet-like query. To use the filter, you must set `parent=accounts/{account_id}/customers/-`. Example: customer = accounts/account_id/customers/c1 OR customer = accounts/account_id/customers/c2. */
-  filter?: string;
   /** Required. The resource name of the customer. Parent uses the format: accounts/{account_id}/customers/{customer_id}. Supports accounts/{account_id}/customers/- to retrieve configs for all customers. */
   parent: string;
   /** Optional. The maximum number of repricing configs to return. The service may return fewer than this value. If unspecified, returns a maximum of 50 rules. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
+  /** Optional. A filter for [CloudChannelService.ListCustomerRepricingConfigs] results (customer only). You can use this filter when you support a BatchGet-like query. To use the filter, you must set `parent=accounts/{account_id}/customers/-`. Example: customer = accounts/account_id/customers/c1 OR customer = accounts/account_id/customers/c2. */
+  filter?: string;
+  /** Optional. A token identifying a page of results beyond the first page. Obtained through ListCustomerRepricingConfigsResponse.next_page_token of the previous CloudChannelService.ListCustomerRepricingConfigs call. */
+  pageToken?: string;
 }
 
 export const ListAccountsCustomersCustomerRepricingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/customerRepricingConfigs" }),
     svc,
@@ -4019,41 +4909,6 @@ export const patchAccountsCustomersCustomerRepricingConfigs: API.OperationMethod
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetAccountsCustomersCustomerRepricingConfigsRequest {
-  /** Required. The resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}. */
-  name: string;
-}
-
-export const GetAccountsCustomersCustomerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetAccountsCustomersCustomerRepricingConfigsRequest>;
-
-export type GetAccountsCustomersCustomerRepricingConfigsResponse =
-  GoogleCloudChannelV1CustomerRepricingConfig;
-export const GetAccountsCustomersCustomerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1CustomerRepricingConfig;
-
-export type GetAccountsCustomersCustomerRepricingConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets information about how a Reseller modifies their bill before sending it to a Customer. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The CustomerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the CustomerRepricingConfig resource, otherwise returns an error. */
-export const getAccountsCustomersCustomerRepricingConfigs: API.OperationMethod<
-  GetAccountsCustomersCustomerRepricingConfigsRequest,
-  GetAccountsCustomersCustomerRepricingConfigsResponse,
-  GetAccountsCustomersCustomerRepricingConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAccountsCustomersCustomerRepricingConfigsRequest,
-  output: GetAccountsCustomersCustomerRepricingConfigsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface CreateAccountsCustomersCustomerRepricingConfigsRequest {
   /** Required. The resource name of the customer that will receive this repricing config. Parent uses the format: accounts/{account_id}/customers/{customer_id} */
   parent: string;
@@ -4100,235 +4955,100 @@ export const createAccountsCustomersCustomerRepricingConfigs: API.OperationMetho
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteAccountsCustomersCustomerRepricingConfigsRequest {
-  /** Required. The resource name of the customer repricing config rule to delete. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}. */
-  name: string;
+export interface LookupOfferAccountsCustomersEntitlementsRequest {
+  /** Required. The resource name of the entitlement to retrieve the Offer. Entitlement uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+  entitlement: string;
 }
 
-export const DeleteAccountsCustomersCustomerRepricingConfigsRequest =
+export const LookupOfferAccountsCustomersEntitlementsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    entitlement: Schema.String.pipe(T.HttpPath("entitlement")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    T.Http({ method: "GET", path: "v1/{+entitlement}:lookupOffer" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsCustomersCustomerRepricingConfigsRequest>;
+  ) as unknown as Schema.Schema<LookupOfferAccountsCustomersEntitlementsRequest>;
 
-export type DeleteAccountsCustomersCustomerRepricingConfigsResponse =
-  GoogleProtobufEmpty;
-export const DeleteAccountsCustomersCustomerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+export type LookupOfferAccountsCustomersEntitlementsResponse =
+  GoogleCloudChannelV1Offer;
+export const LookupOfferAccountsCustomersEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Offer;
 
-export type DeleteAccountsCustomersCustomerRepricingConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the given CustomerRepricingConfig permanently. You can only delete configs if their RepricingConfig.effective_invoice_month is set to a date after the current month. Possible error codes: * PERMISSION_DENIED: The account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The CustomerRepricingConfig is active or in the past. * NOT_FOUND: No CustomerRepricingConfig found for the name in the request. */
-export const deleteAccountsCustomersCustomerRepricingConfigs: API.OperationMethod<
-  DeleteAccountsCustomersCustomerRepricingConfigsRequest,
-  DeleteAccountsCustomersCustomerRepricingConfigsResponse,
-  DeleteAccountsCustomersCustomerRepricingConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAccountsCustomersCustomerRepricingConfigsRequest,
-  output: DeleteAccountsCustomersCustomerRepricingConfigsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAccountsCustomersEntitlementsRequest {
-  /** Optional. A token for a page of results other than the first page. Obtained using ListEntitlementsResponse.next_page_token of the previous CloudChannelService.ListEntitlements call. */
-  pageToken?: string;
-  /** Required. The resource name of the reseller's customer account to list entitlements for. Parent uses the format: accounts/{account_id}/customers/{customer_id} */
-  parent: string;
-  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, return at most 50 entitlements. The maximum value is 100; the server will coerce values above 100. */
-  pageSize?: number;
-}
-
-export const ListAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/entitlements" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAccountsCustomersEntitlementsRequest>;
-
-export type ListAccountsCustomersEntitlementsResponse =
-  GoogleCloudChannelV1ListEntitlementsResponse;
-export const ListAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListEntitlementsResponse;
-
-export type ListAccountsCustomersEntitlementsError =
+export type LookupOfferAccountsCustomersEntitlementsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists Entitlements belonging to a customer. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: A list of the customer's Entitlements. */
-export const listAccountsCustomersEntitlements: API.PaginatedOperationMethod<
-  ListAccountsCustomersEntitlementsRequest,
-  ListAccountsCustomersEntitlementsResponse,
-  ListAccountsCustomersEntitlementsError,
+/** Returns the requested Offer resource. Possible error codes: * PERMISSION_DENIED: The entitlement doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement or offer was not found. Return value: The Offer resource. */
+export const lookupOfferAccountsCustomersEntitlements: API.OperationMethod<
+  LookupOfferAccountsCustomersEntitlementsRequest,
+  LookupOfferAccountsCustomersEntitlementsResponse,
+  LookupOfferAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsCustomersEntitlementsRequest,
-  output: ListAccountsCustomersEntitlementsResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: LookupOfferAccountsCustomersEntitlementsRequest,
+  output: LookupOfferAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
-export interface SuspendAccountsCustomersEntitlementsRequest {
-  /** Required. The resource name of the entitlement to suspend. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+export interface ChangeOfferAccountsCustomersEntitlementsRequest {
+  /** Required. The resource name of the entitlement to update. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
   name: string;
   /** Request body */
-  body?: GoogleCloudChannelV1SuspendEntitlementRequest;
+  body?: GoogleCloudChannelV1ChangeOfferRequest;
 }
 
-export const SuspendAccountsCustomersEntitlementsRequest =
+export const ChangeOfferAccountsCustomersEntitlementsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(GoogleCloudChannelV1SuspendEntitlementRequest).pipe(
+    body: Schema.optional(GoogleCloudChannelV1ChangeOfferRequest).pipe(
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:suspend", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:changeOffer", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SuspendAccountsCustomersEntitlementsRequest>;
+  ) as unknown as Schema.Schema<ChangeOfferAccountsCustomersEntitlementsRequest>;
 
-export type SuspendAccountsCustomersEntitlementsResponse =
+export type ChangeOfferAccountsCustomersEntitlementsResponse =
   GoogleLongrunningOperation;
-export const SuspendAccountsCustomersEntitlementsResponse =
+export const ChangeOfferAccountsCustomersEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type SuspendAccountsCustomersEntitlementsError =
+export type ChangeOfferAccountsCustomersEntitlementsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Suspends a previously fulfilled entitlement. An entitlement suspension is a long-running operation. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * NOT_ACTIVE: Entitlement is not active. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata. */
-export const suspendAccountsCustomersEntitlements: API.OperationMethod<
-  SuspendAccountsCustomersEntitlementsRequest,
-  SuspendAccountsCustomersEntitlementsResponse,
-  SuspendAccountsCustomersEntitlementsError,
+/** Updates the Offer for an existing customer entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Offer or Entitlement resource not found. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata. */
+export const changeOfferAccountsCustomersEntitlements: API.OperationMethod<
+  ChangeOfferAccountsCustomersEntitlementsRequest,
+  ChangeOfferAccountsCustomersEntitlementsResponse,
+  ChangeOfferAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SuspendAccountsCustomersEntitlementsRequest,
-  output: SuspendAccountsCustomersEntitlementsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CancelAccountsCustomersEntitlementsRequest {
-  /** Required. The resource name of the entitlement to cancel. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
-  name: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1CancelEntitlementRequest;
-}
-
-export const CancelAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(GoogleCloudChannelV1CancelEntitlementRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CancelAccountsCustomersEntitlementsRequest>;
-
-export type CancelAccountsCustomersEntitlementsResponse =
-  GoogleLongrunningOperation;
-export const CancelAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type CancelAccountsCustomersEntitlementsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Cancels a previously fulfilled entitlement. An entitlement cancellation is a long-running operation. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * FAILED_PRECONDITION: There are Google Cloud projects linked to the Google Cloud entitlement's Cloud Billing subaccount. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * DELETION_TYPE_NOT_ALLOWED: Cancel is only allowed for Google Workspace add-ons, or entitlements for Google Cloud's development platform. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The response will contain google.protobuf.Empty on success. The Operation metadata will contain an instance of OperationMetadata. */
-export const cancelAccountsCustomersEntitlements: API.OperationMethod<
-  CancelAccountsCustomersEntitlementsRequest,
-  CancelAccountsCustomersEntitlementsResponse,
-  CancelAccountsCustomersEntitlementsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelAccountsCustomersEntitlementsRequest,
-  output: CancelAccountsCustomersEntitlementsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface StartPaidServiceAccountsCustomersEntitlementsRequest {
-  /** Required. The name of the entitlement to start a paid service for. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
-  name: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1StartPaidServiceRequest;
-}
-
-export const StartPaidServiceAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(GoogleCloudChannelV1StartPaidServiceRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+name}:startPaidService",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<StartPaidServiceAccountsCustomersEntitlementsRequest>;
-
-export type StartPaidServiceAccountsCustomersEntitlementsResponse =
-  GoogleLongrunningOperation;
-export const StartPaidServiceAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type StartPaidServiceAccountsCustomersEntitlementsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Starts paid service for a trial entitlement. Starts paid service for a trial entitlement immediately. This method is only applicable if a plan is set up for a trial entitlement but has some trial days remaining. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * FAILED_PRECONDITION/NOT_IN_TRIAL: This method only works for entitlement on trial plans. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata. */
-export const startPaidServiceAccountsCustomersEntitlements: API.OperationMethod<
-  StartPaidServiceAccountsCustomersEntitlementsRequest,
-  StartPaidServiceAccountsCustomersEntitlementsResponse,
-  StartPaidServiceAccountsCustomersEntitlementsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StartPaidServiceAccountsCustomersEntitlementsRequest,
-  output: StartPaidServiceAccountsCustomersEntitlementsResponse,
+  input: ChangeOfferAccountsCustomersEntitlementsRequest,
+  output: ChangeOfferAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListEntitlementChangesAccountsCustomersEntitlementsRequest {
-  /** Optional. Filters applied to the list results. */
-  filter?: string;
+  /** Optional. A page token, received from a previous CloudChannelService.ListEntitlementChanges call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to CloudChannelService.ListEntitlementChanges must match the call that provided the page token. */
+  pageToken?: string;
   /** Required. The resource name of the entitlement for which to list entitlement changes. The `-` wildcard may be used to match entitlements across a customer. Formats: * accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} * accounts/{account_id}/customers/{customer_id}/entitlements/- */
   parent: string;
   /** Optional. The maximum number of entitlement changes to return. The service may return fewer than this value. If unspecified, returns at most 10 entitlement changes. The maximum value is 50; the server will coerce values above 50. */
   pageSize?: number;
-  /** Optional. A page token, received from a previous CloudChannelService.ListEntitlementChanges call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to CloudChannelService.ListEntitlementChanges must match the call that provided the page token. */
-  pageToken?: string;
+  /** Optional. Filters applied to the list results. */
+  filter?: string;
 }
 
 export const ListEntitlementChangesAccountsCustomersEntitlementsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}:listEntitlementChanges" }),
     svc,
@@ -4441,129 +5161,6 @@ export const changeParametersAccountsCustomersEntitlements: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface LookupOfferAccountsCustomersEntitlementsRequest {
-  /** Required. The resource name of the entitlement to retrieve the Offer. Entitlement uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
-  entitlement: string;
-}
-
-export const LookupOfferAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entitlement: Schema.String.pipe(T.HttpPath("entitlement")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+entitlement}:lookupOffer" }),
-    svc,
-  ) as unknown as Schema.Schema<LookupOfferAccountsCustomersEntitlementsRequest>;
-
-export type LookupOfferAccountsCustomersEntitlementsResponse =
-  GoogleCloudChannelV1Offer;
-export const LookupOfferAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Offer;
-
-export type LookupOfferAccountsCustomersEntitlementsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the requested Offer resource. Possible error codes: * PERMISSION_DENIED: The entitlement doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement or offer was not found. Return value: The Offer resource. */
-export const lookupOfferAccountsCustomersEntitlements: API.OperationMethod<
-  LookupOfferAccountsCustomersEntitlementsRequest,
-  LookupOfferAccountsCustomersEntitlementsResponse,
-  LookupOfferAccountsCustomersEntitlementsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: LookupOfferAccountsCustomersEntitlementsRequest,
-  output: LookupOfferAccountsCustomersEntitlementsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ChangeRenewalSettingsAccountsCustomersEntitlementsRequest {
-  /** Required. The name of the entitlement to update. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
-  name: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1ChangeRenewalSettingsRequest;
-}
-
-export const ChangeRenewalSettingsAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(
-      GoogleCloudChannelV1ChangeRenewalSettingsRequest,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+name}:changeRenewalSettings",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ChangeRenewalSettingsAccountsCustomersEntitlementsRequest>;
-
-export type ChangeRenewalSettingsAccountsCustomersEntitlementsResponse =
-  GoogleLongrunningOperation;
-export const ChangeRenewalSettingsAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type ChangeRenewalSettingsAccountsCustomersEntitlementsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the renewal settings for an existing customer entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * NOT_COMMITMENT_PLAN: Renewal Settings are only applicable for a commitment plan. Can't enable or disable renewals for non-commitment plans. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata. */
-export const changeRenewalSettingsAccountsCustomersEntitlements: API.OperationMethod<
-  ChangeRenewalSettingsAccountsCustomersEntitlementsRequest,
-  ChangeRenewalSettingsAccountsCustomersEntitlementsResponse,
-  ChangeRenewalSettingsAccountsCustomersEntitlementsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ChangeRenewalSettingsAccountsCustomersEntitlementsRequest,
-  output: ChangeRenewalSettingsAccountsCustomersEntitlementsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ChangeOfferAccountsCustomersEntitlementsRequest {
-  /** Required. The resource name of the entitlement to update. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
-  name: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1ChangeOfferRequest;
-}
-
-export const ChangeOfferAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(GoogleCloudChannelV1ChangeOfferRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:changeOffer", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ChangeOfferAccountsCustomersEntitlementsRequest>;
-
-export type ChangeOfferAccountsCustomersEntitlementsResponse =
-  GoogleLongrunningOperation;
-export const ChangeOfferAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type ChangeOfferAccountsCustomersEntitlementsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the Offer for an existing customer entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Offer or Entitlement resource not found. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata. */
-export const changeOfferAccountsCustomersEntitlements: API.OperationMethod<
-  ChangeOfferAccountsCustomersEntitlementsRequest,
-  ChangeOfferAccountsCustomersEntitlementsResponse,
-  ChangeOfferAccountsCustomersEntitlementsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ChangeOfferAccountsCustomersEntitlementsRequest,
-  output: ChangeOfferAccountsCustomersEntitlementsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface ActivateAccountsCustomersEntitlementsRequest {
   /** Required. The resource name of the entitlement to activate. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
   name: string;
@@ -4603,6 +5200,52 @@ export const activateAccountsCustomersEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateAccountsCustomersEntitlementsRequest,
   output: ActivateAccountsCustomersEntitlementsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface StartPaidServiceAccountsCustomersEntitlementsRequest {
+  /** Required. The name of the entitlement to start a paid service for. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+  name: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1StartPaidServiceRequest;
+}
+
+export const StartPaidServiceAccountsCustomersEntitlementsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(GoogleCloudChannelV1StartPaidServiceRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+name}:startPaidService",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<StartPaidServiceAccountsCustomersEntitlementsRequest>;
+
+export type StartPaidServiceAccountsCustomersEntitlementsResponse =
+  GoogleLongrunningOperation;
+export const StartPaidServiceAccountsCustomersEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type StartPaidServiceAccountsCustomersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Starts paid service for a trial entitlement. Starts paid service for a trial entitlement immediately. This method is only applicable if a plan is set up for a trial entitlement but has some trial days remaining. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * FAILED_PRECONDITION/NOT_IN_TRIAL: This method only works for entitlement on trial plans. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata. */
+export const startPaidServiceAccountsCustomersEntitlements: API.OperationMethod<
+  StartPaidServiceAccountsCustomersEntitlementsRequest,
+  StartPaidServiceAccountsCustomersEntitlementsResponse,
+  StartPaidServiceAccountsCustomersEntitlementsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartPaidServiceAccountsCustomersEntitlementsRequest,
+  output: StartPaidServiceAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -4652,20 +5295,195 @@ export const createAccountsCustomersEntitlements: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListAccountsSkuGroupsRequest {
-  /** Required. The resource name of the account from which to list SKU groups. Parent uses the format: accounts/{account}. */
+export interface ChangeRenewalSettingsAccountsCustomersEntitlementsRequest {
+  /** Required. The name of the entitlement to update. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+  name: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1ChangeRenewalSettingsRequest;
+}
+
+export const ChangeRenewalSettingsAccountsCustomersEntitlementsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(
+      GoogleCloudChannelV1ChangeRenewalSettingsRequest,
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+name}:changeRenewalSettings",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ChangeRenewalSettingsAccountsCustomersEntitlementsRequest>;
+
+export type ChangeRenewalSettingsAccountsCustomersEntitlementsResponse =
+  GoogleLongrunningOperation;
+export const ChangeRenewalSettingsAccountsCustomersEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type ChangeRenewalSettingsAccountsCustomersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the renewal settings for an existing customer entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * NOT_COMMITMENT_PLAN: Renewal Settings are only applicable for a commitment plan. Can't enable or disable renewals for non-commitment plans. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata. */
+export const changeRenewalSettingsAccountsCustomersEntitlements: API.OperationMethod<
+  ChangeRenewalSettingsAccountsCustomersEntitlementsRequest,
+  ChangeRenewalSettingsAccountsCustomersEntitlementsResponse,
+  ChangeRenewalSettingsAccountsCustomersEntitlementsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ChangeRenewalSettingsAccountsCustomersEntitlementsRequest,
+  output: ChangeRenewalSettingsAccountsCustomersEntitlementsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SuspendAccountsCustomersEntitlementsRequest {
+  /** Required. The resource name of the entitlement to suspend. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+  name: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1SuspendEntitlementRequest;
+}
+
+export const SuspendAccountsCustomersEntitlementsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(GoogleCloudChannelV1SuspendEntitlementRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:suspend", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<SuspendAccountsCustomersEntitlementsRequest>;
+
+export type SuspendAccountsCustomersEntitlementsResponse =
+  GoogleLongrunningOperation;
+export const SuspendAccountsCustomersEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type SuspendAccountsCustomersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Suspends a previously fulfilled entitlement. An entitlement suspension is a long-running operation. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * NOT_ACTIVE: Entitlement is not active. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata. */
+export const suspendAccountsCustomersEntitlements: API.OperationMethod<
+  SuspendAccountsCustomersEntitlementsRequest,
+  SuspendAccountsCustomersEntitlementsResponse,
+  SuspendAccountsCustomersEntitlementsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SuspendAccountsCustomersEntitlementsRequest,
+  output: SuspendAccountsCustomersEntitlementsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CancelAccountsCustomersEntitlementsRequest {
+  /** Required. The resource name of the entitlement to cancel. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
+  name: string;
+  /** Request body */
+  body?: GoogleCloudChannelV1CancelEntitlementRequest;
+}
+
+export const CancelAccountsCustomersEntitlementsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(GoogleCloudChannelV1CancelEntitlementRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CancelAccountsCustomersEntitlementsRequest>;
+
+export type CancelAccountsCustomersEntitlementsResponse =
+  GoogleLongrunningOperation;
+export const CancelAccountsCustomersEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type CancelAccountsCustomersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Cancels a previously fulfilled entitlement. An entitlement cancellation is a long-running operation. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * FAILED_PRECONDITION: There are Google Cloud projects linked to the Google Cloud entitlement's Cloud Billing subaccount. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * DELETION_TYPE_NOT_ALLOWED: Cancel is only allowed for Google Workspace add-ons, or entitlements for Google Cloud's development platform. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The response will contain google.protobuf.Empty on success. The Operation metadata will contain an instance of OperationMetadata. */
+export const cancelAccountsCustomersEntitlements: API.OperationMethod<
+  CancelAccountsCustomersEntitlementsRequest,
+  CancelAccountsCustomersEntitlementsResponse,
+  CancelAccountsCustomersEntitlementsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelAccountsCustomersEntitlementsRequest,
+  output: CancelAccountsCustomersEntitlementsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListAccountsCustomersEntitlementsRequest {
+  /** Required. The resource name of the reseller's customer account to list entitlements for. Parent uses the format: accounts/{account_id}/customers/{customer_id} */
   parent: string;
-  /** Optional. The maximum number of SKU groups to return. The service may return fewer than this value. If unspecified, returns a maximum of 1000 SKU groups. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, return at most 50 entitlements. The maximum value is 100; the server will coerce values above 100. */
   pageSize?: number;
-  /** Optional. A token identifying a page of results beyond the first page. Obtained through ListSkuGroupsResponse.next_page_token of the previous CloudChannelService.ListSkuGroups call. */
+  /** Optional. A token for a page of results other than the first page. Obtained using ListEntitlementsResponse.next_page_token of the previous CloudChannelService.ListEntitlements call. */
   pageToken?: string;
 }
 
-export const ListAccountsSkuGroupsRequest =
+export const ListAccountsCustomersEntitlementsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/entitlements" }),
+    svc,
+  ) as unknown as Schema.Schema<ListAccountsCustomersEntitlementsRequest>;
+
+export type ListAccountsCustomersEntitlementsResponse =
+  GoogleCloudChannelV1ListEntitlementsResponse;
+export const ListAccountsCustomersEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListEntitlementsResponse;
+
+export type ListAccountsCustomersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists Entitlements belonging to a customer. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: A list of the customer's Entitlements. */
+export const listAccountsCustomersEntitlements: API.PaginatedOperationMethod<
+  ListAccountsCustomersEntitlementsRequest,
+  ListAccountsCustomersEntitlementsResponse,
+  ListAccountsCustomersEntitlementsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAccountsCustomersEntitlementsRequest,
+  output: ListAccountsCustomersEntitlementsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ListAccountsSkuGroupsRequest {
+  /** Optional. A token identifying a page of results beyond the first page. Obtained through ListSkuGroupsResponse.next_page_token of the previous CloudChannelService.ListSkuGroups call. */
+  pageToken?: string;
+  /** Required. The resource name of the account from which to list SKU groups. Parent uses the format: accounts/{account}. */
+  parent: string;
+  /** Optional. The maximum number of SKU groups to return. The service may return fewer than this value. If unspecified, returns a maximum of 1000 SKU groups. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+}
+
+export const ListAccountsSkuGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/skuGroups" }),
     svc,
@@ -4695,19 +5513,19 @@ export const listAccountsSkuGroups: API.PaginatedOperationMethod<
 }));
 
 export interface ListAccountsSkuGroupsBillableSkusRequest {
+  /** Optional. A token identifying a page of results beyond the first page. Obtained through ListSkuGroupBillableSkusResponse.next_page_token of the previous CloudChannelService.ListSkuGroupBillableSkus call. */
+  pageToken?: string;
   /** Required. Resource name of the SKU group. Format: accounts/{account}/skuGroups/{sku_group}. */
   parent: string;
   /** Optional. The maximum number of SKUs to return. The service may return fewer than this value. If unspecified, returns a maximum of 100000 SKUs. The maximum value is 100000; values above 100000 will be coerced to 100000. */
   pageSize?: number;
-  /** Optional. A token identifying a page of results beyond the first page. Obtained through ListSkuGroupBillableSkusResponse.next_page_token of the previous CloudChannelService.ListSkuGroupBillableSkus call. */
-  pageToken?: string;
 }
 
 export const ListAccountsSkuGroupsBillableSkusRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/billableSkus" }),
     svc,
@@ -4732,837 +5550,6 @@ export const listAccountsSkuGroupsBillableSkus: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsSkuGroupsBillableSkusRequest,
   output: ListAccountsSkuGroupsBillableSkusResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface FetchReportResultsAccountsReportJobsRequest {
-  /** Required. The report job created by CloudChannelReportsService.RunReportJob. Report_job uses the format: accounts/{account_id}/reportJobs/{report_job_id} */
-  reportJob: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1FetchReportResultsRequest;
-}
-
-export const FetchReportResultsAccountsReportJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    reportJob: Schema.String.pipe(T.HttpPath("reportJob")),
-    body: Schema.optional(GoogleCloudChannelV1FetchReportResultsRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+reportJob}:fetchReportResults",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<FetchReportResultsAccountsReportJobsRequest>;
-
-export type FetchReportResultsAccountsReportJobsResponse =
-  GoogleCloudChannelV1FetchReportResultsResponse;
-export const FetchReportResultsAccountsReportJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1FetchReportResultsResponse;
-
-export type FetchReportResultsAccountsReportJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Retrieves data generated by CloudChannelReportsService.RunReportJob. Deprecated: Please use [Export Channel Services data to BigQuery](https://cloud.google.com/channel/docs/rebilling/export-data-to-bigquery) instead. */
-export const fetchReportResultsAccountsReportJobs: API.OperationMethod<
-  FetchReportResultsAccountsReportJobsRequest,
-  FetchReportResultsAccountsReportJobsResponse,
-  FetchReportResultsAccountsReportJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: FetchReportResultsAccountsReportJobsRequest,
-  output: FetchReportResultsAccountsReportJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetAccountsChannelPartnerLinksRequest {
-  /** Required. The resource name of the channel partner link to retrieve. Name uses the format: accounts/{account_id}/channelPartnerLinks/{id} where {id} is the Cloud Identity ID of the partner. */
-  name: string;
-  /** Optional. The level of granularity the ChannelPartnerLink will display. */
-  view?: "UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
-}
-
-export const GetAccountsChannelPartnerLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetAccountsChannelPartnerLinksRequest>;
-
-export type GetAccountsChannelPartnerLinksResponse =
-  GoogleCloudChannelV1ChannelPartnerLink;
-export const GetAccountsChannelPartnerLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
-
-export type GetAccountsChannelPartnerLinksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return value: The ChannelPartnerLink resource. */
-export const getAccountsChannelPartnerLinks: API.OperationMethod<
-  GetAccountsChannelPartnerLinksRequest,
-  GetAccountsChannelPartnerLinksResponse,
-  GetAccountsChannelPartnerLinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAccountsChannelPartnerLinksRequest,
-  output: GetAccountsChannelPartnerLinksResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateAccountsChannelPartnerLinksRequest {
-  /** Required. Create a channel partner link for the provided reseller account's resource name. Parent uses the format: accounts/{account_id} */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1ChannelPartnerLink;
-}
-
-export const CreateAccountsChannelPartnerLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(GoogleCloudChannelV1ChannelPartnerLink).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/channelPartnerLinks",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateAccountsChannelPartnerLinksRequest>;
-
-export type CreateAccountsChannelPartnerLinksResponse =
-  GoogleCloudChannelV1ChannelPartnerLink;
-export const CreateAccountsChannelPartnerLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
-
-export type CreateAccountsChannelPartnerLinksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Initiates a channel partner link between a distributor and a reseller, or between resellers in an n-tier reseller channel. Invited partners need to follow the invite_link_uri provided in the response to accept. After accepting the invitation, a link is set up between the two parties. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * ALREADY_EXISTS: The ChannelPartnerLink sent in the request already exists. * NOT_FOUND: No Cloud Identity customer exists for provided domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The new ChannelPartnerLink resource. */
-export const createAccountsChannelPartnerLinks: API.OperationMethod<
-  CreateAccountsChannelPartnerLinksRequest,
-  CreateAccountsChannelPartnerLinksResponse,
-  CreateAccountsChannelPartnerLinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateAccountsChannelPartnerLinksRequest,
-  output: CreateAccountsChannelPartnerLinksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAccountsChannelPartnerLinksRequest {
-  /** Optional. A token for a page of results other than the first page. Obtained using ListChannelPartnerLinksResponse.next_page_token of the previous CloudChannelService.ListChannelPartnerLinks call. */
-  pageToken?: string;
-  /** Optional. The level of granularity the ChannelPartnerLink will display. */
-  view?: "UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
-  /** Required. The resource name of the reseller account for listing channel partner links. Parent uses the format: accounts/{account_id} */
-  parent: string;
-  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, server will pick a default size (25). The maximum value is 200; the server will coerce values above 200. */
-  pageSize?: number;
-}
-
-export const ListAccountsChannelPartnerLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/channelPartnerLinks" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAccountsChannelPartnerLinksRequest>;
-
-export type ListAccountsChannelPartnerLinksResponse =
-  GoogleCloudChannelV1ListChannelPartnerLinksResponse;
-export const ListAccountsChannelPartnerLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListChannelPartnerLinksResponse;
-
-export type ListAccountsChannelPartnerLinksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List ChannelPartnerLinks belonging to a distributor. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: The list of the distributor account's ChannelPartnerLink resources. */
-export const listAccountsChannelPartnerLinks: API.PaginatedOperationMethod<
-  ListAccountsChannelPartnerLinksRequest,
-  ListAccountsChannelPartnerLinksResponse,
-  ListAccountsChannelPartnerLinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsChannelPartnerLinksRequest,
-  output: ListAccountsChannelPartnerLinksResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface PatchAccountsChannelPartnerLinksRequest {
-  /** Required. The resource name of the channel partner link to cancel. Name uses the format: accounts/{account_id}/channelPartnerLinks/{id} where {id} is the Cloud Identity ID of the partner. */
-  name: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1UpdateChannelPartnerLinkRequest;
-}
-
-export const PatchAccountsChannelPartnerLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(
-      GoogleCloudChannelV1UpdateChannelPartnerLinkRequest,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchAccountsChannelPartnerLinksRequest>;
-
-export type PatchAccountsChannelPartnerLinksResponse =
-  GoogleCloudChannelV1ChannelPartnerLink;
-export const PatchAccountsChannelPartnerLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
-
-export type PatchAccountsChannelPartnerLinksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a channel partner link. Distributors call this method to change a link's status. For example, to suspend a partner link. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Link state cannot change from invited to active or suspended. * Cannot send reseller_cloud_identity_id, invite_url, or name in update mask. * NOT_FOUND: ChannelPartnerLink resource not found. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The updated ChannelPartnerLink resource. */
-export const patchAccountsChannelPartnerLinks: API.OperationMethod<
-  PatchAccountsChannelPartnerLinksRequest,
-  PatchAccountsChannelPartnerLinksResponse,
-  PatchAccountsChannelPartnerLinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAccountsChannelPartnerLinksRequest,
-  output: PatchAccountsChannelPartnerLinksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest {
-  /** Optional. A filter for [CloudChannelService.ListChannelPartnerRepricingConfigs] results (channel_partner_link only). You can use this filter when you support a BatchGet-like query. To use the filter, you must set `parent=accounts/{account_id}/channelPartnerLinks/-`. Example: `channel_partner_link = accounts/account_id/channelPartnerLinks/c1` OR `channel_partner_link = accounts/account_id/channelPartnerLinks/c2`. */
-  filter?: string;
-  /** Required. The resource name of the account's ChannelPartnerLink. Parent uses the format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}. Supports accounts/{account_id}/channelPartnerLinks/- to retrieve configs for all channel partners. */
-  parent: string;
-  /** Optional. The maximum number of repricing configs to return. The service may return fewer than this value. If unspecified, returns a maximum of 50 rules. The maximum value is 100; values above 100 will be coerced to 100. */
-  pageSize?: number;
-  /** Optional. A token identifying a page of results beyond the first page. Obtained through ListChannelPartnerRepricingConfigsResponse.next_page_token of the previous CloudChannelService.ListChannelPartnerRepricingConfigs call. */
-  pageToken?: string;
-}
-
-export const ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+parent}/channelPartnerRepricingConfigs",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
-
-export type ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse;
-export const ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse;
-
-export type ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists information about how a Reseller modifies their bill before sending it to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is not associated with the given account. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resources. The data for each resource is displayed in the ascending order of: * Channel Partner ID * RepricingConfig.effective_invoice_month * ChannelPartnerRepricingConfig.update_time If unsuccessful, returns an error. */
-export const listAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.PaginatedOperationMethod<
-  ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
-  ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
-  ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
-  output: ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest {
-  /** Output only. Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. */
-  name: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1ChannelPartnerRepricingConfig;
-}
-
-export const PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(
-      GoogleCloudChannelV1ChannelPartnerRepricingConfig,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
-
-export type PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  GoogleCloudChannelV1ChannelPartnerRepricingConfig;
-export const PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
-
-export type PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a ChannelPartnerRepricingConfig. Call this method to set modifications for a specific ChannelPartner's bill. This method overwrites the existing CustomerRepricingConfig. You can only update configs if the RepricingConfig.effective_invoice_month is a future month. To make changes to configs for the current month, use CreateChannelPartnerRepricingConfig, taking note of its restrictions. You cannot update the RepricingConfig.effective_invoice_month. When updating a config in the future: * This config must already exist. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * INVALID_ARGUMENT: Missing or invalid required parameters in the request. Also displays if the updated config is for the current month or past months. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is not associated with the given account. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the updated ChannelPartnerRepricingConfig resource, otherwise returns an error. */
-export const patchAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.OperationMethod<
-  PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
-  PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
-  PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
-  output:
-    PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest {
-  /** Required. The resource name of the channel partner repricing config rule to delete. */
-  name: string;
-}
-
-export const DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
-
-export type DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  GoogleProtobufEmpty;
-export const DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
-
-export type DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the given ChannelPartnerRepricingConfig permanently. You can only delete configs if their RepricingConfig.effective_invoice_month is set to a date after the current month. Possible error codes: * PERMISSION_DENIED: The account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The ChannelPartnerRepricingConfig is active or in the past. * NOT_FOUND: No ChannelPartnerRepricingConfig found for the name in the request. */
-export const deleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.OperationMethod<
-  DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
-  DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
-  DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
-  output:
-    DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest {
-  /** Required. The resource name of the ChannelPartnerRepricingConfig Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. */
-  name: string;
-}
-
-export const GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
-
-export type GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  GoogleCloudChannelV1ChannelPartnerRepricingConfig;
-export const GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
-
-export type GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns an error. */
-export const getAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.OperationMethod<
-  GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
-  GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
-  GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
-  output: GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest {
-  /** Required. The resource name of the ChannelPartner that will receive the repricing config. Parent uses the format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id} */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1ChannelPartnerRepricingConfig;
-}
-
-export const CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(
-      GoogleCloudChannelV1ChannelPartnerRepricingConfig,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/channelPartnerRepricingConfigs",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
-
-export type CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  GoogleCloudChannelV1ChannelPartnerRepricingConfig;
-export const CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
-
-export type CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a ChannelPartnerRepricingConfig. Call this method to set modifications for a specific ChannelPartner's bill. You can only create configs if the RepricingConfig.effective_invoice_month is a future month. If needed, you can create a config for the current month, with some restrictions. When creating a config for a future month, make sure there are no existing configs for that RepricingConfig.effective_invoice_month. The following restrictions are for creating configs in the current month. * This functionality is reserved for recovering from an erroneous config, and should not be used for regular business cases. * The new config will not modify exports used with other configs. Changes to the config may be immediate, but may take up to 24 hours. * There is a limit of ten configs for any ChannelPartner or RepricingConfig.EntitlementGranularity.entitlement, for any RepricingConfig.effective_invoice_month. * The contained ChannelPartnerRepricingConfig.repricing_config value must be different from the value used in the current config for a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * INVALID_ARGUMENT: Missing or invalid required parameters in the request. Also displays if the updated config is for the current month or past months. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is not associated with the given account. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the updated ChannelPartnerRepricingConfig resource, otherwise returns an error. */
-export const createAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.OperationMethod<
-  CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
-  CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
-  CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
-  output:
-    CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetAccountsChannelPartnerLinksCustomersRequest {
-  /** Required. The resource name of the customer to retrieve. Name uses the format: accounts/{account_id}/customers/{customer_id} */
-  name: string;
-}
-
-export const GetAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetAccountsChannelPartnerLinksCustomersRequest>;
-
-export type GetAccountsChannelPartnerLinksCustomersResponse =
-  GoogleCloudChannelV1Customer;
-export const GetAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
-
-export type GetAccountsChannelPartnerLinksCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource. */
-export const getAccountsChannelPartnerLinksCustomers: API.OperationMethod<
-  GetAccountsChannelPartnerLinksCustomersRequest,
-  GetAccountsChannelPartnerLinksCustomersResponse,
-  GetAccountsChannelPartnerLinksCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAccountsChannelPartnerLinksCustomersRequest,
-  output: GetAccountsChannelPartnerLinksCustomersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateAccountsChannelPartnerLinksCustomersRequest {
-  /** Required. The resource name of reseller account in which to create the customer. Parent uses the format: accounts/{account_id} */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1Customer;
-}
-
-export const CreateAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/customers", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateAccountsChannelPartnerLinksCustomersRequest>;
-
-export type CreateAccountsChannelPartnerLinksCustomersResponse =
-  GoogleCloudChannelV1Customer;
-export const CreateAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
-
-export type CreateAccountsChannelPartnerLinksCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: * The reseller account making the request is different from the reseller account in the API request. * You are not authorized to create a customer. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource. */
-export const createAccountsChannelPartnerLinksCustomers: API.OperationMethod<
-  CreateAccountsChannelPartnerLinksCustomersRequest,
-  CreateAccountsChannelPartnerLinksCustomersResponse,
-  CreateAccountsChannelPartnerLinksCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateAccountsChannelPartnerLinksCustomersRequest,
-  output: CreateAccountsChannelPartnerLinksCustomersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteAccountsChannelPartnerLinksCustomersRequest {
-  /** Required. The resource name of the customer to delete. */
-  name: string;
-}
-
-export const DeleteAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteAccountsChannelPartnerLinksCustomersRequest>;
-
-export type DeleteAccountsChannelPartnerLinksCustomersResponse =
-  GoogleProtobufEmpty;
-export const DeleteAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
-
-export type DeleteAccountsChannelPartnerLinksCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the given Customer permanently. Possible error codes: * PERMISSION_DENIED: The account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No Customer resource found for the name in the request. */
-export const deleteAccountsChannelPartnerLinksCustomers: API.OperationMethod<
-  DeleteAccountsChannelPartnerLinksCustomersRequest,
-  DeleteAccountsChannelPartnerLinksCustomersResponse,
-  DeleteAccountsChannelPartnerLinksCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAccountsChannelPartnerLinksCustomersRequest,
-  output: DeleteAccountsChannelPartnerLinksCustomersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ImportAccountsChannelPartnerLinksCustomersRequest {
-  /** Required. The resource name of the reseller's account. Parent takes the format: accounts/{account_id} or accounts/{account_id}/channelPartnerLinks/{channel_partner_id} */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1ImportCustomerRequest;
-}
-
-export const ImportAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(GoogleCloudChannelV1ImportCustomerRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/customers:import",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ImportAccountsChannelPartnerLinksCustomersRequest>;
-
-export type ImportAccountsChannelPartnerLinksCustomersResponse =
-  GoogleCloudChannelV1Customer;
-export const ImportAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
-
-export type ImportAccountsChannelPartnerLinksCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is true, it will update that Customer's data. Possible error codes: * PERMISSION_DENIED: * The reseller account making the request is different from the reseller account in the API request. * You are not authorized to import the customer. See https://support.google.com/channelservices/answer/9759265 * NOT_FOUND: Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has conflicting critical fields. Requires an overwrite. Return value: The Customer. */
-export const importAccountsChannelPartnerLinksCustomers: API.OperationMethod<
-  ImportAccountsChannelPartnerLinksCustomersRequest,
-  ImportAccountsChannelPartnerLinksCustomersResponse,
-  ImportAccountsChannelPartnerLinksCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ImportAccountsChannelPartnerLinksCustomersRequest,
-  output: ImportAccountsChannelPartnerLinksCustomersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAccountsChannelPartnerLinksCustomersRequest {
-  /** Optional. A token identifying a page of results other than the first page. Obtained through ListCustomersResponse.next_page_token of the previous CloudChannelService.ListCustomers call. */
-  pageToken?: string;
-  /** Required. The resource name of the reseller account to list customers from. Parent uses the format: accounts/{account_id}. */
-  parent: string;
-  /** Optional. The maximum number of customers to return. The service may return fewer than this value. If unspecified, returns at most 10 customers. The maximum value is 50. */
-  pageSize?: number;
-  /** Optional. Filters applied to the [CloudChannelService.ListCustomers] results. See https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers for more information. */
-  filter?: string;
-}
-
-export const ListAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/customers" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAccountsChannelPartnerLinksCustomersRequest>;
-
-export type ListAccountsChannelPartnerLinksCustomersResponse =
-  GoogleCloudChannelV1ListCustomersResponse;
-export const ListAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListCustomersResponse;
-
-export type ListAccountsChannelPartnerLinksCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List Customers. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no customers. */
-export const listAccountsChannelPartnerLinksCustomers: API.PaginatedOperationMethod<
-  ListAccountsChannelPartnerLinksCustomersRequest,
-  ListAccountsChannelPartnerLinksCustomersResponse,
-  ListAccountsChannelPartnerLinksCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsChannelPartnerLinksCustomersRequest,
-  output: ListAccountsChannelPartnerLinksCustomersResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface PatchAccountsChannelPartnerLinksCustomersRequest {
-  /** Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
-  name: string;
-  /** The update mask that applies to the resource. Optional. */
-  updateMask?: string;
-  /** Request body */
-  body?: GoogleCloudChannelV1Customer;
-}
-
-export const PatchAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchAccountsChannelPartnerLinksCustomersRequest>;
-
-export type PatchAccountsChannelPartnerLinksCustomersResponse =
-  GoogleCloudChannelV1Customer;
-export const PatchAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
-
-export type PatchAccountsChannelPartnerLinksCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an existing Customer resource for the reseller or distributor. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated Customer resource. */
-export const patchAccountsChannelPartnerLinksCustomers: API.OperationMethod<
-  PatchAccountsChannelPartnerLinksCustomersRequest,
-  PatchAccountsChannelPartnerLinksCustomersResponse,
-  PatchAccountsChannelPartnerLinksCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAccountsChannelPartnerLinksCustomersRequest,
-  output: PatchAccountsChannelPartnerLinksCustomersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAccountsOffersRequest {
-  /** Optional. The expression to filter results by name (name of the Offer), sku.name (name of the SKU), or sku.product.name (name of the Product). Example 1: sku.product.name=products/p1 AND sku.name!=products/p1/skus/s1 Example 2: name=accounts/a1/offers/o1 */
-  filter?: string;
-  /** Required. The resource name of the reseller account from which to list Offers. Parent uses the format: accounts/{account_id}. */
-  parent: string;
-  /** Optional. A token for a page of results other than the first page. */
-  pageToken?: string;
-  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
-  languageCode?: string;
-  /** Optional. A boolean flag that determines if a response returns future offers 30 days from now. If the show_future_offers is true, the response will only contain offers that are scheduled to be available 30 days from now. */
-  showFutureOffers?: boolean;
-  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 500 Offers. The maximum value is 1000; the server will coerce values above 1000. */
-  pageSize?: number;
-}
-
-export const ListAccountsOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    languageCode: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("languageCode"),
-    ),
-    showFutureOffers: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("showFutureOffers"),
-    ),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/offers" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAccountsOffersRequest>;
-
-export type ListAccountsOffersResponse = GoogleCloudChannelV1ListOffersResponse;
-export const ListAccountsOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListOffersResponse;
-
-export type ListAccountsOffersError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists the Offers the reseller can sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
-export const listAccountsOffers: API.PaginatedOperationMethod<
-  ListAccountsOffersRequest,
-  ListAccountsOffersResponse,
-  ListAccountsOffersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsOffersRequest,
-  output: ListAccountsOffersResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ListProductsRequest {
-  /** Required. The resource name of the reseller account. Format: accounts/{account_id}. */
-  account?: string;
-  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 Products. The maximum value is 1000; the server will coerce values above 1000. */
-  pageSize?: number;
-  /** Optional. A token for a page of results other than the first page. */
-  pageToken?: string;
-  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
-  languageCode?: string;
-}
-
-export const ListProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  account: Schema.optional(Schema.String).pipe(T.HttpQuery("account")),
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  languageCode: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("languageCode"),
-  ),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/products" }),
-  svc,
-) as unknown as Schema.Schema<ListProductsRequest>;
-
-export type ListProductsResponse = GoogleCloudChannelV1ListProductsResponse;
-export const ListProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListProductsResponse;
-
-export type ListProductsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists the Products the reseller is authorized to sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
-export const listProducts: API.PaginatedOperationMethod<
-  ListProductsRequest,
-  ListProductsResponse,
-  ListProductsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProductsRequest,
-  output: ListProductsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ListProductsSkusRequest {
-  /** Required. Resource name of the reseller. Format: accounts/{account_id}. */
-  account?: string;
-  /** Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 SKUs. The maximum value is 1000; the server will coerce values above 1000. */
-  pageSize?: number;
-  /** Optional. A token for a page of results other than the first page. Optional. */
-  pageToken?: string;
-  /** Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". */
-  languageCode?: string;
-  /** Required. The resource name of the Product to list SKUs for. Parent uses the format: products/{product_id}. Supports products/- to retrieve SKUs for all products. */
-  parent: string;
-}
-
-export const ListProductsSkusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    account: Schema.optional(Schema.String).pipe(T.HttpQuery("account")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    languageCode: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("languageCode"),
-    ),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/skus" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProductsSkusRequest>;
-
-export type ListProductsSkusResponse = GoogleCloudChannelV1ListSkusResponse;
-export const ListProductsSkusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListSkusResponse;
-
-export type ListProductsSkusError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists the SKUs for a product the reseller is authorized to sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
-export const listProductsSkus: API.PaginatedOperationMethod<
-  ListProductsSkusRequest,
-  ListProductsSkusResponse,
-  ListProductsSkusError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProductsSkusRequest,
-  output: ListProductsSkusResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -5663,22 +5650,22 @@ export const unregisterSubscriberIntegrators: API.OperationMethod<
 }));
 
 export interface ListSubscribersIntegratorsRequest {
-  /** Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. */
-  integrator: string;
-  /** Optional. A page token, received from a previous `ListSubscribers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscribers` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. */
-  account?: string;
   /** Optional. The maximum number of service accounts to return. The service may return fewer than this value. If unspecified, returns at most 100 service accounts. The maximum value is 1000; the server will coerce values above 1000. */
   pageSize?: number;
+  /** Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. */
+  account?: string;
+  /** Optional. A page token, received from a previous `ListSubscribers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscribers` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. */
+  integrator: string;
 }
 
 export const ListSubscribersIntegratorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    integrator: Schema.String.pipe(T.HttpPath("integrator")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    account: Schema.optional(Schema.String).pipe(T.HttpQuery("account")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    account: Schema.optional(Schema.String).pipe(T.HttpQuery("account")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    integrator: Schema.String.pipe(T.HttpPath("integrator")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+integrator}:listSubscribers" }),
     svc,

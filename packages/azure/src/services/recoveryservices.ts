@@ -17,7 +17,7 @@ export const DeletedVaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type DeletedVaultsGetInput = typeof DeletedVaultsGetInput.Type;
@@ -70,7 +70,7 @@ export const DeletedVaultsGetOperationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}/operations/{operationId}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DeletedVaultsGetOperationStatusInput =
@@ -127,7 +127,7 @@ export const DeletedVaultsListBySubscriptionIdInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DeletedVaultsListBySubscriptionIdInput =
@@ -198,7 +198,7 @@ export const DeletedVaultsUndeleteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}/undelete",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DeletedVaultsUndeleteInput = typeof DeletedVaultsUndeleteInput.Type;
@@ -253,7 +253,7 @@ export const GetOperationResultInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/operationResults/{operationId}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type GetOperationResultInput = typeof GetOperationResultInput.Type;
@@ -306,7 +306,7 @@ export const GetOperationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/operationStatus/{operationId}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type GetOperationStatusInput = typeof GetOperationStatusInput.Type;
@@ -358,7 +358,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.RecoveryServices/operations",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -421,7 +421,7 @@ export const PrivateLinkResourcesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources/{privateLinkResourceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -476,7 +476,7 @@ export const PrivateLinkResourcesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -563,7 +563,7 @@ export const RecoveryServicesCapabilitiesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/capabilities",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RecoveryServicesCapabilitiesInput =
@@ -602,7 +602,7 @@ export const RecoveryServicesCheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/locations/{location}/checkNameAvailability",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RecoveryServicesCheckNameAvailabilityInput =
@@ -649,7 +649,7 @@ export const RegisteredIdentitiesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/{identityName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RegisteredIdentitiesDeleteInput =
@@ -687,7 +687,7 @@ export const ReplicationUsagesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/replicationUsages",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationUsagesListInput = typeof ReplicationUsagesListInput.Type;
@@ -752,7 +752,7 @@ export const UsagesListByVaultsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type UsagesListByVaultsInput = typeof UsagesListByVaultsInput.Type;
@@ -828,7 +828,7 @@ export const VaultCertificatesCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/certificates/{certificateName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type VaultCertificatesCreateInput =
@@ -892,7 +892,7 @@ export const VaultExtendedInfoCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type VaultExtendedInfoCreateOrUpdateInput =
@@ -946,7 +946,7 @@ export const VaultExtendedInfoGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type VaultExtendedInfoGetInput = typeof VaultExtendedInfoGetInput.Type;
@@ -1008,7 +1008,7 @@ export const VaultExtendedInfoUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type VaultExtendedInfoUpdateInput =
@@ -1257,6 +1257,14 @@ export const VaultsCreateOrUpdateInput =
                 state: Schema.optional(
                   Schema.Literals(["Disabled", "Unlocked", "Locked"]),
                 ),
+                configuration: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.optional(
+                      Schema.Literals(["AsPerPolicy", "TimeBased"]),
+                    ),
+                    durationInDays: Schema.optional(Schema.Number),
+                  }),
+                ),
               }),
             ),
             softDeleteSettings: Schema.optional(
@@ -1348,7 +1356,7 @@ export const VaultsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type VaultsCreateOrUpdateInput = typeof VaultsCreateOrUpdateInput.Type;
@@ -1400,7 +1408,7 @@ export const VaultsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type VaultsDeleteInput = typeof VaultsDeleteInput.Type;
@@ -1431,7 +1439,7 @@ export const VaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type VaultsGetInput = typeof VaultsGetInput.Type;
@@ -1480,7 +1488,7 @@ export const VaultsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type VaultsListByResourceGroupInput =
@@ -1547,7 +1555,7 @@ export const VaultsListBySubscriptionIdInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/vaults",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type VaultsListBySubscriptionIdInput =
@@ -1804,6 +1812,14 @@ export const VaultsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               state: Schema.optional(
                 Schema.Literals(["Disabled", "Unlocked", "Locked"]),
               ),
+              configuration: Schema.optional(
+                Schema.Struct({
+                  type: Schema.optional(
+                    Schema.Literals(["AsPerPolicy", "TimeBased"]),
+                  ),
+                  durationInDays: Schema.optional(Schema.Number),
+                }),
+              ),
             }),
           ),
           softDeleteSettings: Schema.optional(
@@ -1885,7 +1901,7 @@ export const VaultsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type VaultsUpdateInput = typeof VaultsUpdateInput.Type;

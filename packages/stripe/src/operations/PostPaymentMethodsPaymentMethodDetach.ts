@@ -60,7 +60,16 @@ export const PostPaymentMethodsPaymentMethodDetachOutput =
       phone: Schema.NullOr(Schema.String),
       tax_id: Schema.NullOr(Schema.String),
     }),
-    blik: Schema.optional(Schema.Struct({})),
+    bizum: Schema.optional(
+      Schema.Struct({
+        buyer_id: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+    blik: Schema.optional(
+      Schema.Struct({
+        buyer_id: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
     boleto: Schema.optional(
       Schema.Struct({
         tax_id: Schema.String,
@@ -412,7 +421,11 @@ export const PostPaymentMethodsPaymentMethodDetachOutput =
         pay_id: Schema.NullOr(Schema.String),
       }),
     ),
-    pix: Schema.optional(Schema.Struct({})),
+    pix: Schema.optional(
+      Schema.Struct({
+        fingerprint: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
     promptpay: Schema.optional(Schema.Struct({})),
     radar_options: Schema.optional(
       Schema.Struct({
@@ -422,6 +435,7 @@ export const PostPaymentMethodsPaymentMethodDetachOutput =
     revolut_pay: Schema.optional(Schema.Struct({})),
     samsung_pay: Schema.optional(Schema.Struct({})),
     satispay: Schema.optional(Schema.Struct({})),
+    scalapay: Schema.optional(Schema.Struct({})),
     sepa_debit: Schema.optional(
       Schema.Struct({
         bank_code: Schema.NullOr(Schema.String),
@@ -437,6 +451,7 @@ export const PostPaymentMethodsPaymentMethodDetachOutput =
         country: Schema.NullOr(Schema.String),
       }),
     ),
+    sunbit: Schema.optional(Schema.Struct({})),
     swish: Schema.optional(Schema.Struct({})),
     twint: Schema.optional(Schema.Struct({})),
     type: Schema.Literals([
@@ -450,6 +465,7 @@ export const PostPaymentMethodsPaymentMethodDetachOutput =
       "bacs_debit",
       "bancontact",
       "billie",
+      "bizum",
       "blik",
       "boleto",
       "card",
@@ -486,8 +502,10 @@ export const PostPaymentMethodsPaymentMethodDetachOutput =
       "revolut_pay",
       "samsung_pay",
       "satispay",
+      "scalapay",
       "sepa_debit",
       "sofort",
+      "sunbit",
       "swish",
       "twint",
       "upi",

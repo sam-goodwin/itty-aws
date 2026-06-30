@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsClusteringJobsPartialUpdateInput =
@@ -19,7 +18,7 @@ export const LlmAnalyticsClusteringJobsPartialUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/llm_analytics/clustering_jobs/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/clustering_jobs/{id}/",
     }),
   );
 export type LlmAnalyticsClusteringJobsPartialUpdateInput =
@@ -43,7 +42,7 @@ export type LlmAnalyticsClusteringJobsPartialUpdateOutput =
 
 // The operation
 /**
- * CRUD for clustering job configurations (max 5 per team).
+ * CRUD for clustering job configurations (max 10 per team).
  *
  * @param id - A UUID string identifying this clustering job.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -52,5 +51,4 @@ export const llmAnalyticsClusteringJobsPartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsClusteringJobsPartialUpdateInput,
     outputSchema: LlmAnalyticsClusteringJobsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

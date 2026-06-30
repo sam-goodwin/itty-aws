@@ -26,6 +26,7 @@ export const GetDeploymentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cutover_expiring: Schema.Boolean,
   deploy_check_errors: Schema.optional(Schema.NullOr(Schema.String)),
   finished_at: Schema.NullOr(Schema.String),
+  force_cutover_requested_at: Schema.NullOr(Schema.String),
   queued_at: Schema.NullOr(Schema.String),
   ready_to_cutover_at: Schema.NullOr(Schema.String),
   started_at: Schema.NullOr(Schema.String),
@@ -180,7 +181,7 @@ export const GetDeploymentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   instant_ddl: Schema.Boolean,
   instant_ddl_eligible: Schema.Boolean,
   queue_paused: Schema.Boolean,
-  queue_pause_reason: Schema.String,
+  queue_pause_reason: Schema.NullOr(Schema.String),
 });
 export type GetDeploymentOutput = typeof GetDeploymentOutput.Type;
 

@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ApprovalPoliciesDestroyInput =
@@ -11,7 +10,7 @@ export const ApprovalPoliciesDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/approval_policies/{id}/",
+      path: "/api/projects/{project_id}/approval_policies/{id}/",
     }),
   );
 export type ApprovalPoliciesDestroyInput =
@@ -33,6 +32,5 @@ export const approvalPoliciesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ApprovalPoliciesDestroyInput,
     outputSchema: ApprovalPoliciesDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

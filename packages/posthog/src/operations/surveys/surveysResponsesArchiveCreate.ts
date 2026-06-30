@@ -27,7 +27,6 @@ export const SurveysResponsesArchiveCreateInput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -49,7 +48,6 @@ export const SurveysResponsesArchiveCreateInput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -68,18 +66,17 @@ export const SurveysResponsesArchiveCreateInput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-    targeting_flag_filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    targeting_flag_filters: Schema.optional(Schema.Unknown),
     remove_targeting_flag: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    questions: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    conditions: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    appearance: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    questions: Schema.optional(Schema.Unknown),
+    conditions: Schema.optional(Schema.Unknown),
+    appearance: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(
       Schema.NullOr(
@@ -113,14 +110,13 @@ export const SurveysResponsesArchiveCreateInput =
     response_sampling_interval_type: Schema.optional(Schema.Unknown),
     response_sampling_interval: Schema.optional(Schema.NullOr(Schema.Number)),
     response_sampling_limit: Schema.optional(Schema.NullOr(Schema.Number)),
-    response_sampling_daily_limits: Schema.optional(
-      Schema.NullOr(Schema.Unknown),
-    ),
+    response_sampling_daily_limits: Schema.optional(Schema.Unknown),
     enable_partial_responses: Schema.optional(Schema.NullOr(Schema.Boolean)),
     enable_iframe_embedding: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    translations: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    base_language: Schema.optional(Schema.String),
+    translations: Schema.optional(Schema.Unknown),
     _create_in_folder: Schema.optional(Schema.String),
-    form_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    form_content: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "POST",

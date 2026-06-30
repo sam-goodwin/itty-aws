@@ -9,9 +9,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const DeleteConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DeleteConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consoleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.Portal/consoles/{consoleName}",
@@ -29,6 +29,9 @@ export type DeleteConsoleOutput = typeof DeleteConsoleOutput.Type;
  * Delete console
  *
  * Deletes the console
+ *
+ * @param api-version - Client API version
+ * @param consoleName - The name of the console
  */
 export const DeleteConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteConsoleInput,
@@ -36,7 +39,10 @@ export const DeleteConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DeleteConsoleWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consoleName: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}",
@@ -57,6 +63,10 @@ export type DeleteConsoleWithLocationOutput =
  * Delete console
  *
  * Deletes the console
+ *
+ * @param api-version - Client API version
+ * @param consoleName - The name of the console
+ * @param location - The provider location
  */
 export const deleteConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -66,7 +76,9 @@ export const deleteConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DeleteUserSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userSettingsName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
@@ -84,6 +96,9 @@ export type DeleteUserSettingsOutput = typeof DeleteUserSettingsOutput.Type;
  * delete user settings.
  *
  * Delete cloud shell settings for current signed in user
+ *
+ * @param api-version - Client API version
+ * @param userSettingsName - The name of the user settings
  */
 export const DeleteUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteUserSettingsInput,
@@ -91,7 +106,10 @@ export const DeleteUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DeleteUserSettingsWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userSettingsName: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Portal/locations/{location}/userSettings/{userSettingsName}",
@@ -112,6 +130,10 @@ export type DeleteUserSettingsWithLocationOutput =
  * delete user settings.
  *
  * Delete cloud shell settings for current signed in user
+ *
+ * @param api-version - Client API version
+ * @param userSettingsName - The name of the user settings
+ * @param location - The provider location
  */
 export const deleteUserSettingsWithLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -119,9 +141,9 @@ export const deleteUserSettingsWithLocation =
     outputSchema: DeleteUserSettingsWithLocationOutput,
   }));
 // Input Schema
-export const GetConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consoleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Portal/consoles/{consoleName}",
@@ -139,6 +161,9 @@ export type GetConsoleOutput = typeof GetConsoleOutput.Type;
  * Get console
  *
  * Gets the console for the user.
+ *
+ * @param api-version - Client API version
+ * @param consoleName - The name of the console
  */
 export const GetConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetConsoleInput,
@@ -146,7 +171,10 @@ export const GetConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GetConsoleWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consoleName: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}",
@@ -167,6 +195,10 @@ export type GetConsoleWithLocationOutput =
  * Get console
  *
  * Gets the console for the user.
+ *
+ * @param api-version - Client API version
+ * @param consoleName - The name of the console
+ * @param location - The provider location
  */
 export const getConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -175,9 +207,9 @@ export const getConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const GetUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userSettingsName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
@@ -195,6 +227,9 @@ export type GetUserSettingsOutput = typeof GetUserSettingsOutput.Type;
  * Get user settings.
  *
  * Get current user settings for current signed in user. This operation returns settings for the user's cloud shell preferences including preferred location, storage profile, shell type, font and size settings.
+ *
+ * @param api-version - Client API version
+ * @param userSettingsName - The name of the user settings
  */
 export const GetUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetUserSettingsInput,
@@ -202,7 +237,10 @@ export const GetUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GetUserSettingsWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userSettingsName: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Portal/locations/{location}/userSettings/{userSettingsName}",
@@ -223,6 +261,10 @@ export type GetUserSettingsWithLocationOutput =
  * Get user settings.
  *
  * Get current user settings for current signed in user. This operation returns settings for the user's cloud shell preferences including preferred location, storage profile, shell type, font and size settings.
+ *
+ * @param api-version - Client API version
+ * @param userSettingsName - The name of the user settings
+ * @param location - The provider location
  */
 export const getUserSettingsWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -231,9 +273,9 @@ export const getUserSettingsWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const KeepAliveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const KeepAliveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consoleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Portal/consoles/{consoleName}/keepAlive",
@@ -251,6 +293,8 @@ export type KeepAliveOutput = typeof KeepAliveOutput.Type;
  * Keep alive
  *
  * Keep console alive
+ *
+ * @param consoleName - The name of the console
  */
 export const KeepAlive = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: KeepAliveInput,
@@ -258,7 +302,10 @@ export const KeepAlive = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const KeepAliveWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consoleName: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}/keepAlive",
@@ -278,6 +325,9 @@ export type KeepAliveWithLocationOutput =
  * Keep alive
  *
  * Keep console alive
+ *
+ * @param consoleName - The name of the console
+ * @param location - The provider location
  */
 export const keepAliveWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -288,6 +338,7 @@ export const keepAliveWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PatchUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    userSettingsName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         preferredOsType: Schema.Literals(["Windows", "Linux"]),
@@ -328,6 +379,9 @@ export type PatchUserSettingsOutput = typeof PatchUserSettingsOutput.Type;
  * patch user settings.
  *
  * Patch cloud shell settings for current signed in user
+ *
+ * @param api-version - Client API version
+ * @param userSettingsName - The name of the user settings
  */
 export const PatchUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PatchUserSettingsInput,
@@ -336,6 +390,8 @@ export const PatchUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PatchUserSettingsWithLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userSettingsName: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         preferredOsType: Schema.Literals(["Windows", "Linux"]),
@@ -377,6 +433,10 @@ export type PatchUserSettingsWithLocationOutput =
  * patch user settings.
  *
  * Patch cloud shell settings for current signed in user
+ *
+ * @param api-version - Client API version
+ * @param userSettingsName - The name of the user settings
+ * @param location - The provider location
  */
 export const patchUserSettingsWithLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -385,6 +445,7 @@ export const patchUserSettingsWithLocation =
   }));
 // Input Schema
 export const PutConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consoleName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     osType: Schema.Literals(["Linux", "Windows"]),
     provisioningState: Schema.optional(
@@ -420,6 +481,9 @@ export type PutConsoleOutput = typeof PutConsoleOutput.Type;
  * Put console
  *
  * Puts a request for a console
+ *
+ * @param api-version - Client API version
+ * @param consoleName - The name of the console
  */
 export const PutConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PutConsoleInput,
@@ -427,7 +491,10 @@ export const PutConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PutConsoleWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consoleName: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}",
@@ -448,6 +515,10 @@ export type PutConsoleWithLocationOutput =
  * Put console
  *
  * Puts a request for a console
+ *
+ * @param api-version - Client API version
+ * @param consoleName - The name of the console
+ * @param location - The provider location
  */
 export const putConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -457,6 +528,7 @@ export const putConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PutUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userSettingsName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     preferredOsType: Schema.Literals(["Windows", "Linux"]),
     preferredLocation: Schema.String,
@@ -493,6 +565,9 @@ export type PutUserSettingsOutput = typeof PutUserSettingsOutput.Type;
  * put user settings.
  *
  * Create or update cloud shell settings for current signed in user
+ *
+ * @param api-version - Client API version
+ * @param userSettingsName - The name of the user settings
  */
 export const PutUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PutUserSettingsInput,
@@ -501,6 +576,8 @@ export const PutUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PutUserSettingsWithLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userSettingsName: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       preferredOsType: Schema.Literals(["Windows", "Linux"]),
       preferredLocation: Schema.String,
@@ -540,6 +617,10 @@ export type PutUserSettingsWithLocationOutput =
  * put user settings.
  *
  * Create or update cloud shell settings for current signed in user
+ *
+ * @param api-version - Client API version
+ * @param userSettingsName - The name of the user settings
+ * @param location - The provider location
  */
 export const putUserSettingsWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

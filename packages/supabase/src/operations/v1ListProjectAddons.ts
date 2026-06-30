@@ -23,6 +23,7 @@ export const V1ListProjectAddonsOutput =
           "auth_mfa_phone",
           "auth_mfa_web_authn",
           "log_drain",
+          "etl_pipeline",
         ]),
         variant: Schema.Struct({
           id: Schema.Unknown,
@@ -47,6 +48,7 @@ export const V1ListProjectAddonsOutput =
           "auth_mfa_phone",
           "auth_mfa_web_authn",
           "log_drain",
+          "etl_pipeline",
         ]),
         name: Schema.String,
         variants: Schema.Array(

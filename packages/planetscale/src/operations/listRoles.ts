@@ -11,6 +11,8 @@ export const ListRolesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branch: Schema.String.pipe(T.PathParam()),
   page: Schema.optional(Schema.Number),
   per_page: Schema.optional(Schema.Number),
+  status: Schema.optional(Schema.String),
+  q: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -95,6 +97,8 @@ export type ListRolesOutput = typeof ListRolesOutput.Type;
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
+ * @param status - Filter roles by status
+ * @param q - Search roles by name or username
  */
 export const listRoles = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   inputSchema: ListRolesInput,

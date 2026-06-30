@@ -24,9 +24,10 @@ export type GetNeonAuthEmailProviderOutput =
 
 // The operation
 /**
- * Get email provider configuration
+ * Retrieve email provider configuration
  *
- * Gets the email provider configuration for the specified branch.
+ * Retrieves the email provider configuration for the specified branch's Neon Auth integration,
+ * including the provider type and server settings.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

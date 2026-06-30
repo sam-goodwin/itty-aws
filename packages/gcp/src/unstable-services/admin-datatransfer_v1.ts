@@ -36,115 +36,115 @@ export const ApplicationTransferParam: Schema.Schema<ApplicationTransferParam> =
   }).annotate({ identifier: "ApplicationTransferParam" });
 
 export interface ApplicationDataTransfer {
-  /** Read-only. Current status of transfer for this application. */
-  applicationTransferStatus?: string;
   /** The application's ID. */
   applicationId?: string;
+  /** Read-only. Current status of transfer for this application. */
+  applicationTransferStatus?: string;
   /** The transfer parameters for the application. These parameters are used to select the data which will get transferred in context of this application. For more information about the specific values available for each application, see the [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference. */
   applicationTransferParams?: ReadonlyArray<ApplicationTransferParam>;
 }
 
 export const ApplicationDataTransfer: Schema.Schema<ApplicationDataTransfer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    applicationTransferStatus: Schema.optional(Schema.String),
     applicationId: Schema.optional(Schema.String),
+    applicationTransferStatus: Schema.optional(Schema.String),
     applicationTransferParams: Schema.optional(
       Schema.Array(ApplicationTransferParam),
     ),
   }).annotate({ identifier: "ApplicationDataTransfer" });
 
 export interface DataTransfer {
-  /** Identifies the resource as a DataTransfer request. */
-  kind?: string;
-  /** Read-only. Overall transfer status. */
-  overallTransferStatusCode?: string;
-  /** ID of the user whose data is being transferred. */
-  oldOwnerUserId?: string;
-  /** ID of the user to whom the data is being transferred. */
-  newOwnerUserId?: string;
-  /** The list of per-application data transfer resources. It contains details of the applications associated with this transfer resource, and also specifies the applications for which data transfer has to be done at the time of the transfer resource creation. */
-  applicationDataTransfers?: ReadonlyArray<ApplicationDataTransfer>;
-  /** Read-only. The time at which the data transfer was requested. */
-  requestTime?: string;
-  /** ETag of the resource. */
-  etag?: string;
   /** Read-only. The transfer's ID. */
   id?: string;
+  /** ID of the user whose data is being transferred. */
+  oldOwnerUserId?: string;
+  /** The list of per-application data transfer resources. It contains details of the applications associated with this transfer resource, and also specifies the applications for which data transfer has to be done at the time of the transfer resource creation. */
+  applicationDataTransfers?: ReadonlyArray<ApplicationDataTransfer>;
+  /** ID of the user to whom the data is being transferred. */
+  newOwnerUserId?: string;
+  /** Read-only. Overall transfer status. */
+  overallTransferStatusCode?: string;
+  /** Identifies the resource as a DataTransfer request. */
+  kind?: string;
+  /** ETag of the resource. */
+  etag?: string;
+  /** Read-only. The time at which the data transfer was requested. */
+  requestTime?: string;
 }
 
 export const DataTransfer: Schema.Schema<DataTransfer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    overallTransferStatusCode: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
     oldOwnerUserId: Schema.optional(Schema.String),
-    newOwnerUserId: Schema.optional(Schema.String),
     applicationDataTransfers: Schema.optional(
       Schema.Array(ApplicationDataTransfer),
     ),
-    requestTime: Schema.optional(Schema.String),
+    newOwnerUserId: Schema.optional(Schema.String),
+    overallTransferStatusCode: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "DataTransfer" });
 
-export interface Application {
-  /** Identifies the resource as a DataTransfer Application Resource. */
+export interface DataTransfersListResponse {
+  /** ETag of the resource. */
+  etag?: string;
+  /** List of data transfer requests. */
+  dataTransfers?: ReadonlyArray<DataTransfer>;
+  /** Token to specify the next page in the list. */
+  nextPageToken?: string;
+  /** Identifies the resource as a collection of data transfer requests. */
   kind?: string;
-  /** The application's ID. Retrievable by using the [`applications.list()`](https://developers.google.com/workspace/admin/data-transfer/reference/rest/v1/applications/list) method. */
-  id?: string;
+}
+
+export const DataTransfersListResponse: Schema.Schema<DataTransfersListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    dataTransfers: Schema.optional(Schema.Array(DataTransfer)),
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataTransfersListResponse" });
+
+export interface Application {
   /** The application's name. */
   name?: string;
+  /** Identifies the resource as a DataTransfer Application Resource. */
+  kind?: string;
   /** Etag of the resource. */
   etag?: string;
+  /** The application's ID. Retrievable by using the [`applications.list()`](https://developers.google.com/workspace/admin/data-transfer/reference/rest/v1/applications/list) method. */
+  id?: string;
   /** The list of all possible transfer parameters for this application. These parameters select which categories of the user's data to transfer. */
   transferParams?: ReadonlyArray<ApplicationTransferParam>;
 }
 
 export const Application: Schema.Schema<Application> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
     transferParams: Schema.optional(Schema.Array(ApplicationTransferParam)),
   }).annotate({ identifier: "Application" });
 
 export interface ApplicationsListResponse {
-  /** Identifies the resource as a collection of Applications. */
-  kind?: string;
-  /** The list of applications that support data transfer and are also installed for the customer. */
-  applications?: ReadonlyArray<Application>;
   /** ETag of the resource. */
   etag?: string;
   /** Token to specify the next page in the list. */
   nextPageToken?: string;
+  /** The list of applications that support data transfer and are also installed for the customer. */
+  applications?: ReadonlyArray<Application>;
+  /** Identifies the resource as a collection of Applications. */
+  kind?: string;
 }
 
 export const ApplicationsListResponse: Schema.Schema<ApplicationsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
     applications: Schema.optional(Schema.Array(Application)),
-    etag: Schema.optional(Schema.String),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ApplicationsListResponse" });
-
-export interface DataTransfersListResponse {
-  /** Identifies the resource as a collection of data transfer requests. */
-  kind?: string;
-  /** List of data transfer requests. */
-  dataTransfers?: ReadonlyArray<DataTransfer>;
-  /** ETag of the resource. */
-  etag?: string;
-  /** Token to specify the next page in the list. */
-  nextPageToken?: string;
-}
-
-export const DataTransfersListResponse: Schema.Schema<DataTransfersListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
-    dataTransfers: Schema.optional(Schema.Array(DataTransfer)),
-    etag: Schema.optional(Schema.String),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DataTransfersListResponse" });
+  }).annotate({ identifier: "ApplicationsListResponse" });
 
 // ==========================================================================
 // Errors
@@ -200,47 +200,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface ListApplicationsRequest {
-  /** Immutable ID of the Google Workspace account. */
-  customerId?: string;
-  /** Maximum number of results to return. Default is 100. */
-  maxResults?: number;
-  /** Token to specify next page in the list. */
-  pageToken?: string;
-}
-
-export const ListApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "admin/datatransfer/v1/applications" }),
-    svc,
-  ) as unknown as Schema.Schema<ListApplicationsRequest>;
-
-export type ListApplicationsResponse = ApplicationsListResponse;
-export const ListApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApplicationsListResponse;
-
-export type ListApplicationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists the applications available for data transfer for a customer. */
-export const listApplications: API.PaginatedOperationMethod<
-  ListApplicationsRequest,
-  ListApplicationsResponse,
-  ListApplicationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationsRequest,
-  output: ListApplicationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface GetApplicationsRequest {
   /** ID of the application resource to be retrieved. */
   applicationId: string;
@@ -272,6 +231,79 @@ export const getApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationsRequest,
   output: GetApplicationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListApplicationsRequest {
+  /** Token to specify next page in the list. */
+  pageToken?: string;
+  /** Immutable ID of the Google Workspace account. */
+  customerId?: string;
+  /** Maximum number of results to return. Default is 100. */
+  maxResults?: number;
+}
+
+export const ListApplicationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.Http({ method: "GET", path: "admin/datatransfer/v1/applications" }),
+    svc,
+  ) as unknown as Schema.Schema<ListApplicationsRequest>;
+
+export type ListApplicationsResponse = ApplicationsListResponse;
+export const ListApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApplicationsListResponse;
+
+export type ListApplicationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists the applications available for data transfer for a customer. */
+export const listApplications: API.PaginatedOperationMethod<
+  ListApplicationsRequest,
+  ListApplicationsResponse,
+  ListApplicationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListApplicationsRequest,
+  output: ListApplicationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetTransfersRequest {
+  /** ID of the resource to be retrieved. This is returned in the response from the insert method. */
+  dataTransferId: string;
+}
+
+export const GetTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataTransferId: Schema.String.pipe(T.HttpPath("dataTransferId")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "admin/datatransfer/v1/transfers/{dataTransferId}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetTransfersRequest>;
+
+export type GetTransfersResponse = DataTransfer;
+export const GetTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfer;
+
+export type GetTransfersError = DefaultErrors | NotFound | Forbidden;
+
+/** Retrieves a data transfer request by its resource ID. */
+export const getTransfers: API.OperationMethod<
+  GetTransfersRequest,
+  GetTransfersResponse,
+  GetTransfersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetTransfersRequest,
+  output: GetTransfersResponse,
   errors: [NotFound, Forbidden],
 }));
 
@@ -316,30 +348,30 @@ export const insertTransfers: API.OperationMethod<
 }));
 
 export interface ListTransfersRequest {
+  /** Destination user's profile ID. */
+  newOwnerUserId?: string;
   /** Immutable ID of the Google Workspace account. */
   customerId?: string;
-  /** Maximum number of results to return. Default is 100. */
-  maxResults?: number;
   /** Source user's profile ID. */
   oldOwnerUserId?: string;
   /** Token to specify the next page in the list. */
   pageToken?: string;
-  /** Destination user's profile ID. */
-  newOwnerUserId?: string;
+  /** Maximum number of results to return. Default is 100. */
+  maxResults?: number;
   /** Status of the transfer. */
   status?: string;
 }
 
 export const ListTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  newOwnerUserId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("newOwnerUserId"),
+  ),
   customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
-  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   oldOwnerUserId: Schema.optional(Schema.String).pipe(
     T.HttpQuery("oldOwnerUserId"),
   ),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  newOwnerUserId: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("newOwnerUserId"),
-  ),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   status: Schema.optional(Schema.String).pipe(T.HttpQuery("status")),
 }).pipe(
   T.Http({ method: "GET", path: "admin/datatransfer/v1/transfers" }),
@@ -366,36 +398,4 @@ export const listTransfers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface GetTransfersRequest {
-  /** ID of the resource to be retrieved. This is returned in the response from the insert method. */
-  dataTransferId: string;
-}
-
-export const GetTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dataTransferId: Schema.String.pipe(T.HttpPath("dataTransferId")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "admin/datatransfer/v1/transfers/{dataTransferId}",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetTransfersRequest>;
-
-export type GetTransfersResponse = DataTransfer;
-export const GetTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfer;
-
-export type GetTransfersError = DefaultErrors | NotFound | Forbidden;
-
-/** Retrieves a data transfer request by its resource ID. */
-export const getTransfers: API.OperationMethod<
-  GetTransfersRequest,
-  GetTransfersResponse,
-  GetTransfersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetTransfersRequest,
-  output: GetTransfersResponse,
-  errors: [NotFound, Forbidden],
 }));

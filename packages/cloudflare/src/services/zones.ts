@@ -144,6 +144,100 @@ export const triggerActivationCheck: API.OperationMethod<
 }));
 
 // =============================================================================
+// CtAlerting
+// =============================================================================
+
+export interface GetCtAlertingRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const GetCtAlertingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/ct/alerting" })),
+) as unknown as Schema.Schema<GetCtAlertingRequest>;
+
+export interface GetCtAlertingResponse {
+  /** Whether CT alerting is enabled for the zone. */
+  enabled: boolean;
+  /** Email addresses that receive CT alert notifications. Only present and configurable for Business and Enterprise zones. Maximum of 10 addresses. For Free and Pro zones, notifications are sent to all use */
+  emails?: string[] | null;
+}
+
+export const GetCtAlertingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      emails: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetCtAlertingResponse>;
+
+export type GetCtAlertingError = DefaultErrors;
+
+export const getCtAlerting: API.OperationMethod<
+  GetCtAlertingRequest,
+  GetCtAlertingResponse,
+  GetCtAlertingError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetCtAlertingRequest,
+  output: GetCtAlertingResponse,
+  errors: [],
+}));
+
+export interface PatchCtAlertingRequest {
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: Whether CT alerting is enabled for the zone. */
+  enabled: boolean;
+  /** Body param: Email addresses that receive CT alert notifications. Only present and configurable for Business and Enterprise zones. Maximum of 10 addresses. For Free and Pro zones, notifications are sen */
+  emails?: string[];
+}
+
+export const PatchCtAlertingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      enabled: Schema.Boolean,
+      emails: Schema.optional(Schema.Array(Schema.String)),
+    }).pipe(T.Http({ method: "PATCH", path: "/zones/{zone_id}/ct/alerting" })),
+  ) as unknown as Schema.Schema<PatchCtAlertingRequest>;
+
+export interface PatchCtAlertingResponse {
+  /** Whether CT alerting is enabled for the zone. */
+  enabled: boolean;
+  /** Email addresses that receive CT alert notifications. Only present and configurable for Business and Enterprise zones. Maximum of 10 addresses. For Free and Pro zones, notifications are sent to all use */
+  emails?: string[] | null;
+}
+
+export const PatchCtAlertingResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      emails: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchCtAlertingResponse>;
+
+export type PatchCtAlertingError = DefaultErrors;
+
+export const patchCtAlerting: API.OperationMethod<
+  PatchCtAlertingRequest,
+  PatchCtAlertingResponse,
+  PatchCtAlertingError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchCtAlertingRequest,
+  output: PatchCtAlertingResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // CustomNameserver
 // =============================================================================
 

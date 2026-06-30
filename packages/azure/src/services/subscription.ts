@@ -10,6 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AliasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aliasName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       displayName: Schema.optional(Schema.String),
@@ -81,15 +82,18 @@ export type AliasCreateOutput = typeof AliasCreateOutput.Type;
 // The operation
 /**
  * Create Alias Subscription.
+ *
+ * @param aliasName - AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const AliasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AliasCreateInput,
   outputSchema: AliasCreateOutput,
 }));
 // Input Schema
-export const AliasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AliasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aliasName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.Subscription/aliases/{aliasName}",
@@ -105,13 +109,18 @@ export type AliasDeleteOutput = typeof AliasDeleteOutput.Type;
 // The operation
 /**
  * Delete Alias.
+ *
+ * @param aliasName - AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const AliasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AliasDeleteInput,
   outputSchema: AliasDeleteOutput,
 }));
 // Input Schema
-export const AliasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const AliasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aliasName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Subscription/aliases/{aliasName}",
@@ -165,6 +174,9 @@ export type AliasGetOutput = typeof AliasGetOutput.Type;
 // The operation
 /**
  * Get Alias Subscription.
+ *
+ * @param aliasName - AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const AliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AliasGetInput,
@@ -246,6 +258,8 @@ export type AliasListOutput = typeof AliasListOutput.Type;
 // The operation
 /**
  * List Alias Subscription.
+ *
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const AliasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AliasListInput,
@@ -253,7 +267,9 @@ export const AliasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BillingAccountGetPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Subscription/policies/default",
@@ -303,6 +319,9 @@ export type BillingAccountGetPolicyOutput =
 // The operation
 /**
  * Get Billing Account Policy.
+ *
+ * @param billingAccountId - Billing Account Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const BillingAccountGetPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -347,6 +366,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Microsoft.Subscription API operations.
+ *
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -355,6 +376,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SubscriptionAcceptOwnershipInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.String,
@@ -381,6 +403,9 @@ export type SubscriptionAcceptOwnershipOutput =
 // The operation
 /**
  * Accept subscription ownership.
+ *
+ * @param subscriptionId - Subscription Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionAcceptOwnership = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -390,7 +415,9 @@ export const SubscriptionAcceptOwnership = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SubscriptionAcceptOwnershipStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnershipStatus",
@@ -421,6 +448,9 @@ export type SubscriptionAcceptOwnershipStatusOutput =
 // The operation
 /**
  * Accept subscription ownership status.
+ *
+ * @param subscriptionId - Subscription Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionAcceptOwnershipStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -429,7 +459,9 @@ export const SubscriptionAcceptOwnershipStatus =
   }));
 // Input Schema
 export const SubscriptionCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/cancel",
@@ -448,6 +480,9 @@ export type SubscriptionCancelOutput = typeof SubscriptionCancelOutput.Type;
 // The operation
 /**
  * The operation to cancel a subscription
+ *
+ * @param subscriptionId - Subscription Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionCancelInput,
@@ -455,7 +490,9 @@ export const SubscriptionCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SubscriptionEnableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/enable",
@@ -474,6 +511,9 @@ export type SubscriptionEnableOutput = typeof SubscriptionEnableOutput.Type;
 // The operation
 /**
  * The operation to enable a subscription
+ *
+ * @param subscriptionId - Subscription Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionEnableInput,
@@ -506,6 +546,7 @@ export type SubscriptionOperationGetOutput =
  * Get the status of the pending Microsoft.Subscription API operations.
  *
  * @param operationId - The operation ID, which can be found from the Location field in the generate recommendation response header.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionOperationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -564,6 +605,8 @@ export type SubscriptionPolicyAddUpdatePolicyForTenantOutput =
 // The operation
 /**
  * Create or Update Subscription tenant policy for user's tenant.
+ *
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionPolicyAddUpdatePolicyForTenant =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -617,6 +660,8 @@ export type SubscriptionPolicyGetPolicyForTenantOutput =
 // The operation
 /**
  * Get the subscription tenant policy for the user's tenant.
+ *
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionPolicyGetPolicyForTenant =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -687,6 +732,8 @@ export type SubscriptionPolicyListPolicyForTenantOutput =
 // The operation
 /**
  * Get the subscription tenant policy for the user's tenant.
+ *
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionPolicyListPolicyForTenant =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -695,7 +742,10 @@ export const SubscriptionPolicyListPolicyForTenant =
   }));
 // Input Schema
 export const SubscriptionRenameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    subscriptionName: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/rename",
@@ -714,6 +764,9 @@ export type SubscriptionRenameOutput = typeof SubscriptionRenameOutput.Type;
 // The operation
 /**
  * The operation to rename a subscription
+ *
+ * @param subscriptionId - Subscription Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionRename = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionRenameInput,

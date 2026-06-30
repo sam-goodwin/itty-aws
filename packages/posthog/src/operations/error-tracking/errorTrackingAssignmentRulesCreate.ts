@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingAssignmentRulesCreateInput =
@@ -19,10 +18,11 @@ export const ErrorTrackingAssignmentRulesCreateInput =
         id: Schema.optional(Schema.Unknown),
       }),
     ),
+    order_key: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/error_tracking/assignment_rules/",
+      path: "/api/projects/{project_id}/error_tracking/assignment_rules/",
     }),
   );
 export type ErrorTrackingAssignmentRulesCreateInput =
@@ -42,7 +42,7 @@ export const ErrorTrackingAssignmentRulesCreateOutput =
       ),
     ),
     order_key: Schema.optional(Schema.Number),
-    disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    disabled_data: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
   });
@@ -58,5 +58,4 @@ export const errorTrackingAssignmentRulesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingAssignmentRulesCreateInput,
     outputSchema: ErrorTrackingAssignmentRulesCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

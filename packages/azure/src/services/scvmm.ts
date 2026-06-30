@@ -95,6 +95,7 @@ export const AvailabilitySetsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetResourceName: Schema.String.pipe(T.PathParam()),
+    force: Schema.optional(Schema.Literals(["true", "false"])),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -120,6 +121,7 @@ export type AvailabilitySetsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param force - Forces the resource to be deleted.
  * @param availabilitySetResourceName - Name of the AvailabilitySet.
  */
 export const AvailabilitySetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -481,6 +483,7 @@ export const CloudsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cloudResourceName: Schema.String.pipe(T.PathParam()),
+  force: Schema.optional(Schema.Literals(["true", "false"])),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -503,6 +506,7 @@ export type CloudsDeleteOutput = typeof CloudsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param force - Forces the resource to be deleted.
  * @param cloudResourceName - Name of the Cloud.
  */
 export const CloudsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -753,6 +757,7 @@ export const CloudsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const GuestAgentsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         uuid: Schema.optional(Schema.String),
@@ -827,6 +832,7 @@ export type GuestAgentsCreateOutput = typeof GuestAgentsCreateOutput.Type;
  * Create Or Update GuestAgent.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const GuestAgentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentsCreateInput,
@@ -834,7 +840,9 @@ export const GuestAgentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GuestAgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "DELETE",
@@ -855,15 +863,16 @@ export type GuestAgentsDeleteOutput = typeof GuestAgentsDeleteOutput.Type;
  * Implements GuestAgent DELETE method.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const GuestAgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentsDeleteInput,
   outputSchema: GuestAgentsDeleteOutput,
 }));
 // Input Schema
-export const GuestAgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GuestAgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default",
@@ -901,6 +910,7 @@ export type GuestAgentsGetOutput = typeof GuestAgentsGetOutput.Type;
  * Implements GuestAgent GET method.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const GuestAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentsGetInput,
@@ -908,7 +918,9 @@ export const GuestAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GuestAgentsListByVirtualMachineInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents",
@@ -964,6 +976,7 @@ export type GuestAgentsListByVirtualMachineInstanceOutput =
  * Returns the list of GuestAgent of the given vm.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const GuestAgentsListByVirtualMachineInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1270,6 +1283,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const VirtualMachineInstancesCreateCheckpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).pipe(
@@ -1295,6 +1309,7 @@ export type VirtualMachineInstancesCreateCheckpointOutput =
  * Creates a checkpoint in virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesCreateCheckpoint =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1304,6 +1319,7 @@ export const VirtualMachineInstancesCreateCheckpoint =
 // Input Schema
 export const VirtualMachineInstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         availabilitySets: Schema.optional(
@@ -1499,6 +1515,7 @@ export type VirtualMachineInstancesCreateOrUpdateOutput =
  * The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1508,6 +1525,8 @@ export const VirtualMachineInstancesCreateOrUpdate =
 // Input Schema
 export const VirtualMachineInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    force: Schema.optional(Schema.Literals(["true", "false"])),
     deleteFromHost: Schema.optional(Schema.Literals(["true", "false"])),
   }).pipe(
     T.Http({
@@ -1532,6 +1551,8 @@ export type VirtualMachineInstancesDeleteOutput =
  * The operation to delete a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param force - Forces the resource to be deleted.
  * @param deleteFromHost - Whether to disable the VM from azure and also delete it from Vmm.
  */
 export const VirtualMachineInstancesDelete =
@@ -1542,6 +1563,7 @@ export const VirtualMachineInstancesDelete =
 // Input Schema
 export const VirtualMachineInstancesDeleteCheckpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1566,6 +1588,7 @@ export type VirtualMachineInstancesDeleteCheckpointOutput =
  * Deletes a checkpoint in virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesDeleteCheckpoint =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1574,7 +1597,9 @@ export const VirtualMachineInstancesDeleteCheckpoint =
   }));
 // Input Schema
 export const VirtualMachineInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
@@ -1615,6 +1640,7 @@ export type VirtualMachineInstancesGetOutput =
  * Retrieves information about a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1624,7 +1650,9 @@ export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachineInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances",
@@ -1680,6 +1708,7 @@ export type VirtualMachineInstancesListOutput =
  * Lists all of the virtual machine instances within the specified parent resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1689,7 +1718,9 @@ export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachineInstancesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/restart",
@@ -1712,6 +1743,7 @@ export type VirtualMachineInstancesRestartOutput =
  * The operation to restart a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesRestart =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1721,6 +1753,7 @@ export const VirtualMachineInstancesRestart =
 // Input Schema
 export const VirtualMachineInstancesRestoreCheckpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1745,6 +1778,7 @@ export type VirtualMachineInstancesRestoreCheckpointOutput =
  * Restores to a checkpoint in virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesRestoreCheckpoint =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1753,7 +1787,9 @@ export const VirtualMachineInstancesRestoreCheckpoint =
   }));
 // Input Schema
 export const VirtualMachineInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/start",
@@ -1776,6 +1812,7 @@ export type VirtualMachineInstancesStartOutput =
  * The operation to start a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesStart =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1785,6 +1822,7 @@ export const VirtualMachineInstancesStart =
 // Input Schema
 export const VirtualMachineInstancesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     skipShutdown: Schema.optional(Schema.Literals(["true", "false"])),
   }).pipe(
     T.Http({
@@ -1809,6 +1847,7 @@ export type VirtualMachineInstancesStopOutput =
  * The operation to power off (stop) a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1819,6 +1858,7 @@ export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualMachineInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         availabilitySets: Schema.optional(
@@ -1937,6 +1977,7 @@ export type VirtualMachineInstancesUpdateOutput =
  * The operation to update a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2096,6 +2137,7 @@ export const VirtualMachineTemplatesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+    force: Schema.optional(Schema.Literals(["true", "false"])),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2121,6 +2163,7 @@ export type VirtualMachineTemplatesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param force - Forces the resource to be deleted.
  * @param virtualMachineTemplateName - Name of the VirtualMachineTemplate.
  */
 export const VirtualMachineTemplatesDelete =
@@ -2466,6 +2509,7 @@ export const VirtualNetworksDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
+    force: Schema.optional(Schema.Literals(["true", "false"])),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2490,6 +2534,7 @@ export type VirtualNetworksDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param force - Forces the resource to be deleted.
  * @param virtualNetworkName - Name of the VirtualNetwork.
  */
 export const VirtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2746,7 +2791,9 @@ export const VirtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VmInstanceHybridIdentityMetadatasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/hybridIdentityMetadata/default",
@@ -2787,6 +2834,7 @@ export type VmInstanceHybridIdentityMetadatasGetOutput =
  * Implements HybridIdentityMetadata GET method.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VmInstanceHybridIdentityMetadatasGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2795,7 +2843,9 @@ export const VmInstanceHybridIdentityMetadatasGet =
   }));
 // Input Schema
 export const VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/hybridIdentityMetadata",
@@ -2851,6 +2901,7 @@ export type VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput 
  * Returns the list of HybridIdentityMetadata of the given VM.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VmInstanceHybridIdentityMetadatasListByVirtualMachineInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2955,6 +3006,7 @@ export const VmmServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vmmServerName: Schema.String.pipe(T.PathParam()),
+  force: Schema.optional(Schema.Literals(["true", "false"])),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -2977,6 +3029,7 @@ export type VmmServersDeleteOutput = typeof VmmServersDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param force - Forces the resource to be deleted.
  * @param vmmServerName - Name of the VmmServer.
  */
 export const VmmServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

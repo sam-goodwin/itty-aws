@@ -22,7 +22,6 @@ export const ProductToursCreateInput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -41,7 +40,6 @@ export const ProductToursCreateInput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -49,7 +47,7 @@ export const ProductToursCreateInput =
       }),
     ),
     linked_flag_id: Schema.optional(Schema.NullOr(Schema.Number)),
-    targeting_flag_filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    targeting_flag_filters: Schema.optional(Schema.Unknown),
     content: Schema.optional(Schema.Unknown),
     auto_launch: Schema.optional(Schema.Boolean),
     start_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -101,7 +99,6 @@ export const ProductToursCreateOutput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -120,7 +117,6 @@ export const ProductToursCreateOutput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -128,7 +124,7 @@ export const ProductToursCreateOutput =
       }),
     ),
     linked_flag_id: Schema.optional(Schema.NullOr(Schema.Number)),
-    targeting_flag_filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    targeting_flag_filters: Schema.optional(Schema.Unknown),
     content: Schema.optional(Schema.Unknown),
     auto_launch: Schema.optional(Schema.Boolean),
     start_date: Schema.optional(Schema.NullOr(Schema.String)),

@@ -17,7 +17,7 @@ export type SignEvmHashOutput = typeof SignEvmHashOutput.Type;
 
 // The operation
 /**
- * Sign a hash
+ * Sign hash
  *
  * Signs an arbitrary 32 byte hash with the given EVM account.
  *

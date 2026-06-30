@@ -13,6 +13,8 @@ export const UpdateDatabaseConfigurationInput =
     block_reads: Schema.optional(Schema.Boolean),
     block_writes: Schema.optional(Schema.Boolean),
     delete_protection: Schema.optional(Schema.Boolean),
+    allowed_ips: Schema.optional(Schema.Array(Schema.String)),
+    allowed_aws_vpc_ids: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -30,6 +32,8 @@ export const UpdateDatabaseConfigurationOutput =
     block_reads: Schema.optional(Schema.Boolean),
     block_writes: Schema.optional(Schema.Boolean),
     delete_protection: Schema.optional(Schema.Boolean),
+    allowed_ips: Schema.optional(Schema.Array(Schema.String)),
+    allowed_aws_vpc_ids: Schema.optional(Schema.Array(Schema.String)),
   });
 export type UpdateDatabaseConfigurationOutput =
   typeof UpdateDatabaseConfigurationOutput.Type;

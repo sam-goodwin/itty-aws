@@ -129,11 +129,9 @@ export type RestartProjectEndpointOutput =
 /**
  * Restart compute endpoint
  *
- * Restart the specified compute endpoint: suspend immediately followed by start operations.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain an `endpoint_id` by listing your project's compute endpoints.
+ * Restarts the specified compute endpoint by immediately suspending it and then starting it again.
  * An `endpoint_id` has an `ep-` prefix.
- * For information about compute endpoints, see [Manage computes](https://neon.tech/docs/manage/endpoints/).
+ * For information about compute endpoints, see [Manage computes](https://neon.com/docs/manage/endpoints/).
  *
  * @param project_id - The Neon project ID
  * @param endpoint_id - The endpoint ID

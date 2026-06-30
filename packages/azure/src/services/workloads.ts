@@ -12,6 +12,67 @@ import * as T from "../traits.ts";
 export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.Literals(["None", "UserAssigned"]),
+      userAssignedIdentities: Schema.optional(
+        Schema.NullOr(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Creating",
+          "Updating",
+          "Failed",
+          "Succeeded",
+          "Deleting",
+          "Migrating",
+        ]),
+      ),
+      errors: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          target: Schema.optional(Schema.String),
+          details: Schema.optional(Schema.Array(Schema.Unknown)),
+          innerError: Schema.optional(
+            Schema.Struct({
+              innerError: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        }),
+      ),
+      appLocation: Schema.optional(Schema.String),
+      routingPreference: Schema.optional(
+        Schema.Literals(["Default", "RouteAll"]),
+      ),
+      zoneRedundancyPreference: Schema.optional(Schema.String),
+      managedResourceGroupConfiguration: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      logAnalyticsWorkspaceArmId: Schema.optional(Schema.String),
+      monitorSubnet: Schema.optional(Schema.String),
+      msiArmId: Schema.optional(Schema.String),
+      storageAccountArmId: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
@@ -52,6 +113,7 @@ export type MonitorsCreateOutput = typeof MonitorsCreateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
  */
 export const monitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MonitorsCreateInput,
@@ -61,6 +123,7 @@ export const monitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -135,6 +198,7 @@ export type MonitorsDeleteOutput = typeof MonitorsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
  */
 export const monitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MonitorsDeleteInput,
@@ -144,6 +208,7 @@ export const monitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -184,6 +249,7 @@ export type MonitorsGetOutput = typeof MonitorsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
  */
 export const monitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MonitorsGetInput,
@@ -329,6 +395,7 @@ export const monitorsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   identity: Schema.optional(
     Schema.Struct({
@@ -386,6 +453,7 @@ export type MonitorsUpdateOutput = typeof MonitorsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
  */
 export const monitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MonitorsUpdateInput,
@@ -444,6 +512,57 @@ export const ProviderInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    monitorName: Schema.String.pipe(T.PathParam()),
+    providerInstanceName: Schema.String.pipe(T.PathParam()),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals(["None", "UserAssigned"]),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                principalId: Schema.optional(Schema.String),
+                clientId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Creating",
+            "Updating",
+            "Failed",
+            "Succeeded",
+            "Deleting",
+            "Migrating",
+          ]),
+        ),
+        errors: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            innerError: Schema.optional(
+              Schema.Struct({
+                innerError: Schema.optional(Schema.Unknown),
+              }),
+            ),
+          }),
+        ),
+        providerSettings: Schema.optional(
+          Schema.Struct({
+            providerType: Schema.String,
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -487,6 +606,8 @@ export type ProviderInstancesCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
+ * @param providerInstanceName - Name of the provider instance.
  */
 export const ProviderInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -499,6 +620,8 @@ export const ProviderInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    monitorName: Schema.String.pipe(T.PathParam()),
+    providerInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -576,6 +699,8 @@ export type ProviderInstancesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
+ * @param providerInstanceName - Name of the provider instance.
  */
 export const ProviderInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -588,6 +713,8 @@ export const ProviderInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    monitorName: Schema.String.pipe(T.PathParam()),
+    providerInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -629,6 +756,8 @@ export type ProviderInstancesGetOutput = typeof ProviderInstancesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
+ * @param providerInstanceName - Name of the provider instance.
  */
 export const ProviderInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -641,6 +770,7 @@ export const ProviderInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    monitorName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -700,6 +830,7 @@ export type ProviderInstancesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
  */
 export const ProviderInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -712,6 +843,8 @@ export const SAPApplicationServerInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    applicationInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         instanceNo: Schema.optional(Schema.String),
@@ -823,6 +956,8 @@ export type SAPApplicationServerInstancesCreateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param applicationInstanceName - The name of SAP Application Server instance resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesCreate =
@@ -835,6 +970,8 @@ export const SAPApplicationServerInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    applicationInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -909,6 +1046,8 @@ export type SAPApplicationServerInstancesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param applicationInstanceName - The name of SAP Application Server instance resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesDelete =
@@ -921,6 +1060,8 @@ export const SAPApplicationServerInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    applicationInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -961,6 +1102,8 @@ export type SAPApplicationServerInstancesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param applicationInstanceName - The name of SAP Application Server instance resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesGet =
@@ -973,6 +1116,7 @@ export const SAPApplicationServerInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1030,6 +1174,7 @@ export type SAPApplicationServerInstancesListOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesList =
@@ -1135,6 +1280,8 @@ export const SAPApplicationServerInstancesStartInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    applicationInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1209,6 +1356,8 @@ export type SAPApplicationServerInstancesStartInstanceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param applicationInstanceName - The name of SAP Application Server instance resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesStartInstance =
@@ -1315,6 +1464,8 @@ export const SAPApplicationServerInstancesStopInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    applicationInstanceName: Schema.String.pipe(T.PathParam()),
     softStopTimeoutSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -1390,6 +1541,8 @@ export type SAPApplicationServerInstancesStopInstanceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param applicationInstanceName - The name of SAP Application Server instance resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesStopInstance =
@@ -1402,6 +1555,8 @@ export const SAPApplicationServerInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    applicationInstanceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -1443,6 +1598,8 @@ export type SAPApplicationServerInstancesUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param applicationInstanceName - The name of SAP Application Server instance resource.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesUpdate =
@@ -1502,6 +1659,8 @@ export const SAPCentralInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    centralInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         instanceNo: Schema.optional(Schema.String),
@@ -1662,6 +1821,8 @@ export type SAPCentralInstancesCreateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPCentralInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1675,6 +1836,8 @@ export const SAPCentralInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    centralInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1749,6 +1912,8 @@ export type SAPCentralInstancesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPCentralInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1762,6 +1927,8 @@ export const SAPCentralInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    centralInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1802,6 +1969,8 @@ export type SAPCentralInstancesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPCentralInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1815,6 +1984,7 @@ export const SAPCentralInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1872,6 +2042,7 @@ export type SAPCentralInstancesListOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
 export const SAPCentralInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1885,6 +2056,8 @@ export const SAPCentralInstancesStartInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    centralInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1959,6 +2132,8 @@ export type SAPCentralInstancesStartInstanceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPCentralInstancesStartInstance =
@@ -1971,6 +2146,8 @@ export const SAPCentralInstancesStopInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    centralInstanceName: Schema.String.pipe(T.PathParam()),
     softStopTimeoutSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -2046,6 +2223,8 @@ export type SAPCentralInstancesStopInstanceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPCentralInstancesStopInstance =
@@ -2058,6 +2237,8 @@ export const SAPCentralInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    centralInstanceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -2099,6 +2280,8 @@ export type SAPCentralInstancesUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPCentralInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2696,6 +2879,8 @@ export const SAPDatabaseInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         subnet: Schema.optional(Schema.String),
@@ -2807,6 +2992,8 @@ export type SAPDatabaseInstancesCreateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPDatabaseInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2820,6 +3007,8 @@ export const SAPDatabaseInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2894,6 +3083,8 @@ export type SAPDatabaseInstancesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPDatabaseInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2907,6 +3098,8 @@ export const SAPDatabaseInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2947,6 +3140,8 @@ export type SAPDatabaseInstancesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPDatabaseInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2960,6 +3155,7 @@ export const SAPDatabaseInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3017,6 +3213,7 @@ export type SAPDatabaseInstancesListOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
 export const SAPDatabaseInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3124,6 +3321,8 @@ export const SAPDatabaseInstancesStartInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3198,6 +3397,8 @@ export type SAPDatabaseInstancesStartInstanceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPDatabaseInstancesStartInstance =
@@ -3305,6 +3506,8 @@ export const SAPDatabaseInstancesStopInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseInstanceName: Schema.String.pipe(T.PathParam()),
     softStopTimeoutSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -3380,6 +3583,8 @@ export type SAPDatabaseInstancesStopInstanceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPDatabaseInstancesStopInstance =
@@ -3392,6 +3597,8 @@ export const SAPDatabaseInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseInstanceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -3433,6 +3640,8 @@ export type SAPDatabaseInstancesUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
+ * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
 export const SAPDatabaseInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3542,6 +3751,50 @@ export const SapLandscapeMonitorCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    monitorName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Created",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+        grouping: Schema.optional(
+          Schema.Struct({
+            landscape: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  topSid: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            sapApplication: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  topSid: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+          }),
+        ),
+        topMetricsThresholds: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              green: Schema.optional(Schema.Number),
+              yellow: Schema.optional(Schema.Number),
+              red: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3585,6 +3838,7 @@ export type SapLandscapeMonitorCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
  */
 export const SapLandscapeMonitorCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3597,6 +3851,7 @@ export const SapLandscapeMonitorDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    monitorName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -3622,6 +3877,7 @@ export type SapLandscapeMonitorDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
  */
 export const SapLandscapeMonitorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3634,6 +3890,7 @@ export const SapLandscapeMonitorGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    monitorName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3677,6 +3934,7 @@ export type SapLandscapeMonitorGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
  */
 export const SapLandscapeMonitorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3689,6 +3947,7 @@ export const SapLandscapeMonitorListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    monitorName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3749,6 +4008,7 @@ export type SapLandscapeMonitorListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
  */
 export const SapLandscapeMonitorList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3761,6 +4021,50 @@ export const SapLandscapeMonitorUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    monitorName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Created",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+        grouping: Schema.optional(
+          Schema.Struct({
+            landscape: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  topSid: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            sapApplication: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  topSid: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+          }),
+        ),
+        topMetricsThresholds: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              green: Schema.optional(Schema.Number),
+              yellow: Schema.optional(Schema.Number),
+              red: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3804,6 +4108,7 @@ export type SapLandscapeMonitorUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param monitorName - Name of the SAP monitor resource.
  */
 export const SapLandscapeMonitorUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3911,6 +4216,7 @@ export const SAPVirtualInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
       Schema.Struct({
         type: Schema.Literals(["None", "UserAssigned"]),
@@ -4035,6 +4341,7 @@ export type SAPVirtualInstancesCreateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
 export const SAPVirtualInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4048,6 +4355,7 @@ export const SAPVirtualInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -4122,6 +4430,7 @@ export type SAPVirtualInstancesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
 export const SAPVirtualInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4135,6 +4444,7 @@ export const SAPVirtualInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4175,6 +4485,7 @@ export type SAPVirtualInstancesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
 export const SAPVirtualInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4565,6 +4876,7 @@ export const SAPVirtualInstancesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4639,6 +4951,7 @@ export type SAPVirtualInstancesStartOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
 export const SAPVirtualInstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4652,6 +4965,7 @@ export const SAPVirtualInstancesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     softStopTimeoutSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -4727,6 +5041,7 @@ export type SAPVirtualInstancesStopOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
 export const SAPVirtualInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4740,6 +5055,7 @@ export const SAPVirtualInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
@@ -4797,6 +5113,7 @@ export type SAPVirtualInstancesUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
 export const SAPVirtualInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(

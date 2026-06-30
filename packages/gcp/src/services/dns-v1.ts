@@ -22,7 +22,30 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface ManagedZoneForwardingConfigNameServerTarget {
+  /** Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target. */
+  forwardingPath?: "default" | "private" | (string & {});
+  kind?: string;
+  /** IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022. */
+  ipv6Address?: string;
+  /** IPv4 address of a target name server. */
+  ipv4Address?: string;
+  /** Fully qualified domain name for the forwarding target. */
+  domainName?: string;
+}
+
+export const ManagedZoneForwardingConfigNameServerTarget: Schema.Schema<ManagedZoneForwardingConfigNameServerTarget> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forwardingPath: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    ipv6Address: Schema.optional(Schema.String),
+    ipv4Address: Schema.optional(Schema.String),
+    domainName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneForwardingConfigNameServerTarget" });
+
 export interface RRSetRoutingPolicyLoadBalancerTarget {
+  /** The frontend IP address of the load balancer to health check. */
+  ipAddress?: string;
   /** The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. */
   loadBalancerType?:
     | "none"
@@ -30,103 +53,101 @@ export interface RRSetRoutingPolicyLoadBalancerTarget {
     | "regionalL4ilb"
     | "regionalL7ilb"
     | (string & {});
-  /** The configured port of the load balancer. */
-  port?: string;
-  kind?: string;
-  /** The fully qualified URL of the network that the load balancer is attached to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`. */
-  networkUrl?: string;
   /** The region in which the load balancer is located. */
   region?: string;
-  /** The frontend IP address of the load balancer to health check. */
-  ipAddress?: string;
+  kind?: string;
+  /** The configured port of the load balancer. */
+  port?: string;
   /** The protocol of the load balancer to health check. */
   ipProtocol?: "undefined" | "tcp" | "udp" | (string & {});
+  /** The fully qualified URL of the network that the load balancer is attached to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`. */
+  networkUrl?: string;
   /** The project ID in which the load balancer is located. */
   project?: string;
 }
 
 export const RRSetRoutingPolicyLoadBalancerTarget: Schema.Schema<RRSetRoutingPolicyLoadBalancerTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    loadBalancerType: Schema.optional(Schema.String),
-    port: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    networkUrl: Schema.optional(Schema.String),
-    region: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
+    loadBalancerType: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.String),
     ipProtocol: Schema.optional(Schema.String),
+    networkUrl: Schema.optional(Schema.String),
     project: Schema.optional(Schema.String),
   }).annotate({ identifier: "RRSetRoutingPolicyLoadBalancerTarget" });
 
 export interface RRSetRoutingPolicyHealthCheckTargets {
-  /** The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) */
-  externalEndpoints?: ReadonlyArray<string>;
   /** Configuration for internal load balancers to be health checked. */
   internalLoadBalancers?: ReadonlyArray<RRSetRoutingPolicyLoadBalancerTarget>;
+  /** The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) */
+  externalEndpoints?: ReadonlyArray<string>;
 }
 
 export const RRSetRoutingPolicyHealthCheckTargets: Schema.Schema<RRSetRoutingPolicyHealthCheckTargets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    externalEndpoints: Schema.optional(Schema.Array(Schema.String)),
     internalLoadBalancers: Schema.optional(
       Schema.Array(RRSetRoutingPolicyLoadBalancerTarget),
     ),
+    externalEndpoints: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RRSetRoutingPolicyHealthCheckTargets" });
 
 export interface RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
   rrdatas?: ReadonlyArray<string>;
-  kind?: string;
-  /** The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc. */
-  location?: string;
   /** For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with `rrdata` within this item. */
   healthCheckedTargets?: RRSetRoutingPolicyHealthCheckTargets;
   /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
   signatureRrdatas?: ReadonlyArray<string>;
+  kind?: string;
+  /** The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc. */
+  location?: string;
 }
 
 export const RRSetRoutingPolicyGeoPolicyGeoPolicyItem: Schema.Schema<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rrdatas: Schema.optional(Schema.Array(Schema.String)),
-    kind: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
     healthCheckedTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
     signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).annotate({ identifier: "RRSetRoutingPolicyGeoPolicyGeoPolicyItem" });
 
 export interface RRSetRoutingPolicyGeoPolicy {
+  kind?: string;
   /** The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead. */
   items?: ReadonlyArray<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
   /** Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy. */
   enableFencing?: boolean;
-  kind?: string;
 }
 
 export const RRSetRoutingPolicyGeoPolicy: Schema.Schema<RRSetRoutingPolicyGeoPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
     items: Schema.optional(
       Schema.Array(RRSetRoutingPolicyGeoPolicyGeoPolicyItem),
     ),
     enableFencing: Schema.optional(Schema.Boolean),
-    kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "RRSetRoutingPolicyGeoPolicy" });
 
 export interface RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
-  /** Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of `rrdata` or `health_checked_targets` can be set. */
-  healthCheckedTargets?: RRSetRoutingPolicyHealthCheckTargets;
   /** The weight corresponding to this `WrrPolicyItem` object. When multiple `WrrPolicyItem` objects are configured, the probability of returning an `WrrPolicyItem` object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative. */
   weight?: number;
   rrdatas?: ReadonlyArray<string>;
-  kind?: string;
+  /** Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of `rrdata` or `health_checked_targets` can be set. */
+  healthCheckedTargets?: RRSetRoutingPolicyHealthCheckTargets;
   /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
   signatureRrdatas?: ReadonlyArray<string>;
+  kind?: string;
 }
 
 export const RRSetRoutingPolicyWrrPolicyWrrPolicyItem: Schema.Schema<RRSetRoutingPolicyWrrPolicyWrrPolicyItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    healthCheckedTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
     weight: Schema.optional(Schema.Number),
     rrdatas: Schema.optional(Schema.Array(Schema.String)),
-    kind: Schema.optional(Schema.String),
+    healthCheckedTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
     signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
+    kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "RRSetRoutingPolicyWrrPolicyWrrPolicyItem" });
 
 export interface RRSetRoutingPolicyWrrPolicy {
@@ -145,109 +166,511 @@ export const RRSetRoutingPolicyWrrPolicy: Schema.Schema<RRSetRoutingPolicyWrrPol
 export interface RRSetRoutingPolicyPrimaryBackupPolicy {
   /** Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the `backup_geo_targets`. */
   primaryTargets?: RRSetRoutingPolicyHealthCheckTargets;
+  kind?: string;
   /** Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to `BACKUP`, this policy essentially becomes a geo routing policy. */
   backupGeoTargets?: RRSetRoutingPolicyGeoPolicy;
   /** When serving state is `PRIMARY`, this field provides the option of sending a small percentage of the traffic to the backup targets. */
   trickleTraffic?: number;
-  kind?: string;
 }
 
 export const RRSetRoutingPolicyPrimaryBackupPolicy: Schema.Schema<RRSetRoutingPolicyPrimaryBackupPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
+    kind: Schema.optional(Schema.String),
     backupGeoTargets: Schema.optional(RRSetRoutingPolicyGeoPolicy),
     trickleTraffic: Schema.optional(Schema.Number),
-    kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "RRSetRoutingPolicyPrimaryBackupPolicy" });
 
 export interface RRSetRoutingPolicy {
   geo?: RRSetRoutingPolicyGeoPolicy;
+  kind?: string;
   wrr?: RRSetRoutingPolicyWrrPolicy;
   primaryBackup?: RRSetRoutingPolicyPrimaryBackupPolicy;
   /** The fully qualified URL of the HealthCheck to use for this RRSetRoutingPolicy. Format this URL like `https://www.googleapis.com/compute/v1/projects/{project}/global/healthChecks/{healthCheck}`. https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks */
   healthCheck?: string;
-  kind?: string;
 }
 
 export const RRSetRoutingPolicy: Schema.Schema<RRSetRoutingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     geo: Schema.optional(RRSetRoutingPolicyGeoPolicy),
+    kind: Schema.optional(Schema.String),
     wrr: Schema.optional(RRSetRoutingPolicyWrrPolicy),
     primaryBackup: Schema.optional(RRSetRoutingPolicyPrimaryBackupPolicy),
     healthCheck: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "RRSetRoutingPolicy" });
 
 export interface ResourceRecordSet {
-  /** As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples. */
-  rrdatas?: ReadonlyArray<string>;
-  kind?: string;
   /** The identifier of a supported record type. See the list of Supported DNS record types. */
   type?: string;
-  /** For example, www.example.com. */
-  name?: string;
-  /** As defined in RFC 4034 (section 3.2). */
-  signatureRrdatas?: ReadonlyArray<string>;
   /** Number of seconds that this `ResourceRecordSet` can be cached by resolvers. */
   ttl?: number;
   /** Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid `ResourceRecordSet` contains only `rrdata` (for static resolution) or a `routing_policy` (for dynamic resolution). */
   routingPolicy?: RRSetRoutingPolicy;
+  /** As defined in RFC 4034 (section 3.2). */
+  signatureRrdatas?: ReadonlyArray<string>;
+  kind?: string;
+  /** For example, www.example.com. */
+  name?: string;
+  /** As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples. */
+  rrdatas?: ReadonlyArray<string>;
 }
 
 export const ResourceRecordSet: Schema.Schema<ResourceRecordSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rrdatas: Schema.optional(Schema.Array(Schema.String)),
-    kind: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
     ttl: Schema.optional(Schema.Number),
     routingPolicy: Schema.optional(RRSetRoutingPolicy),
+    signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
+    kind: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    rrdatas: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ResourceRecordSet" });
 
-export interface ResponsePolicyRuleLocalData {
-  /** All resource record sets for this selector, one per resource record type. The name must match the dns_name. */
-  localDatas?: ReadonlyArray<ResourceRecordSet>;
-}
-
-export const ResponsePolicyRuleLocalData: Schema.Schema<ResponsePolicyRuleLocalData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    localDatas: Schema.optional(Schema.Array(ResourceRecordSet)),
-  }).annotate({ identifier: "ResponsePolicyRuleLocalData" });
-
-export interface ResponsePolicyRule {
+export interface Change {
+  /** If the DNS queries for the zone will be served. */
+  isServing?: boolean;
+  /** Which ResourceRecordSets to add? */
+  additions?: ReadonlyArray<ResourceRecordSet>;
+  /** Unique identifier for the resource; defined by the server (output only). */
+  id?: string;
+  /** Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet. */
+  status?: "pending" | "done" | (string & {});
+  /** The time that this operation was started by the server (output only). This is in RFC3339 text format. */
+  startTime?: string;
+  /** Which ResourceRecordSets to remove? Must match existing data exactly. */
+  deletions?: ReadonlyArray<ResourceRecordSet>;
   kind?: string;
-  /** Answer this query with a behavior rather than DNS data. */
-  behavior?: "behaviorUnspecified" | "bypassResponsePolicy" | (string & {});
-  /** The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule. */
-  dnsName?: string;
-  /** An identifier for this rule. Must be unique with the ResponsePolicy. */
-  ruleName?: string;
-  /** Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed. */
-  localData?: ResponsePolicyRuleLocalData;
 }
 
-export const ResponsePolicyRule: Schema.Schema<ResponsePolicyRule> =
+export const Change: Schema.Schema<Change> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isServing: Schema.optional(Schema.Boolean),
+    additions: Schema.optional(Schema.Array(ResourceRecordSet)),
+    id: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    deletions: Schema.optional(Schema.Array(ResourceRecordSet)),
     kind: Schema.optional(Schema.String),
-    behavior: Schema.optional(Schema.String),
-    dnsName: Schema.optional(Schema.String),
-    ruleName: Schema.optional(Schema.String),
-    localData: Schema.optional(ResponsePolicyRuleLocalData),
-  }).annotate({ identifier: "ResponsePolicyRule" });
+  }).annotate({ identifier: "Change" });
 
-export interface ResponsePolicyRulesListResponse {
-  /** The Response Policy Rule resources. */
-  responsePolicyRules?: ReadonlyArray<ResponsePolicyRule>;
+export interface ChangesListResponse {
+  /** The requested changes. */
+  changes?: ReadonlyArray<Change>;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
+  /** Type of resource. */
+  kind?: string;
 }
 
-export const ResponsePolicyRulesListResponse: Schema.Schema<ResponsePolicyRulesListResponse> =
+export const ChangesListResponse: Schema.Schema<ChangesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    responsePolicyRules: Schema.optional(Schema.Array(ResponsePolicyRule)),
+    changes: Schema.optional(Schema.Array(Change)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ResponsePolicyRulesListResponse" });
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ChangesListResponse" });
+
+export interface ManagedZoneCloudLoggingConfig {
+  kind?: string;
+  /** If set, enable query logging for this ManagedZone. False by default, making logging opt-in. */
+  enableLogging?: boolean;
+}
+
+export const ManagedZoneCloudLoggingConfig: Schema.Schema<ManagedZoneCloudLoggingConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    enableLogging: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ManagedZoneCloudLoggingConfig" });
+
+export interface ResponsePolicyNetwork {
+  /** The fully qualified URL of the VPC network to bind to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}` */
+  networkUrl?: string;
+  kind?: string;
+}
+
+export const ResponsePolicyNetwork: Schema.Schema<ResponsePolicyNetwork> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkUrl: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResponsePolicyNetwork" });
+
+export interface ResponsePolicyGKECluster {
+  kind?: string;
+  /** The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/* /locations/* /clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get */
+  gkeClusterName?: string;
+}
+
+export const ResponsePolicyGKECluster: Schema.Schema<ResponsePolicyGKECluster> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    gkeClusterName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResponsePolicyGKECluster" });
+
+export interface ResponsePolicy {
+  /** List of network names specifying networks to which this policy is applied. */
+  networks?: ReadonlyArray<ResponsePolicyNetwork>;
+  /** User labels. */
+  labels?: Record<string, string>;
+  kind?: string;
+  /** User-provided description for this Response Policy. */
+  description?: string;
+  /** The list of Google Kubernetes Engine clusters to which this response policy is applied. */
+  gkeClusters?: ReadonlyArray<ResponsePolicyGKECluster>;
+  /** User assigned name for this Response Policy. */
+  responsePolicyName?: string;
+  /** Unique identifier for the resource; defined by the server (output only). */
+  id?: string;
+}
+
+export const ResponsePolicy: Schema.Schema<ResponsePolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networks: Schema.optional(Schema.Array(ResponsePolicyNetwork)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    kind: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    gkeClusters: Schema.optional(Schema.Array(ResponsePolicyGKECluster)),
+    responsePolicyName: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResponsePolicy" });
+
+export interface ResponsePoliciesUpdateResponse {
+  responsePolicy?: ResponsePolicy;
+}
+
+export const ResponsePoliciesUpdateResponse: Schema.Schema<ResponsePoliciesUpdateResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responsePolicy: Schema.optional(ResponsePolicy),
+  }).annotate({ identifier: "ResponsePoliciesUpdateResponse" });
+
+export interface Expr {
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+}
+
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expression: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
+
+export interface GoogleIamV1Binding {
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: ReadonlyArray<string>;
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
+  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  condition?: Expr;
+}
+
+export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    members: Schema.optional(Schema.Array(Schema.String)),
+    role: Schema.optional(Schema.String),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "GoogleIamV1Binding" });
+
+export interface GoogleIamV1AuditLogConfig {
+  /** The log type that this config enables. */
+  logType?:
+    | "LOG_TYPE_UNSPECIFIED"
+    | "ADMIN_READ"
+    | "DATA_WRITE"
+    | "DATA_READ"
+    | (string & {});
+  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
+  exemptedMembers?: ReadonlyArray<string>;
+}
+
+export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
+
+export interface GoogleIamV1AuditConfig {
+  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
+  service?: string;
+  /** The configuration for logging of each type of permission. */
+  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
+}
+
+export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
+  }).annotate({ identifier: "GoogleIamV1AuditConfig" });
+
+export interface GoogleIamV1Policy {
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
+  /** Specifies cloud audit logging configuration for this policy. */
+  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
+}
+
+export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+    etag: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
+    auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+  }).annotate({ identifier: "GoogleIamV1Policy" });
+
+export interface GoogleIamV1SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: GoogleIamV1Policy;
+  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
+  updateMask?: string;
+}
+
+export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(GoogleIamV1Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
+
+export interface ManagedZonePeeringConfigTargetNetwork {
+  /** The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only. */
+  deactivateTime?: string;
+  /** The fully qualified URL of the VPC network to forward queries to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}` */
+  networkUrl?: string;
+  kind?: string;
+}
+
+export const ManagedZonePeeringConfigTargetNetwork: Schema.Schema<ManagedZonePeeringConfigTargetNetwork> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deactivateTime: Schema.optional(Schema.String),
+    networkUrl: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonePeeringConfigTargetNetwork" });
+
+export interface ManagedZonePeeringConfig {
+  kind?: string;
+  /** The network with which to peer. */
+  targetNetwork?: ManagedZonePeeringConfigTargetNetwork;
+}
+
+export const ManagedZonePeeringConfig: Schema.Schema<ManagedZonePeeringConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    targetNetwork: Schema.optional(ManagedZonePeeringConfigTargetNetwork),
+  }).annotate({ identifier: "ManagedZonePeeringConfig" });
+
+export interface DnsKeySpec {
+  /** Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets. */
+  keyType?: "keySigning" | "zoneSigning" | (string & {});
+  /** Length of the keys in bits. */
+  keyLength?: number;
+  /** String mnemonic specifying the DNSSEC algorithm of this key. */
+  algorithm?:
+    | "rsasha1"
+    | "rsasha256"
+    | "rsasha512"
+    | "ecdsap256sha256"
+    | "ecdsap384sha384"
+    | (string & {});
+  kind?: string;
+}
+
+export const DnsKeySpec: Schema.Schema<DnsKeySpec> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyType: Schema.optional(Schema.String),
+    keyLength: Schema.optional(Schema.Number),
+    algorithm: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DnsKeySpec" });
+
+export interface ManagedZoneDnsSecConfig {
+  /** Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF. */
+  nonExistence?: "nsec" | "nsec3" | (string & {});
+  /** Specifies whether DNSSEC is enabled, and what mode it is in. */
+  state?: "off" | "on" | "transfer" | (string & {});
+  /** Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF. */
+  defaultKeySpecs?: ReadonlyArray<DnsKeySpec>;
+  kind?: string;
+}
+
+export const ManagedZoneDnsSecConfig: Schema.Schema<ManagedZoneDnsSecConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nonExistence: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    defaultKeySpecs: Schema.optional(Schema.Array(DnsKeySpec)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneDnsSecConfig" });
+
+export interface ManagedZoneServiceDirectoryConfigNamespace {
+  kind?: string;
+  /** The fully qualified URL of the namespace associated with the zone. Format must be `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}` */
+  namespaceUrl?: string;
+  /** The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only. */
+  deletionTime?: string;
+}
+
+export const ManagedZoneServiceDirectoryConfigNamespace: Schema.Schema<ManagedZoneServiceDirectoryConfigNamespace> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    namespaceUrl: Schema.optional(Schema.String),
+    deletionTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneServiceDirectoryConfigNamespace" });
+
+export interface ManagedZoneServiceDirectoryConfig {
+  /** Contains information about the namespace associated with the zone. */
+  namespace?: ManagedZoneServiceDirectoryConfigNamespace;
+  kind?: string;
+}
+
+export const ManagedZoneServiceDirectoryConfig: Schema.Schema<ManagedZoneServiceDirectoryConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.optional(ManagedZoneServiceDirectoryConfigNamespace),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneServiceDirectoryConfig" });
+
+export interface ManagedZonePrivateVisibilityConfigGKECluster {
+  /** The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/* /locations/* /clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get */
+  gkeClusterName?: string;
+  kind?: string;
+}
+
+export const ManagedZonePrivateVisibilityConfigGKECluster: Schema.Schema<ManagedZonePrivateVisibilityConfigGKECluster> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gkeClusterName: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonePrivateVisibilityConfigGKECluster" });
+
+export interface ManagedZonePrivateVisibilityConfigNetwork {
+  /** The fully qualified URL of the VPC network to bind to. Format this URL like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}` */
+  networkUrl?: string;
+  kind?: string;
+}
+
+export const ManagedZonePrivateVisibilityConfigNetwork: Schema.Schema<ManagedZonePrivateVisibilityConfigNetwork> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkUrl: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonePrivateVisibilityConfigNetwork" });
+
+export interface ManagedZonePrivateVisibilityConfig {
+  /** The list of Google Kubernetes Engine clusters that can see this zone. */
+  gkeClusters?: ReadonlyArray<ManagedZonePrivateVisibilityConfigGKECluster>;
+  /** The list of VPC networks that can see this zone. */
+  networks?: ReadonlyArray<ManagedZonePrivateVisibilityConfigNetwork>;
+  kind?: string;
+}
+
+export const ManagedZonePrivateVisibilityConfig: Schema.Schema<ManagedZonePrivateVisibilityConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gkeClusters: Schema.optional(
+      Schema.Array(ManagedZonePrivateVisibilityConfigGKECluster),
+    ),
+    networks: Schema.optional(
+      Schema.Array(ManagedZonePrivateVisibilityConfigNetwork),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonePrivateVisibilityConfig" });
+
+export interface ManagedZoneReverseLookupConfig {
+  kind?: string;
+}
+
+export const ManagedZoneReverseLookupConfig: Schema.Schema<ManagedZoneReverseLookupConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneReverseLookupConfig" });
+
+export interface ManagedZoneForwardingConfig {
+  kind?: string;
+  /** List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given. */
+  targetNameServers?: ReadonlyArray<ManagedZoneForwardingConfigNameServerTarget>;
+}
+
+export const ManagedZoneForwardingConfig: Schema.Schema<ManagedZoneForwardingConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    targetNameServers: Schema.optional(
+      Schema.Array(ManagedZoneForwardingConfigNameServerTarget),
+    ),
+  }).annotate({ identifier: "ManagedZoneForwardingConfig" });
+
+export interface ManagedZone {
+  /** Delegate your managed_zone to these virtual name servers; defined by the server (output only) */
+  nameServers?: ReadonlyArray<string>;
+  /** The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with. */
+  peeringConfig?: ManagedZonePeeringConfig;
+  /** The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources. */
+  visibility?: "public" | "private" | (string & {});
+  /** User labels. */
+  labels?: Record<string, string>;
+  kind?: string;
+  /** Unique identifier for the resource; defined by the server (output only) */
+  id?: string;
+  /** The DNS name of this managed zone, for instance "example.com.". */
+  dnsName?: string;
+  /** User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes. */
+  name?: string;
+  /** DNSSEC configuration. */
+  dnssecConfig?: ManagedZoneDnsSecConfig;
+  /** This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones. */
+  serviceDirectoryConfig?: ManagedZoneServiceDirectoryConfig;
+  cloudLoggingConfig?: ManagedZoneCloudLoggingConfig;
+  /** A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function. */
+  description?: string;
+  /** For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from. */
+  privateVisibilityConfig?: ManagedZonePrivateVisibilityConfig;
+  /** The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config. */
+  reverseLookupConfig?: ManagedZoneReverseLookupConfig;
+  /** The time that this resource was created on the server. This is in RFC3339 text format. Output only. */
+  creationTime?: string;
+  /** The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to. */
+  forwardingConfig?: ManagedZoneForwardingConfig;
+  /** Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team. */
+  nameServerSet?: string;
+}
+
+export const ManagedZone: Schema.Schema<ManagedZone> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nameServers: Schema.optional(Schema.Array(Schema.String)),
+    peeringConfig: Schema.optional(ManagedZonePeeringConfig),
+    visibility: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    kind: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    dnsName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    dnssecConfig: Schema.optional(ManagedZoneDnsSecConfig),
+    serviceDirectoryConfig: Schema.optional(ManagedZoneServiceDirectoryConfig),
+    cloudLoggingConfig: Schema.optional(ManagedZoneCloudLoggingConfig),
+    description: Schema.optional(Schema.String),
+    privateVisibilityConfig: Schema.optional(
+      ManagedZonePrivateVisibilityConfig,
+    ),
+    reverseLookupConfig: Schema.optional(ManagedZoneReverseLookupConfig),
+    creationTime: Schema.optional(Schema.String),
+    forwardingConfig: Schema.optional(ManagedZoneForwardingConfig),
+    nameServerSet: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZone" });
+
+export interface OperationManagedZoneContext {
+  /** The pre-operation ManagedZone resource. */
+  oldValue?: ManagedZone;
+  /** The post-operation ManagedZone resource. */
+  newValue?: ManagedZone;
+}
+
+export const OperationManagedZoneContext: Schema.Schema<OperationManagedZoneContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oldValue: Schema.optional(ManagedZone),
+    newValue: Schema.optional(ManagedZone),
+  }).annotate({ identifier: "OperationManagedZoneContext" });
 
 export interface PolicyNetwork {
   kind?: string;
@@ -260,6 +683,133 @@ export const PolicyNetwork: Schema.Schema<PolicyNetwork> =
     kind: Schema.optional(Schema.String),
     networkUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "PolicyNetwork" });
+
+export interface DnsKeyDigest {
+  /** Specifies the algorithm used to calculate this digest. */
+  type?: "sha1" | "sha256" | "sha384" | (string & {});
+  /** The base-16 encoded bytes of this digest. Suitable for use in a DS resource record. */
+  digest?: string;
+}
+
+export const DnsKeyDigest: Schema.Schema<DnsKeyDigest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    digest: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DnsKeyDigest" });
+
+export interface DnsKey {
+  /** String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. */
+  algorithm?:
+    | "rsasha1"
+    | "rsasha256"
+    | "rsasha512"
+    | "ecdsap256sha256"
+    | "ecdsap384sha384"
+    | (string & {});
+  /** The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B. Output only. */
+  keyTag?: number;
+  /** Base64 encoded public half of this key. Output only. */
+  publicKey?: string;
+  /** Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Output only. */
+  digests?: ReadonlyArray<DnsKeyDigest>;
+  /** One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when active, are used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag is cleared, and this key is used to sign only resource record sets of other types. Immutable after creation time. */
+  type?: "keySigning" | "zoneSigning" | (string & {});
+  /** Unique identifier for the resource; defined by the server (output only). */
+  id?: string;
+  /** The time that this resource was created in the control plane. This is in RFC3339 text format. Output only. */
+  creationTime?: string;
+  /** Active keys are used to sign subsequent changes to the ManagedZone. Inactive keys are still present as DNSKEY Resource Records for the use of resolvers validating existing signatures. */
+  isActive?: boolean;
+  /** A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the resource's function. */
+  description?: string;
+  kind?: string;
+  /** Length of the key in bits. Specified at creation time, and then immutable. */
+  keyLength?: number;
+}
+
+export const DnsKey: Schema.Schema<DnsKey> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    algorithm: Schema.optional(Schema.String),
+    keyTag: Schema.optional(Schema.Number),
+    publicKey: Schema.optional(Schema.String),
+    digests: Schema.optional(Schema.Array(DnsKeyDigest)),
+    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    creationTime: Schema.optional(Schema.String),
+    isActive: Schema.optional(Schema.Boolean),
+    description: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    keyLength: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DnsKey" });
+
+export interface DnsKeysListResponse {
+  /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
+  nextPageToken?: string;
+  /** Type of resource. */
+  kind?: string;
+  /** The requested resources. */
+  dnsKeys?: ReadonlyArray<DnsKey>;
+}
+
+export const DnsKeysListResponse: Schema.Schema<DnsKeysListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    dnsKeys: Schema.optional(Schema.Array(DnsKey)),
+  }).annotate({ identifier: "DnsKeysListResponse" });
+
+export interface ResponsePolicyRuleLocalData {
+  /** All resource record sets for this selector, one per resource record type. The name must match the dns_name. */
+  localDatas?: ReadonlyArray<ResourceRecordSet>;
+}
+
+export const ResponsePolicyRuleLocalData: Schema.Schema<ResponsePolicyRuleLocalData> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localDatas: Schema.optional(Schema.Array(ResourceRecordSet)),
+  }).annotate({ identifier: "ResponsePolicyRuleLocalData" });
+
+export interface ResponsePoliciesPatchResponse {
+  responsePolicy?: ResponsePolicy;
+}
+
+export const ResponsePoliciesPatchResponse: Schema.Schema<ResponsePoliciesPatchResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responsePolicy: Schema.optional(ResponsePolicy),
+  }).annotate({ identifier: "ResponsePoliciesPatchResponse" });
+
+export interface PolicyAlternativeNameServerConfigTargetNameServer {
+  /** Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target. */
+  forwardingPath?: "default" | "private" | (string & {});
+  kind?: string;
+  /** IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022. */
+  ipv6Address?: string;
+  /** IPv4 address to forward queries to. */
+  ipv4Address?: string;
+}
+
+export const PolicyAlternativeNameServerConfigTargetNameServer: Schema.Schema<PolicyAlternativeNameServerConfigTargetNameServer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forwardingPath: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    ipv6Address: Schema.optional(Schema.String),
+    ipv4Address: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "PolicyAlternativeNameServerConfigTargetNameServer",
+  });
+
+export interface PolicyAlternativeNameServerConfig {
+  /** Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified. */
+  targetNameServers?: ReadonlyArray<PolicyAlternativeNameServerConfigTargetNameServer>;
+  kind?: string;
+}
+
+export const PolicyAlternativeNameServerConfig: Schema.Schema<PolicyAlternativeNameServerConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetNameServers: Schema.optional(
+      Schema.Array(PolicyAlternativeNameServerConfigTargetNameServer),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PolicyAlternativeNameServerConfig" });
 
 export interface PolicyDns64ConfigScope {
   /** Controls whether DNS64 is enabled globally for all networks bound to the policy. */
@@ -285,545 +835,89 @@ export const PolicyDns64Config: Schema.Schema<PolicyDns64Config> =
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "PolicyDns64Config" });
 
-export interface PolicyAlternativeNameServerConfigTargetNameServer {
-  kind?: string;
-  /** Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target. */
-  forwardingPath?: "default" | "private" | (string & {});
-  /** IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022. */
-  ipv6Address?: string;
-  /** IPv4 address to forward queries to. */
-  ipv4Address?: string;
-}
-
-export const PolicyAlternativeNameServerConfigTargetNameServer: Schema.Schema<PolicyAlternativeNameServerConfigTargetNameServer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    forwardingPath: Schema.optional(Schema.String),
-    ipv6Address: Schema.optional(Schema.String),
-    ipv4Address: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "PolicyAlternativeNameServerConfigTargetNameServer",
-  });
-
-export interface PolicyAlternativeNameServerConfig {
-  /** Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified. */
-  targetNameServers?: ReadonlyArray<PolicyAlternativeNameServerConfigTargetNameServer>;
-  kind?: string;
-}
-
-export const PolicyAlternativeNameServerConfig: Schema.Schema<PolicyAlternativeNameServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    targetNameServers: Schema.optional(
-      Schema.Array(PolicyAlternativeNameServerConfigTargetNameServer),
-    ),
-    kind: Schema.optional(Schema.String),
-  }).annotate({ identifier: "PolicyAlternativeNameServerConfig" });
-
 export interface Policy {
   /** List of network names specifying networks to which this policy is applied. */
   networks?: ReadonlyArray<PolicyNetwork>;
-  /** Unique identifier for the resource; defined by the server (output only). */
-  id?: string;
-  /** A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function. */
-  description?: string;
-  kind?: string;
-  /** Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set. */
-  enableLogging?: boolean;
-  /** Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy. */
-  enableInboundForwarding?: boolean;
-  /** Configurations related to DNS64 for this policy. */
-  dns64Config?: PolicyDns64Config;
-  /** User-assigned name for this policy. */
-  name?: string;
   /** Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified. */
   alternativeNameServerConfig?: PolicyAlternativeNameServerConfig;
+  /** Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy. */
+  enableInboundForwarding?: boolean;
+  /** User-assigned name for this policy. */
+  name?: string;
+  /** Configurations related to DNS64 for this policy. */
+  dns64Config?: PolicyDns64Config;
+  /** Unique identifier for the resource; defined by the server (output only). */
+  id?: string;
+  /** Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set. */
+  enableLogging?: boolean;
+  kind?: string;
+  /** A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function. */
+  description?: string;
 }
 
 export const Policy: Schema.Schema<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networks: Schema.optional(Schema.Array(PolicyNetwork)),
-    id: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    enableLogging: Schema.optional(Schema.Boolean),
-    enableInboundForwarding: Schema.optional(Schema.Boolean),
-    dns64Config: Schema.optional(PolicyDns64Config),
-    name: Schema.optional(Schema.String),
     alternativeNameServerConfig: Schema.optional(
       PolicyAlternativeNameServerConfig,
     ),
+    enableInboundForwarding: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    dns64Config: Schema.optional(PolicyDns64Config),
+    id: Schema.optional(Schema.String),
+    enableLogging: Schema.optional(Schema.Boolean),
+    kind: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
   }).annotate({ identifier: "Policy" });
 
-export interface PoliciesListResponse {
-  /** Type of resource. */
+export interface PoliciesPatchResponse {
+  policy?: Policy;
+}
+
+export const PoliciesPatchResponse: Schema.Schema<PoliciesPatchResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+  }).annotate({ identifier: "PoliciesPatchResponse" });
+
+export interface GoogleIamV1GetPolicyOptions {
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  requestedPolicyVersion?: number;
+}
+
+export const GoogleIamV1GetPolicyOptions: Schema.Schema<GoogleIamV1GetPolicyOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedPolicyVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleIamV1GetPolicyOptions" });
+
+export interface ResponsePolicyRule {
   kind?: string;
-  /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
-  nextPageToken?: string;
-  /** The policy resources. */
-  policies?: ReadonlyArray<Policy>;
-}
-
-export const PoliciesListResponse: Schema.Schema<PoliciesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    nextPageToken: Schema.optional(Schema.String),
-    policies: Schema.optional(Schema.Array(Policy)),
-  }).annotate({ identifier: "PoliciesListResponse" });
-
-export interface ResponsePolicyGKECluster {
-  kind?: string;
-  /** The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/* /locations/* /clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get */
-  gkeClusterName?: string;
-}
-
-export const ResponsePolicyGKECluster: Schema.Schema<ResponsePolicyGKECluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    gkeClusterName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ResponsePolicyGKECluster" });
-
-export interface ResponsePolicyNetwork {
-  kind?: string;
-  /** The fully qualified URL of the VPC network to bind to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}` */
-  networkUrl?: string;
-}
-
-export const ResponsePolicyNetwork: Schema.Schema<ResponsePolicyNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    networkUrl: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ResponsePolicyNetwork" });
-
-export interface ResponsePolicy {
-  /** User labels. */
-  labels?: Record<string, string>;
-  /** Unique identifier for the resource; defined by the server (output only). */
-  id?: string;
-  /** User assigned name for this Response Policy. */
-  responsePolicyName?: string;
-  /** User-provided description for this Response Policy. */
-  description?: string;
-  kind?: string;
-  /** The list of Google Kubernetes Engine clusters to which this response policy is applied. */
-  gkeClusters?: ReadonlyArray<ResponsePolicyGKECluster>;
-  /** List of network names specifying networks to which this policy is applied. */
-  networks?: ReadonlyArray<ResponsePolicyNetwork>;
-}
-
-export const ResponsePolicy: Schema.Schema<ResponsePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    id: Schema.optional(Schema.String),
-    responsePolicyName: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    gkeClusters: Schema.optional(Schema.Array(ResponsePolicyGKECluster)),
-    networks: Schema.optional(Schema.Array(ResponsePolicyNetwork)),
-  }).annotate({ identifier: "ResponsePolicy" });
-
-export interface DnsKeyDigest {
-  /** Specifies the algorithm used to calculate this digest. */
-  type?: "sha1" | "sha256" | "sha384" | (string & {});
-  /** The base-16 encoded bytes of this digest. Suitable for use in a DS resource record. */
-  digest?: string;
-}
-
-export const DnsKeyDigest: Schema.Schema<DnsKeyDigest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    digest: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DnsKeyDigest" });
-
-export interface DnsKey {
-  /** The time that this resource was created in the control plane. This is in RFC3339 text format. Output only. */
-  creationTime?: string;
-  /** Unique identifier for the resource; defined by the server (output only). */
-  id?: string;
-  /** Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Output only. */
-  digests?: ReadonlyArray<DnsKeyDigest>;
-  /** Length of the key in bits. Specified at creation time, and then immutable. */
-  keyLength?: number;
-  /** String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. */
-  algorithm?:
-    | "rsasha1"
-    | "rsasha256"
-    | "rsasha512"
-    | "ecdsap256sha256"
-    | "ecdsap384sha384"
-    | (string & {});
-  /** Base64 encoded public half of this key. Output only. */
-  publicKey?: string;
-  /** The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B. Output only. */
-  keyTag?: number;
-  /** A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the resource's function. */
-  description?: string;
-  kind?: string;
-  /** Active keys are used to sign subsequent changes to the ManagedZone. Inactive keys are still present as DNSKEY Resource Records for the use of resolvers validating existing signatures. */
-  isActive?: boolean;
-  /** One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when active, are used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag is cleared, and this key is used to sign only resource record sets of other types. Immutable after creation time. */
-  type?: "keySigning" | "zoneSigning" | (string & {});
-}
-
-export const DnsKey: Schema.Schema<DnsKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    creationTime: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    digests: Schema.optional(Schema.Array(DnsKeyDigest)),
-    keyLength: Schema.optional(Schema.Number),
-    algorithm: Schema.optional(Schema.String),
-    publicKey: Schema.optional(Schema.String),
-    keyTag: Schema.optional(Schema.Number),
-    description: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    isActive: Schema.optional(Schema.Boolean),
-    type: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DnsKey" });
-
-export interface OperationDnsKeyContext {
-  /** The post-operation DnsKey resource. */
-  newValue?: DnsKey;
-  /** The pre-operation DnsKey resource. */
-  oldValue?: DnsKey;
-}
-
-export const OperationDnsKeyContext: Schema.Schema<OperationDnsKeyContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    newValue: Schema.optional(DnsKey),
-    oldValue: Schema.optional(DnsKey),
-  }).annotate({ identifier: "OperationDnsKeyContext" });
-
-export interface Status {
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    code: Schema.optional(Schema.Number),
-    message: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Status" });
-
-export interface GoogleLongrunningOperation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-}
-
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    name: Schema.optional(Schema.String),
-    done: Schema.optional(Schema.Boolean),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    error: Schema.optional(Status),
-  }).annotate({ identifier: "GoogleLongrunningOperation" });
-
-export interface ManagedZoneCloudLoggingConfig {
-  kind?: string;
-  /** If set, enable query logging for this ManagedZone. False by default, making logging opt-in. */
-  enableLogging?: boolean;
-}
-
-export const ManagedZoneCloudLoggingConfig: Schema.Schema<ManagedZoneCloudLoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    enableLogging: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "ManagedZoneCloudLoggingConfig" });
-
-export interface DnsKeySpec {
-  /** String mnemonic specifying the DNSSEC algorithm of this key. */
-  algorithm?:
-    | "rsasha1"
-    | "rsasha256"
-    | "rsasha512"
-    | "ecdsap256sha256"
-    | "ecdsap384sha384"
-    | (string & {});
-  kind?: string;
-  /** Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets. */
-  keyType?: "keySigning" | "zoneSigning" | (string & {});
-  /** Length of the keys in bits. */
-  keyLength?: number;
-}
-
-export const DnsKeySpec: Schema.Schema<DnsKeySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    algorithm: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    keyType: Schema.optional(Schema.String),
-    keyLength: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "DnsKeySpec" });
-
-export interface ManagedZoneDnsSecConfig {
-  /** Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF. */
-  nonExistence?: "nsec" | "nsec3" | (string & {});
-  kind?: string;
-  /** Specifies whether DNSSEC is enabled, and what mode it is in. */
-  state?: "off" | "on" | "transfer" | (string & {});
-  /** Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF. */
-  defaultKeySpecs?: ReadonlyArray<DnsKeySpec>;
-}
-
-export const ManagedZoneDnsSecConfig: Schema.Schema<ManagedZoneDnsSecConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nonExistence: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    defaultKeySpecs: Schema.optional(Schema.Array(DnsKeySpec)),
-  }).annotate({ identifier: "ManagedZoneDnsSecConfig" });
-
-export interface ManagedZonePeeringConfigTargetNetwork {
-  /** The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only. */
-  deactivateTime?: string;
-  kind?: string;
-  /** The fully qualified URL of the VPC network to forward queries to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}` */
-  networkUrl?: string;
-}
-
-export const ManagedZonePeeringConfigTargetNetwork: Schema.Schema<ManagedZonePeeringConfigTargetNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deactivateTime: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    networkUrl: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ManagedZonePeeringConfigTargetNetwork" });
-
-export interface ManagedZonePeeringConfig {
-  /** The network with which to peer. */
-  targetNetwork?: ManagedZonePeeringConfigTargetNetwork;
-  kind?: string;
-}
-
-export const ManagedZonePeeringConfig: Schema.Schema<ManagedZonePeeringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    targetNetwork: Schema.optional(ManagedZonePeeringConfigTargetNetwork),
-    kind: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ManagedZonePeeringConfig" });
-
-export interface ManagedZoneServiceDirectoryConfigNamespace {
-  /** The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only. */
-  deletionTime?: string;
-  /** The fully qualified URL of the namespace associated with the zone. Format must be `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}` */
-  namespaceUrl?: string;
-  kind?: string;
-}
-
-export const ManagedZoneServiceDirectoryConfigNamespace: Schema.Schema<ManagedZoneServiceDirectoryConfigNamespace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deletionTime: Schema.optional(Schema.String),
-    namespaceUrl: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ManagedZoneServiceDirectoryConfigNamespace" });
-
-export interface ManagedZoneServiceDirectoryConfig {
-  kind?: string;
-  /** Contains information about the namespace associated with the zone. */
-  namespace?: ManagedZoneServiceDirectoryConfigNamespace;
-}
-
-export const ManagedZoneServiceDirectoryConfig: Schema.Schema<ManagedZoneServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    namespace: Schema.optional(ManagedZoneServiceDirectoryConfigNamespace),
-  }).annotate({ identifier: "ManagedZoneServiceDirectoryConfig" });
-
-export interface ManagedZonePrivateVisibilityConfigNetwork {
-  kind?: string;
-  /** The fully qualified URL of the VPC network to bind to. Format this URL like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}` */
-  networkUrl?: string;
-}
-
-export const ManagedZonePrivateVisibilityConfigNetwork: Schema.Schema<ManagedZonePrivateVisibilityConfigNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    networkUrl: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ManagedZonePrivateVisibilityConfigNetwork" });
-
-export interface ManagedZonePrivateVisibilityConfigGKECluster {
-  /** The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/* /locations/* /clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get */
-  gkeClusterName?: string;
-  kind?: string;
-}
-
-export const ManagedZonePrivateVisibilityConfigGKECluster: Schema.Schema<ManagedZonePrivateVisibilityConfigGKECluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gkeClusterName: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ManagedZonePrivateVisibilityConfigGKECluster" });
-
-export interface ManagedZonePrivateVisibilityConfig {
-  /** The list of VPC networks that can see this zone. */
-  networks?: ReadonlyArray<ManagedZonePrivateVisibilityConfigNetwork>;
-  /** The list of Google Kubernetes Engine clusters that can see this zone. */
-  gkeClusters?: ReadonlyArray<ManagedZonePrivateVisibilityConfigGKECluster>;
-  kind?: string;
-}
-
-export const ManagedZonePrivateVisibilityConfig: Schema.Schema<ManagedZonePrivateVisibilityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    networks: Schema.optional(
-      Schema.Array(ManagedZonePrivateVisibilityConfigNetwork),
-    ),
-    gkeClusters: Schema.optional(
-      Schema.Array(ManagedZonePrivateVisibilityConfigGKECluster),
-    ),
-    kind: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ManagedZonePrivateVisibilityConfig" });
-
-export interface ManagedZoneForwardingConfigNameServerTarget {
-  /** Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target. */
-  forwardingPath?: "default" | "private" | (string & {});
-  kind?: string;
-  /** IPv4 address of a target name server. */
-  ipv4Address?: string;
-  /** IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022. */
-  ipv6Address?: string;
-  /** Fully qualified domain name for the forwarding target. */
-  domainName?: string;
-}
-
-export const ManagedZoneForwardingConfigNameServerTarget: Schema.Schema<ManagedZoneForwardingConfigNameServerTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    forwardingPath: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    ipv4Address: Schema.optional(Schema.String),
-    ipv6Address: Schema.optional(Schema.String),
-    domainName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ManagedZoneForwardingConfigNameServerTarget" });
-
-export interface ManagedZoneForwardingConfig {
-  /** List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given. */
-  targetNameServers?: ReadonlyArray<ManagedZoneForwardingConfigNameServerTarget>;
-  kind?: string;
-}
-
-export const ManagedZoneForwardingConfig: Schema.Schema<ManagedZoneForwardingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    targetNameServers: Schema.optional(
-      Schema.Array(ManagedZoneForwardingConfigNameServerTarget),
-    ),
-    kind: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ManagedZoneForwardingConfig" });
-
-export interface ManagedZoneReverseLookupConfig {
-  kind?: string;
-}
-
-export const ManagedZoneReverseLookupConfig: Schema.Schema<ManagedZoneReverseLookupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ManagedZoneReverseLookupConfig" });
-
-export interface ManagedZone {
-  /** A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function. */
-  description?: string;
-  kind?: string;
-  /** User labels. */
-  labels?: Record<string, string>;
-  /** DNSSEC configuration. */
-  dnssecConfig?: ManagedZoneDnsSecConfig;
-  /** User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes. */
-  name?: string;
-  /** The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with. */
-  peeringConfig?: ManagedZonePeeringConfig;
-  /** Delegate your managed_zone to these virtual name servers; defined by the server (output only) */
-  nameServers?: ReadonlyArray<string>;
-  /** The time that this resource was created on the server. This is in RFC3339 text format. Output only. */
-  creationTime?: string;
-  /** The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources. */
-  visibility?: "public" | "private" | (string & {});
-  /** The DNS name of this managed zone, for instance "example.com.". */
+  /** Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed. */
+  localData?: ResponsePolicyRuleLocalData;
+  /** The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule. */
   dnsName?: string;
-  cloudLoggingConfig?: ManagedZoneCloudLoggingConfig;
-  /** This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones. */
-  serviceDirectoryConfig?: ManagedZoneServiceDirectoryConfig;
-  /** Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team. */
-  nameServerSet?: string;
-  /** For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from. */
-  privateVisibilityConfig?: ManagedZonePrivateVisibilityConfig;
-  /** Unique identifier for the resource; defined by the server (output only) */
-  id?: string;
-  /** The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to. */
-  forwardingConfig?: ManagedZoneForwardingConfig;
-  /** The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config. */
-  reverseLookupConfig?: ManagedZoneReverseLookupConfig;
+  /** Answer this query with a behavior rather than DNS data. */
+  behavior?: "behaviorUnspecified" | "bypassResponsePolicy" | (string & {});
+  /** An identifier for this rule. Must be unique with the ResponsePolicy. */
+  ruleName?: string;
 }
 
-export const ManagedZone: Schema.Schema<ManagedZone> =
+export const ResponsePolicyRule: Schema.Schema<ResponsePolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    description: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    dnssecConfig: Schema.optional(ManagedZoneDnsSecConfig),
-    name: Schema.optional(Schema.String),
-    peeringConfig: Schema.optional(ManagedZonePeeringConfig),
-    nameServers: Schema.optional(Schema.Array(Schema.String)),
-    creationTime: Schema.optional(Schema.String),
-    visibility: Schema.optional(Schema.String),
+    localData: Schema.optional(ResponsePolicyRuleLocalData),
     dnsName: Schema.optional(Schema.String),
-    cloudLoggingConfig: Schema.optional(ManagedZoneCloudLoggingConfig),
-    serviceDirectoryConfig: Schema.optional(ManagedZoneServiceDirectoryConfig),
-    nameServerSet: Schema.optional(Schema.String),
-    privateVisibilityConfig: Schema.optional(
-      ManagedZonePrivateVisibilityConfig,
-    ),
-    id: Schema.optional(Schema.String),
-    forwardingConfig: Schema.optional(ManagedZoneForwardingConfig),
-    reverseLookupConfig: Schema.optional(ManagedZoneReverseLookupConfig),
-  }).annotate({ identifier: "ManagedZone" });
+    behavior: Schema.optional(Schema.String),
+    ruleName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResponsePolicyRule" });
 
-export interface GoogleIamV1AuditLogConfig {
-  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: ReadonlyArray<string>;
-  /** The log type that this config enables. */
-  logType?:
-    | "LOG_TYPE_UNSPECIFIED"
-    | "ADMIN_READ"
-    | "DATA_WRITE"
-    | "DATA_READ"
-    | (string & {});
+export interface ResponsePolicyRulesPatchResponse {
+  responsePolicyRule?: ResponsePolicyRule;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
+export const ResponsePolicyRulesPatchResponse: Schema.Schema<ResponsePolicyRulesPatchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    logType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
-
-export interface GoogleIamV1AuditConfig {
-  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
-  service?: string;
-  /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
-}
-
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.optional(Schema.String),
-    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-  }).annotate({ identifier: "GoogleIamV1AuditConfig" });
-
-export interface ResponsePoliciesPatchResponse {
-  responsePolicy?: ResponsePolicy;
-}
-
-export const ResponsePoliciesPatchResponse: Schema.Schema<ResponsePoliciesPatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    responsePolicy: Schema.optional(ResponsePolicy),
-  }).annotate({ identifier: "ResponsePoliciesPatchResponse" });
+    responsePolicyRule: Schema.optional(ResponsePolicyRule),
+  }).annotate({ identifier: "ResponsePolicyRulesPatchResponse" });
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
@@ -835,236 +929,6 @@ export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1Tes
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
-export interface PoliciesPatchResponse {
-  policy?: Policy;
-}
-
-export const PoliciesPatchResponse: Schema.Schema<PoliciesPatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(Policy),
-  }).annotate({ identifier: "PoliciesPatchResponse" });
-
-export interface Quota {
-  /** Maximum allowed number of GKE clusters to which a privately scoped zone can be attached. */
-  gkeClustersPerManagedZone?: number;
-  kind?: string;
-  /** Maximum allowed number of items per routing policy. */
-  itemsPerRoutingPolicy?: number;
-  /** Maximum allowed number of ResourceRecordSets to delete per ChangesCreateRequest. */
-  rrsetDeletionsPerChange?: number;
-  /** Maximum allowed number of rules per response policy. */
-  responsePolicyRulesPerResponsePolicy?: number;
-  /** Maximum allowed number of GKE clusters per response policy. */
-  gkeClustersPerResponsePolicy?: number;
-  /** Maximum allowed number of networks per response policy. */
-  networksPerResponsePolicy?: number;
-  internetHealthChecksPerManagedZone?: number;
-  /** Maximum allowed number of networks per policy. */
-  networksPerPolicy?: number;
-  /** Maximum allowed number of ResourceRecords per ResourceRecordSet. */
-  resourceRecordsPerRrset?: number;
-  /** Maximum allowed number of target name servers per managed forwarding zone. */
-  targetNameServersPerManagedZone?: number;
-  /** Maximum allowed number of DnsKeys per ManagedZone. */
-  dnsKeysPerManagedZone?: number;
-  /** Maximum allowed number of managed zones which can be attached to a network. */
-  managedZonesPerNetwork?: number;
-  /** Maximum allowed number of managed zones in the project. */
-  managedZones?: number;
-  /** Maximum allowed number of managed zones which can be attached to a GKE cluster. */
-  managedZonesPerGkeCluster?: number;
-  /** Maximum allowed number of GKE clusters per policy. */
-  gkeClustersPerPolicy?: number;
-  /** DNSSEC algorithm and key length types that can be used for DnsKeys. */
-  whitelistedKeySpecs?: ReadonlyArray<DnsKeySpec>;
-  /** Maximum allowed number of networks to which a privately scoped zone can be attached. */
-  networksPerManagedZone?: number;
-  /** Maximum allowed number of ResourceRecordSets to add per ChangesCreateRequest. */
-  rrsetAdditionsPerChange?: number;
-  /** Maximum allowed number of ResourceRecordSets per zone in the project. */
-  rrsetsPerManagedZone?: number;
-  /** Maximum allowed number of response policies per project. */
-  responsePolicies?: number;
-  /** Maximum allowed number of alternative target name servers per policy. */
-  targetNameServersPerPolicy?: number;
-  /** Maximum number of nameservers per delegation, meant to prevent abuse */
-  nameserversPerDelegation?: number;
-  /** Maximum allowed size for total rrdata in one ChangesCreateRequest in bytes. */
-  totalRrdataSizePerChange?: number;
-  /** Maximum allowed number of policies per project. */
-  policies?: number;
-  /** Maximum allowed number of consumer peering zones per target network owned by this producer project */
-  peeringZonesPerTargetNetwork?: number;
-}
-
-export const Quota: Schema.Schema<Quota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gkeClustersPerManagedZone: Schema.optional(Schema.Number),
-    kind: Schema.optional(Schema.String),
-    itemsPerRoutingPolicy: Schema.optional(Schema.Number),
-    rrsetDeletionsPerChange: Schema.optional(Schema.Number),
-    responsePolicyRulesPerResponsePolicy: Schema.optional(Schema.Number),
-    gkeClustersPerResponsePolicy: Schema.optional(Schema.Number),
-    networksPerResponsePolicy: Schema.optional(Schema.Number),
-    internetHealthChecksPerManagedZone: Schema.optional(Schema.Number),
-    networksPerPolicy: Schema.optional(Schema.Number),
-    resourceRecordsPerRrset: Schema.optional(Schema.Number),
-    targetNameServersPerManagedZone: Schema.optional(Schema.Number),
-    dnsKeysPerManagedZone: Schema.optional(Schema.Number),
-    managedZonesPerNetwork: Schema.optional(Schema.Number),
-    managedZones: Schema.optional(Schema.Number),
-    managedZonesPerGkeCluster: Schema.optional(Schema.Number),
-    gkeClustersPerPolicy: Schema.optional(Schema.Number),
-    whitelistedKeySpecs: Schema.optional(Schema.Array(DnsKeySpec)),
-    networksPerManagedZone: Schema.optional(Schema.Number),
-    rrsetAdditionsPerChange: Schema.optional(Schema.Number),
-    rrsetsPerManagedZone: Schema.optional(Schema.Number),
-    responsePolicies: Schema.optional(Schema.Number),
-    targetNameServersPerPolicy: Schema.optional(Schema.Number),
-    nameserversPerDelegation: Schema.optional(Schema.Number),
-    totalRrdataSizePerChange: Schema.optional(Schema.Number),
-    policies: Schema.optional(Schema.Number),
-    peeringZonesPerTargetNetwork: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Quota" });
-
-export interface DnsKeysListResponse {
-  /** Type of resource. */
-  kind?: string;
-  /** The requested resources. */
-  dnsKeys?: ReadonlyArray<DnsKey>;
-  /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
-  nextPageToken?: string;
-}
-
-export const DnsKeysListResponse: Schema.Schema<DnsKeysListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    dnsKeys: Schema.optional(Schema.Array(DnsKey)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DnsKeysListResponse" });
-
-export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
-}
-
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expression: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Expr" });
-
-export interface GoogleIamV1Binding {
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: ReadonlyArray<string>;
-  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  condition?: Expr;
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
-}
-
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    members: Schema.optional(Schema.Array(Schema.String)),
-    condition: Schema.optional(Expr),
-    role: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV1Binding" });
-
-export interface GoogleIamV1Policy {
-  /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: ReadonlyArray<GoogleIamV1Binding>;
-}
-
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-    version: Schema.optional(Schema.Number),
-    etag: Schema.optional(Schema.String),
-    bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-  }).annotate({ identifier: "GoogleIamV1Policy" });
-
-export interface ResponsePolicyRulesPatchResponse {
-  responsePolicyRule?: ResponsePolicyRule;
-}
-
-export const ResponsePolicyRulesPatchResponse: Schema.Schema<ResponsePolicyRulesPatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    responsePolicyRule: Schema.optional(ResponsePolicyRule),
-  }).annotate({ identifier: "ResponsePolicyRulesPatchResponse" });
-
-export interface Change {
-  /** If the DNS queries for the zone will be served. */
-  isServing?: boolean;
-  /** The time that this operation was started by the server (output only). This is in RFC3339 text format. */
-  startTime?: string;
-  /** Unique identifier for the resource; defined by the server (output only). */
-  id?: string;
-  /** Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet. */
-  status?: "pending" | "done" | (string & {});
-  kind?: string;
-  /** Which ResourceRecordSets to add? */
-  additions?: ReadonlyArray<ResourceRecordSet>;
-  /** Which ResourceRecordSets to remove? Must match existing data exactly. */
-  deletions?: ReadonlyArray<ResourceRecordSet>;
-}
-
-export const Change: Schema.Schema<Change> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    isServing: Schema.optional(Schema.Boolean),
-    startTime: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    additions: Schema.optional(Schema.Array(ResourceRecordSet)),
-    deletions: Schema.optional(Schema.Array(ResourceRecordSet)),
-  }).annotate({ identifier: "Change" });
-
-export interface ChangesListResponse {
-  /** Type of resource. */
-  kind?: string;
-  /** The requested changes. */
-  changes?: ReadonlyArray<Change>;
-  /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
-  nextPageToken?: string;
-}
-
-export const ChangesListResponse: Schema.Schema<ChangesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    changes: Schema.optional(Schema.Array(Change)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ChangesListResponse" });
-
-export interface ManagedZonesListResponse {
-  /** Type of resource. */
-  kind?: string;
-  /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
-  nextPageToken?: string;
-  /** The managed zone resources. */
-  managedZones?: ReadonlyArray<ManagedZone>;
-}
-
-export const ManagedZonesListResponse: Schema.Schema<ManagedZonesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    nextPageToken: Schema.optional(Schema.String),
-    managedZones: Schema.optional(Schema.Array(ManagedZone)),
-  }).annotate({ identifier: "ManagedZonesListResponse" });
-
 export interface PoliciesUpdateResponse {
   policy?: Policy;
 }
@@ -1074,64 +938,48 @@ export const PoliciesUpdateResponse: Schema.Schema<PoliciesUpdateResponse> =
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "PoliciesUpdateResponse" });
 
-export interface OperationManagedZoneContext {
-  /** The post-operation ManagedZone resource. */
-  newValue?: ManagedZone;
-  /** The pre-operation ManagedZone resource. */
-  oldValue?: ManagedZone;
+export interface OperationDnsKeyContext {
+  /** The pre-operation DnsKey resource. */
+  oldValue?: DnsKey;
+  /** The post-operation DnsKey resource. */
+  newValue?: DnsKey;
 }
 
-export const OperationManagedZoneContext: Schema.Schema<OperationManagedZoneContext> =
+export const OperationDnsKeyContext: Schema.Schema<OperationDnsKeyContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    newValue: Schema.optional(ManagedZone),
-    oldValue: Schema.optional(ManagedZone),
-  }).annotate({ identifier: "OperationManagedZoneContext" });
+    oldValue: Schema.optional(DnsKey),
+    newValue: Schema.optional(DnsKey),
+  }).annotate({ identifier: "OperationDnsKeyContext" });
 
 export interface Operation {
+  /** Type of the operation. Operations include insert, update, and delete (output only). */
+  type?: string;
   /** Unique identifier for the resource. This is the client_operation_id if the client specified it when the mutation was initiated, otherwise, it is generated by the server. The name must be 1-63 characters long and match the regular expression [-a-z0-9]? (output only) */
   id?: string;
   /** Status of the operation. Can be one of the following: "PENDING" or "DONE" (output only). A status of "DONE" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet. */
   status?: "pending" | "done" | (string & {});
+  /** Only populated if the operation targeted a ManagedZone (output only). */
+  zoneContext?: OperationManagedZoneContext;
+  /** User who requested the operation, for example: user@example.com. cloud-dns-system for operations automatically done by the system. (output only) */
+  user?: string;
+  /** The time that this operation was started by the server. This is in RFC3339 text format (output only). */
+  startTime?: string;
   kind?: string;
   /** Only populated if the operation targeted a DnsKey (output only). */
   dnsKeyContext?: OperationDnsKeyContext;
-  /** User who requested the operation, for example: user@example.com. cloud-dns-system for operations automatically done by the system. (output only) */
-  user?: string;
-  /** Type of the operation. Operations include insert, update, and delete (output only). */
-  type?: string;
-  /** Only populated if the operation targeted a ManagedZone (output only). */
-  zoneContext?: OperationManagedZoneContext;
-  /** The time that this operation was started by the server. This is in RFC3339 text format (output only). */
-  startTime?: string;
 }
 
 export const Operation: Schema.Schema<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
+    zoneContext: Schema.optional(OperationManagedZoneContext),
+    user: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     dnsKeyContext: Schema.optional(OperationDnsKeyContext),
-    user: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    zoneContext: Schema.optional(OperationManagedZoneContext),
-    startTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "Operation" });
-
-export interface ManagedZoneOperationsListResponse {
-  /** The operation resources. */
-  operations?: ReadonlyArray<Operation>;
-  /** Type of resource. */
-  kind?: string;
-  /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
-  nextPageToken?: string;
-}
-
-export const ManagedZoneOperationsListResponse: Schema.Schema<ManagedZoneOperationsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operations: Schema.optional(Schema.Array(Operation)),
-    kind: Schema.optional(Schema.String),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ManagedZoneOperationsListResponse" });
 
 export interface ResponsePoliciesListResponse {
   /** The Response Policy resources. */
@@ -1146,28 +994,68 @@ export const ResponsePoliciesListResponse: Schema.Schema<ResponsePoliciesListRes
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResponsePoliciesListResponse" });
 
-export interface GoogleIamV1SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: GoogleIamV1Policy;
-  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
-  updateMask?: string;
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
+export const Status: Schema.Schema<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(GoogleIamV1Policy),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
+    code: Schema.optional(Schema.Number),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Status" });
 
-export interface GoogleIamV1GetPolicyOptions {
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  requestedPolicyVersion?: number;
+export interface GoogleLongrunningOperation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
 }
 
-export const GoogleIamV1GetPolicyOptions: Schema.Schema<GoogleIamV1GetPolicyOptions> =
+export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestedPolicyVersion: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "GoogleIamV1GetPolicyOptions" });
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
+
+export interface ResponsePolicyRulesListResponse {
+  /** The Response Policy Rule resources. */
+  responsePolicyRules?: ReadonlyArray<ResponsePolicyRule>;
+  /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
+  nextPageToken?: string;
+}
+
+export const ResponsePolicyRulesListResponse: Schema.Schema<ResponsePolicyRulesListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responsePolicyRules: Schema.optional(Schema.Array(ResponsePolicyRule)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResponsePolicyRulesListResponse" });
+
+export interface GoogleIamV1TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface ResourceRecordSetsDeleteResponse {}
 
@@ -1175,6 +1063,121 @@ export const ResourceRecordSetsDeleteResponse: Schema.Schema<ResourceRecordSetsD
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResourceRecordSetsDeleteResponse",
   });
+
+export interface ManagedZonesListResponse {
+  /** The managed zone resources. */
+  managedZones?: ReadonlyArray<ManagedZone>;
+  /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
+  nextPageToken?: string;
+  /** Type of resource. */
+  kind?: string;
+}
+
+export const ManagedZonesListResponse: Schema.Schema<ManagedZonesListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedZones: Schema.optional(Schema.Array(ManagedZone)),
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonesListResponse" });
+
+export interface ResourceRecordSetsListResponse {
+  /** The resource record set resources. */
+  rrsets?: ReadonlyArray<ResourceRecordSet>;
+  /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
+  nextPageToken?: string;
+  /** Type of resource. */
+  kind?: string;
+}
+
+export const ResourceRecordSetsListResponse: Schema.Schema<ResourceRecordSetsListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rrsets: Schema.optional(Schema.Array(ResourceRecordSet)),
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResourceRecordSetsListResponse" });
+
+export interface Quota {
+  /** Maximum allowed number of networks per response policy. */
+  networksPerResponsePolicy?: number;
+  /** Maximum allowed number of GKE clusters to which a privately scoped zone can be attached. */
+  gkeClustersPerManagedZone?: number;
+  kind?: string;
+  /** Maximum allowed number of networks per policy. */
+  networksPerPolicy?: number;
+  /** Maximum allowed number of ResourceRecordSets to add per ChangesCreateRequest. */
+  rrsetAdditionsPerChange?: number;
+  /** Maximum allowed number of items per routing policy. */
+  itemsPerRoutingPolicy?: number;
+  /** Maximum allowed number of alternative target name servers per policy. */
+  targetNameServersPerPolicy?: number;
+  /** Maximum allowed number of managed zones in the project. */
+  managedZones?: number;
+  /** Maximum allowed size for total rrdata in one ChangesCreateRequest in bytes. */
+  totalRrdataSizePerChange?: number;
+  /** Maximum allowed number of target name servers per managed forwarding zone. */
+  targetNameServersPerManagedZone?: number;
+  /** Maximum allowed number of ResourceRecords per ResourceRecordSet. */
+  resourceRecordsPerRrset?: number;
+  /** Maximum allowed number of managed zones which can be attached to a network. */
+  managedZonesPerNetwork?: number;
+  /** Maximum allowed number of policies per project. */
+  policies?: number;
+  /** Maximum number of nameservers per delegation, meant to prevent abuse */
+  nameserversPerDelegation?: number;
+  /** Maximum allowed number of managed zones which can be attached to a GKE cluster. */
+  managedZonesPerGkeCluster?: number;
+  /** Maximum allowed number of networks to which a privately scoped zone can be attached. */
+  networksPerManagedZone?: number;
+  /** Maximum allowed number of response policies per project. */
+  responsePolicies?: number;
+  /** Maximum allowed number of GKE clusters per response policy. */
+  gkeClustersPerResponsePolicy?: number;
+  /** Maximum allowed number of ResourceRecordSets per zone in the project. */
+  rrsetsPerManagedZone?: number;
+  /** Maximum allowed number of DnsKeys per ManagedZone. */
+  dnsKeysPerManagedZone?: number;
+  /** Maximum allowed number of rules per response policy. */
+  responsePolicyRulesPerResponsePolicy?: number;
+  internetHealthChecksPerManagedZone?: number;
+  /** DNSSEC algorithm and key length types that can be used for DnsKeys. */
+  whitelistedKeySpecs?: ReadonlyArray<DnsKeySpec>;
+  /** Maximum allowed number of consumer peering zones per target network owned by this producer project */
+  peeringZonesPerTargetNetwork?: number;
+  /** Maximum allowed number of ResourceRecordSets to delete per ChangesCreateRequest. */
+  rrsetDeletionsPerChange?: number;
+  /** Maximum allowed number of GKE clusters per policy. */
+  gkeClustersPerPolicy?: number;
+}
+
+export const Quota: Schema.Schema<Quota> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networksPerResponsePolicy: Schema.optional(Schema.Number),
+    gkeClustersPerManagedZone: Schema.optional(Schema.Number),
+    kind: Schema.optional(Schema.String),
+    networksPerPolicy: Schema.optional(Schema.Number),
+    rrsetAdditionsPerChange: Schema.optional(Schema.Number),
+    itemsPerRoutingPolicy: Schema.optional(Schema.Number),
+    targetNameServersPerPolicy: Schema.optional(Schema.Number),
+    managedZones: Schema.optional(Schema.Number),
+    totalRrdataSizePerChange: Schema.optional(Schema.Number),
+    targetNameServersPerManagedZone: Schema.optional(Schema.Number),
+    resourceRecordsPerRrset: Schema.optional(Schema.Number),
+    managedZonesPerNetwork: Schema.optional(Schema.Number),
+    policies: Schema.optional(Schema.Number),
+    nameserversPerDelegation: Schema.optional(Schema.Number),
+    managedZonesPerGkeCluster: Schema.optional(Schema.Number),
+    networksPerManagedZone: Schema.optional(Schema.Number),
+    responsePolicies: Schema.optional(Schema.Number),
+    gkeClustersPerResponsePolicy: Schema.optional(Schema.Number),
+    rrsetsPerManagedZone: Schema.optional(Schema.Number),
+    dnsKeysPerManagedZone: Schema.optional(Schema.Number),
+    responsePolicyRulesPerResponsePolicy: Schema.optional(Schema.Number),
+    internetHealthChecksPerManagedZone: Schema.optional(Schema.Number),
+    whitelistedKeySpecs: Schema.optional(Schema.Array(DnsKeySpec)),
+    peeringZonesPerTargetNetwork: Schema.optional(Schema.Number),
+    rrsetDeletionsPerChange: Schema.optional(Schema.Number),
+    gkeClustersPerPolicy: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Quota" });
 
 export interface GoogleIamV1GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
@@ -1195,58 +1198,55 @@ export const ResponsePolicyRulesUpdateResponse: Schema.Schema<ResponsePolicyRule
     responsePolicyRule: Schema.optional(ResponsePolicyRule),
   }).annotate({ identifier: "ResponsePolicyRulesUpdateResponse" });
 
-export interface ResourceRecordSetsListResponse {
-  /** Type of resource. */
-  kind?: string;
-  /** The resource record set resources. */
-  rrsets?: ReadonlyArray<ResourceRecordSet>;
+export interface PoliciesListResponse {
+  /** The policy resources. */
+  policies?: ReadonlyArray<Policy>;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
+  /** Type of resource. */
+  kind?: string;
 }
 
-export const ResourceRecordSetsListResponse: Schema.Schema<ResourceRecordSetsListResponse> =
+export const PoliciesListResponse: Schema.Schema<PoliciesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    rrsets: Schema.optional(Schema.Array(ResourceRecordSet)),
+    policies: Schema.optional(Schema.Array(Policy)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ResourceRecordSetsListResponse" });
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PoliciesListResponse" });
 
-export interface GoogleIamV1TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
+export interface ManagedZoneOperationsListResponse {
+  /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
+  nextPageToken?: string;
+  /** Type of resource. */
+  kind?: string;
+  /** The operation resources. */
+  operations?: ReadonlyArray<Operation>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
+export const ManagedZoneOperationsListResponse: Schema.Schema<ManagedZoneOperationsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+  }).annotate({ identifier: "ManagedZoneOperationsListResponse" });
 
 export interface Project {
-  /** User assigned unique identifier for the resource (output only). */
-  id?: string;
   kind?: string;
-  /** Quotas assigned to this project (output only). */
-  quota?: Quota;
   /** Unique numeric identifier for the resource; defined by the server (output only). */
   number?: string;
+  /** Quotas assigned to this project (output only). */
+  quota?: Quota;
+  /** User assigned unique identifier for the resource (output only). */
+  id?: string;
 }
 
 export const Project: Schema.Schema<Project> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
-    quota: Schema.optional(Quota),
     number: Schema.optional(Schema.String),
+    quota: Schema.optional(Quota),
+    id: Schema.optional(Schema.String),
   }).annotate({ identifier: "Project" });
-
-export interface ResponsePoliciesUpdateResponse {
-  responsePolicy?: ResponsePolicy;
-}
-
-export const ResponsePoliciesUpdateResponse: Schema.Schema<ResponsePoliciesUpdateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    responsePolicy: Schema.optional(ResponsePolicy),
-  }).annotate({ identifier: "ResponsePoliciesUpdateResponse" });
 
 // ==========================================================================
 // Errors
@@ -1302,565 +1302,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface PatchPoliciesRequest {
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** User given friendly name of the policy addressed by this request. */
-  policy: string;
-  /** Request body */
-  body?: Policy;
-}
-
-export const PatchPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  clientOperationId: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("clientOperationId"),
-  ),
-  project: Schema.String.pipe(T.HttpPath("project")),
-  policy: Schema.String.pipe(T.HttpPath("policy")),
-  body: Schema.optional(Policy).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "dns/v1/projects/{project}/policies/{policy}",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<PatchPoliciesRequest>;
-
-export type PatchPoliciesResponse = PoliciesPatchResponse;
-export const PatchPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PoliciesPatchResponse;
-
-export type PatchPoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Applies a partial update to an existing policy. */
-export const patchPolicies: API.OperationMethod<
-  PatchPoliciesRequest,
-  PatchPoliciesResponse,
-  PatchPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchPoliciesRequest,
-  output: PatchPoliciesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UpdatePoliciesRequest {
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** User given friendly name of the policy addressed by this request. */
-  policy: string;
-  /** Request body */
-  body?: Policy;
-}
-
-export const UpdatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  clientOperationId: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("clientOperationId"),
-  ),
-  project: Schema.String.pipe(T.HttpPath("project")),
-  policy: Schema.String.pipe(T.HttpPath("policy")),
-  body: Schema.optional(Policy).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({
-    method: "PUT",
-    path: "dns/v1/projects/{project}/policies/{policy}",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<UpdatePoliciesRequest>;
-
-export type UpdatePoliciesResponse = PoliciesUpdateResponse;
-export const UpdatePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PoliciesUpdateResponse;
-
-export type UpdatePoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an existing policy. */
-export const updatePolicies: API.OperationMethod<
-  UpdatePoliciesRequest,
-  UpdatePoliciesResponse,
-  UpdatePoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdatePoliciesRequest,
-  output: UpdatePoliciesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListPoliciesRequest {
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
-  maxResults?: number;
-  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
-  pageToken?: string;
-}
-
-export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  project: Schema.String.pipe(T.HttpPath("project")),
-  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-}).pipe(
-  T.Http({ method: "GET", path: "dns/v1/projects/{project}/policies" }),
-  svc,
-) as unknown as Schema.Schema<ListPoliciesRequest>;
-
-export type ListPoliciesResponse = PoliciesListResponse;
-export const ListPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PoliciesListResponse;
-
-export type ListPoliciesError = DefaultErrors | NotFound | Forbidden;
-
-/** Enumerates all policies associated with a project. */
-export const listPolicies: API.PaginatedOperationMethod<
-  ListPoliciesRequest,
-  ListPoliciesResponse,
-  ListPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListPoliciesRequest,
-  output: ListPoliciesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface CreatePoliciesRequest {
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** Request body */
-  body?: Policy;
-}
-
-export const CreatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  clientOperationId: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("clientOperationId"),
-  ),
-  project: Schema.String.pipe(T.HttpPath("project")),
-  body: Schema.optional(Policy).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "dns/v1/projects/{project}/policies",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<CreatePoliciesRequest>;
-
-export type CreatePoliciesResponse = Policy;
-export const CreatePoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type CreatePoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new policy. */
-export const createPolicies: API.OperationMethod<
-  CreatePoliciesRequest,
-  CreatePoliciesResponse,
-  CreatePoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreatePoliciesRequest,
-  output: CreatePoliciesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetPoliciesRequest {
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** User given friendly name of the policy addressed by this request. */
-  policy: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-}
-
-export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  project: Schema.String.pipe(T.HttpPath("project")),
-  policy: Schema.String.pipe(T.HttpPath("policy")),
-  clientOperationId: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("clientOperationId"),
-  ),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "dns/v1/projects/{project}/policies/{policy}",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetPoliciesRequest>;
-
-export type GetPoliciesResponse = Policy;
-export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetPoliciesError = DefaultErrors | NotFound | Forbidden;
-
-/** Fetches the representation of an existing policy. */
-export const getPolicies: API.OperationMethod<
-  GetPoliciesRequest,
-  GetPoliciesResponse,
-  GetPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetPoliciesRequest,
-  output: GetPoliciesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeletePoliciesRequest {
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** User given friendly name of the policy addressed by this request. */
-  policy: string;
-}
-
-export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  clientOperationId: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("clientOperationId"),
-  ),
-  project: Schema.String.pipe(T.HttpPath("project")),
-  policy: Schema.String.pipe(T.HttpPath("policy")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "dns/v1/projects/{project}/policies/{policy}",
-  }),
-  svc,
-) as unknown as Schema.Schema<DeletePoliciesRequest>;
-
-export interface DeletePoliciesResponse {}
-export const DeletePoliciesResponse: Schema.Schema<DeletePoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeletePoliciesResponse>;
-
-export type DeletePoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a previously created policy. Fails if the policy is still being referenced by a network. */
-export const deletePolicies: API.OperationMethod<
-  DeletePoliciesRequest,
-  DeletePoliciesResponse,
-  DeletePoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeletePoliciesRequest,
-  output: DeletePoliciesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListDnsKeysRequest {
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
-  /** An optional comma-separated list of digest types to compute and display for key signing keys. If omitted, the recommended digest type is computed and displayed. */
-  digestType?: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
-  maxResults?: number;
-  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
-  pageToken?: string;
-}
-
-export const ListDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-  digestType: Schema.optional(Schema.String).pipe(T.HttpQuery("digestType")),
-  project: Schema.String.pipe(T.HttpPath("project")),
-  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "dns/v1/projects/{project}/managedZones/{managedZone}/dnsKeys",
-  }),
-  svc,
-) as unknown as Schema.Schema<ListDnsKeysRequest>;
-
-export type ListDnsKeysResponse = DnsKeysListResponse;
-export const ListDnsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DnsKeysListResponse;
-
-export type ListDnsKeysError = DefaultErrors | NotFound | Forbidden;
-
-/** Enumerates DnsKeys to a ResourceRecordSet collection. */
-export const listDnsKeys: API.PaginatedOperationMethod<
-  ListDnsKeysRequest,
-  ListDnsKeysResponse,
-  ListDnsKeysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListDnsKeysRequest,
-  output: ListDnsKeysResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetDnsKeysRequest {
-  /** An optional comma-separated list of digest types to compute and display for key signing keys. If omitted, the recommended digest type is computed and displayed. */
-  digestType?: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** The identifier of the requested DnsKey. */
-  dnsKeyId: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
-}
-
-export const GetDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  digestType: Schema.optional(Schema.String).pipe(T.HttpQuery("digestType")),
-  project: Schema.String.pipe(T.HttpPath("project")),
-  dnsKeyId: Schema.String.pipe(T.HttpPath("dnsKeyId")),
-  clientOperationId: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("clientOperationId"),
-  ),
-  managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "dns/v1/projects/{project}/managedZones/{managedZone}/dnsKeys/{dnsKeyId}",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetDnsKeysRequest>;
-
-export type GetDnsKeysResponse = DnsKey;
-export const GetDnsKeysResponse = /*@__PURE__*/ /*#__PURE__*/ DnsKey;
-
-export type GetDnsKeysError = DefaultErrors | NotFound | Forbidden;
-
-/** Fetches the representation of an existing DnsKey. */
-export const getDnsKeys: API.OperationMethod<
-  GetDnsKeysRequest,
-  GetDnsKeysResponse,
-  GetDnsKeysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetDnsKeysRequest,
-  output: GetDnsKeysResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetProjectsRequest {
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-}
-
-export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  clientOperationId: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("clientOperationId"),
-  ),
-  project: Schema.String.pipe(T.HttpPath("project")),
-}).pipe(
-  T.Http({ method: "GET", path: "dns/v1/projects/{project}" }),
-  svc,
-) as unknown as Schema.Schema<GetProjectsRequest>;
-
-export type GetProjectsResponse = Project;
-export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
-
-export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
-
-/** Fetches the representation of an existing Project. */
-export const getProjects: API.OperationMethod<
-  GetProjectsRequest,
-  GetProjectsResponse,
-  GetProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsRequest,
-  output: GetProjectsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListResponsePolicyRulesRequest {
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
-  maxResults?: number;
-  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
-  pageToken?: string;
-  /** User assigned name of the Response Policy to list. */
-  responsePolicy: string;
-}
-
-export const ListResponsePolicyRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListResponsePolicyRulesRequest>;
-
-export type ListResponsePolicyRulesResponse = ResponsePolicyRulesListResponse;
-export const ListResponsePolicyRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesListResponse;
-
-export type ListResponsePolicyRulesError = DefaultErrors | NotFound | Forbidden;
-
-/** Enumerates all Response Policy Rules associated with a project. */
-export const listResponsePolicyRules: API.PaginatedOperationMethod<
-  ListResponsePolicyRulesRequest,
-  ListResponsePolicyRulesResponse,
-  ListResponsePolicyRulesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListResponsePolicyRulesRequest,
-  output: ListResponsePolicyRulesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface PatchResponsePolicyRulesRequest {
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** User assigned name of the Response Policy Rule addressed by this request. */
-  responsePolicyRule: string;
-  /** User assigned name of the Response Policy containing the Response Policy Rule. */
-  responsePolicy: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Request body */
-  body?: ResponsePolicyRule;
-}
-
-export const PatchResponsePolicyRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
-    responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    body: Schema.optional(ResponsePolicyRule).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchResponsePolicyRulesRequest>;
-
-export type PatchResponsePolicyRulesResponse = ResponsePolicyRulesPatchResponse;
-export const PatchResponsePolicyRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesPatchResponse;
-
-export type PatchResponsePolicyRulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Applies a partial update to an existing Response Policy Rule. */
-export const patchResponsePolicyRules: API.OperationMethod<
-  PatchResponsePolicyRulesRequest,
-  PatchResponsePolicyRulesResponse,
-  PatchResponsePolicyRulesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchResponsePolicyRulesRequest,
-  output: PatchResponsePolicyRulesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UpdateResponsePolicyRulesRequest {
-  /** User assigned name of the Response Policy Rule addressed by this request. */
-  responsePolicyRule: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** User assigned name of the Response Policy containing the Response Policy Rule. */
-  responsePolicy: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Request body */
-  body?: ResponsePolicyRule;
-}
-
-export const UpdateResponsePolicyRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
-    project: Schema.String.pipe(T.HttpPath("project")),
-    responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    body: Schema.optional(ResponsePolicyRule).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateResponsePolicyRulesRequest>;
-
-export type UpdateResponsePolicyRulesResponse =
-  ResponsePolicyRulesUpdateResponse;
-export const UpdateResponsePolicyRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesUpdateResponse;
-
-export type UpdateResponsePolicyRulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an existing Response Policy Rule. */
-export const updateResponsePolicyRules: API.OperationMethod<
-  UpdateResponsePolicyRulesRequest,
-  UpdateResponsePolicyRulesResponse,
-  UpdateResponsePolicyRulesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateResponsePolicyRulesRequest,
-  output: UpdateResponsePolicyRulesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface CreateResponsePolicyRulesRequest {
   /** User assigned name of the Response Policy containing the Response Policy Rule. */
   responsePolicy: string;
@@ -1912,25 +1353,181 @@ export const createResponsePolicyRules: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetResponsePolicyRulesRequest {
-  /** User assigned name of the Response Policy containing the Response Policy Rule. */
-  responsePolicy: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** User assigned name of the Response Policy Rule addressed by this request. */
-  responsePolicyRule: string;
+export interface UpdateResponsePolicyRulesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
+  /** User assigned name of the Response Policy containing the Response Policy Rule. */
+  responsePolicy: string;
+  /** User assigned name of the Response Policy Rule addressed by this request. */
+  responsePolicyRule: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Request body */
+  body?: ResponsePolicyRule;
+}
+
+export const UpdateResponsePolicyRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
+    responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    body: Schema.optional(ResponsePolicyRule).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateResponsePolicyRulesRequest>;
+
+export type UpdateResponsePolicyRulesResponse =
+  ResponsePolicyRulesUpdateResponse;
+export const UpdateResponsePolicyRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesUpdateResponse;
+
+export type UpdateResponsePolicyRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an existing Response Policy Rule. */
+export const updateResponsePolicyRules: API.OperationMethod<
+  UpdateResponsePolicyRulesRequest,
+  UpdateResponsePolicyRulesResponse,
+  UpdateResponsePolicyRulesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateResponsePolicyRulesRequest,
+  output: UpdateResponsePolicyRulesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListResponsePolicyRulesRequest {
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** User assigned name of the Response Policy to list. */
+  responsePolicy: string;
+  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
+  maxResults?: number;
+  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
+  pageToken?: string;
+}
+
+export const ListResponsePolicyRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListResponsePolicyRulesRequest>;
+
+export type ListResponsePolicyRulesResponse = ResponsePolicyRulesListResponse;
+export const ListResponsePolicyRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesListResponse;
+
+export type ListResponsePolicyRulesError = DefaultErrors | NotFound | Forbidden;
+
+/** Enumerates all Response Policy Rules associated with a project. */
+export const listResponsePolicyRules: API.PaginatedOperationMethod<
+  ListResponsePolicyRulesRequest,
+  ListResponsePolicyRulesResponse,
+  ListResponsePolicyRulesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListResponsePolicyRulesRequest,
+  output: ListResponsePolicyRulesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface PatchResponsePolicyRulesRequest {
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** User assigned name of the Response Policy containing the Response Policy Rule. */
+  responsePolicy: string;
+  /** User assigned name of the Response Policy Rule addressed by this request. */
+  responsePolicyRule: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Request body */
+  body?: ResponsePolicyRule;
+}
+
+export const PatchResponsePolicyRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
+    responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    body: Schema.optional(ResponsePolicyRule).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchResponsePolicyRulesRequest>;
+
+export type PatchResponsePolicyRulesResponse = ResponsePolicyRulesPatchResponse;
+export const PatchResponsePolicyRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesPatchResponse;
+
+export type PatchResponsePolicyRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Applies a partial update to an existing Response Policy Rule. */
+export const patchResponsePolicyRules: API.OperationMethod<
+  PatchResponsePolicyRulesRequest,
+  PatchResponsePolicyRulesResponse,
+  PatchResponsePolicyRulesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchResponsePolicyRulesRequest,
+  output: PatchResponsePolicyRulesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetResponsePolicyRulesRequest {
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** User assigned name of the Response Policy containing the Response Policy Rule. */
+  responsePolicy: string;
+  /** User assigned name of the Response Policy Rule addressed by this request. */
+  responsePolicyRule: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
 }
 
 export const GetResponsePolicyRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
+    responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
     ),
-    responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
-    project: Schema.String.pipe(T.HttpPath("project")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1958,24 +1555,24 @@ export const getResponsePolicyRules: API.OperationMethod<
 }));
 
 export interface DeleteResponsePolicyRulesRequest {
-  /** User assigned name of the Response Policy containing the Response Policy Rule. */
-  responsePolicy: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
   /** Identifies the project addressed by this request. */
   project: string;
+  /** User assigned name of the Response Policy containing the Response Policy Rule. */
+  responsePolicy: string;
   /** User assigned name of the Response Policy Rule addressed by this request. */
   responsePolicyRule: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
 }
 
 export const DeleteResponsePolicyRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
+    responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
     ),
-    project: Schema.String.pipe(T.HttpPath("project")),
-    responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2009,43 +1606,207 @@ export const deleteResponsePolicyRules: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListManagedZonesRequest {
+export interface CreateResourceRecordSetsRequest {
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
   /** Identifies the project addressed by this request. */
   project: string;
-  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
-  maxResults?: number;
-  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
-  pageToken?: string;
-  /** Restricts the list to return only zones with this domain name. */
-  dnsName?: string;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+  /** Request body */
+  body?: ResourceRecordSet;
 }
 
-export const ListManagedZonesRequest =
+export const CreateResourceRecordSetsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+    body: Schema.optional(ResourceRecordSet).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateResourceRecordSetsRequest>;
+
+export type CreateResourceRecordSetsResponse = ResourceRecordSet;
+export const CreateResourceRecordSetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
+
+export type CreateResourceRecordSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new ResourceRecordSet. */
+export const createResourceRecordSets: API.OperationMethod<
+  CreateResourceRecordSetsRequest,
+  CreateResourceRecordSetsResponse,
+  CreateResourceRecordSetsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateResourceRecordSetsRequest,
+  output: CreateResourceRecordSetsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteResourceRecordSetsRequest {
+  /** RRSet type. */
+  type: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Fully qualified domain name. */
+  name: string;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+}
+
+export const DeleteResourceRecordSetsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String.pipe(T.HttpPath("type")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteResourceRecordSetsRequest>;
+
+export type DeleteResourceRecordSetsResponse = ResourceRecordSetsDeleteResponse;
+export const DeleteResourceRecordSetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSetsDeleteResponse;
+
+export type DeleteResourceRecordSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a previously created ResourceRecordSet. */
+export const deleteResourceRecordSets: API.OperationMethod<
+  DeleteResourceRecordSetsRequest,
+  DeleteResourceRecordSetsResponse,
+  DeleteResourceRecordSetsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteResourceRecordSetsRequest,
+  output: DeleteResourceRecordSetsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetResourceRecordSetsRequest {
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Fully qualified domain name. */
+  name: string;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+  /** RRSet type. */
+  type: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+}
+
+export const GetResourceRecordSetsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+    type: Schema.String.pipe(T.HttpPath("type")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetResourceRecordSetsRequest>;
+
+export type GetResourceRecordSetsResponse = ResourceRecordSet;
+export const GetResourceRecordSetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
+
+export type GetResourceRecordSetsError = DefaultErrors | NotFound | Forbidden;
+
+/** Fetches the representation of an existing ResourceRecordSet. */
+export const getResourceRecordSets: API.OperationMethod<
+  GetResourceRecordSetsRequest,
+  GetResourceRecordSetsResponse,
+  GetResourceRecordSetsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetResourceRecordSetsRequest,
+  output: GetResourceRecordSetsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListResourceRecordSetsRequest {
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
+  pageToken?: string;
+  /** Specify a record type to view only those records. You must also specify the `name` parameter. The `type` parameter is not supported and must be omitted when you use `filter`. */
+  type?: string;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+  /** Specify a fully qualified domain name to view only those records. The `name` parameter is not supported and must be omitted when you use `filter`. */
+  name?: string;
+  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
+  maxResults?: number;
+  /** Specify a filter expression to view records that exactly match the specified domain. Both the `name` and `type` parameters are not supported and must be omitted when you use `filter`. Your `filter` expression must conform to AIP-160 and you must specify a domain in the `name` field. Optionally, you can include the `type` field to filter records by type. You can also include the `has_suffix` function to view records that match by domain suffix. Examples: * `name`="example.com." * `name`="example.com." AND type="A" * `name`=`has_suffix`("example.com.") * `name`=`has_suffix`("example.com.") AND type="A" */
+  filter?: string;
+}
+
+export const ListResourceRecordSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    dnsName: Schema.optional(Schema.String).pipe(T.HttpQuery("dnsName")),
+    type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
+    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "dns/v1/projects/{project}/managedZones" }),
+    T.Http({
+      method: "GET",
+      path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets",
+    }),
     svc,
-  ) as unknown as Schema.Schema<ListManagedZonesRequest>;
+  ) as unknown as Schema.Schema<ListResourceRecordSetsRequest>;
 
-export type ListManagedZonesResponse = ManagedZonesListResponse;
-export const ListManagedZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ManagedZonesListResponse;
+export type ListResourceRecordSetsResponse = ResourceRecordSetsListResponse;
+export const ListResourceRecordSetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSetsListResponse;
 
-export type ListManagedZonesError = DefaultErrors | NotFound | Forbidden;
+export type ListResourceRecordSetsError = DefaultErrors | NotFound | Forbidden;
 
-/** Enumerates ManagedZones that have been created but not yet deleted. */
-export const listManagedZones: API.PaginatedOperationMethod<
-  ListManagedZonesRequest,
-  ListManagedZonesResponse,
-  ListManagedZonesError,
+/** Enumerates ResourceRecordSets that you have created but not yet deleted. */
+export const listResourceRecordSets: API.PaginatedOperationMethod<
+  ListResourceRecordSetsRequest,
+  ListResourceRecordSetsResponse,
+  ListResourceRecordSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListManagedZonesRequest,
-  output: ListManagedZonesResponse,
+  input: ListResourceRecordSetsRequest,
+  output: ListResourceRecordSetsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -2053,465 +1814,156 @@ export const listManagedZones: API.PaginatedOperationMethod<
   },
 }));
 
-export interface CreateManagedZonesRequest {
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
+export interface PatchResourceRecordSetsRequest {
   /** Identifies the project addressed by this request. */
   project: string;
-  /** Request body */
-  body?: ManagedZone;
-}
-
-export const CreateManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    project: Schema.String.pipe(T.HttpPath("project")),
-    body: Schema.optional(ManagedZone).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "dns/v1/projects/{project}/managedZones",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateManagedZonesRequest>;
-
-export type CreateManagedZonesResponse = ManagedZone;
-export const CreateManagedZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ManagedZone;
-
-export type CreateManagedZonesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new ManagedZone. */
-export const createManagedZones: API.OperationMethod<
-  CreateManagedZonesRequest,
-  CreateManagedZonesResponse,
-  CreateManagedZonesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateManagedZonesRequest,
-  output: CreateManagedZonesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetManagedZonesRequest {
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-}
-
-export const GetManagedZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    project: Schema.String.pipe(T.HttpPath("project")),
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "dns/v1/projects/{project}/managedZones/{managedZone}",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetManagedZonesRequest>;
-
-export type GetManagedZonesResponse = ManagedZone;
-export const GetManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ ManagedZone;
-
-export type GetManagedZonesError = DefaultErrors | NotFound | Forbidden;
-
-/** Fetches the representation of an existing ManagedZone. */
-export const getManagedZones: API.OperationMethod<
-  GetManagedZonesRequest,
-  GetManagedZonesResponse,
-  GetManagedZonesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetManagedZonesRequest,
-  output: GetManagedZonesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteManagedZonesRequest {
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-}
-
-export const DeleteManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-    project: Schema.String.pipe(T.HttpPath("project")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "dns/v1/projects/{project}/managedZones/{managedZone}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteManagedZonesRequest>;
-
-export interface DeleteManagedZonesResponse {}
-export const DeleteManagedZonesResponse: Schema.Schema<DeleteManagedZonesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteManagedZonesResponse>;
-
-export type DeleteManagedZonesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a previously created ManagedZone. */
-export const deleteManagedZones: API.OperationMethod<
-  DeleteManagedZonesRequest,
-  DeleteManagedZonesResponse,
-  DeleteManagedZonesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteManagedZonesRequest,
-  output: DeleteManagedZonesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyManagedZonesRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GoogleIamV1SetIamPolicyRequest;
-}
-
-export const SetIamPolicyManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "dns/v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyManagedZonesRequest>;
-
-export type SetIamPolicyManagedZonesResponse = GoogleIamV1Policy;
-export const SetIamPolicyManagedZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
-
-export type SetIamPolicyManagedZonesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyManagedZones: API.OperationMethod<
-  SetIamPolicyManagedZonesRequest,
-  SetIamPolicyManagedZonesResponse,
-  SetIamPolicyManagedZonesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyManagedZonesRequest,
-  output: SetIamPolicyManagedZonesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsManagedZonesRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GoogleIamV1TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "dns/v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsManagedZonesRequest>;
-
-export type TestIamPermissionsManagedZonesResponse =
-  GoogleIamV1TestIamPermissionsResponse;
-export const TestIamPermissionsManagedZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
-
-export type TestIamPermissionsManagedZonesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this returns an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsManagedZones: API.OperationMethod<
-  TestIamPermissionsManagedZonesRequest,
-  TestIamPermissionsManagedZonesResponse,
-  TestIamPermissionsManagedZonesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsManagedZonesRequest,
-  output: TestIamPermissionsManagedZonesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchManagedZonesRequest {
-  /** Identifies the project addressed by this request. */
-  project: string;
+  /** RRSet type. */
+  type: string;
+  /** Fully qualified domain name. */
+  name: string;
   /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
   managedZone: string;
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
   /** Request body */
-  body?: ManagedZone;
+  body?: ResourceRecordSet;
 }
 
-export const PatchManagedZonesRequest =
+export const PatchResourceRecordSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
+    type: Schema.String.pipe(T.HttpPath("type")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
     ),
-    body: Schema.optional(ManagedZone).pipe(T.HttpBody()),
+    body: Schema.optional(ResourceRecordSet).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "dns/v1/projects/{project}/managedZones/{managedZone}",
+      path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchManagedZonesRequest>;
+  ) as unknown as Schema.Schema<PatchResourceRecordSetsRequest>;
 
-export type PatchManagedZonesResponse = Operation;
-export const PatchManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type PatchResourceRecordSetsResponse = ResourceRecordSet;
+export const PatchResourceRecordSetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
 
-export type PatchManagedZonesError =
+export type PatchResourceRecordSetsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Applies a partial update to an existing ManagedZone. */
-export const patchManagedZones: API.OperationMethod<
-  PatchManagedZonesRequest,
-  PatchManagedZonesResponse,
-  PatchManagedZonesError,
+/** Applies a partial update to an existing ResourceRecordSet. */
+export const patchResourceRecordSets: API.OperationMethod<
+  PatchResourceRecordSetsRequest,
+  PatchResourceRecordSetsResponse,
+  PatchResourceRecordSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchManagedZonesRequest,
-  output: PatchManagedZonesResponse,
+  input: PatchResourceRecordSetsRequest,
+  output: PatchResourceRecordSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface UpdateManagedZonesRequest {
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
+export interface ListResponsePoliciesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
-  /** Request body */
-  body?: ManagedZone;
+  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
+  maxResults?: number;
+  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
+  pageToken?: string;
 }
 
-export const UpdateManagedZonesRequest =
+export const ListResponsePoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
     project: Schema.String.pipe(T.HttpPath("project")),
-    body: Schema.optional(ManagedZone).pipe(T.HttpBody()),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({
-      method: "PUT",
-      path: "dns/v1/projects/{project}/managedZones/{managedZone}",
-      hasBody: true,
+      method: "GET",
+      path: "dns/v1/projects/{project}/responsePolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateManagedZonesRequest>;
+  ) as unknown as Schema.Schema<ListResponsePoliciesRequest>;
 
-export type UpdateManagedZonesResponse = Operation;
-export const UpdateManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type ListResponsePoliciesResponse = ResponsePoliciesListResponse;
+export const ListResponsePoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResponsePoliciesListResponse;
 
-export type UpdateManagedZonesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type ListResponsePoliciesError = DefaultErrors | NotFound | Forbidden;
 
-/** Updates an existing ManagedZone. */
-export const updateManagedZones: API.OperationMethod<
-  UpdateManagedZonesRequest,
-  UpdateManagedZonesResponse,
-  UpdateManagedZonesError,
+/** Enumerates all Response Policies associated with a project. */
+export const listResponsePolicies: API.PaginatedOperationMethod<
+  ListResponsePoliciesRequest,
+  ListResponsePoliciesResponse,
+  ListResponsePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateManagedZonesRequest,
-  output: UpdateManagedZonesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListResponsePoliciesRequest,
+  output: ListResponsePoliciesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
-export interface GetIamPolicyManagedZonesRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GoogleIamV1GetIamPolicyRequest;
-}
-
-export const GetIamPolicyManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GoogleIamV1GetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "dns/v1/{+resource}:getIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyManagedZonesRequest>;
-
-export type GetIamPolicyManagedZonesResponse = GoogleIamV1Policy;
-export const GetIamPolicyManagedZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
-
-export type GetIamPolicyManagedZonesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyManagedZones: API.OperationMethod<
-  GetIamPolicyManagedZonesRequest,
-  GetIamPolicyManagedZonesResponse,
-  GetIamPolicyManagedZonesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyManagedZonesRequest,
-  output: GetIamPolicyManagedZonesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateResponsePoliciesRequest {
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
+export interface PatchResponsePoliciesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
+  /** User assigned name of the response policy addressed by this request. */
+  responsePolicy: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
   /** Request body */
   body?: ResponsePolicy;
 }
 
-export const CreateResponsePoliciesRequest =
+export const PatchResponsePoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
     ),
-    project: Schema.String.pipe(T.HttpPath("project")),
     body: Schema.optional(ResponsePolicy).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
-      method: "POST",
-      path: "dns/v1/projects/{project}/responsePolicies",
+      method: "PATCH",
+      path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateResponsePoliciesRequest>;
+  ) as unknown as Schema.Schema<PatchResponsePoliciesRequest>;
 
-export type CreateResponsePoliciesResponse = ResponsePolicy;
-export const CreateResponsePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicy;
+export type PatchResponsePoliciesResponse = ResponsePoliciesPatchResponse;
+export const PatchResponsePoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResponsePoliciesPatchResponse;
 
-export type CreateResponsePoliciesError =
+export type PatchResponsePoliciesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new Response Policy */
-export const createResponsePolicies: API.OperationMethod<
-  CreateResponsePoliciesRequest,
-  CreateResponsePoliciesResponse,
-  CreateResponsePoliciesError,
+/** Applies a partial update to an existing Response Policy. */
+export const patchResponsePolicies: API.OperationMethod<
+  PatchResponsePoliciesRequest,
+  PatchResponsePoliciesResponse,
+  PatchResponsePoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateResponsePoliciesRequest,
-  output: CreateResponsePoliciesResponse,
+  input: PatchResponsePoliciesRequest,
+  output: PatchResponsePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetResponsePoliciesRequest {
-  /** User assigned name of the Response Policy addressed by this request. */
-  responsePolicy: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-}
-
-export const GetResponsePoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    project: Schema.String.pipe(T.HttpPath("project")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetResponsePoliciesRequest>;
-
-export type GetResponsePoliciesResponse = ResponsePolicy;
-export const GetResponsePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicy;
-
-export type GetResponsePoliciesError = DefaultErrors | NotFound | Forbidden;
-
-/** Fetches the representation of an existing Response Policy. */
-export const getResponsePolicies: API.OperationMethod<
-  GetResponsePoliciesRequest,
-  GetResponsePoliciesResponse,
-  GetResponsePoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetResponsePoliciesRequest,
-  output: GetResponsePoliciesResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteResponsePoliciesRequest {
@@ -2560,6 +2012,96 @@ export const deleteResponsePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResponsePoliciesRequest,
   output: DeleteResponsePoliciesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetResponsePoliciesRequest {
+  /** User assigned name of the Response Policy addressed by this request. */
+  responsePolicy: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+}
+
+export const GetResponsePoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetResponsePoliciesRequest>;
+
+export type GetResponsePoliciesResponse = ResponsePolicy;
+export const GetResponsePoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicy;
+
+export type GetResponsePoliciesError = DefaultErrors | NotFound | Forbidden;
+
+/** Fetches the representation of an existing Response Policy. */
+export const getResponsePolicies: API.OperationMethod<
+  GetResponsePoliciesRequest,
+  GetResponsePoliciesResponse,
+  GetResponsePoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetResponsePoliciesRequest,
+  output: GetResponsePoliciesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateResponsePoliciesRequest {
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** Request body */
+  body?: ResponsePolicy;
+}
+
+export const CreateResponsePoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    body: Schema.optional(ResponsePolicy).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "dns/v1/projects/{project}/responsePolicies",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateResponsePoliciesRequest>;
+
+export type CreateResponsePoliciesResponse = ResponsePolicy;
+export const CreateResponsePoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicy;
+
+export type CreateResponsePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new Response Policy */
+export const createResponsePolicies: API.OperationMethod<
+  CreateResponsePoliciesRequest,
+  CreateResponsePoliciesResponse,
+  CreateResponsePoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateResponsePoliciesRequest,
+  output: CreateResponsePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -2614,373 +2156,13 @@ export const updateResponsePolicies: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchResponsePoliciesRequest {
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** User assigned name of the response policy addressed by this request. */
-  responsePolicy: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Request body */
-  body?: ResponsePolicy;
-}
-
-export const PatchResponsePoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    body: Schema.optional(ResponsePolicy).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchResponsePoliciesRequest>;
-
-export type PatchResponsePoliciesResponse = ResponsePoliciesPatchResponse;
-export const PatchResponsePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePoliciesPatchResponse;
-
-export type PatchResponsePoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Applies a partial update to an existing Response Policy. */
-export const patchResponsePolicies: API.OperationMethod<
-  PatchResponsePoliciesRequest,
-  PatchResponsePoliciesResponse,
-  PatchResponsePoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchResponsePoliciesRequest,
-  output: PatchResponsePoliciesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListResponsePoliciesRequest {
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
-  maxResults?: number;
-  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
-  pageToken?: string;
-}
-
-export const ListResponsePoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "dns/v1/projects/{project}/responsePolicies",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListResponsePoliciesRequest>;
-
-export type ListResponsePoliciesResponse = ResponsePoliciesListResponse;
-export const ListResponsePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePoliciesListResponse;
-
-export type ListResponsePoliciesError = DefaultErrors | NotFound | Forbidden;
-
-/** Enumerates all Response Policies associated with a project. */
-export const listResponsePolicies: API.PaginatedOperationMethod<
-  ListResponsePoliciesRequest,
-  ListResponsePoliciesResponse,
-  ListResponsePoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListResponsePoliciesRequest,
-  output: ListResponsePoliciesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface CreateResourceRecordSetsRequest {
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Request body */
-  body?: ResourceRecordSet;
-}
-
-export const CreateResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    body: Schema.optional(ResourceRecordSet).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateResourceRecordSetsRequest>;
-
-export type CreateResourceRecordSetsResponse = ResourceRecordSet;
-export const CreateResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
-
-export type CreateResourceRecordSetsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new ResourceRecordSet. */
-export const createResourceRecordSets: API.OperationMethod<
-  CreateResourceRecordSetsRequest,
-  CreateResourceRecordSetsResponse,
-  CreateResourceRecordSetsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateResourceRecordSetsRequest,
-  output: CreateResourceRecordSetsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetResourceRecordSetsRequest {
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** Fully qualified domain name. */
-  name: string;
-  /** RRSet type. */
-  type: string;
-}
-
-export const GetResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    project: Schema.String.pipe(T.HttpPath("project")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    type: Schema.String.pipe(T.HttpPath("type")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetResourceRecordSetsRequest>;
-
-export type GetResourceRecordSetsResponse = ResourceRecordSet;
-export const GetResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
-
-export type GetResourceRecordSetsError = DefaultErrors | NotFound | Forbidden;
-
-/** Fetches the representation of an existing ResourceRecordSet. */
-export const getResourceRecordSets: API.OperationMethod<
-  GetResourceRecordSetsRequest,
-  GetResourceRecordSetsResponse,
-  GetResourceRecordSetsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetResourceRecordSetsRequest,
-  output: GetResourceRecordSetsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteResourceRecordSetsRequest {
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
-  /** RRSet type. */
-  type: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** Fully qualified domain name. */
-  name: string;
-}
-
-export const DeleteResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-    type: Schema.String.pipe(T.HttpPath("type")),
-    project: Schema.String.pipe(T.HttpPath("project")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteResourceRecordSetsRequest>;
-
-export type DeleteResourceRecordSetsResponse = ResourceRecordSetsDeleteResponse;
-export const DeleteResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSetsDeleteResponse;
-
-export type DeleteResourceRecordSetsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a previously created ResourceRecordSet. */
-export const deleteResourceRecordSets: API.OperationMethod<
-  DeleteResourceRecordSetsRequest,
-  DeleteResourceRecordSetsResponse,
-  DeleteResourceRecordSetsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteResourceRecordSetsRequest,
-  output: DeleteResourceRecordSetsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchResourceRecordSetsRequest {
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** Fully qualified domain name. */
-  name: string;
-  /** RRSet type. */
-  type: string;
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
-  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
-  clientOperationId?: string;
-  /** Request body */
-  body?: ResourceRecordSet;
-}
-
-export const PatchResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    type: Schema.String.pipe(T.HttpPath("type")),
-    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    body: Schema.optional(ResourceRecordSet).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchResourceRecordSetsRequest>;
-
-export type PatchResourceRecordSetsResponse = ResourceRecordSet;
-export const PatchResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
-
-export type PatchResourceRecordSetsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Applies a partial update to an existing ResourceRecordSet. */
-export const patchResourceRecordSets: API.OperationMethod<
-  PatchResourceRecordSetsRequest,
-  PatchResourceRecordSetsResponse,
-  PatchResourceRecordSetsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchResourceRecordSetsRequest,
-  output: PatchResourceRecordSetsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListResourceRecordSetsRequest {
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
-  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
-  maxResults?: number;
-  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
-  pageToken?: string;
-  /** Specify a fully qualified domain name to view only those records. The `name` parameter is not supported and must be omitted when you use `filter`. */
-  name?: string;
-  /** Specify a record type to view only those records. You must also specify the `name` parameter. The `type` parameter is not supported and must be omitted when you use `filter`. */
-  type?: string;
-  /** Specify a filter expression to view records that exactly match the specified domain. Both the `name` and `type` parameters are not supported and must be omitted when you use `filter`. Your `filter` expression must conform to AIP-160 and you must specify a domain in the `name` field. Optionally, you can include the `type` field to filter records by type. You can also include the `has_suffix` function to view records that match by domain suffix. Examples: * `name`="example.com." * `name`="example.com." AND type="A" * `name`=`has_suffix`("example.com.") * `name`=`has_suffix`("example.com.") AND type="A" */
-  filter?: string;
-}
-
-export const ListResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-    project: Schema.String.pipe(T.HttpPath("project")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListResourceRecordSetsRequest>;
-
-export type ListResourceRecordSetsResponse = ResourceRecordSetsListResponse;
-export const ListResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSetsListResponse;
-
-export type ListResourceRecordSetsError = DefaultErrors | NotFound | Forbidden;
-
-/** Enumerates ResourceRecordSets that you have created but not yet deleted. */
-export const listResourceRecordSets: API.PaginatedOperationMethod<
-  ListResourceRecordSetsRequest,
-  ListResourceRecordSetsResponse,
-  ListResourceRecordSetsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListResourceRecordSetsRequest,
-  output: ListResourceRecordSetsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface GetManagedZoneOperationsRequest {
   /** Identifies the project addressed by this request. */
   project: string;
-  /** Identifies the operation addressed by this request (ID of the operation). */
-  operation: string;
   /** Identifies the managed zone addressed by this request. */
   managedZone: string;
+  /** Identifies the operation addressed by this request (ID of the operation). */
+  operation: string;
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
 }
@@ -2988,8 +2170,8 @@ export interface GetManagedZoneOperationsRequest {
 export const GetManagedZoneOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
-    operation: Schema.String.pipe(T.HttpPath("operation")),
     managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+    operation: Schema.String.pipe(T.HttpPath("operation")),
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
     ),
@@ -3023,24 +2205,24 @@ export const getManagedZoneOperations: API.OperationMethod<
 }));
 
 export interface ListManagedZoneOperationsRequest {
-  /** Identifies the managed zone addressed by this request. */
-  managedZone: string;
-  /** Identifies the project addressed by this request. */
-  project: string;
   /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
   maxResults?: number;
+  /** Identifies the managed zone addressed by this request. */
+  managedZone: string;
   /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
   pageToken?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
   /** Sorting criterion. The only supported values are START_TIME and ID. */
   sortBy?: "startTime" | "id" | (string & {});
 }
 
 export const ListManagedZoneOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-    project: Schema.String.pipe(T.HttpPath("project")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    project: Schema.String.pipe(T.HttpPath("project")),
     sortBy: Schema.optional(Schema.String).pipe(T.HttpQuery("sortBy")),
   }).pipe(
     T.Http({
@@ -3076,28 +2258,615 @@ export const listManagedZoneOperations: API.PaginatedOperationMethod<
   },
 }));
 
-export interface ListChangesRequest {
-  /** Sorting criterion. The only supported value is change sequence. */
-  sortBy?: "changeSequence" | (string & {});
+export interface TestIamPermissionsManagedZonesRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GoogleIamV1TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsManagedZonesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "dns/v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsManagedZonesRequest>;
+
+export type TestIamPermissionsManagedZonesResponse =
+  GoogleIamV1TestIamPermissionsResponse;
+export const TestIamPermissionsManagedZonesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+
+export type TestIamPermissionsManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this returns an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsManagedZones: API.OperationMethod<
+  TestIamPermissionsManagedZonesRequest,
+  TestIamPermissionsManagedZonesResponse,
+  TestIamPermissionsManagedZonesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsManagedZonesRequest,
+  output: TestIamPermissionsManagedZonesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyManagedZonesRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GoogleIamV1GetIamPolicyRequest;
+}
+
+export const GetIamPolicyManagedZonesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GoogleIamV1GetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "dns/v1/{+resource}:getIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyManagedZonesRequest>;
+
+export type GetIamPolicyManagedZonesResponse = GoogleIamV1Policy;
+export const GetIamPolicyManagedZonesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+
+export type GetIamPolicyManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyManagedZones: API.OperationMethod<
+  GetIamPolicyManagedZonesRequest,
+  GetIamPolicyManagedZonesResponse,
+  GetIamPolicyManagedZonesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyManagedZonesRequest,
+  output: GetIamPolicyManagedZonesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UpdateManagedZonesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Request body */
+  body?: ManagedZone;
+}
+
+export const UpdateManagedZonesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    body: Schema.optional(ManagedZone).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "dns/v1/projects/{project}/managedZones/{managedZone}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateManagedZonesRequest>;
+
+export type UpdateManagedZonesResponse = Operation;
+export const UpdateManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type UpdateManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an existing ManagedZone. */
+export const updateManagedZones: API.OperationMethod<
+  UpdateManagedZonesRequest,
+  UpdateManagedZonesResponse,
+  UpdateManagedZonesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateManagedZonesRequest,
+  output: UpdateManagedZonesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListManagedZonesRequest {
   /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
   maxResults?: number;
   /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
   pageToken?: string;
-  /** Sorting order direction: 'ascending' or 'descending'. */
-  sortOrder?: string;
+  /** Restricts the list to return only zones with this domain name. */
+  dnsName?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+}
+
+export const ListManagedZonesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    dnsName: Schema.optional(Schema.String).pipe(T.HttpQuery("dnsName")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+  }).pipe(
+    T.Http({ method: "GET", path: "dns/v1/projects/{project}/managedZones" }),
+    svc,
+  ) as unknown as Schema.Schema<ListManagedZonesRequest>;
+
+export type ListManagedZonesResponse = ManagedZonesListResponse;
+export const ListManagedZonesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ManagedZonesListResponse;
+
+export type ListManagedZonesError = DefaultErrors | NotFound | Forbidden;
+
+/** Enumerates ManagedZones that have been created but not yet deleted. */
+export const listManagedZones: API.PaginatedOperationMethod<
+  ListManagedZonesRequest,
+  ListManagedZonesResponse,
+  ListManagedZonesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListManagedZonesRequest,
+  output: ListManagedZonesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface PatchManagedZonesRequest {
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Request body */
+  body?: ManagedZone;
+}
+
+export const PatchManagedZonesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    body: Schema.optional(ManagedZone).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "dns/v1/projects/{project}/managedZones/{managedZone}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchManagedZonesRequest>;
+
+export type PatchManagedZonesResponse = Operation;
+export const PatchManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Applies a partial update to an existing ManagedZone. */
+export const patchManagedZones: API.OperationMethod<
+  PatchManagedZonesRequest,
+  PatchManagedZonesResponse,
+  PatchManagedZonesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchManagedZonesRequest,
+  output: PatchManagedZonesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteManagedZonesRequest {
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
   /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
   managedZone: string;
 }
 
-export const ListChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sortBy: Schema.optional(Schema.String).pipe(T.HttpQuery("sortBy")),
-  project: Schema.String.pipe(T.HttpPath("project")),
-  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  sortOrder: Schema.optional(Schema.String).pipe(T.HttpQuery("sortOrder")),
+export const DeleteManagedZonesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "dns/v1/projects/{project}/managedZones/{managedZone}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteManagedZonesRequest>;
+
+export interface DeleteManagedZonesResponse {}
+export const DeleteManagedZonesResponse: Schema.Schema<DeleteManagedZonesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeleteManagedZonesResponse>;
+
+export type DeleteManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a previously created ManagedZone. */
+export const deleteManagedZones: API.OperationMethod<
+  DeleteManagedZonesRequest,
+  DeleteManagedZonesResponse,
+  DeleteManagedZonesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteManagedZonesRequest,
+  output: DeleteManagedZonesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetManagedZonesRequest {
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+}
+
+export const GetManagedZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "dns/v1/projects/{project}/managedZones/{managedZone}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetManagedZonesRequest>;
+
+export type GetManagedZonesResponse = ManagedZone;
+export const GetManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ ManagedZone;
+
+export type GetManagedZonesError = DefaultErrors | NotFound | Forbidden;
+
+/** Fetches the representation of an existing ManagedZone. */
+export const getManagedZones: API.OperationMethod<
+  GetManagedZonesRequest,
+  GetManagedZonesResponse,
+  GetManagedZonesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetManagedZonesRequest,
+  output: GetManagedZonesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateManagedZonesRequest {
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Request body */
+  body?: ManagedZone;
+}
+
+export const CreateManagedZonesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    clientOperationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("clientOperationId"),
+    ),
+    body: Schema.optional(ManagedZone).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "dns/v1/projects/{project}/managedZones",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateManagedZonesRequest>;
+
+export type CreateManagedZonesResponse = ManagedZone;
+export const CreateManagedZonesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ManagedZone;
+
+export type CreateManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new ManagedZone. */
+export const createManagedZones: API.OperationMethod<
+  CreateManagedZonesRequest,
+  CreateManagedZonesResponse,
+  CreateManagedZonesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateManagedZonesRequest,
+  output: CreateManagedZonesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetIamPolicyManagedZonesRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GoogleIamV1SetIamPolicyRequest;
+}
+
+export const SetIamPolicyManagedZonesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "dns/v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyManagedZonesRequest>;
+
+export type SetIamPolicyManagedZonesResponse = GoogleIamV1Policy;
+export const SetIamPolicyManagedZonesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+
+export type SetIamPolicyManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyManagedZones: API.OperationMethod<
+  SetIamPolicyManagedZonesRequest,
+  SetIamPolicyManagedZonesResponse,
+  SetIamPolicyManagedZonesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyManagedZonesRequest,
+  output: SetIamPolicyManagedZonesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetDnsKeysRequest {
+  /** The identifier of the requested DnsKey. */
+  dnsKeyId: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+  /** An optional comma-separated list of digest types to compute and display for key signing keys. If omitted, the recommended digest type is computed and displayed. */
+  digestType?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+}
+
+export const GetDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dnsKeyId: Schema.String.pipe(T.HttpPath("dnsKeyId")),
+  clientOperationId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("clientOperationId"),
+  ),
   managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+  digestType: Schema.optional(Schema.String).pipe(T.HttpQuery("digestType")),
+  project: Schema.String.pipe(T.HttpPath("project")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "dns/v1/projects/{project}/managedZones/{managedZone}/dnsKeys/{dnsKeyId}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetDnsKeysRequest>;
+
+export type GetDnsKeysResponse = DnsKey;
+export const GetDnsKeysResponse = /*@__PURE__*/ /*#__PURE__*/ DnsKey;
+
+export type GetDnsKeysError = DefaultErrors | NotFound | Forbidden;
+
+/** Fetches the representation of an existing DnsKey. */
+export const getDnsKeys: API.OperationMethod<
+  GetDnsKeysRequest,
+  GetDnsKeysResponse,
+  GetDnsKeysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDnsKeysRequest,
+  output: GetDnsKeysResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListDnsKeysRequest {
+  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
+  maxResults?: number;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+  /** An optional comma-separated list of digest types to compute and display for key signing keys. If omitted, the recommended digest type is computed and displayed. */
+  digestType?: string;
+  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
+  pageToken?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+}
+
+export const ListDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+  digestType: Schema.optional(Schema.String).pipe(T.HttpQuery("digestType")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  project: Schema.String.pipe(T.HttpPath("project")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "dns/v1/projects/{project}/managedZones/{managedZone}/dnsKeys",
+  }),
+  svc,
+) as unknown as Schema.Schema<ListDnsKeysRequest>;
+
+export type ListDnsKeysResponse = DnsKeysListResponse;
+export const ListDnsKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DnsKeysListResponse;
+
+export type ListDnsKeysError = DefaultErrors | NotFound | Forbidden;
+
+/** Enumerates DnsKeys to a ResourceRecordSet collection. */
+export const listDnsKeys: API.PaginatedOperationMethod<
+  ListDnsKeysRequest,
+  ListDnsKeysResponse,
+  ListDnsKeysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListDnsKeysRequest,
+  output: ListDnsKeysResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsRequest {
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+}
+
+export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientOperationId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("clientOperationId"),
+  ),
+  project: Schema.String.pipe(T.HttpPath("project")),
+}).pipe(
+  T.Http({ method: "GET", path: "dns/v1/projects/{project}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsRequest>;
+
+export type GetProjectsResponse = Project;
+export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
+
+export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
+
+/** Fetches the representation of an existing Project. */
+export const getProjects: API.OperationMethod<
+  GetProjectsRequest,
+  GetProjectsResponse,
+  GetProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsRequest,
+  output: GetProjectsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetChangesRequest {
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+  /** The identifier of the requested change, from a previous ResourceRecordSetsChangeResponse. */
+  changeId: string;
+}
+
+export const GetChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientOperationId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("clientOperationId"),
+  ),
+  project: Schema.String.pipe(T.HttpPath("project")),
+  managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+  changeId: Schema.String.pipe(T.HttpPath("changeId")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "dns/v1/projects/{project}/managedZones/{managedZone}/changes/{changeId}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetChangesRequest>;
+
+export type GetChangesResponse = Change;
+export const GetChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Change;
+
+export type GetChangesError = DefaultErrors | NotFound | Forbidden;
+
+/** Fetches the representation of an existing Change. */
+export const getChanges: API.OperationMethod<
+  GetChangesRequest,
+  GetChangesResponse,
+  GetChangesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetChangesRequest,
+  output: GetChangesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListChangesRequest {
+  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
+  pageToken?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** Sorting criterion. The only supported value is change sequence. */
+  sortBy?: "changeSequence" | (string & {});
+  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
+  maxResults?: number;
+  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
+  managedZone: string;
+  /** Sorting order direction: 'ascending' or 'descending'. */
+  sortOrder?: string;
+}
+
+export const ListChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  project: Schema.String.pipe(T.HttpPath("project")),
+  sortBy: Schema.optional(Schema.String).pipe(T.HttpQuery("sortBy")),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+  sortOrder: Schema.optional(Schema.String).pipe(T.HttpQuery("sortOrder")),
 }).pipe(
   T.Http({
     method: "GET",
@@ -3177,45 +2946,276 @@ export const createChanges: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetChangesRequest {
+export interface CreatePoliciesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
-  /** The identifier of the requested change, from a previous ResourceRecordSetsChangeResponse. */
-  changeId: string;
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
-  /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
-  managedZone: string;
+  /** Request body */
+  body?: Policy;
 }
 
-export const GetChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
-  changeId: Schema.String.pipe(T.HttpPath("changeId")),
   clientOperationId: Schema.optional(Schema.String).pipe(
     T.HttpQuery("clientOperationId"),
   ),
-  managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+  body: Schema.optional(Policy).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "dns/v1/projects/{project}/policies",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<CreatePoliciesRequest>;
+
+export type CreatePoliciesResponse = Policy;
+export const CreatePoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type CreatePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new policy. */
+export const createPolicies: API.OperationMethod<
+  CreatePoliciesRequest,
+  CreatePoliciesResponse,
+  CreatePoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreatePoliciesRequest,
+  output: CreatePoliciesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UpdatePoliciesRequest {
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** User given friendly name of the policy addressed by this request. */
+  policy: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Request body */
+  body?: Policy;
+}
+
+export const UpdatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  policy: Schema.String.pipe(T.HttpPath("policy")),
+  clientOperationId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("clientOperationId"),
+  ),
+  body: Schema.optional(Policy).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "dns/v1/projects/{project}/policies/{policy}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<UpdatePoliciesRequest>;
+
+export type UpdatePoliciesResponse = PoliciesUpdateResponse;
+export const UpdatePoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ PoliciesUpdateResponse;
+
+export type UpdatePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an existing policy. */
+export const updatePolicies: API.OperationMethod<
+  UpdatePoliciesRequest,
+  UpdatePoliciesResponse,
+  UpdatePoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdatePoliciesRequest,
+  output: UpdatePoliciesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListPoliciesRequest {
+  /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
+  maxResults?: number;
+  /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
+  pageToken?: string;
+  /** Identifies the project addressed by this request. */
+  project: string;
+}
+
+export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  project: Schema.String.pipe(T.HttpPath("project")),
+}).pipe(
+  T.Http({ method: "GET", path: "dns/v1/projects/{project}/policies" }),
+  svc,
+) as unknown as Schema.Schema<ListPoliciesRequest>;
+
+export type ListPoliciesResponse = PoliciesListResponse;
+export const ListPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ PoliciesListResponse;
+
+export type ListPoliciesError = DefaultErrors | NotFound | Forbidden;
+
+/** Enumerates all policies associated with a project. */
+export const listPolicies: API.PaginatedOperationMethod<
+  ListPoliciesRequest,
+  ListPoliciesResponse,
+  ListPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPoliciesRequest,
+  output: ListPoliciesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface PatchPoliciesRequest {
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** User given friendly name of the policy addressed by this request. */
+  policy: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+  /** Request body */
+  body?: Policy;
+}
+
+export const PatchPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  policy: Schema.String.pipe(T.HttpPath("policy")),
+  clientOperationId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("clientOperationId"),
+  ),
+  body: Schema.optional(Policy).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "dns/v1/projects/{project}/policies/{policy}",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<PatchPoliciesRequest>;
+
+export type PatchPoliciesResponse = PoliciesPatchResponse;
+export const PatchPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ PoliciesPatchResponse;
+
+export type PatchPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Applies a partial update to an existing policy. */
+export const patchPolicies: API.OperationMethod<
+  PatchPoliciesRequest,
+  PatchPoliciesResponse,
+  PatchPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchPoliciesRequest,
+  output: PatchPoliciesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeletePoliciesRequest {
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** User given friendly name of the policy addressed by this request. */
+  policy: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+}
+
+export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  policy: Schema.String.pipe(T.HttpPath("policy")),
+  clientOperationId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("clientOperationId"),
+  ),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "dns/v1/projects/{project}/policies/{policy}",
+  }),
+  svc,
+) as unknown as Schema.Schema<DeletePoliciesRequest>;
+
+export interface DeletePoliciesResponse {}
+export const DeletePoliciesResponse: Schema.Schema<DeletePoliciesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeletePoliciesResponse>;
+
+export type DeletePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a previously created policy. Fails if the policy is still being referenced by a network. */
+export const deletePolicies: API.OperationMethod<
+  DeletePoliciesRequest,
+  DeletePoliciesResponse,
+  DeletePoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeletePoliciesRequest,
+  output: DeletePoliciesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetPoliciesRequest {
+  /** Identifies the project addressed by this request. */
+  project: string;
+  /** User given friendly name of the policy addressed by this request. */
+  policy: string;
+  /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
+  clientOperationId?: string;
+}
+
+export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  project: Schema.String.pipe(T.HttpPath("project")),
+  policy: Schema.String.pipe(T.HttpPath("policy")),
+  clientOperationId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("clientOperationId"),
+  ),
 }).pipe(
   T.Http({
     method: "GET",
-    path: "dns/v1/projects/{project}/managedZones/{managedZone}/changes/{changeId}",
+    path: "dns/v1/projects/{project}/policies/{policy}",
   }),
   svc,
-) as unknown as Schema.Schema<GetChangesRequest>;
+) as unknown as Schema.Schema<GetPoliciesRequest>;
 
-export type GetChangesResponse = Change;
-export const GetChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Change;
+export type GetPoliciesResponse = Policy;
+export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetChangesError = DefaultErrors | NotFound | Forbidden;
+export type GetPoliciesError = DefaultErrors | NotFound | Forbidden;
 
-/** Fetches the representation of an existing Change. */
-export const getChanges: API.OperationMethod<
-  GetChangesRequest,
-  GetChangesResponse,
-  GetChangesError,
+/** Fetches the representation of an existing policy. */
+export const getPolicies: API.OperationMethod<
+  GetPoliciesRequest,
+  GetPoliciesResponse,
+  GetPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetChangesRequest,
-  output: GetChangesResponse,
+  input: GetPoliciesRequest,
+  output: GetPoliciesResponse,
   errors: [NotFound, Forbidden],
 }));

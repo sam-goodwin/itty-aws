@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const UserInterviewsPartialUpdateInput =
@@ -27,13 +26,18 @@ export const UserInterviewsPartialUpdateInput =
     ),
     created_at: Schema.optional(Schema.String),
     interviewee_emails: Schema.optional(Schema.Array(Schema.String)),
+    interviewee_identifier: Schema.optional(Schema.String),
+    topic: Schema.optional(Schema.NullOr(Schema.String)),
     transcript: Schema.optional(Schema.String),
     summary: Schema.optional(Schema.String),
+    classifications: Schema.optional(
+      Schema.Array(Schema.Literals(["abandoned", "off-topic"])),
+    ),
     audio: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/user_interviews/{id}/",
+      path: "/api/projects/{project_id}/user_interviews/{id}/",
     }),
   );
 export type UserInterviewsPartialUpdateInput =
@@ -62,8 +66,13 @@ export const UserInterviewsPartialUpdateOutput =
     ),
     created_at: Schema.optional(Schema.String),
     interviewee_emails: Schema.optional(Schema.Array(Schema.String)),
+    interviewee_identifier: Schema.optional(Schema.String),
+    topic: Schema.optional(Schema.NullOr(Schema.String)),
     transcript: Schema.optional(Schema.String),
     summary: Schema.optional(Schema.String),
+    classifications: Schema.optional(
+      Schema.Array(Schema.Literals(["abandoned", "off-topic"])),
+    ),
     audio: Schema.optional(Schema.String),
   });
 export type UserInterviewsPartialUpdateOutput =
@@ -79,6 +88,5 @@ export const userInterviewsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UserInterviewsPartialUpdateInput,
     outputSchema: UserInterviewsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

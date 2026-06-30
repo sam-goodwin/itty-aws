@@ -238,3 +238,37 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
+// Input Schema
+export const PortalTenantCompilefileInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contents: Schema.Record(Schema.String, Schema.Unknown),
+    stringSource: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    files: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/providers/Microsoft.PortalServices/compilefile",
+      apiVersion: "2025-11-01",
+    }),
+  );
+export type PortalTenantCompilefileInput =
+  typeof PortalTenantCompilefileInput.Type;
+
+// Output Schema
+export const PortalTenantCompilefileOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
+export type PortalTenantCompilefileOutput =
+  typeof PortalTenantCompilefileOutput.Type;
+
+// The operation
+/**
+ * Compiles a file using inline content.
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const PortalTenantCompilefile = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: PortalTenantCompilefileInput,
+    outputSchema: PortalTenantCompilefileOutput,
+  }),
+);

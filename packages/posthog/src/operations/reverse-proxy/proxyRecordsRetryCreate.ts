@@ -47,6 +47,7 @@ export type ProxyRecordsRetryCreateOutput =
  * Retry provisioning a failed reverse proxy. Only available for proxies in 'erroring' or 'timed_out' status. Resets the proxy to 'waiting' status and restarts the provisioning workflow.
  *
  * @param id - A UUID string identifying this proxy record.
+ * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const proxyRecordsRetryCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

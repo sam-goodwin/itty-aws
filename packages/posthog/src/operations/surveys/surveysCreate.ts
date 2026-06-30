@@ -25,7 +25,6 @@ export const SurveysCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -47,7 +46,6 @@ export const SurveysCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -66,140 +64,17 @@ export const SurveysCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
       evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
     }),
   ),
-  targeting_flag_filters: Schema.optional(
-    Schema.NullOr(
-      Schema.Struct({
-        groups: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              properties: Schema.optional(Schema.Array(Schema.Unknown)),
-              rollout_percentage: Schema.optional(Schema.Number),
-              variant: Schema.optional(Schema.NullOr(Schema.String)),
-              aggregation_group_type_index: Schema.optional(
-                Schema.NullOr(Schema.Number),
-              ),
-            }),
-          ),
-        ),
-        multivariate: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              variants: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    rollout_percentage: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        aggregation_group_type_index: Schema.optional(
-          Schema.NullOr(Schema.Number),
-        ),
-        payloads: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        super_groups: Schema.optional(
-          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-        ),
-        feature_enrollment: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      }),
-    ),
-  ),
+  targeting_flag_filters: Schema.optional(Schema.Unknown),
   remove_targeting_flag: Schema.optional(Schema.NullOr(Schema.Boolean)),
   questions: Schema.optional(Schema.NullOr(Schema.Array(Schema.Unknown))),
-  conditions: Schema.optional(
-    Schema.NullOr(
-      Schema.Struct({
-        url: Schema.optional(Schema.String),
-        selector: Schema.optional(Schema.String),
-        seenSurveyWaitPeriodInDays: Schema.optional(Schema.Number),
-        urlMatchType: Schema.optional(
-          Schema.Literals([
-            "exact",
-            "is_not",
-            "icontains",
-            "not_icontains",
-            "regex",
-            "not_regex",
-          ]),
-        ),
-        events: Schema.optional(
-          Schema.Struct({
-            repeatedActivation: Schema.optional(Schema.Boolean),
-            values: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        deviceTypes: Schema.optional(
-          Schema.Array(Schema.Literals(["Desktop", "Mobile", "Tablet"])),
-        ),
-        deviceTypesMatchType: Schema.optional(
-          Schema.Literals([
-            "exact",
-            "is_not",
-            "icontains",
-            "not_icontains",
-            "regex",
-            "not_regex",
-          ]),
-        ),
-        linkedFlagVariant: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
-  appearance: Schema.optional(
-    Schema.NullOr(
-      Schema.Struct({
-        backgroundColor: Schema.optional(Schema.String),
-        submitButtonColor: Schema.optional(Schema.String),
-        textColor: Schema.optional(Schema.String),
-        submitButtonText: Schema.optional(Schema.String),
-        submitButtonTextColor: Schema.optional(Schema.String),
-        descriptionTextColor: Schema.optional(Schema.String),
-        ratingButtonColor: Schema.optional(Schema.String),
-        ratingButtonActiveColor: Schema.optional(Schema.String),
-        ratingButtonHoverColor: Schema.optional(Schema.String),
-        whiteLabel: Schema.optional(Schema.Boolean),
-        autoDisappear: Schema.optional(Schema.Boolean),
-        displayThankYouMessage: Schema.optional(Schema.Boolean),
-        thankYouMessageHeader: Schema.optional(Schema.String),
-        thankYouMessageDescription: Schema.optional(Schema.String),
-        thankYouMessageDescriptionContentType: Schema.optional(
-          Schema.Literals(["html", "text"]),
-        ),
-        thankYouMessageCloseButtonText: Schema.optional(Schema.String),
-        borderColor: Schema.optional(Schema.String),
-        placeholder: Schema.optional(Schema.String),
-        shuffleQuestions: Schema.optional(Schema.Boolean),
-        surveyPopupDelaySeconds: Schema.optional(Schema.Number),
-        widgetType: Schema.optional(
-          Schema.Literals(["button", "tab", "selector"]),
-        ),
-        widgetSelector: Schema.optional(Schema.String),
-        widgetLabel: Schema.optional(Schema.String),
-        widgetColor: Schema.optional(Schema.String),
-        fontFamily: Schema.optional(Schema.String),
-        maxWidth: Schema.optional(Schema.String),
-        zIndex: Schema.optional(Schema.String),
-        disabledButtonOpacity: Schema.optional(Schema.String),
-        boxPadding: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  conditions: Schema.optional(Schema.Unknown),
+  appearance: Schema.optional(Schema.Unknown),
   created_at: Schema.optional(Schema.String),
   created_by: Schema.optional(
     Schema.NullOr(
@@ -233,14 +108,13 @@ export const SurveysCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   response_sampling_interval_type: Schema.optional(Schema.Unknown),
   response_sampling_interval: Schema.optional(Schema.NullOr(Schema.Number)),
   response_sampling_limit: Schema.optional(Schema.NullOr(Schema.Number)),
-  response_sampling_daily_limits: Schema.optional(
-    Schema.NullOr(Schema.Unknown),
-  ),
+  response_sampling_daily_limits: Schema.optional(Schema.Unknown),
   enable_partial_responses: Schema.optional(Schema.NullOr(Schema.Boolean)),
   enable_iframe_embedding: Schema.optional(Schema.NullOr(Schema.Boolean)),
-  translations: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  base_language: Schema.optional(Schema.String),
+  translations: Schema.optional(Schema.Unknown),
   _create_in_folder: Schema.optional(Schema.String),
-  form_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  form_content: Schema.optional(Schema.Unknown),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/surveys/" }),
 );
@@ -267,7 +141,6 @@ export const SurveysCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -289,7 +162,6 @@ export const SurveysCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -308,18 +180,17 @@ export const SurveysCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ensure_experience_continuity: Schema.optional(
         Schema.NullOr(Schema.Boolean),
       ),
-      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
       version: Schema.optional(Schema.NullOr(Schema.Number)),
       evaluation_runtime: Schema.optional(Schema.Unknown),
       bucketing_identifier: Schema.optional(Schema.Unknown),
       evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
     }),
   ),
-  targeting_flag_filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  targeting_flag_filters: Schema.optional(Schema.Unknown),
   remove_targeting_flag: Schema.optional(Schema.NullOr(Schema.Boolean)),
-  questions: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  conditions: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  appearance: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  questions: Schema.optional(Schema.Unknown),
+  conditions: Schema.optional(Schema.Unknown),
+  appearance: Schema.optional(Schema.Unknown),
   created_at: Schema.optional(Schema.String),
   created_by: Schema.optional(
     Schema.NullOr(
@@ -353,14 +224,13 @@ export const SurveysCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   response_sampling_interval_type: Schema.optional(Schema.Unknown),
   response_sampling_interval: Schema.optional(Schema.NullOr(Schema.Number)),
   response_sampling_limit: Schema.optional(Schema.NullOr(Schema.Number)),
-  response_sampling_daily_limits: Schema.optional(
-    Schema.NullOr(Schema.Unknown),
-  ),
+  response_sampling_daily_limits: Schema.optional(Schema.Unknown),
   enable_partial_responses: Schema.optional(Schema.NullOr(Schema.Boolean)),
   enable_iframe_embedding: Schema.optional(Schema.NullOr(Schema.Boolean)),
-  translations: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  base_language: Schema.optional(Schema.String),
+  translations: Schema.optional(Schema.Unknown),
   _create_in_folder: Schema.optional(Schema.String),
-  form_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  form_content: Schema.optional(Schema.Unknown),
 });
 export type SurveysCreateOutput = typeof SurveysCreateOutput.Type;
 

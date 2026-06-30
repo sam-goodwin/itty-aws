@@ -23,7 +23,11 @@ export const ListExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     name: Schema.String,
     description: Schema.String,
     internal: Schema.Boolean,
-    shared_preload_allowed: Schema.Boolean,
+    loader: Schema.Literals([
+      "shared_preload_libraries",
+      "session_preload_libraries",
+      "create_extension",
+    ]),
     url: Schema.String,
     available: Schema.Boolean,
     unavailable_reason: Schema.String,

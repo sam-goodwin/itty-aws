@@ -11,6 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const AppsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.optional(Schema.String),
   }).pipe(
@@ -36,6 +37,9 @@ export type AppsCheckNameAvailabilityOutput =
 // The operation
 /**
  * Check if an IoT Central application name is available.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
  */
 export const AppsCheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -46,6 +50,7 @@ export const AppsCheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AppsCheckSubdomainAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.optional(Schema.String),
   }).pipe(
@@ -71,6 +76,9 @@ export type AppsCheckSubdomainAvailabilityOutput =
 // The operation
 /**
  * Check if an IoT Central application subdomain is available.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
  */
 export const AppsCheckSubdomainAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -80,6 +88,9 @@ export const AppsCheckSubdomainAvailability =
 // Input Schema
 export const AppsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         applicationId: Schema.optional(Schema.String),
@@ -127,15 +138,22 @@ export type AppsCreateOrUpdateOutput = typeof AppsCreateOrUpdateOutput.Type;
 // The operation
 /**
  * Create or update the metadata of an IoT Central application. The usual pattern to modify a property is to retrieve the IoT Central application metadata and security metadata, and then combine them with the modified values in a new body to update the IoT Central application.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT Central application.
+ * @param resourceName - The ARM resource name of the IoT Central application.
  */
 export const AppsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsCreateOrUpdateInput,
   outputSchema: AppsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}",
@@ -151,13 +169,22 @@ export type AppsDeleteOutput = typeof AppsDeleteOutput.Type;
 // The operation
 /**
  * Delete an IoT Central application.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT Central application.
+ * @param resourceName - The ARM resource name of the IoT Central application.
  */
 export const AppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsDeleteInput,
   outputSchema: AppsDeleteOutput,
 }));
 // Input Schema
-export const AppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const AppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}",
@@ -179,6 +206,11 @@ export type AppsGetOutput = typeof AppsGetOutput.Type;
 // The operation
 /**
  * Get the metadata of an IoT Central application.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT Central application.
+ * @param resourceName - The ARM resource name of the IoT Central application.
  */
 export const AppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsGetInput,
@@ -186,7 +218,10 @@ export const AppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AppsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps",
@@ -218,6 +253,10 @@ export type AppsListByResourceGroupOutput =
 // The operation
 /**
  * Get all the IoT Central Applications in a resource group.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT Central application.
  */
 export const AppsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -227,7 +266,9 @@ export const AppsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AppsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/iotApps",
@@ -259,6 +300,9 @@ export type AppsListBySubscriptionOutput =
 // The operation
 /**
  * Get all IoT Central Applications in a subscription.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
  */
 export const AppsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -268,7 +312,9 @@ export const AppsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AppsListTemplatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "POST",
@@ -309,6 +355,9 @@ export type AppsListTemplatesOutput = typeof AppsListTemplatesOutput.Type;
 // The operation
 /**
  * Get all available application templates.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
  */
 export const AppsListTemplates = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsListTemplatesInput,
@@ -316,6 +365,9 @@ export const AppsListTemplates = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   sku: Schema.optional(
     Schema.Struct({
@@ -360,6 +412,11 @@ export type AppsUpdateOutput = typeof AppsUpdateOutput.Type;
 // The operation
 /**
  * Update the metadata of an IoT Central application.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the IoT Central application.
+ * @param resourceName - The ARM resource name of the IoT Central application.
  */
 export const AppsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsUpdateInput,
@@ -403,6 +460,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available IoT Central Resource Provider operations.
+ *
+ * @param api-version - The version of the API.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,

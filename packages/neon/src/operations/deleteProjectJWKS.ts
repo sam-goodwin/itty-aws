@@ -32,7 +32,8 @@ export type DeleteProjectJWKSOutput = typeof DeleteProjectJWKSOutput.Type;
 /**
  * Delete JWKS URL
  *
- * Deletes a JWKS URL from the specified project
+ * Removes the specified JWKS URL from the project.
+ * JWTs signed by keys from the removed URL can no longer authenticate to the project's endpoints.
  *
  * @param project_id - The Neon project ID
  * @param jwks_id - The JWKS ID

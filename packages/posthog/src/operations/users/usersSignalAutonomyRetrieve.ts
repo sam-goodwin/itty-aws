@@ -27,6 +27,11 @@ export const UsersSignalAutonomyRetrieveOutput =
       }),
     ),
     autostart_priority: Schema.optional(Schema.Unknown),
+    slack_notification_integration_id: Schema.optional(
+      Schema.NullOr(Schema.Number),
+    ),
+    slack_notification_channel: Schema.optional(Schema.NullOr(Schema.String)),
+    slack_notification_min_priority: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
   });

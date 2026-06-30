@@ -21,7 +21,7 @@ export type ExportSolanaAccountOutput = typeof ExportSolanaAccountOutput.Type;
 
 // The operation
 /**
- * Export an Solana account
+ * Export Solana account
  *
  * Export an existing Solana account's private key. It is important to store the private key in a secure place after it's exported.
  *

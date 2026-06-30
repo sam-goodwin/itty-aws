@@ -97,8 +97,8 @@ export type CreateSnapshotOutput = typeof CreateSnapshotOutput.Type;
 /**
  * Create snapshot
  *
- * Create a snapshot from the specified branch using the provided parameters.
- * This endpoint may initiate an asynchronous operation.
+ * Creates a snapshot from the specified branch.
+ * This operation may initiate an asynchronous process.
  * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID

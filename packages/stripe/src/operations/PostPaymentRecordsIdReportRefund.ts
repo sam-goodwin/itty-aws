@@ -24,9 +24,11 @@ export const PostPaymentRecordsIdReportRefundInput =
       ),
       type: Schema.Literals(["custom"]),
     }),
-    refunded: Schema.Struct({
-      refunded_at: Schema.Number,
-    }),
+    refunded: Schema.optional(
+      Schema.Struct({
+        refunded_at: Schema.Number,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",

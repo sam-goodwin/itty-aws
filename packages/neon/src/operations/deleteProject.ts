@@ -115,6 +115,9 @@ export const DeleteProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.optional(Schema.String),
     maintenance_scheduled_for: Schema.optional(Schema.String),
     hipaa_enabled_at: Schema.optional(Schema.String),
+    effective_project_permission: Schema.optional(
+      Schema.NullOr(Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"])),
+    ),
   }),
 });
 export type DeleteProjectOutput = typeof DeleteProjectOutput.Type;
@@ -123,10 +126,9 @@ export type DeleteProjectOutput = typeof DeleteProjectOutput.Type;
 /**
  * Delete project
  *
- * Deletes the specified project.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * Deleting a project is a permanent action.
- * Deleting a project also deletes endpoints, branches, databases, and users that belong to the project.
+ * Deletes the specified project and all its endpoints, branches, databases, and users.
+ * Deleted projects can be recovered within 7 days using `POST /projects/{project_id}/recover`.
+ * To list recoverable projects, use `GET /projects?recoverable=true`.
  *
  * @param project_id - The Neon project ID
  */

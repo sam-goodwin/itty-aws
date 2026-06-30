@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LogsViewsPartialUpdateInput =
@@ -34,7 +33,7 @@ export const LogsViewsPartialUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/logs/views/{short_id}/",
+      path: "/api/projects/{project_id}/logs/views/{short_id}/",
     }),
   );
 export type LogsViewsPartialUpdateInput =
@@ -80,6 +79,5 @@ export const logsViewsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: LogsViewsPartialUpdateInput,
     outputSchema: LogsViewsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

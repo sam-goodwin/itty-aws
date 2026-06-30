@@ -26,7 +26,7 @@ export type ExportSolanaAccountByNameOutput =
 
 // The operation
 /**
- * Export a Solana account by name
+ * Export Solana account by name
  *
  * Export an existing Solana account's private key by its name. It is important to store the private key in a secure place after it's exported.
  *

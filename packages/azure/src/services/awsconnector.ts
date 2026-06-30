@@ -12175,6 +12175,7 @@ export const Ec2ImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const Ec2InstancesCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         awsProperties: Schema.optional(
@@ -13517,6 +13518,7 @@ export type Ec2InstancesCreateOrReplaceOutput =
  * Create a Ec2Instance. Please note that end user resource creation is currently restricted, but it will be enabled in the future.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const Ec2InstancesCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -13526,7 +13528,9 @@ export const Ec2InstancesCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const Ec2InstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default",
@@ -13544,15 +13548,16 @@ export type Ec2InstancesDeleteOutput = typeof Ec2InstancesDeleteOutput.Type;
  * Delete a Ec2Instance
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const Ec2InstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: Ec2InstancesDeleteInput,
   outputSchema: Ec2InstancesDeleteOutput,
 }));
 // Input Schema
-export const Ec2InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const Ec2InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default",
@@ -13588,15 +13593,16 @@ export type Ec2InstancesGetOutput = typeof Ec2InstancesGetOutput.Type;
  * Get a Ec2Instance
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const Ec2InstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: Ec2InstancesGetInput,
   outputSchema: Ec2InstancesGetOutput,
 }));
 // Input Schema
-export const Ec2InstancesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const Ec2InstancesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances",
@@ -13649,6 +13655,7 @@ export type Ec2InstancesListOutput = typeof Ec2InstancesListOutput.Type;
  * List Ec2Instance resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const Ec2InstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: Ec2InstancesListInput,
@@ -13656,7 +13663,9 @@ export const Ec2InstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const Ec2InstancesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "POST",
@@ -13712,6 +13721,7 @@ export type Ec2InstancesStartOutput = typeof Ec2InstancesStartOutput.Type;
  * A long-running resource action.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const Ec2InstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: Ec2InstancesStartInput,
@@ -13719,6 +13729,7 @@ export const Ec2InstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const Ec2InstancesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
   hibernate: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -13777,6 +13788,7 @@ export type Ec2InstancesStopOutput = typeof Ec2InstancesStopOutput.Type;
  * A long-running resource action.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const Ec2InstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: Ec2InstancesStopInput,
@@ -22124,6 +22136,7 @@ export const EfsMountTargetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const EksClustersCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         awsProperties: Schema.optional(
@@ -22360,6 +22373,7 @@ export type EksClustersCreateOrReplaceOutput =
  * Create a EksCluster. Please note that end user resource creation is currently restricted, but it will be enabled in the future.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const EksClustersCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -22369,7 +22383,9 @@ export const EksClustersCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const EksClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "DELETE",
@@ -22388,15 +22404,16 @@ export type EksClustersDeleteOutput = typeof EksClustersDeleteOutput.Type;
  * Delete a EksCluster
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const EksClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EksClustersDeleteInput,
   outputSchema: EksClustersDeleteOutput,
 }));
 // Input Schema
-export const EksClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const EksClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/eksClusters/default",
@@ -22432,15 +22449,16 @@ export type EksClustersGetOutput = typeof EksClustersGetOutput.Type;
  * Get a EksCluster
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const EksClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EksClustersGetInput,
   outputSchema: EksClustersGetOutput,
 }));
 // Input Schema
-export const EksClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const EksClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/eksClusters",
@@ -22481,6 +22499,7 @@ export type EksClustersListOutput = typeof EksClustersListOutput.Type;
  * List EksCluster resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const EksClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EksClustersListInput,

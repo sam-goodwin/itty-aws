@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const CustomerJourneysUpdateInput =
@@ -17,7 +16,7 @@ export const CustomerJourneysUpdateInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/api/environments/{project_id}/customer_journeys/{id}/",
+      path: "/api/projects/{project_id}/customer_journeys/{id}/",
     }),
   );
 export type CustomerJourneysUpdateInput =
@@ -40,13 +39,11 @@ export type CustomerJourneysUpdateOutput =
 // The operation
 /**
  *
- * @param id - A UUID string identifying this customer journey.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const customerJourneysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CustomerJourneysUpdateInput,
     outputSchema: CustomerJourneysUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

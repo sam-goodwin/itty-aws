@@ -9638,26 +9638,9 @@ export const WatcherCreateOrUpdateInput =
         description: Schema.optional(Schema.String),
       }),
     ),
+    etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",

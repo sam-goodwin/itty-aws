@@ -20,7 +20,6 @@ export type TasksDestroyOutput = typeof TasksDestroyOutput.Type;
 /**
  * API for managing tasks within a project. Tasks represent units of work to be performed by an agent.
  *
- * @param id - A UUID string identifying this task.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

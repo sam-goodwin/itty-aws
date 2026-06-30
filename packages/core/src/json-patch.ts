@@ -223,18 +223,40 @@ export function applyPatch(obj: unknown, patch: JsonPatch): void {
 }
 
 /**
+ * Whether a per-operation failure is caused by the target location being
+ * absent from the spec (i.e. vendor spec drift — the operation/schema the
+ * patch targets was renamed or removed upstream) as opposed to a malformed
+ * patch. Stale targets are skipped with a warning rather than aborting the
+ * whole generate; a patch that only adds an error response to an operation
+ * that no longer exists is harmless to drop.
+ */
+function isStaleTargetError(message: string): boolean {
+  return (
+    message.includes("not an object") ||
+    message.includes("parent is not an object")
+  );
+}
+
+/**
  * Load and apply all patches from a directory.
  * Finds all *.patch.json files and applies them.
+ *
+ * Each operation within a patch file is applied independently. Operations
+ * whose target path no longer exists in the spec (vendor spec drift) are
+ * collected as `skipped` warnings and do not abort generation. Only genuine
+ * failures (malformed JSON, invalid pointers, failed `test` ops) are reported
+ * as `errors`.
  */
 export function applyAllPatches(
   spec: unknown,
   patchDir: string,
-): { applied: string[]; errors: string[] } {
+): { applied: string[]; skipped: string[]; errors: string[] } {
   const applied: string[] = [];
+  const skipped: string[] = [];
   const errors: string[] = [];
 
   if (!fs.existsSync(patchDir)) {
-    return { applied, errors };
+    return { applied, skipped, errors };
   }
 
   // Find all .patch.json files
@@ -245,17 +267,40 @@ export function applyAllPatches(
 
   for (const file of files) {
     const filePath = path.join(patchDir, file);
+    let patchFile: PatchFile;
     try {
       const content = fs.readFileSync(filePath, "utf-8");
-      const patchFile: PatchFile = JSON.parse(content);
-      applyPatch(spec, patchFile.patches);
-      applied.push(`${file}: ${patchFile.description}`);
+      patchFile = JSON.parse(content);
     } catch (error) {
       errors.push(
         `${file}: ${error instanceof Error ? error.message : String(error)}`,
       );
+      continue;
+    }
+
+    let appliedAny = false;
+    for (const operation of patchFile.patches) {
+      try {
+        applyOperation(spec, operation);
+        appliedAny = true;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        if (isStaleTargetError(message)) {
+          skipped.push(
+            `${file} [${operation.op} ${operation.path}]: ${message}`,
+          );
+        } else {
+          errors.push(
+            `${file} [${operation.op} ${operation.path}]: ${message}`,
+          );
+        }
+      }
+    }
+
+    if (appliedAny) {
+      applied.push(`${file}: ${patchFile.description}`);
     }
   }
 
-  return { applied, errors };
+  return { applied, skipped, errors };
 }

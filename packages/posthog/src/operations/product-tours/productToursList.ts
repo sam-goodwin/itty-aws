@@ -40,9 +40,6 @@ export const ProductToursListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               ensure_experience_continuity: Schema.optional(
                 Schema.NullOr(Schema.Boolean),
               ),
-              has_encrypted_payloads: Schema.optional(
-                Schema.NullOr(Schema.Boolean),
-              ),
               version: Schema.optional(Schema.NullOr(Schema.Number)),
               evaluation_runtime: Schema.optional(Schema.Unknown),
               bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -63,9 +60,6 @@ export const ProductToursListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               ensure_experience_continuity: Schema.optional(
                 Schema.NullOr(Schema.Boolean),
               ),
-              has_encrypted_payloads: Schema.optional(
-                Schema.NullOr(Schema.Boolean),
-              ),
               version: Schema.optional(Schema.NullOr(Schema.Number)),
               evaluation_runtime: Schema.optional(Schema.Unknown),
               bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -76,7 +70,7 @@ export const ProductToursListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
           content: Schema.optional(Schema.Unknown),
-          draft_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          draft_content: Schema.optional(Schema.Unknown),
           has_draft: Schema.optional(Schema.Boolean),
           auto_launch: Schema.optional(Schema.Boolean),
           start_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -103,6 +97,7 @@ export const ProductToursListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           updated_at: Schema.optional(Schema.String),
           archived: Schema.optional(Schema.Boolean),
+          search_match_type: Schema.optional(Schema.Unknown),
         }),
       ),
     ),
@@ -116,7 +111,7 @@ export type ProductToursListOutput = typeof ProductToursListOutput.Type;
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
- * @param search - A search term.
+ * @param search - Fuzzy match against product tour `name` and `description` using Postgres trigram word similarity. Supports typos and prefix-as-you-type.
  */
 export const productToursList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProductToursListInput,

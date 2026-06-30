@@ -23,7 +23,7 @@ export type CreatePolicyOutput = typeof CreatePolicyOutput.Type;
 
 // The operation
 /**
- * Create a policy
+ * Create policy
  *
  * Create a policy that can be used to govern the behavior of accounts.
  *

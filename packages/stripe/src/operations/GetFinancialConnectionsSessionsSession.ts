@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const GetFinancialConnectionsSessionsSessionInput =
@@ -62,6 +62,21 @@ export const GetFinancialConnectionsSessionsSessionOutput =
             ),
           ),
           status: Schema.Literals(["active", "disconnected", "inactive"]),
+          status_details: Schema.optional(
+            Schema.Struct({
+              active: Schema.optional(
+                Schema.Struct({
+                  action: Schema.Literals(["none", "relink_required"]),
+                  cause: Schema.Literals([
+                    "access_expired",
+                    "institution_requirement",
+                    "unspecified",
+                  ]),
+                  expected_deactivation_date: Schema.Number,
+                }),
+              ),
+            }),
+          ),
           subcategory: Schema.Literals([
             "checking",
             "credit_card",
@@ -83,7 +98,7 @@ export const GetFinancialConnectionsSessionsSessionOutput =
       object: Schema.Literals(["list"]),
       url: Schema.String,
     }),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     filters: Schema.optional(
       Schema.Struct({
         account_subcategories: Schema.NullOr(

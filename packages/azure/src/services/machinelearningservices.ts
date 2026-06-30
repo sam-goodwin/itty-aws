@@ -81,7 +81,7 @@ export const BatchDeploymentsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BatchDeploymentsCreateOrUpdateInput =
@@ -139,7 +139,7 @@ export const BatchDeploymentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BatchDeploymentsDeleteInput =
@@ -180,7 +180,7 @@ export const BatchDeploymentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BatchDeploymentsGetInput = typeof BatchDeploymentsGetInput.Type;
@@ -239,7 +239,7 @@ export const BatchDeploymentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BatchDeploymentsListInput = typeof BatchDeploymentsListInput.Type;
@@ -321,7 +321,7 @@ export const BatchDeploymentsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BatchDeploymentsUpdateInput =
@@ -433,7 +433,7 @@ export const BatchEndpointsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BatchEndpointsCreateOrUpdateInput =
@@ -491,7 +491,7 @@ export const BatchEndpointsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BatchEndpointsDeleteInput = typeof BatchEndpointsDeleteInput.Type;
@@ -529,7 +529,7 @@ export const BatchEndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type BatchEndpointsGetInput = typeof BatchEndpointsGetInput.Type;
@@ -585,7 +585,7 @@ export const BatchEndpointsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BatchEndpointsListInput = typeof BatchEndpointsListInput.Type;
@@ -654,7 +654,7 @@ export const BatchEndpointsListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/listkeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BatchEndpointsListKeysInput =
@@ -714,7 +714,7 @@ export const BatchEndpointsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BatchEndpointsUpdateInput = typeof BatchEndpointsUpdateInput.Type;
@@ -782,7 +782,7 @@ export const CapabilityHostsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CapabilityHostsCreateOrUpdateInput =
@@ -838,7 +838,7 @@ export const CapabilityHostsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CapabilityHostsDeleteInput = typeof CapabilityHostsDeleteInput.Type;
@@ -876,7 +876,7 @@ export const CapabilityHostsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CapabilityHostsGetInput = typeof CapabilityHostsGetInput.Type;
@@ -942,7 +942,7 @@ export const CodeContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CodeContainersCreateOrUpdateInput =
@@ -998,7 +998,7 @@ export const CodeContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CodeContainersDeleteInput = typeof CodeContainersDeleteInput.Type;
@@ -1036,7 +1036,7 @@ export const CodeContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type CodeContainersGetInput = typeof CodeContainersGetInput.Type;
@@ -1091,7 +1091,7 @@ export const CodeContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CodeContainersListInput = typeof CodeContainersListInput.Type;
@@ -1164,7 +1164,7 @@ export const CodeVersionsCreateOrGetStartPendingUploadInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}/startPendingUpload",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CodeVersionsCreateOrGetStartPendingUploadInput =
@@ -1233,7 +1233,7 @@ export const CodeVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CodeVersionsCreateOrUpdateInput =
@@ -1292,7 +1292,7 @@ export const CodeVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CodeVersionsDeleteInput = typeof CodeVersionsDeleteInput.Type;
@@ -1327,7 +1327,7 @@ export const CodeVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type CodeVersionsGetInput = typeof CodeVersionsGetInput.Type;
@@ -1384,7 +1384,7 @@ export const CodeVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type CodeVersionsListInput = typeof CodeVersionsListInput.Type;
@@ -1462,7 +1462,7 @@ export const CodeVersionsPublishInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}/publish",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CodeVersionsPublishInput = typeof CodeVersionsPublishInput.Type;
@@ -1511,7 +1511,7 @@ export const ComponentContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ComponentContainersCreateOrUpdateInput =
@@ -1567,7 +1567,7 @@ export const ComponentContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ComponentContainersDeleteInput =
@@ -1606,7 +1606,7 @@ export const ComponentContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ComponentContainersGetInput =
@@ -1666,7 +1666,7 @@ export const ComponentContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ComponentContainersListInput =
@@ -1753,7 +1753,7 @@ export const ComponentVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ComponentVersionsCreateOrUpdateInput =
@@ -1811,7 +1811,7 @@ export const ComponentVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ComponentVersionsDeleteInput =
@@ -1852,7 +1852,7 @@ export const ComponentVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ComponentVersionsGetInput = typeof ComponentVersionsGetInput.Type;
@@ -1914,7 +1914,7 @@ export const ComponentVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ComponentVersionsListInput = typeof ComponentVersionsListInput.Type;
@@ -1993,7 +1993,7 @@ export const ComponentVersionsPublishInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}/publish",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ComponentVersionsPublishInput =
@@ -2129,7 +2129,7 @@ export const ComputeCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ComputeCreateOrUpdateInput = typeof ComputeCreateOrUpdateInput.Type;
@@ -2185,7 +2185,7 @@ export const ComputeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ComputeDeleteInput = typeof ComputeDeleteInput.Type;
@@ -2219,7 +2219,7 @@ export const ComputeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ComputeGetInput = typeof ComputeGetInput.Type;
@@ -2270,7 +2270,7 @@ export const ComputeListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ComputeListInput = typeof ComputeListInput.Type;
@@ -2326,7 +2326,7 @@ export const ComputeListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/listKeys",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ComputeListKeysInput = typeof ComputeListKeysInput.Type;
@@ -2372,7 +2372,7 @@ export const ComputeListNodesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/listNodes",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ComputeListNodesInput = typeof ComputeListNodesInput.Type;
@@ -2430,7 +2430,7 @@ export const ComputeRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/restart",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ComputeRestartInput = typeof ComputeRestartInput.Type;
@@ -2463,7 +2463,7 @@ export const ComputeStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/start",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ComputeStartInput = typeof ComputeStartInput.Type;
@@ -2496,7 +2496,7 @@ export const ComputeStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/stop",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ComputeStopInput = typeof ComputeStopInput.Type;
@@ -2544,7 +2544,7 @@ export const ComputeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ComputeUpdateInput = typeof ComputeUpdateInput.Type;
@@ -2609,7 +2609,7 @@ export const DataContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataContainersCreateOrUpdateInput =
@@ -2665,7 +2665,7 @@ export const DataContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataContainersDeleteInput = typeof DataContainersDeleteInput.Type;
@@ -2703,7 +2703,7 @@ export const DataContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DataContainersGetInput = typeof DataContainersGetInput.Type;
@@ -2759,7 +2759,7 @@ export const DataContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataContainersListInput = typeof DataContainersListInput.Type;
@@ -2842,7 +2842,7 @@ export const DatastoresCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DatastoresCreateOrUpdateInput =
@@ -2899,7 +2899,7 @@ export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DatastoresDeleteInput = typeof DatastoresDeleteInput.Type;
@@ -2932,7 +2932,7 @@ export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DatastoresGetInput = typeof DatastoresGetInput.Type;
@@ -2989,7 +2989,7 @@ export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DatastoresListInput = typeof DatastoresListInput.Type;
@@ -3054,7 +3054,7 @@ export const DatastoresListSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}/listSecrets",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DatastoresListSecretsInput = typeof DatastoresListSecretsInput.Type;
@@ -3113,7 +3113,7 @@ export const DataVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataVersionsCreateOrUpdateInput =
@@ -3172,7 +3172,7 @@ export const DataVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataVersionsDeleteInput = typeof DataVersionsDeleteInput.Type;
@@ -3207,7 +3207,7 @@ export const DataVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DataVersionsGetInput = typeof DataVersionsGetInput.Type;
@@ -3266,7 +3266,7 @@ export const DataVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DataVersionsListInput = typeof DataVersionsListInput.Type;
@@ -3345,7 +3345,7 @@ export const DataVersionsPublishInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}/publish",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataVersionsPublishInput = typeof DataVersionsPublishInput.Type;
@@ -3394,7 +3394,7 @@ export const EnvironmentContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EnvironmentContainersCreateOrUpdateInput =
@@ -3450,7 +3450,7 @@ export const EnvironmentContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EnvironmentContainersDeleteInput =
@@ -3489,7 +3489,7 @@ export const EnvironmentContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EnvironmentContainersGetInput =
@@ -3549,7 +3549,7 @@ export const EnvironmentContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EnvironmentContainersListInput =
@@ -3636,7 +3636,7 @@ export const EnvironmentVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EnvironmentVersionsCreateOrUpdateInput =
@@ -3694,7 +3694,7 @@ export const EnvironmentVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EnvironmentVersionsDeleteInput =
@@ -3735,7 +3735,7 @@ export const EnvironmentVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EnvironmentVersionsGetInput =
@@ -3799,7 +3799,7 @@ export const EnvironmentVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EnvironmentVersionsListInput =
@@ -3879,7 +3879,7 @@ export const EnvironmentVersionsPublishInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}/publish",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EnvironmentVersionsPublishInput =
@@ -3932,7 +3932,7 @@ export const FeaturesetContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturesetContainersCreateOrUpdateInput =
@@ -3988,7 +3988,7 @@ export const FeaturesetContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturesetContainersDeleteInput =
@@ -4027,7 +4027,7 @@ export const FeaturesetContainersGetEntityInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturesetContainersGetEntityInput =
@@ -4091,7 +4091,7 @@ export const FeaturesetContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturesetContainersListInput =
@@ -4198,7 +4198,7 @@ export const FeaturesetVersionsBackfillInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}/backfill",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturesetVersionsBackfillInput =
@@ -4254,7 +4254,7 @@ export const FeaturesetVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturesetVersionsCreateOrUpdateInput =
@@ -4312,7 +4312,7 @@ export const FeaturesetVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturesetVersionsDeleteInput =
@@ -4353,7 +4353,7 @@ export const FeaturesetVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturesetVersionsGetInput = typeof FeaturesetVersionsGetInput.Type;
@@ -4421,7 +4421,7 @@ export const FeaturesetVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturesetVersionsListInput =
@@ -4503,7 +4503,7 @@ export const FeaturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{featuresetName}/versions/{featuresetVersion}/features/{featureName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type FeaturesGetInput = typeof FeaturesGetInput.Type;
@@ -4565,7 +4565,7 @@ export const FeaturesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{featuresetName}/versions/{featuresetVersion}/features",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type FeaturesListInput = typeof FeaturesListInput.Type;
@@ -4642,7 +4642,7 @@ export const FeaturestoreEntityContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturestoreEntityContainersCreateOrUpdateInput =
@@ -4698,7 +4698,7 @@ export const FeaturestoreEntityContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturestoreEntityContainersDeleteInput =
@@ -4736,7 +4736,7 @@ export const FeaturestoreEntityContainersGetEntityInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturestoreEntityContainersGetEntityInput =
@@ -4800,7 +4800,7 @@ export const FeaturestoreEntityContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturestoreEntityContainersListInput =
@@ -4891,7 +4891,7 @@ export const FeaturestoreEntityVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturestoreEntityVersionsCreateOrUpdateInput =
@@ -4949,7 +4949,7 @@ export const FeaturestoreEntityVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturestoreEntityVersionsDeleteInput =
@@ -4989,7 +4989,7 @@ export const FeaturestoreEntityVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturestoreEntityVersionsGetInput =
@@ -5057,7 +5057,7 @@ export const FeaturestoreEntityVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FeaturestoreEntityVersionsListInput =
@@ -5136,7 +5136,7 @@ export const JobsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}/cancel",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type JobsCancelInput = typeof JobsCancelInput.Type;
@@ -5183,7 +5183,7 @@ export const JobsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type JobsCreateOrUpdateInput = typeof JobsCreateOrUpdateInput.Type;
@@ -5239,7 +5239,7 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type JobsDeleteInput = typeof JobsDeleteInput.Type;
@@ -5272,7 +5272,7 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type JobsGetInput = typeof JobsGetInput.Type;
@@ -5329,7 +5329,7 @@ export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type JobsListInput = typeof JobsListInput.Type;
@@ -5390,7 +5390,7 @@ export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/provisionManagedNetwork",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ManagedNetworkProvisionsProvisionManagedNetworkInput =
@@ -5452,7 +5452,7 @@ export const ManagedNetworkSettingsRuleCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ManagedNetworkSettingsRuleCreateOrUpdateInput =
@@ -5508,7 +5508,7 @@ export const ManagedNetworkSettingsRuleDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ManagedNetworkSettingsRuleDeleteInput =
@@ -5546,7 +5546,7 @@ export const ManagedNetworkSettingsRuleGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ManagedNetworkSettingsRuleGetInput =
@@ -5601,7 +5601,7 @@ export const ManagedNetworkSettingsRuleListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ManagedNetworkSettingsRuleListInput =
@@ -5694,7 +5694,7 @@ export const MarketplaceSubscriptionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type MarketplaceSubscriptionsCreateOrUpdateInput =
@@ -5750,7 +5750,7 @@ export const MarketplaceSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type MarketplaceSubscriptionsDeleteInput =
@@ -5788,7 +5788,7 @@ export const MarketplaceSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type MarketplaceSubscriptionsGetInput =
@@ -5845,7 +5845,7 @@ export const MarketplaceSubscriptionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type MarketplaceSubscriptionsListInput =
@@ -5929,7 +5929,7 @@ export const ModelContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ModelContainersCreateOrUpdateInput =
@@ -5985,7 +5985,7 @@ export const ModelContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ModelContainersDeleteInput = typeof ModelContainersDeleteInput.Type;
@@ -6023,7 +6023,7 @@ export const ModelContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ModelContainersGetInput = typeof ModelContainersGetInput.Type;
@@ -6080,7 +6080,7 @@ export const ModelContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ModelContainersListInput = typeof ModelContainersListInput.Type;
@@ -6164,7 +6164,7 @@ export const ModelVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ModelVersionsCreateOrUpdateInput =
@@ -6223,7 +6223,7 @@ export const ModelVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ModelVersionsDeleteInput = typeof ModelVersionsDeleteInput.Type;
@@ -6259,7 +6259,7 @@ export const ModelVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ModelVersionsGetInput = typeof ModelVersionsGetInput.Type;
@@ -6327,7 +6327,7 @@ export const ModelVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ModelVersionsListInput = typeof ModelVersionsListInput.Type;
@@ -6409,7 +6409,7 @@ export const ModelVersionsPublishInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}/publish",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ModelVersionsPublishInput = typeof ModelVersionsPublishInput.Type;
@@ -6505,7 +6505,7 @@ export const OnlineDeploymentsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineDeploymentsCreateOrUpdateInput =
@@ -6563,7 +6563,7 @@ export const OnlineDeploymentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineDeploymentsDeleteInput =
@@ -6604,7 +6604,7 @@ export const OnlineDeploymentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineDeploymentsGetInput = typeof OnlineDeploymentsGetInput.Type;
@@ -6665,7 +6665,7 @@ export const OnlineDeploymentsGetLogsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}/getLogs",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineDeploymentsGetLogsInput =
@@ -6710,7 +6710,7 @@ export const OnlineDeploymentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineDeploymentsListInput = typeof OnlineDeploymentsListInput.Type;
@@ -6787,7 +6787,7 @@ export const OnlineDeploymentsListSkusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}/skus",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineDeploymentsListSkusInput =
@@ -6869,7 +6869,7 @@ export const OnlineDeploymentsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineDeploymentsUpdateInput =
@@ -6981,7 +6981,7 @@ export const OnlineEndpointsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineEndpointsCreateOrUpdateInput =
@@ -7037,7 +7037,7 @@ export const OnlineEndpointsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineEndpointsDeleteInput = typeof OnlineEndpointsDeleteInput.Type;
@@ -7075,7 +7075,7 @@ export const OnlineEndpointsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineEndpointsGetInput = typeof OnlineEndpointsGetInput.Type;
@@ -7128,7 +7128,7 @@ export const OnlineEndpointsGetTokenInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/token",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineEndpointsGetTokenInput =
@@ -7187,7 +7187,7 @@ export const OnlineEndpointsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineEndpointsListInput = typeof OnlineEndpointsListInput.Type;
@@ -7261,7 +7261,7 @@ export const OnlineEndpointsListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/listKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineEndpointsListKeysInput =
@@ -7305,7 +7305,7 @@ export const OnlineEndpointsRegenerateKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/regenerateKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineEndpointsRegenerateKeysInput =
@@ -7361,7 +7361,7 @@ export const OnlineEndpointsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OnlineEndpointsUpdateInput = typeof OnlineEndpointsUpdateInput.Type;
@@ -7413,7 +7413,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.MachineLearningServices/operations",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -7531,7 +7531,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -7591,7 +7591,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -7629,7 +7629,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -7684,7 +7684,7 @@ export const PrivateEndpointConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -7755,7 +7755,7 @@ export const PrivateLinkResourcesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateLinkResources",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -7830,11 +7830,12 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const QuotasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/quotas",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type QuotasListInput = typeof QuotasListInput.Type;
@@ -7866,6 +7867,7 @@ export type QuotasListOutput = typeof QuotasListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location name.
  */
 export const QuotasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QuotasListInput,
@@ -7874,6 +7876,7 @@ export const QuotasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const QuotasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -7884,12 +7887,11 @@ export const QuotasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  location: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/updateQuotas",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type QuotasUpdateInput = typeof QuotasUpdateInput.Type;
@@ -7928,6 +7930,7 @@ export type QuotasUpdateOutput = typeof QuotasUpdateOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location name.
  */
 export const QuotasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QuotasUpdateInput,
@@ -8115,7 +8118,7 @@ export const RegistriesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistriesCreateOrUpdateInput =
@@ -8169,7 +8172,7 @@ export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RegistriesDeleteInput = typeof RegistriesDeleteInput.Type;
@@ -8200,7 +8203,7 @@ export const RegistriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RegistriesGetInput = typeof RegistriesGetInput.Type;
@@ -8248,7 +8251,7 @@ export const RegistriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RegistriesListInput = typeof RegistriesListInput.Type;
@@ -8300,7 +8303,7 @@ export const RegistriesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/registries",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistriesListBySubscriptionInput =
@@ -8539,7 +8542,7 @@ export const RegistriesRemoveRegionsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/removeRegions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistriesRemoveRegionsInput =
@@ -8630,7 +8633,7 @@ export const RegistriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RegistriesUpdateInput = typeof RegistriesUpdateInput.Type;
@@ -8696,7 +8699,7 @@ export const RegistryCodeContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryCodeContainersCreateOrUpdateInput =
@@ -8752,7 +8755,7 @@ export const RegistryCodeContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryCodeContainersDeleteInput =
@@ -8790,7 +8793,7 @@ export const RegistryCodeContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryCodeContainersGetInput =
@@ -8847,7 +8850,7 @@ export const RegistryCodeContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryCodeContainersListInput =
@@ -8924,7 +8927,7 @@ export const RegistryCodeVersionsCreateOrGetStartPendingUploadInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}/startPendingUpload",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryCodeVersionsCreateOrGetStartPendingUploadInput =
@@ -8993,7 +8996,7 @@ export const RegistryCodeVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryCodeVersionsCreateOrUpdateInput =
@@ -9051,7 +9054,7 @@ export const RegistryCodeVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryCodeVersionsDeleteInput =
@@ -9092,7 +9095,7 @@ export const RegistryCodeVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryCodeVersionsGetInput =
@@ -9153,7 +9156,7 @@ export const RegistryCodeVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryCodeVersionsListInput =
@@ -9241,7 +9244,7 @@ export const RegistryComponentContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryComponentContainersCreateOrUpdateInput =
@@ -9297,7 +9300,7 @@ export const RegistryComponentContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryComponentContainersDeleteInput =
@@ -9335,7 +9338,7 @@ export const RegistryComponentContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryComponentContainersGetInput =
@@ -9391,7 +9394,7 @@ export const RegistryComponentContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryComponentContainersListInput =
@@ -9476,7 +9479,7 @@ export const RegistryComponentVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryComponentVersionsCreateOrUpdateInput =
@@ -9534,7 +9537,7 @@ export const RegistryComponentVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryComponentVersionsDeleteInput =
@@ -9574,7 +9577,7 @@ export const RegistryComponentVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryComponentVersionsGetInput =
@@ -9634,7 +9637,7 @@ export const RegistryComponentVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryComponentVersionsListInput =
@@ -9721,7 +9724,7 @@ export const RegistryDataContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryDataContainersCreateOrUpdateInput =
@@ -9777,7 +9780,7 @@ export const RegistryDataContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryDataContainersDeleteInput =
@@ -9815,7 +9818,7 @@ export const RegistryDataContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryDataContainersGetInput =
@@ -9875,7 +9878,7 @@ export const RegistryDataContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryDataContainersListInput =
@@ -9951,7 +9954,7 @@ export const RegistryDataReferencesGetBlobReferenceSASInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/datareferences/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryDataReferencesGetBlobReferenceSASInput =
@@ -10012,7 +10015,7 @@ export const RegistryDataVersionsCreateOrGetStartPendingUploadInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}/startPendingUpload",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryDataVersionsCreateOrGetStartPendingUploadInput =
@@ -10081,7 +10084,7 @@ export const RegistryDataVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryDataVersionsCreateOrUpdateInput =
@@ -10139,7 +10142,7 @@ export const RegistryDataVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryDataVersionsDeleteInput =
@@ -10180,7 +10183,7 @@ export const RegistryDataVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryDataVersionsGetInput =
@@ -10245,7 +10248,7 @@ export const RegistryDataVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryDataVersionsListInput =
@@ -10336,7 +10339,7 @@ export const RegistryEnvironmentContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEnvironmentContainersCreateOrUpdateInput =
@@ -10392,7 +10395,7 @@ export const RegistryEnvironmentContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEnvironmentContainersDeleteInput =
@@ -10430,7 +10433,7 @@ export const RegistryEnvironmentContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEnvironmentContainersGetInput =
@@ -10489,7 +10492,7 @@ export const RegistryEnvironmentContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEnvironmentContainersListInput =
@@ -10575,7 +10578,7 @@ export const RegistryEnvironmentVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEnvironmentVersionsCreateOrUpdateInput =
@@ -10633,7 +10636,7 @@ export const RegistryEnvironmentVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEnvironmentVersionsDeleteInput =
@@ -10673,7 +10676,7 @@ export const RegistryEnvironmentVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEnvironmentVersionsGetInput =
@@ -10736,7 +10739,7 @@ export const RegistryEnvironmentVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEnvironmentVersionsListInput =
@@ -10824,7 +10827,7 @@ export const RegistryModelContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryModelContainersCreateOrUpdateInput =
@@ -10880,7 +10883,7 @@ export const RegistryModelContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryModelContainersDeleteInput =
@@ -10918,7 +10921,7 @@ export const RegistryModelContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryModelContainersGetInput =
@@ -10978,7 +10981,7 @@ export const RegistryModelContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryModelContainersListInput =
@@ -11056,7 +11059,7 @@ export const RegistryModelVersionsCreateOrGetStartPendingUploadInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}/startPendingUpload",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryModelVersionsCreateOrGetStartPendingUploadInput =
@@ -11125,7 +11128,7 @@ export const RegistryModelVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryModelVersionsCreateOrUpdateInput =
@@ -11183,7 +11186,7 @@ export const RegistryModelVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryModelVersionsDeleteInput =
@@ -11224,7 +11227,7 @@ export const RegistryModelVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryModelVersionsGetInput =
@@ -11292,7 +11295,7 @@ export const RegistryModelVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryModelVersionsListInput =
@@ -11385,7 +11388,7 @@ export const SchedulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchedulesCreateOrUpdateInput =
@@ -11441,7 +11444,7 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
@@ -11474,7 +11477,7 @@ export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SchedulesGetInput = typeof SchedulesGetInput.Type;
@@ -11528,7 +11531,7 @@ export const SchedulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SchedulesListInput = typeof SchedulesListInput.Type;
@@ -11670,7 +11673,7 @@ export const ServerlessEndpointsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ServerlessEndpointsCreateOrUpdateInput =
@@ -11726,7 +11729,7 @@ export const ServerlessEndpointsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ServerlessEndpointsDeleteInput =
@@ -11765,7 +11768,7 @@ export const ServerlessEndpointsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ServerlessEndpointsGetInput =
@@ -11822,7 +11825,7 @@ export const ServerlessEndpointsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ServerlessEndpointsListInput =
@@ -11894,7 +11897,7 @@ export const ServerlessEndpointsListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}/listKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ServerlessEndpointsListKeysInput =
@@ -11938,7 +11941,7 @@ export const ServerlessEndpointsRegenerateKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}/regenerateKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ServerlessEndpointsRegenerateKeysInput =
@@ -12008,7 +12011,7 @@ export const ServerlessEndpointsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ServerlessEndpointsUpdateInput =
@@ -12057,11 +12060,12 @@ export const ServerlessEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/usages",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type UsagesListInput = typeof UsagesListInput.Type;
@@ -12094,6 +12098,7 @@ export type UsagesListOutput = typeof UsagesListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location name.
  */
 export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
@@ -12103,11 +12108,12 @@ export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const VirtualMachineSizesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/vmSizes",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type VirtualMachineSizesListInput =
@@ -12155,6 +12161,7 @@ export type VirtualMachineSizesListOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location name.
  */
 export const VirtualMachineSizesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -12345,7 +12352,7 @@ export const WorkspaceConnectionsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspaceConnectionsCreateInput =
@@ -12402,7 +12409,7 @@ export const WorkspaceConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspaceConnectionsDeleteInput =
@@ -12441,7 +12448,7 @@ export const WorkspaceConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspaceConnectionsGetInput =
@@ -12500,7 +12507,7 @@ export const WorkspaceConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspaceConnectionsListInput =
@@ -12576,7 +12583,7 @@ export const WorkspaceConnectionsListSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}/listsecrets",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspaceConnectionsListSecretsInput =
@@ -12806,7 +12813,7 @@ export const WorkspaceConnectionsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspaceConnectionsUpdateInput =
@@ -12862,7 +12869,7 @@ export const WorkspaceFeaturesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/features",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspaceFeaturesListInput = typeof WorkspaceFeaturesListInput.Type;
@@ -13164,7 +13171,7 @@ export const WorkspacesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -13219,7 +13226,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -13278,7 +13285,7 @@ export const WorkspacesDiagnoseInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/diagnose",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesDiagnoseInput = typeof WorkspacesDiagnoseInput.Type;
@@ -13414,7 +13421,7 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
@@ -13466,7 +13473,7 @@ export const WorkspacesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesListByResourceGroupInput =
@@ -13537,7 +13544,7 @@ export const WorkspacesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/workspaces",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesListBySubscriptionInput =
@@ -13606,7 +13613,7 @@ export const WorkspacesListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesListKeysInput = typeof WorkspacesListKeysInput.Type;
@@ -13663,7 +13670,7 @@ export const WorkspacesListNotebookAccessTokenInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listNotebookAccessToken",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesListNotebookAccessTokenInput =
@@ -13708,7 +13715,7 @@ export const WorkspacesListNotebookKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listNotebookKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesListNotebookKeysInput =
@@ -13748,7 +13755,7 @@ export const WorkspacesListOutboundNetworkDependenciesEndpointsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundNetworkDependenciesEndpoints",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesListOutboundNetworkDependenciesEndpointsInput =
@@ -13810,7 +13817,7 @@ export const WorkspacesListStorageAccountKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listStorageAccountKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesListStorageAccountKeysInput =
@@ -13848,7 +13855,7 @@ export const WorkspacesPrepareNotebookInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/prepareNotebook",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesPrepareNotebookInput =
@@ -13895,7 +13902,7 @@ export const WorkspacesResyncKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/resyncKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkspacesResyncKeysInput = typeof WorkspacesResyncKeysInput.Type;
@@ -14072,7 +14079,7 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

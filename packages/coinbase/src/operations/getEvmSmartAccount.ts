@@ -23,7 +23,7 @@ export type GetEvmSmartAccountOutput = typeof GetEvmSmartAccountOutput.Type;
 
 // The operation
 /**
- * Get a Smart Account by address
+ * Get Smart Account by address
  *
  * Gets a Smart Account by its address.
  *

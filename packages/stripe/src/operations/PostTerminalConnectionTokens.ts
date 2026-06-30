@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostTerminalConnectionTokensInput =
@@ -23,7 +23,7 @@ export const PostTerminalConnectionTokensOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     object: Schema.Literals(["terminal.connection_token"]),
-    secret: SensitiveString,
+    secret: SensitiveOutputString,
   });
 export type PostTerminalConnectionTokensOutput =
   typeof PostTerminalConnectionTokensOutput.Type;

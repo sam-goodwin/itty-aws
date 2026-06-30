@@ -11,15 +11,15 @@ import * as T from "../traits.ts";
 // Input Schema
 export const DisasterRecoveryConfigsBreakPairingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/breakPairing",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DisasterRecoveryConfigsBreakPairingInput =
@@ -35,11 +35,11 @@ export type DisasterRecoveryConfigsBreakPairingOutput =
 /**
  * This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param alias - The Disaster Recovery configuration name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsBreakPairing =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -49,15 +49,15 @@ export const DisasterRecoveryConfigsBreakPairing =
 // Input Schema
 export const DisasterRecoveryConfigsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/CheckNameAvailability",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DisasterRecoveryConfigsCheckNameAvailabilityInput =
@@ -86,10 +86,10 @@ export type DisasterRecoveryConfigsCheckNameAvailabilityOutput =
 /**
  * Check the give namespace name availability.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -99,10 +99,10 @@ export const DisasterRecoveryConfigsCheckNameAvailability =
 // Input Schema
 export const DisasterRecoveryConfigsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -116,6 +116,23 @@ export const DisasterRecoveryConfigsCreateOrUpdateInput =
         ),
       }),
     ),
+    location: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
+      apiVersion: "2026-01-01",
+    }),
+  );
+export type DisasterRecoveryConfigsCreateOrUpdateInput =
+  typeof DisasterRecoveryConfigsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const DisasterRecoveryConfigsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -130,27 +147,6 @@ export const DisasterRecoveryConfigsCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
-      apiVersion: "2024-01-01",
-    }),
-  );
-export type DisasterRecoveryConfigsCreateOrUpdateInput =
-  typeof DisasterRecoveryConfigsCreateOrUpdateInput.Type;
-
-// Output Schema
-export const DisasterRecoveryConfigsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
   });
 export type DisasterRecoveryConfigsCreateOrUpdateOutput =
   typeof DisasterRecoveryConfigsCreateOrUpdateOutput.Type;
@@ -159,11 +155,11 @@ export type DisasterRecoveryConfigsCreateOrUpdateOutput =
 /**
  * Creates or updates a new Alias(Disaster Recovery configuration)
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param alias - The Disaster Recovery configuration name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -173,15 +169,15 @@ export const DisasterRecoveryConfigsCreateOrUpdate =
 // Input Schema
 export const DisasterRecoveryConfigsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DisasterRecoveryConfigsDeleteInput =
@@ -197,11 +193,11 @@ export type DisasterRecoveryConfigsDeleteOutput =
 /**
  * Deletes an Alias(Disaster Recovery configuration)
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param alias - The Disaster Recovery configuration name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -211,10 +207,10 @@ export const DisasterRecoveryConfigsDelete =
 // Input Schema
 export const DisasterRecoveryConfigsFailOverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         IsSafeFailover: Schema.optional(Schema.Boolean),
@@ -224,7 +220,7 @@ export const DisasterRecoveryConfigsFailOverInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/failover",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DisasterRecoveryConfigsFailOverInput =
@@ -240,11 +236,11 @@ export type DisasterRecoveryConfigsFailOverOutput =
 /**
  * Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param alias - The Disaster Recovery configuration name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsFailOver =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -254,15 +250,15 @@ export const DisasterRecoveryConfigsFailOver =
 // Input Schema
 export const DisasterRecoveryConfigsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DisasterRecoveryConfigsGetInput =
@@ -274,7 +270,20 @@ export const DisasterRecoveryConfigsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type DisasterRecoveryConfigsGetOutput =
   typeof DisasterRecoveryConfigsGetOutput.Type;
@@ -283,11 +292,11 @@ export type DisasterRecoveryConfigsGetOutput =
 /**
  * Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param alias - The Disaster Recovery configuration name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -298,16 +307,16 @@ export const DisasterRecoveryConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DisasterRecoveryConfigsGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules/{authorizationRuleName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DisasterRecoveryConfigsGetAuthorizationRuleInput =
@@ -319,7 +328,20 @@ export const DisasterRecoveryConfigsGetAuthorizationRuleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type DisasterRecoveryConfigsGetAuthorizationRuleOutput =
   typeof DisasterRecoveryConfigsGetAuthorizationRuleOutput.Type;
@@ -328,12 +350,12 @@ export type DisasterRecoveryConfigsGetAuthorizationRuleOutput =
 /**
  * Gets an authorization rule for a namespace by rule name.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param alias - The Disaster Recovery configuration name
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsGetAuthorizationRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -343,14 +365,14 @@ export const DisasterRecoveryConfigsGetAuthorizationRule =
 // Input Schema
 export const DisasterRecoveryConfigsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DisasterRecoveryConfigsListInput =
@@ -359,15 +381,36 @@ export type DisasterRecoveryConfigsListInput =
 // Output Schema
 export const DisasterRecoveryConfigsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -378,10 +421,10 @@ export type DisasterRecoveryConfigsListOutput =
 /**
  * Gets all Alias(Disaster Recovery configurations)
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -392,15 +435,15 @@ export const DisasterRecoveryConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DisasterRecoveryConfigsListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DisasterRecoveryConfigsListAuthorizationRulesInput =
@@ -409,15 +452,36 @@ export type DisasterRecoveryConfigsListAuthorizationRulesInput =
 // Output Schema
 export const DisasterRecoveryConfigsListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -428,11 +492,11 @@ export type DisasterRecoveryConfigsListAuthorizationRulesOutput =
 /**
  * Gets the authorization rules for a namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param alias - The Disaster Recovery configuration name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsListAuthorizationRules =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -442,16 +506,16 @@ export const DisasterRecoveryConfigsListAuthorizationRules =
 // Input Schema
 export const DisasterRecoveryConfigsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules/{authorizationRuleName}/listKeys",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DisasterRecoveryConfigsListKeysInput =
@@ -475,12 +539,12 @@ export type DisasterRecoveryConfigsListKeysOutput =
 /**
  * Gets the primary and secondary connection strings for the namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param alias - The Disaster Recovery configuration name
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const DisasterRecoveryConfigsListKeys =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -490,15 +554,15 @@ export const DisasterRecoveryConfigsListKeys =
 // Input Schema
 export const MigrationConfigsCompleteMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     configName: Schema.Literals(["$default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}/upgrade",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type MigrationConfigsCompleteMigrationInput =
@@ -514,11 +578,11 @@ export type MigrationConfigsCompleteMigrationOutput =
 /**
  * This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace. CompleteMigration operation will fail when entity migration is in-progress.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param configName - The configuration name. Should always be "$default".
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param configName - The configuration name. Should always be $default.
  */
 export const MigrationConfigsCompleteMigration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -528,10 +592,10 @@ export const MigrationConfigsCompleteMigration =
 // Input Schema
 export const MigrationConfigsCreateAndStartMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     configName: Schema.Literals(["$default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(Schema.String),
@@ -541,6 +605,23 @@ export const MigrationConfigsCreateAndStartMigrationInput =
         migrationState: Schema.optional(Schema.String),
       }),
     ),
+    location: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}",
+      apiVersion: "2026-01-01",
+    }),
+  );
+export type MigrationConfigsCreateAndStartMigrationInput =
+  typeof MigrationConfigsCreateAndStartMigrationInput.Type;
+
+// Output Schema
+export const MigrationConfigsCreateAndStartMigrationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -555,27 +636,6 @@ export const MigrationConfigsCreateAndStartMigrationInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}",
-      apiVersion: "2024-01-01",
-    }),
-  );
-export type MigrationConfigsCreateAndStartMigrationInput =
-  typeof MigrationConfigsCreateAndStartMigrationInput.Type;
-
-// Output Schema
-export const MigrationConfigsCreateAndStartMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
   });
 export type MigrationConfigsCreateAndStartMigrationOutput =
   typeof MigrationConfigsCreateAndStartMigrationOutput.Type;
@@ -584,11 +644,11 @@ export type MigrationConfigsCreateAndStartMigrationOutput =
 /**
  * Creates Migration configuration and starts migration of entities from Standard to Premium namespace
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param configName - The configuration name. Should always be "$default".
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param configName - The configuration name. Should always be $default.
  */
 export const MigrationConfigsCreateAndStartMigration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -598,15 +658,15 @@ export const MigrationConfigsCreateAndStartMigration =
 // Input Schema
 export const MigrationConfigsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     configName: Schema.Literals(["$default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type MigrationConfigsDeleteInput =
@@ -622,11 +682,11 @@ export type MigrationConfigsDeleteOutput =
 /**
  * Deletes a MigrationConfiguration
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param configName - The configuration name. Should always be "$default".
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param configName - The configuration name. Should always be $default.
  */
 export const MigrationConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -637,15 +697,15 @@ export const MigrationConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const MigrationConfigsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     configName: Schema.Literals(["$default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type MigrationConfigsGetInput = typeof MigrationConfigsGetInput.Type;
@@ -656,7 +716,20 @@ export const MigrationConfigsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type MigrationConfigsGetOutput = typeof MigrationConfigsGetOutput.Type;
 
@@ -664,11 +737,11 @@ export type MigrationConfigsGetOutput = typeof MigrationConfigsGetOutput.Type;
 /**
  * Retrieves Migration Config
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param configName - The configuration name. Should always be "$default".
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param configName - The configuration name. Should always be $default.
  */
 export const MigrationConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MigrationConfigsGetInput,
@@ -677,14 +750,14 @@ export const MigrationConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const MigrationConfigsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type MigrationConfigsListInput = typeof MigrationConfigsListInput.Type;
@@ -692,15 +765,36 @@ export type MigrationConfigsListInput = typeof MigrationConfigsListInput.Type;
 // Output Schema
 export const MigrationConfigsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -710,10 +804,10 @@ export type MigrationConfigsListOutput = typeof MigrationConfigsListOutput.Type;
 /**
  * Gets all migrationConfigurations
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const MigrationConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -724,15 +818,15 @@ export const MigrationConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const MigrationConfigsRevertInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     configName: Schema.Literals(["$default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}/revert",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type MigrationConfigsRevertInput =
@@ -748,11 +842,11 @@ export type MigrationConfigsRevertOutput =
 /**
  * This operation reverts Migration
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param configName - The configuration name. Should always be "$default".
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param configName - The configuration name. Should always be $default.
  */
 export const MigrationConfigsRevert = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -768,8 +862,8 @@ export const NamespacesCheckNameAvailabilityInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceBus/CheckNameAvailability",
-      apiVersion: "2024-01-01",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceBus/checkNameAvailability",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesCheckNameAvailabilityInput =
@@ -799,7 +893,7 @@ export type NamespacesCheckNameAvailabilityOutput =
  * Check the give namespace name availability.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NamespacesCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -809,59 +903,13 @@ export const NamespacesCheckNameAvailability =
 // Input Schema
 export const NamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["Basic", "Standard", "Premium"]),
-        tier: Schema.optional(
-          Schema.Literals(["Basic", "Standard", "Premium"]),
-        ),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
     properties: Schema.optional(
       Schema.Struct({
         minimumTlsVersion: Schema.optional(
-          Schema.Literals(["1.0", "1.1", "1.2"]),
+          Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
         ),
         provisioningState: Schema.optional(Schema.String),
         status: Schema.optional(Schema.String),
@@ -896,7 +944,30 @@ export const NamespacesCreateOrUpdateInput =
               id: Schema.optional(Schema.String),
               name: Schema.optional(Schema.String),
               type: Schema.optional(Schema.String),
-              location: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
             }),
           ),
         ),
@@ -906,15 +977,72 @@ export const NamespacesCreateOrUpdateInput =
           Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
         ),
         premiumMessagingPartitions: Schema.optional(Schema.Number),
+        platformCapabilities: Schema.optional(
+          Schema.Struct({
+            confidentialCompute: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+              }),
+            ),
+          }),
+        ),
+        geoDataReplication: Schema.optional(
+          Schema.Struct({
+            maxReplicationLagDurationInSeconds: Schema.optional(Schema.Number),
+            locations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  locationName: Schema.optional(Schema.String),
+                  roleType: Schema.optional(
+                    Schema.Literals(["Primary", "Secondary"]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        ipAddressType: Schema.optional(Schema.Literals(["IPv4", "DualStack"])),
       }),
     ),
-    location: Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["Basic", "Standard", "Premium"]),
+        tier: Schema.optional(
+          Schema.Literals(["Basic", "Standard", "Premium"]),
+        ),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesCreateOrUpdateInput =
@@ -926,37 +1054,6 @@ export const NamespacesCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type NamespacesCreateOrUpdateOutput =
-  typeof NamespacesCreateOrUpdateOutput.Type;
-
-// The operation
-/**
- * Creates or updates a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
- *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param namespaceName - The namespace name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- */
-export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesCreateOrUpdateInput,
-    outputSchema: NamespacesCreateOrUpdateOutput,
-  }),
-);
-// Input Schema
-export const NamespacesCreateOrUpdateAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
-      }),
-    ),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -971,15 +1068,43 @@ export const NamespacesCreateOrUpdateAuthorizationRuleInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+  });
+export type NamespacesCreateOrUpdateOutput =
+  typeof NamespacesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - The namespace name
+ */
+export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NamespacesCreateOrUpdateInput,
+    outputSchema: NamespacesCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const NamespacesCreateOrUpdateAuthorizationRuleInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
     location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesCreateOrUpdateAuthorizationRuleInput =
@@ -991,7 +1116,20 @@ export const NamespacesCreateOrUpdateAuthorizationRuleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type NamespacesCreateOrUpdateAuthorizationRuleOutput =
   typeof NamespacesCreateOrUpdateAuthorizationRuleOutput.Type;
@@ -1000,11 +1138,11 @@ export type NamespacesCreateOrUpdateAuthorizationRuleOutput =
 /**
  * Creates or updates an authorization rule for a namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesCreateOrUpdateAuthorizationRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1014,9 +1152,9 @@ export const NamespacesCreateOrUpdateAuthorizationRule =
 // Input Schema
 export const NamespacesCreateOrUpdateNetworkRuleSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         trustedServiceAccessEnabled: Schema.optional(Schema.Boolean),
@@ -1046,6 +1184,23 @@ export const NamespacesCreateOrUpdateNetworkRuleSetInput =
         ),
       }),
     ),
+    location: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkRuleSets/default",
+      apiVersion: "2026-01-01",
+    }),
+  );
+export type NamespacesCreateOrUpdateNetworkRuleSetInput =
+  typeof NamespacesCreateOrUpdateNetworkRuleSetInput.Type;
+
+// Output Schema
+export const NamespacesCreateOrUpdateNetworkRuleSetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -1060,27 +1215,6 @@ export const NamespacesCreateOrUpdateNetworkRuleSetInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkRuleSets/default",
-      apiVersion: "2024-01-01",
-    }),
-  );
-export type NamespacesCreateOrUpdateNetworkRuleSetInput =
-  typeof NamespacesCreateOrUpdateNetworkRuleSetInput.Type;
-
-// Output Schema
-export const NamespacesCreateOrUpdateNetworkRuleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
   });
 export type NamespacesCreateOrUpdateNetworkRuleSetOutput =
   typeof NamespacesCreateOrUpdateNetworkRuleSetOutput.Type;
@@ -1089,10 +1223,10 @@ export type NamespacesCreateOrUpdateNetworkRuleSetOutput =
 /**
  * Create or update NetworkRuleSet for a Namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesCreateOrUpdateNetworkRuleSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1101,14 +1235,14 @@ export const NamespacesCreateOrUpdateNetworkRuleSet =
   }));
 // Input Schema
 export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
@@ -1121,10 +1255,10 @@ export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
 /**
  * Deletes an existing namespace. This operation also removes all associated resources under the namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NamespacesDeleteInput,
@@ -1133,15 +1267,15 @@ export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NamespacesDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesDeleteAuthorizationRuleInput =
@@ -1157,11 +1291,11 @@ export type NamespacesDeleteAuthorizationRuleOutput =
 /**
  * Deletes a namespace authorization rule.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesDeleteAuthorizationRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1169,15 +1303,53 @@ export const NamespacesDeleteAuthorizationRule =
     outputSchema: NamespacesDeleteAuthorizationRuleOutput,
   }));
 // Input Schema
+export const NamespacesFailoverInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        primaryLocation: Schema.optional(Schema.String),
+        force: Schema.optional(Schema.Boolean),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/failover",
+      apiVersion: "2026-01-01",
+    }),
+  );
+export type NamespacesFailoverInput = typeof NamespacesFailoverInput.Type;
+
+// Output Schema
+export const NamespacesFailoverOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type NamespacesFailoverOutput = typeof NamespacesFailoverOutput.Type;
+
+// The operation
+/**
+ * GeoDR Failover
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - The namespace name
+ */
+export const NamespacesFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesFailoverInput,
+  outputSchema: NamespacesFailoverOutput,
+}));
+// Input Schema
 export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type NamespacesGetInput = typeof NamespacesGetInput.Type;
@@ -1187,6 +1359,20 @@ export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
 
@@ -1194,10 +1380,10 @@ export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
 /**
  * Gets a description for the specified namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NamespacesGetInput,
@@ -1206,15 +1392,15 @@ export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NamespacesGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesGetAuthorizationRuleInput =
@@ -1226,7 +1412,20 @@ export const NamespacesGetAuthorizationRuleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type NamespacesGetAuthorizationRuleOutput =
   typeof NamespacesGetAuthorizationRuleOutput.Type;
@@ -1235,11 +1434,11 @@ export type NamespacesGetAuthorizationRuleOutput =
 /**
  * Gets an authorization rule for a namespace by rule name.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesGetAuthorizationRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1249,14 +1448,14 @@ export const NamespacesGetAuthorizationRule =
 // Input Schema
 export const NamespacesGetNetworkRuleSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkRuleSets/default",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesGetNetworkRuleSetInput =
@@ -1268,7 +1467,20 @@ export const NamespacesGetNetworkRuleSetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type NamespacesGetNetworkRuleSetOutput =
   typeof NamespacesGetNetworkRuleSetOutput.Type;
@@ -1277,10 +1489,10 @@ export type NamespacesGetNetworkRuleSetOutput =
 /**
  * Gets NetworkRuleSet for a Namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesGetNetworkRuleSet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1295,21 +1507,33 @@ export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceBus/namespaces",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type NamespacesListInput = typeof NamespacesListInput.Type;
 
 // Output Schema
 export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -1320,7 +1544,7 @@ export type NamespacesListOutput = typeof NamespacesListOutput.Type;
  * Gets all the available namespaces within the subscription, irrespective of the resource groups.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NamespacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NamespacesListInput,
@@ -1329,14 +1553,14 @@ export const NamespacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NamespacesListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesListAuthorizationRulesInput =
@@ -1345,15 +1569,36 @@ export type NamespacesListAuthorizationRulesInput =
 // Output Schema
 export const NamespacesListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1364,10 +1609,10 @@ export type NamespacesListAuthorizationRulesOutput =
 /**
  * Gets the authorization rules for a namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesListAuthorizationRules =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1377,13 +1622,13 @@ export const NamespacesListAuthorizationRules =
 // Input Schema
 export const NamespacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesListByResourceGroupInput =
@@ -1392,14 +1637,36 @@ export type NamespacesListByResourceGroupInput =
 // Output Schema
 export const NamespacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1410,9 +1677,9 @@ export type NamespacesListByResourceGroupOutput =
 /**
  * Gets the available namespaces within a resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NamespacesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1422,15 +1689,15 @@ export const NamespacesListByResourceGroup =
 // Input Schema
 export const NamespacesListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/listKeys",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesListKeysInput = typeof NamespacesListKeysInput.Type;
@@ -1452,11 +1719,11 @@ export type NamespacesListKeysOutput = typeof NamespacesListKeysOutput.Type;
 /**
  * Gets the primary and secondary connection strings for the namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NamespacesListKeysInput,
@@ -1465,14 +1732,14 @@ export const NamespacesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NamespacesListNetworkRuleSetsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkRuleSets",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesListNetworkRuleSetsInput =
@@ -1481,15 +1748,36 @@ export type NamespacesListNetworkRuleSetsInput =
 // Output Schema
 export const NamespacesListNetworkRuleSetsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1500,10 +1788,10 @@ export type NamespacesListNetworkRuleSetsOutput =
 /**
  * Gets list of NetworkRuleSet for a Namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesListNetworkRuleSets =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1513,17 +1801,17 @@ export const NamespacesListNetworkRuleSets =
 // Input Schema
 export const NamespacesRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     keyType: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
     key: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type NamespacesRegenerateKeysInput =
@@ -1547,11 +1835,11 @@ export type NamespacesRegenerateKeysOutput =
 /**
  * Regenerates the primary or secondary connection strings for the namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1561,9 +1849,9 @@ export const NamespacesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   sku: Schema.optional(
     Schema.Struct({
       name: Schema.Literals(["Basic", "Standard", "Premium"]),
@@ -1605,7 +1893,30 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             id: Schema.optional(Schema.String),
             name: Schema.optional(Schema.String),
             type: Schema.optional(Schema.String),
-            location: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
           }),
         ),
       ),
@@ -1642,7 +1953,7 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
@@ -1653,6 +1964,20 @@ export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   },
 );
 export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
@@ -1661,15 +1986,180 @@ export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
 /**
  * Updates a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NamespacesUpdateInput,
   outputSchema: NamespacesUpdateOutput,
 }));
+// Input Schema
+export const NetworkSecurityPerimeterConfigurationListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations",
+      apiVersion: "2026-01-01",
+    }),
+  );
+export type NetworkSecurityPerimeterConfigurationListInput =
+  typeof NetworkSecurityPerimeterConfigurationListInput.Type;
+
+// Output Schema
+export const NetworkSecurityPerimeterConfigurationListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type NetworkSecurityPerimeterConfigurationListOutput =
+  typeof NetworkSecurityPerimeterConfigurationListOutput.Type;
+
+// The operation
+/**
+ * Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - The namespace name
+ */
+export const NetworkSecurityPerimeterConfigurationList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkSecurityPerimeterConfigurationListInput,
+    outputSchema: NetworkSecurityPerimeterConfigurationListOutput,
+  }));
+// Input Schema
+export const NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    resourceAssociationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}",
+      apiVersion: "2026-01-01",
+    }),
+  );
+export type NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameInput =
+  typeof NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameInput.Type;
+
+// Output Schema
+export const NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameOutput =
+  typeof NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameOutput.Type;
+
+// The operation
+/**
+ * Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - The namespace name
+ * @param resourceAssociationName - The ResourceAssociation Name
+ */
+export const NetworkSecurityPerimeterConfigurationsGetResourceAssociationName =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema:
+      NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameInput,
+    outputSchema:
+      NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameOutput,
+  }));
+// Input Schema
+export const NetworkSecurityPerimeterConfigurationsReconcileInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    resourceAssociationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}/reconcile",
+      apiVersion: "2026-01-01",
+    }),
+  );
+export type NetworkSecurityPerimeterConfigurationsReconcileInput =
+  typeof NetworkSecurityPerimeterConfigurationsReconcileInput.Type;
+
+// Output Schema
+export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
+  typeof NetworkSecurityPerimeterConfigurationsReconcileOutput.Type;
+
+// The operation
+/**
+ * Refreshes any information about the association.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - The namespace name
+ * @param resourceAssociationName - The ResourceAssociation Name
+ */
+export const NetworkSecurityPerimeterConfigurationsReconcile =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkSecurityPerimeterConfigurationsReconcileInput,
+    outputSchema: NetworkSecurityPerimeterConfigurationsReconcileOutput,
+  }));
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -1677,30 +2167,28 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ServiceBus/operations",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(Schema.Unknown),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      isDataAction: Schema.optional(Schema.Boolean),
+      display: Schema.optional(
+        Schema.Struct({
+          provider: Schema.optional(Schema.String),
+          resource: Schema.optional(Schema.String),
+          operation: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+      origin: Schema.optional(Schema.String),
+      properties: Schema.optional(Schema.Unknown),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -1708,7 +2196,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * Lists all of the available ServiceBus REST API operations.
+ * List the operations for the provider
  *
  * @param api-version - The API version to use for this operation.
  */
@@ -1755,6 +2243,23 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
         ),
       }),
     ),
+    location: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-01-01",
+    }),
+  );
+export type PrivateEndpointConnectionsCreateOrUpdateInput =
+  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -1769,27 +2274,6 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2024-01-01",
-    }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
-
-// Output Schema
-export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsCreateOrUpdateOutput =
   typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
@@ -1799,7 +2283,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * Creates or updates PrivateEndpointConnections of service namespace.
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param privateEndpointConnectionName - The PrivateEndpointConnection name
@@ -1812,15 +2296,15 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1836,10 +2320,10 @@ export type PrivateEndpointConnectionsDeleteOutput =
 /**
  * Deletes an existing Private Endpoint Connection.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param privateEndpointConnectionName - The PrivateEndpointConnection name
  */
 export const PrivateEndpointConnectionsDelete =
@@ -1850,15 +2334,15 @@ export const PrivateEndpointConnectionsDelete =
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1870,7 +2354,20 @@ export const PrivateEndpointConnectionsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
@@ -1879,11 +2376,11 @@ export type PrivateEndpointConnectionsGetOutput =
 /**
  * Gets a description for the specified Private Endpoint Connection.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param privateEndpointConnectionName - The PrivateEndpointConnection name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1893,14 +2390,14 @@ export const PrivateEndpointConnectionsGet =
 // Input Schema
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -1909,15 +2406,36 @@ export type PrivateEndpointConnectionsListInput =
 // Output Schema
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1928,10 +2446,10 @@ export type PrivateEndpointConnectionsListOutput =
 /**
  * Gets the available PrivateEndpointConnections within a namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const PrivateEndpointConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1941,14 +2459,14 @@ export const PrivateEndpointConnectionsList =
 // Input Schema
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateLinkResources",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -1957,21 +2475,19 @@ export type PrivateLinkResourcesGetInput =
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              groupId: Schema.optional(Schema.String),
-              requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-              requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            groupId: Schema.optional(Schema.String),
+            requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+            requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1982,10 +2498,10 @@ export type PrivateLinkResourcesGetOutput =
 /**
  * Gets lists of resources that supports Privatelinks.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1996,10 +2512,10 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const QueuesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     queueName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         countDetails: Schema.optional(
@@ -2044,31 +2560,15 @@ export const QueuesCreateOrUpdateInput =
         enableExpress: Schema.optional(Schema.Boolean),
         forwardTo: Schema.optional(Schema.String),
         forwardDeadLetteredMessagesTo: Schema.optional(Schema.String),
+        userMetadata: Schema.optional(Schema.String),
       }),
     ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type QueuesCreateOrUpdateInput = typeof QueuesCreateOrUpdateInput.Type;
@@ -2079,39 +2579,6 @@ export const QueuesCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
-export type QueuesCreateOrUpdateOutput = typeof QueuesCreateOrUpdateOutput.Type;
-
-// The operation
-/**
- * Creates or updates a Service Bus queue. This operation is idempotent.
- *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param namespaceName - The namespace name
- * @param queueName - The queue name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- */
-export const QueuesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QueuesCreateOrUpdateInput,
-    outputSchema: QueuesCreateOrUpdateOutput,
-  }),
-);
-// Input Schema
-export const QueuesCreateOrUpdateAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    queueName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
-      }),
-    ),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -2126,15 +2593,44 @@ export const QueuesCreateOrUpdateAuthorizationRuleInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+  });
+export type QueuesCreateOrUpdateOutput = typeof QueuesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates a Service Bus queue. This operation is idempotent.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - The namespace name
+ * @param queueName - The queue name.
+ */
+export const QueuesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: QueuesCreateOrUpdateInput,
+    outputSchema: QueuesCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const QueuesCreateOrUpdateAuthorizationRuleInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    queueName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
     location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type QueuesCreateOrUpdateAuthorizationRuleInput =
@@ -2146,7 +2642,20 @@ export const QueuesCreateOrUpdateAuthorizationRuleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type QueuesCreateOrUpdateAuthorizationRuleOutput =
   typeof QueuesCreateOrUpdateAuthorizationRuleOutput.Type;
@@ -2155,12 +2664,12 @@ export type QueuesCreateOrUpdateAuthorizationRuleOutput =
 /**
  * Creates an authorization rule for a queue.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param queueName - The queue name.
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const QueuesCreateOrUpdateAuthorizationRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2169,15 +2678,15 @@ export const QueuesCreateOrUpdateAuthorizationRule =
   }));
 // Input Schema
 export const QueuesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   queueName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type QueuesDeleteInput = typeof QueuesDeleteInput.Type;
@@ -2190,11 +2699,11 @@ export type QueuesDeleteOutput = typeof QueuesDeleteOutput.Type;
 /**
  * Deletes a queue from the specified namespace in a resource group.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param queueName - The queue name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const QueuesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueuesDeleteInput,
@@ -2203,16 +2712,16 @@ export const QueuesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const QueuesDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     queueName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type QueuesDeleteAuthorizationRuleInput =
@@ -2228,12 +2737,12 @@ export type QueuesDeleteAuthorizationRuleOutput =
 /**
  * Deletes a queue authorization rule.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param queueName - The queue name.
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const QueuesDeleteAuthorizationRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2242,15 +2751,15 @@ export const QueuesDeleteAuthorizationRule =
   }));
 // Input Schema
 export const QueuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   queueName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type QueuesGetInput = typeof QueuesGetInput.Type;
@@ -2260,7 +2769,20 @@ export const QueuesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type QueuesGetOutput = typeof QueuesGetOutput.Type;
 
@@ -2268,11 +2790,11 @@ export type QueuesGetOutput = typeof QueuesGetOutput.Type;
 /**
  * Returns a description for the specified queue.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param queueName - The queue name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const QueuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueuesGetInput,
@@ -2281,16 +2803,16 @@ export const QueuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const QueuesGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     queueName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type QueuesGetAuthorizationRuleInput =
@@ -2302,7 +2824,20 @@ export const QueuesGetAuthorizationRuleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type QueuesGetAuthorizationRuleOutput =
   typeof QueuesGetAuthorizationRuleOutput.Type;
@@ -2311,12 +2846,12 @@ export type QueuesGetAuthorizationRuleOutput =
 /**
  * Gets an authorization rule for a queue by rule name.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param queueName - The queue name.
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const QueuesGetAuthorizationRule = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2327,15 +2862,15 @@ export const QueuesGetAuthorizationRule = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const QueuesListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     queueName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type QueuesListAuthorizationRulesInput =
@@ -2344,15 +2879,36 @@ export type QueuesListAuthorizationRulesInput =
 // Output Schema
 export const QueuesListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2363,11 +2919,11 @@ export type QueuesListAuthorizationRulesOutput =
 /**
  * Gets all authorization rules for a queue.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param queueName - The queue name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const QueuesListAuthorizationRules =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2377,16 +2933,16 @@ export const QueuesListAuthorizationRules =
 // Input Schema
 export const QueuesListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type QueuesListByNamespaceInput = typeof QueuesListByNamespaceInput.Type;
@@ -2394,15 +2950,36 @@ export type QueuesListByNamespaceInput = typeof QueuesListByNamespaceInput.Type;
 // Output Schema
 export const QueuesListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2413,10 +2990,10 @@ export type QueuesListByNamespaceOutput =
 /**
  * Gets the queues within a namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param $skip - Skip is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to use for subsequent calls.
  * @param $top - May be used to limit the number of results to the most recent N usageDetails.
  */
@@ -2428,16 +3005,16 @@ export const QueuesListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const QueuesListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   queueName: Schema.String.pipe(T.PathParam()),
   authorizationRuleName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
-    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}/ListKeys",
-    apiVersion: "2024-01-01",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}/listKeys",
+    apiVersion: "2026-01-01",
   }),
 );
 export type QueuesListKeysInput = typeof QueuesListKeysInput.Type;
@@ -2458,12 +3035,12 @@ export type QueuesListKeysOutput = typeof QueuesListKeysOutput.Type;
 /**
  * Primary and secondary connection strings to the queue.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param queueName - The queue name.
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const QueuesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueuesListKeysInput,
@@ -2472,18 +3049,18 @@ export const QueuesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const QueuesRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     queueName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     keyType: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
     key: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type QueuesRegenerateKeysInput = typeof QueuesRegenerateKeysInput.Type;
@@ -2505,12 +3082,12 @@ export type QueuesRegenerateKeysOutput = typeof QueuesRegenerateKeysOutput.Type;
 /**
  * Regenerates the primary or secondary connection strings to the queue.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param queueName - The queue name.
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const QueuesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2521,12 +3098,12 @@ export const QueuesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     subscriptionName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         action: Schema.optional(
@@ -2564,6 +3141,22 @@ export const RulesCreateOrUpdateInput =
         ),
       }),
     ),
+    location: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}",
+      apiVersion: "2026-01-01",
+    }),
+  );
+export type RulesCreateOrUpdateInput = typeof RulesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const RulesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -2578,26 +3171,6 @@ export const RulesCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}",
-      apiVersion: "2024-01-01",
-    }),
-  );
-export type RulesCreateOrUpdateInput = typeof RulesCreateOrUpdateInput.Type;
-
-// Output Schema
-export const RulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
   });
 export type RulesCreateOrUpdateOutput = typeof RulesCreateOrUpdateOutput.Type;
 
@@ -2605,13 +3178,13 @@ export type RulesCreateOrUpdateOutput = typeof RulesCreateOrUpdateOutput.Type;
 /**
  * Creates a new rule and updates an existing rule
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param subscriptionName - The subscription name.
  * @param ruleName - The rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const RulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RulesCreateOrUpdateInput,
@@ -2619,17 +3192,17 @@ export const RulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
   subscriptionName: Schema.String.pipe(T.PathParam()),
   ruleName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type RulesDeleteInput = typeof RulesDeleteInput.Type;
@@ -2642,13 +3215,13 @@ export type RulesDeleteOutput = typeof RulesDeleteOutput.Type;
 /**
  * Deletes an existing rule.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param subscriptionName - The subscription name.
  * @param ruleName - The rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const RulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RulesDeleteInput,
@@ -2656,17 +3229,17 @@ export const RulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
   subscriptionName: Schema.String.pipe(T.PathParam()),
   ruleName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type RulesGetInput = typeof RulesGetInput.Type;
@@ -2676,7 +3249,20 @@ export const RulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type RulesGetOutput = typeof RulesGetOutput.Type;
 
@@ -2684,13 +3270,13 @@ export type RulesGetOutput = typeof RulesGetOutput.Type;
 /**
  * Retrieves the description for the specified rule.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param subscriptionName - The subscription name.
  * @param ruleName - The rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const RulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RulesGetInput,
@@ -2699,18 +3285,18 @@ export const RulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const RulesListBySubscriptionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     subscriptionName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type RulesListBySubscriptionsInput =
@@ -2719,15 +3305,36 @@ export type RulesListBySubscriptionsInput =
 // Output Schema
 export const RulesListBySubscriptionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2738,12 +3345,12 @@ export type RulesListBySubscriptionsOutput =
 /**
  * List all the rules within given topic-subscription
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param subscriptionName - The subscription name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param $skip - Skip is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to use for subsequent calls.
  * @param $top - May be used to limit the number of results to the most recent N usageDetails.
  */
@@ -2756,11 +3363,11 @@ export const RulesListBySubscriptions = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     subscriptionName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         messageCount: Schema.optional(Schema.Number),
@@ -2803,6 +3410,7 @@ export const SubscriptionsCreateOrUpdateInput =
         forwardTo: Schema.optional(Schema.String),
         forwardDeadLetteredMessagesTo: Schema.optional(Schema.String),
         isClientAffine: Schema.optional(Schema.Boolean),
+        userMetadata: Schema.optional(Schema.String),
         clientAffineProperties: Schema.optional(
           Schema.Struct({
             clientId: Schema.optional(Schema.String),
@@ -2812,6 +3420,23 @@ export const SubscriptionsCreateOrUpdateInput =
         ),
       }),
     ),
+    location: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}",
+      apiVersion: "2026-01-01",
+    }),
+  );
+export type SubscriptionsCreateOrUpdateInput =
+  typeof SubscriptionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const SubscriptionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -2826,27 +3451,6 @@ export const SubscriptionsCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}",
-      apiVersion: "2024-01-01",
-    }),
-  );
-export type SubscriptionsCreateOrUpdateInput =
-  typeof SubscriptionsCreateOrUpdateInput.Type;
-
-// Output Schema
-export const SubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
   });
 export type SubscriptionsCreateOrUpdateOutput =
   typeof SubscriptionsCreateOrUpdateOutput.Type;
@@ -2855,12 +3459,12 @@ export type SubscriptionsCreateOrUpdateOutput =
 /**
  * Creates a topic subscription.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param subscriptionName - The subscription name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const SubscriptionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2871,16 +3475,16 @@ export const SubscriptionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     subscriptionName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type SubscriptionsDeleteInput = typeof SubscriptionsDeleteInput.Type;
@@ -2894,12 +3498,12 @@ export type SubscriptionsDeleteOutput = typeof SubscriptionsDeleteOutput.Type;
 /**
  * Deletes a subscription from the specified topic.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param subscriptionName - The subscription name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const SubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionsDeleteInput,
@@ -2907,16 +3511,16 @@ export const SubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SubscriptionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
   subscriptionName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type SubscriptionsGetInput = typeof SubscriptionsGetInput.Type;
@@ -2927,7 +3531,20 @@ export const SubscriptionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   },
 );
 export type SubscriptionsGetOutput = typeof SubscriptionsGetOutput.Type;
@@ -2936,12 +3553,12 @@ export type SubscriptionsGetOutput = typeof SubscriptionsGetOutput.Type;
 /**
  * Returns a subscription description for the specified topic.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param subscriptionName - The subscription name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const SubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionsGetInput,
@@ -2950,17 +3567,17 @@ export const SubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SubscriptionsListByTopicInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type SubscriptionsListByTopicInput =
@@ -2969,15 +3586,36 @@ export type SubscriptionsListByTopicInput =
 // Output Schema
 export const SubscriptionsListByTopicOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2988,11 +3626,11 @@ export type SubscriptionsListByTopicOutput =
 /**
  * List all the subscriptions under a specified topic.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param $skip - Skip is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to use for subsequent calls.
  * @param $top - May be used to limit the number of results to the most recent N usageDetails.
  */
@@ -3005,10 +3643,10 @@ export const SubscriptionsListByTopic = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         sizeInBytes: Schema.optional(Schema.Number),
@@ -3048,31 +3686,15 @@ export const TopicsCreateOrUpdateInput =
         autoDeleteOnIdle: Schema.optional(Schema.String),
         enablePartitioning: Schema.optional(Schema.Boolean),
         enableExpress: Schema.optional(Schema.Boolean),
+        userMetadata: Schema.optional(Schema.String),
       }),
     ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type TopicsCreateOrUpdateInput = typeof TopicsCreateOrUpdateInput.Type;
@@ -3083,39 +3705,6 @@ export const TopicsCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  });
-export type TopicsCreateOrUpdateOutput = typeof TopicsCreateOrUpdateOutput.Type;
-
-// The operation
-/**
- * Creates a topic in the specified namespace.
- *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param namespaceName - The namespace name
- * @param topicName - The topic name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- */
-export const TopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicsCreateOrUpdateInput,
-    outputSchema: TopicsCreateOrUpdateOutput,
-  }),
-);
-// Input Schema
-export const TopicsCreateOrUpdateAuthorizationRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    topicName: Schema.String.pipe(T.PathParam()),
-    authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
-      }),
-    ),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -3130,15 +3719,44 @@ export const TopicsCreateOrUpdateAuthorizationRuleInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+  });
+export type TopicsCreateOrUpdateOutput = typeof TopicsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates a topic in the specified namespace.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - The namespace name
+ * @param topicName - The topic name.
+ */
+export const TopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: TopicsCreateOrUpdateInput,
+    outputSchema: TopicsCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const TopicsCreateOrUpdateAuthorizationRuleInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    topicName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
     location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type TopicsCreateOrUpdateAuthorizationRuleInput =
@@ -3150,7 +3768,20 @@ export const TopicsCreateOrUpdateAuthorizationRuleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TopicsCreateOrUpdateAuthorizationRuleOutput =
   typeof TopicsCreateOrUpdateAuthorizationRuleOutput.Type;
@@ -3159,12 +3790,12 @@ export type TopicsCreateOrUpdateAuthorizationRuleOutput =
 /**
  * Creates an authorization rule for the specified topic.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const TopicsCreateOrUpdateAuthorizationRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3173,15 +3804,15 @@ export const TopicsCreateOrUpdateAuthorizationRule =
   }));
 // Input Schema
 export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type TopicsDeleteInput = typeof TopicsDeleteInput.Type;
@@ -3194,11 +3825,11 @@ export type TopicsDeleteOutput = typeof TopicsDeleteOutput.Type;
 /**
  * Deletes a topic from the specified namespace and resource group.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const TopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicsDeleteInput,
@@ -3207,16 +3838,16 @@ export const TopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TopicsDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type TopicsDeleteAuthorizationRuleInput =
@@ -3232,12 +3863,12 @@ export type TopicsDeleteAuthorizationRuleOutput =
 /**
  * Deletes a topic authorization rule.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const TopicsDeleteAuthorizationRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3246,15 +3877,15 @@ export const TopicsDeleteAuthorizationRule =
   }));
 // Input Schema
 export const TopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}",
-    apiVersion: "2024-01-01",
+    apiVersion: "2026-01-01",
   }),
 );
 export type TopicsGetInput = typeof TopicsGetInput.Type;
@@ -3264,7 +3895,20 @@ export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type TopicsGetOutput = typeof TopicsGetOutput.Type;
 
@@ -3272,11 +3916,11 @@ export type TopicsGetOutput = typeof TopicsGetOutput.Type;
 /**
  * Returns a description for the specified topic.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const TopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicsGetInput,
@@ -3285,16 +3929,16 @@ export const TopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TopicsGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type TopicsGetAuthorizationRuleInput =
@@ -3306,7 +3950,20 @@ export const TopicsGetAuthorizationRuleOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type TopicsGetAuthorizationRuleOutput =
   typeof TopicsGetAuthorizationRuleOutput.Type;
@@ -3315,12 +3972,12 @@ export type TopicsGetAuthorizationRuleOutput =
 /**
  * Returns the specified authorization rule.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const TopicsGetAuthorizationRule = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3331,15 +3988,15 @@ export const TopicsGetAuthorizationRule = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TopicsListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type TopicsListAuthorizationRulesInput =
@@ -3348,15 +4005,36 @@ export type TopicsListAuthorizationRulesInput =
 // Output Schema
 export const TopicsListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3367,11 +4045,11 @@ export type TopicsListAuthorizationRulesOutput =
 /**
  * Gets authorization rules for a topic.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const TopicsListAuthorizationRules =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3381,16 +4059,16 @@ export const TopicsListAuthorizationRules =
 // Input Schema
 export const TopicsListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type TopicsListByNamespaceInput = typeof TopicsListByNamespaceInput.Type;
@@ -3398,15 +4076,36 @@ export type TopicsListByNamespaceInput = typeof TopicsListByNamespaceInput.Type;
 // Output Schema
 export const TopicsListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3417,10 +4116,10 @@ export type TopicsListByNamespaceOutput =
 /**
  * Gets all the topics in a namespace.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param $skip - Skip is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to use for subsequent calls.
  * @param $top - May be used to limit the number of results to the most recent N usageDetails.
  */
@@ -3432,16 +4131,16 @@ export const TopicsListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TopicsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
   authorizationRuleName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
-    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}/ListKeys",
-    apiVersion: "2024-01-01",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}/listKeys",
+    apiVersion: "2026-01-01",
   }),
 );
 export type TopicsListKeysInput = typeof TopicsListKeysInput.Type;
@@ -3462,12 +4161,12 @@ export type TopicsListKeysOutput = typeof TopicsListKeysOutput.Type;
 /**
  * Gets the primary and secondary connection strings for the topic.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const TopicsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicsListKeysInput,
@@ -3476,18 +4175,18 @@ export const TopicsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TopicsRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     keyType: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
     key: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   );
 export type TopicsRegenerateKeysInput = typeof TopicsRegenerateKeysInput.Type;
@@ -3509,12 +4208,12 @@ export type TopicsRegenerateKeysOutput = typeof TopicsRegenerateKeysOutput.Type;
 /**
  * Regenerates primary or secondary connection strings for the topic.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param namespaceName - The namespace name
  * @param topicName - The topic name.
  * @param authorizationRuleName - The authorization rule name.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const TopicsRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

@@ -105,9 +105,7 @@ export type CreateProjectBranchDatabaseOutput =
  *
  * Creates a database in the specified branch.
  * A branch can have multiple databases.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
- * For related information, see [Manage databases](https://neon.tech/docs/manage/databases/).
+ * For related information, see [Manage databases](https://neon.com/docs/manage/databases/).
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

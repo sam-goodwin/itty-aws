@@ -13,6 +13,9 @@ export const AccessPolicyAssignmentCreateUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -57,6 +60,9 @@ export type AccessPolicyAssignmentCreateUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
+ * @param accessPolicyAssignmentName - The name of the Redis Enterprise database access policy assignment.
  * @param api-version - The API version to use for this operation.
  */
 export const AccessPolicyAssignmentCreateUpdate =
@@ -69,6 +75,9 @@ export const AccessPolicyAssignmentDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -91,6 +100,9 @@ export type AccessPolicyAssignmentDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
+ * @param accessPolicyAssignmentName - The name of the Redis Enterprise database access policy assignment.
  * @param api-version - The API version to use for this operation.
  */
 export const AccessPolicyAssignmentDelete =
@@ -103,6 +115,9 @@ export const AccessPolicyAssignmentGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -129,6 +144,9 @@ export type AccessPolicyAssignmentGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
+ * @param accessPolicyAssignmentName - The name of the Redis Enterprise database access policy assignment.
  * @param api-version - The API version to use for this operation.
  */
 export const AccessPolicyAssignmentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -142,6 +160,8 @@ export const AccessPolicyAssignmentListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -176,6 +196,8 @@ export type AccessPolicyAssignmentListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  */
 export const AccessPolicyAssignmentList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -186,6 +208,8 @@ export const AccessPolicyAssignmentList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -306,6 +330,8 @@ export type DatabasesCreateOutput = typeof DatabasesCreateOutput.Type;
  * Creates a database
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -316,6 +342,8 @@ export const DatabasesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -335,6 +363,8 @@ export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
  * Deletes a single database
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -345,6 +375,8 @@ export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabasesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   sasUri: Schema.String,
 }).pipe(
@@ -365,6 +397,8 @@ export type DatabasesExportOutput = typeof DatabasesExportOutput.Type;
  * Exports a database file from target database.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -375,6 +409,8 @@ export const DatabasesExport = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabasesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   ids: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
@@ -395,6 +431,8 @@ export type DatabasesFlushOutput = typeof DatabasesFlushOutput.Type;
  * Flushes all the keys in this database and also from its linked databases.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -406,6 +444,8 @@ export const DatabasesFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DatabasesForceLinkToReplicationGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     geoReplication: Schema.Struct({
       groupNickname: Schema.optional(Schema.String),
@@ -447,6 +487,8 @@ export type DatabasesForceLinkToReplicationGroupOutput =
  * Forcibly recreates an existing database on the specified cluster, and rejoins it to an existing replication group. **IMPORTANT NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining the replication group.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
@@ -459,6 +501,8 @@ export const DatabasesForceLinkToReplicationGroup =
 export const DatabasesForceUnlinkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     ids: Schema.Array(Schema.String),
   }).pipe(
@@ -480,6 +524,8 @@ export type DatabasesForceUnlinkOutput = typeof DatabasesForceUnlinkOutput.Type;
  * Forcibly removes the link to the specified database resource.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -492,6 +538,8 @@ export const DatabasesForceUnlink = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -515,6 +563,8 @@ export type DatabasesGetOutput = typeof DatabasesGetOutput.Type;
  * Gets information about a database in a Redis Enterprise cluster.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -525,6 +575,8 @@ export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabasesImportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   sasUris: Schema.Array(Schema.String),
 }).pipe(
@@ -545,6 +597,8 @@ export type DatabasesImportOutput = typeof DatabasesImportOutput.Type;
  * Imports database files to target database.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -557,6 +611,7 @@ export const DatabasesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -591,6 +646,7 @@ export type DatabasesListByClusterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  */
 export const DatabasesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -602,6 +658,8 @@ export const DatabasesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DatabasesListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
@@ -626,6 +684,8 @@ export type DatabasesListKeysOutput = typeof DatabasesListKeysOutput.Type;
  * Retrieves the access keys for the Redis Enterprise database.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -637,6 +697,8 @@ export const DatabasesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DatabasesRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     keyType: Schema.Literals(["Primary", "Secondary"]),
   }).pipe(
@@ -663,6 +725,8 @@ export type DatabasesRegenerateKeyOutput =
  * Regenerates the Redis Enterprise database's access keys.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -675,6 +739,8 @@ export const DatabasesRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -795,6 +861,8 @@ export type DatabasesUpdateOutput = typeof DatabasesUpdateOutput.Type;
  * Updates a database
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -806,6 +874,8 @@ export const DatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DatabasesUpgradeDBRedisVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -828,6 +898,8 @@ export type DatabasesUpgradeDBRedisVersionOutput =
  * Upgrades the database Redis version to the latest available.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+ * @param databaseName - The name of the Redis Enterprise database.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -947,6 +1019,7 @@ export const OperationsStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -970,6 +1043,7 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * Deletes the specified private endpoint connection associated with the Redis Enterprise cluster.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
@@ -983,6 +1057,7 @@ export const PrivateEndpointConnectionsDelete =
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1010,6 +1085,7 @@ export type PrivateEndpointConnectionsGetOutput =
  * Gets the specified private endpoint connection associated with the Redis Enterprise cluster.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
@@ -1023,6 +1099,7 @@ export const PrivateEndpointConnectionsGet =
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1055,6 +1132,7 @@ export type PrivateEndpointConnectionsListOutput =
  * Lists all the private endpoint connections associated with the Redis Enterprise cluster.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -1067,6 +1145,7 @@ export const PrivateEndpointConnectionsList =
 export const PrivateEndpointConnectionsPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1116,6 +1195,7 @@ export type PrivateEndpointConnectionsPutOutput =
  * Updates the state of the specified private endpoint connection associated with the Redis Enterprise cluster.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
@@ -1130,6 +1210,7 @@ export const PrivateEndpointConnectionsPut =
 export const PrivateLinkResourcesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1162,6 +1243,7 @@ export type PrivateLinkResourcesListByClusterOutput =
  * Gets the private link resources that need to be created for a Redis Enterprise cluster.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -1174,6 +1256,7 @@ export const PrivateLinkResourcesListByCluster =
 export const RedisEnterpriseCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     kind: Schema.optional(Schema.Literals(["v1", "v2"])),
     sku: Schema.Struct({
@@ -1357,6 +1440,7 @@ export type RedisEnterpriseCreateOutput =
  * Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -1370,6 +1454,7 @@ export const RedisEnterpriseCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RedisEnterpriseDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1391,6 +1476,7 @@ export type RedisEnterpriseDeleteOutput =
  * Deletes a Redis Enterprise cache cluster.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -1404,6 +1490,7 @@ export const RedisEnterpriseDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RedisEnterpriseGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1428,6 +1515,7 @@ export type RedisEnterpriseGetOutput = typeof RedisEnterpriseGetOutput.Type;
  * Gets information about a Redis Enterprise cluster
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -1524,6 +1612,7 @@ export const RedisEnterpriseListByResourceGroup =
 export const RedisEnterpriseListSkusForScalingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1555,6 +1644,7 @@ export type RedisEnterpriseListSkusForScalingOutput =
  * Lists the available SKUs for scaling the Redis Enterprise cluster.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -1567,6 +1657,7 @@ export const RedisEnterpriseListSkusForScaling =
 export const RedisEnterpriseUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     sku: Schema.optional(
       Schema.Struct({
@@ -1749,6 +1840,7 @@ export type RedisEnterpriseUpdateOutput =
  * Updates an existing Redis Enterprise cluster
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */

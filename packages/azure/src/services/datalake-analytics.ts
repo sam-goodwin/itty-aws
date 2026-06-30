@@ -12,6 +12,7 @@ import { SensitiveOutputString } from "../sensitive.ts";
 // Input Schema
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals(["Microsoft.DataLakeAnalytics/accounts"]),
@@ -39,7 +40,9 @@ export type AccountsCheckNameAvailabilityOutput =
 /**
  * Checks whether the specified account name is available or taken.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - The resource location without whitespace.
+ * @param api-version - Client Api Version.
  */
 export const AccountsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -48,6 +51,9 @@ export const AccountsCheckNameAvailability =
   }));
 // Input Schema
 export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.Struct({
@@ -142,15 +148,22 @@ export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
 // The operation
 /**
  * Creates the specified Data Lake Analytics account. This supplies the user with computation services for Data Lake Analytics workloads.
+ *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
+ * @param api-version - Client Api Version.
  */
 export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
 // Input Schema
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}",
@@ -166,15 +179,22 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 // The operation
 /**
  * Begins the delete process for the Data Lake Analytics account object specified by the account name.
+ *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
+ * @param api-version - Client Api Version.
  */
 export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}",
@@ -196,6 +216,11 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
 // The operation
 /**
  * Gets details of the specified Data Lake Analytics account.
+ *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
+ * @param api-version - Client Api Version.
  */
 export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
@@ -203,6 +228,7 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
@@ -240,12 +266,14 @@ export type AccountsListOutput = typeof AccountsListOutput.Type;
 /**
  * Gets the first page of Data Lake Analytics accounts, if any, within the current subscription. This includes a link to the next page, if any.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param $filter - OData filter. Optional.
  * @param $top - The number of items to return. Optional.
  * @param $skip - The number of items to skip over before returning elements. Optional.
  * @param $select - OData Select statement. Limits the properties on each entry to just those requested, e.g. Categories?$select=CategoryName,Description. Optional.
  * @param $orderby - OrderBy clause. One or more comma-separated expressions with an optional "asc" (the default) or "desc" depending on the order you'd like the values sorted, e.g. Categories?$orderby=CategoryName desc. Optional.
  * @param $count - The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional.
+ * @param api-version - Client Api Version.
  */
 export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsListInput,
@@ -254,6 +282,8 @@ export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
@@ -294,12 +324,15 @@ export type AccountsListByResourceGroupOutput =
 /**
  * Gets the first page of Data Lake Analytics accounts, if any, within a specific resource group. This includes a link to the next page, if any.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
  * @param $filter - OData filter. Optional.
  * @param $top - The number of items to return. Optional.
  * @param $skip - The number of items to skip over before returning elements. Optional.
  * @param $select - OData Select statement. Limits the properties on each entry to just those requested, e.g. Categories?$select=CategoryName,Description. Optional.
  * @param $orderby - OrderBy clause. One or more comma-separated expressions with an optional "asc" (the default) or "desc" depending on the order you'd like the values sorted, e.g. Categories?$orderby=CategoryName desc. Optional.
  * @param $count - The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional.
+ * @param api-version - Client Api Version.
  */
 export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -309,6 +342,9 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
     Schema.Struct({
@@ -413,6 +449,11 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
 // The operation
 /**
  * Updates the Data Lake Analytics account object specified by the accountName with the contents of the account object.
+ *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
+ * @param api-version - Client Api Version.
  */
 export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
@@ -421,6 +462,9 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ComputePoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     computePolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       objectId: Schema.String,
@@ -452,7 +496,11 @@ export type ComputePoliciesCreateOrUpdateOutput =
 /**
  * Creates or updates the specified compute policy. During update, the compute policy with the specified name will be replaced with this new compute policy. An account supports, at most, 50 policies
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param computePolicyName - The name of the compute policy to create or update.
+ * @param api-version - Client Api Version.
  */
 export const ComputePoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -462,6 +510,9 @@ export const ComputePoliciesCreateOrUpdate =
 // Input Schema
 export const ComputePoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     computePolicyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -482,7 +533,11 @@ export type ComputePoliciesDeleteOutput =
 /**
  * Deletes the specified compute policy from the specified Data Lake Analytics account
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param computePolicyName - The name of the compute policy to delete.
+ * @param api-version - Client Api Version.
  */
 export const ComputePoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -493,6 +548,9 @@ export const ComputePoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ComputePoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     computePolicyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -516,7 +574,11 @@ export type ComputePoliciesGetOutput = typeof ComputePoliciesGetOutput.Type;
 /**
  * Gets the specified Data Lake Analytics compute policy.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param computePolicyName - The name of the compute policy to retrieve.
+ * @param api-version - Client Api Version.
  */
 export const ComputePoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ComputePoliciesGetInput,
@@ -524,7 +586,11 @@ export const ComputePoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ComputePoliciesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies",
@@ -554,6 +620,11 @@ export type ComputePoliciesListByAccountOutput =
 // The operation
 /**
  * Lists the Data Lake Analytics compute policies within the specified Data Lake Analytics account. An account supports, at most, 50 policies
+ *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
+ * @param api-version - Client Api Version.
  */
 export const ComputePoliciesListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -563,6 +634,9 @@ export const ComputePoliciesListByAccount =
 // Input Schema
 export const ComputePoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     computePolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -597,7 +671,11 @@ export type ComputePoliciesUpdateOutput =
 /**
  * Updates the specified compute policy.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param computePolicyName - The name of the compute policy to update.
+ * @param api-version - Client Api Version.
  */
 export const ComputePoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -608,6 +686,9 @@ export const ComputePoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DataLakeStoreAccountsAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     dataLakeStoreAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -634,7 +715,11 @@ export type DataLakeStoreAccountsAddOutput =
 /**
  * Updates the specified Data Lake Analytics account to include the additional Data Lake Store account.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param dataLakeStoreAccountName - The name of the Data Lake Store account to add.
+ * @param api-version - Client Api Version.
  */
 export const DataLakeStoreAccountsAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -645,6 +730,9 @@ export const DataLakeStoreAccountsAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DataLakeStoreAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     dataLakeStoreAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -666,7 +754,11 @@ export type DataLakeStoreAccountsDeleteOutput =
 /**
  * Updates the Data Lake Analytics account specified to remove the specified Data Lake Store account.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param dataLakeStoreAccountName - The name of the Data Lake Store account to remove
+ * @param api-version - Client Api Version.
  */
 export const DataLakeStoreAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -677,6 +769,9 @@ export const DataLakeStoreAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DataLakeStoreAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     dataLakeStoreAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -702,7 +797,11 @@ export type DataLakeStoreAccountsGetOutput =
 /**
  * Gets the specified Data Lake Store account details in the specified Data Lake Analytics account.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param dataLakeStoreAccountName - The name of the Data Lake Store account to retrieve
+ * @param api-version - Client Api Version.
  */
 export const DataLakeStoreAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -713,6 +812,9 @@ export const DataLakeStoreAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DataLakeStoreAccountsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
@@ -750,12 +852,16 @@ export type DataLakeStoreAccountsListByAccountOutput =
 /**
  * Gets the first page of Data Lake Store accounts linked to the specified Data Lake Analytics account. The response includes a link to the next page, if any.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param $filter - OData filter. Optional.
  * @param $top - The number of items to return. Optional.
  * @param $skip - The number of items to skip over before returning elements. Optional.
  * @param $select - OData Select statement. Limits the properties on each entry to just those requested, e.g. Categories?$select=CategoryName,Description. Optional.
  * @param $orderby - OrderBy clause. One or more comma-separated expressions with an optional "asc" (the default) or "desc" depending on the order you'd like the values sorted, e.g. Categories?$orderby=CategoryName desc. Optional.
  * @param $count - The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional.
+ * @param api-version - Client Api Version.
  */
 export const DataLakeStoreAccountsListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -765,6 +871,9 @@ export const DataLakeStoreAccountsListByAccount =
 // Input Schema
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       startIpAddress: Schema.String,
@@ -794,7 +903,11 @@ export type FirewallRulesCreateOrUpdateOutput =
 /**
  * Creates or updates the specified firewall rule. During update, the firewall rule with the specified name will be replaced with this new firewall rule.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param firewallRuleName - The name of the firewall rule to create or update.
+ * @param api-version - Client Api Version.
  */
 export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -805,6 +918,9 @@ export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FirewallRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -824,7 +940,11 @@ export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 /**
  * Deletes the specified firewall rule from the specified Data Lake Analytics account
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param firewallRuleName - The name of the firewall rule to delete.
+ * @param api-version - Client Api Version.
  */
 export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
@@ -832,6 +952,9 @@ export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   firewallRuleName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -856,7 +979,11 @@ export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
 /**
  * Gets the specified Data Lake Analytics firewall rule.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param firewallRuleName - The name of the firewall rule to retrieve.
+ * @param api-version - Client Api Version.
  */
 export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
@@ -864,7 +991,11 @@ export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const FirewallRulesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules",
@@ -894,6 +1025,11 @@ export type FirewallRulesListByAccountOutput =
 // The operation
 /**
  * Lists the Data Lake Analytics firewall rules within the specified Data Lake Analytics account.
+ *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
+ * @param api-version - Client Api Version.
  */
 export const FirewallRulesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -904,6 +1040,9 @@ export const FirewallRulesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FirewallRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -933,7 +1072,11 @@ export type FirewallRulesUpdateOutput = typeof FirewallRulesUpdateOutput.Type;
 /**
  * Updates the specified firewall rule.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param firewallRuleName - The name of the firewall rule to update.
+ * @param api-version - Client Api Version.
  */
 export const FirewallRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesUpdateInput,
@@ -942,6 +1085,7 @@ export const FirewallRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LocationsGetCapabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -977,7 +1121,9 @@ export type LocationsGetCapabilityOutput =
 /**
  * Gets subscription-level properties and limits for Data Lake Analytics specified by resource location.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - The resource location without whitespace.
+ * @param api-version - Client Api Version.
  */
 export const LocationsGetCapability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1060,6 +1206,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Data Lake Analytics REST API operations.
+ *
+ * @param api-version - Client Api Version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -1068,6 +1216,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StorageAccountsAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       accessKey: Schema.String,
@@ -1090,7 +1241,11 @@ export type StorageAccountsAddOutput = typeof StorageAccountsAddOutput.Type;
 /**
  * Updates the specified Data Lake Analytics account to add an Azure Storage account.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param storageAccountName - The name of the Azure Storage account to add
+ * @param api-version - Client Api Version.
  */
 export const StorageAccountsAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StorageAccountsAddInput,
@@ -1099,6 +1254,9 @@ export const StorageAccountsAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StorageAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1119,7 +1277,11 @@ export type StorageAccountsDeleteOutput =
 /**
  * Updates the specified Data Lake Analytics account to remove an Azure Storage account.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param storageAccountName - The name of the Azure Storage account to remove
+ * @param api-version - Client Api Version.
  */
 export const StorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1130,6 +1292,9 @@ export const StorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const StorageAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1153,7 +1318,11 @@ export type StorageAccountsGetOutput = typeof StorageAccountsGetOutput.Type;
 /**
  * Gets the specified Azure Storage account linked to the given Data Lake Analytics account.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param storageAccountName - The name of the Azure Storage account for which to retrieve the details.
+ * @param api-version - Client Api Version.
  */
 export const StorageAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StorageAccountsGetInput,
@@ -1162,6 +1331,9 @@ export const StorageAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StorageAccountsGetStorageContainerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1188,8 +1360,12 @@ export type StorageAccountsGetStorageContainerOutput =
 /**
  * Gets the specified Azure Storage container associated with the given Data Lake Analytics and Azure Storage accounts.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param storageAccountName - The name of the Azure storage account from which to retrieve the blob container.
  * @param containerName - The name of the Azure storage container to retrieve
+ * @param api-version - Client Api Version.
  */
 export const StorageAccountsGetStorageContainer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1199,6 +1375,9 @@ export const StorageAccountsGetStorageContainer =
 // Input Schema
 export const StorageAccountsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
@@ -1236,12 +1415,16 @@ export type StorageAccountsListByAccountOutput =
 /**
  * Gets the first page of Azure Storage accounts, if any, linked to the specified Data Lake Analytics account. The response includes a link to the next page, if any.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param $filter - The OData filter. Optional.
  * @param $top - The number of items to return. Optional.
  * @param $skip - The number of items to skip over before returning elements. Optional.
  * @param $select - OData Select statement. Limits the properties on each entry to just those requested, e.g. Categories?$select=CategoryName,Description. Optional.
  * @param $orderby - OrderBy clause. One or more comma-separated expressions with an optional "asc" (the default) or "desc" depending on the order you'd like the values sorted, e.g. Categories?$orderby=CategoryName desc. Optional.
  * @param $count - The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional.
+ * @param api-version - Client Api Version.
  */
 export const StorageAccountsListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1251,6 +1434,9 @@ export const StorageAccountsListByAccount =
 // Input Schema
 export const StorageAccountsListSasTokensInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1282,8 +1468,12 @@ export type StorageAccountsListSasTokensOutput =
 /**
  * Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param storageAccountName - The name of the Azure storage account for which the SAS token is being requested.
  * @param containerName - The name of the Azure storage container for which the SAS token is being requested.
+ * @param api-version - Client Api Version.
  */
 export const StorageAccountsListSasTokens =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1293,6 +1483,9 @@ export const StorageAccountsListSasTokens =
 // Input Schema
 export const StorageAccountsListStorageContainersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1325,7 +1518,11 @@ export type StorageAccountsListStorageContainersOutput =
 /**
  * Lists the Azure Storage containers, if any, associated with the specified Data Lake Analytics and Azure Storage account combination. The response includes a link to the next page of results, if any.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param storageAccountName - The name of the Azure storage account from which to list blob containers.
+ * @param api-version - Client Api Version.
  */
 export const StorageAccountsListStorageContainers =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1335,6 +1532,9 @@ export const StorageAccountsListStorageContainers =
 // Input Schema
 export const StorageAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1361,7 +1561,11 @@ export type StorageAccountsUpdateOutput =
 /**
  * Updates the Data Lake Analytics account to replace Azure Storage blob account details, such as the access key and/or suffix.
  *
+ * @param subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Analytics account.
  * @param storageAccountName - The Azure Storage account to modify
+ * @param api-version - Client Api Version.
  */
 export const StorageAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

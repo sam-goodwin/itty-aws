@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsReviewQueuesListInput =
@@ -15,7 +14,7 @@ export const LlmAnalyticsReviewQueuesListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/llm_analytics/review_queues/",
+      path: "/api/projects/{project_id}/llm_analytics/review_queues/",
     }),
   );
 export type LlmAnalyticsReviewQueuesListInput =
@@ -75,5 +74,4 @@ export const llmAnalyticsReviewQueuesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsReviewQueuesListInput,
     outputSchema: LlmAnalyticsReviewQueuesListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

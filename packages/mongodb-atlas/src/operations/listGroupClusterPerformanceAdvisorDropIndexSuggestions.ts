@@ -27,7 +27,7 @@ export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput =
 /**
  * Return All Suggested Indexes to Drop
  *
- * Returns the indexes that the Performance Advisor suggests to drop. The Performance Advisor suggests dropping unused, redundant, and hidden indexes to improve write performance and increase storage space. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns the indexes that the Performance Advisor suggests to drop. The Performance Advisor suggests dropping unused, redundant, and hidden indexes to improve write performance and increase storage space.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

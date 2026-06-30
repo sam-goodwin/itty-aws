@@ -12,7 +12,6 @@ export const HogFunctionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
-  search: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   updated_at: Schema.optional(Schema.String),
 }).pipe(
@@ -56,7 +55,7 @@ export const HogFunctionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           updated_at: Schema.optional(Schema.String),
           enabled: Schema.optional(Schema.Boolean),
           hog: Schema.optional(Schema.String),
-          filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          filters: Schema.optional(Schema.Unknown),
           icon_url: Schema.optional(Schema.NullOr(Schema.String)),
           template: Schema.optional(
             Schema.Struct({
@@ -71,8 +70,8 @@ export const HogFunctionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               category: Schema.optional(Schema.Unknown),
               free: Schema.optional(Schema.Boolean),
               icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-              filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-              masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
+              filters: Schema.optional(Schema.Unknown),
+              masking: Schema.optional(Schema.Unknown),
               mapping_templates: Schema.optional(
                 Schema.NullOr(
                   Schema.Array(
@@ -84,26 +83,18 @@ export const HogFunctionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                       use_all_events_by_default: Schema.optional(
                         Schema.NullOr(Schema.Boolean),
                       ),
-                      filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                      inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                      inputs_schema: Schema.optional(
-                        Schema.NullOr(Schema.Unknown),
-                      ),
+                      filters: Schema.optional(Schema.Unknown),
+                      inputs: Schema.optional(Schema.Unknown),
+                      inputs_schema: Schema.optional(Schema.Unknown),
                     }),
                   ),
                 ),
               ),
             }),
           ),
-          status: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                state: Schema.optional(Schema.Literals([0, 1, 2, 3, 11, 12])),
-                tokens: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
+          status: Schema.optional(Schema.Unknown),
           execution_order: Schema.optional(Schema.NullOr(Schema.Number)),
+          search_match_type: Schema.optional(Schema.Unknown),
         }),
       ),
     ),
@@ -117,7 +108,6 @@ export type HogFunctionsListOutput = typeof HogFunctionsListOutput.Type;
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
- * @param search - A search term.
  * @param type - Multiple values may be separated by commas.
  */
 export const hogFunctionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

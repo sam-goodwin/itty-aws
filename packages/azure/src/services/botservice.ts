@@ -12,6 +12,10 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const BotConnectionCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -83,6 +87,12 @@ export type BotConnectionCreateOutput = typeof BotConnectionCreateOutput.Type;
 // The operation
 /**
  * Register a new Auth Connection for a Bot Service
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param connectionName - The name of the Bot Service Connection Setting resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotConnectionCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BotConnectionCreateInput,
@@ -90,7 +100,12 @@ export const BotConnectionCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BotConnectionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
@@ -107,15 +122,24 @@ export type BotConnectionDeleteOutput = typeof BotConnectionDeleteOutput.Type;
 // The operation
 /**
  * Deletes a Connection Setting registration for a Bot Service
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param connectionName - The name of the Bot Service Connection Setting resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotConnectionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BotConnectionDeleteInput,
   outputSchema: BotConnectionDeleteOutput,
 }));
 // Input Schema
-export const BotConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BotConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
@@ -150,6 +174,12 @@ export type BotConnectionGetOutput = typeof BotConnectionGetOutput.Type;
 // The operation
 /**
  * Get a Connection Setting registration for a Bot Service
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param connectionName - The name of the Bot Service Connection Setting resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotConnectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BotConnectionGetInput,
@@ -157,7 +187,11 @@ export const BotConnectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BotConnectionListByBotServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections",
@@ -200,6 +234,11 @@ export type BotConnectionListByBotServiceOutput =
 // The operation
 /**
  * Returns all the Connection Settings registered to a particular BotService resource
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param subscriptionId - Azure Subscription ID.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const BotConnectionListByBotService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -208,7 +247,9 @@ export const BotConnectionListByBotService =
   }));
 // Input Schema
 export const BotConnectionListServiceProvidersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/listAuthServiceProviders",
@@ -265,6 +306,9 @@ export type BotConnectionListServiceProvidersOutput =
 // The operation
 /**
  * Lists the available Service Providers for creating Connection Settings
+ *
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotConnectionListServiceProviders =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -273,7 +317,12 @@ export const BotConnectionListServiceProviders =
   }));
 // Input Schema
 export const BotConnectionListWithSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}/listWithSecrets",
@@ -309,6 +358,12 @@ export type BotConnectionListWithSecretsOutput =
 // The operation
 /**
  * Get a Connection Setting registration for a Bot Service
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param connectionName - The name of the Bot Service Connection Setting resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotConnectionListWithSecrets =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -318,6 +373,10 @@ export const BotConnectionListWithSecrets =
 // Input Schema
 export const BotConnectionUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -389,6 +448,12 @@ export type BotConnectionUpdateOutput = typeof BotConnectionUpdateOutput.Type;
 // The operation
 /**
  * Updates a Connection Setting registration for a Bot Service
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param connectionName - The name of the Bot Service Connection Setting resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotConnectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BotConnectionUpdateInput,
@@ -396,6 +461,9 @@ export const BotConnectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       displayName: Schema.String,
@@ -498,15 +566,22 @@ export type BotsCreateOutput = typeof BotsCreateOutput.Type;
 // The operation
 /**
  * Creates a Bot Service. Bot Service is a resource group wide resource type.
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BotsCreateInput,
   outputSchema: BotsCreateOutput,
 }));
 // Input Schema
-export const BotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
@@ -522,13 +597,22 @@ export type BotsDeleteOutput = typeof BotsDeleteOutput.Type;
 // The operation
 /**
  * Deletes a Bot Service from the resource group.
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BotsDeleteInput,
   outputSchema: BotsDeleteOutput,
 }));
 // Input Schema
-export const BotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const BotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
@@ -561,6 +645,11 @@ export type BotsGetOutput = typeof BotsGetOutput.Type;
 // The operation
 /**
  * Returns a BotService specified by the parameters.
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BotsGetInput,
@@ -594,6 +683,8 @@ export type BotsGetCheckNameAvailabilityOutput =
 // The operation
 /**
  * Check whether a bot name is available.
+ *
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const BotsGetCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -601,7 +692,9 @@ export const BotsGetCheckNameAvailability =
     outputSchema: BotsGetCheckNameAvailabilityOutput,
   }));
 // Input Schema
-export const BotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const BotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/botServices",
@@ -641,6 +734,9 @@ export type BotsListOutput = typeof BotsListOutput.Type;
 // The operation
 /**
  * Returns all the resources of a particular type belonging to a subscription.
+ *
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BotsListInput,
@@ -648,7 +744,10 @@ export const BotsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BotsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices",
@@ -691,6 +790,10 @@ export type BotsListByResourceGroupOutput =
 // The operation
 /**
  * Returns all the resources of a particular type belonging to a resource group
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param subscriptionId - Azure Subscription ID.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const BotsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -700,6 +803,9 @@ export const BotsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       displayName: Schema.String,
@@ -802,6 +908,11 @@ export type BotsUpdateOutput = typeof BotsUpdateOutput.Type;
 // The operation
 /**
  * Updates a Bot Service
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const BotsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BotsUpdateInput,
@@ -809,6 +920,30 @@ export const BotsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ChannelsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  channelName: Schema.Literals([
+    "AlexaChannel",
+    "FacebookChannel",
+    "EmailChannel",
+    "KikChannel",
+    "TelegramChannel",
+    "SlackChannel",
+    "MsTeamsChannel",
+    "SkypeChannel",
+    "WebChatChannel",
+    "DirectLineChannel",
+    "SmsChannel",
+    "LineChannel",
+    "DirectLineSpeechChannel",
+    "OutlookChannel",
+    "Omnichannel",
+    "TelephonyChannel",
+    "AcsChatChannel",
+    "SearchAssistant",
+    "M365Extensions",
+  ]).pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       channelName: Schema.String,
@@ -866,6 +1001,12 @@ export type ChannelsCreateOutput = typeof ChannelsCreateOutput.Type;
 // The operation
 /**
  * Creates a Channel registration for a Bot Service
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param channelName - The name of the Channel resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const ChannelsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChannelsCreateInput,
@@ -873,7 +1014,10 @@ export const ChannelsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   channelName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -891,7 +1035,11 @@ export type ChannelsDeleteOutput = typeof ChannelsDeleteOutput.Type;
 /**
  * Deletes a Channel registration from a Bot Service
  *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
  * @param channelName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const ChannelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChannelsDeleteInput,
@@ -899,7 +1047,10 @@ export const ChannelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ChannelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   channelName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -934,7 +1085,11 @@ export type ChannelsGetOutput = typeof ChannelsGetOutput.Type;
 /**
  * Returns a BotService Channel registration specified by the parameters.
  *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
  * @param channelName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const ChannelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChannelsGetInput,
@@ -942,7 +1097,11 @@ export const ChannelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ChannelsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels",
@@ -985,6 +1144,11 @@ export type ChannelsListByResourceGroupOutput =
 // The operation
 /**
  * Returns all the Channel registrations of a particular BotService resource
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param subscriptionId - Azure Subscription ID.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ChannelsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -994,7 +1158,32 @@ export const ChannelsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ChannelsListWithKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    channelName: Schema.Literals([
+      "AlexaChannel",
+      "FacebookChannel",
+      "EmailChannel",
+      "KikChannel",
+      "TelegramChannel",
+      "SlackChannel",
+      "MsTeamsChannel",
+      "SkypeChannel",
+      "WebChatChannel",
+      "DirectLineChannel",
+      "SmsChannel",
+      "LineChannel",
+      "DirectLineSpeechChannel",
+      "OutlookChannel",
+      "Omnichannel",
+      "TelephonyChannel",
+      "AcsChatChannel",
+      "SearchAssistant",
+      "M365Extensions",
+    ]).pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}/listChannelWithKeys",
@@ -1028,6 +1217,12 @@ export type ChannelsListWithKeysOutput = typeof ChannelsListWithKeysOutput.Type;
 // The operation
 /**
  * Lists a Channel registration for a Bot Service including secrets
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param channelName - The name of the Channel resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const ChannelsListWithKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1037,6 +1232,30 @@ export const ChannelsListWithKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  channelName: Schema.Literals([
+    "AlexaChannel",
+    "FacebookChannel",
+    "EmailChannel",
+    "KikChannel",
+    "TelegramChannel",
+    "SlackChannel",
+    "MsTeamsChannel",
+    "SkypeChannel",
+    "WebChatChannel",
+    "DirectLineChannel",
+    "SmsChannel",
+    "LineChannel",
+    "DirectLineSpeechChannel",
+    "OutlookChannel",
+    "Omnichannel",
+    "TelephonyChannel",
+    "AcsChatChannel",
+    "SearchAssistant",
+    "M365Extensions",
+  ]).pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       channelName: Schema.String,
@@ -1094,6 +1313,12 @@ export type ChannelsUpdateOutput = typeof ChannelsUpdateOutput.Type;
 // The operation
 /**
  * Updates a Channel registration for a Bot Service
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param channelName - The name of the Channel resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const ChannelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChannelsUpdateInput,
@@ -1102,6 +1327,12 @@ export const ChannelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DirectLineRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    channelName: Schema.Literals(["WebChatChannel", "DirectLineChannel"]).pipe(
+      T.PathParam(),
+    ),
     siteName: Schema.String,
     key: Schema.Literals(["key1", "key2"]),
   }).pipe(
@@ -1140,6 +1371,12 @@ export type DirectLineRegenerateKeysOutput =
 // The operation
 /**
  * Regenerates secret keys and returns them for the DirectLine Channel of a particular BotService resource
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param subscriptionId - Azure Subscription ID.
+ * @param channelName - The name of the Channel resource for which keys are to be regenerated.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DirectLineRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1149,7 +1386,11 @@ export const DirectLineRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const EmailCreateSignInUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/createEmailSignInUrl",
@@ -1174,6 +1415,11 @@ export type EmailCreateSignInUrlOutput = typeof EmailCreateSignInUrlOutput.Type;
 // The operation
 /**
  * Creates an email channel sign in url for a Bot Service
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const EmailCreateSignInUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1182,9 +1428,9 @@ export const EmailCreateSignInUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const HostSettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const HostSettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/hostSettings",
@@ -1209,6 +1455,9 @@ export type HostSettingsGetOutput = typeof HostSettingsGetOutput.Type;
 // The operation
 /**
  * Get per subscription settings needed to host bot in compute resource such as Azure App Service
+ *
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const HostSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HostSettingsGetInput,
@@ -1216,7 +1465,10 @@ export const HostSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const OperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    operationResultId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/operationresults/{operationResultId}",
@@ -1246,6 +1498,10 @@ export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
 // The operation
 /**
  * Get the operation result for a long running operation.
+ *
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
+ * @param operationResultId - The ID of the operation result to get.
  */
 export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationResultsGetInput,
@@ -1289,6 +1545,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all the available BotService operations.
+ *
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -1297,6 +1555,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1345,6 +1606,10 @@ export type PrivateEndpointConnectionsCreateOutput =
 /**
  * Update the state of specified private endpoint connection associated with the Bot.
  *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  * @param properties - Resource properties.
  */
@@ -1356,6 +1621,9 @@ export const PrivateEndpointConnectionsCreate =
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1377,6 +1645,10 @@ export type PrivateEndpointConnectionsDeleteOutput =
 /**
  * Deletes the specified private endpoint connection associated with the Bot.
  *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsDelete =
@@ -1387,6 +1659,9 @@ export const PrivateEndpointConnectionsDelete =
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1412,6 +1687,10 @@ export type PrivateEndpointConnectionsGetOutput =
 /**
  * Gets the specified private endpoint connection associated with the Bot.
  *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsGet =
@@ -1421,7 +1700,11 @@ export const PrivateEndpointConnectionsGet =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections",
@@ -1450,6 +1733,11 @@ export type PrivateEndpointConnectionsListOutput =
 // The operation
 /**
  * List all the private endpoint connections associated with the Bot.
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const PrivateEndpointConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1458,7 +1746,11 @@ export const PrivateEndpointConnectionsList =
   }));
 // Input Schema
 export const PrivateLinkResourcesListByBotResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateLinkResources",
@@ -1487,6 +1779,11 @@ export type PrivateLinkResourcesListByBotResourceOutput =
 // The operation
 /**
  * Gets the private link resources that need to be created for a Bot.
+ *
+ * @param resourceGroupName - The name of the Bot resource group in the user subscription.
+ * @param resourceName - The name of the Bot resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const PrivateLinkResourcesListByBotResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1496,6 +1793,7 @@ export const PrivateLinkResourcesListByBotResource =
 // Input Schema
 export const QnAMakerEndpointKeysGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     hostname: Schema.optional(Schema.String),
     authkey: Schema.optional(Schema.String),
   }).pipe(
@@ -1522,6 +1820,9 @@ export type QnAMakerEndpointKeysGetOutput =
 // The operation
 /**
  * Lists the QnA Maker endpoint keys
+ *
+ * @param api-version - Version of the API to be used with the client request.
+ * @param subscriptionId - Azure Subscription ID.
  */
 export const QnAMakerEndpointKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

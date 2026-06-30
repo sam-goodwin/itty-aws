@@ -40,7 +40,7 @@ export type SignEvmTypedDataWithEndUserAccountOutput =
 
 // The operation
 /**
- * Sign EIP-712 typed data with end user EVM account
+ * Sign EIP-712 typed data via end user EVM account
  *
  * Signs [EIP-712](https://eips.ethereum.org/EIPS/eip-712) typed data with the given end user EVM account.
  *

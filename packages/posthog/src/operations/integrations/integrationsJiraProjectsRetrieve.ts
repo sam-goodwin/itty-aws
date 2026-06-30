@@ -19,7 +19,15 @@ export type IntegrationsJiraProjectsRetrieveInput =
 
 // Output Schema
 export const IntegrationsJiraProjectsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projects: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        key: Schema.String,
+        name: Schema.String,
+      }),
+    ),
+  });
 export type IntegrationsJiraProjectsRetrieveOutput =
   typeof IntegrationsJiraProjectsRetrieveOutput.Type;
 

@@ -17,7 +17,7 @@ export const FeaturesDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/disable",
-    apiVersion: "2026-04-30",
+    apiVersion: "2026-07-01",
   }),
 );
 export type FeaturesDisableInput = typeof FeaturesDisableInput.Type;
@@ -98,11 +98,12 @@ export const FeaturesEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
+  serviceTreeId: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/enable",
-    apiVersion: "2026-04-30",
+    apiVersion: "2026-07-01",
   }),
 );
 export type FeaturesEnableInput = typeof FeaturesEnableInput.Type;
@@ -187,7 +188,7 @@ export const FeaturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}",
-    apiVersion: "2026-04-30",
+    apiVersion: "2026-07-01",
   }),
 );
 export type FeaturesGetInput = typeof FeaturesGetInput.Type;
@@ -236,7 +237,7 @@ export const FeaturesListBySubscriptionLocationResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features",
-      apiVersion: "2026-04-30",
+      apiVersion: "2026-07-01",
     }),
   );
 export type FeaturesListBySubscriptionLocationResourceInput =
@@ -311,7 +312,7 @@ export const GuestSubscriptionsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
-      apiVersion: "2026-04-30",
+      apiVersion: "2026-07-01",
     }),
   );
 export type GuestSubscriptionsCreateInput =
@@ -366,7 +367,7 @@ export const GuestSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
-      apiVersion: "2026-04-30",
+      apiVersion: "2026-07-01",
     }),
   );
 export type GuestSubscriptionsDeleteInput =
@@ -403,7 +404,7 @@ export const GuestSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
-      apiVersion: "2026-04-30",
+      apiVersion: "2026-07-01",
     }),
   );
 export type GuestSubscriptionsGetInput = typeof GuestSubscriptionsGetInput.Type;
@@ -456,7 +457,7 @@ export const GuestSubscriptionsListBySubscriptionLocationResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions",
-      apiVersion: "2026-04-30",
+      apiVersion: "2026-07-01",
     }),
   );
 export type GuestSubscriptionsListBySubscriptionLocationResourceInput =
@@ -515,13 +516,241 @@ export const GuestSubscriptionsListBySubscriptionLocationResource =
     outputSchema: GuestSubscriptionsListBySubscriptionLocationResourceOutput,
   }));
 // Input Schema
+export const MemberCapOverridesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    vmFamilyName: Schema.String.pipe(T.PathParam()),
+    memberSubscriptionId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        cap: Schema.Number,
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides/{memberSubscriptionId}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type MemberCapOverridesCreateOrUpdateInput =
+  typeof MemberCapOverridesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const MemberCapOverridesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type MemberCapOverridesCreateOrUpdateOutput =
+  typeof MemberCapOverridesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or replaces the cap override for a single member subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param vmFamilyName - The name of the SharedLimitCap
+ * @param memberSubscriptionId - The name of the MemberCapOverride
+ */
+export const MemberCapOverridesCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: MemberCapOverridesCreateOrUpdateInput,
+    outputSchema: MemberCapOverridesCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const MemberCapOverridesDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    vmFamilyName: Schema.String.pipe(T.PathParam()),
+    memberSubscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides/{memberSubscriptionId}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type MemberCapOverridesDeleteInput =
+  typeof MemberCapOverridesDeleteInput.Type;
+
+// Output Schema
+export const MemberCapOverridesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type MemberCapOverridesDeleteOutput =
+  typeof MemberCapOverridesDeleteOutput.Type;
+
+// The operation
+/**
+ * Removes the per-member cap override for a member subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param vmFamilyName - The name of the SharedLimitCap
+ * @param memberSubscriptionId - The name of the MemberCapOverride
+ */
+export const MemberCapOverridesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: MemberCapOverridesDeleteInput,
+    outputSchema: MemberCapOverridesDeleteOutput,
+  }),
+);
+// Input Schema
+export const MemberCapOverridesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    vmFamilyName: Schema.String.pipe(T.PathParam()),
+    memberSubscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides/{memberSubscriptionId}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type MemberCapOverridesGetInput = typeof MemberCapOverridesGetInput.Type;
+
+// Output Schema
+export const MemberCapOverridesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type MemberCapOverridesGetOutput =
+  typeof MemberCapOverridesGetOutput.Type;
+
+// The operation
+/**
+ * Gets the cap override configured for a single member subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param vmFamilyName - The name of the SharedLimitCap
+ * @param memberSubscriptionId - The name of the MemberCapOverride
+ */
+export const MemberCapOverridesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: MemberCapOverridesGetInput,
+    outputSchema: MemberCapOverridesGetOutput,
+  }),
+);
+// Input Schema
+export const MemberCapOverridesListByParentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    vmFamilyName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type MemberCapOverridesListByParentInput =
+  typeof MemberCapOverridesListByParentInput.Type;
+
+// Output Schema
+export const MemberCapOverridesListByParentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type MemberCapOverridesListByParentOutput =
+  typeof MemberCapOverridesListByParentOutput.Type;
+
+// The operation
+/**
+ * Lists all per-member cap overrides configured under a SharedLimitCap.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param vmFamilyName - The name of the SharedLimitCap
+ */
+export const MemberCapOverridesListByParent =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: MemberCapOverridesListByParentInput,
+    outputSchema: MemberCapOverridesListByParentOutput,
+  }));
+// Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ComputeLimit/operations",
-    apiVersion: "2026-04-30",
+    apiVersion: "2026-07-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -563,6 +792,274 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export const SharedLimitCapsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    vmFamilyName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        defaultMemberCap: Schema.optional(Schema.Number),
+        isBoundedCap: Schema.Boolean,
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type SharedLimitCapsCreateOrUpdateInput =
+  typeof SharedLimitCapsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const SharedLimitCapsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type SharedLimitCapsCreateOrUpdateOutput =
+  typeof SharedLimitCapsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or replaces the shared limit cap configuration for a VM family.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param vmFamilyName - The name of the SharedLimitCap
+ */
+export const SharedLimitCapsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SharedLimitCapsCreateOrUpdateInput,
+    outputSchema: SharedLimitCapsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const SharedLimitCapsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    vmFamilyName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type SharedLimitCapsDeleteInput = typeof SharedLimitCapsDeleteInput.Type;
+
+// Output Schema
+export const SharedLimitCapsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type SharedLimitCapsDeleteOutput =
+  typeof SharedLimitCapsDeleteOutput.Type;
+
+// The operation
+/**
+ * Deletes the shared limit cap configuration for a VM family. The caller's subscription is treated as the host subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param vmFamilyName - The name of the SharedLimitCap
+ */
+export const SharedLimitCapsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SharedLimitCapsDeleteInput,
+    outputSchema: SharedLimitCapsDeleteOutput,
+  }),
+);
+// Input Schema
+export const SharedLimitCapsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    vmFamilyName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type SharedLimitCapsGetInput = typeof SharedLimitCapsGetInput.Type;
+
+// Output Schema
+export const SharedLimitCapsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type SharedLimitCapsGetOutput = typeof SharedLimitCapsGetOutput.Type;
+
+// The operation
+/**
+ * Gets the shared limit cap configuration for a VM family, as visible to the caller's subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param vmFamilyName - The name of the SharedLimitCap
+ */
+export const SharedLimitCapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SharedLimitCapsGetInput,
+  outputSchema: SharedLimitCapsGetOutput,
+}));
+// Input Schema
+export const SharedLimitCapsListBySubscriptionLocationResourceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type SharedLimitCapsListBySubscriptionLocationResourceInput =
+  typeof SharedLimitCapsListBySubscriptionLocationResourceInput.Type;
+
+// Output Schema
+export const SharedLimitCapsListBySubscriptionLocationResourceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SharedLimitCapsListBySubscriptionLocationResourceOutput =
+  typeof SharedLimitCapsListBySubscriptionLocationResourceOutput.Type;
+
+// The operation
+/**
+ * Lists all shared limit cap configurations visible to the caller's subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ */
+export const SharedLimitCapsListBySubscriptionLocationResource =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SharedLimitCapsListBySubscriptionLocationResourceInput,
+    outputSchema: SharedLimitCapsListBySubscriptionLocationResourceOutput,
+  }));
+// Input Schema
+export const SharedLimitCapsSetMemberCapOverridesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    vmFamilyName: Schema.String.pipe(T.PathParam()),
+    memberCapOverrides: Schema.Array(
+      Schema.Struct({
+        subscriptionId: Schema.String,
+        cap: Schema.Number,
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/setMemberCapOverrides",
+      apiVersion: "2026-07-01",
+    }),
+  );
+export type SharedLimitCapsSetMemberCapOverridesInput =
+  typeof SharedLimitCapsSetMemberCapOverridesInput.Type;
+
+// Output Schema
+export const SharedLimitCapsSetMemberCapOverridesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    memberCapOverrides: Schema.Array(
+      Schema.Struct({
+        subscriptionId: Schema.String,
+        cap: Schema.Number,
+      }),
+    ),
+  });
+export type SharedLimitCapsSetMemberCapOverridesOutput =
+  typeof SharedLimitCapsSetMemberCapOverridesOutput.Type;
+
+// The operation
+/**
+ * Replaces the full set of per-member cap overrides for this shared limit
+ * cap. The supplied array becomes the new complete set of overrides;
+ * supplying an empty array clears all existing overrides.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param vmFamilyName - The name of the SharedLimitCap
+ */
+export const SharedLimitCapsSetMemberCapOverrides =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SharedLimitCapsSetMemberCapOverridesInput,
+    outputSchema: SharedLimitCapsSetMemberCapOverridesOutput,
+  }));
+// Input Schema
 export const SharedLimitsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -587,7 +1084,7 @@ export const SharedLimitsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
-      apiVersion: "2026-04-30",
+      apiVersion: "2026-07-01",
     }),
   );
 export type SharedLimitsCreateInput = typeof SharedLimitsCreateInput.Type;
@@ -638,7 +1135,7 @@ export const SharedLimitsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
-      apiVersion: "2026-04-30",
+      apiVersion: "2026-07-01",
     }),
   );
 export type SharedLimitsDeleteInput = typeof SharedLimitsDeleteInput.Type;
@@ -669,7 +1166,7 @@ export const SharedLimitsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
-    apiVersion: "2026-04-30",
+    apiVersion: "2026-07-01",
   }),
 );
 export type SharedLimitsGetInput = typeof SharedLimitsGetInput.Type;
@@ -718,7 +1215,7 @@ export const SharedLimitsListBySubscriptionLocationResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits",
-      apiVersion: "2026-04-30",
+      apiVersion: "2026-07-01",
     }),
   );
 export type SharedLimitsListBySubscriptionLocationResourceInput =
@@ -785,7 +1282,7 @@ export const VmFamiliesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies/{vmFamilyName}",
-    apiVersion: "2026-04-30",
+    apiVersion: "2026-07-01",
   }),
 );
 export type VmFamiliesGetInput = typeof VmFamiliesGetInput.Type;
@@ -835,7 +1332,7 @@ export const VmFamiliesListBySubscriptionLocationResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies",
-      apiVersion: "2026-04-30",
+      apiVersion: "2026-07-01",
     }),
   );
 export type VmFamiliesListBySubscriptionLocationResourceInput =

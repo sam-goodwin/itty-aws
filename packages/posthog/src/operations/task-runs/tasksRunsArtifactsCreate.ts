@@ -22,6 +22,7 @@ export const TasksRunsArtifactsCreateInput =
               "artifact",
               "tree_snapshot",
               "user_attachment",
+              "skill_bundle",
             ]),
           ),
           source: Schema.optional(Schema.String),
@@ -30,6 +31,20 @@ export const TasksRunsArtifactsCreateInput =
             Schema.Literals(["utf-8", "base64"]),
           ),
           content_type: Schema.optional(Schema.String),
+          metadata: Schema.optional(
+            Schema.Struct({
+              skill_name: Schema.String,
+              skill_source: Schema.Literals([
+                "user",
+                "repo",
+                "marketplace",
+                "codex",
+              ]),
+              content_sha256: Schema.String,
+              bundle_format: Schema.Literals(["zip"]),
+              schema_version: Schema.Number,
+            }),
+          ),
         }),
       ),
     ),
@@ -54,6 +69,20 @@ export const TasksRunsArtifactsCreateOutput =
           source: Schema.optional(Schema.String),
           size: Schema.optional(Schema.Number),
           content_type: Schema.optional(Schema.String),
+          metadata: Schema.optional(
+            Schema.Struct({
+              skill_name: Schema.String,
+              skill_source: Schema.Literals([
+                "user",
+                "repo",
+                "marketplace",
+                "codex",
+              ]),
+              content_sha256: Schema.String,
+              bundle_format: Schema.Literals(["zip"]),
+              schema_version: Schema.Number,
+            }),
+          ),
           storage_path: Schema.optional(Schema.String),
           uploaded_at: Schema.optional(Schema.String),
         }),
@@ -69,7 +98,6 @@ export type TasksRunsArtifactsCreateOutput =
  *
  * Persist task artifacts to S3 and attach them to the run manifest.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsArtifactsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(

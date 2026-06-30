@@ -29,9 +29,15 @@ export const SavedRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   has_content: Schema.optional(Schema.Boolean),
   snapshots: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    Schema.Array(
+      Schema.Struct({
+        width: Schema.Number,
+        has_content: Schema.Boolean,
+      }),
+    ),
   ),
   deleted: Schema.optional(Schema.Boolean),
+  block_consent_modals: Schema.optional(Schema.Boolean),
   created_by: Schema.optional(
     Schema.NullOr(
       Schema.Struct({
@@ -57,6 +63,7 @@ export type SavedRetrieveOutput = typeof SavedRetrieveOutput.Type;
 
 // The operation
 /**
+ * Get a single saved heatmap by its short_id, including per-width render status.
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */

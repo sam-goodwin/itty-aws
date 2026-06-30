@@ -27,9 +27,10 @@ export type UpdateNeonAuthAllowLocalhostOutput =
 
 // The operation
 /**
- * Update allow localhost
+ * Update localhost allow setting
  *
- * Updates the allow localhost configuration for the specified branch.
+ * Updates the localhost allow setting for the specified branch's Neon Auth integration.
+ * When enabled, authentication flows work from `localhost` without adding it to the redirect URI whitelist.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

@@ -78,6 +78,7 @@ export const PostInvoiceitemsInvoiceitemOutput =
     proration: Schema.Boolean,
     proration_details: Schema.optional(
       Schema.Struct({
+        credited_items: Schema.Unknown,
         discount_amounts: Schema.Array(
           Schema.Struct({
             amount: Schema.Number,

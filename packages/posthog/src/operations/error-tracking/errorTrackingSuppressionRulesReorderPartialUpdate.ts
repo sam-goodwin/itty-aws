@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingSuppressionRulesReorderPartialUpdateInput =
@@ -10,14 +9,14 @@ export const ErrorTrackingSuppressionRulesReorderPartialUpdateInput =
     id: Schema.optional(Schema.String),
     filters: Schema.optional(Schema.Unknown),
     order_key: Schema.optional(Schema.Number),
-    disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    disabled_data: Schema.optional(Schema.Unknown),
     sampling_rate: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/error_tracking/suppression_rules/reorder/",
+      path: "/api/projects/{project_id}/error_tracking/suppression_rules/reorder/",
     }),
   );
 export type ErrorTrackingSuppressionRulesReorderPartialUpdateInput =
@@ -38,5 +37,4 @@ export const errorTrackingSuppressionRulesReorderPartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingSuppressionRulesReorderPartialUpdateInput,
     outputSchema: ErrorTrackingSuppressionRulesReorderPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

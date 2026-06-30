@@ -11,6 +11,9 @@ import * as T from "../traits.ts";
 // Input Schema
 export const ADCCatalogsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         sku: Schema.optional(Schema.Literals(["Free", "Standard"])),
@@ -69,6 +72,11 @@ export type ADCCatalogsCreateOrUpdateOutput =
  * Create or Update Azure Data Catalog service (PUT Resource)
  *
  * The Create Azure Data Catalog service operation creates a new data catalog service with the specified parameters. If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param catalogName - The name of the data catalog in the specified subscription and resource group.
  */
 export const ADCCatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -78,7 +86,11 @@ export const ADCCatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ADCCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "DELETE",
@@ -97,15 +109,22 @@ export type ADCCatalogsDeleteOutput = typeof ADCCatalogsDeleteOutput.Type;
  * Delete Azure Data Catalog Service (DELETE Resource)
  *
  * The Delete Azure Data Catalog Service operation deletes an existing data catalog.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param catalogName - The name of the data catalog in the specified subscription and resource group.
  */
 export const ADCCatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ADCCatalogsDeleteInput,
   outputSchema: ADCCatalogsDeleteOutput,
 }));
 // Input Schema
-export const ADCCatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ADCCatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
@@ -130,6 +149,11 @@ export type ADCCatalogsGetOutput = typeof ADCCatalogsGetOutput.Type;
  * Get Azure Data Catalog service (GET Resources)
  *
  * The Get Azure Data Catalog Service operation retrieves a json representation of the data catalog.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param catalogName - The name of the data catalog in the specified subscription and resource group.
  */
 export const ADCCatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ADCCatalogsGetInput,
@@ -137,7 +161,10 @@ export const ADCCatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ADCCatalogsListtByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs",
@@ -171,6 +198,10 @@ export type ADCCatalogsListtByResourceGroupOutput =
  * List catalogs in Resource Group (GET Resources)
  *
  * The List catalogs in Resource Group operation lists all the Azure Data Catalogs available under the given resource group.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  */
 export const ADCCatalogsListtByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -180,6 +211,9 @@ export const ADCCatalogsListtByResourceGroup =
 // Input Schema
 export const ADCCatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         sku: Schema.optional(Schema.Literals(["Free", "Standard"])),
@@ -237,6 +271,11 @@ export type ADCCatalogsUpdateOutput = typeof ADCCatalogsUpdateOutput.Type;
  * Update Azure Data Catalog Service (PATCH Resource)
  *
  * The Update Azure Data Catalog Service operation can be used to update the existing deployment. The update call only supports the properties listed in the PATCH body.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
+ * @param catalogName - The name of the data catalog in the specified subscription and resource group.
  */
 export const ADCCatalogsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ADCCatalogsUpdateInput,
@@ -278,6 +317,8 @@ export type ADCOperationsListOutput = typeof ADCOperationsListOutput.Type;
 // The operation
 /**
  * Lists all the available Azure Data Catalog service operations.
+ *
+ * @param api-version - Client Api Version.
  */
 export const ADCOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ADCOperationsListInput,

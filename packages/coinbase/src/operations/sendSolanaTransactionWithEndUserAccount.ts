@@ -31,7 +31,7 @@ export type SendSolanaTransactionWithEndUserAccountOutput =
 
 // The operation
 /**
- * Send a transaction with end user Solana account
+ * Send transaction via end user Solana account
  *
  * Signs a transaction with the given end user Solana account and sends it to the indicated supported network.
  * The API handles recent blockhash management and fee estimation, leaving the developer to provide only the minimal set of fields necessary to send the transaction.

@@ -29,7 +29,7 @@ export type GetFederationSettingConnectedOrgConfigRoleMappingOutput =
 /**
  * Return One Role Mapping from One Organization
  *
- * Returns one role mapping from the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+ * Returns one role mapping from the specified organization in the specified federation.
  *
  * @param federationSettingsId - Unique 24-hexadecimal digit string that identifies your federation.
  * @param id - Unique 24-hexadecimal digit string that identifies the role mapping that you want to return.

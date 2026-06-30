@@ -35,7 +35,13 @@ export type GetAvailablePreloadLibrariesOutput =
 
 // The operation
 /**
- * Return available shared preload libraries
+ * List available shared preload libraries
+ *
+ * Returns the shared preload libraries available for the specified project's Postgres version.
+ * Shared preload libraries are Postgres extensions that require the `shared_preload_libraries`
+ * setting and a compute restart to activate.
+ * Use this list to determine which libraries can be enabled in the project's
+ * `settings.preload_libraries` configuration.
  */
 export const getAvailablePreloadLibraries =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

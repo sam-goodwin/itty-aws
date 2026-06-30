@@ -34,7 +34,8 @@ export const BatchExportsRunsRetryCreateInput =
     last_updated_at: Schema.optional(Schema.String),
     records_total_count: Schema.optional(Schema.NullOr(Schema.Number)),
     bytes_exported: Schema.optional(Schema.NullOr(Schema.Number)),
-    batch_export: Schema.optional(Schema.String),
+    batch_export: Schema.optional(Schema.NullOr(Schema.String)),
+    batch_export_on_demand: Schema.optional(Schema.NullOr(Schema.String)),
     backfill: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({

@@ -29,7 +29,7 @@ export type UpdateGroupAlertConfigOutput =
 /**
  * Update One Alert Configuration in One Project
  *
- * Updates one alert configuration in the specified project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role.
+ * Updates one alert configuration in the specified project. Alert configurations define the triggers and notification methods for alerts.
  * **NOTE**: To enable or disable the alert configuration, see Toggle One State of One Alert Configuration in One Project.
  * This resource remains under revision and may change.
  *

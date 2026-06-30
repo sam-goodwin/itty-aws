@@ -178,6 +178,7 @@ export const DenyAssignmentsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DenyAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -258,6 +259,7 @@ export type DenyAssignmentsListOutput = typeof DenyAssignmentsListOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned.
  */
 export const DenyAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DenyAssignmentsListInput,
@@ -268,9 +270,11 @@ export const DenyAssignmentsListForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     parentResourcePath: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -353,10 +357,12 @@ export type DenyAssignmentsListForResourceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceProviderNamespace - The namespace of the resource provider.
  * @param parentResourcePath - The parent resource identity.
  * @param resourceType - The resource type of the resource.
  * @param resourceName - The name of the resource to get deny assignments for.
  * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned.
  */
 export const DenyAssignmentsListForResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -368,6 +374,7 @@ export const DenyAssignmentsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -451,6 +458,7 @@ export type DenyAssignmentsListForResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned.
  */
 export const DenyAssignmentsListForResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -461,6 +469,7 @@ export const DenyAssignmentsListForResourceGroup =
 export const DenyAssignmentsListForScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -543,6 +552,7 @@ export type DenyAssignmentsListForScopeOutput =
  *
  * @param scope - The scope of the deny assignments.
  * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned.
  */
 export const DenyAssignmentsListForScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

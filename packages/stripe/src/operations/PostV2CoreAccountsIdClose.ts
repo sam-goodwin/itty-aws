@@ -1298,6 +1298,34 @@ export const PostV2CoreAccountsIdCloseOutput =
                     ),
                   }),
                 ),
+                sunbit_payments: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.Literals([
+                      "active",
+                      "pending",
+                      "restricted",
+                      "unsupported",
+                    ]),
+                    status_details: Schema.Array(
+                      Schema.Struct({
+                        code: Schema.Literals([
+                          "determining_status",
+                          "requirements_past_due",
+                          "requirements_pending_verification",
+                          "restricted_other",
+                          "unsupported_business",
+                          "unsupported_country",
+                          "unsupported_entity_type",
+                        ]),
+                        resolution: Schema.Literals([
+                          "contact_stripe",
+                          "no_resolution",
+                          "provide_info",
+                        ]),
+                      }),
+                    ),
+                  }),
+                ),
                 swish_payments: Schema.optional(
                   Schema.Struct({
                     status: Schema.Literals([
@@ -2038,12 +2066,22 @@ export const PostV2CoreAccountsIdCloseOutput =
                 proof_of_registration: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),
                 proof_of_ultimate_beneficial_ownership: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),

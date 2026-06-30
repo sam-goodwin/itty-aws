@@ -27,7 +27,7 @@ export type GetGroupAlertConfigOutput = typeof GetGroupAlertConfigOutput.Type;
 /**
  * Return One Alert Configuration from One Project
  *
- * Returns the specified alert configuration from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
+ * Returns the specified alert configuration from the specified project. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
  * This resource remains under revision and may change.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const GetV2CoreEventDestinationsInput =
@@ -29,6 +29,20 @@ export const GetV2CoreEventDestinationsOutput =
             ]),
           }),
         ),
+        azure_event_grid: Schema.optional(
+          Schema.Struct({
+            azure_partner_topic_name: Schema.String,
+            azure_partner_topic_status: Schema.Literals([
+              "activated",
+              "deleted",
+              "never_activated",
+              "unknown",
+            ]),
+            azure_region: Schema.String,
+            azure_resource_group_name: Schema.String,
+            azure_subscription_id: Schema.String,
+          }),
+        ),
         created: Schema.String,
         description: Schema.String,
         enabled_events: Schema.Array(Schema.String),
@@ -45,16 +59,24 @@ export const GetV2CoreEventDestinationsOutput =
           Schema.Struct({
             disabled: Schema.optional(
               Schema.Struct({
-                reason: Schema.Literals(["no_aws_event_source_exists", "user"]),
+                reason: Schema.Literals([
+                  "no_aws_event_source_exists",
+                  "no_azure_partner_topic_exists",
+                  "user",
+                ]),
               }),
             ),
           }),
         ),
-        type: Schema.Literals(["amazon_eventbridge", "webhook_endpoint"]),
+        type: Schema.Literals([
+          "amazon_eventbridge",
+          "azure_event_grid",
+          "webhook_endpoint",
+        ]),
         updated: Schema.String,
         webhook_endpoint: Schema.optional(
           Schema.Struct({
-            signing_secret: Schema.optional(SensitiveString),
+            signing_secret: Schema.optional(SensitiveOutputString),
             url: Schema.optional(Schema.String),
           }),
         ),

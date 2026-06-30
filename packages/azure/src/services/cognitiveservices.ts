@@ -25,7 +25,7 @@ export const AccountCapabilityHostsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountCapabilityHostsCreateOrUpdateInput =
@@ -81,7 +81,7 @@ export const AccountCapabilityHostsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountCapabilityHostsDeleteInput =
@@ -119,7 +119,7 @@ export const AccountCapabilityHostsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountCapabilityHostsGetInput =
@@ -175,7 +175,7 @@ export const AccountCapabilityHostsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountCapabilityHostsListInput =
@@ -420,7 +420,7 @@ export const AccountConnectionsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountConnectionsCreateInput =
@@ -477,7 +477,7 @@ export const AccountConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountConnectionsDeleteInput =
@@ -516,7 +516,7 @@ export const AccountConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountConnectionsGetInput = typeof AccountConnectionsGetInput.Type;
@@ -574,7 +574,7 @@ export const AccountConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountConnectionsListInput =
@@ -824,7 +824,7 @@ export const AccountConnectionsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountConnectionsUpdateInput =
@@ -1164,28 +1164,11 @@ export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
@@ -1234,7 +1217,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -1265,7 +1248,7 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -1312,7 +1295,7 @@ export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/accounts",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type AccountsListInput = typeof AccountsListInput.Type;
@@ -1376,7 +1359,7 @@ export const AccountsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountsListByResourceGroupInput =
@@ -1446,7 +1429,7 @@ export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/listKeys",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type AccountsListKeysInput = typeof AccountsListKeysInput.Type;
@@ -1483,7 +1466,7 @@ export const AccountsListModelsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/models",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountsListModelsInput = typeof AccountsListModelsInput.Type;
@@ -1554,7 +1537,7 @@ export const AccountsListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/skus",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type AccountsListSkusInput = typeof AccountsListSkusInput.Type;
@@ -1614,7 +1597,7 @@ export const AccountsListUsagesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/usages",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountsListUsagesInput = typeof AccountsListUsagesInput.Type;
@@ -1681,7 +1664,7 @@ export const AccountsRegenerateKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/regenerateKey",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AccountsRegenerateKeyInput = typeof AccountsRegenerateKeyInput.Type;
@@ -2004,28 +1987,11 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -2083,7 +2049,7 @@ export const AgentApplicationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentApplicationsCreateOrUpdateInput =
@@ -2141,7 +2107,7 @@ export const AgentApplicationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentApplicationsDeleteInput =
@@ -2182,7 +2148,7 @@ export const AgentApplicationsDisableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/disable",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentApplicationsDisableInput =
@@ -2223,7 +2189,7 @@ export const AgentApplicationsEnableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/enable",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentApplicationsEnableInput =
@@ -2264,7 +2230,7 @@ export const AgentApplicationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentApplicationsGetInput = typeof AgentApplicationsGetInput.Type;
@@ -2327,7 +2293,7 @@ export const AgentApplicationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentApplicationsListInput = typeof AgentApplicationsListInput.Type;
@@ -2408,7 +2374,7 @@ export const AgentApplicationsListAgentsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/listAgents",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentApplicationsListAgentsInput =
@@ -2493,7 +2459,7 @@ export const AgentDeploymentsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentDeploymentsCreateOrUpdateInput =
@@ -2553,7 +2519,7 @@ export const AgentDeploymentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentDeploymentsDeleteInput =
@@ -2596,7 +2562,7 @@ export const AgentDeploymentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentDeploymentsGetInput = typeof AgentDeploymentsGetInput.Type;
@@ -2657,7 +2623,7 @@ export const AgentDeploymentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentDeploymentsListInput = typeof AgentDeploymentsListInput.Type;
@@ -2737,7 +2703,7 @@ export const AgentDeploymentsStartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}/start",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentDeploymentsStartInput = typeof AgentDeploymentsStartInput.Type;
@@ -2779,7 +2745,7 @@ export const AgentDeploymentsStopInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}/stop",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type AgentDeploymentsStopInput = typeof AgentDeploymentsStopInput.Type;
@@ -2864,7 +2830,7 @@ export const CalculateModelCapacityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/calculateModelCapacity",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CalculateModelCapacityInput =
@@ -2943,7 +2909,7 @@ export const CheckDomainAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/checkDomainAvailability",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CheckDomainAvailabilityInput =
@@ -2986,7 +2952,7 @@ export const CheckSkuAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/checkSkuAvailability",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CheckSkuAvailabilityInput = typeof CheckSkuAvailabilityInput.Type;
@@ -3120,28 +3086,11 @@ export const CommitmentPlansCreateOrUpdateInput =
         capacity: Schema.optional(Schema.Number),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansCreateOrUpdateInput =
@@ -3204,7 +3153,7 @@ export const CommitmentPlansCreateOrUpdateAssociationInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansCreateOrUpdateAssociationInput =
@@ -3345,28 +3294,11 @@ export const CommitmentPlansCreateOrUpdatePlanInput =
         capacity: Schema.optional(Schema.Number),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansCreateOrUpdatePlanInput =
@@ -3421,7 +3353,7 @@ export const CommitmentPlansDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansDeleteInput = typeof CommitmentPlansDeleteInput.Type;
@@ -3459,7 +3391,7 @@ export const CommitmentPlansDeleteAssociationInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansDeleteAssociationInput =
@@ -3496,7 +3428,7 @@ export const CommitmentPlansDeletePlanInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansDeletePlanInput =
@@ -3534,7 +3466,7 @@ export const CommitmentPlansGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansGetInput = typeof CommitmentPlansGetInput.Type;
@@ -3587,7 +3519,7 @@ export const CommitmentPlansGetAssociationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansGetAssociationInput =
@@ -3642,7 +3574,7 @@ export const CommitmentPlansGetPlanInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansGetPlanInput =
@@ -3697,7 +3629,7 @@ export const CommitmentPlansListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansListInput = typeof CommitmentPlansListInput.Type;
@@ -3765,7 +3697,7 @@ export const CommitmentPlansListAssociationsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansListAssociationsInput =
@@ -3835,7 +3767,7 @@ export const CommitmentPlansListPlansByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansListPlansByResourceGroupInput =
@@ -3903,7 +3835,7 @@ export const CommitmentPlansListPlansBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/commitmentPlans",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansListPlansBySubscriptionInput =
@@ -3990,7 +3922,7 @@ export const CommitmentPlansUpdatePlanInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentPlansUpdatePlanInput =
@@ -4044,7 +3976,7 @@ export const CommitmentTiersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/commitmentTiers",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type CommitmentTiersListInput = typeof CommitmentTiersListInput.Type;
@@ -4117,7 +4049,7 @@ export const DefenderForAISettingsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DefenderForAISettingsCreateOrUpdateInput =
@@ -4173,7 +4105,7 @@ export const DefenderForAISettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DefenderForAISettingsGetInput =
@@ -4229,7 +4161,7 @@ export const DefenderForAISettingsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DefenderForAISettingsListInput =
@@ -4309,7 +4241,7 @@ export const DefenderForAISettingsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DefenderForAISettingsUpdateInput =
@@ -4366,7 +4298,7 @@ export const DeletedAccountsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroupName}/deletedAccounts/{accountName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DeletedAccountsGetInput = typeof DeletedAccountsGetInput.Type;
@@ -4416,7 +4348,7 @@ export const DeletedAccountsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/deletedAccounts",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DeletedAccountsListInput = typeof DeletedAccountsListInput.Type;
@@ -4483,7 +4415,7 @@ export const DeletedAccountsPurgeInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroupName}/deletedAccounts/{accountName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DeletedAccountsPurgeInput = typeof DeletedAccountsPurgeInput.Type;
@@ -4644,7 +4576,7 @@ export const DeploymentsCreateOrUpdateInput =
         routing: Schema.optional(
           Schema.Struct({
             mode: Schema.optional(
-              Schema.Literals(["cost", "balanced", "accuracy"]),
+              Schema.Literals(["cost", "balanced", "quality"]),
             ),
             models: Schema.optional(
               Schema.Array(
@@ -4712,7 +4644,7 @@ export const DeploymentsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DeploymentsCreateOrUpdateInput =
@@ -4770,7 +4702,7 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
@@ -4803,7 +4735,7 @@ export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
@@ -4853,7 +4785,7 @@ export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type DeploymentsListInput = typeof DeploymentsListInput.Type;
@@ -4921,7 +4853,7 @@ export const DeploymentsListSkusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/skus",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DeploymentsListSkusInput = typeof DeploymentsListSkusInput.Type;
@@ -4990,7 +4922,7 @@ export const DeploymentsPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/pause",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type DeploymentsPauseInput = typeof DeploymentsPauseInput.Type;
@@ -5047,7 +4979,7 @@ export const DeploymentsResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/resume",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type DeploymentsResumeInput = typeof DeploymentsResumeInput.Type;
@@ -5121,7 +5053,7 @@ export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type DeploymentsUpdateInput = typeof DeploymentsUpdateInput.Type;
@@ -5194,7 +5126,7 @@ export const EncryptionScopesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type EncryptionScopesCreateOrUpdateInput =
@@ -5250,7 +5182,7 @@ export const EncryptionScopesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type EncryptionScopesDeleteInput =
@@ -5289,7 +5221,7 @@ export const EncryptionScopesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type EncryptionScopesGetInput = typeof EncryptionScopesGetInput.Type;
@@ -5341,7 +5273,7 @@ export const EncryptionScopesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type EncryptionScopesListInput = typeof EncryptionScopesListInput.Type;
@@ -5413,7 +5345,7 @@ export const LocationBasedModelCapacitiesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/modelCapacities",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type LocationBasedModelCapacitiesListInput =
@@ -5487,7 +5419,7 @@ export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/provision",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ManagedNetworkProvisionsProvisionManagedNetworkInput =
@@ -5517,6 +5449,44 @@ export const ManagedNetworkProvisionsProvisionManagedNetwork =
     outputSchema: ManagedNetworkProvisionsProvisionManagedNetworkOutput,
   }));
 // Input Schema
+export const ManagedNetworkSettingsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    managedNetworkName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
+      apiVersion: "2026-05-01",
+    }),
+  );
+export type ManagedNetworkSettingsDeleteInput =
+  typeof ManagedNetworkSettingsDeleteInput.Type;
+
+// Output Schema
+export const ManagedNetworkSettingsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ManagedNetworkSettingsDeleteOutput =
+  typeof ManagedNetworkSettingsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete API for managed network settings of a cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
+ */
+export const ManagedNetworkSettingsDelete =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ManagedNetworkSettingsDeleteInput,
+    outputSchema: ManagedNetworkSettingsDeleteOutput,
+  }));
+// Input Schema
 export const ManagedNetworkSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5527,7 +5497,7 @@ export const ManagedNetworkSettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ManagedNetworkSettingsGetInput =
@@ -5583,7 +5553,7 @@ export const ManagedNetworkSettingsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ManagedNetworkSettingsListInput =
@@ -5741,7 +5711,7 @@ export const ManagedNetworkSettingsPatchInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ManagedNetworkSettingsPatchInput =
@@ -5883,7 +5853,7 @@ export const ManagedNetworkSettingsPutInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ManagedNetworkSettingsPutInput =
@@ -5940,7 +5910,7 @@ export const ModelCapacitiesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/modelCapacities",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ModelCapacitiesListInput = typeof ModelCapacitiesListInput.Type;
@@ -6007,7 +5977,7 @@ export const ModelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/models",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type ModelsListInput = typeof ModelsListInput.Type;
@@ -6085,7 +6055,7 @@ export const NetworkSecurityPerimeterConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations/{nspConfigurationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsGetInput =
@@ -6140,7 +6110,7 @@ export const NetworkSecurityPerimeterConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsListInput =
@@ -6212,7 +6182,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations/{nspConfigurationName}/reconcile",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsReconcileInput =
@@ -6264,7 +6234,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.CognitiveServices/operations",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -6339,7 +6309,7 @@ export const OutboundRuleCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type OutboundRuleCreateOrUpdateInput =
@@ -6398,7 +6368,7 @@ export const OutboundRuleDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type OutboundRuleDeleteInput = typeof OutboundRuleDeleteInput.Type;
@@ -6433,7 +6403,7 @@ export const OutboundRuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type OutboundRuleGetInput = typeof OutboundRuleGetInput.Type;
@@ -6485,7 +6455,7 @@ export const OutboundRuleListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type OutboundRuleListInput = typeof OutboundRuleListInput.Type;
@@ -6637,7 +6607,7 @@ export const OutboundRulesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/batchOutboundRules",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type OutboundRulesPostInput = typeof OutboundRulesPostInput.Type;
@@ -6729,7 +6699,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -6785,7 +6755,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -6823,7 +6793,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -6878,7 +6848,7 @@ export const PrivateEndpointConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -6948,7 +6918,7 @@ export const PrivateLinkResourcesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateLinkResources",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -7045,7 +7015,7 @@ export const ProjectCapabilityHostsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProjectCapabilityHostsCreateOrUpdateInput =
@@ -7103,7 +7073,7 @@ export const ProjectCapabilityHostsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProjectCapabilityHostsDeleteInput =
@@ -7143,7 +7113,7 @@ export const ProjectCapabilityHostsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProjectCapabilityHostsGetInput =
@@ -7201,7 +7171,7 @@ export const ProjectCapabilityHostsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProjectCapabilityHostsListInput =
@@ -7448,7 +7418,7 @@ export const ProjectConnectionsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProjectConnectionsCreateInput =
@@ -7507,7 +7477,7 @@ export const ProjectConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProjectConnectionsDeleteInput =
@@ -7548,7 +7518,7 @@ export const ProjectConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProjectConnectionsGetInput = typeof ProjectConnectionsGetInput.Type;
@@ -7608,7 +7578,7 @@ export const ProjectConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProjectConnectionsListInput =
@@ -7860,7 +7830,7 @@ export const ProjectConnectionsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProjectConnectionsUpdateInput =
@@ -7959,28 +7929,11 @@ export const ProjectsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type ProjectsCreateInput = typeof ProjectsCreateInput.Type;
@@ -8031,7 +7984,7 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
@@ -8064,7 +8017,7 @@ export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type ProjectsGetInput = typeof ProjectsGetInput.Type;
@@ -8114,7 +8067,7 @@ export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type ProjectsListInput = typeof ProjectsListInput.Type;
@@ -8223,28 +8176,11 @@ export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
@@ -8317,7 +8253,7 @@ export const QuotaTiersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type QuotaTiersCreateOrUpdateInput =
@@ -8371,7 +8307,7 @@ export const QuotaTiersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type QuotaTiersGetInput = typeof QuotaTiersGetInput.Type;
@@ -8420,7 +8356,7 @@ export const QuotaTiersListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type QuotaTiersListBySubscriptionInput =
@@ -8508,7 +8444,7 @@ export const QuotaTiersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type QuotaTiersUpdateInput = typeof QuotaTiersUpdateInput.Type;
@@ -8562,7 +8498,7 @@ export const RaiBlocklistItemsBatchAddInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/addRaiBlocklistItems",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiBlocklistItemsBatchAddInput =
@@ -8619,7 +8555,7 @@ export const RaiBlocklistItemsBatchDeleteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/deleteRaiBlocklistItems",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiBlocklistItemsBatchDeleteInput =
@@ -8666,7 +8602,7 @@ export const RaiBlocklistItemsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiBlocklistItemsCreateOrUpdateInput =
@@ -8724,7 +8660,7 @@ export const RaiBlocklistItemsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiBlocklistItemsDeleteInput =
@@ -8765,7 +8701,7 @@ export const RaiBlocklistItemsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiBlocklistItemsGetInput = typeof RaiBlocklistItemsGetInput.Type;
@@ -8821,7 +8757,7 @@ export const RaiBlocklistItemsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiBlocklistItemsListInput = typeof RaiBlocklistItemsListInput.Type;
@@ -8901,7 +8837,7 @@ export const RaiBlocklistsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiBlocklistsCreateOrUpdateInput =
@@ -8958,7 +8894,7 @@ export const RaiBlocklistsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiBlocklistsDeleteInput = typeof RaiBlocklistsDeleteInput.Type;
@@ -8992,7 +8928,7 @@ export const RaiBlocklistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RaiBlocklistsGetInput = typeof RaiBlocklistsGetInput.Type;
@@ -9046,7 +8982,7 @@ export const RaiBlocklistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RaiBlocklistsListInput = typeof RaiBlocklistsListInput.Type;
@@ -9114,7 +9050,7 @@ export const RaiContentFiltersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/raiContentFilters/{filterName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiContentFiltersGetInput = typeof RaiContentFiltersGetInput.Type;
@@ -9166,7 +9102,7 @@ export const RaiContentFiltersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/raiContentFilters",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiContentFiltersListInput = typeof RaiContentFiltersListInput.Type;
@@ -9250,7 +9186,7 @@ export const RaiExternalSafetyProviderCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiExternalSafetyProviderCreateOrUpdateInput =
@@ -9302,7 +9238,7 @@ export const RaiExternalSafetyProviderDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiExternalSafetyProviderDeleteInput =
@@ -9336,7 +9272,7 @@ export const RaiExternalSafetyProviderGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiExternalSafetyProviderGetInput =
@@ -9387,7 +9323,7 @@ export const RaiExternalSafetyProvidersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiExternalSafetyProvidersListInput =
@@ -9522,7 +9458,7 @@ export const RaiPoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiPoliciesCreateOrUpdateInput =
@@ -9580,7 +9516,7 @@ export const RaiPoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RaiPoliciesDeleteInput = typeof RaiPoliciesDeleteInput.Type;
@@ -9613,7 +9549,7 @@ export const RaiPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RaiPoliciesGetInput = typeof RaiPoliciesGetInput.Type;
@@ -9663,7 +9599,7 @@ export const RaiPoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RaiPoliciesListInput = typeof RaiPoliciesListInput.Type;
@@ -9753,7 +9689,7 @@ export const RaiToolLabelsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiToolLabelsCreateOrUpdateInput =
@@ -9810,7 +9746,7 @@ export const RaiToolLabelsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiToolLabelsDeleteInput = typeof RaiToolLabelsDeleteInput.Type;
@@ -9844,7 +9780,7 @@ export const RaiToolLabelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RaiToolLabelsGetInput = typeof RaiToolLabelsGetInput.Type;
@@ -9898,7 +9834,7 @@ export const RaiToolLabelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RaiToolLabelsListInput = typeof RaiToolLabelsListInput.Type;
@@ -9981,7 +9917,7 @@ export const RaiTopicsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RaiTopicsCreateOrUpdateInput =
@@ -10037,7 +9973,7 @@ export const RaiTopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RaiTopicsDeleteInput = typeof RaiTopicsDeleteInput.Type;
@@ -10070,7 +10006,7 @@ export const RaiTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RaiTopicsGetInput = typeof RaiTopicsGetInput.Type;
@@ -10120,7 +10056,7 @@ export const RaiTopicsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RaiTopicsListInput = typeof RaiTopicsListInput.Type;
@@ -10184,7 +10120,7 @@ export const ResourceSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/skus",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type ResourceSkusListInput = typeof ResourceSkusListInput.Type;
@@ -10308,7 +10244,7 @@ export const SubscriptionRaiPolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type SubscriptionRaiPolicyCreateOrUpdateInput =
@@ -10360,7 +10296,7 @@ export const SubscriptionRaiPolicyDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type SubscriptionRaiPolicyDeleteInput =
@@ -10395,7 +10331,7 @@ export const SubscriptionRaiPolicyGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type SubscriptionRaiPolicyGetInput =
@@ -10465,7 +10401,7 @@ export const TestRaiExternalSafetyProviderCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/testRaiExternalSafetyProvider/{safetyProviderName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type TestRaiExternalSafetyProviderCreateOrUpdateInput =
@@ -10519,7 +10455,7 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/usages",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type UsagesListInput = typeof UsagesListInput.Type;

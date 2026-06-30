@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostCheckoutSessionsInput =
@@ -187,6 +187,7 @@ export const PostCheckoutSessionsInput =
           "bacs_debit",
           "bancontact",
           "billie",
+          "bizum",
           "blik",
           "boleto",
           "card",
@@ -219,8 +220,10 @@ export const PostCheckoutSessionsInput =
           "revolut_pay",
           "samsung_pay",
           "satispay",
+          "scalapay",
           "sepa_debit",
           "sofort",
+          "sunbit",
           "swish",
           "twint",
           "upi",
@@ -349,6 +352,11 @@ export const PostCheckoutSessionsInput =
         "zh-HK",
         "zh-TW",
       ]),
+    ),
+    managed_payments: Schema.optional(
+      Schema.Struct({
+        enabled: Schema.optional(Schema.Boolean),
+      }),
     ),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     mode: Schema.optional(
@@ -824,7 +832,33 @@ export const PostCheckoutSessionsInput =
               Schema.Literals(["always", "never"]),
             ),
             expires_after_seconds: Schema.optional(Schema.Number),
-            setup_future_usage: Schema.optional(Schema.Literals(["none"])),
+            mandate_options: Schema.optional(
+              Schema.Struct({
+                amount: Schema.optional(Schema.Number),
+                amount_includes_iof: Schema.optional(
+                  Schema.Literals(["always", "never"]),
+                ),
+                amount_type: Schema.optional(
+                  Schema.Literals(["fixed", "maximum"]),
+                ),
+                currency: Schema.optional(Schema.String),
+                end_date: Schema.optional(Schema.String),
+                payment_schedule: Schema.optional(
+                  Schema.Literals([
+                    "halfyearly",
+                    "monthly",
+                    "quarterly",
+                    "weekly",
+                    "yearly",
+                  ]),
+                ),
+                reference: Schema.optional(Schema.String),
+                start_date: Schema.optional(Schema.String),
+              }),
+            ),
+            setup_future_usage: Schema.optional(
+              Schema.Literals(["none", "off_session"]),
+            ),
           }),
         ),
         revolut_pay: Schema.optional(
@@ -841,6 +875,11 @@ export const PostCheckoutSessionsInput =
           }),
         ),
         satispay: Schema.optional(
+          Schema.Struct({
+            capture_method: Schema.optional(Schema.Literals(["manual"])),
+          }),
+        ),
+        scalapay: Schema.optional(
           Schema.Struct({
             capture_method: Schema.optional(Schema.Literals(["manual"])),
           }),
@@ -863,6 +902,12 @@ export const PostCheckoutSessionsInput =
             setup_future_usage: Schema.optional(Schema.Literals(["none"])),
           }),
         ),
+        sunbit: Schema.optional(
+          Schema.Struct({
+            capture_method: Schema.optional(Schema.Literals(["manual"])),
+            setup_future_usage: Schema.optional(Schema.Literals(["none"])),
+          }),
+        ),
         swish: Schema.optional(
           Schema.Struct({
             reference: Schema.optional(Schema.String),
@@ -870,7 +915,9 @@ export const PostCheckoutSessionsInput =
         ),
         twint: Schema.optional(
           Schema.Struct({
-            setup_future_usage: Schema.optional(Schema.Literals(["none"])),
+            setup_future_usage: Schema.optional(
+              Schema.Literals(["none", "off_session"]),
+            ),
           }),
         ),
         upi: Schema.optional(
@@ -942,6 +989,7 @@ export const PostCheckoutSessionsInput =
           "bacs_debit",
           "bancontact",
           "billie",
+          "bizum",
           "blik",
           "boleto",
           "card",
@@ -975,8 +1023,10 @@ export const PostCheckoutSessionsInput =
           "revolut_pay",
           "samsung_pay",
           "satispay",
+          "scalapay",
           "sepa_debit",
           "sofort",
+          "sunbit",
           "swish",
           "twint",
           "upi",
@@ -1344,6 +1394,15 @@ export const PostCheckoutSessionsInput =
       Schema.Struct({
         application_fee_percent: Schema.optional(Schema.Number),
         billing_cycle_anchor: Schema.optional(Schema.Number),
+        billing_cycle_anchor_config: Schema.optional(
+          Schema.Struct({
+            day_of_month: Schema.Number,
+            hour: Schema.optional(Schema.Number),
+            minute: Schema.optional(Schema.Number),
+            month: Schema.optional(Schema.Number),
+            second: Schema.optional(Schema.Number),
+          }),
+        ),
         billing_mode: Schema.optional(
           Schema.Struct({
             flexible: Schema.optional(
@@ -1460,7 +1519,7 @@ export const PostCheckoutSessionsOutput =
     ),
     cancel_url: Schema.NullOr(Schema.String),
     client_reference_id: Schema.NullOr(Schema.String),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     collected_information: Schema.Unknown,
     consent: Schema.Unknown,
     consent_collection: Schema.Unknown,
@@ -1706,6 +1765,7 @@ export const PostCheckoutSessionsOutput =
         "zh-TW",
       ]),
     ),
+    managed_payments: Schema.Unknown,
     metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     mode: Schema.Literals(["payment", "setup", "subscription"]),
     name_collection: Schema.optional(

@@ -195,6 +195,8 @@ export interface Bucket {
         matchesSuffix?: ReadonlyArray<string>;
         matchesStorageClass?: ReadonlyArray<string>;
         noncurrentTimeBefore?: string;
+        sizeAboveBytes?: string;
+        sizeBelowBytes?: string;
         numNewerVersions?: number;
       };
     }>;
@@ -375,6 +377,8 @@ export const Bucket: Schema.Schema<Bucket> =
                     Schema.Array(Schema.String),
                   ),
                   noncurrentTimeBefore: Schema.optional(Schema.String),
+                  sizeAboveBytes: Schema.optional(Schema.String),
+                  sizeBelowBytes: Schema.optional(Schema.String),
                   numNewerVersions: Schema.optional(Schema.Number),
                 }),
               ),
@@ -5212,81 +5216,6 @@ export const updateObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateObjectsRequest,
   output: UpdateObjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface WatchAllObjectsRequest {
-  /** Name of the bucket in which to look for objects. */
-  bucket: string;
-  /** Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted. */
-  delimiter?: string;
-  /** Filter results to objects whose names are lexicographically before endOffset. If startOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive). */
-  endOffset?: string;
-  /** If true, objects that end in exactly one instance of delimiter will have their metadata included in items in addition to prefixes. */
-  includeTrailingDelimiter?: boolean;
-  /** Maximum number of items plus prefixes to return in a single page of responses. As duplicate prefixes are omitted, fewer total results may be returned than requested. The service will use this parameter or 1,000 items, whichever is smaller. */
-  maxResults?: number;
-  /** A previously-returned page token representing part of the larger set of results to view. */
-  pageToken?: string;
-  /** Filter results to objects whose names begin with this prefix. */
-  prefix?: string;
-  /** Set of properties to return. Defaults to noAcl. */
-  projection?: "full" | "noAcl" | (string & {});
-  /** Filter results to objects whose names are lexicographically equal to or after startOffset. If endOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive). */
-  startOffset?: string;
-  /** The project to be billed for this request. Required for Requester Pays buckets. */
-  userProject?: string;
-  /** If true, lists all versions of an object as distinct results. The default is false. For more information, see [Object Versioning](https://cloud.google.com/storage/docs/object-versioning). */
-  versions?: boolean;
-  /** Request body */
-  body?: Channel;
-}
-
-export const WatchAllObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    delimiter: Schema.optional(Schema.String).pipe(T.HttpQuery("delimiter")),
-    endOffset: Schema.optional(Schema.String).pipe(T.HttpQuery("endOffset")),
-    includeTrailingDelimiter: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("includeTrailingDelimiter"),
-    ),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
-    projection: Schema.optional(Schema.String).pipe(T.HttpQuery("projection")),
-    startOffset: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("startOffset"),
-    ),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    versions: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("versions")),
-    body: Schema.optional(Channel).pipe(T.HttpBody()),
-  },
-).pipe(
-  T.Http({ method: "POST", path: "b/{bucket}/o/watch", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<WatchAllObjectsRequest>;
-
-export type WatchAllObjectsResponse = Channel;
-export const WatchAllObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
-
-export type WatchAllObjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Watch for changes on all objects in a bucket. */
-export const watchAllObjects: API.OperationMethod<
-  WatchAllObjectsRequest,
-  WatchAllObjectsResponse,
-  WatchAllObjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: WatchAllObjectsRequest,
-  output: WatchAllObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 

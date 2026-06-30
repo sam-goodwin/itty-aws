@@ -895,9 +895,9 @@ paths:
   /accounts/{account_id}/browser-rendering/devtools/browser:
     post:
       operationId: createDevtoolBrowser
-      description: "Get a browser session ID.  @example ```ts const browser = await
-        client.browserRendering.devtools.browser.create({ account_id:
-        'account_id', }); ```"
+      description: "Acquire a new browser DevTools session  @example ```ts const
+        browser = await client.browserRendering.devtools.browser.create({
+        account_id: 'account_id', }); ```"
       parameters:
         - name: account_id
           in: path

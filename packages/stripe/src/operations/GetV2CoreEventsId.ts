@@ -38,7 +38,8 @@ export type GetV2CoreEventsIdOutput = typeof GetV2CoreEventsIdOutput.Type;
 /**
  * Retrieve an Event
  *
- * Retrieves the details of an event.
+ * Retrieves the details of an event if it was created in the last 30 days. Supply the unique
+ * identifier of the event, which might have been delivered to your event destination.
  *
  * @param id - Unique identifier for the object.
  */

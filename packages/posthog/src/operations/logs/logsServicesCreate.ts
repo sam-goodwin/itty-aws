@@ -57,7 +57,7 @@ export const LogsServicesCreateInput =
                   "is_not_set",
                 ]),
               ),
-              value: Schema.optional(Schema.NullOr(Schema.Unknown)),
+              value: Schema.optional(Schema.Unknown),
             }),
           ),
         ),
@@ -81,6 +81,24 @@ export const LogsServicesCreateOutput =
           log_count: Schema.optional(Schema.Number),
           error_count: Schema.optional(Schema.Number),
           error_rate: Schema.optional(Schema.Number),
+          volume_share_pct: Schema.optional(Schema.Number),
+          severity_breakdown: Schema.optional(
+            Schema.Struct({
+              debug: Schema.Number,
+              info: Schema.Number,
+              warn: Schema.Number,
+              error: Schema.Number,
+            }),
+          ),
+          active_rules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                rule_id: Schema.String,
+                rule_name: Schema.String,
+                summary_string: Schema.String,
+              }),
+            ),
+          ),
         }),
       ),
     ),
@@ -92,6 +110,12 @@ export const LogsServicesCreateOutput =
           count: Schema.optional(Schema.Number),
         }),
       ),
+    ),
+    summary: Schema.optional(
+      Schema.Struct({
+        top_services_count: Schema.Number,
+        top_services_volume_share_pct: Schema.Number,
+      }),
     ),
   });
 export type LogsServicesCreateOutput = typeof LogsServicesCreateOutput.Type;

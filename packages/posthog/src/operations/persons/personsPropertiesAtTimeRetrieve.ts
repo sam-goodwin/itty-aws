@@ -7,7 +7,6 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const PersonsPropertiesAtTimeRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    debug: Schema.optional(Schema.Boolean),
     distinct_id: Schema.optional(Schema.String),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
     include_set_once: Schema.optional(Schema.Boolean),
@@ -45,17 +44,6 @@ export const PersonsPropertiesAtTimeRetrieveOutput =
         distinct_ids_count: Schema.optional(Schema.Number),
       }),
     ),
-    debug: Schema.optional(
-      Schema.Struct({
-        query: Schema.optional(Schema.String),
-        params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-        events_found: Schema.optional(Schema.Number),
-        events: Schema.optional(
-          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-        ),
-        error: Schema.optional(Schema.String),
-      }),
-    ),
   });
 export type PersonsPropertiesAtTimeRetrieveOutput =
   typeof PersonsPropertiesAtTimeRetrieveOutput.Type;
@@ -69,9 +57,7 @@ export type PersonsPropertiesAtTimeRetrieveOutput =
  * - distinct_id: The distinct_id of the person
  * - timestamp: ISO datetime string for the point in time (e.g., "2023-06-15T14:30:00Z")
  * - include_set_once: Whether to handle $set_once operations (default: false)
- * - debug: Whether to include debug information with raw events (default: false)
  *
- * @param debug - Whether to include debug information with raw events (only works when DEBUG=True, default: false)
  * @param distinct_id - The distinct_id of the person (mutually exclusive with person_id)
  * @param include_set_once - Whether to handle $set_once operations (default: false)
  * @param person_id - The person_id (UUID) to build properties for (mutually exclusive with distinct_id)

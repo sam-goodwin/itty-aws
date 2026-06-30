@@ -11,6 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const ApplyUpdatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -55,10 +56,12 @@ export type ApplyUpdatesCreateOrUpdateOutput =
  *
  * Apply maintenance updates to resource
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ApplyUpdatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -69,6 +72,7 @@ export const ApplyUpdatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ApplyUpdatesCreateOrUpdateParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -115,12 +119,14 @@ export type ApplyUpdatesCreateOrUpdateParentOutput =
  *
  * Apply maintenance updates to resource with parent
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
  * @param resourceParentName - Resource parent identifier
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ApplyUpdatesCreateOrUpdateParent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -129,6 +135,7 @@ export const ApplyUpdatesCreateOrUpdateParent =
   }));
 // Input Schema
 export const ApplyUpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   providerName: Schema.String.pipe(T.PathParam()),
   resourceType: Schema.String.pipe(T.PathParam()),
@@ -171,11 +178,13 @@ export type ApplyUpdatesGetOutput = typeof ApplyUpdatesGetOutput.Type;
  *
  * Track maintenance updates to resource
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param applyUpdateName - applyUpdate Id
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ApplyUpdatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplyUpdatesGetInput,
@@ -184,6 +193,7 @@ export const ApplyUpdatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ApplyUpdatesGetParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -230,6 +240,7 @@ export type ApplyUpdatesGetParentOutput =
  *
  * Track maintenance updates to resource with parent
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
@@ -237,6 +248,7 @@ export type ApplyUpdatesGetParentOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param applyUpdateName - applyUpdate Id
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ApplyUpdatesGetParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -247,6 +259,7 @@ export const ApplyUpdatesGetParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConfigurationAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -334,11 +347,13 @@ export type ConfigurationAssignmentsCreateOrUpdateOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -348,6 +363,7 @@ export const ConfigurationAssignmentsCreateOrUpdate =
 // Input Schema
 export const ConfigurationAssignmentsCreateOrUpdateParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -437,6 +453,7 @@ export type ConfigurationAssignmentsCreateOrUpdateParentOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
@@ -444,6 +461,7 @@ export type ConfigurationAssignmentsCreateOrUpdateParentOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsCreateOrUpdateParent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -453,6 +471,7 @@ export const ConfigurationAssignmentsCreateOrUpdateParent =
 // Input Schema
 export const ConfigurationAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -498,11 +517,13 @@ export type ConfigurationAssignmentsDeleteOutput =
  *
  * Unregister configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Unique configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -512,6 +533,7 @@ export const ConfigurationAssignmentsDelete =
 // Input Schema
 export const ConfigurationAssignmentsDeleteParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -559,6 +581,7 @@ export type ConfigurationAssignmentsDeleteParentOutput =
  *
  * Unregister configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
@@ -566,6 +589,7 @@ export type ConfigurationAssignmentsDeleteParentOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Unique configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsDeleteParent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -575,6 +599,7 @@ export const ConfigurationAssignmentsDeleteParent =
 // Input Schema
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -659,8 +684,10 @@ export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -670,6 +697,7 @@ export const ConfigurationAssignmentsForResourceGroupCreateOrUpdate =
 // Input Schema
 export const ConfigurationAssignmentsForResourceGroupDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -712,8 +740,10 @@ export type ConfigurationAssignmentsForResourceGroupDeleteOutput =
  *
  * Unregister configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param configurationAssignmentName - Unique configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -723,6 +753,7 @@ export const ConfigurationAssignmentsForResourceGroupDelete =
 // Input Schema
 export const ConfigurationAssignmentsForResourceGroupGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -765,8 +796,10 @@ export type ConfigurationAssignmentsForResourceGroupGetOutput =
  *
  * Get configuration assignment for resource..
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -776,6 +809,7 @@ export const ConfigurationAssignmentsForResourceGroupGet =
 // Input Schema
 export const ConfigurationAssignmentsForResourceGroupUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -860,8 +894,10 @@ export type ConfigurationAssignmentsForResourceGroupUpdateOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -871,6 +907,7 @@ export const ConfigurationAssignmentsForResourceGroupUpdate =
 // Input Schema
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -954,7 +991,9 @@ export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -964,6 +1003,7 @@ export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdate =
 // Input Schema
 export const ConfigurationAssignmentsForSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1005,7 +1045,9 @@ export type ConfigurationAssignmentsForSubscriptionsDeleteOutput =
  *
  * Unregister configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param configurationAssignmentName - Unique configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1015,6 +1057,7 @@ export const ConfigurationAssignmentsForSubscriptionsDelete =
 // Input Schema
 export const ConfigurationAssignmentsForSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1056,7 +1099,9 @@ export type ConfigurationAssignmentsForSubscriptionsGetOutput =
  *
  * Get configuration assignment for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1066,6 +1111,7 @@ export const ConfigurationAssignmentsForSubscriptionsGet =
 // Input Schema
 export const ConfigurationAssignmentsForSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -1149,7 +1195,9 @@ export type ConfigurationAssignmentsForSubscriptionsUpdateOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1159,6 +1207,7 @@ export const ConfigurationAssignmentsForSubscriptionsUpdate =
 // Input Schema
 export const ConfigurationAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -1204,11 +1253,13 @@ export type ConfigurationAssignmentsGetOutput =
  *
  * Get configuration assignment for resource..
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1219,6 +1270,7 @@ export const ConfigurationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConfigurationAssignmentsGetParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -1266,6 +1318,7 @@ export type ConfigurationAssignmentsGetParentOutput =
  *
  * Get configuration assignment for resource..
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
@@ -1273,6 +1326,7 @@ export type ConfigurationAssignmentsGetParentOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsGetParent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1282,6 +1336,7 @@ export const ConfigurationAssignmentsGetParent =
 // Input Schema
 export const ConfigurationAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -1342,10 +1397,12 @@ export type ConfigurationAssignmentsListOutput =
  *
  * List configurationAssignments for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1355,6 +1412,7 @@ export const ConfigurationAssignmentsList =
 // Input Schema
 export const ConfigurationAssignmentsListParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -1417,12 +1475,14 @@ export type ConfigurationAssignmentsListParentOutput =
  *
  * List configurationAssignments for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
  * @param resourceParentName - Resource parent identifier
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsListParent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1431,7 +1491,9 @@ export const ConfigurationAssignmentsListParent =
   }));
 // Input Schema
 export const ConfigurationAssignmentsWithinSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments",
@@ -1484,6 +1546,9 @@ export type ConfigurationAssignmentsWithinSubscriptionListOutput =
 // The operation
 /**
  * [UNSUPPORTED] Get configuration assignment within a subscription. This API is not implemented yet.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsWithinSubscriptionList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1493,6 +1558,7 @@ export const ConfigurationAssignmentsWithinSubscriptionList =
 // Input Schema
 export const MaintenanceConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -1615,8 +1681,10 @@ export type MaintenanceConfigurationsCreateOrUpdateOutput =
 /**
  * Create or Update configuration record
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1626,6 +1694,7 @@ export const MaintenanceConfigurationsCreateOrUpdate =
 // Input Schema
 export const MaintenanceConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1666,8 +1735,10 @@ export type MaintenanceConfigurationsDeleteOutput =
 /**
  * Delete Configuration record
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1677,6 +1748,7 @@ export const MaintenanceConfigurationsDelete =
 // Input Schema
 export const MaintenanceConfigurationsForResourceGroupListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1732,7 +1804,9 @@ export type MaintenanceConfigurationsForResourceGroupListOutput =
 /**
  * Get Configuration records within a subscription and resource group
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource Group Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsForResourceGroupList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1742,6 +1816,7 @@ export const MaintenanceConfigurationsForResourceGroupList =
 // Input Schema
 export const MaintenanceConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1782,8 +1857,10 @@ export type MaintenanceConfigurationsGetOutput =
 /**
  * Get Configuration record
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1792,7 +1869,9 @@ export const MaintenanceConfigurationsGet =
   }));
 // Input Schema
 export const MaintenanceConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/maintenanceConfigurations",
@@ -1845,6 +1924,9 @@ export type MaintenanceConfigurationsListOutput =
 // The operation
 /**
  * Get Configuration records within a subscription
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1854,6 +1936,7 @@ export const MaintenanceConfigurationsList =
 // Input Schema
 export const MaintenanceConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -1976,8 +2059,10 @@ export type MaintenanceConfigurationsUpdateOutput =
 /**
  * Patch configuration record
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2024,6 +2109,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  * List available operations
  *
  * List the available operations supported by the Microsoft.Maintenance resource provider
+ *
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -2032,6 +2119,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PublicMaintenanceConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2071,7 +2159,9 @@ export type PublicMaintenanceConfigurationsGetOutput =
 /**
  * Get Public Maintenance Configuration record
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceName - Maintenance Configuration Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PublicMaintenanceConfigurationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2080,7 +2170,9 @@ export const PublicMaintenanceConfigurationsGet =
   }));
 // Input Schema
 export const PublicMaintenanceConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations",
@@ -2133,6 +2225,9 @@ export type PublicMaintenanceConfigurationsListOutput =
 // The operation
 /**
  * Get Public Maintenance Configuration records
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PublicMaintenanceConfigurationsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2141,6 +2236,7 @@ export const PublicMaintenanceConfigurationsList =
   }));
 // Input Schema
 export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   providerName: Schema.String.pipe(T.PathParam()),
   resourceType: Schema.String.pipe(T.PathParam()),
@@ -2201,10 +2297,12 @@ export type UpdatesListOutput = typeof UpdatesListOutput.Type;
  *
  * Get updates to resources.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const UpdatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdatesListInput,
@@ -2213,6 +2311,7 @@ export const UpdatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const UpdatesListParentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -2277,12 +2376,14 @@ export type UpdatesListParentOutput = typeof UpdatesListParentOutput.Type;
  *
  * Get updates to resources.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
  * @param resourceParentName - Resource parent identifier
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const UpdatesListParent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdatesListParentInput,

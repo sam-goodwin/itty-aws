@@ -2176,7 +2176,7 @@ export interface CreateAccessAiControlMcpServerRequest {
   authCredentials?: string;
   /** Body param */
   description?: string | null;
-  /** Body param: When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public */
+  /** Body param: When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults t */
   isSharedOauthCallbackEnabled?: boolean;
   /** Body param: Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway */
   secureWebGateway?: boolean;
@@ -2270,7 +2270,7 @@ export interface CreateAccessAiControlMcpServerResponse {
     retryable?: boolean | null;
     statusCode?: number | null;
   } | null;
-  /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server crea */
+  /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off */
   isSharedOauthCallbackEnabled?: boolean | null;
   lastSuccessfulSync?: string | null;
   lastSynced?: string | null;
@@ -2441,7 +2441,7 @@ export interface UpdateAccessAiControlMcpServerRequest {
   authCredentials?: string;
   /** Body param */
   description?: string | null;
-  /** Body param: When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public */
+  /** Body param: When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults t */
   isSharedOauthCallbackEnabled?: boolean;
   /** Body param */
   name?: string;
@@ -2529,7 +2529,7 @@ export interface UpdateAccessAiControlMcpServerResponse {
     retryable?: boolean | null;
     statusCode?: number | null;
   } | null;
-  /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server crea */
+  /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off */
   isSharedOauthCallbackEnabled?: boolean | null;
   lastSuccessfulSync?: string | null;
   lastSynced?: string | null;
@@ -2729,7 +2729,7 @@ export interface DeleteAccessAiControlMcpServerResponse {
     retryable?: boolean | null;
     statusCode?: number | null;
   } | null;
-  /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server crea */
+  /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off */
   isSharedOauthCallbackEnabled?: boolean | null;
   lastSuccessfulSync?: string | null;
   lastSynced?: string | null;
@@ -2929,7 +2929,7 @@ export interface ReadAccessAiControlMcpServerResponse {
     retryable?: boolean | null;
     statusCode?: number | null;
   } | null;
-  /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server crea */
+  /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off */
   isSharedOauthCallbackEnabled?: boolean | null;
   lastSuccessfulSync?: string | null;
   lastSynced?: string | null;
@@ -3292,8 +3292,13 @@ export type GetAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
+      eagerRedirectCookieSetting?: boolean | null;
       enableBindingCookie?: boolean | null;
       httpOnlyCookieAttribute?: boolean | null;
       logoUrl?: string | null;
@@ -5059,7 +5064,7 @@ export type GetAccessApplicationResponse =
                 )[]
               | null;
             mfaConfig?: {
-              allowedAuthenticators?: "ssh_piv_key"[] | null;
+              allowedAuthenticators?: "piv_key"[] | null;
               mfaDisabled?: boolean | null;
               sessionDuration?: string | null;
             } | null;
@@ -5209,8 +5214,13 @@ export type GetAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
+      eagerRedirectCookieSetting?: boolean | null;
       enableBindingCookie?: boolean | null;
       httpOnlyCookieAttribute?: boolean | null;
       logoUrl?: string | null;
@@ -5589,6 +5599,10 @@ export type GetAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
       httpOnlyCookieAttribute?: boolean | null;
@@ -5955,6 +5969,10 @@ export type GetAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
       domain?: string | null;
@@ -6413,6 +6431,24 @@ export const GetAccessApplicationResponse =
             Schema.Array(
               Schema.Union([
                 Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
+                Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
                   ),
@@ -6475,6 +6511,9 @@ export const GetAccessApplicationResponse =
             ),
             Schema.Null,
           ]),
+        ),
+        eagerRedirectCookieSetting: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
         ),
         enableBindingCookie: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -7740,6 +7779,7 @@ export const GetAccessApplicationResponse =
           customNonIdentityDenyUrl: "custom_non_identity_deny_url",
           customPages: "custom_pages",
           destinations: "destinations",
+          eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
           enableBindingCookie: "enable_binding_cookie",
           httpOnlyCookieAttribute: "http_only_cookie_attribute",
           logoUrl: "logo_url",
@@ -7876,6 +7916,24 @@ export const GetAccessApplicationResponse =
             Schema.Array(
               Schema.Union([
                 Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
+                Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
                   ),
@@ -7938,6 +7996,9 @@ export const GetAccessApplicationResponse =
             ),
             Schema.Null,
           ]),
+        ),
+        eagerRedirectCookieSetting: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
         ),
         enableBindingCookie: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -9202,6 +9263,7 @@ export const GetAccessApplicationResponse =
           customNonIdentityDenyUrl: "custom_non_identity_deny_url",
           customPages: "custom_pages",
           destinations: "destinations",
+          eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
           enableBindingCookie: "enable_binding_cookie",
           httpOnlyCookieAttribute: "http_only_cookie_attribute",
           logoUrl: "logo_url",
@@ -9829,7 +9891,7 @@ export const GetAccessApplicationResponse =
                     Schema.Struct({
                       allowedAuthenticators: Schema.optional(
                         Schema.Union([
-                          Schema.Array(Schema.Literal("ssh_piv_key")),
+                          Schema.Array(Schema.Literal("piv_key")),
                           Schema.Null,
                         ]),
                       ),
@@ -12256,6 +12318,24 @@ export const GetAccessApplicationResponse =
             Schema.Array(
               Schema.Union([
                 Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
+                Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
                   ),
@@ -13586,6 +13666,24 @@ export const GetAccessApplicationResponse =
           Schema.Union([
             Schema.Array(
               Schema.Union([
+                Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
                 Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
@@ -17513,8 +17611,13 @@ export interface ListAccessApplicationsResponse {
                   mcpServerId?: string | null;
                   type?: "via_mcp_server_portal" | null;
                 }
+              | { type: "worker"; workerId: string }
+              | { type: "preview_worker"; workerId: string }
+              | { type: "all_workers" }
+              | { type: "all_preview_workers" }
             )[]
           | null;
+        eagerRedirectCookieSetting?: boolean | null;
         enableBindingCookie?: boolean | null;
         httpOnlyCookieAttribute?: boolean | null;
         logoUrl?: string | null;
@@ -19181,7 +19284,7 @@ export interface ListAccessApplicationsResponse {
                   )[]
                 | null;
               mfaConfig?: {
-                allowedAuthenticators?: "ssh_piv_key"[] | null;
+                allowedAuthenticators?: "piv_key"[] | null;
                 mfaDisabled?: boolean | null;
                 sessionDuration?: string | null;
               } | null;
@@ -19325,8 +19428,13 @@ export interface ListAccessApplicationsResponse {
                   mcpServerId?: string | null;
                   type?: "via_mcp_server_portal" | null;
                 }
+              | { type: "worker"; workerId: string }
+              | { type: "preview_worker"; workerId: string }
+              | { type: "all_workers" }
+              | { type: "all_preview_workers" }
             )[]
           | null;
+        eagerRedirectCookieSetting?: boolean | null;
         enableBindingCookie?: boolean | null;
         httpOnlyCookieAttribute?: boolean | null;
         logoUrl?: string | null;
@@ -19687,6 +19795,10 @@ export interface ListAccessApplicationsResponse {
                   mcpServerId?: string | null;
                   type?: "via_mcp_server_portal" | null;
                 }
+              | { type: "worker"; workerId: string }
+              | { type: "preview_worker"; workerId: string }
+              | { type: "all_workers" }
+              | { type: "all_preview_workers" }
             )[]
           | null;
         httpOnlyCookieAttribute?: boolean | null;
@@ -20035,6 +20147,10 @@ export interface ListAccessApplicationsResponse {
                   mcpServerId?: string | null;
                   type?: "via_mcp_server_portal" | null;
                 }
+              | { type: "worker"; workerId: string }
+              | { type: "preview_worker"; workerId: string }
+              | { type: "all_workers" }
+              | { type: "all_preview_workers" }
             )[]
           | null;
         domain?: string | null;
@@ -20485,6 +20601,30 @@ export const ListAccessApplicationsResponse =
                 Schema.Array(
                   Schema.Union([
                     Schema.Struct({
+                      type: Schema.Literal("worker"),
+                      workerId: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        type: "type",
+                        workerId: "worker_id",
+                      }),
+                    ),
+                    Schema.Struct({
+                      type: Schema.Literal("preview_worker"),
+                      workerId: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        type: "type",
+                        workerId: "worker_id",
+                      }),
+                    ),
+                    Schema.Struct({
+                      type: Schema.Literal("all_workers"),
+                    }),
+                    Schema.Struct({
+                      type: Schema.Literal("all_preview_workers"),
+                    }),
+                    Schema.Struct({
                       type: Schema.optional(
                         Schema.Union([Schema.Literal("public"), Schema.Null]),
                       ),
@@ -20547,6 +20687,9 @@ export const ListAccessApplicationsResponse =
                 ),
                 Schema.Null,
               ]),
+            ),
+            eagerRedirectCookieSetting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
             ),
             enableBindingCookie: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
@@ -21878,6 +22021,7 @@ export const ListAccessApplicationsResponse =
               customNonIdentityDenyUrl: "custom_non_identity_deny_url",
               customPages: "custom_pages",
               destinations: "destinations",
+              eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
               enableBindingCookie: "enable_binding_cookie",
               httpOnlyCookieAttribute: "http_only_cookie_attribute",
               logoUrl: "logo_url",
@@ -22014,6 +22158,30 @@ export const ListAccessApplicationsResponse =
                 Schema.Array(
                   Schema.Union([
                     Schema.Struct({
+                      type: Schema.Literal("worker"),
+                      workerId: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        type: "type",
+                        workerId: "worker_id",
+                      }),
+                    ),
+                    Schema.Struct({
+                      type: Schema.Literal("preview_worker"),
+                      workerId: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        type: "type",
+                        workerId: "worker_id",
+                      }),
+                    ),
+                    Schema.Struct({
+                      type: Schema.Literal("all_workers"),
+                    }),
+                    Schema.Struct({
+                      type: Schema.Literal("all_preview_workers"),
+                    }),
+                    Schema.Struct({
                       type: Schema.optional(
                         Schema.Union([Schema.Literal("public"), Schema.Null]),
                       ),
@@ -22076,6 +22244,9 @@ export const ListAccessApplicationsResponse =
                 ),
                 Schema.Null,
               ]),
+            ),
+            eagerRedirectCookieSetting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
             ),
             enableBindingCookie: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
@@ -23406,6 +23577,7 @@ export const ListAccessApplicationsResponse =
               customNonIdentityDenyUrl: "custom_non_identity_deny_url",
               customPages: "custom_pages",
               destinations: "destinations",
+              eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
               enableBindingCookie: "enable_binding_cookie",
               httpOnlyCookieAttribute: "http_only_cookie_attribute",
               logoUrl: "logo_url",
@@ -24071,7 +24243,7 @@ export const ListAccessApplicationsResponse =
                         Schema.Struct({
                           allowedAuthenticators: Schema.optional(
                             Schema.Union([
-                              Schema.Array(Schema.Literal("ssh_piv_key")),
+                              Schema.Array(Schema.Literal("piv_key")),
                               Schema.Null,
                             ]),
                           ),
@@ -26632,6 +26804,30 @@ export const ListAccessApplicationsResponse =
                 Schema.Array(
                   Schema.Union([
                     Schema.Struct({
+                      type: Schema.Literal("worker"),
+                      workerId: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        type: "type",
+                        workerId: "worker_id",
+                      }),
+                    ),
+                    Schema.Struct({
+                      type: Schema.Literal("preview_worker"),
+                      workerId: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        type: "type",
+                        workerId: "worker_id",
+                      }),
+                    ),
+                    Schema.Struct({
+                      type: Schema.Literal("all_workers"),
+                    }),
+                    Schema.Struct({
+                      type: Schema.Literal("all_preview_workers"),
+                    }),
+                    Schema.Struct({
                       type: Schema.optional(
                         Schema.Union([Schema.Literal("public"), Schema.Null]),
                       ),
@@ -28024,6 +28220,30 @@ export const ListAccessApplicationsResponse =
               Schema.Union([
                 Schema.Array(
                   Schema.Union([
+                    Schema.Struct({
+                      type: Schema.Literal("worker"),
+                      workerId: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        type: "type",
+                        workerId: "worker_id",
+                      }),
+                    ),
+                    Schema.Struct({
+                      type: Schema.Literal("preview_worker"),
+                      workerId: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        type: "type",
+                        workerId: "worker_id",
+                      }),
+                    ),
+                    Schema.Struct({
+                      type: Schema.Literal("all_workers"),
+                    }),
+                    Schema.Struct({
+                      type: Schema.Literal("all_preview_workers"),
+                    }),
                     Schema.Struct({
                       type: Schema.optional(
                         Schema.Union([Schema.Literal("public"), Schema.Null]),
@@ -32124,6 +32344,20 @@ const CreateAccessApplicationBaseFields = {
     Schema.Array(
       Schema.Union([
         Schema.Struct({
+          type: Schema.Literal("worker"),
+          workerId: Schema.String,
+        }).pipe(Schema.encodeKeys({ type: "type", workerId: "worker_id" })),
+        Schema.Struct({
+          type: Schema.Literal("preview_worker"),
+          workerId: Schema.String,
+        }).pipe(Schema.encodeKeys({ type: "type", workerId: "worker_id" })),
+        Schema.Struct({
+          type: Schema.Literal("all_workers"),
+        }),
+        Schema.Struct({
+          type: Schema.Literal("all_preview_workers"),
+        }),
+        Schema.Struct({
           type: Schema.optional(Schema.Literal("public")),
           uri: Schema.optional(Schema.String),
         }),
@@ -32155,6 +32389,7 @@ const CreateAccessApplicationBaseFields = {
       ]),
     ),
   ),
+  eagerRedirectCookieSetting: Schema.optional(Schema.Boolean),
   enableBindingCookie: Schema.optional(Schema.Boolean),
   httpOnlyCookieAttribute: Schema.optional(Schema.Boolean),
   logoUrl: Schema.optional(Schema.String),
@@ -32758,7 +32993,7 @@ const CreateAccessApplicationBaseFields = {
           mfaConfig: Schema.optional(
             Schema.Struct({
               allowedAuthenticators: Schema.optional(
-                Schema.Array(Schema.Literal("ssh_piv_key")),
+                Schema.Array(Schema.Literal("piv_key")),
               ),
               mfaDisabled: Schema.optional(Schema.Boolean),
               sessionDuration: Schema.optional(Schema.String),
@@ -33437,7 +33672,13 @@ interface CreateAccessApplicationBaseRequest {
         vnetId?: string;
       }
     | { mcpServerId?: string; type?: "via_mcp_server_portal" }
+    | { type: "worker"; workerId: string }
+    | { type: "preview_worker"; workerId: string }
+    | { type: "all_workers" }
+    | { type: "all_preview_workers" }
   )[];
+  /** Body param: Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. D */
+  eagerRedirectCookieSetting?: boolean;
   /** Body param: Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks. */
   enableBindingCookie?: boolean;
   /** Body param: Enables the HttpOnly cookie attribute, which increases security against XSS attacks. */
@@ -33639,7 +33880,7 @@ interface CreateAccessApplicationBaseRequest {
           | { cloudflareAccountMember: { accountId?: string } }
         )[];
         mfaConfig?: {
-          allowedAuthenticators?: "ssh_piv_key"[];
+          allowedAuthenticators?: "piv_key"[];
           mfaDisabled?: boolean;
           sessionDuration?: string;
         };
@@ -33886,6 +34127,7 @@ export const CreateAccessApplicationForAccountRequest =
         customNonIdentityDenyUrl: "custom_non_identity_deny_url",
         customPages: "custom_pages",
         destinations: "destinations",
+        eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
         enableBindingCookie: "enable_binding_cookie",
         httpOnlyCookieAttribute: "http_only_cookie_attribute",
         logoUrl: "logo_url",
@@ -33938,6 +34180,7 @@ export const CreateAccessApplicationForZoneRequest =
         customNonIdentityDenyUrl: "custom_non_identity_deny_url",
         customPages: "custom_pages",
         destinations: "destinations",
+        eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
         enableBindingCookie: "enable_binding_cookie",
         httpOnlyCookieAttribute: "http_only_cookie_attribute",
         logoUrl: "logo_url",
@@ -34038,8 +34281,13 @@ export type CreateAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
+      eagerRedirectCookieSetting?: boolean | null;
       enableBindingCookie?: boolean | null;
       httpOnlyCookieAttribute?: boolean | null;
       logoUrl?: string | null;
@@ -35805,7 +36053,7 @@ export type CreateAccessApplicationResponse =
                 )[]
               | null;
             mfaConfig?: {
-              allowedAuthenticators?: "ssh_piv_key"[] | null;
+              allowedAuthenticators?: "piv_key"[] | null;
               mfaDisabled?: boolean | null;
               sessionDuration?: string | null;
             } | null;
@@ -35955,8 +36203,13 @@ export type CreateAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
+      eagerRedirectCookieSetting?: boolean | null;
       enableBindingCookie?: boolean | null;
       httpOnlyCookieAttribute?: boolean | null;
       logoUrl?: string | null;
@@ -36335,6 +36588,10 @@ export type CreateAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
       httpOnlyCookieAttribute?: boolean | null;
@@ -36701,6 +36958,10 @@ export type CreateAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
       domain?: string | null;
@@ -37159,6 +37420,24 @@ export const CreateAccessApplicationResponse =
             Schema.Array(
               Schema.Union([
                 Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
+                Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
                   ),
@@ -37221,6 +37500,9 @@ export const CreateAccessApplicationResponse =
             ),
             Schema.Null,
           ]),
+        ),
+        eagerRedirectCookieSetting: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
         ),
         enableBindingCookie: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -38486,6 +38768,7 @@ export const CreateAccessApplicationResponse =
           customNonIdentityDenyUrl: "custom_non_identity_deny_url",
           customPages: "custom_pages",
           destinations: "destinations",
+          eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
           enableBindingCookie: "enable_binding_cookie",
           httpOnlyCookieAttribute: "http_only_cookie_attribute",
           logoUrl: "logo_url",
@@ -38622,6 +38905,24 @@ export const CreateAccessApplicationResponse =
             Schema.Array(
               Schema.Union([
                 Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
+                Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
                   ),
@@ -38684,6 +38985,9 @@ export const CreateAccessApplicationResponse =
             ),
             Schema.Null,
           ]),
+        ),
+        eagerRedirectCookieSetting: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
         ),
         enableBindingCookie: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -39948,6 +40252,7 @@ export const CreateAccessApplicationResponse =
           customNonIdentityDenyUrl: "custom_non_identity_deny_url",
           customPages: "custom_pages",
           destinations: "destinations",
+          eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
           enableBindingCookie: "enable_binding_cookie",
           httpOnlyCookieAttribute: "http_only_cookie_attribute",
           logoUrl: "logo_url",
@@ -40575,7 +40880,7 @@ export const CreateAccessApplicationResponse =
                     Schema.Struct({
                       allowedAuthenticators: Schema.optional(
                         Schema.Union([
-                          Schema.Array(Schema.Literal("ssh_piv_key")),
+                          Schema.Array(Schema.Literal("piv_key")),
                           Schema.Null,
                         ]),
                       ),
@@ -43002,6 +43307,24 @@ export const CreateAccessApplicationResponse =
             Schema.Array(
               Schema.Union([
                 Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
+                Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
                   ),
@@ -44332,6 +44655,24 @@ export const CreateAccessApplicationResponse =
           Schema.Union([
             Schema.Array(
               Schema.Union([
+                Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
                 Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
@@ -48211,6 +48552,20 @@ const UpdateAccessApplicationBaseFields = {
     Schema.Array(
       Schema.Union([
         Schema.Struct({
+          type: Schema.Literal("worker"),
+          workerId: Schema.String,
+        }).pipe(Schema.encodeKeys({ type: "type", workerId: "worker_id" })),
+        Schema.Struct({
+          type: Schema.Literal("preview_worker"),
+          workerId: Schema.String,
+        }).pipe(Schema.encodeKeys({ type: "type", workerId: "worker_id" })),
+        Schema.Struct({
+          type: Schema.Literal("all_workers"),
+        }),
+        Schema.Struct({
+          type: Schema.Literal("all_preview_workers"),
+        }),
+        Schema.Struct({
           type: Schema.optional(Schema.Literal("public")),
           uri: Schema.optional(Schema.String),
         }),
@@ -48242,6 +48597,7 @@ const UpdateAccessApplicationBaseFields = {
       ]),
     ),
   ),
+  eagerRedirectCookieSetting: Schema.optional(Schema.Boolean),
   enableBindingCookie: Schema.optional(Schema.Boolean),
   httpOnlyCookieAttribute: Schema.optional(Schema.Boolean),
   logoUrl: Schema.optional(Schema.String),
@@ -48845,7 +49201,7 @@ const UpdateAccessApplicationBaseFields = {
           mfaConfig: Schema.optional(
             Schema.Struct({
               allowedAuthenticators: Schema.optional(
-                Schema.Array(Schema.Literal("ssh_piv_key")),
+                Schema.Array(Schema.Literal("piv_key")),
               ),
               mfaDisabled: Schema.optional(Schema.Boolean),
               sessionDuration: Schema.optional(Schema.String),
@@ -49525,7 +49881,13 @@ interface UpdateAccessApplicationBaseRequest {
         vnetId?: string;
       }
     | { mcpServerId?: string; type?: "via_mcp_server_portal" }
+    | { type: "worker"; workerId: string }
+    | { type: "preview_worker"; workerId: string }
+    | { type: "all_workers" }
+    | { type: "all_preview_workers" }
   )[];
+  /** Body param: Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. D */
+  eagerRedirectCookieSetting?: boolean;
   /** Body param: Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks. */
   enableBindingCookie?: boolean;
   /** Body param: Enables the HttpOnly cookie attribute, which increases security against XSS attacks. */
@@ -49727,7 +50089,7 @@ interface UpdateAccessApplicationBaseRequest {
           | { cloudflareAccountMember: { accountId?: string } }
         )[];
         mfaConfig?: {
-          allowedAuthenticators?: "ssh_piv_key"[];
+          allowedAuthenticators?: "piv_key"[];
           mfaDisabled?: boolean;
           sessionDuration?: string;
         };
@@ -49974,6 +50336,7 @@ export const UpdateAccessApplicationForAccountRequest =
         customNonIdentityDenyUrl: "custom_non_identity_deny_url",
         customPages: "custom_pages",
         destinations: "destinations",
+        eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
         enableBindingCookie: "enable_binding_cookie",
         httpOnlyCookieAttribute: "http_only_cookie_attribute",
         logoUrl: "logo_url",
@@ -50029,6 +50392,7 @@ export const UpdateAccessApplicationForZoneRequest =
         customNonIdentityDenyUrl: "custom_non_identity_deny_url",
         customPages: "custom_pages",
         destinations: "destinations",
+        eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
         enableBindingCookie: "enable_binding_cookie",
         httpOnlyCookieAttribute: "http_only_cookie_attribute",
         logoUrl: "logo_url",
@@ -50129,8 +50493,13 @@ export type UpdateAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
+      eagerRedirectCookieSetting?: boolean | null;
       enableBindingCookie?: boolean | null;
       httpOnlyCookieAttribute?: boolean | null;
       logoUrl?: string | null;
@@ -51896,7 +52265,7 @@ export type UpdateAccessApplicationResponse =
                 )[]
               | null;
             mfaConfig?: {
-              allowedAuthenticators?: "ssh_piv_key"[] | null;
+              allowedAuthenticators?: "piv_key"[] | null;
               mfaDisabled?: boolean | null;
               sessionDuration?: string | null;
             } | null;
@@ -52046,8 +52415,13 @@ export type UpdateAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
+      eagerRedirectCookieSetting?: boolean | null;
       enableBindingCookie?: boolean | null;
       httpOnlyCookieAttribute?: boolean | null;
       logoUrl?: string | null;
@@ -52426,6 +52800,10 @@ export type UpdateAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
       httpOnlyCookieAttribute?: boolean | null;
@@ -52792,6 +53170,10 @@ export type UpdateAccessApplicationResponse =
                 mcpServerId?: string | null;
                 type?: "via_mcp_server_portal" | null;
               }
+            | { type: "worker"; workerId: string }
+            | { type: "preview_worker"; workerId: string }
+            | { type: "all_workers" }
+            | { type: "all_preview_workers" }
           )[]
         | null;
       domain?: string | null;
@@ -53250,6 +53632,24 @@ export const UpdateAccessApplicationResponse =
             Schema.Array(
               Schema.Union([
                 Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
+                Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
                   ),
@@ -53312,6 +53712,9 @@ export const UpdateAccessApplicationResponse =
             ),
             Schema.Null,
           ]),
+        ),
+        eagerRedirectCookieSetting: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
         ),
         enableBindingCookie: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -54577,6 +54980,7 @@ export const UpdateAccessApplicationResponse =
           customNonIdentityDenyUrl: "custom_non_identity_deny_url",
           customPages: "custom_pages",
           destinations: "destinations",
+          eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
           enableBindingCookie: "enable_binding_cookie",
           httpOnlyCookieAttribute: "http_only_cookie_attribute",
           logoUrl: "logo_url",
@@ -54713,6 +55117,24 @@ export const UpdateAccessApplicationResponse =
             Schema.Array(
               Schema.Union([
                 Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
+                Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
                   ),
@@ -54775,6 +55197,9 @@ export const UpdateAccessApplicationResponse =
             ),
             Schema.Null,
           ]),
+        ),
+        eagerRedirectCookieSetting: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
         ),
         enableBindingCookie: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -56039,6 +56464,7 @@ export const UpdateAccessApplicationResponse =
           customNonIdentityDenyUrl: "custom_non_identity_deny_url",
           customPages: "custom_pages",
           destinations: "destinations",
+          eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
           enableBindingCookie: "enable_binding_cookie",
           httpOnlyCookieAttribute: "http_only_cookie_attribute",
           logoUrl: "logo_url",
@@ -56666,7 +57092,7 @@ export const UpdateAccessApplicationResponse =
                     Schema.Struct({
                       allowedAuthenticators: Schema.optional(
                         Schema.Union([
-                          Schema.Array(Schema.Literal("ssh_piv_key")),
+                          Schema.Array(Schema.Literal("piv_key")),
                           Schema.Null,
                         ]),
                       ),
@@ -59093,6 +59519,24 @@ export const UpdateAccessApplicationResponse =
             Schema.Array(
               Schema.Union([
                 Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
+                Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
                   ),
@@ -60423,6 +60867,24 @@ export const UpdateAccessApplicationResponse =
           Schema.Union([
             Schema.Array(
               Schema.Union([
+                Schema.Struct({
+                  type: Schema.Literal("worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("preview_worker"),
+                  workerId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ type: "type", workerId: "worker_id" }),
+                ),
+                Schema.Struct({
+                  type: Schema.Literal("all_workers"),
+                }),
+                Schema.Struct({
+                  type: Schema.Literal("all_preview_workers"),
+                }),
                 Schema.Struct({
                   type: Schema.optional(
                     Schema.Union([Schema.Literal("public"), Schema.Null]),
@@ -78421,8 +78883,6 @@ export const GetAccessIdpFederationGrantRequest =
 export interface GetAccessIdpFederationGrantResponse {
   /** UID of the IdP federation grant. */
   id: string;
-  /** When the grant was created. */
-  createdAt: string;
   /** UID of the identity provider being federated. */
   idpId: string;
 }
@@ -78431,16 +78891,9 @@ export const GetAccessIdpFederationGrantResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
-      createdAt: Schema.String,
       idpId: Schema.String,
     })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          idpId: "idp_id",
-        }),
-      )
+      .pipe(Schema.encodeKeys({ id: "id", idpId: "idp_id" }))
       .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetAccessIdpFederationGrantResponse>;
 
@@ -78476,7 +78929,6 @@ export const ListAccessIdpFederationGrantsRequest =
 
 export type ListAccessIdpFederationGrantsResponse = {
   id: string;
-  createdAt: string;
   idpId: string;
 }[];
 
@@ -78485,15 +78937,8 @@ export const ListAccessIdpFederationGrantsResponse =
     Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        createdAt: Schema.String,
         idpId: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          idpId: "idp_id",
-        }),
-      ),
+      }).pipe(Schema.encodeKeys({ id: "id", idpId: "idp_id" })),
     ).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<ListAccessIdpFederationGrantsResponse>;
 
@@ -78534,8 +78979,6 @@ export const CreateAccessIdpFederationGrantRequest =
 export interface CreateAccessIdpFederationGrantResponse {
   /** UID of the IdP federation grant. */
   id: string;
-  /** When the grant was created. */
-  createdAt: string;
   /** UID of the identity provider being federated. */
   idpId: string;
 }
@@ -78544,16 +78987,9 @@ export const CreateAccessIdpFederationGrantResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
-      createdAt: Schema.String,
       idpId: Schema.String,
     })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          idpId: "idp_id",
-        }),
-      )
+      .pipe(Schema.encodeKeys({ id: "id", idpId: "idp_id" }))
       .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<CreateAccessIdpFederationGrantResponse>;
 
@@ -89825,6 +90261,7 @@ export const revokeDeviceDevices: API.OperationMethod<
 
 export interface GetDeviceDexTestRequest {
   dexTestId: string;
+  /** Unique identifier linked to an account. */
   accountId: string;
 }
 
@@ -89928,13 +90365,13 @@ export const getDeviceDexTest: API.OperationMethod<
 }));
 
 export interface ListDeviceDexTestsRequest {
-  /** Path param */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: Filter by test type */
+  /** Query param: Filter by test type. */
   kind?: "http" | "traceroute" | (string & {});
-  /** Query param: Filter by test name */
+  /** Query param: Filter by test name. */
   testName?: string;
 }
 
@@ -90081,7 +90518,7 @@ export const listDeviceDexTests: API.PaginatedOperationMethod<
 }));
 
 export interface CreateDeviceDexTestRequest {
-  /** Path param */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   /** Body param: The configuration object which contains the details for the WARP client to conduct the test. */
   data: {
@@ -90234,7 +90671,7 @@ export const createDeviceDexTest: API.OperationMethod<
 
 export interface UpdateDeviceDexTestRequest {
   dexTestId: string;
-  /** Path param */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   /** Body param: The configuration object which contains the details for the WARP client to conduct the test. */
   data: {
@@ -90391,6 +90828,7 @@ export const updateDeviceDexTest: API.OperationMethod<
 
 export interface DeleteDeviceDexTestRequest {
   dexTestId: string;
+  /** Unique identifier linked to an account. */
   accountId: string;
 }
 
@@ -90516,13 +90954,13 @@ export const deleteDeviceDexTest: API.OperationMethod<
 
 export interface GetDeviceFleetStatusRequest {
   deviceId: string;
-  /** Path param: Unique identifier for account */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
-  /** Query param: Number of minutes before current time */
+  /** Query param: Number of minutes before current time. */
   sinceMinutes: number;
-  /** Query param: List of data centers to filter results */
+  /** Query param: List of data centers to filter results. */
   colo?: string;
-  /** Query param: Number of minutes before current time */
+  /** Query param: Current time in ISO format. */
   timeNow?: string;
 }
 
@@ -90543,19 +90981,18 @@ export const GetDeviceFleetStatusRequest =
   ) as unknown as Schema.Schema<GetDeviceFleetStatusRequest>;
 
 export interface GetDeviceFleetStatusResponse {
-  /** Cloudflare colo */
+  /** Cloudflare colo airport code. */
   colo: string;
   /** Device identifier (UUID v4) */
   deviceId: string;
-  /** The mode under which the WARP client is run */
+  /** The mode under which the WARP client is run. */
   mode: string;
-  /** Operating system */
+  /** Operating system. */
   platform: string;
-  /** Network status */
+  /** Network status. */
   status: string;
-  /** Timestamp in ISO format */
   timestamp: string;
-  /** WARP client version */
+  /** WARP client version. */
   version: string;
   alwaysOn?: boolean | null;
   batteryCharging?: boolean | null;
@@ -90563,7 +91000,7 @@ export interface GetDeviceFleetStatusResponse {
   batteryPct?: number | null;
   connectionType?: string | null;
   cpuPct?: number | null;
-  cpuPctByApp?: { cpuPct?: number | null; name?: string | null }[][] | null;
+  cpuPctByApp?: { cpuPct?: number | null; name?: string | null }[] | null;
   deviceIpv4?: {
     address?: string | null;
     asn?: number | null;
@@ -90574,8 +91011,9 @@ export interface GetDeviceFleetStatusResponse {
       stateIso?: string | null;
       zip?: string | null;
     } | null;
+    name?: string | null;
     netmask?: string | null;
-    version?: string | null;
+    version?: number | null;
   } | null;
   deviceIpv6?: {
     address?: string | null;
@@ -90587,10 +91025,11 @@ export interface GetDeviceFleetStatusResponse {
       stateIso?: string | null;
       zip?: string | null;
     } | null;
+    name?: string | null;
     netmask?: string | null;
-    version?: string | null;
+    version?: number | null;
   } | null;
-  /** Device identifier (human readable) */
+  /** Device identifier (human readable). */
   deviceName?: string | null;
   /** @deprecated Use `registrationId` instead. */
   deviceRegistration?: string | null;
@@ -90610,8 +91049,9 @@ export interface GetDeviceFleetStatusResponse {
       stateIso?: string | null;
       zip?: string | null;
     } | null;
+    name?: string | null;
     netmask?: string | null;
-    version?: string | null;
+    version?: number | null;
   } | null;
   gatewayIpv6?: {
     address?: string | null;
@@ -90623,8 +91063,9 @@ export interface GetDeviceFleetStatusResponse {
       stateIso?: string | null;
       zip?: string | null;
     } | null;
+    name?: string | null;
     netmask?: string | null;
-    version?: string | null;
+    version?: number | null;
   } | null;
   handshakeLatencyMs?: number | null;
   ispIpv4?: {
@@ -90637,8 +91078,9 @@ export interface GetDeviceFleetStatusResponse {
       stateIso?: string | null;
       zip?: string | null;
     } | null;
+    name?: string | null;
     netmask?: string | null;
-    version?: string | null;
+    version?: number | null;
   } | null;
   ispIpv6?: {
     address?: string | null;
@@ -90650,8 +91092,9 @@ export interface GetDeviceFleetStatusResponse {
       stateIso?: string | null;
       zip?: string | null;
     } | null;
+    name?: string | null;
     netmask?: string | null;
-    version?: string | null;
+    version?: number | null;
   } | null;
   metal?: string | null;
   networkRcvdBps?: number | null;
@@ -90662,11 +91105,48 @@ export interface GetDeviceFleetStatusResponse {
   ramAvailableKb?: number | null;
   ramUsedPct?: number | null;
   ramUsedPctByApp?:
-    | { name?: string | null; ramUsedPct?: number | null }[][]
+    | { name?: string | null; ramUsedPct?: number | null }[]
     | null;
   /** Device registration identifier (UUID v4). On multi-user devices, this uniquely identifies a user's registration on the device. */
   registrationId?: string | null;
+  /** Round-trip time statistics for the WARP tunnel. */
+  rtt?: {
+    minRttUs?: { downstream?: number | null; upstream?: number | null } | null;
+    rttUs?: { downstream?: number | null; upstream?: number | null } | null;
+    rttVarUs?: { downstream?: number | null; upstream?: number | null } | null;
+  } | null;
   switchLocked?: boolean | null;
+  /** WARP tunnel packet and byte counters. */
+  tunnelStats?: {
+    bytesLost?: { downstream?: number | null; upstream?: number | null } | null;
+    bytesReceived?: {
+      downstream?: number | null;
+      upstream?: number | null;
+    } | null;
+    bytesRetransmitted?: {
+      downstream?: number | null;
+      upstream?: number | null;
+    } | null;
+    bytesSent?: { downstream?: number | null; upstream?: number | null } | null;
+    packetsLost?: {
+      downstream?: number | null;
+      upstream?: number | null;
+    } | null;
+    packetsReceived?: {
+      downstream?: number | null;
+      upstream?: number | null;
+    } | null;
+    packetsRetransmitted?: {
+      downstream?: number | null;
+      upstream?: number | null;
+    } | null;
+    packetsSent?: {
+      downstream?: number | null;
+      upstream?: number | null;
+    } | null;
+    statsWindowMs?: number | null;
+  } | null;
+  tunnelType?: string | null;
   wifiStrengthDbm?: number | null;
 }
 
@@ -90695,16 +91175,12 @@ export const GetDeviceFleetStatusResponse =
       cpuPctByApp: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Array(
-              Schema.Struct({
-                cpuPct: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ cpuPct: "cpu_pct", name: "name" })),
-            ),
+            Schema.Struct({
+              cpuPct: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }).pipe(Schema.encodeKeys({ cpuPct: "cpu_pct", name: "name" })),
           ),
           Schema.Null,
         ]),
@@ -90743,11 +91219,12 @@ export const GetDeviceFleetStatusResponse =
                 Schema.Null,
               ]),
             ),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             netmask: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             version: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
+              Schema.Union([Schema.Number, Schema.Null]),
             ),
           }),
           Schema.Null,
@@ -90787,11 +91264,12 @@ export const GetDeviceFleetStatusResponse =
                 Schema.Null,
               ]),
             ),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             netmask: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             version: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
+              Schema.Union([Schema.Number, Schema.Null]),
             ),
           }),
           Schema.Null,
@@ -90845,11 +91323,12 @@ export const GetDeviceFleetStatusResponse =
                 Schema.Null,
               ]),
             ),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             netmask: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             version: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
+              Schema.Union([Schema.Number, Schema.Null]),
             ),
           }),
           Schema.Null,
@@ -90889,11 +91368,12 @@ export const GetDeviceFleetStatusResponse =
                 Schema.Null,
               ]),
             ),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             netmask: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             version: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
+              Schema.Union([Schema.Number, Schema.Null]),
             ),
           }),
           Schema.Null,
@@ -90936,11 +91416,12 @@ export const GetDeviceFleetStatusResponse =
                 Schema.Null,
               ]),
             ),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             netmask: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             version: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
+              Schema.Union([Schema.Number, Schema.Null]),
             ),
           }),
           Schema.Null,
@@ -90980,11 +91461,12 @@ export const GetDeviceFleetStatusResponse =
                 Schema.Null,
               ]),
             ),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             netmask: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             version: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
+              Schema.Union([Schema.Number, Schema.Null]),
             ),
           }),
           Schema.Null,
@@ -91006,17 +91488,13 @@ export const GetDeviceFleetStatusResponse =
       ramUsedPctByApp: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                ramUsedPct: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ name: "name", ramUsedPct: "ram_used_pct" }),
+            Schema.Struct({
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              ramUsedPct: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
               ),
+            }).pipe(
+              Schema.encodeKeys({ name: "name", ramUsedPct: "ram_used_pct" }),
             ),
           ),
           Schema.Null,
@@ -91025,9 +91503,170 @@ export const GetDeviceFleetStatusResponse =
       registrationId: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
+      rtt: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            minRttUs: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            rttUs: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            rttVarUs: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
       switchLocked: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
+      tunnelStats: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            bytesLost: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            bytesReceived: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            bytesRetransmitted: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            bytesSent: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            packetsLost: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            packetsReceived: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            packetsRetransmitted: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            packetsSent: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  downstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  upstream: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            statsWindowMs: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      tunnelType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       wifiStrengthDbm: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
       ),
@@ -91135,7 +91774,7 @@ export const getDeviceIpProfile: API.OperationMethod<
 export interface ListDeviceIpProfilesRequest {
   /** Path param */
   accountId: string;
-  /** Query param: The number of IP profiles to return per page. */
+  page?: number;
   perPage?: number;
 }
 
@@ -91143,6 +91782,7 @@ export const ListDeviceIpProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
       perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     }).pipe(
       T.Http({
@@ -91164,6 +91804,12 @@ export interface ListDeviceIpProfilesResponse {
     subnetId: string;
     updatedAt: string;
   }[];
+  resultInfo?: {
+    count?: number | null;
+    page?: number | null;
+    perPage?: number | null;
+    totalCount?: number | null;
+  } | null;
 }
 
 export const ListDeviceIpProfilesResponse =
@@ -91194,7 +91840,29 @@ export const ListDeviceIpProfilesResponse =
           }),
         ),
       ),
-    }),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListDeviceIpProfilesResponse>;
 
 export type ListDeviceIpProfilesError = DefaultErrors;
@@ -91209,8 +91877,11 @@ export const listDeviceIpProfiles: API.PaginatedOperationMethod<
   output: ListDeviceIpProfilesResponse,
   errors: [],
   pagination: {
-    mode: "single",
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
     items: "result",
+    pageSize: "perPage",
   } as const,
 }));
 
@@ -92049,6 +92720,12 @@ export type GetDevicePolicyCustomResponse = {
       }[]
     | null;
   gatewayUniqueId?: string | null;
+  globalAcceleration?: {
+    apiEndpoints: string[];
+    enabled: boolean;
+    masqueEndpoints: string[];
+    wireguardEndpoints: string[];
+  } | null;
   include?:
     | (
         | { address: string; description?: string | null }
@@ -92160,6 +92837,24 @@ export const GetDevicePolicyCustomResponse =
         gatewayUniqueId: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
+        globalAcceleration: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              apiEndpoints: Schema.Array(Schema.String),
+              enabled: Schema.Boolean,
+              masqueEndpoints: Schema.Array(Schema.String),
+              wireguardEndpoints: Schema.Array(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                apiEndpoints: "api_endpoints",
+                enabled: "enabled",
+                masqueEndpoints: "masque_endpoints",
+                wireguardEndpoints: "wireguard_endpoints",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
         include: Schema.optional(
           Schema.Union([
             Schema.Array(
@@ -92251,6 +92946,7 @@ export const GetDevicePolicyCustomResponse =
           excludeOfficeIps: "exclude_office_ips",
           fallbackDomains: "fallback_domains",
           gatewayUniqueId: "gateway_unique_id",
+          globalAcceleration: "global_acceleration",
           include: "include",
           lanAllowMinutes: "lan_allow_minutes",
           lanAllowSubnetSize: "lan_allow_subnet_size",
@@ -92333,6 +93029,12 @@ export interface ListDevicePolicyCustomsResponse {
         }[]
       | null;
     gatewayUniqueId?: string | null;
+    globalAcceleration?: {
+      apiEndpoints: string[];
+      enabled: boolean;
+      masqueEndpoints: string[];
+      wireguardEndpoints: string[];
+    } | null;
     include?:
       | (
           | { address: string; description?: string | null }
@@ -92446,6 +93148,24 @@ export const ListDevicePolicyCustomsResponse =
           gatewayUniqueId: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
+          globalAcceleration: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                apiEndpoints: Schema.Array(Schema.String),
+                enabled: Schema.Boolean,
+                masqueEndpoints: Schema.Array(Schema.String),
+                wireguardEndpoints: Schema.Array(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  apiEndpoints: "api_endpoints",
+                  enabled: "enabled",
+                  masqueEndpoints: "masque_endpoints",
+                  wireguardEndpoints: "wireguard_endpoints",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
           include: Schema.optional(
             Schema.Union([
               Schema.Array(
@@ -92547,6 +93267,7 @@ export const ListDevicePolicyCustomsResponse =
             excludeOfficeIps: "exclude_office_ips",
             fallbackDomains: "fallback_domains",
             gatewayUniqueId: "gateway_unique_id",
+            globalAcceleration: "global_acceleration",
             include: "include",
             lanAllowMinutes: "lan_allow_minutes",
             lanAllowSubnetSize: "lan_allow_subnet_size",
@@ -92619,6 +93340,13 @@ export interface CreateDevicePolicyCustomRequest {
   )[];
   /** Body param: Whether to add Microsoft IPs to Split Tunnel exclusions. */
   excludeOfficeIps?: boolean;
+  /** Body param: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to */
+  globalAcceleration?: {
+    apiEndpoints: string[];
+    enabled: boolean;
+    masqueEndpoints: string[];
+    wireguardEndpoints: string[];
+  } | null;
   /** Body param: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. */
   include?: (
     | { address: string; description?: string }
@@ -92682,6 +93410,24 @@ export const CreateDevicePolicyCustomRequest =
         ),
       ),
       excludeOfficeIps: Schema.optional(Schema.Boolean),
+      globalAcceleration: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            apiEndpoints: Schema.Array(Schema.String),
+            enabled: Schema.Boolean,
+            masqueEndpoints: Schema.Array(Schema.String),
+            wireguardEndpoints: Schema.Array(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              apiEndpoints: "api_endpoints",
+              enabled: "enabled",
+              masqueEndpoints: "masque_endpoints",
+              wireguardEndpoints: "wireguard_endpoints",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
       include: Schema.optional(
         Schema.Array(
           Schema.Union([
@@ -92734,6 +93480,7 @@ export const CreateDevicePolicyCustomRequest =
         enabled: "enabled",
         exclude: "exclude",
         excludeOfficeIps: "exclude_office_ips",
+        globalAcceleration: "global_acceleration",
         include: "include",
         lanAllowMinutes: "lan_allow_minutes",
         lanAllowSubnetSize: "lan_allow_subnet_size",
@@ -92775,6 +93522,12 @@ export type CreateDevicePolicyCustomResponse = {
       }[]
     | null;
   gatewayUniqueId?: string | null;
+  globalAcceleration?: {
+    apiEndpoints: string[];
+    enabled: boolean;
+    masqueEndpoints: string[];
+    wireguardEndpoints: string[];
+  } | null;
   include?:
     | (
         | { address: string; description?: string | null }
@@ -92886,6 +93639,24 @@ export const CreateDevicePolicyCustomResponse =
         gatewayUniqueId: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
+        globalAcceleration: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              apiEndpoints: Schema.Array(Schema.String),
+              enabled: Schema.Boolean,
+              masqueEndpoints: Schema.Array(Schema.String),
+              wireguardEndpoints: Schema.Array(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                apiEndpoints: "api_endpoints",
+                enabled: "enabled",
+                masqueEndpoints: "masque_endpoints",
+                wireguardEndpoints: "wireguard_endpoints",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
         include: Schema.optional(
           Schema.Union([
             Schema.Array(
@@ -92977,6 +93748,7 @@ export const CreateDevicePolicyCustomResponse =
           excludeOfficeIps: "exclude_office_ips",
           fallbackDomains: "fallback_domains",
           gatewayUniqueId: "gateway_unique_id",
+          globalAcceleration: "global_acceleration",
           include: "include",
           lanAllowMinutes: "lan_allow_minutes",
           lanAllowSubnetSize: "lan_allow_subnet_size",
@@ -93040,6 +93812,13 @@ export interface PatchDevicePolicyCustomRequest {
   )[];
   /** Body param: Whether to add Microsoft IPs to Split Tunnel exclusions. */
   excludeOfficeIps?: boolean;
+  /** Body param: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to */
+  globalAcceleration?: {
+    apiEndpoints: string[];
+    enabled: boolean;
+    masqueEndpoints: string[];
+    wireguardEndpoints: string[];
+  } | null;
   /** Body param: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. */
   include?: (
     | { address: string; description?: string }
@@ -93107,6 +93886,24 @@ export const PatchDevicePolicyCustomRequest =
         ),
       ),
       excludeOfficeIps: Schema.optional(Schema.Boolean),
+      globalAcceleration: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            apiEndpoints: Schema.Array(Schema.String),
+            enabled: Schema.Boolean,
+            masqueEndpoints: Schema.Array(Schema.String),
+            wireguardEndpoints: Schema.Array(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              apiEndpoints: "api_endpoints",
+              enabled: "enabled",
+              masqueEndpoints: "masque_endpoints",
+              wireguardEndpoints: "wireguard_endpoints",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
       include: Schema.optional(
         Schema.Array(
           Schema.Union([
@@ -93159,6 +93956,7 @@ export const PatchDevicePolicyCustomRequest =
         enabled: "enabled",
         exclude: "exclude",
         excludeOfficeIps: "exclude_office_ips",
+        globalAcceleration: "global_acceleration",
         include: "include",
         lanAllowMinutes: "lan_allow_minutes",
         lanAllowSubnetSize: "lan_allow_subnet_size",
@@ -93206,6 +94004,12 @@ export type PatchDevicePolicyCustomResponse = {
       }[]
     | null;
   gatewayUniqueId?: string | null;
+  globalAcceleration?: {
+    apiEndpoints: string[];
+    enabled: boolean;
+    masqueEndpoints: string[];
+    wireguardEndpoints: string[];
+  } | null;
   include?:
     | (
         | { address: string; description?: string | null }
@@ -93317,6 +94121,24 @@ export const PatchDevicePolicyCustomResponse =
         gatewayUniqueId: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
+        globalAcceleration: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              apiEndpoints: Schema.Array(Schema.String),
+              enabled: Schema.Boolean,
+              masqueEndpoints: Schema.Array(Schema.String),
+              wireguardEndpoints: Schema.Array(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                apiEndpoints: "api_endpoints",
+                enabled: "enabled",
+                masqueEndpoints: "masque_endpoints",
+                wireguardEndpoints: "wireguard_endpoints",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
         include: Schema.optional(
           Schema.Union([
             Schema.Array(
@@ -93408,6 +94230,7 @@ export const PatchDevicePolicyCustomResponse =
           excludeOfficeIps: "exclude_office_ips",
           fallbackDomains: "fallback_domains",
           gatewayUniqueId: "gateway_unique_id",
+          globalAcceleration: "global_acceleration",
           include: "include",
           lanAllowMinutes: "lan_allow_minutes",
           lanAllowSubnetSize: "lan_allow_subnet_size",
@@ -93493,6 +94316,12 @@ export interface DeleteDevicePolicyCustomResponse {
             }[]
           | null;
         gatewayUniqueId?: string | null;
+        globalAcceleration?: {
+          apiEndpoints: string[];
+          enabled: boolean;
+          masqueEndpoints: string[];
+          wireguardEndpoints: string[];
+        } | null;
         include?:
           | (
               | { address: string; description?: string | null }
@@ -93612,6 +94441,24 @@ export const DeleteDevicePolicyCustomResponse =
             gatewayUniqueId: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            globalAcceleration: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  apiEndpoints: Schema.Array(Schema.String),
+                  enabled: Schema.Boolean,
+                  masqueEndpoints: Schema.Array(Schema.String),
+                  wireguardEndpoints: Schema.Array(Schema.String),
+                }).pipe(
+                  Schema.encodeKeys({
+                    apiEndpoints: "api_endpoints",
+                    enabled: "enabled",
+                    masqueEndpoints: "masque_endpoints",
+                    wireguardEndpoints: "wireguard_endpoints",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
             include: Schema.optional(
               Schema.Union([
                 Schema.Array(
@@ -93715,6 +94562,7 @@ export const DeleteDevicePolicyCustomResponse =
               excludeOfficeIps: "exclude_office_ips",
               fallbackDomains: "fallback_domains",
               gatewayUniqueId: "gateway_unique_id",
+              globalAcceleration: "global_acceleration",
               include: "include",
               lanAllowMinutes: "lan_allow_minutes",
               lanAllowSubnetSize: "lan_allow_subnet_size",
@@ -94296,6 +95144,13 @@ export interface GetDevicePolicyDefaultResponse {
       }[]
     | null;
   gatewayUniqueId?: string | null;
+  /** Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this */
+  globalAcceleration?: {
+    apiEndpoints: string[];
+    enabled: boolean;
+    masqueEndpoints: string[];
+    wireguardEndpoints: string[];
+  } | null;
   /** List of routes included in the WARP client's tunnel. */
   include?:
     | (
@@ -94402,6 +95257,24 @@ export const GetDevicePolicyDefaultResponse =
       gatewayUniqueId: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
+      globalAcceleration: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            apiEndpoints: Schema.Array(Schema.String),
+            enabled: Schema.Boolean,
+            masqueEndpoints: Schema.Array(Schema.String),
+            wireguardEndpoints: Schema.Array(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              apiEndpoints: "api_endpoints",
+              enabled: "enabled",
+              masqueEndpoints: "masque_endpoints",
+              wireguardEndpoints: "wireguard_endpoints",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
       include: Schema.optional(
         Schema.Union([
           Schema.Array(
@@ -94471,6 +95344,7 @@ export const GetDevicePolicyDefaultResponse =
           excludeOfficeIps: "exclude_office_ips",
           fallbackDomains: "fallback_domains",
           gatewayUniqueId: "gateway_unique_id",
+          globalAcceleration: "global_acceleration",
           include: "include",
           policyId: "policy_id",
           registerInterfaceIpWithDns: "register_interface_ip_with_dns",
@@ -94522,6 +95396,13 @@ export interface PatchDevicePolicyDefaultRequest {
   )[];
   /** Body param: Whether to add Microsoft IPs to Split Tunnel exclusions. */
   excludeOfficeIps?: boolean;
+  /** Body param: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to */
+  globalAcceleration?: {
+    apiEndpoints: string[];
+    enabled: boolean;
+    masqueEndpoints: string[];
+    wireguardEndpoints: string[];
+  } | null;
   /** Body param: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. */
   include?: (
     | { address: string; description?: string }
@@ -94580,6 +95461,24 @@ export const PatchDevicePolicyDefaultRequest =
         ),
       ),
       excludeOfficeIps: Schema.optional(Schema.Boolean),
+      globalAcceleration: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            apiEndpoints: Schema.Array(Schema.String),
+            enabled: Schema.Boolean,
+            masqueEndpoints: Schema.Array(Schema.String),
+            wireguardEndpoints: Schema.Array(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              apiEndpoints: "api_endpoints",
+              enabled: "enabled",
+              masqueEndpoints: "masque_endpoints",
+              wireguardEndpoints: "wireguard_endpoints",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
       include: Schema.optional(
         Schema.Array(
           Schema.Union([
@@ -94627,6 +95526,7 @@ export const PatchDevicePolicyDefaultRequest =
         dnsSearchSuffixes: "dns_search_suffixes",
         exclude: "exclude",
         excludeOfficeIps: "exclude_office_ips",
+        globalAcceleration: "global_acceleration",
         include: "include",
         lanAllowMinutes: "lan_allow_minutes",
         lanAllowSubnetSize: "lan_allow_subnet_size",
@@ -94681,6 +95581,13 @@ export interface PatchDevicePolicyDefaultResponse {
       }[]
     | null;
   gatewayUniqueId?: string | null;
+  /** Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this */
+  globalAcceleration?: {
+    apiEndpoints: string[];
+    enabled: boolean;
+    masqueEndpoints: string[];
+    wireguardEndpoints: string[];
+  } | null;
   /** List of routes included in the WARP client's tunnel. */
   include?:
     | (
@@ -94787,6 +95694,24 @@ export const PatchDevicePolicyDefaultResponse =
       gatewayUniqueId: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
+      globalAcceleration: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            apiEndpoints: Schema.Array(Schema.String),
+            enabled: Schema.Boolean,
+            masqueEndpoints: Schema.Array(Schema.String),
+            wireguardEndpoints: Schema.Array(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              apiEndpoints: "api_endpoints",
+              enabled: "enabled",
+              masqueEndpoints: "masque_endpoints",
+              wireguardEndpoints: "wireguard_endpoints",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
       include: Schema.optional(
         Schema.Union([
           Schema.Array(
@@ -94856,6 +95781,7 @@ export const PatchDevicePolicyDefaultResponse =
           excludeOfficeIps: "exclude_office_ips",
           fallbackDomains: "fallback_domains",
           gatewayUniqueId: "gateway_unique_id",
+          globalAcceleration: "global_acceleration",
           include: "include",
           policyId: "policy_id",
           registerInterfaceIpWithDns: "register_interface_ip_with_dns",
@@ -100339,6 +101265,10 @@ export interface GetDeviceRegistrationResponse {
     email?: string | null;
     name?: string | null;
   } | null;
+  /** The virtual IPv4 address assigned to the network interface of the tunnel for this registration. */
+  virtualIpv4?: string | null;
+  /** The virtual IPv6 address assigned to the network interface of the tunnel for this registration. */
+  virtualIpv6?: string | null;
 }
 
 export const GetDeviceRegistrationResponse =
@@ -100396,6 +101326,8 @@ export const GetDeviceRegistrationResponse =
           Schema.Null,
         ]),
       ),
+      virtualIpv4: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      virtualIpv6: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -100411,6 +101343,8 @@ export const GetDeviceRegistrationResponse =
           revokedAt: "revoked_at",
           tunnelType: "tunnel_type",
           user: "user",
+          virtualIpv4: "virtual_ipv4",
+          virtualIpv6: "virtual_ipv6",
         }),
       )
       .pipe(T.ResponsePath("result")),
@@ -100538,6 +101472,8 @@ export interface ListDeviceRegistrationsResponse {
       email?: string | null;
       name?: string | null;
     } | null;
+    virtualIpv4?: string | null;
+    virtualIpv6?: string | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -100613,6 +101549,12 @@ export const ListDeviceRegistrationsResponse =
               Schema.Null,
             ]),
           ),
+          virtualIpv4: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          virtualIpv6: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
@@ -100627,6 +101569,8 @@ export const ListDeviceRegistrationsResponse =
             revokedAt: "revoked_at",
             tunnelType: "tunnel_type",
             user: "user",
+            virtualIpv4: "virtual_ipv4",
+            virtualIpv6: "virtual_ipv6",
           }),
         ),
       ),
@@ -101500,11 +102444,11 @@ export const createDeviceUnrevoke: API.OperationMethod<
 // =============================================================================
 
 export interface ListDexColosRequest {
-  /** Path param: unique identifier linked to an account in the API request path. */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
-  /** Query param: Start time for connection period in ISO (RFC3339 - ISO 8601) format */
+  /** Query param: Start time for connection period in ISO (RFC3339 - ISO 8601) format. */
   from: string;
-  /** Query param: End time for connection period in ISO (RFC3339 - ISO 8601) format */
+  /** Query param: End time for connection period in ISO (RFC3339 - ISO 8601) format. */
   to: string;
   /** Query param: Type of usage that colos should be sorted by. If unspecified, returns all Cloudflare colos sorted alphabetically. */
   sortBy?: "fleet-status-usage" | "application-tests-usage" | (string & {});
@@ -101566,26 +102510,26 @@ export const listDexColos: API.PaginatedOperationMethod<
 // =============================================================================
 
 export interface ListDexCommandsRequest {
-  /** Path param: unique identifier linked to an account in the API request path */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: Optionally filter executed commands by command type */
+  /** Query param: Optionally filter executed commands by command type. */
   commandType?: "pcap" | "speed-test" | "warp-diag" | (string & {});
-  /** Query param: Unique identifier for a device */
+  /** Query param: Unique identifier for a device. */
   deviceId?: string;
-  /** Query param: Start time for the query in ISO (RFC3339 - ISO 8601) format */
+  /** Query param: Start time for the query in ISO (RFC3339 - ISO 8601) format. */
   from?: string;
-  /** Query param: Optionally filter executed commands by status */
+  /** Query param: Optionally filter executed commands by status. */
   status?:
     | "PENDING_EXEC"
     | "PENDING_UPLOAD"
     | "SUCCESS"
     | "FAILED"
     | (string & {});
-  /** Query param: End time for the query in ISO (RFC3339 - ISO 8601) format */
+  /** Query param: End time for the query in ISO (RFC3339 - ISO 8601) format. */
   to?: string;
-  /** Query param: Email tied to the device */
+  /** Query param: Email tied to the device. */
   userEmail?: string;
 }
 
@@ -101757,7 +102701,7 @@ export const listDexCommands: API.PaginatedOperationMethod<
 }));
 
 export interface CreateDexCommandRequest {
-  /** Path param: unique identifier linked to an account in the API request path */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   /** Body param: List of device-level commands to execute */
   commands: {
@@ -101922,11 +102866,11 @@ export const createDexCommand: API.OperationMethod<
 // =============================================================================
 
 export interface ListDexCommandDevicesRequest {
-  /** Path param: unique identifier linked to an account in the API request path */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: Filter devices by name or email */
+  /** Query param: Filter devices by name or email. */
   search?: string;
 }
 
@@ -102079,7 +103023,7 @@ export const listDexCommandDevices: API.PaginatedOperationMethod<
 export interface GetDexCommandDownloadRequest {
   commandId: string;
   filename: string;
-  /** unique identifier linked to an account in the API request path */
+  /** Unique identifier linked to an account. */
   accountId: string;
 }
 
@@ -102122,7 +103066,7 @@ export const getDexCommandDownload: API.OperationMethod<
 // =============================================================================
 
 export interface GetDexCommandQuotaRequest {
-  /** unique identifier linked to an account in the API request path */
+  /** Unique identifier linked to an account. */
   accountId: string;
 }
 
@@ -102139,11 +103083,11 @@ export const GetDexCommandQuotaRequest =
   ) as unknown as Schema.Schema<GetDexCommandQuotaRequest>;
 
 export interface GetDexCommandQuotaResponse {
-  /** The remaining number of commands that can be initiated for an account */
+  /** The total number of commands that can be initiated for an account. */
   quota: number;
-  /** The number of commands that have been initiated for an account */
+  /** The number of commands that have been initiated for an account. */
   quotaUsage: number;
-  /** The time when the quota resets */
+  /** The time when the quota resets. */
   resetTime: string;
 }
 
@@ -102183,19 +103127,19 @@ export const getDexCommandQuota: API.OperationMethod<
 
 export interface ListDexDeviceIspsRequest {
   deviceId: string;
-  /** Path param: unique identifier linked to an account in the API request path */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   page?: number;
   perPage?: number;
   /** Query param: Cursor for cursor-based pagination. Mutually exclusive with page. */
   cursor?: string;
-  /** Query param: Start time for the query in ISO 8601 format */
+  /** Query param: Start time for the query in ISO 8601 format. */
   from?: string;
-  /** Query param: The field to sort results by */
+  /** Query param: The field to sort results by. */
   sortBy?: "time_start";
-  /** Query param: The order to sort results */
+  /** Query param: The order to sort results. */
   sortOrder?: "ASC" | "DESC" | (string & {});
-  /** Query param: End time for the query in ISO 8601 format */
+  /** Query param: End time for the query in ISO 8601 format. */
   to?: string;
 }
 
@@ -102386,9 +103330,9 @@ export const listDexDeviceIsps: API.PaginatedOperationMethod<
 // =============================================================================
 
 export interface LiveDexFleetStatusRequest {
-  /** Path param: Unique identifier for account */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
-  /** Query param: Number of minutes before current time */
+  /** Query param: Number of minutes before current time. */
   sinceMinutes: number;
 }
 
@@ -102535,23 +103479,23 @@ export const liveDexFleetStatus: API.OperationMethod<
 // =============================================================================
 
 export interface ListDexFleetStatusDevicesRequest {
-  /** Path param: Unique identifier for account */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: Time range beginning in ISO format */
+  /** Query param: Start of the time range to query. Timestamp can be provided in ISO 8601 datetime format or milliseconds since epoch. */
   from: string;
-  /** Query param: Time range end in ISO format */
+  /** Query param: End of the time range to query. Timestamp can be provided in ISO 8601 datetime format or milliseconds since epoch. */
   to: string;
-  /** Query param: Cloudflare colo */
+  /** Query param: Cloudflare colo airport code. */
   colo?: string;
-  /** Query param: Device-specific ID, given as UUID v4 */
+  /** Query param: Device-specific ID, given as UUID. */
   deviceId?: string;
-  /** Query param: The mode under which the WARP client is run */
+  /** Query param: The mode under which the WARP client is run. */
   mode?: string;
-  /** Query param: Operating system */
+  /** Query param: Operating system. */
   platform?: string;
-  /** Query param: Dimension to sort results by */
+  /** Query param: Dimension to sort results by. */
   sortBy?:
     | "colo"
     | "device_id"
@@ -102563,9 +103507,9 @@ export interface ListDexFleetStatusDevicesRequest {
     | (string & {});
   /** Query param: Source:  - `hourly` - device details aggregated hourly, up to 7 days prior - `last_seen` - device details, up to 60 minutes prior. Time windows exceeding 60 minutes will be rejected from  */
   source?: "last_seen" | "hourly" | "raw" | (string & {});
-  /** Query param: Network status */
+  /** Query param: Network status. */
   status?: string;
-  /** Query param: WARP client version */
+  /** Query param: WARP client version. */
   version?: string;
 }
 
@@ -102626,7 +103570,7 @@ export interface ListDexFleetStatusDevicesResponse {
     batteryPct?: number | null;
     connectionType?: string | null;
     cpuPct?: number | null;
-    cpuPctByApp?: { cpuPct?: number | null; name?: string | null }[][] | null;
+    cpuPctByApp?: { cpuPct?: number | null; name?: string | null }[] | null;
     deviceIpv4?: {
       address?: string | null;
       asn?: number | null;
@@ -102637,8 +103581,9 @@ export interface ListDexFleetStatusDevicesResponse {
         stateIso?: string | null;
         zip?: string | null;
       } | null;
+      name?: string | null;
       netmask?: string | null;
-      version?: string | null;
+      version?: number | null;
     } | null;
     deviceIpv6?: {
       address?: string | null;
@@ -102650,8 +103595,9 @@ export interface ListDexFleetStatusDevicesResponse {
         stateIso?: string | null;
         zip?: string | null;
       } | null;
+      name?: string | null;
       netmask?: string | null;
-      version?: string | null;
+      version?: number | null;
     } | null;
     deviceName?: string | null;
     deviceRegistration?: string | null;
@@ -102671,8 +103617,9 @@ export interface ListDexFleetStatusDevicesResponse {
         stateIso?: string | null;
         zip?: string | null;
       } | null;
+      name?: string | null;
       netmask?: string | null;
-      version?: string | null;
+      version?: number | null;
     } | null;
     gatewayIpv6?: {
       address?: string | null;
@@ -102684,8 +103631,9 @@ export interface ListDexFleetStatusDevicesResponse {
         stateIso?: string | null;
         zip?: string | null;
       } | null;
+      name?: string | null;
       netmask?: string | null;
-      version?: string | null;
+      version?: number | null;
     } | null;
     handshakeLatencyMs?: number | null;
     ispIpv4?: {
@@ -102698,8 +103646,9 @@ export interface ListDexFleetStatusDevicesResponse {
         stateIso?: string | null;
         zip?: string | null;
       } | null;
+      name?: string | null;
       netmask?: string | null;
-      version?: string | null;
+      version?: number | null;
     } | null;
     ispIpv6?: {
       address?: string | null;
@@ -102711,8 +103660,9 @@ export interface ListDexFleetStatusDevicesResponse {
         stateIso?: string | null;
         zip?: string | null;
       } | null;
+      name?: string | null;
       netmask?: string | null;
-      version?: string | null;
+      version?: number | null;
     } | null;
     metal?: string | null;
     networkRcvdBps?: number | null;
@@ -102722,10 +103672,57 @@ export interface ListDexFleetStatusDevicesResponse {
     ramAvailableKb?: number | null;
     ramUsedPct?: number | null;
     ramUsedPctByApp?:
-      | { name?: string | null; ramUsedPct?: number | null }[][]
+      | { name?: string | null; ramUsedPct?: number | null }[]
       | null;
     registrationId?: string | null;
+    rtt?: {
+      minRttUs?: {
+        downstream?: number | null;
+        upstream?: number | null;
+      } | null;
+      rttUs?: { downstream?: number | null; upstream?: number | null } | null;
+      rttVarUs?: {
+        downstream?: number | null;
+        upstream?: number | null;
+      } | null;
+    } | null;
     switchLocked?: boolean | null;
+    tunnelStats?: {
+      bytesLost?: {
+        downstream?: number | null;
+        upstream?: number | null;
+      } | null;
+      bytesReceived?: {
+        downstream?: number | null;
+        upstream?: number | null;
+      } | null;
+      bytesRetransmitted?: {
+        downstream?: number | null;
+        upstream?: number | null;
+      } | null;
+      bytesSent?: {
+        downstream?: number | null;
+        upstream?: number | null;
+      } | null;
+      packetsLost?: {
+        downstream?: number | null;
+        upstream?: number | null;
+      } | null;
+      packetsReceived?: {
+        downstream?: number | null;
+        upstream?: number | null;
+      } | null;
+      packetsRetransmitted?: {
+        downstream?: number | null;
+        upstream?: number | null;
+      } | null;
+      packetsSent?: {
+        downstream?: number | null;
+        upstream?: number | null;
+      } | null;
+      statsWindowMs?: number | null;
+    } | null;
+    tunnelType?: string | null;
     wifiStrengthDbm?: number | null;
   }[];
   resultInfo?: {
@@ -102767,18 +103764,14 @@ export const ListDexFleetStatusDevicesResponse =
           cpuPctByApp: Schema.optional(
             Schema.Union([
               Schema.Array(
-                Schema.Array(
-                  Schema.Struct({
-                    cpuPct: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    name: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({ cpuPct: "cpu_pct", name: "name" }),
+                Schema.Struct({
+                  cpuPct: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
                   ),
-                ),
+                  name: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(Schema.encodeKeys({ cpuPct: "cpu_pct", name: "name" })),
               ),
               Schema.Null,
             ]),
@@ -102821,11 +103814,14 @@ export const ListDexFleetStatusDevicesResponse =
                     Schema.Null,
                   ]),
                 ),
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
                 netmask: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 version: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
+                  Schema.Union([Schema.Number, Schema.Null]),
                 ),
               }),
               Schema.Null,
@@ -102869,11 +103865,14 @@ export const ListDexFleetStatusDevicesResponse =
                     Schema.Null,
                   ]),
                 ),
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
                 netmask: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 version: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
+                  Schema.Union([Schema.Number, Schema.Null]),
                 ),
               }),
               Schema.Null,
@@ -102941,11 +103940,14 @@ export const ListDexFleetStatusDevicesResponse =
                     Schema.Null,
                   ]),
                 ),
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
                 netmask: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 version: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
+                  Schema.Union([Schema.Number, Schema.Null]),
                 ),
               }),
               Schema.Null,
@@ -102989,11 +103991,14 @@ export const ListDexFleetStatusDevicesResponse =
                     Schema.Null,
                   ]),
                 ),
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
                 netmask: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 version: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
+                  Schema.Union([Schema.Number, Schema.Null]),
                 ),
               }),
               Schema.Null,
@@ -103040,11 +104045,14 @@ export const ListDexFleetStatusDevicesResponse =
                     Schema.Null,
                   ]),
                 ),
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
                 netmask: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 version: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
+                  Schema.Union([Schema.Number, Schema.Null]),
                 ),
               }),
               Schema.Null,
@@ -103088,11 +104096,14 @@ export const ListDexFleetStatusDevicesResponse =
                     Schema.Null,
                   ]),
                 ),
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
                 netmask: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 version: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
+                  Schema.Union([Schema.Number, Schema.Null]),
                 ),
               }),
               Schema.Null,
@@ -103120,20 +104131,18 @@ export const ListDexFleetStatusDevicesResponse =
           ramUsedPctByApp: Schema.optional(
             Schema.Union([
               Schema.Array(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    ramUsedPct: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      name: "name",
-                      ramUsedPct: "ram_used_pct",
-                    }),
+                Schema.Struct({
+                  name: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
                   ),
+                  ramUsedPct: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    name: "name",
+                    ramUsedPct: "ram_used_pct",
+                  }),
                 ),
               ),
               Schema.Null,
@@ -103142,8 +104151,171 @@ export const ListDexFleetStatusDevicesResponse =
           registrationId: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
+          rtt: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                minRttUs: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                rttUs: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                rttVarUs: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
           switchLocked: Schema.optional(
             Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          tunnelStats: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                bytesLost: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                bytesReceived: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                bytesRetransmitted: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                bytesSent: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                packetsLost: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                packetsReceived: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                packetsRetransmitted: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                packetsSent: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      downstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      upstream: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                statsWindowMs: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          tunnelType: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
           wifiStrengthDbm: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
@@ -103201,13 +104373,13 @@ export const listDexFleetStatusDevices: API.PaginatedOperationMethod<
 
 export interface GetDexHttpTestRequest {
   testId: string;
-  /** Path param: unique identifier linked to an account in the API request path. */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
-  /** Query param: Start time for aggregate metrics in ISO ms */
+  /** Query param: Start time for aggregate metrics in ISO ms. */
   from: string;
   /** Query param: Time interval for aggregate time slots. */
   interval: "minute" | "hour" | (string & {});
-  /** Query param: End time for aggregate metrics in ISO ms */
+  /** Query param: End time for aggregate metrics in ISO ms. */
   to: string;
   /** Query param: Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param. */
   colo?: string;
@@ -103239,7 +104411,7 @@ export const GetDexHttpTestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
 ) as unknown as Schema.Schema<GetDexHttpTestRequest>;
 
 export interface GetDexHttpTestResponse {
-  /** The url of the HTTP synthetic application test */
+  /** The url of the HTTP synthetic application test. */
   host?: string | null;
   httpStats?: {
     availabilityPct: {
@@ -103315,9 +104487,9 @@ export interface GetDexHttpTestResponse {
   /** The interval at which the HTTP synthetic application test is set to run. */
   interval?: string | null;
   kind?: "http" | null;
-  /** The HTTP method to use when running the test */
+  /** The HTTP method to use when running the test. */
   method?: string | null;
-  /** The name of the HTTP synthetic application test */
+  /** The name of the HTTP synthetic application test. */
   name?: string | null;
   targetPolicies?: { id: string; default: boolean; name: string }[] | null;
   targeted?: boolean | null;
@@ -103531,11 +104703,11 @@ export const getDexHttpTest: API.OperationMethod<
 
 export interface GetDexHttpTestPercentileRequest {
   testId: string;
-  /** Path param: unique identifier linked to an account in the API request path. */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
-  /** Query param: Start time for the query in ISO (RFC3339 - ISO 8601) format */
+  /** Query param: Start time for the query in ISO (RFC3339 - ISO 8601) format. */
   from: string;
-  /** Query param: End time for the query in ISO (RFC3339 - ISO 8601) format */
+  /** Query param: End time for the query in ISO (RFC3339 - ISO 8601) format. */
   to: string;
   /** Query param: Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param. */
   colo?: string;
@@ -103641,7 +104813,7 @@ export const getDexHttpTestPercentile: API.OperationMethod<
 
 export interface GetDexRuleRequest {
   ruleId: string;
-  /** unique identifier linked to an account in the API request path */
+  /** Unique identifier linked to an account. */
   accountId: string;
 }
 
@@ -103747,15 +104919,15 @@ export const getDexRule: API.OperationMethod<
 }));
 
 export interface ListDexRulesRequest {
-  /** Path param: unique identifier linked to an account in the API request path */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: Filter results by rule name */
+  /** Query param: Filter results by rule name. */
   name?: string;
-  /** Query param: Which property to sort results by */
+  /** Query param: Which property to sort results by. */
   sortBy?: "name" | "created_at" | "updated_at" | (string & {});
-  /** Query param: Sort direction for sort_by property */
+  /** Query param: Sort direction for sort_by property. */
   sortOrder?: "ASC" | "DESC" | (string & {});
 }
 
@@ -103938,7 +105110,7 @@ export const listDexRules: API.PaginatedOperationMethod<
 }));
 
 export interface CreateDexRuleRequest {
-  /** Path param: unique identifier linked to an account in the API request path */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   /** Body param: The wirefilter expression to match. */
   match: string;
@@ -104050,7 +105222,7 @@ export const createDexRule: API.OperationMethod<
 
 export interface PatchDexRuleRequest {
   ruleId: string;
-  /** Path param: unique identifier linked to an account in the API request path */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   /** Body param */
   description?: string;
@@ -104166,7 +105338,7 @@ export const patchDexRule: API.OperationMethod<
 
 export interface DeleteDexRuleRequest {
   ruleId: string;
-  /** unique identifier linked to an account in the API request path */
+  /** Unique identifier linked to an account. */
   accountId: string;
 }
 
@@ -104208,7 +105380,7 @@ export const deleteDexRule: API.OperationMethod<
 // =============================================================================
 
 export interface ListDexTestsRequest {
-  /** Path param: unique identifier linked to an account in the API request path. */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   page?: number;
   perPage?: number;
@@ -104216,11 +105388,11 @@ export interface ListDexTestsRequest {
   colo?: string;
   /** Query param: Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param. */
   deviceId?: string[];
-  /** Query param: Filter by test type */
+  /** Query param: Filter by test type. */
   kind?: "http" | "traceroute" | (string & {});
   /** Query param: Optionally filter results to a specific device registration. Must be used in combination with a single deviceId. */
   registrationId?: string;
-  /** Query param: Optionally filter results by test name */
+  /** Query param: Optionally filter results by test name. */
   testName?: string;
 }
 
@@ -104615,11 +105787,11 @@ export const listDexTests: API.PaginatedOperationMethod<
 // =============================================================================
 
 export interface ListDexTestUniqueDevicesRequest {
-  /** Path param: unique identifier linked to an account in the API request path. */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
   /** Query param: Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param. */
   deviceId?: string[];
-  /** Query param: Optionally filter results by test name */
+  /** Query param: Optionally filter results by test name. */
   testName?: string;
 }
 
@@ -104670,13 +105842,13 @@ export const listDexTestUniqueDevices: API.OperationMethod<
 
 export interface GetDexTracerouteTestRequest {
   testId: string;
-  /** Path param: Unique identifier linked to an account */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
-  /** Query param: Start time for aggregate metrics in ISO ms */
+  /** Query param: Start time for aggregate metrics in ISO ms. */
   from: string;
   /** Query param: Time interval for aggregate time slots. */
   interval: "minute" | "hour" | (string & {});
-  /** Query param: End time for aggregate metrics in ISO ms */
+  /** Query param: End time for aggregate metrics in ISO ms. */
   to: string;
   /** Query param: Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param. */
   colo?: string;
@@ -104708,12 +105880,12 @@ export const GetDexTracerouteTestRequest =
   ) as unknown as Schema.Schema<GetDexTracerouteTestRequest>;
 
 export interface GetDexTracerouteTestResponse {
-  /** The host of the Traceroute synthetic application test */
+  /** The host of the Traceroute synthetic application test. */
   host: string;
   /** The interval at which the Traceroute synthetic application test is set to run. */
   interval: string;
   kind: "traceroute";
-  /** The name of the Traceroute synthetic application test */
+  /** The name of the Traceroute synthetic application test. */
   name: string;
   targetPolicies?: { id: string; default: boolean; name: string }[] | null;
   targeted?: boolean | null;
@@ -104958,11 +106130,11 @@ export const getDexTracerouteTest: API.OperationMethod<
 
 export interface PercentilesDexTracerouteTestRequest {
   testId: string;
-  /** Path param: unique identifier linked to an account in the API request path. */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
-  /** Query param: Start time for the query in ISO (RFC3339 - ISO 8601) format */
+  /** Query param: Start time for the query in ISO (RFC3339 - ISO 8601) format. */
   from: string;
-  /** Query param: End time for the query in ISO (RFC3339 - ISO 8601) format */
+  /** Query param: End time for the query in ISO (RFC3339 - ISO 8601) format. */
   to: string;
   /** Query param: Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param. */
   colo?: string;
@@ -105068,7 +106240,7 @@ export const percentilesDexTracerouteTest: API.OperationMethod<
 
 export interface GetDexTracerouteTestResultNetworkPathRequest {
   testResultId: string;
-  /** unique identifier linked to an account */
+  /** Unique identifier linked to an account. */
   accountId: string;
 }
 
@@ -105086,7 +106258,7 @@ export const GetDexTracerouteTestResultNetworkPathRequest =
   ) as unknown as Schema.Schema<GetDexTracerouteTestResultNetworkPathRequest>;
 
 export interface GetDexTracerouteTestResultNetworkPathResponse {
-  /** an array of the hops taken by the device to reach the end destination */
+  /** An array of the hops taken by the device to reach the end destination. */
   hops: {
     ttl: number;
     asn?: number | null;
@@ -105109,12 +106281,24 @@ export interface GetDexTracerouteTestResultNetworkPathResponse {
   }[];
   /** API Resource UUID tag. */
   resultId: string;
-  /** name of the device associated with this network path response */
+  /** Cloudflare colo airport code. */
+  colo?: string | null;
+  /** Name of the device associated with this network path response. */
   deviceName?: string | null;
+  /** Whether the test was run inside or outside of the WARP tunnel. */
+  executionContext?:
+    | "EXECUTION_CONTEXT_INVALID"
+    | "OUT_OF_TUNNEL"
+    | "IN_TUNNEL"
+    | (string & {})
+    | null;
   /** API Resource UUID tag. */
   testId?: string | null;
-  /** name of the tracroute test */
+  /** Name of the traceroute test. */
   testName?: string | null;
+  /** Timestamp indicating when the traceroute test execution began. */
+  timeStart?: string | null;
+  tunnelType?: string | null;
 }
 
 export const GetDexTracerouteTestResultNetworkPathResponse =
@@ -105161,10 +106345,40 @@ export const GetDexTracerouteTestResultNetworkPathResponse =
         }),
       ),
       resultId: Schema.String,
+      colo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       deviceName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      executionContext: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals([
+              "EXECUTION_CONTEXT_INVALID",
+              "OUT_OF_TUNNEL",
+              "IN_TUNNEL",
+            ]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
       testId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       testName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+      timeStart: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      tunnelType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          hops: "hops",
+          resultId: "resultId",
+          colo: "colo",
+          deviceName: "deviceName",
+          executionContext: "execution_context",
+          testId: "testId",
+          testName: "testName",
+          timeStart: "time_start",
+          tunnelType: "tunnel_type",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetDexTracerouteTestResultNetworkPathResponse>;
 
 export type GetDexTracerouteTestResultNetworkPathError = DefaultErrors;
@@ -105185,15 +106399,15 @@ export const getDexTracerouteTestResultNetworkPath: API.OperationMethod<
 // =============================================================================
 
 export interface GetDexWarpChangeEventRequest {
-  /** Path param: unique identifier linked to an account in the API request path */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
-  /** Query param: Start time for the query in ISO (RFC3339 - ISO 8601) format */
+  /** Query param: Start time for the query in ISO (RFC3339 - ISO 8601) format. */
   from: string;
-  /** Query param: Page number of paginated results */
+  /** Query param: Page number of paginated results. */
   page: number;
-  /** Query param: Number of items per page */
+  /** Query param: Number of results per page. */
   perPage: number;
-  /** Query param: End time for the query in ISO (RFC3339 - ISO 8601) format */
+  /** Query param: End time for the query in ISO (RFC3339 - ISO 8601) format. */
   to: string;
   /** Query param: Filter events by account name. */
   accountName?: string;
@@ -105203,7 +106417,7 @@ export interface GetDexWarpChangeEventRequest {
   sortOrder?: "ASC" | "DESC" | (string & {});
   /** Query param: Filter events by type toggle value. Applicable to type='toggle' events only. */
   toggle?: "on" | "off" | (string & {});
-  /** Query param: Filter events by type 'config' or 'toggle' */
+  /** Query param: Filter events by type 'config' or 'toggle'. */
   type?: "config" | "toggle" | (string & {});
 }
 
@@ -150421,22 +151635,14 @@ export interface ListOrganizationsResponse {
   /** Configures multi-factor authentication (MFA) settings for an organization. */
   mfaConfig?: {
     allowedAuthenticators?:
-      | (
-          | "totp"
-          | "biometrics"
-          | "security_key"
-          | "ssh_piv_key"
-          | (string & {})
-        )[]
+      | ("totp" | "biometrics" | "security_key" | "piv_key" | (string & {}))[]
       | null;
     amrMatchingSessionDuration?: string | null;
     requiredAaguids?: string | null;
     sessionDuration?: string | null;
   } | null;
-  /** Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowe */
-  mfaRequiredForAllApps?: boolean | null;
-  /** Configures SSH PIV key requirements for MFA using hardware security keys. */
-  mfaSshPivKeyRequirements?: {
+  /** Configures PIV key requirements for MFA using hardware security keys. */
+  mfaPivKeyRequirements?: {
     pinPolicy?: "never" | "once" | "always" | (string & {}) | null;
     requireFipsDevice?: boolean | null;
     sshKeySize?:
@@ -150445,6 +151651,8 @@ export interface ListOrganizationsResponse {
     sshKeyType?: ("ecdsa" | "ed25519" | "rsa" | (string & {}))[] | null;
     touchPolicy?: "never" | "always" | "cached" | (string & {}) | null;
   } | null;
+  /** Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowe */
+  mfaRequiredForAllApps?: boolean | null;
   /** The name of your Zero Trust organization. */
   name?: string | null;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
@@ -150535,7 +151743,7 @@ export const ListOrganizationsResponse =
                       "totp",
                       "biometrics",
                       "security_key",
-                      "ssh_piv_key",
+                      "piv_key",
                     ]),
                     Schema.String,
                   ]),
@@ -150563,10 +151771,7 @@ export const ListOrganizationsResponse =
           Schema.Null,
         ]),
       ),
-      mfaRequiredForAllApps: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      mfaSshPivKeyRequirements: Schema.optional(
+      mfaPivKeyRequirements: Schema.optional(
         Schema.Union([
           Schema.Struct({
             pinPolicy: Schema.optional(
@@ -150631,6 +151836,9 @@ export const ListOrganizationsResponse =
           Schema.Null,
         ]),
       ),
+      mfaRequiredForAllApps: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       sessionDuration: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -150657,8 +151865,8 @@ export const ListOrganizationsResponse =
           isUiReadOnly: "is_ui_read_only",
           loginDesign: "login_design",
           mfaConfig: "mfa_config",
+          mfaPivKeyRequirements: "mfa_piv_key_requirements",
           mfaRequiredForAllApps: "mfa_required_for_all_apps",
-          mfaSshPivKeyRequirements: "mfa_ssh_piv_key_requirements",
           name: "name",
           sessionDuration: "session_duration",
           uiReadOnlyToggleReason: "ui_read_only_toggle_reason",
@@ -150725,12 +151933,7 @@ const CreateOrganizationBaseFields = {
       allowedAuthenticators: Schema.optional(
         Schema.Array(
           Schema.Union([
-            Schema.Literals([
-              "totp",
-              "biometrics",
-              "security_key",
-              "ssh_piv_key",
-            ]),
+            Schema.Literals(["totp", "biometrics", "security_key", "piv_key"]),
             Schema.String,
           ]),
         ),
@@ -150747,8 +151950,7 @@ const CreateOrganizationBaseFields = {
       }),
     ),
   ),
-  mfaRequiredForAllApps: Schema.optional(Schema.Boolean),
-  mfaSshPivKeyRequirements: Schema.optional(
+  mfaPivKeyRequirements: Schema.optional(
     Schema.Struct({
       pinPolicy: Schema.optional(
         Schema.Union([
@@ -150789,6 +151991,7 @@ const CreateOrganizationBaseFields = {
       }),
     ),
   ),
+  mfaRequiredForAllApps: Schema.optional(Schema.Boolean),
   sessionDuration: Schema.optional(Schema.String),
   uiReadOnlyToggleReason: Schema.optional(Schema.String),
   userSeatExpirationInactiveTime: Schema.optional(Schema.String),
@@ -150824,17 +152027,15 @@ interface CreateOrganizationBaseRequest {
       | "totp"
       | "biometrics"
       | "security_key"
-      | "ssh_piv_key"
+      | "piv_key"
       | (string & {})
     )[];
     amrMatchingSessionDuration?: string;
     requiredAaguids?: string;
     sessionDuration?: string;
   };
-  /** Body param: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. N */
-  mfaRequiredForAllApps?: boolean;
-  /** Body param: Configures SSH PIV key requirements for MFA using hardware security keys. */
-  mfaSshPivKeyRequirements?: {
+  /** Body param: Configures PIV key requirements for MFA using hardware security keys. */
+  mfaPivKeyRequirements?: {
     pinPolicy?: "never" | "once" | "always" | (string & {});
     requireFipsDevice?: boolean;
     sshKeySize?: (
@@ -150849,6 +152050,8 @@ interface CreateOrganizationBaseRequest {
     sshKeyType?: ("ecdsa" | "ed25519" | "rsa" | (string & {}))[];
     touchPolicy?: "never" | "always" | "cached" | (string & {});
   };
+  /** Body param: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. N */
+  mfaRequiredForAllApps?: boolean;
   /** Body param: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
   sessionDuration?: string;
   /** Body param: A description of the reason why the UI read only field is being toggled. */
@@ -150886,8 +152089,8 @@ export const CreateOrganizationForAccountRequest =
         isUiReadOnly: "is_ui_read_only",
         loginDesign: "login_design",
         mfaConfig: "mfa_config",
+        mfaPivKeyRequirements: "mfa_piv_key_requirements",
         mfaRequiredForAllApps: "mfa_required_for_all_apps",
-        mfaSshPivKeyRequirements: "mfa_ssh_piv_key_requirements",
         sessionDuration: "session_duration",
         uiReadOnlyToggleReason: "ui_read_only_toggle_reason",
         userSeatExpirationInactiveTime: "user_seat_expiration_inactive_time",
@@ -150917,8 +152120,8 @@ export const CreateOrganizationForZoneRequest =
         isUiReadOnly: "is_ui_read_only",
         loginDesign: "login_design",
         mfaConfig: "mfa_config",
+        mfaPivKeyRequirements: "mfa_piv_key_requirements",
         mfaRequiredForAllApps: "mfa_required_for_all_apps",
-        mfaSshPivKeyRequirements: "mfa_ssh_piv_key_requirements",
         sessionDuration: "session_duration",
         uiReadOnlyToggleReason: "ui_read_only_toggle_reason",
         userSeatExpirationInactiveTime: "user_seat_expiration_inactive_time",
@@ -150955,22 +152158,14 @@ export interface CreateOrganizationResponse {
   /** Configures multi-factor authentication (MFA) settings for an organization. */
   mfaConfig?: {
     allowedAuthenticators?:
-      | (
-          | "totp"
-          | "biometrics"
-          | "security_key"
-          | "ssh_piv_key"
-          | (string & {})
-        )[]
+      | ("totp" | "biometrics" | "security_key" | "piv_key" | (string & {}))[]
       | null;
     amrMatchingSessionDuration?: string | null;
     requiredAaguids?: string | null;
     sessionDuration?: string | null;
   } | null;
-  /** Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowe */
-  mfaRequiredForAllApps?: boolean | null;
-  /** Configures SSH PIV key requirements for MFA using hardware security keys. */
-  mfaSshPivKeyRequirements?: {
+  /** Configures PIV key requirements for MFA using hardware security keys. */
+  mfaPivKeyRequirements?: {
     pinPolicy?: "never" | "once" | "always" | (string & {}) | null;
     requireFipsDevice?: boolean | null;
     sshKeySize?:
@@ -150979,6 +152174,8 @@ export interface CreateOrganizationResponse {
     sshKeyType?: ("ecdsa" | "ed25519" | "rsa" | (string & {}))[] | null;
     touchPolicy?: "never" | "always" | "cached" | (string & {}) | null;
   } | null;
+  /** Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowe */
+  mfaRequiredForAllApps?: boolean | null;
   /** The name of your Zero Trust organization. */
   name?: string | null;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
@@ -151069,7 +152266,7 @@ export const CreateOrganizationResponse =
                       "totp",
                       "biometrics",
                       "security_key",
-                      "ssh_piv_key",
+                      "piv_key",
                     ]),
                     Schema.String,
                   ]),
@@ -151097,10 +152294,7 @@ export const CreateOrganizationResponse =
           Schema.Null,
         ]),
       ),
-      mfaRequiredForAllApps: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      mfaSshPivKeyRequirements: Schema.optional(
+      mfaPivKeyRequirements: Schema.optional(
         Schema.Union([
           Schema.Struct({
             pinPolicy: Schema.optional(
@@ -151165,6 +152359,9 @@ export const CreateOrganizationResponse =
           Schema.Null,
         ]),
       ),
+      mfaRequiredForAllApps: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       sessionDuration: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -151191,8 +152388,8 @@ export const CreateOrganizationResponse =
           isUiReadOnly: "is_ui_read_only",
           loginDesign: "login_design",
           mfaConfig: "mfa_config",
+          mfaPivKeyRequirements: "mfa_piv_key_requirements",
           mfaRequiredForAllApps: "mfa_required_for_all_apps",
-          mfaSshPivKeyRequirements: "mfa_ssh_piv_key_requirements",
           name: "name",
           sessionDuration: "session_duration",
           uiReadOnlyToggleReason: "ui_read_only_toggle_reason",
@@ -151269,12 +152466,7 @@ const UpdateOrganizationBaseFields = {
       allowedAuthenticators: Schema.optional(
         Schema.Array(
           Schema.Union([
-            Schema.Literals([
-              "totp",
-              "biometrics",
-              "security_key",
-              "ssh_piv_key",
-            ]),
+            Schema.Literals(["totp", "biometrics", "security_key", "piv_key"]),
             Schema.String,
           ]),
         ),
@@ -151291,8 +152483,7 @@ const UpdateOrganizationBaseFields = {
       }),
     ),
   ),
-  mfaRequiredForAllApps: Schema.optional(Schema.Boolean),
-  mfaSshPivKeyRequirements: Schema.optional(
+  mfaPivKeyRequirements: Schema.optional(
     Schema.Struct({
       pinPolicy: Schema.optional(
         Schema.Union([
@@ -151333,6 +152524,7 @@ const UpdateOrganizationBaseFields = {
       }),
     ),
   ),
+  mfaRequiredForAllApps: Schema.optional(Schema.Boolean),
   name: Schema.optional(Schema.String),
   sessionDuration: Schema.optional(Schema.String),
   uiReadOnlyToggleReason: Schema.optional(Schema.String),
@@ -151369,17 +152561,15 @@ interface UpdateOrganizationBaseRequest {
       | "totp"
       | "biometrics"
       | "security_key"
-      | "ssh_piv_key"
+      | "piv_key"
       | (string & {})
     )[];
     amrMatchingSessionDuration?: string;
     requiredAaguids?: string;
     sessionDuration?: string;
   };
-  /** Body param: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. N */
-  mfaRequiredForAllApps?: boolean;
-  /** Body param: Configures SSH PIV key requirements for MFA using hardware security keys. */
-  mfaSshPivKeyRequirements?: {
+  /** Body param: Configures PIV key requirements for MFA using hardware security keys. */
+  mfaPivKeyRequirements?: {
     pinPolicy?: "never" | "once" | "always" | (string & {});
     requireFipsDevice?: boolean;
     sshKeySize?: (
@@ -151394,6 +152584,8 @@ interface UpdateOrganizationBaseRequest {
     sshKeyType?: ("ecdsa" | "ed25519" | "rsa" | (string & {}))[];
     touchPolicy?: "never" | "always" | "cached" | (string & {});
   };
+  /** Body param: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. N */
+  mfaRequiredForAllApps?: boolean;
   /** Body param: The name of your Zero Trust organization. */
   name?: string;
   /** Body param: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
@@ -151433,8 +152625,8 @@ export const UpdateOrganizationForAccountRequest =
         isUiReadOnly: "is_ui_read_only",
         loginDesign: "login_design",
         mfaConfig: "mfa_config",
+        mfaPivKeyRequirements: "mfa_piv_key_requirements",
         mfaRequiredForAllApps: "mfa_required_for_all_apps",
-        mfaSshPivKeyRequirements: "mfa_ssh_piv_key_requirements",
         name: "name",
         sessionDuration: "session_duration",
         uiReadOnlyToggleReason: "ui_read_only_toggle_reason",
@@ -151465,8 +152657,8 @@ export const UpdateOrganizationForZoneRequest =
         isUiReadOnly: "is_ui_read_only",
         loginDesign: "login_design",
         mfaConfig: "mfa_config",
+        mfaPivKeyRequirements: "mfa_piv_key_requirements",
         mfaRequiredForAllApps: "mfa_required_for_all_apps",
-        mfaSshPivKeyRequirements: "mfa_ssh_piv_key_requirements",
         name: "name",
         sessionDuration: "session_duration",
         uiReadOnlyToggleReason: "ui_read_only_toggle_reason",
@@ -151504,22 +152696,14 @@ export interface UpdateOrganizationResponse {
   /** Configures multi-factor authentication (MFA) settings for an organization. */
   mfaConfig?: {
     allowedAuthenticators?:
-      | (
-          | "totp"
-          | "biometrics"
-          | "security_key"
-          | "ssh_piv_key"
-          | (string & {})
-        )[]
+      | ("totp" | "biometrics" | "security_key" | "piv_key" | (string & {}))[]
       | null;
     amrMatchingSessionDuration?: string | null;
     requiredAaguids?: string | null;
     sessionDuration?: string | null;
   } | null;
-  /** Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowe */
-  mfaRequiredForAllApps?: boolean | null;
-  /** Configures SSH PIV key requirements for MFA using hardware security keys. */
-  mfaSshPivKeyRequirements?: {
+  /** Configures PIV key requirements for MFA using hardware security keys. */
+  mfaPivKeyRequirements?: {
     pinPolicy?: "never" | "once" | "always" | (string & {}) | null;
     requireFipsDevice?: boolean | null;
     sshKeySize?:
@@ -151528,6 +152712,8 @@ export interface UpdateOrganizationResponse {
     sshKeyType?: ("ecdsa" | "ed25519" | "rsa" | (string & {}))[] | null;
     touchPolicy?: "never" | "always" | "cached" | (string & {}) | null;
   } | null;
+  /** Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowe */
+  mfaRequiredForAllApps?: boolean | null;
   /** The name of your Zero Trust organization. */
   name?: string | null;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
@@ -151618,7 +152804,7 @@ export const UpdateOrganizationResponse =
                       "totp",
                       "biometrics",
                       "security_key",
-                      "ssh_piv_key",
+                      "piv_key",
                     ]),
                     Schema.String,
                   ]),
@@ -151646,10 +152832,7 @@ export const UpdateOrganizationResponse =
           Schema.Null,
         ]),
       ),
-      mfaRequiredForAllApps: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      mfaSshPivKeyRequirements: Schema.optional(
+      mfaPivKeyRequirements: Schema.optional(
         Schema.Union([
           Schema.Struct({
             pinPolicy: Schema.optional(
@@ -151714,6 +152897,9 @@ export const UpdateOrganizationResponse =
           Schema.Null,
         ]),
       ),
+      mfaRequiredForAllApps: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       sessionDuration: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -151740,8 +152926,8 @@ export const UpdateOrganizationResponse =
           isUiReadOnly: "is_ui_read_only",
           loginDesign: "login_design",
           mfaConfig: "mfa_config",
+          mfaPivKeyRequirements: "mfa_piv_key_requirements",
           mfaRequiredForAllApps: "mfa_required_for_all_apps",
-          mfaSshPivKeyRequirements: "mfa_ssh_piv_key_requirements",
           name: "name",
           sessionDuration: "session_duration",
           uiReadOnlyToggleReason: "ui_read_only_toggle_reason",
@@ -151934,15 +153120,15 @@ export const putOrganizationDoh: API.OperationMethod<
 
 export interface NetworkPathDexTracerouteTestRequest {
   testId: string;
-  /** Path param: unique identifier linked to an account */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
-  /** Query param: Device to filter tracroute result runs to */
+  /** Query param: Device to filter traceroute result runs to. */
   deviceId: string;
-  /** Query param: Start time for aggregate metrics in ISO ms */
+  /** Query param: Start time for aggregate metrics in ISO ms. */
   from: string;
   /** Query param: Time interval for aggregate time slots. */
   interval: "minute" | "hour" | (string & {});
-  /** Query param: End time for aggregate metrics in ISO ms */
+  /** Query param: End time for aggregate metrics in ISO ms. */
   to: string;
 }
 
@@ -151969,6 +153155,7 @@ export const NetworkPathDexTracerouteTestRequest =
 export interface NetworkPathDexTracerouteTestResponse {
   /** API Resource UUID tag. */
   id: string;
+  /** Name of the device that ran the test. */
   deviceName?: string | null;
   /** The interval at which the Traceroute synthetic application test is set to run. */
   interval?: string | null;
@@ -151985,7 +153172,7 @@ export interface NetworkPathDexTracerouteTestResponse {
     }[];
     sampling?: { unit: "hours"; value: number } | null;
   } | null;
-  /** The host of the Traceroute synthetic application test */
+  /** The host of the Traceroute synthetic application test. */
   url?: string | null;
 }
 
@@ -154384,15 +155571,15 @@ export const listTenantGatewayRule: API.PaginatedOperationMethod<
 // =============================================================================
 
 export interface OverTimeDexFleetStatusRequest {
-  /** Path param: Unique identifier for account */
+  /** Path param: Unique identifier linked to an account. */
   accountId: string;
-  /** Query param: Time range beginning in ISO format */
+  /** Query param: Start of the time range to query. Timestamp can be provided in ISO 8601 datetime format or milliseconds since epoch. */
   from: string;
-  /** Query param: Time range end in ISO format */
+  /** Query param: End of the time range to query. Timestamp can be provided in ISO 8601 datetime format or milliseconds since epoch. */
   to: string;
-  /** Query param: Cloudflare colo */
+  /** Query param: Cloudflare colo airport code. */
   colo?: string;
-  /** Query param: Device-specific ID, given as UUID v4 */
+  /** Query param: Device-specific ID, given as UUID. */
   deviceId?: string;
 }
 

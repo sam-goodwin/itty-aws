@@ -5,6 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const GetPaymentMethodConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    active: Schema.optional(Schema.Boolean),
     application: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -128,6 +129,16 @@ export const GetPaymentMethodConfigurationsOutput =
           }),
         ),
         billie: Schema.optional(
+          Schema.Struct({
+            available: Schema.Boolean,
+            display_preference: Schema.Struct({
+              overridable: Schema.NullOr(Schema.Boolean),
+              preference: Schema.Literals(["none", "off", "on"]),
+              value: Schema.Literals(["off", "on"]),
+            }),
+          }),
+        ),
+        bizum: Schema.optional(
           Schema.Struct({
             available: Schema.Boolean,
             display_preference: Schema.Struct({
@@ -503,6 +514,16 @@ export const GetPaymentMethodConfigurationsOutput =
             }),
           }),
         ),
+        scalapay: Schema.optional(
+          Schema.Struct({
+            available: Schema.Boolean,
+            display_preference: Schema.Struct({
+              overridable: Schema.NullOr(Schema.Boolean),
+              preference: Schema.Literals(["none", "off", "on"]),
+              value: Schema.Literals(["off", "on"]),
+            }),
+          }),
+        ),
         sepa_debit: Schema.optional(
           Schema.Struct({
             available: Schema.Boolean,
@@ -514,6 +535,16 @@ export const GetPaymentMethodConfigurationsOutput =
           }),
         ),
         sofort: Schema.optional(
+          Schema.Struct({
+            available: Schema.Boolean,
+            display_preference: Schema.Struct({
+              overridable: Schema.NullOr(Schema.Boolean),
+              preference: Schema.Literals(["none", "off", "on"]),
+              value: Schema.Literals(["off", "on"]),
+            }),
+          }),
+        ),
+        sunbit: Schema.optional(
           Schema.Struct({
             available: Schema.Boolean,
             display_preference: Schema.Struct({
@@ -598,6 +629,7 @@ export type GetPaymentMethodConfigurationsOutput =
  *
  * <p>List payment method configurations</p>
  *
+ * @param active - Whether the configuration is active.
  * @param application - The Connect application to filter by.
  * @param ending_before - A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
  * @param expand - Specifies which fields in the response should be expanded.

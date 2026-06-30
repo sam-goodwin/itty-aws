@@ -2,13 +2,17 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const V1ExchangeOauthTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     grant_type: Schema.optional(
-      Schema.Literals(["authorization_code", "refresh_token"]),
+      Schema.Literals([
+        "authorization_code",
+        "refresh_token",
+        "urn:ietf:params:oauth:grant-type:jwt-bearer",
+      ]),
     ),
     client_id: Schema.optional(Schema.String),
     client_secret: Schema.optional(SensitiveString),
@@ -16,6 +20,7 @@ export const V1ExchangeOauthTokenInput =
     code_verifier: Schema.optional(Schema.String),
     redirect_uri: Schema.optional(Schema.String),
     refresh_token: Schema.optional(SensitiveString),
+    assertion: Schema.optional(Schema.String),
     resource: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
   }).pipe(
@@ -30,8 +35,8 @@ export type V1ExchangeOauthTokenInput = typeof V1ExchangeOauthTokenInput.Type;
 // Output Schema
 export const V1ExchangeOauthTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    access_token: SensitiveString,
-    refresh_token: SensitiveString,
+    access_token: SensitiveOutputString,
+    refresh_token: Schema.optional(SensitiveOutputString),
     expires_in: Schema.Number,
     token_type: Schema.Literals(["Bearer"]),
   });
@@ -40,6 +45,8 @@ export type V1ExchangeOauthTokenOutput = typeof V1ExchangeOauthTokenOutput.Type;
 // The operation
 /**
  * [Beta] Exchange auth code for user's access and refresh token
+ *
+ * Supports `authorization_code`, `refresh_token`, and `urn:ietf:params:oauth:grant-type:jwt-bearer` grant types. The `jwt-bearer` grant type (IDJAG — identity-directed JWT assertion) is in beta and available on Team and Enterprise plans only.
  */
 export const v1ExchangeOauthToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

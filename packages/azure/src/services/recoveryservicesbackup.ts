@@ -20,7 +20,7 @@ export const BackupEnginesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEngines/{backupEngineName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type BackupEnginesGetInput = typeof BackupEnginesGetInput.Type;
@@ -78,7 +78,7 @@ export const BackupEnginesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEngines",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type BackupEnginesListInput = typeof BackupEnginesListInput.Type;
@@ -116,7 +116,7 @@ export const BackupJobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type BackupJobsListInput = typeof BackupJobsListInput.Type;
@@ -153,7 +153,7 @@ export const BackupOperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperationResults/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupOperationResultsGetInput =
@@ -195,7 +195,7 @@ export const BackupOperationStatusesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperations/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupOperationStatusesGetInput =
@@ -261,7 +261,7 @@ export const BackupPoliciesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupPoliciesListInput = typeof BackupPoliciesListInput.Type;
@@ -300,7 +300,7 @@ export const BackupProtectableItemsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupProtectableItemsListInput =
@@ -344,7 +344,7 @@ export const BackupProtectedItemsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectedItems",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupProtectedItemsListInput =
@@ -386,7 +386,7 @@ export const BackupProtectionContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionContainers",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupProtectionContainersListInput =
@@ -427,7 +427,7 @@ export const BackupProtectionIntentListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionIntents",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupProtectionIntentListInput =
@@ -468,7 +468,7 @@ export const BackupResourceEncryptionConfigsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupResourceEncryptionConfigsGetInput =
@@ -566,7 +566,7 @@ export const BackupResourceEncryptionConfigsUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupResourceEncryptionConfigsUpdateInput =
@@ -602,7 +602,7 @@ export const BackupResourceStorageConfigsNonCRRGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupResourceStorageConfigsNonCRRGetInput =
@@ -691,7 +691,7 @@ export const BackupResourceStorageConfigsNonCRRPatchInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupResourceStorageConfigsNonCRRPatchInput =
@@ -762,7 +762,7 @@ export const BackupResourceStorageConfigsNonCRRUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupResourceStorageConfigsNonCRRUpdateInput =
@@ -816,7 +816,7 @@ export const BackupResourceVaultConfigsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupResourceVaultConfigsGetInput =
@@ -909,7 +909,7 @@ export const BackupResourceVaultConfigsPutInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupResourceVaultConfigsPutInput =
@@ -1002,7 +1002,7 @@ export const BackupResourceVaultConfigsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupResourceVaultConfigsUpdateInput =
@@ -1076,7 +1076,7 @@ export const BackupStatusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupStatus",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type BackupStatusGetInput = typeof BackupStatusGetInput.Type;
@@ -1156,7 +1156,7 @@ export const BackupsTriggerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type BackupsTriggerInput = typeof BackupsTriggerInput.Type;
@@ -1194,7 +1194,7 @@ export const BackupUsageSummariesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupUsageSummaries",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupUsageSummariesListInput =
@@ -1239,7 +1239,7 @@ export const BackupWorkloadItemsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/items",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BackupWorkloadItemsListInput =
@@ -1288,7 +1288,7 @@ export const BMSPrepareDataMoveInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/prepareDataMove",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BMSPrepareDataMoveInput = typeof BMSPrepareDataMoveInput.Type;
@@ -1321,7 +1321,7 @@ export const BMSPrepareDataMoveOperationResultGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationResults/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BMSPrepareDataMoveOperationResultGetInput =
@@ -1366,7 +1366,7 @@ export const BMSTriggerDataMoveInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/triggerDataMove",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type BMSTriggerDataMoveInput = typeof BMSTriggerDataMoveInput.Type;
@@ -1399,7 +1399,7 @@ export const DeletedProtectionContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupDeletedProtectionContainers",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type DeletedProtectionContainersListInput =
@@ -1439,7 +1439,7 @@ export const ExportJobsOperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/operationResults/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ExportJobsOperationResultsGetInput =
@@ -1532,7 +1532,7 @@ export const FeatureSupportValidateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupValidateFeatures",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type FeatureSupportValidateInput =
@@ -1591,7 +1591,7 @@ export const FetchTieringCostPostInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/fetchTieringCost",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type FetchTieringCostPostInput = typeof FetchTieringCostPostInput.Type;
@@ -1630,7 +1630,7 @@ export const GetOperationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationStatus/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type GetOperationStatusInput = typeof GetOperationStatusInput.Type;
@@ -1690,7 +1690,7 @@ export const GetTieringCostOperationResultGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/operationResults/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type GetTieringCostOperationResultGetInput =
@@ -1757,7 +1757,7 @@ export const ItemLevelRecoveryConnectionsProvisionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/provisionInstantItemRecovery",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ItemLevelRecoveryConnectionsProvisionInput =
@@ -1803,7 +1803,7 @@ export const ItemLevelRecoveryConnectionsRevokeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/revokeInstantItemRecovery",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ItemLevelRecoveryConnectionsRevokeInput =
@@ -1845,7 +1845,7 @@ export const JobCancellationsTriggerInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/cancel",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type JobCancellationsTriggerInput =
@@ -1884,7 +1884,7 @@ export const JobDetailsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type JobDetailsGetInput = typeof JobDetailsGetInput.Type;
@@ -1937,7 +1937,7 @@ export const JobOperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/operationResults/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type JobOperationResultsGetInput =
@@ -1976,7 +1976,7 @@ export const JobsExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobsExport",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type JobsExportInput = typeof JobsExportInput.Type;
@@ -2021,7 +2021,7 @@ export const MoveRecoveryPointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/move",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type MoveRecoveryPointInput = typeof MoveRecoveryPointInput.Type;
@@ -2054,7 +2054,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.RecoveryServices/operations",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2123,7 +2123,7 @@ export const OperationValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperation",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type OperationValidateInput = typeof OperationValidateInput.Type;
@@ -2171,7 +2171,7 @@ export const PrivateEndpointConnectionDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateEndpointConnectionDeleteInput =
@@ -2209,7 +2209,7 @@ export const PrivateEndpointConnectionGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateEndpointConnectionGetInput =
@@ -2303,7 +2303,7 @@ export const PrivateEndpointConnectionPutInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateEndpointConnectionPutInput =
@@ -2360,7 +2360,7 @@ export const PrivateEndpointGetOperationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}/operationsStatus/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type PrivateEndpointGetOperationStatusInput =
@@ -2425,7 +2425,7 @@ export const ProtectableContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectableContainers",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectableContainersListInput =
@@ -2469,7 +2469,7 @@ export const ProtectedItemOperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationResults/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectedItemOperationResultsGetInput =
@@ -2531,7 +2531,7 @@ export const ProtectedItemOperationStatusesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationsStatus/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectedItemOperationStatusesGetInput =
@@ -2662,7 +2662,7 @@ export const ProtectedItemsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectedItemsCreateOrUpdateInput =
@@ -2723,7 +2723,7 @@ export const ProtectedItemsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectedItemsDeleteInput = typeof ProtectedItemsDeleteInput.Type;
@@ -2767,7 +2767,7 @@ export const ProtectedItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type ProtectedItemsGetInput = typeof ProtectedItemsGetInput.Type;
@@ -2826,7 +2826,7 @@ export const ProtectionContainerOperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/operationResults/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionContainerOperationResultsGetInput =
@@ -2885,7 +2885,7 @@ export const ProtectionContainerRefreshOperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/operationResults/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionContainerRefreshOperationResultsGetInput =
@@ -2925,7 +2925,7 @@ export const ProtectionContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionContainersGetInput =
@@ -2985,7 +2985,7 @@ export const ProtectionContainersInquireInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionContainersInquireInput =
@@ -3027,7 +3027,7 @@ export const ProtectionContainersRefreshInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionContainersRefreshInput =
@@ -3113,7 +3113,7 @@ export const ProtectionContainersRegisterInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionContainersRegisterInput =
@@ -3173,7 +3173,7 @@ export const ProtectionContainersUnregisterInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionContainersUnregisterInput =
@@ -3254,7 +3254,7 @@ export const ProtectionIntentCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionIntentCreateOrUpdateInput =
@@ -3312,7 +3312,7 @@ export const ProtectionIntentDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionIntentDeleteInput =
@@ -3353,7 +3353,7 @@ export const ProtectionIntentGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionIntentGetInput = typeof ProtectionIntentGetInput.Type;
@@ -3429,7 +3429,7 @@ export const ProtectionIntentValidateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupPreValidateProtection",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionIntentValidateInput =
@@ -3495,7 +3495,7 @@ export const ProtectionPoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionPoliciesCreateOrUpdateInput =
@@ -3552,7 +3552,7 @@ export const ProtectionPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionPoliciesDeleteInput =
@@ -3592,7 +3592,7 @@ export const ProtectionPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionPoliciesGetInput = typeof ProtectionPoliciesGetInput.Type;
@@ -3650,7 +3650,7 @@ export const ProtectionPolicyOperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operationResults/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionPolicyOperationResultsGetInput =
@@ -3708,7 +3708,7 @@ export const ProtectionPolicyOperationStatusesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operations/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ProtectionPolicyOperationStatusesGetInput =
@@ -3778,7 +3778,7 @@ export const RecoveryPointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RecoveryPointsGetInput = typeof RecoveryPointsGetInput.Type;
@@ -3838,7 +3838,7 @@ export const RecoveryPointsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RecoveryPointsListInput = typeof RecoveryPointsListInput.Type;
@@ -3882,7 +3882,7 @@ export const RecoveryPointsRecommendedForMoveListInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPointsRecommendedForMove",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RecoveryPointsRecommendedForMoveListInput =
@@ -3923,7 +3923,7 @@ export const ResourceGuardProxiesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ResourceGuardProxiesGetInput =
@@ -3963,7 +3963,7 @@ export const ResourceGuardProxyDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ResourceGuardProxyDeleteInput =
@@ -4001,7 +4001,7 @@ export const ResourceGuardProxyGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ResourceGuardProxyGetInput = typeof ResourceGuardProxyGetInput.Type;
@@ -4074,7 +4074,7 @@ export const ResourceGuardProxyPutInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ResourceGuardProxyPutInput = typeof ResourceGuardProxyPutInput.Type;
@@ -4134,7 +4134,7 @@ export const ResourceGuardProxyUnlockDeleteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ResourceGuardProxyUnlockDeleteInput =
@@ -4203,7 +4203,7 @@ export const RestoresTriggerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RestoresTriggerInput = typeof RestoresTriggerInput.Type;
@@ -4240,7 +4240,7 @@ export const SecurityPINsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupSecurityPIN",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type SecurityPINsGetInput = typeof SecurityPINsGetInput.Type;
@@ -4277,7 +4277,7 @@ export const TieringCostOperationStatusGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/operationsStatus/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type TieringCostOperationStatusGetInput =
@@ -4339,7 +4339,7 @@ export const ValidateOperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationResults/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ValidateOperationResultsGetInput =
@@ -4392,7 +4392,7 @@ export const ValidateOperationStatusesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationsStatuses/{operationId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ValidateOperationStatusesGetInput =
@@ -4460,7 +4460,7 @@ export const ValidateOperationTriggerInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTriggerValidateOperation",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ValidateOperationTriggerInput =

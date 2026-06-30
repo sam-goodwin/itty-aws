@@ -11,7 +11,7 @@ export type V1GetJitAccessInput = typeof V1GetJitAccessInput.Type;
 
 // Output Schema
 export const V1GetJitAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  user_id: Schema.String,
+  user_id: Schema.optional(Schema.String),
   user_roles: Schema.Array(
     Schema.Struct({
       role: Schema.String,
@@ -34,6 +34,7 @@ export const V1GetJitAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         }),
       ),
+      branches_only: Schema.optional(Schema.Boolean),
     }),
   ),
 });

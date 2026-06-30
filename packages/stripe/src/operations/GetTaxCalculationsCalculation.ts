@@ -75,8 +75,10 @@ export const GetTaxCalculationsCalculationOutput =
             "et_tin",
             "eu_oss_vat",
             "eu_vat",
+            "fo_vat",
             "gb_vat",
             "ge_vat",
+            "gi_tin",
             "gn_nif",
             "hk_br",
             "hr_oib",
@@ -85,6 +87,7 @@ export const GetTaxCalculationsCalculationOutput =
             "il_vat",
             "in_gst",
             "is_vat",
+            "it_cf",
             "jp_cn",
             "jp_rn",
             "jp_trn",
@@ -115,6 +118,7 @@ export const GetTaxCalculationsCalculationOutput =
             "pe_ruc",
             "ph_tin",
             "pl_nip",
+            "py_ruc",
             "ro_tin",
             "rs_pib",
             "ru_inn",
@@ -286,7 +290,7 @@ export type GetTaxCalculationsCalculationOutput =
 
 // The operation
 /**
- * Retrieve a Tax Calculation
+ * Retrieve a Calculation
  *
  * <p>Retrieves a Tax <code>Calculation</code> object, if the calculation hasn’t expired.</p>
  *

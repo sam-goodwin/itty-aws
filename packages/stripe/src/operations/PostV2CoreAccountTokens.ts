@@ -131,12 +131,22 @@ export const PostV2CoreAccountTokensInput =
                 proof_of_registration: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),
                 proof_of_ultimate_beneficial_ownership: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),
@@ -626,7 +636,11 @@ export type PostV2CoreAccountTokensOutput =
 /**
  * Create an account token
  *
- * Creates an Account Token.
+ * Create an account token with a publishable key and pass it to the Accounts v2 API to
+ * create or update an account without its data touching your server.
+ * Learn more about [account tokens](https://docs.stripe.com/connect/account-tokens).
+ * In live mode, you can only create account tokens with your application's publishable key.
+ * In test mode, you can create account tokens with your secret key or publishable key.
  */
 export const PostV2CoreAccountTokens = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

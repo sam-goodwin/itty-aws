@@ -21,7 +21,13 @@ export const GetOrganizationMemberOutput =
     id: Schema.String,
     user_id: Schema.String,
     org_id: Schema.String,
-    role: Schema.Literals(["admin", "member"]),
+    role: Schema.Literals([
+      "admin",
+      "member",
+      "editor",
+      "viewer",
+      "collaborator",
+    ]),
     joined_at: Schema.optional(Schema.String),
   });
 export type GetOrganizationMemberOutput =

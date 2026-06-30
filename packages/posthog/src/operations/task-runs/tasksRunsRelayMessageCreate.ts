@@ -34,7 +34,6 @@ export type TasksRunsRelayMessageCreateOutput =
  *
  * Queue a Slack relay workflow to post a run message into the mapped Slack thread.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsRelayMessageCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(

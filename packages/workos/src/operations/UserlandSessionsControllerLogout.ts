@@ -24,8 +24,8 @@ export type UserlandSessionsControllerLogoutOutput =
  *
  * Logout a user from the current [session](/reference/authkit/session).
  *
- * @param session_id - The ID of the session to revoke. This can be extracted from the `sid` claim of the access token.
- * @param return_to - The URL to redirect the user to after session revocation.
+ * @param session_id - The ID of the session. This can be extracted from the `sid` claim of the access token.
+ * @param return_to - The URL to redirect the user to after logout.
  */
 export const UserlandSessionsControllerLogout =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

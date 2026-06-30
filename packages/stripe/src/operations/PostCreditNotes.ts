@@ -291,6 +291,7 @@ export type PostCreditNotesOutput = typeof PostCreditNotesOutput.Type;
  * <p>The sum of refunds, customer balance credits, and outside of Stripe credits must equal the <code>post_payment_amount</code>.</p>
  * <p>You may issue multiple credit notes for an invoice. Each credit note may increment the invoice’s <code>pre_payment_credit_notes_amount</code>,
  * <code>post_payment_credit_notes_amount</code>, or both, depending on the invoice’s <code>amount_remaining</code> at the time of credit note creation.</p>
+ * <p>For invoices that also have refunds created through the <a href="/docs/api/refunds">Refund API</a>, the credit note API subtracts those refund amounts from the maximum creditable amount. This prevents the combined credit notes and refunds from exceeding the invoice amount. If you use both, ensure the combined total does not exceed the invoice’s paid amount.</p>
  */
 export const PostCreditNotes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PostCreditNotesInput,

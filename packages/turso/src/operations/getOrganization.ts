@@ -19,6 +19,7 @@ export const GetOrganizationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       slug: Schema.optional(Schema.String),
       type: Schema.optional(Schema.Literals(["personal", "team"])),
       overages: Schema.optional(Schema.Boolean),
+      require_mfa: Schema.optional(Schema.Boolean),
       blocked_reads: Schema.optional(Schema.Boolean),
       blocked_writes: Schema.optional(Schema.Boolean),
       plan_id: Schema.optional(Schema.String),

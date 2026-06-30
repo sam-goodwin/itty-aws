@@ -46,6 +46,8 @@ export type GetAvailableOperationsOutput =
 // The operation
 /**
  * Indicates which operations can be performed by the Power BI Resource Provider.
+ *
+ * @param api-version - Client Api Version.
  */
 export const getAvailableOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -56,6 +58,7 @@ export const getAvailableOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkspaceCollectionsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -83,7 +86,9 @@ export type WorkspaceCollectionsCheckNameAvailabilityOutput =
 /**
  * Verify the specified Power BI Workspace Collection name is valid and not already in use.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - Azure location
+ * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -93,6 +98,7 @@ export const WorkspaceCollectionsCheckNameAvailability =
 // Input Schema
 export const WorkspaceCollectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -136,8 +142,10 @@ export type WorkspaceCollectionsCreateOutput =
 /**
  * Creates a new Power BI Workspace Collection with the specified properties. A Power BI Workspace Collection contains one or more workspaces, and can be used to provision keys that provide API access to those workspaces.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
+ * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -148,6 +156,7 @@ export const WorkspaceCollectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkspaceCollectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -170,8 +179,10 @@ export type WorkspaceCollectionsDeleteOutput =
 /**
  * Delete a Power BI Workspace Collection.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
+ * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -182,6 +193,7 @@ export const WorkspaceCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkspaceCollectionsGetAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -207,8 +219,10 @@ export type WorkspaceCollectionsGetAccessKeysOutput =
 /**
  * Retrieves the primary and secondary access keys for the specified Power BI Workspace Collection.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
+ * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsGetAccessKeys =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -218,6 +232,7 @@ export const WorkspaceCollectionsGetAccessKeys =
 // Input Schema
 export const WorkspaceCollectionsGetByNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -253,8 +268,10 @@ export type WorkspaceCollectionsGetByNameOutput =
 /**
  * Retrieves an existing Power BI Workspace Collection.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
+ * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsGetByName =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -264,6 +281,7 @@ export const WorkspaceCollectionsGetByName =
 // Input Schema
 export const WorkspaceCollectionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -304,7 +322,9 @@ export type WorkspaceCollectionsListByResourceGroupOutput =
 /**
  * Retrieves all existing Power BI workspace collections in the specified resource group.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Azure resource group
+ * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -313,7 +333,9 @@ export const WorkspaceCollectionsListByResourceGroup =
   }));
 // Input Schema
 export const WorkspaceCollectionsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/workspaceCollections",
@@ -351,6 +373,9 @@ export type WorkspaceCollectionsListBySubscriptionOutput =
 // The operation
 /**
  * Retrieves all existing Power BI workspace collections in the specified subscription.
+ *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -360,6 +385,7 @@ export const WorkspaceCollectionsListBySubscription =
 // Input Schema
 export const WorkspaceCollectionsMigrateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetResourceGroup: Schema.optional(Schema.String),
     resources: Schema.optional(Schema.Array(Schema.String)),
@@ -383,7 +409,9 @@ export type WorkspaceCollectionsMigrateOutput =
 /**
  * Migrates an existing Power BI Workspace Collection to a different resource group and/or subscription.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Azure resource group
+ * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -394,6 +422,7 @@ export const WorkspaceCollectionsMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkspaceCollectionsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.optional(Schema.Literals(["key1", "key2"])),
@@ -420,8 +449,10 @@ export type WorkspaceCollectionsRegenerateKeyOutput =
 /**
  * Regenerates the primary or secondary access key for the specified Power BI Workspace Collection.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
+ * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsRegenerateKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -431,6 +462,7 @@ export const WorkspaceCollectionsRegenerateKey =
 // Input Schema
 export const WorkspaceCollectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -473,8 +505,10 @@ export type WorkspaceCollectionsUpdateOutput =
 /**
  * Update an existing Power BI Workspace Collection with the specified properties.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
+ * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -484,6 +518,7 @@ export const WorkspaceCollectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceCollectionName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -514,8 +549,10 @@ export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
 /**
  * Retrieves all existing Power BI workspaces in the specified workspace collection.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
+ * @param api-version - Client Api Version.
  */
 export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesListInput,

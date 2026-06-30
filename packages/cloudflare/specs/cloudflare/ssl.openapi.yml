@@ -49,6 +49,93 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+  /zones/{zone_id}/settings/auto_origin_tls_kex:
+    get:
+      operationId: getAutoOriginTlsKex
+      description: "When enabled, Cloudflare automatically selects the preferred TLS
+        key-exchange algorithm to use when establishing the TLS connection to
+        the zone's origin, picking from the algorithms permitted by the zone's
+        `origin_tls_compliance_modes` setting. When disabled, the default
+        key-exchange ordering is used.  @example ```ts const autoOriginTLSKex =
+        await client.ssl.autoOriginTLSKex.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  enabled:
+                    type: boolean
+                    description: Whether Auto-Origin TLS KEX selection is enabled for the zone.
+                  modified_on:
+                    type: string
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - enabled
+                  - modified_on
+      x-distilled-response-path: result
+    patch:
+      operationId: patchAutoOriginTlsKex
+      description: "Enable or disable Auto-Origin TLS KEX selection for the zone by
+        sending `{\"enabled\": true}` or `{\"enabled\": false}`. When enabled,
+        Cloudflare runs a periodic scan of the zone's origins to determine the
+        preferred key-exchange algorithm and writes that preference to the edge
+        so it is sent first in the TLS ClientHello to the origin.  @example
+        ```ts const response = await client.ssl.autoOriginTLSKex.edit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', enabled: true, }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Path param
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: "Body param: Controls enablement of Auto-Origin TLS KEX selection
+                    for the zone."
+              required:
+                - enabled
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  enabled:
+                    type: boolean
+                    description: Whether Auto-Origin TLS KEX selection is enabled for the zone.
+                  modified_on:
+                    type: string
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - enabled
+                  - modified_on
+      x-distilled-response-path: result
   /zones/{zone_id}/ssl/certificate_packs/{certificatePackId}:
     get:
       operationId: getCertificatePack
@@ -1209,51 +1296,6 @@ paths:
                       used:
                         type: number
                         description: Quantity Used.
-      x-distilled-response-path: result
-  /zones/{zone_id}/ssl/recommendation:
-    get:
-      operationId: getRecommendation
-      description: Retrieve the SSL/TLS Recommender's recommendation for a
-        zone.  @deprecated SSL/TLS Recommender has been decommissioned in favor
-        of Automatic SSL/TLS
-      parameters:
-        - name: zone_id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  editable:
-                    type: boolean
-                    description: Whether this setting can be updated or not.
-                  modified_on:
-                    type: string
-                    description: Last time this setting was modified.
-                  value:
-                    type: string
-                    enum:
-                      - auto
-                      - custom
-                    description: Current setting of the automatic SSL/TLS.
-                  next_scheduled_scan:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                    description: Next time this zone will be scanned by the Automatic SSL/TLS.
-                required:
-                  - id
-                  - editable
-                  - modified_on
-                  - value
       x-distilled-response-path: result
   /zones/{zone_id}/ssl/universal/settings:
     get:

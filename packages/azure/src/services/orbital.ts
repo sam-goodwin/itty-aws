@@ -12,6 +12,7 @@ import * as T from "../traits.ts";
 export const AvailableGroundStationsListByCapabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    capability: Schema.Literals(["EarthObservation", "Communication"]),
   }).pipe(
     T.Http({
       method: "GET",
@@ -54,6 +55,7 @@ export type AvailableGroundStationsListByCapabilityOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param capability - Ground Station Capability.
  */
 export const AvailableGroundStationsListByCapability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -65,6 +67,7 @@ export const ContactProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    contactProfileName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals([
@@ -168,6 +171,7 @@ export type ContactProfilesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param contactProfileName - Contact Profile name.
  */
 export const ContactProfilesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -179,6 +183,7 @@ export const ContactProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    contactProfileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -201,6 +206,7 @@ export type ContactProfilesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param contactProfileName - Contact Profile name.
  */
 export const ContactProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -213,6 +219,7 @@ export const ContactProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    contactProfileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -252,6 +259,7 @@ export type ContactProfilesGetOutput = typeof ContactProfilesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param contactProfileName - Contact Profile name.
  */
 export const ContactProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContactProfilesGetInput,
@@ -262,6 +270,7 @@ export const ContactProfilesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -318,6 +327,7 @@ export type ContactProfilesListOutput = typeof ContactProfilesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const ContactProfilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContactProfilesListInput,
@@ -327,6 +337,7 @@ export const ContactProfilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ContactProfilesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -384,6 +395,7 @@ export type ContactProfilesListBySubscriptionOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const ContactProfilesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -395,6 +407,7 @@ export const ContactProfilesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    contactProfileName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -437,6 +450,7 @@ export type ContactProfilesUpdateTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param contactProfileName - Contact Profile name.
  */
 export const ContactProfilesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -448,6 +462,8 @@ export const ContactProfilesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ContactsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  spacecraftName: Schema.String.pipe(T.PathParam()),
+  contactName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     provisioningState: Schema.optional(
       Schema.Literals([
@@ -529,6 +545,8 @@ export type ContactsCreateOutput = typeof ContactsCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param spacecraftName - Spacecraft ID.
+ * @param contactName - Contact name.
  */
 export const ContactsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContactsCreateInput,
@@ -538,6 +556,8 @@ export const ContactsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ContactsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  spacecraftName: Schema.String.pipe(T.PathParam()),
+  contactName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -558,6 +578,8 @@ export type ContactsDeleteOutput = typeof ContactsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param spacecraftName - Spacecraft ID.
+ * @param contactName - Contact name.
  */
 export const ContactsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContactsDeleteInput,
@@ -567,6 +589,8 @@ export const ContactsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ContactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  spacecraftName: Schema.String.pipe(T.PathParam()),
+  contactName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -605,6 +629,8 @@ export type ContactsGetOutput = typeof ContactsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param spacecraftName - Spacecraft ID.
+ * @param contactName - Contact name.
  */
 export const ContactsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContactsGetInput,
@@ -614,6 +640,8 @@ export const ContactsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ContactsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  spacecraftName: Schema.String.pipe(T.PathParam()),
+  $skiptoken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -669,6 +697,8 @@ export type ContactsListOutput = typeof ContactsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param spacecraftName - Spacecraft ID.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const ContactsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ContactsListInput,
@@ -679,6 +709,7 @@ export const EdgeSitesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    edgeSiteName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       globalCommunicationsSite: Schema.Struct({
         id: Schema.String,
@@ -727,6 +758,7 @@ export type EdgeSitesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param edgeSiteName - Edge site name.
  */
 export const EdgeSitesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -738,6 +770,7 @@ export const EdgeSitesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const EdgeSitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  edgeSiteName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -758,6 +791,7 @@ export type EdgeSitesDeleteOutput = typeof EdgeSitesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param edgeSiteName - Edge site name.
  */
 export const EdgeSitesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EdgeSitesDeleteInput,
@@ -767,6 +801,7 @@ export const EdgeSitesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EdgeSitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  edgeSiteName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -805,6 +840,7 @@ export type EdgeSitesGetOutput = typeof EdgeSitesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param edgeSiteName - Edge site name.
  */
 export const EdgeSitesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EdgeSitesGetInput,
@@ -814,6 +850,7 @@ export const EdgeSitesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EdgeSitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  $skiptoken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -869,6 +906,7 @@ export type EdgeSitesListOutput = typeof EdgeSitesListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const EdgeSitesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EdgeSitesListInput,
@@ -878,6 +916,7 @@ export const EdgeSitesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EdgeSitesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -935,6 +974,7 @@ export type EdgeSitesListBySubscriptionOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const EdgeSitesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -947,6 +987,7 @@ export const EdgeSitesListL2ConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    edgeSiteName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -979,6 +1020,7 @@ export type EdgeSitesListL2ConnectionsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param edgeSiteName - Edge site name.
  */
 export const EdgeSitesListL2Connections = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -991,6 +1033,7 @@ export const EdgeSitesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    edgeSiteName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -1031,6 +1074,7 @@ export type EdgeSitesUpdateTagsOutput = typeof EdgeSitesUpdateTagsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param edgeSiteName - Edge site name.
  */
 export const EdgeSitesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EdgeSitesUpdateTagsInput,
@@ -1108,6 +1152,7 @@ export const GroundStationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    groundStationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         city: Schema.optional(Schema.String),
@@ -1167,6 +1212,7 @@ export type GroundStationsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param groundStationName - Ground Station name.
  */
 export const GroundStationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1178,6 +1224,7 @@ export const GroundStationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    groundStationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1198,6 +1245,7 @@ export type GroundStationsDeleteOutput = typeof GroundStationsDeleteOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param groundStationName - Ground Station name.
  * @param api-version - The API version to use for this operation.
  */
 export const GroundStationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1211,6 +1259,7 @@ export const GroundStationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    groundStationName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -1250,6 +1299,7 @@ export type GroundStationsGetOutput = typeof GroundStationsGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param groundStationName - Ground Station name.
  * @param api-version - The API version to use for this operation.
  */
 export const GroundStationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1261,6 +1311,7 @@ export const GroundStationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1317,6 +1368,7 @@ export type GroundStationsListOutput = typeof GroundStationsListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const GroundStationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GroundStationsListInput,
@@ -1326,6 +1378,7 @@ export const GroundStationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GroundStationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1383,6 +1436,7 @@ export type GroundStationsListBySubscriptionOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const GroundStationsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1394,6 +1448,7 @@ export const GroundStationsListL2ConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    groundStationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1426,6 +1481,7 @@ export type GroundStationsListL2ConnectionsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param groundStationName - Ground Station name.
  */
 export const GroundStationsListL2Connections =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1437,6 +1493,7 @@ export const GroundStationsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    groundStationName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -1479,6 +1536,7 @@ export type GroundStationsUpdateTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param groundStationName - Ground Station name.
  */
 export const GroundStationsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1491,6 +1549,7 @@ export const L2ConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    l2ConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals([
@@ -1560,6 +1619,7 @@ export type L2ConnectionsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param l2ConnectionName - L2 Connection name.
  */
 export const L2ConnectionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1572,6 +1632,7 @@ export const L2ConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    l2ConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1593,6 +1654,7 @@ export type L2ConnectionsDeleteOutput = typeof L2ConnectionsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param l2ConnectionName - L2 Connection name.
  */
 export const L2ConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L2ConnectionsDeleteInput,
@@ -1602,6 +1664,7 @@ export const L2ConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const L2ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  l2ConnectionName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1642,6 +1705,7 @@ export type L2ConnectionsGetOutput = typeof L2ConnectionsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param l2ConnectionName - L2 Connection name.
  */
 export const L2ConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L2ConnectionsGetInput,
@@ -1652,6 +1716,7 @@ export const L2ConnectionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $skiptoken: Schema.optional(Schema.String),
   },
 ).pipe(
   T.Http({
@@ -1709,6 +1774,7 @@ export type L2ConnectionsListOutput = typeof L2ConnectionsListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const L2ConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L2ConnectionsListInput,
@@ -1718,6 +1784,7 @@ export const L2ConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const L2ConnectionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1775,6 +1842,7 @@ export type L2ConnectionsListBySubscriptionOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const L2ConnectionsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1786,6 +1854,7 @@ export const L2ConnectionsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    l2ConnectionName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -1828,6 +1897,7 @@ export type L2ConnectionsUpdateTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param l2ConnectionName - L2 Connection name.
  */
 export const L2ConnectionsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1941,6 +2011,7 @@ export const SpacecraftsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    spacecraftName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals([
@@ -2022,6 +2093,7 @@ export type SpacecraftsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param spacecraftName - Spacecraft ID.
  */
 export const SpacecraftsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2034,6 +2106,7 @@ export const SpacecraftsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    spacecraftName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -2055,6 +2128,7 @@ export type SpacecraftsDeleteOutput = typeof SpacecraftsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param spacecraftName - Spacecraft ID.
  */
 export const SpacecraftsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SpacecraftsDeleteInput,
@@ -2064,6 +2138,7 @@ export const SpacecraftsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SpacecraftsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  spacecraftName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2102,6 +2177,7 @@ export type SpacecraftsGetOutput = typeof SpacecraftsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param spacecraftName - Spacecraft ID.
  */
 export const SpacecraftsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SpacecraftsGetInput,
@@ -2111,6 +2187,7 @@ export const SpacecraftsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SpacecraftsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  $skiptoken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2166,6 +2243,7 @@ export type SpacecraftsListOutput = typeof SpacecraftsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const SpacecraftsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SpacecraftsListInput,
@@ -2176,6 +2254,7 @@ export const SpacecraftsListAvailableContactsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    spacecraftName: Schema.String.pipe(T.PathParam()),
     contactProfile: Schema.Struct({
       id: Schema.String,
     }),
@@ -2232,6 +2311,7 @@ export type SpacecraftsListAvailableContactsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param spacecraftName - Spacecraft ID.
  */
 export const SpacecraftsListAvailableContacts =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2242,6 +2322,7 @@ export const SpacecraftsListAvailableContacts =
 export const SpacecraftsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2299,6 +2380,7 @@ export type SpacecraftsListBySubscriptionOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const SpacecraftsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2310,6 +2392,7 @@ export const SpacecraftsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    spacecraftName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -2351,6 +2434,7 @@ export type SpacecraftsUpdateTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param spacecraftName - Spacecraft ID.
  */
 export const SpacecraftsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

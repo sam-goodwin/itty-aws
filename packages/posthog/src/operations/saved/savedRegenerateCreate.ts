@@ -8,7 +8,19 @@ export const SavedRegenerateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     short_id: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/projects/{project_id}/saved/{short_id}/regenerate/",
+    }),
+  );
+export type SavedRegenerateCreateInput = typeof SavedRegenerateCreateInput.Type;
+
+// Output Schema
+export const SavedRegenerateCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
+    short_id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     url: Schema.optional(Schema.String),
     data_url: Schema.optional(Schema.NullOr(Schema.String)),
@@ -21,9 +33,15 @@ export const SavedRegenerateCreateInput =
     ),
     has_content: Schema.optional(Schema.Boolean),
     snapshots: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      Schema.Array(
+        Schema.Struct({
+          width: Schema.Number,
+          has_content: Schema.Boolean,
+        }),
+      ),
     ),
     deleted: Schema.optional(Schema.Boolean),
+    block_consent_modals: Schema.optional(Schema.Boolean),
     created_by: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -44,22 +62,13 @@ export const SavedRegenerateCreateInput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     exception: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/projects/{project_id}/saved/{short_id}/regenerate/",
-    }),
-  );
-export type SavedRegenerateCreateInput = typeof SavedRegenerateCreateInput.Type;
-
-// Output Schema
-export const SavedRegenerateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  });
 export type SavedRegenerateCreateOutput =
   typeof SavedRegenerateCreateOutput.Type;
 
 // The operation
 /**
+ * Re-run screenshot generation for a saved heatmap of type 'screenshot'. Clears existing renders and re-renders at every target width; status returns to 'processing'.
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */

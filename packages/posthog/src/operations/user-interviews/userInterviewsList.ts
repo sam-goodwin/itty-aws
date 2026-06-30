@@ -1,18 +1,19 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const UserInterviewsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
+    classifications: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
+    topic: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/user_interviews/",
+      path: "/api/projects/{project_id}/user_interviews/",
     }),
   );
 export type UserInterviewsListInput = typeof UserInterviewsListInput.Type;
@@ -48,8 +49,13 @@ export const UserInterviewsListOutput =
           ),
           created_at: Schema.optional(Schema.String),
           interviewee_emails: Schema.optional(Schema.Array(Schema.String)),
+          interviewee_identifier: Schema.optional(Schema.String),
+          topic: Schema.optional(Schema.NullOr(Schema.String)),
           transcript: Schema.optional(Schema.String),
           summary: Schema.optional(Schema.String),
+          classifications: Schema.optional(
+            Schema.Array(Schema.Literals(["abandoned", "off-topic"])),
+          ),
           audio: Schema.optional(Schema.String),
         }),
       ),
@@ -60,6 +66,7 @@ export type UserInterviewsListOutput = typeof UserInterviewsListOutput.Type;
 // The operation
 /**
  *
+ * @param classifications - Comma-separated classifications; returns responses carrying any of them (OR). Valid values: abandoned, off-topic.
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -67,5 +74,4 @@ export type UserInterviewsListOutput = typeof UserInterviewsListOutput.Type;
 export const userInterviewsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UserInterviewsListInput,
   outputSchema: UserInterviewsListOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

@@ -88,6 +88,11 @@ export const PostAccountsAccountInput =
             requested: Schema.optional(Schema.Boolean),
           }),
         ),
+        app_distribution: Schema.optional(
+          Schema.Struct({
+            requested: Schema.optional(Schema.Boolean),
+          }),
+        ),
         au_becs_debit_payments: Schema.optional(
           Schema.Struct({
             requested: Schema.optional(Schema.Boolean),
@@ -109,6 +114,11 @@ export const PostAccountsAccountInput =
           }),
         ),
         billie_payments: Schema.optional(
+          Schema.Struct({
+            requested: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        bizum_payments: Schema.optional(
           Schema.Struct({
             requested: Schema.optional(Schema.Boolean),
           }),
@@ -308,6 +318,11 @@ export const PostAccountsAccountInput =
             requested: Schema.optional(Schema.Boolean),
           }),
         ),
+        scalapay_payments: Schema.optional(
+          Schema.Struct({
+            requested: Schema.optional(Schema.Boolean),
+          }),
+        ),
         sepa_bank_transfer_payments: Schema.optional(
           Schema.Struct({
             requested: Schema.optional(Schema.Boolean),
@@ -319,6 +334,11 @@ export const PostAccountsAccountInput =
           }),
         ),
         sofort_payments: Schema.optional(
+          Schema.Struct({
+            requested: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        sunbit_payments: Schema.optional(
           Schema.Struct({
             requested: Schema.optional(Schema.Boolean),
           }),
@@ -805,6 +825,9 @@ export const PostAccountsAccountOutput =
         amazon_pay_payments: Schema.optional(
           Schema.Literals(["active", "inactive", "pending"]),
         ),
+        app_distribution: Schema.optional(
+          Schema.Literals(["active", "inactive", "pending"]),
+        ),
         au_becs_debit_payments: Schema.optional(
           Schema.Literals(["active", "inactive", "pending"]),
         ),
@@ -818,6 +841,9 @@ export const PostAccountsAccountOutput =
           Schema.Literals(["active", "inactive", "pending"]),
         ),
         billie_payments: Schema.optional(
+          Schema.Literals(["active", "inactive", "pending"]),
+        ),
+        bizum_payments: Schema.optional(
           Schema.Literals(["active", "inactive", "pending"]),
         ),
         blik_payments: Schema.optional(
@@ -937,6 +963,9 @@ export const PostAccountsAccountOutput =
         satispay_payments: Schema.optional(
           Schema.Literals(["active", "inactive", "pending"]),
         ),
+        scalapay_payments: Schema.optional(
+          Schema.Literals(["active", "inactive", "pending"]),
+        ),
         sepa_bank_transfer_payments: Schema.optional(
           Schema.Literals(["active", "inactive", "pending"]),
         ),
@@ -944,6 +973,9 @@ export const PostAccountsAccountOutput =
           Schema.Literals(["active", "inactive", "pending"]),
         ),
         sofort_payments: Schema.optional(
+          Schema.Literals(["active", "inactive", "pending"]),
+        ),
+        sunbit_payments: Schema.optional(
           Schema.Literals(["active", "inactive", "pending"]),
         ),
         swish_payments: Schema.optional(

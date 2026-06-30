@@ -14,7 +14,7 @@ export const UpdateDatabasePostgresCidrInput =
     cidrs: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
-      method: "PUT",
+      method: "PATCH",
       path: "/organizations/{organization}/databases/{database}/cidrs/{id}",
     }),
   );

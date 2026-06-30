@@ -10,7 +10,7 @@ export const NotebooksKernelExecuteStreamCreateInput =
     short_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.NullOr(Schema.String)),
-    content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    content: Schema.optional(Schema.Unknown),
     text_content: Schema.optional(Schema.NullOr(Schema.String)),
     version: Schema.optional(Schema.Number),
     deleted: Schema.optional(Schema.Boolean),
@@ -51,6 +51,14 @@ export const NotebooksKernelExecuteStreamCreateInput =
       ),
     ),
     user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
+    parent_resource: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          type: Schema.Literals(["account"]),
+          id: Schema.String,
+        }),
+      ),
+    ),
     _create_in_folder: Schema.optional(Schema.String),
   }).pipe(
     T.Http({

@@ -19,7 +19,7 @@ export type ExportEvmAccountOutput = typeof ExportEvmAccountOutput.Type;
 
 // The operation
 /**
- * Export an EVM account
+ * Export EVM account
  *
  * Export an existing EVM account's private key. It is important to store the private key in a secure place after it's exported.
  *

@@ -447,6 +447,11 @@ export const MachinesListVersionsOutput =
             ),
           ),
           size: Schema.optional(Schema.String),
+          spot: Schema.optional(
+            Schema.Struct({
+              max_price_fraction: Schema.optional(Schema.Number),
+            }),
+          ),
           standbys: Schema.optional(Schema.Array(Schema.String)),
           statics: Schema.optional(
             Schema.Array(

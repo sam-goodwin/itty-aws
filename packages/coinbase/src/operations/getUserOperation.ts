@@ -63,13 +63,14 @@ export const GetUserOperationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
     ),
+    expiresAt: Schema.optional(Schema.String),
   },
 );
 export type GetUserOperationOutput = typeof GetUserOperationOutput.Type;
 
 // The operation
 /**
- * Get a user operation
+ * Get user operation
  *
  * Gets a user operation by its hash.
  *

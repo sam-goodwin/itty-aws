@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query userActorPublicDataByUsername($username: String!) {\n  userActorPublicData {\n    byUsername(username: $username) {\n      firstName\n      id\n      lastName\n      profilePhoto\n      username\n    }\n  }\n}";
+  "query userActorPublicDataByUsername($username: String!) {\n  userActorPublicData {\n    byUsername(username: $username) {\n      firstName\n      id\n      lastName\n      primaryAccountProfileImageUrl\n      profilePhoto\n      username\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const UserActorPublicDataByUsernameInput = Schema.Struct({
@@ -24,6 +24,7 @@ export const UserActorPublicDataByUsernameOutput = Schema.Struct({
   firstName: Schema.NullOr(Schema.String),
   id: Schema.String,
   lastName: Schema.NullOr(Schema.String),
+  primaryAccountProfileImageUrl: Schema.String,
   profilePhoto: Schema.String,
   username: Schema.String,
 }).pipe(T.ResponsePath("userActorPublicData.byUsername"));

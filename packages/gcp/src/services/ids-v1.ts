@@ -22,121 +22,6 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Endpoint {
-  /** Output only. The update time timestamp. */
-  updateTime?: string;
-  /** Whether the endpoint should report traffic logs in addition to threat logs. */
-  trafficLogs?: boolean;
-  /** User-provided description of the endpoint */
-  description?: string;
-  /** List of threat IDs to be excepted from generating alerts. */
-  threatExceptions?: ReadonlyArray<string>;
-  /** Output only. The create time timestamp. */
-  createTime?: string;
-  /** Required. Lowest threat severity that this endpoint will alert on. */
-  severity?:
-    | "SEVERITY_UNSPECIFIED"
-    | "INFORMATIONAL"
-    | "LOW"
-    | "MEDIUM"
-    | "HIGH"
-    | "CRITICAL"
-    | (string & {});
-  /** Output only. The IP address of the IDS Endpoint's ILB. */
-  endpointIp?: string;
-  /** Output only. [Output Only] Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** The labels of the endpoint. */
-  labels?: Record<string, string>;
-  /** Output only. Current state of the endpoint. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "READY"
-    | "DELETING"
-    | "UPDATING"
-    | (string & {});
-  /** Output only. The name of the endpoint. */
-  name?: string;
-  /** Output only. [Output Only] Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** Output only. The fully qualified URL of the endpoint's ILB Forwarding Rule. */
-  endpointForwardingRule?: string;
-  /** Required. The fully qualified URL of the network to which the IDS Endpoint is attached. */
-  network?: string;
-}
-
-export const Endpoint: Schema.Schema<Endpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateTime: Schema.optional(Schema.String),
-    trafficLogs: Schema.optional(Schema.Boolean),
-    description: Schema.optional(Schema.String),
-    threatExceptions: Schema.optional(Schema.Array(Schema.String)),
-    createTime: Schema.optional(Schema.String),
-    severity: Schema.optional(Schema.String),
-    endpointIp: Schema.optional(Schema.String),
-    satisfiesPzi: Schema.optional(Schema.Boolean),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    state: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    satisfiesPzs: Schema.optional(Schema.Boolean),
-    endpointForwardingRule: Schema.optional(Schema.String),
-    network: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Endpoint" });
-
-export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.optional(Schema.String),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    code: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Status" });
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CancelOperationRequest",
-  });
-
-export interface OperationMetadata {
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-}
-
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    statusMessage: Schema.optional(Schema.String),
-    apiVersion: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OperationMetadata" });
-
 export interface Empty {}
 
 export const Empty: Schema.Schema<Empty> =
@@ -144,80 +29,44 @@ export const Empty: Schema.Schema<Empty> =
     identifier: "Empty",
   });
 
-export interface ListEndpointsResponse {
-  /** The list of endpoints response. */
-  endpoints?: ReadonlyArray<Endpoint>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const ListEndpointsResponse: Schema.Schema<ListEndpointsResponse> =
+export const Status: Schema.Schema<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpoints: Schema.optional(Schema.Array(Endpoint)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListEndpointsResponse" });
-
-export interface Operation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-}
-
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    error: Schema.optional(Status),
-    name: Schema.optional(Schema.String),
-    done: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "Operation" });
-
-export interface ListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<Operation>;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operations: Schema.optional(Schema.Array(Operation)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListOperationsResponse" });
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
 
 export interface Location {
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: Record<string, unknown>;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
 }
 
 export const Location: Schema.Schema<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    locationId: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
@@ -232,6 +81,157 @@ export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLocationsResponse" });
+
+export interface Operation {
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+}
+
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
+
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
+
+export interface OperationMetadata {
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+}
+
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    target: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
+
+export interface Endpoint {
+  /** Required. The fully qualified URL of the network to which the IDS Endpoint is attached. */
+  network?: string;
+  /** Output only. [Output Only] Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Whether the endpoint should report traffic logs in addition to threat logs. */
+  trafficLogs?: boolean;
+  /** Output only. The update time timestamp. */
+  updateTime?: string;
+  /** Required. Lowest threat severity that this endpoint will alert on. */
+  severity?:
+    | "SEVERITY_UNSPECIFIED"
+    | "INFORMATIONAL"
+    | "LOW"
+    | "MEDIUM"
+    | "HIGH"
+    | "CRITICAL"
+    | (string & {});
+  /** User-provided description of the endpoint */
+  description?: string;
+  /** Output only. The IP address of the IDS Endpoint's ILB. */
+  endpointIp?: string;
+  /** List of threat IDs to be excepted from generating alerts. */
+  threatExceptions?: ReadonlyArray<string>;
+  /** The labels of the endpoint. */
+  labels?: Record<string, string>;
+  /** Output only. The create time timestamp. */
+  createTime?: string;
+  /** Output only. Current state of the endpoint. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "READY"
+    | "DELETING"
+    | "UPDATING"
+    | (string & {});
+  /** Output only. The fully qualified URL of the endpoint's ILB Forwarding Rule. */
+  endpointForwardingRule?: string;
+  /** Output only. The name of the endpoint. */
+  name?: string;
+  /** Output only. [Output Only] Reserved for future use. */
+  satisfiesPzi?: boolean;
+}
+
+export const Endpoint: Schema.Schema<Endpoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    network: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    trafficLogs: Schema.optional(Schema.Boolean),
+    updateTime: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    endpointIp: Schema.optional(Schema.String),
+    threatExceptions: Schema.optional(Schema.Array(Schema.String)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    endpointForwardingRule: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Endpoint" });
+
+export interface ListEndpointsResponse {
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+  /** The list of endpoints response. */
+  endpoints?: ReadonlyArray<Endpoint>;
+}
+
+export const ListEndpointsResponse: Schema.Schema<ListEndpointsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    endpoints: Schema.optional(Schema.Array(Endpoint)),
+  }).annotate({ identifier: "ListEndpointsResponse" });
+
+export interface ListOperationsResponse {
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<Operation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListOperationsResponse" });
 
 // ==========================================================================
 // Errors
@@ -288,27 +288,27 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
@@ -365,6 +365,58 @@ export const getProjectsLocations: API.OperationMethod<
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsOperationsRequest {
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list page size. */
+  pageSize?: number;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The standard list filter. */
+  filter?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+}
+
+export const ListProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+
+export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
+export const ListProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
+  ListProjectsLocationsOperationsRequest,
+  ListProjectsLocationsOperationsResponse,
+  ListProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -442,58 +494,6 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list page token. */
-  pageToken?: string;
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list filter. */
-  filter?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-}
-
-export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
-
-export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
-export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
-
-export type ListProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
-  ListProjectsLocationsOperationsRequest,
-  ListProjectsLocationsOperationsResponse,
-  ListProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
@@ -529,25 +529,25 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 }));
 
 export interface ListProjectsLocationsEndpointsRequest {
-  /** Optional. One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. */
-  orderBy?: string;
-  /** Optional. The filter expression, following the syntax outlined in https://google.aip.dev/160. */
-  filter?: string;
-  /** Optional. The maximum number of endpoints to return. The service may return fewer than this value. */
-  pageSize?: number;
   /** Required. The parent, which owns this collection of endpoints. */
   parent: string;
   /** Optional. A page token, received from a previous `ListEndpoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListEndpoints` must match the call that provided the page token. */
   pageToken?: string;
+  /** Optional. The maximum number of endpoints to return. The service may return fewer than this value. */
+  pageSize?: number;
+  /** Optional. One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. */
+  orderBy?: string;
+  /** Optional. The filter expression, following the syntax outlined in https://google.aip.dev/160. */
+  filter?: string;
 }
 
 export const ListProjectsLocationsEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/endpoints" }),
     svc,
@@ -576,130 +576,6 @@ export const listProjectsLocationsEndpoints: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface GetProjectsLocationsEndpointsRequest {
-  /** Required. The name of the endpoint to retrieve. Format: projects/{project}/locations/{location}/endpoints/{endpoint} */
-  name: string;
-}
-
-export const GetProjectsLocationsEndpointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEndpointsRequest>;
-
-export type GetProjectsLocationsEndpointsResponse = Endpoint;
-export const GetProjectsLocationsEndpointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Endpoint;
-
-export type GetProjectsLocationsEndpointsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single Endpoint. */
-export const getProjectsLocationsEndpoints: API.OperationMethod<
-  GetProjectsLocationsEndpointsRequest,
-  GetProjectsLocationsEndpointsResponse,
-  GetProjectsLocationsEndpointsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsEndpointsRequest,
-  output: GetProjectsLocationsEndpointsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsEndpointsRequest {
-  /** Required. The endpoint identifier. This will be part of the endpoint's resource name. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error. */
-  endpointId?: string;
-  /** Required. The endpoint's parent. */
-  parent: string;
-  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Request body */
-  body?: Endpoint;
-}
-
-export const CreateProjectsLocationsEndpointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpointId: Schema.optional(Schema.String).pipe(T.HttpQuery("endpointId")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(Endpoint).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/endpoints", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEndpointsRequest>;
-
-export type CreateProjectsLocationsEndpointsResponse = Operation;
-export const CreateProjectsLocationsEndpointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsEndpointsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new Endpoint in a given project and location. */
-export const createProjectsLocationsEndpoints: API.OperationMethod<
-  CreateProjectsLocationsEndpointsRequest,
-  CreateProjectsLocationsEndpointsResponse,
-  CreateProjectsLocationsEndpointsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsEndpointsRequest,
-  output: CreateProjectsLocationsEndpointsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsEndpointsRequest {
-  /** Field mask is used to specify the fields to be overwritten in the Endpoint resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
-  updateMask?: string;
-  /** Output only. The name of the endpoint. */
-  name: string;
-  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Request body */
-  body?: Endpoint;
-}
-
-export const PatchProjectsLocationsEndpointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(Endpoint).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEndpointsRequest>;
-
-export type PatchProjectsLocationsEndpointsResponse = Operation;
-export const PatchProjectsLocationsEndpointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsEndpointsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the parameters of a single Endpoint. */
-export const patchProjectsLocationsEndpoints: API.OperationMethod<
-  PatchProjectsLocationsEndpointsRequest,
-  PatchProjectsLocationsEndpointsResponse,
-  PatchProjectsLocationsEndpointsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsEndpointsRequest,
-  output: PatchProjectsLocationsEndpointsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsEndpointsRequest {
@@ -739,4 +615,128 @@ export const deleteProjectsLocationsEndpoints: API.OperationMethod<
   input: DeleteProjectsLocationsEndpointsRequest,
   output: DeleteProjectsLocationsEndpointsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsEndpointsRequest {
+  /** Output only. The name of the endpoint. */
+  name: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Field mask is used to specify the fields to be overwritten in the Endpoint resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
+  updateMask?: string;
+  /** Request body */
+  body?: Endpoint;
+}
+
+export const PatchProjectsLocationsEndpointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Endpoint).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsEndpointsRequest>;
+
+export type PatchProjectsLocationsEndpointsResponse = Operation;
+export const PatchProjectsLocationsEndpointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the parameters of a single Endpoint. */
+export const patchProjectsLocationsEndpoints: API.OperationMethod<
+  PatchProjectsLocationsEndpointsRequest,
+  PatchProjectsLocationsEndpointsResponse,
+  PatchProjectsLocationsEndpointsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsEndpointsRequest,
+  output: PatchProjectsLocationsEndpointsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsEndpointsRequest {
+  /** Required. The endpoint identifier. This will be part of the endpoint's resource name. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error. */
+  endpointId?: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. The endpoint's parent. */
+  parent: string;
+  /** Request body */
+  body?: Endpoint;
+}
+
+export const CreateProjectsLocationsEndpointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpointId: Schema.optional(Schema.String).pipe(T.HttpQuery("endpointId")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(Endpoint).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/endpoints", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsEndpointsRequest>;
+
+export type CreateProjectsLocationsEndpointsResponse = Operation;
+export const CreateProjectsLocationsEndpointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new Endpoint in a given project and location. */
+export const createProjectsLocationsEndpoints: API.OperationMethod<
+  CreateProjectsLocationsEndpointsRequest,
+  CreateProjectsLocationsEndpointsResponse,
+  CreateProjectsLocationsEndpointsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsEndpointsRequest,
+  output: CreateProjectsLocationsEndpointsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsEndpointsRequest {
+  /** Required. The name of the endpoint to retrieve. Format: projects/{project}/locations/{location}/endpoints/{endpoint} */
+  name: string;
+}
+
+export const GetProjectsLocationsEndpointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsEndpointsRequest>;
+
+export type GetProjectsLocationsEndpointsResponse = Endpoint;
+export const GetProjectsLocationsEndpointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Endpoint;
+
+export type GetProjectsLocationsEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single Endpoint. */
+export const getProjectsLocationsEndpoints: API.OperationMethod<
+  GetProjectsLocationsEndpointsRequest,
+  GetProjectsLocationsEndpointsResponse,
+  GetProjectsLocationsEndpointsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsEndpointsRequest,
+  output: GetProjectsLocationsEndpointsResponse,
+  errors: [NotFound, Forbidden],
 }));

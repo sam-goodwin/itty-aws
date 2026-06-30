@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingFingerprintsDestroyInput =
@@ -11,7 +10,7 @@ export const ErrorTrackingFingerprintsDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/error_tracking/fingerprints/{id}/",
+      path: "/api/projects/{project_id}/error_tracking/fingerprints/{id}/",
     }),
   );
 export type ErrorTrackingFingerprintsDestroyInput =
@@ -33,5 +32,4 @@ export const errorTrackingFingerprintsDestroy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingFingerprintsDestroyInput,
     outputSchema: ErrorTrackingFingerprintsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

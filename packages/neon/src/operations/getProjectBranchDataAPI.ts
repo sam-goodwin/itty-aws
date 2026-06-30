@@ -47,9 +47,10 @@ export type GetProjectBranchDataAPIOutput =
 
 // The operation
 /**
- * Get Neon Data API
+ * Retrieve Neon Data API configuration
  *
- * Retrieves the Neon Data API for the specified branch.
+ * Retrieves the Neon Data API configuration for the specified branch,
+ * including endpoint URL, enabled state, and database settings.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

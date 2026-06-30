@@ -11,6 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const DnsResourceReferenceGetByTargetResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         targetResources: Schema.optional(
@@ -64,6 +65,9 @@ export type DnsResourceReferenceGetByTargetResourcesOutput =
 // The operation
 /**
  * Returns the DNS records specified by the referencing targetResourceIds.
+ *
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const DnsResourceReferenceGetByTargetResources =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -88,6 +92,7 @@ export const RecordSetsCreateOrUpdateInput =
       "SRV",
       "TXT",
     ]).pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -305,6 +310,8 @@ export type RecordSetsCreateOrUpdateOutput =
  * @param recordType - The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
  * @param If-Match - The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will be ignored.
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const RecordSetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -329,6 +336,7 @@ export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "SRV",
     "TXT",
   ]).pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -351,6 +359,8 @@ export type RecordSetsDeleteOutput = typeof RecordSetsDeleteOutput.Type;
  * @param relativeRecordSetName - The name of the record set, relative to the name of the zone.
  * @param recordType - The type of DNS record in this record set. Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted).
  * @param If-Match - The etag of the record set. Omit this value to always delete the current record set. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const RecordSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RecordSetsDeleteInput,
@@ -373,6 +383,7 @@ export const RecordSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "SRV",
     "TXT",
   ]).pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -490,6 +501,8 @@ export type RecordSetsGetOutput = typeof RecordSetsGetOutput.Type;
  * @param zoneName - The name of the DNS zone (without a terminating dot).
  * @param relativeRecordSetName - The name of the record set, relative to the name of the zone.
  * @param recordType - The type of DNS record in this record set.
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const RecordSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RecordSetsGetInput,
@@ -500,6 +513,7 @@ export const RecordSetsListAllByDnsZoneInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     zoneName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $recordsetnamesuffix: Schema.optional(Schema.String),
   }).pipe(
@@ -631,6 +645,8 @@ export type RecordSetsListAllByDnsZoneOutput =
  * @param zoneName - The name of the DNS zone (without a terminating dot).
  * @param $top - The maximum number of record sets to return. If not specified, returns up to 100 record sets.
  * @param $recordsetnamesuffix - The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const RecordSetsListAllByDnsZone = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -643,6 +659,7 @@ export const RecordSetsListByDnsZoneInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     zoneName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $recordsetnamesuffix: Schema.optional(Schema.String),
   }).pipe(
@@ -774,6 +791,8 @@ export type RecordSetsListByDnsZoneOutput =
  * @param zoneName - The name of the DNS zone (without a terminating dot).
  * @param $top - The maximum number of record sets to return. If not specified, returns up to 100 record sets.
  * @param $recordsetnamesuffix - The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const RecordSetsListByDnsZone = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -798,6 +817,7 @@ export const RecordSetsListByTypeInput =
       "SRV",
       "TXT",
     ]).pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $recordsetnamesuffix: Schema.optional(Schema.String),
   }).pipe(
@@ -928,6 +948,8 @@ export type RecordSetsListByTypeOutput = typeof RecordSetsListByTypeOutput.Type;
  * @param recordType - The type of record sets to enumerate.
  * @param $top - The maximum number of record sets to return. If not specified, returns up to 100 record sets.
  * @param $recordsetnamesuffix - The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const RecordSetsListByType = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -952,6 +974,7 @@ export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "SRV",
     "TXT",
   ]).pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1167,6 +1190,8 @@ export type RecordSetsUpdateOutput = typeof RecordSetsUpdateOutput.Type;
  * @param relativeRecordSetName - The name of the record set, relative to the name of the zone.
  * @param recordType - The type of DNS record in this record set.
  * @param If-Match - The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting concurrent changes.
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const RecordSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RecordSetsUpdateInput,
@@ -1177,6 +1202,7 @@ export const ZonesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     zoneName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     etag: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -1234,6 +1260,8 @@ export type ZonesCreateOrUpdateOutput = typeof ZonesCreateOrUpdateOutput.Type;
  * @param zoneName - The name of the DNS zone (without a terminating dot).
  * @param If-Match - The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new DNS zone to be created, but to prevent updating an existing zone. Other values will be ignored.
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const ZonesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ZonesCreateOrUpdateInput,
@@ -1243,6 +1271,7 @@ export const ZonesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ZonesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -1263,6 +1292,8 @@ export type ZonesDeleteOutput = typeof ZonesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group.
  * @param zoneName - The name of the DNS zone (without a terminating dot).
  * @param If-Match - The etag of the DNS zone. Omit this value to always delete the current zone. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const ZonesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ZonesDeleteInput,
@@ -1272,6 +1303,7 @@ export const ZonesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ZonesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1297,6 +1329,8 @@ export type ZonesGetOutput = typeof ZonesGetOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group.
  * @param zoneName - The name of the DNS zone (without a terminating dot).
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const ZonesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ZonesGetInput,
@@ -1304,6 +1338,7 @@ export const ZonesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
@@ -1336,6 +1371,8 @@ export type ZonesListOutput = typeof ZonesListOutput.Type;
  * Lists the DNS zones in all resource groups in a subscription.
  *
  * @param $top - The maximum number of DNS zones to return. If not specified, returns up to 100 zones.
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const ZonesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ZonesListInput,
@@ -1345,6 +1382,7 @@ export const ZonesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ZonesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -1381,6 +1419,8 @@ export type ZonesListByResourceGroupOutput =
  *
  * @param resourceGroupName - The name of the resource group.
  * @param $top - The maximum number of record sets to return. If not specified, returns up to 100 record sets.
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const ZonesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1392,6 +1432,7 @@ export const ZonesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ZonesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -1419,6 +1460,8 @@ export type ZonesUpdateOutput = typeof ZonesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group.
  * @param zoneName - The name of the DNS zone (without a terminating dot).
  * @param If-Match - The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
+ * @param api-version - Specifies the API version.
+ * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const ZonesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ZonesUpdateInput,

@@ -49,7 +49,7 @@ export type GetTaxTransactionsTransactionLineItemsOutput =
 
 // The operation
 /**
- * Retrieve a transaction's line items
+ * Retrieve a Transaction's line items
  *
  * <p>Retrieves the line items of a committed standalone transaction as a collection.</p>
  *

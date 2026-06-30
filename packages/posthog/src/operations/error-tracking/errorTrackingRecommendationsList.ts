@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingRecommendationsListInput =
@@ -12,7 +11,7 @@ export const ErrorTrackingRecommendationsListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/recommendations/",
+      path: "/api/projects/{project_id}/error_tracking/recommendations/",
     }),
   );
 export type ErrorTrackingRecommendationsListInput =
@@ -30,9 +29,10 @@ export const ErrorTrackingRecommendationsListOutput =
           id: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
           meta: Schema.optional(Schema.Unknown),
+          completed: Schema.optional(Schema.Boolean),
+          status: Schema.optional(Schema.String),
           computed_at: Schema.optional(Schema.NullOr(Schema.String)),
           dismissed_at: Schema.optional(Schema.NullOr(Schema.String)),
-          next_refresh_at: Schema.optional(Schema.NullOr(Schema.String)),
           created_at: Schema.optional(Schema.String),
           updated_at: Schema.optional(Schema.String),
         }),
@@ -53,5 +53,4 @@ export const errorTrackingRecommendationsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingRecommendationsListInput,
     outputSchema: ErrorTrackingRecommendationsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

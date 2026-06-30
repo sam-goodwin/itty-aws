@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ApprovalPoliciesPartialUpdateInput =
@@ -38,7 +37,7 @@ export const ApprovalPoliciesPartialUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/approval_policies/{id}/",
+      path: "/api/projects/{project_id}/approval_policies/{id}/",
     }),
   );
 export type ApprovalPoliciesPartialUpdateInput =
@@ -89,5 +88,4 @@ export const approvalPoliciesPartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ApprovalPoliciesPartialUpdateInput,
     outputSchema: ApprovalPoliciesPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

@@ -31,7 +31,7 @@ export const EnvironmentsDefaultEvaluationContextsCreateInput =
     test_account_filters_default_checked: Schema.optional(
       Schema.NullOr(Schema.Boolean),
     ),
-    path_cleaning_filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    path_cleaning_filters: Schema.optional(Schema.Unknown),
     is_demo: Schema.optional(Schema.Boolean),
     timezone: Schema.optional(
       Schema.Literals([
@@ -637,7 +637,7 @@ export const EnvironmentsDefaultEvaluationContextsCreateInput =
     person_display_name_properties: Schema.optional(
       Schema.NullOr(Schema.Array(Schema.String)),
     ),
-    correlation_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    correlation_config: Schema.optional(Schema.Unknown),
     autocapture_opt_out: Schema.optional(Schema.NullOr(Schema.Boolean)),
     autocapture_exceptions_opt_in: Schema.optional(
       Schema.NullOr(Schema.Boolean),
@@ -645,14 +645,10 @@ export const EnvironmentsDefaultEvaluationContextsCreateInput =
     autocapture_web_vitals_opt_in: Schema.optional(
       Schema.NullOr(Schema.Boolean),
     ),
-    autocapture_web_vitals_allowed_metrics: Schema.optional(
-      Schema.NullOr(Schema.Unknown),
-    ),
-    autocapture_exceptions_errors_to_ignore: Schema.optional(
-      Schema.NullOr(Schema.Unknown),
-    ),
+    autocapture_web_vitals_allowed_metrics: Schema.optional(Schema.Unknown),
+    autocapture_exceptions_errors_to_ignore: Schema.optional(Schema.Unknown),
     capture_console_log_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    logs_settings: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    logs_settings: Schema.optional(Schema.Unknown),
     capture_performance_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
     session_recording_opt_in: Schema.optional(Schema.Boolean),
     session_recording_sample_rate: Schema.optional(
@@ -661,20 +657,16 @@ export const EnvironmentsDefaultEvaluationContextsCreateInput =
     session_recording_minimum_duration_milliseconds: Schema.optional(
       Schema.NullOr(Schema.Number),
     ),
-    session_recording_linked_flag: Schema.optional(
-      Schema.NullOr(Schema.Unknown),
-    ),
+    session_recording_linked_flag: Schema.optional(Schema.Unknown),
     session_recording_network_payload_capture_config: Schema.optional(
-      Schema.NullOr(Schema.Unknown),
+      Schema.Unknown,
     ),
-    session_recording_masking_config: Schema.optional(
-      Schema.NullOr(Schema.Unknown),
-    ),
+    session_recording_masking_config: Schema.optional(Schema.Unknown),
     session_recording_url_trigger_config: Schema.optional(
-      Schema.NullOr(Schema.Array(Schema.NullOr(Schema.Unknown))),
+      Schema.NullOr(Schema.Array(Schema.Unknown)),
     ),
     session_recording_url_blocklist_config: Schema.optional(
-      Schema.NullOr(Schema.Array(Schema.NullOr(Schema.Unknown))),
+      Schema.NullOr(Schema.Array(Schema.Unknown)),
     ),
     session_recording_event_trigger_config: Schema.optional(
       Schema.NullOr(Schema.Array(Schema.NullOr(Schema.String))),
@@ -682,14 +674,12 @@ export const EnvironmentsDefaultEvaluationContextsCreateInput =
     session_recording_trigger_match_type_config: Schema.optional(
       Schema.NullOr(Schema.String),
     ),
-    session_recording_trigger_groups: Schema.optional(
-      Schema.NullOr(Schema.Unknown),
-    ),
+    session_recording_trigger_groups: Schema.optional(Schema.Unknown),
     session_recording_retention_period: Schema.optional(
       Schema.Literals(["30d", "90d", "1y", "5y"]),
     ),
-    session_replay_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    survey_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    session_replay_config: Schema.optional(Schema.Unknown),
+    survey_config: Schema.optional(Schema.Unknown),
     week_start_day: Schema.optional(Schema.Unknown),
     primary_dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
     live_events_columns: Schema.optional(
@@ -703,11 +693,9 @@ export const EnvironmentsDefaultEvaluationContextsCreateInput =
       Schema.NullOr(Schema.Boolean),
     ),
     inject_web_apps: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    extra_settings: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    modifiers: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    has_completed_onboarding_for: Schema.optional(
-      Schema.NullOr(Schema.Unknown),
-    ),
+    extra_settings: Schema.optional(Schema.Unknown),
+    modifiers: Schema.optional(Schema.Unknown),
+    has_completed_onboarding_for: Schema.optional(Schema.Unknown),
     surveys_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
     heatmaps_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
     flags_persistence_default: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -912,9 +900,10 @@ export const EnvironmentsDefaultEvaluationContextsCreateInput =
         signup_event: Schema.optional(Schema.Unknown),
         subscription_event: Schema.optional(Schema.Unknown),
         payment_event: Schema.optional(Schema.Unknown),
+        account_group_type_index: Schema.optional(Schema.NullOr(Schema.Number)),
       }),
     ),
-    onboarding_tasks: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    onboarding_tasks: Schema.optional(Schema.Unknown),
     base_currency: Schema.optional(
       Schema.Literals([
         "AED",
@@ -1079,11 +1068,14 @@ export const EnvironmentsDefaultEvaluationContextsCreateInput =
     ),
     business_model: Schema.optional(Schema.Unknown),
     conversations_enabled: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    conversations_settings: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    conversations_settings: Schema.optional(Schema.Unknown),
     proactive_tasks_enabled: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    effective_membership_level: Schema.optional(
-      Schema.NullOr(Schema.Literals([1, 8, 15])),
+    workflows_config: Schema.optional(
+      Schema.Struct({
+        capture_workflows_engagement_events: Schema.optional(Schema.Boolean),
+      }),
     ),
+    effective_membership_level: Schema.optional(Schema.Literals([1, 8, 15])),
     has_group_types: Schema.optional(Schema.Boolean),
     group_types: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1163,9 +1155,15 @@ export const EnvironmentsDefaultEvaluationContextsCreateInput =
           "test_endpoint",
           "create_early_access_feature",
           "update_feature_stage",
+          "use_posthog_ai",
+          "use_posthog_code",
+          "use_posthog_mcp",
+          "use_posthog_in_slack",
         ]),
       ),
     ),
+    event_retention_months: Schema.optional(Schema.Number),
+    events_retention_enforced: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",

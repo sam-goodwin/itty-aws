@@ -32,7 +32,7 @@ export type ListApiKeysOutput = typeof ListApiKeysOutput.Type;
  * Retrieves the API keys for your Neon account.
  * The response does not include API key tokens. A token is only provided when creating an API key.
  * API keys can also be managed in the Neon Console.
- * For more information, see [Manage API keys](https://neon.tech/docs/manage/api-keys/).
+ * For more information, see [Manage API keys](https://neon.com/docs/manage/api-keys/).
  */
 export const listApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListApiKeysInput,

@@ -38,7 +38,7 @@ export type UpdateSnapshotOutput = typeof UpdateSnapshotOutput.Type;
 /**
  * Update snapshot
  *
- * Update the specified snapshot.
+ * Updates the specified snapshot.
  * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID

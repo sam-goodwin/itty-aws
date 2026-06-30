@@ -419,6 +419,11 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
       ),
       size: Schema.optional(Schema.String),
+      spot: Schema.optional(
+        Schema.Struct({
+          max_price_fraction: Schema.optional(Schema.Number),
+        }),
+      ),
       standbys: Schema.optional(Schema.Array(Schema.String)),
       statics: Schema.optional(
         Schema.Array(
@@ -450,7 +455,6 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   current_version: Schema.optional(Schema.String),
   lease_ttl: Schema.optional(Schema.Number),
-  lsvd: Schema.optional(Schema.Boolean),
   min_secrets_version: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.String),
   region: Schema.optional(Schema.String),
@@ -886,6 +890,11 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
       ),
       size: Schema.optional(Schema.String),
+      spot: Schema.optional(
+        Schema.Struct({
+          max_price_fraction: Schema.optional(Schema.Number),
+        }),
+      ),
       standbys: Schema.optional(Schema.Array(Schema.String)),
       statics: Schema.optional(
         Schema.Array(
@@ -1353,6 +1362,11 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
       ),
       size: Schema.optional(Schema.String),
+      spot: Schema.optional(
+        Schema.Struct({
+          max_price_fraction: Schema.optional(Schema.Number),
+        }),
+      ),
       standbys: Schema.optional(Schema.Array(Schema.String)),
       statics: Schema.optional(
         Schema.Array(

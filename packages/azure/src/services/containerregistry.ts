@@ -1821,7 +1821,11 @@ export const RegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RegistriesGetBuildSourceUploadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    registryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listBuildSourceUploadUrl",
@@ -1843,6 +1847,11 @@ export type RegistriesGetBuildSourceUploadUrlOutput =
 // The operation
 /**
  * Get the upload location for the user to be able to upload the source.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
  */
 export const RegistriesGetBuildSourceUploadUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2300,6 +2309,9 @@ export const RegistriesRegenerateCredential =
 // Input Schema
 export const RegistriesScheduleRunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    registryName: Schema.String.pipe(T.PathParam()),
     type: Schema.String,
     isArchiveEnabled: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -2324,6 +2336,11 @@ export type RegistriesScheduleRunOutput =
 // The operation
 /**
  * Schedules a new run based on the request parameters and add it to the run queue.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
  */
 export const RegistriesScheduleRun = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2787,6 +2804,9 @@ export const ReplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
   runId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2805,6 +2825,10 @@ export type RunsCancelOutput = typeof RunsCancelOutput.Type;
 /**
  * Cancel an existing run.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
  * @param runId - The run ID.
  */
 export const RunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2813,6 +2837,9 @@ export const RunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
   runId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2835,6 +2862,10 @@ export type RunsGetOutput = typeof RunsGetOutput.Type;
 /**
  * Gets the detailed information for a given run.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
  * @param runId - The run ID.
  */
 export const RunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2843,6 +2874,9 @@ export const RunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RunsGetLogSasUrlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
   runId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2865,6 +2899,10 @@ export type RunsGetLogSasUrlOutput = typeof RunsGetLogSasUrlOutput.Type;
 /**
  * Gets a link to download the run logs.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
  * @param runId - The run ID.
  */
 export const RunsGetLogSasUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2873,6 +2911,9 @@ export const RunsGetLogSasUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
 }).pipe(
@@ -2903,6 +2944,10 @@ export type RunsListOutput = typeof RunsListOutput.Type;
 /**
  * Gets all the runs for a registry.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
  * @param $filter - The runs filter to apply on the operation. Arithmetic operators are not supported. The allowed string function is 'contains'. All logical operators except 'Not', 'Has', 'All' are allowed.
  * @param $top - $top is supported for get list of runs, which limits the maximum number of runs to return.
  */
@@ -2912,6 +2957,9 @@ export const RunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RunsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
   runId: Schema.String.pipe(T.PathParam()),
   isArchiveEnabled: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -2935,6 +2983,10 @@ export type RunsUpdateOutput = typeof RunsUpdateOutput.Type;
 /**
  * Patch the run properties.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
  * @param runId - The run ID.
  */
 export const RunsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3219,6 +3271,10 @@ export const ScopeMapsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  taskName: Schema.String.pipe(T.PathParam()),
   identity: Schema.optional(
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
@@ -3397,15 +3453,24 @@ export type TasksCreateOutput = typeof TasksCreateOutput.Type;
 // The operation
 /**
  * Creates a task for a container registry with the specified parameters.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
+ * @param taskName - The name of the container registry task.
  */
 export const TasksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TasksCreateInput,
   outputSchema: TasksCreateOutput,
 }));
 // Input Schema
-export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  taskName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
@@ -3421,13 +3486,24 @@ export type TasksDeleteOutput = typeof TasksDeleteOutput.Type;
 // The operation
 /**
  * Deletes a specified task.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
+ * @param taskName - The name of the container registry task.
  */
 export const TasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TasksDeleteInput,
   outputSchema: TasksDeleteOutput,
 }));
 // Input Schema
-export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  taskName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
@@ -3449,15 +3525,24 @@ export type TasksGetOutput = typeof TasksGetOutput.Type;
 // The operation
 /**
  * Get the properties of a specified task.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
+ * @param taskName - The name of the container registry task.
  */
 export const TasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TasksGetInput,
   outputSchema: TasksGetOutput,
 }));
 // Input Schema
-export const TasksGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TasksGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  taskName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}/listDetails",
@@ -3479,15 +3564,23 @@ export type TasksGetDetailsOutput = typeof TasksGetDetailsOutput.Type;
 // The operation
 /**
  * Returns a task with extended information that includes all secrets.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
+ * @param taskName - The name of the container registry task.
  */
 export const TasksGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TasksGetDetailsInput,
   outputSchema: TasksGetDetailsOutput,
 }));
 // Input Schema
-export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks",
@@ -3516,6 +3609,11 @@ export type TasksListOutput = typeof TasksListOutput.Type;
 // The operation
 /**
  * Lists all the tasks for a specified container registry.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
  */
 export const TasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TasksListInput,
@@ -3523,6 +3621,10 @@ export const TasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  taskName: Schema.String.pipe(T.PathParam()),
   identity: Schema.optional(
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
@@ -3686,6 +3788,12 @@ export type TasksUpdateOutput = typeof TasksUpdateOutput.Type;
 // The operation
 /**
  * Updates a task with the specified parameters.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param registryName - The name of the container registry.
+ * @param api-version - The client API version.
+ * @param taskName - The name of the container registry task.
  */
 export const TasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TasksUpdateInput,

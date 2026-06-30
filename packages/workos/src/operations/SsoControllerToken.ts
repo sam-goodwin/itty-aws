@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const SsoControllerTokenInput =
@@ -18,7 +18,7 @@ export type SsoControllerTokenInput = typeof SsoControllerTokenInput.Type;
 export const SsoControllerTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token_type: Schema.optional(Schema.String),
-    access_token: Schema.optional(SensitiveString),
+    access_token: Schema.optional(SensitiveOutputString),
     expires_in: Schema.optional(Schema.Number),
     profile: Schema.optional(
       Schema.Struct({
@@ -85,6 +85,7 @@ export const SsoControllerTokenOutput =
         email: Schema.optional(Schema.String),
         first_name: Schema.optional(Schema.NullOr(Schema.String)),
         last_name: Schema.optional(Schema.NullOr(Schema.String)),
+        name: Schema.optional(Schema.NullOr(Schema.String)),
         role: Schema.optional(Schema.Unknown),
         roles: Schema.optional(Schema.Unknown),
         groups: Schema.optional(Schema.Array(Schema.String)),
@@ -99,8 +100,8 @@ export const SsoControllerTokenOutput =
     oauth_tokens: Schema.optional(
       Schema.Struct({
         provider: Schema.String,
-        refresh_token: SensitiveString,
-        access_token: SensitiveString,
+        refresh_token: SensitiveOutputString,
+        access_token: SensitiveOutputString,
         expires_at: Schema.Number,
         scopes: Schema.Array(Schema.String),
       }),

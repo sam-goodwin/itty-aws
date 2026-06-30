@@ -26,7 +26,7 @@ export type GetSolanaAccountByNameOutput =
 
 // The operation
 /**
- * Get a Solana account by name
+ * Get Solana account by name
  *
  * Gets a Solana account by its name.
  *

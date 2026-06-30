@@ -12,6 +12,9 @@ import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const CustomizationPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    regionId: Schema.String.pipe(T.PathParam()),
+    pcName: Schema.String.pipe(T.PathParam()),
     customizationPolicyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -106,6 +109,10 @@ export type CustomizationPoliciesGetOutput =
  *
  * Returns customization policy by its name
  *
+ * @param api-version - Client API version.
+ * @param subscriptionId - The subscription ID.
+ * @param regionId - The region Id (westus, eastus)
+ * @param pcName - The private cloud name
  * @param customizationPolicyName - customization policy name
  */
 export const customizationPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -117,6 +124,9 @@ export const customizationPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CustomizationPoliciesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    regionId: Schema.String.pipe(T.PathParam()),
+    pcName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -220,6 +230,10 @@ export type CustomizationPoliciesListOutput =
  *
  * Returns list of customization policies in region for private cloud
  *
+ * @param subscriptionId - The subscription ID.
+ * @param regionId - The region Id (westus, eastus)
+ * @param pcName - The private cloud name
+ * @param api-version - Client API version.
  * @param $filter - The filter to apply on the list operation. only type is allowed here as a filter e.g. $filter=type eq 'xxxx'
  */
 export const customizationPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -231,6 +245,8 @@ export const customizationPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DedicatedCloudNodesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCloudNodeName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     location: Schema.String,
@@ -329,7 +345,11 @@ export type DedicatedCloudNodesCreateOrUpdateOutput =
  *
  * Returns dedicated cloud node by its name
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
+ * @param Referer - referer url
  * @param dedicatedCloudNodeName - dedicated cloud node name
+ * @param api-version - Client API version.
  */
 export const DedicatedCloudNodesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -339,6 +359,8 @@ export const DedicatedCloudNodesCreateOrUpdate =
 // Input Schema
 export const DedicatedCloudNodesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCloudNodeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -362,7 +384,10 @@ export type DedicatedCloudNodesDeleteOutput =
  *
  * Delete dedicated cloud node
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
  * @param dedicatedCloudNodeName - dedicated cloud node name
+ * @param api-version - Client API version.
  */
 export const DedicatedCloudNodesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -373,6 +398,8 @@ export const DedicatedCloudNodesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DedicatedCloudNodesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCloudNodeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -434,7 +461,10 @@ export type DedicatedCloudNodesGetOutput =
  *
  * Returns dedicated cloud node
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
  * @param dedicatedCloudNodeName - dedicated cloud node name
+ * @param api-version - Client API version.
  */
 export const DedicatedCloudNodesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -445,6 +475,8 @@ export const DedicatedCloudNodesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DedicatedCloudNodesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -515,6 +547,9 @@ export type DedicatedCloudNodesListByResourceGroupOutput =
  *
  * Returns list of dedicate cloud nodes within resource group
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
+ * @param api-version - Client API version.
  * @param $filter - The filter to apply on the list operation
  * @param $top - The maximum number of record sets to return
  * @param $skipToken - to be used by nextLink implementation
@@ -527,6 +562,7 @@ export const DedicatedCloudNodesListByResourceGroup =
 // Input Schema
 export const DedicatedCloudNodesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -597,6 +633,8 @@ export type DedicatedCloudNodesListBySubscriptionOutput =
  *
  * Returns list of dedicate cloud nodes within subscription
  *
+ * @param subscriptionId - The subscription ID.
+ * @param api-version - Client API version.
  * @param $filter - The filter to apply on the list operation
  * @param $top - The maximum number of record sets to return
  * @param $skipToken - to be used by nextLink implementation
@@ -609,6 +647,8 @@ export const DedicatedCloudNodesListBySubscription =
 // Input Schema
 export const DedicatedCloudNodesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCloudNodeName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Unknown),
   }).pipe(
@@ -671,7 +711,10 @@ export type DedicatedCloudNodesUpdateOutput =
  *
  * Patches dedicated node properties
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
  * @param dedicatedCloudNodeName - dedicated cloud node name
+ * @param api-version - Client API version.
  */
 export const DedicatedCloudNodesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -682,6 +725,8 @@ export const DedicatedCloudNodesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DedicatedCloudServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCloudServiceName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     location: Schema.String,
@@ -746,7 +791,10 @@ export type DedicatedCloudServicesCreateOrUpdateOutput =
  *
  * Create dedicate cloud service
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
  * @param dedicatedCloudServiceName - dedicated cloud Service name
+ * @param api-version - Client API version.
  */
 export const DedicatedCloudServicesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -756,6 +804,8 @@ export const DedicatedCloudServicesCreateOrUpdate =
 // Input Schema
 export const DedicatedCloudServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCloudServiceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -779,7 +829,10 @@ export type DedicatedCloudServicesDeleteOutput =
  *
  * Delete dedicate cloud service
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
  * @param dedicatedCloudServiceName - dedicated cloud service name
+ * @param api-version - Client API version.
  */
 export const DedicatedCloudServicesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -789,6 +842,8 @@ export const DedicatedCloudServicesDelete =
 // Input Schema
 export const DedicatedCloudServicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCloudServiceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -833,7 +888,10 @@ export type DedicatedCloudServicesGetOutput =
  *
  * Returns Dedicate Cloud Service
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
  * @param dedicatedCloudServiceName - dedicated cloud Service name
+ * @param api-version - Client API version.
  */
 export const DedicatedCloudServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -844,6 +902,8 @@ export const DedicatedCloudServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DedicatedCloudServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -897,6 +957,9 @@ export type DedicatedCloudServicesListByResourceGroupOutput =
  *
  * Returns list of dedicated cloud services within a resource group
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
+ * @param api-version - Client API version.
  * @param $filter - The filter to apply on the list operation
  * @param $top - The maximum number of record sets to return
  * @param $skipToken - to be used by nextLink implementation
@@ -909,6 +972,7 @@ export const DedicatedCloudServicesListByResourceGroup =
 // Input Schema
 export const DedicatedCloudServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -962,6 +1026,8 @@ export type DedicatedCloudServicesListBySubscriptionOutput =
  *
  * Returns list of dedicated cloud services within a subscription
  *
+ * @param subscriptionId - The subscription ID.
+ * @param api-version - Client API version.
  * @param $filter - The filter to apply on the list operation
  * @param $top - The maximum number of record sets to return
  * @param $skipToken - to be used by nextLink implementation
@@ -974,6 +1040,8 @@ export const DedicatedCloudServicesListBySubscription =
 // Input Schema
 export const DedicatedCloudServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCloudServiceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Unknown),
   }).pipe(
@@ -1019,7 +1087,10 @@ export type DedicatedCloudServicesUpdateOutput =
  *
  * Patch dedicated cloud service's properties
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
  * @param dedicatedCloudServiceName - dedicated cloud service name
+ * @param api-version - Client API version.
  */
 export const DedicatedCloudServicesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1028,6 +1099,8 @@ export const DedicatedCloudServicesUpdate =
   }));
 // Input Schema
 export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  regionId: Schema.String.pipe(T.PathParam()),
   operationId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1060,6 +1133,10 @@ export type OperationsGetOutput = typeof OperationsGetOutput.Type;
  *
  * Return an async operation
  *
+ * @param subscriptionId - The subscription ID.
+ * @param api-version - Client API version.
+ * @param regionId - The region Id (westus, eastus)
+ * @param Referer - referer url
  * @param operationId - operation id
  */
 export const OperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1127,15 +1204,19 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  * Implements list of available operations
  *
  * Return list of operations
+ *
+ * @param api-version - Client API version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PrivateCloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const PrivateCloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  pcName: Schema.String.pipe(T.PathParam()),
+  regionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}",
@@ -1319,6 +1400,11 @@ export type PrivateCloudsGetOutput = typeof PrivateCloudsGetOutput.Type;
  * Implements private cloud GET method
  *
  * Returns private cloud by its name
+ *
+ * @param subscriptionId - The subscription ID.
+ * @param pcName - The private cloud name
+ * @param regionId - The region Id (westus, eastus)
+ * @param api-version - Client API version.
  */
 export const PrivateCloudsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PrivateCloudsGetInput,
@@ -1326,7 +1412,10 @@ export const PrivateCloudsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PrivateCloudsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    regionId: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -1527,6 +1616,10 @@ export type PrivateCloudsListOutput = typeof PrivateCloudsListOutput.Type;
  * Implements private cloud list GET method
  *
  * Returns list of private clouds in particular region
+ *
+ * @param subscriptionId - The subscription ID.
+ * @param regionId - The region Id (westus, eastus)
+ * @param api-version - Client API version.
  */
 export const PrivateCloudsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PrivateCloudsListInput,
@@ -1534,6 +1627,9 @@ export const PrivateCloudsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ResourcePoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  regionId: Schema.String.pipe(T.PathParam()),
+  pcName: Schema.String.pipe(T.PathParam()),
   resourcePoolName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1567,6 +1663,10 @@ export type ResourcePoolsGetOutput = typeof ResourcePoolsGetOutput.Type;
  *
  * Returns resource pool templates by its name
  *
+ * @param subscriptionId - The subscription ID.
+ * @param api-version - Client API version.
+ * @param regionId - The region Id (westus, eastus)
+ * @param pcName - The private cloud name
  * @param resourcePoolName - resource pool id (vsphereId)
  */
 export const ResourcePoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1575,7 +1675,11 @@ export const ResourcePoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ResourcePoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    regionId: Schema.String.pipe(T.PathParam()),
+    pcName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -1613,6 +1717,11 @@ export type ResourcePoolsListOutput = typeof ResourcePoolsListOutput.Type;
  * Implements get of resource pools list
  *
  * Returns list of resource pools in region for private cloud
+ *
+ * @param subscriptionId - The subscription ID.
+ * @param regionId - The region Id (westus, eastus)
+ * @param pcName - The private cloud name
+ * @param api-version - Client API version.
  */
 export const ResourcePoolsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcePoolsListInput,
@@ -1621,6 +1730,8 @@ export const ResourcePoolsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SkusAvailabilityListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    regionId: Schema.String.pipe(T.PathParam()),
     skuId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1658,7 +1769,10 @@ export type SkusAvailabilityListOutput = typeof SkusAvailabilityListOutput.Type;
  *
  * Returns list of available resources in region
  *
+ * @param subscriptionId - The subscription ID.
+ * @param regionId - The region Id (westus, eastus)
  * @param skuId - sku id, if no sku is passed availability for all skus will be returned
+ * @param api-version - Client API version.
  */
 export const SkusAvailabilityList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1668,6 +1782,8 @@ export const SkusAvailabilityList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  regionId: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -1714,7 +1830,10 @@ export type UsagesListOutput = typeof UsagesListOutput.Type;
  *
  * Returns list of usage in region
  *
+ * @param subscriptionId - The subscription ID.
+ * @param regionId - The region Id (westus, eastus)
  * @param $filter - The filter to apply on the list operation. only name.value is allowed here as a filter e.g. $filter=name.value eq 'xxxx'
+ * @param api-version - Client API version.
  */
 export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
@@ -1723,6 +1842,8 @@ export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const VirtualMachinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     location: Schema.String,
@@ -2005,7 +2126,11 @@ export type VirtualMachinesCreateOrUpdateOutput =
  *
  * Create Or Update Virtual Machine
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
+ * @param Referer - referer url
  * @param virtualMachineName - virtual machine name
+ * @param api-version - Client API version.
  */
 export const VirtualMachinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2015,6 +2140,8 @@ export const VirtualMachinesCreateOrUpdate =
 // Input Schema
 export const VirtualMachinesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2037,7 +2164,11 @@ export type VirtualMachinesDeleteOutput =
  *
  * Delete virtual machine
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
+ * @param Referer - referer url
  * @param virtualMachineName - virtual machine name
+ * @param api-version - Client API version.
  */
 export const VirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2048,6 +2179,8 @@ export const VirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualMachinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2199,7 +2332,10 @@ export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
  *
  * Get virtual machine
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
  * @param virtualMachineName - virtual machine name
+ * @param api-version - Client API version.
  */
 export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesGetInput,
@@ -2208,6 +2344,8 @@ export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const VirtualMachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -2372,6 +2510,9 @@ export type VirtualMachinesListByResourceGroupOutput =
  *
  * Returns list of virtual machine within resource group
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
+ * @param api-version - Client API version.
  * @param $filter - The filter to apply on the list operation
  * @param $top - The maximum number of record sets to return
  * @param $skipToken - to be used by nextLink implementation
@@ -2384,6 +2525,7 @@ export const VirtualMachinesListByResourceGroup =
 // Input Schema
 export const VirtualMachinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -2548,6 +2690,8 @@ export type VirtualMachinesListBySubscriptionOutput =
  *
  * Returns list virtual machine within subscription
  *
+ * @param subscriptionId - The subscription ID.
+ * @param api-version - Client API version.
  * @param $filter - The filter to apply on the list operation
  * @param $top - The maximum number of record sets to return
  * @param $skipToken - to be used by nextLink implementation
@@ -2560,6 +2704,8 @@ export const VirtualMachinesListBySubscription =
 // Input Schema
 export const VirtualMachinesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2581,7 +2727,11 @@ export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
  *
  * Power on virtual machine
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
+ * @param Referer - referer url
  * @param virtualMachineName - virtual machine name
+ * @param api-version - Client API version.
  */
 export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2592,6 +2742,8 @@ export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualMachinesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
     mode: Schema.optional(
       Schema.Literals(["reboot", "suspend", "shutdown", "poweroff"]),
@@ -2616,8 +2768,12 @@ export type VirtualMachinesStopOutput = typeof VirtualMachinesStopOutput.Type;
  *
  * Power off virtual machine, options: shutdown, poweroff, and suspend
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
+ * @param Referer - referer url
  * @param virtualMachineName - virtual machine name
  * @param mode - query stop mode parameter (reboot, shutdown, etc...)
+ * @param api-version - Client API version.
  */
 export const VirtualMachinesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesStopInput,
@@ -2626,6 +2782,8 @@ export const VirtualMachinesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const VirtualMachinesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Unknown),
   }).pipe(
@@ -2779,7 +2937,10 @@ export type VirtualMachinesUpdateOutput =
  *
  * Patch virtual machine properties
  *
+ * @param subscriptionId - The subscription ID.
+ * @param resourceGroupName - The name of the resource group
  * @param virtualMachineName - virtual machine name
+ * @param api-version - Client API version.
  */
 export const VirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2790,6 +2951,9 @@ export const VirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualMachineTemplatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    regionId: Schema.String.pipe(T.PathParam()),
+    pcName: Schema.String.pipe(T.PathParam()),
     virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2902,7 +3066,11 @@ export type VirtualMachineTemplatesGetOutput =
  *
  * Returns virtual machine templates by its name
  *
+ * @param subscriptionId - The subscription ID.
+ * @param regionId - The region Id (westus, eastus)
+ * @param pcName - The private cloud name
  * @param virtualMachineTemplateName - virtual machine template id (vsphereId)
+ * @param api-version - Client API version.
  */
 export const VirtualMachineTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2913,6 +3081,9 @@ export const VirtualMachineTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualMachineTemplatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    pcName: Schema.String.pipe(T.PathParam()),
+    regionId: Schema.String.pipe(T.PathParam()),
     resourcePoolName: Schema.String,
   }).pipe(
     T.Http({
@@ -3034,6 +3205,10 @@ export type VirtualMachineTemplatesListOutput =
  *
  * Returns list of virtual machine templates in region for private cloud
  *
+ * @param subscriptionId - The subscription ID.
+ * @param api-version - Client API version.
+ * @param pcName - The private cloud name
+ * @param regionId - The region Id (westus, eastus)
  * @param resourcePoolName - Resource pool used to derive vSphere cluster which contains VM templates
  */
 export const VirtualMachineTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3045,6 +3220,9 @@ export const VirtualMachineTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    regionId: Schema.String.pipe(T.PathParam()),
+    pcName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -3077,7 +3255,11 @@ export type VirtualNetworksGetOutput = typeof VirtualNetworksGetOutput.Type;
  *
  * Return virtual network by its name
  *
+ * @param subscriptionId - The subscription ID.
+ * @param regionId - The region Id (westus, eastus)
+ * @param pcName - The private cloud name
  * @param virtualNetworkName - virtual network id (vsphereId)
+ * @param api-version - Client API version.
  */
 export const VirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualNetworksGetInput,
@@ -3086,6 +3268,9 @@ export const VirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const VirtualNetworksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    regionId: Schema.String.pipe(T.PathParam()),
+    pcName: Schema.String.pipe(T.PathParam()),
     resourcePoolName: Schema.String,
   }).pipe(
     T.Http({
@@ -3125,6 +3310,10 @@ export type VirtualNetworksListOutput = typeof VirtualNetworksListOutput.Type;
  *
  * Return list of virtual networks in location for private cloud
  *
+ * @param subscriptionId - The subscription ID.
+ * @param regionId - The region Id (westus, eastus)
+ * @param pcName - The private cloud name
+ * @param api-version - Client API version.
  * @param resourcePoolName - Resource pool used to derive vSphere cluster which contains virtual networks
  */
 export const VirtualNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

@@ -186,6 +186,7 @@ export const WebPubSubCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.String,
@@ -451,6 +452,7 @@ export type WebPubSubCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -463,6 +465,7 @@ export const WebPubSubCustomCertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
@@ -522,6 +525,7 @@ export type WebPubSubCustomCertificatesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param certificateName - Custom certificate name
  * @param api-version - The API version to use for this operation.
  */
@@ -535,6 +539,7 @@ export const WebPubSubCustomCertificatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -558,6 +563,7 @@ export type WebPubSubCustomCertificatesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param certificateName - Custom certificate name
  * @param api-version - The API version to use for this operation.
  */
@@ -571,6 +577,7 @@ export const WebPubSubCustomCertificatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -612,6 +619,7 @@ export type WebPubSubCustomCertificatesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param certificateName - Custom certificate name
  * @param api-version - The API version to use for this operation.
  */
@@ -625,6 +633,7 @@ export const WebPubSubCustomCertificatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -682,6 +691,7 @@ export type WebPubSubCustomCertificatesListOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubCustomCertificatesList =
@@ -694,6 +704,7 @@ export const WebPubSubCustomDomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
@@ -754,6 +765,7 @@ export type WebPubSubCustomDomainsCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
@@ -767,6 +779,7 @@ export const WebPubSubCustomDomainsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -790,6 +803,7 @@ export type WebPubSubCustomDomainsDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
@@ -803,6 +817,7 @@ export const WebPubSubCustomDomainsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -844,6 +859,7 @@ export type WebPubSubCustomDomainsGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
@@ -858,6 +874,7 @@ export const WebPubSubCustomDomainsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -915,6 +932,7 @@ export type WebPubSubCustomDomainsListOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -927,6 +945,7 @@ export const WebPubSubCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WebPubSubDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -947,6 +966,7 @@ export type WebPubSubDeleteOutput = typeof WebPubSubDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubDeleteInput,
@@ -956,6 +976,7 @@ export const WebPubSubDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WebPubSubGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -994,6 +1015,7 @@ export type WebPubSubGetOutput = typeof WebPubSubGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubGetInput,
@@ -1005,6 +1027,7 @@ export const WebPubSubHubsCreateOrUpdateInput =
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       eventHandlers: Schema.optional(
         Schema.Array(
@@ -1084,6 +1107,7 @@ export type WebPubSubHubsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubHubsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1097,6 +1121,7 @@ export const WebPubSubHubsDeleteInput =
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1119,6 +1144,7 @@ export type WebPubSubHubsDeleteOutput = typeof WebPubSubHubsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubHubsDeleteInput,
@@ -1129,6 +1155,7 @@ export const WebPubSubHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1170,6 +1197,7 @@ export type WebPubSubHubsGetOutput = typeof WebPubSubHubsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubHubsGetInput,
@@ -1180,6 +1208,7 @@ export const WebPubSubHubsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -1237,6 +1266,7 @@ export type WebPubSubHubsListOutput = typeof WebPubSubHubsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubHubsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubHubsListInput,
@@ -1384,6 +1414,7 @@ export const WebPubSubListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -1411,6 +1442,7 @@ export type WebPubSubListKeysOutput = typeof WebPubSubListKeysOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubListKeysInput,
@@ -1421,6 +1453,8 @@ export const WebPubSubListReplicaSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1474,6 +1508,8 @@ export type WebPubSubListReplicaSkusOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubListReplicaSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1487,6 +1523,7 @@ export const WebPubSubListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -1540,6 +1577,7 @@ export type WebPubSubListSkusOutput = typeof WebPubSubListSkusOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubListSkusInput,
@@ -1551,6 +1589,7 @@ export const WebPubSubPrivateEndpointConnectionsDeleteInput =
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1575,6 +1614,7 @@ export type WebPubSubPrivateEndpointConnectionsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubPrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1587,6 +1627,7 @@ export const WebPubSubPrivateEndpointConnectionsGetInput =
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1629,6 +1670,7 @@ export type WebPubSubPrivateEndpointConnectionsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubPrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1640,6 +1682,7 @@ export const WebPubSubPrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1698,6 +1741,7 @@ export type WebPubSubPrivateEndpointConnectionsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubPrivateEndpointConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1710,6 +1754,7 @@ export const WebPubSubPrivateEndpointConnectionsUpdateInput =
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -1789,6 +1834,7 @@ export type WebPubSubPrivateEndpointConnectionsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubPrivateEndpointConnectionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1800,6 +1846,7 @@ export const WebPubSubPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1858,6 +1905,7 @@ export type WebPubSubPrivateLinkResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubPrivateLinkResourcesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1869,6 +1917,7 @@ export const WebPubSubRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     keyType: Schema.optional(Schema.Literals(["Primary", "Secondary", "Salt"])),
   }).pipe(
     T.Http({
@@ -1898,6 +1947,7 @@ export type WebPubSubRegenerateKeyOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1910,6 +1960,8 @@ export const WebPubSubReplicasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.String,
@@ -1982,6 +2034,8 @@ export type WebPubSubReplicasCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicasCreateOrUpdate =
@@ -1994,6 +2048,8 @@ export const WebPubSubReplicasDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2016,6 +2072,8 @@ export type WebPubSubReplicasDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2029,6 +2087,8 @@ export const WebPubSubReplicasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2067,6 +2127,8 @@ export type WebPubSubReplicasGetOutput = typeof WebPubSubReplicasGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2080,6 +2142,9 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
+    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         groupId: Schema.String,
@@ -2149,6 +2214,9 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
+ * @param sharedPrivateLinkResourceName - The name of the shared private link resource.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdate =
@@ -2162,6 +2230,9 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
+    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2202,6 +2273,9 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
+ * @param sharedPrivateLinkResourceName - The name of the shared private link resource.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicaSharedPrivateLinkResourcesGet =
@@ -2214,6 +2288,8 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2271,6 +2347,8 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesListOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicaSharedPrivateLinkResourcesList =
@@ -2283,6 +2361,7 @@ export const WebPubSubReplicasListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2339,6 +2418,7 @@ export type WebPubSubReplicasListOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicasList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2352,6 +2432,8 @@ export const WebPubSubReplicasRestartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2374,6 +2456,8 @@ export type WebPubSubReplicasRestartOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicasRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2387,6 +2471,8 @@ export const WebPubSubReplicasUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    replicaName: Schema.String.pipe(T.PathParam()),
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.String,
@@ -2459,6 +2545,8 @@ export type WebPubSubReplicasUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
+ * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2471,6 +2559,7 @@ export const WebPubSubReplicasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WebPubSubRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -2491,6 +2580,7 @@ export type WebPubSubRestartOutput = typeof WebPubSubRestartOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubRestartInput,
@@ -2499,8 +2589,10 @@ export const WebPubSubRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         groupId: Schema.String,
@@ -2568,9 +2660,11 @@ export type WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput =
 /**
  * Create or update a shared private link resource
  *
+ * @param sharedPrivateLinkResourceName - The name of the shared private link resource.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2580,8 +2674,10 @@ export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdate =
 // Input Schema
 export const WebPubSubSharedPrivateLinkResourcesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2602,9 +2698,11 @@ export type WebPubSubSharedPrivateLinkResourcesDeleteOutput =
 /**
  * Delete the specified shared private link resource
  *
+ * @param sharedPrivateLinkResourceName - The name of the shared private link resource.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubSharedPrivateLinkResourcesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2614,8 +2712,10 @@ export const WebPubSubSharedPrivateLinkResourcesDelete =
 // Input Schema
 export const WebPubSubSharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2654,9 +2754,11 @@ export type WebPubSubSharedPrivateLinkResourcesGetOutput =
 /**
  * Get the specified shared private link resource
  *
+ * @param sharedPrivateLinkResourceName - The name of the shared private link resource.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubSharedPrivateLinkResourcesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2668,6 +2770,7 @@ export const WebPubSubSharedPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2726,6 +2829,7 @@ export type WebPubSubSharedPrivateLinkResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubSharedPrivateLinkResourcesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2736,6 +2840,7 @@ export const WebPubSubSharedPrivateLinkResourcesList =
 export const WebPubSubUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   sku: Schema.optional(
     Schema.Struct({
       name: Schema.String,
@@ -2998,6 +3103,7 @@ export type WebPubSubUpdateOutput = typeof WebPubSubUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource.
  */
 export const WebPubSubUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubUpdateInput,

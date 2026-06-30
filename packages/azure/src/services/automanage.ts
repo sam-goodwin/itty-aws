@@ -264,6 +264,7 @@ export const ConfigurationProfileAssignmentsCreateOrUpdateInput =
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         configurationProfile: Schema.optional(Schema.String),
@@ -313,6 +314,7 @@ export type ConfigurationProfileAssignmentsCreateOrUpdateOutput =
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment. Only default is supported.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsCreateOrUpdate =
@@ -326,6 +328,7 @@ export const ConfigurationProfileAssignmentsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -349,6 +352,7 @@ export type ConfigurationProfileAssignmentsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment
  * @param subscriptionId - The ID of the target subscription.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsDelete =
@@ -362,6 +366,7 @@ export const ConfigurationProfileAssignmentsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -389,6 +394,7 @@ export type ConfigurationProfileAssignmentsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param subscriptionId - The ID of the target subscription.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsGet =
@@ -445,6 +451,7 @@ export const ConfigurationProfileAssignmentsListByClusterNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -477,6 +484,7 @@ export type ConfigurationProfileAssignmentsListByClusterNameOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Arc machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsListByClusterName =
@@ -489,6 +497,7 @@ export const ConfigurationProfileAssignmentsListByMachineNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -521,6 +530,7 @@ export type ConfigurationProfileAssignmentsListByMachineNameOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the Arc machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsListByMachineName =
@@ -575,6 +585,7 @@ export const ConfigurationProfileAssignmentsListByVirtualMachinesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -607,6 +618,7 @@ export type ConfigurationProfileAssignmentsListByVirtualMachinesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsListByVirtualMachines =
@@ -619,6 +631,7 @@ export const ConfigurationProfileHCIAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -668,6 +681,7 @@ export type ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment. Only default is supported.
  * @param api-version - The API version to use for this operation.
  */
@@ -681,6 +695,7 @@ export const ConfigurationProfileHCIAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -704,6 +719,7 @@ export type ConfigurationProfileHCIAssignmentsDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment
  * @param api-version - The API version to use for this operation.
  */
@@ -717,6 +733,7 @@ export const ConfigurationProfileHCIAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -744,6 +761,7 @@ export type ConfigurationProfileHCIAssignmentsGetOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
+ * @param clusterName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param api-version - The API version to use for this operation.
  */
@@ -757,6 +775,7 @@ export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -806,6 +825,7 @@ export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment. Only default is supported.
  * @param api-version - The API version to use for this operation.
  */
@@ -819,6 +839,7 @@ export const ConfigurationProfileHCRPAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -842,6 +863,7 @@ export type ConfigurationProfileHCRPAssignmentsDeleteOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
+ * @param machineName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment
  * @param api-version - The API version to use for this operation.
  */
@@ -855,6 +877,7 @@ export const ConfigurationProfileHCRPAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -882,6 +905,7 @@ export type ConfigurationProfileHCRPAssignmentsGetOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
+ * @param machineName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param api-version - The API version to use for this operation.
  */
@@ -1355,6 +1379,7 @@ export const ConfigurationProfilesVersionsListChildResources =
 export const HCIReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1380,6 +1405,7 @@ export type HCIReportsGetOutput = typeof HCIReportsGetOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
+ * @param clusterName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param reportName - The report name.
  * @param api-version - The API version to use for this operation.
@@ -1393,6 +1419,7 @@ export const HCIReportsListByConfigurationProfileAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1426,6 +1453,7 @@ export type HCIReportsListByConfigurationProfileAssignmentsOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param api-version - The API version to use for this operation.
  */
@@ -1438,6 +1466,7 @@ export const HCIReportsListByConfigurationProfileAssignments =
 export const HCRPReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  machineName: Schema.String.pipe(T.PathParam()),
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1463,6 +1492,7 @@ export type HCRPReportsGetOutput = typeof HCRPReportsGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param reportName - The report name.
  * @param api-version - The API version to use for this operation.
@@ -1476,6 +1506,7 @@ export const HCRPReportsListByConfigurationProfileAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1509,6 +1540,7 @@ export type HCRPReportsListByConfigurationProfileAssignmentsOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param api-version - The API version to use for this operation.
  */
@@ -1571,6 +1603,7 @@ export const ReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   reportName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1596,6 +1629,7 @@ export type ReportsGetOutput = typeof ReportsGetOutput.Type;
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param reportName - The report name.
  * @param subscriptionId - The ID of the target subscription.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const reportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1608,6 +1642,7 @@ export const ReportsListByConfigurationProfileAssignmentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1641,6 +1676,7 @@ export type ReportsListByConfigurationProfileAssignmentsOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const reportsListByConfigurationProfileAssignments =

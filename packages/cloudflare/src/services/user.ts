@@ -1426,6 +1426,146 @@ export const deleteSubscription: API.OperationMethod<
 }));
 
 // =============================================================================
+// Tenant
+// =============================================================================
+
+export interface ListTenantsRequest {}
+
+export const ListTenantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({}).pipe(T.Http({ method: "GET", path: "/user/tenants" })),
+) as unknown as Schema.Schema<ListTenantsRequest>;
+
+export interface ListTenantsResponse {
+  result: {
+    id: string;
+    createTime: string;
+    meta: {
+      flags?: {
+        accountCreation: string;
+        accountDeletion: string;
+        accountMigration: string;
+        accountMobility: string;
+        subOrgCreation: string;
+      } | null;
+      hierarchyTags?: string[] | null;
+      managedBy?: string | null;
+    };
+    name: string;
+    parent?: { id: string; name: string } | null;
+    profile?: {
+      businessAddress: string;
+      businessEmail: string;
+      businessName: string;
+      businessPhone: string;
+      externalMetadata: string;
+    } | null;
+  }[];
+}
+
+export const ListTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          createTime: Schema.String,
+          meta: Schema.Struct({
+            flags: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  accountCreation: Schema.String,
+                  accountDeletion: Schema.String,
+                  accountMigration: Schema.String,
+                  accountMobility: Schema.String,
+                  subOrgCreation: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    accountCreation: "account_creation",
+                    accountDeletion: "account_deletion",
+                    accountMigration: "account_migration",
+                    accountMobility: "account_mobility",
+                    subOrgCreation: "sub_org_creation",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            hierarchyTags: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              flags: "flags",
+              hierarchyTags: "hierarchy_tags",
+              managedBy: "managed_by",
+            }),
+          ),
+          name: Schema.String,
+          parent: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                id: Schema.String,
+                name: Schema.String,
+              }),
+              Schema.Null,
+            ]),
+          ),
+          profile: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                businessAddress: Schema.String,
+                businessEmail: Schema.String,
+                businessName: Schema.String,
+                businessPhone: Schema.String,
+                externalMetadata: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  businessAddress: "business_address",
+                  businessEmail: "business_email",
+                  businessName: "business_name",
+                  businessPhone: "business_phone",
+                  externalMetadata: "external_metadata",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createTime: "create_time",
+            meta: "meta",
+            name: "name",
+            parent: "parent",
+            profile: "profile",
+          }),
+        ),
+      ),
+    }),
+) as unknown as Schema.Schema<ListTenantsResponse>;
+
+export type ListTenantsError = DefaultErrors;
+
+export const listTenants: API.PaginatedOperationMethod<
+  ListTenantsRequest,
+  ListTenantsResponse,
+  ListTenantsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListTenantsRequest,
+  output: ListTenantsResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+// =============================================================================
 // Token
 // =============================================================================
 
@@ -2378,6 +2518,22 @@ export const ListTokenPermissionGroupsRequest =
 export interface ListTokenPermissionGroupsResponse {
   result: {
     id?: string | null;
+    category?:
+      | "developer_platform"
+      | "ai_and_machine_learning"
+      | "dns_and_zones"
+      | "app_security"
+      | "rules_and_configuration"
+      | "cloudflare_one_and_zero_trust"
+      | "analytics_and_logs"
+      | "network_services"
+      | "media"
+      | "email_and_messaging"
+      | "cache_and_performance"
+      | "account_and_billing"
+      | "other"
+      | (string & {})
+      | null;
     name?: string | null;
     scopes?:
       | (
@@ -2397,6 +2553,29 @@ export const ListTokenPermissionGroupsResponse =
       result: Schema.Array(
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          category: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals([
+                  "developer_platform",
+                  "ai_and_machine_learning",
+                  "dns_and_zones",
+                  "app_security",
+                  "rules_and_configuration",
+                  "cloudflare_one_and_zero_trust",
+                  "analytics_and_logs",
+                  "network_services",
+                  "media",
+                  "email_and_messaging",
+                  "cache_and_performance",
+                  "account_and_billing",
+                  "other",
+                ]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
           name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           scopes: Schema.optional(
             Schema.Union([

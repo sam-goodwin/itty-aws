@@ -7,10 +7,17 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const LogsAlertsSimulateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    filters: Schema.optional(Schema.Unknown),
+    filters: Schema.optional(
+      Schema.Struct({
+        filterGroup: Schema.optional(Schema.Unknown),
+        serviceNames: Schema.optional(Schema.Unknown),
+        severityLevels: Schema.optional(Schema.Unknown),
+      }),
+    ),
     threshold_count: Schema.optional(Schema.Number),
     threshold_operator: Schema.optional(Schema.Literals(["above", "below"])),
     window_minutes: Schema.optional(Schema.Number),
+    check_interval_minutes: Schema.optional(Schema.Number),
     evaluation_periods: Schema.optional(Schema.Number),
     datapoints_to_alarm: Schema.optional(Schema.Number),
     cooldown_minutes: Schema.optional(Schema.Number),

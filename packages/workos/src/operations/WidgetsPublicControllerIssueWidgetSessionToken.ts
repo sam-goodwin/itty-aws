@@ -17,6 +17,7 @@ export const WidgetsPublicControllerIssueWidgetSessionTokenInput =
           "widgets:api-keys:manage",
           "widgets:dsync:manage",
           "widgets:audit-log-streaming:manage",
+          "widgets:pipes:manage",
         ]),
       ),
     ),

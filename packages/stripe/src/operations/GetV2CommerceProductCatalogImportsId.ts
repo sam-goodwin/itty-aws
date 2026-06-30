@@ -19,10 +19,16 @@ export type GetV2CommerceProductCatalogImportsIdInput =
 export const GetV2CommerceProductCatalogImportsIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.String,
-    feed_type: Schema.Literals(["inventory", "pricing", "product"]),
+    feed_type: Schema.Literals([
+      "inventory",
+      "pricing",
+      "product",
+      "promotion",
+    ]),
     id: Schema.String,
     livemode: Schema.Boolean,
     metadata: Schema.Record(Schema.String, Schema.String),
+    mode: Schema.Literals(["replace", "upsert"]),
     object: Schema.Literals(["v2.commerce.product_catalog_import"]),
     status: Schema.Literals([
       "awaiting_upload",

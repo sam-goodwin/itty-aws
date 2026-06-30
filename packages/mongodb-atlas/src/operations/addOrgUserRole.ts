@@ -25,7 +25,7 @@ export type AddOrgUserRoleOutput = typeof AddOrgUserRoleOutput.Type;
 /**
  * Add One Organization Role to One MongoDB Cloud User
  *
- * Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+ * Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization.
  * **Note**: This operation is atomic.
  * **Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
  *

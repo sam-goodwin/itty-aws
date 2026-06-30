@@ -10,6 +10,344 @@ import * as T from "../traits.ts";
 import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
+export const AiGatewaysCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        aiGatewayId: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/aigateways/{name}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type AiGatewaysCreateOrUpdateInput =
+  typeof AiGatewaysCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AiGatewaysCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AiGatewaysCreateOrUpdateOutput =
+  typeof AiGatewaysCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create a AiGateway
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param name - The name of the AI gateway
+ */
+export const AiGatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AiGatewaysCreateOrUpdateInput,
+    outputSchema: AiGatewaysCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const AiGatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/aigateways/{name}",
+    apiVersion: "2026-03-15",
+  }),
+);
+export type AiGatewaysDeleteInput = typeof AiGatewaysDeleteInput.Type;
+
+// Output Schema
+export const AiGatewaysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AiGatewaysDeleteOutput = typeof AiGatewaysDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete a AiGateway
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param name - The name of the AI gateway
+ */
+export const AiGatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AiGatewaysDeleteInput,
+  outputSchema: AiGatewaysDeleteOutput,
+}));
+// Input Schema
+export const AiGatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/aigateways/{name}",
+    apiVersion: "2026-03-15",
+  }),
+);
+export type AiGatewaysGetInput = typeof AiGatewaysGetInput.Type;
+
+// Output Schema
+export const AiGatewaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type AiGatewaysGetOutput = typeof AiGatewaysGetOutput.Type;
+
+// The operation
+/**
+ * Get a AiGateway
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param name - The name of the AI gateway
+ */
+export const AiGatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AiGatewaysGetInput,
+  outputSchema: AiGatewaysGetOutput,
+}));
+// Input Schema
+export const AiGatewaysListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    top: Schema.optional(Schema.Number),
+    skip: Schema.optional(Schema.Number),
+    maxpagesize: Schema.optional(Schema.Number),
+    filter: Schema.optional(Schema.String),
+    select: Schema.optional(Schema.String),
+    expand: Schema.optional(Schema.String),
+    orderby: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/aigateways",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type AiGatewaysListByResourceGroupInput =
+  typeof AiGatewaysListByResourceGroupInput.Type;
+
+// Output Schema
+export const AiGatewaysListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AiGatewaysListByResourceGroupOutput =
+  typeof AiGatewaysListByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * List AiGateway resources by resource group
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param top - The number of result items to return.
+ * @param skip - The number of result items to skip.
+ * @param maxpagesize - The maximum number of result items per page.
+ * @param filter - Filter the result list using the given expression.
+ * @param select - Select the specified fields to be included in the response.
+ * @param expand - Expand the indicated resources into the response.
+ * @param orderby - Expressions that specify the order of returned results.
+ */
+export const AiGatewaysListByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AiGatewaysListByResourceGroupInput,
+    outputSchema: AiGatewaysListByResourceGroupOutput,
+  }));
+// Input Schema
+export const AiGatewaysListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/aigateways",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type AiGatewaysListBySubscriptionInput =
+  typeof AiGatewaysListBySubscriptionInput.Type;
+
+// Output Schema
+export const AiGatewaysListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AiGatewaysListBySubscriptionOutput =
+  typeof AiGatewaysListBySubscriptionOutput.Type;
+
+// The operation
+/**
+ * List AiGateway resources by subscription ID
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const AiGatewaysListBySubscription =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AiGatewaysListBySubscriptionInput,
+    outputSchema: AiGatewaysListBySubscriptionOutput,
+  }));
+// Input Schema
+export const AiGatewaysPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/aigateways/{name}",
+    apiVersion: "2026-03-15",
+  }),
+);
+export type AiGatewaysPatchInput = typeof AiGatewaysPatchInput.Type;
+
+// Output Schema
+export const AiGatewaysPatchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type AiGatewaysPatchOutput = typeof AiGatewaysPatchOutput.Type;
+
+// The operation
+/**
+ * Update a AiGateway
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param name - The name of the AI gateway
+ */
+export const AiGatewaysPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AiGatewaysPatchInput,
+  outputSchema: AiGatewaysPatchOutput,
+}));
+// Input Schema
 export const AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -39,7 +377,7 @@ export const AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionInput
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionInput =
@@ -101,7 +439,7 @@ export const AppServiceEnvironmentsChangeVnetInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/changeVirtualNetwork",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsChangeVnetInput =
@@ -287,7 +625,7 @@ export const AppServiceEnvironmentsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsCreateOrUpdateInput =
@@ -383,7 +721,7 @@ export const AppServiceEnvironmentsCreateOrUpdateMultiRolePoolInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsCreateOrUpdateMultiRolePoolInput =
@@ -480,7 +818,7 @@ export const AppServiceEnvironmentsCreateOrUpdateWorkerPoolInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsCreateOrUpdateWorkerPoolInput =
@@ -538,7 +876,7 @@ export const AppServiceEnvironmentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsDeleteInput =
@@ -577,7 +915,7 @@ export const AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/configurations/customdnssuffix",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationInput =
@@ -616,7 +954,7 @@ export const AppServiceEnvironmentsDeletePrivateEndpointConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsDeletePrivateEndpointConnectionInput =
@@ -655,7 +993,7 @@ export const AppServiceEnvironmentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetInput =
@@ -712,7 +1050,7 @@ export const AppServiceEnvironmentsGetAseCustomDnsSuffixConfigurationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/configurations/customdnssuffix",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetAseCustomDnsSuffixConfigurationInput =
@@ -767,7 +1105,7 @@ export const AppServiceEnvironmentsGetAseV3NetworkingConfigurationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/configurations/networking",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetAseV3NetworkingConfigurationInput =
@@ -823,8 +1161,8 @@ export const AppServiceEnvironmentsGetDiagnosticsItemInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/hostingEnvironments/{name}/diagnostics/{diagnosticsName}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/diagnostics/{diagnosticsName}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetDiagnosticsItemInput =
@@ -865,7 +1203,7 @@ export const AppServiceEnvironmentsGetInboundNetworkDependenciesEndpointsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/inboundNetworkDependenciesEndpoints",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetInboundNetworkDependenciesEndpointsInput =
@@ -914,7 +1252,7 @@ export const AppServiceEnvironmentsGetMultiRolePoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetMultiRolePoolInput =
@@ -970,7 +1308,7 @@ export const AppServiceEnvironmentsGetOutboundNetworkDependenciesEndpointsInput 
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/outboundNetworkDependenciesEndpoints",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetOutboundNetworkDependenciesEndpointsInput =
@@ -1035,7 +1373,7 @@ export const AppServiceEnvironmentsGetPrivateEndpointConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetPrivateEndpointConnectionInput =
@@ -1092,7 +1430,7 @@ export const AppServiceEnvironmentsGetPrivateEndpointConnectionListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateEndpointConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetPrivateEndpointConnectionListInput =
@@ -1163,7 +1501,7 @@ export const AppServiceEnvironmentsGetPrivateLinkResourcesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateLinkResources",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetPrivateLinkResourcesInput =
@@ -1214,7 +1552,7 @@ export const AppServiceEnvironmentsGetVipInfoInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/capacities/virtualip",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetVipInfoInput =
@@ -1271,7 +1609,7 @@ export const AppServiceEnvironmentsGetWorkerPoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsGetWorkerPoolInput =
@@ -1326,7 +1664,7 @@ export const AppServiceEnvironmentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/hostingEnvironments",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListInput =
@@ -1396,7 +1734,7 @@ export const AppServiceEnvironmentsListAppServicePlansInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/serverfarms",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListAppServicePlansInput =
@@ -1466,7 +1804,7 @@ export const AppServiceEnvironmentsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListByResourceGroupInput =
@@ -1536,7 +1874,7 @@ export const AppServiceEnvironmentsListCapacitiesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/capacities/compute",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListCapacitiesInput =
@@ -1608,7 +1946,7 @@ export const AppServiceEnvironmentsListDiagnosticsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/diagnostics",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListDiagnosticsInput =
@@ -1651,7 +1989,7 @@ export const AppServiceEnvironmentsListMultiRoleMetricDefinitionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/metricdefinitions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListMultiRoleMetricDefinitionsInput =
@@ -1699,8 +2037,8 @@ export const AppServiceEnvironmentsListMultiRolePoolInstanceMetricDefinitionsInp
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/instances/{instance}/metricdefinitions",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/instances/{instance}/metricdefinitions",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListMultiRolePoolInstanceMetricDefinitionsInput =
@@ -1751,7 +2089,7 @@ export const AppServiceEnvironmentsListMultiRolePoolsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListMultiRolePoolsInput =
@@ -1822,7 +2160,7 @@ export const AppServiceEnvironmentsListMultiRolePoolSkusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/skus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListMultiRolePoolSkusInput =
@@ -1904,7 +2242,7 @@ export const AppServiceEnvironmentsListMultiRoleUsagesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/usages",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListMultiRoleUsagesInput =
@@ -1952,7 +2290,7 @@ export const AppServiceEnvironmentsListOperationsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/operations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListOperationsInput =
@@ -2023,7 +2361,7 @@ export const AppServiceEnvironmentsListUsagesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/usages",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListUsagesInput =
@@ -2079,7 +2417,7 @@ export const AppServiceEnvironmentsListWebAppsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/sites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListWebAppsInput =
@@ -2152,7 +2490,7 @@ export const AppServiceEnvironmentsListWebWorkerMetricDefinitionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/metricdefinitions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListWebWorkerMetricDefinitionsInput =
@@ -2202,7 +2540,7 @@ export const AppServiceEnvironmentsListWebWorkerUsagesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/usages",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListWebWorkerUsagesInput =
@@ -2252,8 +2590,8 @@ export const AppServiceEnvironmentsListWorkerPoolInstanceMetricDefinitionsInput 
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/instances/{instance}/metricdefinitions",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/instances/{instance}/metricdefinitions",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListWorkerPoolInstanceMetricDefinitionsInput =
@@ -2305,7 +2643,7 @@ export const AppServiceEnvironmentsListWorkerPoolsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListWorkerPoolsInput =
@@ -2377,7 +2715,7 @@ export const AppServiceEnvironmentsListWorkerPoolSkusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/skus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsListWorkerPoolSkusInput =
@@ -2460,7 +2798,7 @@ export const AppServiceEnvironmentsRebootInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/reboot",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsRebootInput =
@@ -2498,7 +2836,7 @@ export const AppServiceEnvironmentsResumeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/resume",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsResumeInput =
@@ -2569,7 +2907,7 @@ export const AppServiceEnvironmentsSuspendInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/suspend",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsSuspendInput =
@@ -2640,7 +2978,7 @@ export const AppServiceEnvironmentsTestUpgradeAvailableNotificationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/testUpgradeAvailableNotification",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsTestUpgradeAvailableNotificationInput =
@@ -2791,7 +3129,7 @@ export const AppServiceEnvironmentsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsUpdateInput =
@@ -2859,7 +3197,7 @@ export const AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/configurations/customdnssuffix",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationInput =
@@ -2934,7 +3272,7 @@ export const AppServiceEnvironmentsUpdateAseNetworkingConfigurationInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/configurations/networking",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsUpdateAseNetworkingConfigurationInput =
@@ -3030,7 +3368,7 @@ export const AppServiceEnvironmentsUpdateMultiRolePoolInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsUpdateMultiRolePoolInput =
@@ -3127,7 +3465,7 @@ export const AppServiceEnvironmentsUpdateWorkerPoolInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsUpdateWorkerPoolInput =
@@ -3184,7 +3522,7 @@ export const AppServiceEnvironmentsUpgradeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/upgrade",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServiceEnvironmentsUpgradeInput =
@@ -3408,7 +3746,7 @@ export const AppServicePlansCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansCreateOrUpdateInput =
@@ -3476,7 +3814,7 @@ export const AppServicePlansCreateOrUpdateVnetRouteInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansCreateOrUpdateVnetRouteInput =
@@ -3534,7 +3872,7 @@ export const AppServicePlansDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansDeleteInput = typeof AppServicePlansDeleteInput.Type;
@@ -3574,7 +3912,7 @@ export const AppServicePlansDeleteHybridConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansDeleteHybridConnectionInput =
@@ -3616,7 +3954,7 @@ export const AppServicePlansDeleteVnetRouteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansDeleteVnetRouteInput =
@@ -3656,7 +3994,7 @@ export const AppServicePlansGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansGetInput = typeof AppServicePlansGetInput.Type;
@@ -3711,7 +4049,7 @@ export const AppServicePlansGetHybridConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansGetHybridConnectionInput =
@@ -3769,7 +4107,7 @@ export const AppServicePlansGetHybridConnectionPlanLimitInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/hybridConnectionPlanLimits/limit",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansGetHybridConnectionPlanLimitInput =
@@ -3827,7 +4165,7 @@ export const AppServicePlansGetRouteForVnetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansGetRouteForVnetInput =
@@ -3887,7 +4225,7 @@ export const AppServicePlansGetServerFarmInstanceDetailsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/listinstances",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansGetServerFarmInstanceDetailsInput =
@@ -3937,7 +4275,7 @@ export const AppServicePlansGetServerFarmRdpPasswordInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/getrdppassword",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansGetServerFarmRdpPasswordInput =
@@ -3978,7 +4316,7 @@ export const AppServicePlansGetServerFarmSkusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/skus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansGetServerFarmSkusInput =
@@ -4017,7 +4355,7 @@ export const AppServicePlansGetVnetFromServerFarmInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansGetVnetFromServerFarmInput =
@@ -4076,7 +4414,7 @@ export const AppServicePlansGetVnetGatewayInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansGetVnetGatewayInput =
@@ -4133,7 +4471,7 @@ export const AppServicePlansListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/serverfarms",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansListInput = typeof AppServicePlansListInput.Type;
@@ -4200,7 +4538,7 @@ export const AppServicePlansListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansListByResourceGroupInput =
@@ -4270,7 +4608,7 @@ export const AppServicePlansListCapabilitiesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/capabilities",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansListCapabilitiesInput =
@@ -4316,7 +4654,7 @@ export const AppServicePlansListHybridConnectionKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}/listKeys",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansListHybridConnectionKeysInput =
@@ -4361,7 +4699,7 @@ export const AppServicePlansListHybridConnectionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/hybridConnectionRelays",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansListHybridConnectionsInput =
@@ -4433,7 +4771,7 @@ export const AppServicePlansListRoutesForVnetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansListRoutesForVnetInput =
@@ -4493,7 +4831,7 @@ export const AppServicePlansListUsagesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/usages",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansListUsagesInput =
@@ -4549,7 +4887,7 @@ export const AppServicePlansListVnetsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansListVnetsInput =
@@ -4611,7 +4949,7 @@ export const AppServicePlansListWebAppsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/sites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansListWebAppsInput =
@@ -4688,7 +5026,7 @@ export const AppServicePlansListWebAppsByHybridConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}/sites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansListWebAppsByHybridConnectionInput =
@@ -4731,8 +5069,8 @@ export const AppServicePlansRebootWorkerInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/serverfarms/{name}/workers/{workerName}/reboot",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/workers/{workerName}/reboot",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansRebootWorkerInput =
@@ -4772,8 +5110,8 @@ export const AppServicePlansRecycleManagedInstanceWorkerInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/serverfarms/{name}/workers/{workerName}/recycleinstance",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/workers/{workerName}/recycleinstance",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansRecycleManagedInstanceWorkerInput =
@@ -4843,7 +5181,7 @@ export const AppServicePlansRestartWebAppsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/restartSites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansRestartWebAppsInput =
@@ -4957,7 +5295,7 @@ export const AppServicePlansUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansUpdateInput = typeof AppServicePlansUpdateInput.Type;
@@ -5022,7 +5360,7 @@ export const AppServicePlansUpdateVnetGatewayInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansUpdateVnetGatewayInput =
@@ -5092,7 +5430,7 @@ export const AppServicePlansUpdateVnetRouteInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type AppServicePlansUpdateVnetRouteInput =
@@ -5198,7 +5536,7 @@ export const CertificatesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CertificatesCreateOrUpdateInput =
@@ -5255,7 +5593,7 @@ export const CertificatesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
@@ -5288,7 +5626,7 @@ export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type CertificatesGetInput = typeof CertificatesGetInput.Type;
@@ -5338,7 +5676,7 @@ export const CertificatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/certificates",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type CertificatesListInput = typeof CertificatesListInput.Type;
@@ -5405,7 +5743,7 @@ export const CertificatesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CertificatesListByResourceGroupInput =
@@ -5523,7 +5861,7 @@ export const CertificatesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CertificatesUpdateInput = typeof CertificatesUpdateInput.Type;
@@ -5587,7 +5925,7 @@ export const CheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/checknameavailability",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type CheckNameAvailabilityInput = typeof CheckNameAvailabilityInput.Type;
@@ -5627,7 +5965,7 @@ export const DeletedWebAppsGetDeletedWebAppByLocationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/deletedSites/{deletedSiteId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DeletedWebAppsGetDeletedWebAppByLocationInput =
@@ -5681,7 +6019,7 @@ export const DeletedWebAppsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/deletedSites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DeletedWebAppsListInput = typeof DeletedWebAppsListInput.Type;
@@ -5746,7 +6084,7 @@ export const DeletedWebAppsListByLocationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/deletedSites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DeletedWebAppsListByLocationInput =
@@ -5821,7 +6159,7 @@ export const DiagnosticsExecuteSiteAnalysisInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses/{analysisName}/execute",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsExecuteSiteAnalysisInput =
@@ -5875,7 +6213,7 @@ export const DiagnosticsExecuteSiteAnalysisSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/analyses/{analysisName}/execute",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsExecuteSiteAnalysisSlotInput =
@@ -5929,7 +6267,7 @@ export const DiagnosticsExecuteSiteDetectorInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors/{detectorName}/execute",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsExecuteSiteDetectorInput =
@@ -5983,7 +6321,7 @@ export const DiagnosticsExecuteSiteDetectorSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/detectors/{detectorName}/execute",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsExecuteSiteDetectorSlotInput =
@@ -6036,7 +6374,7 @@ export const DiagnosticsGetHostingEnvironmentDetectorResponseInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/detectors/{detectorName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsGetHostingEnvironmentDetectorResponseInput =
@@ -6098,7 +6436,7 @@ export const DiagnosticsGetSiteAnalysisInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses/{analysisName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsGetSiteAnalysisInput =
@@ -6160,7 +6498,7 @@ export const DiagnosticsGetSiteAnalysisSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/analyses/{analysisName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsGetSiteAnalysisSlotInput =
@@ -6221,7 +6559,7 @@ export const DiagnosticsGetSiteDetectorInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors/{detectorName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsGetSiteDetectorInput =
@@ -6284,7 +6622,7 @@ export const DiagnosticsGetSiteDetectorResponseInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/detectors/{detectorName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsGetSiteDetectorResponseInput =
@@ -6349,7 +6687,7 @@ export const DiagnosticsGetSiteDetectorResponseSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/detectors/{detectorName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsGetSiteDetectorResponseSlotInput =
@@ -6413,7 +6751,7 @@ export const DiagnosticsGetSiteDetectorSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/detectors/{detectorName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsGetSiteDetectorSlotInput =
@@ -6473,7 +6811,7 @@ export const DiagnosticsGetSiteDiagnosticCategoryInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsGetSiteDiagnosticCategoryInput =
@@ -6532,7 +6870,7 @@ export const DiagnosticsGetSiteDiagnosticCategorySlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsGetSiteDiagnosticCategorySlotInput =
@@ -6590,7 +6928,7 @@ export const DiagnosticsListHostingEnvironmentDetectorResponsesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/detectors",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsListHostingEnvironmentDetectorResponsesInput =
@@ -6662,7 +7000,7 @@ export const DiagnosticsListSiteAnalysesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsListSiteAnalysesInput =
@@ -6737,7 +7075,7 @@ export const DiagnosticsListSiteAnalysesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/analyses",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsListSiteAnalysesSlotInput =
@@ -6810,7 +7148,7 @@ export const DiagnosticsListSiteDetectorResponsesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/detectors",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsListSiteDetectorResponsesInput =
@@ -6882,7 +7220,7 @@ export const DiagnosticsListSiteDetectorResponsesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/detectors",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsListSiteDetectorResponsesSlotInput =
@@ -6955,7 +7293,7 @@ export const DiagnosticsListSiteDetectorsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsListSiteDetectorsInput =
@@ -7029,7 +7367,7 @@ export const DiagnosticsListSiteDetectorsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/detectors",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsListSiteDetectorsSlotInput =
@@ -7102,7 +7440,7 @@ export const DiagnosticsListSiteDiagnosticCategoriesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsListSiteDiagnosticCategoriesInput =
@@ -7174,7 +7512,7 @@ export const DiagnosticsListSiteDiagnosticCategoriesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DiagnosticsListSiteDiagnosticCategoriesSlotInput =
@@ -7243,7 +7581,7 @@ export const GetPublishingUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Web/publishingUsers/web",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type GetPublishingUserInput = typeof GetPublishingUserInput.Type;
@@ -7290,7 +7628,7 @@ export const GetSourceControlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Web/sourcecontrols/{sourceControlType}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type GetSourceControlInput = typeof GetSourceControlInput.Type;
@@ -7340,7 +7678,7 @@ export const GetSubscriptionDeploymentLocationsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/deploymentLocations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GetSubscriptionDeploymentLocationsInput =
@@ -7508,7 +7846,7 @@ export const GetUsagesInLocationListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/usages",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GetUsagesInLocationListInput =
@@ -7561,7 +7899,7 @@ export const GlobalGetDeletedWebAppInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GlobalGetDeletedWebAppInput =
@@ -7616,7 +7954,7 @@ export const GlobalGetDeletedWebAppSnapshotsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}/snapshots",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GlobalGetDeletedWebAppSnapshotsInput =
@@ -7660,7 +7998,7 @@ export const GlobalGetSubscriptionOperationWithAsyncResponseInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/operations/{operationId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type GlobalGetSubscriptionOperationWithAsyncResponseInput =
@@ -7771,7 +8109,7 @@ export const KubeEnvironmentsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type KubeEnvironmentsCreateOrUpdateInput =
@@ -7827,7 +8165,7 @@ export const KubeEnvironmentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type KubeEnvironmentsDeleteInput =
@@ -7866,7 +8204,7 @@ export const KubeEnvironmentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type KubeEnvironmentsGetInput = typeof KubeEnvironmentsGetInput.Type;
@@ -7918,7 +8256,7 @@ export const KubeEnvironmentsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type KubeEnvironmentsListByResourceGroupInput =
@@ -7986,7 +8324,7 @@ export const KubeEnvironmentsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/kubeEnvironments",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type KubeEnvironmentsListBySubscriptionInput =
@@ -8121,7 +8459,7 @@ export const KubeEnvironmentsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type KubeEnvironmentsUpdateInput =
@@ -8175,7 +8513,7 @@ export const ListAseRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/aseRegions",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ListAseRegionsInput = typeof ListAseRegionsInput.Type;
@@ -8218,7 +8556,7 @@ export const ListBillingMetersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/billingMeters",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ListBillingMetersInput = typeof ListBillingMetersInput.Type;
@@ -8262,7 +8600,7 @@ export const ListCustomHostNameSitesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/customhostnameSites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ListCustomHostNameSitesInput =
@@ -8327,7 +8665,7 @@ export const ListGeoRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/geoRegions",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ListGeoRegionsInput = typeof ListGeoRegionsInput.Type;
@@ -8372,7 +8710,7 @@ export const ListPremierAddOnOffersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ListPremierAddOnOffersInput =
@@ -8418,7 +8756,7 @@ export const ListSiteIdentifiersAssignedToHostNameInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/listSitesAssignedToHostName",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ListSiteIdentifiersAssignedToHostNameInput =
@@ -8484,7 +8822,7 @@ export const ListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/skus",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ListSkusInput = typeof ListSkusInput.Type;
@@ -8543,7 +8881,7 @@ export const ListSourceControlsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Web/sourcecontrols",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ListSourceControlsInput = typeof ListSourceControlsInput.Type;
@@ -8608,7 +8946,7 @@ export const MoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type MoveInput = typeof MoveInput.Type;
@@ -8647,7 +8985,7 @@ export const ProviderGetAvailableStacksInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Web/availableStacks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ProviderGetAvailableStacksInput =
@@ -8700,7 +9038,7 @@ export const ProviderGetAvailableStacksOnPremInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/availableStacks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ProviderGetAvailableStacksOnPremInput =
@@ -8744,7 +9082,7 @@ export const ProviderGetFunctionAppStacksInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Web/functionAppStacks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ProviderGetFunctionAppStacksInput =
@@ -8789,7 +9127,7 @@ export const ProviderGetFunctionAppStacksForLocationInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Web/locations/{location}/functionAppStacks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ProviderGetFunctionAppStacksForLocationInput =
@@ -8834,7 +9172,7 @@ export const ProviderGetWebAppStacksInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Web/webAppStacks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ProviderGetWebAppStacksInput =
@@ -8880,7 +9218,7 @@ export const ProviderGetWebAppStacksForLocationInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Web/locations/{location}/webAppStacks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ProviderGetWebAppStacksForLocationInput =
@@ -8923,7 +9261,7 @@ export const ProviderListOperationsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Web/operations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ProviderListOperationsInput =
@@ -9042,7 +9380,7 @@ export const RecommendationsDisableAllForHostingEnvironmentInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/disable",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsDisableAllForHostingEnvironmentInput =
@@ -9081,7 +9419,7 @@ export const RecommendationsDisableAllForWebAppInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/disable",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsDisableAllForWebAppInput =
@@ -9121,7 +9459,7 @@ export const RecommendationsDisableRecommendationForHostingEnvironmentInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/{name}/disable",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsDisableRecommendationForHostingEnvironmentInput =
@@ -9163,7 +9501,7 @@ export const RecommendationsDisableRecommendationForSiteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/{name}/disable",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsDisableRecommendationForSiteInput =
@@ -9201,7 +9539,7 @@ export const RecommendationsDisableRecommendationForSubscriptionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations/{name}/disable",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsDisableRecommendationForSubscriptionInput =
@@ -9241,7 +9579,7 @@ export const RecommendationsGetRuleDetailsByHostingEnvironmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsGetRuleDetailsByHostingEnvironmentInput =
@@ -9303,7 +9641,7 @@ export const RecommendationsGetRuleDetailsByWebAppInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsGetRuleDetailsByWebAppInput =
@@ -9362,7 +9700,7 @@ export const RecommendationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsListInput = typeof RecommendationsListInput.Type;
@@ -9409,7 +9747,7 @@ export const RecommendationsListHistoryForHostingEnvironmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendationHistory",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsListHistoryForHostingEnvironmentInput =
@@ -9461,7 +9799,7 @@ export const RecommendationsListHistoryForWebAppInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendationHistory",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsListHistoryForWebAppInput =
@@ -9513,7 +9851,7 @@ export const RecommendationsListRecommendedRulesForHostingEnvironmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsListRecommendedRulesForHostingEnvironmentInput =
@@ -9566,7 +9904,7 @@ export const RecommendationsListRecommendedRulesForWebAppInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsListRecommendedRulesForWebAppInput =
@@ -9614,7 +9952,7 @@ export const RecommendationsResetAllFiltersInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations/reset",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsResetAllFiltersInput =
@@ -9651,7 +9989,7 @@ export const RecommendationsResetAllFiltersForHostingEnvironmentInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/reset",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsResetAllFiltersForHostingEnvironmentInput =
@@ -9690,7 +10028,7 @@ export const RecommendationsResetAllFiltersForWebAppInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/reset",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RecommendationsResetAllFiltersForWebAppInput =
@@ -9740,7 +10078,7 @@ export const RegionalCheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/checknameavailability",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type RegionalCheckNameAvailabilityInput =
@@ -9780,7 +10118,7 @@ export const ResourceHealthMetadataGetBySiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/resourceHealthMetadata/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ResourceHealthMetadataGetBySiteInput =
@@ -9837,7 +10175,7 @@ export const ResourceHealthMetadataGetBySiteSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/resourceHealthMetadata/default",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ResourceHealthMetadataGetBySiteSlotInput =
@@ -9892,7 +10230,7 @@ export const ResourceHealthMetadataListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/resourceHealthMetadata",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ResourceHealthMetadataListInput =
@@ -9961,7 +10299,7 @@ export const ResourceHealthMetadataListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/resourceHealthMetadata",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ResourceHealthMetadataListByResourceGroupInput =
@@ -10031,7 +10369,7 @@ export const ResourceHealthMetadataListBySiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/resourceHealthMetadata",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ResourceHealthMetadataListBySiteInput =
@@ -10103,7 +10441,7 @@ export const ResourceHealthMetadataListBySiteSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/resourceHealthMetadata",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ResourceHealthMetadataListBySiteSlotInput =
@@ -10224,7 +10562,7 @@ export const SiteCertificatesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SiteCertificatesCreateOrUpdateInput =
@@ -10329,7 +10667,7 @@ export const SiteCertificatesCreateOrUpdateSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates/{certificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SiteCertificatesCreateOrUpdateSlotInput =
@@ -10386,7 +10724,7 @@ export const SiteCertificatesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SiteCertificatesDeleteInput =
@@ -10426,7 +10764,7 @@ export const SiteCertificatesDeleteSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates/{certificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SiteCertificatesDeleteSlotInput =
@@ -10466,7 +10804,7 @@ export const SiteCertificatesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SiteCertificatesGetInput = typeof SiteCertificatesGetInput.Type;
@@ -10520,7 +10858,7 @@ export const SiteCertificatesGetSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates/{certificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SiteCertificatesGetSlotInput =
@@ -10577,7 +10915,7 @@ export const SiteCertificatesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SiteCertificatesListInput = typeof SiteCertificatesListInput.Type;
@@ -10646,7 +10984,7 @@ export const SiteCertificatesListSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SiteCertificatesListSlotInput =
@@ -10766,7 +11104,7 @@ export const SiteCertificatesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/certificates/{certificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SiteCertificatesUpdateInput =
@@ -10872,7 +11210,7 @@ export const SiteCertificatesUpdateSlotInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/certificates/{certificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type SiteCertificatesUpdateSlotInput =
@@ -10920,6 +11258,99 @@ export const SiteCertificatesUpdateSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const SitesGetNetworkSecurityPerimeterConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    networkSecurityPerimeterReference: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterReference}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type SitesGetNetworkSecurityPerimeterConfigurationInput =
+  typeof SitesGetNetworkSecurityPerimeterConfigurationInput.Type;
+
+// Output Schema
+export const SitesGetNetworkSecurityPerimeterConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+export type SitesGetNetworkSecurityPerimeterConfigurationOutput =
+  typeof SitesGetNetworkSecurityPerimeterConfigurationOutput.Type;
+
+// The operation
+/**
+ * Gets the Network Security Perimeter Association Configuration for the site for the specified Network Security Perimeter Association reference.
+ *
+ * Description for Gets the Network Security Perimeter Association Configuration for the site for the specified Network Security Perimeter Association reference.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param name - Name of the app.
+ * @param networkSecurityPerimeterReference - AssociationName and PerimeterGuid of the Network Security Perimeter Association.
+ */
+export const SitesGetNetworkSecurityPerimeterConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SitesGetNetworkSecurityPerimeterConfigurationInput,
+    outputSchema: SitesGetNetworkSecurityPerimeterConfigurationOutput,
+  }));
+// Input Schema
+export const SitesListNetworkSecurityPerimeterConfigurationsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkSecurityPerimeterConfigurations",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type SitesListNetworkSecurityPerimeterConfigurationsInput =
+  typeof SitesListNetworkSecurityPerimeterConfigurationsInput.Type;
+
+// Output Schema
+export const SitesListNetworkSecurityPerimeterConfigurationsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        kind: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SitesListNetworkSecurityPerimeterConfigurationsOutput =
+  typeof SitesListNetworkSecurityPerimeterConfigurationsOutput.Type;
+
+// The operation
+/**
+ * Lists all Network Security Perimeter Association Configurations for the site.
+ *
+ * Description for Gets all Network Security Perimeter Association Configurations for the site.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param name - Name of the app.
+ */
+export const SitesListNetworkSecurityPerimeterConfigurations =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SitesListNetworkSecurityPerimeterConfigurationsInput,
+    outputSchema: SitesListNetworkSecurityPerimeterConfigurationsOutput,
+  }));
+// Input Schema
 export const StaticSitesApproveOrRejectPrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10949,7 +11380,7 @@ export const StaticSitesApproveOrRejectPrivateEndpointConnectionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesApproveOrRejectPrivateEndpointConnectionInput =
@@ -10997,6 +11428,296 @@ export const StaticSitesApproveOrRejectPrivateEndpointConnection =
     outputSchema: StaticSitesApproveOrRejectPrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export const StaticSitesAsyncOperationsGetOperationResultInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/staticSitesOperationResults/{operationId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type StaticSitesAsyncOperationsGetOperationResultInput =
+  typeof StaticSitesAsyncOperationsGetOperationResultInput.Type;
+
+// Output Schema
+export const StaticSitesAsyncOperationsGetOperationResultOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type StaticSitesAsyncOperationsGetOperationResultOutput =
+  typeof StaticSitesAsyncOperationsGetOperationResultOutput.Type;
+
+// The operation
+/**
+ * Gets the result of a static site async operation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param operationId - The ID of an ongoing async operation.
+ */
+export const StaticSitesAsyncOperationsGetOperationResult =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: StaticSitesAsyncOperationsGetOperationResultInput,
+    outputSchema: StaticSitesAsyncOperationsGetOperationResultOutput,
+  }));
+// Input Schema
+export const StaticSitesAsyncOperationsGetOperationStatusInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/staticSitesOperationStatuses/{operationId}",
+      apiVersion: "2026-03-15",
+    }),
+  );
+export type StaticSitesAsyncOperationsGetOperationStatusInput =
+  typeof StaticSitesAsyncOperationsGetOperationStatusInput.Type;
+
+// Output Schema
+export const StaticSitesAsyncOperationsGetOperationStatusOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        status: Schema.optional(Schema.String),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        staticSiteProperties: Schema.optional(
+          Schema.Struct({
+            defaultHostname: Schema.optional(Schema.String),
+            repositoryUrl: Schema.optional(Schema.String),
+            branch: Schema.optional(Schema.String),
+            customDomains: Schema.optional(Schema.Array(Schema.String)),
+            repositoryToken: Schema.optional(Schema.String),
+            buildProperties: Schema.optional(
+              Schema.Struct({
+                appLocation: Schema.optional(Schema.String),
+                apiLocation: Schema.optional(Schema.String),
+                appArtifactLocation: Schema.optional(Schema.String),
+                outputLocation: Schema.optional(Schema.String),
+                appBuildCommand: Schema.optional(Schema.String),
+                apiBuildCommand: Schema.optional(Schema.String),
+                skipGithubActionWorkflowGeneration: Schema.optional(
+                  Schema.Boolean,
+                ),
+                githubActionSecretNameOverride: Schema.optional(Schema.String),
+              }),
+            ),
+            privateEndpointConnections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                  location: Schema.optional(Schema.String),
+                  tags: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  plan: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      publisher: Schema.optional(Schema.String),
+                      product: Schema.optional(Schema.String),
+                      promotionCode: Schema.optional(Schema.String),
+                      version: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  properties: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                      name: Schema.optional(Schema.String),
+                      kind: Schema.optional(Schema.String),
+                      type: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  sku: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      tier: Schema.optional(Schema.String),
+                      size: Schema.optional(Schema.String),
+                      family: Schema.optional(Schema.String),
+                      capacity: Schema.optional(Schema.Number),
+                      skuCapacity: Schema.optional(
+                        Schema.Struct({
+                          minimum: Schema.optional(Schema.Number),
+                          maximum: Schema.optional(Schema.Number),
+                          elasticMaximum: Schema.optional(Schema.Number),
+                          default: Schema.optional(Schema.Number),
+                          scaleType: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      locations: Schema.optional(Schema.Array(Schema.String)),
+                      capabilities: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                            reason: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  status: Schema.optional(Schema.String),
+                  error: Schema.optional(
+                    Schema.Struct({
+                      extendedCode: Schema.optional(Schema.String),
+                      messageTemplate: Schema.optional(Schema.String),
+                      parameters: Schema.optional(Schema.Array(Schema.String)),
+                      innerErrors: Schema.optional(
+                        Schema.Array(Schema.Unknown),
+                      ),
+                      details: Schema.optional(Schema.Array(Schema.Unknown)),
+                      target: Schema.optional(Schema.String),
+                      code: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  identity: Schema.optional(
+                    Schema.Struct({
+                      type: Schema.optional(
+                        Schema.Literals([
+                          "SystemAssigned",
+                          "UserAssigned",
+                          "SystemAssigned, UserAssigned",
+                          "None",
+                        ]),
+                      ),
+                      tenantId: Schema.optional(Schema.String),
+                      principalId: Schema.optional(Schema.String),
+                      userAssignedIdentities: Schema.optional(
+                        Schema.Record(
+                          Schema.String,
+                          Schema.Struct({
+                            principalId: Schema.optional(Schema.String),
+                            clientId: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  zones: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            stagingEnvironmentPolicy: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            allowConfigFileUpdates: Schema.optional(Schema.Boolean),
+            templateProperties: Schema.optional(
+              Schema.Struct({
+                templateRepositoryUrl: Schema.optional(Schema.String),
+                owner: Schema.optional(Schema.String),
+                repositoryName: Schema.optional(Schema.String),
+                description: Schema.optional(Schema.String),
+                isPrivate: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            contentDistributionEndpoint: Schema.optional(Schema.String),
+            keyVaultReferenceIdentity: Schema.optional(Schema.String),
+            userProvidedFunctionApps: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  kind: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            linkedBackends: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  backendResourceId: Schema.optional(Schema.String),
+                  region: Schema.optional(Schema.String),
+                  createdOn: Schema.optional(Schema.String),
+                  provisioningState: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            provider: Schema.optional(Schema.String),
+            enterpriseGradeCdnStatus: Schema.optional(
+              Schema.Literals(["Enabled", "Enabling", "Disabled", "Disabling"]),
+            ),
+            publicNetworkAccess: Schema.optional(Schema.String),
+            databaseConnections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  resourceId: Schema.optional(Schema.String),
+                  connectionIdentity: Schema.optional(Schema.String),
+                  region: Schema.optional(Schema.String),
+                  configurationFiles: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        fileName: Schema.optional(Schema.String),
+                        contents: Schema.optional(Schema.String),
+                        type: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        error: Schema.optional(
+          Schema.Struct({
+            error: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+  });
+export type StaticSitesAsyncOperationsGetOperationStatusOutput =
+  typeof StaticSitesAsyncOperationsGetOperationStatusOutput.Type;
+
+// The operation
+/**
+ * Gets the status of a static site async operation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param operationId - The ID of an ongoing async operation.
+ */
+export const StaticSitesAsyncOperationsGetOperationStatus =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: StaticSitesAsyncOperationsGetOperationStatusInput,
+    outputSchema: StaticSitesAsyncOperationsGetOperationStatusOutput,
+  }));
+// Input Schema
 export const StaticSitesCreateOrUpdateBasicAuthInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11017,7 +11738,7 @@ export const StaticSitesCreateOrUpdateBasicAuthInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/basicAuth/{basicAuthName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateOrUpdateBasicAuthInput =
@@ -11094,7 +11815,7 @@ export const StaticSitesCreateOrUpdateBuildDatabaseConnectionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/databaseConnections/{databaseConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateOrUpdateBuildDatabaseConnectionInput =
@@ -11171,7 +11892,7 @@ export const StaticSitesCreateOrUpdateDatabaseConnectionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/databaseConnections/{databaseConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateOrUpdateDatabaseConnectionInput =
@@ -11457,7 +12178,7 @@ export const StaticSitesCreateOrUpdateStaticSiteInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateOrUpdateStaticSiteInput =
@@ -11517,7 +12238,7 @@ export const StaticSitesCreateOrUpdateStaticSiteAppSettingsInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/config/appsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateOrUpdateStaticSiteAppSettingsInput =
@@ -11565,7 +12286,7 @@ export const StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/config/appsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsInput =
@@ -11614,7 +12335,7 @@ export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/config/functionappsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsInput =
@@ -11669,7 +12390,7 @@ export const StaticSitesCreateOrUpdateStaticSiteCustomDomainInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateOrUpdateStaticSiteCustomDomainInput =
@@ -11730,7 +12451,7 @@ export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/config/functionappsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsInput =
@@ -11785,7 +12506,7 @@ export const StaticSitesCreateUserRolesInvitationLinkInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/createUserInvitation",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateUserRolesInvitationLinkInput =
@@ -11840,7 +12561,7 @@ export const StaticSitesCreateZipDeploymentForStaticSiteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/zipdeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateZipDeploymentForStaticSiteInput =
@@ -11891,7 +12612,7 @@ export const StaticSitesCreateZipDeploymentForStaticSiteBuildInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/zipdeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesCreateZipDeploymentForStaticSiteBuildInput =
@@ -11932,7 +12653,7 @@ export const StaticSitesDeleteBuildDatabaseConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/databaseConnections/{databaseConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesDeleteBuildDatabaseConnectionInput =
@@ -11971,7 +12692,7 @@ export const StaticSitesDeleteDatabaseConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/databaseConnections/{databaseConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesDeleteDatabaseConnectionInput =
@@ -12009,7 +12730,7 @@ export const StaticSitesDeletePrivateEndpointConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesDeletePrivateEndpointConnectionInput =
@@ -12048,7 +12769,7 @@ export const StaticSitesDeleteStaticSiteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesDeleteStaticSiteInput =
@@ -12088,7 +12809,7 @@ export const StaticSitesDeleteStaticSiteBuildInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesDeleteStaticSiteBuildInput =
@@ -12128,7 +12849,7 @@ export const StaticSitesDeleteStaticSiteCustomDomainInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesDeleteStaticSiteCustomDomainInput =
@@ -12168,8 +12889,8 @@ export const StaticSitesDeleteStaticSiteUserInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesDeleteStaticSiteUserInput =
@@ -12206,7 +12927,7 @@ export const StaticSitesDetachStaticSiteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/detach",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesDetachStaticSiteInput =
@@ -12246,7 +12967,7 @@ export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps/{functionAppName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteInput =
@@ -12287,7 +13008,7 @@ export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/userProvidedFunctionApps/{functionAppName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildInput =
@@ -12330,7 +13051,7 @@ export const StaticSitesGetBasicAuthInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/basicAuth/{basicAuthName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetBasicAuthInput =
@@ -12390,7 +13111,7 @@ export const StaticSitesGetBuildDatabaseConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/databaseConnections/{databaseConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetBuildDatabaseConnectionInput =
@@ -12447,7 +13168,7 @@ export const StaticSitesGetBuildDatabaseConnectionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/databaseConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetBuildDatabaseConnectionsInput =
@@ -12518,7 +13239,7 @@ export const StaticSitesGetBuildDatabaseConnectionsWithDetailsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/showDatabaseConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetBuildDatabaseConnectionsWithDetailsInput =
@@ -12590,7 +13311,7 @@ export const StaticSitesGetBuildDatabaseConnectionWithDetailsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/databaseConnections/{databaseConnectionName}/show",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetBuildDatabaseConnectionWithDetailsInput =
@@ -12647,7 +13368,7 @@ export const StaticSitesGetDatabaseConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/databaseConnections/{databaseConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetDatabaseConnectionInput =
@@ -12702,7 +13423,7 @@ export const StaticSitesGetDatabaseConnectionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/databaseConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetDatabaseConnectionsInput =
@@ -12771,7 +13492,7 @@ export const StaticSitesGetDatabaseConnectionsWithDetailsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/showDatabaseConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetDatabaseConnectionsWithDetailsInput =
@@ -12841,7 +13562,7 @@ export const StaticSitesGetDatabaseConnectionWithDetailsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/databaseConnections/{databaseConnectionName}/show",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetDatabaseConnectionWithDetailsInput =
@@ -12897,7 +13618,7 @@ export const StaticSitesGetLinkedBackendInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetLinkedBackendInput =
@@ -12955,7 +13676,7 @@ export const StaticSitesGetLinkedBackendForBuildInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/linkedBackends/{linkedBackendName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetLinkedBackendForBuildInput =
@@ -13011,7 +13732,7 @@ export const StaticSitesGetLinkedBackendsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetLinkedBackendsInput =
@@ -13081,7 +13802,7 @@ export const StaticSitesGetLinkedBackendsForBuildInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/linkedBackends",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetLinkedBackendsForBuildInput =
@@ -13152,7 +13873,7 @@ export const StaticSitesGetPrivateEndpointConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetPrivateEndpointConnectionInput =
@@ -13209,7 +13930,7 @@ export const StaticSitesGetPrivateEndpointConnectionListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/privateEndpointConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetPrivateEndpointConnectionListInput =
@@ -13280,7 +14001,7 @@ export const StaticSitesGetPrivateLinkResourcesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/privateLinkResources",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetPrivateLinkResourcesInput =
@@ -13331,7 +14052,7 @@ export const StaticSitesGetStaticSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetStaticSiteInput =
@@ -13389,7 +14110,7 @@ export const StaticSitesGetStaticSiteBuildInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetStaticSiteBuildInput =
@@ -13446,7 +14167,7 @@ export const StaticSitesGetStaticSiteBuildsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetStaticSiteBuildsInput =
@@ -13518,7 +14239,7 @@ export const StaticSitesGetStaticSiteCustomDomainInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetStaticSiteCustomDomainInput =
@@ -13574,7 +14295,7 @@ export const StaticSitesGetStaticSitesByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetStaticSitesByResourceGroupInput =
@@ -13645,7 +14366,7 @@ export const StaticSitesGetUserProvidedFunctionAppForStaticSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps/{functionAppName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetUserProvidedFunctionAppForStaticSiteInput =
@@ -13704,7 +14425,7 @@ export const StaticSitesGetUserProvidedFunctionAppForStaticSiteBuildInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/userProvidedFunctionApps/{functionAppName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetUserProvidedFunctionAppForStaticSiteBuildInput =
@@ -13762,7 +14483,7 @@ export const StaticSitesGetUserProvidedFunctionAppsForStaticSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetUserProvidedFunctionAppsForStaticSiteInput =
@@ -13834,7 +14555,7 @@ export const StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/userProvidedFunctionApps",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildInput =
@@ -13917,7 +14638,7 @@ export const StaticSitesLinkBackendInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesLinkBackendInput =
@@ -13984,7 +14705,7 @@ export const StaticSitesLinkBackendToBuildInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/linkedBackends/{linkedBackendName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesLinkBackendToBuildInput =
@@ -14037,7 +14758,7 @@ export const StaticSitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/staticSites",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type StaticSitesListInput = typeof StaticSitesListInput.Type;
@@ -14092,7 +14813,7 @@ export const StaticSitesListBasicAuthInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/basicAuth",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListBasicAuthInput =
@@ -14164,7 +14885,7 @@ export const StaticSitesListStaticSiteAppSettingsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/listAppSettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListStaticSiteAppSettingsInput =
@@ -14208,7 +14929,7 @@ export const StaticSitesListStaticSiteBuildAppSettingsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/listAppSettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListStaticSiteBuildAppSettingsInput =
@@ -14253,7 +14974,7 @@ export const StaticSitesListStaticSiteBuildFunctionAppSettingsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/listFunctionAppSettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListStaticSiteBuildFunctionAppSettingsInput =
@@ -14298,7 +15019,7 @@ export const StaticSitesListStaticSiteBuildFunctionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/functions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListStaticSiteBuildFunctionsInput =
@@ -14347,7 +15068,7 @@ export const StaticSitesListStaticSiteConfiguredRolesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/listConfiguredRoles",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListStaticSiteConfiguredRolesInput =
@@ -14390,7 +15111,7 @@ export const StaticSitesListStaticSiteCustomDomainsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListStaticSiteCustomDomainsInput =
@@ -14461,7 +15182,7 @@ export const StaticSitesListStaticSiteFunctionAppSettingsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/listFunctionAppSettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListStaticSiteFunctionAppSettingsInput =
@@ -14504,7 +15225,7 @@ export const StaticSitesListStaticSiteFunctionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/functions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListStaticSiteFunctionsInput =
@@ -14552,7 +15273,7 @@ export const StaticSitesListStaticSiteSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/listSecrets",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListStaticSiteSecretsInput =
@@ -14595,8 +15316,8 @@ export const StaticSitesListStaticSiteUsersInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/staticSites/{name}/authproviders/{authprovider}/listUsers",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/authproviders/{authprovider}/listUsers",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesListStaticSiteUsersInput =
@@ -14665,7 +15386,7 @@ export const StaticSitesPreviewWorkflowInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/previewStaticSiteWorkflowFile",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesPreviewWorkflowInput =
@@ -14718,7 +15439,7 @@ export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps/{functionAppName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteInput =
@@ -14788,7 +15509,7 @@ export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildInput 
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/userProvidedFunctionApps/{functionAppName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildInput =
@@ -14858,7 +15579,7 @@ export const StaticSitesResetStaticSiteApiKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/resetapikey",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesResetStaticSiteApiKeyInput =
@@ -14898,7 +15619,7 @@ export const StaticSitesUnlinkBackendInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesUnlinkBackendInput =
@@ -14940,7 +15661,7 @@ export const StaticSitesUnlinkBackendFromBuildInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/linkedBackends/{linkedBackendName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesUnlinkBackendFromBuildInput =
@@ -14989,7 +15710,7 @@ export const StaticSitesUpdateBuildDatabaseConnectionInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/databaseConnections/{databaseConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesUpdateBuildDatabaseConnectionInput =
@@ -15056,7 +15777,7 @@ export const StaticSitesUpdateDatabaseConnectionInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/databaseConnections/{databaseConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesUpdateDatabaseConnectionInput =
@@ -15291,7 +16012,7 @@ export const StaticSitesUpdateStaticSiteInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesUpdateStaticSiteInput =
@@ -15360,8 +16081,8 @@ export const StaticSitesUpdateStaticSiteUserInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesUpdateStaticSiteUserInput =
@@ -15413,7 +16134,7 @@ export const StaticSitesValidateBackendInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}/validate",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesValidateBackendInput =
@@ -15462,7 +16183,7 @@ export const StaticSitesValidateBackendForBuildInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/linkedBackends/{linkedBackendName}/validate",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesValidateBackendForBuildInput =
@@ -15509,7 +16230,7 @@ export const StaticSitesValidateCustomDomainCanBeAddedToStaticSiteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}/validate",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type StaticSitesValidateCustomDomainCanBeAddedToStaticSiteInput =
@@ -15555,7 +16276,7 @@ export const UpdatePublishingUserInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Web/publishingUsers/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type UpdatePublishingUserInput = typeof UpdatePublishingUserInput.Type;
@@ -15614,7 +16335,7 @@ export const UpdateSourceControlInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Web/sourcecontrols/{sourceControlType}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type UpdateSourceControlInput = typeof UpdateSourceControlInput.Type;
@@ -15797,7 +16518,7 @@ export const ValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/validate",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ValidateInput = typeof ValidateInput.Type;
@@ -15838,7 +16559,7 @@ export const ValidateMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/validateMoveResources",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ValidateMoveInput = typeof ValidateMoveInput.Type;
@@ -15881,7 +16602,7 @@ export const VerifyHostingEnvironmentVnetInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/verifyHostingEnvironmentVnet",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type VerifyHostingEnvironmentVnetInput =
@@ -15935,7 +16656,7 @@ export const WebAppsAddPremierAddOnInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsAddPremierAddOnInput =
@@ -16007,7 +16728,7 @@ export const WebAppsAddPremierAddOnSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsAddPremierAddOnSlotInput =
@@ -16067,7 +16788,7 @@ export const WebAppsAnalyzeCustomHostnameInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/analyzeCustomHostname",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsAnalyzeCustomHostnameInput =
@@ -16113,7 +16834,7 @@ export const WebAppsAnalyzeCustomHostnameSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/analyzeCustomHostname",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsAnalyzeCustomHostnameSlotInput =
@@ -16160,7 +16881,7 @@ export const WebAppsApplySlotConfigToProductionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/applySlotConfig",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsApplySlotConfigToProductionInput =
@@ -16201,7 +16922,7 @@ export const WebAppsApplySlotConfigurationSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/applySlotConfig",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsApplySlotConfigurationSlotInput =
@@ -16260,7 +16981,7 @@ export const WebAppsApproveOrRejectPrivateEndpointConnectionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsApproveOrRejectPrivateEndpointConnectionInput =
@@ -16338,7 +17059,7 @@ export const WebAppsApproveOrRejectPrivateEndpointConnectionSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsApproveOrRejectPrivateEndpointConnectionSlotInput =
@@ -16430,7 +17151,7 @@ export const WebAppsBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backup",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsBackupInput = typeof WebAppsBackupInput.Type;
@@ -16519,7 +17240,7 @@ export const WebAppsBackupSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backup",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsBackupSlotInput = typeof WebAppsBackupSlotInput.Type;
@@ -16588,7 +17309,7 @@ export const WebAppsCreateDeploymentInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateDeploymentInput =
@@ -16662,7 +17383,7 @@ export const WebAppsCreateDeploymentSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateDeploymentSlotInput =
@@ -16740,7 +17461,7 @@ export const WebAppsCreateFunctionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateFunctionInput = typeof WebAppsCreateFunctionInput.Type;
@@ -16817,7 +17538,7 @@ export const WebAppsCreateInstanceFunctionSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateInstanceFunctionSlotInput =
@@ -16892,7 +17613,7 @@ export const WebAppsCreateInstanceMSDeployOperationInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateInstanceMSDeployOperationInput =
@@ -16967,7 +17688,7 @@ export const WebAppsCreateInstanceMSDeployOperationSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateInstanceMSDeployOperationSlotInput =
@@ -17041,7 +17762,7 @@ export const WebAppsCreateMSDeployOperationInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateMSDeployOperationInput =
@@ -17114,7 +17835,7 @@ export const WebAppsCreateMSDeployOperationSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateMSDeployOperationSlotInput =
@@ -17171,7 +17892,7 @@ export const WebAppsCreateOneDeployOperationInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/onedeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOneDeployOperationInput =
@@ -17212,6 +17933,7 @@ export const WebAppsCreateOrUpdateInput =
         repositorySiteName: Schema.optional(Schema.String),
         usageState: Schema.optional(Schema.Literals(["Normal", "Exceeded"])),
         enabled: Schema.optional(Schema.Boolean),
+        siteScopedCertificatesEnabled: Schema.optional(Schema.Boolean),
         enabledHostNames: Schema.optional(Schema.Array(Schema.String)),
         availabilityState: Schema.optional(
           Schema.Literals(["Normal", "Limited", "DisasterRecoveryMode"]),
@@ -17254,6 +17976,7 @@ export const WebAppsCreateOrUpdateInput =
             contentShareTraffic: Schema.optional(Schema.Boolean),
             imagePullTraffic: Schema.optional(Schema.Boolean),
             backupRestoreTraffic: Schema.optional(Schema.Boolean),
+            managedIdentityTraffic: Schema.optional(Schema.Boolean),
           }),
         ),
         siteConfig: Schema.optional(
@@ -17725,6 +18448,35 @@ export const WebAppsCreateOrUpdateInput =
             enableApiLogging: Schema.optional(Schema.Boolean),
           }),
         ),
+        aiIntegration: Schema.optional(
+          Schema.Struct({
+            apiSpecPath: Schema.optional(Schema.String),
+            mcp: Schema.optional(
+              Schema.Struct({
+                servers: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      description: Schema.optional(Schema.String),
+                      enabled: Schema.optional(Schema.Boolean),
+                      endpoint: Schema.optional(Schema.String),
+                      toolList: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            siteAuth: Schema.optional(
+              Schema.Struct({
+                jwksUri: Schema.optional(Schema.String),
+                issuer: Schema.optional(Schema.String),
+                audience: Schema.optional(Schema.String),
+                wellKnownOpenIdConfiguration: Schema.optional(Schema.String),
+                scopes: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
         workloadProfileName: Schema.optional(Schema.String),
         resourceConfig: Schema.optional(
           Schema.Struct({
@@ -17815,6 +18567,9 @@ export const WebAppsCreateOrUpdateInput =
         virtualNetworkSubnetId: Schema.optional(Schema.String),
         managedEnvironmentId: Schema.optional(Schema.String),
         sku: Schema.optional(Schema.String),
+        platformReleaseChannel: Schema.optional(
+          Schema.Literals(["Latest", "Standard", "Extended"]),
+        ),
       }),
     ),
     identity: Schema.optional(
@@ -17853,7 +18608,7 @@ export const WebAppsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateInput = typeof WebAppsCreateOrUpdateInput.Type;
@@ -18288,7 +19043,7 @@ export const WebAppsCreateOrUpdateConfigurationInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateConfigurationInput =
@@ -18724,7 +19479,7 @@ export const WebAppsCreateOrUpdateConfigurationSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateConfigurationSlotInput =
@@ -18788,7 +19543,7 @@ export const WebAppsCreateOrUpdateDomainOwnershipIdentifierInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateDomainOwnershipIdentifierInput =
@@ -18853,7 +19608,7 @@ export const WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotInput =
@@ -18913,8 +19668,8 @@ export const WebAppsCreateOrUpdateFunctionSecretInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/functions/{functionName}/keys/{keyName}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/keys/{keyName}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateFunctionSecretInput =
@@ -18958,7 +19713,7 @@ export const WebAppsCreateOrUpdateFunctionSecretSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/keys/{keyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateFunctionSecretSlotInput =
@@ -19019,7 +19774,7 @@ export const WebAppsCreateOrUpdateHostNameBindingInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateHostNameBindingInput =
@@ -19098,7 +19853,7 @@ export const WebAppsCreateOrUpdateHostNameBindingSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings/{hostName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateHostNameBindingSlotInput =
@@ -19158,8 +19913,8 @@ export const WebAppsCreateOrUpdateHostSecretInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateHostSecretInput =
@@ -19205,8 +19960,8 @@ export const WebAppsCreateOrUpdateHostSecretSlotInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/host/default/{keyType}/{keyName}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/{keyType}/{keyName}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateHostSecretSlotInput =
@@ -19265,7 +20020,7 @@ export const WebAppsCreateOrUpdateHybridConnectionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateHybridConnectionInput =
@@ -19339,7 +20094,7 @@ export const WebAppsCreateOrUpdateHybridConnectionSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateHybridConnectionSlotInput =
@@ -19409,7 +20164,7 @@ export const WebAppsCreateOrUpdatePublicCertificateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdatePublicCertificateInput =
@@ -19478,7 +20233,7 @@ export const WebAppsCreateOrUpdatePublicCertificateSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdatePublicCertificateSlotInput =
@@ -19549,7 +20304,7 @@ export const WebAppsCreateOrUpdateRelayServiceConnectionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateRelayServiceConnectionInput =
@@ -19620,7 +20375,7 @@ export const WebAppsCreateOrUpdateRelayServiceConnectionSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection/{entityName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateRelayServiceConnectionSlotInput =
@@ -19720,7 +20475,7 @@ export const WebAppsCreateOrUpdateSiteContainerInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers/{containerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateSiteContainerInput =
@@ -19818,7 +20573,7 @@ export const WebAppsCreateOrUpdateSiteContainerSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sitecontainers/{containerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateSiteContainerSlotInput =
@@ -19878,6 +20633,7 @@ export const WebAppsCreateOrUpdateSlotInput =
         repositorySiteName: Schema.optional(Schema.String),
         usageState: Schema.optional(Schema.Literals(["Normal", "Exceeded"])),
         enabled: Schema.optional(Schema.Boolean),
+        siteScopedCertificatesEnabled: Schema.optional(Schema.Boolean),
         enabledHostNames: Schema.optional(Schema.Array(Schema.String)),
         availabilityState: Schema.optional(
           Schema.Literals(["Normal", "Limited", "DisasterRecoveryMode"]),
@@ -19920,6 +20676,7 @@ export const WebAppsCreateOrUpdateSlotInput =
             contentShareTraffic: Schema.optional(Schema.Boolean),
             imagePullTraffic: Schema.optional(Schema.Boolean),
             backupRestoreTraffic: Schema.optional(Schema.Boolean),
+            managedIdentityTraffic: Schema.optional(Schema.Boolean),
           }),
         ),
         siteConfig: Schema.optional(
@@ -20391,6 +21148,35 @@ export const WebAppsCreateOrUpdateSlotInput =
             enableApiLogging: Schema.optional(Schema.Boolean),
           }),
         ),
+        aiIntegration: Schema.optional(
+          Schema.Struct({
+            apiSpecPath: Schema.optional(Schema.String),
+            mcp: Schema.optional(
+              Schema.Struct({
+                servers: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      description: Schema.optional(Schema.String),
+                      enabled: Schema.optional(Schema.Boolean),
+                      endpoint: Schema.optional(Schema.String),
+                      toolList: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            siteAuth: Schema.optional(
+              Schema.Struct({
+                jwksUri: Schema.optional(Schema.String),
+                issuer: Schema.optional(Schema.String),
+                audience: Schema.optional(Schema.String),
+                wellKnownOpenIdConfiguration: Schema.optional(Schema.String),
+                scopes: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
         workloadProfileName: Schema.optional(Schema.String),
         resourceConfig: Schema.optional(
           Schema.Struct({
@@ -20481,6 +21267,9 @@ export const WebAppsCreateOrUpdateSlotInput =
         virtualNetworkSubnetId: Schema.optional(Schema.String),
         managedEnvironmentId: Schema.optional(Schema.String),
         sku: Schema.optional(Schema.String),
+        platformReleaseChannel: Schema.optional(
+          Schema.Literals(["Latest", "Standard", "Extended"]),
+        ),
       }),
     ),
     identity: Schema.optional(
@@ -20519,7 +21308,7 @@ export const WebAppsCreateOrUpdateSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateSlotInput =
@@ -20608,7 +21397,7 @@ export const WebAppsCreateOrUpdateSourceControlInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateSourceControlInput =
@@ -20696,7 +21485,7 @@ export const WebAppsCreateOrUpdateSourceControlSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateSourceControlSlotInput =
@@ -20760,7 +21549,7 @@ export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckInput =
@@ -20828,7 +21617,7 @@ export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotInpu
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkConfig/virtualNetwork",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotInput =
@@ -20934,7 +21723,7 @@ export const WebAppsCreateOrUpdateVnetConnectionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateVnetConnectionInput =
@@ -21000,7 +21789,7 @@ export const WebAppsCreateOrUpdateVnetConnectionGatewayInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateVnetConnectionGatewayInput =
@@ -21068,7 +21857,7 @@ export const WebAppsCreateOrUpdateVnetConnectionGatewaySlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateVnetConnectionGatewaySlotInput =
@@ -21173,7 +21962,7 @@ export const WebAppsCreateOrUpdateVnetConnectionSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsCreateOrUpdateVnetConnectionSlotInput =
@@ -21232,7 +22021,7 @@ export const WebAppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsDeleteInput = typeof WebAppsDeleteInput.Type;
@@ -21269,7 +22058,7 @@ export const WebAppsDeleteBackupInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteBackupInput = typeof WebAppsDeleteBackupInput.Type;
@@ -21305,7 +22094,7 @@ export const WebAppsDeleteBackupConfigurationInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteBackupConfigurationInput =
@@ -21344,7 +22133,7 @@ export const WebAppsDeleteBackupConfigurationSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/backup",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteBackupConfigurationSlotInput =
@@ -21385,7 +22174,7 @@ export const WebAppsDeleteBackupSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteBackupSlotInput =
@@ -21427,7 +22216,7 @@ export const WebAppsDeleteContinuousWebJobInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteContinuousWebJobInput =
@@ -21468,7 +22257,7 @@ export const WebAppsDeleteContinuousWebJobSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteContinuousWebJobSlotInput =
@@ -21509,7 +22298,7 @@ export const WebAppsDeleteDeploymentInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteDeploymentInput =
@@ -21551,7 +22340,7 @@ export const WebAppsDeleteDeploymentSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteDeploymentSlotInput =
@@ -21593,7 +22382,7 @@ export const WebAppsDeleteDomainOwnershipIdentifierInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteDomainOwnershipIdentifierInput =
@@ -21634,7 +22423,7 @@ export const WebAppsDeleteDomainOwnershipIdentifierSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteDomainOwnershipIdentifierSlotInput =
@@ -21675,7 +22464,7 @@ export const WebAppsDeleteFunctionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteFunctionInput = typeof WebAppsDeleteFunctionInput.Type;
@@ -21715,8 +22504,8 @@ export const WebAppsDeleteFunctionSecretInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/functions/{functionName}/keys/{keyName}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/keys/{keyName}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteFunctionSecretInput =
@@ -21757,7 +22546,7 @@ export const WebAppsDeleteFunctionSecretSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/keys/{keyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteFunctionSecretSlotInput =
@@ -21795,7 +22584,7 @@ export const WebAppsDeleteHostNameBindingInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteHostNameBindingInput =
@@ -21836,7 +22625,7 @@ export const WebAppsDeleteHostNameBindingSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings/{hostName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteHostNameBindingSlotInput =
@@ -21877,8 +22666,8 @@ export const WebAppsDeleteHostSecretInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteHostSecretInput =
@@ -21921,8 +22710,8 @@ export const WebAppsDeleteHostSecretSlotInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/host/default/{keyType}/{keyName}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/{keyType}/{keyName}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteHostSecretSlotInput =
@@ -21966,7 +22755,7 @@ export const WebAppsDeleteHybridConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteHybridConnectionInput =
@@ -22009,7 +22798,7 @@ export const WebAppsDeleteHybridConnectionSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteHybridConnectionSlotInput =
@@ -22052,7 +22841,7 @@ export const WebAppsDeleteInstanceFunctionSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteInstanceFunctionSlotInput =
@@ -22094,7 +22883,7 @@ export const WebAppsDeleteInstanceProcessInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteInstanceProcessInput =
@@ -22137,7 +22926,7 @@ export const WebAppsDeleteInstanceProcessSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteInstanceProcessSlotInput =
@@ -22179,7 +22968,7 @@ export const WebAppsDeletePremierAddOnInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeletePremierAddOnInput =
@@ -22221,7 +23010,7 @@ export const WebAppsDeletePremierAddOnSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeletePremierAddOnSlotInput =
@@ -22262,7 +23051,7 @@ export const WebAppsDeletePrivateEndpointConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeletePrivateEndpointConnectionInput =
@@ -22303,7 +23092,7 @@ export const WebAppsDeletePrivateEndpointConnectionSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeletePrivateEndpointConnectionSlotInput =
@@ -22344,7 +23133,7 @@ export const WebAppsDeleteProcessInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteProcessInput = typeof WebAppsDeleteProcessInput.Type;
@@ -22384,7 +23173,7 @@ export const WebAppsDeleteProcessSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteProcessSlotInput =
@@ -22426,7 +23215,7 @@ export const WebAppsDeletePublicCertificateInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeletePublicCertificateInput =
@@ -22467,7 +23256,7 @@ export const WebAppsDeletePublicCertificateSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeletePublicCertificateSlotInput =
@@ -22508,7 +23297,7 @@ export const WebAppsDeleteRelayServiceConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteRelayServiceConnectionInput =
@@ -22549,7 +23338,7 @@ export const WebAppsDeleteRelayServiceConnectionSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection/{entityName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteRelayServiceConnectionSlotInput =
@@ -22590,7 +23379,7 @@ export const WebAppsDeleteSiteContainerInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers/{containerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteSiteContainerInput =
@@ -22630,7 +23419,7 @@ export const WebAppsDeleteSiteContainerSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sitecontainers/{containerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteSiteContainerSlotInput =
@@ -22669,7 +23458,7 @@ export const WebAppsDeleteSiteExtensionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteSiteExtensionInput =
@@ -22711,7 +23500,7 @@ export const WebAppsDeleteSiteExtensionSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteSiteExtensionSlotInput =
@@ -22755,7 +23544,7 @@ export const WebAppsDeleteSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsDeleteSlotInput = typeof WebAppsDeleteSlotInput.Type;
@@ -22793,7 +23582,7 @@ export const WebAppsDeleteSourceControlInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteSourceControlInput =
@@ -22834,7 +23623,7 @@ export const WebAppsDeleteSourceControlSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteSourceControlSlotInput =
@@ -22873,7 +23662,7 @@ export const WebAppsDeleteSwiftVirtualNetworkInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteSwiftVirtualNetworkInput =
@@ -22912,7 +23701,7 @@ export const WebAppsDeleteSwiftVirtualNetworkSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkConfig/virtualNetwork",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteSwiftVirtualNetworkSlotInput =
@@ -22952,7 +23741,7 @@ export const WebAppsDeleteTriggeredWebJobInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteTriggeredWebJobInput =
@@ -22993,7 +23782,7 @@ export const WebAppsDeleteTriggeredWebJobSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteTriggeredWebJobSlotInput =
@@ -23034,7 +23823,7 @@ export const WebAppsDeleteVnetConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteVnetConnectionInput =
@@ -23076,7 +23865,7 @@ export const WebAppsDeleteVnetConnectionSlotInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeleteVnetConnectionSlotInput =
@@ -23119,7 +23908,7 @@ export const WebAppsDeployWorkflowArtifactsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployWorkflowArtifacts",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeployWorkflowArtifactsInput =
@@ -23161,7 +23950,7 @@ export const WebAppsDeployWorkflowArtifactsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployWorkflowArtifacts",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDeployWorkflowArtifactsSlotInput =
@@ -23240,7 +24029,7 @@ export const WebAppsDiscoverBackupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/discoverbackup",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDiscoverBackupInput = typeof WebAppsDiscoverBackupInput.Type;
@@ -23324,7 +24113,7 @@ export const WebAppsDiscoverBackupSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/discoverbackup",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsDiscoverBackupSlotInput =
@@ -23369,7 +24158,7 @@ export const WebAppsGenerateNewSitePublishingPasswordInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/newpassword",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGenerateNewSitePublishingPasswordInput =
@@ -23408,7 +24197,7 @@ export const WebAppsGenerateNewSitePublishingPasswordSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/newpassword",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGenerateNewSitePublishingPasswordSlotInput =
@@ -23446,7 +24235,7 @@ export const WebAppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsGetInput = typeof WebAppsGetInput.Type;
@@ -23499,7 +24288,7 @@ export const WebAppsGetAppSettingKeyVaultReferenceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/appsettings/{appSettingKey}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetAppSettingKeyVaultReferenceInput =
@@ -23558,7 +24347,7 @@ export const WebAppsGetAppSettingKeyVaultReferenceSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/appsettings/{appSettingKey}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetAppSettingKeyVaultReferenceSlotInput =
@@ -23615,7 +24404,7 @@ export const WebAppsGetAppSettingsKeyVaultReferencesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/appsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetAppSettingsKeyVaultReferencesInput =
@@ -23687,7 +24476,7 @@ export const WebAppsGetAppSettingsKeyVaultReferencesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/appsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetAppSettingsKeyVaultReferencesSlotInput =
@@ -23758,7 +24547,7 @@ export const WebAppsGetAuthSettingsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetAuthSettingsInput =
@@ -23803,7 +24592,7 @@ export const WebAppsGetAuthSettingsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetAuthSettingsSlotInput =
@@ -23848,7 +24637,7 @@ export const WebAppsGetAuthSettingsV2Input =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettingsV2/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetAuthSettingsV2Input =
@@ -23906,7 +24695,7 @@ export const WebAppsGetAuthSettingsV2SlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettingsV2/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetAuthSettingsV2SlotInput =
@@ -23963,7 +24752,7 @@ export const WebAppsGetAuthSettingsV2WithoutSecretsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettingsV2",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetAuthSettingsV2WithoutSecretsInput =
@@ -24020,7 +24809,7 @@ export const WebAppsGetAuthSettingsV2WithoutSecretsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettingsV2",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetAuthSettingsV2WithoutSecretsSlotInput =
@@ -24075,7 +24864,7 @@ export const WebAppsGetBackupConfigurationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetBackupConfigurationInput =
@@ -24119,7 +24908,7 @@ export const WebAppsGetBackupConfigurationSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/backup/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetBackupConfigurationSlotInput =
@@ -24164,7 +24953,7 @@ export const WebAppsGetBackupStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetBackupStatusInput =
@@ -24224,7 +25013,7 @@ export const WebAppsGetBackupStatusSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetBackupStatusSlotInput =
@@ -24283,7 +25072,7 @@ export const WebAppsGetConfigurationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetConfigurationInput =
@@ -24341,7 +25130,7 @@ export const WebAppsGetConfigurationSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetConfigurationSlotInput =
@@ -24400,7 +25189,7 @@ export const WebAppsGetConfigurationSnapshotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetConfigurationSnapshotInput =
@@ -24459,7 +25248,7 @@ export const WebAppsGetConfigurationSnapshotSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots/{snapshotId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetConfigurationSnapshotSlotInput =
@@ -24517,7 +25306,7 @@ export const WebAppsGetContainerLogsZipInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs/zip/download",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetContainerLogsZipInput =
@@ -24557,7 +25346,7 @@ export const WebAppsGetContainerLogsZipSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs/zip/download",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetContainerLogsZipSlotInput =
@@ -24597,7 +25386,7 @@ export const WebAppsGetContinuousWebJobInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetContinuousWebJobInput =
@@ -24657,7 +25446,7 @@ export const WebAppsGetContinuousWebJobSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetContinuousWebJobSlotInput =
@@ -24716,7 +25505,7 @@ export const WebAppsGetDeploymentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetDeploymentInput = typeof WebAppsGetDeploymentInput.Type;
@@ -24774,7 +25563,7 @@ export const WebAppsGetDeploymentSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetDeploymentSlotInput =
@@ -24833,7 +25622,7 @@ export const WebAppsGetDiagnosticLogsConfigurationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/logs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetDiagnosticLogsConfigurationInput =
@@ -24890,7 +25679,7 @@ export const WebAppsGetDiagnosticLogsConfigurationSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/logs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetDiagnosticLogsConfigurationSlotInput =
@@ -24948,7 +25737,7 @@ export const WebAppsGetDomainOwnershipIdentifierInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetDomainOwnershipIdentifierInput =
@@ -25007,7 +25796,7 @@ export const WebAppsGetDomainOwnershipIdentifierSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetDomainOwnershipIdentifierSlotInput =
@@ -25065,7 +25854,7 @@ export const WebAppsGetFtpAllowedInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/ftp",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetFtpAllowedInput = typeof WebAppsGetFtpAllowedInput.Type;
@@ -25121,7 +25910,7 @@ export const WebAppsGetFtpAllowedSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetFtpAllowedSlotInput =
@@ -25179,7 +25968,7 @@ export const WebAppsGetFunctionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetFunctionInput = typeof WebAppsGetFunctionInput.Type;
@@ -25233,7 +26022,7 @@ export const WebAppsGetFunctionsAdminTokenInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/admin/token",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetFunctionsAdminTokenInput =
@@ -25272,7 +26061,7 @@ export const WebAppsGetFunctionsAdminTokenSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/admin/token",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetFunctionsAdminTokenSlotInput =
@@ -25312,7 +26101,7 @@ export const WebAppsGetHostNameBindingInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetHostNameBindingInput =
@@ -25372,7 +26161,7 @@ export const WebAppsGetHostNameBindingSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings/{hostName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetHostNameBindingSlotInput =
@@ -25432,7 +26221,7 @@ export const WebAppsGetHybridConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetHybridConnectionInput =
@@ -25494,7 +26283,7 @@ export const WebAppsGetHybridConnectionSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetHybridConnectionSlotInput =
@@ -25555,7 +26344,7 @@ export const WebAppsGetInstanceFunctionSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceFunctionSlotInput =
@@ -25614,7 +26403,7 @@ export const WebAppsGetInstanceInfoInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceInfoInput =
@@ -25673,7 +26462,7 @@ export const WebAppsGetInstanceInfoSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceInfoSlotInput =
@@ -25732,7 +26521,7 @@ export const WebAppsGetInstanceMSDeployLogInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy/log",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceMSDeployLogInput =
@@ -25778,7 +26567,7 @@ export const WebAppsGetInstanceMSDeployLogSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy/log",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceMSDeployLogSlotInput =
@@ -25824,7 +26613,7 @@ export const WebAppsGetInstanceMsDeployStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceMsDeployStatusInput =
@@ -25883,7 +26672,7 @@ export const WebAppsGetInstanceMsDeployStatusSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceMsDeployStatusSlotInput =
@@ -25943,7 +26732,7 @@ export const WebAppsGetInstanceProcessInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceProcessInput =
@@ -26004,7 +26793,7 @@ export const WebAppsGetInstanceProcessDumpInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/dump",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceProcessDumpInput =
@@ -26047,7 +26836,7 @@ export const WebAppsGetInstanceProcessDumpSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/dump",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceProcessDumpSlotInput =
@@ -26091,7 +26880,7 @@ export const WebAppsGetInstanceProcessModuleInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/modules/{baseAddress}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceProcessModuleInput =
@@ -26154,7 +26943,7 @@ export const WebAppsGetInstanceProcessModuleSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/modules/{baseAddress}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceProcessModuleSlotInput =
@@ -26217,7 +27006,7 @@ export const WebAppsGetInstanceProcessSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceProcessSlotInput =
@@ -26278,7 +27067,7 @@ export const WebAppsGetInstanceWorkflowSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/workflows/{workflowName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetInstanceWorkflowSlotInput =
@@ -26334,7 +27123,7 @@ export const WebAppsGetMigrateMySqlStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql/status",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetMigrateMySqlStatusInput =
@@ -26391,7 +27180,7 @@ export const WebAppsGetMigrateMySqlStatusSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/migratemysql/status",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetMigrateMySqlStatusSlotInput =
@@ -26448,7 +27237,7 @@ export const WebAppsGetMSDeployLogInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy/log",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetMSDeployLogInput = typeof WebAppsGetMSDeployLogInput.Type;
@@ -26492,7 +27281,7 @@ export const WebAppsGetMSDeployLogSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy/log",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetMSDeployLogSlotInput =
@@ -26537,7 +27326,7 @@ export const WebAppsGetMSDeployStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetMSDeployStatusInput =
@@ -26595,7 +27384,7 @@ export const WebAppsGetMSDeployStatusSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetMSDeployStatusSlotInput =
@@ -26652,8 +27441,8 @@ export const WebAppsGetNetworkTraceOperationInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/networkTrace/operationresults/{operationId}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/operationresults/{operationId}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetNetworkTraceOperationInput =
@@ -26699,8 +27488,8 @@ export const WebAppsGetNetworkTraceOperationSlotInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/networkTrace/operationresults/{operationId}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/operationresults/{operationId}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetNetworkTraceOperationSlotInput =
@@ -26747,8 +27536,8 @@ export const WebAppsGetNetworkTraceOperationSlotV2Input =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/networkTraces/current/operationresults/{operationId}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTraces/current/operationresults/{operationId}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetNetworkTraceOperationSlotV2Input =
@@ -26794,8 +27583,8 @@ export const WebAppsGetNetworkTraceOperationV2Input =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/networkTraces/current/operationresults/{operationId}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTraces/current/operationresults/{operationId}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetNetworkTraceOperationV2Input =
@@ -26840,8 +27629,8 @@ export const WebAppsGetNetworkTracesInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/networkTrace/{operationId}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/{operationId}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetNetworkTracesInput =
@@ -26888,8 +27677,8 @@ export const WebAppsGetNetworkTracesSlotInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/networkTrace/{operationId}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/{operationId}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetNetworkTracesSlotInput =
@@ -26937,8 +27726,8 @@ export const WebAppsGetNetworkTracesSlotV2Input =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/slots/{slot}/networkTraces/{operationId}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTraces/{operationId}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetNetworkTracesSlotV2Input =
@@ -26984,8 +27773,8 @@ export const WebAppsGetNetworkTracesV2Input =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Web/sites/{name}/networkTraces/{operationId}",
-      apiVersion: "2025-05-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTraces/{operationId}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetNetworkTracesV2Input =
@@ -27031,7 +27820,7 @@ export const WebAppsGetOneDeployStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/onedeploy",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetOneDeployStatusInput =
@@ -27071,7 +27860,7 @@ export const WebAppsGetPremierAddOnInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPremierAddOnInput =
@@ -27131,7 +27920,7 @@ export const WebAppsGetPremierAddOnSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPremierAddOnSlotInput =
@@ -27190,7 +27979,7 @@ export const WebAppsGetPrivateAccessInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateAccess/virtualNetworks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPrivateAccessInput =
@@ -27248,7 +28037,7 @@ export const WebAppsGetPrivateAccessSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateAccess/virtualNetworks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPrivateAccessSlotInput =
@@ -27307,7 +28096,7 @@ export const WebAppsGetPrivateEndpointConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPrivateEndpointConnectionInput =
@@ -27364,7 +28153,7 @@ export const WebAppsGetPrivateEndpointConnectionListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPrivateEndpointConnectionListInput =
@@ -27436,7 +28225,7 @@ export const WebAppsGetPrivateEndpointConnectionListSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPrivateEndpointConnectionListSlotInput =
@@ -27510,7 +28299,7 @@ export const WebAppsGetPrivateEndpointConnectionSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPrivateEndpointConnectionSlotInput =
@@ -27568,7 +28357,7 @@ export const WebAppsGetPrivateLinkResourcesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateLinkResources",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPrivateLinkResourcesInput =
@@ -27620,7 +28409,7 @@ export const WebAppsGetPrivateLinkResourcesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateLinkResources",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPrivateLinkResourcesSlotInput =
@@ -27674,7 +28463,7 @@ export const WebAppsGetProcessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsGetProcessInput = typeof WebAppsGetProcessInput.Type;
@@ -27729,7 +28518,7 @@ export const WebAppsGetProcessDumpInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/dump",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetProcessDumpInput = typeof WebAppsGetProcessDumpInput.Type;
@@ -27770,7 +28559,7 @@ export const WebAppsGetProcessDumpSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/dump",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetProcessDumpSlotInput =
@@ -27813,7 +28602,7 @@ export const WebAppsGetProcessModuleInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules/{baseAddress}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetProcessModuleInput =
@@ -27875,7 +28664,7 @@ export const WebAppsGetProcessModuleSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules/{baseAddress}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetProcessModuleSlotInput =
@@ -27937,7 +28726,7 @@ export const WebAppsGetProcessSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetProcessSlotInput = typeof WebAppsGetProcessSlotInput.Type;
@@ -27996,7 +28785,7 @@ export const WebAppsGetProductionSiteDeploymentStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deploymentStatus/{deploymentStatusId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetProductionSiteDeploymentStatusInput =
@@ -28052,7 +28841,7 @@ export const WebAppsGetPublicCertificateInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPublicCertificateInput =
@@ -28112,7 +28901,7 @@ export const WebAppsGetPublicCertificateSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetPublicCertificateSlotInput =
@@ -28171,7 +28960,7 @@ export const WebAppsGetRelayServiceConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetRelayServiceConnectionInput =
@@ -28230,7 +29019,7 @@ export const WebAppsGetRelayServiceConnectionSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection/{entityName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetRelayServiceConnectionSlotInput =
@@ -28288,7 +29077,7 @@ export const WebAppsGetScmAllowedInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/scm",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetScmAllowedInput = typeof WebAppsGetScmAllowedInput.Type;
@@ -28344,7 +29133,7 @@ export const WebAppsGetScmAllowedSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetScmAllowedSlotInput =
@@ -28402,7 +29191,7 @@ export const WebAppsGetSiteConnectionStringKeyVaultReferenceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/connectionstrings/{connectionStringKey}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSiteConnectionStringKeyVaultReferenceInput =
@@ -28458,7 +29247,7 @@ export const WebAppsGetSiteConnectionStringKeyVaultReferencesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/connectionstrings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSiteConnectionStringKeyVaultReferencesInput =
@@ -28531,7 +29320,7 @@ export const WebAppsGetSiteConnectionStringKeyVaultReferenceSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/connectionstrings/{connectionStringKey}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSiteConnectionStringKeyVaultReferenceSlotInput =
@@ -28588,7 +29377,7 @@ export const WebAppsGetSiteConnectionStringKeyVaultReferencesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/connectionstrings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSiteConnectionStringKeyVaultReferencesSlotInput =
@@ -28660,7 +29449,7 @@ export const WebAppsGetSiteContainerInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers/{containerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSiteContainerInput =
@@ -28718,7 +29507,7 @@ export const WebAppsGetSiteContainerSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sitecontainers/{containerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSiteContainerSlotInput =
@@ -28776,7 +29565,7 @@ export const WebAppsGetSiteExtensionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSiteExtensionInput =
@@ -28836,7 +29625,7 @@ export const WebAppsGetSiteExtensionSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSiteExtensionSlotInput =
@@ -28895,7 +29684,7 @@ export const WebAppsGetSitePhpErrorLogFlagInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/phplogging",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSitePhpErrorLogFlagInput =
@@ -28939,7 +29728,7 @@ export const WebAppsGetSitePhpErrorLogFlagSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/phplogging",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSitePhpErrorLogFlagSlotInput =
@@ -28983,7 +29772,7 @@ export const WebAppsGetSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsGetSlotInput = typeof WebAppsGetSlotInput.Type;
@@ -29038,7 +29827,7 @@ export const WebAppsGetSlotSiteDeploymentStatusSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deploymentStatus/{deploymentStatusId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSlotSiteDeploymentStatusSlotInput =
@@ -29094,7 +29883,7 @@ export const WebAppsGetSourceControlInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSourceControlInput =
@@ -29152,7 +29941,7 @@ export const WebAppsGetSourceControlSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSourceControlSlotInput =
@@ -29210,7 +29999,7 @@ export const WebAppsGetSwiftVirtualNetworkConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSwiftVirtualNetworkConnectionInput =
@@ -29267,7 +30056,7 @@ export const WebAppsGetSwiftVirtualNetworkConnectionSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkConfig/virtualNetwork",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetSwiftVirtualNetworkConnectionSlotInput =
@@ -29325,7 +30114,7 @@ export const WebAppsGetTriggeredWebJobInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetTriggeredWebJobInput =
@@ -29385,7 +30174,7 @@ export const WebAppsGetTriggeredWebJobHistoryInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history/{id}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetTriggeredWebJobHistoryInput =
@@ -29446,7 +30235,7 @@ export const WebAppsGetTriggeredWebJobHistorySlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history/{id}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetTriggeredWebJobHistorySlotInput =
@@ -29507,7 +30296,7 @@ export const WebAppsGetTriggeredWebJobSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetTriggeredWebJobSlotInput =
@@ -29566,7 +30355,7 @@ export const WebAppsGetVnetConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetVnetConnectionInput =
@@ -29626,7 +30415,7 @@ export const WebAppsGetVnetConnectionGatewayInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetVnetConnectionGatewayInput =
@@ -29687,7 +30476,7 @@ export const WebAppsGetVnetConnectionGatewaySlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetVnetConnectionGatewaySlotInput =
@@ -29748,7 +30537,7 @@ export const WebAppsGetVnetConnectionSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetVnetConnectionSlotInput =
@@ -29806,7 +30595,7 @@ export const WebAppsGetWebJobInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs/{webJobName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsGetWebJobInput = typeof WebAppsGetWebJobInput.Type;
@@ -29863,7 +30652,7 @@ export const WebAppsGetWebJobSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs/{webJobName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetWebJobSlotInput = typeof WebAppsGetWebJobSlotInput.Type;
@@ -29920,7 +30709,7 @@ export const WebAppsGetWebSiteContainerLogsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetWebSiteContainerLogsInput =
@@ -29959,7 +30748,7 @@ export const WebAppsGetWebSiteContainerLogsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetWebSiteContainerLogsSlotInput =
@@ -29999,7 +30788,7 @@ export const WebAppsGetWorkflowInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/workflows/{workflowName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsGetWorkflowInput = typeof WebAppsGetWorkflowInput.Type;
@@ -30052,7 +30841,7 @@ export const WebAppsInstallSiteExtensionInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsInstallSiteExtensionInput =
@@ -30112,7 +30901,7 @@ export const WebAppsInstallSiteExtensionSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsInstallSiteExtensionSlotInput =
@@ -30170,7 +30959,7 @@ export const WebAppsIsCloneableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/iscloneable",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsIsCloneableInput = typeof WebAppsIsCloneableInput.Type;
@@ -30234,7 +31023,7 @@ export const WebAppsIsCloneableSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/iscloneable",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsIsCloneableSlotInput =
@@ -30299,7 +31088,7 @@ export const WebAppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/sites",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsListInput = typeof WebAppsListInput.Type;
@@ -30354,7 +31143,7 @@ export const WebAppsListApplicationSettingsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListApplicationSettingsInput =
@@ -30398,7 +31187,7 @@ export const WebAppsListApplicationSettingsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/appsettings/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListApplicationSettingsSlotInput =
@@ -30442,7 +31231,7 @@ export const WebAppsListAzureStorageAccountsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListAzureStorageAccountsInput =
@@ -30486,7 +31275,7 @@ export const WebAppsListAzureStorageAccountsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/azurestorageaccounts/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListAzureStorageAccountsSlotInput =
@@ -30530,7 +31319,7 @@ export const WebAppsListBackupsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListBackupsInput = typeof WebAppsListBackupsInput.Type;
@@ -30599,7 +31388,7 @@ export const WebAppsListBackupsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListBackupsSlotInput =
@@ -30708,7 +31497,7 @@ export const WebAppsListBackupStatusSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListBackupStatusSecretsInput =
@@ -30802,7 +31591,7 @@ export const WebAppsListBackupStatusSecretsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListBackupStatusSecretsSlotInput =
@@ -30860,7 +31649,7 @@ export const WebAppsListBasicPublishingCredentialsPoliciesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListBasicPublishingCredentialsPoliciesInput =
@@ -30932,7 +31721,7 @@ export const WebAppsListBasicPublishingCredentialsPoliciesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListBasicPublishingCredentialsPoliciesSlotInput =
@@ -31003,7 +31792,7 @@ export const WebAppsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListByResourceGroupInput =
@@ -31075,7 +31864,7 @@ export const WebAppsListConfigurationsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListConfigurationsInput =
@@ -31147,7 +31936,7 @@ export const WebAppsListConfigurationSnapshotInfoInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListConfigurationSnapshotInfoInput =
@@ -31196,7 +31985,7 @@ export const WebAppsListConfigurationSnapshotInfoSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListConfigurationSnapshotInfoSlotInput =
@@ -31246,7 +32035,7 @@ export const WebAppsListConfigurationsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListConfigurationsSlotInput =
@@ -31318,7 +32107,7 @@ export const WebAppsListConnectionStringsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListConnectionStringsInput =
@@ -31362,7 +32151,7 @@ export const WebAppsListConnectionStringsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/connectionstrings/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListConnectionStringsSlotInput =
@@ -31406,7 +32195,7 @@ export const WebAppsListContinuousWebJobsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListContinuousWebJobsInput =
@@ -31478,7 +32267,7 @@ export const WebAppsListContinuousWebJobsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListContinuousWebJobsSlotInput =
@@ -31551,7 +32340,7 @@ export const WebAppsListDeploymentLogInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}/log",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListDeploymentLogInput =
@@ -31611,7 +32400,7 @@ export const WebAppsListDeploymentLogSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}/log",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListDeploymentLogSlotInput =
@@ -31669,7 +32458,7 @@ export const WebAppsListDeploymentsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListDeploymentsInput =
@@ -31742,7 +32531,7 @@ export const WebAppsListDeploymentsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListDeploymentsSlotInput =
@@ -31815,7 +32604,7 @@ export const WebAppsListDomainOwnershipIdentifiersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListDomainOwnershipIdentifiersInput =
@@ -31887,7 +32676,7 @@ export const WebAppsListDomainOwnershipIdentifiersSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListDomainOwnershipIdentifiersSlotInput =
@@ -31960,7 +32749,7 @@ export const WebAppsListFunctionKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/listkeys",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListFunctionKeysInput =
@@ -32007,7 +32796,7 @@ export const WebAppsListFunctionKeysSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/listkeys",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListFunctionKeysSlotInput =
@@ -32050,7 +32839,7 @@ export const WebAppsListFunctionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListFunctionsInput = typeof WebAppsListFunctionsInput.Type;
@@ -32121,7 +32910,7 @@ export const WebAppsListFunctionSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/listsecrets",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListFunctionSecretsInput =
@@ -32166,7 +32955,7 @@ export const WebAppsListFunctionSecretsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/listsecrets",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListFunctionSecretsSlotInput =
@@ -32209,7 +32998,7 @@ export const WebAppsListHostKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listkeys",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListHostKeysInput = typeof WebAppsListHostKeysInput.Type;
@@ -32249,7 +33038,7 @@ export const WebAppsListHostKeysSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listkeys",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListHostKeysSlotInput =
@@ -32293,7 +33082,7 @@ export const WebAppsListHostNameBindingsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListHostNameBindingsInput =
@@ -32366,7 +33155,7 @@ export const WebAppsListHostNameBindingsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListHostNameBindingsSlotInput =
@@ -32438,7 +33227,7 @@ export const WebAppsListHybridConnectionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionRelays",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListHybridConnectionsInput =
@@ -32495,7 +33284,7 @@ export const WebAppsListHybridConnectionsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionRelays",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListHybridConnectionsSlotInput =
@@ -32553,7 +33342,7 @@ export const WebAppsListInstanceFunctionsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListInstanceFunctionsSlotInput =
@@ -32625,7 +33414,7 @@ export const WebAppsListInstanceIdentifiersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListInstanceIdentifiersInput =
@@ -32697,7 +33486,7 @@ export const WebAppsListInstanceIdentifiersSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListInstanceIdentifiersSlotInput =
@@ -32770,7 +33559,7 @@ export const WebAppsListInstanceProcessesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListInstanceProcessesInput =
@@ -32844,7 +33633,7 @@ export const WebAppsListInstanceProcessesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListInstanceProcessesSlotInput =
@@ -32919,7 +33708,7 @@ export const WebAppsListInstanceProcessModulesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/modules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListInstanceProcessModulesInput =
@@ -32995,7 +33784,7 @@ export const WebAppsListInstanceProcessModulesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/modules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListInstanceProcessModulesSlotInput =
@@ -33071,7 +33860,7 @@ export const WebAppsListInstanceProcessThreadsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/threads",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListInstanceProcessThreadsInput =
@@ -33124,7 +33913,7 @@ export const WebAppsListInstanceProcessThreadsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/threads",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListInstanceProcessThreadsSlotInput =
@@ -33176,7 +33965,7 @@ export const WebAppsListInstanceWorkflowsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/workflows",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListInstanceWorkflowsSlotInput =
@@ -33246,7 +34035,7 @@ export const WebAppsListMetadataInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListMetadataInput = typeof WebAppsListMetadataInput.Type;
@@ -33287,7 +34076,7 @@ export const WebAppsListMetadataSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListMetadataSlotInput =
@@ -33333,7 +34122,7 @@ export const WebAppsListNetworkFeaturesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkFeatures/{view}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListNetworkFeaturesInput =
@@ -33393,7 +34182,7 @@ export const WebAppsListNetworkFeaturesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkFeatures/{view}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListNetworkFeaturesSlotInput =
@@ -33452,7 +34241,7 @@ export const WebAppsListPerfMonCountersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/perfcounters",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListPerfMonCountersInput =
@@ -33519,7 +34308,7 @@ export const WebAppsListPerfMonCountersSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/perfcounters",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListPerfMonCountersSlotInput =
@@ -33584,7 +34373,7 @@ export const WebAppsListPremierAddOnsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListPremierAddOnsInput =
@@ -33642,7 +34431,7 @@ export const WebAppsListPremierAddOnsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListPremierAddOnsSlotInput =
@@ -33699,7 +34488,7 @@ export const WebAppsListProcessesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListProcessesInput = typeof WebAppsListProcessesInput.Type;
@@ -33770,7 +34559,7 @@ export const WebAppsListProcessesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListProcessesSlotInput =
@@ -33844,7 +34633,7 @@ export const WebAppsListProcessModulesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListProcessModulesInput =
@@ -33919,7 +34708,7 @@ export const WebAppsListProcessModulesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListProcessModulesSlotInput =
@@ -33993,7 +34782,7 @@ export const WebAppsListProcessThreadsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/threads",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListProcessThreadsInput =
@@ -34045,7 +34834,7 @@ export const WebAppsListProcessThreadsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/threads",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListProcessThreadsSlotInput =
@@ -34095,7 +34884,7 @@ export const WebAppsListProductionSiteDeploymentStatusesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deploymentStatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListProductionSiteDeploymentStatusesInput =
@@ -34164,7 +34953,7 @@ export const WebAppsListPublicCertificatesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListPublicCertificatesInput =
@@ -34236,7 +35025,7 @@ export const WebAppsListPublicCertificatesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListPublicCertificatesSlotInput =
@@ -34308,7 +35097,7 @@ export const WebAppsListPublishingCredentialsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/publishingcredentials/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListPublishingCredentialsInput =
@@ -34365,7 +35154,7 @@ export const WebAppsListPublishingCredentialsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/publishingcredentials/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListPublishingCredentialsSlotInput =
@@ -34426,7 +35215,7 @@ export const WebAppsListPublishingProfileXmlWithSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publishxml",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListPublishingProfileXmlWithSecretsInput =
@@ -34469,7 +35258,7 @@ export const WebAppsListPublishingProfileXmlWithSecretsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publishxml",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListPublishingProfileXmlWithSecretsSlotInput =
@@ -34508,7 +35297,7 @@ export const WebAppsListRelayServiceConnectionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListRelayServiceConnectionsInput =
@@ -34565,7 +35354,7 @@ export const WebAppsListRelayServiceConnectionsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListRelayServiceConnectionsSlotInput =
@@ -34622,7 +35411,7 @@ export const WebAppsListSiteBackupsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listbackups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSiteBackupsInput =
@@ -34695,7 +35484,7 @@ export const WebAppsListSiteBackupsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/listbackups",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSiteBackupsSlotInput =
@@ -34768,7 +35557,7 @@ export const WebAppsListSiteContainersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSiteContainersInput =
@@ -34839,7 +35628,7 @@ export const WebAppsListSiteContainersSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sitecontainers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSiteContainersSlotInput =
@@ -34909,7 +35698,7 @@ export const WebAppsListSiteExtensionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSiteExtensionsInput =
@@ -34982,7 +35771,7 @@ export const WebAppsListSiteExtensionsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSiteExtensionsSlotInput =
@@ -35054,7 +35843,7 @@ export const WebAppsListSitePushSettingsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSitePushSettingsInput =
@@ -35099,7 +35888,7 @@ export const WebAppsListSitePushSettingsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/pushsettings/list",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSitePushSettingsSlotInput =
@@ -35143,7 +35932,7 @@ export const WebAppsListSlotConfigurationNamesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/slotConfigNames",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSlotConfigurationNamesInput =
@@ -35201,7 +35990,7 @@ export const WebAppsListSlotDifferencesFromProductionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotsdiffs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSlotDifferencesFromProductionInput =
@@ -35252,7 +36041,7 @@ export const WebAppsListSlotDifferencesSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsdiffs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSlotDifferencesSlotInput =
@@ -35300,7 +36089,7 @@ export const WebAppsListSlotsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsListSlotsInput = typeof WebAppsListSlotsInput.Type;
@@ -35370,7 +36159,7 @@ export const WebAppsListSlotSiteDeploymentStatusesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deploymentStatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSlotSiteDeploymentStatusesSlotInput =
@@ -35440,7 +36229,7 @@ export const WebAppsListSnapshotsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/snapshots",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSnapshotsInput = typeof WebAppsListSnapshotsInput.Type;
@@ -35487,7 +36276,7 @@ export const WebAppsListSnapshotsFromDRSecondaryInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/snapshotsdr",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSnapshotsFromDRSecondaryInput =
@@ -35536,7 +36325,7 @@ export const WebAppsListSnapshotsFromDRSecondarySlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/snapshotsdr",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSnapshotsFromDRSecondarySlotInput =
@@ -35586,7 +36375,7 @@ export const WebAppsListSnapshotsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/snapshots",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSnapshotsSlotInput =
@@ -35636,7 +36425,7 @@ export const WebAppsListSyncFunctionTriggersInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listsyncfunctiontriggerstatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSyncFunctionTriggersInput =
@@ -35678,7 +36467,7 @@ export const WebAppsListSyncFunctionTriggersSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/listsyncfunctiontriggerstatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSyncFunctionTriggersSlotInput =
@@ -35720,7 +36509,7 @@ export const WebAppsListSyncStatusInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listsyncstatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSyncStatusInput = typeof WebAppsListSyncStatusInput.Type;
@@ -35759,7 +36548,7 @@ export const WebAppsListSyncStatusSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listsyncstatus",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListSyncStatusSlotInput =
@@ -35800,7 +36589,7 @@ export const WebAppsListTriggeredWebJobHistoryInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListTriggeredWebJobHistoryInput =
@@ -35874,7 +36663,7 @@ export const WebAppsListTriggeredWebJobHistorySlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListTriggeredWebJobHistorySlotInput =
@@ -35947,7 +36736,7 @@ export const WebAppsListTriggeredWebJobsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListTriggeredWebJobsInput =
@@ -36020,7 +36809,7 @@ export const WebAppsListTriggeredWebJobsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListTriggeredWebJobsSlotInput =
@@ -36094,7 +36883,7 @@ export const WebAppsListUsagesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/usages",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsListUsagesInput = typeof WebAppsListUsagesInput.Type;
@@ -36148,7 +36937,7 @@ export const WebAppsListUsagesSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/usages",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListUsagesSlotInput = typeof WebAppsListUsagesSlotInput.Type;
@@ -36204,7 +36993,7 @@ export const WebAppsListVnetConnectionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListVnetConnectionsInput =
@@ -36264,7 +37053,7 @@ export const WebAppsListVnetConnectionsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListVnetConnectionsSlotInput =
@@ -36323,7 +37112,7 @@ export const WebAppsListWebJobsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListWebJobsInput = typeof WebAppsListWebJobsInput.Type;
@@ -36392,7 +37181,7 @@ export const WebAppsListWebJobsSlotInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListWebJobsSlotInput =
@@ -36465,7 +37254,7 @@ export const WebAppsListWorkflowsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/workflows",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListWorkflowsInput = typeof WebAppsListWorkflowsInput.Type;
@@ -36533,7 +37322,7 @@ export const WebAppsListWorkflowsConnectionsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listWorkflowsConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListWorkflowsConnectionsInput =
@@ -36588,7 +37377,7 @@ export const WebAppsListWorkflowsConnectionsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/listWorkflowsConnections",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsListWorkflowsConnectionsSlotInput =
@@ -36652,7 +37441,7 @@ export const WebAppsMigrateMySqlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsMigrateMySqlInput = typeof WebAppsMigrateMySqlInput.Type;
@@ -36729,7 +37518,7 @@ export const WebAppsMigrateStorageInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migrate",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsMigrateStorageInput = typeof WebAppsMigrateStorageInput.Type;
@@ -36796,7 +37585,7 @@ export const WebAppsPutPrivateAccessVnetInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateAccess/virtualNetworks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsPutPrivateAccessVnetInput =
@@ -36877,7 +37666,7 @@ export const WebAppsPutPrivateAccessVnetSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateAccess/virtualNetworks",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsPutPrivateAccessVnetSlotInput =
@@ -36935,7 +37724,7 @@ export const WebAppsRecoverSiteConfigurationSnapshotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}/recover",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRecoverSiteConfigurationSnapshotInput =
@@ -36976,7 +37765,7 @@ export const WebAppsRecoverSiteConfigurationSnapshotSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots/{snapshotId}/recover",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRecoverSiteConfigurationSnapshotSlotInput =
@@ -37016,7 +37805,7 @@ export const WebAppsResetProductionSlotConfigInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/resetSlotConfig",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsResetProductionSlotConfigInput =
@@ -37055,7 +37844,7 @@ export const WebAppsResetSlotConfigurationSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/resetSlotConfig",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsResetSlotConfigurationSlotInput =
@@ -37095,7 +37884,7 @@ export const WebAppsRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restart",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsRestartInput = typeof WebAppsRestartInput.Type;
@@ -37134,7 +37923,7 @@ export const WebAppsRestartSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restart",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRestartSlotInput = typeof WebAppsRestartSlotInput.Type;
@@ -37211,7 +38000,7 @@ export const WebAppsRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/restore",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsRestoreInput = typeof WebAppsRestoreInput.Type;
@@ -37286,7 +38075,7 @@ export const WebAppsRestoreFromBackupBlobInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromBackupBlob",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRestoreFromBackupBlobInput =
@@ -37365,7 +38154,7 @@ export const WebAppsRestoreFromBackupBlobSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreFromBackupBlob",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRestoreFromBackupBlobSlotInput =
@@ -37415,7 +38204,7 @@ export const WebAppsRestoreFromDeletedAppInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromDeletedApp",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRestoreFromDeletedAppInput =
@@ -37465,7 +38254,7 @@ export const WebAppsRestoreFromDeletedAppSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreFromDeletedApp",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRestoreFromDeletedAppSlotInput =
@@ -37546,7 +38335,7 @@ export const WebAppsRestoreSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/restore",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRestoreSlotInput = typeof WebAppsRestoreSlotInput.Type;
@@ -37600,7 +38389,7 @@ export const WebAppsRestoreSnapshotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreSnapshot",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRestoreSnapshotInput =
@@ -37658,7 +38447,7 @@ export const WebAppsRestoreSnapshotSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreSnapshot",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRestoreSnapshotSlotInput =
@@ -37699,7 +38488,7 @@ export const WebAppsRunTriggeredWebJobInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/run",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRunTriggeredWebJobInput =
@@ -37741,7 +38530,7 @@ export const WebAppsRunTriggeredWebJobSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/run",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsRunTriggeredWebJobSlotInput =
@@ -37780,7 +38569,7 @@ export const WebAppsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/start",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsStartInput = typeof WebAppsStartInput.Type;
@@ -37815,7 +38604,7 @@ export const WebAppsStartContinuousWebJobInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/start",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStartContinuousWebJobInput =
@@ -37856,7 +38645,7 @@ export const WebAppsStartContinuousWebJobSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/start",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStartContinuousWebJobSlotInput =
@@ -37899,7 +38688,7 @@ export const WebAppsStartNetworkTraceInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/startNetworkTrace",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStartNetworkTraceInput =
@@ -37951,7 +38740,7 @@ export const WebAppsStartNetworkTraceSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/startNetworkTrace",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStartNetworkTraceSlotInput =
@@ -37999,7 +38788,7 @@ export const WebAppsStartSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/start",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsStartSlotInput = typeof WebAppsStartSlotInput.Type;
@@ -38037,7 +38826,7 @@ export const WebAppsStartWebSiteNetworkTraceInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/start",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStartWebSiteNetworkTraceInput =
@@ -38081,7 +38870,7 @@ export const WebAppsStartWebSiteNetworkTraceOperationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/startOperation",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStartWebSiteNetworkTraceOperationInput =
@@ -38132,7 +38921,7 @@ export const WebAppsStartWebSiteNetworkTraceOperationSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/startOperation",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStartWebSiteNetworkTraceOperationSlotInput =
@@ -38184,7 +38973,7 @@ export const WebAppsStartWebSiteNetworkTraceSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/start",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStartWebSiteNetworkTraceSlotInput =
@@ -38225,7 +39014,7 @@ export const WebAppsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/stop",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsStopInput = typeof WebAppsStopInput.Type;
@@ -38260,7 +39049,7 @@ export const WebAppsStopContinuousWebJobInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/stop",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStopContinuousWebJobInput =
@@ -38302,7 +39091,7 @@ export const WebAppsStopContinuousWebJobSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/stop",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStopContinuousWebJobSlotInput =
@@ -38342,7 +39131,7 @@ export const WebAppsStopNetworkTraceInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/stopNetworkTrace",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStopNetworkTraceInput =
@@ -38382,7 +39171,7 @@ export const WebAppsStopNetworkTraceSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/stopNetworkTrace",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStopNetworkTraceSlotInput =
@@ -38422,7 +39211,7 @@ export const WebAppsStopSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/stop",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsStopSlotInput = typeof WebAppsStopSlotInput.Type;
@@ -38457,7 +39246,7 @@ export const WebAppsStopWebSiteNetworkTraceInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/stop",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStopWebSiteNetworkTraceInput =
@@ -38496,7 +39285,7 @@ export const WebAppsStopWebSiteNetworkTraceSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/stop",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsStopWebSiteNetworkTraceSlotInput =
@@ -38538,7 +39327,7 @@ export const WebAppsSwapSlotSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsswap",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsSwapSlotSlotInput = typeof WebAppsSwapSlotSlotInput.Type;
@@ -38576,7 +39365,7 @@ export const WebAppsSwapSlotWithProductionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotsswap",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsSwapSlotWithProductionInput =
@@ -38614,7 +39403,7 @@ export const WebAppsSyncFunctionsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/sync",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsSyncFunctionsInput = typeof WebAppsSyncFunctionsInput.Type;
@@ -38652,7 +39441,7 @@ export const WebAppsSyncFunctionsSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/sync",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsSyncFunctionsSlotInput =
@@ -38692,7 +39481,7 @@ export const WebAppsSyncFunctionTriggersInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/syncfunctiontriggers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsSyncFunctionTriggersInput =
@@ -38732,7 +39521,7 @@ export const WebAppsSyncFunctionTriggersSlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/syncfunctiontriggers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsSyncFunctionTriggersSlotInput =
@@ -38771,7 +39560,7 @@ export const WebAppsSyncRepositoryInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sync",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsSyncRepositoryInput = typeof WebAppsSyncRepositoryInput.Type;
@@ -38810,7 +39599,7 @@ export const WebAppsSyncRepositorySlotInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sync",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsSyncRepositorySlotInput =
@@ -38852,6 +39641,7 @@ export const WebAppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       repositorySiteName: Schema.optional(Schema.String),
       usageState: Schema.optional(Schema.Literals(["Normal", "Exceeded"])),
       enabled: Schema.optional(Schema.Boolean),
+      siteScopedCertificatesEnabled: Schema.optional(Schema.Boolean),
       enabledHostNames: Schema.optional(Schema.Array(Schema.String)),
       availabilityState: Schema.optional(
         Schema.Literals(["Normal", "Limited", "DisasterRecoveryMode"]),
@@ -39267,6 +40057,35 @@ export const WebAppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           publicNetworkAccess: Schema.optional(Schema.String),
         }),
       ),
+      aiIntegration: Schema.optional(
+        Schema.Struct({
+          apiSpecPath: Schema.optional(Schema.String),
+          mcp: Schema.optional(
+            Schema.Struct({
+              servers: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    description: Schema.optional(Schema.String),
+                    enabled: Schema.optional(Schema.Boolean),
+                    endpoint: Schema.optional(Schema.String),
+                    toolList: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
+              ),
+            }),
+          ),
+          siteAuth: Schema.optional(
+            Schema.Struct({
+              jwksUri: Schema.optional(Schema.String),
+              issuer: Schema.optional(Schema.String),
+              audience: Schema.optional(Schema.String),
+              wellKnownOpenIdConfiguration: Schema.optional(Schema.String),
+              scopes: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        }),
+      ),
       trafficManagerHostNames: Schema.optional(Schema.Array(Schema.String)),
       scmSiteAlsoStopped: Schema.optional(Schema.Boolean),
       targetSwapSlot: Schema.optional(Schema.String),
@@ -39366,7 +40185,7 @@ export const WebAppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsUpdateInput = typeof WebAppsUpdateInput.Type;
@@ -39422,7 +40241,7 @@ export const WebAppsUpdateApplicationSettingsInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateApplicationSettingsInput =
@@ -39470,7 +40289,7 @@ export const WebAppsUpdateApplicationSettingsSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/appsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateApplicationSettingsSlotInput =
@@ -39574,7 +40393,7 @@ export const WebAppsUpdateAuthSettingsInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateAuthSettingsInput =
@@ -39679,7 +40498,7 @@ export const WebAppsUpdateAuthSettingsSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateAuthSettingsSlotInput =
@@ -40035,7 +40854,7 @@ export const WebAppsUpdateAuthSettingsV2Input =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettingsV2",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateAuthSettingsV2Input =
@@ -40405,7 +41224,7 @@ export const WebAppsUpdateAuthSettingsV2SlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettingsV2",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateAuthSettingsV2SlotInput =
@@ -40486,7 +41305,7 @@ export const WebAppsUpdateAzureStorageAccountsInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateAzureStorageAccountsInput =
@@ -40554,7 +41373,7 @@ export const WebAppsUpdateAzureStorageAccountsSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/azurestorageaccounts",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateAzureStorageAccountsSlotInput =
@@ -40633,7 +41452,7 @@ export const WebAppsUpdateBackupConfigurationInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateBackupConfigurationInput =
@@ -40712,7 +41531,7 @@ export const WebAppsUpdateBackupConfigurationSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/backup",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateBackupConfigurationSlotInput =
@@ -41135,7 +41954,7 @@ export const WebAppsUpdateConfigurationInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateConfigurationInput =
@@ -41572,7 +42391,7 @@ export const WebAppsUpdateConfigurationSlotInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateConfigurationSlotInput =
@@ -41653,7 +42472,7 @@ export const WebAppsUpdateConnectionStringsInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateConnectionStringsInput =
@@ -41721,7 +42540,7 @@ export const WebAppsUpdateConnectionStringsSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/connectionstrings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateConnectionStringsSlotInput =
@@ -41844,7 +42663,7 @@ export const WebAppsUpdateDiagnosticLogsConfigInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/logs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateDiagnosticLogsConfigInput =
@@ -41980,7 +42799,7 @@ export const WebAppsUpdateDiagnosticLogsConfigSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/logs",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateDiagnosticLogsConfigSlotInput =
@@ -42044,7 +42863,7 @@ export const WebAppsUpdateDomainOwnershipIdentifierInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateDomainOwnershipIdentifierInput =
@@ -42109,7 +42928,7 @@ export const WebAppsUpdateDomainOwnershipIdentifierSlotInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateDomainOwnershipIdentifierSlotInput =
@@ -42173,7 +42992,7 @@ export const WebAppsUpdateFtpAllowedInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/ftp",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateFtpAllowedInput =
@@ -42237,7 +43056,7 @@ export const WebAppsUpdateFtpAllowedSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateFtpAllowedSlotInput =
@@ -42309,7 +43128,7 @@ export const WebAppsUpdateHybridConnectionInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateHybridConnectionInput =
@@ -42383,7 +43202,7 @@ export const WebAppsUpdateHybridConnectionSlotInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateHybridConnectionSlotInput =
@@ -42442,7 +43261,7 @@ export const WebAppsUpdateMachineKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/updatemachinekey",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateMachineKeyInput =
@@ -42483,7 +43302,7 @@ export const WebAppsUpdateMetadataInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateMetadataInput = typeof WebAppsUpdateMetadataInput.Type;
@@ -42531,7 +43350,7 @@ export const WebAppsUpdateMetadataSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateMetadataSlotInput =
@@ -42589,7 +43408,7 @@ export const WebAppsUpdatePremierAddOnInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdatePremierAddOnInput =
@@ -42661,7 +43480,7 @@ export const WebAppsUpdatePremierAddOnSlotInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdatePremierAddOnSlotInput =
@@ -42732,7 +43551,7 @@ export const WebAppsUpdateRelayServiceConnectionInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateRelayServiceConnectionInput =
@@ -42803,7 +43622,7 @@ export const WebAppsUpdateRelayServiceConnectionSlotInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection/{entityName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateRelayServiceConnectionSlotInput =
@@ -42867,7 +43686,7 @@ export const WebAppsUpdateScmAllowedInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/scm",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateScmAllowedInput =
@@ -42931,7 +43750,7 @@ export const WebAppsUpdateScmAllowedSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateScmAllowedSlotInput =
@@ -42999,7 +43818,7 @@ export const WebAppsUpdateSitePushSettingsInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateSitePushSettingsInput =
@@ -43054,7 +43873,7 @@ export const WebAppsUpdateSitePushSettingsSlotInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/pushsettings",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateSitePushSettingsSlotInput =
@@ -43102,6 +43921,7 @@ export const WebAppsUpdateSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         repositorySiteName: Schema.optional(Schema.String),
         usageState: Schema.optional(Schema.Literals(["Normal", "Exceeded"])),
         enabled: Schema.optional(Schema.Boolean),
+        siteScopedCertificatesEnabled: Schema.optional(Schema.Boolean),
         enabledHostNames: Schema.optional(Schema.Array(Schema.String)),
         availabilityState: Schema.optional(
           Schema.Literals(["Normal", "Limited", "DisasterRecoveryMode"]),
@@ -43517,6 +44337,35 @@ export const WebAppsUpdateSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             publicNetworkAccess: Schema.optional(Schema.String),
           }),
         ),
+        aiIntegration: Schema.optional(
+          Schema.Struct({
+            apiSpecPath: Schema.optional(Schema.String),
+            mcp: Schema.optional(
+              Schema.Struct({
+                servers: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      description: Schema.optional(Schema.String),
+                      enabled: Schema.optional(Schema.Boolean),
+                      endpoint: Schema.optional(Schema.String),
+                      toolList: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            siteAuth: Schema.optional(
+              Schema.Struct({
+                jwksUri: Schema.optional(Schema.String),
+                issuer: Schema.optional(Schema.String),
+                audience: Schema.optional(Schema.String),
+                wellKnownOpenIdConfiguration: Schema.optional(Schema.String),
+                scopes: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
         trafficManagerHostNames: Schema.optional(Schema.Array(Schema.String)),
         scmSiteAlsoStopped: Schema.optional(Schema.Boolean),
         targetSwapSlot: Schema.optional(Schema.String),
@@ -43617,7 +44466,7 @@ export const WebAppsUpdateSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WebAppsUpdateSlotInput = typeof WebAppsUpdateSlotInput.Type;
@@ -43679,7 +44528,7 @@ export const WebAppsUpdateSlotConfigurationNamesInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/slotConfigNames",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateSlotConfigurationNamesInput =
@@ -43766,7 +44615,7 @@ export const WebAppsUpdateSourceControlInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateSourceControlInput =
@@ -43855,7 +44704,7 @@ export const WebAppsUpdateSourceControlSlotInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateSourceControlSlotInput =
@@ -43919,7 +44768,7 @@ export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckInput =
@@ -43985,7 +44834,7 @@ export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkConfig/virtualNetwork",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotInput =
@@ -44089,7 +44938,7 @@ export const WebAppsUpdateVnetConnectionInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateVnetConnectionInput =
@@ -44156,7 +45005,7 @@ export const WebAppsUpdateVnetConnectionGatewayInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateVnetConnectionGatewayInput =
@@ -44224,7 +45073,7 @@ export const WebAppsUpdateVnetConnectionGatewaySlotInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateVnetConnectionGatewaySlotInput =
@@ -44329,7 +45178,7 @@ export const WebAppsUpdateVnetConnectionSlotInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WebAppsUpdateVnetConnectionSlotInput =
@@ -44391,7 +45240,7 @@ export const WorkflowRunActionRepetitionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunActionRepetitionsGetInput =
@@ -44452,7 +45301,7 @@ export const WorkflowRunActionRepetitionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunActionRepetitionsListInput =
@@ -44528,7 +45377,7 @@ export const WorkflowRunActionRepetitionsListExpressionTracesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}/listExpressionTraces",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunActionRepetitionsListExpressionTracesInput =
@@ -44590,7 +45439,7 @@ export const WorkflowRunActionRepetitionsRequestHistoriesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}/requestHistories/{requestHistoryName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunActionRepetitionsRequestHistoriesGetInput =
@@ -44653,7 +45502,7 @@ export const WorkflowRunActionRepetitionsRequestHistoriesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}/requestHistories",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunActionRepetitionsRequestHistoriesListInput =
@@ -44730,7 +45579,7 @@ export const WorkflowRunActionScopeRepetitionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}/scopeRepetitions/{repetitionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunActionScopeRepetitionsGetInput =
@@ -44791,7 +45640,7 @@ export const WorkflowRunActionScopeRepetitionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}/scopeRepetitions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunActionScopeRepetitionsListInput =
@@ -44866,7 +45715,7 @@ export const WorkflowRunActionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunActionsGetInput = typeof WorkflowRunActionsGetInput.Type;
@@ -44927,7 +45776,7 @@ export const WorkflowRunActionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunActionsListInput =
@@ -45004,7 +45853,7 @@ export const WorkflowRunActionsListExpressionTracesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/actions/{actionName}/listExpressionTraces",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunActionsListExpressionTracesInput =
@@ -45062,7 +45911,7 @@ export const WorkflowRunsCancelInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}/cancel",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowRunsCancelInput = typeof WorkflowRunsCancelInput.Type;
@@ -45097,7 +45946,7 @@ export const WorkflowRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs/{runName}",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WorkflowRunsGetInput = typeof WorkflowRunsGetInput.Type;
@@ -45151,7 +46000,7 @@ export const WorkflowRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/runs",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WorkflowRunsListInput = typeof WorkflowRunsListInput.Type;
@@ -45225,7 +46074,7 @@ export const WorkflowsRegenerateAccessKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/regenerateAccessKey",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowsRegenerateAccessKeyInput =
@@ -45561,7 +46410,7 @@ export const WorkflowsValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/validate",
-    apiVersion: "2025-05-01",
+    apiVersion: "2026-03-15",
   }),
 );
 export type WorkflowsValidateInput = typeof WorkflowsValidateInput.Type;
@@ -45597,7 +46446,7 @@ export const WorkflowTriggerHistoriesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/histories/{historyName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowTriggerHistoriesGetInput =
@@ -45659,7 +46508,7 @@ export const WorkflowTriggerHistoriesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/histories",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowTriggerHistoriesListInput =
@@ -45735,7 +46584,7 @@ export const WorkflowTriggerHistoriesResubmitInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/histories/{historyName}/resubmit",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowTriggerHistoriesResubmitInput =
@@ -45776,7 +46625,7 @@ export const WorkflowTriggersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowTriggersGetInput = typeof WorkflowTriggersGetInput.Type;
@@ -45831,7 +46680,7 @@ export const WorkflowTriggersGetSchemaJsonInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/schemas/json",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowTriggersGetSchemaJsonInput =
@@ -45875,7 +46724,7 @@ export const WorkflowTriggersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowTriggersListInput = typeof WorkflowTriggersListInput.Type;
@@ -45948,7 +46797,7 @@ export const WorkflowTriggersListCallbackUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowTriggersListCallbackUrlInput =
@@ -46003,7 +46852,7 @@ export const WorkflowTriggersRunInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/run",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowTriggersRunInput = typeof WorkflowTriggersRunInput.Type;
@@ -46040,7 +46889,7 @@ export const WorkflowVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/versions/{versionId}",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowVersionsGetInput = typeof WorkflowVersionsGetInput.Type;
@@ -46095,7 +46944,7 @@ export const WorkflowVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/versions",
-      apiVersion: "2025-05-01",
+      apiVersion: "2026-03-15",
     }),
   );
 export type WorkflowVersionsListInput = typeof WorkflowVersionsListInput.Type;

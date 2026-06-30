@@ -25,6 +25,7 @@ export const FeatureFlagsRetrieveOutput =
     filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     deleted: Schema.optional(Schema.Boolean),
     active: Schema.optional(Schema.Boolean),
+    archived: Schema.optional(Schema.Boolean),
     created_by: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -67,11 +68,17 @@ export const FeatureFlagsRetrieveOutput =
     ),
     experiment_set: Schema.optional(Schema.Array(Schema.Number)),
     experiment_set_metadata: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.Number,
+          name: Schema.String,
+          is_running: Schema.Boolean,
+        }),
+      ),
     ),
     surveys: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     features: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    rollback_conditions: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    rollback_conditions: Schema.optional(Schema.Unknown),
     performed_rollback: Schema.optional(Schema.NullOr(Schema.Boolean)),
     can_edit: Schema.optional(Schema.Boolean),
     tags: Schema.optional(Schema.Array(Schema.Unknown)),

@@ -47,6 +47,7 @@ export const PostTestHelpersConfirmationTokensInput =
             tax_id: Schema.optional(Schema.String),
           }),
         ),
+        bizum: Schema.optional(Schema.Struct({})),
         blik: Schema.optional(Schema.Struct({})),
         boleto: Schema.optional(
           Schema.Struct({
@@ -244,6 +245,7 @@ export const PostTestHelpersConfirmationTokensInput =
         revolut_pay: Schema.optional(Schema.Struct({})),
         samsung_pay: Schema.optional(Schema.Struct({})),
         satispay: Schema.optional(Schema.Struct({})),
+        scalapay: Schema.optional(Schema.Struct({})),
         sepa_debit: Schema.optional(
           Schema.Struct({
             iban: Schema.String,
@@ -254,6 +256,7 @@ export const PostTestHelpersConfirmationTokensInput =
             country: Schema.Literals(["AT", "BE", "DE", "ES", "IT", "NL"]),
           }),
         ),
+        sunbit: Schema.optional(Schema.Struct({})),
         swish: Schema.optional(Schema.Struct({})),
         twint: Schema.optional(Schema.Struct({})),
         type: Schema.Literals([
@@ -267,6 +270,7 @@ export const PostTestHelpersConfirmationTokensInput =
           "bacs_debit",
           "bancontact",
           "billie",
+          "bizum",
           "blik",
           "boleto",
           "cashapp",
@@ -299,8 +303,10 @@ export const PostTestHelpersConfirmationTokensInput =
           "revolut_pay",
           "samsung_pay",
           "satispay",
+          "scalapay",
           "sepa_debit",
           "sofort",
+          "sunbit",
           "swish",
           "twint",
           "upi",

@@ -11,6 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const MoveCollectionsBulkRemoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -73,6 +74,9 @@ export type MoveCollectionsBulkRemoveOutput =
 // The operation
 /**
  * Removes the set of move resources included in the request body from move collection. The orchestration is done by service. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsBulkRemove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -83,6 +87,9 @@ export const MoveCollectionsBulkRemove = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const MoveCollectionsCommitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
@@ -142,6 +149,11 @@ export type MoveCollectionsCommitOutput =
 // The operation
 /**
  * Commits the set of resources included in the request body. The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsCommit = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -152,6 +164,9 @@ export const MoveCollectionsCommit = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const MoveCollectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -281,6 +296,11 @@ export type MoveCollectionsCreateOutput =
 // The operation
 /**
  * Creates or updates a move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -290,7 +310,11 @@ export const MoveCollectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MoveCollectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
@@ -344,6 +368,11 @@ export type MoveCollectionsDeleteOutput =
 // The operation
 /**
  * Deletes a move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -354,6 +383,9 @@ export const MoveCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const MoveCollectionsDiscardInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
@@ -414,6 +446,11 @@ export type MoveCollectionsDiscardOutput =
 // The operation
 /**
  * Discards the set of resources included in the request body. The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsDiscard = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -423,7 +460,11 @@ export const MoveCollectionsDiscard = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MoveCollectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
@@ -496,6 +537,11 @@ export type MoveCollectionsGetOutput = typeof MoveCollectionsGetOutput.Type;
 // The operation
 /**
  * Gets the move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MoveCollectionsGetInput,
@@ -504,6 +550,9 @@ export const MoveCollectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const MoveCollectionsInitiateMoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
@@ -564,6 +613,11 @@ export type MoveCollectionsInitiateMoveOutput =
 // The operation
 /**
  * Moves the set of resources included in the request body. The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsInitiateMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -573,7 +627,10 @@ export const MoveCollectionsInitiateMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MoveCollectionsListMoveCollectionsByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections",
@@ -672,6 +729,10 @@ export type MoveCollectionsListMoveCollectionsByResourceGroupOutput =
  * Get all Move Collections.
  *
  * Get all the Move Collections in the resource group.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsListMoveCollectionsByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -680,7 +741,9 @@ export const MoveCollectionsListMoveCollectionsByResourceGroup =
   }));
 // Input Schema
 export const MoveCollectionsListMoveCollectionsBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/moveCollections",
@@ -779,6 +842,9 @@ export type MoveCollectionsListMoveCollectionsBySubscriptionOutput =
  * Get all Move Collections.
  *
  * Get all the Move Collections in the subscription.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsListMoveCollectionsBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -788,6 +854,9 @@ export const MoveCollectionsListMoveCollectionsBySubscription =
 // Input Schema
 export const MoveCollectionsListRequiredForInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     sourceId: Schema.String,
   }).pipe(
     T.Http({
@@ -811,7 +880,11 @@ export type MoveCollectionsListRequiredForOutput =
 /**
  * List of the move resources for which an arm resource is required for.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
  * @param sourceId - The sourceId for which the api is invoked.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsListRequiredFor =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -821,6 +894,9 @@ export const MoveCollectionsListRequiredFor =
 // Input Schema
 export const MoveCollectionsPrepareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
@@ -881,6 +957,11 @@ export type MoveCollectionsPrepareOutput =
 // The operation
 /**
  * Initiates prepare for the set of resources included in the request body. The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsPrepare = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -890,7 +971,11 @@ export const MoveCollectionsPrepare = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MoveCollectionsResolveDependenciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/resolveDependencies",
@@ -945,6 +1030,11 @@ export type MoveCollectionsResolveDependenciesOutput =
 // The operation
 /**
  * Computes, resolves and validate the dependencies of the moveResources in the move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsResolveDependencies =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -954,6 +1044,9 @@ export const MoveCollectionsResolveDependencies =
 // Input Schema
 export const MoveCollectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
@@ -1038,6 +1131,11 @@ export type MoveCollectionsUpdateOutput =
 // The operation
 /**
  * Updates a move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1048,6 +1146,10 @@ export const MoveCollectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const MoveResourcesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
+    moveResourceName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1322,6 +1424,12 @@ export type MoveResourcesCreateOutput = typeof MoveResourcesCreateOutput.Type;
 // The operation
 /**
  * Creates or updates a Move Resource in the move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param moveResourceName - The Move Resource Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveResourcesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MoveResourcesCreateInput,
@@ -1329,7 +1437,12 @@ export const MoveResourcesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const MoveResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
+    moveResourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
@@ -1382,15 +1495,24 @@ export type MoveResourcesDeleteOutput = typeof MoveResourcesDeleteOutput.Type;
 // The operation
 /**
  * Deletes a Move Resource from the move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param moveResourceName - The Move Resource Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MoveResourcesDeleteInput,
   outputSchema: MoveResourcesDeleteOutput,
 }));
 // Input Schema
-export const MoveResourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const MoveResourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  moveCollectionName: Schema.String.pipe(T.PathParam()),
+  moveResourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
@@ -1537,6 +1659,12 @@ export type MoveResourcesGetOutput = typeof MoveResourcesGetOutput.Type;
 // The operation
 /**
  * Gets the Move Resource.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param moveResourceName - The Move Resource Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MoveResourcesGetInput,
@@ -1545,6 +1673,9 @@ export const MoveResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const MoveResourcesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   },
 ).pipe(
@@ -1737,6 +1868,10 @@ export type MoveResourcesListOutput = typeof MoveResourcesListOutput.Type;
 /**
  * Lists the Move Resources in the move collection.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  * @param $filter - The filter to apply on the operation. For example, you can use $filter=Properties/ProvisioningState eq 'Succeeded'.
  */
 export const MoveResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1782,6 +1917,10 @@ export type OperationsDiscoveryGetOutput =
   typeof OperationsDiscoveryGetOutput.Type;
 
 // The operation
+/**
+ *
+ * @param api-version - Client Api Version.
+ */
 export const OperationsDiscoveryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: OperationsDiscoveryGetInput,
@@ -1791,6 +1930,9 @@ export const OperationsDiscoveryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const UnresolvedDependenciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     dependencyLevel: Schema.optional(Schema.Literals(["Direct", "Descendant"])),
     $orderby: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -1838,8 +1980,12 @@ export type UnresolvedDependenciesGetOutput =
 /**
  * Gets a list of unresolved dependencies.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
  * @param dependencyLevel - Defines the dependency level.
  * @param $orderby - OData order by query option. For example, you can use $orderby=Count desc.
+ * @param api-version - Client Api Version.
  * @param $filter - The filter to apply on the operation. For example, $apply=filter(count eq 2).
  */
 export const UnresolvedDependenciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(

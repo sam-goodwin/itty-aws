@@ -44,7 +44,6 @@ export type UpdateProjectBranchDataAPIOutput =
  * Updates the Neon Data API configuration for the specified branch.
  * You can optionally provide settings to update the Data API configuration.
  * The schema cache is always refreshed as part of this operation.
- * You can obtain the `project_id` and `branch_id` by listing the projects and branches for your Neon account.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

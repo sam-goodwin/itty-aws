@@ -115,6 +115,9 @@ export const GetProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.optional(Schema.String),
     maintenance_scheduled_for: Schema.optional(Schema.String),
     hipaa_enabled_at: Schema.optional(Schema.String),
+    effective_project_permission: Schema.optional(
+      Schema.NullOr(Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"])),
+    ),
   }),
 });
 export type GetProjectOutput = typeof GetProjectOutput.Type;
@@ -124,7 +127,7 @@ export type GetProjectOutput = typeof GetProjectOutput.Type;
  * Retrieve project details
  *
  * Retrieves information about the specified project.
- * You can obtain a `project_id` by listing the projects for an organization.
+ * Returned details include the project settings, compute configuration, history retention, owner information, and current usage metrics.
  *
  * @param project_id - The Neon project ID
  */

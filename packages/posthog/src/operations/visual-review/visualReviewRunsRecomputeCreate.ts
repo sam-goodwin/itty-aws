@@ -22,15 +22,8 @@ export const VisualReviewRunsRecomputeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     run: Schema.optional(
       Schema.Struct({
-        approved_by: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              id: Schema.optional(Schema.Number),
-              first_name: Schema.optional(Schema.String),
-              email: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
+        approved_by: Schema.optional(Schema.Unknown),
+        search_match_type: Schema.optional(Schema.Unknown),
         id: Schema.optional(Schema.String),
         repo_id: Schema.optional(Schema.String),
         status: Schema.optional(Schema.String),

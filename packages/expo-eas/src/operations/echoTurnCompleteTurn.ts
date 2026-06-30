@@ -3,10 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation echoTurnCompleteTurn($id: ID!, $usage: EchoTurnUsageInput!) {\n  echoTurn {\n    completeTurn(id: $id, usage: $usage) {\n      completedAt\n      createdAt\n      echoChat {\n        agentMetadata\n        agentType\n        echoProject {\n          description\n          displayName\n          id\n          initFromGitHubUrl\n          lastMessageAt\n          slug\n          updatedAt\n          visibility\n        }\n        id\n        state\n        stats\n        title\n      }\n      echoMessages {\n        completedAt\n        echoChat {\n          agentMetadata\n          agentType\n          id\n          state\n          stats\n          title\n        }\n        echoMessageParts {\n          data\n          id\n          index\n          type\n        }\n        id\n        metadata\n        role\n        turnId\n        user {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          email\n          emailVerified\n          firstName\n          fullName\n          githubUsername\n          hasPassword\n          hasPendingUserInvitations\n          id\n          industry\n          isExpoAdmin\n          isLegacy\n          isSecondFactorAuthenticationEnabled\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          newEmailPendingVerification\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n      }\n      id\n    }\n  }\n}";
+  "mutation echoTurnCompleteTurn($completionStatus: EchoTurnCompletionStatus, $error: String, $id: ID!, $usage: EchoTurnUsageInput!) {\n  echoTurn {\n    completeTurn(completionStatus: $completionStatus, error: $error, id: $id, usage: $usage) {\n      completedAt\n      completionStatus\n      createdAt\n      echoChat {\n        agentMetadata\n        agentType\n        echoProject {\n          description\n          displayName\n          id\n          initFromGitHubUrl\n          lastMessageAt\n          slug\n          updatedAt\n          visibility\n        }\n        id\n        state\n        stats\n        title\n      }\n      echoMessages {\n        completedAt\n        echoChat {\n          agentMetadata\n          agentType\n          id\n          state\n          stats\n          title\n        }\n        echoMessageParts {\n          data\n          id\n          index\n          type\n        }\n        id\n        metadata\n        role\n        turnId\n        user {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          email\n          emailVerified\n          firstName\n          fullName\n          githubUsername\n          hasPassword\n          hasPendingUserInvitations\n          id\n          industry\n          isExpoAdmin\n          isLegacy\n          isSecondFactorAuthenticationEnabled\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          newEmailPendingVerification\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n      }\n      error\n      id\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const EchoTurnCompleteTurnInput = Schema.Struct({
+  completionStatus: Schema.optional(
+    Schema.NullOr(Schema.Literals(["CANCELLED", "COMPLETED", "ERROR"])),
+  ),
+  error: Schema.optional(Schema.NullOr(Schema.String)),
   id: Schema.String,
   usage: Schema.Struct({
     agent: Schema.optional(Schema.NullOr(Schema.String)),
@@ -49,6 +53,9 @@ export type EchoTurnCompleteTurnInput = typeof EchoTurnCompleteTurnInput.Type;
 // Output Schema (GraphQL selection set)
 export const EchoTurnCompleteTurnOutput = Schema.Struct({
   completedAt: Schema.NullOr(Schema.String),
+  completionStatus: Schema.NullOr(
+    Schema.Literals(["CANCELLED", "COMPLETED", "ERROR"]),
+  ),
   createdAt: Schema.String,
   echoChat: Schema.Struct({
     agentMetadata: Schema.NullOr(Schema.Unknown),
@@ -129,7 +136,7 @@ export const EchoTurnCompleteTurnOutput = Schema.Struct({
           lastName: Schema.NullOr(Schema.String),
           location: Schema.NullOr(Schema.String),
           newEmailPendingVerification: Schema.NullOr(Schema.String),
-          primaryAccountProfileImageUrl: Schema.NullOr(Schema.String),
+          primaryAccountProfileImageUrl: Schema.String,
           profilePhoto: Schema.String,
           twitterUsername: Schema.NullOr(Schema.String),
           username: Schema.String,
@@ -137,6 +144,7 @@ export const EchoTurnCompleteTurnOutput = Schema.Struct({
       ),
     }),
   ),
+  error: Schema.NullOr(Schema.String),
   id: Schema.String,
 }).pipe(T.ResponsePath("echoTurn.completeTurn"));
 export type EchoTurnCompleteTurnOutput = typeof EchoTurnCompleteTurnOutput.Type;

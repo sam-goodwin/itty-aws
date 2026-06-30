@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const CustomerProfileConfigsCreateInput =
@@ -18,14 +17,14 @@ export const CustomerProfileConfigsCreateInput =
         "group_4",
       ]),
     ),
-    content: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    sidebar: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    content: Schema.optional(Schema.Unknown),
+    sidebar: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/customer_profile_configs/",
+      path: "/api/projects/{project_id}/customer_profile_configs/",
     }),
   );
 export type CustomerProfileConfigsCreateInput =
@@ -45,8 +44,8 @@ export const CustomerProfileConfigsCreateOutput =
         "group_4",
       ]),
     ),
-    content: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    sidebar: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    content: Schema.optional(Schema.Unknown),
+    sidebar: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
   });
@@ -62,5 +61,4 @@ export const customerProfileConfigsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CustomerProfileConfigsCreateInput,
     outputSchema: CustomerProfileConfigsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

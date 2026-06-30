@@ -8,42 +8,15 @@ export const SavedPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     short_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     url: Schema.optional(Schema.String),
     data_url: Schema.optional(Schema.NullOr(Schema.String)),
-    target_widths: Schema.optional(Schema.Unknown),
+    widths: Schema.optional(Schema.Array(Schema.Number)),
     type: Schema.optional(
       Schema.Literals(["screenshot", "iframe", "recording"]),
     ),
-    status: Schema.optional(
-      Schema.Literals(["processing", "completed", "failed"]),
-    ),
-    has_content: Schema.optional(Schema.Boolean),
-    snapshots: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
     deleted: Schema.optional(Schema.Boolean),
-    created_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          uuid: Schema.optional(Schema.String),
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          role_at_organization: Schema.optional(Schema.Unknown),
-        }),
-      ),
-    ),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
-    exception: Schema.optional(Schema.NullOr(Schema.String)),
+    block_consent_modals: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -69,9 +42,15 @@ export const SavedPartialUpdateOutput =
     ),
     has_content: Schema.optional(Schema.Boolean),
     snapshots: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      Schema.Array(
+        Schema.Struct({
+          width: Schema.Number,
+          has_content: Schema.Boolean,
+        }),
+      ),
     ),
     deleted: Schema.optional(Schema.Boolean),
+    block_consent_modals: Schema.optional(Schema.Boolean),
     created_by: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -97,6 +76,7 @@ export type SavedPartialUpdateOutput = typeof SavedPartialUpdateOutput.Type;
 
 // The operation
 /**
+ * Update a saved heatmap (e.g. rename, change widths, or soft-delete via 'deleted'). Changing the URL of a 'screenshot' heatmap triggers a re-render.
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */

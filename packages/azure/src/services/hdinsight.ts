@@ -12,6 +12,10 @@ import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const ApplicationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
@@ -274,6 +278,12 @@ export type ApplicationsCreateOutput = typeof ApplicationsCreateOutput.Type;
 // The operation
 /**
  * Creates applications for the HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param applicationName - The constant value for the application name.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ApplicationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsCreateInput,
@@ -281,7 +291,12 @@ export const ApplicationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ApplicationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}",
@@ -297,15 +312,24 @@ export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
 // The operation
 /**
  * Deletes the specified application on the HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param applicationName - The constant value for the application name.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsDeleteInput,
   outputSchema: ApplicationsDeleteOutput,
 }));
 // Input Schema
-export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}",
@@ -325,6 +349,12 @@ export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
 // The operation
 /**
  * Gets properties of the specified application.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param applicationName - The constant value for the application name.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsGetInput,
@@ -332,7 +362,13 @@ export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ApplicationsGetAzureAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}/azureasyncoperations/{operationId}",
@@ -361,6 +397,13 @@ export type ApplicationsGetAzureAsyncOperationStatusOutput =
 // The operation
 /**
  * Gets the async operation status.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param applicationName - The constant value for the application name.
+ * @param api-version - The HDInsight client API Version.
+ * @param operationId - The long running operation id.
  */
 export const ApplicationsGetAzureAsyncOperationStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -369,7 +412,11 @@ export const ApplicationsGetAzureAsyncOperationStatus =
   }));
 // Input Schema
 export const ApplicationsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications",
@@ -399,6 +446,11 @@ export type ApplicationsListByClusterOutput =
 // The operation
 /**
  * Lists all of the applications for the HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ApplicationsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -408,6 +460,9 @@ export const ApplicationsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   zones: Schema.optional(Schema.Array(Schema.String)),
@@ -714,15 +769,22 @@ export type ClustersCreateOutput = typeof ClustersCreateOutput.Type;
 // The operation
 /**
  * Creates a new HDInsight cluster with the specified parameters.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersCreateInput,
   outputSchema: ClustersCreateOutput,
 }));
 // Input Schema
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
@@ -738,6 +800,11 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 // The operation
 /**
  * Deletes the specified HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
@@ -746,6 +813,9 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClustersExecuteScriptActionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     scriptActions: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -777,6 +847,11 @@ export type ClustersExecuteScriptActionsOutput =
 // The operation
 /**
  * Executes script actions on the specified HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  * @param scriptActions - The list of run time script actions.
  * @param persistOnSuccess - Gets or sets if the scripts needs to be persisted.
  */
@@ -786,9 +861,11 @@ export const ClustersExecuteScriptActions =
     outputSchema: ClustersExecuteScriptActionsOutput,
   }));
 // Input Schema
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
@@ -808,6 +885,11 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
 // The operation
 /**
  * Gets the specified cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
@@ -815,7 +897,12 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ClustersGetAzureAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/azureasyncoperations/{operationId}",
@@ -844,6 +931,12 @@ export type ClustersGetAzureAsyncOperationStatusOutput =
 // The operation
 /**
  * The the async operation status.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
+ * @param operationId - The long running operation id.
  */
 export const ClustersGetAzureAsyncOperationStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -852,7 +945,11 @@ export const ClustersGetAzureAsyncOperationStatus =
   }));
 // Input Schema
 export const ClustersGetGatewaySettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/getGatewaySettings",
@@ -875,6 +972,11 @@ export type ClustersGetGatewaySettingsOutput =
 // The operation
 /**
  * Gets the gateway settings for the specified cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersGetGatewaySettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -883,9 +985,9 @@ export const ClustersGetGatewaySettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/clusters",
@@ -912,6 +1014,9 @@ export type ClustersListOutput = typeof ClustersListOutput.Type;
 // The operation
 /**
  * Lists all the HDInsight clusters under the subscription.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
@@ -919,7 +1024,10 @@ export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters",
@@ -949,6 +1057,10 @@ export type ClustersListByResourceGroupOutput =
 // The operation
 /**
  * Lists the HDInsight clusters in a resource group.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -958,6 +1070,9 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ClustersResizeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   roleName: Schema.Literals(["workernode"]).pipe(T.PathParam()),
   targetInstanceCount: Schema.optional(Schema.Number),
 }).pipe(
@@ -977,7 +1092,11 @@ export type ClustersResizeOutput = typeof ClustersResizeOutput.Type;
 /**
  * Resizes the specified HDInsight cluster to the specified size.
  *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
  * @param roleName - The constant value for the roleName
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersResize = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersResizeInput,
@@ -986,6 +1105,9 @@ export const ClustersResize = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClustersRotateDiskEncryptionKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     vaultUri: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
     keyVersion: Schema.optional(Schema.String),
@@ -1008,6 +1130,11 @@ export type ClustersRotateDiskEncryptionKeyOutput =
 // The operation
 /**
  * Rotate disk encryption key of the specified HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersRotateDiskEncryptionKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1016,6 +1143,9 @@ export const ClustersRotateDiskEncryptionKey =
   }));
 // Input Schema
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(
     Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
   ),
@@ -1039,6 +1169,11 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
 // The operation
 /**
  * Patch HDInsight cluster with the specified parameters.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
@@ -1047,6 +1182,9 @@ export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClustersUpdateAutoScaleConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     roleName: Schema.Literals(["workernode"]).pipe(T.PathParam()),
     autoscale: Schema.optional(
       Schema.Struct({
@@ -1109,7 +1247,11 @@ export type ClustersUpdateAutoScaleConfigurationOutput =
 /**
  * Updates the Autoscale Configuration for HDInsight cluster.
  *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
  * @param roleName - The constant value for the roleName
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersUpdateAutoScaleConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1119,6 +1261,9 @@ export const ClustersUpdateAutoScaleConfiguration =
 // Input Schema
 export const ClustersUpdateGatewaySettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "restAuthCredential.isEnabled": Schema.optional(Schema.Boolean),
     "restAuthCredential.username": Schema.optional(Schema.String),
     "restAuthCredential.password": Schema.optional(SensitiveString),
@@ -1141,6 +1286,11 @@ export type ClustersUpdateGatewaySettingsOutput =
 // The operation
 /**
  * Configures the gateway settings on the specified cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersUpdateGatewaySettings =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1150,6 +1300,9 @@ export const ClustersUpdateGatewaySettings =
 // Input Schema
 export const ClustersUpdateIdentityCertificateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     applicationId: Schema.optional(Schema.String),
     certificate: Schema.optional(Schema.String),
     certificatePassword: Schema.optional(SensitiveString),
@@ -1172,6 +1325,11 @@ export type ClustersUpdateIdentityCertificateOutput =
 // The operation
 /**
  * Updates the cluster identity certificate.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ClustersUpdateIdentityCertificate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1180,7 +1338,12 @@ export const ClustersUpdateIdentityCertificate =
   }));
 // Input Schema
 export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    configurationName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -1198,6 +1361,12 @@ export type ConfigurationsGetOutput = typeof ConfigurationsGetOutput.Type;
 // The operation
 /**
  * The configuration object for the specified cluster. This API is not recommended and might be removed in the future. Please consider using List configurations API instead.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param configurationName - The name of the cluster configuration.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationsGetInput,
@@ -1205,7 +1374,11 @@ export const ConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations",
@@ -1226,6 +1399,11 @@ export type ConfigurationsListOutput = typeof ConfigurationsListOutput.Type;
 // The operation
 /**
  * Gets all configuration information for an HDI cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationsListInput,
@@ -1233,6 +1411,10 @@ export const ConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
   workspaceId: Schema.optional(Schema.String),
   primaryKey: Schema.optional(Schema.String),
 }).pipe(
@@ -1251,15 +1433,24 @@ export type ExtensionsCreateOutput = typeof ExtensionsCreateOutput.Type;
 // The operation
 /**
  * Creates an HDInsight cluster extension.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param extensionName - The name of the cluster extension.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsCreateInput,
   outputSchema: ExtensionsCreateOutput,
 }));
 // Input Schema
-export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
@@ -1275,6 +1466,12 @@ export type ExtensionsDeleteOutput = typeof ExtensionsDeleteOutput.Type;
 // The operation
 /**
  * Deletes the specified extension for HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param extensionName - The name of the cluster extension.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsDeleteInput,
@@ -1282,7 +1479,11 @@ export const ExtensionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ExtensionsDisableAzureMonitorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
@@ -1301,6 +1502,11 @@ export type ExtensionsDisableAzureMonitorOutput =
 // The operation
 /**
  * Disables the Azure Monitor on the HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsDisableAzureMonitor =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1309,7 +1515,11 @@ export const ExtensionsDisableAzureMonitor =
   }));
 // Input Schema
 export const ExtensionsDisableMonitoringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring",
@@ -1328,6 +1538,11 @@ export type ExtensionsDisableMonitoringOutput =
 // The operation
 /**
  * Disables the Operations Management Suite (OMS) on the HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsDisableMonitoring = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1338,6 +1553,9 @@ export const ExtensionsDisableMonitoring = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ExtensionsEnableAzureMonitorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.optional(Schema.String),
     primaryKey: Schema.optional(Schema.String),
     selectedConfigurations: Schema.optional(
@@ -1374,6 +1592,11 @@ export type ExtensionsEnableAzureMonitorOutput =
 // The operation
 /**
  * Enables the Azure Monitor on the HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsEnableAzureMonitor =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1383,6 +1606,9 @@ export const ExtensionsEnableAzureMonitor =
 // Input Schema
 export const ExtensionsEnableMonitoringInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.optional(Schema.String),
     primaryKey: Schema.optional(Schema.String),
   }).pipe(
@@ -1404,6 +1630,11 @@ export type ExtensionsEnableMonitoringOutput =
 // The operation
 /**
  * Enables the Operations Management Suite (OMS) on the HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsEnableMonitoring = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1412,9 +1643,12 @@ export const ExtensionsEnableMonitoring = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
@@ -1433,6 +1667,12 @@ export type ExtensionsGetOutput = typeof ExtensionsGetOutput.Type;
 // The operation
 /**
  * Gets the extension properties for the specified HDInsight cluster extension.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param extensionName - The name of the cluster extension.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsGetInput,
@@ -1440,7 +1680,13 @@ export const ExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ExtensionsGetAzureAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    extensionName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}/azureAsyncOperations/{operationId}",
@@ -1469,6 +1715,13 @@ export type ExtensionsGetAzureAsyncOperationStatusOutput =
 // The operation
 /**
  * Gets the async operation status.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param extensionName - The name of the cluster extension.
+ * @param api-version - The HDInsight client API Version.
+ * @param operationId - The long running operation id.
  */
 export const ExtensionsGetAzureAsyncOperationStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1477,7 +1730,11 @@ export const ExtensionsGetAzureAsyncOperationStatus =
   }));
 // Input Schema
 export const ExtensionsGetAzureMonitorStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
@@ -1514,6 +1771,11 @@ export type ExtensionsGetAzureMonitorStatusOutput =
 // The operation
 /**
  * Gets the status of Azure Monitor on the HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsGetAzureMonitorStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1522,7 +1784,11 @@ export const ExtensionsGetAzureMonitorStatus =
   }));
 // Input Schema
 export const ExtensionsGetMonitoringStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring",
@@ -1544,6 +1810,11 @@ export type ExtensionsGetMonitoringStatusOutput =
 // The operation
 /**
  * Gets the status of Operations Management Suite (OMS) on the HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsGetMonitoringStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1553,6 +1824,8 @@ export const ExtensionsGetMonitoringStatus =
 // Input Schema
 export const LocationsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
@@ -1578,6 +1851,10 @@ export type LocationsCheckNameAvailabilityOutput =
 // The operation
 /**
  * Check the cluster name is available or not.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param location - The Azure location (region) for which to make the request.
+ * @param api-version - The HDInsight client API Version.
  */
 export const LocationsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1586,7 +1863,11 @@ export const LocationsCheckNameAvailability =
   }));
 // Input Schema
 export const LocationsGetAzureAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/azureasyncoperations/{operationId}",
@@ -1615,6 +1896,11 @@ export type LocationsGetAzureAsyncOperationStatusOutput =
 // The operation
 /**
  * Get the async operation status.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param location - The Azure location (region) for which to make the request.
+ * @param api-version - The HDInsight client API Version.
+ * @param operationId - The long running operation id.
  */
 export const LocationsGetAzureAsyncOperationStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1623,7 +1909,10 @@ export const LocationsGetAzureAsyncOperationStatus =
   }));
 // Input Schema
 export const LocationsGetCapabilitiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/capabilities",
@@ -1686,6 +1975,10 @@ export type LocationsGetCapabilitiesOutput =
 // The operation
 /**
  * Gets the capabilities for the specified location.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param location - The Azure location (region) for which to make the request.
+ * @param api-version - The HDInsight client API Version.
  */
 export const LocationsGetCapabilities = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1695,7 +1988,10 @@ export const LocationsGetCapabilities = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const LocationsListBillingSpecsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/billingSpecs",
@@ -1777,6 +2073,10 @@ export type LocationsListBillingSpecsOutput =
 // The operation
 /**
  * Lists the billingSpecs for the specified subscription and location.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param location - The Azure location (region) for which to make the request.
+ * @param api-version - The HDInsight client API Version.
  */
 export const LocationsListBillingSpecs = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1786,7 +2086,10 @@ export const LocationsListBillingSpecs = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const LocationsListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/usages",
@@ -1819,6 +2122,10 @@ export type LocationsListUsagesOutput = typeof LocationsListUsagesOutput.Type;
 // The operation
 /**
  * Lists the usages for the specified location.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param location - The Azure location (region) for which to make the request.
+ * @param api-version - The HDInsight client API Version.
  */
 export const LocationsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LocationsListUsagesInput,
@@ -1827,11 +2134,12 @@ export const LocationsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LocationsValidateClusterCreateRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
     fetchAaddsResource: Schema.optional(Schema.Boolean),
-    location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     zones: Schema.optional(Schema.Array(Schema.String)),
     properties: Schema.optional(
@@ -2173,6 +2481,10 @@ export type LocationsValidateClusterCreateRequestOutput =
 // The operation
 /**
  * Validate the cluster create request spec is valid or not.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param location - The Azure location (region) for which to make the request.
+ * @param api-version - The HDInsight client API Version.
  */
 export const LocationsValidateClusterCreateRequest =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2265,6 +2577,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available HDInsight REST API operations.
+ *
+ * @param api-version - The HDInsight client API Version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -2273,6 +2587,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       privateEndpoint: Schema.optional(
         Schema.Struct({
@@ -2336,6 +2654,12 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
 // The operation
 /**
  * Approve or reject a private endpoint connection manually.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param api-version - The HDInsight client API Version.
+ * @param clusterName - The name of the cluster.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2344,7 +2668,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -2363,6 +2692,12 @@ export type PrivateEndpointConnectionsDeleteOutput =
 // The operation
 /**
  * Deletes the specific private endpoint connection.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param api-version - The HDInsight client API Version.
+ * @param clusterName - The name of the cluster.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2371,7 +2706,12 @@ export const PrivateEndpointConnectionsDelete =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -2394,6 +2734,12 @@ export type PrivateEndpointConnectionsGetOutput =
 // The operation
 /**
  * Gets the specific private endpoint connection.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param api-version - The HDInsight client API Version.
+ * @param clusterName - The name of the cluster.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2402,7 +2748,11 @@ export const PrivateEndpointConnectionsGet =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections",
@@ -2432,6 +2782,11 @@ export type PrivateEndpointConnectionsListByClusterOutput =
 // The operation
 /**
  * Lists the private endpoint connections for a HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param api-version - The HDInsight client API Version.
+ * @param clusterName - The name of the cluster.
  */
 export const PrivateEndpointConnectionsListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2440,7 +2795,12 @@ export const PrivateEndpointConnectionsListByCluster =
   }));
 // Input Schema
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateLinkResourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateLinkResources/{privateLinkResourceName}",
@@ -2463,6 +2823,12 @@ export type PrivateLinkResourcesGetOutput =
 // The operation
 /**
  * Gets the specific private link resource.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param api-version - The HDInsight client API Version.
+ * @param clusterName - The name of the cluster.
+ * @param privateLinkResourceName - The name of the private link resource.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2472,7 +2838,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkResourcesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateLinkResources",
@@ -2501,6 +2871,11 @@ export type PrivateLinkResourcesListByClusterOutput =
 // The operation
 /**
  * Lists the private link resources in a HDInsight cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param api-version - The HDInsight client API Version.
+ * @param clusterName - The name of the cluster.
  */
 export const PrivateLinkResourcesListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2509,7 +2884,12 @@ export const PrivateLinkResourcesListByCluster =
   }));
 // Input Schema
 export const ScriptActionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    scriptName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptActions/{scriptName}",
@@ -2526,6 +2906,12 @@ export type ScriptActionsDeleteOutput = typeof ScriptActionsDeleteOutput.Type;
 // The operation
 /**
  * Deletes a specified persisted script action of the cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param scriptName - The name of the script.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ScriptActionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScriptActionsDeleteInput,
@@ -2533,7 +2919,12 @@ export const ScriptActionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ScriptActionsGetExecutionAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/executeScriptActions/azureasyncoperations/{operationId}",
@@ -2562,6 +2953,12 @@ export type ScriptActionsGetExecutionAsyncOperationStatusOutput =
 // The operation
 /**
  * Gets the async operation status of execution operation.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
+ * @param operationId - The long running operation id.
  */
 export const ScriptActionsGetExecutionAsyncOperationStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2570,7 +2967,12 @@ export const ScriptActionsGetExecutionAsyncOperationStatus =
   }));
 // Input Schema
 export const ScriptActionsGetExecutionDetailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    scriptExecutionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory/{scriptExecutionId}",
@@ -2595,6 +2997,12 @@ export type ScriptActionsGetExecutionDetailOutput =
 // The operation
 /**
  * Gets the script execution detail for the given script execution ID.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param scriptExecutionId - The script execution Id
+ * @param api-version - The HDInsight client API Version.
  */
 export const ScriptActionsGetExecutionDetail =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2603,7 +3011,11 @@ export const ScriptActionsGetExecutionDetail =
   }));
 // Input Schema
 export const ScriptActionsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptActions",
@@ -2635,6 +3047,11 @@ export type ScriptActionsListByClusterOutput =
 // The operation
 /**
  * Lists all the persisted script actions for the specified cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ScriptActionsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2644,7 +3061,11 @@ export const ScriptActionsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ScriptExecutionHistoryListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory",
@@ -2676,6 +3097,11 @@ export type ScriptExecutionHistoryListByClusterOutput =
 // The operation
 /**
  * Lists all scripts' execution history for the specified cluster.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const ScriptExecutionHistoryListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2684,7 +3110,12 @@ export const ScriptExecutionHistoryListByCluster =
   }));
 // Input Schema
 export const ScriptExecutionHistoryPromoteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    scriptExecutionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory/{scriptExecutionId}/promote",
@@ -2703,6 +3134,12 @@ export type ScriptExecutionHistoryPromoteOutput =
 // The operation
 /**
  * Promotes the specified ad-hoc script execution to a persisted script.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param scriptExecutionId - The script execution Id
+ * @param api-version - The HDInsight client API Version.
  */
 export const ScriptExecutionHistoryPromote =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2711,7 +3148,12 @@ export const ScriptExecutionHistoryPromote =
   }));
 // Input Schema
 export const VirtualMachinesGetAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts/azureasyncoperations/{operationId}",
@@ -2740,6 +3182,12 @@ export type VirtualMachinesGetAsyncOperationStatusOutput =
 // The operation
 /**
  * Gets the async operation status.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
+ * @param operationId - The long running operation id.
  */
 export const VirtualMachinesGetAsyncOperationStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2748,7 +3196,11 @@ export const VirtualMachinesGetAsyncOperationStatus =
   }));
 // Input Schema
 export const VirtualMachinesListHostsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts",
@@ -2773,6 +3225,11 @@ export type VirtualMachinesListHostsOutput =
 // The operation
 /**
  * Lists the HDInsight clusters hosts
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const VirtualMachinesListHosts = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2782,7 +3239,11 @@ export const VirtualMachinesListHosts = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachinesRestartHostsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts",
@@ -2801,6 +3262,11 @@ export type VirtualMachinesRestartHostsOutput =
 // The operation
 /**
  * Restarts the specified HDInsight cluster hosts.
+ *
+ * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group.
+ * @param clusterName - The name of the cluster.
+ * @param api-version - The HDInsight client API Version.
  */
 export const VirtualMachinesRestartHosts = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

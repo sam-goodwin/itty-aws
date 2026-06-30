@@ -25,7 +25,7 @@ export type CreateEvmSmartAccountOutput =
 
 // The operation
 /**
- * Create a Smart Account
+ * Create Smart Account
  *
  * Creates a new Smart Account.
  *

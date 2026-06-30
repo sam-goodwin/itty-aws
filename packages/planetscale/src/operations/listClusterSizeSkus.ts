@@ -10,6 +10,7 @@ export const ListClusterSizeSkusInput =
     engine: Schema.optional(Schema.Literals(["mysql", "postgresql"])),
     rates: Schema.optional(Schema.Boolean),
     region: Schema.optional(Schema.String),
+    database: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -52,6 +53,7 @@ export type ListClusterSizeSkusOutput = typeof ListClusterSizeSkusOutput.Type;
  * @param engine - The database engine to filter by. Defaults to 'mysql'.
  * @param rates - Whether to include pricing rates in the response. Defaults to false.
  * @param region - The region slug to get rates for. If not specified, uses the organization's default region.
+ * @param database - The database name to resolve rates for. When specified, database-level custom rates take precedence over organization rates.
  */
 export const listClusterSizeSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListClusterSizeSkusInput,

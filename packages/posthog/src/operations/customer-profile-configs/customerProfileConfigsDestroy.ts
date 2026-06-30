@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const CustomerProfileConfigsDestroyInput =
@@ -11,7 +10,7 @@ export const CustomerProfileConfigsDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/customer_profile_configs/{id}/",
+      path: "/api/projects/{project_id}/customer_profile_configs/{id}/",
     }),
   );
 export type CustomerProfileConfigsDestroyInput =
@@ -26,12 +25,10 @@ export type CustomerProfileConfigsDestroyOutput =
 // The operation
 /**
  *
- * @param id - A UUID string identifying this customer profile config.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const customerProfileConfigsDestroy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CustomerProfileConfigsDestroyInput,
     outputSchema: CustomerProfileConfigsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

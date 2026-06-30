@@ -28,7 +28,7 @@ export type ListSolanaAccountsOutput = typeof ListSolanaAccountsOutput.Type;
 
 // The operation
 /**
- * List Solana accounts or get account by name
+ * List Solana accounts
  *
  * Lists the Solana accounts belonging to the developer.
  * The response is paginated, and by default, returns 20 accounts per page.

@@ -67,8 +67,7 @@ export type ListProjectEndpointsOutput = typeof ListProjectEndpointsOutput.Type;
  *
  * Retrieves a list of compute endpoints for the specified project.
  * A compute endpoint is a Neon compute instance.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * For information about compute endpoints, see [Manage computes](https://neon.tech/docs/manage/endpoints/).
+ * For information about compute endpoints, see [Manage computes](https://neon.com/docs/manage/endpoints/).
  *
  * @param project_id - The Neon project ID
  */

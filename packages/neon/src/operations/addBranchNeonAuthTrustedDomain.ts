@@ -8,12 +8,7 @@ export const AddBranchNeonAuthTrustedDomainInput =
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     domain: Schema.String,
-    auth_provider: Schema.Literals([
-      "mock",
-      "stack",
-      "stack_v2",
-      "better_auth",
-    ]),
+    auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
   }).pipe(
     T.Http({
       method: "POST",
@@ -33,7 +28,8 @@ export type AddBranchNeonAuthTrustedDomainOutput =
 /**
  * Add domain to redirect_uri whitelist
  *
- * Adds a domain to the redirect_uri whitelist for the specified project.
+ * Adds a domain to the redirect URI whitelist for the specified branch.
+ * Only domains in this list are permitted as redirect targets after authentication.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

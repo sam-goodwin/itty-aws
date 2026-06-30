@@ -9,9 +9,11 @@ export const DirectoryUsersControllerListInput =
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
     directory: Schema.optional(Schema.String),
     group: Schema.optional(Schema.String),
+    idp_id: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "GET", path: "/directory_users" }));
 export type DirectoryUsersControllerListInput =
   typeof DirectoryUsersControllerListInput.Type;
@@ -31,6 +33,7 @@ export const DirectoryUsersControllerListOutput =
           email: Schema.optional(Schema.NullOr(Schema.String)),
           first_name: Schema.optional(Schema.NullOr(Schema.String)),
           last_name: Schema.optional(Schema.NullOr(Schema.String)),
+          name: Schema.optional(Schema.NullOr(Schema.String)),
           emails: Schema.optional(
             Schema.Array(
               Schema.Struct({
@@ -104,9 +107,11 @@ export type DirectoryUsersControllerListOutput =
  * @param before - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`.
  * @param after - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `after="obj_123"` to fetch a new batch of objects after `"obj_123"`.
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
- * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
+ * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  * @param directory - Unique identifier of the WorkOS Directory. This value can be obtained from the WorkOS dashboard or from the WorkOS API.
  * @param group - Unique identifier of the WorkOS Directory Group. This value can be obtained from the WorkOS API.
+ * @param idp_id - Filter Directory Users by the identity provider's unique identifier (`idp_id`). Requires the `directory` parameter to also be provided.
+ * @param email - Filter Directory Users by their primary email address. Requires the `directory` parameter to also be provided.
  */
 export const DirectoryUsersControllerList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

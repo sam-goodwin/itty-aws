@@ -11,6 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals(["Microsoft.DataLakeStore/accounts"]),
@@ -38,7 +39,9 @@ export type AccountsCheckNameAvailabilityOutput =
 /**
  * Checks whether the specified account name is available or taken.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - The resource location without whitespace.
+ * @param api-version - Client Api Version.
  */
 export const AccountsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -47,6 +50,9 @@ export const AccountsCheckNameAvailability =
   }));
 // Input Schema
 export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   identity: Schema.optional(
@@ -147,15 +153,22 @@ export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
 // The operation
 /**
  * Creates the specified Data Lake Store account.
+ *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
+ * @param api-version - Client Api Version.
  */
 export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
 // Input Schema
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}",
@@ -171,6 +184,11 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 // The operation
 /**
  * Deletes the specified Data Lake Store account.
+ *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
+ * @param api-version - Client Api Version.
  */
 export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
@@ -178,7 +196,11 @@ export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AccountsEnableKeyVaultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/enableKeyVault",
@@ -197,6 +219,11 @@ export type AccountsEnableKeyVaultOutput =
 // The operation
 /**
  * Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
+ *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
+ * @param api-version - Client Api Version.
  */
 export const AccountsEnableKeyVault = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -205,9 +232,11 @@ export const AccountsEnableKeyVault = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}",
@@ -229,6 +258,11 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
 // The operation
 /**
  * Gets the specified Data Lake Store account.
+ *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
+ * @param api-version - Client Api Version.
  */
 export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
@@ -236,6 +270,7 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
@@ -272,12 +307,14 @@ export type AccountsListOutput = typeof AccountsListOutput.Type;
 /**
  * Lists the Data Lake Store accounts within the subscription. The response includes a link to the next page of results, if any.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param $filter - OData filter. Optional.
  * @param $top - The number of items to return. Optional.
  * @param $skip - The number of items to skip over before returning elements. Optional.
  * @param $select - OData Select statement. Limits the properties on each entry to just those requested, e.g. Categories?$select=CategoryName,Description. Optional.
  * @param $orderby - OrderBy clause. One or more comma-separated expressions with an optional "asc" (the default) or "desc" depending on the order you'd like the values sorted, e.g. Categories?$orderby=CategoryName desc. Optional.
  * @param $count - The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional.
+ * @param api-version - Client Api Version.
  */
 export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsListInput,
@@ -286,6 +323,8 @@ export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
@@ -325,12 +364,15 @@ export type AccountsListByResourceGroupOutput =
 /**
  * Lists the Data Lake Store accounts within a specific resource group. The response includes a link to the next page of results, if any.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
  * @param $filter - OData filter. Optional.
  * @param $top - The number of items to return. Optional.
  * @param $skip - The number of items to skip over before returning elements. Optional.
  * @param $select - OData Select statement. Limits the properties on each entry to just those requested, e.g. Categories?$select=CategoryName,Description. Optional.
  * @param $orderby - OrderBy clause. One or more comma-separated expressions with an optional "asc" (the default) or "desc" depending on the order you'd like the values sorted, e.g. Categories?$orderby=CategoryName desc. Optional.
  * @param $count - A Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional.
+ * @param api-version - Client Api Version.
  */
 export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -340,6 +382,9 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
     Schema.Struct({
@@ -432,6 +477,11 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
 // The operation
 /**
  * Updates the specified Data Lake Store account information.
+ *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
+ * @param api-version - Client Api Version.
  */
 export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
@@ -440,6 +490,9 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       startIpAddress: Schema.String,
@@ -469,7 +522,11 @@ export type FirewallRulesCreateOrUpdateOutput =
 /**
  * Creates or updates the specified firewall rule. During update, the firewall rule with the specified name will be replaced with this new firewall rule.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param firewallRuleName - The name of the firewall rule to create or update.
+ * @param api-version - Client Api Version.
  */
 export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -480,6 +537,9 @@ export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FirewallRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -499,7 +559,11 @@ export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 /**
  * Deletes the specified firewall rule from the specified Data Lake Store account.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param firewallRuleName - The name of the firewall rule to delete.
+ * @param api-version - Client Api Version.
  */
 export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
@@ -507,6 +571,9 @@ export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   firewallRuleName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -531,7 +598,11 @@ export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
 /**
  * Gets the specified Data Lake Store firewall rule.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param firewallRuleName - The name of the firewall rule to retrieve.
+ * @param api-version - Client Api Version.
  */
 export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
@@ -539,7 +610,11 @@ export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const FirewallRulesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules",
@@ -569,6 +644,11 @@ export type FirewallRulesListByAccountOutput =
 // The operation
 /**
  * Lists the Data Lake Store firewall rules within the specified Data Lake Store account.
+ *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
+ * @param api-version - Client Api Version.
  */
 export const FirewallRulesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -579,6 +659,9 @@ export const FirewallRulesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FirewallRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -608,7 +691,11 @@ export type FirewallRulesUpdateOutput = typeof FirewallRulesUpdateOutput.Type;
 /**
  * Updates the specified firewall rule.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param firewallRuleName - The name of the firewall rule to update.
+ * @param api-version - Client Api Version.
  */
 export const FirewallRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesUpdateInput,
@@ -617,6 +704,7 @@ export const FirewallRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LocationsGetCapabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -652,7 +740,9 @@ export type LocationsGetCapabilityOutput =
 /**
  * Gets subscription-level properties and limits for Data Lake Store specified by resource location.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - The resource location without whitespace.
+ * @param api-version - Client Api Version.
  */
 export const LocationsGetCapability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -663,6 +753,7 @@ export const LocationsGetCapability = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LocationsGetUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
@@ -709,6 +800,8 @@ export type LocationsGetUsageOutput = typeof LocationsGetUsageOutput.Type;
 /**
  * Gets the current usage count and the limit for the resources of the location under the subscription.
  *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - The resource location without whitespace.
  */
 export const LocationsGetUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -754,6 +847,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Data Lake Store REST API operations.
+ *
+ * @param api-version - Client Api Version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -762,6 +857,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TrustedIdProvidersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     trustedIdProviderName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       idProvider: Schema.String,
@@ -790,7 +888,11 @@ export type TrustedIdProvidersCreateOrUpdateOutput =
 /**
  * Creates or updates the specified trusted identity provider. During update, the trusted identity provider with the specified name will be replaced with this new provider
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param trustedIdProviderName - The name of the trusted identity provider. This is used for differentiation of providers in the account.
+ * @param api-version - Client Api Version.
  */
 export const TrustedIdProvidersCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -800,6 +902,9 @@ export const TrustedIdProvidersCreateOrUpdate =
 // Input Schema
 export const TrustedIdProvidersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     trustedIdProviderName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -821,7 +926,11 @@ export type TrustedIdProvidersDeleteOutput =
 /**
  * Deletes the specified trusted identity provider from the specified Data Lake Store account
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param trustedIdProviderName - The name of the trusted identity provider to delete.
+ * @param api-version - Client Api Version.
  */
 export const TrustedIdProvidersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -832,6 +941,9 @@ export const TrustedIdProvidersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TrustedIdProvidersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     trustedIdProviderName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -856,7 +968,11 @@ export type TrustedIdProvidersGetOutput =
 /**
  * Gets the specified Data Lake Store trusted identity provider.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param trustedIdProviderName - The name of the trusted identity provider to retrieve.
+ * @param api-version - Client Api Version.
  */
 export const TrustedIdProvidersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -866,7 +982,11 @@ export const TrustedIdProvidersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TrustedIdProvidersListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders",
@@ -896,6 +1016,11 @@ export type TrustedIdProvidersListByAccountOutput =
 // The operation
 /**
  * Lists the Data Lake Store trusted identity providers within the specified Data Lake Store account.
+ *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
+ * @param api-version - Client Api Version.
  */
 export const TrustedIdProvidersListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -905,6 +1030,9 @@ export const TrustedIdProvidersListByAccount =
 // Input Schema
 export const TrustedIdProvidersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     trustedIdProviderName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -935,7 +1063,11 @@ export type TrustedIdProvidersUpdateOutput =
 /**
  * Updates the specified trusted identity provider.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param trustedIdProviderName - The name of the trusted identity provider. This is used for differentiation of providers in the account.
+ * @param api-version - Client Api Version.
  */
 export const TrustedIdProvidersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -946,6 +1078,9 @@ export const TrustedIdProvidersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualNetworkRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       subnetId: Schema.String,
@@ -974,7 +1109,11 @@ export type VirtualNetworkRulesCreateOrUpdateOutput =
 /**
  * Creates or updates the specified virtual network rule. During update, the virtual network rule with the specified name will be replaced with this new virtual network rule.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param virtualNetworkRuleName - The name of the virtual network rule to create or update.
+ * @param api-version - Client Api Version.
  */
 export const VirtualNetworkRulesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -984,6 +1123,9 @@ export const VirtualNetworkRulesCreateOrUpdate =
 // Input Schema
 export const VirtualNetworkRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1005,7 +1147,11 @@ export type VirtualNetworkRulesDeleteOutput =
 /**
  * Deletes the specified virtual network rule from the specified Data Lake Store account.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param virtualNetworkRuleName - The name of the virtual network rule to delete.
+ * @param api-version - Client Api Version.
  */
 export const VirtualNetworkRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1016,6 +1162,9 @@ export const VirtualNetworkRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualNetworkRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1041,7 +1190,11 @@ export type VirtualNetworkRulesGetOutput =
 /**
  * Gets the specified Data Lake Store virtual network rule.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param virtualNetworkRuleName - The name of the virtual network rule to retrieve.
+ * @param api-version - Client Api Version.
  */
 export const VirtualNetworkRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1051,7 +1204,11 @@ export const VirtualNetworkRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualNetworkRulesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules",
@@ -1081,6 +1238,11 @@ export type VirtualNetworkRulesListByAccountOutput =
 // The operation
 /**
  * Lists the Data Lake Store virtual network rules within the specified Data Lake Store account.
+ *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
+ * @param api-version - Client Api Version.
  */
 export const VirtualNetworkRulesListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1090,6 +1252,9 @@ export const VirtualNetworkRulesListByAccount =
 // Input Schema
 export const VirtualNetworkRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1120,7 +1285,11 @@ export type VirtualNetworkRulesUpdateOutput =
 /**
  * Updates the specified virtual network rule.
  *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the Azure resource group.
+ * @param accountName - The name of the Data Lake Store account.
  * @param virtualNetworkRuleName - The name of the virtual network rule to update.
+ * @param api-version - Client Api Version.
  */
 export const VirtualNetworkRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

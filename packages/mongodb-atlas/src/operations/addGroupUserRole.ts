@@ -25,7 +25,7 @@ export type AddGroupUserRoleOutput = typeof AddGroupUserRoleOutput.Type;
 /**
  * Add One Project Role to One MongoDB Cloud User
  *
- * Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+ * Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project.
  * **Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

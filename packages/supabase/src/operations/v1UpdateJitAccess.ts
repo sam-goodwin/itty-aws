@@ -30,6 +30,7 @@ export const V1UpdateJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ),
           }),
         ),
+        branches_only: Schema.optional(Schema.Boolean),
       }),
     ),
   },
@@ -39,7 +40,7 @@ export type V1UpdateJitAccessInput = typeof V1UpdateJitAccessInput.Type;
 // Output Schema
 export const V1UpdateJitAccessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user_id: Schema.String,
+    user_id: Schema.optional(Schema.String),
     user_roles: Schema.Array(
       Schema.Struct({
         role: Schema.String,
@@ -62,6 +63,7 @@ export const V1UpdateJitAccessOutput =
             ),
           }),
         ),
+        branches_only: Schema.optional(Schema.Boolean),
       }),
     ),
   });

@@ -28,6 +28,7 @@ export const CreateDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created: Schema.String,
   description: Schema.String,
   edgeDeployment: Schema.optional(Schema.String),
+  edgeDeploymentUrl: Schema.optional(Schema.String),
   id: Schema.String,
   kind: Schema.Literals([
     "otel:metrics:v1",
@@ -39,6 +40,7 @@ export const CreateDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   retentionDays: Schema.optional(Schema.Number),
   sharedByOrg: Schema.optional(Schema.String),
+  updatedAt: Schema.String,
   useRetentionPeriod: Schema.optional(Schema.Boolean),
   who: Schema.String,
 });

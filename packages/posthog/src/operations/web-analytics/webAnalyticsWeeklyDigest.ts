@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const WebAnalyticsWeeklyDigestInput =
@@ -12,7 +11,7 @@ export const WebAnalyticsWeeklyDigestInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/web_analytics/weekly_digest/",
+      path: "/api/projects/{project_id}/web_analytics/weekly_digest/",
     }),
   );
 export type WebAnalyticsWeeklyDigestInput =
@@ -25,85 +24,35 @@ export const WebAnalyticsWeeklyDigestOutput =
       Schema.Struct({
         current: Schema.optional(Schema.Number),
         previous: Schema.optional(Schema.NullOr(Schema.Number)),
-        change: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              percent: Schema.optional(Schema.Number),
-              direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-              color: Schema.optional(Schema.String),
-              text: Schema.optional(Schema.String),
-              long_text: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
+        change: Schema.optional(Schema.Unknown),
       }),
     ),
     pageviews: Schema.optional(
       Schema.Struct({
         current: Schema.optional(Schema.Number),
         previous: Schema.optional(Schema.NullOr(Schema.Number)),
-        change: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              percent: Schema.optional(Schema.Number),
-              direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-              color: Schema.optional(Schema.String),
-              text: Schema.optional(Schema.String),
-              long_text: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
+        change: Schema.optional(Schema.Unknown),
       }),
     ),
     sessions: Schema.optional(
       Schema.Struct({
         current: Schema.optional(Schema.Number),
         previous: Schema.optional(Schema.NullOr(Schema.Number)),
-        change: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              percent: Schema.optional(Schema.Number),
-              direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-              color: Schema.optional(Schema.String),
-              text: Schema.optional(Schema.String),
-              long_text: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
+        change: Schema.optional(Schema.Unknown),
       }),
     ),
     bounce_rate: Schema.optional(
       Schema.Struct({
         current: Schema.optional(Schema.Number),
         previous: Schema.optional(Schema.NullOr(Schema.Number)),
-        change: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              percent: Schema.optional(Schema.Number),
-              direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-              color: Schema.optional(Schema.String),
-              text: Schema.optional(Schema.String),
-              long_text: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
+        change: Schema.optional(Schema.Unknown),
       }),
     ),
     avg_session_duration: Schema.optional(
       Schema.Struct({
         current: Schema.optional(Schema.String),
         previous: Schema.optional(Schema.NullOr(Schema.String)),
-        change: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              percent: Schema.optional(Schema.Number),
-              direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-              color: Schema.optional(Schema.String),
-              text: Schema.optional(Schema.String),
-              long_text: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
+        change: Schema.optional(Schema.Unknown),
       }),
     ),
     top_pages: Schema.optional(
@@ -112,17 +61,7 @@ export const WebAnalyticsWeeklyDigestOutput =
           host: Schema.optional(Schema.String),
           path: Schema.optional(Schema.String),
           visitors: Schema.optional(Schema.Number),
-          change: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                percent: Schema.optional(Schema.Number),
-                direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-                color: Schema.optional(Schema.String),
-                text: Schema.optional(Schema.String),
-                long_text: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
+          change: Schema.optional(Schema.Unknown),
         }),
       ),
     ),
@@ -131,17 +70,7 @@ export const WebAnalyticsWeeklyDigestOutput =
         Schema.Struct({
           name: Schema.optional(Schema.String),
           visitors: Schema.optional(Schema.Number),
-          change: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                percent: Schema.optional(Schema.Number),
-                direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-                color: Schema.optional(Schema.String),
-                text: Schema.optional(Schema.String),
-                long_text: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
+          change: Schema.optional(Schema.Unknown),
         }),
       ),
     ),
@@ -150,17 +79,7 @@ export const WebAnalyticsWeeklyDigestOutput =
         Schema.Struct({
           name: Schema.optional(Schema.String),
           conversions: Schema.optional(Schema.Number),
-          change: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                percent: Schema.optional(Schema.Number),
-                direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-                color: Schema.optional(Schema.String),
-                text: Schema.optional(Schema.String),
-                long_text: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
+          change: Schema.optional(Schema.Unknown),
         }),
       ),
     ),
@@ -183,6 +102,5 @@ export const webAnalyticsWeeklyDigest = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: WebAnalyticsWeeklyDigestInput,
     outputSchema: WebAnalyticsWeeklyDigestOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

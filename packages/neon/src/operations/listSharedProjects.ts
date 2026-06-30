@@ -95,6 +95,11 @@ export const ListSharedProjectsOutput =
         hipaa_enabled_at: Schema.optional(Schema.String),
         deleted_at: Schema.optional(Schema.String),
         recoverable_until: Schema.optional(Schema.String),
+        effective_project_permission: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"]),
+          ),
+        ),
       }),
     ),
     unavailable_project_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -111,7 +116,7 @@ export type ListSharedProjectsOutput = typeof ListSharedProjectsOutput.Type;
  * List shared projects
  *
  * Retrieves a list of projects shared with your Neon account.
- * For more information, see [Manage projects](https://neon.tech/docs/manage/projects/).
+ * For more information, see [Manage projects](https://neon.com/docs/manage/projects/).
  *
  * @param cursor - Specify the cursor value from the previous response to get the next batch of projects.
  * @param limit - Specify a value from 1 to 400 to limit number of projects in the response.

@@ -12,6 +12,7 @@ export const FileSystemShortcutCreateInput =
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
+    order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -30,6 +31,7 @@ export const FileSystemShortcutCreateOutput =
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
+    order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
   });
 export type FileSystemShortcutCreateOutput =

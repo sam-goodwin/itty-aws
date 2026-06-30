@@ -22,7 +22,7 @@ export type ListClusterDetailsOutput = typeof ListClusterDetailsOutput.Type;
 /**
  * Return All Authorized Clusters in All Projects
  *
- * Returns the details for all clusters in all projects to which you have access. Clusters contain a group of hosts that maintain the same data set. The response does not include multi-cloud clusters. To use this resource, the requesting Service Account or API Key can have any cluster-level role.
+ * Returns the details for all clusters in all projects to which you have access. Clusters contain a group of hosts that maintain the same data set. The response does not include multi-cloud clusters.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param includeCount - Flag that indicates whether the response returns the total number of items (`totalCount`) in the response.

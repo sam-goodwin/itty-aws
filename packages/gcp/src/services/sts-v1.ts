@@ -23,10 +23,10 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface GoogleTypeExpr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -35,82 +35,26 @@ export interface GoogleTypeExpr {
 
 export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleTypeExpr" });
 
-export interface GoogleIdentityStsV1AccessBoundaryRule {
-  /** The full resource name of a Google Cloud resource entity. The format definition is at https://cloud.google.com/apis/design/resource_names. Example value: `//cloudresourcemanager.googleapis.com/projects/my-project`. */
-  availableResource?: string;
-  /** A list of permissions that may be allowed for use on the specified resource. The only supported values in the list are IAM roles, following the format of google.iam.v1.Binding.role. Example value: `inRole:roles/logging.viewer` for predefined roles and `inRole:organizations/{ORGANIZATION_ID}/roles/logging.viewer` for custom roles. */
-  availablePermissions?: ReadonlyArray<string>;
-  /** The availability condition further constrains the access allowed by the access boundary rule. If the condition evaluates to `true`, then this access boundary rule will provide access to the specified resource, assuming the principal has the required permissions for the resource. If the condition does not evaluate to `true`, then access to the specified resource will not be available. Note that all access boundary rules in an access boundary are evaluated together as a union. As such, another access boundary rule may allow access to the resource, even if this access boundary rule does not allow access. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). The maximum length of the `expression` field is 2048 characters. */
-  availabilityCondition?: GoogleTypeExpr;
-}
-
-export const GoogleIdentityStsV1AccessBoundaryRule: Schema.Schema<GoogleIdentityStsV1AccessBoundaryRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    availableResource: Schema.optional(Schema.String),
-    availablePermissions: Schema.optional(Schema.Array(Schema.String)),
-    availabilityCondition: Schema.optional(GoogleTypeExpr),
-  }).annotate({ identifier: "GoogleIdentityStsV1AccessBoundaryRule" });
-
-export interface GoogleIdentityStsV1AccessBoundary {
-  /** A list of access boundary rules which defines the upper bound of the permission a principal may carry. If multiple rules are specified, the effective access boundary is the union of all the access boundary rules attached. One access boundary can contain at most 10 rules. */
-  accessBoundaryRules?: ReadonlyArray<GoogleIdentityStsV1AccessBoundaryRule>;
-}
-
-export const GoogleIdentityStsV1AccessBoundary: Schema.Schema<GoogleIdentityStsV1AccessBoundary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accessBoundaryRules: Schema.optional(
-      Schema.Array(GoogleIdentityStsV1AccessBoundaryRule),
-    ),
-  }).annotate({ identifier: "GoogleIdentityStsV1AccessBoundary" });
-
-export interface GoogleIdentityStsV1ExchangeTokenRequest {
-  /** A set of features that Security Token Service supports, in addition to the standard OAuth 2.0 token exchange, formatted as a serialized JSON object of Options. The size of the parameter value must not exceed 4 * 1024 * 1024 characters (4 MB). */
-  options?: string;
-  /** Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-exchange`, which indicates a token exchange. */
-  grantType?: string;
-  /** The OAuth 2.0 scopes to include on the resulting access token, formatted as a list of space-delimited, case-sensitive strings; for example, `https://www.googleapis.com/auth/cloud-platform`. Required when exchanging an external credential for a Google access token. For a list of OAuth 2.0 scopes, see [OAuth 2.0 Scopes for Google APIs](https://developers.google.com/identity/protocols/oauth2/scopes). */
-  scope?: string;
-  /** Required. An identifier for the type of requested security token. Can be `urn:ietf:params:oauth:token-type:access_token` or `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`. */
-  requestedTokenType?: string;
-  /** The full resource name of the identity provider; for example: `//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/` for workload identity pool providers, or `//iam.googleapis.com/locations/global/workforcePools//providers/` for workforce pool providers. Required when exchanging an external credential for a Google access token. */
-  audience?: string;
-  /** Required. The input token. This token is either an external credential issued by a workload identity pool provider, or a short-lived access token issued by Google. If the token is an OIDC JWT, it must use the JWT format defined in [RFC 7523](https://tools.ietf.org/html/rfc7523), and the `subject_token_type` must be either `urn:ietf:params:oauth:token-type:jwt` or `urn:ietf:params:oauth:token-type:id_token`. The following headers are required: - `kid`: The identifier of the signing key securing the JWT. - `alg`: The cryptographic algorithm securing the JWT. Must be `RS256` or `ES256`. The following payload fields are required. For more information, see [RFC 7523, Section 3](https://tools.ietf.org/html/rfc7523#section-3): - `iss`: The issuer of the token. The issuer must provide a discovery document at the URL `/.well-known/openid-configuration`, where `` is the value of this field. The document must be formatted according to section 4.2 of the [OIDC 1.0 Discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). - `iat`: The issue time, in seconds, since the Unix epoch. This timestamp must be in the past and no more than 24 hours in the past, or the token will be rejected. Note that this implies the token is only acceptable within a time window of at most 24 hours. - `exp`: The expiration time, in seconds, since the Unix epoch. Shorter expiration times are more secure. If possible, we recommend setting an expiration time less than 6 hours. - `sub`: The identity asserted in the JWT. - `aud`: For workload identity pools, this must be a value specified in the allowed audiences for the workload identity pool provider, or one of the audiences allowed by default if no audiences were specified. See https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers#oidc. For workforce pools, this must match the client ID specified in the provider configuration. See https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers#oidc. Example header: ``` { "alg": "RS256", "kid": "us-east-11" } ``` Example payload: ``` { "iss": "https://accounts.google.com", "iat": 1517963104, "exp": 1517966704, "aud": "//iam.googleapis.com/projects/1234567890123/locations/global/workloadIdentityPools/my-pool/providers/my-provider", "sub": "113475438248934895348", "my_claims": { "additional_claim": "value" } } ``` If `subject_token` is for AWS, it must be a serialized `GetCallerIdentity` token. This token contains the same information as a request to the AWS [`GetCallerIdentity()`](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity) method, as well as the AWS [signature](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html) for the request information. Use Signature Version 4. Format the request as URL-encoded JSON, and set the `subject_token_type` parameter to `urn:ietf:params:aws:token-type:aws4_request`. The following parameters are required: - `url`: The URL of the AWS STS endpoint for `GetCallerIdentity()`, such as `https://sts.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15`. Regional endpoints are also supported. - `method`: The HTTP request method: `POST`. - `headers`: The HTTP request headers, which must include: - `Authorization`: The request signature. - `x-amz-date`: The time you will send the request, formatted as an [ISO8601 Basic](https://docs.aws.amazon.com/general/latest/gr/sigv4_elements.html#sigv4_elements_date) string. This value is typically set to the current time and is used to help prevent replay attacks. - `host`: The hostname of the `url` field; for example, `sts.amazonaws.com`. - `x-goog-cloud-target-resource`: The full, canonical resource name of the workload identity pool provider, with or without an `https:` prefix. To help ensure data integrity, we recommend including this header in the `SignedHeaders` field of the signed request. For example: //iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/ If you are using temporary security credentials provided by AWS, you must also include the header `x-amz-security-token`, with the value set to the session token. The following example shows a `GetCallerIdentity` token: ``` { "headers": [ {"key": "x-amz-date", "value": "20200815T015049Z"}, {"key": "Authorization", "value": "AWS4-HMAC-SHA256+Credential=$credential,+SignedHeaders=host;x-amz-date;x-goog-cloud-target-resource,+Signature=$signature"}, {"key": "x-goog-cloud-target-resource", "value": "//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/"}, {"key": "host", "value": "sts.amazonaws.com"} . ], "method": "POST", "url": "https://sts.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15" } ``` If the token is a SAML 2.0 assertion, it must use the format defined in [the SAML 2.0 spec](https://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0-cd-02.pdf), and the `subject_token_type` must be `urn:ietf:params:oauth:token-type:saml2`. See [Verification of external credentials](https://cloud.google.com/iam/docs/using-workload-identity-federation#verification_of_external_credentials) for details on how SAML 2.0 assertions are validated during token exchanges. You can also use a Google-issued OAuth 2.0 access token with this field to obtain an access token with new security attributes applied, such as a Credential Access Boundary. In this case, set `subject_token_type` to `urn:ietf:params:oauth:token-type:access_token`. If an access token already contains security attributes, you cannot apply additional security attributes. If the request is for X.509 certificate-based authentication, the `subject_token` must be a JSON-formatted list of X.509 certificates in DER format, as defined in [RFC 7515](https://www.rfc-editor.org/rfc/rfc7515#section-4.1.6). `subject_token_type` must be `urn:ietf:params:oauth:token-type:mtls`. The following example shows a JSON-formatted list of X.509 certificate in DER format: ``` [\"MIIEYDCCA0i...\", \"MCIFFGAGTT0...\"] ``` */
-  subjectToken?: string;
-  /** Required. An identifier that indicates the type of the security token in the `subject_token` parameter. Supported values are `urn:ietf:params:oauth:token-type:jwt`, `urn:ietf:params:oauth:token-type:id_token`, `urn:ietf:params:aws:token-type:aws4_request`, `urn:ietf:params:oauth:token-type:access_token`, `urn:ietf:params:oauth:token-type:mtls`, and `urn:ietf:params:oauth:token-type:saml2`. */
-  subjectTokenType?: string;
-}
-
-export const GoogleIdentityStsV1ExchangeTokenRequest: Schema.Schema<GoogleIdentityStsV1ExchangeTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    options: Schema.optional(Schema.String),
-    grantType: Schema.optional(Schema.String),
-    scope: Schema.optional(Schema.String),
-    requestedTokenType: Schema.optional(Schema.String),
-    audience: Schema.optional(Schema.String),
-    subjectToken: Schema.optional(Schema.String),
-    subjectTokenType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIdentityStsV1ExchangeTokenRequest" });
-
 export interface GoogleIdentityStsV1betaAccessBoundaryRule {
   /** The full resource name of a Google Cloud resource entity. The format definition is at https://cloud.google.com/apis/design/resource_names. Example value: `//cloudresourcemanager.googleapis.com/projects/my-project`. */
   availableResource?: string;
-  /** A list of permissions that may be allowed for use on the specified resource. The only supported values in the list are IAM roles, following the format of google.iam.v1.Binding.role. Example value: `inRole:roles/logging.viewer` for predefined roles and `inRole:organizations/{ORGANIZATION_ID}/roles/logging.viewer` for custom roles. */
-  availablePermissions?: ReadonlyArray<string>;
   /** The availability condition further constrains the access allowed by the access boundary rule. If the condition evaluates to `true`, then this access boundary rule will provide access to the specified resource, assuming the principal has the required permissions for the resource. If the condition does not evaluate to `true`, then access to the specified resource will not be available. Note that all access boundary rules in an access boundary are evaluated together as a union. As such, another access boundary rule may allow access to the resource, even if this access boundary rule does not allow access. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). The maximum length of the `expression` field is 2048 characters. */
   availabilityCondition?: GoogleTypeExpr;
+  /** A list of permissions that may be allowed for use on the specified resource. The only supported values in the list are IAM roles, following the format of google.iam.v1.Binding.role. Example value: `inRole:roles/logging.viewer` for predefined roles and `inRole:organizations/{ORGANIZATION_ID}/roles/logging.viewer` for custom roles. */
+  availablePermissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIdentityStsV1betaAccessBoundaryRule: Schema.Schema<GoogleIdentityStsV1betaAccessBoundaryRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availableResource: Schema.optional(Schema.String),
-    availablePermissions: Schema.optional(Schema.Array(Schema.String)),
     availabilityCondition: Schema.optional(GoogleTypeExpr),
+    availablePermissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIdentityStsV1betaAccessBoundaryRule" });
 
 export interface GoogleIdentityStsV1betaAccessBoundary {
@@ -139,20 +83,70 @@ export const GoogleIdentityStsV1betaOptions: Schema.Schema<GoogleIdentityStsV1be
   }).annotate({ identifier: "GoogleIdentityStsV1betaOptions" });
 
 export interface GoogleIamV1Binding {
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: ReadonlyArray<string>;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
     condition: Schema.optional(GoogleTypeExpr),
-    members: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1Binding" });
+
+export interface GoogleIdentityStsV1ExchangeTokenResponse {
+  /** The type of access token. Always has the value `Bearer`. */
+  token_type?: string;
+  /** The amount of time, in seconds, between the time when the access token was issued and the time when the access token will expire. This field is absent when the `subject_token` in the request is a a short-lived access token for a Cloud Identity or Google Workspace user account. In this case, the access token has the same expiration time as the `subject_token`. */
+  expires_in?: number;
+  /** The access boundary session key. This key is used along with the access boundary intermediary token to generate Credential Access Boundary tokens at client side. This field is absent when the `requested_token_type` from the request is not `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`. */
+  access_boundary_session_key?: string;
+  /** The token type. Always matches the value of `requested_token_type` from the request. */
+  issued_token_type?: string;
+  /** An OAuth 2.0 security token, issued by Google, in response to the token exchange request. Tokens can vary in size, depending in part on the size of mapped claims, up to a maximum of 12288 bytes (12 KB). Google reserves the right to change the token size and the maximum length at any time. */
+  access_token?: string;
+}
+
+export const GoogleIdentityStsV1ExchangeTokenResponse: Schema.Schema<GoogleIdentityStsV1ExchangeTokenResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    token_type: Schema.optional(Schema.String),
+    expires_in: Schema.optional(Schema.Number),
+    access_boundary_session_key: Schema.optional(Schema.String),
+    issued_token_type: Schema.optional(Schema.String),
+    access_token: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIdentityStsV1ExchangeTokenResponse" });
+
+export interface GoogleIdentityStsV1AccessBoundaryRule {
+  /** A list of permissions that may be allowed for use on the specified resource. The only supported values in the list are IAM roles, following the format of google.iam.v1.Binding.role. Example value: `inRole:roles/logging.viewer` for predefined roles and `inRole:organizations/{ORGANIZATION_ID}/roles/logging.viewer` for custom roles. */
+  availablePermissions?: ReadonlyArray<string>;
+  /** The full resource name of a Google Cloud resource entity. The format definition is at https://cloud.google.com/apis/design/resource_names. Example value: `//cloudresourcemanager.googleapis.com/projects/my-project`. */
+  availableResource?: string;
+  /** The availability condition further constrains the access allowed by the access boundary rule. If the condition evaluates to `true`, then this access boundary rule will provide access to the specified resource, assuming the principal has the required permissions for the resource. If the condition does not evaluate to `true`, then access to the specified resource will not be available. Note that all access boundary rules in an access boundary are evaluated together as a union. As such, another access boundary rule may allow access to the resource, even if this access boundary rule does not allow access. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). The maximum length of the `expression` field is 2048 characters. */
+  availabilityCondition?: GoogleTypeExpr;
+}
+
+export const GoogleIdentityStsV1AccessBoundaryRule: Schema.Schema<GoogleIdentityStsV1AccessBoundaryRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availablePermissions: Schema.optional(Schema.Array(Schema.String)),
+    availableResource: Schema.optional(Schema.String),
+    availabilityCondition: Schema.optional(GoogleTypeExpr),
+  }).annotate({ identifier: "GoogleIdentityStsV1AccessBoundaryRule" });
+
+export interface GoogleIdentityStsV1AccessBoundary {
+  /** A list of access boundary rules which defines the upper bound of the permission a principal may carry. If multiple rules are specified, the effective access boundary is the union of all the access boundary rules attached. One access boundary can contain at most 10 rules. */
+  accessBoundaryRules?: ReadonlyArray<GoogleIdentityStsV1AccessBoundaryRule>;
+}
+
+export const GoogleIdentityStsV1AccessBoundary: Schema.Schema<GoogleIdentityStsV1AccessBoundary> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessBoundaryRules: Schema.optional(
+      Schema.Array(GoogleIdentityStsV1AccessBoundaryRule),
+    ),
+  }).annotate({ identifier: "GoogleIdentityStsV1AccessBoundary" });
 
 export interface GoogleIdentityStsV1Options {
   /** An access boundary that defines the upper bound of permissions the credential may have. The value should be a JSON object of AccessBoundary. The access boundary can include up to 10 rules. The size of the parameter value should not exceed 2048 characters. */
@@ -170,27 +164,95 @@ export const GoogleIdentityStsV1Options: Schema.Schema<GoogleIdentityStsV1Option
     bindCertFingerprint: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleIdentityStsV1Options" });
 
-export interface GoogleIdentityStsV1ExchangeTokenResponse {
-  /** The access boundary session key. This key is used along with the access boundary intermediary token to generate Credential Access Boundary tokens at client side. This field is absent when the `requested_token_type` from the request is not `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`. */
-  access_boundary_session_key?: string;
-  /** The token type. Always matches the value of `requested_token_type` from the request. */
-  issued_token_type?: string;
-  /** The amount of time, in seconds, between the time when the access token was issued and the time when the access token will expire. This field is absent when the `subject_token` in the request is a a short-lived access token for a Cloud Identity or Google Workspace user account. In this case, the access token has the same expiration time as the `subject_token`. */
-  expires_in?: number;
-  /** The type of access token. Always has the value `Bearer`. */
-  token_type?: string;
-  /** An OAuth 2.0 security token, issued by Google, in response to the token exchange request. Tokens can vary in size, depending in part on the size of mapped claims, up to a maximum of 12288 bytes (12 KB). Google reserves the right to change the token size and the maximum length at any time. */
-  access_token?: string;
+export interface GoogleIdentityStsV1Jwk {
+  /** Key ID. */
+  kid?: string;
+  /** Modulus value for kty="RSA". */
+  n?: string;
+  /** Key type. Currently "RSA". */
+  kty?: string;
+  /** Public key use. Currently "jwt-svid". */
+  use?: string;
+  /** Exponent value for kty="RSA". */
+  e?: string;
 }
 
-export const GoogleIdentityStsV1ExchangeTokenResponse: Schema.Schema<GoogleIdentityStsV1ExchangeTokenResponse> =
+export const GoogleIdentityStsV1Jwk: Schema.Schema<GoogleIdentityStsV1Jwk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    access_boundary_session_key: Schema.optional(Schema.String),
-    issued_token_type: Schema.optional(Schema.String),
-    expires_in: Schema.optional(Schema.Number),
-    token_type: Schema.optional(Schema.String),
-    access_token: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIdentityStsV1ExchangeTokenResponse" });
+    kid: Schema.optional(Schema.String),
+    n: Schema.optional(Schema.String),
+    kty: Schema.optional(Schema.String),
+    use: Schema.optional(Schema.String),
+    e: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIdentityStsV1Jwk" });
+
+export interface GoogleIdentityStsV1Jwks {
+  /** The JWKS for this OP. */
+  keys?: ReadonlyArray<GoogleIdentityStsV1Jwk>;
+}
+
+export const GoogleIdentityStsV1Jwks: Schema.Schema<GoogleIdentityStsV1Jwks> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keys: Schema.optional(Schema.Array(GoogleIdentityStsV1Jwk)),
+  }).annotate({ identifier: "GoogleIdentityStsV1Jwks" });
+
+export interface GoogleIdentityStsV1OpenIdProviderConfig {
+  /** URL pointing to an authorization endpoint under this issuer. Note: Currently this endpoint returns a 404. */
+  authorization_endpoint?: string;
+  /** JSON array containing a list of the subject identifier types that this OP supports. Note: Currently always "["public"]". */
+  subject_types_supported?: ReadonlyArray<string>;
+  /** JSON array containing a list of the JWS signing algorithms (alg values) supported by the OP for the ID token to encode the claims in a JWT [JWT]. Note: Currently always "["RS256"]". */
+  id_token_signing_alg_values_supported?: ReadonlyArray<string>;
+  /** URL pointing to a token endpoint under this issuer. Note: Currently this endpoint returns a 404. */
+  token_endpoint?: string;
+  /** URL of the OP's JWK Set [JWK] document, which MUST use the https scheme. */
+  jwks_uri?: string;
+  /** JSON array containing a list of the OAuth 2.0 response_type values that this OP supports. Note: Currently always "["id_token"]". */
+  response_types_supported?: ReadonlyArray<string>;
+  /** URL using the https scheme with no query or fragment components that the OP asserts as its issuer identifier. */
+  issuer?: string;
+}
+
+export const GoogleIdentityStsV1OpenIdProviderConfig: Schema.Schema<GoogleIdentityStsV1OpenIdProviderConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorization_endpoint: Schema.optional(Schema.String),
+    subject_types_supported: Schema.optional(Schema.Array(Schema.String)),
+    id_token_signing_alg_values_supported: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    token_endpoint: Schema.optional(Schema.String),
+    jwks_uri: Schema.optional(Schema.String),
+    response_types_supported: Schema.optional(Schema.Array(Schema.String)),
+    issuer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIdentityStsV1OpenIdProviderConfig" });
+
+export interface GoogleIdentityStsV1ExchangeTokenRequest {
+  /** Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-exchange`, which indicates a token exchange. */
+  grantType?: string;
+  /** Required. An identifier for the type of requested security token. Can be `urn:ietf:params:oauth:token-type:access_token` or `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`. */
+  requestedTokenType?: string;
+  /** Required. An identifier that indicates the type of the security token in the `subject_token` parameter. Supported values are `urn:ietf:params:oauth:token-type:jwt`, `urn:ietf:params:oauth:token-type:id_token`, `urn:ietf:params:aws:token-type:aws4_request`, `urn:ietf:params:oauth:token-type:access_token`, `urn:ietf:params:oauth:token-type:mtls`, and `urn:ietf:params:oauth:token-type:saml2`. */
+  subjectTokenType?: string;
+  /** The OAuth 2.0 scopes to include on the resulting access token, formatted as a list of space-delimited, case-sensitive strings; for example, `https://www.googleapis.com/auth/cloud-platform`. Required when exchanging an external credential for a Google access token. For a list of OAuth 2.0 scopes, see [OAuth 2.0 Scopes for Google APIs](https://developers.google.com/identity/protocols/oauth2/scopes). */
+  scope?: string;
+  /** A set of features that Security Token Service supports, in addition to the standard OAuth 2.0 token exchange, formatted as a serialized JSON object of Options. The size of the parameter value must not exceed 4 * 1024 * 1024 characters (4 MB). */
+  options?: string;
+  /** The full resource name of the identity provider; for example: `//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/` for workload identity pool providers, or `//iam.googleapis.com/locations/global/workforcePools//providers/` for workforce pool providers. Required when exchanging an external credential for a Google access token. */
+  audience?: string;
+  /** Required. The input token. This token is either an external credential issued by a workload identity pool provider, or a short-lived access token issued by Google. If the token is an OIDC JWT, it must use the JWT format defined in [RFC 7523](https://tools.ietf.org/html/rfc7523), and the `subject_token_type` must be either `urn:ietf:params:oauth:token-type:jwt` or `urn:ietf:params:oauth:token-type:id_token`. The following headers are required: - `kid`: The identifier of the signing key securing the JWT. - `alg`: The cryptographic algorithm securing the JWT. Must be `RS256` or `ES256`. The following payload fields are required. For more information, see [RFC 7523, Section 3](https://tools.ietf.org/html/rfc7523#section-3): - `iss`: The issuer of the token. The issuer must provide a discovery document at the URL `/.well-known/openid-configuration`, where `` is the value of this field. The document must be formatted according to section 4.2 of the [OIDC 1.0 Discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). - `iat`: The issue time, in seconds, since the Unix epoch. This timestamp must be in the past and no more than 24 hours in the past, or the token will be rejected. Note that this implies the token is only acceptable within a time window of at most 24 hours. - `exp`: The expiration time, in seconds, since the Unix epoch. Shorter expiration times are more secure. If possible, we recommend setting an expiration time less than 6 hours. - `sub`: The identity asserted in the JWT. - `aud`: For workload identity pools, this must be a value specified in the allowed audiences for the workload identity pool provider, or one of the audiences allowed by default if no audiences were specified. See https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers#oidc. For workforce pools, this must match the client ID specified in the provider configuration. See https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers#oidc. Example header: ``` { "alg": "RS256", "kid": "us-east-11" } ``` Example payload: ``` { "iss": "https://accounts.google.com", "iat": 1517963104, "exp": 1517966704, "aud": "//iam.googleapis.com/projects/1234567890123/locations/global/workloadIdentityPools/my-pool/providers/my-provider", "sub": "113475438248934895348", "my_claims": { "additional_claim": "value" } } ``` If `subject_token` is for AWS, it must be a serialized `GetCallerIdentity` token. This token contains the same information as a request to the AWS [`GetCallerIdentity()`](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity) method, as well as the AWS [signature](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html) for the request information. Use Signature Version 4. Format the request as URL-encoded JSON, and set the `subject_token_type` parameter to `urn:ietf:params:aws:token-type:aws4_request`. The following parameters are required: - `url`: The URL of the AWS STS endpoint for `GetCallerIdentity()`, such as `https://sts.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15`. Regional endpoints are also supported. - `method`: The HTTP request method: `POST`. - `headers`: The HTTP request headers, which must include: - `Authorization`: The request signature. - `x-amz-date`: The time you will send the request, formatted as an [ISO8601 Basic](https://docs.aws.amazon.com/general/latest/gr/sigv4_elements.html#sigv4_elements_date) string. This value is typically set to the current time and is used to help prevent replay attacks. - `host`: The hostname of the `url` field; for example, `sts.amazonaws.com`. - `x-goog-cloud-target-resource`: The full, canonical resource name of the workload identity pool provider, with or without an `https:` prefix. To help ensure data integrity, we recommend including this header in the `SignedHeaders` field of the signed request. For example: //iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/ If you are using temporary security credentials provided by AWS, you must also include the header `x-amz-security-token`, with the value set to the session token. The following example shows a `GetCallerIdentity` token: ``` { "headers": [ {"key": "x-amz-date", "value": "20200815T015049Z"}, {"key": "Authorization", "value": "AWS4-HMAC-SHA256+Credential=$credential,+SignedHeaders=host;x-amz-date;x-goog-cloud-target-resource,+Signature=$signature"}, {"key": "x-goog-cloud-target-resource", "value": "//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/"}, {"key": "host", "value": "sts.amazonaws.com"} . ], "method": "POST", "url": "https://sts.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15" } ``` If the token is a SAML 2.0 assertion, it must use the format defined in [the SAML 2.0 spec](https://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0-cd-02.pdf), and the `subject_token_type` must be `urn:ietf:params:oauth:token-type:saml2`. See [Verification of external credentials](https://cloud.google.com/iam/docs/using-workload-identity-federation#verification_of_external_credentials) for details on how SAML 2.0 assertions are validated during token exchanges. You can also use a Google-issued OAuth 2.0 access token with this field to obtain an access token with new security attributes applied, such as a Credential Access Boundary. In this case, set `subject_token_type` to `urn:ietf:params:oauth:token-type:access_token`. If an access token already contains security attributes, you cannot apply additional security attributes. If the request is for X.509 certificate-based authentication, the `subject_token` must be a JSON-formatted list of X.509 certificates in DER format, as defined in [RFC 7515](https://www.rfc-editor.org/rfc/rfc7515#section-4.1.6). `subject_token_type` must be `urn:ietf:params:oauth:token-type:mtls`. The following example shows a JSON-formatted list of X.509 certificate in DER format: ``` [\"MIIEYDCCA0i...\", \"MCIFFGAGTT0...\"] ``` */
+  subjectToken?: string;
+}
+
+export const GoogleIdentityStsV1ExchangeTokenRequest: Schema.Schema<GoogleIdentityStsV1ExchangeTokenRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    grantType: Schema.optional(Schema.String),
+    requestedTokenType: Schema.optional(Schema.String),
+    subjectTokenType: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    options: Schema.optional(Schema.String),
+    audience: Schema.optional(Schema.String),
+    subjectToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIdentityStsV1ExchangeTokenRequest" });
 
 // ==========================================================================
 // Errors
@@ -281,4 +343,150 @@ export const tokenV1: API.OperationMethod<
   input: TokenV1Request,
   output: TokenV1Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest {
+  /** Required. The name of the pool whose JWKS needs to be retrieved. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s): 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
+  name: string;
+}
+
+export const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/openid/jwks" }),
+    svc,
+  ) as unknown as Schema.Schema<GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest>;
+
+export type GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidResponse =
+  GoogleIdentityStsV1Jwks;
+export const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1Jwks;
+
+export type GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Fetches the signing keys for an agentic or managed workload identity pool and returns them in JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic system pools are supported. */
+export const getJwksProjectsLocationsWorkloadIdentityPoolsOpenid: API.OperationMethod<
+  GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest,
+  GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidResponse,
+  GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest,
+  output: GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest {
+  /** Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
+  name: string;
+}
+
+export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+name}/.well-known/openid-configuration",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest>;
+
+export type GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownResponse =
+  GoogleIdentityStsV1OpenIdProviderConfig;
+export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1OpenIdProviderConfig;
+
+export type GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. */
+export const getOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_known: API.OperationMethod<
+  GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest,
+  GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownResponse,
+  GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest,
+  output:
+    GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest {
+  /** Required. The name of the pool whose JWKS needs to be retrieved. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s): 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
+  name: string;
+}
+
+export const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/openid/jwks" }),
+    svc,
+  ) as unknown as Schema.Schema<GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest>;
+
+export type GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidResponse =
+  GoogleIdentityStsV1Jwks;
+export const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1Jwks;
+
+export type GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Fetches the signing keys for an agentic or managed workload identity pool and returns them in JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic system pools are supported. */
+export const getJwksOrganizationsLocationsWorkloadIdentityPoolsOpenid: API.OperationMethod<
+  GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest,
+  GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidResponse,
+  GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest,
+  output: GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest {
+  /** Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
+  name: string;
+}
+
+export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+name}/.well-known/openid-configuration",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>;
+
+export type GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownResponse =
+  GoogleIdentityStsV1OpenIdProviderConfig;
+export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1OpenIdProviderConfig;
+
+export type GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. */
+export const getOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_known: API.OperationMethod<
+  GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest,
+  GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownResponse,
+  GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest,
+  output:
+    GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownResponse,
+  errors: [NotFound, Forbidden],
 }));

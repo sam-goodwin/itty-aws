@@ -1,14 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare AI Gateway API (patch additions)
+  title: Cloudflare AI-GATEWAY API
   version: 0.0.0
-  description: |
-    Operations missing from the upstream OpenAPI spec / TypeScript SDK.
-    Currently:
-      - deleteProviderConfig: the dashboard deletes BYOK provider configs via
-        DELETE .../provider_configs/{id}; verified live (returns the deleted
-        config object; a second delete returns code 7002 Not Found), but the
-        upstream spec only documents list + create.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: ai-gateway
@@ -2821,11 +2814,11 @@ paths:
       x-distilled-response-path: result
     post:
       operationId: createBillingSpendingLimit
-      description: "Configure a spending limit with amount, strategy, and
-        duration.  @example ```ts const spendingLimit = await
-        client.aiGateway.billing.spendingLimit.create({ account_id:
-        'account_id', amount: 10000, duration: 'monthly', strategy: 'fixed', });
-        ```"
+      description: "Deprecated: spending limits can no longer be created, enabled, or
+        modified and this endpoint always responds 403. Use the new AI Gateway
+        spend limits instead:
+        https://developers.cloudflare.com/ai-gateway/features/spend-limits/.
+        Existing limits can be removed via DELETE /spending-limit.  @deprecated"
       parameters:
         - name: account_id
           in: path
@@ -3106,6 +3099,325 @@ paths:
           content:
             application/json:
               schema: {}
+      x-distilled-response-path: result
+  /accounts/{account_id}/ai-gateway/custom-providers/{id}:
+    get:
+      operationId: getCustomProvider
+      description: "Retrieves details for a specific AI Gateway dataset.  @example
+        ```ts const customProvider = await client.aiGateway.customProviders.get(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0' }, ); ```"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  base_url:
+                    type: string
+                  created_at:
+                    type: string
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                  slug:
+                    type: string
+                  beta:
+                    type: boolean
+                  curl_example:
+                    type: string
+                  description:
+                    type: string
+                  enable:
+                    type: boolean
+                  headers:
+                    type: string
+                  js_example:
+                    type: string
+                  link:
+                    type: string
+                  logo:
+                    type: string
+                  position:
+                    type: number
+                required:
+                  - id
+                  - base_url
+                  - created_at
+                  - modified_at
+                  - name
+                  - slug
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteCustomProvider
+      description: "Deletes an AI Gateway dataset.  @example ```ts const
+        customProvider = await client.aiGateway.customProviders.delete(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0' }, ); ```"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  base_url:
+                    type: string
+                  created_at:
+                    type: string
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                  slug:
+                    type: string
+                  beta:
+                    type: boolean
+                  curl_example:
+                    type: string
+                  description:
+                    type: string
+                  enable:
+                    type: boolean
+                  headers:
+                    type: string
+                  js_example:
+                    type: string
+                  link:
+                    type: string
+                  logo:
+                    type: string
+                  position:
+                    type: number
+                required:
+                  - id
+                  - base_url
+                  - created_at
+                  - modified_at
+                  - name
+                  - slug
+      x-distilled-response-path: result
+  /accounts/{account_id}/ai-gateway/custom-providers:
+    get:
+      operationId: listCustomProviders
+      description: "Lists all AI Gateway evaluator types configured for the
+        account.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const customProviderListResponse of
+        client.aiGateway.customProviders.list( { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Path param
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: beta
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: boolean
+        - name: enable
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: boolean
+        - name: search
+          in: query
+          required: false
+          description: "Query param: Search by id, name, slug"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  base_url:
+                    type: string
+                  created_at:
+                    type: string
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                  slug:
+                    type: string
+                  beta:
+                    type: boolean
+                  curl_example:
+                    type: string
+                  description:
+                    type: string
+                  enable:
+                    type: boolean
+                  headers:
+                    type: string
+                  js_example:
+                    type: string
+                  link:
+                    type: string
+                  logo:
+                    type: string
+                  position:
+                    type: number
+                required:
+                  - id
+                  - base_url
+                  - created_at
+                  - modified_at
+                  - name
+                  - slug
+      x-distilled-pagination-class: CustomProviderListResponsesV4PagePaginationArray
+    post:
+      operationId: createCustomProvider
+      description: "Creates a new AI Gateway.  @example ```ts const customProvider =
+        await client.aiGateway.customProviders.create({ account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0', base_url: 'https://example.com',
+        name: 'name', slug: 'slug', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Path param
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                base_url:
+                  type: string
+                  description: Body param
+                name:
+                  type: string
+                  description: Body param
+                slug:
+                  type: string
+                  description: Body param
+                beta:
+                  type: boolean
+                  description: Body param
+                curl_example:
+                  type: string
+                  description: Body param
+                description:
+                  type: string
+                  description: Body param
+                enable:
+                  type: boolean
+                  description: Body param
+                headers:
+                  type: string
+                  description: Body param
+                js_example:
+                  type: string
+                  description: Body param
+                link:
+                  type: string
+                  description: Body param
+                position:
+                  type: number
+                  description: Body param
+              required:
+                - base_url
+                - name
+                - slug
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  base_url:
+                    type: string
+                  created_at:
+                    type: string
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                  slug:
+                    type: string
+                  beta:
+                    type: boolean
+                  curl_example:
+                    type: string
+                  description:
+                    type: string
+                  enable:
+                    type: boolean
+                  headers:
+                    type: string
+                  js_example:
+                    type: string
+                  link:
+                    type: string
+                  logo:
+                    type: string
+                  position:
+                    type: number
+                required:
+                  - id
+                  - base_url
+                  - created_at
+                  - modified_at
+                  - name
+                  - slug
       x-distilled-response-path: result
   /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/datasets/{id}:
     get:

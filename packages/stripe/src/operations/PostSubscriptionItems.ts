@@ -53,6 +53,7 @@ export type PostSubscriptionItemsInput = typeof PostSubscriptionItemsInput.Type;
 // Output Schema
 export const PostSubscriptionItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billed_until: Schema.optional(Schema.Number),
     billing_thresholds: Schema.Unknown,
     created: Schema.Number,
     current_period_end: Schema.Number,

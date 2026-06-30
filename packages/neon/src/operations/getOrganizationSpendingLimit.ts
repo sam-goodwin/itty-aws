@@ -25,12 +25,11 @@ export type GetOrganizationSpendingLimitOutput =
 
 // The operation
 /**
- * Retrieve the organization's monthly spending limit
+ * Retrieve organization spending limit
  *
- * Returns the configured spending limit for a V3 paid organization.
- * `spending_limit_cents: null` indicates that no limit is currently
- * set. Available to organization members with read access on Launch
- * and Scale plans only.
+ * Returns the configured monthly spending limit for the specified organization.
+ * `spending_limit_cents: null` indicates that no limit is currently set.
+ * Available to organization members with read access on Launch and Scale plans only.
  *
  * @param org_id - The Neon organization ID
  */

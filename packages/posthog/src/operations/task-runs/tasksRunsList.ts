@@ -19,54 +19,55 @@ export type TasksRunsListInput = typeof TasksRunsListInput.Type;
 
 // Output Schema
 export const TasksRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.optional(Schema.Number),
+  count: Schema.Number,
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        task: Schema.optional(Schema.String),
-        stage: Schema.optional(Schema.NullOr(Schema.String)),
-        branch: Schema.optional(Schema.NullOr(Schema.String)),
-        status: Schema.optional(
-          Schema.Literals([
-            "not_started",
-            "queued",
-            "in_progress",
-            "completed",
-            "failed",
-            "cancelled",
-          ]),
-        ),
-        environment: Schema.optional(Schema.Literals(["local", "cloud"])),
-        runtime_adapter: Schema.optional(Schema.Unknown),
-        provider: Schema.optional(Schema.Unknown),
-        model: Schema.optional(Schema.NullOr(Schema.String)),
-        reasoning_effort: Schema.optional(Schema.Unknown),
-        log_url: Schema.optional(Schema.NullOr(Schema.String)),
-        error_message: Schema.optional(Schema.NullOr(Schema.String)),
-        output: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        state: Schema.optional(Schema.Unknown),
-        artifacts: Schema.optional(
-          Schema.Array(
+  results: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      task: Schema.String,
+      stage: Schema.NullOr(Schema.String),
+      branch: Schema.NullOr(Schema.String),
+      status: Schema.String,
+      environment: Schema.String,
+      runtime_adapter: Schema.optional(Schema.Unknown),
+      provider: Schema.optional(Schema.Unknown),
+      model: Schema.optional(Schema.NullOr(Schema.String)),
+      reasoning_effort: Schema.optional(Schema.Unknown),
+      log_url: Schema.optional(Schema.NullOr(Schema.String)),
+      error_message: Schema.NullOr(Schema.String),
+      output: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+      state: Schema.Record(Schema.String, Schema.Unknown),
+      artifacts: Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          source: Schema.optional(Schema.String),
+          size: Schema.optional(Schema.Number),
+          content_type: Schema.optional(Schema.String),
+          metadata: Schema.optional(
             Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              source: Schema.optional(Schema.String),
-              size: Schema.optional(Schema.Number),
-              content_type: Schema.optional(Schema.String),
-              storage_path: Schema.optional(Schema.String),
-              uploaded_at: Schema.optional(Schema.String),
+              skill_name: Schema.String,
+              skill_source: Schema.Literals([
+                "user",
+                "repo",
+                "marketplace",
+                "codex",
+              ]),
+              content_sha256: Schema.String,
+              bundle_format: Schema.Literals(["zip"]),
+              schema_version: Schema.Number,
             }),
           ),
-        ),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-        completed_at: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+          storage_path: Schema.optional(Schema.String),
+          uploaded_at: Schema.optional(Schema.String),
+        }),
+      ),
+      created_at: Schema.optional(Schema.NullOr(Schema.String)),
+      updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+      completed_at: Schema.optional(Schema.NullOr(Schema.String)),
+    }),
   ),
 });
 export type TasksRunsListOutput = typeof TasksRunsListOutput.Type;

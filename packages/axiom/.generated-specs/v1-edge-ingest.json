@@ -204,6 +204,116 @@
       }
     },
     "schemas": {
+      "BifrostErrorResponse": {
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "BifrostScopedCredentials": {
+        "type": "object",
+        "required": [
+          "accessKeyId",
+          "secretAccessKey",
+          "sessionToken",
+          "expiresAt"
+        ],
+        "properties": {
+          "accessKeyId": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "secretAccessKey": {
+            "type": "string"
+          },
+          "sessionToken": {
+            "type": "string"
+          }
+        }
+      },
+      "BifrostUploadLayout": {
+        "type": "object",
+        "required": [
+          "version",
+          "blockType",
+          "zipObject",
+          "indexInZip"
+        ],
+        "properties": {
+          "blockType": {
+            "type": "string"
+          },
+          "indexInZip": {
+            "type": "boolean"
+          },
+          "version": {
+            "type": "string"
+          },
+          "zipObject": {
+            "type": "string"
+          }
+        }
+      },
+      "BifrostUploadSessionRequest": {
+        "type": "object",
+        "required": [
+          "dataset"
+        ],
+        "properties": {
+          "dataset": {
+            "description": "The source dataset name for the upload session.",
+            "type": "string"
+          }
+        }
+      },
+      "BifrostUploadSessionResponse": {
+        "type": "object",
+        "required": [
+          "storageSink",
+          "normalizedDataset",
+          "bucket",
+          "region",
+          "keyRoot",
+          "expiresAt",
+          "layout",
+          "credentials"
+        ],
+        "properties": {
+          "bucket": {
+            "type": "string"
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/BifrostScopedCredentials"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "keyRoot": {
+            "type": "string"
+          },
+          "layout": {
+            "$ref": "#/components/schemas/BifrostUploadLayout"
+          },
+          "normalizedDataset": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "storageSink": {
+            "type": "string"
+          }
+        }
+      },
       "FirehoseIngestStatus": {
         "description": "AWS Firehose HTTP endpoint response format",
         "type": "object",

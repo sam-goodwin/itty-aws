@@ -14,6 +14,7 @@ export const ApplicationDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationDefinitionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       lockLevel: Schema.Literals(["CanNotDelete", "ReadOnly", "None"]),
       displayName: Schema.optional(Schema.String),
@@ -140,6 +141,7 @@ export type ApplicationDefinitionsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param applicationDefinitionName - The name of the managed application definition.
  */
 export const ApplicationDefinitionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -151,6 +153,7 @@ export const ApplicationDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationDefinitionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -174,6 +177,7 @@ export type ApplicationDefinitionsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param applicationDefinitionName - The name of the managed application definition.
  */
 export const ApplicationDefinitionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -185,6 +189,7 @@ export const ApplicationDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationDefinitionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -228,6 +233,7 @@ export type ApplicationDefinitionsGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param applicationDefinitionName - The name of the managed application definition.
  */
 export const ApplicationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -380,6 +386,7 @@ export const ApplicationDefinitionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationDefinitionName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -424,6 +431,7 @@ export type ApplicationDefinitionsUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param applicationDefinitionName - The name of the managed application definition.
  */
 export const ApplicationDefinitionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -435,6 +443,7 @@ export const ApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       managedResourceGroupId: Schema.optional(Schema.String),
       applicationDefinitionId: Schema.optional(Schema.String),
@@ -617,6 +626,7 @@ export type ApplicationsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param applicationName - The name of the managed application.
  */
 export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -820,6 +830,7 @@ export const ApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -840,6 +851,7 @@ export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param applicationName - The name of the managed application.
  */
 export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsDeleteInput,
@@ -882,6 +894,7 @@ export const ApplicationsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -922,6 +935,7 @@ export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param applicationName - The name of the managed application.
  */
 export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsGetInput,
@@ -981,6 +995,7 @@ export const ApplicationsListAllowedUpgradePlansInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1016,6 +1031,7 @@ export type ApplicationsListAllowedUpgradePlansOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param applicationName - The name of the managed application.
  */
 export const ApplicationsListAllowedUpgradePlans =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1220,6 +1236,7 @@ export const ApplicationsRefreshPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1243,6 +1260,7 @@ export type ApplicationsRefreshPermissionsOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param applicationName - The name of the managed application.
  */
 export const ApplicationsRefreshPermissions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1254,6 +1272,7 @@ export const ApplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         managedResourceGroupId: Schema.optional(Schema.String),
@@ -1436,6 +1455,7 @@ export type ApplicationsUpdateOutput = typeof ApplicationsUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param applicationName - The name of the managed application.
  */
 export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsUpdateInput,
@@ -1693,6 +1713,7 @@ export const JitRequestsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    jitRequestName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         applicationResourceId: Schema.String,
@@ -1811,6 +1832,7 @@ export type JitRequestsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param jitRequestName - The name of the JIT request.
  */
 export const jitRequestsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1823,6 +1845,7 @@ export const JitRequestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    jitRequestName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -1844,6 +1867,7 @@ export type JitRequestsDeleteOutput = typeof JitRequestsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param jitRequestName - The name of the JIT request.
  */
 export const jitRequestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JitRequestsDeleteInput,
@@ -1853,6 +1877,7 @@ export const jitRequestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const JitRequestsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jitRequestName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1893,6 +1918,7 @@ export type JitRequestsGetOutput = typeof JitRequestsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param jitRequestName - The name of the JIT request.
  */
 export const JitRequestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JitRequestsGetInput,
@@ -2043,6 +2069,7 @@ export const JitRequestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    jitRequestName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
@@ -2086,6 +2113,7 @@ export type JitRequestsUpdateOutput = typeof JitRequestsUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param jitRequestName - The name of the JIT request.
  */
 export const JitRequestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JitRequestsUpdateInput,

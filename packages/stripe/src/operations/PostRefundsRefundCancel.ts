@@ -117,6 +117,7 @@ export const PostRefundsRefundCancelOutput =
         ),
         pix: Schema.optional(Schema.Struct({})),
         revolut: Schema.optional(Schema.Struct({})),
+        scalapay: Schema.optional(Schema.Struct({})),
         sofort: Schema.optional(Schema.Struct({})),
         swish: Schema.optional(
           Schema.Struct({

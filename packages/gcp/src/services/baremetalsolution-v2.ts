@@ -22,449 +22,40 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface OSImage {
-  /** Output only. OS Image's unique name. */
-  name?: string;
-  /** OS Image description. */
-  description?: string;
-  /** OS Image code. */
-  code?: string;
-  /** Network templates that can be used with this OS Image. */
-  supportedNetworkTemplates?: ReadonlyArray<string>;
-  /** Instance types this image is applicable to. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations) */
-  applicableInstanceTypes?: ReadonlyArray<string>;
-}
-
-export const OSImage: Schema.Schema<OSImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.String),
-    supportedNetworkTemplates: Schema.optional(Schema.Array(Schema.String)),
-    applicableInstanceTypes: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "OSImage" });
-
-export interface LunRange {
-  /** Number of LUNs to create. */
-  quantity?: number;
-  /** The requested size of each LUN, in GB. */
-  sizeGb?: number;
-}
-
-export const LunRange: Schema.Schema<LunRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    quantity: Schema.optional(Schema.Number),
-    sizeGb: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "LunRange" });
-
-export interface NfsExport {
-  /** Network to use to publish the export. */
-  networkId?: string;
-  /** Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication. */
-  noRootSquash?: boolean;
-  /** Allow the setuid flag. */
-  allowSuid?: boolean;
-  /** Either a single machine, identified by an ID, or a comma-separated list of machine IDs. */
-  machineId?: string;
-  /** Allow dev flag in NfsShare AllowedClientsRequest. */
-  allowDev?: boolean;
-  /** Export permissions. */
-  permissions?:
-    | "PERMISSIONS_UNSPECIFIED"
-    | "READ_ONLY"
-    | "READ_WRITE"
-    | (string & {});
-  /** A CIDR range. */
-  cidr?: string;
-}
-
-export const NfsExport: Schema.Schema<NfsExport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    networkId: Schema.optional(Schema.String),
-    noRootSquash: Schema.optional(Schema.Boolean),
-    allowSuid: Schema.optional(Schema.Boolean),
-    machineId: Schema.optional(Schema.String),
-    allowDev: Schema.optional(Schema.Boolean),
-    permissions: Schema.optional(Schema.String),
-    cidr: Schema.optional(Schema.String),
-  }).annotate({ identifier: "NfsExport" });
-
-export interface VolumeConfig {
-  /** LUN ranges to be configured. Set only when protocol is PROTOCOL_FC. */
-  lunRanges?: ReadonlyArray<LunRange>;
-  /** NFS exports. Set only when protocol is PROTOCOL_NFS. */
-  nfsExports?: ReadonlyArray<NfsExport>;
-  /** Whether snapshots should be enabled. */
-  snapshotsEnabled?: boolean;
-  /** The requested size of this volume, in GB. */
-  sizeGb?: number;
-  /** User note field, it can be used by customers to add additional information for the BMS Ops team . */
-  userNote?: string;
-  /** Output only. The name of the volume config. */
-  name?: string;
-  /** Volume protocol. */
-  protocol?:
-    | "PROTOCOL_UNSPECIFIED"
-    | "PROTOCOL_FC"
-    | "PROTOCOL_NFS"
-    | (string & {});
-  /** Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC. */
-  machineIds?: ReadonlyArray<string>;
-  /** A transient unique identifier to identify a volume within an ProvisioningConfig request. */
-  id?: string;
-  /** The type of this Volume. */
-  type?: "TYPE_UNSPECIFIED" | "FLASH" | "DISK" | (string & {});
-  /** The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning. */
-  gcpService?: string;
-  /** Performance tier of the Volume. Default is SHARED. */
-  performanceTier?:
-    | "VOLUME_PERFORMANCE_TIER_UNSPECIFIED"
-    | "VOLUME_PERFORMANCE_TIER_SHARED"
-    | "VOLUME_PERFORMANCE_TIER_ASSIGNED"
-    | "VOLUME_PERFORMANCE_TIER_HT"
-    | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE"
-    | (string & {});
-}
-
-export const VolumeConfig: Schema.Schema<VolumeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    lunRanges: Schema.optional(Schema.Array(LunRange)),
-    nfsExports: Schema.optional(Schema.Array(NfsExport)),
-    snapshotsEnabled: Schema.optional(Schema.Boolean),
-    sizeGb: Schema.optional(Schema.Number),
-    userNote: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    protocol: Schema.optional(Schema.String),
-    machineIds: Schema.optional(Schema.Array(Schema.String)),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    gcpService: Schema.optional(Schema.String),
-    performanceTier: Schema.optional(Schema.String),
-  }).annotate({ identifier: "VolumeConfig" });
-
-export interface RenameInstanceRequest {
-  /** Required. The new `id` of the instance. */
-  newInstanceId?: string;
-}
-
-export const RenameInstanceRequest: Schema.Schema<RenameInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    newInstanceId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RenameInstanceRequest" });
-
-export interface DisableInteractiveSerialConsoleResponse {}
-
-export const DisableInteractiveSerialConsoleResponse: Schema.Schema<DisableInteractiveSerialConsoleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DisableInteractiveSerialConsoleResponse",
-  });
-
-export interface NetworkAddressReservation {
-  /** The first address of this reservation block. Must be specified as a single IPv4 address, e.g. 10.1.2.2. */
-  startAddress?: string;
-  /** The last address of this reservation block, inclusive. I.e., for cases when reservations are only single addresses, end_address and start_address will be the same. Must be specified as a single IPv4 address, e.g. 10.1.2.2. */
-  endAddress?: string;
-  /** A note about this reservation, intended for human consumption. */
-  note?: string;
-}
-
-export const NetworkAddressReservation: Schema.Schema<NetworkAddressReservation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startAddress: Schema.optional(Schema.String),
-    endAddress: Schema.optional(Schema.String),
-    note: Schema.optional(Schema.String),
-  }).annotate({ identifier: "NetworkAddressReservation" });
-
-export interface DetachLunRequest {
-  /** Required. Name of the Lun to detach. */
-  lun?: string;
-  /** If true, performs lun unmapping without instance reboot. */
-  skipReboot?: boolean;
-}
-
-export const DetachLunRequest: Schema.Schema<DetachLunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    lun: Schema.optional(Schema.String),
-    skipReboot: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "DetachLunRequest" });
-
-export interface EnableInteractiveSerialConsoleResponse {}
-
-export const EnableInteractiveSerialConsoleResponse: Schema.Schema<EnableInteractiveSerialConsoleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "EnableInteractiveSerialConsoleResponse",
-  });
-
-export interface ResetInstanceRequest {}
-
-export const ResetInstanceRequest: Schema.Schema<ResetInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ResetInstanceRequest",
-  });
-
-export interface RestoreVolumeSnapshotRequest {}
-
-export const RestoreVolumeSnapshotRequest: Schema.Schema<RestoreVolumeSnapshotRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RestoreVolumeSnapshotRequest",
-  });
-
-export interface LogicalNetworkInterface {
-  /** Type of network. */
-  networkType?: "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE" | (string & {});
-  /** IP address in the network */
-  ipAddress?: string;
-  /** An identifier for the `Network`, generated by the backend. */
-  id?: string;
-  /** Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance. */
-  defaultGateway?: boolean;
-  /** Name of the network */
-  network?: string;
-}
-
-export const LogicalNetworkInterface: Schema.Schema<LogicalNetworkInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    networkType: Schema.optional(Schema.String),
-    ipAddress: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    defaultGateway: Schema.optional(Schema.Boolean),
-    network: Schema.optional(Schema.String),
-  }).annotate({ identifier: "LogicalNetworkInterface" });
-
-export interface GoogleCloudBaremetalsolutionV2LogicalInterface {
-  /** The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated. */
-  interfaceIndex?: number;
-  /** List of logical network interfaces within a logical interface. */
-  logicalNetworkInterfaces?: ReadonlyArray<LogicalNetworkInterface>;
-  /** Interface name. This is of syntax or and forms part of the network template name. */
-  name?: string;
-}
-
-export const GoogleCloudBaremetalsolutionV2LogicalInterface: Schema.Schema<GoogleCloudBaremetalsolutionV2LogicalInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    interfaceIndex: Schema.optional(Schema.Number),
-    logicalNetworkInterfaces: Schema.optional(
-      Schema.Array(LogicalNetworkInterface),
-    ),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudBaremetalsolutionV2LogicalInterface" });
-
-export interface EnableInteractiveSerialConsoleRequest {}
-
-export const EnableInteractiveSerialConsoleRequest: Schema.Schema<EnableInteractiveSerialConsoleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "EnableInteractiveSerialConsoleRequest",
-  });
-
-export interface SSHKey {
-  /** Output only. The name of this SSH key. Currently, the only valid value for the location is "global". */
-  name?: string;
-  /** The public SSH key. This must be in OpenSSH .authorized_keys format. */
-  publicKey?: string;
-}
-
-export const SSHKey: Schema.Schema<SSHKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    publicKey: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SSHKey" });
-
-export interface ListSSHKeysResponse {
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-  /** The SSH keys registered in the project. */
-  sshKeys?: ReadonlyArray<SSHKey>;
-}
-
-export const ListSSHKeysResponse: Schema.Schema<ListSSHKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    sshKeys: Schema.optional(Schema.Array(SSHKey)),
-  }).annotate({ identifier: "ListSSHKeysResponse" });
-
-export interface RenameNetworkRequest {
-  /** Required. The new `id` of the network. */
-  newNetworkId?: string;
-}
-
-export const RenameNetworkRequest: Schema.Schema<RenameNetworkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    newNetworkId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RenameNetworkRequest" });
-
-export interface InstanceQuota {
-  /** Location where the quota applies. */
-  location?: string;
-  /** Number of machines than can be created for the given location and instance_type. */
-  availableMachineCount?: number;
-  /** Instance type. Deprecated: use gcp_service. */
-  instanceType?: string;
-  /** Output only. The name of the instance quota. */
-  name?: string;
-  /** The gcp service of the provisioning quota. */
-  gcpService?: string;
-}
-
-export const InstanceQuota: Schema.Schema<InstanceQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.optional(Schema.String),
-    availableMachineCount: Schema.optional(Schema.Number),
-    instanceType: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    gcpService: Schema.optional(Schema.String),
-  }).annotate({ identifier: "InstanceQuota" });
-
-export interface ProvisioningQuota {
-  /** The gcp service of the provisioning quota. */
-  gcpService?: string;
-  /** The available count of the provisioning quota. */
-  availableCount?: number;
-  /** Network bandwidth, Gbps */
-  networkBandwidth?: string;
-  /** The specific location of the provisioining quota. */
-  location?: string;
-  /** Server count. */
-  serverCount?: string;
-  /** The asset type of this provisioning quota. */
-  assetType?:
-    | "ASSET_TYPE_UNSPECIFIED"
-    | "ASSET_TYPE_SERVER"
-    | "ASSET_TYPE_STORAGE"
-    | "ASSET_TYPE_NETWORK"
-    | (string & {});
-  /** Output only. The name of the provisioning quota. */
-  name?: string;
-  /** Instance quota. */
-  instanceQuota?: InstanceQuota;
-  /** Storage size (GB). */
-  storageGib?: string;
-}
-
-export const ProvisioningQuota: Schema.Schema<ProvisioningQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gcpService: Schema.optional(Schema.String),
-    availableCount: Schema.optional(Schema.Number),
-    networkBandwidth: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    serverCount: Schema.optional(Schema.String),
-    assetType: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    instanceQuota: Schema.optional(InstanceQuota),
-    storageGib: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ProvisioningQuota" });
-
 export interface NetworkMountPoint {
-  /** Instance to attach network to. */
-  instance?: string;
   /** Logical interface to detach from. */
   logicalInterface?: string;
   /** Network should be a default gateway. */
   defaultGateway?: boolean;
+  /** Instance to attach network to. */
+  instance?: string;
   /** Ip address of the server. */
   ipAddress?: string;
 }
 
 export const NetworkMountPoint: Schema.Schema<NetworkMountPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    instance: Schema.optional(Schema.String),
     logicalInterface: Schema.optional(Schema.String),
     defaultGateway: Schema.optional(Schema.Boolean),
+    instance: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
   }).annotate({ identifier: "NetworkMountPoint" });
 
-export interface AllowedClient {
-  /** Mount permissions. */
-  mountPermissions?:
-    | "MOUNT_PERMISSIONS_UNSPECIFIED"
-    | "READ"
-    | "READ_WRITE"
-    | (string & {});
-  /** Allow dev flag. Which controls whether to allow creation of devices. */
-  allowDev?: boolean;
-  /** Output only. The path to access NFS, in format shareIP:/InstanceID InstanceID is the generated ID instead of customer provided name. example like "10.0.0.0:/g123456789-nfs001" */
-  nfsPath?: string;
-  /** The network the access point sits on. */
-  network?: string;
-  /** The subnet of IP addresses permitted to access the share. */
-  allowedClientsCidr?: string;
-  /** Output only. The IP address of the share on this network. Assigned automatically during provisioning based on the network's services_cidr. */
-  shareIp?: string;
-  /** Allow the setuid flag. */
-  allowSuid?: boolean;
-  /** Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication. */
-  noRootSquash?: boolean;
+export interface NetworkAddressReservation {
+  /** The last address of this reservation block, inclusive. I.e., for cases when reservations are only single addresses, end_address and start_address will be the same. Must be specified as a single IPv4 address, e.g. 10.1.2.2. */
+  endAddress?: string;
+  /** A note about this reservation, intended for human consumption. */
+  note?: string;
+  /** The first address of this reservation block. Must be specified as a single IPv4 address, e.g. 10.1.2.2. */
+  startAddress?: string;
 }
 
-export const AllowedClient: Schema.Schema<AllowedClient> =
+export const NetworkAddressReservation: Schema.Schema<NetworkAddressReservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    mountPermissions: Schema.optional(Schema.String),
-    allowDev: Schema.optional(Schema.Boolean),
-    nfsPath: Schema.optional(Schema.String),
-    network: Schema.optional(Schema.String),
-    allowedClientsCidr: Schema.optional(Schema.String),
-    shareIp: Schema.optional(Schema.String),
-    allowSuid: Schema.optional(Schema.Boolean),
-    noRootSquash: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "AllowedClient" });
-
-export interface NfsShare {
-  /** Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod. */
-  pod?: string;
-  /** Output only. An identifier for the NFS share, generated by the backend. This is the same value as nfs_share_id and will replace it in the future. */
-  id?: string;
-  /** Output only. The state of the NFS share. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "PROVISIONED"
-    | "CREATING"
-    | "UPDATING"
-    | "DELETING"
-    | (string & {});
-  /** The requested size, in GiB. */
-  requestedSizeGib?: string;
-  /** Output only. The underlying volume of the share. Created automatically during provisioning. */
-  volume?: string;
-  /** Labels as key value pairs. */
-  labels?: Record<string, string>;
-  /** Output only. An identifier for the NFS share, generated by the backend. This field will be deprecated in the future, use `id` instead. */
-  nfsShareId?: string;
-  /** Immutable. The name of the NFS share. */
-  name?: string;
-  /** List of allowed access points. */
-  allowedClients?: ReadonlyArray<AllowedClient>;
-  /** Immutable. The storage type of the underlying volume. */
-  storageType?: "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD" | (string & {});
-}
-
-export const NfsShare: Schema.Schema<NfsShare> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pod: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    requestedSizeGib: Schema.optional(Schema.String),
-    volume: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    nfsShareId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    allowedClients: Schema.optional(Schema.Array(AllowedClient)),
-    storageType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "NfsShare" });
-
-export interface ListNfsSharesResponse {
-  /** A token identifying a page of results from the server. */
-  nextPageToken?: string;
-  /** The list of NFS shares. */
-  nfsShares?: ReadonlyArray<NfsShare>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListNfsSharesResponse: Schema.Schema<ListNfsSharesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    nfsShares: Schema.optional(Schema.Array(NfsShare)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListNfsSharesResponse" });
+    endAddress: Schema.optional(Schema.String),
+    note: Schema.optional(Schema.String),
+    startAddress: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkAddressReservation" });
 
 export interface QosPolicy {
   /** The bandwidth permitted by the QOS policy, in gbps. */
@@ -477,75 +68,65 @@ export const QosPolicy: Schema.Schema<QosPolicy> =
   }).annotate({ identifier: "QosPolicy" });
 
 export interface VlanAttachment {
-  /** The router IP of the attachment. */
-  routerIp?: string;
+  /** The peer IP of the attachment. */
+  peerIp?: string;
   /** Input only. Pairing key. */
   pairingKey?: string;
   /** The QOS policy applied to this VLAN attachment. This value should be preferred to using qos at vrf level. */
   qosPolicy?: QosPolicy;
-  /** The peer vlan ID of the attachment. */
-  peerVlanId?: string;
-  /** The peer IP of the attachment. */
-  peerIp?: string;
-  /** Immutable. The identifier of the attachment within vrf. */
-  id?: string;
   /** Optional. The name of the vlan attachment within vrf. This is of the form projects/{project_number}/regions/{region}/interconnectAttachments/{interconnect_attachment} */
   interconnectAttachment?: string;
+  /** Immutable. The identifier of the attachment within vrf. */
+  id?: string;
+  /** The peer vlan ID of the attachment. */
+  peerVlanId?: string;
+  /** The router IP of the attachment. */
+  routerIp?: string;
 }
 
 export const VlanAttachment: Schema.Schema<VlanAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    routerIp: Schema.optional(Schema.String),
+    peerIp: Schema.optional(Schema.String),
     pairingKey: Schema.optional(Schema.String),
     qosPolicy: Schema.optional(QosPolicy),
-    peerVlanId: Schema.optional(Schema.String),
-    peerIp: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
     interconnectAttachment: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    peerVlanId: Schema.optional(Schema.String),
+    routerIp: Schema.optional(Schema.String),
   }).annotate({ identifier: "VlanAttachment" });
 
 export interface VRF {
+  /** The name of the VRF. */
+  name?: string;
   /** The possible state of VRF. */
   state?: "STATE_UNSPECIFIED" | "PROVISIONING" | "PROVISIONED" | (string & {});
   /** The list of VLAN attachments for the VRF. */
   vlanAttachments?: ReadonlyArray<VlanAttachment>;
-  /** The name of the VRF. */
-  name?: string;
   /** The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is left for backward-compatibility. */
   qosPolicy?: QosPolicy;
 }
 
 export const VRF: Schema.Schema<VRF> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     vlanAttachments: Schema.optional(Schema.Array(VlanAttachment)),
-    name: Schema.optional(Schema.String),
     qosPolicy: Schema.optional(QosPolicy),
   }).annotate({ identifier: "VRF" });
 
 export interface Network {
-  /** The vlan id of the Network. */
-  vlanId?: string;
-  /** The cidr of the Network. */
-  cidr?: string;
-  /** Output only. The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}` */
-  name?: string;
-  /** IP address configured. */
-  ipAddress?: string;
-  /** The Vrf for the Network. Use this only if a new Vrf needs to be created. */
-  vrf?: VRF;
-  /** List of physical interfaces. */
-  macAddress?: ReadonlyArray<string>;
-  /** Optional. The name of a pre-existing Vrf that the network should be attached to. Format is `vrfs/{vrf}`. */
-  vrfAttachment?: string;
-  /** Output only. Gateway ip address. */
-  gatewayIp?: string;
-  /** The type of this network. */
-  type?: "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE" | (string & {});
   /** Input only. List of mount points to attach the network to. */
   mountPoints?: ReadonlyArray<NetworkMountPoint>;
-  /** An identifier for the `Network`, generated by the backend. */
-  id?: string;
+  /** Output only. Gateway ip address. */
+  gatewayIp?: string;
+  /** The cidr of the Network. */
+  cidr?: string;
+  /** Labels as key value pairs. */
+  labels?: Record<string, string>;
+  /** List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server. */
+  reservations?: ReadonlyArray<NetworkAddressReservation>;
+  /** Output only. The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}` */
+  name?: string;
   /** The Network state. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -554,75 +135,217 @@ export interface Network {
     | "DEPROVISIONING"
     | "UPDATING"
     | (string & {});
-  /** List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server. */
-  reservations?: ReadonlyArray<NetworkAddressReservation>;
+  /** An identifier for the `Network`, generated by the backend. */
+  id?: string;
   /** IP range for reserved for services (e.g. NFS). */
   servicesCidr?: string;
-  /** Whether network uses standard frames or jumbo ones. */
-  jumboFramesEnabled?: boolean;
-  /** Labels as key value pairs. */
-  labels?: Record<string, string>;
+  /** The vlan id of the Network. */
+  vlanId?: string;
+  /** The Vrf for the Network. Use this only if a new Vrf needs to be created. */
+  vrf?: VRF;
+  /** Optional. The name of a pre-existing Vrf that the network should be attached to. Format is `vrfs/{vrf}`. */
+  vrfAttachment?: string;
+  /** The type of this network. */
+  type?: "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE" | (string & {});
+  /** List of physical interfaces. */
+  macAddress?: ReadonlyArray<string>;
+  /** IP address configured. */
+  ipAddress?: string;
   /** Immutable. Pod name. Pod is an independent part of infrastructure. Network can only be connected to the assets (instances, nfsshares) allocated in the same pod. */
   pod?: string;
+  /** Whether network uses standard frames or jumbo ones. */
+  jumboFramesEnabled?: boolean;
 }
 
 export const Network: Schema.Schema<Network> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    vlanId: Schema.optional(Schema.String),
-    cidr: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    ipAddress: Schema.optional(Schema.String),
-    vrf: Schema.optional(VRF),
-    macAddress: Schema.optional(Schema.Array(Schema.String)),
-    vrfAttachment: Schema.optional(Schema.String),
-    gatewayIp: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     mountPoints: Schema.optional(Schema.Array(NetworkMountPoint)),
-    id: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    reservations: Schema.optional(Schema.Array(NetworkAddressReservation)),
-    servicesCidr: Schema.optional(Schema.String),
-    jumboFramesEnabled: Schema.optional(Schema.Boolean),
+    gatewayIp: Schema.optional(Schema.String),
+    cidr: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    reservations: Schema.optional(Schema.Array(NetworkAddressReservation)),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    servicesCidr: Schema.optional(Schema.String),
+    vlanId: Schema.optional(Schema.String),
+    vrf: Schema.optional(VRF),
+    vrfAttachment: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    macAddress: Schema.optional(Schema.Array(Schema.String)),
+    ipAddress: Schema.optional(Schema.String),
     pod: Schema.optional(Schema.String),
+    jumboFramesEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Network" });
 
+export interface NetworkUsage {
+  /** Network. */
+  network?: Network;
+  /** All used IP addresses in this network. */
+  usedIps?: ReadonlyArray<string>;
+}
+
+export const NetworkUsage: Schema.Schema<NetworkUsage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    network: Schema.optional(Network),
+    usedIps: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "NetworkUsage" });
+
+export interface ListNetworkUsageResponse {
+  /** Networks with IPs. */
+  networks?: ReadonlyArray<NetworkUsage>;
+}
+
+export const ListNetworkUsageResponse: Schema.Schema<ListNetworkUsageResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networks: Schema.optional(Schema.Array(NetworkUsage)),
+  }).annotate({ identifier: "ListNetworkUsageResponse" });
+
+export interface OSImage {
+  /** Instance types this image is applicable to. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations) */
+  applicableInstanceTypes?: ReadonlyArray<string>;
+  /** OS Image description. */
+  description?: string;
+  /** Network templates that can be used with this OS Image. */
+  supportedNetworkTemplates?: ReadonlyArray<string>;
+  /** OS Image code. */
+  code?: string;
+  /** Output only. OS Image's unique name. */
+  name?: string;
+}
+
+export const OSImage: Schema.Schema<OSImage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicableInstanceTypes: Schema.optional(Schema.Array(Schema.String)),
+    description: Schema.optional(Schema.String),
+    supportedNetworkTemplates: Schema.optional(Schema.Array(Schema.String)),
+    code: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSImage" });
+
+export interface Lun {
+  /** Display the storage volume for this LUN. */
+  storageVolume?: string;
+  /** Output only. The name of the LUN. */
+  name?: string;
+  /** The state of this storage volume. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "UPDATING"
+    | "READY"
+    | "DELETING"
+    | "COOL_OFF"
+    | (string & {});
+  /** Display if this LUN is a boot LUN. */
+  bootLun?: boolean;
+  /** The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system. */
+  multiprotocolType?:
+    | "MULTIPROTOCOL_TYPE_UNSPECIFIED"
+    | "LINUX"
+    | (string & {});
+  /** Output only. Instances this Lun is attached to. */
+  instances?: ReadonlyArray<string>;
+  /** An identifier for the LUN, generated by the backend. */
+  id?: string;
+  /** The size of this LUN, in GiB. */
+  sizeGb?: string;
+  /** The storage type for this LUN. */
+  storageType?: "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD" | (string & {});
+  /** The WWID for this LUN. */
+  wwid?: string;
+  /** Output only. Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state. */
+  expireTime?: string;
+  /** Display if this LUN can be shared between multiple physical servers. */
+  shareable?: boolean;
+}
+
+export const Lun: Schema.Schema<Lun> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageVolume: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    bootLun: Schema.optional(Schema.Boolean),
+    multiprotocolType: Schema.optional(Schema.String),
+    instances: Schema.optional(Schema.Array(Schema.String)),
+    id: Schema.optional(Schema.String),
+    sizeGb: Schema.optional(Schema.String),
+    storageType: Schema.optional(Schema.String),
+    wwid: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    shareable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Lun" });
+
+export interface LogicalNetworkInterface {
+  /** Name of the network */
+  network?: string;
+  /** An identifier for the `Network`, generated by the backend. */
+  id?: string;
+  /** Type of network. */
+  networkType?: "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE" | (string & {});
+  /** Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance. */
+  defaultGateway?: boolean;
+  /** IP address in the network */
+  ipAddress?: string;
+}
+
+export const LogicalNetworkInterface: Schema.Schema<LogicalNetworkInterface> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    network: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    networkType: Schema.optional(Schema.String),
+    defaultGateway: Schema.optional(Schema.Boolean),
+    ipAddress: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LogicalNetworkInterface" });
+
+export interface GoogleCloudBaremetalsolutionV2LogicalInterface {
+  /** List of logical network interfaces within a logical interface. */
+  logicalNetworkInterfaces?: ReadonlyArray<LogicalNetworkInterface>;
+  /** The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated. */
+  interfaceIndex?: number;
+  /** Interface name. This is of syntax or and forms part of the network template name. */
+  name?: string;
+}
+
+export const GoogleCloudBaremetalsolutionV2LogicalInterface: Schema.Schema<GoogleCloudBaremetalsolutionV2LogicalInterface> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logicalNetworkInterfaces: Schema.optional(
+      Schema.Array(LogicalNetworkInterface),
+    ),
+    interfaceIndex: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudBaremetalsolutionV2LogicalInterface" });
+
 export interface SnapshotReservationDetail {
+  /** The amount, in GiB, of available space in this storage volume's reserved snapshot space. */
+  reservedSpaceRemainingGib?: string;
+  /** The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume. */
+  reservedSpaceUsedPercent?: number;
   /** The space on this storage volume reserved for snapshots, shown in GiB. */
   reservedSpaceGib?: string;
   /** Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true. */
   reservedSpacePercent?: number;
-  /** The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume. */
-  reservedSpaceUsedPercent?: number;
-  /** The amount, in GiB, of available space in this storage volume's reserved snapshot space. */
-  reservedSpaceRemainingGib?: string;
 }
 
 export const SnapshotReservationDetail: Schema.Schema<SnapshotReservationDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservedSpaceRemainingGib: Schema.optional(Schema.String),
+    reservedSpaceUsedPercent: Schema.optional(Schema.Number),
     reservedSpaceGib: Schema.optional(Schema.String),
     reservedSpacePercent: Schema.optional(Schema.Number),
-    reservedSpaceUsedPercent: Schema.optional(Schema.Number),
-    reservedSpaceRemainingGib: Schema.optional(Schema.String),
   }).annotate({ identifier: "SnapshotReservationDetail" });
 
 export interface Volume {
-  /** Maximum size volume can be expanded to in case of evergency, in GiB. */
-  maxSizeGib?: string;
-  /** The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink. */
-  currentSizeGib?: string;
-  /** Whether snapshots are enabled. */
-  snapshotEnabled?: boolean;
-  /** Output only. Instances this Volume is attached to. This field is set only in Get requests. */
-  instances?: ReadonlyArray<string>;
-  /** The requested size of this storage volume, in GiB. */
-  requestedSizeGib?: string;
-  /** Output only. Is the Volume attached at at least one instance. This field is a lightweight counterpart of `instances` field. It is filled in List responses as well. */
-  attached?: boolean;
-  /** Details about snapshot space reservation and usage on the storage volume. */
-  snapshotReservationDetail?: SnapshotReservationDetail;
   /** Immutable. Pod name. Pod is an independent part of infrastructure. Volume can only be connected to the instances allocated in the same pod. */
   pod?: string;
+  /** Output only. Storage protocol for the Volume. */
+  protocol?: "PROTOCOL_UNSPECIFIED" | "FIBRE_CHANNEL" | "NFS" | (string & {});
+  /** The workload profile for the volume. */
+  workloadProfile?:
+    | "WORKLOAD_PROFILE_UNSPECIFIED"
+    | "GENERIC"
+    | "HANA"
+    | (string & {});
   /** Immutable. Performance tier of the Volume. Default is SHARED. */
   performanceTier?:
     | "VOLUME_PERFORMANCE_TIER_UNSPECIFIED"
@@ -631,26 +354,12 @@ export interface Volume {
     | "VOLUME_PERFORMANCE_TIER_HT"
     | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE"
     | (string & {});
-  /** Labels as key value pairs. */
-  labels?: Record<string, string>;
-  /** Output only. Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state. */
-  expireTime?: string;
-  /** The storage type for this volume. */
-  storageType?: "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD" | (string & {});
-  /** The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0. */
-  autoGrownSizeGib?: string;
-  /** Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value. */
-  emergencySizeGib?: string;
-  /** The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots. */
-  remainingSpaceGib?: string;
-  /** Output only. The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}` */
-  name?: string;
-  /** Output only. Storage protocol for the Volume. */
-  protocol?: "PROTOCOL_UNSPECIFIED" | "FIBRE_CHANNEL" | "NFS" | (string & {});
   /** Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention. */
   notes?: string;
-  /** Output only. Whether this volume is a boot volume. A boot volume is one which contains a boot LUN. */
-  bootVolume?: boolean;
+  /** The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots. */
+  remainingSpaceGib?: string;
+  /** Output only. Is the Volume attached at at least one instance. This field is a lightweight counterpart of `instances` field. It is filled in List responses as well. */
+  attached?: boolean;
   /** The behavior to use when snapshot reserved space is full. */
   snapshotAutoDeleteBehavior?:
     | "SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED"
@@ -658,8 +367,20 @@ export interface Volume {
     | "OLDEST_FIRST"
     | "NEWEST_FIRST"
     | (string & {});
+  /** The requested size of this storage volume, in GiB. */
+  requestedSizeGib?: string;
+  /** Output only. Instances this Volume is attached to. This field is set only in Get requests. */
+  instances?: ReadonlyArray<string>;
   /** An identifier for the `Volume`, generated by the backend. */
   id?: string;
+  /** Maximum size volume can be expanded to in case of evergency, in GiB. */
+  maxSizeGib?: string;
+  /** Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value. */
+  emergencySizeGib?: string;
+  /** Labels as key value pairs. */
+  labels?: Record<string, string>;
+  /** Output only. The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}` */
+  name?: string;
   /** The state of this storage volume. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -669,114 +390,61 @@ export interface Volume {
     | "UPDATING"
     | "COOL_OFF"
     | (string & {});
-  /** The workload profile for the volume. */
-  workloadProfile?:
-    | "WORKLOAD_PROFILE_UNSPECIFIED"
-    | "GENERIC"
-    | "HANA"
-    | (string & {});
   /** Originally requested size, in GiB. */
   originallyRequestedSizeGib?: string;
+  /** Details about snapshot space reservation and usage on the storage volume. */
+  snapshotReservationDetail?: SnapshotReservationDetail;
+  /** Output only. Whether this volume is a boot volume. A boot volume is one which contains a boot LUN. */
+  bootVolume?: boolean;
+  /** Whether snapshots are enabled. */
+  snapshotEnabled?: boolean;
+  /** The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink. */
+  currentSizeGib?: string;
+  /** The storage type for this volume. */
+  storageType?: "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD" | (string & {});
+  /** The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0. */
+  autoGrownSizeGib?: string;
+  /** Output only. Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state. */
+  expireTime?: string;
 }
 
 export const Volume: Schema.Schema<Volume> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    maxSizeGib: Schema.optional(Schema.String),
-    currentSizeGib: Schema.optional(Schema.String),
-    snapshotEnabled: Schema.optional(Schema.Boolean),
-    instances: Schema.optional(Schema.Array(Schema.String)),
-    requestedSizeGib: Schema.optional(Schema.String),
-    attached: Schema.optional(Schema.Boolean),
-    snapshotReservationDetail: Schema.optional(SnapshotReservationDetail),
     pod: Schema.optional(Schema.String),
+    protocol: Schema.optional(Schema.String),
+    workloadProfile: Schema.optional(Schema.String),
     performanceTier: Schema.optional(Schema.String),
+    notes: Schema.optional(Schema.String),
+    remainingSpaceGib: Schema.optional(Schema.String),
+    attached: Schema.optional(Schema.Boolean),
+    snapshotAutoDeleteBehavior: Schema.optional(Schema.String),
+    requestedSizeGib: Schema.optional(Schema.String),
+    instances: Schema.optional(Schema.Array(Schema.String)),
+    id: Schema.optional(Schema.String),
+    maxSizeGib: Schema.optional(Schema.String),
+    emergencySizeGib: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    expireTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    originallyRequestedSizeGib: Schema.optional(Schema.String),
+    snapshotReservationDetail: Schema.optional(SnapshotReservationDetail),
+    bootVolume: Schema.optional(Schema.Boolean),
+    snapshotEnabled: Schema.optional(Schema.Boolean),
+    currentSizeGib: Schema.optional(Schema.String),
     storageType: Schema.optional(Schema.String),
     autoGrownSizeGib: Schema.optional(Schema.String),
-    emergencySizeGib: Schema.optional(Schema.String),
-    remainingSpaceGib: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    protocol: Schema.optional(Schema.String),
-    notes: Schema.optional(Schema.String),
-    bootVolume: Schema.optional(Schema.Boolean),
-    snapshotAutoDeleteBehavior: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    workloadProfile: Schema.optional(Schema.String),
-    originallyRequestedSizeGib: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "Volume" });
 
-export interface Lun {
-  /** The storage type for this LUN. */
-  storageType?: "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD" | (string & {});
-  /** The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system. */
-  multiprotocolType?:
-    | "MULTIPROTOCOL_TYPE_UNSPECIFIED"
-    | "LINUX"
-    | (string & {});
-  /** The WWID for this LUN. */
-  wwid?: string;
-  /** Output only. The name of the LUN. */
-  name?: string;
-  /** Display if this LUN can be shared between multiple physical servers. */
-  shareable?: boolean;
-  /** The size of this LUN, in GiB. */
-  sizeGb?: string;
-  /** Display the storage volume for this LUN. */
-  storageVolume?: string;
-  /** Display if this LUN is a boot LUN. */
-  bootLun?: boolean;
-  /** Output only. Instances this Lun is attached to. */
-  instances?: ReadonlyArray<string>;
-  /** An identifier for the LUN, generated by the backend. */
-  id?: string;
-  /** The state of this storage volume. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "UPDATING"
-    | "READY"
-    | "DELETING"
-    | "COOL_OFF"
-    | (string & {});
-  /** Output only. Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state. */
-  expireTime?: string;
-}
-
-export const Lun: Schema.Schema<Lun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storageType: Schema.optional(Schema.String),
-    multiprotocolType: Schema.optional(Schema.String),
-    wwid: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    shareable: Schema.optional(Schema.Boolean),
-    sizeGb: Schema.optional(Schema.String),
-    storageVolume: Schema.optional(Schema.String),
-    bootLun: Schema.optional(Schema.Boolean),
-    instances: Schema.optional(Schema.Array(Schema.String)),
-    id: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    expireTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Lun" });
-
 export interface Instance {
-  /** The OS image currently installed on the server. */
-  osImage?: string;
-  /** Output only. Create a time stamp. */
-  createTime?: string;
   /** Output only. Update a time stamp. */
   updateTime?: string;
-  /** Output only. List of networks associated with this server. */
-  networks?: ReadonlyArray<Network>;
-  /** The workload profile for the instance. */
-  workloadProfile?:
-    | "WORKLOAD_PROFILE_UNSPECIFIED"
-    | "WORKLOAD_PROFILE_GENERIC"
-    | "WORKLOAD_PROFILE_HANA"
-    | (string & {});
-  /** Output only. An identifier for the `Instance`, generated by the backend. */
-  id?: string;
+  /** Labels as key value pairs. */
+  labels?: Record<string, string>;
+  /** Output only. True if the interactive serial console feature is enabled for the instance, false otherwise. The default value is false. */
+  interactiveSerialConsoleEnabled?: boolean;
+  /** Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/instances/{instance}` */
+  name?: string;
   /** Output only. The state of the server. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -788,61 +456,69 @@ export interface Instance {
     | "STOPPING"
     | "SHUTDOWN"
     | (string & {});
-  /** Output only. The firmware version for the instance. */
-  firmwareVersion?: string;
   /** Instance network template name. For eg, bondaa-bondaa, bondab-nic, etc. Generally, the template name follows the syntax of "bond" or "nic". */
   networkTemplate?: string;
-  /** Output only. Text field about info for logging in. */
-  loginInfo?: string;
   /** Immutable. The server type. [Available server types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations) */
   machineType?: string;
-  /** Output only. True if the interactive serial console feature is enabled for the instance, false otherwise. The default value is false. */
-  interactiveSerialConsoleEnabled?: boolean;
-  /** Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/instances/{instance}` */
-  name?: string;
-  /** Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses. */
-  volumes?: ReadonlyArray<Volume>;
-  /** List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. For the non-multivlan configurations (for eg, existing servers) that use existing default network template (bondaa-bondaa), both the Instance.networks field and the Instance.logical_interfaces fields will be filled to ensure backward compatibility. For the others, only Instance.logical_interfaces will be filled. */
-  logicalInterfaces?: ReadonlyArray<GoogleCloudBaremetalsolutionV2LogicalInterface>;
-  /** Labels as key value pairs. */
-  labels?: Record<string, string>;
-  /** Immutable. Pod name. Pod is an independent part of infrastructure. Instance can only be connected to the assets (networks, volumes) allocated in the same pod. */
-  pod?: string;
-  /** True if you enable hyperthreading for the server, otherwise false. The default value is false. */
-  hyperthreadingEnabled?: boolean;
   /** Immutable. List of LUNs associated with this server. */
   luns?: ReadonlyArray<Lun>;
+  /** Output only. Text field about info for logging in. */
+  loginInfo?: string;
+  /** True if you enable hyperthreading for the server, otherwise false. The default value is false. */
+  hyperthreadingEnabled?: boolean;
+  /** Output only. List of networks associated with this server. */
+  networks?: ReadonlyArray<Network>;
+  /** Output only. Create a time stamp. */
+  createTime?: string;
+  /** Immutable. Pod name. Pod is an independent part of infrastructure. Instance can only be connected to the assets (networks, volumes) allocated in the same pod. */
+  pod?: string;
+  /** List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. For the non-multivlan configurations (for eg, existing servers) that use existing default network template (bondaa-bondaa), both the Instance.networks field and the Instance.logical_interfaces fields will be filled to ensure backward compatibility. For the others, only Instance.logical_interfaces will be filled. */
+  logicalInterfaces?: ReadonlyArray<GoogleCloudBaremetalsolutionV2LogicalInterface>;
+  /** Output only. The firmware version for the instance. */
+  firmwareVersion?: string;
+  /** The workload profile for the instance. */
+  workloadProfile?:
+    | "WORKLOAD_PROFILE_UNSPECIFIED"
+    | "WORKLOAD_PROFILE_GENERIC"
+    | "WORKLOAD_PROFILE_HANA"
+    | (string & {});
   /** Optional. Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose. Format is `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`. */
   kmsKeyVersion?: string;
   /** Optional. List of SSH Keys used during instance provisioning. */
   sshKeys?: ReadonlyArray<string>;
+  /** The OS image currently installed on the server. */
+  osImage?: string;
+  /** Output only. An identifier for the `Instance`, generated by the backend. */
+  id?: string;
+  /** Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses. */
+  volumes?: ReadonlyArray<Volume>;
 }
 
 export const Instance: Schema.Schema<Instance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    osImage: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
-    networks: Schema.optional(Schema.Array(Network)),
-    workloadProfile: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    firmwareVersion: Schema.optional(Schema.String),
-    networkTemplate: Schema.optional(Schema.String),
-    loginInfo: Schema.optional(Schema.String),
-    machineType: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     interactiveSerialConsoleEnabled: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
-    volumes: Schema.optional(Schema.Array(Volume)),
+    state: Schema.optional(Schema.String),
+    networkTemplate: Schema.optional(Schema.String),
+    machineType: Schema.optional(Schema.String),
+    luns: Schema.optional(Schema.Array(Lun)),
+    loginInfo: Schema.optional(Schema.String),
+    hyperthreadingEnabled: Schema.optional(Schema.Boolean),
+    networks: Schema.optional(Schema.Array(Network)),
+    createTime: Schema.optional(Schema.String),
+    pod: Schema.optional(Schema.String),
     logicalInterfaces: Schema.optional(
       Schema.Array(GoogleCloudBaremetalsolutionV2LogicalInterface),
     ),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    pod: Schema.optional(Schema.String),
-    hyperthreadingEnabled: Schema.optional(Schema.Boolean),
-    luns: Schema.optional(Schema.Array(Lun)),
+    firmwareVersion: Schema.optional(Schema.String),
+    workloadProfile: Schema.optional(Schema.String),
     kmsKeyVersion: Schema.optional(Schema.String),
     sshKeys: Schema.optional(Schema.Array(Schema.String)),
+    osImage: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    volumes: Schema.optional(Schema.Array(Volume)),
   }).annotate({ identifier: "Instance" });
 
 export interface ListInstancesResponse {
@@ -861,430 +537,85 @@ export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
     unreachable: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ListInstancesResponse" });
 
-export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.Number),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-  }).annotate({ identifier: "Status" });
-
-export interface IntakeVlanAttachment {
-  /** Attachment pairing key. */
-  pairingKey?: string;
-  /** Identifier of the VLAN attachment. */
-  id?: string;
-}
-
-export const IntakeVlanAttachment: Schema.Schema<IntakeVlanAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pairingKey: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-  }).annotate({ identifier: "IntakeVlanAttachment" });
-
-export interface NetworkConfig {
-  /** Optional. The name of a pre-existing Vrf that the network should be attached to. Format is `vrfs/{vrf}`. If vrf is specified, vlan_attachments must be empty. */
-  vrf?: string;
-  /** User note field, it can be used by customers to add additional information for the BMS Ops team . */
-  userNote?: string;
-  /** Output only. The name of the network config. */
-  name?: string;
-  /** Service CIDR, if any. */
-  serviceCidr?:
-    | "SERVICE_CIDR_UNSPECIFIED"
-    | "DISABLED"
-    | "HIGH_26"
-    | "HIGH_27"
-    | "HIGH_28"
-    | (string & {});
-  /** CIDR range of the network. */
-  cidr?: string;
-  /** A transient unique identifier to identify a volume within an ProvisioningConfig request. */
-  id?: string;
-  /** List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future (multi vlan). Use only one of vlan_attachments or vrf */
-  vlanAttachments?: ReadonlyArray<IntakeVlanAttachment>;
-  /** The type of this network, either Client or Private. */
-  type?: "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE" | (string & {});
-  /** The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning. */
-  gcpService?: string;
-  /** The JumboFramesEnabled option for customer to set. */
-  jumboFramesEnabled?: boolean;
-  /** Whether the VLAN attachment pair is located in the same project. */
-  vlanSameProject?: boolean;
-  /** Interconnect bandwidth. Set only when type is CLIENT. */
-  bandwidth?:
-    | "BANDWIDTH_UNSPECIFIED"
-    | "BW_1_GBPS"
-    | "BW_2_GBPS"
-    | "BW_5_GBPS"
-    | "BW_10_GBPS"
-    | (string & {});
-}
-
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    vrf: Schema.optional(Schema.String),
-    userNote: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    serviceCidr: Schema.optional(Schema.String),
-    cidr: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    vlanAttachments: Schema.optional(Schema.Array(IntakeVlanAttachment)),
-    type: Schema.optional(Schema.String),
-    gcpService: Schema.optional(Schema.String),
-    jumboFramesEnabled: Schema.optional(Schema.Boolean),
-    vlanSameProject: Schema.optional(Schema.Boolean),
-    bandwidth: Schema.optional(Schema.String),
-  }).annotate({ identifier: "NetworkConfig" });
-
-export interface NetworkAddress {
-  /** IPv4 address to be assigned to the server. */
-  address?: string;
-  /** Name of the existing network to use. */
-  existingNetworkId?: string;
-  /** Id of the network to use, within the same ProvisioningConfig request. */
-  networkId?: string;
-}
-
-export const NetworkAddress: Schema.Schema<NetworkAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.optional(Schema.String),
-    existingNetworkId: Schema.optional(Schema.String),
-    networkId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "NetworkAddress" });
-
-export interface InstanceConfig {
-  /** Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose. */
-  kmsKeyVersion?: string;
-  /** The type of network configuration on the instance. */
-  networkConfig?:
-    | "NETWORKCONFIG_UNSPECIFIED"
-    | "SINGLE_VLAN"
-    | "MULTI_VLAN"
-    | (string & {});
-  /** Optional. List of names of ssh keys used to provision the instance. */
-  sshKeyNames?: ReadonlyArray<string>;
-  /** Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations) */
-  instanceType?: string;
-  /** List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true. */
-  logicalInterfaces?: ReadonlyArray<GoogleCloudBaremetalsolutionV2LogicalInterface>;
-  /** Whether the instance should be provisioned with Hyperthreading enabled. */
-  hyperthreading?: boolean;
-  /** Client network address. Filled if InstanceConfig.multivlan_config is false. */
-  clientNetwork?: NetworkAddress;
-  /** Server network template name. Filled if InstanceConfig.multivlan_config is true. */
-  networkTemplate?: string;
-  /** Private network address, if any. Filled if InstanceConfig.multivlan_config is false. */
-  privateNetwork?: NetworkAddress;
-  /** User note field, it can be used by customers to add additional information for the BMS Ops team . */
-  userNote?: string;
-  /** The name of the instance config. */
-  name?: string;
-  /** OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations) */
-  osImage?: string;
-  /** A transient unique identifier to identify an instance within an ProvisioningConfig request. */
-  id?: string;
-  /** If true networks can be from different projects of the same vendor account. */
-  accountNetworksEnabled?: boolean;
-}
-
-export const InstanceConfig: Schema.Schema<InstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kmsKeyVersion: Schema.optional(Schema.String),
-    networkConfig: Schema.optional(Schema.String),
-    sshKeyNames: Schema.optional(Schema.Array(Schema.String)),
-    instanceType: Schema.optional(Schema.String),
-    logicalInterfaces: Schema.optional(
-      Schema.Array(GoogleCloudBaremetalsolutionV2LogicalInterface),
-    ),
-    hyperthreading: Schema.optional(Schema.Boolean),
-    clientNetwork: Schema.optional(NetworkAddress),
-    networkTemplate: Schema.optional(Schema.String),
-    privateNetwork: Schema.optional(NetworkAddress),
-    userNote: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    osImage: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    accountNetworksEnabled: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "InstanceConfig" });
-
-export interface ProvisioningConfig {
-  /** Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period. */
-  location?: string;
-  /** Output only. State of ProvisioningConfig. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "DRAFT"
-    | "SUBMITTED"
-    | "PROVISIONING"
-    | "PROVISIONED"
-    | "VALIDATED"
-    | "CANCELLED"
-    | "FAILED"
-    | (string & {});
-  /** Networks to be created. */
-  networks?: ReadonlyArray<NetworkConfig>;
-  /** A service account to enable customers to access instance credentials upon handover. */
-  handoverServiceAccount?: string;
-  /** Output only. Last update timestamp. */
-  updateTime?: string;
-  /** Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages. */
-  email?: string;
-  /** A generated ticket id to track provisioning request. */
-  ticketId?: string;
-  /** If true, VPC SC is enabled for the cluster. */
-  vpcScEnabled?: boolean;
-  /** Output only. The system-generated name of the provisioning config. This follows the UUID format. */
-  name?: string;
-  /** Output only. URI to Cloud Console UI view of this provisioning config. */
-  cloudConsoleUri?: string;
-  /** Instances to be created. */
-  instances?: ReadonlyArray<InstanceConfig>;
-  /** Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only. */
-  pod?: string;
-  /** Volumes to be created. */
-  volumes?: ReadonlyArray<VolumeConfig>;
-  /** Optional status messages associated with the FAILED state. */
-  statusMessage?: string;
-  /** Optional. The user-defined identifier of the provisioning config. */
-  customId?: string;
-}
-
-export const ProvisioningConfig: Schema.Schema<ProvisioningConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    networks: Schema.optional(Schema.Array(NetworkConfig)),
-    handoverServiceAccount: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    email: Schema.optional(Schema.String),
-    ticketId: Schema.optional(Schema.String),
-    vpcScEnabled: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
-    cloudConsoleUri: Schema.optional(Schema.String),
-    instances: Schema.optional(Schema.Array(InstanceConfig)),
-    pod: Schema.optional(Schema.String),
-    volumes: Schema.optional(Schema.Array(VolumeConfig)),
-    statusMessage: Schema.optional(Schema.String),
-    customId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ProvisioningConfig" });
-
-export interface SubmitProvisioningConfigRequest {
-  /** Required. The ProvisioningConfig to create. */
-  provisioningConfig?: ProvisioningConfig;
-  /** Optional. Email provided to send a confirmation with provisioning config to. */
-  email?: string;
-}
-
-export const SubmitProvisioningConfigRequest: Schema.Schema<SubmitProvisioningConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    provisioningConfig: Schema.optional(ProvisioningConfig),
-    email: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SubmitProvisioningConfigRequest" });
-
-export interface StartInstanceRequest {}
-
-export const StartInstanceRequest: Schema.Schema<StartInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "StartInstanceRequest",
-  });
-
 export interface Location {
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: Record<string, string>;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
 }
 
 export const Location: Schema.Schema<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "Location" });
 
-export interface ListOSImagesResponse {
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-  /** The OS images available. */
-  osImages?: ReadonlyArray<OSImage>;
+export interface Status {
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
 }
 
-export const ListOSImagesResponse: Schema.Schema<ListOSImagesResponse> =
+export const Status: Schema.Schema<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    osImages: Schema.optional(Schema.Array(OSImage)),
-  }).annotate({ identifier: "ListOSImagesResponse" });
-
-export interface NetworkUsage {
-  /** Network. */
-  network?: Network;
-  /** All used IP addresses in this network. */
-  usedIps?: ReadonlyArray<string>;
-}
-
-export const NetworkUsage: Schema.Schema<NetworkUsage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    network: Schema.optional(Network),
-    usedIps: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "NetworkUsage" });
-
-export interface DisableHyperthreadingRequest {}
-
-export const DisableHyperthreadingRequest: Schema.Schema<DisableHyperthreadingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DisableHyperthreadingRequest",
-  });
-
-export interface ListProvisioningQuotasResponse {
-  /** The provisioning quotas registered in this project. */
-  provisioningQuotas?: ReadonlyArray<ProvisioningQuota>;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-}
-
-export const ListProvisioningQuotasResponse: Schema.Schema<ListProvisioningQuotasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    provisioningQuotas: Schema.optional(Schema.Array(ProvisioningQuota)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListProvisioningQuotasResponse" });
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Status" });
 
 export interface ListNetworksResponse {
-  /** A token identifying a page of results from the server. */
-  nextPageToken?: string;
   /** Locations that could not be reached. */
   unreachable?: ReadonlyArray<string>;
   /** The list of networks. */
   networks?: ReadonlyArray<Network>;
+  /** A token identifying a page of results from the server. */
+  nextPageToken?: string;
 }
 
 export const ListNetworksResponse: Schema.Schema<ListNetworksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     networks: Schema.optional(Schema.Array(Network)),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListNetworksResponse" });
-
-export interface ListLunsResponse {
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** A token identifying a page of results from the server. */
-  nextPageToken?: string;
-  /** The list of luns. */
-  luns?: ReadonlyArray<Lun>;
-}
-
-export const ListLunsResponse: Schema.Schema<ListLunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-    luns: Schema.optional(Schema.Array(Lun)),
-  }).annotate({ identifier: "ListLunsResponse" });
-
-export interface ListNetworkUsageResponse {
-  /** Networks with IPs. */
-  networks?: ReadonlyArray<NetworkUsage>;
-}
-
-export const ListNetworkUsageResponse: Schema.Schema<ListNetworkUsageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    networks: Schema.optional(Schema.Array(NetworkUsage)),
-  }).annotate({ identifier: "ListNetworkUsageResponse" });
-
-export interface EnableHyperthreadingRequest {}
-
-export const EnableHyperthreadingRequest: Schema.Schema<EnableHyperthreadingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "EnableHyperthreadingRequest",
-  });
-
-export interface GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface {
-  /** Interface name. This is not a globally unique identifier. Name is unique only inside the ServerNetworkTemplate. This is of syntax or and forms part of the network template name. */
-  name?: string;
-  /** Interface type. */
-  type?: "INTERFACE_TYPE_UNSPECIFIED" | "BOND" | "NIC" | (string & {});
-  /** If true, interface must have network connected. */
-  required?: boolean;
-}
-
-export const GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface: Schema.Schema<GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    required: Schema.optional(Schema.Boolean),
-  }).annotate({
-    identifier:
-      "GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface",
-  });
-
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: ReadonlyArray<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locations: Schema.optional(Schema.Array(Location)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListLocationsResponse" });
-
-export interface EvictLunRequest {}
-
-export const EvictLunRequest: Schema.Schema<EvictLunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "EvictLunRequest",
-  });
-
-export interface ResetInstanceResponse {}
-
-export const ResetInstanceResponse: Schema.Schema<ResetInstanceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ResetInstanceResponse",
-  });
 
 export interface VolumeSnapshot {
   /** The name of the snapshot. */
   name?: string;
-  /** Output only. The type of the snapshot which indicates whether it was scheduled or manual/ad-hoc. */
-  type?: "SNAPSHOT_TYPE_UNSPECIFIED" | "AD_HOC" | "SCHEDULED" | (string & {});
-  /** Output only. An identifier for the snapshot, generated by the backend. */
-  id?: string;
-  /** The description of the snapshot. */
-  description?: string;
   /** Output only. The name of the volume which this snapshot belongs to. */
   storageVolume?: string;
+  /** Output only. The type of the snapshot which indicates whether it was scheduled or manual/ad-hoc. */
+  type?: "SNAPSHOT_TYPE_UNSPECIFIED" | "AD_HOC" | "SCHEDULED" | (string & {});
+  /** The description of the snapshot. */
+  description?: string;
   /** Output only. The creation time of the snapshot. */
   createTime?: string;
+  /** Output only. An identifier for the snapshot, generated by the backend. */
+  id?: string;
 }
 
 export const VolumeSnapshot: Schema.Schema<VolumeSnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
     storageVolume: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   }).annotate({ identifier: "VolumeSnapshot" });
 
 export interface ListVolumeSnapshotsResponse {
@@ -1303,25 +634,522 @@ export const ListVolumeSnapshotsResponse: Schema.Schema<ListVolumeSnapshotsRespo
     volumeSnapshots: Schema.optional(Schema.Array(VolumeSnapshot)),
   }).annotate({ identifier: "ListVolumeSnapshotsResponse" });
 
-export interface StartInstanceResponse {}
+export interface NetworkAddress {
+  /** Name of the existing network to use. */
+  existingNetworkId?: string;
+  /** Id of the network to use, within the same ProvisioningConfig request. */
+  networkId?: string;
+  /** IPv4 address to be assigned to the server. */
+  address?: string;
+}
 
-export const StartInstanceResponse: Schema.Schema<StartInstanceResponse> =
+export const NetworkAddress: Schema.Schema<NetworkAddress> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    existingNetworkId: Schema.optional(Schema.String),
+    networkId: Schema.optional(Schema.String),
+    address: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkAddress" });
+
+export interface InstanceConfig {
+  /** Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations) */
+  instanceType?: string;
+  /** Private network address, if any. Filled if InstanceConfig.multivlan_config is false. */
+  privateNetwork?: NetworkAddress;
+  /** User note field, it can be used by customers to add additional information for the BMS Ops team . */
+  userNote?: string;
+  /** The name of the instance config. */
+  name?: string;
+  /** Whether the instance should be provisioned with Hyperthreading enabled. */
+  hyperthreading?: boolean;
+  /** Server network template name. Filled if InstanceConfig.multivlan_config is true. */
+  networkTemplate?: string;
+  /** Optional. List of names of ssh keys used to provision the instance. */
+  sshKeyNames?: ReadonlyArray<string>;
+  /** Client network address. Filled if InstanceConfig.multivlan_config is false. */
+  clientNetwork?: NetworkAddress;
+  /** A transient unique identifier to identify an instance within an ProvisioningConfig request. */
+  id?: string;
+  /** The type of network configuration on the instance. */
+  networkConfig?:
+    | "NETWORKCONFIG_UNSPECIFIED"
+    | "SINGLE_VLAN"
+    | "MULTI_VLAN"
+    | (string & {});
+  /** List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true. */
+  logicalInterfaces?: ReadonlyArray<GoogleCloudBaremetalsolutionV2LogicalInterface>;
+  /** Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose. */
+  kmsKeyVersion?: string;
+  /** OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations) */
+  osImage?: string;
+  /** If true networks can be from different projects of the same vendor account. */
+  accountNetworksEnabled?: boolean;
+}
+
+export const InstanceConfig: Schema.Schema<InstanceConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceType: Schema.optional(Schema.String),
+    privateNetwork: Schema.optional(NetworkAddress),
+    userNote: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    hyperthreading: Schema.optional(Schema.Boolean),
+    networkTemplate: Schema.optional(Schema.String),
+    sshKeyNames: Schema.optional(Schema.Array(Schema.String)),
+    clientNetwork: Schema.optional(NetworkAddress),
+    id: Schema.optional(Schema.String),
+    networkConfig: Schema.optional(Schema.String),
+    logicalInterfaces: Schema.optional(
+      Schema.Array(GoogleCloudBaremetalsolutionV2LogicalInterface),
+    ),
+    kmsKeyVersion: Schema.optional(Schema.String),
+    osImage: Schema.optional(Schema.String),
+    accountNetworksEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "InstanceConfig" });
+
+export interface LunRange {
+  /** The requested size of each LUN, in GB. */
+  sizeGb?: number;
+  /** Number of LUNs to create. */
+  quantity?: number;
+}
+
+export const LunRange: Schema.Schema<LunRange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sizeGb: Schema.optional(Schema.Number),
+    quantity: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "LunRange" });
+
+export interface NfsExport {
+  /** Network to use to publish the export. */
+  networkId?: string;
+  /** Either a single machine, identified by an ID, or a comma-separated list of machine IDs. */
+  machineId?: string;
+  /** Export permissions. */
+  permissions?:
+    | "PERMISSIONS_UNSPECIFIED"
+    | "READ_ONLY"
+    | "READ_WRITE"
+    | (string & {});
+  /** Allow dev flag in NfsShare AllowedClientsRequest. */
+  allowDev?: boolean;
+  /** A CIDR range. */
+  cidr?: string;
+  /** Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication. */
+  noRootSquash?: boolean;
+  /** Allow the setuid flag. */
+  allowSuid?: boolean;
+}
+
+export const NfsExport: Schema.Schema<NfsExport> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkId: Schema.optional(Schema.String),
+    machineId: Schema.optional(Schema.String),
+    permissions: Schema.optional(Schema.String),
+    allowDev: Schema.optional(Schema.Boolean),
+    cidr: Schema.optional(Schema.String),
+    noRootSquash: Schema.optional(Schema.Boolean),
+    allowSuid: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "NfsExport" });
+
+export interface VolumeConfig {
+  /** LUN ranges to be configured. Set only when protocol is PROTOCOL_FC. */
+  lunRanges?: ReadonlyArray<LunRange>;
+  /** A transient unique identifier to identify a volume within an ProvisioningConfig request. */
+  id?: string;
+  /** The requested size of this volume, in GB. */
+  sizeGb?: number;
+  /** User note field, it can be used by customers to add additional information for the BMS Ops team . */
+  userNote?: string;
+  /** The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning. */
+  gcpService?: string;
+  /** The type of this Volume. */
+  type?: "TYPE_UNSPECIFIED" | "FLASH" | "DISK" | (string & {});
+  /** Whether snapshots should be enabled. */
+  snapshotsEnabled?: boolean;
+  /** NFS exports. Set only when protocol is PROTOCOL_NFS. */
+  nfsExports?: ReadonlyArray<NfsExport>;
+  /** Output only. The name of the volume config. */
+  name?: string;
+  /** Volume protocol. */
+  protocol?:
+    | "PROTOCOL_UNSPECIFIED"
+    | "PROTOCOL_FC"
+    | "PROTOCOL_NFS"
+    | (string & {});
+  /** Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC. */
+  machineIds?: ReadonlyArray<string>;
+  /** Performance tier of the Volume. Default is SHARED. */
+  performanceTier?:
+    | "VOLUME_PERFORMANCE_TIER_UNSPECIFIED"
+    | "VOLUME_PERFORMANCE_TIER_SHARED"
+    | "VOLUME_PERFORMANCE_TIER_ASSIGNED"
+    | "VOLUME_PERFORMANCE_TIER_HT"
+    | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE"
+    | (string & {});
+}
+
+export const VolumeConfig: Schema.Schema<VolumeConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lunRanges: Schema.optional(Schema.Array(LunRange)),
+    id: Schema.optional(Schema.String),
+    sizeGb: Schema.optional(Schema.Number),
+    userNote: Schema.optional(Schema.String),
+    gcpService: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    snapshotsEnabled: Schema.optional(Schema.Boolean),
+    nfsExports: Schema.optional(Schema.Array(NfsExport)),
+    name: Schema.optional(Schema.String),
+    protocol: Schema.optional(Schema.String),
+    machineIds: Schema.optional(Schema.Array(Schema.String)),
+    performanceTier: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VolumeConfig" });
+
+export interface IntakeVlanAttachment {
+  /** Identifier of the VLAN attachment. */
+  id?: string;
+  /** Attachment pairing key. */
+  pairingKey?: string;
+}
+
+export const IntakeVlanAttachment: Schema.Schema<IntakeVlanAttachment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    pairingKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IntakeVlanAttachment" });
+
+export interface NetworkConfig {
+  /** CIDR range of the network. */
+  cidr?: string;
+  /** The JumboFramesEnabled option for customer to set. */
+  jumboFramesEnabled?: boolean;
+  /** Output only. The name of the network config. */
+  name?: string;
+  /** Whether the VLAN attachment pair is located in the same project. */
+  vlanSameProject?: boolean;
+  /** Interconnect bandwidth. Set only when type is CLIENT. */
+  bandwidth?:
+    | "BANDWIDTH_UNSPECIFIED"
+    | "BW_1_GBPS"
+    | "BW_2_GBPS"
+    | "BW_5_GBPS"
+    | "BW_10_GBPS"
+    | (string & {});
+  /** The type of this network, either Client or Private. */
+  type?: "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE" | (string & {});
+  /** Service CIDR, if any. */
+  serviceCidr?:
+    | "SERVICE_CIDR_UNSPECIFIED"
+    | "DISABLED"
+    | "HIGH_26"
+    | "HIGH_27"
+    | "HIGH_28"
+    | (string & {});
+  /** User note field, it can be used by customers to add additional information for the BMS Ops team . */
+  userNote?: string;
+  /** The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning. */
+  gcpService?: string;
+  /** A transient unique identifier to identify a volume within an ProvisioningConfig request. */
+  id?: string;
+  /** List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future (multi vlan). Use only one of vlan_attachments or vrf */
+  vlanAttachments?: ReadonlyArray<IntakeVlanAttachment>;
+  /** Optional. The name of a pre-existing Vrf that the network should be attached to. Format is `vrfs/{vrf}`. If vrf is specified, vlan_attachments must be empty. */
+  vrf?: string;
+}
+
+export const NetworkConfig: Schema.Schema<NetworkConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cidr: Schema.optional(Schema.String),
+    jumboFramesEnabled: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    vlanSameProject: Schema.optional(Schema.Boolean),
+    bandwidth: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    serviceCidr: Schema.optional(Schema.String),
+    userNote: Schema.optional(Schema.String),
+    gcpService: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    vlanAttachments: Schema.optional(Schema.Array(IntakeVlanAttachment)),
+    vrf: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkConfig" });
+
+export interface ProvisioningConfig {
+  /** Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only. */
+  pod?: string;
+  /** Optional status messages associated with the FAILED state. */
+  statusMessage?: string;
+  /** Output only. URI to Cloud Console UI view of this provisioning config. */
+  cloudConsoleUri?: string;
+  /** Instances to be created. */
+  instances?: ReadonlyArray<InstanceConfig>;
+  /** Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages. */
+  email?: string;
+  /** Volumes to be created. */
+  volumes?: ReadonlyArray<VolumeConfig>;
+  /** Output only. The system-generated name of the provisioning config. This follows the UUID format. */
+  name?: string;
+  /** Output only. State of ProvisioningConfig. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "DRAFT"
+    | "SUBMITTED"
+    | "PROVISIONING"
+    | "PROVISIONED"
+    | "VALIDATED"
+    | "CANCELLED"
+    | "FAILED"
+    | (string & {});
+  /** Output only. Last update timestamp. */
+  updateTime?: string;
+  /** A generated ticket id to track provisioning request. */
+  ticketId?: string;
+  /** Optional. The user-defined identifier of the provisioning config. */
+  customId?: string;
+  /** A service account to enable customers to access instance credentials upon handover. */
+  handoverServiceAccount?: string;
+  /** Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period. */
+  location?: string;
+  /** Networks to be created. */
+  networks?: ReadonlyArray<NetworkConfig>;
+  /** If true, VPC SC is enabled for the cluster. */
+  vpcScEnabled?: boolean;
+}
+
+export const ProvisioningConfig: Schema.Schema<ProvisioningConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pod: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    cloudConsoleUri: Schema.optional(Schema.String),
+    instances: Schema.optional(Schema.Array(InstanceConfig)),
+    email: Schema.optional(Schema.String),
+    volumes: Schema.optional(Schema.Array(VolumeConfig)),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    ticketId: Schema.optional(Schema.String),
+    customId: Schema.optional(Schema.String),
+    handoverServiceAccount: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    networks: Schema.optional(Schema.Array(NetworkConfig)),
+    vpcScEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ProvisioningConfig" });
+
+export interface SubmitProvisioningConfigResponse {
+  /** The submitted provisioning config. */
+  provisioningConfig?: ProvisioningConfig;
+}
+
+export const SubmitProvisioningConfigResponse: Schema.Schema<SubmitProvisioningConfigResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningConfig: Schema.optional(ProvisioningConfig),
+  }).annotate({ identifier: "SubmitProvisioningConfigResponse" });
+
+export interface DisableInteractiveSerialConsoleRequest {}
+
+export const DisableInteractiveSerialConsoleRequest: Schema.Schema<DisableInteractiveSerialConsoleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "StartInstanceResponse",
+    identifier: "DisableInteractiveSerialConsoleRequest",
+  });
+
+export interface EnableHyperthreadingRequest {}
+
+export const EnableHyperthreadingRequest: Schema.Schema<EnableHyperthreadingRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "EnableHyperthreadingRequest",
+  });
+
+export interface SubmitProvisioningConfigRequest {
+  /** Required. The ProvisioningConfig to create. */
+  provisioningConfig?: ProvisioningConfig;
+  /** Optional. Email provided to send a confirmation with provisioning config to. */
+  email?: string;
+}
+
+export const SubmitProvisioningConfigRequest: Schema.Schema<SubmitProvisioningConfigRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningConfig: Schema.optional(ProvisioningConfig),
+    email: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubmitProvisioningConfigRequest" });
+
+export interface AllowedClient {
+  /** The subnet of IP addresses permitted to access the share. */
+  allowedClientsCidr?: string;
+  /** Allow dev flag. Which controls whether to allow creation of devices. */
+  allowDev?: boolean;
+  /** Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication. */
+  noRootSquash?: boolean;
+  /** Output only. The IP address of the share on this network. Assigned automatically during provisioning based on the network's services_cidr. */
+  shareIp?: string;
+  /** Allow the setuid flag. */
+  allowSuid?: boolean;
+  /** Mount permissions. */
+  mountPermissions?:
+    | "MOUNT_PERMISSIONS_UNSPECIFIED"
+    | "READ"
+    | "READ_WRITE"
+    | (string & {});
+  /** The network the access point sits on. */
+  network?: string;
+  /** Output only. The path to access NFS, in format shareIP:/InstanceID InstanceID is the generated ID instead of customer provided name. example like "10.0.0.0:/g123456789-nfs001" */
+  nfsPath?: string;
+}
+
+export const AllowedClient: Schema.Schema<AllowedClient> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedClientsCidr: Schema.optional(Schema.String),
+    allowDev: Schema.optional(Schema.Boolean),
+    noRootSquash: Schema.optional(Schema.Boolean),
+    shareIp: Schema.optional(Schema.String),
+    allowSuid: Schema.optional(Schema.Boolean),
+    mountPermissions: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+    nfsPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AllowedClient" });
+
+export interface Operation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+}
+
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
+
+export interface EnableInteractiveSerialConsoleRequest {}
+
+export const EnableInteractiveSerialConsoleRequest: Schema.Schema<EnableInteractiveSerialConsoleRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "EnableInteractiveSerialConsoleRequest",
+  });
+
+export interface RenameNfsShareRequest {
+  /** Required. The new `id` of the nfsshare. */
+  newNfsshareId?: string;
+}
+
+export const RenameNfsShareRequest: Schema.Schema<RenameNfsShareRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newNfsshareId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RenameNfsShareRequest" });
+
+export interface InstanceQuota {
+  /** Location where the quota applies. */
+  location?: string;
+  /** Output only. The name of the instance quota. */
+  name?: string;
+  /** Instance type. Deprecated: use gcp_service. */
+  instanceType?: string;
+  /** The gcp service of the provisioning quota. */
+  gcpService?: string;
+  /** Number of machines than can be created for the given location and instance_type. */
+  availableMachineCount?: number;
+}
+
+export const InstanceQuota: Schema.Schema<InstanceQuota> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    instanceType: Schema.optional(Schema.String),
+    gcpService: Schema.optional(Schema.String),
+    availableMachineCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "InstanceQuota" });
+
+export interface ProvisioningQuota {
+  /** Storage size (GB). */
+  storageGib?: string;
+  /** Instance quota. */
+  instanceQuota?: InstanceQuota;
+  /** Output only. The name of the provisioning quota. */
+  name?: string;
+  /** The available count of the provisioning quota. */
+  availableCount?: number;
+  /** The asset type of this provisioning quota. */
+  assetType?:
+    | "ASSET_TYPE_UNSPECIFIED"
+    | "ASSET_TYPE_SERVER"
+    | "ASSET_TYPE_STORAGE"
+    | "ASSET_TYPE_NETWORK"
+    | (string & {});
+  /** Server count. */
+  serverCount?: string;
+  /** The specific location of the provisioining quota. */
+  location?: string;
+  /** The gcp service of the provisioning quota. */
+  gcpService?: string;
+  /** Network bandwidth, Gbps */
+  networkBandwidth?: string;
+}
+
+export const ProvisioningQuota: Schema.Schema<ProvisioningQuota> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageGib: Schema.optional(Schema.String),
+    instanceQuota: Schema.optional(InstanceQuota),
+    name: Schema.optional(Schema.String),
+    availableCount: Schema.optional(Schema.Number),
+    assetType: Schema.optional(Schema.String),
+    serverCount: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    gcpService: Schema.optional(Schema.String),
+    networkBandwidth: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProvisioningQuota" });
+
+export interface StopInstanceResponse {}
+
+export const StopInstanceResponse: Schema.Schema<StopInstanceResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "StopInstanceResponse",
+  });
+
+export interface EvictLunRequest {}
+
+export const EvictLunRequest: Schema.Schema<EvictLunRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "EvictLunRequest",
+  });
+
+export interface StartInstanceRequest {}
+
+export const StartInstanceRequest: Schema.Schema<StartInstanceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "StartInstanceRequest",
   });
 
 export interface UserAccount {
-  /** Encrypted initial password value. */
-  encryptedPassword?: string;
   /** KMS CryptoKey Version used to encrypt the password. */
   kmsKeyVersion?: string;
+  /** Encrypted initial password value. */
+  encryptedPassword?: string;
 }
 
 export const UserAccount: Schema.Schema<UserAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encryptedPassword: Schema.optional(Schema.String),
     kmsKeyVersion: Schema.optional(Schema.String),
+    encryptedPassword: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserAccount" });
+
+export interface SSHKey {
+  /** Output only. The name of this SSH key. Currently, the only valid value for the location is "global". */
+  name?: string;
+  /** The public SSH key. This must be in OpenSSH .authorized_keys format. */
+  publicKey?: string;
+}
+
+export const SSHKey: Schema.Schema<SSHKey> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    publicKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SSHKey" });
 
 export interface LoadInstanceAuthInfoResponse {
   /** Map of username to the user account info. */
@@ -1336,59 +1164,43 @@ export const LoadInstanceAuthInfoResponse: Schema.Schema<LoadInstanceAuthInfoRes
     sshKeys: Schema.optional(Schema.Array(SSHKey)),
   }).annotate({ identifier: "LoadInstanceAuthInfoResponse" });
 
-export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
+export interface RenameInstanceRequest {
+  /** Required. The new `id` of the instance. */
+  newInstanceId?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const RenameInstanceRequest: Schema.Schema<RenameInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    done: Schema.optional(Schema.Boolean),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    error: Schema.optional(Status),
-  }).annotate({ identifier: "Operation" });
+    newInstanceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RenameInstanceRequest" });
 
-export interface ReimageInstanceRequest {
-  /** Optional. Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose. Format is `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`. */
-  kmsKeyVersion?: string;
-  /** Required. The OS image code of the image which will be used in the reimage operation. */
-  osImage?: string;
-  /** Optional. List of SSH Keys used during reimaging an instance. */
-  sshKeys?: ReadonlyArray<string>;
-}
+export interface StopInstanceRequest {}
 
-export const ReimageInstanceRequest: Schema.Schema<ReimageInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kmsKeyVersion: Schema.optional(Schema.String),
-    osImage: Schema.optional(Schema.String),
-    sshKeys: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ReimageInstanceRequest" });
+export const StopInstanceRequest: Schema.Schema<StopInstanceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "StopInstanceRequest",
+  });
 
-export interface ListVolumesResponse {
-  /** A token identifying a page of results from the server. */
-  nextPageToken?: string;
-  /** The list of storage volumes. */
-  volumes?: ReadonlyArray<Volume>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
+export interface ResetInstanceResponse {}
 
-export const ListVolumesResponse: Schema.Schema<ListVolumesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    volumes: Schema.optional(Schema.Array(Volume)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListVolumesResponse" });
+export const ResetInstanceResponse: Schema.Schema<ResetInstanceResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ResetInstanceResponse",
+  });
+
+export interface DisableHyperthreadingRequest {}
+
+export const DisableHyperthreadingRequest: Schema.Schema<DisableHyperthreadingRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DisableHyperthreadingRequest",
+  });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface RenameVolumeRequest {
   /** Required. The new `id` of the volume. */
@@ -1400,15 +1212,44 @@ export const RenameVolumeRequest: Schema.Schema<RenameVolumeRequest> =
     newVolumeId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RenameVolumeRequest" });
 
-export interface SubmitProvisioningConfigResponse {
-  /** The submitted provisioning config. */
-  provisioningConfig?: ProvisioningConfig;
+export interface DisableInteractiveSerialConsoleResponse {}
+
+export const DisableInteractiveSerialConsoleResponse: Schema.Schema<DisableInteractiveSerialConsoleResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DisableInteractiveSerialConsoleResponse",
+  });
+
+export interface ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: ReadonlyArray<Location>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
 }
 
-export const SubmitProvisioningConfigResponse: Schema.Schema<SubmitProvisioningConfigResponse> =
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    provisioningConfig: Schema.optional(ProvisioningConfig),
-  }).annotate({ identifier: "SubmitProvisioningConfigResponse" });
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
+
+export interface GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface {
+  /** Interface type. */
+  type?: "INTERFACE_TYPE_UNSPECIFIED" | "BOND" | "NIC" | (string & {});
+  /** Interface name. This is not a globally unique identifier. Name is unique only inside the ServerNetworkTemplate. This is of syntax or and forms part of the network template name. */
+  name?: string;
+  /** If true, interface must have network connected. */
+  required?: boolean;
+}
+
+export const GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface: Schema.Schema<GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    required: Schema.optional(Schema.Boolean),
+  }).annotate({
+    identifier:
+      "GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface",
+  });
 
 export interface ServerNetworkTemplate {
   /** Instance types this template is applicable to. */
@@ -1430,6 +1271,92 @@ export const ServerNetworkTemplate: Schema.Schema<ServerNetworkTemplate> =
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServerNetworkTemplate" });
 
+export interface ReimageInstanceRequest {
+  /** Optional. List of SSH Keys used during reimaging an instance. */
+  sshKeys?: ReadonlyArray<string>;
+  /** Required. The OS image code of the image which will be used in the reimage operation. */
+  osImage?: string;
+  /** Optional. Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose. Format is `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`. */
+  kmsKeyVersion?: string;
+}
+
+export const ReimageInstanceRequest: Schema.Schema<ReimageInstanceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sshKeys: Schema.optional(Schema.Array(Schema.String)),
+    osImage: Schema.optional(Schema.String),
+    kmsKeyVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReimageInstanceRequest" });
+
+export interface ListSSHKeysResponse {
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** The SSH keys registered in the project. */
+  sshKeys?: ReadonlyArray<SSHKey>;
+}
+
+export const ListSSHKeysResponse: Schema.Schema<ListSSHKeysResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    sshKeys: Schema.optional(Schema.Array(SSHKey)),
+  }).annotate({ identifier: "ListSSHKeysResponse" });
+
+export interface NfsShare {
+  /** Labels as key value pairs. */
+  labels?: Record<string, string>;
+  /** Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod. */
+  pod?: string;
+  /** Immutable. The name of the NFS share. */
+  name?: string;
+  /** Output only. The state of the NFS share. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "PROVISIONED"
+    | "CREATING"
+    | "UPDATING"
+    | "DELETING"
+    | (string & {});
+  /** Output only. An identifier for the NFS share, generated by the backend. This field will be deprecated in the future, use `id` instead. */
+  nfsShareId?: string;
+  /** The requested size, in GiB. */
+  requestedSizeGib?: string;
+  /** List of allowed access points. */
+  allowedClients?: ReadonlyArray<AllowedClient>;
+  /** Output only. An identifier for the NFS share, generated by the backend. This is the same value as nfs_share_id and will replace it in the future. */
+  id?: string;
+  /** Output only. The underlying volume of the share. Created automatically during provisioning. */
+  volume?: string;
+  /** Immutable. The storage type of the underlying volume. */
+  storageType?: "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD" | (string & {});
+}
+
+export const NfsShare: Schema.Schema<NfsShare> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    pod: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    nfsShareId: Schema.optional(Schema.String),
+    requestedSizeGib: Schema.optional(Schema.String),
+    allowedClients: Schema.optional(Schema.Array(AllowedClient)),
+    id: Schema.optional(Schema.String),
+    volume: Schema.optional(Schema.String),
+    storageType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NfsShare" });
+
+export interface ResetInstanceRequest {}
+
+export const ResetInstanceRequest: Schema.Schema<ResetInstanceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ResetInstanceRequest",
+  });
+
+export interface RestoreVolumeSnapshotRequest {}
+
+export const RestoreVolumeSnapshotRequest: Schema.Schema<RestoreVolumeSnapshotRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RestoreVolumeSnapshotRequest",
+  });
+
 export interface EvictVolumeRequest {}
 
 export const EvictVolumeRequest: Schema.Schema<EvictVolumeRequest> =
@@ -1437,35 +1364,50 @@ export const EvictVolumeRequest: Schema.Schema<EvictVolumeRequest> =
     identifier: "EvictVolumeRequest",
   });
 
-export interface RenameNfsShareRequest {
-  /** Required. The new `id` of the nfsshare. */
-  newNfsshareId?: string;
+export interface ListNfsSharesResponse {
+  /** A token identifying a page of results from the server. */
+  nextPageToken?: string;
+  /** The list of NFS shares. */
+  nfsShares?: ReadonlyArray<NfsShare>;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
 }
 
-export const RenameNfsShareRequest: Schema.Schema<RenameNfsShareRequest> =
+export const ListNfsSharesResponse: Schema.Schema<ListNfsSharesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    newNfsshareId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RenameNfsShareRequest" });
+    nextPageToken: Schema.optional(Schema.String),
+    nfsShares: Schema.optional(Schema.Array(NfsShare)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListNfsSharesResponse" });
 
-export interface Empty {}
+export interface ListProvisioningQuotasResponse {
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** The provisioning quotas registered in this project. */
+  provisioningQuotas?: ReadonlyArray<ProvisioningQuota>;
+}
 
-export const Empty: Schema.Schema<Empty> =
+export const ListProvisioningQuotasResponse: Schema.Schema<ListProvisioningQuotasResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    provisioningQuotas: Schema.optional(Schema.Array(ProvisioningQuota)),
+  }).annotate({ identifier: "ListProvisioningQuotasResponse" });
+
+export interface RenameNetworkRequest {
+  /** Required. The new `id` of the network. */
+  newNetworkId?: string;
+}
+
+export const RenameNetworkRequest: Schema.Schema<RenameNetworkRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newNetworkId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RenameNetworkRequest" });
+
+export interface EnableInteractiveSerialConsoleResponse {}
+
+export const EnableInteractiveSerialConsoleResponse: Schema.Schema<EnableInteractiveSerialConsoleResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
-export interface StopInstanceRequest {}
-
-export const StopInstanceRequest: Schema.Schema<StopInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "StopInstanceRequest",
-  });
-
-export interface DisableInteractiveSerialConsoleRequest {}
-
-export const DisableInteractiveSerialConsoleRequest: Schema.Schema<DisableInteractiveSerialConsoleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DisableInteractiveSerialConsoleRequest",
+    identifier: "EnableInteractiveSerialConsoleResponse",
   });
 
 export interface ResizeVolumeRequest {
@@ -1478,12 +1420,70 @@ export const ResizeVolumeRequest: Schema.Schema<ResizeVolumeRequest> =
     sizeGib: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResizeVolumeRequest" });
 
-export interface StopInstanceResponse {}
+export interface StartInstanceResponse {}
 
-export const StopInstanceResponse: Schema.Schema<StopInstanceResponse> =
+export const StartInstanceResponse: Schema.Schema<StartInstanceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "StopInstanceResponse",
+    identifier: "StartInstanceResponse",
   });
+
+export interface ListVolumesResponse {
+  /** The list of storage volumes. */
+  volumes?: ReadonlyArray<Volume>;
+  /** A token identifying a page of results from the server. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListVolumesResponse: Schema.Schema<ListVolumesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    volumes: Schema.optional(Schema.Array(Volume)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListVolumesResponse" });
+
+export interface ListLunsResponse {
+  /** The list of luns. */
+  luns?: ReadonlyArray<Lun>;
+  /** A token identifying a page of results from the server. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListLunsResponse: Schema.Schema<ListLunsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    luns: Schema.optional(Schema.Array(Lun)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListLunsResponse" });
+
+export interface DetachLunRequest {
+  /** Required. Name of the Lun to detach. */
+  lun?: string;
+  /** If true, performs lun unmapping without instance reboot. */
+  skipReboot?: boolean;
+}
+
+export const DetachLunRequest: Schema.Schema<DetachLunRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lun: Schema.optional(Schema.String),
+    skipReboot: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DetachLunRequest" });
+
+export interface ListOSImagesResponse {
+  /** The OS images available. */
+  osImages?: ReadonlyArray<OSImage>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+}
+
+export const ListOSImagesResponse: Schema.Schema<ListOSImagesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osImages: Schema.optional(Schema.Array(OSImage)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOSImagesResponse" });
 
 // ==========================================================================
 // Errors
@@ -1539,6 +1539,55 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
+export interface ListProjectsLocationsRequest {
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
+  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("extraLocationTypes"),
+    ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}/locations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+
+export type ListProjectsLocationsResponse = ListLocationsResponse;
+export const ListProjectsLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+export const listProjectsLocations: API.PaginatedOperationMethod<
+  ListProjectsLocationsRequest,
+  ListProjectsLocationsResponse,
+  ListProjectsLocationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRequest,
+  output: ListProjectsLocationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
@@ -1570,48 +1619,43 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
+export interface ListProjectsLocationsOsImagesRequest {
+  /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. Notice that page_size field is not supported and won't be respected in the API request for now, will be updated when pagination is supported. */
   pageSize?: number;
+  /** Required. Parent value for ListOSImagesRequest. */
+  parent: string;
+  /** A token identifying a page of results from the server. */
+  pageToken?: string;
 }
 
-export const ListProjectsLocationsRequest =
+export const ListProjectsLocationsOsImagesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("extraLocationTypes"),
-    ),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}/locations" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/osImages" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsOsImagesRequest>;
 
-export type ListProjectsLocationsResponse = ListLocationsResponse;
-export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+export type ListProjectsLocationsOsImagesResponse = ListOSImagesResponse;
+export const ListProjectsLocationsOsImagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListOSImagesResponse;
 
-export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
+export type ListProjectsLocationsOsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
-export const listProjectsLocations: API.PaginatedOperationMethod<
-  ListProjectsLocationsRequest,
-  ListProjectsLocationsResponse,
-  ListProjectsLocationsError,
+/** Retrieves the list of OS images which are currently approved. */
+export const listProjectsLocationsOsImages: API.PaginatedOperationMethod<
+  ListProjectsLocationsOsImagesRequest,
+  ListProjectsLocationsOsImagesResponse,
+  ListProjectsLocationsOsImagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListProjectsLocationsResponse,
+  input: ListProjectsLocationsOsImagesRequest,
+  output: ListProjectsLocationsOsImagesResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -1619,154 +1663,119 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GetProjectsLocationsNetworksRequest {
-  /** Required. Name of the resource. */
+export interface GetProjectsLocationsOsImagesRequest {
+  /** Required. Name of the OS image. */
   name: string;
 }
 
-export const GetProjectsLocationsNetworksRequest =
+export const GetProjectsLocationsOsImagesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsNetworksRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsOsImagesRequest>;
 
-export type GetProjectsLocationsNetworksResponse = Network;
-export const GetProjectsLocationsNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Network;
+export type GetProjectsLocationsOsImagesResponse = OSImage;
+export const GetProjectsLocationsOsImagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ OSImage;
 
-export type GetProjectsLocationsNetworksError =
+export type GetProjectsLocationsOsImagesError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Get details of a single network. */
-export const getProjectsLocationsNetworks: API.OperationMethod<
-  GetProjectsLocationsNetworksRequest,
-  GetProjectsLocationsNetworksResponse,
-  GetProjectsLocationsNetworksError,
+/** Get details of a single OS image. */
+export const getProjectsLocationsOsImages: API.OperationMethod<
+  GetProjectsLocationsOsImagesRequest,
+  GetProjectsLocationsOsImagesResponse,
+  GetProjectsLocationsOsImagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsNetworksRequest,
-  output: GetProjectsLocationsNetworksResponse,
+  input: GetProjectsLocationsOsImagesRequest,
+  output: GetProjectsLocationsOsImagesResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface RenameProjectsLocationsNetworksRequest {
-  /** Required. The `name` field is used to identify the network. Format: projects/{project}/locations/{location}/networks/{network} */
+export interface RenameProjectsLocationsNfsSharesRequest {
+  /** Required. The `name` field is used to identify the nfsshare. Format: projects/{project}/locations/{location}/nfsshares/{nfsshare} */
   name: string;
   /** Request body */
-  body?: RenameNetworkRequest;
+  body?: RenameNfsShareRequest;
 }
 
-export const RenameProjectsLocationsNetworksRequest =
+export const RenameProjectsLocationsNfsSharesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RenameNetworkRequest).pipe(T.HttpBody()),
+    body: Schema.optional(RenameNfsShareRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:rename", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RenameProjectsLocationsNetworksRequest>;
+  ) as unknown as Schema.Schema<RenameProjectsLocationsNfsSharesRequest>;
 
-export type RenameProjectsLocationsNetworksResponse = Network;
-export const RenameProjectsLocationsNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Network;
+export type RenameProjectsLocationsNfsSharesResponse = NfsShare;
+export const RenameProjectsLocationsNfsSharesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ NfsShare;
 
-export type RenameProjectsLocationsNetworksError =
+export type RenameProjectsLocationsNfsSharesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** RenameNetwork sets a new name for a network. Use with caution, previous names become immediately invalidated. */
-export const renameProjectsLocationsNetworks: API.OperationMethod<
-  RenameProjectsLocationsNetworksRequest,
-  RenameProjectsLocationsNetworksResponse,
-  RenameProjectsLocationsNetworksError,
+/** RenameNfsShare sets a new name for an nfsshare. Use with caution, previous names become immediately invalidated. */
+export const renameProjectsLocationsNfsShares: API.OperationMethod<
+  RenameProjectsLocationsNfsSharesRequest,
+  RenameProjectsLocationsNfsSharesResponse,
+  RenameProjectsLocationsNfsSharesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RenameProjectsLocationsNetworksRequest,
-  output: RenameProjectsLocationsNetworksResponse,
+  input: RenameProjectsLocationsNfsSharesRequest,
+  output: RenameProjectsLocationsNfsSharesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListNetworkUsageProjectsLocationsNetworksRequest {
-  /** Required. Parent value (project and location). */
-  location: string;
-}
-
-export const ListNetworkUsageProjectsLocationsNetworksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.HttpPath("location")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+location}/networks:listNetworkUsage" }),
-    svc,
-  ) as unknown as Schema.Schema<ListNetworkUsageProjectsLocationsNetworksRequest>;
-
-export type ListNetworkUsageProjectsLocationsNetworksResponse =
-  ListNetworkUsageResponse;
-export const ListNetworkUsageProjectsLocationsNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListNetworkUsageResponse;
-
-export type ListNetworkUsageProjectsLocationsNetworksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List all Networks (and used IPs for each Network) in the vendor account associated with the specified project. */
-export const listNetworkUsageProjectsLocationsNetworks: API.OperationMethod<
-  ListNetworkUsageProjectsLocationsNetworksRequest,
-  ListNetworkUsageProjectsLocationsNetworksResponse,
-  ListNetworkUsageProjectsLocationsNetworksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListNetworkUsageProjectsLocationsNetworksRequest,
-  output: ListNetworkUsageProjectsLocationsNetworksResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsNetworksRequest {
-  /** Required. Parent value for ListNetworksRequest. */
-  parent: string;
+export interface ListProjectsLocationsNfsSharesRequest {
   /** A token identifying a page of results from the server. */
   pageToken?: string;
-  /** List filter. */
-  filter?: string;
   /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
+  /** List filter. */
+  filter?: string;
+  /** Required. Parent value for ListNfsSharesRequest. */
+  parent: string;
 }
 
-export const ListProjectsLocationsNetworksRequest =
+export const ListProjectsLocationsNfsSharesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/networks" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/nfsShares" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsNetworksRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsNfsSharesRequest>;
 
-export type ListProjectsLocationsNetworksResponse = ListNetworksResponse;
-export const ListProjectsLocationsNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListNetworksResponse;
+export type ListProjectsLocationsNfsSharesResponse = ListNfsSharesResponse;
+export const ListProjectsLocationsNfsSharesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListNfsSharesResponse;
 
-export type ListProjectsLocationsNetworksError =
+export type ListProjectsLocationsNfsSharesError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** List network in a given project and location. */
-export const listProjectsLocationsNetworks: API.PaginatedOperationMethod<
-  ListProjectsLocationsNetworksRequest,
-  ListProjectsLocationsNetworksResponse,
-  ListProjectsLocationsNetworksError,
+/** List NFS shares. */
+export const listProjectsLocationsNfsShares: API.PaginatedOperationMethod<
+  ListProjectsLocationsNfsSharesRequest,
+  ListProjectsLocationsNfsSharesResponse,
+  ListProjectsLocationsNfsSharesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsNetworksRequest,
-  output: ListProjectsLocationsNetworksResponse,
+  input: ListProjectsLocationsNfsSharesRequest,
+  output: ListProjectsLocationsNfsSharesResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -1774,93 +1783,395 @@ export const listProjectsLocationsNetworks: API.PaginatedOperationMethod<
   },
 }));
 
-export interface PatchProjectsLocationsNetworksRequest {
-  /** Output only. The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}` */
+export interface DeleteProjectsLocationsNfsSharesRequest {
+  /** Required. The name of the NFS share to delete. */
   name: string;
-  /** The list of fields to update. The only currently supported fields are: `labels`, `reservations`, `vrf.vlan_attachments` */
-  updateMask?: string;
-  /** Request body */
-  body?: Network;
 }
 
-export const PatchProjectsLocationsNetworksRequest =
+export const DeleteProjectsLocationsNfsSharesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsNfsSharesRequest>;
+
+export type DeleteProjectsLocationsNfsSharesResponse = Operation;
+export const DeleteProjectsLocationsNfsSharesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsNfsSharesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Delete an NFS share. The underlying volume is automatically deleted. */
+export const deleteProjectsLocationsNfsShares: API.OperationMethod<
+  DeleteProjectsLocationsNfsSharesRequest,
+  DeleteProjectsLocationsNfsSharesResponse,
+  DeleteProjectsLocationsNfsSharesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsNfsSharesRequest,
+  output: DeleteProjectsLocationsNfsSharesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsNfsSharesRequest {
+  /** Required. Name of the resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsNfsSharesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsNfsSharesRequest>;
+
+export type GetProjectsLocationsNfsSharesResponse = NfsShare;
+export const GetProjectsLocationsNfsSharesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ NfsShare;
+
+export type GetProjectsLocationsNfsSharesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get details of a single NFS share. */
+export const getProjectsLocationsNfsShares: API.OperationMethod<
+  GetProjectsLocationsNfsSharesRequest,
+  GetProjectsLocationsNfsSharesResponse,
+  GetProjectsLocationsNfsSharesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsNfsSharesRequest,
+  output: GetProjectsLocationsNfsSharesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PatchProjectsLocationsNfsSharesRequest {
+  /** Immutable. The name of the NFS share. */
+  name: string;
+  /** The list of fields to update. The only currently supported fields are: `labels` `allowed_clients` */
+  updateMask?: string;
+  /** Request body */
+  body?: NfsShare;
+}
+
+export const PatchProjectsLocationsNfsSharesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Network).pipe(T.HttpBody()),
+    body: Schema.optional(NfsShare).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsNetworksRequest>;
+  ) as unknown as Schema.Schema<PatchProjectsLocationsNfsSharesRequest>;
 
-export type PatchProjectsLocationsNetworksResponse = Operation;
-export const PatchProjectsLocationsNetworksResponse =
+export type PatchProjectsLocationsNfsSharesResponse = Operation;
+export const PatchProjectsLocationsNfsSharesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsNetworksError =
+export type PatchProjectsLocationsNfsSharesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Update details of a single network. */
-export const patchProjectsLocationsNetworks: API.OperationMethod<
-  PatchProjectsLocationsNetworksRequest,
-  PatchProjectsLocationsNetworksResponse,
-  PatchProjectsLocationsNetworksError,
+/** Update details of a single NFS share. */
+export const patchProjectsLocationsNfsShares: API.OperationMethod<
+  PatchProjectsLocationsNfsSharesRequest,
+  PatchProjectsLocationsNfsSharesResponse,
+  PatchProjectsLocationsNfsSharesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsNetworksRequest,
-  output: PatchProjectsLocationsNetworksResponse,
+  input: PatchProjectsLocationsNfsSharesRequest,
+  output: PatchProjectsLocationsNfsSharesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsVolumesRequest {
-  /** Required. Parent value for ListVolumesRequest. */
+export interface CreateProjectsLocationsNfsSharesRequest {
+  /** Required. The parent project and location. */
   parent: string;
+  /** Request body */
+  body?: NfsShare;
+}
+
+export const CreateProjectsLocationsNfsSharesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(NfsShare).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+parent}/nfsShares", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsNfsSharesRequest>;
+
+export type CreateProjectsLocationsNfsSharesResponse = Operation;
+export const CreateProjectsLocationsNfsSharesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsNfsSharesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Create an NFS share. */
+export const createProjectsLocationsNfsShares: API.OperationMethod<
+  CreateProjectsLocationsNfsSharesRequest,
+  CreateProjectsLocationsNfsSharesResponse,
+  CreateProjectsLocationsNfsSharesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsNfsSharesRequest,
+  output: CreateProjectsLocationsNfsSharesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsProvisioningQuotasRequest {
   /** A token identifying a page of results from the server. */
   pageToken?: string;
-  /** List filter. */
-  filter?: string;
-  /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  /** Required. Parent value for ListProvisioningQuotasRequest. */
+  parent: string;
+  /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. Notice that page_size field is not supported and won't be respected in the API request for now, will be updated when pagination is supported. */
   pageSize?: number;
 }
 
-export const ListProjectsLocationsVolumesRequest =
+export const ListProjectsLocationsProvisioningQuotasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/volumes" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/provisioningQuotas" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsVolumesRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsProvisioningQuotasRequest>;
 
-export type ListProjectsLocationsVolumesResponse = ListVolumesResponse;
-export const ListProjectsLocationsVolumesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVolumesResponse;
+export type ListProjectsLocationsProvisioningQuotasResponse =
+  ListProvisioningQuotasResponse;
+export const ListProjectsLocationsProvisioningQuotasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListProvisioningQuotasResponse;
 
-export type ListProjectsLocationsVolumesError =
+export type ListProjectsLocationsProvisioningQuotasError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** List storage volumes in a given project and location. */
-export const listProjectsLocationsVolumes: API.PaginatedOperationMethod<
-  ListProjectsLocationsVolumesRequest,
-  ListProjectsLocationsVolumesResponse,
-  ListProjectsLocationsVolumesError,
+/** List the budget details to provision resources on a given project. */
+export const listProjectsLocationsProvisioningQuotas: API.PaginatedOperationMethod<
+  ListProjectsLocationsProvisioningQuotasRequest,
+  ListProjectsLocationsProvisioningQuotasResponse,
+  ListProjectsLocationsProvisioningQuotasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsVolumesRequest,
-  output: ListProjectsLocationsVolumesResponse,
+  input: ListProjectsLocationsProvisioningQuotasRequest,
+  output: ListProjectsLocationsProvisioningQuotasResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+
+export type GetProjectsLocationsOperationsResponse = Operation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get details about an operation. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsSshKeysRequest {
+  /** The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
+  /** The maximum number of items to return. */
+  pageSize?: number;
+  /** Required. The parent containing the SSH keys. Currently, the only valid value for the location is "global". */
+  parent: string;
+}
+
+export const ListProjectsLocationsSshKeysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+parent}/sshKeys" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSshKeysRequest>;
+
+export type ListProjectsLocationsSshKeysResponse = ListSSHKeysResponse;
+export const ListProjectsLocationsSshKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListSSHKeysResponse;
+
+export type ListProjectsLocationsSshKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the public SSH keys registered for the specified project. These SSH keys are used only for the interactive serial console feature. */
+export const listProjectsLocationsSshKeys: API.PaginatedOperationMethod<
+  ListProjectsLocationsSshKeysRequest,
+  ListProjectsLocationsSshKeysResponse,
+  ListProjectsLocationsSshKeysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsSshKeysRequest,
+  output: ListProjectsLocationsSshKeysResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsSshKeysRequest {
+  /** Required. The name of the SSH key to delete. Currently, the only valid value for the location is "global". */
+  name: string;
+}
+
+export const DeleteProjectsLocationsSshKeysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsSshKeysRequest>;
+
+export type DeleteProjectsLocationsSshKeysResponse = Empty;
+export const DeleteProjectsLocationsSshKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsSshKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a public SSH key registered in the specified project. */
+export const deleteProjectsLocationsSshKeys: API.OperationMethod<
+  DeleteProjectsLocationsSshKeysRequest,
+  DeleteProjectsLocationsSshKeysResponse,
+  DeleteProjectsLocationsSshKeysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsSshKeysRequest,
+  output: DeleteProjectsLocationsSshKeysResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsSshKeysRequest {
+  /** Required. The ID to use for the key, which will become the final component of the key's resource name. This value must match the regex: [a-zA-Z0-9@.\-_]{1,64} */
+  sshKeyId?: string;
+  /** Required. The parent containing the SSH keys. */
+  parent: string;
+  /** Request body */
+  body?: SSHKey;
+}
+
+export const CreateProjectsLocationsSshKeysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sshKeyId: Schema.optional(Schema.String).pipe(T.HttpQuery("sshKeyId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(SSHKey).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+parent}/sshKeys", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsSshKeysRequest>;
+
+export type CreateProjectsLocationsSshKeysResponse = SSHKey;
+export const CreateProjectsLocationsSshKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SSHKey;
+
+export type CreateProjectsLocationsSshKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Register a public SSH key in the specified project for use with the interactive serial console feature. */
+export const createProjectsLocationsSshKeys: API.OperationMethod<
+  CreateProjectsLocationsSshKeysRequest,
+  CreateProjectsLocationsSshKeysResponse,
+  CreateProjectsLocationsSshKeysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsSshKeysRequest,
+  output: CreateProjectsLocationsSshKeysResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface EvictProjectsLocationsVolumesRequest {
+  /** Required. The name of the Volume. */
+  name: string;
+  /** Request body */
+  body?: EvictVolumeRequest;
+}
+
+export const EvictProjectsLocationsVolumesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(EvictVolumeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+name}:evict", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<EvictProjectsLocationsVolumesRequest>;
+
+export type EvictProjectsLocationsVolumesResponse = Operation;
+export const EvictProjectsLocationsVolumesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type EvictProjectsLocationsVolumesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Skips volume's cooloff and deletes it now. Volume must be in cooloff state. */
+export const evictProjectsLocationsVolumes: API.OperationMethod<
+  EvictProjectsLocationsVolumesRequest,
+  EvictProjectsLocationsVolumesResponse,
+  EvictProjectsLocationsVolumesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: EvictProjectsLocationsVolumesRequest,
+  output: EvictProjectsLocationsVolumesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsVolumesRequest {
@@ -1905,43 +2216,38 @@ export const patchProjectsLocationsVolumes: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface EvictProjectsLocationsVolumesRequest {
-  /** Required. The name of the Volume. */
+export interface GetProjectsLocationsVolumesRequest {
+  /** Required. Name of the resource. */
   name: string;
-  /** Request body */
-  body?: EvictVolumeRequest;
 }
 
-export const EvictProjectsLocationsVolumesRequest =
+export const GetProjectsLocationsVolumesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(EvictVolumeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v2/{+name}:evict", hasBody: true }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<EvictProjectsLocationsVolumesRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsVolumesRequest>;
 
-export type EvictProjectsLocationsVolumesResponse = Operation;
-export const EvictProjectsLocationsVolumesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type GetProjectsLocationsVolumesResponse = Volume;
+export const GetProjectsLocationsVolumesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Volume;
 
-export type EvictProjectsLocationsVolumesError =
+export type GetProjectsLocationsVolumesError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Skips volume's cooloff and deletes it now. Volume must be in cooloff state. */
-export const evictProjectsLocationsVolumes: API.OperationMethod<
-  EvictProjectsLocationsVolumesRequest,
-  EvictProjectsLocationsVolumesResponse,
-  EvictProjectsLocationsVolumesError,
+/** Get details of a single storage volume. */
+export const getProjectsLocationsVolumes: API.OperationMethod<
+  GetProjectsLocationsVolumesRequest,
+  GetProjectsLocationsVolumesResponse,
+  GetProjectsLocationsVolumesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: EvictProjectsLocationsVolumesRequest,
-  output: EvictProjectsLocationsVolumesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: GetProjectsLocationsVolumesRequest,
+  output: GetProjectsLocationsVolumesResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ResizeProjectsLocationsVolumesRequest {
@@ -2022,150 +2328,46 @@ export const renameProjectsLocationsVolumes: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsVolumesRequest {
-  /** Required. Name of the resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsVolumesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsVolumesRequest>;
-
-export type GetProjectsLocationsVolumesResponse = Volume;
-export const GetProjectsLocationsVolumesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Volume;
-
-export type GetProjectsLocationsVolumesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get details of a single storage volume. */
-export const getProjectsLocationsVolumes: API.OperationMethod<
-  GetProjectsLocationsVolumesRequest,
-  GetProjectsLocationsVolumesResponse,
-  GetProjectsLocationsVolumesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsVolumesRequest,
-  output: GetProjectsLocationsVolumesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetProjectsLocationsVolumesLunsRequest {
-  /** Required. Name of the resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsVolumesLunsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsVolumesLunsRequest>;
-
-export type GetProjectsLocationsVolumesLunsResponse = Lun;
-export const GetProjectsLocationsVolumesLunsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Lun;
-
-export type GetProjectsLocationsVolumesLunsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get details of a single storage logical unit number(LUN). */
-export const getProjectsLocationsVolumesLuns: API.OperationMethod<
-  GetProjectsLocationsVolumesLunsRequest,
-  GetProjectsLocationsVolumesLunsResponse,
-  GetProjectsLocationsVolumesLunsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsVolumesLunsRequest,
-  output: GetProjectsLocationsVolumesLunsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface EvictProjectsLocationsVolumesLunsRequest {
-  /** Required. The name of the lun. */
-  name: string;
-  /** Request body */
-  body?: EvictLunRequest;
-}
-
-export const EvictProjectsLocationsVolumesLunsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(EvictLunRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+name}:evict", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<EvictProjectsLocationsVolumesLunsRequest>;
-
-export type EvictProjectsLocationsVolumesLunsResponse = Operation;
-export const EvictProjectsLocationsVolumesLunsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type EvictProjectsLocationsVolumesLunsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Skips lun's cooloff and deletes it now. Lun must be in cooloff state. */
-export const evictProjectsLocationsVolumesLuns: API.OperationMethod<
-  EvictProjectsLocationsVolumesLunsRequest,
-  EvictProjectsLocationsVolumesLunsResponse,
-  EvictProjectsLocationsVolumesLunsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: EvictProjectsLocationsVolumesLunsRequest,
-  output: EvictProjectsLocationsVolumesLunsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsVolumesLunsRequest {
-  /** Required. Parent value for ListLunsRequest. */
-  parent: string;
+export interface ListProjectsLocationsVolumesRequest {
   /** A token identifying a page of results from the server. */
   pageToken?: string;
+  /** Required. Parent value for ListVolumesRequest. */
+  parent: string;
   /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
+  /** List filter. */
+  filter?: string;
 }
 
-export const ListProjectsLocationsVolumesLunsRequest =
+export const ListProjectsLocationsVolumesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/luns" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/volumes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsVolumesLunsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsVolumesRequest>;
 
-export type ListProjectsLocationsVolumesLunsResponse = ListLunsResponse;
-export const ListProjectsLocationsVolumesLunsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLunsResponse;
+export type ListProjectsLocationsVolumesResponse = ListVolumesResponse;
+export const ListProjectsLocationsVolumesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListVolumesResponse;
 
-export type ListProjectsLocationsVolumesLunsError =
+export type ListProjectsLocationsVolumesError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** List storage volume luns for given storage volume. */
-export const listProjectsLocationsVolumesLuns: API.PaginatedOperationMethod<
-  ListProjectsLocationsVolumesLunsRequest,
-  ListProjectsLocationsVolumesLunsResponse,
-  ListProjectsLocationsVolumesLunsError,
+/** List storage volumes in a given project and location. */
+export const listProjectsLocationsVolumes: API.PaginatedOperationMethod<
+  ListProjectsLocationsVolumesRequest,
+  ListProjectsLocationsVolumesResponse,
+  ListProjectsLocationsVolumesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsVolumesLunsRequest,
-  output: ListProjectsLocationsVolumesLunsResponse,
+  input: ListProjectsLocationsVolumesRequest,
+  output: ListProjectsLocationsVolumesResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -2256,6 +2458,40 @@ export const createProjectsLocationsVolumesSnapshots: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetProjectsLocationsVolumesSnapshotsRequest {
+  /** Required. The name of the snapshot. */
+  name: string;
+}
+
+export const GetProjectsLocationsVolumesSnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsVolumesSnapshotsRequest>;
+
+export type GetProjectsLocationsVolumesSnapshotsResponse = VolumeSnapshot;
+export const GetProjectsLocationsVolumesSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ VolumeSnapshot;
+
+export type GetProjectsLocationsVolumesSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the specified snapshot resource. Returns INVALID_ARGUMENT if called for a non-boot volume. */
+export const getProjectsLocationsVolumesSnapshots: API.OperationMethod<
+  GetProjectsLocationsVolumesSnapshotsRequest,
+  GetProjectsLocationsVolumesSnapshotsResponse,
+  GetProjectsLocationsVolumesSnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsVolumesSnapshotsRequest,
+  output: GetProjectsLocationsVolumesSnapshotsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface DeleteProjectsLocationsVolumesSnapshotsRequest {
   /** Required. The name of the snapshot to delete. */
   name: string;
@@ -2292,54 +2528,20 @@ export const deleteProjectsLocationsVolumesSnapshots: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsVolumesSnapshotsRequest {
-  /** Required. The name of the snapshot. */
-  name: string;
-}
-
-export const GetProjectsLocationsVolumesSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsVolumesSnapshotsRequest>;
-
-export type GetProjectsLocationsVolumesSnapshotsResponse = VolumeSnapshot;
-export const GetProjectsLocationsVolumesSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VolumeSnapshot;
-
-export type GetProjectsLocationsVolumesSnapshotsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the specified snapshot resource. Returns INVALID_ARGUMENT if called for a non-boot volume. */
-export const getProjectsLocationsVolumesSnapshots: API.OperationMethod<
-  GetProjectsLocationsVolumesSnapshotsRequest,
-  GetProjectsLocationsVolumesSnapshotsResponse,
-  GetProjectsLocationsVolumesSnapshotsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsVolumesSnapshotsRequest,
-  output: GetProjectsLocationsVolumesSnapshotsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface ListProjectsLocationsVolumesSnapshotsRequest {
+  /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
   /** Required. Parent value for ListVolumesRequest. */
   parent: string;
   /** A token identifying a page of results from the server. */
   pageToken?: string;
-  /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
 }
 
 export const ListProjectsLocationsVolumesSnapshotsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/snapshots" }),
     svc,
@@ -2371,46 +2573,43 @@ export const listProjectsLocationsVolumesSnapshots: API.PaginatedOperationMethod
   },
 }));
 
-export interface ListProjectsLocationsNfsSharesRequest {
+export interface ListProjectsLocationsVolumesLunsRequest {
   /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
-  /** Required. Parent value for ListNfsSharesRequest. */
+  /** Required. Parent value for ListLunsRequest. */
   parent: string;
   /** A token identifying a page of results from the server. */
   pageToken?: string;
-  /** List filter. */
-  filter?: string;
 }
 
-export const ListProjectsLocationsNfsSharesRequest =
+export const ListProjectsLocationsVolumesLunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/nfsShares" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/luns" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsNfsSharesRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsVolumesLunsRequest>;
 
-export type ListProjectsLocationsNfsSharesResponse = ListNfsSharesResponse;
-export const ListProjectsLocationsNfsSharesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListNfsSharesResponse;
+export type ListProjectsLocationsVolumesLunsResponse = ListLunsResponse;
+export const ListProjectsLocationsVolumesLunsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListLunsResponse;
 
-export type ListProjectsLocationsNfsSharesError =
+export type ListProjectsLocationsVolumesLunsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** List NFS shares. */
-export const listProjectsLocationsNfsShares: API.PaginatedOperationMethod<
-  ListProjectsLocationsNfsSharesRequest,
-  ListProjectsLocationsNfsSharesResponse,
-  ListProjectsLocationsNfsSharesError,
+/** List storage volume luns for given storage volume. */
+export const listProjectsLocationsVolumesLuns: API.PaginatedOperationMethod<
+  ListProjectsLocationsVolumesLunsRequest,
+  ListProjectsLocationsVolumesLunsResponse,
+  ListProjectsLocationsVolumesLunsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsNfsSharesRequest,
-  output: ListProjectsLocationsNfsSharesResponse,
+  input: ListProjectsLocationsVolumesLunsRequest,
+  output: ListProjectsLocationsVolumesLunsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -2418,241 +2617,313 @@ export const listProjectsLocationsNfsShares: API.PaginatedOperationMethod<
   },
 }));
 
-export interface PatchProjectsLocationsNfsSharesRequest {
-  /** Immutable. The name of the NFS share. */
+export interface EvictProjectsLocationsVolumesLunsRequest {
+  /** Required. The name of the lun. */
   name: string;
-  /** The list of fields to update. The only currently supported fields are: `labels` `allowed_clients` */
-  updateMask?: string;
   /** Request body */
-  body?: NfsShare;
+  body?: EvictLunRequest;
 }
 
-export const PatchProjectsLocationsNfsSharesRequest =
+export const EvictProjectsLocationsVolumesLunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(NfsShare).pipe(T.HttpBody()),
+    body: Schema.optional(EvictLunRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v2/{+name}:evict", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsNfsSharesRequest>;
+  ) as unknown as Schema.Schema<EvictProjectsLocationsVolumesLunsRequest>;
 
-export type PatchProjectsLocationsNfsSharesResponse = Operation;
-export const PatchProjectsLocationsNfsSharesResponse =
+export type EvictProjectsLocationsVolumesLunsResponse = Operation;
+export const EvictProjectsLocationsVolumesLunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsNfsSharesError =
+export type EvictProjectsLocationsVolumesLunsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Update details of a single NFS share. */
-export const patchProjectsLocationsNfsShares: API.OperationMethod<
-  PatchProjectsLocationsNfsSharesRequest,
-  PatchProjectsLocationsNfsSharesResponse,
-  PatchProjectsLocationsNfsSharesError,
+/** Skips lun's cooloff and deletes it now. Lun must be in cooloff state. */
+export const evictProjectsLocationsVolumesLuns: API.OperationMethod<
+  EvictProjectsLocationsVolumesLunsRequest,
+  EvictProjectsLocationsVolumesLunsResponse,
+  EvictProjectsLocationsVolumesLunsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsNfsSharesRequest,
-  output: PatchProjectsLocationsNfsSharesResponse,
+  input: EvictProjectsLocationsVolumesLunsRequest,
+  output: EvictProjectsLocationsVolumesLunsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsNfsSharesRequest {
+export interface GetProjectsLocationsVolumesLunsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
 
-export const GetProjectsLocationsNfsSharesRequest =
+export const GetProjectsLocationsVolumesLunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsNfsSharesRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsVolumesLunsRequest>;
 
-export type GetProjectsLocationsNfsSharesResponse = NfsShare;
-export const GetProjectsLocationsNfsSharesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ NfsShare;
+export type GetProjectsLocationsVolumesLunsResponse = Lun;
+export const GetProjectsLocationsVolumesLunsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Lun;
 
-export type GetProjectsLocationsNfsSharesError =
+export type GetProjectsLocationsVolumesLunsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Get details of a single NFS share. */
-export const getProjectsLocationsNfsShares: API.OperationMethod<
-  GetProjectsLocationsNfsSharesRequest,
-  GetProjectsLocationsNfsSharesResponse,
-  GetProjectsLocationsNfsSharesError,
+/** Get details of a single storage logical unit number(LUN). */
+export const getProjectsLocationsVolumesLuns: API.OperationMethod<
+  GetProjectsLocationsVolumesLunsRequest,
+  GetProjectsLocationsVolumesLunsResponse,
+  GetProjectsLocationsVolumesLunsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsNfsSharesRequest,
-  output: GetProjectsLocationsNfsSharesResponse,
+  input: GetProjectsLocationsVolumesLunsRequest,
+  output: GetProjectsLocationsVolumesLunsResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface CreateProjectsLocationsNfsSharesRequest {
-  /** Required. The parent project and location. */
-  parent: string;
-  /** Request body */
-  body?: NfsShare;
+export interface ListNetworkUsageProjectsLocationsNetworksRequest {
+  /** Required. Parent value (project and location). */
+  location: string;
 }
 
-export const CreateProjectsLocationsNfsSharesRequest =
+export const ListNetworkUsageProjectsLocationsNetworksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(NfsShare).pipe(T.HttpBody()),
+    location: Schema.String.pipe(T.HttpPath("location")),
   }).pipe(
-    T.Http({ method: "POST", path: "v2/{+parent}/nfsShares", hasBody: true }),
+    T.Http({ method: "GET", path: "v2/{+location}/networks:listNetworkUsage" }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsNfsSharesRequest>;
+  ) as unknown as Schema.Schema<ListNetworkUsageProjectsLocationsNetworksRequest>;
 
-export type CreateProjectsLocationsNfsSharesResponse = Operation;
-export const CreateProjectsLocationsNfsSharesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type ListNetworkUsageProjectsLocationsNetworksResponse =
+  ListNetworkUsageResponse;
+export const ListNetworkUsageProjectsLocationsNetworksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListNetworkUsageResponse;
 
-export type CreateProjectsLocationsNfsSharesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Create an NFS share. */
-export const createProjectsLocationsNfsShares: API.OperationMethod<
-  CreateProjectsLocationsNfsSharesRequest,
-  CreateProjectsLocationsNfsSharesResponse,
-  CreateProjectsLocationsNfsSharesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsNfsSharesRequest,
-  output: CreateProjectsLocationsNfsSharesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsNfsSharesRequest {
-  /** Required. The name of the NFS share to delete. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsNfsSharesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsNfsSharesRequest>;
-
-export type DeleteProjectsLocationsNfsSharesResponse = Operation;
-export const DeleteProjectsLocationsNfsSharesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsNfsSharesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Delete an NFS share. The underlying volume is automatically deleted. */
-export const deleteProjectsLocationsNfsShares: API.OperationMethod<
-  DeleteProjectsLocationsNfsSharesRequest,
-  DeleteProjectsLocationsNfsSharesResponse,
-  DeleteProjectsLocationsNfsSharesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsNfsSharesRequest,
-  output: DeleteProjectsLocationsNfsSharesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RenameProjectsLocationsNfsSharesRequest {
-  /** Required. The `name` field is used to identify the nfsshare. Format: projects/{project}/locations/{location}/nfsshares/{nfsshare} */
-  name: string;
-  /** Request body */
-  body?: RenameNfsShareRequest;
-}
-
-export const RenameProjectsLocationsNfsSharesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RenameNfsShareRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+name}:rename", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<RenameProjectsLocationsNfsSharesRequest>;
-
-export type RenameProjectsLocationsNfsSharesResponse = NfsShare;
-export const RenameProjectsLocationsNfsSharesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ NfsShare;
-
-export type RenameProjectsLocationsNfsSharesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** RenameNfsShare sets a new name for an nfsshare. Use with caution, previous names become immediately invalidated. */
-export const renameProjectsLocationsNfsShares: API.OperationMethod<
-  RenameProjectsLocationsNfsSharesRequest,
-  RenameProjectsLocationsNfsSharesResponse,
-  RenameProjectsLocationsNfsSharesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RenameProjectsLocationsNfsSharesRequest,
-  output: RenameProjectsLocationsNfsSharesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsInstancesRequest {
-  /** Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
-  pageSize?: number;
-  /** Required. Parent value for ListInstancesRequest. */
-  parent: string;
-  /** A token identifying a page of results from the server. */
-  pageToken?: string;
-  /** List filter. */
-  filter?: string;
-}
-
-export const ListProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/instances" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
-
-export type ListProjectsLocationsInstancesResponse = ListInstancesResponse;
-export const ListProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
-
-export type ListProjectsLocationsInstancesError =
+export type ListNetworkUsageProjectsLocationsNetworksError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** List servers in a given project and location. */
-export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
-  ListProjectsLocationsInstancesRequest,
-  ListProjectsLocationsInstancesResponse,
-  ListProjectsLocationsInstancesError,
+/** List all Networks (and used IPs for each Network) in the vendor account associated with the specified project. */
+export const listNetworkUsageProjectsLocationsNetworks: API.OperationMethod<
+  ListNetworkUsageProjectsLocationsNetworksRequest,
+  ListNetworkUsageProjectsLocationsNetworksResponse,
+  ListNetworkUsageProjectsLocationsNetworksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListNetworkUsageProjectsLocationsNetworksRequest,
+  output: ListNetworkUsageProjectsLocationsNetworksResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetProjectsLocationsNetworksRequest {
+  /** Required. Name of the resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsNetworksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsNetworksRequest>;
+
+export type GetProjectsLocationsNetworksResponse = Network;
+export const GetProjectsLocationsNetworksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Network;
+
+export type GetProjectsLocationsNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get details of a single network. */
+export const getProjectsLocationsNetworks: API.OperationMethod<
+  GetProjectsLocationsNetworksRequest,
+  GetProjectsLocationsNetworksResponse,
+  GetProjectsLocationsNetworksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsNetworksRequest,
+  output: GetProjectsLocationsNetworksResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsNetworksRequest {
+  /** Required. Parent value for ListNetworksRequest. */
+  parent: string;
+  /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+  /** List filter. */
+  filter?: string;
+  /** A token identifying a page of results from the server. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsNetworksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+parent}/networks" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsNetworksRequest>;
+
+export type ListProjectsLocationsNetworksResponse = ListNetworksResponse;
+export const ListProjectsLocationsNetworksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListNetworksResponse;
+
+export type ListProjectsLocationsNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List network in a given project and location. */
+export const listProjectsLocationsNetworks: API.PaginatedOperationMethod<
+  ListProjectsLocationsNetworksRequest,
+  ListProjectsLocationsNetworksResponse,
+  ListProjectsLocationsNetworksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInstancesRequest,
-  output: ListProjectsLocationsInstancesResponse,
+  input: ListProjectsLocationsNetworksRequest,
+  output: ListProjectsLocationsNetworksResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface RenameProjectsLocationsNetworksRequest {
+  /** Required. The `name` field is used to identify the network. Format: projects/{project}/locations/{location}/networks/{network} */
+  name: string;
+  /** Request body */
+  body?: RenameNetworkRequest;
+}
+
+export const RenameProjectsLocationsNetworksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RenameNetworkRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+name}:rename", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<RenameProjectsLocationsNetworksRequest>;
+
+export type RenameProjectsLocationsNetworksResponse = Network;
+export const RenameProjectsLocationsNetworksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Network;
+
+export type RenameProjectsLocationsNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** RenameNetwork sets a new name for a network. Use with caution, previous names become immediately invalidated. */
+export const renameProjectsLocationsNetworks: API.OperationMethod<
+  RenameProjectsLocationsNetworksRequest,
+  RenameProjectsLocationsNetworksResponse,
+  RenameProjectsLocationsNetworksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RenameProjectsLocationsNetworksRequest,
+  output: RenameProjectsLocationsNetworksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsNetworksRequest {
+  /** Output only. The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}` */
+  name: string;
+  /** The list of fields to update. The only currently supported fields are: `labels`, `reservations`, `vrf.vlan_attachments` */
+  updateMask?: string;
+  /** Request body */
+  body?: Network;
+}
+
+export const PatchProjectsLocationsNetworksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Network).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsNetworksRequest>;
+
+export type PatchProjectsLocationsNetworksResponse = Operation;
+export const PatchProjectsLocationsNetworksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Update details of a single network. */
+export const patchProjectsLocationsNetworks: API.OperationMethod<
+  PatchProjectsLocationsNetworksRequest,
+  PatchProjectsLocationsNetworksResponse,
+  PatchProjectsLocationsNetworksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsNetworksRequest,
+  output: PatchProjectsLocationsNetworksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ResetProjectsLocationsInstancesRequest {
+  /** Required. Name of the resource. */
+  name: string;
+  /** Request body */
+  body?: ResetInstanceRequest;
+}
+
+export const ResetProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ResetInstanceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+name}:reset", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<ResetProjectsLocationsInstancesRequest>;
+
+export type ResetProjectsLocationsInstancesResponse = Operation;
+export const ResetProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ResetProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Perform an ungraceful, hard reset on a server. Equivalent to shutting the power off and then turning it back on. */
+export const resetProjectsLocationsInstances: API.OperationMethod<
+  ResetProjectsLocationsInstancesRequest,
+  ResetProjectsLocationsInstancesResponse,
+  ResetProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ResetProjectsLocationsInstancesRequest,
+  output: ResetProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsInstancesRequest {
@@ -2697,6 +2968,208 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface StopProjectsLocationsInstancesRequest {
+  /** Required. Name of the resource. */
+  name: string;
+  /** Request body */
+  body?: StopInstanceRequest;
+}
+
+export const StopProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(StopInstanceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+name}:stop", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<StopProjectsLocationsInstancesRequest>;
+
+export type StopProjectsLocationsInstancesResponse = Operation;
+export const StopProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type StopProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Stop a running server. */
+export const stopProjectsLocationsInstances: API.OperationMethod<
+  StopProjectsLocationsInstancesRequest,
+  StopProjectsLocationsInstancesResponse,
+  StopProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StopProjectsLocationsInstancesRequest,
+  output: StopProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsInstancesRequest {
+  /** A token identifying a page of results from the server. */
+  pageToken?: string;
+  /** Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
+  pageSize?: number;
+  /** List filter. */
+  filter?: string;
+  /** Required. Parent value for ListInstancesRequest. */
+  parent: string;
+}
+
+export const ListProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+parent}/instances" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
+
+export type ListProjectsLocationsInstancesResponse = ListInstancesResponse;
+export const ListProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
+
+export type ListProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List servers in a given project and location. */
+export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
+  ListProjectsLocationsInstancesRequest,
+  ListProjectsLocationsInstancesResponse,
+  ListProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsInstancesRequest,
+  output: ListProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface RenameProjectsLocationsInstancesRequest {
+  /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */
+  name: string;
+  /** Request body */
+  body?: RenameInstanceRequest;
+}
+
+export const RenameProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RenameInstanceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+name}:rename", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<RenameProjectsLocationsInstancesRequest>;
+
+export type RenameProjectsLocationsInstancesResponse = Instance;
+export const RenameProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Instance;
+
+export type RenameProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** RenameInstance sets a new name for an instance. Use with caution, previous names become immediately invalidated. */
+export const renameProjectsLocationsInstances: API.OperationMethod<
+  RenameProjectsLocationsInstancesRequest,
+  RenameProjectsLocationsInstancesResponse,
+  RenameProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RenameProjectsLocationsInstancesRequest,
+  output: RenameProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsInstancesRequest {
+  /** Required. Name of the resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
+
+export type GetProjectsLocationsInstancesResponse = Instance;
+export const GetProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Instance;
+
+export type GetProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get details about a single server. */
+export const getProjectsLocationsInstances: API.OperationMethod<
+  GetProjectsLocationsInstancesRequest,
+  GetProjectsLocationsInstancesResponse,
+  GetProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsInstancesRequest,
+  output: GetProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DisableHyperthreadingProjectsLocationsInstancesRequest {
+  /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */
+  name: string;
+  /** Request body */
+  body?: DisableHyperthreadingRequest;
+}
+
+export const DisableHyperthreadingProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DisableHyperthreadingRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+name}:disableHyperthreading",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DisableHyperthreadingProjectsLocationsInstancesRequest>;
+
+export type DisableHyperthreadingProjectsLocationsInstancesResponse = Operation;
+export const DisableHyperthreadingProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DisableHyperthreadingProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Perform disable hyperthreading operation on a single server. */
+export const disableHyperthreadingProjectsLocationsInstances: API.OperationMethod<
+  DisableHyperthreadingProjectsLocationsInstancesRequest,
+  DisableHyperthreadingProjectsLocationsInstancesResponse,
+  DisableHyperthreadingProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DisableHyperthreadingProjectsLocationsInstancesRequest,
+  output: DisableHyperthreadingProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface StartProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
@@ -2736,42 +3209,159 @@ export const startProjectsLocationsInstances: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface RenameProjectsLocationsInstancesRequest {
-  /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */
-  name: string;
+export interface DetachLunProjectsLocationsInstancesRequest {
+  /** Required. Name of the instance. */
+  instance: string;
   /** Request body */
-  body?: RenameInstanceRequest;
+  body?: DetachLunRequest;
 }
 
-export const RenameProjectsLocationsInstancesRequest =
+export const DetachLunProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RenameInstanceRequest).pipe(T.HttpBody()),
+    instance: Schema.String.pipe(T.HttpPath("instance")),
+    body: Schema.optional(DetachLunRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v2/{+name}:rename", hasBody: true }),
+    T.Http({ method: "POST", path: "v2/{+instance}:detachLun", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RenameProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Schema<DetachLunProjectsLocationsInstancesRequest>;
 
-export type RenameProjectsLocationsInstancesResponse = Instance;
-export const RenameProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Instance;
+export type DetachLunProjectsLocationsInstancesResponse = Operation;
+export const DetachLunProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RenameProjectsLocationsInstancesError =
+export type DetachLunProjectsLocationsInstancesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** RenameInstance sets a new name for an instance. Use with caution, previous names become immediately invalidated. */
-export const renameProjectsLocationsInstances: API.OperationMethod<
-  RenameProjectsLocationsInstancesRequest,
-  RenameProjectsLocationsInstancesResponse,
-  RenameProjectsLocationsInstancesError,
+/** Detach LUN from Instance. */
+export const detachLunProjectsLocationsInstances: API.OperationMethod<
+  DetachLunProjectsLocationsInstancesRequest,
+  DetachLunProjectsLocationsInstancesResponse,
+  DetachLunProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RenameProjectsLocationsInstancesRequest,
-  output: RenameProjectsLocationsInstancesResponse,
+  input: DetachLunProjectsLocationsInstancesRequest,
+  output: DetachLunProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ReimageProjectsLocationsInstancesRequest {
+  /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */
+  name: string;
+  /** Request body */
+  body?: ReimageInstanceRequest;
+}
+
+export const ReimageProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ReimageInstanceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+name}:reimage", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<ReimageProjectsLocationsInstancesRequest>;
+
+export type ReimageProjectsLocationsInstancesResponse = Operation;
+export const ReimageProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ReimageProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Perform reimage operation on a single server. */
+export const reimageProjectsLocationsInstances: API.OperationMethod<
+  ReimageProjectsLocationsInstancesRequest,
+  ReimageProjectsLocationsInstancesResponse,
+  ReimageProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReimageProjectsLocationsInstancesRequest,
+  output: ReimageProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface LoadAuthInfoProjectsLocationsInstancesRequest {
+  /** Required. Name of the server. */
+  name: string;
+}
+
+export const LoadAuthInfoProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}:loadAuthInfo" }),
+    svc,
+  ) as unknown as Schema.Schema<LoadAuthInfoProjectsLocationsInstancesRequest>;
+
+export type LoadAuthInfoProjectsLocationsInstancesResponse =
+  LoadInstanceAuthInfoResponse;
+export const LoadAuthInfoProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ LoadInstanceAuthInfoResponse;
+
+export type LoadAuthInfoProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Load auth info for a server. */
+export const loadAuthInfoProjectsLocationsInstances: API.OperationMethod<
+  LoadAuthInfoProjectsLocationsInstancesRequest,
+  LoadAuthInfoProjectsLocationsInstancesResponse,
+  LoadAuthInfoProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: LoadAuthInfoProjectsLocationsInstancesRequest,
+  output: LoadAuthInfoProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface EnableHyperthreadingProjectsLocationsInstancesRequest {
+  /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */
+  name: string;
+  /** Request body */
+  body?: EnableHyperthreadingRequest;
+}
+
+export const EnableHyperthreadingProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(EnableHyperthreadingRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+name}:enableHyperthreading",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<EnableHyperthreadingProjectsLocationsInstancesRequest>;
+
+export type EnableHyperthreadingProjectsLocationsInstancesResponse = Operation;
+export const EnableHyperthreadingProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type EnableHyperthreadingProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Perform enable hyperthreading operation on a single server. */
+export const enableHyperthreadingProjectsLocationsInstances: API.OperationMethod<
+  EnableHyperthreadingProjectsLocationsInstancesRequest,
+  EnableHyperthreadingProjectsLocationsInstancesResponse,
+  EnableHyperthreadingProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: EnableHyperthreadingProjectsLocationsInstancesRequest,
+  output: EnableHyperthreadingProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -2821,204 +3411,6 @@ export const enableInteractiveSerialConsoleProjectsLocationsInstances: API.Opera
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ResetProjectsLocationsInstancesRequest {
-  /** Required. Name of the resource. */
-  name: string;
-  /** Request body */
-  body?: ResetInstanceRequest;
-}
-
-export const ResetProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ResetInstanceRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+name}:reset", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ResetProjectsLocationsInstancesRequest>;
-
-export type ResetProjectsLocationsInstancesResponse = Operation;
-export const ResetProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type ResetProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Perform an ungraceful, hard reset on a server. Equivalent to shutting the power off and then turning it back on. */
-export const resetProjectsLocationsInstances: API.OperationMethod<
-  ResetProjectsLocationsInstancesRequest,
-  ResetProjectsLocationsInstancesResponse,
-  ResetProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ResetProjectsLocationsInstancesRequest,
-  output: ResetProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface StopProjectsLocationsInstancesRequest {
-  /** Required. Name of the resource. */
-  name: string;
-  /** Request body */
-  body?: StopInstanceRequest;
-}
-
-export const StopProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(StopInstanceRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+name}:stop", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<StopProjectsLocationsInstancesRequest>;
-
-export type StopProjectsLocationsInstancesResponse = Operation;
-export const StopProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type StopProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Stop a running server. */
-export const stopProjectsLocationsInstances: API.OperationMethod<
-  StopProjectsLocationsInstancesRequest,
-  StopProjectsLocationsInstancesResponse,
-  StopProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StopProjectsLocationsInstancesRequest,
-  output: StopProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DisableHyperthreadingProjectsLocationsInstancesRequest {
-  /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */
-  name: string;
-  /** Request body */
-  body?: DisableHyperthreadingRequest;
-}
-
-export const DisableHyperthreadingProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(DisableHyperthreadingRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+name}:disableHyperthreading",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DisableHyperthreadingProjectsLocationsInstancesRequest>;
-
-export type DisableHyperthreadingProjectsLocationsInstancesResponse = Operation;
-export const DisableHyperthreadingProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DisableHyperthreadingProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Perform disable hyperthreading operation on a single server. */
-export const disableHyperthreadingProjectsLocationsInstances: API.OperationMethod<
-  DisableHyperthreadingProjectsLocationsInstancesRequest,
-  DisableHyperthreadingProjectsLocationsInstancesResponse,
-  DisableHyperthreadingProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DisableHyperthreadingProjectsLocationsInstancesRequest,
-  output: DisableHyperthreadingProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface EnableHyperthreadingProjectsLocationsInstancesRequest {
-  /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */
-  name: string;
-  /** Request body */
-  body?: EnableHyperthreadingRequest;
-}
-
-export const EnableHyperthreadingProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(EnableHyperthreadingRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+name}:enableHyperthreading",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<EnableHyperthreadingProjectsLocationsInstancesRequest>;
-
-export type EnableHyperthreadingProjectsLocationsInstancesResponse = Operation;
-export const EnableHyperthreadingProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type EnableHyperthreadingProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Perform enable hyperthreading operation on a single server. */
-export const enableHyperthreadingProjectsLocationsInstances: API.OperationMethod<
-  EnableHyperthreadingProjectsLocationsInstancesRequest,
-  EnableHyperthreadingProjectsLocationsInstancesResponse,
-  EnableHyperthreadingProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: EnableHyperthreadingProjectsLocationsInstancesRequest,
-  output: EnableHyperthreadingProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsInstancesRequest {
-  /** Required. Name of the resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
-
-export type GetProjectsLocationsInstancesResponse = Instance;
-export const GetProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Instance;
-
-export type GetProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get details about a single server. */
-export const getProjectsLocationsInstances: API.OperationMethod<
-  GetProjectsLocationsInstancesRequest,
-  GetProjectsLocationsInstancesResponse,
-  GetProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInstancesRequest,
-  output: GetProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface DisableInteractiveSerialConsoleProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
@@ -3065,198 +3457,49 @@ export const disableInteractiveSerialConsoleProjectsLocationsInstances: API.Oper
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DetachLunProjectsLocationsInstancesRequest {
-  /** Required. Name of the instance. */
-  instance: string;
-  /** Request body */
-  body?: DetachLunRequest;
-}
-
-export const DetachLunProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    instance: Schema.String.pipe(T.HttpPath("instance")),
-    body: Schema.optional(DetachLunRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+instance}:detachLun", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<DetachLunProjectsLocationsInstancesRequest>;
-
-export type DetachLunProjectsLocationsInstancesResponse = Operation;
-export const DetachLunProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DetachLunProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Detach LUN from Instance. */
-export const detachLunProjectsLocationsInstances: API.OperationMethod<
-  DetachLunProjectsLocationsInstancesRequest,
-  DetachLunProjectsLocationsInstancesResponse,
-  DetachLunProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DetachLunProjectsLocationsInstancesRequest,
-  output: DetachLunProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface LoadAuthInfoProjectsLocationsInstancesRequest {
-  /** Required. Name of the server. */
-  name: string;
-}
-
-export const LoadAuthInfoProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}:loadAuthInfo" }),
-    svc,
-  ) as unknown as Schema.Schema<LoadAuthInfoProjectsLocationsInstancesRequest>;
-
-export type LoadAuthInfoProjectsLocationsInstancesResponse =
-  LoadInstanceAuthInfoResponse;
-export const LoadAuthInfoProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoadInstanceAuthInfoResponse;
-
-export type LoadAuthInfoProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Load auth info for a server. */
-export const loadAuthInfoProjectsLocationsInstances: API.OperationMethod<
-  LoadAuthInfoProjectsLocationsInstancesRequest,
-  LoadAuthInfoProjectsLocationsInstancesResponse,
-  LoadAuthInfoProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: LoadAuthInfoProjectsLocationsInstancesRequest,
-  output: LoadAuthInfoProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ReimageProjectsLocationsInstancesRequest {
-  /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */
-  name: string;
-  /** Request body */
-  body?: ReimageInstanceRequest;
-}
-
-export const ReimageProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ReimageInstanceRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+name}:reimage", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ReimageProjectsLocationsInstancesRequest>;
-
-export type ReimageProjectsLocationsInstancesResponse = Operation;
-export const ReimageProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type ReimageProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Perform reimage operation on a single server. */
-export const reimageProjectsLocationsInstances: API.OperationMethod<
-  ReimageProjectsLocationsInstancesRequest,
-  ReimageProjectsLocationsInstancesResponse,
-  ReimageProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReimageProjectsLocationsInstancesRequest,
-  output: ReimageProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsProvisioningConfigsRequest {
-  /** Required. Name of the ProvisioningConfig. */
-  name: string;
-}
-
-export const GetProjectsLocationsProvisioningConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProvisioningConfigsRequest>;
-
-export type GetProjectsLocationsProvisioningConfigsResponse =
-  ProvisioningConfig;
-export const GetProjectsLocationsProvisioningConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProvisioningConfig;
-
-export type GetProjectsLocationsProvisioningConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get ProvisioningConfig by name. */
-export const getProjectsLocationsProvisioningConfigs: API.OperationMethod<
-  GetProjectsLocationsProvisioningConfigsRequest,
-  GetProjectsLocationsProvisioningConfigsResponse,
-  GetProjectsLocationsProvisioningConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsProvisioningConfigsRequest,
-  output: GetProjectsLocationsProvisioningConfigsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsProvisioningConfigsRequest {
-  /** Required. The parent project and location containing the ProvisioningConfig. */
-  parent: string;
+export interface PatchProjectsLocationsProvisioningConfigsRequest {
   /** Optional. Email provided to send a confirmation with provisioning config to. */
   email?: string;
+  /** Output only. The system-generated name of the provisioning config. This follows the UUID format. */
+  name: string;
+  /** Required. The list of fields to update. */
+  updateMask?: string;
   /** Request body */
   body?: ProvisioningConfig;
 }
 
-export const CreateProjectsLocationsProvisioningConfigsRequest =
+export const PatchProjectsLocationsProvisioningConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     email: Schema.optional(Schema.String).pipe(T.HttpQuery("email")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ProvisioningConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+parent}/provisioningConfigs",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsProvisioningConfigsRequest>;
+  ) as unknown as Schema.Schema<PatchProjectsLocationsProvisioningConfigsRequest>;
 
-export type CreateProjectsLocationsProvisioningConfigsResponse =
+export type PatchProjectsLocationsProvisioningConfigsResponse =
   ProvisioningConfig;
-export const CreateProjectsLocationsProvisioningConfigsResponse =
+export const PatchProjectsLocationsProvisioningConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProvisioningConfig;
 
-export type CreateProjectsLocationsProvisioningConfigsError =
+export type PatchProjectsLocationsProvisioningConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Create new ProvisioningConfig. */
-export const createProjectsLocationsProvisioningConfigs: API.OperationMethod<
-  CreateProjectsLocationsProvisioningConfigsRequest,
-  CreateProjectsLocationsProvisioningConfigsResponse,
-  CreateProjectsLocationsProvisioningConfigsError,
+/** Update existing ProvisioningConfig. */
+export const patchProjectsLocationsProvisioningConfigs: API.OperationMethod<
+  PatchProjectsLocationsProvisioningConfigsRequest,
+  PatchProjectsLocationsProvisioningConfigsResponse,
+  PatchProjectsLocationsProvisioningConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsProvisioningConfigsRequest,
-  output: CreateProjectsLocationsProvisioningConfigsResponse,
+  input: PatchProjectsLocationsProvisioningConfigsRequest,
+  output: PatchProjectsLocationsProvisioningConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -3304,327 +3547,84 @@ export const submitProjectsLocationsProvisioningConfigs: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchProjectsLocationsProvisioningConfigsRequest {
-  /** Output only. The system-generated name of the provisioning config. This follows the UUID format. */
+export interface GetProjectsLocationsProvisioningConfigsRequest {
+  /** Required. Name of the ProvisioningConfig. */
   name: string;
-  /** Required. The list of fields to update. */
-  updateMask?: string;
+}
+
+export const GetProjectsLocationsProvisioningConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsProvisioningConfigsRequest>;
+
+export type GetProjectsLocationsProvisioningConfigsResponse =
+  ProvisioningConfig;
+export const GetProjectsLocationsProvisioningConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ProvisioningConfig;
+
+export type GetProjectsLocationsProvisioningConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get ProvisioningConfig by name. */
+export const getProjectsLocationsProvisioningConfigs: API.OperationMethod<
+  GetProjectsLocationsProvisioningConfigsRequest,
+  GetProjectsLocationsProvisioningConfigsResponse,
+  GetProjectsLocationsProvisioningConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsProvisioningConfigsRequest,
+  output: GetProjectsLocationsProvisioningConfigsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsProvisioningConfigsRequest {
   /** Optional. Email provided to send a confirmation with provisioning config to. */
   email?: string;
+  /** Required. The parent project and location containing the ProvisioningConfig. */
+  parent: string;
   /** Request body */
   body?: ProvisioningConfig;
 }
 
-export const PatchProjectsLocationsProvisioningConfigsRequest =
+export const CreateProjectsLocationsProvisioningConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     email: Schema.optional(Schema.String).pipe(T.HttpQuery("email")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ProvisioningConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v2/{+parent}/provisioningConfigs",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsProvisioningConfigsRequest>;
+  ) as unknown as Schema.Schema<CreateProjectsLocationsProvisioningConfigsRequest>;
 
-export type PatchProjectsLocationsProvisioningConfigsResponse =
+export type CreateProjectsLocationsProvisioningConfigsResponse =
   ProvisioningConfig;
-export const PatchProjectsLocationsProvisioningConfigsResponse =
+export const CreateProjectsLocationsProvisioningConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProvisioningConfig;
 
-export type PatchProjectsLocationsProvisioningConfigsError =
+export type CreateProjectsLocationsProvisioningConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Update existing ProvisioningConfig. */
-export const patchProjectsLocationsProvisioningConfigs: API.OperationMethod<
-  PatchProjectsLocationsProvisioningConfigsRequest,
-  PatchProjectsLocationsProvisioningConfigsResponse,
-  PatchProjectsLocationsProvisioningConfigsError,
+/** Create new ProvisioningConfig. */
+export const createProjectsLocationsProvisioningConfigs: API.OperationMethod<
+  CreateProjectsLocationsProvisioningConfigsRequest,
+  CreateProjectsLocationsProvisioningConfigsResponse,
+  CreateProjectsLocationsProvisioningConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsProvisioningConfigsRequest,
-  output: PatchProjectsLocationsProvisioningConfigsResponse,
+  input: CreateProjectsLocationsProvisioningConfigsRequest,
+  output: CreateProjectsLocationsProvisioningConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
-
-export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get details about an operation. */
-export const getProjectsLocationsOperations: API.OperationMethod<
-  GetProjectsLocationsOperationsRequest,
-  GetProjectsLocationsOperationsResponse,
-  GetProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GetProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsSshKeysRequest {
-  /** Required. The parent containing the SSH keys. */
-  parent: string;
-  /** Required. The ID to use for the key, which will become the final component of the key's resource name. This value must match the regex: [a-zA-Z0-9@.\-_]{1,64} */
-  sshKeyId?: string;
-  /** Request body */
-  body?: SSHKey;
-}
-
-export const CreateProjectsLocationsSshKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    sshKeyId: Schema.optional(Schema.String).pipe(T.HttpQuery("sshKeyId")),
-    body: Schema.optional(SSHKey).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+parent}/sshKeys", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSshKeysRequest>;
-
-export type CreateProjectsLocationsSshKeysResponse = SSHKey;
-export const CreateProjectsLocationsSshKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SSHKey;
-
-export type CreateProjectsLocationsSshKeysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Register a public SSH key in the specified project for use with the interactive serial console feature. */
-export const createProjectsLocationsSshKeys: API.OperationMethod<
-  CreateProjectsLocationsSshKeysRequest,
-  CreateProjectsLocationsSshKeysResponse,
-  CreateProjectsLocationsSshKeysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSshKeysRequest,
-  output: CreateProjectsLocationsSshKeysResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsSshKeysRequest {
-  /** Required. The name of the SSH key to delete. Currently, the only valid value for the location is "global". */
-  name: string;
-}
-
-export const DeleteProjectsLocationsSshKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSshKeysRequest>;
-
-export type DeleteProjectsLocationsSshKeysResponse = Empty;
-export const DeleteProjectsLocationsSshKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsSshKeysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a public SSH key registered in the specified project. */
-export const deleteProjectsLocationsSshKeys: API.OperationMethod<
-  DeleteProjectsLocationsSshKeysRequest,
-  DeleteProjectsLocationsSshKeysResponse,
-  DeleteProjectsLocationsSshKeysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSshKeysRequest,
-  output: DeleteProjectsLocationsSshKeysResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsSshKeysRequest {
-  /** The maximum number of items to return. */
-  pageSize?: number;
-  /** Required. The parent containing the SSH keys. Currently, the only valid value for the location is "global". */
-  parent: string;
-  /** The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
-}
-
-export const ListProjectsLocationsSshKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/sshKeys" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSshKeysRequest>;
-
-export type ListProjectsLocationsSshKeysResponse = ListSSHKeysResponse;
-export const ListProjectsLocationsSshKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSSHKeysResponse;
-
-export type ListProjectsLocationsSshKeysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the public SSH keys registered for the specified project. These SSH keys are used only for the interactive serial console feature. */
-export const listProjectsLocationsSshKeys: API.PaginatedOperationMethod<
-  ListProjectsLocationsSshKeysRequest,
-  ListProjectsLocationsSshKeysResponse,
-  ListProjectsLocationsSshKeysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSshKeysRequest,
-  output: ListProjectsLocationsSshKeysResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ListProjectsLocationsOsImagesRequest {
-  /** Required. Parent value for ListOSImagesRequest. */
-  parent: string;
-  /** A token identifying a page of results from the server. */
-  pageToken?: string;
-  /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. Notice that page_size field is not supported and won't be respected in the API request for now, will be updated when pagination is supported. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsOsImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/osImages" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOsImagesRequest>;
-
-export type ListProjectsLocationsOsImagesResponse = ListOSImagesResponse;
-export const ListProjectsLocationsOsImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOSImagesResponse;
-
-export type ListProjectsLocationsOsImagesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Retrieves the list of OS images which are currently approved. */
-export const listProjectsLocationsOsImages: API.PaginatedOperationMethod<
-  ListProjectsLocationsOsImagesRequest,
-  ListProjectsLocationsOsImagesResponse,
-  ListProjectsLocationsOsImagesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOsImagesRequest,
-  output: ListProjectsLocationsOsImagesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsOsImagesRequest {
-  /** Required. Name of the OS image. */
-  name: string;
-}
-
-export const GetProjectsLocationsOsImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOsImagesRequest>;
-
-export type GetProjectsLocationsOsImagesResponse = OSImage;
-export const GetProjectsLocationsOsImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OSImage;
-
-export type GetProjectsLocationsOsImagesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get details of a single OS image. */
-export const getProjectsLocationsOsImages: API.OperationMethod<
-  GetProjectsLocationsOsImagesRequest,
-  GetProjectsLocationsOsImagesResponse,
-  GetProjectsLocationsOsImagesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOsImagesRequest,
-  output: GetProjectsLocationsOsImagesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsProvisioningQuotasRequest {
-  /** Requested page size. The server might return fewer items than requested. If unspecified, server will pick an appropriate default. Notice that page_size field is not supported and won't be respected in the API request for now, will be updated when pagination is supported. */
-  pageSize?: number;
-  /** Required. Parent value for ListProvisioningQuotasRequest. */
-  parent: string;
-  /** A token identifying a page of results from the server. */
-  pageToken?: string;
-}
-
-export const ListProjectsLocationsProvisioningQuotasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/provisioningQuotas" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProvisioningQuotasRequest>;
-
-export type ListProjectsLocationsProvisioningQuotasResponse =
-  ListProvisioningQuotasResponse;
-export const ListProjectsLocationsProvisioningQuotasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProvisioningQuotasResponse;
-
-export type ListProjectsLocationsProvisioningQuotasError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List the budget details to provision resources on a given project. */
-export const listProjectsLocationsProvisioningQuotas: API.PaginatedOperationMethod<
-  ListProjectsLocationsProvisioningQuotasRequest,
-  ListProjectsLocationsProvisioningQuotasResponse,
-  ListProjectsLocationsProvisioningQuotasError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsProvisioningQuotasRequest,
-  output: ListProjectsLocationsProvisioningQuotasResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));

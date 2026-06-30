@@ -14,63 +14,35 @@ export type TasksRetrieveInput = typeof TasksRetrieveInput.Type;
 
 // Output Schema
 export const TasksRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  task_number: Schema.optional(Schema.NullOr(Schema.Number)),
-  slug: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  title_manually_set: Schema.optional(Schema.Boolean),
-  description: Schema.optional(Schema.String),
-  origin_product: Schema.optional(
-    Schema.Literals([
-      "error_tracking",
-      "eval_clusters",
-      "user_created",
-      "automation",
-      "slack",
-      "support_queue",
-      "session_summaries",
-      "signal_report",
-    ]),
-  ),
-  repository: Schema.optional(Schema.NullOr(Schema.String)),
-  github_integration: Schema.optional(Schema.NullOr(Schema.Number)),
-  signal_report: Schema.optional(Schema.NullOr(Schema.String)),
-  signal_report_task_relationship: Schema.optional(
-    Schema.Literals(["implementation"]),
-  ),
-  json_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  internal: Schema.optional(Schema.Boolean),
-  latest_run: Schema.optional(
-    Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-  created_at: Schema.optional(Schema.String),
-  updated_at: Schema.optional(Schema.String),
-  created_by: Schema.optional(
-    Schema.NullOr(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        uuid: Schema.optional(Schema.String),
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.optional(Schema.String),
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.optional(
-          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-        ),
-        role_at_organization: Schema.optional(Schema.Unknown),
-      }),
-    ),
-  ),
-  ci_prompt: Schema.optional(Schema.NullOr(Schema.String)),
+  id: Schema.String,
+  task_number: Schema.NullOr(Schema.Number),
+  slug: Schema.String,
+  title: Schema.String,
+  title_manually_set: Schema.Boolean,
+  description: Schema.String,
+  origin_product: Schema.String,
+  repository: Schema.NullOr(Schema.String),
+  github_integration: Schema.NullOr(Schema.Number),
+  github_user_integration: Schema.NullOr(Schema.String),
+  signal_report: Schema.NullOr(Schema.String),
+  json_schema: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+  internal: Schema.Boolean,
+  archived: Schema.Boolean,
+  archived_at: Schema.NullOr(Schema.String),
+  latest_run: Schema.NullOr(Schema.String),
+  created_at: Schema.optional(Schema.NullOr(Schema.String)),
+  updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+  created_by: Schema.optional(Schema.Unknown),
+  ci_prompt: Schema.NullOr(Schema.String),
 });
 export type TasksRetrieveOutput = typeof TasksRetrieveOutput.Type;
 
 // The operation
 /**
- * API for managing tasks within a project. Tasks represent units of work to be performed by an agent.
+ * Get task
  *
- * @param id - A UUID string identifying this task.
+ * Retrieve a single task by ID.
+ *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

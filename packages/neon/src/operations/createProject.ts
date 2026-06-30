@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const CreateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -187,13 +187,16 @@ export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.optional(Schema.String),
     maintenance_scheduled_for: Schema.optional(Schema.String),
     hipaa_enabled_at: Schema.optional(Schema.String),
+    effective_project_permission: Schema.optional(
+      Schema.NullOr(Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"])),
+    ),
   }),
   connection_uris: Schema.Array(
     Schema.Struct({
-      connection_uri: SensitiveString,
+      connection_uri: SensitiveOutputString,
       connection_parameters: Schema.Struct({
         database: Schema.String,
-        password: SensitiveString,
+        password: SensitiveOutputString,
         role: Schema.String,
         host: Schema.String,
         pooler_host: Schema.String,
@@ -204,7 +207,7 @@ export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       branch_id: Schema.String,
       name: Schema.String,
-      password: Schema.optional(SensitiveString),
+      password: Schema.optional(SensitiveOutputString),
       protected: Schema.optional(Schema.Boolean),
       authentication_method: Schema.optional(Schema.String),
       created_at: Schema.String,
@@ -383,12 +386,13 @@ export type CreateProjectOutput = typeof CreateProjectOutput.Type;
  * Create project
  *
  * Creates a Neon project within an organization.
- * You may need to specify an org_id parameter depending on your API key type.
+ * If using a personal API key, include the `org_id` parameter to specify which organization to create the project in.
+ * If using an org API key, `org_id` is automatically inferred from the key.
  * Plan limits define how many projects you can create.
- * For more information, see [Manage projects](https://neon.tech/docs/manage/projects/).
+ * For more information, see [Manage projects](https://neon.com/docs/manage/projects/).
  * You can specify a region and Postgres version in the request body.
- * Neon currently supports PostgreSQL 14, 15, 16, and 17.
- * For supported regions and `region_id` values, see [Regions](https://neon.tech/docs/introduction/regions/).
+ * Neon currently supports PostgreSQL 14, 15, 16, 17, and 18.
+ * For supported regions and `region_id` values, see [Regions](https://neon.com/docs/introduction/regions/).
  */
 export const createProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateProjectInput,

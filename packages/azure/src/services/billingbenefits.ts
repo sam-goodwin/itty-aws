@@ -51,6 +51,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  * Get operations.
  *
  * List all the operations.
+ *
+ * @param api-version - The api-version to be used by the service
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -58,7 +60,90 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ReservationOrderAliasCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderAliasName: Schema.String.pipe(T.PathParam()),
+    sku: Schema.Struct({
+      name: Schema.optional(Schema.String),
+    }),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        billingScopeId: Schema.optional(Schema.String),
+        term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
+        billingPlan: Schema.optional(Schema.Literals(["P1M"])),
+        appliedScopeType: Schema.optional(
+          Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+        ),
+        appliedScopeProperties: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            managementGroupId: Schema.optional(Schema.String),
+            subscriptionId: Schema.optional(Schema.String),
+            resourceGroupId: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+          }),
+        ),
+        quantity: Schema.optional(Schema.Number),
+        renew: Schema.optional(Schema.Boolean),
+        reservedResourceType: Schema.optional(
+          Schema.Literals([
+            "VirtualMachines",
+            "SqlDatabases",
+            "SuseLinux",
+            "CosmosDb",
+            "RedHat",
+            "SqlDataWarehouse",
+            "VMwareCloudSimple",
+            "RedHatOsa",
+            "Databricks",
+            "AppService",
+            "ManagedDisk",
+            "BlockBlob",
+            "RedisCache",
+            "AzureDataExplorer",
+            "MySql",
+            "MariaDb",
+            "PostgreSql",
+            "DedicatedHost",
+            "SapHana",
+            "SqlAzureHybridBenefit",
+            "AVS",
+            "DataFactory",
+            "NetAppStorage",
+            "AzureFiles",
+            "SqlEdge",
+            "VirtualMachineSoftware",
+          ]),
+        ),
+        reviewDateTime: Schema.optional(Schema.String),
+        reservedResourceProperties: Schema.optional(
+          Schema.Struct({
+            instanceFlexibility: Schema.optional(
+              Schema.Literals(["On", "Off"]),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
@@ -95,6 +180,9 @@ export type ReservationOrderAliasCreateOutput =
 // The operation
 /**
  * Create a reservation order alias.
+ *
+ * @param reservationOrderAliasName - Name of the reservation order alias
+ * @param api-version - The api-version to be used by the service
  */
 export const ReservationOrderAliasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -104,7 +192,9 @@ export const ReservationOrderAliasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ReservationOrderAliasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderAliasName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
@@ -141,6 +231,9 @@ export type ReservationOrderAliasGetOutput =
 // The operation
 /**
  * Get a reservation order alias.
+ *
+ * @param reservationOrderAliasName - Name of the reservation order alias
+ * @param api-version - The api-version to be used by the service
  */
 export const ReservationOrderAliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -149,9 +242,11 @@ export const ReservationOrderAliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const SavingsPlanGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SavingsPlanGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
+  savingsPlanId: Schema.String.pipe(T.PathParam()),
+  $expand: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
@@ -185,15 +280,20 @@ export type SavingsPlanGetOutput = typeof SavingsPlanGetOutput.Type;
 // The operation
 /**
  * Get savings plan.
+ *
+ * @param savingsPlanOrderId - Order ID of the savings plan
+ * @param savingsPlanId - ID of the savings plan
+ * @param api-version - The api-version to be used by the service
+ * @param $expand - May be used to expand the detail information of some properties.
  */
 export const SavingsPlanGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanGetInput,
   outputSchema: SavingsPlanGetOutput,
 }));
 // Input Schema
-export const SavingsPlanListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SavingsPlanListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans",
@@ -244,6 +344,9 @@ export type SavingsPlanListOutput = typeof SavingsPlanListOutput.Type;
 // The operation
 /**
  * List savings plans in an order.
+ *
+ * @param savingsPlanOrderId - Order ID of the savings plan
+ * @param api-version - The api-version to be used by the service
  */
 export const SavingsPlanList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanListInput,
@@ -331,6 +434,7 @@ export type SavingsPlanListAllOutput = typeof SavingsPlanListAllOutput.Type;
 /**
  * List savings plans.
  *
+ * @param api-version - The api-version to be used by the service
  * @param $filter - May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}
  * @param $orderby - May be used to sort order by reservation properties.
  * @param refreshSummary - To indicate whether to refresh the roll up counts of the savings plans group by provisioning states
@@ -344,7 +448,70 @@ export const SavingsPlanListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SavingsPlanOrderAliasCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    savingsPlanOrderAliasName: Schema.String.pipe(T.PathParam()),
+    sku: Schema.Struct({
+      name: Schema.optional(Schema.String),
+    }),
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        savingsPlanOrderId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Created",
+            "Succeeded",
+            "Cancelled",
+            "Expired",
+            "Failed",
+          ]),
+        ),
+        billingScopeId: Schema.optional(Schema.String),
+        term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
+        billingPlan: Schema.optional(Schema.Literals(["P1M"])),
+        appliedScopeType: Schema.optional(
+          Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+        ),
+        appliedScopeProperties: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            managementGroupId: Schema.optional(Schema.String),
+            subscriptionId: Schema.optional(Schema.String),
+            resourceGroupId: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+          }),
+        ),
+        commitment: Schema.optional(
+          Schema.Struct({
+            currencyCode: Schema.optional(Schema.String),
+            amount: Schema.optional(Schema.Number),
+          }),
+        ),
+        renew: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
@@ -381,6 +548,9 @@ export type SavingsPlanOrderAliasCreateOutput =
 // The operation
 /**
  * Create a savings plan. Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
+ *
+ * @param savingsPlanOrderAliasName - Name of the savings plan order alias
+ * @param api-version - The api-version to be used by the service
  */
 export const SavingsPlanOrderAliasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -390,7 +560,9 @@ export const SavingsPlanOrderAliasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SavingsPlanOrderAliasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    savingsPlanOrderAliasName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
@@ -427,6 +599,9 @@ export type SavingsPlanOrderAliasGetOutput =
 // The operation
 /**
  * Get a savings plan.
+ *
+ * @param savingsPlanOrderAliasName - Name of the savings plan order alias
+ * @param api-version - The api-version to be used by the service
  */
 export const SavingsPlanOrderAliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -436,7 +611,9 @@ export const SavingsPlanOrderAliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SavingsPlanOrderElevateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/elevate",
@@ -465,6 +642,9 @@ export type SavingsPlanOrderElevateOutput =
 // The operation
 /**
  * Elevate as owner on savings plan order based on billing permissions.
+ *
+ * @param savingsPlanOrderId - Order ID of the savings plan
+ * @param api-version - The api-version to be used by the service
  */
 export const SavingsPlanOrderElevate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -474,7 +654,10 @@ export const SavingsPlanOrderElevate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SavingsPlanOrderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
+    $expand: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}",
@@ -509,6 +692,10 @@ export type SavingsPlanOrderGetOutput = typeof SavingsPlanOrderGetOutput.Type;
 // The operation
 /**
  * Get a savings plan order.
+ *
+ * @param savingsPlanOrderId - Order ID of the savings plan
+ * @param api-version - The api-version to be used by the service
+ * @param $expand - May be used to expand the detail information of some properties.
  */
 export const SavingsPlanOrderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanOrderGetInput,
@@ -568,6 +755,8 @@ export type SavingsPlanOrderListOutput = typeof SavingsPlanOrderListOutput.Type;
 // The operation
 /**
  * List all Savings plan orders.
+ *
+ * @param api-version - The api-version to be used by the service
  */
 export const SavingsPlanOrderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -577,7 +766,71 @@ export const SavingsPlanOrderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SavingsPlanUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
+    savingsPlanId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        appliedScopeType: Schema.optional(
+          Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+        ),
+        appliedScopeProperties: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            managementGroupId: Schema.optional(Schema.String),
+            subscriptionId: Schema.optional(Schema.String),
+            resourceGroupId: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+          }),
+        ),
+        renew: Schema.optional(Schema.Boolean),
+        renewProperties: Schema.optional(
+          Schema.Struct({
+            purchaseProperties: Schema.optional(
+              Schema.Struct({
+                sku: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                  }),
+                ),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    displayName: Schema.optional(Schema.String),
+                    billingScopeId: Schema.optional(Schema.String),
+                    term: Schema.optional(
+                      Schema.Literals(["P1Y", "P3Y", "P5Y"]),
+                    ),
+                    billingPlan: Schema.optional(Schema.Literals(["P1M"])),
+                    appliedScopeType: Schema.optional(
+                      Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+                    ),
+                    commitment: Schema.optional(
+                      Schema.Struct({
+                        currencyCode: Schema.optional(Schema.String),
+                        amount: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    effectiveDateTime: Schema.optional(Schema.String),
+                    renew: Schema.optional(Schema.Boolean),
+                    appliedScopeProperties: Schema.optional(
+                      Schema.Struct({
+                        tenantId: Schema.optional(Schema.String),
+                        managementGroupId: Schema.optional(Schema.String),
+                        subscriptionId: Schema.optional(Schema.String),
+                        resourceGroupId: Schema.optional(Schema.String),
+                        displayName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+  },
 ).pipe(
   T.Http({
     method: "PATCH",
@@ -613,6 +866,10 @@ export type SavingsPlanUpdateOutput = typeof SavingsPlanUpdateOutput.Type;
 // The operation
 /**
  * Update savings plan.
+ *
+ * @param savingsPlanOrderId - Order ID of the savings plan
+ * @param savingsPlanId - ID of the savings plan
+ * @param api-version - The api-version to be used by the service
  */
 export const SavingsPlanUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanUpdateInput,
@@ -620,7 +877,77 @@ export const SavingsPlanUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SavingsPlanValidateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
+    savingsPlanId: Schema.String.pipe(T.PathParam()),
+    benefits: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          displayName: Schema.optional(Schema.String),
+          appliedScopeType: Schema.optional(
+            Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+          ),
+          appliedScopeProperties: Schema.optional(
+            Schema.Struct({
+              tenantId: Schema.optional(Schema.String),
+              managementGroupId: Schema.optional(Schema.String),
+              subscriptionId: Schema.optional(Schema.String),
+              resourceGroupId: Schema.optional(Schema.String),
+              displayName: Schema.optional(Schema.String),
+            }),
+          ),
+          renew: Schema.optional(Schema.Boolean),
+          renewProperties: Schema.optional(
+            Schema.Struct({
+              purchaseProperties: Schema.optional(
+                Schema.Struct({
+                  sku: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  properties: Schema.optional(
+                    Schema.Struct({
+                      displayName: Schema.optional(Schema.String),
+                      billingScopeId: Schema.optional(Schema.String),
+                      term: Schema.optional(
+                        Schema.Literals(["P1Y", "P3Y", "P5Y"]),
+                      ),
+                      billingPlan: Schema.optional(Schema.Literals(["P1M"])),
+                      appliedScopeType: Schema.optional(
+                        Schema.Literals([
+                          "Single",
+                          "Shared",
+                          "ManagementGroup",
+                        ]),
+                      ),
+                      commitment: Schema.optional(
+                        Schema.Struct({
+                          currencyCode: Schema.optional(Schema.String),
+                          amount: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      effectiveDateTime: Schema.optional(Schema.String),
+                      renew: Schema.optional(Schema.Boolean),
+                      appliedScopeProperties: Schema.optional(
+                        Schema.Struct({
+                          tenantId: Schema.optional(Schema.String),
+                          managementGroupId: Schema.optional(Schema.String),
+                          subscriptionId: Schema.optional(Schema.String),
+                          resourceGroupId: Schema.optional(Schema.String),
+                          displayName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/validate",
@@ -650,6 +977,10 @@ export type SavingsPlanValidateUpdateOutput =
 // The operation
 /**
  * Validate savings plan patch.
+ *
+ * @param savingsPlanOrderId - Order ID of the savings plan
+ * @param savingsPlanId - ID of the savings plan
+ * @param api-version - The api-version to be used by the service
  */
 export const SavingsPlanValidateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -658,9 +989,41 @@ export const SavingsPlanValidateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ValidatePurchaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ValidatePurchaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  benefits: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  ),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.BillingBenefits/validate",
@@ -689,6 +1052,8 @@ export type ValidatePurchaseOutput = typeof ValidatePurchaseOutput.Type;
 // The operation
 /**
  * Validate savings plan purchase.
+ *
+ * @param api-version - The api-version to be used by the service
  */
 export const ValidatePurchase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ValidatePurchaseInput,

@@ -1744,6 +1744,9 @@ export type DatabaseAdvisorsUpdateOutput =
  * @param serverName - The name of the server.
  * @param databaseName - The name of the database.
  * @param advisorName - The name of the Database Advisor.
+ * @param properties - Resource properties.
+ * @param kind - Resource kind.
+ * @param location - Resource location.
  */
 export const DatabaseAdvisorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2968,6 +2971,9 @@ export type DatabaseRecommendedActionsUpdateOutput =
  * @param databaseName - The name of the database.
  * @param advisorName - The name of the Database Advisor.
  * @param recommendedActionName - The name of Database Recommended Action.
+ * @param properties - Resource properties.
+ * @param kind - Resource kind.
+ * @param location - Resource location.
  */
 export const DatabaseRecommendedActionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4108,6 +4114,7 @@ export type DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateOutput =
  * @param serverName - The name of the server.
  * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
+ * @param properties - Resource properties.
  */
 export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4358,6 +4365,7 @@ export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput 
  * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
+ * @param properties - Resource properties.
  */
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5566,6 +5574,7 @@ export type DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule).
+ * @param properties - Resource properties.
  */
 export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5995,6 +6004,7 @@ export type DatabaseVulnerabilityAssessmentsCreateOrUpdateOutput =
  * @param serverName - The name of the server.
  * @param databaseName - The name of the database for which the vulnerability assessment is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
+ * @param properties - Resource properties.
  */
 export const DatabaseVulnerabilityAssessmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7338,6 +7348,7 @@ export const ElasticPoolActivitiesListByElasticPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     elasticPoolName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -7370,6 +7381,7 @@ export type ElasticPoolActivitiesListByElasticPoolOutput =
  * @param api-version - The API version to use for the request.
  * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serverName - The name of the server.
  * @param elasticPoolName - The name of the elastic pool for which to get the current activity.
  */
 export const ElasticPoolActivitiesListByElasticPool =
@@ -7382,6 +7394,7 @@ export const ElasticPoolDatabaseActivitiesListByElasticPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     elasticPoolName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -7414,6 +7427,7 @@ export type ElasticPoolDatabaseActivitiesListByElasticPoolOutput =
  * @param api-version - The API version to use for the request.
  * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serverName - The name of the server.
  * @param elasticPoolName - The name of the elastic pool.
  */
 export const ElasticPoolDatabaseActivitiesListByElasticPool =
@@ -16070,6 +16084,7 @@ export type ManagedBackupShortTermRetentionPoliciesCreateOrUpdateOutput =
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the database.
  * @param policyName - The policy name.
+ * @param properties - Resource properties.
  */
 export const ManagedBackupShortTermRetentionPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16262,6 +16277,7 @@ export type ManagedBackupShortTermRetentionPoliciesUpdateOutput =
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the database.
  * @param policyName - The policy name.
+ * @param properties - Resource properties.
  */
 export const ManagedBackupShortTermRetentionPoliciesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17851,6 +17867,8 @@ export type ManagedDatabaseSensitivityLabelsCreateOrUpdateOutput =
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
+ * @param properties - Resource properties.
+ * @param managedBy - Resource that manages the sensitivity label.
  */
 export const ManagedDatabaseSensitivityLabelsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19169,6 +19187,7 @@ export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOut
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule).
+ * @param properties - Resource properties.
  */
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19600,6 +19619,7 @@ export type ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateOutput =
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the database for which the vulnerability assessment is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
+ * @param properties - Resource properties.
  */
 export const ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23071,6 +23091,7 @@ export type ManagedInstanceTdeCertificatesCreateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param properties - Resource properties.
  */
 export const ManagedInstanceTdeCertificatesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23620,6 +23641,7 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCrea
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
  * @param policyName - The policy name.
+ * @param properties - Resource properties.
  */
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23815,6 +23837,7 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpda
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
  * @param policyName - The policy name.
+ * @param properties - Resource properties.
  */
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -25186,6 +25209,7 @@ export const RecoverableDatabasesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -25214,6 +25238,7 @@ export type RecoverableDatabasesGetOutput =
  * @param api-version - The API version to use for the request.
  * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database
  */
 export const RecoverableDatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -25227,6 +25252,7 @@ export const RecoverableDatabasesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -25258,6 +25284,7 @@ export type RecoverableDatabasesListByServerOutput =
  * @param api-version - The API version to use for the request.
  * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serverName - The name of the server.
  */
 export const RecoverableDatabasesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -25485,6 +25512,7 @@ export const ReplicationLinksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     linkId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -25510,6 +25538,7 @@ export type ReplicationLinksDeleteOutput =
  * @param api-version - The API version to use for the request.
  * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database that has the replication link to be dropped.
  * @param linkId - The ID of the replication link to be deleted.
  */
@@ -25524,6 +25553,7 @@ export const ReplicationLinksFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     linkId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -25549,6 +25579,7 @@ export type ReplicationLinksFailoverOutput =
  * @param api-version - The API version to use for the request.
  * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database that has the replication link to be failed over.
  * @param linkId - The ID of the replication link to be failed over.
  */
@@ -25563,6 +25594,7 @@ export const ReplicationLinksFailoverAllowDataLossInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     linkId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -25588,6 +25620,7 @@ export type ReplicationLinksFailoverAllowDataLossOutput =
  * @param api-version - The API version to use for the request.
  * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database that has the replication link to be failed over.
  * @param linkId - The ID of the replication link to be failed over.
  */
@@ -25796,6 +25829,7 @@ export const ReplicationLinksUnlinkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     linkId: Schema.String.pipe(T.PathParam()),
     forcedTermination: Schema.optional(Schema.Boolean),
@@ -25822,6 +25856,7 @@ export type ReplicationLinksUnlinkOutput =
  * @param api-version - The API version to use for the request.
  * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database that has the replication link to be failed over.
  * @param linkId - The ID of the replication link to be failed over.
  */
@@ -26442,6 +26477,8 @@ export type SensitivityLabelsCreateOrUpdateOutput =
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
+ * @param properties - Resource properties.
+ * @param managedBy - Resource that manages the sensitivity label.
  */
 export const SensitivityLabelsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -27365,6 +27402,9 @@ export type ServerAdvisorsUpdateOutput = typeof ServerAdvisorsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  * @param advisorName - The name of the Server Advisor.
+ * @param properties - Resource properties.
+ * @param kind - Resource kind.
+ * @param location - Resource location.
  */
 export const ServerAdvisorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -29431,10 +29471,10 @@ export const ServersCreateOrUpdateInput =
           }),
         ),
         restrictOutboundNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
         ),
         isIPv6Enabled: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
         ),
         externalGovernanceStatus: Schema.optional(
           Schema.Literals(["Enabled", "Disabled"]),
@@ -30143,9 +30183,11 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
       ),
       restrictOutboundNetworkAccess: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
+        Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
       ),
-      isIPv6Enabled: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      isIPv6Enabled: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+      ),
       externalGovernanceStatus: Schema.optional(
         Schema.Literals(["Enabled", "Disabled"]),
       ),
@@ -30732,6 +30774,7 @@ export const ServerUsagesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -30767,6 +30810,7 @@ export type ServerUsagesListByServerOutput =
  * @param api-version - The API version to use for the request.
  * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serverName - The name of the server.
  */
 export const ServerUsagesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -31324,6 +31368,7 @@ export type SqlVulnerabilityAssessmentBaselinesCreateOrUpdateOutput =
  * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param systemDatabaseName - The vulnerability assessment system database name.
+ * @param properties - Resource properties.
  */
 export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -31435,6 +31480,7 @@ export type SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateOutput =
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param systemDatabaseName - The vulnerability assessment system database name.
+ * @param properties - Resource properties.
  */
 export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -32003,6 +32049,7 @@ export type SqlVulnerabilityAssessmentsSettingsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the SQL Vulnerability Assessment.
+ * @param properties - Resource properties.
  */
 export const SqlVulnerabilityAssessmentsSettingsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -34115,6 +34162,7 @@ export type TdeCertificatesCreateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
+ * @param properties - Resource properties.
  */
 export const TdeCertificatesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

@@ -12,6 +12,7 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const IntegrationAccountAgreementsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
@@ -1220,9 +1221,11 @@ export type IntegrationAccountAgreementsCreateOrUpdateOutput =
 /**
  * Creates or updates an integration account agreement.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param agreementName - The integration account agreement name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountAgreementsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1232,6 +1235,7 @@ export const IntegrationAccountAgreementsCreateOrUpdate =
 // Input Schema
 export const IntegrationAccountAgreementsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
@@ -1255,9 +1259,11 @@ export type IntegrationAccountAgreementsDeleteOutput =
 /**
  * Deletes an integration account agreement.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param agreementName - The integration account agreement name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountAgreementsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1267,6 +1273,7 @@ export const IntegrationAccountAgreementsDelete =
 // Input Schema
 export const IntegrationAccountAgreementsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
@@ -1296,9 +1303,11 @@ export type IntegrationAccountAgreementsGetOutput =
 /**
  * Gets an integration account agreement.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param agreementName - The integration account agreement name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountAgreementsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1308,6 +1317,7 @@ export const IntegrationAccountAgreementsGet =
 // Input Schema
 export const IntegrationAccountAgreementsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -1345,8 +1355,10 @@ export type IntegrationAccountAgreementsListOutput =
 /**
  * Gets a list of integration account agreements.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: AgreementType.
  */
@@ -1358,6 +1370,7 @@ export const IntegrationAccountAgreementsList =
 // Input Schema
 export const IntegrationAccountAgreementsListContentCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
@@ -1400,9 +1413,11 @@ export type IntegrationAccountAgreementsListContentCallbackUrlOutput =
 /**
  * Get the content callback url.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param agreementName - The integration account agreement name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountAgreementsListContentCallbackUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1412,6 +1427,7 @@ export const IntegrationAccountAgreementsListContentCallbackUrl =
 // Input Schema
 export const IntegrationAccountAssembliesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     assemblyArtifactName: Schema.String.pipe(T.PathParam()),
@@ -1451,9 +1467,11 @@ export type IntegrationAccountAssembliesCreateOrUpdateOutput =
 /**
  * Create or update an assembly for an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param assemblyArtifactName - The assembly artifact name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountAssembliesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1463,6 +1481,7 @@ export const IntegrationAccountAssembliesCreateOrUpdate =
 // Input Schema
 export const IntegrationAccountAssembliesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     assemblyArtifactName: Schema.String.pipe(T.PathParam()),
@@ -1486,9 +1505,11 @@ export type IntegrationAccountAssembliesDeleteOutput =
 /**
  * Delete an assembly for an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param assemblyArtifactName - The assembly artifact name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountAssembliesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1498,6 +1519,7 @@ export const IntegrationAccountAssembliesDelete =
 // Input Schema
 export const IntegrationAccountAssembliesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     assemblyArtifactName: Schema.String.pipe(T.PathParam()),
@@ -1527,9 +1549,11 @@ export type IntegrationAccountAssembliesGetOutput =
 /**
  * Get an assembly for an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param assemblyArtifactName - The assembly artifact name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountAssembliesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1539,6 +1563,7 @@ export const IntegrationAccountAssembliesGet =
 // Input Schema
 export const IntegrationAccountAssembliesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1573,8 +1598,10 @@ export type IntegrationAccountAssembliesListOutput =
 /**
  * List the assemblies for an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountAssembliesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1584,6 +1611,7 @@ export const IntegrationAccountAssembliesList =
 // Input Schema
 export const IntegrationAccountAssembliesListContentCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     assemblyArtifactName: Schema.String.pipe(T.PathParam()),
@@ -1622,9 +1650,11 @@ export type IntegrationAccountAssembliesListContentCallbackUrlOutput =
 /**
  * Get the content callback url for an integration account assembly.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param assemblyArtifactName - The assembly artifact name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountAssembliesListContentCallbackUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1634,6 +1664,7 @@ export const IntegrationAccountAssembliesListContentCallbackUrl =
 // Input Schema
 export const IntegrationAccountBatchConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     batchConfigurationName: Schema.String.pipe(T.PathParam()),
@@ -1673,9 +1704,11 @@ export type IntegrationAccountBatchConfigurationsCreateOrUpdateOutput =
 /**
  * Create or update a batch configuration for an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param batchConfigurationName - The batch configuration name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountBatchConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1685,6 +1718,7 @@ export const IntegrationAccountBatchConfigurationsCreateOrUpdate =
 // Input Schema
 export const IntegrationAccountBatchConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     batchConfigurationName: Schema.String.pipe(T.PathParam()),
@@ -1708,9 +1742,11 @@ export type IntegrationAccountBatchConfigurationsDeleteOutput =
 /**
  * Delete a batch configuration for an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param batchConfigurationName - The batch configuration name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountBatchConfigurationsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1720,6 +1756,7 @@ export const IntegrationAccountBatchConfigurationsDelete =
 // Input Schema
 export const IntegrationAccountBatchConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     batchConfigurationName: Schema.String.pipe(T.PathParam()),
@@ -1749,9 +1786,11 @@ export type IntegrationAccountBatchConfigurationsGetOutput =
 /**
  * Get a batch configuration for an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param batchConfigurationName - The batch configuration name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountBatchConfigurationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1761,6 +1800,7 @@ export const IntegrationAccountBatchConfigurationsGet =
 // Input Schema
 export const IntegrationAccountBatchConfigurationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1795,8 +1835,10 @@ export type IntegrationAccountBatchConfigurationsListOutput =
 /**
  * List the batch configurations for an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountBatchConfigurationsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1806,6 +1848,7 @@ export const IntegrationAccountBatchConfigurationsList =
 // Input Schema
 export const IntegrationAccountCertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
@@ -1857,9 +1900,11 @@ export type IntegrationAccountCertificatesCreateOrUpdateOutput =
 /**
  * Creates or updates an integration account certificate.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param certificateName - The integration account certificate name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountCertificatesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1869,6 +1914,7 @@ export const IntegrationAccountCertificatesCreateOrUpdate =
 // Input Schema
 export const IntegrationAccountCertificatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
@@ -1892,9 +1938,11 @@ export type IntegrationAccountCertificatesDeleteOutput =
 /**
  * Deletes an integration account certificate.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param certificateName - The integration account certificate name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountCertificatesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1904,6 +1952,7 @@ export const IntegrationAccountCertificatesDelete =
 // Input Schema
 export const IntegrationAccountCertificatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
@@ -1933,9 +1982,11 @@ export type IntegrationAccountCertificatesGetOutput =
 /**
  * Gets an integration account certificate.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param certificateName - The integration account certificate name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountCertificatesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1945,6 +1996,7 @@ export const IntegrationAccountCertificatesGet =
 // Input Schema
 export const IntegrationAccountCertificatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -1981,8 +2033,10 @@ export type IntegrationAccountCertificatesListOutput =
 /**
  * Gets a list of integration account certificates.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationAccountCertificatesList =
@@ -1993,6 +2047,7 @@ export const IntegrationAccountCertificatesList =
 // Input Schema
 export const IntegrationAccountMapsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     mapName: Schema.String.pipe(T.PathParam()),
@@ -2060,9 +2115,11 @@ export type IntegrationAccountMapsCreateOrUpdateOutput =
 /**
  * Creates or updates an integration account map. If the map is larger than 4 MB, you need to store the map in an Azure blob and use the blob's Shared Access Signature (SAS) URL as the 'contentLink' property value.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param mapName - The integration account map name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountMapsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2072,6 +2129,7 @@ export const IntegrationAccountMapsCreateOrUpdate =
 // Input Schema
 export const IntegrationAccountMapsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     mapName: Schema.String.pipe(T.PathParam()),
@@ -2095,9 +2153,11 @@ export type IntegrationAccountMapsDeleteOutput =
 /**
  * Deletes an integration account map.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param mapName - The integration account map name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountMapsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2107,6 +2167,7 @@ export const IntegrationAccountMapsDelete =
 // Input Schema
 export const IntegrationAccountMapsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     mapName: Schema.String.pipe(T.PathParam()),
@@ -2136,9 +2197,11 @@ export type IntegrationAccountMapsGetOutput =
 /**
  * Gets an integration account map.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param mapName - The integration account map name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountMapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2149,6 +2212,7 @@ export const IntegrationAccountMapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IntegrationAccountMapsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -2186,8 +2250,10 @@ export type IntegrationAccountMapsListOutput =
 /**
  * Gets a list of integration account maps.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: MapType.
  */
@@ -2200,6 +2266,7 @@ export const IntegrationAccountMapsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IntegrationAccountMapsListContentCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     mapName: Schema.String.pipe(T.PathParam()),
@@ -2242,9 +2309,11 @@ export type IntegrationAccountMapsListContentCallbackUrlOutput =
 /**
  * Get the content callback url.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param mapName - The integration account map name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountMapsListContentCallbackUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2254,6 +2323,7 @@ export const IntegrationAccountMapsListContentCallbackUrl =
 // Input Schema
 export const IntegrationAccountPartnersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
@@ -2308,9 +2378,11 @@ export type IntegrationAccountPartnersCreateOrUpdateOutput =
 /**
  * Creates or updates an integration account partner.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param partnerName - The integration account partner name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountPartnersCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2320,6 +2392,7 @@ export const IntegrationAccountPartnersCreateOrUpdate =
 // Input Schema
 export const IntegrationAccountPartnersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
@@ -2343,9 +2416,11 @@ export type IntegrationAccountPartnersDeleteOutput =
 /**
  * Deletes an integration account partner.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param partnerName - The integration account partner name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountPartnersDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2355,6 +2430,7 @@ export const IntegrationAccountPartnersDelete =
 // Input Schema
 export const IntegrationAccountPartnersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
@@ -2384,9 +2460,11 @@ export type IntegrationAccountPartnersGetOutput =
 /**
  * Gets an integration account partner.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param partnerName - The integration account partner name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountPartnersGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2396,6 +2474,7 @@ export const IntegrationAccountPartnersGet =
 // Input Schema
 export const IntegrationAccountPartnersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -2433,8 +2512,10 @@ export type IntegrationAccountPartnersListOutput =
 /**
  * Gets a list of integration account partners.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: PartnerType.
  */
@@ -2446,6 +2527,7 @@ export const IntegrationAccountPartnersList =
 // Input Schema
 export const IntegrationAccountPartnersListContentCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
@@ -2488,9 +2570,11 @@ export type IntegrationAccountPartnersListContentCallbackUrlOutput =
 /**
  * Get the content callback url.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param partnerName - The integration account partner name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountPartnersListContentCallbackUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2500,6 +2584,7 @@ export const IntegrationAccountPartnersListContentCallbackUrl =
 // Input Schema
 export const IntegrationAccountSchemasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
@@ -2559,9 +2644,11 @@ export type IntegrationAccountSchemasCreateOrUpdateOutput =
 /**
  * Creates or updates an integration account schema.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param schemaName - The integration account schema name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountSchemasCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2571,6 +2658,7 @@ export const IntegrationAccountSchemasCreateOrUpdate =
 // Input Schema
 export const IntegrationAccountSchemasDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
@@ -2594,9 +2682,11 @@ export type IntegrationAccountSchemasDeleteOutput =
 /**
  * Deletes an integration account schema.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param schemaName - The integration account schema name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountSchemasDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2606,6 +2696,7 @@ export const IntegrationAccountSchemasDelete =
 // Input Schema
 export const IntegrationAccountSchemasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
@@ -2635,9 +2726,11 @@ export type IntegrationAccountSchemasGetOutput =
 /**
  * Gets an integration account schema.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param schemaName - The integration account schema name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountSchemasGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2647,6 +2740,7 @@ export const IntegrationAccountSchemasGet =
 // Input Schema
 export const IntegrationAccountSchemasListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -2684,8 +2778,10 @@ export type IntegrationAccountSchemasListOutput =
 /**
  * Gets a list of integration account schemas.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: SchemaType.
  */
@@ -2697,6 +2793,7 @@ export const IntegrationAccountSchemasList =
 // Input Schema
 export const IntegrationAccountSchemasListContentCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
@@ -2739,9 +2836,11 @@ export type IntegrationAccountSchemasListContentCallbackUrlOutput =
 /**
  * Get the content callback url.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param schemaName - The integration account schema name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountSchemasListContentCallbackUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2751,6 +2850,7 @@ export const IntegrationAccountSchemasListContentCallbackUrl =
 // Input Schema
 export const IntegrationAccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -2810,8 +2910,10 @@ export type IntegrationAccountsCreateOrUpdateOutput =
 /**
  * Creates or updates an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2821,6 +2923,7 @@ export const IntegrationAccountsCreateOrUpdate =
 // Input Schema
 export const IntegrationAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2843,8 +2946,10 @@ export type IntegrationAccountsDeleteOutput =
 /**
  * Deletes an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2855,6 +2960,7 @@ export const IntegrationAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IntegrationAccountSessionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     sessionName: Schema.String.pipe(T.PathParam()),
@@ -2894,9 +3000,11 @@ export type IntegrationAccountSessionsCreateOrUpdateOutput =
 /**
  * Creates or updates an integration account session.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param sessionName - The integration account session name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountSessionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2906,6 +3014,7 @@ export const IntegrationAccountSessionsCreateOrUpdate =
 // Input Schema
 export const IntegrationAccountSessionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     sessionName: Schema.String.pipe(T.PathParam()),
@@ -2929,9 +3038,11 @@ export type IntegrationAccountSessionsDeleteOutput =
 /**
  * Deletes an integration account session.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param sessionName - The integration account session name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountSessionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2941,6 +3052,7 @@ export const IntegrationAccountSessionsDelete =
 // Input Schema
 export const IntegrationAccountSessionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     sessionName: Schema.String.pipe(T.PathParam()),
@@ -2970,9 +3082,11 @@ export type IntegrationAccountSessionsGetOutput =
 /**
  * Gets an integration account session.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
  * @param sessionName - The integration account session name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountSessionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2982,6 +3096,7 @@ export const IntegrationAccountSessionsGet =
 // Input Schema
 export const IntegrationAccountSessionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -3019,8 +3134,10 @@ export type IntegrationAccountSessionsListOutput =
 /**
  * Gets a list of integration account sessions.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: ChangedTime.
  */
@@ -3032,6 +3149,7 @@ export const IntegrationAccountSessionsList =
 // Input Schema
 export const IntegrationAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3060,8 +3178,10 @@ export type IntegrationAccountsGetOutput =
 /**
  * Gets an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3072,6 +3192,7 @@ export const IntegrationAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IntegrationAccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -3107,7 +3228,9 @@ export type IntegrationAccountsListByResourceGroupOutput =
 /**
  * Gets a list of integration accounts by resource group.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationAccountsListByResourceGroup =
@@ -3118,6 +3241,7 @@ export const IntegrationAccountsListByResourceGroup =
 // Input Schema
 export const IntegrationAccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -3152,6 +3276,8 @@ export type IntegrationAccountsListBySubscriptionOutput =
 /**
  * Gets a list of integration accounts by subscription.
  *
+ * @param subscriptionId - The subscription id.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationAccountsListBySubscription =
@@ -3162,6 +3288,7 @@ export const IntegrationAccountsListBySubscription =
 // Input Schema
 export const IntegrationAccountsListCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     notAfter: Schema.optional(Schema.String),
@@ -3190,8 +3317,10 @@ export type IntegrationAccountsListCallbackUrlOutput =
 /**
  * Gets the integration account callback URL.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountsListCallbackUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3201,6 +3330,7 @@ export const IntegrationAccountsListCallbackUrl =
 // Input Schema
 export const IntegrationAccountsListKeyVaultKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     keyVault: Schema.Struct({
@@ -3245,8 +3375,10 @@ export type IntegrationAccountsListKeyVaultKeysOutput =
 /**
  * Gets the integration account's Key Vault keys.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountsListKeyVaultKeys =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3256,6 +3388,7 @@ export const IntegrationAccountsListKeyVaultKeys =
 // Input Schema
 export const IntegrationAccountsLogTrackingEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     sourceType: Schema.String,
@@ -3320,8 +3453,10 @@ export type IntegrationAccountsLogTrackingEventsOutput =
 /**
  * Logs the integration account's tracking events.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountsLogTrackingEvents =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3331,6 +3466,7 @@ export const IntegrationAccountsLogTrackingEvents =
 // Input Schema
 export const IntegrationAccountsRegenerateAccessKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     keyType: Schema.optional(
@@ -3362,8 +3498,10 @@ export type IntegrationAccountsRegenerateAccessKeyOutput =
 /**
  * Regenerates the integration account access key.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountsRegenerateAccessKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3373,6 +3511,7 @@ export const IntegrationAccountsRegenerateAccessKey =
 // Input Schema
 export const IntegrationAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -3432,8 +3571,10 @@ export type IntegrationAccountsUpdateOutput =
 /**
  * Updates an integration account.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param integrationAccountName - The integration account name.
+ * @param api-version - The API version.
  */
 export const IntegrationAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3444,6 +3585,7 @@ export const IntegrationAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IntegrationServiceEnvironmentManagedApiOperationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
@@ -3480,9 +3622,11 @@ export type IntegrationServiceEnvironmentManagedApiOperationsListOutput =
 /**
  * Gets the managed Api operations.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
  * @param apiName - The api name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentManagedApiOperationsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3492,6 +3636,7 @@ export const IntegrationServiceEnvironmentManagedApiOperationsList =
 // Input Schema
 export const IntegrationServiceEnvironmentManagedApisDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
@@ -3515,9 +3660,11 @@ export type IntegrationServiceEnvironmentManagedApisDeleteOutput =
 /**
  * Deletes the integration service environment managed Api.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
  * @param apiName - The api name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentManagedApisDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3527,6 +3674,7 @@ export const IntegrationServiceEnvironmentManagedApisDelete =
 // Input Schema
 export const IntegrationServiceEnvironmentManagedApisGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
@@ -3556,9 +3704,11 @@ export type IntegrationServiceEnvironmentManagedApisGetOutput =
 /**
  * Gets the integration service environment managed Api.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group name.
  * @param integrationServiceEnvironmentName - The integration service environment name.
  * @param apiName - The api name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentManagedApisGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3568,6 +3718,7 @@ export const IntegrationServiceEnvironmentManagedApisGet =
 // Input Schema
 export const IntegrationServiceEnvironmentManagedApisListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3603,8 +3754,10 @@ export type IntegrationServiceEnvironmentManagedApisListOutput =
 /**
  * Gets the integration service environment managed Apis.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentManagedApisList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3614,6 +3767,7 @@ export const IntegrationServiceEnvironmentManagedApisList =
 // Input Schema
 export const IntegrationServiceEnvironmentManagedApisPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
@@ -3813,9 +3967,11 @@ export type IntegrationServiceEnvironmentManagedApisPutOutput =
 /**
  * Puts the integration service environment managed Api.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group name.
  * @param integrationServiceEnvironmentName - The integration service environment name.
  * @param apiName - The api name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentManagedApisPut =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3825,6 +3981,7 @@ export const IntegrationServiceEnvironmentManagedApisPut =
 // Input Schema
 export const IntegrationServiceEnvironmentNetworkHealthGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3921,8 +4078,10 @@ export type IntegrationServiceEnvironmentNetworkHealthGetOutput =
 /**
  * Gets the integration service environment network health.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentNetworkHealthGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3932,6 +4091,7 @@ export const IntegrationServiceEnvironmentNetworkHealthGet =
 // Input Schema
 export const IntegrationServiceEnvironmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -4108,8 +4268,10 @@ export type IntegrationServiceEnvironmentsCreateOrUpdateOutput =
 /**
  * Creates or updates an integration service environment.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4119,6 +4281,7 @@ export const IntegrationServiceEnvironmentsCreateOrUpdate =
 // Input Schema
 export const IntegrationServiceEnvironmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4141,8 +4304,10 @@ export type IntegrationServiceEnvironmentsDeleteOutput =
 /**
  * Deletes an integration service environment.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4152,6 +4317,7 @@ export const IntegrationServiceEnvironmentsDelete =
 // Input Schema
 export const IntegrationServiceEnvironmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4180,8 +4346,10 @@ export type IntegrationServiceEnvironmentsGetOutput =
 /**
  * Gets an integration service environment.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4191,6 +4359,7 @@ export const IntegrationServiceEnvironmentsGet =
 // Input Schema
 export const IntegrationServiceEnvironmentSkusListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4240,8 +4409,10 @@ export type IntegrationServiceEnvironmentSkusListOutput =
 /**
  * Gets a list of integration service environment Skus.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentSkusList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4251,6 +4422,7 @@ export const IntegrationServiceEnvironmentSkusList =
 // Input Schema
 export const IntegrationServiceEnvironmentsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -4286,7 +4458,9 @@ export type IntegrationServiceEnvironmentsListByResourceGroupOutput =
 /**
  * Gets a list of integration service environments by resource group.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationServiceEnvironmentsListByResourceGroup =
@@ -4297,6 +4471,7 @@ export const IntegrationServiceEnvironmentsListByResourceGroup =
 // Input Schema
 export const IntegrationServiceEnvironmentsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -4331,6 +4506,8 @@ export type IntegrationServiceEnvironmentsListBySubscriptionOutput =
 /**
  * Gets a list of integration service environments by subscription.
  *
+ * @param subscriptionId - The subscription id.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationServiceEnvironmentsListBySubscription =
@@ -4341,6 +4518,7 @@ export const IntegrationServiceEnvironmentsListBySubscription =
 // Input Schema
 export const IntegrationServiceEnvironmentsRestartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4363,8 +4541,10 @@ export type IntegrationServiceEnvironmentsRestartOutput =
 /**
  * Restarts an integration service environment.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentsRestart =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4374,6 +4554,7 @@ export const IntegrationServiceEnvironmentsRestart =
 // Input Schema
 export const IntegrationServiceEnvironmentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -4550,8 +4731,10 @@ export type IntegrationServiceEnvironmentsUpdateOutput =
 /**
  * Updates an integration service environment.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroup - The resource group.
  * @param integrationServiceEnvironmentName - The integration service environment name.
+ * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4596,6 +4779,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Logic REST API operations.
+ *
+ * @param api-version - The API version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -4604,6 +4789,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkflowRunActionRepetitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -4635,11 +4821,13 @@ export type WorkflowRunActionRepetitionsGetOutput =
 /**
  * Get a workflow run action repetition.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  * @param repetitionName - The workflow repetition.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionRepetitionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4649,6 +4837,7 @@ export const WorkflowRunActionRepetitionsGet =
 // Input Schema
 export const WorkflowRunActionRepetitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -4686,10 +4875,12 @@ export type WorkflowRunActionRepetitionsListOutput =
 /**
  * Get all of a workflow run action repetitions.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionRepetitionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4699,6 +4890,7 @@ export const WorkflowRunActionRepetitionsList =
 // Input Schema
 export const WorkflowRunActionRepetitionsListExpressionTracesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -4739,11 +4931,13 @@ export type WorkflowRunActionRepetitionsListExpressionTracesOutput =
 /**
  * Lists a workflow run expression trace.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  * @param repetitionName - The workflow repetition.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionRepetitionsListExpressionTraces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4753,6 +4947,7 @@ export const WorkflowRunActionRepetitionsListExpressionTraces =
 // Input Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -4785,12 +4980,14 @@ export type WorkflowRunActionRepetitionsRequestHistoriesGetOutput =
 /**
  * Gets a workflow run repetition request history.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  * @param repetitionName - The workflow repetition.
  * @param requestHistoryName - The request history name.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionRepetitionsRequestHistoriesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4800,6 +4997,7 @@ export const WorkflowRunActionRepetitionsRequestHistoriesGet =
 // Input Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -4838,11 +5036,13 @@ export type WorkflowRunActionRepetitionsRequestHistoriesListOutput =
 /**
  * List a workflow run repetition request history.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  * @param repetitionName - The workflow repetition.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionRepetitionsRequestHistoriesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4852,6 +5052,7 @@ export const WorkflowRunActionRepetitionsRequestHistoriesList =
 // Input Schema
 export const WorkflowRunActionRequestHistoriesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -4883,11 +5084,13 @@ export type WorkflowRunActionRequestHistoriesGetOutput =
 /**
  * Gets a workflow run request history.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  * @param requestHistoryName - The request history name.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionRequestHistoriesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4897,6 +5100,7 @@ export const WorkflowRunActionRequestHistoriesGet =
 // Input Schema
 export const WorkflowRunActionRequestHistoriesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -4934,10 +5138,12 @@ export type WorkflowRunActionRequestHistoriesListOutput =
 /**
  * List a workflow run request history.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionRequestHistoriesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4947,6 +5153,7 @@ export const WorkflowRunActionRequestHistoriesList =
 // Input Schema
 export const WorkflowRunActionScopeRepetitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -4978,11 +5185,13 @@ export type WorkflowRunActionScopeRepetitionsGetOutput =
 /**
  * Get a workflow run action scoped repetition.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  * @param repetitionName - The workflow repetition.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionScopeRepetitionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4992,6 +5201,7 @@ export const WorkflowRunActionScopeRepetitionsGet =
 // Input Schema
 export const WorkflowRunActionScopeRepetitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -5029,10 +5239,12 @@ export type WorkflowRunActionScopeRepetitionsListOutput =
 /**
  * List the workflow run action scoped repetitions.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionScopeRepetitionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5042,6 +5254,7 @@ export const WorkflowRunActionScopeRepetitionsList =
 // Input Schema
 export const WorkflowRunActionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -5067,10 +5280,12 @@ export type WorkflowRunActionsGetOutput =
 /**
  * Gets a workflow run action.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5081,6 +5296,7 @@ export const WorkflowRunActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowRunActionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -5115,9 +5331,11 @@ export type WorkflowRunActionsListOutput =
 /**
  * Gets a list of workflow run actions.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status.
  */
@@ -5130,6 +5348,7 @@ export const WorkflowRunActionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowRunActionsListExpressionTracesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -5169,10 +5388,12 @@ export type WorkflowRunActionsListExpressionTracesOutput =
 /**
  * Lists a workflow run expression trace.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
+ * @param api-version - The API version.
  */
 export const WorkflowRunActionsListExpressionTraces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5182,6 +5403,7 @@ export const WorkflowRunActionsListExpressionTraces =
 // Input Schema
 export const WorkflowRunOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -5208,10 +5430,12 @@ export type WorkflowRunOperationsGetOutput =
 /**
  * Gets an operation for a run.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  * @param operationId - The workflow operation id.
+ * @param api-version - The API version.
  */
 export const WorkflowRunOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5222,6 +5446,7 @@ export const WorkflowRunOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowRunsCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     runName: Schema.String.pipe(T.PathParam()),
@@ -5242,9 +5467,11 @@ export type WorkflowRunsCancelOutput = typeof WorkflowRunsCancelOutput.Type;
 /**
  * Cancels a workflow run.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
+ * @param api-version - The API version.
  */
 export const WorkflowRunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsCancelInput,
@@ -5252,6 +5479,7 @@ export const WorkflowRunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WorkflowRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
   runName: Schema.String.pipe(T.PathParam()),
@@ -5274,9 +5502,11 @@ export type WorkflowRunsGetOutput = typeof WorkflowRunsGetOutput.Type;
 /**
  * Gets a workflow run.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
+ * @param api-version - The API version.
  */
 export const WorkflowRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsGetInput,
@@ -5284,6 +5514,7 @@ export const WorkflowRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WorkflowRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
@@ -5316,8 +5547,10 @@ export type WorkflowRunsListOutput = typeof WorkflowRunsListOutput.Type;
 /**
  * Gets a list of workflow runs.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId.
  */
@@ -5328,6 +5561,7 @@ export const WorkflowRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkflowsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -5646,8 +5880,10 @@ export type WorkflowsCreateOrUpdateOutput =
 /**
  * Creates or updates a workflow.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5657,6 +5893,7 @@ export const WorkflowsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -5676,8 +5913,10 @@ export type WorkflowsDeleteOutput = typeof WorkflowsDeleteOutput.Type;
 /**
  * Deletes a workflow.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsDeleteInput,
@@ -5685,6 +5924,7 @@ export const WorkflowsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WorkflowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -5704,8 +5944,10 @@ export type WorkflowsDisableOutput = typeof WorkflowsDisableOutput.Type;
 /**
  * Disables a workflow.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsDisableInput,
@@ -5713,6 +5955,7 @@ export const WorkflowsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WorkflowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -5732,8 +5975,10 @@ export type WorkflowsEnableOutput = typeof WorkflowsEnableOutput.Type;
 /**
  * Enables a workflow.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsEnableInput,
@@ -5742,6 +5987,7 @@ export const WorkflowsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkflowsGenerateUpgradedDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     targetSchemaVersion: Schema.optional(Schema.String),
@@ -5765,8 +6011,10 @@ export type WorkflowsGenerateUpgradedDefinitionOutput =
 /**
  * Generates the upgraded definition for a workflow.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsGenerateUpgradedDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5775,6 +6023,7 @@ export const WorkflowsGenerateUpgradedDefinition =
   }));
 // Input Schema
 export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -5800,8 +6049,10 @@ export type WorkflowsGetOutput = typeof WorkflowsGetOutput.Type;
 /**
  * Gets a workflow.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsGetInput,
@@ -5810,6 +6061,7 @@ export const WorkflowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkflowsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
@@ -5846,7 +6098,9 @@ export type WorkflowsListByResourceGroupOutput =
 /**
  * Gets a list of workflows by resource group.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: State, Trigger, and ReferencedResourceId.
  */
@@ -5858,6 +6112,7 @@ export const WorkflowsListByResourceGroup =
 // Input Schema
 export const WorkflowsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -5893,6 +6148,8 @@ export type WorkflowsListBySubscriptionOutput =
 /**
  * Gets a list of workflows by subscription.
  *
+ * @param subscriptionId - The subscription id.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: State, Trigger, and ReferencedResourceId.
  */
@@ -5905,6 +6162,7 @@ export const WorkflowsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowsListCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     notAfter: Schema.optional(Schema.String),
@@ -5946,8 +6204,10 @@ export type WorkflowsListCallbackUrlOutput =
 /**
  * Get the workflow callback Url.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsListCallbackUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5958,6 +6218,7 @@ export const WorkflowsListCallbackUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowsListSwaggerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5978,8 +6239,10 @@ export type WorkflowsListSwaggerOutput = typeof WorkflowsListSwaggerOutput.Type;
 /**
  * Gets an OpenAPI definition for the workflow.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsListSwagger = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5989,6 +6252,7 @@ export const WorkflowsListSwagger = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WorkflowsMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
@@ -6011,8 +6275,10 @@ export type WorkflowsMoveOutput = typeof WorkflowsMoveOutput.Type;
 /**
  * Moves an existing workflow.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsMove = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsMoveInput,
@@ -6021,6 +6287,7 @@ export const WorkflowsMove = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkflowsRegenerateAccessKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     keyType: Schema.optional(
@@ -6046,8 +6313,10 @@ export type WorkflowsRegenerateAccessKeyOutput =
 /**
  * Regenerates the callback URL access key for request triggers.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsRegenerateAccessKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6056,6 +6325,7 @@ export const WorkflowsRegenerateAccessKey =
   }));
 // Input Schema
 export const WorkflowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -6081,8 +6351,10 @@ export type WorkflowsUpdateOutput = typeof WorkflowsUpdateOutput.Type;
 /**
  * Updates a workflow.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsUpdateInput,
@@ -6091,6 +6363,7 @@ export const WorkflowsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkflowsValidateByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -6403,9 +6676,11 @@ export type WorkflowsValidateByLocationOutput =
 /**
  * Validates the workflow definition.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param location - The workflow location.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsValidateByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6416,6 +6691,7 @@ export const WorkflowsValidateByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowsValidateByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -6728,8 +7004,10 @@ export type WorkflowsValidateByResourceGroupOutput =
 /**
  * Validates the workflow.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  */
 export const WorkflowsValidateByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6739,6 +7017,7 @@ export const WorkflowsValidateByResourceGroup =
 // Input Schema
 export const WorkflowTriggerHistoriesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
@@ -6765,10 +7044,12 @@ export type WorkflowTriggerHistoriesGetOutput =
 /**
  * Gets a workflow trigger history.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  * @param historyName - The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+ * @param api-version - The API version.
  */
 export const WorkflowTriggerHistoriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6779,6 +7060,7 @@ export const WorkflowTriggerHistoriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowTriggerHistoriesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
@@ -6813,9 +7095,11 @@ export type WorkflowTriggerHistoriesListOutput =
 /**
  * Gets a list of workflow trigger histories.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId.
  */
@@ -6827,6 +7111,7 @@ export const WorkflowTriggerHistoriesList =
 // Input Schema
 export const WorkflowTriggerHistoriesResubmitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
@@ -6851,10 +7136,12 @@ export type WorkflowTriggerHistoriesResubmitOutput =
 /**
  * Resubmits a workflow run based on the trigger history.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  * @param historyName - The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+ * @param api-version - The API version.
  */
 export const WorkflowTriggerHistoriesResubmit =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6864,6 +7151,7 @@ export const WorkflowTriggerHistoriesResubmit =
 // Input Schema
 export const WorkflowTriggersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
@@ -6887,9 +7175,11 @@ export type WorkflowTriggersGetOutput = typeof WorkflowTriggersGetOutput.Type;
 /**
  * Gets a workflow trigger.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
+ * @param api-version - The API version.
  */
 export const WorkflowTriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowTriggersGetInput,
@@ -6898,6 +7188,7 @@ export const WorkflowTriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkflowTriggersGetSchemaJsonInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
@@ -6924,9 +7215,11 @@ export type WorkflowTriggersGetSchemaJsonOutput =
 /**
  * Get the trigger schema as JSON.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
+ * @param api-version - The API version.
  */
 export const WorkflowTriggersGetSchemaJson =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6936,6 +7229,7 @@ export const WorkflowTriggersGetSchemaJson =
 // Input Schema
 export const WorkflowTriggersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -6967,8 +7261,10 @@ export type WorkflowTriggersListOutput = typeof WorkflowTriggersListOutput.Type;
 /**
  * Gets a list of workflow triggers.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation.
  */
@@ -6981,6 +7277,7 @@ export const WorkflowTriggersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowTriggersListCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
@@ -7019,9 +7316,11 @@ export type WorkflowTriggersListCallbackUrlOutput =
 /**
  * Get the callback URL for a workflow trigger.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
+ * @param api-version - The API version.
  */
 export const WorkflowTriggersListCallbackUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7031,6 +7330,7 @@ export const WorkflowTriggersListCallbackUrl =
 // Input Schema
 export const WorkflowTriggersResetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
@@ -7053,9 +7353,11 @@ export type WorkflowTriggersResetOutput =
 /**
  * Resets a workflow trigger.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
+ * @param api-version - The API version.
  */
 export const WorkflowTriggersReset = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7066,6 +7368,7 @@ export const WorkflowTriggersReset = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowTriggersRunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
@@ -7087,9 +7390,11 @@ export type WorkflowTriggersRunOutput = typeof WorkflowTriggersRunOutput.Type;
 /**
  * Runs a workflow trigger.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
+ * @param api-version - The API version.
  */
 export const WorkflowTriggersRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowTriggersRunInput,
@@ -7098,6 +7403,7 @@ export const WorkflowTriggersRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkflowTriggersSetStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
@@ -7126,9 +7432,11 @@ export type WorkflowTriggersSetStateOutput =
 /**
  * Sets the state of a workflow trigger.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
+ * @param api-version - The API version.
  */
 export const WorkflowTriggersSetState = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7139,6 +7447,7 @@ export const WorkflowTriggersSetState = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     versionId: Schema.String.pipe(T.PathParam()),
@@ -7166,9 +7475,11 @@ export type WorkflowVersionsGetOutput = typeof WorkflowVersionsGetOutput.Type;
 /**
  * Gets a workflow version.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param versionId - The workflow versionId.
+ * @param api-version - The API version.
  */
 export const WorkflowVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowVersionsGetInput,
@@ -7177,6 +7488,7 @@ export const WorkflowVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkflowVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -7211,8 +7523,10 @@ export type WorkflowVersionsListOutput = typeof WorkflowVersionsListOutput.Type;
 /**
  * Gets a list of workflow versions.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
+ * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  */
 export const WorkflowVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7224,6 +7538,7 @@ export const WorkflowVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkflowVersionTriggersListCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     versionId: Schema.String.pipe(T.PathParam()),
@@ -7267,10 +7582,12 @@ export type WorkflowVersionTriggersListCallbackUrlOutput =
 /**
  * Get the callback url for a trigger of a workflow version.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param workflowName - The workflow name.
  * @param versionId - The workflow versionId.
  * @param triggerName - The workflow trigger name.
+ * @param api-version - The API version.
  */
 export const WorkflowVersionTriggersListCallbackUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

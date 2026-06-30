@@ -22,34 +22,24 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface LatLng {
-  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
-  latitude?: number;
-  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
-  longitude?: number;
+export interface TypeFilter {
+  /** Optional. Excluded Place types. */
+  excludedTypes?: ReadonlyArray<string>;
+  /** Optional. Included Place types. */
+  includedTypes?: ReadonlyArray<string>;
+  /** Optional. Included primary Place types. */
+  includedPrimaryTypes?: ReadonlyArray<string>;
+  /** Optional. Excluded primary Place types. */
+  excludedPrimaryTypes?: ReadonlyArray<string>;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
+export const TypeFilter: Schema.Schema<TypeFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    latitude: Schema.optional(Schema.Number),
-    longitude: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "LatLng" });
-
-export interface Circle {
-  /** The latitude and longitude of the center of the circle. */
-  latLng?: LatLng;
-  /** Optional. The radius of the circle in meters */
-  radius?: number;
-  /** **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is the unique identifier of a place. For example: `places/ChIJgUbEo8cfqokR5lP9_Wh_DaM`. */
-  place?: string;
-}
-
-export const Circle: Schema.Schema<Circle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    latLng: Schema.optional(LatLng),
-    radius: Schema.optional(Schema.Number),
-    place: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Circle" });
+    excludedTypes: Schema.optional(Schema.Array(Schema.String)),
+    includedTypes: Schema.optional(Schema.Array(Schema.String)),
+    includedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
+    excludedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TypeFilter" });
 
 export interface PlaceInsight {
   /** The unique identifier of the place. This resource name can be used to retrieve details about the place using the [Places API](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places/get). */
@@ -61,47 +51,18 @@ export const PlaceInsight: Schema.Schema<PlaceInsight> =
     place: Schema.optional(Schema.String),
   }).annotate({ identifier: "PlaceInsight" });
 
-export interface TypeFilter {
-  /** Optional. Excluded Place types. */
-  excludedTypes?: ReadonlyArray<string>;
-  /** Optional. Excluded primary Place types. */
-  excludedPrimaryTypes?: ReadonlyArray<string>;
-  /** Optional. Included Place types. */
-  includedTypes?: ReadonlyArray<string>;
-  /** Optional. Included primary Place types. */
-  includedPrimaryTypes?: ReadonlyArray<string>;
+export interface LatLng {
+  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
+  longitude?: number;
+  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
+  latitude?: number;
 }
 
-export const TypeFilter: Schema.Schema<TypeFilter> =
+export const LatLng: Schema.Schema<LatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    excludedTypes: Schema.optional(Schema.Array(Schema.String)),
-    excludedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
-    includedTypes: Schema.optional(Schema.Array(Schema.String)),
-    includedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TypeFilter" });
-
-export interface RatingFilter {
-  /** Optional. Restricts results to places whose average user rating is greater than or equal to min_rating. Values must be between 1.0 and 5.0. */
-  minRating?: number;
-  /** Optional. Restricts results to places whose average user rating is strictly less than or equal to max_rating. Values must be between 1.0 and 5.0. */
-  maxRating?: number;
-}
-
-export const RatingFilter: Schema.Schema<RatingFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    minRating: Schema.optional(Schema.Number),
-    maxRating: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "RatingFilter" });
-
-export interface Region {
-  /** The [place ID](https://developers.google.com/maps/documentation/places/web-service/place-id) of the geographic region. Not all region types are supported; see documentation for details. **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is the unique identifier of a place. For example: `places/ChIJPV4oX_65j4ARVW8IJ6IJUYs`. */
-  place?: string;
-}
-
-export const Region: Schema.Schema<Region> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    place: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Region" });
+    longitude: Schema.optional(Schema.Number),
+    latitude: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "LatLng" });
 
 export interface Polygon {
   /** Optional. The coordinates that define the polygon. */
@@ -123,23 +84,66 @@ export const CustomArea: Schema.Schema<CustomArea> =
     polygon: Schema.optional(Polygon),
   }).annotate({ identifier: "CustomArea" });
 
+export interface RatingFilter {
+  /** Optional. Restricts results to places whose average user rating is greater than or equal to min_rating. Values must be between 1.0 and 5.0. */
+  minRating?: number;
+  /** Optional. Restricts results to places whose average user rating is strictly less than or equal to max_rating. Values must be between 1.0 and 5.0. */
+  maxRating?: number;
+}
+
+export const RatingFilter: Schema.Schema<RatingFilter> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minRating: Schema.optional(Schema.Number),
+    maxRating: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RatingFilter" });
+
+export interface Circle {
+  /** The latitude and longitude of the center of the circle. */
+  latLng?: LatLng;
+  /** Optional. The radius of the circle in meters */
+  radius?: number;
+  /** **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is the unique identifier of a place. For example: `places/ChIJgUbEo8cfqokR5lP9_Wh_DaM`. */
+  place?: string;
+}
+
+export const Circle: Schema.Schema<Circle> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latLng: Schema.optional(LatLng),
+    radius: Schema.optional(Schema.Number),
+    place: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Circle" });
+
+export interface Region {
+  /** The [place ID](https://developers.google.com/maps/documentation/places/web-service/place-id) of the geographic region. Not all region types are supported; see documentation for details. **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is the unique identifier of a place. For example: `places/ChIJPV4oX_65j4ARVW8IJ6IJUYs`. */
+  place?: string;
+}
+
+export const Region: Schema.Schema<Region> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    place: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Region" });
+
 export interface LocationFilter {
   /** Area as a circle. */
   circle?: Circle;
-  /** Area as region. */
-  region?: Region;
   /** Custom area specified by a polygon. */
   customArea?: CustomArea;
+  /** Area as region. */
+  region?: Region;
 }
 
 export const LocationFilter: Schema.Schema<LocationFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     circle: Schema.optional(Circle),
-    region: Schema.optional(Region),
     customArea: Schema.optional(CustomArea),
+    region: Schema.optional(Region),
   }).annotate({ identifier: "LocationFilter" });
 
 export interface Filter {
+  /** Optional. Restricts results to places whose average user ratings are in the range specified by rating_filter. If rating_filter is not set, all ratings are included in the result. */
+  ratingFilter?: RatingFilter;
+  /** Required. Place type filters. */
+  typeFilter?: TypeFilter;
   /** Optional. Restricts results to places whose price level is included on this list. If `price_levels` is not set, all price levels are included in the results. */
   priceLevels?: ReadonlyArray<
     | "PRICE_LEVEL_UNSPECIFIED"
@@ -150,8 +154,6 @@ export interface Filter {
     | "PRICE_LEVEL_VERY_EXPENSIVE"
     | (string & {})
   >;
-  /** Required. Place type filters. */
-  typeFilter?: TypeFilter;
   /** Optional. Restricts results to places whose operating status is included on this list. If operating_status is not set, OPERATING_STATUS_OPERATIONAL is used as default. */
   operatingStatus?: ReadonlyArray<
     | "OPERATING_STATUS_UNSPECIFIED"
@@ -162,17 +164,15 @@ export interface Filter {
   >;
   /** Required. Restricts results to places which are located in the area specified by location filters. */
   locationFilter?: LocationFilter;
-  /** Optional. Restricts results to places whose average user ratings are in the range specified by rating_filter. If rating_filter is not set, all ratings are included in the result. */
-  ratingFilter?: RatingFilter;
 }
 
 export const Filter: Schema.Schema<Filter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    priceLevels: Schema.optional(Schema.Array(Schema.String)),
+    ratingFilter: Schema.optional(RatingFilter),
     typeFilter: Schema.optional(TypeFilter),
+    priceLevels: Schema.optional(Schema.Array(Schema.String)),
     operatingStatus: Schema.optional(Schema.Array(Schema.String)),
     locationFilter: Schema.optional(LocationFilter),
-    ratingFilter: Schema.optional(RatingFilter),
   }).annotate({ identifier: "Filter" });
 
 export interface ComputeInsightsRequest {

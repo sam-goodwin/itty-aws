@@ -59,11 +59,16 @@ const fullSpec = JSON.parse(fs.readFileSync(specPath, "utf-8"));
 // expects to apply patches itself per-spec, but our per-tag slicing means a
 // patch targeting one tag's paths would fail (whole-file abort) when applied
 // to another tag's slice. Applying once on the full spec sidesteps that.
-const { applied: appliedPatches, errors: patchErrors } = applyAllPatches(
-  fullSpec,
-  patchDir,
-);
+const {
+  applied: appliedPatches,
+  skipped: patchSkipped,
+  errors: patchErrors,
+} = applyAllPatches(fullSpec, patchDir);
 for (const a of appliedPatches) console.log(`  ✓ patch ${a}`);
+if (patchSkipped.length > 0) {
+  console.warn("Skipped stale patch operations (target no longer in spec):");
+  for (const e of patchSkipped) console.warn(`  ⚠ ${e}`);
+}
 if (patchErrors.length > 0) {
   console.error("Patch errors:");
   for (const e of patchErrors) console.error(`  ✗ ${e}`);

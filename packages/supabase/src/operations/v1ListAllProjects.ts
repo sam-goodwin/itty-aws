@@ -51,7 +51,6 @@ export type V1ListAllProjectsOutput = typeof V1ListAllProjectsOutput.Type;
  * List all projects
  *
  * Returns a list of all projects you've previously created.
- * Use `/v1/organizations/{slug}/projects` instead when possible to get more precise results and pagination support.
  */
 export const v1ListAllProjects = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1ListAllProjectsInput,

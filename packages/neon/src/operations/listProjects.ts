@@ -95,6 +95,9 @@ export const ListProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       hipaa_enabled_at: Schema.optional(Schema.String),
       deleted_at: Schema.optional(Schema.String),
       recoverable_until: Schema.optional(Schema.String),
+      effective_project_permission: Schema.optional(
+        Schema.NullOr(Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"])),
+      ),
     }),
   ),
   unavailable_project_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -122,9 +125,11 @@ export type ListProjectsOutput = typeof ListProjectsOutput.Type;
 /**
  * List projects
  *
- * Retrieves a list of projects for an organization.
- * You may need to specify an org_id parameter depending on your API key type.
- * For more information, see [Manage projects](https://neon.tech/docs/manage/projects/).
+ * Retrieves a list of projects for the specified organization.
+ * If using a personal API key, include the `org_id` parameter to specify which organization to work with.
+ * If using an org API key, `org_id` is automatically inferred from the key.
+ * For more information, see [Manage organizations using the Neon API](https://neon.com/docs/manage/orgs-api)
+ * and [Manage projects](https://neon.com/docs/manage/projects/).
  *
  * @param cursor - Specify the cursor value from the previous response to retrieve the next batch of projects.
  * @param limit - Specify a value from 1 to 400 to limit number of projects in the response.

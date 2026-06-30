@@ -50,6 +50,9 @@ export const PostIssuingCardsCardInput =
     ),
     spending_controls: Schema.optional(
       Schema.Struct({
+        allowed_card_presences: Schema.optional(
+          Schema.Array(Schema.Literals(["not_present", "present"])),
+        ),
         allowed_categories: Schema.optional(
           Schema.Array(
             Schema.Literals([
@@ -353,6 +356,9 @@ export const PostIssuingCardsCardInput =
         ),
         allowed_merchant_countries: Schema.optional(
           Schema.Array(Schema.String),
+        ),
+        blocked_card_presences: Schema.optional(
+          Schema.Array(Schema.Literals(["not_present", "present"])),
         ),
         blocked_categories: Schema.optional(
           Schema.Array(
@@ -993,7 +999,12 @@ export const PostIssuingCardsCardOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     brand: Schema.String,
     cancellation_reason: Schema.NullOr(
-      Schema.Literals(["design_rejected", "lost", "stolen"]),
+      Schema.Literals([
+        "design_rejected",
+        "fulfillment_error",
+        "lost",
+        "stolen",
+      ]),
     ),
     cardholder: Schema.Struct({
       billing: Schema.Struct({
@@ -1066,11 +1077,20 @@ export const PostIssuingCardsCardOutput =
     replaced_by: Schema.Unknown,
     replacement_for: Schema.Unknown,
     replacement_reason: Schema.NullOr(
-      Schema.Literals(["damaged", "expired", "lost", "stolen"]),
+      Schema.Literals([
+        "damaged",
+        "expired",
+        "fulfillment_error",
+        "lost",
+        "stolen",
+      ]),
     ),
     second_line: Schema.NullOr(Schema.String),
     shipping: Schema.Unknown,
     spending_controls: Schema.Struct({
+      allowed_card_presences: Schema.NullOr(
+        Schema.Array(Schema.Literals(["not_present", "present"])),
+      ),
       allowed_categories: Schema.NullOr(
         Schema.Array(
           Schema.Literals([
@@ -1373,6 +1393,9 @@ export const PostIssuingCardsCardOutput =
         ),
       ),
       allowed_merchant_countries: Schema.NullOr(Schema.Array(Schema.String)),
+      blocked_card_presences: Schema.NullOr(
+        Schema.Array(Schema.Literals(["not_present", "present"])),
+      ),
       blocked_categories: Schema.NullOr(
         Schema.Array(
           Schema.Literals([

@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingAssignmentRulesRetrieveInput =
@@ -11,7 +10,7 @@ export const ErrorTrackingAssignmentRulesRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/assignment_rules/{id}/",
+      path: "/api/projects/{project_id}/error_tracking/assignment_rules/{id}/",
     }),
   );
 export type ErrorTrackingAssignmentRulesRetrieveInput =
@@ -31,7 +30,7 @@ export const ErrorTrackingAssignmentRulesRetrieveOutput =
       ),
     ),
     order_key: Schema.optional(Schema.Number),
-    disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    disabled_data: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
   });
@@ -41,12 +40,10 @@ export type ErrorTrackingAssignmentRulesRetrieveOutput =
 // The operation
 /**
  *
- * @param id - A UUID string identifying this error tracking assignment rule.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingAssignmentRulesRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingAssignmentRulesRetrieveInput,
     outputSchema: ErrorTrackingAssignmentRulesRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

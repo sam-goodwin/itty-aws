@@ -7,11 +7,13 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const FeatureFlagsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   active: Schema.optional(Schema.Literals(["STALE", "false", "true"])),
+  archived: Schema.optional(Schema.Literals(["false", "true"])),
   created_by_id: Schema.optional(Schema.String),
   evaluation_runtime: Schema.optional(
-    Schema.Literals(["both", "client", "server"]),
+    Schema.Literals(["all", "client", "server"]),
   ),
   excluded_properties: Schema.optional(Schema.String),
+  excluded_tags: Schema.optional(Schema.String),
   has_evaluation_contexts: Schema.optional(Schema.Literals(["false", "true"])),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
@@ -42,6 +44,7 @@ export const FeatureFlagsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           deleted: Schema.optional(Schema.Boolean),
           active: Schema.optional(Schema.Boolean),
+          archived: Schema.optional(Schema.Boolean),
           created_by: Schema.optional(
             Schema.NullOr(
               Schema.Struct({
@@ -88,7 +91,13 @@ export const FeatureFlagsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           experiment_set: Schema.optional(Schema.Array(Schema.Number)),
           experiment_set_metadata: Schema.optional(
-            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.Number,
+                name: Schema.String,
+                is_running: Schema.Boolean,
+              }),
+            ),
           ),
           surveys: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
@@ -96,7 +105,7 @@ export const FeatureFlagsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           features: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
           ),
-          rollback_conditions: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          rollback_conditions: Schema.optional(Schema.Unknown),
           performed_rollback: Schema.optional(Schema.NullOr(Schema.Boolean)),
           can_edit: Schema.optional(Schema.Boolean),
           tags: Schema.optional(Schema.Array(Schema.Unknown)),
@@ -142,9 +151,11 @@ export type FeatureFlagsListOutput = typeof FeatureFlagsListOutput.Type;
  * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/feature-flags) for more information on feature flags.
  * If you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user.
  *
- * @param created_by_id - The User ID which initially created the feature flag.
+ * @param archived - Filter by archived state. When omitted, archived flags are excluded.
+ * @param created_by_id - Filter by the user(s) who created the feature flag. Accepts a single user ID, or a JSON-encoded / comma-separated list of user IDs to match any of them.
  * @param evaluation_runtime - Filter feature flags by their evaluation runtime.
  * @param excluded_properties - JSON-encoded list of feature flag keys to exclude from the results.
+ * @param excluded_tags - JSON-encoded list of tag names to exclude. Flags carrying any of these tags are filtered out.
  * @param has_evaluation_contexts - Filter feature flags by presence of evaluation contexts. 'true' returns only flags with at least one evaluation context, 'false' returns only flags without.
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.

@@ -10,6 +10,9 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   identity: Schema.Struct({
     principalId: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
@@ -69,15 +72,22 @@ export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
  * Create an account in the given resource group
  *
  * Create an account
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  */
 export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
 // Input Schema
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
@@ -114,15 +124,22 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
  * Delete an account
  *
  * DeleteAccount
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  */
 export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
@@ -158,6 +175,11 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
  * Get an account under a resource group
  *
  * Get an account
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  */
 export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
@@ -166,6 +188,8 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -222,6 +246,9 @@ export type AccountsListByResourceGroupOutput =
  *
  * List Accounts in ResourceGroup
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
 export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -233,6 +260,7 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -289,6 +317,8 @@ export type AccountsListBySubscriptionOutput =
  *
  * List Accounts in Subscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
 export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -299,6 +329,9 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -336,6 +369,11 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
  * Patch a given account
  *
  * Patch an account
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  */
 export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
@@ -388,6 +426,7 @@ export type ConsumerInvitationsGetOutput =
  *
  * @param location - Location of the invitation
  * @param invitationId - An invitation id
+ * @param api-version - The api version to use.
  */
 export const ConsumerInvitationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -454,6 +493,7 @@ export type ConsumerInvitationsListInvitationsOutput =
  *
  * Lists invitations
  *
+ * @param api-version - The api version to use.
  * @param $skipToken - The continuation token
  */
 export const ConsumerInvitationsListInvitations =
@@ -542,6 +582,7 @@ export type ConsumerInvitationsRejectInvitationOutput =
  * Reject an invitation
  *
  * @param location - Location of the invitation
+ * @param api-version - The api version to use.
  */
 export const ConsumerInvitationsRejectInvitation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -551,6 +592,9 @@ export const ConsumerInvitationsRejectInvitation =
 // Input Schema
 export const ConsumerSourceDataSetsListByShareSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -608,7 +652,11 @@ export type ConsumerSourceDataSetsListByShareSubscriptionOutput =
  *
  * Get source dataSets of a shareSubscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
 export const ConsumerSourceDataSetsListByShareSubscription =
@@ -619,6 +667,9 @@ export const ConsumerSourceDataSetsListByShareSubscription =
 // Input Schema
 export const DataSetMappingsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     dataSetMappingName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals([
@@ -692,8 +743,12 @@ Enables copying the data set from source to destination.
  *
  * Create a DataSetMapping
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription which will hold the data set sink.
  * @param dataSetMappingName - The name of the data set mapping to be created.
+ * @param api-version - The api version to use.
  */
 export const DataSetMappingsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -704,6 +759,9 @@ export const DataSetMappingsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DataSetMappingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     dataSetMappingName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -727,8 +785,12 @@ export type DataSetMappingsDeleteOutput =
  *
  * Delete a DataSetMapping in a shareSubscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param dataSetMappingName - The name of the dataSetMapping.
+ * @param api-version - The api version to use.
  */
 export const DataSetMappingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -739,6 +801,9 @@ export const DataSetMappingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DataSetMappingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     dataSetMappingName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -779,8 +844,12 @@ export type DataSetMappingsGetOutput = typeof DataSetMappingsGetOutput.Type;
  *
  * Get a DataSetMapping in a shareSubscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param dataSetMappingName - The name of the dataSetMapping.
+ * @param api-version - The api version to use.
  */
 export const DataSetMappingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataSetMappingsGetInput,
@@ -789,6 +858,9 @@ export const DataSetMappingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DataSetMappingsListByShareSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -848,7 +920,11 @@ export type DataSetMappingsListByShareSubscriptionOutput =
  *
  * List DataSetMappings in a share subscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -860,6 +936,9 @@ export const DataSetMappingsListByShareSubscription =
   }));
 // Input Schema
 export const DataSetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
   dataSetName: Schema.String.pipe(T.PathParam()),
   kind: Schema.Literals([
@@ -932,8 +1011,12 @@ export type DataSetsCreateOutput = typeof DataSetsCreateOutput.Type;
  *
  * Create a DataSet
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share to add the data set to.
  * @param dataSetName - The name of the dataSet.
+ * @param api-version - The api version to use.
  */
 export const DataSetsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataSetsCreateInput,
@@ -941,6 +1024,9 @@ export const DataSetsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DataSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
   dataSetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -962,8 +1048,12 @@ export type DataSetsDeleteOutput = typeof DataSetsDeleteOutput.Type;
  *
  * Delete a DataSet in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param dataSetName - The name of the dataSet.
+ * @param api-version - The api version to use.
  */
 export const DataSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataSetsDeleteInput,
@@ -971,6 +1061,9 @@ export const DataSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DataSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
   dataSetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1010,8 +1103,12 @@ export type DataSetsGetOutput = typeof DataSetsGetOutput.Type;
  *
  * Get a DataSet in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param dataSetName - The name of the dataSet.
+ * @param api-version - The api version to use.
  */
 export const DataSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataSetsGetInput,
@@ -1020,6 +1117,9 @@ export const DataSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DataSetsListByShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -1077,7 +1177,11 @@ export type DataSetsListByShareOutput = typeof DataSetsListByShareOutput.Type;
  *
  * List DataSets in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -1136,6 +1240,7 @@ export type EmailRegistrationsActivateEmailOutput =
  * Activate the email registration for the current tenant
  *
  * @param location - Location of the activation.
+ * @param api-version - The api version to use.
  */
 export const EmailRegistrationsActivateEmail =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1181,6 +1286,7 @@ export type EmailRegistrationsRegisterEmailOutput =
  * Register an email for the current tenant
  *
  * @param location - Location of the registration
+ * @param api-version - The api version to use.
  */
 export const EmailRegistrationsRegisterEmail =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1190,6 +1296,9 @@ export const EmailRegistrationsRegisterEmail =
 // Input Schema
 export const InvitationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     invitationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1264,8 +1373,12 @@ export type InvitationsCreateOutput = typeof InvitationsCreateOutput.Type;
  *
  * Create an invitation
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share to send the invitation for.
  * @param invitationName - The name of the invitation.
+ * @param api-version - The api version to use.
  */
 export const InvitationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InvitationsCreateInput,
@@ -1274,6 +1387,9 @@ export const InvitationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const InvitationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     invitationName: Schema.String.pipe(T.PathParam()),
   },
@@ -1296,8 +1412,12 @@ export type InvitationsDeleteOutput = typeof InvitationsDeleteOutput.Type;
  *
  * Delete an invitation in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param invitationName - The name of the invitation.
+ * @param api-version - The api version to use.
  */
 export const InvitationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InvitationsDeleteInput,
@@ -1305,6 +1425,9 @@ export const InvitationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const InvitationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
   invitationName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1344,8 +1467,12 @@ export type InvitationsGetOutput = typeof InvitationsGetOutput.Type;
  *
  * Get an invitation in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param invitationName - The name of the invitation.
+ * @param api-version - The api version to use.
  */
 export const InvitationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InvitationsGetInput,
@@ -1354,6 +1481,9 @@ export const InvitationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const InvitationsListByShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -1413,7 +1543,11 @@ export type InvitationsListByShareOutput =
  *
  * List invitations in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - The continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -1509,6 +1643,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  * Lists the available operations
  *
  * List of available operations
+ *
+ * @param api-version - The api version to use.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -1517,6 +1653,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ProviderShareSubscriptionsAdjustInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1592,8 +1731,12 @@ export type ProviderShareSubscriptionsAdjustOutput =
  *
  * Adjust a share subscription's expiration date in a provider share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
+ * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsAdjust =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1603,6 +1746,9 @@ export const ProviderShareSubscriptionsAdjust =
 // Input Schema
 export const ProviderShareSubscriptionsGetByShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1645,8 +1791,12 @@ export type ProviderShareSubscriptionsGetByShareOutput =
  *
  * Get share subscription in a provider share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
+ * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsGetByShare =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1656,6 +1806,9 @@ export const ProviderShareSubscriptionsGetByShare =
 // Input Schema
 export const ProviderShareSubscriptionsListByShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -1713,7 +1866,11 @@ export type ProviderShareSubscriptionsListByShareOutput =
  *
  * List share subscriptions in a provider share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation Token
  */
 export const ProviderShareSubscriptionsListByShare =
@@ -1724,6 +1881,9 @@ export const ProviderShareSubscriptionsListByShare =
 // Input Schema
 export const ProviderShareSubscriptionsReinstateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1799,8 +1959,12 @@ export type ProviderShareSubscriptionsReinstateOutput =
  *
  * Reinstate share subscription in a provider share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
+ * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsReinstate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1810,6 +1974,9 @@ export const ProviderShareSubscriptionsReinstate =
 // Input Schema
 export const ProviderShareSubscriptionsRevokeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1852,8 +2019,12 @@ export type ProviderShareSubscriptionsRevokeOutput =
  *
  * Revoke share subscription in a provider share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
+ * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsRevoke =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1862,6 +2033,9 @@ export const ProviderShareSubscriptionsRevoke =
   }));
 // Input Schema
 export const SharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -1936,7 +2110,11 @@ export type SharesCreateOutput = typeof SharesCreateOutput.Type;
  *
  * Create a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  */
 export const SharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SharesCreateInput,
@@ -1944,6 +2122,9 @@ export const SharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1983,7 +2164,11 @@ export type SharesDeleteOutput = typeof SharesDeleteOutput.Type;
  *
  * Delete a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  */
 export const SharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SharesDeleteInput,
@@ -1991,6 +2176,9 @@ export const SharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2029,7 +2217,11 @@ export type SharesGetOutput = typeof SharesGetOutput.Type;
  *
  * Get a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share to retrieve.
+ * @param api-version - The api version to use.
  */
 export const SharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SharesGetInput,
@@ -2038,6 +2230,9 @@ export const SharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SharesListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
@@ -2094,6 +2289,10 @@ export type SharesListByAccountOutput = typeof SharesListByAccountOutput.Type;
  *
  * List shares in an account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation Token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2105,6 +2304,9 @@ export const SharesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SharesListSynchronizationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -2181,7 +2383,11 @@ export type SharesListSynchronizationDetailsOutput =
  *
  * List synchronization details
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2194,6 +2400,9 @@ export const SharesListSynchronizationDetails =
 // Input Schema
 export const SharesListSynchronizationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -2238,7 +2447,11 @@ export type SharesListSynchronizationsOutput =
  *
  * List synchronizations of a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2252,6 +2465,9 @@ export const SharesListSynchronizations = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ShareSubscriptionsCancelSynchronizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     durationMs: Schema.optional(Schema.Number),
     endTime: Schema.optional(Schema.String),
@@ -2294,7 +2510,11 @@ export type ShareSubscriptionsCancelSynchronizationOutput =
  *
  * Request to cancel a synchronization.
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsCancelSynchronization =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2304,6 +2524,9 @@ export const ShareSubscriptionsCancelSynchronization =
 // Input Schema
 export const ShareSubscriptionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       createdAt: Schema.optional(Schema.String),
@@ -2389,7 +2612,11 @@ export type ShareSubscriptionsCreateOutput =
  *
  * Create a shareSubscription in an account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2400,6 +2627,9 @@ export const ShareSubscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ShareSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2442,7 +2672,11 @@ export type ShareSubscriptionsDeleteOutput =
  *
  * Delete a shareSubscription in an account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2453,6 +2687,9 @@ export const ShareSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ShareSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2493,7 +2730,11 @@ export type ShareSubscriptionsGetOutput =
  *
  * Get a shareSubscription in an account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2504,6 +2745,9 @@ export const ShareSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ShareSubscriptionsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
@@ -2562,6 +2806,10 @@ export type ShareSubscriptionsListByAccountOutput =
  *
  * List share subscriptions in an account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation Token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2574,6 +2822,9 @@ export const ShareSubscriptionsListByAccount =
 // Input Schema
 export const ShareSubscriptionsListSourceShareSynchronizationSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -2605,7 +2856,11 @@ export type ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
  *
  * Get synchronization settings set on a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
 export const ShareSubscriptionsListSourceShareSynchronizationSettings =
@@ -2617,6 +2872,9 @@ export const ShareSubscriptionsListSourceShareSynchronizationSettings =
 // Input Schema
 export const ShareSubscriptionsListSynchronizationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -2690,7 +2948,11 @@ export type ShareSubscriptionsListSynchronizationDetailsOutput =
  *
  * List synchronization details
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2703,6 +2965,9 @@ export const ShareSubscriptionsListSynchronizationDetails =
 // Input Schema
 export const ShareSubscriptionsListSynchronizationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -2744,7 +3009,11 @@ export type ShareSubscriptionsListSynchronizationsOutput =
  *
  * List synchronizations of a share subscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2757,6 +3026,9 @@ export const ShareSubscriptionsListSynchronizations =
 // Input Schema
 export const ShareSubscriptionsSynchronizeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     synchronizationMode: Schema.optional(
       Schema.Literals(["Incremental", "FullSync"]),
@@ -2793,7 +3065,11 @@ export type ShareSubscriptionsSynchronizeOutput =
  *
  * Initiate a copy
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of share subscription
+ * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsSynchronize =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2803,6 +3079,9 @@ export const ShareSubscriptionsSynchronize =
 // Input Schema
 export const SynchronizationSettingsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     synchronizationSettingName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["ScheduleBased"]),
@@ -2863,8 +3142,12 @@ export type SynchronizationSettingsCreateOutput =
  *
  * Create a synchronizationSetting
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share to add the synchronization setting to.
  * @param synchronizationSettingName - The name of the synchronizationSetting.
+ * @param api-version - The api version to use.
  */
 export const SynchronizationSettingsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2874,6 +3157,9 @@ export const SynchronizationSettingsCreate =
 // Input Schema
 export const SynchronizationSettingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     synchronizationSettingName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2917,8 +3203,12 @@ export type SynchronizationSettingsDeleteOutput =
  *
  * Delete a synchronizationSetting in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param synchronizationSettingName - The name of the synchronizationSetting .
+ * @param api-version - The api version to use.
  */
 export const SynchronizationSettingsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2928,6 +3218,9 @@ export const SynchronizationSettingsDelete =
 // Input Schema
 export const SynchronizationSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     synchronizationSettingName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2970,8 +3263,12 @@ export type SynchronizationSettingsGetOutput =
  *
  * Get a synchronizationSetting in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param synchronizationSettingName - The name of the synchronizationSetting.
+ * @param api-version - The api version to use.
  */
 export const SynchronizationSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2982,6 +3279,9 @@ export const SynchronizationSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SynchronizationSettingsListByShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -3039,7 +3339,11 @@ export type SynchronizationSettingsListByShareOutput =
  *
  * List synchronizationSettings in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - continuation token
  */
 export const SynchronizationSettingsListByShare =
@@ -3049,6 +3353,9 @@ export const SynchronizationSettingsListByShare =
   }));
 // Input Schema
 export const TriggersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
   kind: Schema.Literals(["ScheduleBased"]),
@@ -3106,8 +3413,12 @@ export type TriggersCreateOutput = typeof TriggersCreateOutput.Type;
  *
  * Create a Trigger
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription which will hold the data set sink.
  * @param triggerName - The name of the trigger.
+ * @param api-version - The api version to use.
  */
 export const TriggersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TriggersCreateInput,
@@ -3115,6 +3426,9 @@ export const TriggersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3155,8 +3469,12 @@ export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
  *
  * Delete a Trigger in a shareSubscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param triggerName - The name of the trigger.
+ * @param api-version - The api version to use.
  */
 export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TriggersDeleteInput,
@@ -3164,6 +3482,9 @@ export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3203,8 +3524,12 @@ export type TriggersGetOutput = typeof TriggersGetOutput.Type;
  *
  * Get a Trigger in a shareSubscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param triggerName - The name of the trigger.
+ * @param api-version - The api version to use.
  */
 export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TriggersGetInput,
@@ -3213,6 +3538,9 @@ export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TriggersListByShareSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -3270,7 +3598,11 @@ export type TriggersListByShareSubscriptionOutput =
  *
  * List Triggers in a share subscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
 export const TriggersListByShareSubscription =

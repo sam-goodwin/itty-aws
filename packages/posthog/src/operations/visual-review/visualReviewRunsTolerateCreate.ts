@@ -21,49 +21,13 @@ export type VisualReviewRunsTolerateCreateInput =
 // Output Schema
 export const VisualReviewRunsTolerateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    current_artifact: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          content_hash: Schema.optional(Schema.String),
-          width: Schema.optional(Schema.NullOr(Schema.Number)),
-          height: Schema.optional(Schema.NullOr(Schema.Number)),
-          download_url: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
-    ),
-    baseline_artifact: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          content_hash: Schema.optional(Schema.String),
-          width: Schema.optional(Schema.NullOr(Schema.Number)),
-          height: Schema.optional(Schema.NullOr(Schema.Number)),
-          download_url: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
-    ),
-    diff_artifact: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          content_hash: Schema.optional(Schema.String),
-          width: Schema.optional(Schema.NullOr(Schema.Number)),
-          height: Schema.optional(Schema.NullOr(Schema.Number)),
-          download_url: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
-    ),
-    reviewed_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          first_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    current_artifact: Schema.optional(Schema.Unknown),
+    baseline_artifact: Schema.optional(Schema.Unknown),
+    diff_artifact: Schema.optional(Schema.Unknown),
+    reviewed_by: Schema.optional(Schema.Unknown),
+    cluster_summary: Schema.optional(Schema.Unknown),
     id: Schema.optional(Schema.String),
+    run_id: Schema.optional(Schema.String),
     identifier: Schema.optional(Schema.String),
     result: Schema.optional(Schema.String),
     classification_reason: Schema.optional(Schema.String),
@@ -75,6 +39,9 @@ export const VisualReviewRunsTolerateCreateOutput =
     tolerated_hash_id: Schema.optional(Schema.NullOr(Schema.String)),
     is_quarantined: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    ssim_score: Schema.optional(Schema.NullOr(Schema.Number)),
+    change_kind: Schema.optional(Schema.String),
+    size_mismatch: Schema.optional(Schema.Boolean),
   });
 export type VisualReviewRunsTolerateCreateOutput =
   typeof VisualReviewRunsTolerateCreateOutput.Type;

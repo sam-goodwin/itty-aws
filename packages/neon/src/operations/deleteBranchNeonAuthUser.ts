@@ -27,7 +27,8 @@ export type DeleteBranchNeonAuthUserOutput =
 /**
  * Delete auth user
  *
- * Deletes the auth user for the specified project.
+ * Deletes the specified user from the Neon Auth user directory for the specified branch.
+ * Removes the user record from `neon_auth.users_sync`. This action cannot be undone.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

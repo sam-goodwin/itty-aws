@@ -102,6 +102,7 @@ export interface UserAgentAiBotSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -175,6 +176,9 @@ export const UserAgentAiBotSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -330,6 +334,7 @@ export interface UserAgentAiTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -413,6 +418,9 @@ export const UserAgentAiTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -755,6 +763,7 @@ export interface TimeseriesAiBotResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -837,6 +846,9 @@ export const TimeseriesAiBotResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -964,6 +976,7 @@ export interface ModelAiInferenceSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -1037,6 +1050,9 @@ export const ModelAiInferenceSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -1161,6 +1177,7 @@ export interface TaskAiInferenceSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -1234,6 +1251,9 @@ export const TaskAiInferenceSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -1380,6 +1400,7 @@ export interface ModelAiInferenceTimeseriesGroupSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -1463,6 +1484,9 @@ export const ModelAiInferenceTimeseriesGroupSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -1607,6 +1631,7 @@ export interface TaskAiInferenceTimeseriesGroupSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -1690,6 +1715,9 @@ export const TaskAiInferenceTimeseriesGroupSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -1817,6 +1845,7 @@ export interface SummaryAiMarkdownForAgentResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -1890,6 +1919,9 @@ export const SummaryAiMarkdownForAgentResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -2031,6 +2063,7 @@ export interface TimeseriesAiMarkdownForAgentResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -2113,6 +2146,9 @@ export const TimeseriesAiMarkdownForAgentResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -2334,6 +2370,7 @@ export interface SummaryAiTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -2407,6 +2444,9 @@ export const SummaryAiTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -2636,6 +2676,7 @@ export interface TimeseriesAiTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -2718,6 +2759,9 @@ export const TimeseriesAiTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -3578,6 +3622,7 @@ export interface MatchingAnswerDnsSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -3651,6 +3696,9 @@ export const MatchingAnswerDnsSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -4062,6 +4110,7 @@ export interface MatchingAnswerDnsTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -4145,6 +4194,9 @@ export const MatchingAnswerDnsTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -4542,6 +4594,7 @@ export interface TimeseriesAs112Response {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -4624,6 +4677,9 @@ export const TimeseriesAs112Response =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -5000,6 +5056,7 @@ export interface DnssecAs112SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -5073,6 +5130,9 @@ export const DnssecAs112SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -5454,6 +5514,7 @@ export interface EdnsAs112SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -5527,6 +5588,9 @@ export const EdnsAs112SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -5898,6 +5962,7 @@ export interface ProtocolAs112SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -5971,6 +6036,9 @@ export const ProtocolAs112SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -6377,6 +6445,7 @@ export interface DnssecAs112TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -6460,6 +6529,9 @@ export const DnssecAs112TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -6858,6 +6930,7 @@ export interface EdnsAs112TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -6941,6 +7014,9 @@ export const EdnsAs112TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -7332,6 +7408,7 @@ export interface ProtocolAs112TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -7415,6 +7492,9 @@ export const ProtocolAs112TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -7566,6 +7646,7 @@ export interface DnssecAs112TopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -7644,6 +7725,9 @@ export const DnssecAs112TopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -7784,6 +7868,7 @@ export interface EdnsAs112TopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -7862,6 +7947,9 @@ export const EdnsAs112TopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -7998,6 +8086,7 @@ export interface LocationsAs112TopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -8076,6 +8165,9 @@ export const LocationsAs112TopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -8268,6 +8360,7 @@ export interface TimeseriesAttackLayer3Response {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -8350,6 +8443,9 @@ export const TimeseriesAttackLayer3Response =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -8502,6 +8598,7 @@ export interface BitrateAttackLayer3SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -8581,6 +8678,9 @@ export const BitrateAttackLayer3SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -8744,6 +8844,7 @@ export interface DurationAttackLayer3SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -8824,6 +8925,9 @@ export const DurationAttackLayer3SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -8992,6 +9096,7 @@ export interface IndustryAttackLayer3SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -9065,6 +9170,9 @@ export const IndustryAttackLayer3SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -9204,6 +9312,7 @@ export interface ProtocolAttackLayer3SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -9277,6 +9386,9 @@ export const ProtocolAttackLayer3SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -9436,6 +9548,7 @@ export interface VectorAttackLayer3SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -9509,6 +9622,9 @@ export const VectorAttackLayer3SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -9661,6 +9777,7 @@ export interface VerticalAttackLayer3SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -9734,6 +9851,9 @@ export const VerticalAttackLayer3SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -9913,6 +10033,7 @@ export interface BitrateAttackLayer3TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -10003,6 +10124,9 @@ export const BitrateAttackLayer3TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -10194,6 +10318,7 @@ export interface DurationAttackLayer3TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -10285,6 +10410,9 @@ export const DurationAttackLayer3TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -10481,6 +10609,7 @@ export interface IndustryAttackLayer3TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -10564,6 +10693,9 @@ export const IndustryAttackLayer3TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -10731,6 +10863,7 @@ export interface ProtocolAttackLayer3TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -10820,6 +10953,9 @@ export const ProtocolAttackLayer3TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -11012,6 +11148,7 @@ export interface VectorAttackLayer3TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -11095,6 +11232,9 @@ export const VectorAttackLayer3TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -11275,6 +11415,7 @@ export interface VerticalAttackLayer3TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -11358,6 +11499,9 @@ export const VerticalAttackLayer3TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -11535,6 +11679,7 @@ export interface AttacksAttackLayer3TopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -11613,6 +11758,9 @@ export const AttacksAttackLayer3TopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -11768,6 +11916,7 @@ export interface IndustryAttackLayer3TopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -11842,6 +11991,9 @@ export const IndustryAttackLayer3TopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -11996,6 +12148,7 @@ export interface VerticalAttackLayer3TopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -12070,6 +12223,9 @@ export const VerticalAttackLayer3TopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -12231,6 +12387,7 @@ export interface OriginAttackLayer3TopLocationResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -12310,6 +12467,9 @@ export const OriginAttackLayer3TopLocationResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -12469,6 +12629,7 @@ export interface TargetAttackLayer3TopLocationResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -12548,6 +12709,9 @@ export const TargetAttackLayer3TopLocationResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -12863,6 +13027,7 @@ export interface TimeseriesAttackLayer7Response {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -12946,6 +13111,9 @@ export const TimeseriesAttackLayer7Response =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -13235,6 +13403,7 @@ export interface IndustryAttackLayer7SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -13308,6 +13477,9 @@ export const IndustryAttackLayer7SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -13590,6 +13762,7 @@ export interface VerticalAttackLayer7SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -13663,6 +13836,9 @@ export const VerticalAttackLayer7SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -13975,6 +14151,7 @@ export interface IndustryAttackLayer7TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -14058,6 +14235,9 @@ export const IndustryAttackLayer7TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -14368,6 +14548,7 @@ export interface VerticalAttackLayer7TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -14451,6 +14632,9 @@ export const VerticalAttackLayer7TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -14633,6 +14817,7 @@ export interface AttacksAttackLayer7TopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -14713,6 +14898,9 @@ export const AttacksAttackLayer7TopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -15005,6 +15193,7 @@ export interface IndustryAttackLayer7TopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -15079,6 +15268,9 @@ export const IndustryAttackLayer7TopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -15368,6 +15560,7 @@ export interface VerticalAttackLayer7TopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -15442,6 +15635,9 @@ export const VerticalAttackLayer7TopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -15732,6 +15928,7 @@ export interface OriginAttackLayer7TopAsResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -15811,6 +16008,9 @@ export const OriginAttackLayer7TopAsResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -16106,6 +16306,7 @@ export interface OriginAttackLayer7TopLocationResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -16185,6 +16386,9 @@ export const OriginAttackLayer7TopLocationResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -16351,6 +16555,7 @@ export interface TargetAttackLayer7TopLocationResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -16430,6 +16635,9 @@ export const TargetAttackLayer7TopLocationResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -16825,6 +17033,7 @@ export interface DnssecAwareDnsSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -16898,6 +17107,9 @@ export const DnssecAwareDnsSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -17312,6 +17524,7 @@ export interface DnssecAwareDnsTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -17395,6 +17608,9 @@ export const DnssecAwareDnsTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -17550,6 +17766,7 @@ export interface TimeseriesBgpResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -17616,6 +17833,9 @@ export const TimeseriesBgpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -17987,6 +18207,7 @@ export interface TimeseriesBgpIpResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -18086,6 +18307,9 @@ export const TimeseriesBgpIpResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -19925,6 +20149,7 @@ export interface SummaryBotResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -19998,6 +20223,9 @@ export const SummaryBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -20204,6 +20432,7 @@ export interface TimeseriesBotResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -20286,6 +20515,9 @@ export const TimeseriesBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -20469,6 +20701,7 @@ export interface SummaryBotWebCrawlerResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -20542,6 +20775,9 @@ export const SummaryBotWebCrawlerResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -20670,6 +20906,7 @@ export interface DomainCategoriesRobotsTxtTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -20744,6 +20981,9 @@ export const DomainCategoriesRobotsTxtTopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -20935,6 +21175,7 @@ export interface ThreatCategoryEmailSecuritySummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -21013,6 +21254,9 @@ export const ThreatCategoryEmailSecuritySummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -21224,6 +21468,7 @@ export interface ThreatCategoryEmailSecurityTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -21312,6 +21557,9 @@ export const ThreatCategoryEmailSecurityTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -21553,6 +21801,7 @@ export interface BotClassHttpSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -21626,6 +21875,9 @@ export const BotClassHttpSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -21878,6 +22130,7 @@ export interface BotClassHttpTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -21961,6 +22214,9 @@ export const BotClassHttpTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -22103,6 +22359,7 @@ export interface BotClassLeakedCredentialSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -22176,6 +22433,9 @@ export const BotClassLeakedCredentialSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -22332,6 +22592,7 @@ export interface BotClassLeakedCredentialTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -22415,6 +22676,9 @@ export const BotClassLeakedCredentialTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -22759,6 +23023,7 @@ export interface ResponseCodeDnsSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -22832,6 +23097,9 @@ export const ResponseCodeDnsSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -23190,6 +23458,7 @@ export interface ResponseCodeDnsTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -23273,6 +23542,9 @@ export const ResponseCodeDnsTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -23606,6 +23878,7 @@ export interface ResponseCodesAs112SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -23679,6 +23952,9 @@ export const ResponseCodesAs112SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -24028,6 +24304,7 @@ export interface ResponseCodesAs112TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -24111,6 +24388,9 @@ export const ResponseCodesAs112TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -24385,6 +24665,7 @@ export interface SummaryCtResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -24478,6 +24759,9 @@ export const SummaryCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -24805,6 +25089,7 @@ export interface TimeseriesCtResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -24887,6 +25172,9 @@ export const TimeseriesCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -26028,6 +26316,7 @@ export interface TimeseriesDnsResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -26110,6 +26399,9 @@ export const TimeseriesDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -26495,6 +26787,7 @@ export interface DnssecDnsSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -26573,6 +26866,9 @@ export const DnssecDnsSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -26957,6 +27253,7 @@ export interface ProtocolDnsSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -27030,6 +27327,9 @@ export const ProtocolDnsSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -27445,6 +27745,7 @@ export interface DnssecDnsTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -27533,6 +27834,9 @@ export const DnssecDnsTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -27934,6 +28238,7 @@ export interface ProtocolDnsTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -28017,6 +28322,9 @@ export const ProtocolDnsTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -28481,6 +28789,7 @@ export interface AsesDnsTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -28555,6 +28864,9 @@ export const AsesDnsTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -29014,6 +29326,7 @@ export interface LocationsDnsTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -29092,6 +29405,9 @@ export const LocationsDnsTopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -29486,6 +29802,7 @@ export interface DnssecE2EDnsSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -29559,6 +29876,9 @@ export const DnssecE2EDnsSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -29970,6 +30290,7 @@ export interface DnssecE2EDnsTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -30053,6 +30374,9 @@ export const DnssecE2EDnsTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -30230,6 +30554,7 @@ export interface ArcEmailRoutingSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -30303,6 +30628,9 @@ export const ArcEmailRoutingSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -30475,6 +30803,7 @@ export interface DkimEmailRoutingSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -30548,6 +30877,9 @@ export const DkimEmailRoutingSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -30720,6 +31052,7 @@ export interface DmarcEmailRoutingSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -30793,6 +31126,9 @@ export const DmarcEmailRoutingSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -30965,6 +31301,7 @@ export interface EncryptedEmailRoutingSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -31038,6 +31375,9 @@ export const EncryptedEmailRoutingSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -31214,6 +31554,7 @@ export interface SpfEmailRoutingSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -31287,6 +31628,9 @@ export const SpfEmailRoutingSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -31481,6 +31825,7 @@ export interface ArcEmailRoutingTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -31564,6 +31909,9 @@ export const ArcEmailRoutingTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -31754,6 +32102,7 @@ export interface DkimEmailRoutingTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -31837,6 +32186,9 @@ export const DkimEmailRoutingTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -32027,6 +32379,7 @@ export interface DmarcEmailRoutingTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -32110,6 +32463,9 @@ export const DmarcEmailRoutingTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -32300,6 +32656,7 @@ export interface EncryptedEmailRoutingTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -32383,6 +32740,9 @@ export const EncryptedEmailRoutingTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -32577,6 +32937,7 @@ export interface SpfEmailRoutingTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -32660,6 +33021,9 @@ export const SpfEmailRoutingTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -32835,6 +33199,7 @@ export interface ArcEmailSecuritySummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -32908,6 +33273,9 @@ export const ArcEmailSecuritySummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -33079,6 +33447,7 @@ export interface DkimEmailSecuritySummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -33152,6 +33521,9 @@ export const DkimEmailSecuritySummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -33323,6 +33695,7 @@ export interface DmarcEmailSecuritySummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -33396,6 +33769,9 @@ export const DmarcEmailSecuritySummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -33580,6 +33956,7 @@ export interface MaliciousEmailSecuritySummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -33653,6 +34030,9 @@ export const MaliciousEmailSecuritySummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -33838,6 +34218,7 @@ export interface SpamEmailSecuritySummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -33911,6 +34292,9 @@ export const SpamEmailSecuritySummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -34081,6 +34465,7 @@ export interface SpfEmailSecuritySummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -34154,6 +34539,9 @@ export const SpfEmailSecuritySummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -34335,6 +34723,7 @@ export interface SpoofEmailSecuritySummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -34408,6 +34797,9 @@ export const SpoofEmailSecuritySummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -34600,6 +34992,7 @@ export interface ArcEmailSecurityTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -34683,6 +35076,9 @@ export const ArcEmailSecurityTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -34872,6 +35268,7 @@ export interface DkimEmailSecurityTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -34955,6 +35352,9 @@ export const DkimEmailSecurityTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -35144,6 +35544,7 @@ export interface DmarcEmailSecurityTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -35227,6 +35628,9 @@ export const DmarcEmailSecurityTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -35426,6 +35830,7 @@ export interface MaliciousEmailSecurityTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -35509,6 +35914,9 @@ export const MaliciousEmailSecurityTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -35712,6 +36120,7 @@ export interface SpamEmailSecurityTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -35795,6 +36204,9 @@ export const SpamEmailSecurityTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -35983,6 +36395,7 @@ export interface SpfEmailSecurityTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -36066,6 +36479,9 @@ export const SpfEmailSecurityTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -36265,6 +36681,7 @@ export interface SpoofEmailSecurityTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -36348,6 +36765,9 @@ export const SpoofEmailSecurityTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -36538,6 +36958,7 @@ export interface GetEmailSecurityTopTldResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -36612,6 +37033,9 @@ export const GetEmailSecurityTopTldResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -36813,6 +37237,7 @@ export interface GetEmailSecurityTopTldMaliciousResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -36887,6 +37312,9 @@ export const GetEmailSecurityTopTldMaliciousResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -37088,6 +37516,7 @@ export interface GetEmailSecurityTopTldSpamResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -37162,6 +37591,9 @@ export const GetEmailSecurityTopTldSpamResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -37363,6 +37795,7 @@ export interface GetEmailSecurityTopTldSpoofResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -37437,6 +37870,9 @@ export const GetEmailSecurityTopTldSpoofResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -37692,6 +38128,7 @@ export interface ListEntityAsnsResponse {
     asn: number;
     country: string;
     countryName: string;
+    estimatedUsers: { estimatedUsers?: number | null };
     name: string;
     aka?: string | null;
     orgName?: string | null;
@@ -37707,6 +38144,11 @@ export const ListEntityAsnsResponse =
           asn: Schema.Number,
           country: Schema.String,
           countryName: Schema.String,
+          estimatedUsers: Schema.Struct({
+            estimatedUsers: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }),
           name: Schema.String,
           aka: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           orgName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -38256,6 +38698,7 @@ export interface BrowserFamilyHttpTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -38339,6 +38782,9 @@ export const BrowserFamilyHttpTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -38573,6 +39019,7 @@ export interface BrowserFamilyHttpTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -38647,6 +39094,9 @@ export const BrowserFamilyHttpTopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -39126,6 +39576,7 @@ export interface TimeseriesGroupsAiBotResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -39209,6 +39660,9 @@ export const TimeseriesGroupsAiBotResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -39463,6 +39917,7 @@ export interface TimeseriesGroupsAiTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -39546,6 +40001,9 @@ export const TimeseriesGroupsAiTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -39768,6 +40226,7 @@ export interface TimeseriesGroupsBotResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -39851,6 +40310,9 @@ export const TimeseriesGroupsBotResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -40064,6 +40526,7 @@ export interface TimeseriesGroupsBotWebCrawlerResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -40147,6 +40610,9 @@ export const TimeseriesGroupsBotWebCrawlerResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -40445,6 +40911,7 @@ export interface TimeseriesGroupsCtResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -40548,6 +41015,9 @@ export const TimeseriesGroupsCtResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -40782,6 +41252,7 @@ export interface TimeseriesGroupsNetflowResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -40865,6 +41336,9 @@ export const TimeseriesGroupsNetflowResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -41004,6 +41478,7 @@ export interface TimeseriesGroupsPostQuantumOriginResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -41087,6 +41562,9 @@ export const TimeseriesGroupsPostQuantumOriginResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -41247,6 +41725,7 @@ export interface TimeseriesGroupsQualityIqiResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -41330,6 +41809,9 @@ export const TimeseriesGroupsQualityIqiResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -41484,6 +41966,7 @@ export interface TimeseriesGroupsRankingResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -41567,6 +42050,9 @@ export const TimeseriesGroupsRankingResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -41710,6 +42196,7 @@ export interface TimeseriesGroupsRankingInternetServiceResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -41793,6 +42280,9 @@ export const TimeseriesGroupsRankingInternetServiceResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -41947,6 +42437,7 @@ export interface TimeseriesGroupsTcpResetsTimeoutResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -42037,6 +42528,9 @@ export const TimeseriesGroupsTcpResetsTimeoutResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -42218,6 +42712,7 @@ export interface TimeseriesGroupsV2AiInferenceResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -42301,6 +42796,9 @@ export const TimeseriesGroupsV2AiInferenceResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -42705,6 +43203,7 @@ export interface TimeseriesGroupsV2As112Response {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -42788,6 +43287,9 @@ export const TimeseriesGroupsV2As112Response =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -42974,6 +43476,7 @@ export interface TimeseriesGroupsV2AttackLayer3Response {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -43057,6 +43560,9 @@ export const TimeseriesGroupsV2AttackLayer3Response =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -43373,6 +43879,7 @@ export interface TimeseriesGroupsV2AttackLayer7Response {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -43456,6 +43963,9 @@ export const TimeseriesGroupsV2AttackLayer7Response =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -43940,6 +44450,7 @@ export interface TimeseriesGroupsV2DnsResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -44023,6 +44534,9 @@ export const TimeseriesGroupsV2DnsResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -44230,6 +44744,7 @@ export interface TimeseriesGroupsV2EmailRoutingResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -44313,6 +44828,9 @@ export const TimeseriesGroupsV2EmailRoutingResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -44519,6 +45037,7 @@ export interface TimeseriesGroupsV2EmailSecurityResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -44602,6 +45121,9 @@ export const TimeseriesGroupsV2EmailSecurityResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -44918,6 +45440,7 @@ export interface TimeseriesGroupsV2HttpResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -45001,6 +45524,9 @@ export const TimeseriesGroupsV2HttpResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -45211,6 +45737,7 @@ export interface TimeseriesGroupsV2LeakedCredentialResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -45294,6 +45821,9 @@ export const TimeseriesGroupsV2LeakedCredentialResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -45682,6 +46212,7 @@ export interface CacheHitDnsSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -45755,6 +46286,9 @@ export const CacheHitDnsSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -46163,6 +46697,7 @@ export interface CacheHitDnsTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -46246,6 +46781,9 @@ export const CacheHitDnsTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -46565,6 +47103,7 @@ export interface TimeseriesHttpResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -46647,6 +47186,9 @@ export const TimeseriesHttpResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -46887,6 +47429,7 @@ export interface GetHttpAsResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -46961,6 +47504,9 @@ export const GetHttpAsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -47208,6 +47754,7 @@ export interface GetHttpAsBotClassResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -47282,6 +47829,9 @@ export const GetHttpAsBotClassResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -47529,6 +48079,7 @@ export interface GetHttpAsBrowserFamilyResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -47603,6 +48154,9 @@ export const GetHttpAsBrowserFamilyResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -47850,6 +48404,7 @@ export interface GetHttpAsDeviceTypeResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -47924,6 +48479,9 @@ export const GetHttpAsDeviceTypeResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -48171,6 +48729,7 @@ export interface GetHttpAsHttpMethodResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -48245,6 +48804,9 @@ export const GetHttpAsHttpMethodResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -48495,6 +49057,7 @@ export interface GetHttpAsHttpProtocolResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -48569,6 +49132,9 @@ export const GetHttpAsHttpProtocolResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -48819,6 +49385,7 @@ export interface GetHttpAsIpVersionResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -48893,6 +49460,9 @@ export const GetHttpAsIpVersionResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -49118,6 +49688,7 @@ export interface GetHttpAsOsResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -49192,6 +49763,9 @@ export const GetHttpAsOsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -49426,6 +50000,7 @@ export interface GetHttpAsTlsVersionResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -49500,6 +50075,9 @@ export const GetHttpAsTlsVersionResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -49750,6 +50328,7 @@ export interface GetHttpLocationResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -49828,6 +50407,9 @@ export const GetHttpLocationResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -50075,6 +50657,7 @@ export interface GetHttpLocationBotClassResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -50153,6 +50736,9 @@ export const GetHttpLocationBotClassResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -50400,6 +50986,7 @@ export interface GetHttpLocationBrowserFamilyResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -50478,6 +51065,9 @@ export const GetHttpLocationBrowserFamilyResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -50725,6 +51315,7 @@ export interface GetHttpLocationDeviceTypeResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -50803,6 +51394,9 @@ export const GetHttpLocationDeviceTypeResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -51050,6 +51644,7 @@ export interface GetHttpLocationHttpMethodResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -51128,6 +51723,9 @@ export const GetHttpLocationHttpMethodResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -51378,6 +51976,7 @@ export interface GetHttpLocationHttpProtocolResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -51456,6 +52055,9 @@ export const GetHttpLocationHttpProtocolResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -51706,6 +52308,7 @@ export interface GetHttpLocationIpVersionResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -51784,6 +52387,9 @@ export const GetHttpLocationIpVersionResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -52011,6 +52617,7 @@ export interface GetHttpLocationOsResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -52089,6 +52696,9 @@ export const GetHttpLocationOsResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -52323,6 +52933,7 @@ export interface GetHttpLocationTlsVersionResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -52401,6 +53012,9 @@ export const GetHttpLocationTlsVersionResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -52621,6 +53235,7 @@ export interface OsHttpSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -52694,6 +53309,9 @@ export const OsHttpSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -52956,6 +53574,7 @@ export interface BrowserHttpTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -53039,6 +53658,9 @@ export const BrowserHttpTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -53266,6 +53888,7 @@ export interface OsHttpTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -53349,6 +53972,9 @@ export const OsHttpTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -53593,6 +54219,7 @@ export interface BrowserHttpTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -53667,6 +54294,9 @@ export const BrowserHttpTopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -53812,6 +54442,7 @@ export interface CompromisedLeakedCredentialSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -53885,6 +54516,9 @@ export const CompromisedLeakedCredentialSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -54043,6 +54677,7 @@ export interface CompromisedLeakedCredentialTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -54126,6 +54761,9 @@ export const CompromisedLeakedCredentialTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -54320,6 +54958,7 @@ export interface HttpMethodAttackLayer7SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -54393,6 +55032,9 @@ export const HttpMethodAttackLayer7SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -54600,6 +55242,7 @@ export interface HttpMethodAttackLayer7TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -54683,6 +55326,9 @@ export const HttpMethodAttackLayer7TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -54820,6 +55466,7 @@ export interface SummaryNetflowResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -54893,6 +55540,9 @@ export const SummaryNetflowResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -55057,6 +55707,7 @@ export interface TimeseriesNetflowResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -55140,6 +55791,9 @@ export const TimeseriesNetflowResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -55281,6 +55935,7 @@ export interface AsesNetflowTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -55355,6 +56010,9 @@ export const AsesNetflowTopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -55497,6 +56155,7 @@ export interface LocationsNetflowTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -55575,6 +56234,9 @@ export const LocationsNetflowTopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -55713,6 +56375,7 @@ export interface SummaryPostQuantumOriginResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -55786,6 +56449,9 @@ export const SummaryPostQuantumOriginResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -56108,6 +56774,7 @@ export interface MitigationProductAttackLayer7SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -56181,6 +56848,9 @@ export const MitigationProductAttackLayer7SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -56466,6 +57136,7 @@ export interface MitigationProductAttackLayer7TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -56549,6 +57220,9 @@ export const MitigationProductAttackLayer7TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -56785,6 +57459,7 @@ export interface HttpProtocolHttpSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -56858,6 +57533,9 @@ export const HttpProtocolHttpSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -57113,6 +57791,7 @@ export interface HttpProtocolHttpTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -57196,6 +57875,9 @@ export const HttpProtocolHttpTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -57338,6 +58020,7 @@ export interface SummaryQualityIqiResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -57411,6 +58094,9 @@ export const SummaryQualityIqiResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -57558,6 +58244,7 @@ export interface HistogramQualitySpeedResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -57637,6 +58324,9 @@ export const HistogramQualitySpeedResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -57759,6 +58449,7 @@ export interface SummaryQualitySpeedResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -57840,6 +58531,9 @@ export const SummaryQualitySpeedResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -58002,6 +58696,7 @@ export interface AsesQualitySpeedTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -58087,6 +58782,9 @@ export const AsesQualitySpeedTopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -58254,6 +58952,7 @@ export interface LocationsQualitySpeedTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -58339,6 +59038,9 @@ export const LocationsQualitySpeedTopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -58595,6 +59297,7 @@ export interface PostQuantumHttpSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -58668,6 +59371,9 @@ export const PostQuantumHttpSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -58935,6 +59641,7 @@ export interface PostQuantumHttpTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -59022,6 +59729,9 @@ export const PostQuantumHttpTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -59165,6 +59875,7 @@ export interface TopRankingResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -59244,6 +59955,9 @@ export const TopRankingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -59550,6 +60264,7 @@ export interface TopRankingInternetServiceResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -59624,6 +60339,9 @@ export const TopRankingInternetServiceResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -59767,6 +60485,7 @@ export interface DirectiveRobotsTxtTopUserAgentResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -59846,6 +60565,9 @@ export const DirectiveRobotsTxtTopUserAgentResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -60146,6 +60868,7 @@ export interface ManagedRulesAttackLayer7SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -60219,6 +60942,9 @@ export const ManagedRulesAttackLayer7SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -60531,6 +61257,7 @@ export interface ManagedRulesAttackLayer7TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -60614,6 +61341,9 @@ export const ManagedRulesAttackLayer7TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -60972,6 +61702,7 @@ export interface SummaryTcpResetsTimeoutResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -61051,6 +61782,9 @@ export const SummaryTcpResetsTimeoutResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -61770,6 +62504,7 @@ export interface ResponseTTLDnsSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -61851,6 +62586,9 @@ export const ResponseTTLDnsSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -62275,6 +63013,7 @@ export interface ResponseTTLDnsTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -62366,6 +63105,9 @@ export const ResponseTTLDnsTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -62577,6 +63319,7 @@ export interface QueryTypeAs112SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -62650,6 +63393,9 @@ export const QueryTypeAs112SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -62863,6 +63609,7 @@ export interface QueryTypeAs112TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -62946,6 +63693,9 @@ export const QueryTypeAs112TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -63150,6 +63900,7 @@ export interface QueryTypeDnsSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -63223,6 +63974,9 @@ export const QueryTypeDnsSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -63445,6 +64199,7 @@ export interface QueryTypeDnsTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -63528,6 +64283,9 @@ export const QueryTypeDnsTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -63759,6 +64517,7 @@ export interface DeviceTypeHttpSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -63832,6 +64591,9 @@ export const DeviceTypeHttpSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -64085,6 +64847,7 @@ export interface DeviceTypeHttpTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -64173,6 +64936,9 @@ export const DeviceTypeHttpTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -64400,6 +65166,7 @@ export interface SummaryV2AiBotResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -64473,6 +65240,9 @@ export const SummaryV2AiBotResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -64615,6 +65385,7 @@ export interface SummaryV2AiInferenceResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -64688,6 +65459,9 @@ export const SummaryV2AiInferenceResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -65072,6 +65846,7 @@ export interface SummaryV2As112Response {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -65145,6 +65920,9 @@ export const SummaryV2As112Response =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -65306,6 +66084,7 @@ export interface SummaryV2AttackLayer3Response {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -65379,6 +66158,9 @@ export const SummaryV2AttackLayer3Response =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -65670,6 +66452,7 @@ export interface SummaryV2AttackLayer7Response {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -65743,6 +66526,9 @@ export const SummaryV2AttackLayer7Response =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -66197,6 +66983,7 @@ export interface SummaryV2DnsResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -66270,6 +67057,9 @@ export const SummaryV2DnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -66460,6 +67250,7 @@ export interface SummaryV2EmailRoutingResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -66533,6 +67324,9 @@ export const SummaryV2EmailRoutingResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -66722,6 +67516,7 @@ export interface SummaryV2EmailSecurityResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -66795,6 +67590,9 @@ export const SummaryV2EmailSecurityResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -67081,6 +67879,7 @@ export interface SummaryV2HttpResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -67154,6 +67953,9 @@ export const SummaryV2HttpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -67316,6 +68118,7 @@ export interface SummaryV2LeakedCredentialResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -67389,6 +68192,9 @@ export const SummaryV2LeakedCredentialResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -67538,6 +68344,7 @@ export interface SummaryV2NetflowResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -67611,6 +68418,9 @@ export const SummaryV2NetflowResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -67746,6 +68556,7 @@ export interface BotsVerifiedBotTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -67825,6 +68636,9 @@ export const BotsVerifiedBotTopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -67967,6 +68781,7 @@ export interface CategoriesVerifiedBotTopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -68041,6 +68856,9 @@ export const CategoriesVerifiedBotTopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -68425,6 +69243,7 @@ export interface IpVersionAs112SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -68498,6 +69317,9 @@ export const IpVersionAs112SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -68898,6 +69720,7 @@ export interface IpVersionAs112TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -68981,6 +69804,9 @@ export const IpVersionAs112TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -69123,6 +69949,7 @@ export interface IpVersionAs112TopResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     } | null;
@@ -69201,6 +70028,9 @@ export const IpVersionAs112TopResponse =
                 isInstantaneous: Schema.Boolean,
                 linkedUrl: Schema.String,
                 startDate: Schema.String,
+                tags: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
               }),
             ),
             level: Schema.Number,
@@ -69358,6 +70188,7 @@ export interface IpVersionAttackLayer3SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -69431,6 +70262,9 @@ export const IpVersionAttackLayer3SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -69606,6 +70440,7 @@ export interface IpVersionAttackLayer3TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -69689,6 +70524,9 @@ export const IpVersionAttackLayer3TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -69975,6 +70813,7 @@ export interface HttpVersionAttackLayer7SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -70048,6 +70887,9 @@ export const HttpVersionAttackLayer7SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -70333,6 +71175,7 @@ export interface IpVersionAttackLayer7SummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -70406,6 +71249,9 @@ export const IpVersionAttackLayer7SummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -70708,6 +71554,7 @@ export interface HttpVersionAttackLayer7TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -70796,6 +71643,9 @@ export const HttpVersionAttackLayer7TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -71106,6 +71956,7 @@ export interface IpVersionAttackLayer7TimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -71189,6 +72040,9 @@ export const IpVersionAttackLayer7TimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -71585,6 +72439,7 @@ export interface IpVersionDnsSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -71658,6 +72513,9 @@ export const IpVersionDnsSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -72067,6 +72925,7 @@ export interface IpVersionDnsTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -72150,6 +73009,9 @@ export const IpVersionDnsTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -72331,6 +73193,7 @@ export interface IpVersionEmailRoutingSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -72404,6 +73267,9 @@ export const IpVersionEmailRoutingSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -72600,6 +73466,7 @@ export interface IpVersionEmailRoutingTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -72683,6 +73550,9 @@ export const IpVersionEmailRoutingTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -72854,6 +73724,7 @@ export interface TlsVersionEmailSecuritySummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -72932,6 +73803,9 @@ export const TlsVersionEmailSecuritySummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -73127,6 +74001,7 @@ export interface TlsVersionEmailSecurityTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -73215,6 +74090,9 @@ export const TlsVersionEmailSecurityTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -73458,6 +74336,7 @@ export interface HttpVersionHttpSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -73531,6 +74410,9 @@ export const HttpVersionHttpSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -73769,6 +74651,7 @@ export interface IpVersionHttpSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -73842,6 +74725,9 @@ export const IpVersionHttpSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -74057,6 +74943,7 @@ export interface TlsVersionHttpSummaryResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -74136,6 +75023,9 @@ export const TlsVersionHttpSummaryResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -74399,6 +75289,7 @@ export interface HttpVersionHttpTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -74487,6 +75378,9 @@ export const HttpVersionHttpTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -74747,6 +75641,7 @@ export interface IpVersionHttpTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -74830,6 +75725,9 @@ export const IpVersionHttpTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,
@@ -75072,6 +75970,7 @@ export interface TlsVersionHttpTimeseriesGroupResponse {
         isInstantaneous: boolean;
         linkedUrl: string;
         startDate: string;
+        tags?: string[] | null;
       }[];
       level: number;
     };
@@ -75162,6 +76061,9 @@ export const TlsVersionHttpTimeseriesGroupResponse =
               isInstantaneous: Schema.Boolean,
               linkedUrl: Schema.String,
               startDate: Schema.String,
+              tags: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
             }),
           ),
           level: Schema.Number,

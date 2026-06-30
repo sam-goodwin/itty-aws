@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const UpdateNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -66,6 +66,7 @@ export const UpdateNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   }),
+  updatedAt: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "PUT", path: "/v2/notifiers/{id}" }));
 export type UpdateNotifierInput = typeof UpdateNotifierInput.Type;
 
@@ -109,7 +110,7 @@ export const UpdateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     opsgenie: Schema.optional(
       Schema.Struct({
-        apiKey: Schema.optional(SensitiveString),
+        apiKey: Schema.optional(SensitiveOutputString),
         isEU: Schema.optional(Schema.Boolean),
       }),
     ),
@@ -130,6 +131,7 @@ export const UpdateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   }),
+  updatedAt: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
 });
 export type UpdateNotifierOutput = typeof UpdateNotifierOutput.Type;

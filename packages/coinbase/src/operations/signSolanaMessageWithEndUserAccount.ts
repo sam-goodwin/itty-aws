@@ -29,7 +29,7 @@ export type SignSolanaMessageWithEndUserAccountOutput =
 
 // The operation
 /**
- * Sign a Base64 encoded message
+ * Sign Base64-encoded message
  *
  * Signs an arbitrary Base64 encoded message with the given Solana account.
  * **WARNING:**  Never sign a message that you didn't generate as it may put your funds at risk.

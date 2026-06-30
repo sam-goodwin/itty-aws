@@ -6,8 +6,11 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 // Input Schema
 export const AlertsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
+  created_by: Schema.optional(Schema.String),
+  insight_id: Schema.optional(Schema.Number),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
+  search: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "GET", path: "/api/projects/{project_id}/alerts/" }));
 export type AlertsListInput = typeof AlertsListInput.Type;
 
@@ -48,12 +51,7 @@ export const AlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             name: Schema.optional(Schema.String),
             configuration: Schema.optional(
               Schema.Struct({
-                bounds: Schema.optional(
-                  Schema.Struct({
-                    lower: Schema.optional(Schema.NullOr(Schema.Number)),
-                    upper: Schema.optional(Schema.NullOr(Schema.Number)),
-                  }),
-                ),
+                bounds: Schema.optional(Schema.Unknown),
                 type: Schema.optional(
                   Schema.Literals(["absolute", "percentage"]),
                 ),
@@ -61,19 +59,7 @@ export const AlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
           }),
         ),
-        condition: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals([
-                  "absolute_value",
-                  "relative_increase",
-                  "relative_decrease",
-                ]),
-              ),
-            }),
-          ),
-        ),
+        condition: Schema.optional(Schema.Unknown),
         state: Schema.optional(Schema.String),
         enabled: Schema.optional(Schema.Boolean),
         last_notified_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -89,13 +75,11 @@ export const AlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Literals(["Firing", "Not firing", "Errored", "Snoozed"]),
               ),
               targets_notified: Schema.optional(Schema.Boolean),
-              anomaly_scores: Schema.optional(Schema.NullOr(Schema.Unknown)),
-              triggered_points: Schema.optional(Schema.NullOr(Schema.Unknown)),
-              triggered_dates: Schema.optional(Schema.NullOr(Schema.Unknown)),
+              anomaly_scores: Schema.optional(Schema.Unknown),
+              triggered_points: Schema.optional(Schema.Unknown),
+              triggered_dates: Schema.optional(Schema.Unknown),
               interval: Schema.optional(Schema.NullOr(Schema.String)),
-              triggered_metadata: Schema.optional(
-                Schema.NullOr(Schema.Unknown),
-              ),
+              triggered_metadata: Schema.optional(Schema.Unknown),
               investigation_status: Schema.optional(Schema.Unknown),
               investigation_verdict: Schema.optional(Schema.Unknown),
               investigation_summary: Schema.optional(
@@ -112,43 +96,27 @@ export const AlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         ),
         checks_total: Schema.optional(Schema.NullOr(Schema.Number)),
-        config: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              check_ongoing_interval: Schema.optional(
-                Schema.NullOr(Schema.Boolean),
-              ),
-              series_index: Schema.optional(Schema.Number),
-              type: Schema.optional(Schema.Literals(["TrendsAlertConfig"])),
-            }),
-          ),
-        ),
+        config: Schema.optional(Schema.Unknown),
         detector_config: Schema.optional(Schema.Unknown),
         calculation_interval: Schema.optional(
-          Schema.Literals(["hourly", "daily", "weekly", "monthly"]),
+          Schema.Literals([
+            "every_15_minutes",
+            "hourly",
+            "daily",
+            "weekly",
+            "monthly",
+          ]),
         ),
         snoozed_until: Schema.optional(Schema.NullOr(Schema.String)),
         skip_weekend: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        schedule_restriction: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              blocked_windows: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    start: Schema.optional(Schema.String),
-                    end: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
+        schedule_restriction: Schema.optional(Schema.Unknown),
         last_value: Schema.optional(Schema.NullOr(Schema.Number)),
         investigation_agent_enabled: Schema.optional(Schema.Boolean),
         investigation_gates_notifications: Schema.optional(Schema.Boolean),
         investigation_inconclusive_action: Schema.optional(
           Schema.Literals(["notify", "suppress"]),
         ),
+        search_match_type: Schema.optional(Schema.Unknown),
       }),
     ),
   ),
@@ -158,9 +126,12 @@ export type AlertsListOutput = typeof AlertsListOutput.Type;
 // The operation
 /**
  *
+ * @param created_by - Optional. Restrict results to alerts created by the user with this UUID.
+ * @param insight_id - Optional. Restrict results to alerts on this insight ID.
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+ * @param search - Optional. Fuzzy match against alert `name` using Postgres trigram word similarity (handles typos, transpositions, and prefix-as-you-type). Results are ordered by relevance, then creation time. Capped at 200 characters; longer queries return a 400 error.
  */
 export const alertsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AlertsListInput,

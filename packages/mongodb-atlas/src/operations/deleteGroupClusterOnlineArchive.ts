@@ -30,7 +30,7 @@ export type DeleteGroupClusterOnlineArchiveOutput =
 /**
  * Remove One Online Archive
  *
- * Removes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role.
+ * Removes one online archive. This archive stores data from one cluster within one project.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

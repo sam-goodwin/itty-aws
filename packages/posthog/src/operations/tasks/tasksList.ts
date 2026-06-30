@@ -6,6 +6,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 // Input Schema
 export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
+  archived: Schema.optional(Schema.Literals(["true", "false", "all"])),
   created_by: Schema.optional(Schema.Number),
   internal: Schema.optional(Schema.Boolean),
   limit: Schema.optional(Schema.Number),
@@ -30,63 +31,32 @@ export type TasksListInput = typeof TasksListInput.Type;
 
 // Output Schema
 export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.optional(Schema.Number),
+  count: Schema.Number,
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        task_number: Schema.optional(Schema.NullOr(Schema.Number)),
-        slug: Schema.optional(Schema.String),
-        title: Schema.optional(Schema.String),
-        title_manually_set: Schema.optional(Schema.Boolean),
-        description: Schema.optional(Schema.String),
-        origin_product: Schema.optional(
-          Schema.Literals([
-            "error_tracking",
-            "eval_clusters",
-            "user_created",
-            "automation",
-            "slack",
-            "support_queue",
-            "session_summaries",
-            "signal_report",
-          ]),
-        ),
-        repository: Schema.optional(Schema.NullOr(Schema.String)),
-        github_integration: Schema.optional(Schema.NullOr(Schema.Number)),
-        signal_report: Schema.optional(Schema.NullOr(Schema.String)),
-        signal_report_task_relationship: Schema.optional(
-          Schema.Literals(["implementation"]),
-        ),
-        json_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        internal: Schema.optional(Schema.Boolean),
-        latest_run: Schema.optional(
-          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-        ),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-        created_by: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              id: Schema.optional(Schema.Number),
-              uuid: Schema.optional(Schema.String),
-              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-              first_name: Schema.optional(Schema.String),
-              last_name: Schema.optional(Schema.String),
-              email: Schema.optional(Schema.String),
-              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-              hedgehog_config: Schema.optional(
-                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              role_at_organization: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        ci_prompt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+  results: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      task_number: Schema.NullOr(Schema.Number),
+      slug: Schema.String,
+      title: Schema.String,
+      title_manually_set: Schema.Boolean,
+      description: Schema.String,
+      origin_product: Schema.String,
+      repository: Schema.NullOr(Schema.String),
+      github_integration: Schema.NullOr(Schema.Number),
+      github_user_integration: Schema.NullOr(Schema.String),
+      signal_report: Schema.NullOr(Schema.String),
+      json_schema: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+      internal: Schema.Boolean,
+      archived: Schema.Boolean,
+      archived_at: Schema.NullOr(Schema.String),
+      latest_run: Schema.NullOr(Schema.String),
+      created_at: Schema.optional(Schema.NullOr(Schema.String)),
+      updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+      created_by: Schema.optional(Schema.Unknown),
+      ci_prompt: Schema.NullOr(Schema.String),
+    }),
   ),
 });
 export type TasksListOutput = typeof TasksListOutput.Type;
@@ -97,8 +67,13 @@ export type TasksListOutput = typeof TasksListOutput.Type;
  *
  * Get a list of tasks for the current project, with optional filtering by origin product, stage, organization, repository, and created_by.
  *
+ * @param archived - Filter by archived state. Defaults to excluding archived tasks. Use 'true' to list only archived tasks, 'false' for the default, or 'all' to include both.
+
+* `true` - true
+* `false` - false
+* `all` - all
  * @param created_by - Filter by creator user ID
- * @param internal - Filter by internal flag. Defaults to excluding internal tasks when not specified.
+ * @param internal - When true, list internal tasks instead of user-facing ones. Honored in debug environments or for staff users; ignored for non-staff users in production. Defaults to excluding internal tasks.
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  * @param organization - Filter by repository organization

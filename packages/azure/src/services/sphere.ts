@@ -338,6 +338,10 @@ export const CatalogsListDeploymentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -394,6 +398,10 @@ export type CatalogsListDeploymentsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const CatalogsListDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -408,6 +416,10 @@ export const CatalogsListDeviceGroupsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
     deviceGroupName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -465,6 +477,10 @@ export type CatalogsListDeviceGroupsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const CatalogsListDeviceGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -479,6 +495,10 @@ export const CatalogsListDeviceInsightsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -516,6 +536,10 @@ export type CatalogsListDeviceInsightsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const CatalogsListDeviceInsights = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -530,6 +554,10 @@ export const CatalogsListDevicesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -584,6 +612,10 @@ export type CatalogsListDevicesOutput = typeof CatalogsListDevicesOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const CatalogsListDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -780,6 +812,10 @@ export const CertificatesListByCatalogInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -836,6 +872,10 @@ export type CertificatesListByCatalogOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const CertificatesListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1156,6 +1196,10 @@ export const DeploymentsListByDeviceGroupInput =
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1212,6 +1256,10 @@ export type DeploymentsListByDeviceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  * @param productName - Name of product.
  * @param deviceGroupName - Name of device group.
@@ -1486,6 +1534,10 @@ export const DeviceGroupsListByProductInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1542,6 +1594,10 @@ export type DeviceGroupsListByProductOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  * @param productName - Name of product.
  */
@@ -2168,6 +2224,10 @@ export const ImagesListByCatalogInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2222,6 +2282,10 @@ export type ImagesListByCatalogOutput = typeof ImagesListByCatalogOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const ImagesListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

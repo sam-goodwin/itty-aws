@@ -12,6 +12,10 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const ImagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labPlanName: Schema.String.pipe(T.PathParam()),
+    imageName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -52,6 +56,12 @@ export type ImagesCreateOrUpdateOutput = typeof ImagesCreateOrUpdateOutput.Type;
  * Updates an image via PUT.
  *
  * Updates an image resource via PUT. Creating new resources via PUT will not function.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labPlanName - The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+ * @param imageName - The image name.
  */
 export const ImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -60,9 +70,12 @@ export const ImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labPlanName: Schema.String.pipe(T.PathParam()),
+  imageName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images/{imageName}",
@@ -84,6 +97,12 @@ export type ImagesGetOutput = typeof ImagesGetOutput.Type;
  * Gets an image.
  *
  * Gets an image resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labPlanName - The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+ * @param imageName - The image name.
  */
 export const ImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ImagesGetInput,
@@ -91,7 +110,12 @@ export const ImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ImagesListByLabPlanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labPlanName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images",
@@ -121,6 +145,12 @@ export type ImagesListByLabPlanOutput = typeof ImagesListByLabPlanOutput.Type;
  * Gets all images.
  *
  * Gets all images from galleries attached to a lab plan.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labPlanName - The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+ * @param $filter - The filter to apply to the operation.
  */
 export const ImagesListByLabPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ImagesListByLabPlanInput,
@@ -128,6 +158,10 @@ export const ImagesListByLabPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labPlanName: Schema.String.pipe(T.PathParam()),
+  imageName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
@@ -155,6 +189,12 @@ export type ImagesUpdateOutput = typeof ImagesUpdateOutput.Type;
  * Updates an image.
  *
  * Updates an image resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labPlanName - The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+ * @param imageName - The image name.
  */
 export const ImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ImagesUpdateInput,
@@ -163,6 +203,9 @@ export const ImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LabPlansCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labPlanName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -261,6 +304,11 @@ export type LabPlansCreateOrUpdateOutput =
  * Updates or creates a Lab Plan resource.
  *
  * Operation to create or update a Lab Plan resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labPlanName - The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
  */
 export const LabPlansCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -269,9 +317,11 @@ export const LabPlansCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const LabPlansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabPlansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labPlanName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
@@ -289,15 +339,22 @@ export type LabPlansDeleteOutput = typeof LabPlansDeleteOutput.Type;
  * Deletes a Lab Plan resource.
  *
  * Operation to delete a Lab Plan resource. Deleting a lab plan does not delete labs associated with a lab plan, nor does it delete shared images added to a gallery via the lab plan permission container.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labPlanName - The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
  */
 export const LabPlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LabPlansDeleteInput,
   outputSchema: LabPlansDeleteOutput,
 }));
 // Input Schema
-export const LabPlansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabPlansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labPlanName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
@@ -319,6 +376,11 @@ export type LabPlansGetOutput = typeof LabPlansGetOutput.Type;
  * Retrieves a Lab Plan resource.
  *
  * Retrieves the properties of a Lab Plan.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labPlanName - The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
  */
 export const LabPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LabPlansGetInput,
@@ -326,7 +388,10 @@ export const LabPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LabPlansListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans",
@@ -358,6 +423,10 @@ export type LabPlansListByResourceGroupOutput =
  * Get all lab plans for a subscription and resource group.
  *
  * Returns a list of all lab plans for a subscription and resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const LabPlansListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -367,7 +436,10 @@ export const LabPlansListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const LabPlansListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labPlans",
@@ -399,6 +471,10 @@ export type LabPlansListBySubscriptionOutput =
  * Get all lab plans for a subscription.
  *
  * Returns a list of all lab plans within a subscription
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param $filter - The filter to apply to the operation.
  */
 export const LabPlansListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -409,6 +485,9 @@ export const LabPlansListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LabPlansSaveImageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labPlanName: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     labVirtualMachineId: Schema.optional(Schema.String),
   },
@@ -430,6 +509,11 @@ export type LabPlansSaveImageOutput = typeof LabPlansSaveImageOutput.Type;
  * Save an image from a lab VM to the attached shared image gallery.
  *
  * Saves an image from a lab VM to the attached shared image gallery.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labPlanName - The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
  */
 export const LabPlansSaveImage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LabPlansSaveImageInput,
@@ -437,6 +521,9 @@ export const LabPlansSaveImage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LabPlansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labPlanName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       defaultConnectionProfile: Schema.optional(
@@ -519,6 +606,11 @@ export type LabPlansUpdateOutput = typeof LabPlansUpdateOutput.Type;
  * Updates a Lab Plan resource.
  *
  * Operation to update a Lab Plan resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labPlanName - The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
  */
 export const LabPlansUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LabPlansUpdateInput,
@@ -527,6 +619,9 @@ export const LabPlansUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LabsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -662,15 +757,22 @@ export type LabsCreateOrUpdateOutput = typeof LabsCreateOrUpdateOutput.Type;
  * Create or update a lab resource.
  *
  * Operation to create or update a lab resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
  */
 export const LabsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LabsCreateOrUpdateInput,
   outputSchema: LabsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
@@ -688,13 +790,22 @@ export type LabsDeleteOutput = typeof LabsDeleteOutput.Type;
  * Deletes a lab resource.
  *
  * Operation to delete a lab resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
  */
 export const LabsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LabsDeleteInput,
   outputSchema: LabsDeleteOutput,
 }));
 // Input Schema
-export const LabsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const LabsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
@@ -716,6 +827,11 @@ export type LabsGetOutput = typeof LabsGetOutput.Type;
  * Get a lab resource.
  *
  * Returns the properties of a lab resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
  */
 export const LabsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LabsGetInput,
@@ -723,7 +839,10 @@ export const LabsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LabsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs",
@@ -755,6 +874,10 @@ export type LabsListByResourceGroupOutput =
  * Get all labs for a subscription and resource group.
  *
  * Returns a list of all labs in a resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const LabsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -764,7 +887,10 @@ export const LabsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const LabsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labs",
@@ -796,6 +922,10 @@ export type LabsListBySubscriptionOutput =
  * Get all labs for a subscription.
  *
  * Returns a list of all labs for a subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param $filter - The filter to apply to the operation.
  */
 export const LabsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -804,9 +934,11 @@ export const LabsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const LabsPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabsPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/publish",
@@ -824,15 +956,22 @@ export type LabsPublishOutput = typeof LabsPublishOutput.Type;
  * Publish or re-publish a lab.
  *
  * Publish or re-publish a lab. This will create or update all lab resources, such as virtual machines.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
  */
 export const LabsPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LabsPublishInput,
   outputSchema: LabsPublishOutput,
 }));
 // Input Schema
-export const LabsSyncGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabsSyncGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/syncGroup",
@@ -850,6 +989,11 @@ export type LabsSyncGroupOutput = typeof LabsSyncGroupOutput.Type;
  * Manually sync the lab group.
  *
  * Action used to manually kick off an AAD group sync job.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
  */
 export const LabsSyncGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LabsSyncGroupInput,
@@ -857,6 +1001,9 @@ export const LabsSyncGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       autoShutdownProfile: Schema.optional(
@@ -978,6 +1125,11 @@ export type LabsUpdateOutput = typeof LabsUpdateOutput.Type;
  * Update a lab resource.
  *
  * Operation to update a lab resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
  */
 export const LabsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LabsUpdateInput,
@@ -985,7 +1137,10 @@ export const LabsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const OperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    operationResultId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/operationResults/{operationResultId}",
@@ -1050,6 +1205,10 @@ export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
  * Get an azure operation result.
  *
  * Returns an azure operation result.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param operationResultId - The operation result ID / name.
  */
 export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationResultsGetInput,
@@ -1098,6 +1257,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  * Get all operations
  *
  * Returns a list of all operations.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -1106,6 +1267,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    scheduleName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -1171,6 +1336,12 @@ export type SchedulesCreateOrUpdateOutput =
  * Create or update a lab schedule.
  *
  * Operation to create or update a lab schedule.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param scheduleName - The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
  */
 export const SchedulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1179,9 +1350,12 @@ export const SchedulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  scheduleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
@@ -1199,15 +1373,24 @@ export type SchedulesDeleteOutput = typeof SchedulesDeleteOutput.Type;
  * Deletes a schedule resource.
  *
  * Operation to delete a schedule resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param scheduleName - The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
  */
 export const SchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SchedulesDeleteInput,
   outputSchema: SchedulesDeleteOutput,
 }));
 // Input Schema
-export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  scheduleName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
@@ -1229,6 +1412,12 @@ export type SchedulesGetOutput = typeof SchedulesGetOutput.Type;
  * Get a lab Schedule.
  *
  * Returns the properties of a lab Schedule.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param scheduleName - The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
  */
 export const SchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SchedulesGetInput,
@@ -1236,7 +1425,12 @@ export const SchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SchedulesListByLabInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules",
@@ -1266,6 +1460,12 @@ export type SchedulesListByLabOutput = typeof SchedulesListByLabOutput.Type;
  * Get all schedules for a lab.
  *
  * Returns a list of all schedules for a lab.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param $filter - The filter to apply to the operation.
  */
 export const SchedulesListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SchedulesListByLabInput,
@@ -1273,6 +1473,10 @@ export const SchedulesListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  scheduleName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       startAt: Schema.optional(Schema.String),
@@ -1323,13 +1527,22 @@ export type SchedulesUpdateOutput = typeof SchedulesUpdateOutput.Type;
  * Update a lab schedule.
  *
  * Operation to update a lab schedule.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param scheduleName - The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
  */
 export const SchedulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SchedulesUpdateInput,
   outputSchema: SchedulesUpdateOutput,
 }));
 // Input Schema
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/skus",
@@ -1399,6 +1612,10 @@ export type SkusListOutput = typeof SkusListOutput.Type;
  * Gets the Azure Lab Services resource SKUs.
  *
  * Returns a list of Azure Lab Services resource SKUs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param $filter - The filter to apply to the operation.
  */
 export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
@@ -1406,7 +1623,11 @@ export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const UsagesListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/locations/{location}/usages",
@@ -1444,6 +1665,11 @@ export type UsagesListByLocationOutput = typeof UsagesListByLocationOutput.Type;
  * Gets the list of usages.
  *
  * Returns list of usage per SKU family for the specified subscription in the specified region.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location name.
+ * @param $filter - The filter to apply to the operation.
  */
 export const UsagesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1454,6 +1680,10 @@ export const UsagesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const UsersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    userName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -1494,15 +1724,24 @@ export type UsersCreateOrUpdateOutput = typeof UsersCreateOrUpdateOutput.Type;
  * Create or update a lab user.
  *
  * Operation to create or update a lab user.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param userName - The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
  */
 export const UsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsersCreateOrUpdateInput,
   outputSchema: UsersCreateOrUpdateOutput,
 }));
 // Input Schema
-export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  userName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
@@ -1520,13 +1759,24 @@ export type UsersDeleteOutput = typeof UsersDeleteOutput.Type;
  * Deletes a user resource.
  *
  * Operation to delete a user resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param userName - The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
  */
 export const UsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsersDeleteInput,
   outputSchema: UsersDeleteOutput,
 }));
 // Input Schema
-export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  userName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
@@ -1548,6 +1798,12 @@ export type UsersGetOutput = typeof UsersGetOutput.Type;
  * Get a lab user.
  *
  * Returns the properties of a lab user.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param userName - The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
  */
 export const UsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsersGetInput,
@@ -1555,6 +1811,10 @@ export const UsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const UsersInviteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  userName: Schema.String.pipe(T.PathParam()),
   text: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -1574,15 +1834,24 @@ export type UsersInviteOutput = typeof UsersInviteOutput.Type;
  * Invite a user to a lab.
  *
  * Operation to invite a user to a lab.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param userName - The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
  */
 export const UsersInvite = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsersInviteInput,
   outputSchema: UsersInviteOutput,
 }));
 // Input Schema
-export const UsersListByLabInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const UsersListByLabInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users",
@@ -1611,6 +1880,12 @@ export type UsersListByLabOutput = typeof UsersListByLabOutput.Type;
  * Get all users for a lab.
  *
  * Returns a list of all users for a lab.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param $filter - The filter to apply to the operation.
  */
 export const UsersListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsersListByLabInput,
@@ -1618,6 +1893,10 @@ export const UsersListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  userName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       additionalUsageQuota: Schema.optional(Schema.String),
@@ -1645,6 +1924,12 @@ export type UsersUpdateOutput = typeof UsersUpdateOutput.Type;
  * Update a lab user.
  *
  * Operation to update a lab user.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param userName - The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
  */
 export const UsersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsersUpdateInput,
@@ -1652,7 +1937,12 @@ export const UsersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VirtualMachinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    virtualMachineName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}",
@@ -1675,6 +1965,12 @@ export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
  * Get a lab virtual machine.
  *
  * Returns the properties for a lab virtual machine.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param virtualMachineName - The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
  */
 export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesGetInput,
@@ -1682,7 +1978,12 @@ export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VirtualMachinesListByLabInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines",
@@ -1714,6 +2015,12 @@ export type VirtualMachinesListByLabOutput =
  * Get all virtual machines for a lab.
  *
  * Returns a list of all virtual machines for a lab.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param $filter - The filter to apply to the operation.
  */
 export const VirtualMachinesListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1723,7 +2030,12 @@ export const VirtualMachinesListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachinesRedeployInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    virtualMachineName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/redeploy",
@@ -1744,6 +2056,12 @@ export type VirtualMachinesRedeployOutput =
  * Redeploy a lab virtual machine to a different compute node. For troubleshooting connectivity.
  *
  * Action to redeploy a lab virtual machine to a different compute node. For troubleshooting connectivity.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param virtualMachineName - The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
  */
 export const VirtualMachinesRedeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1753,7 +2071,12 @@ export const VirtualMachinesRedeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachinesReimageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    virtualMachineName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/reimage",
@@ -1774,6 +2097,12 @@ export type VirtualMachinesReimageOutput =
  * Re-image a lab virtual machine.
  *
  * Re-image a lab virtual machine. The virtual machine will be deleted and recreated using the latest published snapshot of the reference environment of the lab.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param virtualMachineName - The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
  */
 export const VirtualMachinesReimage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1784,6 +2113,10 @@ export const VirtualMachinesReimage = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualMachinesResetPasswordInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    virtualMachineName: Schema.String.pipe(T.PathParam()),
     username: Schema.String,
     password: SensitiveString,
   }).pipe(
@@ -1807,6 +2140,12 @@ export type VirtualMachinesResetPasswordOutput =
  * Reset a lab virtual machine password.
  *
  * Resets a lab virtual machine password.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param virtualMachineName - The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
  */
 export const VirtualMachinesResetPassword =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1815,7 +2154,12 @@ export const VirtualMachinesResetPassword =
   }));
 // Input Schema
 export const VirtualMachinesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    virtualMachineName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/start",
@@ -1834,6 +2178,12 @@ export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
  * Start a lab virtual machine.
  *
  * Action to start a lab virtual machine.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param virtualMachineName - The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
  */
 export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1843,7 +2193,12 @@ export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachinesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    virtualMachineName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/stop",
@@ -1862,6 +2217,12 @@ export type VirtualMachinesStopOutput = typeof VirtualMachinesStopOutput.Type;
  * Stop a lab virtual machine.
  *
  * Action to stop a lab virtual machine.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
+ * @param virtualMachineName - The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
  */
 export const VirtualMachinesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesStopInput,

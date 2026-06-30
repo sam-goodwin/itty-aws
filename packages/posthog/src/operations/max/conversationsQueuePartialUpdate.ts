@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsQueuePartialUpdateInput =
@@ -14,6 +13,7 @@ export const ConversationsQueuePartialUpdateInput =
       Schema.Literals(["idle", "in_progress", "canceling"]),
     ),
     title: Schema.optional(Schema.NullOr(Schema.String)),
+    topic: Schema.optional(Schema.Unknown),
     user: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -44,14 +44,16 @@ export const ConversationsQueuePartialUpdateInput =
     ),
     has_unsupported_content: Schema.optional(Schema.Boolean),
     agent_mode: Schema.optional(Schema.NullOr(Schema.String)),
+    agent_runtime: Schema.optional(Schema.Literals(["langgraph", "sandbox"])),
     is_sandbox: Schema.optional(Schema.Boolean),
     pending_approvals: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    task: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/conversations/{conversation}/queue/{queue_id}/",
+      path: "/api/projects/{project_id}/conversations/{conversation}/queue/{queue_id}/",
     }),
   );
 export type ConversationsQueuePartialUpdateInput =
@@ -65,6 +67,7 @@ export const ConversationsQueuePartialUpdateOutput =
       Schema.Literals(["idle", "in_progress", "canceling"]),
     ),
     title: Schema.optional(Schema.NullOr(Schema.String)),
+    topic: Schema.optional(Schema.Unknown),
     user: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -95,10 +98,12 @@ export const ConversationsQueuePartialUpdateOutput =
     ),
     has_unsupported_content: Schema.optional(Schema.Boolean),
     agent_mode: Schema.optional(Schema.NullOr(Schema.String)),
+    agent_runtime: Schema.optional(Schema.Literals(["langgraph", "sandbox"])),
     is_sandbox: Schema.optional(Schema.Boolean),
     pending_approvals: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    task: Schema.optional(Schema.Unknown),
   });
 export type ConversationsQueuePartialUpdateOutput =
   typeof ConversationsQueuePartialUpdateOutput.Type;
@@ -113,5 +118,4 @@ export const conversationsQueuePartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ConversationsQueuePartialUpdateInput,
     outputSchema: ConversationsQueuePartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

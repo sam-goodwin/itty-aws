@@ -30,7 +30,9 @@ export type CreateBranchNeonAuthNewUserOutput =
 /**
  * Create new auth user
  *
- * Creates a new user in Neon Auth.
+ * Creates a new user in the Neon Auth user directory for the specified branch.
+ * The user is created in the `neon_auth.users_sync` table and can immediately authenticate
+ * using the branch's configured auth providers.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

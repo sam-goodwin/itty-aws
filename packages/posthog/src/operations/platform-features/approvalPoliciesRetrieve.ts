@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ApprovalPoliciesRetrieveInput =
@@ -11,7 +10,7 @@ export const ApprovalPoliciesRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/approval_policies/{id}/",
+      path: "/api/projects/{project_id}/approval_policies/{id}/",
     }),
   );
 export type ApprovalPoliciesRetrieveInput =
@@ -62,6 +61,5 @@ export const approvalPoliciesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ApprovalPoliciesRetrieveInput,
     outputSchema: ApprovalPoliciesRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

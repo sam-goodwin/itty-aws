@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LogsExplainLogWithAICreateInput =
@@ -13,7 +12,7 @@ export const LogsExplainLogWithAICreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/logs/explainLogWithAI/",
+      path: "/api/projects/{project_id}/logs/explainLogWithAI/",
     }),
   );
 export type LogsExplainLogWithAICreateInput =
@@ -40,6 +39,5 @@ export const logsExplainLogWithAICreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: LogsExplainLogWithAICreateInput,
     outputSchema: LogsExplainLogWithAICreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

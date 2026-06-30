@@ -11,6 +11,8 @@ import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
@@ -160,7 +162,10 @@ export type ClustersCreateOutput = typeof ClustersCreateOutput.Type;
  *
  * Create Or Update cluster.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param clusterName - Name of the cluster.
+ * @param api-version - Client Api Version.
  */
 export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersCreateInput,
@@ -168,6 +173,8 @@ export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -189,7 +196,10 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
  *
  * Implements cluster DELETE method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param clusterName - Name of the cluster.
+ * @param api-version - Client Api Version.
  * @param force - Whether force delete was specified.
  */
 export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -198,6 +208,8 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -283,16 +295,19 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
  *
  * Implements cluster GET method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param clusterName - Name of the cluster.
+ * @param api-version - Client Api Version.
  */
 export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
-export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/clusters",
@@ -380,6 +395,9 @@ export type ClustersListOutput = typeof ClustersListOutput.Type;
  * Implements GET clusters in a subscription.
  *
  * List of clusters in a subscription.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
@@ -387,7 +405,10 @@ export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters",
@@ -488,6 +509,10 @@ export type ClustersListByResourceGroupOutput =
  * Implements GET clusters in a resource group.
  *
  * List of clusters in a resource group.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param api-version - Client Api Version.
  */
 export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -497,6 +522,8 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -583,7 +610,10 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
  *
  * API to update certain properties of the cluster resource.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param clusterName - Name of the cluster.
+ * @param api-version - Client Api Version.
  */
 export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
@@ -591,6 +621,8 @@ export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DatastoresCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   datastoreName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
@@ -734,7 +766,10 @@ export type DatastoresCreateOutput = typeof DatastoresCreateOutput.Type;
  *
  * Create Or Update datastore.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param datastoreName - Name of the datastore.
+ * @param api-version - Client Api Version.
  */
 export const DatastoresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatastoresCreateInput,
@@ -742,6 +777,8 @@ export const DatastoresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   datastoreName: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -763,7 +800,10 @@ export type DatastoresDeleteOutput = typeof DatastoresDeleteOutput.Type;
  *
  * Implements datastore DELETE method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param datastoreName - Name of the datastore.
+ * @param api-version - Client Api Version.
  * @param force - Whether force delete was specified.
  */
 export const DatastoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -772,6 +812,8 @@ export const DatastoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   datastoreName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -853,16 +895,19 @@ export type DatastoresGetOutput = typeof DatastoresGetOutput.Type;
  *
  * Implements datastore GET method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param datastoreName - Name of the datastore.
+ * @param api-version - Client Api Version.
  */
 export const DatastoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatastoresGetInput,
   outputSchema: DatastoresGetOutput,
 }));
 // Input Schema
-export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/datastores",
@@ -946,6 +991,9 @@ export type DatastoresListOutput = typeof DatastoresListOutput.Type;
  * Implements GET datastores in a subscription.
  *
  * List of datastores in a subscription.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const DatastoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatastoresListInput,
@@ -953,7 +1001,10 @@ export const DatastoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DatastoresListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores",
@@ -1050,6 +1101,10 @@ export type DatastoresListByResourceGroupOutput =
  * Implements GET datastores in a resource group.
  *
  * List of datastores in a resource group.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param api-version - Client Api Version.
  */
 export const DatastoresListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1058,6 +1113,8 @@ export const DatastoresListByResourceGroup =
   }));
 // Input Schema
 export const DatastoresUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   datastoreName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -1142,7 +1199,10 @@ export type DatastoresUpdateOutput = typeof DatastoresUpdateOutput.Type;
  *
  * API to update certain properties of the datastore resource.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param datastoreName - Name of the datastore.
+ * @param api-version - Client Api Version.
  */
 export const DatastoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatastoresUpdateInput,
@@ -1150,6 +1210,8 @@ export const DatastoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const HostsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   hostName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
@@ -1299,7 +1361,10 @@ export type HostsCreateOutput = typeof HostsCreateOutput.Type;
  *
  * Create Or Update host.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param hostName - Name of the host.
+ * @param api-version - Client Api Version.
  */
 export const HostsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HostsCreateInput,
@@ -1307,6 +1372,8 @@ export const HostsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const HostsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   hostName: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -1328,7 +1395,10 @@ export type HostsDeleteOutput = typeof HostsDeleteOutput.Type;
  *
  * Implements host DELETE method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param hostName - Name of the host.
+ * @param api-version - Client Api Version.
  * @param force - Whether force delete was specified.
  */
 export const HostsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1337,6 +1407,8 @@ export const HostsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const HostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   hostName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1422,16 +1494,19 @@ export type HostsGetOutput = typeof HostsGetOutput.Type;
  *
  * Implements host GET method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param hostName - Name of the host.
+ * @param api-version - Client Api Version.
  */
 export const HostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HostsGetInput,
   outputSchema: HostsGetOutput,
 }));
 // Input Schema
-export const HostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const HostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/hosts",
@@ -1519,6 +1594,9 @@ export type HostsListOutput = typeof HostsListOutput.Type;
  * Implements GET hosts in a subscription.
  *
  * List of hosts in a subscription.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const HostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HostsListInput,
@@ -1526,7 +1604,10 @@ export const HostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const HostsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts",
@@ -1627,6 +1708,10 @@ export type HostsListByResourceGroupOutput =
  * Implements GET hosts in a resource group.
  *
  * List of hosts in a resource group.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param api-version - Client Api Version.
  */
 export const HostsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1636,6 +1721,8 @@ export const HostsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const HostsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   hostName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -1722,7 +1809,10 @@ export type HostsUpdateOutput = typeof HostsUpdateOutput.Type;
  *
  * API to update certain properties of the host resource.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param hostName - Name of the host.
+ * @param api-version - Client Api Version.
  */
 export const HostsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HostsUpdateInput,
@@ -1731,6 +1821,8 @@ export const HostsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const InventoryItemsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcenterName: Schema.String.pipe(T.PathParam()),
     inventoryItemName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -1798,8 +1890,11 @@ export type InventoryItemsCreateOutput = typeof InventoryItemsCreateOutput.Type;
  *
  * Create Or Update InventoryItem.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param vcenterName - Name of the vCenter.
  * @param inventoryItemName - Name of the inventoryItem.
+ * @param api-version - Client Api Version.
  */
 export const InventoryItemsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1810,6 +1905,8 @@ export const InventoryItemsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const InventoryItemsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcenterName: Schema.String.pipe(T.PathParam()),
     inventoryItemName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1832,8 +1929,11 @@ export type InventoryItemsDeleteOutput = typeof InventoryItemsDeleteOutput.Type;
  *
  * Implements inventoryItem DELETE method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param vcenterName - Name of the vCenter.
  * @param inventoryItemName - Name of the inventoryItem.
+ * @param api-version - Client Api Version.
  */
 export const InventoryItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1844,6 +1944,8 @@ export const InventoryItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const InventoryItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcenterName: Schema.String.pipe(T.PathParam()),
     inventoryItemName: Schema.String.pipe(T.PathParam()),
   },
@@ -1885,8 +1987,11 @@ export type InventoryItemsGetOutput = typeof InventoryItemsGetOutput.Type;
  *
  * Implements InventoryItem GET method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param vcenterName - Name of the vCenter.
  * @param inventoryItemName - Name of the inventoryItem.
+ * @param api-version - Client Api Version.
  */
 export const InventoryItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InventoryItemsGetInput,
@@ -1895,6 +2000,8 @@ export const InventoryItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const InventoryItemsListByVCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcenterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1951,7 +2058,10 @@ export type InventoryItemsListByVCenterOutput =
  *
  * Returns the list of inventoryItems of the given vCenter.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param vcenterName - Name of the vCenter.
+ * @param api-version - Client Api Version.
  */
 export const InventoryItemsListByVCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1994,6 +2104,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Returns list of all operations.
+ *
+ * @param api-version - Client Api Version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -2002,6 +2114,8 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ResourcePoolsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourcePoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       uuid: Schema.optional(Schema.String),
@@ -2164,7 +2278,10 @@ export type ResourcePoolsCreateOutput = typeof ResourcePoolsCreateOutput.Type;
  *
  * Create Or Update resourcePool.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param resourcePoolName - Name of the resourcePool.
+ * @param api-version - Client Api Version.
  */
 export const ResourcePoolsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcePoolsCreateInput,
@@ -2173,6 +2290,8 @@ export const ResourcePoolsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ResourcePoolsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourcePoolName: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -2195,7 +2314,10 @@ export type ResourcePoolsDeleteOutput = typeof ResourcePoolsDeleteOutput.Type;
  *
  * Implements resourcePool DELETE method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param resourcePoolName - Name of the resourcePool.
+ * @param api-version - Client Api Version.
  * @param force - Whether force delete was specified.
  */
 export const ResourcePoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2204,6 +2326,8 @@ export const ResourcePoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ResourcePoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourcePoolName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2297,7 +2421,10 @@ export type ResourcePoolsGetOutput = typeof ResourcePoolsGetOutput.Type;
  *
  * Implements resourcePool GET method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param resourcePoolName - Name of the resourcePool.
+ * @param api-version - Client Api Version.
  */
 export const ResourcePoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcePoolsGetInput,
@@ -2305,7 +2432,9 @@ export const ResourcePoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ResourcePoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -2411,6 +2540,9 @@ export type ResourcePoolsListOutput = typeof ResourcePoolsListOutput.Type;
  * Implements GET resourcePools in a subscription.
  *
  * List of resourcePools in a subscription.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const ResourcePoolsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcePoolsListInput,
@@ -2418,7 +2550,10 @@ export const ResourcePoolsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ResourcePoolsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools",
@@ -2525,6 +2660,10 @@ export type ResourcePoolsListByResourceGroupOutput =
  * Implements GET resourcePools in a resource group.
  *
  * List of resourcePools in a resource group.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param api-version - Client Api Version.
  */
 export const ResourcePoolsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2534,6 +2673,8 @@ export const ResourcePoolsListByResourceGroup =
 // Input Schema
 export const ResourcePoolsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourcePoolName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -2627,7 +2768,10 @@ export type ResourcePoolsUpdateOutput = typeof ResourcePoolsUpdateOutput.Type;
  *
  * API to update certain properties of the resourcePool resource.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param resourcePoolName - Name of the resourcePool.
+ * @param api-version - Client Api Version.
  */
 export const ResourcePoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcePoolsUpdateInput,
@@ -2635,6 +2779,8 @@ export const ResourcePoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VCentersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   vcenterName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     uuid: Schema.optional(Schema.String),
@@ -2786,7 +2932,10 @@ export type VCentersCreateOutput = typeof VCentersCreateOutput.Type;
  *
  * Create Or Update vCenter.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param vcenterName - Name of the vCenter.
+ * @param api-version - Client Api Version.
  */
 export const VCentersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VCentersCreateInput,
@@ -2794,6 +2943,8 @@ export const VCentersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VCentersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   vcenterName: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -2815,7 +2966,10 @@ export type VCentersDeleteOutput = typeof VCentersDeleteOutput.Type;
  *
  * Implements vCenter DELETE method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param vcenterName - Name of the vCenter.
+ * @param api-version - Client Api Version.
  * @param force - Whether force delete was specified.
  */
 export const VCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2824,6 +2978,8 @@ export const VCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VCentersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   vcenterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2910,16 +3066,19 @@ export type VCentersGetOutput = typeof VCentersGetOutput.Type;
  *
  * Implements vCenter GET method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param vcenterName - Name of the vCenter.
+ * @param api-version - Client Api Version.
  */
 export const VCentersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VCentersGetInput,
   outputSchema: VCentersGetOutput,
 }));
 // Input Schema
-export const VCentersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const VCentersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/vcenters",
@@ -3008,6 +3167,9 @@ export type VCentersListOutput = typeof VCentersListOutput.Type;
  * Implements GET vCenters in a subscription.
  *
  * List of vCenters in a subscription.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const VCentersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VCentersListInput,
@@ -3015,7 +3177,10 @@ export const VCentersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VCentersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters",
@@ -3117,6 +3282,10 @@ export type VCentersListByResourceGroupOutput =
  * Implements GET vCenters in a resource group.
  *
  * List of vCenters in a resource group.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param api-version - Client Api Version.
  */
 export const VCentersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3126,6 +3295,8 @@ export const VCentersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VCentersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   vcenterName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -3213,7 +3384,10 @@ export type VCentersUpdateOutput = typeof VCentersUpdateOutput.Type;
  *
  * API to update certain properties of the vCenter resource.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param vcenterName - Name of the vCenter.
+ * @param api-version - Client Api Version.
  */
 export const VCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VCentersUpdateInput,
@@ -3222,6 +3396,7 @@ export const VCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const VirtualMachineInstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       placementProfile: Schema.optional(
         Schema.Struct({
@@ -3486,6 +3661,9 @@ export type VirtualMachineInstancesCreateOrUpdateOutput =
  * Implements virtual machine PUT method.
  *
  * The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineInstancesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3495,6 +3673,7 @@ export const VirtualMachineInstancesCreateOrUpdate =
 // Input Schema
 export const VirtualMachineInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     deleteFromHost: Schema.optional(Schema.Boolean),
     force: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -3519,6 +3698,8 @@ export type VirtualMachineInstancesDeleteOutput =
  *
  * The operation to delete a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  * @param deleteFromHost - Whether to delete the VM from the vCenter.
  * @param force - Whether force delete was specified.
  */
@@ -3529,7 +3710,9 @@ export const VirtualMachineInstancesDelete =
   }));
 // Input Schema
 export const VirtualMachineInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
@@ -3568,6 +3751,9 @@ export type VirtualMachineInstancesGetOutput =
  * Gets a virtual machine.
  *
  * Retrieves information about a virtual machine instance.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3577,7 +3763,9 @@ export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachineInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances",
@@ -3631,6 +3819,9 @@ export type VirtualMachineInstancesListOutput =
  * Implements List virtual machine instances.
  *
  * Lists all of the virtual machine instances within the specified parent resource.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3640,7 +3831,9 @@ export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachineInstancesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/restart",
@@ -3661,6 +3854,9 @@ export type VirtualMachineInstancesRestartOutput =
  * Implements the operation to restart a virtual machine.
  *
  * The operation to restart a virtual machine instance.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineInstancesRestart =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3669,7 +3865,9 @@ export const VirtualMachineInstancesRestart =
   }));
 // Input Schema
 export const VirtualMachineInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/start",
@@ -3690,6 +3888,9 @@ export type VirtualMachineInstancesStartOutput =
  * Implements the operation to start a virtual machine.
  *
  * The operation to start a virtual machine instance.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineInstancesStart =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3699,6 +3900,7 @@ export const VirtualMachineInstancesStart =
 // Input Schema
 export const VirtualMachineInstancesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     skipShutdown: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -3721,6 +3923,9 @@ export type VirtualMachineInstancesStopOutput =
  * Implements the operation to stop a virtual machine.
  *
  * The operation to power off (stop) a virtual machine instance.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3731,6 +3936,7 @@ export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualMachineInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         hardwareProfile: Schema.optional(
@@ -3844,6 +4050,9 @@ export type VirtualMachineInstancesUpdateOutput =
  * Updates a virtual machine.
  *
  * The operation to update a virtual machine instance.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineInstancesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3853,6 +4062,8 @@ export const VirtualMachineInstancesUpdate =
 // Input Schema
 export const VirtualMachineTemplatesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       uuid: Schema.optional(Schema.String),
@@ -4187,7 +4398,10 @@ export type VirtualMachineTemplatesCreateOutput =
  *
  * Create Or Update virtual machine template.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param virtualMachineTemplateName - Name of the virtual machine template resource.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineTemplatesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4197,6 +4411,8 @@ export const VirtualMachineTemplatesCreate =
 // Input Schema
 export const VirtualMachineTemplatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -4221,7 +4437,10 @@ export type VirtualMachineTemplatesDeleteOutput =
  *
  * Implements virtual machine template DELETE method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param virtualMachineTemplateName - Name of the virtual machine template resource.
+ * @param api-version - Client Api Version.
  * @param force - Whether force delete was specified.
  */
 export const VirtualMachineTemplatesDelete =
@@ -4232,6 +4451,8 @@ export const VirtualMachineTemplatesDelete =
 // Input Schema
 export const VirtualMachineTemplatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4411,7 +4632,10 @@ export type VirtualMachineTemplatesGetOutput =
  *
  * Implements virtual machine template GET method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param virtualMachineTemplateName - Name of the virtual machine template resource.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4421,7 +4645,9 @@ export const VirtualMachineTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachineTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates",
@@ -4615,6 +4841,9 @@ export type VirtualMachineTemplatesListOutput =
  * Implements GET virtualMachineTemplates in a subscription.
  *
  * List of virtualMachineTemplates in a subscription.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4624,7 +4853,10 @@ export const VirtualMachineTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachineTemplatesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates",
@@ -4818,6 +5050,10 @@ export type VirtualMachineTemplatesListByResourceGroupOutput =
  * Implements GET virtualMachineTemplates in a resource group.
  *
  * List of virtualMachineTemplates in a resource group.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineTemplatesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4827,6 +5063,8 @@ export const VirtualMachineTemplatesListByResourceGroup =
 // Input Schema
 export const VirtualMachineTemplatesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -5007,7 +5245,10 @@ export type VirtualMachineTemplatesUpdateOutput =
  *
  * API to update certain properties of the virtual machine template resource.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param virtualMachineTemplateName - Name of the virtual machine template resource.
+ * @param api-version - Client Api Version.
  */
 export const VirtualMachineTemplatesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5017,6 +5258,8 @@ export const VirtualMachineTemplatesUpdate =
 // Input Schema
 export const VirtualNetworksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       uuid: Schema.optional(Schema.String),
@@ -5156,7 +5399,10 @@ export type VirtualNetworksCreateOutput =
  *
  * Create Or Update virtual network.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param virtualNetworkName - Name of the virtual network resource.
+ * @param api-version - Client Api Version.
  */
 export const VirtualNetworksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5167,6 +5413,8 @@ export const VirtualNetworksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -5190,7 +5438,10 @@ export type VirtualNetworksDeleteOutput =
  *
  * Implements virtual network DELETE method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param virtualNetworkName - Name of the virtual network resource.
+ * @param api-version - Client Api Version.
  * @param force - Whether force delete was specified.
  */
 export const VirtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5202,6 +5453,8 @@ export const VirtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5282,7 +5535,10 @@ export type VirtualNetworksGetOutput = typeof VirtualNetworksGetOutput.Type;
  *
  * Implements virtual network GET method.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param virtualNetworkName - Name of the virtual network resource.
+ * @param api-version - Client Api Version.
  */
 export const VirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualNetworksGetInput,
@@ -5290,7 +5546,9 @@ export const VirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VirtualNetworksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks",
@@ -5383,6 +5641,9 @@ export type VirtualNetworksListOutput = typeof VirtualNetworksListOutput.Type;
  * Implements GET virtualNetworks in a subscription.
  *
  * List of virtualNetworks in a subscription.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const VirtualNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualNetworksListInput,
@@ -5390,7 +5651,10 @@ export const VirtualNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VirtualNetworksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks",
@@ -5485,6 +5749,10 @@ export type VirtualNetworksListByResourceGroupOutput =
  * Implements GET virtualNetworks in a resource group.
  *
  * List of virtualNetworks in a resource group.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param api-version - Client Api Version.
  */
 export const VirtualNetworksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5494,6 +5762,8 @@ export const VirtualNetworksListByResourceGroup =
 // Input Schema
 export const VirtualNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -5576,7 +5846,10 @@ export type VirtualNetworksUpdateOutput =
  *
  * API to update certain properties of the virtual network resource.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
  * @param virtualNetworkName - Name of the virtual network resource.
+ * @param api-version - Client Api Version.
  */
 export const VirtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5587,6 +5860,7 @@ export const VirtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VMInstanceGuestAgentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       uuid: Schema.optional(Schema.String),
       credentials: Schema.optional(
@@ -5671,6 +5945,9 @@ export type VMInstanceGuestAgentsCreateOutput =
  * Implements GuestAgent PUT method.
  *
  * Create Or Update GuestAgent.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VMInstanceGuestAgentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5680,7 +5957,9 @@ export const VMInstanceGuestAgentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VMInstanceGuestAgentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
@@ -5701,6 +5980,9 @@ export type VMInstanceGuestAgentsDeleteOutput =
  * Deletes an GuestAgent.
  *
  * Implements GuestAgent DELETE method.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VMInstanceGuestAgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5710,7 +5992,9 @@ export const VMInstanceGuestAgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VMInstanceGuestAgentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
@@ -5749,6 +6033,9 @@ export type VMInstanceGuestAgentsGetOutput =
  * Gets GuestAgent.
  *
  * Implements GuestAgent GET method.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VMInstanceGuestAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5758,7 +6045,9 @@ export const VMInstanceGuestAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VMInstanceGuestAgentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents",
@@ -5812,6 +6101,9 @@ export type VMInstanceGuestAgentsListOutput =
  * Implements GET GuestAgent in a vm.
  *
  * Returns the list of GuestAgent of the given vm.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VMInstanceGuestAgentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5821,7 +6113,9 @@ export const VMInstanceGuestAgentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VmInstanceHybridIdentityMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/hybridIdentityMetadata/default",
@@ -5860,6 +6154,9 @@ export type VmInstanceHybridIdentityMetadataGetOutput =
  * Gets HybridIdentityMetadata.
  *
  * Implements HybridIdentityMetadata GET method.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VmInstanceHybridIdentityMetadataGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5868,7 +6165,9 @@ export const VmInstanceHybridIdentityMetadataGet =
   }));
 // Input Schema
 export const VmInstanceHybridIdentityMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/hybridIdentityMetadata",
@@ -5922,6 +6221,9 @@ export type VmInstanceHybridIdentityMetadataListOutput =
  * Implements GET HybridIdentityMetadata in a vm.
  *
  * Returns the list of HybridIdentityMetadata of the given vm.
+ *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+ * @param api-version - Client Api Version.
  */
 export const VmInstanceHybridIdentityMetadataList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

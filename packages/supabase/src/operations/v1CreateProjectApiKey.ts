@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const V1CreateProjectApiKeyInput =
@@ -21,7 +21,7 @@ export type V1CreateProjectApiKeyInput = typeof V1CreateProjectApiKeyInput.Type;
 // Output Schema
 export const V1CreateProjectApiKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    api_key: Schema.optional(SensitiveNullableString),
+    api_key: Schema.optional(SensitiveOutputNullableString),
     id: Schema.optional(Schema.NullOr(Schema.String)),
     type: Schema.optional(
       Schema.NullOr(Schema.Literals(["legacy", "publishable", "secret"])),

@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
+import { UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsCancelPartialUpdateInput =
@@ -13,6 +13,7 @@ export const ConversationsCancelPartialUpdateInput =
       Schema.Literals(["idle", "in_progress", "canceling"]),
     ),
     title: Schema.optional(Schema.NullOr(Schema.String)),
+    topic: Schema.optional(Schema.Unknown),
     user: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -43,14 +44,16 @@ export const ConversationsCancelPartialUpdateInput =
     ),
     has_unsupported_content: Schema.optional(Schema.Boolean),
     agent_mode: Schema.optional(Schema.NullOr(Schema.String)),
+    agent_runtime: Schema.optional(Schema.Literals(["langgraph", "sandbox"])),
     is_sandbox: Schema.optional(Schema.Boolean),
     pending_approvals: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    task: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/conversations/{conversation}/cancel/",
+      path: "/api/projects/{project_id}/conversations/{conversation}/cancel/",
     }),
   );
 export type ConversationsCancelPartialUpdateInput =
@@ -58,52 +61,13 @@ export type ConversationsCancelPartialUpdateInput =
 
 // Output Schema
 export const ConversationsCancelPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals(["idle", "in_progress", "canceling"]),
-    ),
-    title: Schema.optional(Schema.NullOr(Schema.String)),
-    user: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          uuid: Schema.optional(Schema.String),
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          role_at_organization: Schema.optional(Schema.Unknown),
-        }),
-      ),
-    ),
-    created_at: Schema.optional(Schema.NullOr(Schema.String)),
-    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-    type: Schema.optional(
-      Schema.Literals(["assistant", "tool_call", "deep_research", "slack"]),
-    ),
-    is_internal: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    slack_thread_key: Schema.optional(Schema.NullOr(Schema.String)),
-    slack_workspace_domain: Schema.optional(Schema.NullOr(Schema.String)),
-    messages: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    has_unsupported_content: Schema.optional(Schema.Boolean),
-    agent_mode: Schema.optional(Schema.NullOr(Schema.String)),
-    is_sandbox: Schema.optional(Schema.Boolean),
-    pending_approvals: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type ConversationsCancelPartialUpdateOutput =
   typeof ConversationsCancelPartialUpdateOutput.Type;
 
 // The operation
 /**
+ * Cancel the conversation's in-progress LangGraph run.
  *
  * @param conversation - A UUID string identifying this conversation.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -112,5 +76,5 @@ export const conversationsCancelPartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ConversationsCancelPartialUpdateInput,
     outputSchema: ConversationsCancelPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
+    errors: [UnprocessableEntity] as const,
   }));

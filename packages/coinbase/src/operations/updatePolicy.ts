@@ -25,7 +25,7 @@ export type UpdatePolicyOutput = typeof UpdatePolicyOutput.Type;
 
 // The operation
 /**
- * Update a policy
+ * Update policy
  *
  * Updates a policy by its ID. This will have the effect of applying the updated policy to all accounts that are currently using it.
  *

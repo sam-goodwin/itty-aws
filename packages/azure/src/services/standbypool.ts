@@ -15,7 +15,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StandbyPool/operations",
-    apiVersion: "2025-10-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -67,7 +67,7 @@ export const StandbyContainerGroupPoolRuntimeViewsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews/{runtimeView}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyContainerGroupPoolRuntimeViewsGetInput =
@@ -122,7 +122,7 @@ export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput =
@@ -223,7 +223,7 @@ export const StandbyContainerGroupPoolsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyContainerGroupPoolsCreateOrUpdateInput =
@@ -277,7 +277,7 @@ export const StandbyContainerGroupPoolsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyContainerGroupPoolsDeleteInput =
@@ -313,7 +313,7 @@ export const StandbyContainerGroupPoolsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyContainerGroupPoolsGetInput =
@@ -366,7 +366,7 @@ export const StandbyContainerGroupPoolsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyContainerGroupPoolsListByResourceGroupInput =
@@ -432,7 +432,7 @@ export const StandbyContainerGroupPoolsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StandbyPool/standbyContainerGroupPools",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyContainerGroupPoolsListBySubscriptionInput =
@@ -531,7 +531,7 @@ export const StandbyContainerGroupPoolsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyContainerGroupPoolsUpdateInput =
@@ -586,7 +586,7 @@ export const StandbyVirtualMachinePoolRuntimeViewsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/{runtimeView}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyVirtualMachinePoolRuntimeViewsGetInput =
@@ -641,7 +641,7 @@ export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput =
@@ -724,7 +724,15 @@ export const StandbyVirtualMachinePoolsCreateOrUpdateInput =
           "Running",
           "Deallocated",
           "Hibernated",
+          "Mix",
         ]),
+        vmStateDistribution: Schema.optional(
+          Schema.Struct({
+            runningPercent: Schema.optional(Schema.Number),
+            deallocatedPercent: Schema.optional(Schema.Number),
+            hibernatedPercent: Schema.optional(Schema.Number),
+          }),
+        ),
         attachedVirtualMachineScaleSetId: Schema.optional(Schema.String),
         provisioningState: Schema.optional(
           Schema.Literals(["Succeeded", "Failed", "Canceled", "Deleting"]),
@@ -737,7 +745,7 @@ export const StandbyVirtualMachinePoolsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyVirtualMachinePoolsCreateOrUpdateInput =
@@ -791,7 +799,7 @@ export const StandbyVirtualMachinePoolsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyVirtualMachinePoolsDeleteInput =
@@ -827,7 +835,7 @@ export const StandbyVirtualMachinePoolsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyVirtualMachinePoolsGetInput =
@@ -880,7 +888,7 @@ export const StandbyVirtualMachinePoolsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyVirtualMachinePoolsListByResourceGroupInput =
@@ -946,7 +954,7 @@ export const StandbyVirtualMachinePoolsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyVirtualMachinePoolsListBySubscriptionInput =
@@ -1025,7 +1033,14 @@ export const StandbyVirtualMachinePoolsUpdateInput =
           }),
         ),
         virtualMachineState: Schema.optional(
-          Schema.Literals(["Running", "Deallocated", "Hibernated"]),
+          Schema.Literals(["Running", "Deallocated", "Hibernated", "Mix"]),
+        ),
+        vmStateDistribution: Schema.optional(
+          Schema.Struct({
+            runningPercent: Schema.optional(Schema.Number),
+            deallocatedPercent: Schema.optional(Schema.Number),
+            hibernatedPercent: Schema.optional(Schema.Number),
+          }),
         ),
         attachedVirtualMachineScaleSetId: Schema.optional(Schema.String),
       }),
@@ -1034,7 +1049,7 @@ export const StandbyVirtualMachinePoolsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyVirtualMachinePoolsUpdateInput =
@@ -1089,7 +1104,7 @@ export const StandbyVirtualMachinesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines/{standbyVirtualMachineName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyVirtualMachinesGetInput =
@@ -1145,7 +1160,7 @@ export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput 
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput =

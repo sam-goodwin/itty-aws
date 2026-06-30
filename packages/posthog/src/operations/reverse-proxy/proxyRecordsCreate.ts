@@ -60,6 +60,8 @@ export type ProxyRecordsCreateOutput = typeof ProxyRecordsCreateOutput.Type;
 // The operation
 /**
  * Create a new managed reverse proxy. Provide the domain you want to proxy through. The response includes the CNAME target you need to add as a DNS record. Once the CNAME is configured, the proxy will be automatically verified and provisioned.
+ *
+ * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const proxyRecordsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProxyRecordsCreateInput,

@@ -11,6 +11,9 @@ import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       provisioningState: Schema.optional(
@@ -136,15 +139,22 @@ export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
 // The operation
 /**
  * Creates or updates Account.
+ *
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param accountName - Account name.
  */
 export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
 // Input Schema
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}",
@@ -160,15 +170,22 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 // The operation
 /**
  * Deletes account.
+ *
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param accountName - Account name.
  */
 export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}",
@@ -202,6 +219,11 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
 // The operation
 /**
  * Returns account details for the given account name.
+ *
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param accountName - Account name.
  */
 export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
@@ -209,7 +231,10 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts",
@@ -263,6 +288,10 @@ export type AccountsListByResourceGroupOutput =
 // The operation
 /**
  * Returns list of Accounts.
+ *
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -272,7 +301,9 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceUpdate/accounts",
@@ -326,6 +357,9 @@ export type AccountsListBySubscriptionOutput =
 // The operation
 /**
  * Returns list of Accounts.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -335,6 +369,9 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   identity: Schema.optional(
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
@@ -394,6 +431,11 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
 // The operation
 /**
  * Updates account's patchable properties
+ *
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param accountName - Account name.
  */
 export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
@@ -402,6 +444,7 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
@@ -426,6 +469,9 @@ export type CheckNameAvailabilityOutput =
 // The operation
 /**
  * Checks ADU resource name availability.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
@@ -437,6 +483,10 @@ export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const InstancesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     provisioningState: Schema.optional(
       Schema.Literals([
@@ -501,15 +551,24 @@ export type InstancesCreateOutput = typeof InstancesCreateOutput.Type;
 // The operation
 /**
  * Creates or updates instance.
+ *
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param accountName - Account name.
+ * @param instanceName - Instance name.
  */
 export const InstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InstancesCreateInput,
   outputSchema: InstancesCreateOutput,
 }));
 // Input Schema
-export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances/{instanceName}",
@@ -525,15 +584,24 @@ export type InstancesDeleteOutput = typeof InstancesDeleteOutput.Type;
 // The operation
 /**
  * Deletes instance.
+ *
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param accountName - Account name.
+ * @param instanceName - Instance name.
  */
 export const InstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InstancesDeleteInput,
   outputSchema: InstancesDeleteOutput,
 }));
 // Input Schema
-export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances/{instanceName}",
@@ -567,6 +635,12 @@ export type InstancesGetOutput = typeof InstancesGetOutput.Type;
 // The operation
 /**
  * Returns instance details for the given instance and account name.
+ *
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param accountName - Account name.
+ * @param instanceName - Instance name.
  */
 export const InstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InstancesGetInput,
@@ -574,7 +648,11 @@ export const InstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const InstancesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances",
@@ -628,6 +706,11 @@ export type InstancesListByAccountOutput =
 // The operation
 /**
  * Returns instances for the given account name.
+ *
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param accountName - Account name.
  */
 export const InstancesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -637,6 +720,10 @@ export const InstancesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -672,6 +759,12 @@ export type InstancesUpdateOutput = typeof InstancesUpdateOutput.Type;
 // The operation
 /**
  * Updates instance's tags.
+ *
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param accountName - Account name.
+ * @param instanceName - Instance name.
  */
 export const InstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InstancesUpdateInput,
@@ -718,6 +811,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Returns list of operations for Microsoft.DeviceUpdate resource provider.
+ *
+ * @param api-version - ADU schema API version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -726,6 +821,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PrivateEndpointConnectionProxiesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionProxyId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -903,6 +1002,12 @@ export type PrivateEndpointConnectionProxiesCreateOrUpdateOutput =
 // The operation
 /**
  * (INTERNAL - DO NOT USE) Creates or updates the specified private endpoint connection proxy resource associated with the device update account.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
+ * @param privateEndpointConnectionProxyId - The ID of the private endpoint connection proxy object.
  */
 export const PrivateEndpointConnectionProxiesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -911,7 +1016,12 @@ export const PrivateEndpointConnectionProxiesCreateOrUpdate =
   }));
 // Input Schema
 export const PrivateEndpointConnectionProxiesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionProxyId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyId}",
@@ -930,6 +1040,12 @@ export type PrivateEndpointConnectionProxiesDeleteOutput =
 // The operation
 /**
  * (INTERNAL - DO NOT USE) Deletes the specified private endpoint connection proxy associated with the device update account.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
+ * @param privateEndpointConnectionProxyId - The ID of the private endpoint connection proxy object.
  */
 export const PrivateEndpointConnectionProxiesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -938,7 +1054,12 @@ export const PrivateEndpointConnectionProxiesDelete =
   }));
 // Input Schema
 export const PrivateEndpointConnectionProxiesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionProxyId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyId}",
@@ -1033,6 +1154,12 @@ export type PrivateEndpointConnectionProxiesGetOutput =
 // The operation
 /**
  * (INTERNAL - DO NOT USE) Get the specified private endpoint connection proxy associated with the device update account.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
+ * @param privateEndpointConnectionProxyId - The ID of the private endpoint connection proxy object.
  */
 export const PrivateEndpointConnectionProxiesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1041,7 +1168,11 @@ export const PrivateEndpointConnectionProxiesGet =
   }));
 // Input Schema
 export const PrivateEndpointConnectionProxiesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies",
@@ -1145,6 +1276,11 @@ export type PrivateEndpointConnectionProxiesListByAccountOutput =
 // The operation
 /**
  * (INTERNAL - DO NOT USE) List all private endpoint connection proxies in a device update account.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
  */
 export const PrivateEndpointConnectionProxiesListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1154,6 +1290,10 @@ export const PrivateEndpointConnectionProxiesListByAccount =
 // Input Schema
 export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionProxyId: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     immutableSubscriptionId: Schema.optional(Schema.String),
@@ -1178,6 +1318,12 @@ export type PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesOutpu
 // The operation
 /**
  * (INTERNAL - DO NOT USE) Updates a private endpoint inside the private endpoint connection proxy object.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
+ * @param privateEndpointConnectionProxyId - The ID of the private endpoint connection proxy object.
  */
 export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointProperties =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1189,6 +1335,10 @@ export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointProperties =
 // Input Schema
 export const PrivateEndpointConnectionProxiesValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionProxyId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -1290,6 +1440,12 @@ export type PrivateEndpointConnectionProxiesValidateOutput =
 // The operation
 /**
  * (INTERNAL - DO NOT USE) Validates a private endpoint connection proxy object.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
+ * @param privateEndpointConnectionProxyId - The ID of the private endpoint connection proxy object.
  */
 export const PrivateEndpointConnectionProxiesValidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1299,6 +1455,9 @@ export const PrivateEndpointConnectionProxiesValidate =
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       privateEndpoint: Schema.optional(
@@ -1373,6 +1532,10 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
 /**
  * Update the state of specified private endpoint connection associated with the device update account.
  *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  * @param properties - Resource properties.
  */
@@ -1384,6 +1547,9 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1405,6 +1571,10 @@ export type PrivateEndpointConnectionsDeleteOutput =
 /**
  * Deletes the specified private endpoint connection associated with the device update account.
  *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsDelete =
@@ -1415,6 +1585,9 @@ export const PrivateEndpointConnectionsDelete =
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1454,6 +1627,10 @@ export type PrivateEndpointConnectionsGetOutput =
 /**
  * Get the specified private endpoint connection associated with the device update account.
  *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsGet =
@@ -1463,7 +1640,11 @@ export const PrivateEndpointConnectionsGet =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnections",
@@ -1516,6 +1697,11 @@ export type PrivateEndpointConnectionsListByAccountOutput =
 // The operation
 /**
  * List all private endpoint connections in a device update account.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
  */
 export const PrivateEndpointConnectionsListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1524,7 +1710,12 @@ export const PrivateEndpointConnectionsListByAccount =
   }));
 // Input Schema
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    groupId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateLinkResources/{groupId}",
@@ -1561,6 +1752,12 @@ export type PrivateLinkResourcesGetOutput =
 // The operation
 /**
  * Get the specified private link resource associated with the device update account.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
+ * @param groupId - The group ID of the private link resource.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1570,7 +1767,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkResourcesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateLinkResources",
@@ -1624,6 +1825,11 @@ export type PrivateLinkResourcesListByAccountOutput =
 // The operation
 /**
  * List all private link resources in a device update account.
+ *
+ * @param api-version - ADU schema API version.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - Account name.
  */
 export const PrivateLinkResourcesListByAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

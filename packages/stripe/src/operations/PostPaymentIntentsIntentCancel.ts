@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostPaymentIntentsIntentCancelInput =
@@ -105,7 +105,7 @@ export const PostPaymentIntentsIntentCancelOutput =
       ]),
     ),
     capture_method: Schema.Literals(["automatic", "automatic_async", "manual"]),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     confirmation_method: Schema.Literals(["automatic", "manual"]),
     created: Schema.Number,
     currency: Schema.String,
@@ -125,6 +125,7 @@ export const PostPaymentIntentsIntentCancelOutput =
           "bacs_debit",
           "bancontact",
           "billie",
+          "bizum",
           "blik",
           "boleto",
           "card",
@@ -157,8 +158,10 @@ export const PostPaymentIntentsIntentCancelOutput =
           "revolut_pay",
           "samsung_pay",
           "satispay",
+          "scalapay",
           "sepa_debit",
           "sofort",
+          "sunbit",
           "swish",
           "twint",
           "upi",
@@ -185,6 +188,7 @@ export const PostPaymentIntentsIntentCancelOutput =
     last_payment_error: Schema.Unknown,
     latest_charge: Schema.Unknown,
     livemode: Schema.Boolean,
+    managed_payments: Schema.Unknown,
     metadata: Schema.Record(Schema.String, Schema.String),
     next_action: Schema.Unknown,
     object: Schema.Literals(["payment_intent"]),

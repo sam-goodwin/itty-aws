@@ -24,7 +24,7 @@ export type SignEvmTransactionOutput = typeof SignEvmTransactionOutput.Type;
 
 // The operation
 /**
- * Sign a transaction
+ * Sign transaction
  *
  * Signs a transaction with the given EVM account.
  * The transaction should be serialized as a hex string using [RLP](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/).

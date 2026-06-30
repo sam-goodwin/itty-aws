@@ -56,6 +56,7 @@ export const PostSubscriptionSchedulesScheduleInput =
           add_invoice_items: Schema.optional(
             Schema.Array(
               Schema.Struct({
+                discountable: Schema.optional(Schema.Boolean),
                 discounts: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
@@ -265,6 +266,7 @@ export const PostSubscriptionSchedulesScheduleOutput =
       Schema.Struct({
         add_invoice_items: Schema.Array(
           Schema.Struct({
+            discountable: Schema.NullOr(Schema.Boolean),
             discounts: Schema.Array(
               Schema.Struct({
                 coupon: Schema.Unknown,

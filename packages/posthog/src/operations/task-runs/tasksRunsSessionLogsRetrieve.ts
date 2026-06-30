@@ -38,7 +38,6 @@ export type TasksRunsSessionLogsRetrieveOutput =
  * @param after - Only return events after this ISO8601 timestamp
  * @param event_types - Comma-separated list of event types to include
  * @param exclude_types - Comma-separated list of event types to exclude
- * @param id - A UUID string identifying this task run.
  * @param limit - Maximum number of entries to return (default 1000, max 5000)
  * @param offset - Zero-based offset into the filtered log entries
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.

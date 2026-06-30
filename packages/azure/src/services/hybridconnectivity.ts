@@ -11,6 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const EndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -58,6 +59,7 @@ export type EndpointsCreateOrUpdateOutput =
  * Create or update the endpoint to the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const EndpointsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -68,6 +70,7 @@ export const EndpointsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -87,6 +90,7 @@ export type EndpointsDeleteOutput = typeof EndpointsDeleteOutput.Type;
  * Deletes the endpoint access to the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -95,6 +99,7 @@ export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -132,6 +137,7 @@ export type EndpointsGetOutput = typeof EndpointsGetOutput.Type;
  * Gets the endpoint to the resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -139,9 +145,9 @@ export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsGetOutput,
 }));
 // Input Schema
-export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints",
@@ -182,6 +188,7 @@ export type EndpointsListOutput = typeof EndpointsListOutput.Type;
  * List of endpoints to the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const EndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EndpointsListInput,
@@ -190,6 +197,7 @@ export const EndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const EndpointsListCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     expiresin: Schema.optional(Schema.Number),
     serviceName: Schema.optional(Schema.Literals(["SSH", "WAC"])),
@@ -225,6 +233,7 @@ export type EndpointsListCredentialsOutput =
  * Gets the endpoint access credentials to the resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param expiresin - The is how long the endpoint access token is valid (in seconds).
  */
@@ -237,6 +246,7 @@ export const EndpointsListCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const EndpointsListIngressGatewayCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     expiresin: Schema.optional(Schema.Number),
     serviceName: Schema.optional(Schema.Literals(["SSH", "WAC"])),
@@ -281,6 +291,7 @@ export type EndpointsListIngressGatewayCredentialsOutput =
  * Gets the ingress gateway endpoint credentials
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param expiresin - The is how long the endpoint access token is valid (in seconds).
  */
@@ -292,6 +303,7 @@ export const EndpointsListIngressGatewayCredentials =
 // Input Schema
 export const EndpointsListManagedProxyDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     service: Schema.String,
     hostname: Schema.optional(Schema.String),
@@ -320,6 +332,7 @@ export type EndpointsListManagedProxyDetailsOutput =
  * Fetches the managed proxy details
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const EndpointsListManagedProxyDetails =
@@ -329,6 +342,7 @@ export const EndpointsListManagedProxyDetails =
   }));
 // Input Schema
 export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -373,6 +387,7 @@ export type EndpointsUpdateOutput = typeof EndpointsUpdateOutput.Type;
  * Update the endpoint to the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -425,6 +440,7 @@ export const GenerateAwsTemplatePost = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const InventoryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   solutionConfiguration: Schema.String.pipe(T.PathParam()),
   inventoryId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -463,6 +479,7 @@ export type InventoryGetOutput = typeof InventoryGetOutput.Type;
  * Get a InventoryResource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  * @param inventoryId - Inventory resource
  */
@@ -473,6 +490,7 @@ export const InventoryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const InventoryListBySolutionConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -528,6 +546,7 @@ export type InventoryListBySolutionConfigurationOutput =
  * List InventoryResource resources by SolutionConfiguration
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const InventoryListBySolutionConfiguration =
@@ -1035,6 +1054,7 @@ export const PublicCloudConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServiceConfigurationsCreateOrupdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1092,6 +1112,7 @@ export type ServiceConfigurationsCreateOrupdateOutput =
  * Create or update a service in serviceConfiguration for the endpoint resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
@@ -1103,6 +1124,7 @@ export const ServiceConfigurationsCreateOrupdate =
 // Input Schema
 export const ServiceConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1126,6 +1148,7 @@ export type ServiceConfigurationsDeleteOutput =
  * Deletes the service details to the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
@@ -1138,6 +1161,7 @@ export const ServiceConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServiceConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1179,6 +1203,7 @@ export type ServiceConfigurationsGetOutput =
  * Gets the details about the service to the resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
@@ -1191,6 +1216,7 @@ export const ServiceConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServiceConfigurationsListByEndpointResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1248,6 +1274,7 @@ export type ServiceConfigurationsListByEndpointResourceOutput =
  * API to enumerate registered services in service configurations under a Endpoint Resource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const ServiceConfigurationsListByEndpointResource =
@@ -1258,6 +1285,7 @@ export const ServiceConfigurationsListByEndpointResource =
 // Input Schema
 export const ServiceConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1304,6 +1332,7 @@ export type ServiceConfigurationsUpdateOutput =
  * Update the service details in the service configurations of the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
@@ -1316,6 +1345,7 @@ export const ServiceConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SolutionConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1372,6 +1402,7 @@ export type SolutionConfigurationsCreateOrUpdateOutput =
  * Create a SolutionConfiguration
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsCreateOrUpdate =
@@ -1382,6 +1413,7 @@ export const SolutionConfigurationsCreateOrUpdate =
 // Input Schema
 export const SolutionConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1404,6 +1436,7 @@ export type SolutionConfigurationsDeleteOutput =
  * Delete a SolutionConfiguration
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsDelete =
@@ -1414,6 +1447,7 @@ export const SolutionConfigurationsDelete =
 // Input Schema
 export const SolutionConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1454,6 +1488,7 @@ export type SolutionConfigurationsGetOutput =
  * Get a SolutionConfiguration
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1464,7 +1499,9 @@ export const SolutionConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SolutionConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations",
@@ -1518,6 +1555,7 @@ export type SolutionConfigurationsListOutput =
  * List SolutionConfiguration resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const SolutionConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1528,6 +1566,7 @@ export const SolutionConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SolutionConfigurationsSyncNowInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1604,6 +1643,7 @@ export type SolutionConfigurationsSyncNowOutput =
  * Trigger immediate sync with source cloud
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsSyncNow =
@@ -1614,6 +1654,7 @@ export const SolutionConfigurationsSyncNow =
 // Input Schema
 export const SolutionConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1662,6 +1703,7 @@ export type SolutionConfigurationsUpdateOutput =
  * Update a SolutionConfiguration
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsUpdate =

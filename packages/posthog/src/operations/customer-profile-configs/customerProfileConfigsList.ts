@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const CustomerProfileConfigsListInput =
@@ -12,7 +11,7 @@ export const CustomerProfileConfigsListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/customer_profile_configs/",
+      path: "/api/projects/{project_id}/customer_profile_configs/",
     }),
   );
 export type CustomerProfileConfigsListInput =
@@ -38,8 +37,8 @@ export const CustomerProfileConfigsListOutput =
               "group_4",
             ]),
           ),
-          content: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          sidebar: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          content: Schema.optional(Schema.Unknown),
+          sidebar: Schema.optional(Schema.Unknown),
           created_at: Schema.optional(Schema.String),
           updated_at: Schema.optional(Schema.NullOr(Schema.String)),
         }),
@@ -60,6 +59,5 @@ export const customerProfileConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CustomerProfileConfigsListInput,
     outputSchema: CustomerProfileConfigsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

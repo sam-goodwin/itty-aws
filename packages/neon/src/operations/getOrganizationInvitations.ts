@@ -22,7 +22,13 @@ export const GetOrganizationInvitationsOutput =
         org_id: Schema.String,
         invited_by: Schema.String,
         invited_at: Schema.String,
-        role: Schema.Literals(["admin", "member"]),
+        role: Schema.Literals([
+          "admin",
+          "member",
+          "editor",
+          "viewer",
+          "collaborator",
+        ]),
       }),
     ),
   });
@@ -31,9 +37,9 @@ export type GetOrganizationInvitationsOutput =
 
 // The operation
 /**
- * Retrieve organization invitation details
+ * List organization invitations
  *
- * Retrieves information about extended invitations for the specified organization
+ * Retrieves pending and accepted invitations for the specified organization.
  *
  * @param org_id - The Neon organization ID
  */

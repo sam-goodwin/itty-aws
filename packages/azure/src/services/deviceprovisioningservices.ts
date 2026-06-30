@@ -12,6 +12,7 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const DpsCertificateCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
@@ -96,6 +97,8 @@ export type DpsCertificateCreateOrUpdateOutput =
  *
  * Add new certificate or update an existing certificate.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group identifier.
  * @param provisioningServiceName - The name of the provisioning service.
  * @param certificateName - The name of the certificate create or update.
@@ -109,6 +112,7 @@ export const DpsCertificateCreateOrUpdate =
 // Input Schema
 export const DpsCertificateDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
@@ -142,6 +146,7 @@ export type DpsCertificateDeleteOutput = typeof DpsCertificateDeleteOutput.Type;
  *
  * Deletes the specified certificate associated with the Provisioning Service
  *
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group identifier.
  * @param If-Match - ETag of the certificate
  * @param provisioningServiceName - The name of the provisioning service.
@@ -154,6 +159,7 @@ export type DpsCertificateDeleteOutput = typeof DpsCertificateDeleteOutput.Type;
  * @param certificate.lastUpdated - Time the certificate is last updated.
  * @param certificate.hasPrivateKey - Indicates if the certificate contains a private key.
  * @param certificate.nonce - Random number generated to indicate Proof of Possession.
+ * @param api-version - The version of the API.
  */
 export const DpsCertificateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -165,6 +171,7 @@ export const DpsCertificateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DpsCertificateGenerateVerificationCodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificateName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
     "certificate.name": Schema.optional(Schema.String),
@@ -216,6 +223,7 @@ export type DpsCertificateGenerateVerificationCodeOutput =
  *
  * @param certificateName - The mandatory logical name of the certificate, that the provisioning service uses to access.
  * @param If-Match - ETag of the certificate. This is required to update an existing certificate, and ignored while creating a brand new certificate.
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - name of resource group.
  * @param provisioningServiceName - Name of provisioning service.
  * @param certificate.name - Common Name for the certificate.
@@ -226,6 +234,7 @@ export type DpsCertificateGenerateVerificationCodeOutput =
  * @param certificate.lastUpdated - Certificate last updated time.
  * @param certificate.hasPrivateKey - Indicates if the certificate contains private key.
  * @param certificate.nonce - Random number generated to indicate Proof of Possession.
+ * @param api-version - The version of the API.
  */
 export const DpsCertificateGenerateVerificationCode =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -236,6 +245,7 @@ export const DpsCertificateGenerateVerificationCode =
 export const DpsCertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     certificateName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
   },
@@ -288,9 +298,11 @@ export type DpsCertificateGetOutput = typeof DpsCertificateGetOutput.Type;
  * Get the certificate from the provisioning service.
  *
  * @param certificateName - Name of the certificate to retrieve.
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group identifier.
  * @param provisioningServiceName - Name of the provisioning service the certificate is associated with.
  * @param If-Match - ETag of the certificate.
+ * @param api-version - The version of the API.
  */
 export const DpsCertificateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DpsCertificateGetInput,
@@ -299,6 +311,7 @@ export const DpsCertificateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DpsCertificateListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -365,8 +378,10 @@ export type DpsCertificateListOutput = typeof DpsCertificateListOutput.Type;
 /**
  * Get all the certificates tied to the provisioning service.
  *
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Name of resource group.
  * @param provisioningServiceName - Name of provisioning service to retrieve certificates for.
+ * @param api-version - The version of the API.
  */
 export const DpsCertificateList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DpsCertificateListInput,
@@ -376,6 +391,7 @@ export const DpsCertificateList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DpsCertificateVerifyCertificateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificateName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
     "certificate.name": Schema.optional(Schema.String),
@@ -443,6 +459,7 @@ export type DpsCertificateVerifyCertificateOutput =
  *
  * @param certificateName - The mandatory logical name of the certificate, that the provisioning service uses to access.
  * @param If-Match - ETag of the certificate.
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group name.
  * @param provisioningServiceName - Provisioning service name.
  * @param certificate.name - Common Name for the certificate.
@@ -453,6 +470,7 @@ export type DpsCertificateVerifyCertificateOutput =
  * @param certificate.lastUpdated - Certificate last updated time.
  * @param certificate.hasPrivateKey - Indicates if the certificate contains private key.
  * @param certificate.nonce - Random number generated to indicate Proof of Possession.
+ * @param api-version - The version of the API.
  */
 export const DpsCertificateVerifyCertificate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -462,6 +480,7 @@ export const DpsCertificateVerifyCertificate =
 // Input Schema
 export const IotDpsResourceCheckProvisioningServiceNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({
@@ -488,6 +507,9 @@ export type IotDpsResourceCheckProvisioningServiceNameAvailabilityOutput =
  * Check if a provisioning service name is available.
  *
  * Check if a provisioning service name is available. This will validate if the name is syntactically valid and if the name is usable
+ *
+ * @param subscriptionId - The subscription identifier.
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceCheckProvisioningServiceNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -497,6 +519,7 @@ export const IotDpsResourceCheckProvisioningServiceNameAvailability =
 // Input Schema
 export const IotDpsResourceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
     etag: Schema.optional(Schema.String),
@@ -676,8 +699,10 @@ export type IotDpsResourceCreateOrUpdateOutput =
  *
  * Create or update the metadata of the provisioning service. The usual pattern to modify a property is to retrieve the provisioning service metadata and security metadata, and then combine them with the modified values in a new body to update the provisioning service.
  *
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group identifier.
  * @param provisioningServiceName - Name of provisioning service to create or update.
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -687,6 +712,10 @@ export const IotDpsResourceCreateOrUpdate =
 // Input Schema
 export const IotDpsResourceCreateOrUpdatePrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -777,6 +806,12 @@ export type IotDpsResourceCreateOrUpdatePrivateEndpointConnectionOutput =
  * Create or update private endpoint connection
  *
  * Create or update the status of a private endpoint connection with the specified name
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the provisioning service.
+ * @param resourceName - The name of the provisioning service.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const IotDpsResourceCreateOrUpdatePrivateEndpointConnection =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -787,6 +822,7 @@ export const IotDpsResourceCreateOrUpdatePrivateEndpointConnection =
 export const IotDpsResourceDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -809,7 +845,9 @@ export type IotDpsResourceDeleteOutput = typeof IotDpsResourceDeleteOutput.Type;
  * Deletes the Provisioning Service.
  *
  * @param provisioningServiceName - Name of provisioning service to delete.
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group identifier.
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -819,7 +857,12 @@ export const IotDpsResourceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const IotDpsResourceDeletePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -875,6 +918,12 @@ export type IotDpsResourceDeletePrivateEndpointConnectionOutput =
  * Delete private endpoint connection
  *
  * Delete private endpoint connection with the specified name
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the provisioning service.
+ * @param resourceName - The name of the provisioning service.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const IotDpsResourceDeletePrivateEndpointConnection =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -885,6 +934,7 @@ export const IotDpsResourceDeletePrivateEndpointConnection =
 export const IotDpsResourceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
@@ -916,7 +966,9 @@ export type IotDpsResourceGetOutput = typeof IotDpsResourceGetOutput.Type;
  * Get the metadata of the provisioning service without SAS keys.
  *
  * @param provisioningServiceName - Name of the provisioning service to retrieve.
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group name.
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IotDpsResourceGetInput,
@@ -926,6 +978,7 @@ export const IotDpsResourceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const IotDpsResourceGetOperationResultInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationId: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
     asyncinfo: Schema.String,
@@ -959,9 +1012,11 @@ export type IotDpsResourceGetOperationResultOutput =
  * Gets the status of a long running operation, such as create, update or delete a provisioning service.
  *
  * @param operationId - Operation id corresponding to long running operation. Use this to poll for the status.
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group identifier.
  * @param provisioningServiceName - Name of provisioning service that the operation is running on.
  * @param asyncinfo - Async header used to poll on the status of the operation, obtained while creating the long running operation.
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceGetOperationResult =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -970,7 +1025,12 @@ export const IotDpsResourceGetOperationResult =
   }));
 // Input Schema
 export const IotDpsResourceGetPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -1026,6 +1086,12 @@ export type IotDpsResourceGetPrivateEndpointConnectionOutput =
  * Get private endpoint connection
  *
  * Get private endpoint connection properties
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the provisioning service.
+ * @param resourceName - The name of the provisioning service.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const IotDpsResourceGetPrivateEndpointConnection =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1034,7 +1100,12 @@ export const IotDpsResourceGetPrivateEndpointConnection =
   }));
 // Input Schema
 export const IotDpsResourceGetPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    groupId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateLinkResources/{groupId}",
@@ -1064,6 +1135,12 @@ export type IotDpsResourceGetPrivateLinkResourcesOutput =
  * Get the specified private link resource
  *
  * Get the specified private link resource for the given provisioning service
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the provisioning service.
+ * @param resourceName - The name of the provisioning service.
+ * @param groupId - The name of the private link resource
  */
 export const IotDpsResourceGetPrivateLinkResources =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1073,6 +1150,7 @@ export const IotDpsResourceGetPrivateLinkResources =
 // Input Schema
 export const IotDpsResourceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1109,7 +1187,9 @@ export type IotDpsResourceListByResourceGroupOutput =
 /**
  * Get a list of all provisioning services in the given resource group.
  *
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group identifier.
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1118,7 +1198,9 @@ export const IotDpsResourceListByResourceGroup =
   }));
 // Input Schema
 export const IotDpsResourceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/provisioningServices",
@@ -1154,6 +1236,9 @@ export type IotDpsResourceListBySubscriptionOutput =
  * Get all the provisioning services in a subscription.
  *
  * List all the provisioning services for a given subscription id.
+ *
+ * @param subscriptionId - The subscription identifier.
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1164,6 +1249,7 @@ export const IotDpsResourceListBySubscription =
 export const IotDpsResourceListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1207,7 +1293,9 @@ export type IotDpsResourceListKeysOutput =
  * List the primary and secondary keys for a provisioning service.
  *
  * @param provisioningServiceName - The provisioning service name to get the shared access keys for.
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - resource group name
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1220,6 +1308,7 @@ export const IotDpsResourceListKeysForKeyNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1257,7 +1346,9 @@ export type IotDpsResourceListKeysForKeyNameOutput =
  *
  * @param provisioningServiceName - Name of the provisioning service.
  * @param keyName - Logical key name to get key-values for.
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - The name of the resource group that contains the provisioning service.
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceListKeysForKeyName =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1266,7 +1357,11 @@ export const IotDpsResourceListKeysForKeyName =
   }));
 // Input Schema
 export const IotDpsResourceListPrivateEndpointConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections",
@@ -1324,6 +1419,11 @@ export type IotDpsResourceListPrivateEndpointConnectionsOutput =
  * List private endpoint connections
  *
  * List private endpoint connection properties
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the provisioning service.
+ * @param resourceName - The name of the provisioning service.
  */
 export const IotDpsResourceListPrivateEndpointConnections =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1332,7 +1432,11 @@ export const IotDpsResourceListPrivateEndpointConnections =
   }));
 // Input Schema
 export const IotDpsResourceListPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateLinkResources",
@@ -1368,6 +1472,11 @@ export type IotDpsResourceListPrivateLinkResourcesOutput =
  * List private link resources
  *
  * List private link resources for the given provisioning service
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the provisioning service.
+ * @param resourceName - The name of the provisioning service.
  */
 export const IotDpsResourceListPrivateLinkResources =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1378,6 +1487,7 @@ export const IotDpsResourceListPrivateLinkResources =
 export const IotDpsResourceListValidSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1411,7 +1521,9 @@ export type IotDpsResourceListValidSkusOutput =
  * Gets the list of valid SKUs and tiers for a provisioning service.
  *
  * @param provisioningServiceName - Name of provisioning service.
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Name of resource group.
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceListValidSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1422,6 +1534,7 @@ export const IotDpsResourceListValidSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IotDpsResourceUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Unknown),
@@ -1453,8 +1566,10 @@ export type IotDpsResourceUpdateOutput = typeof IotDpsResourceUpdateOutput.Type;
  *
  * Update an existing provisioning service's tags. to update other fields use the CreateOrUpdate method
  *
+ * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - Resource group identifier.
  * @param provisioningServiceName - Name of provisioning service to create or update.
+ * @param api-version - The version of the API.
  */
 export const IotDpsResourceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1497,6 +1612,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Microsoft.Devices REST API operations.
+ *
+ * @param api-version - The version of the API.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,

@@ -9,9 +9,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const NotificationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const NotificationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscription: Schema.String.pipe(T.PathParam()),
+  notification: Schema.String.pipe(T.PathParam()),
+  principalId: Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscription}/providers/Microsoft.MarketplaceNotifications/reviewsNotification/{notification}",
@@ -29,6 +31,13 @@ export const NotificationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NotificationGetOutput = typeof NotificationGetOutput.Type;
 
 // The operation
+/**
+ *
+ * @param subscription - user's subscription id
+ * @param notification - the notification id
+ * @param principalId - user's principal id
+ * @param api-version - The API version to use for the request.
+ */
 export const NotificationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NotificationGetInput,
   outputSchema: NotificationGetOutput,
@@ -72,6 +81,10 @@ export type NotificationGetOperationsOutput =
   typeof NotificationGetOperationsOutput.Type;
 
 // The operation
+/**
+ *
+ * @param api-version - The API version to use for the request.
+ */
 export const NotificationGetOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: NotificationGetOperationsInput,
@@ -80,7 +93,10 @@ export const NotificationGetOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const NotificationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscription: Schema.String.pipe(T.PathParam()),
+    principalId: Schema.String,
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -107,6 +123,12 @@ export const NotificationsListOutput =
 export type NotificationsListOutput = typeof NotificationsListOutput.Type;
 
 // The operation
+/**
+ *
+ * @param subscription - user's subscription id
+ * @param principalId - user's principal id
+ * @param api-version - The API version to use for the request.
+ */
 export const NotificationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NotificationsListInput,
   outputSchema: NotificationsListOutput,

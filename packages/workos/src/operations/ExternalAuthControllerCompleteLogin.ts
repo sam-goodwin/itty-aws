@@ -13,6 +13,7 @@ export const ExternalAuthControllerCompleteLoginInput =
         email: Schema.optional(Schema.String),
         first_name: Schema.optional(Schema.String),
         last_name: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
         metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       }),
     ),

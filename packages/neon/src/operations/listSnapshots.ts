@@ -31,7 +31,8 @@ export type ListSnapshotsOutput = typeof ListSnapshotsOutput.Type;
 /**
  * List project snapshots
  *
- * List the snapshots for the specified project.
+ * Lists the snapshots for the specified project.
+ * Each snapshot represents a point-in-time backup of the project data.
  * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID

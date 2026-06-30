@@ -11,8 +11,8 @@ export const SessionGroupSummariesUpdateInput =
     title: Schema.optional(Schema.String),
     session_ids: Schema.optional(Schema.Array(Schema.String)),
     summary: Schema.optional(Schema.Unknown),
-    extra_summary_context: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    run_metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    extra_summary_context: Schema.optional(Schema.Unknown),
+    run_metadata: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(
       Schema.NullOr(
@@ -48,8 +48,8 @@ export const SessionGroupSummariesUpdateOutput =
     title: Schema.optional(Schema.String),
     session_ids: Schema.optional(Schema.Array(Schema.String)),
     summary: Schema.optional(Schema.Unknown),
-    extra_summary_context: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    run_metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    extra_summary_context: Schema.optional(Schema.Unknown),
+    run_metadata: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(
       Schema.NullOr(

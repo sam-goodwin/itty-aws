@@ -53,7 +53,7 @@ export const ListKeyspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
       replication_durability_constraints: Schema.Struct({
         strategy: Schema.optional(
-          Schema.Literals(["available", "lag", "always"]),
+          Schema.NullOr(Schema.Literals(["available", "lag", "always"])),
         ),
       }),
       vreplication_flags: Schema.Struct({

@@ -36,30 +36,13 @@ export const AlertsPartialUpdateInput =
         name: Schema.optional(Schema.String),
         configuration: Schema.optional(
           Schema.Struct({
-            bounds: Schema.optional(
-              Schema.Struct({
-                lower: Schema.optional(Schema.NullOr(Schema.Number)),
-                upper: Schema.optional(Schema.NullOr(Schema.Number)),
-              }),
-            ),
+            bounds: Schema.optional(Schema.Unknown),
             type: Schema.optional(Schema.Literals(["absolute", "percentage"])),
           }),
         ),
       }),
     ),
-    condition: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Literals([
-              "absolute_value",
-              "relative_increase",
-              "relative_decrease",
-            ]),
-          ),
-        }),
-      ),
-    ),
+    condition: Schema.optional(Schema.Unknown),
     state: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
     last_notified_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -75,11 +58,11 @@ export const AlertsPartialUpdateInput =
             Schema.Literals(["Firing", "Not firing", "Errored", "Snoozed"]),
           ),
           targets_notified: Schema.optional(Schema.Boolean),
-          anomaly_scores: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          triggered_points: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          triggered_dates: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          anomaly_scores: Schema.optional(Schema.Unknown),
+          triggered_points: Schema.optional(Schema.Unknown),
+          triggered_dates: Schema.optional(Schema.Unknown),
           interval: Schema.optional(Schema.NullOr(Schema.String)),
-          triggered_metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          triggered_metadata: Schema.optional(Schema.Unknown),
           investigation_status: Schema.optional(Schema.Unknown),
           investigation_verdict: Schema.optional(Schema.Unknown),
           investigation_summary: Schema.optional(Schema.NullOr(Schema.String)),
@@ -92,43 +75,27 @@ export const AlertsPartialUpdateInput =
       ),
     ),
     checks_total: Schema.optional(Schema.NullOr(Schema.Number)),
-    config: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          check_ongoing_interval: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          series_index: Schema.optional(Schema.Number),
-          type: Schema.optional(Schema.Literals(["TrendsAlertConfig"])),
-        }),
-      ),
-    ),
+    config: Schema.optional(Schema.Unknown),
     detector_config: Schema.optional(Schema.Unknown),
     calculation_interval: Schema.optional(
-      Schema.Literals(["hourly", "daily", "weekly", "monthly"]),
+      Schema.Literals([
+        "every_15_minutes",
+        "hourly",
+        "daily",
+        "weekly",
+        "monthly",
+      ]),
     ),
     snoozed_until: Schema.optional(Schema.NullOr(Schema.String)),
     skip_weekend: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    schedule_restriction: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          blocked_windows: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                start: Schema.optional(Schema.String),
-                end: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    schedule_restriction: Schema.optional(Schema.Unknown),
     last_value: Schema.optional(Schema.NullOr(Schema.Number)),
     investigation_agent_enabled: Schema.optional(Schema.Boolean),
     investigation_gates_notifications: Schema.optional(Schema.Boolean),
     investigation_inconclusive_action: Schema.optional(
       Schema.Literals(["notify", "suppress"]),
     ),
+    search_match_type: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -169,30 +136,13 @@ export const AlertsPartialUpdateOutput =
         name: Schema.optional(Schema.String),
         configuration: Schema.optional(
           Schema.Struct({
-            bounds: Schema.optional(
-              Schema.Struct({
-                lower: Schema.optional(Schema.NullOr(Schema.Number)),
-                upper: Schema.optional(Schema.NullOr(Schema.Number)),
-              }),
-            ),
+            bounds: Schema.optional(Schema.Unknown),
             type: Schema.optional(Schema.Literals(["absolute", "percentage"])),
           }),
         ),
       }),
     ),
-    condition: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Literals([
-              "absolute_value",
-              "relative_increase",
-              "relative_decrease",
-            ]),
-          ),
-        }),
-      ),
-    ),
+    condition: Schema.optional(Schema.Unknown),
     state: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
     last_notified_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -208,11 +158,11 @@ export const AlertsPartialUpdateOutput =
             Schema.Literals(["Firing", "Not firing", "Errored", "Snoozed"]),
           ),
           targets_notified: Schema.optional(Schema.Boolean),
-          anomaly_scores: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          triggered_points: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          triggered_dates: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          anomaly_scores: Schema.optional(Schema.Unknown),
+          triggered_points: Schema.optional(Schema.Unknown),
+          triggered_dates: Schema.optional(Schema.Unknown),
           interval: Schema.optional(Schema.NullOr(Schema.String)),
-          triggered_metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          triggered_metadata: Schema.optional(Schema.Unknown),
           investigation_status: Schema.optional(Schema.Unknown),
           investigation_verdict: Schema.optional(Schema.Unknown),
           investigation_summary: Schema.optional(Schema.NullOr(Schema.String)),
@@ -225,43 +175,27 @@ export const AlertsPartialUpdateOutput =
       ),
     ),
     checks_total: Schema.optional(Schema.NullOr(Schema.Number)),
-    config: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          check_ongoing_interval: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          series_index: Schema.optional(Schema.Number),
-          type: Schema.optional(Schema.Literals(["TrendsAlertConfig"])),
-        }),
-      ),
-    ),
+    config: Schema.optional(Schema.Unknown),
     detector_config: Schema.optional(Schema.Unknown),
     calculation_interval: Schema.optional(
-      Schema.Literals(["hourly", "daily", "weekly", "monthly"]),
+      Schema.Literals([
+        "every_15_minutes",
+        "hourly",
+        "daily",
+        "weekly",
+        "monthly",
+      ]),
     ),
     snoozed_until: Schema.optional(Schema.NullOr(Schema.String)),
     skip_weekend: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    schedule_restriction: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          blocked_windows: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                start: Schema.optional(Schema.String),
-                end: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    schedule_restriction: Schema.optional(Schema.Unknown),
     last_value: Schema.optional(Schema.NullOr(Schema.Number)),
     investigation_agent_enabled: Schema.optional(Schema.Boolean),
     investigation_gates_notifications: Schema.optional(Schema.Boolean),
     investigation_inconclusive_action: Schema.optional(
       Schema.Literals(["notify", "suppress"]),
     ),
+    search_match_type: Schema.optional(Schema.Unknown),
   });
 export type AlertsPartialUpdateOutput = typeof AlertsPartialUpdateOutput.Type;
 

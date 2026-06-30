@@ -29,7 +29,6 @@ export type ErrorTrackingSymbolSetsDownloadRetrieveOutput =
 /**
  * Return a presigned URL for downloading the symbol set's source map.
  *
- * @param id - A UUID string identifying this error tracking symbol set.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingSymbolSetsDownloadRetrieve =

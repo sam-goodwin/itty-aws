@@ -11,6 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const JobCollectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
@@ -100,8 +101,10 @@ export type JobCollectionsCreateOrUpdateOutput =
 /**
  * Provisions a new job collection or updates an existing job collection.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
+ * @param api-version - The API version.
  */
 export const JobCollectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -111,6 +114,7 @@ export const JobCollectionsCreateOrUpdate =
 // Input Schema
 export const JobCollectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -131,8 +135,10 @@ export type JobCollectionsDeleteOutput = typeof JobCollectionsDeleteOutput.Type;
 /**
  * Deletes a job collection.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
+ * @param api-version - The API version.
  */
 export const JobCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -143,6 +149,7 @@ export const JobCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobCollectionsDisableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -164,8 +171,10 @@ export type JobCollectionsDisableOutput =
 /**
  * Disables all of the jobs in the job collection.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
+ * @param api-version - The API version.
  */
 export const JobCollectionsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -176,6 +185,7 @@ export const JobCollectionsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobCollectionsEnableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -196,8 +206,10 @@ export type JobCollectionsEnableOutput = typeof JobCollectionsEnableOutput.Type;
 /**
  * Enables all of the jobs in the job collection.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
+ * @param api-version - The API version.
  */
 export const JobCollectionsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -208,6 +220,7 @@ export const JobCollectionsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobCollectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
   },
@@ -263,8 +276,10 @@ export type JobCollectionsGetOutput = typeof JobCollectionsGetOutput.Type;
 /**
  * Gets a job collection.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
+ * @param api-version - The API version.
  */
 export const JobCollectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobCollectionsGetInput,
@@ -273,6 +288,7 @@ export const JobCollectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobCollectionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -351,7 +367,9 @@ export type JobCollectionsListByResourceGroupOutput =
 /**
  * Gets all job collections under specified resource group.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
+ * @param api-version - The API version.
  */
 export const JobCollectionsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -360,7 +378,9 @@ export const JobCollectionsListByResourceGroup =
   }));
 // Input Schema
 export const JobCollectionsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Scheduler/jobCollections",
@@ -436,6 +456,9 @@ export type JobCollectionsListBySubscriptionOutput =
 // The operation
 /**
  * Gets all job collections under specified subscription.
+ *
+ * @param subscriptionId - The subscription id.
+ * @param api-version - The API version.
  */
 export const JobCollectionsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -445,6 +468,7 @@ export const JobCollectionsListBySubscription =
 // Input Schema
 export const JobCollectionsPatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
@@ -532,8 +556,10 @@ export type JobCollectionsPatchOutput = typeof JobCollectionsPatchOutput.Type;
 /**
  * Patches an existing job collection.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
+ * @param api-version - The API version.
  */
 export const JobCollectionsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobCollectionsPatchInput,
@@ -542,6 +568,7 @@ export const JobCollectionsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -1200,9 +1227,11 @@ export type JobsCreateOrUpdateOutput = typeof JobsCreateOrUpdateOutput.Type;
 /**
  * Provisions a new job or updates an existing job.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
  * @param jobName - The job name.
+ * @param api-version - The API version.
  */
 export const JobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsCreateOrUpdateInput,
@@ -1210,6 +1239,7 @@ export const JobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobCollectionName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1230,9 +1260,11 @@ export type JobsDeleteOutput = typeof JobsDeleteOutput.Type;
 /**
  * Deletes a job.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
  * @param jobName - The job name.
+ * @param api-version - The API version.
  */
 export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsDeleteInput,
@@ -1240,6 +1272,7 @@ export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobCollectionName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1579,9 +1612,11 @@ export type JobsGetOutput = typeof JobsGetOutput.Type;
 /**
  * Gets a job.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
  * @param jobName - The job name.
+ * @param api-version - The API version.
  */
 export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsGetInput,
@@ -1589,6 +1624,7 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobCollectionName: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
@@ -1957,8 +1993,10 @@ export type JobsListOutput = typeof JobsListOutput.Type;
 /**
  * Lists all jobs under the specified job collection.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
+ * @param api-version - The API version.
  * @param $top - The number of jobs to request, in the of range of [1..100].
  * @param $skip - The (0-based) index of the job history list from which to begin requesting entries.
  * @param $filter - The filter to apply on the job state.
@@ -1970,6 +2008,7 @@ export const JobsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobsListJobHistoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -2021,9 +2060,11 @@ export type JobsListJobHistoryOutput = typeof JobsListJobHistoryOutput.Type;
 /**
  * Lists job history.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
  * @param jobName - The job name.
+ * @param api-version - The API version.
  * @param $top - the number of job history to request, in the of range of [1..100].
  * @param $skip - The (0-based) index of the job history list from which to begin requesting entries.
  * @param $filter - The filter to apply on the job state.
@@ -2034,6 +2075,7 @@ export const JobsListJobHistory = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobsPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobCollectionName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -2691,9 +2733,11 @@ export type JobsPatchOutput = typeof JobsPatchOutput.Type;
 /**
  * Patches an existing job.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
  * @param jobName - The job name.
+ * @param api-version - The API version.
  */
 export const JobsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsPatchInput,
@@ -2701,6 +2745,7 @@ export const JobsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobsRunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobCollectionName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -2721,9 +2766,11 @@ export type JobsRunOutput = typeof JobsRunOutput.Type;
 /**
  * Runs a job.
  *
+ * @param subscriptionId - The subscription id.
  * @param resourceGroupName - The resource group name.
  * @param jobCollectionName - The job collection name.
  * @param jobName - The job name.
+ * @param api-version - The API version.
  */
 export const JobsRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsRunInput,

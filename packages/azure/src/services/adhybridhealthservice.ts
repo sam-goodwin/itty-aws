@@ -137,6 +137,7 @@ export type AdDomainServiceMembersListOutput =
  * @param nextPartitionKey - The next partition key to query for.
  * @param nextRowKey - The next row key to query for.
  * @param takeCount - The take count , which specifies the number of elements that can be returned from a sequence.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const adDomainServiceMembersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -188,6 +189,7 @@ export type AddsServiceGetMetricsOutput =
  * @param groupKey - The group key
  * @param fromDate - The start date.
  * @param toDate - The end date.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServiceGetMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -224,6 +226,7 @@ export type AddsServiceMembersDeleteOutput =
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The server Id.
  * @param confirm - Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServiceMembersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -286,6 +289,7 @@ export type AddsServiceMembersGetOutput =
  *
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The server Id.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServiceMembersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -412,6 +416,7 @@ export type AddsServiceMembersListOutput =
  *
  * @param serviceName - The name of the service.
  * @param $filter - The server property filter to apply.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServiceMembersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -458,6 +463,7 @@ export type AddsServiceMembersListCredentialsOutput =
  * @param serviceName - The name of the service.
  * @param $filter - The property filter to apply.
  * @param serviceMemberId - The server Id.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServiceMembersListCredentials =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -531,6 +537,8 @@ export type AddsServicesAddOutput = typeof AddsServicesAddOutput.Type;
 // The operation
 /**
  * Onboards a service for a given tenant in Azure Active Directory Connect Health.
+ *
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AddsServicesAddInput,
@@ -560,6 +568,7 @@ export type AddsServicesDeleteOutput = typeof AddsServicesDeleteOutput.Type;
  *
  * @param serviceName - The name of the service which needs to be deleted.
  * @param confirm - Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AddsServicesDeleteInput,
@@ -611,6 +620,7 @@ export type AddsServicesGetOutput = typeof AddsServicesGetOutput.Type;
  * Gets the details of an Active Directory Domain Service for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AddsServicesGetInput,
@@ -649,6 +659,7 @@ export type AddsServicesGetForestSummaryOutput =
  * Gets the forest summary for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesGetForestSummary =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -702,6 +713,7 @@ export type AddsServicesGetMetricMetadataOutput =
  *
  * @param serviceName - The name of the service.
  * @param metricName - The metric name
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesGetMetricMetadata =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -753,6 +765,7 @@ export type AddsServicesGetMetricMetadataForGroupOutput =
  * @param groupKey - The group key
  * @param fromDate - The start date.
  * @param toDate - The end date.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesGetMetricMetadataForGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -828,6 +841,7 @@ export type AddsServicesListOutput = typeof AddsServicesListOutput.Type;
  * @param serviceType - The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService.
  * @param skipCount - The skip count, which specifies the number of elements that can be bypassed from a sequence and then return the remaining elements.
  * @param takeCount - The take count , which specifies the number of elements that can be returned from a sequence.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AddsServicesListInput,
@@ -891,6 +905,7 @@ export type AddsServicesListMetricMetadataOutput =
  * @param $filter - The metric metadata property filter to apply.
  * @param serviceName - The name of the service.
  * @param perfCounter - Indicates if only performance counter metrics are requested.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListMetricMetadata =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -938,6 +953,7 @@ export type AddsServicesListMetricsAverageOutput =
  * @param serviceName - The name of the service.
  * @param metricName - The metric name
  * @param groupName - The group name
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListMetricsAverage =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -985,6 +1001,7 @@ export type AddsServicesListMetricsSumOutput =
  * @param serviceName - The name of the service.
  * @param metricName - The metric name
  * @param groupName - The group name
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListMetricsSum = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1063,6 +1080,7 @@ export type AddsServicesListPremiumServicesOutput =
  * @param serviceType - The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService.
  * @param skipCount - The skip count, which specifies the number of elements that can be bypassed from a sequence and then return the remaining elements.
  * @param takeCount - The take count , which specifies the number of elements that can be returned from a sequence.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListPremiumServices =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1133,6 +1151,7 @@ export type AddsServicesListReplicationDetailsOutput =
  * @param serviceName - The name of the service.
  * @param $filter - The server property filter to apply.
  * @param withDetails - Indicates if InboundReplicationNeighbor details are required or not.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListReplicationDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1208,6 +1227,7 @@ export type AddsServicesListReplicationSummaryOutput =
  * @param nextPartitionKey - The next partition key to query for.
  * @param nextRowKey - The next row key to query for.
  * @param takeCount - The take count , which specifies the number of elements that can be returned from a sequence.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListReplicationSummary =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1318,6 +1338,7 @@ export type AddsServicesListServerAlertsOutput =
  * @param state - The alert state to query for.
  * @param from - The start date to query for.
  * @param to - The end date till when to query for.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListServerAlerts =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1353,6 +1374,7 @@ export type AddsServicesReplicationStatusGetOutput =
  * Gets Replication status for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesReplicationStatusGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1441,6 +1463,7 @@ export type AddsServicesServiceMembersAddOutput =
  * Onboards  a server, for a given Active Directory Domain Controller service, to Azure Active Directory Connect Health Service.
  *
  * @param serviceName - The name of the service under which the server is to be onboarded.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesServiceMembersAdd =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1518,6 +1541,7 @@ export type AddsServicesServiceMembersListOutput =
  * @param $filter - The server property filter to apply.
  * @param dimensionType - The server specific dimension.
  * @param dimensionSignature - The value of the dimension.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesServiceMembersList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1595,6 +1619,7 @@ export type AddsServicesUpdateOutput = typeof AddsServicesUpdateOutput.Type;
  * Updates an Active Directory Domain Service properties of an onboarded service.
  *
  * @param serviceName - The name of the service which needs to be deleted.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AddsServicesUpdateInput,
@@ -1628,6 +1653,7 @@ export type AddsServicesUserPreferenceAddOutput =
  *
  * @param serviceName - The name of the service.
  * @param featureName - The name of the feature.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesUserPreferenceAdd =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1661,6 +1687,7 @@ export type AddsServicesUserPreferenceDeleteOutput =
  *
  * @param serviceName - The name of the service.
  * @param featureName - The name of the feature.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesUserPreferenceDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1696,6 +1723,7 @@ export type AddsServicesUserPreferenceGetOutput =
  *
  * @param serviceName - The name of the service.
  * @param featureName - The name of the feature.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesUserPreferenceGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1802,6 +1830,7 @@ export type AlertsListAddsAlertsOutput = typeof AlertsListAddsAlertsOutput.Type;
  * @param state - The alert state to query for.
  * @param from - The start date to query for.
  * @param to - The end date till when to query for.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const alertsListAddsAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1852,6 +1881,8 @@ export type ConfigurationAddOutput = typeof ConfigurationAddOutput.Type;
 // The operation
 /**
  * Onboards a tenant in Azure Active Directory Connect Health.
+ *
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const configurationAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationAddInput,
@@ -1900,6 +1931,8 @@ export type ConfigurationGetOutput = typeof ConfigurationGetOutput.Type;
 // The operation
 /**
  * Gets the details of a tenant onboarded to Azure Active Directory Connect Health.
+ *
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const configurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationGetInput,
@@ -2013,6 +2046,8 @@ export type ConfigurationUpdateOutput = typeof ConfigurationUpdateOutput.Type;
 // The operation
 /**
  * Updates tenant properties for tenants onboarded to Azure Active Directory Connect Health.
+ *
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const configurationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationUpdateInput,
@@ -2072,6 +2107,7 @@ export type DimensionsListAddsDimensionsOutput =
  *
  * @param serviceName - The name of the service.
  * @param dimension - The dimension type.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const dimensionsListAddsDimensions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2132,6 +2168,7 @@ export type ListIPAddressAggregatesByServiceOutput =
  *
  * @param serviceName - The name of the service.
  * @param skiptoken - A continuationtoken value returned in paginated result to load different pages.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const listIPAddressAggregatesByService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2174,6 +2211,7 @@ export type ListIPAddressAggregateSettingsOutput =
  * Gets the IP address aggregate settings.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const listIPAddressAggregateSettings =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2211,6 +2249,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists the available Azure Data Factory API operations.
+ *
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const operationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -2239,6 +2279,8 @@ export type ReportsGetDevOpsOutput = typeof ReportsGetDevOpsOutput.Type;
 // The operation
 /**
  * Checks if the user is enabled for Dev Ops access.
+ *
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const reportsGetDevOps = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReportsGetDevOpsInput,
@@ -2288,6 +2330,7 @@ export type ServiceGetMetricsOutput = typeof ServiceGetMetricsOutput.Type;
  * @param groupKey - The group key
  * @param fromDate - The start date.
  * @param toDate - The end date.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceGetMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceGetMetricsInput,
@@ -2374,6 +2417,7 @@ export type ServiceMembersAddOutput = typeof ServiceMembersAddOutput.Type;
  * Onboards  a server, for a given service, to Azure Active Directory Connect Health Service.
  *
  * @param serviceName - The name of the service under which the server is to be onboarded.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceMembersAddInput,
@@ -2406,6 +2450,7 @@ export type ServiceMembersDeleteOutput = typeof ServiceMembersDeleteOutput.Type;
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The server Id.
  * @param confirm - Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2440,6 +2485,7 @@ export type ServiceMembersDeleteDataOutput =
  *
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The server Id.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersDeleteData = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2502,6 +2548,7 @@ export type ServiceMembersGetOutput = typeof ServiceMembersGetOutput.Type;
  *
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The server Id.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceMembersGetInput,
@@ -2546,6 +2593,7 @@ export type ServiceMembersGetConnectorMetadataOutput =
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The service member id.
  * @param metricName - The name of the metric.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersGetConnectorMetadata =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2599,6 +2647,7 @@ export type ServiceMembersGetMetricsOutput =
  * @param groupKey - The group key
  * @param fromDate - The start date.
  * @param toDate - The end date.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersGetMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2643,6 +2692,7 @@ export type ServiceMembersGetServiceConfigurationOutput =
  *
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The server Id.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersGetServiceConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2718,6 +2768,7 @@ export type ServiceMembersListOutput = typeof ServiceMembersListOutput.Type;
  * @param $filter - The server property filter to apply.
  * @param dimensionType - The server specific dimension.
  * @param dimensionSignature - The value of the dimension.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceMembersListInput,
@@ -2827,6 +2878,7 @@ export type ServiceMembersListAlertsOutput =
  * @param state - The alert state to query for.
  * @param from - The start date to query for.
  * @param to - The end date till when to query for.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2928,6 +2980,7 @@ export type ServiceMembersListConnectorsOutput =
  *
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The server Id.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListConnectors =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2973,6 +3026,7 @@ export type ServiceMembersListCredentialsOutput =
  * @param serviceName - The name of the service.
  * @param $filter - The property filter to apply.
  * @param serviceMemberId - The server Id.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListCredentials =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3015,6 +3069,7 @@ export type ServiceMembersListDataFreshnessOutput =
  *
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The server Id.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListDataFreshness =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3062,6 +3117,7 @@ export type ServiceMembersListExportStatusOutput =
  *
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The server Id.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListExportStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3114,6 +3170,7 @@ export type ServiceMembersListGlobalConfigurationOutput =
  *
  * @param serviceName - The name of the service.
  * @param serviceMemberId - The server id.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListGlobalConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3187,6 +3244,8 @@ export type ServicesAddOutput = typeof ServicesAddOutput.Type;
 // The operation
 /**
  * Onboards a service for a given tenant in Azure Active Directory Connect Health.
+ *
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesAddInput,
@@ -3234,6 +3293,7 @@ export type ServicesAddAlertFeedbackOutput =
  * Adds an alert feedback submitted by customer.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesAddAlertFeedback = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3264,6 +3324,7 @@ export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
  *
  * @param serviceName - The name of the service which needs to be deleted.
  * @param confirm - Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
@@ -3315,6 +3376,7 @@ export type ServicesGetOutput = typeof ServicesGetOutput.Type;
  * Gets the details of a service for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
@@ -3349,6 +3411,7 @@ export type ServicesGetFeatureAvailibilityOutput =
  *
  * @param serviceName - The name of the service.
  * @param featureName - The name of the feature.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesGetFeatureAvailibility =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3402,6 +3465,7 @@ export type ServicesGetMetricMetadataOutput =
  *
  * @param serviceName - The name of the service.
  * @param metricName - The metric name
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesGetMetricMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3454,6 +3518,7 @@ export type ServicesGetMetricMetadataForGroupOutput =
  * @param groupKey - The group key
  * @param fromDate - The start date.
  * @param toDate - The end date.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesGetMetricMetadataForGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3489,6 +3554,7 @@ export type ServicesGetTenantWhitelistingOutput =
  *
  * @param serviceName - The name of the service.
  * @param featureName - The name of the feature.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesGetTenantWhitelisting =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3560,6 +3626,7 @@ export type ServicesListOutput = typeof ServicesListOutput.Type;
  * @param serviceType - The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService.
  * @param skipCount - The skip count, which specifies the number of elements that can be bypassed from a sequence and then return the remaining elements.
  * @param takeCount - The take count , which specifies the number of elements that can be returned from a sequence.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
@@ -3607,6 +3674,7 @@ export type ServicesListAlertFeedbackOutput =
  *
  * @param serviceName - The name of the service.
  * @param shortName - The name of the alert.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListAlertFeedback = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3714,6 +3782,7 @@ export type ServicesListAlertsOutput = typeof ServicesListAlertsOutput.Type;
  * @param state - The alert state to query for.
  * @param from - The start date to query for.
  * @param to - The end date till when to query for.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesListAlertsInput,
@@ -3757,6 +3826,7 @@ export type ServicesListAllRiskyIpDownloadReportOutput =
  * Gets all Risky IP report URIs for the last 7 days.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListAllRiskyIpDownloadReport =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3801,6 +3871,7 @@ export type ServicesListCurrentRiskyIpDownloadReportOutput =
  * Initiate the generation of a new Risky IP report. Returns the URI for the new one.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListCurrentRiskyIpDownloadReport =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3842,6 +3913,7 @@ export type ServicesListExportErrorsOutput =
  * Gets the count of latest AAD export errors.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListExportErrors = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3935,6 +4007,7 @@ export type ServicesListExportErrorsV2Output =
  *
  * @param serviceName - The name of the service.
  * @param errorBucket - The error category to query for.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListExportErrorsV2 = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3981,6 +4054,7 @@ export type ServicesListExportStatusOutput =
  * Gets the export status.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListExportStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4046,6 +4120,7 @@ export type ServicesListMetricMetadataOutput =
  * @param $filter - The metric metadata property filter to apply.
  * @param serviceName - The name of the service.
  * @param perfCounter - Indicates if only performance counter metrics are requested.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListMetricMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4094,6 +4169,7 @@ export type ServicesListMetricsAverageOutput =
  * @param serviceName - The name of the service.
  * @param metricName - The metric name
  * @param groupName - The group name
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListMetricsAverage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4142,6 +4218,7 @@ export type ServicesListMetricsSumOutput =
  * @param serviceName - The name of the service.
  * @param metricName - The metric name
  * @param groupName - The group name
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListMetricsSum = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4183,6 +4260,7 @@ export type ServicesListMonitoringConfigurationsOutput =
  * Gets the service level monitoring configurations.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListMonitoringConfigurations =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4258,6 +4336,7 @@ export type ServicesListPremiumOutput = typeof ServicesListPremiumOutput.Type;
  * @param serviceType - The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService.
  * @param skipCount - The skip count, which specifies the number of elements that can be bypassed from a sequence and then return the remaining elements.
  * @param takeCount - The take count , which specifies the number of elements that can be returned from a sequence.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListPremium = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesListPremiumInput,
@@ -4302,6 +4381,7 @@ export type ServicesListUserBadPasswordReportOutput =
  *
  * @param serviceName - The name of the service.
  * @param dataSource - The source of data, if its test data or customer data.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListUserBadPasswordReport =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4377,6 +4457,7 @@ export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
  * Updates the service properties of an onboarded service.
  *
  * @param serviceName - The name of the service which needs to be deleted.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpdateInput,
@@ -4409,6 +4490,7 @@ export type ServicesUpdateMonitoringConfigurationOutput =
  * Updates the service level monitoring configuration.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesUpdateMonitoringConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4461,6 +4543,7 @@ export type UpdateIPAddressAggregateSettingsOutput =
  * Updates the IP address aggregate settings alert thresholds.
  *
  * @param serviceName - The name of the service.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const updateIPAddressAggregateSettings =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

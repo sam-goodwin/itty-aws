@@ -10,7 +10,26 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const HybridUseBenefitCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    planId: Schema.String.pipe(T.PathParam()),
+    sku: Schema.Struct({
+      name: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.Number),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Cancelled", "Failed"]),
+        ),
+        createdDate: Schema.optional(Schema.String),
+        lastUpdatedDate: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}",
@@ -33,6 +52,10 @@ export type HybridUseBenefitCreateOutput =
 // The operation
 /**
  * Create a new hybrid use benefit under a given scope
+ *
+ * @param scope - The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
+ * @param planId - This is a unique identifier for a plan. Should be a guid.
+ * @param api-version - The api-version to be used by the service
  */
 export const HybridUseBenefitCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -42,7 +65,10 @@ export const HybridUseBenefitCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const HybridUseBenefitDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    planId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}",
@@ -61,6 +87,10 @@ export type HybridUseBenefitDeleteOutput =
 // The operation
 /**
  * Deletes a given plan ID
+ *
+ * @param scope - The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
+ * @param planId - This is a unique identifier for a plan. Should be a guid.
+ * @param api-version - The api-version to be used by the service
  */
 export const HybridUseBenefitDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -70,7 +100,10 @@ export const HybridUseBenefitDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const HybridUseBenefitGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    planId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}",
@@ -91,6 +124,10 @@ export type HybridUseBenefitGetOutput = typeof HybridUseBenefitGetOutput.Type;
 // The operation
 /**
  * Gets a given plan ID
+ *
+ * @param scope - The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
+ * @param planId - This is a unique identifier for a plan. Should be a guid.
+ * @param api-version - The api-version to be used by the service
  */
 export const HybridUseBenefitGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HybridUseBenefitGetInput,
@@ -99,6 +136,7 @@ export const HybridUseBenefitGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const HybridUseBenefitListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -129,6 +167,8 @@ export type HybridUseBenefitListOutput = typeof HybridUseBenefitListOutput.Type;
 /**
  * Get all hybrid use benefits associated with an ARM resource.
  *
+ * @param scope - The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
+ * @param api-version - The api-version to be used by the service
  * @param $filter - Supports applying filter on the type of SKU
  */
 export const HybridUseBenefitList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -139,7 +179,10 @@ export const HybridUseBenefitList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const HybridUseBenefitRevisionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    planId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}/revisions",
@@ -169,6 +212,10 @@ export type HybridUseBenefitRevisionListOutput =
 // The operation
 /**
  * Gets the version history of a hybrid use benefit
+ *
+ * @param scope - The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
+ * @param planId - This is a unique identifier for a plan. Should be a guid.
+ * @param api-version - The api-version to be used by the service
  */
 export const HybridUseBenefitRevisionList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -177,7 +224,26 @@ export const HybridUseBenefitRevisionList =
   }));
 // Input Schema
 export const HybridUseBenefitUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    planId: Schema.String.pipe(T.PathParam()),
+    sku: Schema.Struct({
+      name: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.Number),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Cancelled", "Failed"]),
+        ),
+        createdDate: Schema.optional(Schema.String),
+        lastUpdatedDate: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}",
@@ -200,6 +266,10 @@ export type HybridUseBenefitUpdateOutput =
 // The operation
 /**
  * Updates an existing hybrid use benefit
+ *
+ * @param scope - The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
+ * @param planId - This is a unique identifier for a plan. Should be a guid.
+ * @param api-version - The api-version to be used by the service
  */
 export const HybridUseBenefitUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -208,9 +278,9 @@ export const HybridUseBenefitUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.SoftwarePlan/operations",
@@ -246,6 +316,9 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  * Get operations.
  *
  * List all the operations.
+ *
+ * @param scope - The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
+ * @param api-version - The api-version to be used by the service
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -274,6 +347,7 @@ export type SoftwarePlanRegisterOutput = typeof SoftwarePlanRegisterOutput.Type;
  * Register to Microsoft.SoftwarePlan resource provider.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The api-version to be used by the service
  */
 export const SoftwarePlanRegister = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

@@ -12,6 +12,8 @@ import * as T from "../traits.ts";
 export const AvailabilityStatusesGetByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -29,70 +31,6 @@ export const AvailabilityStatusesGetByResourceOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        availabilityState: Schema.optional(
-          Schema.Literals(["Available", "Unavailable", "Degraded", "Unknown"]),
-        ),
-        title: Schema.optional(Schema.String),
-        summary: Schema.optional(Schema.String),
-        detailedStatus: Schema.optional(Schema.String),
-        reasonType: Schema.optional(Schema.String),
-        context: Schema.optional(Schema.String),
-        category: Schema.optional(Schema.String),
-        articleId: Schema.optional(Schema.String),
-        rootCauseAttributionTime: Schema.optional(Schema.String),
-        healthEventType: Schema.optional(Schema.String),
-        healthEventCause: Schema.optional(Schema.String),
-        healthEventCategory: Schema.optional(Schema.String),
-        healthEventId: Schema.optional(Schema.String),
-        resolutionETA: Schema.optional(Schema.String),
-        occuredTime: Schema.optional(Schema.String),
-        reasonChronicity: Schema.optional(
-          Schema.Literals(["Transient", "Persistent"]),
-        ),
-        reportedTime: Schema.optional(Schema.String),
-        recentlyResolved: Schema.optional(
-          Schema.Struct({
-            unavailableOccuredTime: Schema.optional(Schema.String),
-            resolvedTime: Schema.optional(Schema.String),
-            unavailableSummary: Schema.optional(Schema.String),
-          }),
-        ),
-        recommendedActions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              action: Schema.optional(Schema.String),
-              actionUrl: Schema.optional(Schema.String),
-              "_ActionUrl.Comment": Schema.optional(Schema.String),
-              actionUrlText: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        serviceImpactingEvents: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              eventStartTime: Schema.optional(Schema.String),
-              eventStatusLastModifiedTime: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Struct({
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-              incidentProperties: Schema.optional(
-                Schema.Struct({
-                  title: Schema.optional(Schema.String),
-                  service: Schema.optional(Schema.String),
-                  region: Schema.optional(Schema.String),
-                  incidentType: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
   });
 export type AvailabilityStatusesGetByResourceOutput =
   typeof AvailabilityStatusesGetByResourceOutput.Type;
@@ -101,8 +39,10 @@ export type AvailabilityStatusesGetByResourceOutput =
 /**
  * Gets current availability status for a single resource
  *
- * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API support not nested and one nesting level resource types : /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name} and /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const AvailabilityStatusesGetByResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -113,6 +53,8 @@ export const AvailabilityStatusesGetByResource =
 export const AvailabilityStatusesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -132,75 +74,6 @@ export const AvailabilityStatusesListOutput =
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
         location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
-              Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
-              }),
-            ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -212,8 +85,10 @@ export type AvailabilityStatusesListOutput =
 /**
  * Lists all historical availability transitions and impacting events for a single resource.
  *
- * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API support not nested and one nesting level resource types : /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name} and /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const AvailabilityStatusesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -226,6 +101,8 @@ export const AvailabilityStatusesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -245,75 +122,6 @@ export const AvailabilityStatusesListByResourceGroupOutput =
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
         location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
-              Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
-              }),
-            ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -325,9 +133,11 @@ export type AvailabilityStatusesListByResourceGroupOutput =
 /**
  * Lists the current availability status for all the resources in the resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const AvailabilityStatusesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -338,6 +148,8 @@ export const AvailabilityStatusesListByResourceGroup =
 export const AvailabilityStatusesListBySubscriptionIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -357,75 +169,6 @@ export const AvailabilityStatusesListBySubscriptionIdOutput =
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
         location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
-              Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
-              }),
-            ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -439,6 +182,8 @@ export type AvailabilityStatusesListBySubscriptionIdOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const AvailabilityStatusesListBySubscriptionId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -449,6 +194,8 @@ export const AvailabilityStatusesListBySubscriptionId =
 export const ChildAvailabilityStatusesGetByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -466,70 +213,6 @@ export const ChildAvailabilityStatusesGetByResourceOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        availabilityState: Schema.optional(
-          Schema.Literals(["Available", "Unavailable", "Degraded", "Unknown"]),
-        ),
-        title: Schema.optional(Schema.String),
-        summary: Schema.optional(Schema.String),
-        detailedStatus: Schema.optional(Schema.String),
-        reasonType: Schema.optional(Schema.String),
-        context: Schema.optional(Schema.String),
-        category: Schema.optional(Schema.String),
-        articleId: Schema.optional(Schema.String),
-        rootCauseAttributionTime: Schema.optional(Schema.String),
-        healthEventType: Schema.optional(Schema.String),
-        healthEventCause: Schema.optional(Schema.String),
-        healthEventCategory: Schema.optional(Schema.String),
-        healthEventId: Schema.optional(Schema.String),
-        resolutionETA: Schema.optional(Schema.String),
-        occuredTime: Schema.optional(Schema.String),
-        reasonChronicity: Schema.optional(
-          Schema.Literals(["Transient", "Persistent"]),
-        ),
-        reportedTime: Schema.optional(Schema.String),
-        recentlyResolved: Schema.optional(
-          Schema.Struct({
-            unavailableOccuredTime: Schema.optional(Schema.String),
-            resolvedTime: Schema.optional(Schema.String),
-            unavailableSummary: Schema.optional(Schema.String),
-          }),
-        ),
-        recommendedActions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              action: Schema.optional(Schema.String),
-              actionUrl: Schema.optional(Schema.String),
-              "_ActionUrl.Comment": Schema.optional(Schema.String),
-              actionUrlText: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        serviceImpactingEvents: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              eventStartTime: Schema.optional(Schema.String),
-              eventStatusLastModifiedTime: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Struct({
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-              incidentProperties: Schema.optional(
-                Schema.Struct({
-                  title: Schema.optional(Schema.String),
-                  service: Schema.optional(Schema.String),
-                  region: Schema.optional(Schema.String),
-                  incidentType: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
   });
 export type ChildAvailabilityStatusesGetByResourceOutput =
   typeof ChildAvailabilityStatusesGetByResourceOutput.Type;
@@ -538,8 +221,10 @@ export type ChildAvailabilityStatusesGetByResourceOutput =
 /**
  * Gets current availability status for a single resource
  *
- * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API only support one nesting level resource types : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - undefined
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const ChildAvailabilityStatusesGetByResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -550,6 +235,8 @@ export const ChildAvailabilityStatusesGetByResource =
 export const ChildAvailabilityStatusesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -569,75 +256,6 @@ export const ChildAvailabilityStatusesListOutput =
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
         location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
-              Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
-              }),
-            ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -649,8 +267,10 @@ export type ChildAvailabilityStatusesListOutput =
 /**
  * Lists the historical availability statuses for a single child resource. Use the nextLink property in the response to get the next page of availability status
  *
- * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API only support one nesting level resource types : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - undefined
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const ChildAvailabilityStatusesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -661,6 +281,8 @@ export const ChildAvailabilityStatusesList =
 export const ChildResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -679,75 +301,6 @@ export const ChildResourcesListOutput =
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
         location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
-              Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
-              }),
-            ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -758,8 +311,10 @@ export type ChildResourcesListOutput = typeof ChildResourcesListOutput.Type;
 /**
  * Lists the all the children and its current health status for a parent resource. Use the nextLink property in the response to get the next page of children current health
  *
- * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API only support not nested parent resource type: /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name}
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const ChildResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChildResourcesListInput,
@@ -767,7 +322,9 @@ export const ChildResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const EmergingIssuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    issueName: Schema.Literals(["default"]).pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -805,6 +362,7 @@ export type EmergingIssuesGetOutput = typeof EmergingIssuesGetOutput.Type;
  * Gets Azure services' emerging issues.
  *
  * @param api-version - The API version to use for this operation.
+ * @param issueName - The name of the emerging issue.
  */
 export const EmergingIssuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EmergingIssuesGetInput,
@@ -875,6 +433,7 @@ export const EmergingIssuesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -915,6 +474,7 @@ export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdO
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
  */
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -927,6 +487,7 @@ export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId
 export const EventFetchDetailsBySubscriptionIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -967,6 +528,7 @@ export type EventFetchDetailsBySubscriptionIdAndTrackingIdOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
  */
 export const EventFetchDetailsBySubscriptionIdAndTrackingId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -975,7 +537,9 @@ export const EventFetchDetailsBySubscriptionIdAndTrackingId =
   }));
 // Input Schema
 export const EventFetchDetailsByTenantIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/fetchEventDetails",
@@ -1014,6 +578,7 @@ export type EventFetchDetailsByTenantIdAndTrackingIdOutput =
  * Service health event details in the tenant by event tracking id. This can be used to fetch sensitive properties for Security Advisory events. Please see https://learn.microsoft.com/en-us/azure/service-health/security-advisories-elevated-access
  *
  * @param api-version - The API version to use for this operation.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
  */
 export const EventFetchDetailsByTenantIdAndTrackingId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1024,6 +589,9 @@ export const EventFetchDetailsByTenantIdAndTrackingId =
 export const EventGetBySubscriptionIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    queryStartTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1064,6 +632,9 @@ export type EventGetBySubscriptionIdAndTrackingIdOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param queryStartTime - Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020
  */
 export const EventGetBySubscriptionIdAndTrackingId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1072,7 +643,11 @@ export const EventGetBySubscriptionIdAndTrackingId =
   }));
 // Input Schema
 export const EventGetByTenantIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    queryStartTime: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}",
@@ -1111,6 +686,9 @@ export type EventGetByTenantIdAndTrackingIdOutput =
  * Service health event in the tenant by event tracking id
  *
  * @param api-version - The API version to use for this operation.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param queryStartTime - Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020
  */
 export const EventGetByTenantIdAndTrackingId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1121,6 +699,7 @@ export const EventGetByTenantIdAndTrackingId =
 export const EventsListBySingleResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1174,8 +753,9 @@ export type EventsListBySingleResourceOutput =
 /**
  * Lists current service health events for given resource.
  *
- * @param resourceUri - The fully qualified ID of the resource, including the resource name and resource type. Currently the API support not nested and one nesting level resource types : /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name} and /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  */
 export const EventsListBySingleResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1187,6 +767,8 @@ export const EventsListBySingleResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const EventsListBySubscriptionIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    queryStartTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1242,6 +824,8 @@ export type EventsListBySubscriptionIdOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param queryStartTime - Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020
  */
 export const EventsListBySubscriptionId = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1251,7 +835,10 @@ export const EventsListBySubscriptionId = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const EventsListByTenantIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $filter: Schema.optional(Schema.String),
+    queryStartTime: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceHealth/events",
@@ -1303,6 +890,8 @@ export type EventsListByTenantIdOutput = typeof EventsListByTenantIdOutput.Type;
  * Lists current service health events in the tenant.
  *
  * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+ * @param queryStartTime - Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020
  */
 export const EventsListByTenantId = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1314,6 +903,8 @@ export const EventsListByTenantId = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ImpactedResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
+    impactedResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1350,8 +941,10 @@ export type ImpactedResourcesGetOutput = typeof ImpactedResourcesGetOutput.Type;
 /**
  * Gets the specific impacted resource in the subscription by an event.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
+ * @param impactedResourceName - Name of the Impacted Resource.
  */
 export const ImpactedResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1361,7 +954,10 @@ export const ImpactedResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ImpactedResourcesGetByTenantIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
+    impactedResourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources/{impactedResourceName}",
@@ -1400,6 +996,8 @@ export type ImpactedResourcesGetByTenantIdOutput =
  * Gets the specific impacted resource in the tenant by an event.
  *
  * @param api-version - The API version to use for this operation.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
+ * @param impactedResourceName - Name of the Impacted Resource.
  */
 export const ImpactedResourcesGetByTenantId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1410,6 +1008,8 @@ export const ImpactedResourcesGetByTenantId =
 export const ImpactedResourcesListBySubscriptionIdAndEventIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1463,8 +1063,10 @@ export type ImpactedResourcesListBySubscriptionIdAndEventIdOutput =
 /**
  * Lists impacted resources in the subscription by an event.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  */
 export const ImpactedResourcesListBySubscriptionIdAndEventId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1473,7 +1075,10 @@ export const ImpactedResourcesListBySubscriptionIdAndEventId =
   }));
 // Input Schema
 export const ImpactedResourcesListByTenantIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
@@ -1527,6 +1132,8 @@ export type ImpactedResourcesListByTenantIdAndEventIdOutput =
  * Lists impacted resources in the tenant by an event.
  *
  * @param api-version - The API version to use for this operation.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  */
 export const ImpactedResourcesListByTenantIdAndEventId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1574,8 +1181,8 @@ export type MetadataGetEntityOutput = typeof MetadataGetEntityOutput.Type;
 /**
  * Gets the list of metadata entities.
  *
- * @param name - Name of metadata entity.
  * @param api-version - The API version to use for this operation.
+ * @param name - Name of metadata entity.
  */
 export const MetadataGetEntity = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MetadataGetEntityInput,
@@ -1686,6 +1293,8 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1739,8 +1348,10 @@ export type SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutpu
 /**
  * Lists impacted resources in the subscription by an event (Security Advisory).
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  */
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1751,7 +1362,10 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId =
   }));
 // Input Schema
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventTrackingId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
@@ -1805,6 +1419,8 @@ export type SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput =
  * Lists impacted resources in the tenant by an event (Security Advisory).
  *
  * @param api-version - The API version to use for this operation.
+ * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
+ * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  */
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

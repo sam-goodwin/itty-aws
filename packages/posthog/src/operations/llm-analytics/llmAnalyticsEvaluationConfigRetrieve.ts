@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsEvaluationConfigRetrieveInput =
@@ -10,7 +9,7 @@ export const LlmAnalyticsEvaluationConfigRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/llm_analytics/evaluation_config/",
+      path: "/api/projects/{project_id}/llm_analytics/evaluation_config/",
     }),
   );
 export type LlmAnalyticsEvaluationConfigRetrieveInput =
@@ -18,7 +17,14 @@ export type LlmAnalyticsEvaluationConfigRetrieveInput =
 
 // Output Schema
 export const LlmAnalyticsEvaluationConfigRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trial_eval_limit: Schema.Number,
+    trial_evals_used: Schema.Number,
+    trial_evals_remaining: Schema.Number,
+    active_provider_key: Schema.Unknown,
+    created_at: Schema.String,
+    updated_at: Schema.String,
+  });
 export type LlmAnalyticsEvaluationConfigRetrieveOutput =
   typeof LlmAnalyticsEvaluationConfigRetrieveOutput.Type;
 
@@ -32,5 +38,4 @@ export const llmAnalyticsEvaluationConfigRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsEvaluationConfigRetrieveInput,
     outputSchema: LlmAnalyticsEvaluationConfigRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

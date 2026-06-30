@@ -33,7 +33,7 @@ export type ListOrgApiKeysOutput = typeof ListOrgApiKeysOutput.Type;
  * Retrieves the API keys for the specified organization.
  * The response does not include API key tokens. A token is only provided when creating an API key.
  * API keys can also be managed in the Neon Console.
- * For more information, see [Manage API keys](https://neon.tech/docs/manage/api-keys/).
+ * For more information, see [Manage API keys](https://neon.com/docs/manage/api-keys/).
  *
  * @param org_id - The Neon organization ID
  */

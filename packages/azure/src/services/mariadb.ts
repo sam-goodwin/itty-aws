@@ -12,6 +12,7 @@ import * as T from "../traits.ts";
 export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -32,6 +33,7 @@ export type ServersStartOutput = typeof ServersStartOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersStartInput,
@@ -41,6 +43,7 @@ export const ServersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -61,6 +64,7 @@ export type ServersStopOutput = typeof ServersStopOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersStopInput,

@@ -22,6 +22,121 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface StateError {
+  /** Provides specifics about the error. */
+  details?: string;
+  /** The type of this state error. */
+  type?: "TYPE_UNSPECIFIED" | "KMS_ERROR" | (string & {});
+}
+
+export const StateError: Schema.Schema<StateError> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    details: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StateError" });
+
+export interface Workflow {
+  /** Workflow code to be executed. The size limit is 128KB. */
+  sourceContents?: string;
+  /** Output only. The timestamp for the latest revision of the workflow's creation. */
+  revisionCreateTime?: string;
+  /** Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS". */
+  userEnvVars?: Record<string, string>;
+  /** Output only. The resource name of a KMS crypto key version used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion} */
+  cryptoKeyVersion?: string;
+  /** Output only. State of the workflow deployment. */
+  state?: "STATE_UNSPECIFIED" | "ACTIVE" | "UNAVAILABLE" | (string & {});
+  /** Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence. */
+  callLogLevel?:
+    | "CALL_LOG_LEVEL_UNSPECIFIED"
+    | "LOG_ALL_CALLS"
+    | "LOG_ERRORS_ONLY"
+    | "LOG_NONE"
+    | (string & {});
+  /** Output only. The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision. */
+  createTime?: string;
+  /** Output only. A list of all KMS crypto keys used to encrypt or decrypt the data associated with the workflow. */
+  allKmsKeys?: ReadonlyArray<string>;
+  /** Output only. A list of all KMS crypto key versions used to encrypt or decrypt the data associated with the workflow. */
+  allKmsKeysVersions?: ReadonlyArray<string>;
+  /** The service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision. */
+  serviceAccount?: string;
+  /** The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision. */
+  name?: string;
+  /** Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters. */
+  revisionId?: string;
+  /** Optional. Describes the execution history level to apply to this workflow. */
+  executionHistoryLevel?:
+    | "EXECUTION_HISTORY_LEVEL_UNSPECIFIED"
+    | "EXECUTION_HISTORY_BASIC"
+    | "EXECUTION_HISTORY_DETAILED"
+    | (string & {});
+  /** Output only. The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision. */
+  updateTime?: string;
+  /** Output only. Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions. */
+  stateError?: StateError;
+  /** Optional. Input only. Immutable. Tags associated with this workflow. */
+  tags?: Record<string, string>;
+  /** Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision. */
+  description?: string;
+  /** Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision. */
+  labels?: Record<string, string>;
+  /** Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted. */
+  cryptoKeyName?: string;
+}
+
+export const Workflow: Schema.Schema<Workflow> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceContents: Schema.optional(Schema.String),
+    revisionCreateTime: Schema.optional(Schema.String),
+    userEnvVars: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    cryptoKeyVersion: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    callLogLevel: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    allKmsKeys: Schema.optional(Schema.Array(Schema.String)),
+    allKmsKeysVersions: Schema.optional(Schema.Array(Schema.String)),
+    serviceAccount: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    executionHistoryLevel: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    stateError: Schema.optional(StateError),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    cryptoKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Workflow" });
+
+export interface ListWorkflowRevisionsResponse {
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** The revisions of the workflow, ordered in reverse chronological order. */
+  workflows?: ReadonlyArray<Workflow>;
+}
+
+export const ListWorkflowRevisionsResponse: Schema.Schema<ListWorkflowRevisionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    workflows: Schema.optional(Schema.Array(Workflow)),
+  }).annotate({ identifier: "ListWorkflowRevisionsResponse" });
+
+export interface ListWorkflowsResponse {
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** Unreachable resources. */
+  unreachable?: ReadonlyArray<string>;
+  /** The workflows that match the request. */
+  workflows?: ReadonlyArray<Workflow>;
+}
+
+export const ListWorkflowsResponse: Schema.Schema<ListWorkflowsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    workflows: Schema.optional(Schema.Array(Workflow)),
+  }).annotate({ identifier: "ListWorkflowsResponse" });
+
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
@@ -40,117 +155,15 @@ export const Status: Schema.Schema<Status> =
     ),
   }).annotate({ identifier: "Status" });
 
-export interface StateError {
-  /** The type of this state error. */
-  type?: "TYPE_UNSPECIFIED" | "KMS_ERROR" | (string & {});
-  /** Provides specifics about the error. */
-  details?: string;
-}
-
-export const StateError: Schema.Schema<StateError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    details: Schema.optional(Schema.String),
-  }).annotate({ identifier: "StateError" });
-
-export interface Workflow {
-  /** Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters. */
-  revisionId?: string;
-  /** Output only. The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision. */
-  updateTime?: string;
-  /** Output only. A list of all KMS crypto key versions used to encrypt or decrypt the data associated with the workflow. */
-  allKmsKeysVersions?: ReadonlyArray<string>;
-  /** Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted. */
-  cryptoKeyName?: string;
-  /** Output only. Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions. */
-  stateError?: StateError;
-  /** Output only. The resource name of a KMS crypto key version used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion} */
-  cryptoKeyVersion?: string;
-  /** The service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision. */
-  serviceAccount?: string;
-  /** Output only. The timestamp for the latest revision of the workflow's creation. */
-  revisionCreateTime?: string;
-  /** Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence. */
-  callLogLevel?:
-    | "CALL_LOG_LEVEL_UNSPECIFIED"
-    | "LOG_ALL_CALLS"
-    | "LOG_ERRORS_ONLY"
-    | "LOG_NONE"
-    | (string & {});
-  /** Optional. Describes the execution history level to apply to this workflow. */
-  executionHistoryLevel?:
-    | "EXECUTION_HISTORY_LEVEL_UNSPECIFIED"
-    | "EXECUTION_HISTORY_BASIC"
-    | "EXECUTION_HISTORY_DETAILED"
-    | (string & {});
-  /** The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision. */
-  name?: string;
-  /** Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision. */
-  description?: string;
-  /** Output only. A list of all KMS crypto keys used to encrypt or decrypt the data associated with the workflow. */
-  allKmsKeys?: ReadonlyArray<string>;
-  /** Optional. Input only. Immutable. Tags associated with this workflow. */
-  tags?: Record<string, string>;
-  /** Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS". */
-  userEnvVars?: Record<string, string>;
-  /** Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision. */
-  labels?: Record<string, string>;
-  /** Output only. The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision. */
-  createTime?: string;
-  /** Output only. State of the workflow deployment. */
-  state?: "STATE_UNSPECIFIED" | "ACTIVE" | "UNAVAILABLE" | (string & {});
-  /** Workflow code to be executed. The size limit is 128KB. */
-  sourceContents?: string;
-}
-
-export const Workflow: Schema.Schema<Workflow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    revisionId: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    allKmsKeysVersions: Schema.optional(Schema.Array(Schema.String)),
-    cryptoKeyName: Schema.optional(Schema.String),
-    stateError: Schema.optional(StateError),
-    cryptoKeyVersion: Schema.optional(Schema.String),
-    serviceAccount: Schema.optional(Schema.String),
-    revisionCreateTime: Schema.optional(Schema.String),
-    callLogLevel: Schema.optional(Schema.String),
-    executionHistoryLevel: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    allKmsKeys: Schema.optional(Schema.Array(Schema.String)),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    userEnvVars: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    createTime: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    sourceContents: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Workflow" });
-
-export interface ListWorkflowsResponse {
-  /** The workflows that match the request. */
-  workflows?: ReadonlyArray<Workflow>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** Unreachable resources. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListWorkflowsResponse: Schema.Schema<ListWorkflowsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    workflows: Schema.optional(Schema.Array(Workflow)),
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListWorkflowsResponse" });
-
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: Record<string, unknown>;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
@@ -159,87 +172,10 @@ export const Operation: Schema.Schema<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(Status),
   }).annotate({ identifier: "Operation" });
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
-export interface Location {
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-}
-
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationId: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    name: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Location" });
-
-export interface ListLocationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: ReadonlyArray<Location>;
-}
-
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    locations: Schema.optional(Schema.Array(Location)),
-  }).annotate({ identifier: "ListLocationsResponse" });
-
-export interface OperationMetadata {
-  /** The time the operation finished running. */
-  endTime?: string;
-  /** API version used to start the operation. */
-  apiVersion?: string;
-  /** Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** The time the operation was created. */
-  createTime?: string;
-  /** Name of the verb executed by the operation. */
-  verb?: string;
-}
-
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String),
-    apiVersion: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OperationMetadata" });
-
-export interface ListWorkflowRevisionsResponse {
-  /** The revisions of the workflow, ordered in reverse chronological order. */
-  workflows?: ReadonlyArray<Workflow>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListWorkflowRevisionsResponse: Schema.Schema<ListWorkflowRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    workflows: Schema.optional(Schema.Array(Workflow)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListWorkflowRevisionsResponse" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -256,6 +192,70 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
   }).annotate({ identifier: "ListOperationsResponse" });
+
+export interface OperationMetadata {
+  /** The time the operation was created. */
+  createTime?: string;
+  /** The time the operation finished running. */
+  endTime?: string;
+  /** Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** API version used to start the operation. */
+  apiVersion?: string;
+  /** Name of the verb executed by the operation. */
+  verb?: string;
+}
+
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface Location {
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+}
+
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Location" });
+
+export interface ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: ReadonlyArray<Location>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
 // Errors
@@ -312,27 +312,27 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
@@ -392,27 +392,27 @@ export const getProjectsLocations: API.OperationMethod<
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The standard list page token. */
-  pageToken?: string;
-  /** The name of the operation's parent resource. */
-  name: string;
   /** The standard list filter. */
   filter?: string;
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The standard list page size. */
+  pageSize?: number;
 }
 
 export const ListProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
     ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
@@ -514,25 +514,25 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 }));
 
 export interface ListProjectsLocationsWorkflowsRequest {
-  /** Required. Project and location from which the workflows should be listed. Format: projects/{project}/locations/{location} */
-  parent: string;
-  /** Filter to restrict results to specific workflows. For details, see AIP-160. For example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or `createTime>"2023-08-01" AND state="FAILED"` */
-  filter?: string;
-  /** Maximum number of workflows to return per call. The service might return fewer than this value even if not at the end of the collection. If a value is not specified, a default value of 500 is used. The maximum permitted value is 1000 and values greater than 1000 are coerced down to 1000. */
-  pageSize?: number;
   /** A page token, received from a previous `ListWorkflows` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkflows` must match the call that provided the page token. */
   pageToken?: string;
+  /** Maximum number of workflows to return per call. The service might return fewer than this value even if not at the end of the collection. If a value is not specified, a default value of 500 is used. The maximum permitted value is 1000 and values greater than 1000 are coerced down to 1000. */
+  pageSize?: number;
+  /** Filter to restrict results to specific workflows. For details, see AIP-160. For example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or `createTime>"2023-08-01" AND state="FAILED"` */
+  filter?: string;
   /** Comma-separated list of fields that specify the order of the results. Default sorting order for a field is ascending. To specify descending order for a field, append a "desc" suffix. If not specified, the results are returned in an unspecified order. */
   orderBy?: string;
+  /** Required. Project and location from which the workflows should be listed. Format: projects/{project}/locations/{location} */
+  parent: string;
 }
 
 export const ListProjectsLocationsWorkflowsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/workflows" }),
     svc,
@@ -563,62 +563,57 @@ export const listProjectsLocationsWorkflows: API.PaginatedOperationMethod<
   },
 }));
 
-export interface PatchProjectsLocationsWorkflowsRequest {
-  /** The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision. */
+export interface GetProjectsLocationsWorkflowsRequest {
+  /** Optional. The revision of the workflow to retrieve. If the revision_id is empty, the latest revision is retrieved. The format is "000001-a4d", where the first six characters define the zero-padded decimal revision number. They are followed by a hyphen and three hexadecimal characters. */
+  revisionId?: string;
+  /** Required. Name of the workflow for which information should be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow} */
   name: string;
-  /** List of fields to be updated. If not present, the entire workflow will be updated. */
-  updateMask?: string;
-  /** Request body */
-  body?: Workflow;
 }
 
-export const PatchProjectsLocationsWorkflowsRequest =
+export const GetProjectsLocationsWorkflowsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionId: Schema.optional(Schema.String).pipe(T.HttpQuery("revisionId")),
     name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Workflow).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsWorkflowsRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsWorkflowsRequest>;
 
-export type PatchProjectsLocationsWorkflowsResponse = Operation;
-export const PatchProjectsLocationsWorkflowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type GetProjectsLocationsWorkflowsResponse = Workflow;
+export const GetProjectsLocationsWorkflowsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Workflow;
 
-export type PatchProjectsLocationsWorkflowsError =
+export type GetProjectsLocationsWorkflowsError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Updates an existing workflow. Running this method has no impact on already running executions of the workflow. A new revision of the workflow might be created as a result of a successful update operation. In that case, the new revision is used in new workflow executions. */
-export const patchProjectsLocationsWorkflows: API.OperationMethod<
-  PatchProjectsLocationsWorkflowsRequest,
-  PatchProjectsLocationsWorkflowsResponse,
-  PatchProjectsLocationsWorkflowsError,
+/** Gets details of a single workflow. */
+export const getProjectsLocationsWorkflows: API.OperationMethod<
+  GetProjectsLocationsWorkflowsRequest,
+  GetProjectsLocationsWorkflowsResponse,
+  GetProjectsLocationsWorkflowsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsWorkflowsRequest,
-  output: PatchProjectsLocationsWorkflowsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: GetProjectsLocationsWorkflowsRequest,
+  output: GetProjectsLocationsWorkflowsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListRevisionsProjectsLocationsWorkflowsRequest {
-  /** The maximum number of revisions to return per page. If a value is not specified, a default value of 20 is used. The maximum permitted value is 100. Values greater than 100 are coerced down to 100. */
-  pageSize?: number;
   /** The page token, received from a previous ListWorkflowRevisions call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
   /** Required. Workflow for which the revisions should be listed. Format: projects/{project}/locations/{location}/workflows/{workflow} */
   name: string;
+  /** The maximum number of revisions to return per page. If a value is not specified, a default value of 20 is used. The maximum permitted value is 100. Values greater than 100 are coerced down to 100. */
+  pageSize?: number;
 }
 
 export const ListRevisionsProjectsLocationsWorkflowsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:listRevisions" }),
     svc,
@@ -728,39 +723,44 @@ export const deleteProjectsLocationsWorkflows: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsWorkflowsRequest {
-  /** Required. Name of the workflow for which information should be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow} */
+export interface PatchProjectsLocationsWorkflowsRequest {
+  /** The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision. */
   name: string;
-  /** Optional. The revision of the workflow to retrieve. If the revision_id is empty, the latest revision is retrieved. The format is "000001-a4d", where the first six characters define the zero-padded decimal revision number. They are followed by a hyphen and three hexadecimal characters. */
-  revisionId?: string;
+  /** List of fields to be updated. If not present, the entire workflow will be updated. */
+  updateMask?: string;
+  /** Request body */
+  body?: Workflow;
 }
 
-export const GetProjectsLocationsWorkflowsRequest =
+export const PatchProjectsLocationsWorkflowsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    revisionId: Schema.optional(Schema.String).pipe(T.HttpQuery("revisionId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Workflow).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsWorkflowsRequest>;
+  ) as unknown as Schema.Schema<PatchProjectsLocationsWorkflowsRequest>;
 
-export type GetProjectsLocationsWorkflowsResponse = Workflow;
-export const GetProjectsLocationsWorkflowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Workflow;
+export type PatchProjectsLocationsWorkflowsResponse = Operation;
+export const PatchProjectsLocationsWorkflowsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsWorkflowsError =
+export type PatchProjectsLocationsWorkflowsError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Gets details of a single workflow. */
-export const getProjectsLocationsWorkflows: API.OperationMethod<
-  GetProjectsLocationsWorkflowsRequest,
-  GetProjectsLocationsWorkflowsResponse,
-  GetProjectsLocationsWorkflowsError,
+/** Updates an existing workflow. Running this method has no impact on already running executions of the workflow. A new revision of the workflow might be created as a result of a successful update operation. In that case, the new revision is used in new workflow executions. */
+export const patchProjectsLocationsWorkflows: API.OperationMethod<
+  PatchProjectsLocationsWorkflowsRequest,
+  PatchProjectsLocationsWorkflowsResponse,
+  PatchProjectsLocationsWorkflowsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsWorkflowsRequest,
-  output: GetProjectsLocationsWorkflowsResponse,
-  errors: [NotFound, Forbidden],
+  input: PatchProjectsLocationsWorkflowsRequest,
+  output: PatchProjectsLocationsWorkflowsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

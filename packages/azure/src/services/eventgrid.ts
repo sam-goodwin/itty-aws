@@ -11,6 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export const CaCertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     caCertificateName: Schema.String.pipe(T.PathParam()),
@@ -76,9 +77,11 @@ export type CaCertificatesCreateOrUpdateOutput =
  *
  * Create or update a CA certificate with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param caCertificateName - The CA certificate name.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const CaCertificatesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -88,6 +91,7 @@ export const CaCertificatesCreateOrUpdate =
 // Input Schema
 export const CaCertificatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     caCertificateName: Schema.String.pipe(T.PathParam()),
@@ -111,9 +115,11 @@ export type CaCertificatesDeleteOutput = typeof CaCertificatesDeleteOutput.Type;
  *
  * Delete an existing CA certificate.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param caCertificateName - Name of the CA certificate.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const CaCertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -124,6 +130,7 @@ export const CaCertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CaCertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     caCertificateName: Schema.String.pipe(T.PathParam()),
@@ -152,9 +159,11 @@ export type CaCertificatesGetOutput = typeof CaCertificatesGetOutput.Type;
  *
  * Get properties of a CA certificate.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param caCertificateName - Name of the CA certificate.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const CaCertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CaCertificatesGetInput,
@@ -163,8 +172,11 @@ export const CaCertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CaCertificatesListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -198,8 +210,12 @@ export type CaCertificatesListByNamespaceOutput =
  *
  * Get all the CA certificates under a namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const CaCertificatesListByNamespace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -209,6 +225,7 @@ export const CaCertificatesListByNamespace =
 // Input Schema
 export const ChannelsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
     channelName: Schema.String.pipe(T.PathParam()),
@@ -300,9 +317,11 @@ export type ChannelsCreateOrUpdateOutput =
  *
  * Synchronously creates or updates a new channel with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the partners subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
  * @param channelName - Name of the channel.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ChannelsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -312,6 +331,7 @@ export const ChannelsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   partnerNamespaceName: Schema.String.pipe(T.PathParam()),
   channelName: Schema.String.pipe(T.PathParam()),
@@ -334,9 +354,11 @@ export type ChannelsDeleteOutput = typeof ChannelsDeleteOutput.Type;
  *
  * Delete an existing channel.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the partners subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
  * @param channelName - Name of the channel.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ChannelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChannelsDeleteInput,
@@ -344,6 +366,7 @@ export const ChannelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ChannelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   partnerNamespaceName: Schema.String.pipe(T.PathParam()),
   channelName: Schema.String.pipe(T.PathParam()),
@@ -370,9 +393,11 @@ export type ChannelsGetOutput = typeof ChannelsGetOutput.Type;
  *
  * Get properties of a channel.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the partners subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
  * @param channelName - Name of the channel.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ChannelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChannelsGetInput,
@@ -381,6 +406,7 @@ export const ChannelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ChannelsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
     channelName: Schema.String.pipe(T.PathParam()),
@@ -406,9 +432,11 @@ export type ChannelsGetFullUrlOutput = typeof ChannelsGetFullUrlOutput.Type;
  *
  * Get the full endpoint URL of a partner destination channel.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the partners subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
  * @param channelName - Name of the Channel.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ChannelsGetFullUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChannelsGetFullUrlInput,
@@ -417,8 +445,11 @@ export const ChannelsGetFullUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ChannelsListByPartnerNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -452,8 +483,12 @@ export type ChannelsListByPartnerNamespaceOutput =
  *
  * List all the channels in a partner namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the partners subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const ChannelsListByPartnerNamespace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -462,6 +497,7 @@ export const ChannelsListByPartnerNamespace =
   }));
 // Input Schema
 export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   partnerNamespaceName: Schema.String.pipe(T.PathParam()),
   channelName: Schema.String.pipe(T.PathParam()),
@@ -509,9 +545,11 @@ export type ChannelsUpdateOutput = typeof ChannelsUpdateOutput.Type;
  *
  * Synchronously updates a channel with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the partners subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
  * @param channelName - Name of the channel.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ChannelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChannelsUpdateInput,
@@ -520,6 +558,7 @@ export const ChannelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClientGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     clientGroupName: Schema.String.pipe(T.PathParam()),
@@ -583,9 +622,11 @@ export type ClientGroupsCreateOrUpdateOutput =
  *
  * Create or update a client group with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param clientGroupName - The client group name.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ClientGroupsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -596,6 +637,7 @@ export const ClientGroupsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ClientGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     clientGroupName: Schema.String.pipe(T.PathParam()),
@@ -618,9 +660,11 @@ export type ClientGroupsDeleteOutput = typeof ClientGroupsDeleteOutput.Type;
  *
  * Delete an existing client group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param clientGroupName - Name of the client group.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ClientGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClientGroupsDeleteInput,
@@ -628,6 +672,7 @@ export const ClientGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ClientGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   clientGroupName: Schema.String.pipe(T.PathParam()),
@@ -654,9 +699,11 @@ export type ClientGroupsGetOutput = typeof ClientGroupsGetOutput.Type;
  *
  * Get properties of a client group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param clientGroupName - Name of the client group.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ClientGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClientGroupsGetInput,
@@ -665,8 +712,11 @@ export const ClientGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClientGroupsListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -700,8 +750,12 @@ export type ClientGroupsListByNamespaceOutput =
  *
  * Get all the client groups under a namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const ClientGroupsListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -712,6 +766,7 @@ export const ClientGroupsListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ClientsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     clientName: Schema.String.pipe(T.PathParam()),
@@ -793,9 +848,11 @@ export type ClientsCreateOrUpdateOutput =
  *
  * Create or update a client with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param clientName - The client name.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ClientsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -805,6 +862,7 @@ export const ClientsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ClientsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   clientName: Schema.String.pipe(T.PathParam()),
@@ -827,9 +885,11 @@ export type ClientsDeleteOutput = typeof ClientsDeleteOutput.Type;
  *
  * Delete an existing client.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param clientName - Name of the client.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ClientsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClientsDeleteInput,
@@ -837,6 +897,7 @@ export const ClientsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ClientsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   clientName: Schema.String.pipe(T.PathParam()),
@@ -863,9 +924,11 @@ export type ClientsGetOutput = typeof ClientsGetOutput.Type;
  *
  * Get properties of a client.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param clientName - Name of the client.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ClientsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClientsGetInput,
@@ -874,8 +937,11 @@ export const ClientsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClientsListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -909,8 +975,12 @@ export type ClientsListByNamespaceOutput =
  *
  * Get all the permission bindings under a namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const ClientsListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -921,6 +991,7 @@ export const ClientsListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DomainEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -1099,9 +1170,11 @@ export type DomainEventSubscriptionsCreateOrUpdateOutput =
  *
  * Asynchronously creates a new event subscription or updates an existing event subscription.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain topic.
  * @param eventSubscriptionName - Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1111,6 +1184,7 @@ export const DomainEventSubscriptionsCreateOrUpdate =
 // Input Schema
 export const DomainEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -1136,9 +1210,11 @@ export type DomainEventSubscriptionsDeleteOutput =
  *
  * Delete an existing event subscription for a domain.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
  * @param eventSubscriptionName - Name of the event subscription to be deleted.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1148,6 +1224,7 @@ export const DomainEventSubscriptionsDelete =
 // Input Schema
 export const DomainEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -1177,9 +1254,11 @@ export type DomainEventSubscriptionsGetOutput =
  *
  * Get properties of an event subscription of a domain.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
  * @param eventSubscriptionName - Name of the event subscription to be found.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1190,6 +1269,7 @@ export const DomainEventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DomainEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -1224,9 +1304,11 @@ export type DomainEventSubscriptionsGetDeliveryAttributesOutput =
  *
  * Get all delivery attributes for an event subscription for domain.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsGetDeliveryAttributes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1236,6 +1318,7 @@ export const DomainEventSubscriptionsGetDeliveryAttributes =
 // Input Schema
 export const DomainEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -1263,9 +1346,11 @@ export type DomainEventSubscriptionsGetFullUrlOutput =
  *
  * Get the full endpoint URL for an event subscription for domain.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsGetFullUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1275,8 +1360,11 @@ export const DomainEventSubscriptionsGetFullUrl =
 // Input Schema
 export const DomainEventSubscriptionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1310,8 +1398,12 @@ export type DomainEventSubscriptionsListOutput =
  *
  * List all event subscriptions that have been created for a specific topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const DomainEventSubscriptionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1321,6 +1413,7 @@ export const DomainEventSubscriptionsList =
 // Input Schema
 export const DomainEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -1466,9 +1559,11 @@ export type DomainEventSubscriptionsUpdateOutput =
  *
  * Update an existing event subscription for a topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
  * @param eventSubscriptionName - Name of the event subscription to be updated.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1478,6 +1573,7 @@ export const DomainEventSubscriptionsUpdate =
 // Input Schema
 export const DomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1617,8 +1713,10 @@ export type DomainsCreateOrUpdateOutput =
  *
  * Asynchronously creates or updates a new domain with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1628,6 +1726,7 @@ export const DomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1649,8 +1748,10 @@ export type DomainsDeleteOutput = typeof DomainsDeleteOutput.Type;
  *
  * Delete existing domain.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DomainsDeleteInput,
@@ -1658,6 +1759,7 @@ export const DomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1683,8 +1785,10 @@ export type DomainsGetOutput = typeof DomainsGetOutput.Type;
  *
  * Get properties of a domain.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DomainsGetInput,
@@ -1693,7 +1797,10 @@ export const DomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DomainsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1727,7 +1834,11 @@ export type DomainsListByResourceGroupOutput =
  *
  * List all the domains under a resource group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const DomainsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1737,7 +1848,11 @@ export const DomainsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DomainsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/domains",
@@ -1769,6 +1884,11 @@ export type DomainsListBySubscriptionOutput =
  * List domains under an Azure subscription.
  *
  * List all the domains under an Azure subscription.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const DomainsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1779,6 +1899,7 @@ export const DomainsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DomainsListSharedAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1806,8 +1927,10 @@ export type DomainsListSharedAccessKeysOutput =
  *
  * List the two keys used to publish to a domain.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainsListSharedAccessKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1818,6 +1941,7 @@ export const DomainsListSharedAccessKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DomainsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String,
@@ -1844,8 +1968,10 @@ export type DomainsRegenerateKeyOutput = typeof DomainsRegenerateKeyOutput.Type;
  *
  * Regenerate a shared access key for a domain.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1855,6 +1981,7 @@ export const DomainsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1940,8 +2067,10 @@ export type DomainsUpdateOutput = typeof DomainsUpdateOutput.Type;
  *
  * Asynchronously updates a domain with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DomainsUpdateInput,
@@ -1950,6 +2079,7 @@ export const DomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DomainTopicEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -2129,10 +2259,12 @@ export type DomainTopicEventSubscriptionsCreateOrUpdateOutput =
  *
  * Asynchronously creates a new event subscription or updates an existing event subscription.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the top level domain.
  * @param topicName - Name of the domain topic.
  * @param eventSubscriptionName - Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2142,6 +2274,7 @@ export const DomainTopicEventSubscriptionsCreateOrUpdate =
 // Input Schema
 export const DomainTopicEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -2168,10 +2301,12 @@ export type DomainTopicEventSubscriptionsDeleteOutput =
  *
  * Delete a nested existing event subscription for a domain topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the top level domain.
  * @param topicName - Name of the domain topic.
  * @param eventSubscriptionName - Name of the event subscription to be deleted.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2181,6 +2316,7 @@ export const DomainTopicEventSubscriptionsDelete =
 // Input Schema
 export const DomainTopicEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -2211,10 +2347,12 @@ export type DomainTopicEventSubscriptionsGetOutput =
  *
  * Get properties of a nested event subscription for a domain topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the top level domain.
  * @param topicName - Name of the domain topic.
  * @param eventSubscriptionName - Name of the event subscription to be found.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2224,6 +2362,7 @@ export const DomainTopicEventSubscriptionsGet =
 // Input Schema
 export const DomainTopicEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -2259,10 +2398,12 @@ export type DomainTopicEventSubscriptionsGetDeliveryAttributesOutput =
  *
  * Get all delivery attributes for an event subscription for domain topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the top level domain.
  * @param topicName - Name of the domain topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsGetDeliveryAttributes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2272,6 +2413,7 @@ export const DomainTopicEventSubscriptionsGetDeliveryAttributes =
 // Input Schema
 export const DomainTopicEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -2300,10 +2442,12 @@ export type DomainTopicEventSubscriptionsGetFullUrlOutput =
  *
  * Get the full endpoint URL for a nested event subscription for domain topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the top level domain.
  * @param topicName - Name of the domain topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsGetFullUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2313,9 +2457,12 @@ export const DomainTopicEventSubscriptionsGetFullUrl =
 // Input Schema
 export const DomainTopicEventSubscriptionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2349,9 +2496,13 @@ export type DomainTopicEventSubscriptionsListOutput =
  *
  * List all event subscriptions that have been created for a specific domain topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the top level domain.
  * @param topicName - Name of the domain topic.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const DomainTopicEventSubscriptionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2361,6 +2512,7 @@ export const DomainTopicEventSubscriptionsList =
 // Input Schema
 export const DomainTopicEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -2507,10 +2659,12 @@ export type DomainTopicEventSubscriptionsUpdateOutput =
  *
  * Update an existing event subscription for a domain topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
  * @param topicName - Name of the topic.
  * @param eventSubscriptionName - Name of the event subscription to be updated.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2520,6 +2674,7 @@ export const DomainTopicEventSubscriptionsUpdate =
 // Input Schema
 export const DomainTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     domainTopicName: Schema.String.pipe(T.PathParam()),
@@ -2549,9 +2704,11 @@ export type DomainTopicsCreateOrUpdateOutput =
  *
  * Asynchronously creates or updates a new domain topic with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
  * @param domainTopicName - Name of the domain topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2562,6 +2719,7 @@ export const DomainTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DomainTopicsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     domainTopicName: Schema.String.pipe(T.PathParam()),
@@ -2584,9 +2742,11 @@ export type DomainTopicsDeleteOutput = typeof DomainTopicsDeleteOutput.Type;
  *
  * Delete existing domain topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
  * @param domainTopicName - Name of the domain topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DomainTopicsDeleteInput,
@@ -2594,6 +2754,7 @@ export const DomainTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DomainTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
   domainTopicName: Schema.String.pipe(T.PathParam()),
@@ -2620,9 +2781,11 @@ export type DomainTopicsGetOutput = typeof DomainTopicsGetOutput.Type;
  *
  * Get properties of a domain topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the domain.
  * @param domainTopicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DomainTopicsGetInput,
@@ -2631,8 +2794,11 @@ export const DomainTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DomainTopicsListByDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2666,8 +2832,12 @@ export type DomainTopicsListByDomainOutput =
  *
  * List all the topics in a domain.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Domain name.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const DomainTopicsListByDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2857,6 +3027,7 @@ export type EventSubscriptionsCreateOrUpdateOutput =
  *
  * @param scope - The identifier of the resource to which the event subscription needs to be created or updated. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
  * @param eventSubscriptionName - Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and should use alphanumeric letters only.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSubscriptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2892,6 +3063,7 @@ export type EventSubscriptionsDeleteOutput =
  *
  * @param scope - The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
  * @param eventSubscriptionName - Name of the event subscription to be deleted.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2931,6 +3103,7 @@ export type EventSubscriptionsGetOutput =
  *
  * @param scope - The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
  * @param eventSubscriptionName - Name of the event subscription to be found.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2976,6 +3149,7 @@ export type EventSubscriptionsGetDeliveryAttributesOutput =
  *
  * @param scope - The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSubscriptionsGetDeliveryAttributes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3013,6 +3187,7 @@ export type EventSubscriptionsGetFullUrlOutput =
  *
  * @param scope - The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSubscriptionsGetFullUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3022,9 +3197,12 @@ export const EventSubscriptionsGetFullUrl =
 // Input Schema
 export const EventSubscriptionsListByDomainTopicInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3058,9 +3236,13 @@ export type EventSubscriptionsListByDomainTopicOutput =
  *
  * List all event subscriptions that have been created for a specific domain topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param domainName - Name of the top level domain.
  * @param topicName - Name of the domain topic.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListByDomainTopic =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3070,10 +3252,13 @@ export const EventSubscriptionsListByDomainTopic =
 // Input Schema
 export const EventSubscriptionsListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     resourceTypeName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3107,10 +3292,14 @@ export type EventSubscriptionsListByResourceOutput =
  *
  * List all event subscriptions that have been created for a specific resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param providerNamespace - Namespace of the provider of the topic.
  * @param resourceTypeName - Name of the resource type.
  * @param resourceName - Name of the resource.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListByResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3120,7 +3309,10 @@ export const EventSubscriptionsListByResource =
 // Input Schema
 export const EventSubscriptionsListGlobalByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3154,7 +3346,11 @@ export type EventSubscriptionsListGlobalByResourceGroupOutput =
  *
  * List all global event subscriptions under a specific Azure subscription and resource group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListGlobalByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3164,8 +3360,11 @@ export const EventSubscriptionsListGlobalByResourceGroup =
 // Input Schema
 export const EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicTypeName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3199,8 +3398,12 @@ export type EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput =
  *
  * List all global event subscriptions under a resource group for a specific topic type.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicTypeName - Name of the topic type.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListGlobalByResourceGroupForTopicType =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3209,7 +3412,11 @@ export const EventSubscriptionsListGlobalByResourceGroupForTopicType =
   }));
 // Input Schema
 export const EventSubscriptionsListGlobalBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/eventSubscriptions",
@@ -3241,6 +3448,11 @@ export type EventSubscriptionsListGlobalBySubscriptionOutput =
  * Get an aggregated list of all global event subscriptions under an Azure subscription.
  *
  * List all aggregated global event subscriptions under a specific Azure subscription.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListGlobalBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3250,7 +3462,10 @@ export const EventSubscriptionsListGlobalBySubscription =
 // Input Schema
 export const EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     topicTypeName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3284,7 +3499,11 @@ export type EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput =
  *
  * List all global event subscriptions under an Azure subscription for a topic type.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param topicTypeName - Name of the topic type.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListGlobalBySubscriptionForTopicType =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3294,8 +3513,11 @@ export const EventSubscriptionsListGlobalBySubscriptionForTopicType =
 // Input Schema
 export const EventSubscriptionsListRegionalByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3329,8 +3551,12 @@ export type EventSubscriptionsListRegionalByResourceGroupOutput =
  *
  * List all event subscriptions from the given location under a specific Azure subscription and resource group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param location - Name of the location.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListRegionalByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3340,9 +3566,12 @@ export const EventSubscriptionsListRegionalByResourceGroup =
 // Input Schema
 export const EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     topicTypeName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3376,9 +3605,13 @@ export type EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput =
  *
  * List all event subscriptions from the given location under a specific Azure subscription and resource group and topic type.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param location - Name of the location.
  * @param topicTypeName - Name of the topic type.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListRegionalByResourceGroupForTopicType =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3389,7 +3622,10 @@ export const EventSubscriptionsListRegionalByResourceGroupForTopicType =
 // Input Schema
 export const EventSubscriptionsListRegionalBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3423,7 +3659,11 @@ export type EventSubscriptionsListRegionalBySubscriptionOutput =
  *
  * List all event subscriptions from the given location under a specific Azure subscription.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - Name of the location.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListRegionalBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3433,8 +3673,11 @@ export const EventSubscriptionsListRegionalBySubscription =
 // Input Schema
 export const EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     topicTypeName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3468,8 +3711,12 @@ export type EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput =
  *
  * List all event subscriptions from the given location under a specific Azure subscription and topic type.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - Name of the location.
  * @param topicTypeName - Name of the topic type.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListRegionalBySubscriptionForTopicType =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3626,6 +3873,7 @@ export type EventSubscriptionsUpdateOutput =
  *
  * @param scope - The scope of existing event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
  * @param eventSubscriptionName - Name of the event subscription to be updated.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSubscriptionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3662,6 +3910,7 @@ export type ExtensionTopicsGetOutput = typeof ExtensionTopicsGetOutput.Type;
  * Get the properties of an extension topic.
  *
  * @param scope - The identifier of the resource to which extension topic is queried. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for Azure resource.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ExtensionTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ExtensionTopicsGetInput,
@@ -3670,6 +3919,7 @@ export const ExtensionTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -3879,8 +4129,10 @@ export type NamespacesCreateOrUpdateOutput =
  *
  * Asynchronously creates or updates a new namespace with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3890,6 +4142,7 @@ export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3911,8 +4164,10 @@ export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
  *
  * Delete existing namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NamespacesDeleteInput,
@@ -3920,6 +4175,7 @@ export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3945,8 +4201,10 @@ export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
  *
  * Get properties of a namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NamespacesGetInput,
@@ -3955,7 +4213,10 @@ export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NamespacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3989,7 +4250,11 @@ export type NamespacesListByResourceGroupOutput =
  *
  * List all the namespaces under a resource group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const NamespacesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3998,7 +4263,11 @@ export const NamespacesListByResourceGroup =
   }));
 // Input Schema
 export const NamespacesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/namespaces",
@@ -4030,6 +4299,11 @@ export type NamespacesListBySubscriptionOutput =
  * List namespaces under an Azure subscription.
  *
  * List all the namespaces under an Azure subscription.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const NamespacesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4039,6 +4313,7 @@ export const NamespacesListBySubscription =
 // Input Schema
 export const NamespacesListSharedAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4066,8 +4341,10 @@ export type NamespacesListSharedAccessKeysOutput =
  *
  * List the two keys used to publish to a namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespacesListSharedAccessKeys =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4077,6 +4354,7 @@ export const NamespacesListSharedAccessKeys =
 // Input Schema
 export const NamespacesRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String,
@@ -4105,8 +4383,10 @@ export type NamespacesRegenerateKeyOutput =
  *
  * Regenerate a shared access key for a namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the Namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespacesRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4116,6 +4396,7 @@ export const NamespacesRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -4280,8 +4561,10 @@ export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
  *
  * Asynchronously updates a namespace with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NamespacesUpdateInput,
@@ -4290,6 +4573,7 @@ export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NamespacesValidateCustomDomainOwnershipInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4365,8 +4649,10 @@ export type NamespacesValidateCustomDomainOwnershipOutput =
  *
  * Performs ownership validation via checking TXT records for all custom domains in a namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the Namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespacesValidateCustomDomainOwnership =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4376,6 +4662,7 @@ export const NamespacesValidateCustomDomainOwnership =
 // Input Schema
 export const NamespaceTopicEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -4573,10 +4860,12 @@ export type NamespaceTopicEventSubscriptionsCreateOrUpdateOutput =
  *
  * Asynchronously creates or updates an event subscription of a namespace topic with the specified parameters. Existing event subscriptions will be updated with this API.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the namespace topic.
  * @param eventSubscriptionName - Name of the event subscription to be created. Event subscription names must be between 3 and 50 characters in length and use alphanumeric letters only.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4586,6 +4875,7 @@ export const NamespaceTopicEventSubscriptionsCreateOrUpdate =
 // Input Schema
 export const NamespaceTopicEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -4612,10 +4902,12 @@ export type NamespaceTopicEventSubscriptionsDeleteOutput =
  *
  * Delete an existing event subscription of a namespace topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the namespace topic.
  * @param eventSubscriptionName - Name of the event subscription to be deleted.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4625,6 +4917,7 @@ export const NamespaceTopicEventSubscriptionsDelete =
 // Input Schema
 export const NamespaceTopicEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -4655,10 +4948,12 @@ export type NamespaceTopicEventSubscriptionsGetOutput =
  *
  * Get properties of an event subscription of a namespace topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the namespace topic.
  * @param eventSubscriptionName - Name of the event subscription to be found.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4668,6 +4963,7 @@ export const NamespaceTopicEventSubscriptionsGet =
 // Input Schema
 export const NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -4703,10 +4999,12 @@ export type NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput =
  *
  * Get all delivery attributes for an event subscription of a namespace topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the namespace topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsGetDeliveryAttributes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4716,6 +5014,7 @@ export const NamespaceTopicEventSubscriptionsGetDeliveryAttributes =
 // Input Schema
 export const NamespaceTopicEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -4744,10 +5043,12 @@ export type NamespaceTopicEventSubscriptionsGetFullUrlOutput =
  *
  * Get the full endpoint URL for an event subscription of a namespace topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the namespace topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsGetFullUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4757,9 +5058,12 @@ export const NamespaceTopicEventSubscriptionsGetFullUrl =
 // Input Schema
 export const NamespaceTopicEventSubscriptionsListByNamespaceTopicInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4793,9 +5097,13 @@ export type NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput =
  *
  * List event subscriptions that belong to a specific namespace topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the namespace topic.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const NamespaceTopicEventSubscriptionsListByNamespaceTopic =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4805,6 +5113,7 @@ export const NamespaceTopicEventSubscriptionsListByNamespaceTopic =
 // Input Schema
 export const NamespaceTopicEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -4970,10 +5279,12 @@ export type NamespaceTopicEventSubscriptionsUpdateOutput =
  *
  * Update an existing event subscription of a namespace topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the namespace topic.
  * @param eventSubscriptionName - Name of the event subscription to be updated.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4983,6 +5294,7 @@ export const NamespaceTopicEventSubscriptionsUpdate =
 // Input Schema
 export const NamespaceTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -5050,9 +5362,11 @@ export type NamespaceTopicsCreateOrUpdateOutput =
  *
  * Asynchronously creates a new namespace topic with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the namespace topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5062,6 +5376,7 @@ export const NamespaceTopicsCreateOrUpdate =
 // Input Schema
 export const NamespaceTopicsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -5086,9 +5401,11 @@ export type NamespaceTopicsDeleteOutput =
  *
  * Delete existing namespace topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5099,6 +5416,7 @@ export const NamespaceTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const NamespaceTopicsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -5126,9 +5444,11 @@ export type NamespaceTopicsGetOutput = typeof NamespaceTopicsGetOutput.Type;
  *
  * Get properties of a namespace topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the namespace topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NamespaceTopicsGetInput,
@@ -5137,8 +5457,11 @@ export const NamespaceTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NamespaceTopicsListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5172,8 +5495,12 @@ export type NamespaceTopicsListByNamespaceOutput =
  *
  * List all the namespace topics under a namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const NamespaceTopicsListByNamespace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5183,6 +5510,7 @@ export const NamespaceTopicsListByNamespace =
 // Input Schema
 export const NamespaceTopicsListSharedAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -5211,9 +5539,11 @@ export type NamespaceTopicsListSharedAccessKeysOutput =
  *
  * List the two keys used to publish to a namespace topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicsListSharedAccessKeys =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5223,6 +5553,7 @@ export const NamespaceTopicsListSharedAccessKeys =
 // Input Schema
 export const NamespaceTopicsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -5252,9 +5583,11 @@ export type NamespaceTopicsRegenerateKeyOutput =
  *
  * Regenerate a shared access key for a namespace topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicsRegenerateKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5264,6 +5597,7 @@ export const NamespaceTopicsRegenerateKey =
 // Input Schema
 export const NamespaceTopicsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -5297,9 +5631,11 @@ export type NamespaceTopicsUpdateOutput =
  *
  * Asynchronously updates a namespace topic with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicName - Name of the namespace topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5347,6 +5683,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  * List available operations.
  *
  * List the available operations supported by the Microsoft.EventGrid resource provider.
+ *
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -5355,6 +5693,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PartnerConfigurationsAuthorizePartnerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationImmutableId: Schema.optional(Schema.String),
     partnerName: Schema.optional(Schema.String),
@@ -5385,7 +5724,9 @@ export type PartnerConfigurationsAuthorizePartnerOutput =
  *
  * Authorize a single partner either by partner registration immutable Id or by partner name.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsAuthorizePartner =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5395,6 +5736,7 @@ export const PartnerConfigurationsAuthorizePartner =
 // Input Schema
 export const PartnerConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -5473,7 +5815,9 @@ export type PartnerConfigurationsCreateOrUpdateOutput =
  *
  * Synchronously creates or updates a partner configuration with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5483,6 +5827,7 @@ export const PartnerConfigurationsCreateOrUpdate =
 // Input Schema
 export const PartnerConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5506,7 +5851,9 @@ export type PartnerConfigurationsDeleteOutput =
  *
  * Delete existing partner configuration.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5517,6 +5864,7 @@ export const PartnerConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5544,7 +5892,9 @@ export type PartnerConfigurationsGetOutput =
  *
  * Get properties of a partner configuration.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5555,6 +5905,7 @@ export const PartnerConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerConfigurationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5589,7 +5940,9 @@ export type PartnerConfigurationsListByResourceGroupOutput =
  *
  * List all the partner configurations under a resource group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5598,7 +5951,11 @@ export const PartnerConfigurationsListByResourceGroup =
   }));
 // Input Schema
 export const PartnerConfigurationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerConfigurations",
@@ -5630,6 +5987,11 @@ export type PartnerConfigurationsListBySubscriptionOutput =
  * List partner configurations under an Azure subscription.
  *
  * List all the partner configurations under an Azure subscription.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerConfigurationsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5639,6 +6001,7 @@ export const PartnerConfigurationsListBySubscription =
 // Input Schema
 export const PartnerConfigurationsUnauthorizePartnerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationImmutableId: Schema.optional(Schema.String),
     partnerName: Schema.optional(Schema.String),
@@ -5669,7 +6032,9 @@ export type PartnerConfigurationsUnauthorizePartnerOutput =
  *
  * Unauthorize a single partner either by partner registration immutable Id or by partner name.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsUnauthorizePartner =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5679,6 +6044,7 @@ export const PartnerConfigurationsUnauthorizePartner =
 // Input Schema
 export const PartnerConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
@@ -5712,7 +6078,9 @@ export type PartnerConfigurationsUpdateOutput =
  *
  * Synchronously updates a partner configuration with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5723,6 +6091,7 @@ export const PartnerConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerNamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -5810,8 +6179,10 @@ export type PartnerNamespacesCreateOrUpdateOutput =
  *
  * Asynchronously creates a new partner namespace with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerNamespacesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5821,6 +6192,7 @@ export const PartnerNamespacesCreateOrUpdate =
 // Input Schema
 export const PartnerNamespacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5845,8 +6217,10 @@ export type PartnerNamespacesDeleteOutput =
  *
  * Delete existing partner namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerNamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5857,6 +6231,7 @@ export const PartnerNamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerNamespacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5883,8 +6258,10 @@ export type PartnerNamespacesGetOutput = typeof PartnerNamespacesGetOutput.Type;
  *
  * Get properties of a partner namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerNamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5895,7 +6272,10 @@ export const PartnerNamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerNamespacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5929,7 +6309,11 @@ export type PartnerNamespacesListByResourceGroupOutput =
  *
  * List all the partner namespaces under a resource group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerNamespacesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5938,7 +6322,11 @@ export const PartnerNamespacesListByResourceGroup =
   }));
 // Input Schema
 export const PartnerNamespacesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerNamespaces",
@@ -5970,6 +6358,11 @@ export type PartnerNamespacesListBySubscriptionOutput =
  * List partner namespaces under an Azure subscription.
  *
  * List all the partner namespaces under an Azure subscription.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerNamespacesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5979,6 +6372,7 @@ export const PartnerNamespacesListBySubscription =
 // Input Schema
 export const PartnerNamespacesListSharedAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6006,8 +6400,10 @@ export type PartnerNamespacesListSharedAccessKeysOutput =
  *
  * List the two keys used to publish to a partner namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerNamespacesListSharedAccessKeys =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6017,6 +6413,7 @@ export const PartnerNamespacesListSharedAccessKeys =
 // Input Schema
 export const PartnerNamespacesRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String,
@@ -6045,8 +6442,10 @@ export type PartnerNamespacesRegenerateKeyOutput =
  *
  * Regenerate a shared access key for a partner namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerNamespacesRegenerateKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6056,6 +6455,7 @@ export const PartnerNamespacesRegenerateKey =
 // Input Schema
 export const PartnerNamespacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -6100,8 +6500,10 @@ export type PartnerNamespacesUpdateOutput =
  *
  * Asynchronously updates a partner namespace with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerNamespaceName - Name of the partner namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerNamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6112,6 +6514,7 @@ export const PartnerNamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerRegistrationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -6171,8 +6574,10 @@ export type PartnerRegistrationsCreateOrUpdateOutput =
  *
  * Creates a new partner registration with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerRegistrationName - Name of the partner registration.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerRegistrationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6182,6 +6587,7 @@ export const PartnerRegistrationsCreateOrUpdate =
 // Input Schema
 export const PartnerRegistrationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6206,8 +6612,10 @@ export type PartnerRegistrationsDeleteOutput =
  *
  * Deletes a partner registration with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerRegistrationName - Name of the partner registration.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerRegistrationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6218,6 +6626,7 @@ export const PartnerRegistrationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerRegistrationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6246,8 +6655,10 @@ export type PartnerRegistrationsGetOutput =
  *
  * Gets a partner registration with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerRegistrationName - Name of the partner registration.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerRegistrationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6258,7 +6669,10 @@ export const PartnerRegistrationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerRegistrationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6292,7 +6706,11 @@ export type PartnerRegistrationsListByResourceGroupOutput =
  *
  * List all the partner registrations under a resource group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerRegistrationsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6301,7 +6719,11 @@ export const PartnerRegistrationsListByResourceGroup =
   }));
 // Input Schema
 export const PartnerRegistrationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerRegistrations",
@@ -6333,6 +6755,11 @@ export type PartnerRegistrationsListBySubscriptionOutput =
  * List partner registrations under an Azure subscription.
  *
  * List all the partner registrations under an Azure subscription.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerRegistrationsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6342,6 +6769,7 @@ export const PartnerRegistrationsListBySubscription =
 // Input Schema
 export const PartnerRegistrationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -6367,8 +6795,10 @@ export type PartnerRegistrationsUpdateOutput =
  *
  * Updates a partner registration with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerRegistrationName - Name of the partner registration.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerRegistrationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6379,6 +6809,7 @@ export const PartnerRegistrationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerTopicEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -6557,9 +6988,11 @@ export type PartnerTopicEventSubscriptionsCreateOrUpdateOutput =
  *
  * Asynchronously creates or updates an event subscription of a partner topic with the specified parameters. Existing event subscriptions will be updated with this API.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
  * @param eventSubscriptionName - Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6569,6 +7002,7 @@ export const PartnerTopicEventSubscriptionsCreateOrUpdate =
 // Input Schema
 export const PartnerTopicEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -6594,9 +7028,11 @@ export type PartnerTopicEventSubscriptionsDeleteOutput =
  *
  * Delete an existing event subscription of a partner topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
  * @param eventSubscriptionName - Name of the event subscription to be deleted.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6606,6 +7042,7 @@ export const PartnerTopicEventSubscriptionsDelete =
 // Input Schema
 export const PartnerTopicEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -6635,9 +7072,11 @@ export type PartnerTopicEventSubscriptionsGetOutput =
  *
  * Get properties of an event subscription of a partner topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
  * @param eventSubscriptionName - Name of the event subscription to be found.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6647,6 +7086,7 @@ export const PartnerTopicEventSubscriptionsGet =
 // Input Schema
 export const PartnerTopicEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -6681,9 +7121,11 @@ export type PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput =
  *
  * Get all delivery attributes for an event subscription of a partner topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsGetDeliveryAttributes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6693,6 +7135,7 @@ export const PartnerTopicEventSubscriptionsGetDeliveryAttributes =
 // Input Schema
 export const PartnerTopicEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -6720,9 +7163,11 @@ export type PartnerTopicEventSubscriptionsGetFullUrlOutput =
  *
  * Get the full endpoint URL for an event subscription of a partner topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsGetFullUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6732,8 +7177,11 @@ export const PartnerTopicEventSubscriptionsGetFullUrl =
 // Input Schema
 export const PartnerTopicEventSubscriptionsListByPartnerTopicInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6767,8 +7215,12 @@ export type PartnerTopicEventSubscriptionsListByPartnerTopicOutput =
  *
  * List event subscriptions that belong to a specific partner topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerTopicEventSubscriptionsListByPartnerTopic =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6778,6 +7230,7 @@ export const PartnerTopicEventSubscriptionsListByPartnerTopic =
 // Input Schema
 export const PartnerTopicEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -6923,9 +7376,11 @@ export type PartnerTopicEventSubscriptionsUpdateOutput =
  *
  * Update an existing event subscription of a partner topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
  * @param eventSubscriptionName - Name of the event subscription to be updated.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6935,6 +7390,7 @@ export const PartnerTopicEventSubscriptionsUpdate =
 // Input Schema
 export const PartnerTopicsActivateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6962,8 +7418,10 @@ export type PartnerTopicsActivateOutput =
  *
  * Activate a newly created partner topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicsActivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6974,6 +7432,7 @@ export const PartnerTopicsActivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -7080,8 +7539,10 @@ export type PartnerTopicsCreateOrUpdateOutput =
  *
  * Asynchronously creates a new partner topic with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7092,6 +7553,7 @@ export const PartnerTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerTopicsDeactivateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7120,8 +7582,10 @@ export type PartnerTopicsDeactivateOutput =
  *
  * Deactivate specific partner topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicsDeactivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7132,6 +7596,7 @@ export const PartnerTopicsDeactivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PartnerTopicsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7154,8 +7619,10 @@ export type PartnerTopicsDeleteOutput = typeof PartnerTopicsDeleteOutput.Type;
  *
  * Delete existing partner topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PartnerTopicsDeleteInput,
@@ -7163,6 +7630,7 @@ export const PartnerTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PartnerTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   partnerTopicName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -7190,8 +7658,10 @@ export type PartnerTopicsGetOutput = typeof PartnerTopicsGetOutput.Type;
  *
  * Get properties of a partner topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PartnerTopicsGetInput,
@@ -7200,7 +7670,10 @@ export const PartnerTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PartnerTopicsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7234,7 +7707,11 @@ export type PartnerTopicsListByResourceGroupOutput =
  *
  * List all the partner topics under a resource group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerTopicsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7243,7 +7720,11 @@ export const PartnerTopicsListByResourceGroup =
   }));
 // Input Schema
 export const PartnerTopicsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerTopics",
@@ -7275,6 +7756,11 @@ export type PartnerTopicsListBySubscriptionOutput =
  * List partner topics under an Azure subscription.
  *
  * List all the partner topics under an Azure subscription.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerTopicsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7284,6 +7770,7 @@ export const PartnerTopicsListBySubscription =
 // Input Schema
 export const PartnerTopicsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -7330,8 +7817,10 @@ export type PartnerTopicsUpdateOutput = typeof PartnerTopicsUpdateOutput.Type;
  *
  * Asynchronously updates a partner topic with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param partnerTopicName - Name of the partner topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PartnerTopicsUpdateInput,
@@ -7340,6 +7829,7 @@ export const PartnerTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PermissionBindingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     permissionBindingName: Schema.String.pipe(T.PathParam()),
@@ -7407,9 +7897,11 @@ export type PermissionBindingsCreateOrUpdateOutput =
  *
  * Create or update a permission binding with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param permissionBindingName - The permission binding name.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PermissionBindingsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7419,6 +7911,7 @@ export const PermissionBindingsCreateOrUpdate =
 // Input Schema
 export const PermissionBindingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     permissionBindingName: Schema.String.pipe(T.PathParam()),
@@ -7444,9 +7937,11 @@ export type PermissionBindingsDeleteOutput =
  *
  * Delete an existing permission binding.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param permissionBindingName - Name of the permission binding.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PermissionBindingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7457,6 +7952,7 @@ export const PermissionBindingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PermissionBindingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     permissionBindingName: Schema.String.pipe(T.PathParam()),
@@ -7485,9 +7981,11 @@ export type PermissionBindingsGetOutput =
  *
  * Get properties of a permission binding.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param permissionBindingName - Name of the permission binding.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PermissionBindingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7498,8 +7996,11 @@ export const PermissionBindingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PermissionBindingsListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7533,8 +8034,12 @@ export type PermissionBindingsListByNamespaceOutput =
  *
  * Get all the permission bindings under a namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PermissionBindingsListByNamespace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7544,6 +8049,7 @@ export const PermissionBindingsListByNamespace =
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.Literals([
       "topics",
@@ -7575,10 +8081,12 @@ export type PrivateEndpointConnectionsDeleteOutput =
  *
  * Delete a specific private endpoint connection under a topic, domain, or partner namespace or namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param parentType - The type of the parent resource. This can be either \\'topics\\', \\'domains\\', or \\'partnerNamespaces\\' or \\'namespaces\\'.
  * @param parentName - The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
  * @param privateEndpointConnectionName - The name of the private endpoint connection connection.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7588,6 +8096,7 @@ export const PrivateEndpointConnectionsDelete =
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.Literals([
       "topics",
@@ -7623,10 +8132,12 @@ export type PrivateEndpointConnectionsGetOutput =
  *
  * Get a specific private endpoint connection under a topic, domain, or partner namespace or namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param parentType - The type of the parent resource. This can be either \\'topics\\', \\'domains\\', or \\'partnerNamespaces\\' or \\'namespaces\\'.
  * @param parentName - The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
  * @param privateEndpointConnectionName - The name of the private endpoint connection connection.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7636,6 +8147,7 @@ export const PrivateEndpointConnectionsGet =
 // Input Schema
 export const PrivateEndpointConnectionsListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.Literals([
       "topics",
@@ -7644,6 +8156,8 @@ export const PrivateEndpointConnectionsListByResourceInput =
       "namespaces",
     ]).pipe(T.PathParam()),
     parentName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7677,9 +8191,13 @@ export type PrivateEndpointConnectionsListByResourceOutput =
  *
  * Get all private endpoint connections under a topic, domain, or partner namespace or namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param parentType - The type of the parent resource. This can be either \\'topics\\', \\'domains\\', or \\'partnerNamespaces\\' or \\'namespaces\\'.
  * @param parentName - The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PrivateEndpointConnectionsListByResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7689,6 +8207,7 @@ export const PrivateEndpointConnectionsListByResource =
 // Input Schema
 export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.Literals([
       "topics",
@@ -7761,10 +8280,12 @@ export type PrivateEndpointConnectionsUpdateOutput =
  *
  * Update a specific private endpoint connection under a topic, domain or partner namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param parentType - The type of the parent resource. This can be either \\'topics\\', \\'domains\\', or \\'partnerNamespaces\\' or \\'namespaces\\'.
  * @param parentName - The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
  * @param privateEndpointConnectionName - The name of the private endpoint connection connection.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PrivateEndpointConnectionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7774,6 +8295,7 @@ export const PrivateEndpointConnectionsUpdate =
 // Input Schema
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.String.pipe(T.PathParam()),
     parentName: Schema.String.pipe(T.PathParam()),
@@ -7812,10 +8334,12 @@ export type PrivateLinkResourcesGetOutput =
  *
  * Get properties of a private link resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param parentType - The type of the parent resource. This can be either \\'topics\\', \\'domains\\', or \\'partnerNamespaces\\' or \\'namespaces\\'.
  * @param parentName - The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
  * @param privateLinkResourceName - The name of private link resource will be either topic, domain, partnerNamespace or namespace.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7826,9 +8350,12 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PrivateLinkResourcesListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.String.pipe(T.PathParam()),
     parentName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7870,9 +8397,13 @@ export type PrivateLinkResourcesListByResourceOutput =
  *
  * List all the private link resources under a topic, domain, or partner namespace or namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param parentType - The type of the parent resource. This can be either \\'topics\\', \\'domains\\', or \\'partnerNamespaces\\' or \\'namespaces\\'.
  * @param parentName - The name of the parent resource (namely, either, the topic name, domain name, or partner namespace or namespace name).
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PrivateLinkResourcesListByResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7882,6 +8413,7 @@ export const PrivateLinkResourcesListByResource =
 // Input Schema
 export const SystemTopicEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -8060,9 +8592,11 @@ export type SystemTopicEventSubscriptionsCreateOrUpdateOutput =
  *
  * Asynchronously creates or updates an event subscription with the specified parameters. Existing event subscriptions will be updated with this API.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
  * @param eventSubscriptionName - Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8072,6 +8606,7 @@ export const SystemTopicEventSubscriptionsCreateOrUpdate =
 // Input Schema
 export const SystemTopicEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -8097,9 +8632,11 @@ export type SystemTopicEventSubscriptionsDeleteOutput =
  *
  * Delete an existing event subscription of a system topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
  * @param eventSubscriptionName - Name of the event subscription to be deleted.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8109,6 +8646,7 @@ export const SystemTopicEventSubscriptionsDelete =
 // Input Schema
 export const SystemTopicEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -8138,9 +8676,11 @@ export type SystemTopicEventSubscriptionsGetOutput =
  *
  * Get an event subscription.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
  * @param eventSubscriptionName - Name of the event subscription to be found.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8150,6 +8690,7 @@ export const SystemTopicEventSubscriptionsGet =
 // Input Schema
 export const SystemTopicEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -8184,9 +8725,11 @@ export type SystemTopicEventSubscriptionsGetDeliveryAttributesOutput =
  *
  * Get all delivery attributes for an event subscription.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsGetDeliveryAttributes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8196,6 +8739,7 @@ export const SystemTopicEventSubscriptionsGetDeliveryAttributes =
 // Input Schema
 export const SystemTopicEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -8223,9 +8767,11 @@ export type SystemTopicEventSubscriptionsGetFullUrlOutput =
  *
  * Get the full endpoint URL for an event subscription of a system topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsGetFullUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8235,8 +8781,11 @@ export const SystemTopicEventSubscriptionsGetFullUrl =
 // Input Schema
 export const SystemTopicEventSubscriptionsListBySystemTopicInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -8270,8 +8819,12 @@ export type SystemTopicEventSubscriptionsListBySystemTopicOutput =
  *
  * List event subscriptions that belong to a specific system topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const SystemTopicEventSubscriptionsListBySystemTopic =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8281,6 +8834,7 @@ export const SystemTopicEventSubscriptionsListBySystemTopic =
 // Input Schema
 export const SystemTopicEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -8426,9 +8980,11 @@ export type SystemTopicEventSubscriptionsUpdateOutput =
  *
  * Update an existing event subscription of a system topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
  * @param eventSubscriptionName - Name of the event subscription to be updated.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8438,6 +8994,7 @@ export const SystemTopicEventSubscriptionsUpdate =
 // Input Schema
 export const SystemTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -8522,8 +9079,10 @@ export type SystemTopicsCreateOrUpdateOutput =
  *
  * Asynchronously creates a new system topic with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8534,6 +9093,7 @@ export const SystemTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SystemTopicsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -8555,8 +9115,10 @@ export type SystemTopicsDeleteOutput = typeof SystemTopicsDeleteOutput.Type;
  *
  * Delete existing system topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SystemTopicsDeleteInput,
@@ -8564,6 +9126,7 @@ export const SystemTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SystemTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   systemTopicName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -8589,8 +9152,10 @@ export type SystemTopicsGetOutput = typeof SystemTopicsGetOutput.Type;
  *
  * Get properties of a system topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SystemTopicsGetInput,
@@ -8599,7 +9164,10 @@ export const SystemTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SystemTopicsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -8633,7 +9201,11 @@ export type SystemTopicsListByResourceGroupOutput =
  *
  * List all the system topics under a resource group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const SystemTopicsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8642,7 +9214,11 @@ export const SystemTopicsListByResourceGroup =
   }));
 // Input Schema
 export const SystemTopicsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/systemTopics",
@@ -8674,6 +9250,11 @@ export type SystemTopicsListBySubscriptionOutput =
  * List system topics under an Azure subscription.
  *
  * List all the system topics under an Azure subscription.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const SystemTopicsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8683,6 +9264,7 @@ export const SystemTopicsListBySubscription =
 // Input Schema
 export const SystemTopicsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -8733,8 +9315,10 @@ export type SystemTopicsUpdateOutput = typeof SystemTopicsUpdateOutput.Type;
  *
  * Asynchronously updates a system topic with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param systemTopicName - Name of the system topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SystemTopicsUpdateInput,
@@ -8743,6 +9327,7 @@ export const SystemTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TopicEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -8921,9 +9506,11 @@ export type TopicEventSubscriptionsCreateOrUpdateOutput =
  *
  * Asynchronously creates a new event subscription or updates an existing event subscription.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the domain topic.
  * @param eventSubscriptionName - Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8933,6 +9520,7 @@ export const TopicEventSubscriptionsCreateOrUpdate =
 // Input Schema
 export const TopicEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -8958,9 +9546,11 @@ export type TopicEventSubscriptionsDeleteOutput =
  *
  * Delete an existing event subscription for a topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the topic.
  * @param eventSubscriptionName - Name of the event subscription to be deleted.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8970,6 +9560,7 @@ export const TopicEventSubscriptionsDelete =
 // Input Schema
 export const TopicEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -8999,9 +9590,11 @@ export type TopicEventSubscriptionsGetOutput =
  *
  * Get properties of an event subscription of a topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the topic.
  * @param eventSubscriptionName - Name of the event subscription to be found.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9012,6 +9605,7 @@ export const TopicEventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TopicEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -9046,9 +9640,11 @@ export type TopicEventSubscriptionsGetDeliveryAttributesOutput =
  *
  * Get all delivery attributes for an event subscription for topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsGetDeliveryAttributes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9058,6 +9654,7 @@ export const TopicEventSubscriptionsGetDeliveryAttributes =
 // Input Schema
 export const TopicEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -9085,9 +9682,11 @@ export type TopicEventSubscriptionsGetFullUrlOutput =
  *
  * Get the full endpoint URL for an event subscription for topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the domain topic.
  * @param eventSubscriptionName - Name of the event subscription.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsGetFullUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9097,8 +9696,11 @@ export const TopicEventSubscriptionsGetFullUrl =
 // Input Schema
 export const TopicEventSubscriptionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -9132,8 +9734,12 @@ export type TopicEventSubscriptionsListOutput =
  *
  * List all event subscriptions that have been created for a specific topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const TopicEventSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9144,6 +9750,7 @@ export const TopicEventSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TopicEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -9289,9 +9896,11 @@ export type TopicEventSubscriptionsUpdateOutput =
  *
  * Update an existing event subscription for a topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the domain.
  * @param eventSubscriptionName - Name of the event subscription to be updated.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9301,6 +9910,7 @@ export const TopicEventSubscriptionsUpdate =
 // Input Schema
 export const TopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -9437,8 +10047,10 @@ export type TopicsCreateOrUpdateOutput = typeof TopicsCreateOrUpdateOutput.Type;
  *
  * Asynchronously creates a new topic with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9448,6 +10060,7 @@ export const TopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -9469,8 +10082,10 @@ export type TopicsDeleteOutput = typeof TopicsDeleteOutput.Type;
  *
  * Delete existing topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicsDeleteInput,
@@ -9478,6 +10093,7 @@ export const TopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -9503,8 +10119,10 @@ export type TopicsGetOutput = typeof TopicsGetOutput.Type;
  *
  * Get properties of a topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicsGetInput,
@@ -9513,7 +10131,10 @@ export const TopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TopicsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -9547,7 +10168,11 @@ export type TopicsListByResourceGroupOutput =
  *
  * List all the topics under a resource group.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const TopicsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9557,7 +10182,11 @@ export const TopicsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TopicsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/topics",
@@ -9589,6 +10218,11 @@ export type TopicsListBySubscriptionOutput =
  * List topics under an Azure subscription.
  *
  * List all the topics under an Azure subscription.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const TopicsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9599,6 +10233,7 @@ export const TopicsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TopicsListEventTypesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     resourceTypeName: Schema.String.pipe(T.PathParam()),
@@ -9633,10 +10268,12 @@ export type TopicsListEventTypesOutput = typeof TopicsListEventTypesOutput.Type;
  *
  * List event types for a topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param providerNamespace - Namespace of the provider of the topic.
  * @param resourceTypeName - Name of the topic type.
  * @param resourceName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicsListEventTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9647,6 +10284,7 @@ export const TopicsListEventTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TopicsListSharedAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -9674,8 +10312,10 @@ export type TopicsListSharedAccessKeysOutput =
  *
  * List the two keys used to publish to a topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicsListSharedAccessKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9686,6 +10326,7 @@ export const TopicsListSharedAccessKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TopicSpacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicSpaceName: Schema.String.pipe(T.PathParam()),
@@ -9749,9 +10390,11 @@ export type TopicSpacesCreateOrUpdateOutput =
  *
  * Create or update a topic space with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicSpaceName - The topic space name.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicSpacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9762,6 +10405,7 @@ export const TopicSpacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TopicSpacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicSpaceName: Schema.String.pipe(T.PathParam()),
@@ -9785,9 +10429,11 @@ export type TopicSpacesDeleteOutput = typeof TopicSpacesDeleteOutput.Type;
  *
  * Delete an existing topic space.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicSpaceName - Name of the Topic space.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicSpacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicSpacesDeleteInput,
@@ -9795,6 +10441,7 @@ export const TopicSpacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TopicSpacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   topicSpaceName: Schema.String.pipe(T.PathParam()),
@@ -9821,9 +10468,11 @@ export type TopicSpacesGetOutput = typeof TopicSpacesGetOutput.Type;
  *
  * Get properties of a topic space.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
  * @param topicSpaceName - Name of the Topic space.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicSpacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicSpacesGetInput,
@@ -9832,8 +10481,11 @@ export const TopicSpacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TopicSpacesListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -9867,8 +10519,12 @@ export type TopicSpacesListByNamespaceOutput =
  *
  * Get all the topic spaces under a namespace.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param namespaceName - Name of the namespace.
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const TopicSpacesListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9879,6 +10535,7 @@ export const TopicSpacesListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TopicsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String,
@@ -9905,8 +10562,10 @@ export type TopicsRegenerateKeyOutput = typeof TopicsRegenerateKeyOutput.Type;
  *
  * Regenerate a shared access key for a topic.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicsRegenerateKeyInput,
@@ -9914,6 +10573,7 @@ export const TopicsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TopicsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -9997,8 +10657,10 @@ export type TopicsUpdateOutput = typeof TopicsUpdateOutput.Type;
  *
  * Asynchronously updates a topic with the specified parameters.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param topicName - Name of the topic.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicsUpdateInput,
@@ -10031,6 +10693,7 @@ export type TopicTypesGetOutput = typeof TopicTypesGetOutput.Type;
  * Get information about a topic type.
  *
  * @param topicTypeName - Name of the topic type.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicTypesGetInput,
@@ -10067,6 +10730,8 @@ export type TopicTypesListOutput = typeof TopicTypesListOutput.Type;
  * List topic types.
  *
  * List all registered topic types.
+ *
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TopicTypesListInput,
@@ -10109,6 +10774,7 @@ export type TopicTypesListEventTypesOutput =
  * List event types for a topic type.
  *
  * @param topicTypeName - Name of the topic type.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicTypesListEventTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10145,6 +10811,7 @@ export type VerifiedPartnersGetOutput = typeof VerifiedPartnersGetOutput.Type;
  * Get properties of a verified partner.
  *
  * @param verifiedPartnerName - Name of the verified partner.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const VerifiedPartnersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VerifiedPartnersGetInput,
@@ -10152,7 +10819,10 @@ export const VerifiedPartnersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VerifiedPartnersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.EventGrid/verifiedPartners",
@@ -10182,6 +10852,10 @@ export type VerifiedPartnersListOutput = typeof VerifiedPartnersListOutput.Type;
  * List all verified partners.
  *
  * Get a list of all verified partners.
+ *
+ * @param api-version - Version of the API to be used with the client request.
+ * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
+ * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const VerifiedPartnersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

@@ -11,7 +11,7 @@ export const GetV2CommerceProductCatalogImportsInput =
     created_lt: Schema.optional(Schema.String),
     created_lte: Schema.optional(Schema.String),
     feed_type: Schema.optional(
-      Schema.Literals(["inventory", "pricing", "product"]),
+      Schema.Literals(["inventory", "pricing", "product", "promotion"]),
     ),
     limit: Schema.optional(Schema.Number),
     status: Schema.optional(
@@ -35,10 +35,16 @@ export const GetV2CommerceProductCatalogImportsOutput =
     data: Schema.Array(
       Schema.Struct({
         created: Schema.String,
-        feed_type: Schema.Literals(["inventory", "pricing", "product"]),
+        feed_type: Schema.Literals([
+          "inventory",
+          "pricing",
+          "product",
+          "promotion",
+        ]),
         id: Schema.String,
         livemode: Schema.Boolean,
         metadata: Schema.Record(Schema.String, Schema.String),
+        mode: Schema.Literals(["replace", "upsert"]),
         object: Schema.Literals(["v2.commerce.product_catalog_import"]),
         status: Schema.Literals([
           "awaiting_upload",

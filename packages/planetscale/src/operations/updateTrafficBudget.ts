@@ -45,7 +45,7 @@ export const UpdateTrafficBudgetOutput =
     rules: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        kind: Schema.Literals(["match"]),
+        kind: Schema.Literals(["match", "each"]),
         tags: Schema.Array(
           Schema.Struct({
             key_id: Schema.String,

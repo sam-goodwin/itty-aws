@@ -12,6 +12,9 @@ import { SensitiveOutputString } from "../sensitive.ts";
 // Input Schema
 export const ConfigurationStoresCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
       Schema.Struct({
         type: Schema.optional(
@@ -165,6 +168,11 @@ export type ConfigurationStoresCreateOutput =
 // The operation
 /**
  * Creates a configuration store with the specified parameters.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  */
 export const ConfigurationStoresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -174,7 +182,11 @@ export const ConfigurationStoresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigurationStoresDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
@@ -193,6 +205,11 @@ export type ConfigurationStoresDeleteOutput =
 // The operation
 /**
  * Deletes a configuration store.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  */
 export const ConfigurationStoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -202,7 +219,11 @@ export const ConfigurationStoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigurationStoresGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
@@ -225,6 +246,11 @@ export type ConfigurationStoresGetOutput =
 // The operation
 /**
  * Gets the properties of the specified configuration store.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  */
 export const ConfigurationStoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -234,7 +260,11 @@ export const ConfigurationStoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigurationStoresGetDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}",
@@ -267,6 +297,11 @@ export type ConfigurationStoresGetDeletedOutput =
 // The operation
 /**
  * Gets a deleted Azure app configuration store.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param location - The location in which uniqueness will be verified.
+ * @param configStoreName - The name of the configuration store.
  */
 export const ConfigurationStoresGetDeleted =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -276,6 +311,7 @@ export const ConfigurationStoresGetDeleted =
 // Input Schema
 export const ConfigurationStoresListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -308,6 +344,8 @@ export type ConfigurationStoresListOutput =
 /**
  * Lists the configuration stores for a given subscription.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param api-version - The client API version.
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
 export const ConfigurationStoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -319,6 +357,8 @@ export const ConfigurationStoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConfigurationStoresListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -351,6 +391,9 @@ export type ConfigurationStoresListByResourceGroupOutput =
 /**
  * Lists the configuration stores for a given resource group.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param api-version - The client API version.
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
 export const ConfigurationStoresListByResourceGroup =
@@ -360,7 +403,9 @@ export const ConfigurationStoresListByResourceGroup =
   }));
 // Input Schema
 export const ConfigurationStoresListDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/deletedConfigurationStores",
@@ -402,6 +447,9 @@ export type ConfigurationStoresListDeletedOutput =
 // The operation
 /**
  * Gets information about the deleted configuration stores in a subscription.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
  */
 export const ConfigurationStoresListDeleted =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -411,6 +459,9 @@ export const ConfigurationStoresListDeleted =
 // Input Schema
 export const ConfigurationStoresListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -446,6 +497,10 @@ export type ConfigurationStoresListKeysOutput =
 /**
  * Lists the access key for the specified configuration store.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
 export const ConfigurationStoresListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -456,7 +511,11 @@ export const ConfigurationStoresListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigurationStoresPurgeDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}/purge",
@@ -475,6 +534,11 @@ export type ConfigurationStoresPurgeDeletedOutput =
 // The operation
 /**
  * Permanently deletes the specified configuration store.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param location - The location in which uniqueness will be verified.
+ * @param configStoreName - The name of the configuration store.
  */
 export const ConfigurationStoresPurgeDeleted =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -484,6 +548,9 @@ export const ConfigurationStoresPurgeDeleted =
 // Input Schema
 export const ConfigurationStoresRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -511,6 +578,11 @@ export type ConfigurationStoresRegenerateKeyOutput =
 // The operation
 /**
  * Regenerates an access key for the specified configuration store.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  */
 export const ConfigurationStoresRegenerateKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -520,6 +592,9 @@ export const ConfigurationStoresRegenerateKey =
 // Input Schema
 export const ConfigurationStoresUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         encryption: Schema.optional(
@@ -604,6 +679,11 @@ export type ConfigurationStoresUpdateOutput =
 // The operation
 /**
  * Updates a configuration store with the specified parameters.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  */
 export const ConfigurationStoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -614,6 +694,9 @@ export const ConfigurationStoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const KeyValuesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
     keyValueName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -666,6 +749,10 @@ export type KeyValuesCreateOrUpdateOutput =
 /**
  * Creates a key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param keyValueName - Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
  */
 export const KeyValuesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -676,6 +763,9 @@ export const KeyValuesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const KeyValuesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  configStoreName: Schema.String.pipe(T.PathParam()),
   keyValueName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -694,6 +784,10 @@ export type KeyValuesDeleteOutput = typeof KeyValuesDeleteOutput.Type;
 /**
  * Deletes a key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param keyValueName - Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
  */
 export const KeyValuesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -702,6 +796,9 @@ export const KeyValuesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const KeyValuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  configStoreName: Schema.String.pipe(T.PathParam()),
   keyValueName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -736,6 +833,10 @@ export type KeyValuesGetOutput = typeof KeyValuesGetOutput.Type;
 /**
  * Gets the properties of the specified key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param keyValueName - Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
  */
 export const KeyValuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -745,6 +846,7 @@ export const KeyValuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const OperationsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals(["Microsoft.AppConfiguration/configurationStores"]),
   }).pipe(
@@ -770,6 +872,9 @@ export type OperationsCheckNameAvailabilityOutput =
 // The operation
 /**
  * Checks whether the configuration store name is available for use.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param api-version - The client API version.
  */
 export const OperationsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -854,6 +959,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Lists the operations available from this provider.
  *
+ * @param api-version - The client API version.
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -863,6 +969,8 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const OperationsRegionalCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals(["Microsoft.AppConfiguration/configurationStores"]),
   }).pipe(
@@ -888,6 +996,10 @@ export type OperationsRegionalCheckNameAvailabilityOutput =
 // The operation
 /**
  * Checks whether the configuration store name is available for use.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param location - The location in which uniqueness will be verified.
+ * @param api-version - The client API version.
  */
 export const OperationsRegionalCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -897,6 +1009,9 @@ export const OperationsRegionalCheckNameAvailability =
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -991,6 +1106,10 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
 /**
  * Update the state of the specified private endpoint connection associated with the configuration store. This operation cannot be used to create a private endpoint connection. Private endpoint connections must be created with the Network resource provider.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param privateEndpointConnectionName - Private endpoint connection name
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
@@ -1001,6 +1120,9 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1022,6 +1144,10 @@ export type PrivateEndpointConnectionsDeleteOutput =
 /**
  * Deletes a private endpoint connection.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param privateEndpointConnectionName - Private endpoint connection name
  */
 export const PrivateEndpointConnectionsDelete =
@@ -1032,6 +1158,9 @@ export const PrivateEndpointConnectionsDelete =
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1090,6 +1219,10 @@ export type PrivateEndpointConnectionsGetOutput =
 /**
  * Gets the specified private endpoint connection associated with the configuration store.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param privateEndpointConnectionName - Private endpoint connection name
  */
 export const PrivateEndpointConnectionsGet =
@@ -1099,7 +1232,11 @@ export const PrivateEndpointConnectionsGet =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsListByConfigurationStoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections",
@@ -1162,6 +1299,11 @@ export type PrivateEndpointConnectionsListByConfigurationStoreOutput =
 // The operation
 /**
  * Lists all private endpoint connections for a configuration store.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  */
 export const PrivateEndpointConnectionsListByConfigurationStore =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1171,6 +1313,9 @@ export const PrivateEndpointConnectionsListByConfigurationStore =
 // Input Schema
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1203,6 +1348,10 @@ export type PrivateLinkResourcesGetOutput =
 /**
  * Gets a private link resource that need to be created for a configuration store.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param groupName - The name of the private link resource group.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1213,7 +1362,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkResourcesListByConfigurationStoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources",
@@ -1250,6 +1403,11 @@ export type PrivateLinkResourcesListByConfigurationStoreOutput =
 // The operation
 /**
  * Gets the private link resources that need to be created for a configuration store.
+ *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  */
 export const PrivateLinkResourcesListByConfigurationStore =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1258,6 +1416,9 @@ export const PrivateLinkResourcesListByConfigurationStore =
   }));
 // Input Schema
 export const ReplicasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  configStoreName: Schema.String.pipe(T.PathParam()),
   replicaName: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1341,6 +1502,10 @@ export type ReplicasCreateOutput = typeof ReplicasCreateOutput.Type;
 /**
  * Creates a replica with the specified parameters.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param replicaName - The name of the replica.
  */
 export const ReplicasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1349,6 +1514,9 @@ export const ReplicasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ReplicasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  configStoreName: Schema.String.pipe(T.PathParam()),
   replicaName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1367,6 +1535,10 @@ export type ReplicasDeleteOutput = typeof ReplicasDeleteOutput.Type;
 /**
  * Deletes a replica.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param replicaName - The name of the replica.
  */
 export const ReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1375,6 +1547,9 @@ export const ReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ReplicasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  configStoreName: Schema.String.pipe(T.PathParam()),
   replicaName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1426,6 +1601,10 @@ export type ReplicasGetOutput = typeof ReplicasGetOutput.Type;
 /**
  * Gets the properties of the specified replica.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param replicaName - The name of the replica.
  */
 export const ReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1435,6 +1614,9 @@ export const ReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReplicasListByConfigurationStoreInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configStoreName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1506,6 +1688,10 @@ export type ReplicasListByConfigurationStoreOutput =
 /**
  * Lists the replicas for a given configuration store.
  *
+ * @param subscriptionId - The Microsoft Azure subscription ID.
+ * @param resourceGroupName - The name of the resource group to which the container registry belongs.
+ * @param configStoreName - The name of the configuration store.
+ * @param api-version - The client API version.
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
 export const ReplicasListByConfigurationStore =
@@ -1517,6 +1703,8 @@ export const ReplicasListByConfigurationStore =
 export const SnapshotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  configStoreName: Schema.String.pipe(T.PathParam()),
+  snapshotName: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1605,6 +1793,8 @@ export type SnapshotsCreateOutput = typeof SnapshotsCreateOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configStoreName - The name of the configuration store.
+ * @param snapshotName - The name of the snapshot.
  * @param api-version - The API version to use for this operation.
  */
 export const SnapshotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1615,6 +1805,8 @@ export const SnapshotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  configStoreName: Schema.String.pipe(T.PathParam()),
+  snapshotName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1669,6 +1861,8 @@ export type SnapshotsGetOutput = typeof SnapshotsGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configStoreName - The name of the configuration store.
+ * @param snapshotName - The name of the snapshot.
  * @param api-version - The API version to use for this operation.
  */
 export const SnapshotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

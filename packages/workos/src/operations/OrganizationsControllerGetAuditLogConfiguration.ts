@@ -31,6 +31,7 @@ export const OrganizationsControllerGetAuditLogConfigurationOutput =
           "GenericHttps",
           "GoogleCloudStorage",
           "S3",
+          "Snowflake",
           "Splunk",
         ]),
         state: Schema.Literals(["active", "inactive", "error", "invalid"]),

@@ -148,6 +148,9 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountOutp
           "climate_order_refund",
           "connect_collection_transfer",
           "contribution",
+          "fee_credit_funding",
+          "inbound_transfer",
+          "inbound_transfer_reversal",
           "issuing_authorization_hold",
           "issuing_authorization_release",
           "issuing_dispute",
@@ -177,6 +180,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountOutp
           "stripe_fee",
           "stripe_fx_fee",
           "tax_fee",
+          "tax_fund",
           "topup",
           "topup_reversal",
           "transfer",
@@ -189,7 +193,12 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountOutp
     card: Schema.Struct({
       brand: Schema.String,
       cancellation_reason: Schema.NullOr(
-        Schema.Literals(["design_rejected", "lost", "stolen"]),
+        Schema.Literals([
+          "design_rejected",
+          "fulfillment_error",
+          "lost",
+          "stolen",
+        ]),
       ),
       cardholder: Schema.Struct({
         billing: Schema.Struct({
@@ -262,11 +271,20 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountOutp
       replaced_by: Schema.Unknown,
       replacement_for: Schema.Unknown,
       replacement_reason: Schema.NullOr(
-        Schema.Literals(["damaged", "expired", "lost", "stolen"]),
+        Schema.Literals([
+          "damaged",
+          "expired",
+          "fulfillment_error",
+          "lost",
+          "stolen",
+        ]),
       ),
       second_line: Schema.NullOr(Schema.String),
       shipping: Schema.Unknown,
       spending_controls: Schema.Struct({
+        allowed_card_presences: Schema.NullOr(
+          Schema.Array(Schema.Literals(["not_present", "present"])),
+        ),
         allowed_categories: Schema.NullOr(
           Schema.Array(
             Schema.Literals([
@@ -569,6 +587,9 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountOutp
           ),
         ),
         allowed_merchant_countries: Schema.NullOr(Schema.Array(Schema.String)),
+        blocked_card_presences: Schema.NullOr(
+          Schema.Array(Schema.Literals(["not_present", "present"])),
+        ),
         blocked_categories: Schema.NullOr(
           Schema.Array(
             Schema.Literals([
@@ -1193,6 +1214,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountOutp
       type: Schema.Literals(["physical", "virtual"]),
       wallets: Schema.Unknown,
     }),
+    card_presence: Schema.NullOr(Schema.Literals(["not_present", "present"])),
     cardholder: Schema.Unknown,
     created: Schema.Number,
     currency: Schema.String,

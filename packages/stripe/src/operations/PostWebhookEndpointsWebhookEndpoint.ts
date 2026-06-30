@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostWebhookEndpointsWebhookEndpointInput =
@@ -25,7 +25,13 @@ export const PostWebhookEndpointsWebhookEndpointInput =
           "balance.available",
           "balance_settings.updated",
           "billing.alert.triggered",
+          "billing.credit_balance_transaction.created",
           "billing.credit_grant.created",
+          "billing.credit_grant.updated",
+          "billing.meter.created",
+          "billing.meter.deactivated",
+          "billing.meter.reactivated",
+          "billing.meter.updated",
           "billing_portal.configuration.created",
           "billing_portal.configuration.updated",
           "billing_portal.session.created",
@@ -295,7 +301,7 @@ export const PostWebhookEndpointsWebhookEndpointOutput =
     livemode: Schema.Boolean,
     metadata: Schema.Record(Schema.String, Schema.String),
     object: Schema.Literals(["webhook_endpoint"]),
-    secret: Schema.optional(SensitiveString),
+    secret: Schema.optional(SensitiveOutputString),
     status: Schema.String,
     url: Schema.String,
   });

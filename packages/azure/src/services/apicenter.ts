@@ -293,6 +293,7 @@ export const ApiDefinitionsListInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -351,6 +352,7 @@ export type ApiDefinitionsListOutput = typeof ApiDefinitionsListOutput.Type;
  * @param workspaceName - The name of the workspace.
  * @param apiName - The name of the API.
  * @param versionName - The name of the API version.
+ * @param $filter - OData filter parameter.
  */
 export const ApiDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApiDefinitionsListInput,
@@ -562,6 +564,7 @@ export const ApisListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -607,6 +610,7 @@ export type ApisListOutput = typeof ApisListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serviceName - The name of Azure API Center service.
  * @param workspaceName - The name of the workspace.
+ * @param $filter - OData filter parameter.
  */
 export const ApisList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApisListInput,
@@ -788,6 +792,7 @@ export const ApiVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   apiName: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -834,6 +839,7 @@ export type ApiVersionsListOutput = typeof ApiVersionsListOutput.Type;
  * @param serviceName - The name of Azure API Center service.
  * @param workspaceName - The name of the workspace.
  * @param apiName - The name of the API.
+ * @param $filter - OData filter parameter.
  */
 export const ApiVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApiVersionsListInput,
@@ -1016,6 +1022,7 @@ export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   apiName: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1062,6 +1069,7 @@ export type DeploymentsListOutput = typeof DeploymentsListOutput.Type;
  * @param serviceName - The name of Azure API Center service.
  * @param workspaceName - The name of the workspace.
  * @param apiName - The name of the API.
+ * @param $filter - OData filter parameter.
  */
 export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsListInput,
@@ -1256,6 +1264,7 @@ export const EnvironmentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1313,6 +1322,7 @@ export type EnvironmentsListOutput = typeof EnvironmentsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serviceName - The name of Azure API Center service.
  * @param workspaceName - The name of the workspace.
+ * @param $filter - OData filter parameter.
  */
 export const EnvironmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsListInput,
@@ -1487,6 +1497,7 @@ export const MetadataSchemasListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1542,6 +1553,7 @@ export type MetadataSchemasListOutput = typeof MetadataSchemasListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serviceName - The name of Azure API Center service.
+ * @param $filter - OData filter parameter.
  */
 export const MetadataSchemasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MetadataSchemasListInput,
@@ -2159,6 +2171,7 @@ export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2203,6 +2216,7 @@ export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serviceName - The name of Azure API Center service.
+ * @param $filter - OData filter parameter.
  */
 export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesListInput,

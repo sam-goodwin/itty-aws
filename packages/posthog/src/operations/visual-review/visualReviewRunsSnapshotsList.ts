@@ -8,6 +8,7 @@ export const VisualReviewRunsSnapshotsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
+    include_quarantined: Schema.optional(Schema.Boolean),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
   }).pipe(
@@ -28,49 +29,13 @@ export const VisualReviewRunsSnapshotsListOutput =
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          current_artifact: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                content_hash: Schema.optional(Schema.String),
-                width: Schema.optional(Schema.NullOr(Schema.Number)),
-                height: Schema.optional(Schema.NullOr(Schema.Number)),
-                download_url: Schema.optional(Schema.NullOr(Schema.String)),
-              }),
-            ),
-          ),
-          baseline_artifact: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                content_hash: Schema.optional(Schema.String),
-                width: Schema.optional(Schema.NullOr(Schema.Number)),
-                height: Schema.optional(Schema.NullOr(Schema.Number)),
-                download_url: Schema.optional(Schema.NullOr(Schema.String)),
-              }),
-            ),
-          ),
-          diff_artifact: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                content_hash: Schema.optional(Schema.String),
-                width: Schema.optional(Schema.NullOr(Schema.Number)),
-                height: Schema.optional(Schema.NullOr(Schema.Number)),
-                download_url: Schema.optional(Schema.NullOr(Schema.String)),
-              }),
-            ),
-          ),
-          reviewed_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                first_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
+          current_artifact: Schema.optional(Schema.Unknown),
+          baseline_artifact: Schema.optional(Schema.Unknown),
+          diff_artifact: Schema.optional(Schema.Unknown),
+          reviewed_by: Schema.optional(Schema.Unknown),
+          cluster_summary: Schema.optional(Schema.Unknown),
           id: Schema.optional(Schema.String),
+          run_id: Schema.optional(Schema.String),
           identifier: Schema.optional(Schema.String),
           result: Schema.optional(Schema.String),
           classification_reason: Schema.optional(Schema.String),
@@ -84,17 +49,22 @@ export const VisualReviewRunsSnapshotsListOutput =
           metadata: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
           ),
+          ssim_score: Schema.optional(Schema.NullOr(Schema.Number)),
+          change_kind: Schema.optional(Schema.String),
+          size_mismatch: Schema.optional(Schema.Boolean),
         }),
       ),
     ),
+    quarantined_count: Schema.optional(Schema.Number),
   });
 export type VisualReviewRunsSnapshotsListOutput =
   typeof VisualReviewRunsSnapshotsListOutput.Type;
 
 // The operation
 /**
- * Get all snapshots for a run with diff results.
+ * Get a run's snapshots with diff results, excluding quarantined ones by default.
  *
+ * @param include_quarantined - Whether to include snapshots whose identifier is currently quarantined. Defaults to false: quarantined snapshots are excluded from results and reported in quarantined_count instead, since they are noise when reviewing real changes.
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.

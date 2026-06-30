@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const DeleteCollectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -40,12 +40,12 @@ export const DeleteCollectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             from: Schema.Array(Schema.String),
             model_config: Schema.Struct({
               model_name: Schema.String,
-              api_key: Schema.optional(SensitiveString),
+              api_key: Schema.optional(SensitiveOutputString),
               url: Schema.optional(Schema.String),
-              access_token: Schema.optional(SensitiveString),
-              refresh_token: Schema.optional(SensitiveString),
+              access_token: Schema.optional(SensitiveOutputString),
+              refresh_token: Schema.optional(SensitiveOutputString),
               client_id: Schema.optional(Schema.String),
-              client_secret: Schema.optional(SensitiveString),
+              client_secret: Schema.optional(SensitiveOutputString),
               project_id: Schema.optional(Schema.String),
               indexing_prefix: Schema.optional(Schema.String),
               query_prefix: Schema.optional(Schema.String),

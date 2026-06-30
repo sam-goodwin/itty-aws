@@ -28,7 +28,7 @@ export type UpdateFederationSettingConnectedOrgConfigOutput =
 /**
  * Update One Organization Configuration in One Federation
  *
- * Updates one connected organization configuration from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+ * Updates one connected organization configuration from the specified federation.
  * **Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.
  * **Note**: The `domainRestrictionEnabled` field defaults to false if not provided in the request.
  * **Note**: If the `identityProviderId` field is not provided, you will disconnect the organization and the identity provider.

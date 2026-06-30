@@ -80,6 +80,7 @@ export const NamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
     sku: Schema.Struct({
       name: Schema.Literals(["Free", "Basic", "Standard"]),
       tier: Schema.optional(Schema.String),
@@ -314,6 +315,7 @@ export type NamespacesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -327,6 +329,8 @@ export const NamespacesCreateOrUpdateAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
@@ -382,6 +386,8 @@ export type NamespacesCreateOrUpdateAuthorizationRuleOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param authorizationRuleName - Authorization Rule Name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesCreateOrUpdateAuthorizationRule =
@@ -393,6 +399,7 @@ export const NamespacesCreateOrUpdateAuthorizationRule =
 export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -412,6 +419,7 @@ export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -423,6 +431,8 @@ export const NamespacesDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -445,6 +455,8 @@ export type NamespacesDeleteAuthorizationRuleOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param authorizationRuleName - Authorization Rule Name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesDeleteAuthorizationRule =
@@ -456,6 +468,7 @@ export const NamespacesDeleteAuthorizationRule =
 export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -493,6 +506,7 @@ export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -504,6 +518,8 @@ export const NamespacesGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -544,6 +560,8 @@ export type NamespacesGetAuthorizationRuleOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param authorizationRuleName - Authorization Rule Name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesGetAuthorizationRule =
@@ -556,6 +574,7 @@ export const NamespacesGetPnsCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -596,6 +615,7 @@ export type NamespacesGetPnsCredentialsOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesGetPnsCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -746,6 +766,7 @@ export const NamespacesListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -803,6 +824,7 @@ export type NamespacesListAuthorizationRulesOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesListAuthorizationRules =
@@ -815,6 +837,8 @@ export const NamespacesListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -841,6 +865,8 @@ export type NamespacesListKeysOutput = typeof NamespacesListKeysOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param authorizationRuleName - Authorization Rule Name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -852,6 +878,8 @@ export const NamespacesRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
     policyKey: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
   }).pipe(
     T.Http({
@@ -881,6 +909,8 @@ export type NamespacesRegenerateKeysOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param authorizationRuleName - Authorization Rule Name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -893,6 +923,7 @@ export const NamespacesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
   sku: Schema.optional(
     Schema.Struct({
       name: Schema.Literals(["Free", "Basic", "Standard"]),
@@ -1125,6 +1156,7 @@ export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param api-version - The API version to use for this operation.
  */
 export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1136,6 +1168,7 @@ export const NotificationHubsCheckNotificationHubAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.String,
     type: Schema.optional(Schema.String),
@@ -1191,6 +1224,7 @@ export type NotificationHubsCheckNotificationHubAvailabilityOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsCheckNotificationHubAvailability =
@@ -1203,6 +1237,8 @@ export const NotificationHubsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -1355,6 +1391,8 @@ export type NotificationHubsCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsCreateOrUpdate =
@@ -1367,6 +1405,9 @@ export const NotificationHubsCreateOrUpdateAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
@@ -1422,6 +1463,9 @@ export type NotificationHubsCreateOrUpdateAuthorizationRuleOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
+ * @param authorizationRuleName - Authorization Rule Name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsCreateOrUpdateAuthorizationRule =
@@ -1434,6 +1478,8 @@ export const NotificationHubsDebugSendInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1474,6 +1520,8 @@ export type NotificationHubsDebugSendOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsDebugSend = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1487,6 +1535,8 @@ export const NotificationHubsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1509,6 +1559,8 @@ export type NotificationHubsDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1522,6 +1574,9 @@ export const NotificationHubsDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1544,6 +1599,9 @@ export type NotificationHubsDeleteAuthorizationRuleOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
+ * @param authorizationRuleName - Authorization Rule Name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsDeleteAuthorizationRule =
@@ -1556,6 +1614,8 @@ export const NotificationHubsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1594,6 +1654,8 @@ export type NotificationHubsGetOutput = typeof NotificationHubsGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1605,6 +1667,9 @@ export const NotificationHubsGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1645,6 +1710,9 @@ export type NotificationHubsGetAuthorizationRuleOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
+ * @param authorizationRuleName - Authorization Rule Name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsGetAuthorizationRule =
@@ -1657,6 +1725,8 @@ export const NotificationHubsGetPnsCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1697,6 +1767,8 @@ export type NotificationHubsGetPnsCredentialsOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsGetPnsCredentials =
@@ -1709,6 +1781,7 @@ export const NotificationHubsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -1766,6 +1839,7 @@ export type NotificationHubsListOutput = typeof NotificationHubsListOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param $skipToken - Continuation token.
  * @param $top - Page size.
  * @param api-version - The API version to use for this operation.
@@ -1781,6 +1855,8 @@ export const NotificationHubsListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1838,6 +1914,8 @@ export type NotificationHubsListAuthorizationRulesOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsListAuthorizationRules =
@@ -1850,6 +1928,9 @@ export const NotificationHubsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1878,6 +1959,9 @@ export type NotificationHubsListKeysOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
+ * @param authorizationRuleName - Authorization Rule Name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1891,6 +1975,9 @@ export const NotificationHubsRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
+    authorizationRuleName: Schema.String.pipe(T.PathParam()),
     policyKey: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
   }).pipe(
     T.Http({
@@ -1920,6 +2007,9 @@ export type NotificationHubsRegenerateKeysOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
+ * @param authorizationRuleName - Authorization Rule Name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsRegenerateKeys =
@@ -1932,6 +2022,8 @@ export const NotificationHubsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    notificationHubName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -2083,6 +2175,8 @@ export type NotificationHubsUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param notificationHubName - Notification Hub name
  * @param api-version - The API version to use for this operation.
  */
 export const NotificationHubsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2178,6 +2272,8 @@ export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2201,6 +2297,8 @@ This is a public API that can be called directly by Notification Hubs users.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param privateEndpointConnectionName - Private Endpoint Connection Name
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsDelete =
@@ -2213,6 +2311,8 @@ export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2254,6 +2354,8 @@ This is a public API that can be called directly by Notification Hubs users.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param privateEndpointConnectionName - Private Endpoint Connection Name
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsGet =
@@ -2266,6 +2368,7 @@ export const PrivateEndpointConnectionsGetGroupIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
     subResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2311,6 +2414,7 @@ This is a public API required by the Networking RP contract. It can be used dire
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param subResourceName - Name of the Private Link sub-resource. The only supported sub-resource is "namespace"
  * @param api-version - The API version to use for this operation.
  */
@@ -2324,6 +2428,7 @@ export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2382,6 +2487,7 @@ This is a public API that can be called directly by Notification Hubs users.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsList =
@@ -2394,6 +2500,7 @@ export const PrivateEndpointConnectionsListGroupIdsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2455,6 +2562,7 @@ This is a public API required by the Networking RP contract. It can be used dire
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsListGroupIds =
@@ -2467,6 +2575,8 @@ export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    namespaceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -2544,6 +2654,8 @@ This is a public API that can be called directly by Notification Hubs users.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param namespaceName - Namespace name
+ * @param privateEndpointConnectionName - Private Endpoint Connection Name
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsUpdate =

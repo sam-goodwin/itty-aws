@@ -114,6 +114,8 @@ export const GitHubOAuthCallbackInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
+    code: Schema.String,
+    state: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -153,6 +155,8 @@ export type GitHubOAuthCallbackOutput = typeof GitHubOAuthCallbackOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
+ * @param code - The code response from authenticating the GitHub App.
+ * @param state - The state response from authenticating the GitHub App.
  */
 export const GitHubOAuthCallback = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GitHubOAuthCallbackInput,
@@ -276,6 +280,7 @@ export const WorkflowCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workflowName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         githubWorkflowProfile: Schema.optional(
@@ -418,6 +423,7 @@ export type WorkflowCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workflowName - The name of the workflow resource.
  */
 export const WorkflowCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -429,6 +435,7 @@ export const WorkflowCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WorkflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -451,6 +458,7 @@ export type WorkflowDeleteOutput = typeof WorkflowDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workflowName - The name of the workflow resource.
  */
 export const WorkflowDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowDeleteInput,
@@ -460,6 +468,7 @@ export const WorkflowDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WorkflowGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -498,6 +507,7 @@ export type WorkflowGetOutput = typeof WorkflowGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workflowName - The name of the workflow resource.
  */
 export const WorkflowGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowGetInput,
@@ -570,6 +580,7 @@ export const WorkflowListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedClusterResource: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -628,6 +639,7 @@ export type WorkflowListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedClusterResource - The ManagedCluster resource associated with the workflows.
  */
 export const WorkflowListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -640,6 +652,7 @@ export const WorkflowUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workflowName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -680,6 +693,7 @@ export type WorkflowUpdateTagsOutput = typeof WorkflowUpdateTagsOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workflowName - The name of the workflow resource.
  */
 export const WorkflowUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkflowUpdateTagsInput,

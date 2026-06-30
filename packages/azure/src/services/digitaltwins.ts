@@ -11,6 +11,8 @@ import * as T from "../traits.ts";
 // Input Schema
 export const DigitalTwinsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals(["Microsoft.DigitalTwins/digitalTwinsInstances"]),
   }).pipe(
@@ -38,6 +40,10 @@ export type DigitalTwinsCheckNameAvailabilityOutput =
 // The operation
 /**
  * Check if a DigitalTwinsInstance name is available.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param location - Location of DigitalTwinsInstance.
  */
 export const DigitalTwinsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -47,6 +53,9 @@ export const DigitalTwinsCheckNameAvailability =
 // Input Schema
 export const DigitalTwinsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         createdTime: Schema.optional(Schema.String),
@@ -265,6 +274,11 @@ export type DigitalTwinsCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update the metadata of a DigitalTwinsInstance. The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
  */
 export const DigitalTwinsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -274,7 +288,11 @@ export const DigitalTwinsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DigitalTwinsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
@@ -342,6 +360,11 @@ export type DigitalTwinsDeleteOutput = typeof DigitalTwinsDeleteOutput.Type;
 // The operation
 /**
  * Delete a DigitalTwinsInstance.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
  */
 export const DigitalTwinsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DigitalTwinsDeleteInput,
@@ -350,6 +373,10 @@ export const DigitalTwinsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DigitalTwinsEndpointCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    endpointName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       endpointType: Schema.Literals(["EventHub", "EventGrid", "ServiceBus"]),
       provisioningState: Schema.optional(
@@ -447,6 +474,12 @@ export type DigitalTwinsEndpointCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update DigitalTwinsInstance endpoint.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
+ * @param endpointName - Name of Endpoint Resource.
  */
 export const DigitalTwinsEndpointCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -455,7 +488,12 @@ export const DigitalTwinsEndpointCreateOrUpdate =
   }));
 // Input Schema
 export const DigitalTwinsEndpointDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    endpointName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
@@ -496,6 +534,12 @@ export type DigitalTwinsEndpointDeleteOutput =
 // The operation
 /**
  * Delete a DigitalTwinsInstance endpoint.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
+ * @param endpointName - Name of Endpoint Resource.
  */
 export const DigitalTwinsEndpointDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -505,7 +549,12 @@ export const DigitalTwinsEndpointDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DigitalTwinsEndpointGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    endpointName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
@@ -546,6 +595,12 @@ export type DigitalTwinsEndpointGetOutput =
 // The operation
 /**
  * Get DigitalTwinsInstances Endpoint.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
+ * @param endpointName - Name of Endpoint Resource.
  */
 export const DigitalTwinsEndpointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -555,7 +610,11 @@ export const DigitalTwinsEndpointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DigitalTwinsEndpointListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints",
@@ -613,6 +672,11 @@ export type DigitalTwinsEndpointListOutput =
 // The operation
 /**
  * Get DigitalTwinsInstance Endpoints.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
  */
 export const DigitalTwinsEndpointList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -621,9 +685,11 @@ export const DigitalTwinsEndpointList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const DigitalTwinsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DigitalTwinsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
@@ -690,15 +756,20 @@ export type DigitalTwinsGetOutput = typeof DigitalTwinsGetOutput.Type;
 // The operation
 /**
  * Get DigitalTwinsInstances resource.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
  */
 export const DigitalTwinsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DigitalTwinsGetInput,
   outputSchema: DigitalTwinsGetOutput,
 }));
 // Input Schema
-export const DigitalTwinsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DigitalTwinsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
@@ -784,6 +855,9 @@ export type DigitalTwinsListOutput = typeof DigitalTwinsListOutput.Type;
 // The operation
 /**
  * Get all the DigitalTwinsInstances in a subscription.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
  */
 export const DigitalTwinsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DigitalTwinsListInput,
@@ -791,7 +865,10 @@ export const DigitalTwinsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DigitalTwinsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
@@ -878,6 +955,10 @@ export type DigitalTwinsListByResourceGroupOutput =
 // The operation
 /**
  * Get all the DigitalTwinsInstances in a resource group.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
  */
 export const DigitalTwinsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -887,6 +968,9 @@ export const DigitalTwinsListByResourceGroup =
 // Input Schema
 export const DigitalTwinsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
@@ -990,6 +1074,11 @@ export type DigitalTwinsUpdateOutput = typeof DigitalTwinsUpdateOutput.Type;
 // The operation
 /**
  * Update metadata of DigitalTwinsInstance.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
  */
 export const DigitalTwinsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DigitalTwinsUpdateInput,
@@ -1036,6 +1125,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available DigitalTwins service REST API operations.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -1044,6 +1135,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1156,6 +1251,12 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
 // The operation
 /**
  * Update the status of a private endpoint connection with the given name.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1164,7 +1265,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -1183,6 +1289,12 @@ export type PrivateEndpointConnectionsDeleteOutput =
 // The operation
 /**
  * Delete private endpoint connection with the specified name.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1191,7 +1303,12 @@ export const PrivateEndpointConnectionsDelete =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
@@ -1257,6 +1374,12 @@ export type PrivateEndpointConnectionsGetOutput =
 // The operation
 /**
  * Get private endpoint connection properties for the given private endpoint.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1265,7 +1388,11 @@ export const PrivateEndpointConnectionsGet =
   }));
 // Input Schema
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections",
@@ -1352,6 +1479,11 @@ export type PrivateEndpointConnectionsListOutput =
 // The operation
 /**
  * List private endpoint connection properties.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
  */
 export const PrivateEndpointConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1360,7 +1492,12 @@ export const PrivateEndpointConnectionsList =
   }));
 // Input Schema
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    resourceId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateLinkResources/{resourceId}",
@@ -1388,6 +1525,12 @@ export type PrivateLinkResourcesGetOutput =
 // The operation
 /**
  * Get the specified private link resource for the given Digital Twin.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
+ * @param resourceId - The name of the private link resource.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1397,7 +1540,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateLinkResources",
@@ -1431,6 +1578,11 @@ export type PrivateLinkResourcesListOutput =
 // The operation
 /**
  * List private link resources for given Digital Twin.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
  */
 export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1441,6 +1593,10 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    timeSeriesDatabaseConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         connectionType: Schema.Literals(["AzureDataExplorer"]),
@@ -1532,6 +1688,12 @@ export type TimeSeriesDatabaseConnectionsCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update a time series database connection.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
+ * @param timeSeriesDatabaseConnectionName - Name of time series database connection.
  */
 export const TimeSeriesDatabaseConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1540,7 +1702,15 @@ export const TimeSeriesDatabaseConnectionsCreateOrUpdate =
   }));
 // Input Schema
 export const TimeSeriesDatabaseConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    timeSeriesDatabaseConnectionName: Schema.String.pipe(T.PathParam()),
+    cleanupConnectionArtifacts: Schema.optional(
+      Schema.Literals(["true", "false"]),
+    ),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}",
@@ -1581,6 +1751,13 @@ export type TimeSeriesDatabaseConnectionsDeleteOutput =
 // The operation
 /**
  * Delete a time series database connection.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
+ * @param timeSeriesDatabaseConnectionName - Name of time series database connection.
+ * @param cleanupConnectionArtifacts - Specifies whether or not to attempt to clean up artifacts that were created in order to establish a connection to the time series database. This is a best-effort attempt that will fail if appropriate permissions are not in place. Setting this to 'true' does not delete any recorded data.
  */
 export const TimeSeriesDatabaseConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1589,7 +1766,12 @@ export const TimeSeriesDatabaseConnectionsDelete =
   }));
 // Input Schema
 export const TimeSeriesDatabaseConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    timeSeriesDatabaseConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}",
@@ -1630,6 +1812,12 @@ export type TimeSeriesDatabaseConnectionsGetOutput =
 // The operation
 /**
  * Get the description of an existing time series database connection.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
+ * @param timeSeriesDatabaseConnectionName - Name of time series database connection.
  */
 export const TimeSeriesDatabaseConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1638,7 +1826,11 @@ export const TimeSeriesDatabaseConnectionsGet =
   }));
 // Input Schema
 export const TimeSeriesDatabaseConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections",
@@ -1696,6 +1888,11 @@ export type TimeSeriesDatabaseConnectionsListOutput =
 // The operation
 /**
  * Get all existing time series database connections for this DigitalTwins instance.
+ *
+ * @param api-version - Version of the DigitalTwinsInstance Management API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
+ * @param resourceName - The name of the DigitalTwinsInstance.
  */
 export const TimeSeriesDatabaseConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

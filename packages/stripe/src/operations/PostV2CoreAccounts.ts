@@ -293,6 +293,11 @@ export const PostV2CoreAccountsInput =
                     requested: Schema.Boolean,
                   }),
                 ),
+                sunbit_payments: Schema.optional(
+                  Schema.Struct({
+                    requested: Schema.Boolean,
+                  }),
+                ),
                 swish_payments: Schema.optional(
                   Schema.Struct({
                     requested: Schema.Boolean,
@@ -651,12 +656,22 @@ export const PostV2CoreAccountsInput =
                 proof_of_registration: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),
                 proof_of_ultimate_beneficial_ownership: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),
@@ -2428,6 +2443,34 @@ export const PostV2CoreAccountsOutput =
                     ),
                   }),
                 ),
+                sunbit_payments: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.Literals([
+                      "active",
+                      "pending",
+                      "restricted",
+                      "unsupported",
+                    ]),
+                    status_details: Schema.Array(
+                      Schema.Struct({
+                        code: Schema.Literals([
+                          "determining_status",
+                          "requirements_past_due",
+                          "requirements_pending_verification",
+                          "restricted_other",
+                          "unsupported_business",
+                          "unsupported_country",
+                          "unsupported_entity_type",
+                        ]),
+                        resolution: Schema.Literals([
+                          "contact_stripe",
+                          "no_resolution",
+                          "provide_info",
+                        ]),
+                      }),
+                    ),
+                  }),
+                ),
                 swish_payments: Schema.optional(
                   Schema.Struct({
                     status: Schema.Literals([
@@ -3168,12 +3211,22 @@ export const PostV2CoreAccountsOutput =
                 proof_of_registration: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),
                 proof_of_ultimate_beneficial_ownership: Schema.optional(
                   Schema.Struct({
                     files: Schema.Array(Schema.String),
+                    signer: Schema.optional(
+                      Schema.Struct({
+                        person: Schema.String,
+                      }),
+                    ),
                     type: Schema.Literals(["files"]),
                   }),
                 ),
@@ -3897,7 +3950,7 @@ export type PostV2CoreAccountsOutput = typeof PostV2CoreAccountsOutput.Type;
 /**
  * Create an account
  *
- * An Account is a representation of a company, individual or other entity that a user interacts with. Accounts contain identifying information about the entity, and configurations that store the features an account has access to. An account can be configured as any or all of the following configurations: Customer, Merchant and/or Recipient.
+ * Create an Account that represents a company, individual, or other entity that your business interacts with. Accounts contain identifying information about the entity, and configurations that store the features an account has access to. An account can be configured as any or all of the following configurations: Customer, Merchant and/or Recipient.
  */
 export const PostV2CoreAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PostV2CoreAccountsInput,

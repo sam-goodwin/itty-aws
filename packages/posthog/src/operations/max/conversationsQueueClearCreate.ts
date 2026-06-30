@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsQueueClearCreateInput =
@@ -13,6 +12,7 @@ export const ConversationsQueueClearCreateInput =
       Schema.Literals(["idle", "in_progress", "canceling"]),
     ),
     title: Schema.optional(Schema.NullOr(Schema.String)),
+    topic: Schema.optional(Schema.Unknown),
     user: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -43,14 +43,16 @@ export const ConversationsQueueClearCreateInput =
     ),
     has_unsupported_content: Schema.optional(Schema.Boolean),
     agent_mode: Schema.optional(Schema.NullOr(Schema.String)),
+    agent_runtime: Schema.optional(Schema.Literals(["langgraph", "sandbox"])),
     is_sandbox: Schema.optional(Schema.Boolean),
     pending_approvals: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    task: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/conversations/{conversation}/queue/clear/",
+      path: "/api/projects/{project_id}/conversations/{conversation}/queue/clear/",
     }),
   );
 export type ConversationsQueueClearCreateInput =
@@ -64,6 +66,7 @@ export const ConversationsQueueClearCreateOutput =
       Schema.Literals(["idle", "in_progress", "canceling"]),
     ),
     title: Schema.optional(Schema.NullOr(Schema.String)),
+    topic: Schema.optional(Schema.Unknown),
     user: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -94,10 +97,12 @@ export const ConversationsQueueClearCreateOutput =
     ),
     has_unsupported_content: Schema.optional(Schema.Boolean),
     agent_mode: Schema.optional(Schema.NullOr(Schema.String)),
+    agent_runtime: Schema.optional(Schema.Literals(["langgraph", "sandbox"])),
     is_sandbox: Schema.optional(Schema.Boolean),
     pending_approvals: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    task: Schema.optional(Schema.Unknown),
   });
 export type ConversationsQueueClearCreateOutput =
   typeof ConversationsQueueClearCreateOutput.Type;
@@ -112,5 +117,4 @@ export const conversationsQueueClearCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ConversationsQueueClearCreateInput,
     outputSchema: ConversationsQueueClearCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

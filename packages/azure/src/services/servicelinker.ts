@@ -127,6 +127,7 @@ export const ConfigurationNamesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConnectorCreateDryrunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
@@ -201,6 +202,7 @@ export type ConnectorCreateDryrunOutput =
 /**
  * create a dryrun job to do necessary check before actual creation
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
@@ -215,8 +217,10 @@ export const ConnectorCreateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConnectorCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       targetService: Schema.optional(
         Schema.Struct({
@@ -401,8 +405,10 @@ export type ConnectorCreateOrUpdateOutput =
 /**
  * Create or update Connector resource.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
+ * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
 export const ConnectorCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -413,8 +419,10 @@ export const ConnectorCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
+  connectorName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -432,8 +440,10 @@ export type ConnectorDeleteOutput = typeof ConnectorDeleteOutput.Type;
 /**
  * Delete a Connector.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
+ * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
 export const ConnectorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -443,6 +453,7 @@ export const ConnectorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ConnectorDeleteDryrunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
@@ -465,6 +476,7 @@ export type ConnectorDeleteDryrunOutput =
 /**
  * delete a dryrun job
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
@@ -479,8 +491,10 @@ export const ConnectorDeleteDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConnectorGenerateConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
     deleteOrUpdateBehavior: Schema.optional(
       Schema.Literals(["Default", "ForcedCleanup"]),
     ),
@@ -558,8 +572,10 @@ export type ConnectorGenerateConfigurationsOutput =
 /**
  * Generate configurations for a Connector.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
+ * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
 export const ConnectorGenerateConfigurations =
@@ -569,8 +585,10 @@ export const ConnectorGenerateConfigurations =
   }));
 // Input Schema
 export const ConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
+  connectorName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -606,8 +624,10 @@ export type ConnectorGetOutput = typeof ConnectorGetOutput.Type;
 /**
  * Returns Connector resource for a given name.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
+ * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
 export const ConnectorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -617,6 +637,7 @@ export const ConnectorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ConnectorGetDryrunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
@@ -656,6 +677,7 @@ export type ConnectorGetDryrunOutput = typeof ConnectorGetDryrunOutput.Type;
 /**
  * get a dryrun job
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
@@ -667,6 +689,7 @@ export const ConnectorGetDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ConnectorListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -721,6 +744,7 @@ export type ConnectorListOutput = typeof ConnectorListOutput.Type;
 /**
  * Returns list of connector which connects to the resource, which supports to config the target service during the resource provision.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
@@ -732,6 +756,7 @@ export const ConnectorList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ConnectorListDryrunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -787,6 +812,7 @@ export type ConnectorListDryrunOutput = typeof ConnectorListDryrunOutput.Type;
 /**
  * list dryrun jobs
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
@@ -797,8 +823,10 @@ export const ConnectorListDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ConnectorUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
+  connectorName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       targetService: Schema.optional(
@@ -968,8 +996,10 @@ export type ConnectorUpdateOutput = typeof ConnectorUpdateOutput.Type;
 /**
  * Operation to update an existing Connector.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
+ * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
 export const ConnectorUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -979,6 +1009,7 @@ export const ConnectorUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ConnectorUpdateDryrunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
@@ -1053,6 +1084,7 @@ export type ConnectorUpdateDryrunOutput =
 /**
  * update a dryrun job to do necessary check before actual creation
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
@@ -1067,8 +1099,10 @@ export const ConnectorUpdateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConnectorValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -1128,8 +1162,10 @@ export type ConnectorValidateOutput = typeof ConnectorValidateOutput.Type;
 /**
  * Validate a Connector.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param location - The name of Azure region.
+ * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
 export const ConnectorValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1139,6 +1175,8 @@ export const ConnectorValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LinkerCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    linkerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       targetService: Schema.optional(
         Schema.Struct({
@@ -1321,7 +1359,9 @@ export type LinkerCreateOrUpdateOutput = typeof LinkerCreateOrUpdateOutput.Type;
 /**
  * Create or update Linker resource.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
+ * @param linkerName - The name Linker resource.
  */
 export const LinkerCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1330,9 +1370,10 @@ export const LinkerCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const LinkerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LinkerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  linkerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
@@ -1349,16 +1390,19 @@ export type LinkerDeleteOutput = typeof LinkerDeleteOutput.Type;
 /**
  * Delete a Linker.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
+ * @param linkerName - The name Linker resource.
  */
 export const LinkerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LinkerDeleteInput,
   outputSchema: LinkerDeleteOutput,
 }));
 // Input Schema
-export const LinkerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LinkerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  linkerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
@@ -1393,16 +1437,18 @@ export type LinkerGetOutput = typeof LinkerGetOutput.Type;
 /**
  * Returns Linker resource for a given name.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
+ * @param linkerName - The name Linker resource.
  */
 export const LinkerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LinkerGetInput,
   outputSchema: LinkerGetOutput,
 }));
 // Input Schema
-export const LinkerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LinkerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers",
@@ -1454,6 +1500,7 @@ export type LinkerListOutput = typeof LinkerListOutput.Type;
 /**
  * Returns list of Linkers which connects to the resource. which supports to config both application and target service during the resource provision.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
  */
 export const LinkerList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1462,7 +1509,10 @@ export const LinkerList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LinkerListConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    linkerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/listConfigurations",
@@ -1498,7 +1548,9 @@ export type LinkerListConfigurationsOutput =
 /**
  * list source configurations for a Linker.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
+ * @param linkerName - The name Linker resource.
  */
 export const LinkerListConfigurations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1509,6 +1561,7 @@ export const LinkerListConfigurations = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LinkersCreateDryrunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1580,6 +1633,7 @@ export type LinkersCreateDryrunOutput = typeof LinkersCreateDryrunOutput.Type;
 /**
  * create a dryrun job to do necessary check before actual creation
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
@@ -1590,6 +1644,7 @@ export const LinkersCreateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LinkersDeleteDryrunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1609,6 +1664,7 @@ export type LinkersDeleteDryrunOutput = typeof LinkersDeleteDryrunOutput.Type;
 /**
  * delete a dryrun job
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
@@ -1619,6 +1675,8 @@ export const LinkersDeleteDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LinkersGenerateConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    linkerName: Schema.String.pipe(T.PathParam()),
     deleteOrUpdateBehavior: Schema.optional(
       Schema.Literals(["Default", "ForcedCleanup"]),
     ),
@@ -1696,7 +1754,9 @@ export type LinkersGenerateConfigurationsOutput =
 /**
  * Generate configurations for a Linker.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
+ * @param linkerName - The name Linker resource.
  */
 export const LinkersGenerateConfigurations =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1705,6 +1765,7 @@ export const LinkersGenerateConfigurations =
   }));
 // Input Schema
 export const LinkersGetDryrunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   dryrunName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1743,6 +1804,7 @@ export type LinkersGetDryrunOutput = typeof LinkersGetDryrunOutput.Type;
 /**
  * get a dryrun job
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
@@ -1752,7 +1814,9 @@ export const LinkersGetDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LinkersListDaprConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ServiceLinker/daprConfigurations",
@@ -1824,6 +1888,7 @@ export type LinkersListDaprConfigurationsOutput =
 /**
  * List the dapr configuration supported by Service Connector.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
  */
 export const LinkersListDaprConfigurations =
@@ -1833,7 +1898,9 @@ export const LinkersListDaprConfigurations =
   }));
 // Input Schema
 export const LinkersListDryrunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -1887,6 +1954,7 @@ export type LinkersListDryrunOutput = typeof LinkersListDryrunOutput.Type;
 /**
  * list dryrun jobs
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
  */
 export const LinkersListDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1896,6 +1964,7 @@ export const LinkersListDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LinkersUpdateDryrunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1967,6 +2036,7 @@ export type LinkersUpdateDryrunOutput = typeof LinkersUpdateDryrunOutput.Type;
 /**
  * add a dryrun job to do necessary check before actual creation
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
@@ -1976,6 +2046,8 @@ export const LinkersUpdateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LinkerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  linkerName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       targetService: Schema.optional(
@@ -2145,16 +2217,19 @@ export type LinkerUpdateOutput = typeof LinkerUpdateOutput.Type;
 /**
  * Operation to update an existing Linker.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
+ * @param linkerName - The name Linker resource.
  */
 export const LinkerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LinkerUpdateInput,
   outputSchema: LinkerUpdateOutput,
 }));
 // Input Schema
-export const LinkerValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LinkerValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  linkerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/validateLinker",
@@ -2209,7 +2284,9 @@ export type LinkerValidateOutput = typeof LinkerValidateOutput.Type;
 /**
  * Validate a Linker.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
+ * @param linkerName - The name Linker resource.
  */
 export const LinkerValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LinkerValidateInput,

@@ -42,7 +42,7 @@ export type SendEvmTransactionWithEndUserAccountOutput =
 
 // The operation
 /**
- * Send a transaction with end user EVM account
+ * Send transaction via end user EVM account
  *
  * Signs a transaction with the given end user EVM account and sends it to the indicated supported network. This API handles nonce management and gas estimation, leaving the developer to provide only the minimal set of fields necessary to send the transaction. The transaction should be serialized as a hex string using [RLP](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/).
  * The transaction must be an [EIP-1559 dynamic fee transaction](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md).

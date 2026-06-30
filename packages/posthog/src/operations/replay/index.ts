@@ -12,3 +12,4 @@ export * from "./sessionRecordingsRetrieve.ts";
 export * from "./sessionRecordingsUpdate.ts";
 export * from "./sessionRecordingsPartialUpdate.ts";
 export * from "./sessionRecordingsDestroy.ts";
+export * from "./createSessionSummariesIndividually.ts";

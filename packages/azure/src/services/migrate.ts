@@ -3206,6 +3206,8 @@ export const DatabaseInstancesControllerGetDatabaseInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    databaseInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3266,6 +3268,8 @@ export type DatabaseInstancesControllerGetDatabaseInstanceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param databaseInstanceName - Unique name of a database instance in Azure migration hub.
  * @param api-version - The API version to use for this operation.
  */
 export const DatabaseInstancesControllerGetDatabaseInstance =
@@ -3278,6 +3282,9 @@ export const DatabaseInstancesControllerListDatabaseInstancesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3345,7 +3352,10 @@ export type DatabaseInstancesControllerListDatabaseInstancesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const DatabaseInstancesControllerListDatabaseInstances =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3357,6 +3367,8 @@ export const DatabasesControllerGetDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3411,6 +3423,8 @@ export type DatabasesControllerGetDatabaseOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param databaseName - Unique name of a database in Azure migration hub.
  * @param api-version - The API version to use for this operation.
  */
 export const DatabasesControllerGetDatabase =
@@ -3423,6 +3437,9 @@ export const DatabasesControllerListDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3484,7 +3501,10 @@ export type DatabasesControllerListDatabasesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const DatabasesControllerListDatabases =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3715,6 +3735,8 @@ export const EventsControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    eventName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -3739,6 +3761,8 @@ export type EventsControllerDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param eventName - Unique name of an event within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const EventsControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3752,6 +3776,8 @@ export const EventsControllerGetEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    eventName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3789,6 +3815,8 @@ export type EventsControllerGetEventOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param eventName - Unique name of an event within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const EventsControllerGetEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3802,6 +3830,8 @@ export const EventsControllerListEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3846,7 +3876,9 @@ export type EventsControllerListEventsOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
  */
 export const EventsControllerListEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8542,6 +8574,8 @@ export const MachinesControllerGetMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -8649,6 +8683,8 @@ export type MachinesControllerGetMachineOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param machineName - Unique name of a machine in Azure migration hub.
  * @param api-version - The API version to use for this operation.
  */
 export const MachinesControllerGetMachine =
@@ -8738,6 +8774,9 @@ export const MachinesControllerListMachinesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -8854,7 +8893,10 @@ export type MachinesControllerListMachinesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const MachinesControllerListMachines =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9689,6 +9731,7 @@ export const MigrateProjectsControllerDeleteMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -9713,6 +9756,7 @@ export type MigrateProjectsControllerDeleteMigrateProjectOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerDeleteMigrateProject =
@@ -9725,6 +9769,7 @@ export const MigrateProjectsControllerGetMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -9899,6 +9944,7 @@ export type MigrateProjectsControllerGetMigrateProjectOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerGetMigrateProject =
@@ -9911,6 +9957,7 @@ export const MigrateProjectsControllerGetToolRegistrationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     tool: Schema.optional(
       Schema.Literals([
         "ServerDiscovery",
@@ -9970,6 +10017,7 @@ export type MigrateProjectsControllerGetToolRegistrationDetailsOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerGetToolRegistrationDetails =
@@ -9982,6 +10030,7 @@ export const MigrateProjectsControllerPatchMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         registeredTools: Schema.optional(
@@ -10305,6 +10354,7 @@ export type MigrateProjectsControllerPatchMigrateProjectOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerPatchMigrateProject =
@@ -10317,6 +10367,7 @@ export const MigrateProjectsControllerPutMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         registeredTools: Schema.optional(
@@ -10641,6 +10692,7 @@ export type MigrateProjectsControllerPutMigrateProjectOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerPutMigrateProject =
@@ -10653,6 +10705,7 @@ export const MigrateProjectsControllerRefreshSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     goal: Schema.optional(Schema.Literals(["Servers", "Databases"])),
   }).pipe(
     T.Http({
@@ -10678,6 +10731,7 @@ export type MigrateProjectsControllerRefreshSummaryOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerRefreshSummary =
@@ -10690,6 +10744,7 @@ export const MigrateProjectsControllerRegisterToolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     tool: Schema.optional(
       Schema.Literals([
         "ServerDiscovery",
@@ -10743,6 +10798,7 @@ export type MigrateProjectsControllerRegisterToolOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerRegisterTool =
@@ -10932,6 +10988,7 @@ export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionI
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -11005,6 +11062,7 @@ export type PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionOu
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param peConnectionName - Private endpoint connection name.
  * @param api-version - The API version to use for this operation.
  */
@@ -11076,6 +11134,7 @@ export const PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInpu
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -11152,6 +11211,7 @@ export type PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutpu
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param peConnectionName - Private endpoint connection name.
  * @param api-version - The API version to use for this operation.
  */
@@ -11236,6 +11296,7 @@ export const PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInpu
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -11362,6 +11423,7 @@ export type PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutpu
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param peConnectionName - Private endpoint connection name.
  * @param api-version - The API version to use for this operation.
  */
@@ -11618,6 +11680,7 @@ export const PrivateEndpointConnectionProxyControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -11852,6 +11915,7 @@ export type PrivateEndpointConnectionProxyControllerCreateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param pecProxyName - Private endpoint proxy name.
  * @param api-version - The API version to use for this operation.
  */
@@ -11865,6 +11929,7 @@ export const PrivateEndpointConnectionProxyControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -11890,6 +11955,7 @@ export type PrivateEndpointConnectionProxyControllerDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param pecProxyName - Private endpoint proxy name.
  * @param api-version - The API version to use for this operation.
  */
@@ -11903,6 +11969,7 @@ export const PrivateEndpointConnectionProxyControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -12033,6 +12100,7 @@ export type PrivateEndpointConnectionProxyControllerGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param pecProxyName - Private link proxy name.
  * @param api-version - The API version to use for this operation.
  */
@@ -12046,6 +12114,7 @@ export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnecti
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -12198,6 +12267,7 @@ export type PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectio
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxies =
@@ -12212,6 +12282,7 @@ export const PrivateEndpointConnectionProxyControllerValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -12446,6 +12517,7 @@ export type PrivateEndpointConnectionProxyControllerValidateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param pecProxyName - Private link proxy name.
  * @param api-version - The API version to use for this operation.
  */
@@ -12459,6 +12531,7 @@ export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsIn
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -12551,6 +12624,7 @@ export type PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOut
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnections =
@@ -12565,6 +12639,7 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     privateLinkResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -12601,6 +12676,7 @@ export type PrivateLinkResourceControllerGetPrivateLinkResourceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param privateLinkResourceName - Private Link resource name.
  * @param api-version - The API version to use for this operation.
  */
@@ -12614,6 +12690,7 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -12656,6 +12733,7 @@ export type PrivateLinkResourceControllerGetPrivateLinkResourcesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateLinkResourceControllerGetPrivateLinkResources =
@@ -16172,6 +16250,8 @@ export const SolutionsControllerCleanupDataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -16194,6 +16274,8 @@ export type SolutionsControllerCleanupDataOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerCleanupData =
@@ -16206,6 +16288,8 @@ export const SolutionsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16375,6 +16459,8 @@ export type SolutionsControllerCreateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -16388,6 +16474,8 @@ export const SolutionsControllerDeleteSolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -16412,6 +16500,8 @@ export type SolutionsControllerDeleteSolutionOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerDeleteSolution =
@@ -16424,6 +16514,8 @@ export const SolutionsControllerGetConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -16448,6 +16540,8 @@ export type SolutionsControllerGetConfigOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerGetConfig =
@@ -16460,6 +16554,8 @@ export const SolutionsControllerGetSolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -16556,6 +16652,8 @@ export type SolutionsControllerGetSolutionOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerGetSolution =
@@ -16568,6 +16666,7 @@ export const SolutionsControllerListSolutionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -16671,6 +16770,7 @@ export type SolutionsControllerListSolutionsOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerListSolutions =
@@ -16683,6 +16783,8 @@ export const SolutionsControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16854,6 +16956,8 @@ export type SolutionsControllerUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -19951,6 +20055,8 @@ export const VirtualDesktopUserControllerGetVirtualDesktopUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    virtualDesktopUserName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -20019,6 +20125,8 @@ export type VirtualDesktopUserControllerGetVirtualDesktopUserOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param virtualDesktopUserName - The ARM name of the webserver to be fetched.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualDesktopUserControllerGetVirtualDesktopUser =
@@ -20031,6 +20139,9 @@ export const VirtualDesktopUserControllerListVirtualDesktopUsersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -20106,7 +20217,10 @@ export type VirtualDesktopUserControllerListVirtualDesktopUsersOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const VirtualDesktopUserControllerListVirtualDesktopUsers =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22928,6 +23042,8 @@ export const WebServersControllerGetWebServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    webServerId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -22993,6 +23109,8 @@ export type WebServersControllerGetWebServerOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param webServerId - The ARM name of the virtual desktop user.
  * @param api-version - The API version to use for this operation.
  */
 export const WebServersControllerGetWebServer =
@@ -23084,6 +23202,9 @@ export const WebServersControllerListWebServersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -23156,7 +23277,10 @@ export type WebServersControllerListWebServersOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const WebServersControllerListWebServers =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23168,6 +23292,8 @@ export const WebSitesControllerGetWebSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    webSiteName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -23262,6 +23388,8 @@ export type WebSitesControllerGetWebSiteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param webSiteName - The ARM name of the website to be fetched.
  * @param api-version - The API version to use for this operation.
  */
 export const WebSitesControllerGetWebSite =
@@ -23274,6 +23402,9 @@ export const WebSitesControllerListWebSitesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -23375,7 +23506,10 @@ export type WebSitesControllerListWebSitesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const WebSitesControllerListWebSites =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

@@ -62,32 +62,34 @@ export const CreateResourceV1DeviceClassInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/resource.k8s.io/v1/deviceclasses" }),
   );
@@ -143,32 +145,34 @@ export const CreateResourceV1DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type CreateResourceV1DeviceClassOutput =
   typeof CreateResourceV1DeviceClassOutput.Type;
@@ -243,74 +247,38 @@ export const CreateResourceV1NamespacedResourceClaimInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -321,7 +289,6 @@ export const CreateResourceV1NamespacedResourceClaimInput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -346,14 +313,53 @@ export const CreateResourceV1NamespacedResourceClaimInput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -537,74 +543,38 @@ export const CreateResourceV1NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -615,7 +585,6 @@ export const CreateResourceV1NamespacedResourceClaimOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -640,14 +609,53 @@ export const CreateResourceV1NamespacedResourceClaimOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -847,163 +855,173 @@ export const CreateResourceV1NamespacedResourceClaimTemplateInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1062,163 +1080,173 @@ export const CreateResourceV1NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type CreateResourceV1NamespacedResourceClaimTemplateOutput =
   typeof CreateResourceV1NamespacedResourceClaimTemplateOutput.Type;
@@ -2126,32 +2154,34 @@ export const CreateResourceV1beta1DeviceClassInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2210,32 +2240,34 @@ export const CreateResourceV1beta1DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type CreateResourceV1beta1DeviceClassOutput =
   typeof CreateResourceV1beta1DeviceClassOutput.Type;
@@ -2309,113 +2341,115 @@ export const CreateResourceV1beta1NamespacedResourceClaimInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -2599,113 +2633,115 @@ export const CreateResourceV1beta1NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -2905,159 +2941,167 @@ export const CreateResourceV1beta1NamespacedResourceClaimTemplateInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  adminAccess: Schema.optional(Schema.Boolean),
-                  allocationMode: Schema.optional(Schema.String),
-                  capacity: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      requests: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
+                      opaque: Schema.optional(
+                        Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
                       ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  count: Schema.optional(Schema.Number),
-                  deviceClassName: Schema.optional(Schema.String),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
+                      allocationMode: Schema.optional(Schema.String),
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      count: Schema.optional(Schema.Number),
+                      deviceClassName: Schema.optional(Schema.String),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
                             ),
                           }),
                         ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  name: Schema.String,
-                  selectors: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        cel: Schema.optional(
+                      ),
+                      name: Schema.String,
+                      selectors: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            expression: Schema.String,
+                            cel: Schema.optional(
+                              Schema.Struct({
+                                expression: Schema.String,
+                              }),
+                            ),
                           }),
                         ),
-                      }),
-                    ),
+                      ),
+                      tolerations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            effect: Schema.optional(Schema.String),
+                            key: Schema.optional(Schema.String),
+                            operator: Schema.optional(Schema.String),
+                            tolerationSeconds: Schema.optional(Schema.Number),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
                   ),
-                  tolerations: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        effect: Schema.optional(Schema.String),
-                        key: Schema.optional(Schema.String),
-                        operator: Schema.optional(Schema.String),
-                        tolerationSeconds: Schema.optional(Schema.Number),
-                        value: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3116,159 +3160,167 @@ export const CreateResourceV1beta1NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  adminAccess: Schema.optional(Schema.Boolean),
-                  allocationMode: Schema.optional(Schema.String),
-                  capacity: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      requests: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
+                      opaque: Schema.optional(
+                        Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
                       ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  count: Schema.optional(Schema.Number),
-                  deviceClassName: Schema.optional(Schema.String),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
+                      allocationMode: Schema.optional(Schema.String),
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      count: Schema.optional(Schema.Number),
+                      deviceClassName: Schema.optional(Schema.String),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
                             ),
                           }),
                         ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  name: Schema.String,
-                  selectors: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        cel: Schema.optional(
+                      ),
+                      name: Schema.String,
+                      selectors: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            expression: Schema.String,
+                            cel: Schema.optional(
+                              Schema.Struct({
+                                expression: Schema.String,
+                              }),
+                            ),
                           }),
                         ),
-                      }),
-                    ),
+                      ),
+                      tolerations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            effect: Schema.optional(Schema.String),
+                            key: Schema.optional(Schema.String),
+                            operator: Schema.optional(Schema.String),
+                            tolerationSeconds: Schema.optional(Schema.Number),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
                   ),
-                  tolerations: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        effect: Schema.optional(Schema.String),
-                        key: Schema.optional(Schema.String),
-                        operator: Schema.optional(Schema.String),
-                        tolerationSeconds: Schema.optional(Schema.Number),
-                        value: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type CreateResourceV1beta1NamespacedResourceClaimTemplateOutput =
   typeof CreateResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
@@ -3810,32 +3862,34 @@ export const CreateResourceV1beta2DeviceClassInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3894,32 +3948,34 @@ export const CreateResourceV1beta2DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type CreateResourceV1beta2DeviceClassOutput =
   typeof CreateResourceV1beta2DeviceClassOutput.Type;
@@ -4185,74 +4241,38 @@ export const CreateResourceV1beta2NamespacedResourceClaimInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -4263,7 +4283,6 @@ export const CreateResourceV1beta2NamespacedResourceClaimInput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -4288,14 +4307,53 @@ export const CreateResourceV1beta2NamespacedResourceClaimInput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -4479,74 +4537,38 @@ export const CreateResourceV1beta2NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -4557,7 +4579,6 @@ export const CreateResourceV1beta2NamespacedResourceClaimOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -4582,14 +4603,53 @@ export const CreateResourceV1beta2NamespacedResourceClaimOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -4789,163 +4849,173 @@ export const CreateResourceV1beta2NamespacedResourceClaimTemplateInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5004,163 +5074,173 @@ export const CreateResourceV1beta2NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type CreateResourceV1beta2NamespacedResourceClaimTemplateOutput =
   typeof CreateResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
@@ -6300,32 +6380,34 @@ export const DeleteResourceV1DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type DeleteResourceV1DeviceClassOutput =
   typeof DeleteResourceV1DeviceClassOutput.Type;
@@ -6428,74 +6510,38 @@ export const DeleteResourceV1NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -6506,7 +6552,6 @@ export const DeleteResourceV1NamespacedResourceClaimOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -6531,14 +6576,53 @@ export const DeleteResourceV1NamespacedResourceClaimOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -6766,163 +6850,173 @@ export const DeleteResourceV1NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type DeleteResourceV1NamespacedResourceClaimTemplateOutput =
   typeof DeleteResourceV1NamespacedResourceClaimTemplateOutput.Type;
@@ -8436,32 +8530,34 @@ export const DeleteResourceV1beta1DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type DeleteResourceV1beta1DeviceClassOutput =
   typeof DeleteResourceV1beta1DeviceClassOutput.Type;
@@ -8563,113 +8659,115 @@ export const DeleteResourceV1beta1NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -8897,159 +8995,167 @@ export const DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  adminAccess: Schema.optional(Schema.Boolean),
-                  allocationMode: Schema.optional(Schema.String),
-                  capacity: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      requests: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
+                      opaque: Schema.optional(
+                        Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
                       ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  count: Schema.optional(Schema.Number),
-                  deviceClassName: Schema.optional(Schema.String),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
+                      allocationMode: Schema.optional(Schema.String),
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      count: Schema.optional(Schema.Number),
+                      deviceClassName: Schema.optional(Schema.String),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
                             ),
                           }),
                         ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  name: Schema.String,
-                  selectors: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        cel: Schema.optional(
+                      ),
+                      name: Schema.String,
+                      selectors: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            expression: Schema.String,
+                            cel: Schema.optional(
+                              Schema.Struct({
+                                expression: Schema.String,
+                              }),
+                            ),
                           }),
                         ),
-                      }),
-                    ),
+                      ),
+                      tolerations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            effect: Schema.optional(Schema.String),
+                            key: Schema.optional(Schema.String),
+                            operator: Schema.optional(Schema.String),
+                            tolerationSeconds: Schema.optional(Schema.Number),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
                   ),
-                  tolerations: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        effect: Schema.optional(Schema.String),
-                        key: Schema.optional(Schema.String),
-                        operator: Schema.optional(Schema.String),
-                        tolerationSeconds: Schema.optional(Schema.Number),
-                        value: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput =
   typeof DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
@@ -10161,32 +10267,34 @@ export const DeleteResourceV1beta2DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type DeleteResourceV1beta2DeviceClassOutput =
   typeof DeleteResourceV1beta2DeviceClassOutput.Type;
@@ -10419,74 +10527,38 @@ export const DeleteResourceV1beta2NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -10497,7 +10569,6 @@ export const DeleteResourceV1beta2NamespacedResourceClaimOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -10522,14 +10593,53 @@ export const DeleteResourceV1beta2NamespacedResourceClaimOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -10757,163 +10867,173 @@ export const DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput =
   typeof DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
@@ -11480,32 +11600,34 @@ export const ListResourceV1DeviceClassOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-              }),
+        spec: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
+                    Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                }),
+              ),
             ),
-          ),
-          extendedResourceName: Schema.optional(Schema.String),
-          selectors: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                cel: Schema.optional(
-                  Schema.Struct({
-                    expression: Schema.String,
-                  }),
-                ),
-              }),
+            extendedResourceName: Schema.optional(Schema.String),
+            selectors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  cel: Schema.optional(
+                    Schema.Struct({
+                      expression: Schema.String,
+                    }),
+                  ),
+                }),
+              ),
             ),
-          ),
-        }),
+          }),
+        ),
       }),
     ),
     kind: Schema.optional(Schema.String),
@@ -11669,74 +11791,38 @@ export const ListResourceV1NamespacedResourceClaimOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          devices: Schema.optional(
-            Schema.Struct({
-              config: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    opaque: Schema.optional(
-                      Schema.Struct({
-                        driver: Schema.String,
-                        parameters: Schema.Unknown,
-                      }),
-                    ),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              constraints: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    distinctAttribute: Schema.optional(Schema.String),
-                    matchAttribute: Schema.optional(Schema.String),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              requests: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    exactly: Schema.optional(
-                      Schema.Struct({
-                        adminAccess: Schema.optional(Schema.Boolean),
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    firstAvailable: Schema.optional(
-                      Schema.Array(
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      opaque: Schema.optional(
                         Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
+                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
                           allocationMode: Schema.optional(Schema.String),
                           capacity: Schema.optional(
                             Schema.Struct({
@@ -11747,7 +11833,6 @@ export const ListResourceV1NamespacedResourceClaimOutput =
                           ),
                           count: Schema.optional(Schema.Number),
                           deviceClassName: Schema.String,
-                          name: Schema.String,
                           selectors: Schema.optional(
                             Schema.Array(
                               Schema.Struct({
@@ -11774,14 +11859,55 @@ export const ListResourceV1NamespacedResourceClaimOutput =
                           ),
                         }),
                       ),
-                    ),
-                    name: Schema.String,
-                  }),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      ),
+                      name: Schema.String,
+                    }),
+                  ),
                 ),
-              ),
-            }),
-          ),
-        }),
+              }),
+            ),
+          }),
+        ),
         status: Schema.optional(
           Schema.Struct({
             allocation: Schema.optional(
@@ -12078,169 +12204,180 @@ export const ListResourceV1NamespacedResourceClaimTemplateOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          metadata: Schema.optional(
-            Schema.Struct({
-              annotations: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              creationTimestamp: Schema.optional(Schema.String),
-              deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-              deletionTimestamp: Schema.optional(Schema.String),
-              finalizers: Schema.optional(Schema.Array(Schema.String)),
-              generateName: Schema.optional(Schema.String),
-              generation: Schema.optional(Schema.Number),
-              labels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              managedFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldsType: Schema.optional(Schema.String),
-                    fieldsV1: Schema.optional(Schema.Unknown),
-                    manager: Schema.optional(Schema.String),
-                    operation: Schema.optional(Schema.String),
-                    subresource: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              ownerReferences: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.String,
-                    blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                    controller: Schema.optional(Schema.Boolean),
-                    kind: Schema.String,
-                    name: Schema.String,
-                    uid: Schema.String,
-                  }),
-                ),
-              ),
-              resourceVersion: Schema.optional(Schema.String),
-              selfLink: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          spec: Schema.Struct({
-            devices: Schema.optional(
+        spec: Schema.optional(
+          Schema.Struct({
+            metadata: Schema.optional(
               Schema.Struct({
-                config: Schema.optional(
+                annotations: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                creationTimestamp: Schema.optional(Schema.String),
+                deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+                deletionTimestamp: Schema.optional(Schema.String),
+                finalizers: Schema.optional(Schema.Array(Schema.String)),
+                generateName: Schema.optional(Schema.String),
+                generation: Schema.optional(Schema.Number),
+                labels: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                managedFields: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
-                      opaque: Schema.optional(
+                      apiVersion: Schema.optional(Schema.String),
+                      fieldsType: Schema.optional(Schema.String),
+                      fieldsV1: Schema.optional(Schema.Unknown),
+                      manager: Schema.optional(Schema.String),
+                      operation: Schema.optional(Schema.String),
+                      subresource: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                name: Schema.optional(Schema.String),
+                namespace: Schema.optional(Schema.String),
+                ownerReferences: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      apiVersion: Schema.String,
+                      blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                      controller: Schema.optional(Schema.Boolean),
+                      kind: Schema.String,
+                      name: Schema.String,
+                      uid: Schema.String,
+                    }),
+                  ),
+                ),
+                resourceVersion: Schema.optional(Schema.String),
+                selfLink: Schema.optional(Schema.String),
+                uid: Schema.optional(Schema.String),
+              }),
+            ),
+            spec: Schema.optional(
+              Schema.Struct({
+                devices: Schema.optional(
+                  Schema.Struct({
+                    config: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
-                          driver: Schema.String,
-                          parameters: Schema.Unknown,
+                          opaque: Schema.optional(
+                            Schema.Struct({
+                              driver: Schema.String,
+                              parameters: Schema.Unknown,
+                            }),
+                          ),
+                          requests: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
                         }),
                       ),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                constraints: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      distinctAttribute: Schema.optional(Schema.String),
-                      matchAttribute: Schema.optional(Schema.String),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                requests: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      exactly: Schema.optional(
+                    ),
+                    constraints: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
-                          adminAccess: Schema.optional(Schema.Boolean),
-                          allocationMode: Schema.optional(Schema.String),
-                          capacity: Schema.optional(
+                          distinctAttribute: Schema.optional(Schema.String),
+                          matchAttribute: Schema.optional(Schema.String),
+                          requests: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                    ),
+                    requests: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          exactly: Schema.optional(
                             Schema.Struct({
-                              requests: Schema.optional(
-                                Schema.Record(Schema.String, Schema.String),
+                              adminAccess: Schema.optional(Schema.Boolean),
+                              allocationMode: Schema.optional(Schema.String),
+                              capacity: Schema.optional(
+                                Schema.Struct({
+                                  requests: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              count: Schema.optional(Schema.Number),
+                              deviceClassName: Schema.String,
+                              selectors: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    cel: Schema.optional(
+                                      Schema.Struct({
+                                        expression: Schema.String,
+                                      }),
+                                    ),
+                                  }),
+                                ),
+                              ),
+                              tolerations: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    effect: Schema.optional(Schema.String),
+                                    key: Schema.optional(Schema.String),
+                                    operator: Schema.optional(Schema.String),
+                                    tolerationSeconds: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
                               ),
                             }),
                           ),
-                          count: Schema.optional(Schema.Number),
-                          deviceClassName: Schema.String,
-                          selectors: Schema.optional(
+                          firstAvailable: Schema.optional(
                             Schema.Array(
                               Schema.Struct({
-                                cel: Schema.optional(
+                                allocationMode: Schema.optional(Schema.String),
+                                capacity: Schema.optional(
                                   Schema.Struct({
-                                    expression: Schema.String,
+                                    requests: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
                                   }),
                                 ),
-                              }),
-                            ),
-                          ),
-                          tolerations: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                effect: Schema.optional(Schema.String),
-                                key: Schema.optional(Schema.String),
-                                operator: Schema.optional(Schema.String),
-                                tolerationSeconds: Schema.optional(
-                                  Schema.Number,
-                                ),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                      firstAvailable: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            allocationMode: Schema.optional(Schema.String),
-                            capacity: Schema.optional(
-                              Schema.Struct({
-                                requests: Schema.optional(
-                                  Schema.Record(Schema.String, Schema.String),
-                                ),
-                              }),
-                            ),
-                            count: Schema.optional(Schema.Number),
-                            deviceClassName: Schema.String,
-                            name: Schema.String,
-                            selectors: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  cel: Schema.optional(
+                                count: Schema.optional(Schema.Number),
+                                deviceClassName: Schema.String,
+                                name: Schema.String,
+                                selectors: Schema.optional(
+                                  Schema.Array(
                                     Schema.Struct({
-                                      expression: Schema.String,
+                                      cel: Schema.optional(
+                                        Schema.Struct({
+                                          expression: Schema.String,
+                                        }),
+                                      ),
                                     }),
                                   ),
-                                }),
-                              ),
-                            ),
-                            tolerations: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  effect: Schema.optional(Schema.String),
-                                  key: Schema.optional(Schema.String),
-                                  operator: Schema.optional(Schema.String),
-                                  tolerationSeconds: Schema.optional(
-                                    Schema.Number,
+                                ),
+                                tolerations: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      effect: Schema.optional(Schema.String),
+                                      key: Schema.optional(Schema.String),
+                                      operator: Schema.optional(Schema.String),
+                                      tolerationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      value: Schema.optional(Schema.String),
+                                    }),
                                   ),
-                                  value: Schema.optional(Schema.String),
-                                }),
-                              ),
+                                ),
+                              }),
                             ),
-                          }),
-                        ),
+                          ),
+                          name: Schema.String,
+                        }),
                       ),
-                      name: Schema.String,
-                    }),
-                  ),
+                    ),
+                  }),
                 ),
               }),
             ),
           }),
-        }),
+        ),
       }),
     ),
     kind: Schema.optional(Schema.String),
@@ -12400,74 +12537,38 @@ export const ListResourceV1ResourceClaimForAllNamespacesOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          devices: Schema.optional(
-            Schema.Struct({
-              config: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    opaque: Schema.optional(
-                      Schema.Struct({
-                        driver: Schema.String,
-                        parameters: Schema.Unknown,
-                      }),
-                    ),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              constraints: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    distinctAttribute: Schema.optional(Schema.String),
-                    matchAttribute: Schema.optional(Schema.String),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              requests: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    exactly: Schema.optional(
-                      Schema.Struct({
-                        adminAccess: Schema.optional(Schema.Boolean),
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    firstAvailable: Schema.optional(
-                      Schema.Array(
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      opaque: Schema.optional(
                         Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
+                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
                           allocationMode: Schema.optional(Schema.String),
                           capacity: Schema.optional(
                             Schema.Struct({
@@ -12478,7 +12579,6 @@ export const ListResourceV1ResourceClaimForAllNamespacesOutput =
                           ),
                           count: Schema.optional(Schema.Number),
                           deviceClassName: Schema.String,
-                          name: Schema.String,
                           selectors: Schema.optional(
                             Schema.Array(
                               Schema.Struct({
@@ -12505,14 +12605,55 @@ export const ListResourceV1ResourceClaimForAllNamespacesOutput =
                           ),
                         }),
                       ),
-                    ),
-                    name: Schema.String,
-                  }),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      ),
+                      name: Schema.String,
+                    }),
+                  ),
                 ),
-              ),
-            }),
-          ),
-        }),
+              }),
+            ),
+          }),
+        ),
         status: Schema.optional(
           Schema.Struct({
             allocation: Schema.optional(
@@ -12807,169 +12948,180 @@ export const ListResourceV1ResourceClaimTemplateForAllNamespacesOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          metadata: Schema.optional(
-            Schema.Struct({
-              annotations: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              creationTimestamp: Schema.optional(Schema.String),
-              deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-              deletionTimestamp: Schema.optional(Schema.String),
-              finalizers: Schema.optional(Schema.Array(Schema.String)),
-              generateName: Schema.optional(Schema.String),
-              generation: Schema.optional(Schema.Number),
-              labels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              managedFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldsType: Schema.optional(Schema.String),
-                    fieldsV1: Schema.optional(Schema.Unknown),
-                    manager: Schema.optional(Schema.String),
-                    operation: Schema.optional(Schema.String),
-                    subresource: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              ownerReferences: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.String,
-                    blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                    controller: Schema.optional(Schema.Boolean),
-                    kind: Schema.String,
-                    name: Schema.String,
-                    uid: Schema.String,
-                  }),
-                ),
-              ),
-              resourceVersion: Schema.optional(Schema.String),
-              selfLink: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          spec: Schema.Struct({
-            devices: Schema.optional(
+        spec: Schema.optional(
+          Schema.Struct({
+            metadata: Schema.optional(
               Schema.Struct({
-                config: Schema.optional(
+                annotations: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                creationTimestamp: Schema.optional(Schema.String),
+                deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+                deletionTimestamp: Schema.optional(Schema.String),
+                finalizers: Schema.optional(Schema.Array(Schema.String)),
+                generateName: Schema.optional(Schema.String),
+                generation: Schema.optional(Schema.Number),
+                labels: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                managedFields: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
-                      opaque: Schema.optional(
+                      apiVersion: Schema.optional(Schema.String),
+                      fieldsType: Schema.optional(Schema.String),
+                      fieldsV1: Schema.optional(Schema.Unknown),
+                      manager: Schema.optional(Schema.String),
+                      operation: Schema.optional(Schema.String),
+                      subresource: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                name: Schema.optional(Schema.String),
+                namespace: Schema.optional(Schema.String),
+                ownerReferences: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      apiVersion: Schema.String,
+                      blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                      controller: Schema.optional(Schema.Boolean),
+                      kind: Schema.String,
+                      name: Schema.String,
+                      uid: Schema.String,
+                    }),
+                  ),
+                ),
+                resourceVersion: Schema.optional(Schema.String),
+                selfLink: Schema.optional(Schema.String),
+                uid: Schema.optional(Schema.String),
+              }),
+            ),
+            spec: Schema.optional(
+              Schema.Struct({
+                devices: Schema.optional(
+                  Schema.Struct({
+                    config: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
-                          driver: Schema.String,
-                          parameters: Schema.Unknown,
+                          opaque: Schema.optional(
+                            Schema.Struct({
+                              driver: Schema.String,
+                              parameters: Schema.Unknown,
+                            }),
+                          ),
+                          requests: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
                         }),
                       ),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                constraints: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      distinctAttribute: Schema.optional(Schema.String),
-                      matchAttribute: Schema.optional(Schema.String),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                requests: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      exactly: Schema.optional(
+                    ),
+                    constraints: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
-                          adminAccess: Schema.optional(Schema.Boolean),
-                          allocationMode: Schema.optional(Schema.String),
-                          capacity: Schema.optional(
+                          distinctAttribute: Schema.optional(Schema.String),
+                          matchAttribute: Schema.optional(Schema.String),
+                          requests: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                    ),
+                    requests: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          exactly: Schema.optional(
                             Schema.Struct({
-                              requests: Schema.optional(
-                                Schema.Record(Schema.String, Schema.String),
+                              adminAccess: Schema.optional(Schema.Boolean),
+                              allocationMode: Schema.optional(Schema.String),
+                              capacity: Schema.optional(
+                                Schema.Struct({
+                                  requests: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              count: Schema.optional(Schema.Number),
+                              deviceClassName: Schema.String,
+                              selectors: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    cel: Schema.optional(
+                                      Schema.Struct({
+                                        expression: Schema.String,
+                                      }),
+                                    ),
+                                  }),
+                                ),
+                              ),
+                              tolerations: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    effect: Schema.optional(Schema.String),
+                                    key: Schema.optional(Schema.String),
+                                    operator: Schema.optional(Schema.String),
+                                    tolerationSeconds: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
                               ),
                             }),
                           ),
-                          count: Schema.optional(Schema.Number),
-                          deviceClassName: Schema.String,
-                          selectors: Schema.optional(
+                          firstAvailable: Schema.optional(
                             Schema.Array(
                               Schema.Struct({
-                                cel: Schema.optional(
+                                allocationMode: Schema.optional(Schema.String),
+                                capacity: Schema.optional(
                                   Schema.Struct({
-                                    expression: Schema.String,
+                                    requests: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
                                   }),
                                 ),
-                              }),
-                            ),
-                          ),
-                          tolerations: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                effect: Schema.optional(Schema.String),
-                                key: Schema.optional(Schema.String),
-                                operator: Schema.optional(Schema.String),
-                                tolerationSeconds: Schema.optional(
-                                  Schema.Number,
-                                ),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                      firstAvailable: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            allocationMode: Schema.optional(Schema.String),
-                            capacity: Schema.optional(
-                              Schema.Struct({
-                                requests: Schema.optional(
-                                  Schema.Record(Schema.String, Schema.String),
-                                ),
-                              }),
-                            ),
-                            count: Schema.optional(Schema.Number),
-                            deviceClassName: Schema.String,
-                            name: Schema.String,
-                            selectors: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  cel: Schema.optional(
+                                count: Schema.optional(Schema.Number),
+                                deviceClassName: Schema.String,
+                                name: Schema.String,
+                                selectors: Schema.optional(
+                                  Schema.Array(
                                     Schema.Struct({
-                                      expression: Schema.String,
+                                      cel: Schema.optional(
+                                        Schema.Struct({
+                                          expression: Schema.String,
+                                        }),
+                                      ),
                                     }),
                                   ),
-                                }),
-                              ),
-                            ),
-                            tolerations: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  effect: Schema.optional(Schema.String),
-                                  key: Schema.optional(Schema.String),
-                                  operator: Schema.optional(Schema.String),
-                                  tolerationSeconds: Schema.optional(
-                                    Schema.Number,
+                                ),
+                                tolerations: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      effect: Schema.optional(Schema.String),
+                                      key: Schema.optional(Schema.String),
+                                      operator: Schema.optional(Schema.String),
+                                      tolerationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      value: Schema.optional(Schema.String),
+                                    }),
                                   ),
-                                  value: Schema.optional(Schema.String),
-                                }),
-                              ),
+                                ),
+                              }),
                             ),
-                          }),
-                        ),
+                          ),
+                          name: Schema.String,
+                        }),
                       ),
-                      name: Schema.String,
-                    }),
-                  ),
+                    ),
+                  }),
                 ),
               }),
             ),
           }),
-        }),
+        ),
       }),
     ),
     kind: Schema.optional(Schema.String),
@@ -13842,32 +13994,34 @@ export const ListResourceV1beta1DeviceClassOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-              }),
+        spec: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
+                    Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                }),
+              ),
             ),
-          ),
-          extendedResourceName: Schema.optional(Schema.String),
-          selectors: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                cel: Schema.optional(
-                  Schema.Struct({
-                    expression: Schema.String,
-                  }),
-                ),
-              }),
+            extendedResourceName: Schema.optional(Schema.String),
+            selectors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  cel: Schema.optional(
+                    Schema.Struct({
+                      expression: Schema.String,
+                    }),
+                  ),
+                }),
+              ),
             ),
-          ),
-        }),
+          }),
+        ),
       }),
     ),
     kind: Schema.optional(Schema.String),
@@ -14030,115 +14184,117 @@ export const ListResourceV1beta1NamespacedResourceClaimOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          devices: Schema.optional(
-            Schema.Struct({
-              config: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    opaque: Schema.optional(
-                      Schema.Struct({
-                        driver: Schema.String,
-                        parameters: Schema.Unknown,
-                      }),
-                    ),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              constraints: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    distinctAttribute: Schema.optional(Schema.String),
-                    matchAttribute: Schema.optional(Schema.String),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              requests: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.optional(Schema.String),
-                    firstAvailable: Schema.optional(
-                      Schema.Array(
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          allocationMode: Schema.optional(Schema.String),
-                          capacity: Schema.optional(
-                            Schema.Struct({
-                              requests: Schema.optional(
-                                Schema.Record(Schema.String, Schema.String),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
+                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
+                      allocationMode: Schema.optional(Schema.String),
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      count: Schema.optional(Schema.Number),
+                      deviceClassName: Schema.optional(Schema.String),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
                               ),
-                            }),
-                          ),
-                          count: Schema.optional(Schema.Number),
-                          deviceClassName: Schema.String,
-                          name: Schema.String,
-                          selectors: Schema.optional(
-                            Schema.Array(
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      ),
+                      name: Schema.String,
+                      selectors: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            cel: Schema.optional(
                               Schema.Struct({
-                                cel: Schema.optional(
-                                  Schema.Struct({
-                                    expression: Schema.String,
-                                  }),
-                                ),
+                                expression: Schema.String,
                               }),
                             ),
-                          ),
-                          tolerations: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                effect: Schema.optional(Schema.String),
-                                key: Schema.optional(Schema.String),
-                                operator: Schema.optional(Schema.String),
-                                tolerationSeconds: Schema.optional(
-                                  Schema.Number,
-                                ),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
+                          }),
+                        ),
                       ),
-                    ),
-                    name: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
+                      tolerations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            effect: Schema.optional(Schema.String),
+                            key: Schema.optional(Schema.String),
+                            operator: Schema.optional(Schema.String),
+                            tolerationSeconds: Schema.optional(Schema.Number),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
                       ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
+                    }),
+                  ),
                 ),
-              ),
-            }),
-          ),
-        }),
+              }),
+            ),
+          }),
+        ),
         status: Schema.optional(
           Schema.Struct({
             allocation: Schema.optional(
@@ -14435,163 +14591,176 @@ export const ListResourceV1beta1NamespacedResourceClaimTemplateOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          metadata: Schema.optional(
-            Schema.Struct({
-              annotations: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              creationTimestamp: Schema.optional(Schema.String),
-              deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-              deletionTimestamp: Schema.optional(Schema.String),
-              finalizers: Schema.optional(Schema.Array(Schema.String)),
-              generateName: Schema.optional(Schema.String),
-              generation: Schema.optional(Schema.Number),
-              labels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              managedFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldsType: Schema.optional(Schema.String),
-                    fieldsV1: Schema.optional(Schema.Unknown),
-                    manager: Schema.optional(Schema.String),
-                    operation: Schema.optional(Schema.String),
-                    subresource: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              ownerReferences: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.String,
-                    blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                    controller: Schema.optional(Schema.Boolean),
-                    kind: Schema.String,
-                    name: Schema.String,
-                    uid: Schema.String,
-                  }),
-                ),
-              ),
-              resourceVersion: Schema.optional(Schema.String),
-              selfLink: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          spec: Schema.Struct({
-            devices: Schema.optional(
+        spec: Schema.optional(
+          Schema.Struct({
+            metadata: Schema.optional(
               Schema.Struct({
-                config: Schema.optional(
+                annotations: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                creationTimestamp: Schema.optional(Schema.String),
+                deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+                deletionTimestamp: Schema.optional(Schema.String),
+                finalizers: Schema.optional(Schema.Array(Schema.String)),
+                generateName: Schema.optional(Schema.String),
+                generation: Schema.optional(Schema.Number),
+                labels: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                managedFields: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
-                      opaque: Schema.optional(
-                        Schema.Struct({
-                          driver: Schema.String,
-                          parameters: Schema.Unknown,
-                        }),
-                      ),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
+                      apiVersion: Schema.optional(Schema.String),
+                      fieldsType: Schema.optional(Schema.String),
+                      fieldsV1: Schema.optional(Schema.Unknown),
+                      manager: Schema.optional(Schema.String),
+                      operation: Schema.optional(Schema.String),
+                      subresource: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
                     }),
                   ),
                 ),
-                constraints: Schema.optional(
+                name: Schema.optional(Schema.String),
+                namespace: Schema.optional(Schema.String),
+                ownerReferences: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
-                      distinctAttribute: Schema.optional(Schema.String),
-                      matchAttribute: Schema.optional(Schema.String),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
+                      apiVersion: Schema.String,
+                      blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                      controller: Schema.optional(Schema.Boolean),
+                      kind: Schema.String,
+                      name: Schema.String,
+                      uid: Schema.String,
                     }),
                   ),
                 ),
-                requests: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                resourceVersion: Schema.optional(Schema.String),
+                selfLink: Schema.optional(Schema.String),
+                uid: Schema.optional(Schema.String),
+              }),
+            ),
+            spec: Schema.optional(
+              Schema.Struct({
+                devices: Schema.optional(
+                  Schema.Struct({
+                    config: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
+                          opaque: Schema.optional(
+                            Schema.Struct({
+                              driver: Schema.String,
+                              parameters: Schema.Unknown,
+                            }),
+                          ),
                           requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
+                            Schema.Array(Schema.String),
                           ),
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.optional(Schema.String),
-                      firstAvailable: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            allocationMode: Schema.optional(Schema.String),
-                            capacity: Schema.optional(
+                    ),
+                    constraints: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          distinctAttribute: Schema.optional(Schema.String),
+                          matchAttribute: Schema.optional(Schema.String),
+                          requests: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                    ),
+                    requests: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
+                            Schema.Struct({
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
+                              ),
+                            }),
+                          ),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.optional(Schema.String),
+                          firstAvailable: Schema.optional(
+                            Schema.Array(
                               Schema.Struct({
-                                requests: Schema.optional(
-                                  Schema.Record(Schema.String, Schema.String),
+                                allocationMode: Schema.optional(Schema.String),
+                                capacity: Schema.optional(
+                                  Schema.Struct({
+                                    requests: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                count: Schema.optional(Schema.Number),
+                                deviceClassName: Schema.String,
+                                name: Schema.String,
+                                selectors: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      cel: Schema.optional(
+                                        Schema.Struct({
+                                          expression: Schema.String,
+                                        }),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                tolerations: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      effect: Schema.optional(Schema.String),
+                                      key: Schema.optional(Schema.String),
+                                      operator: Schema.optional(Schema.String),
+                                      tolerationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      value: Schema.optional(Schema.String),
+                                    }),
+                                  ),
                                 ),
                               }),
                             ),
-                            count: Schema.optional(Schema.Number),
-                            deviceClassName: Schema.String,
-                            name: Schema.String,
-                            selectors: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  cel: Schema.optional(
-                                    Schema.Struct({
-                                      expression: Schema.String,
-                                    }),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            tolerations: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  effect: Schema.optional(Schema.String),
-                                  key: Schema.optional(Schema.String),
-                                  operator: Schema.optional(Schema.String),
-                                  tolerationSeconds: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  value: Schema.optional(Schema.String),
-                                }),
-                              ),
-                            ),
-                          }),
-                        ),
-                      ),
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
+                          ),
+                          name: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
                               Schema.Struct({
-                                expression: Schema.String,
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
                               }),
                             ),
-                          }),
-                        ),
+                          ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
                       ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
+                    ),
+                  }),
                 ),
               }),
             ),
           }),
-        }),
+        ),
       }),
     ),
     kind: Schema.optional(Schema.String),
@@ -14754,115 +14923,117 @@ export const ListResourceV1beta1ResourceClaimForAllNamespacesOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          devices: Schema.optional(
-            Schema.Struct({
-              config: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    opaque: Schema.optional(
-                      Schema.Struct({
-                        driver: Schema.String,
-                        parameters: Schema.Unknown,
-                      }),
-                    ),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              constraints: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    distinctAttribute: Schema.optional(Schema.String),
-                    matchAttribute: Schema.optional(Schema.String),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              requests: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.optional(Schema.String),
-                    firstAvailable: Schema.optional(
-                      Schema.Array(
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          allocationMode: Schema.optional(Schema.String),
-                          capacity: Schema.optional(
-                            Schema.Struct({
-                              requests: Schema.optional(
-                                Schema.Record(Schema.String, Schema.String),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
+                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
+                      allocationMode: Schema.optional(Schema.String),
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      count: Schema.optional(Schema.Number),
+                      deviceClassName: Schema.optional(Schema.String),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
                               ),
-                            }),
-                          ),
-                          count: Schema.optional(Schema.Number),
-                          deviceClassName: Schema.String,
-                          name: Schema.String,
-                          selectors: Schema.optional(
-                            Schema.Array(
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      ),
+                      name: Schema.String,
+                      selectors: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            cel: Schema.optional(
                               Schema.Struct({
-                                cel: Schema.optional(
-                                  Schema.Struct({
-                                    expression: Schema.String,
-                                  }),
-                                ),
+                                expression: Schema.String,
                               }),
                             ),
-                          ),
-                          tolerations: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                effect: Schema.optional(Schema.String),
-                                key: Schema.optional(Schema.String),
-                                operator: Schema.optional(Schema.String),
-                                tolerationSeconds: Schema.optional(
-                                  Schema.Number,
-                                ),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
+                          }),
+                        ),
                       ),
-                    ),
-                    name: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
+                      tolerations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            effect: Schema.optional(Schema.String),
+                            key: Schema.optional(Schema.String),
+                            operator: Schema.optional(Schema.String),
+                            tolerationSeconds: Schema.optional(Schema.Number),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
                       ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
+                    }),
+                  ),
                 ),
-              ),
-            }),
-          ),
-        }),
+              }),
+            ),
+          }),
+        ),
         status: Schema.optional(
           Schema.Struct({
             allocation: Schema.optional(
@@ -15157,163 +15328,176 @@ export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          metadata: Schema.optional(
-            Schema.Struct({
-              annotations: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              creationTimestamp: Schema.optional(Schema.String),
-              deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-              deletionTimestamp: Schema.optional(Schema.String),
-              finalizers: Schema.optional(Schema.Array(Schema.String)),
-              generateName: Schema.optional(Schema.String),
-              generation: Schema.optional(Schema.Number),
-              labels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              managedFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldsType: Schema.optional(Schema.String),
-                    fieldsV1: Schema.optional(Schema.Unknown),
-                    manager: Schema.optional(Schema.String),
-                    operation: Schema.optional(Schema.String),
-                    subresource: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              ownerReferences: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.String,
-                    blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                    controller: Schema.optional(Schema.Boolean),
-                    kind: Schema.String,
-                    name: Schema.String,
-                    uid: Schema.String,
-                  }),
-                ),
-              ),
-              resourceVersion: Schema.optional(Schema.String),
-              selfLink: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          spec: Schema.Struct({
-            devices: Schema.optional(
+        spec: Schema.optional(
+          Schema.Struct({
+            metadata: Schema.optional(
               Schema.Struct({
-                config: Schema.optional(
+                annotations: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                creationTimestamp: Schema.optional(Schema.String),
+                deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+                deletionTimestamp: Schema.optional(Schema.String),
+                finalizers: Schema.optional(Schema.Array(Schema.String)),
+                generateName: Schema.optional(Schema.String),
+                generation: Schema.optional(Schema.Number),
+                labels: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                managedFields: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
-                      opaque: Schema.optional(
-                        Schema.Struct({
-                          driver: Schema.String,
-                          parameters: Schema.Unknown,
-                        }),
-                      ),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
+                      apiVersion: Schema.optional(Schema.String),
+                      fieldsType: Schema.optional(Schema.String),
+                      fieldsV1: Schema.optional(Schema.Unknown),
+                      manager: Schema.optional(Schema.String),
+                      operation: Schema.optional(Schema.String),
+                      subresource: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
                     }),
                   ),
                 ),
-                constraints: Schema.optional(
+                name: Schema.optional(Schema.String),
+                namespace: Schema.optional(Schema.String),
+                ownerReferences: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
-                      distinctAttribute: Schema.optional(Schema.String),
-                      matchAttribute: Schema.optional(Schema.String),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
+                      apiVersion: Schema.String,
+                      blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                      controller: Schema.optional(Schema.Boolean),
+                      kind: Schema.String,
+                      name: Schema.String,
+                      uid: Schema.String,
                     }),
                   ),
                 ),
-                requests: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                resourceVersion: Schema.optional(Schema.String),
+                selfLink: Schema.optional(Schema.String),
+                uid: Schema.optional(Schema.String),
+              }),
+            ),
+            spec: Schema.optional(
+              Schema.Struct({
+                devices: Schema.optional(
+                  Schema.Struct({
+                    config: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
+                          opaque: Schema.optional(
+                            Schema.Struct({
+                              driver: Schema.String,
+                              parameters: Schema.Unknown,
+                            }),
+                          ),
                           requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
+                            Schema.Array(Schema.String),
                           ),
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.optional(Schema.String),
-                      firstAvailable: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            allocationMode: Schema.optional(Schema.String),
-                            capacity: Schema.optional(
+                    ),
+                    constraints: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          distinctAttribute: Schema.optional(Schema.String),
+                          matchAttribute: Schema.optional(Schema.String),
+                          requests: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                    ),
+                    requests: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
+                            Schema.Struct({
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
+                              ),
+                            }),
+                          ),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.optional(Schema.String),
+                          firstAvailable: Schema.optional(
+                            Schema.Array(
                               Schema.Struct({
-                                requests: Schema.optional(
-                                  Schema.Record(Schema.String, Schema.String),
+                                allocationMode: Schema.optional(Schema.String),
+                                capacity: Schema.optional(
+                                  Schema.Struct({
+                                    requests: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                count: Schema.optional(Schema.Number),
+                                deviceClassName: Schema.String,
+                                name: Schema.String,
+                                selectors: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      cel: Schema.optional(
+                                        Schema.Struct({
+                                          expression: Schema.String,
+                                        }),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                tolerations: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      effect: Schema.optional(Schema.String),
+                                      key: Schema.optional(Schema.String),
+                                      operator: Schema.optional(Schema.String),
+                                      tolerationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      value: Schema.optional(Schema.String),
+                                    }),
+                                  ),
                                 ),
                               }),
                             ),
-                            count: Schema.optional(Schema.Number),
-                            deviceClassName: Schema.String,
-                            name: Schema.String,
-                            selectors: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  cel: Schema.optional(
-                                    Schema.Struct({
-                                      expression: Schema.String,
-                                    }),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            tolerations: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  effect: Schema.optional(Schema.String),
-                                  key: Schema.optional(Schema.String),
-                                  operator: Schema.optional(Schema.String),
-                                  tolerationSeconds: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  value: Schema.optional(Schema.String),
-                                }),
-                              ),
-                            ),
-                          }),
-                        ),
-                      ),
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
+                          ),
+                          name: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
                               Schema.Struct({
-                                expression: Schema.String,
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
                               }),
                             ),
-                          }),
-                        ),
+                          ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
                       ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
+                    ),
+                  }),
                 ),
               }),
             ),
           }),
-        }),
+        ),
       }),
     ),
     kind: Schema.optional(Schema.String),
@@ -15810,32 +15994,34 @@ export const ListResourceV1beta2DeviceClassOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-              }),
+        spec: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
+                    Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                }),
+              ),
             ),
-          ),
-          extendedResourceName: Schema.optional(Schema.String),
-          selectors: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                cel: Schema.optional(
-                  Schema.Struct({
-                    expression: Schema.String,
-                  }),
-                ),
-              }),
+            extendedResourceName: Schema.optional(Schema.String),
+            selectors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  cel: Schema.optional(
+                    Schema.Struct({
+                      expression: Schema.String,
+                    }),
+                  ),
+                }),
+              ),
             ),
-          ),
-        }),
+          }),
+        ),
       }),
     ),
     kind: Schema.optional(Schema.String),
@@ -16190,74 +16376,38 @@ export const ListResourceV1beta2NamespacedResourceClaimOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          devices: Schema.optional(
-            Schema.Struct({
-              config: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    opaque: Schema.optional(
-                      Schema.Struct({
-                        driver: Schema.String,
-                        parameters: Schema.Unknown,
-                      }),
-                    ),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              constraints: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    distinctAttribute: Schema.optional(Schema.String),
-                    matchAttribute: Schema.optional(Schema.String),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              requests: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    exactly: Schema.optional(
-                      Schema.Struct({
-                        adminAccess: Schema.optional(Schema.Boolean),
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    firstAvailable: Schema.optional(
-                      Schema.Array(
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      opaque: Schema.optional(
                         Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
+                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
                           allocationMode: Schema.optional(Schema.String),
                           capacity: Schema.optional(
                             Schema.Struct({
@@ -16268,7 +16418,6 @@ export const ListResourceV1beta2NamespacedResourceClaimOutput =
                           ),
                           count: Schema.optional(Schema.Number),
                           deviceClassName: Schema.String,
-                          name: Schema.String,
                           selectors: Schema.optional(
                             Schema.Array(
                               Schema.Struct({
@@ -16295,14 +16444,55 @@ export const ListResourceV1beta2NamespacedResourceClaimOutput =
                           ),
                         }),
                       ),
-                    ),
-                    name: Schema.String,
-                  }),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      ),
+                      name: Schema.String,
+                    }),
+                  ),
                 ),
-              ),
-            }),
-          ),
-        }),
+              }),
+            ),
+          }),
+        ),
         status: Schema.optional(
           Schema.Struct({
             allocation: Schema.optional(
@@ -16599,169 +16789,180 @@ export const ListResourceV1beta2NamespacedResourceClaimTemplateOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          metadata: Schema.optional(
-            Schema.Struct({
-              annotations: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              creationTimestamp: Schema.optional(Schema.String),
-              deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-              deletionTimestamp: Schema.optional(Schema.String),
-              finalizers: Schema.optional(Schema.Array(Schema.String)),
-              generateName: Schema.optional(Schema.String),
-              generation: Schema.optional(Schema.Number),
-              labels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              managedFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldsType: Schema.optional(Schema.String),
-                    fieldsV1: Schema.optional(Schema.Unknown),
-                    manager: Schema.optional(Schema.String),
-                    operation: Schema.optional(Schema.String),
-                    subresource: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              ownerReferences: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.String,
-                    blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                    controller: Schema.optional(Schema.Boolean),
-                    kind: Schema.String,
-                    name: Schema.String,
-                    uid: Schema.String,
-                  }),
-                ),
-              ),
-              resourceVersion: Schema.optional(Schema.String),
-              selfLink: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          spec: Schema.Struct({
-            devices: Schema.optional(
+        spec: Schema.optional(
+          Schema.Struct({
+            metadata: Schema.optional(
               Schema.Struct({
-                config: Schema.optional(
+                annotations: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                creationTimestamp: Schema.optional(Schema.String),
+                deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+                deletionTimestamp: Schema.optional(Schema.String),
+                finalizers: Schema.optional(Schema.Array(Schema.String)),
+                generateName: Schema.optional(Schema.String),
+                generation: Schema.optional(Schema.Number),
+                labels: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                managedFields: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
-                      opaque: Schema.optional(
+                      apiVersion: Schema.optional(Schema.String),
+                      fieldsType: Schema.optional(Schema.String),
+                      fieldsV1: Schema.optional(Schema.Unknown),
+                      manager: Schema.optional(Schema.String),
+                      operation: Schema.optional(Schema.String),
+                      subresource: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                name: Schema.optional(Schema.String),
+                namespace: Schema.optional(Schema.String),
+                ownerReferences: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      apiVersion: Schema.String,
+                      blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                      controller: Schema.optional(Schema.Boolean),
+                      kind: Schema.String,
+                      name: Schema.String,
+                      uid: Schema.String,
+                    }),
+                  ),
+                ),
+                resourceVersion: Schema.optional(Schema.String),
+                selfLink: Schema.optional(Schema.String),
+                uid: Schema.optional(Schema.String),
+              }),
+            ),
+            spec: Schema.optional(
+              Schema.Struct({
+                devices: Schema.optional(
+                  Schema.Struct({
+                    config: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
-                          driver: Schema.String,
-                          parameters: Schema.Unknown,
+                          opaque: Schema.optional(
+                            Schema.Struct({
+                              driver: Schema.String,
+                              parameters: Schema.Unknown,
+                            }),
+                          ),
+                          requests: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
                         }),
                       ),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                constraints: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      distinctAttribute: Schema.optional(Schema.String),
-                      matchAttribute: Schema.optional(Schema.String),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                requests: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      exactly: Schema.optional(
+                    ),
+                    constraints: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
-                          adminAccess: Schema.optional(Schema.Boolean),
-                          allocationMode: Schema.optional(Schema.String),
-                          capacity: Schema.optional(
+                          distinctAttribute: Schema.optional(Schema.String),
+                          matchAttribute: Schema.optional(Schema.String),
+                          requests: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                    ),
+                    requests: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          exactly: Schema.optional(
                             Schema.Struct({
-                              requests: Schema.optional(
-                                Schema.Record(Schema.String, Schema.String),
+                              adminAccess: Schema.optional(Schema.Boolean),
+                              allocationMode: Schema.optional(Schema.String),
+                              capacity: Schema.optional(
+                                Schema.Struct({
+                                  requests: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              count: Schema.optional(Schema.Number),
+                              deviceClassName: Schema.String,
+                              selectors: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    cel: Schema.optional(
+                                      Schema.Struct({
+                                        expression: Schema.String,
+                                      }),
+                                    ),
+                                  }),
+                                ),
+                              ),
+                              tolerations: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    effect: Schema.optional(Schema.String),
+                                    key: Schema.optional(Schema.String),
+                                    operator: Schema.optional(Schema.String),
+                                    tolerationSeconds: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
                               ),
                             }),
                           ),
-                          count: Schema.optional(Schema.Number),
-                          deviceClassName: Schema.String,
-                          selectors: Schema.optional(
+                          firstAvailable: Schema.optional(
                             Schema.Array(
                               Schema.Struct({
-                                cel: Schema.optional(
+                                allocationMode: Schema.optional(Schema.String),
+                                capacity: Schema.optional(
                                   Schema.Struct({
-                                    expression: Schema.String,
+                                    requests: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
                                   }),
                                 ),
-                              }),
-                            ),
-                          ),
-                          tolerations: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                effect: Schema.optional(Schema.String),
-                                key: Schema.optional(Schema.String),
-                                operator: Schema.optional(Schema.String),
-                                tolerationSeconds: Schema.optional(
-                                  Schema.Number,
-                                ),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                      firstAvailable: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            allocationMode: Schema.optional(Schema.String),
-                            capacity: Schema.optional(
-                              Schema.Struct({
-                                requests: Schema.optional(
-                                  Schema.Record(Schema.String, Schema.String),
-                                ),
-                              }),
-                            ),
-                            count: Schema.optional(Schema.Number),
-                            deviceClassName: Schema.String,
-                            name: Schema.String,
-                            selectors: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  cel: Schema.optional(
+                                count: Schema.optional(Schema.Number),
+                                deviceClassName: Schema.String,
+                                name: Schema.String,
+                                selectors: Schema.optional(
+                                  Schema.Array(
                                     Schema.Struct({
-                                      expression: Schema.String,
+                                      cel: Schema.optional(
+                                        Schema.Struct({
+                                          expression: Schema.String,
+                                        }),
+                                      ),
                                     }),
                                   ),
-                                }),
-                              ),
-                            ),
-                            tolerations: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  effect: Schema.optional(Schema.String),
-                                  key: Schema.optional(Schema.String),
-                                  operator: Schema.optional(Schema.String),
-                                  tolerationSeconds: Schema.optional(
-                                    Schema.Number,
+                                ),
+                                tolerations: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      effect: Schema.optional(Schema.String),
+                                      key: Schema.optional(Schema.String),
+                                      operator: Schema.optional(Schema.String),
+                                      tolerationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      value: Schema.optional(Schema.String),
+                                    }),
                                   ),
-                                  value: Schema.optional(Schema.String),
-                                }),
-                              ),
+                                ),
+                              }),
                             ),
-                          }),
-                        ),
+                          ),
+                          name: Schema.String,
+                        }),
                       ),
-                      name: Schema.String,
-                    }),
-                  ),
+                    ),
+                  }),
                 ),
               }),
             ),
           }),
-        }),
+        ),
       }),
     ),
     kind: Schema.optional(Schema.String),
@@ -16924,74 +17125,38 @@ export const ListResourceV1beta2ResourceClaimForAllNamespacesOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          devices: Schema.optional(
-            Schema.Struct({
-              config: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    opaque: Schema.optional(
-                      Schema.Struct({
-                        driver: Schema.String,
-                        parameters: Schema.Unknown,
-                      }),
-                    ),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              constraints: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    distinctAttribute: Schema.optional(Schema.String),
-                    matchAttribute: Schema.optional(Schema.String),
-                    requests: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              requests: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    exactly: Schema.optional(
-                      Schema.Struct({
-                        adminAccess: Schema.optional(Schema.Boolean),
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    firstAvailable: Schema.optional(
-                      Schema.Array(
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      opaque: Schema.optional(
                         Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
+                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
                           allocationMode: Schema.optional(Schema.String),
                           capacity: Schema.optional(
                             Schema.Struct({
@@ -17002,7 +17167,6 @@ export const ListResourceV1beta2ResourceClaimForAllNamespacesOutput =
                           ),
                           count: Schema.optional(Schema.Number),
                           deviceClassName: Schema.String,
-                          name: Schema.String,
                           selectors: Schema.optional(
                             Schema.Array(
                               Schema.Struct({
@@ -17029,14 +17193,55 @@ export const ListResourceV1beta2ResourceClaimForAllNamespacesOutput =
                           ),
                         }),
                       ),
-                    ),
-                    name: Schema.String,
-                  }),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      ),
+                      name: Schema.String,
+                    }),
+                  ),
                 ),
-              ),
-            }),
-          ),
-        }),
+              }),
+            ),
+          }),
+        ),
         status: Schema.optional(
           Schema.Struct({
             allocation: Schema.optional(
@@ -17331,169 +17536,180 @@ export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput =
             uid: Schema.optional(Schema.String),
           }),
         ),
-        spec: Schema.Struct({
-          metadata: Schema.optional(
-            Schema.Struct({
-              annotations: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              creationTimestamp: Schema.optional(Schema.String),
-              deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-              deletionTimestamp: Schema.optional(Schema.String),
-              finalizers: Schema.optional(Schema.Array(Schema.String)),
-              generateName: Schema.optional(Schema.String),
-              generation: Schema.optional(Schema.Number),
-              labels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              managedFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldsType: Schema.optional(Schema.String),
-                    fieldsV1: Schema.optional(Schema.Unknown),
-                    manager: Schema.optional(Schema.String),
-                    operation: Schema.optional(Schema.String),
-                    subresource: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              ownerReferences: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiVersion: Schema.String,
-                    blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                    controller: Schema.optional(Schema.Boolean),
-                    kind: Schema.String,
-                    name: Schema.String,
-                    uid: Schema.String,
-                  }),
-                ),
-              ),
-              resourceVersion: Schema.optional(Schema.String),
-              selfLink: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          spec: Schema.Struct({
-            devices: Schema.optional(
+        spec: Schema.optional(
+          Schema.Struct({
+            metadata: Schema.optional(
               Schema.Struct({
-                config: Schema.optional(
+                annotations: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                creationTimestamp: Schema.optional(Schema.String),
+                deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+                deletionTimestamp: Schema.optional(Schema.String),
+                finalizers: Schema.optional(Schema.Array(Schema.String)),
+                generateName: Schema.optional(Schema.String),
+                generation: Schema.optional(Schema.Number),
+                labels: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                managedFields: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
-                      opaque: Schema.optional(
+                      apiVersion: Schema.optional(Schema.String),
+                      fieldsType: Schema.optional(Schema.String),
+                      fieldsV1: Schema.optional(Schema.Unknown),
+                      manager: Schema.optional(Schema.String),
+                      operation: Schema.optional(Schema.String),
+                      subresource: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                name: Schema.optional(Schema.String),
+                namespace: Schema.optional(Schema.String),
+                ownerReferences: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      apiVersion: Schema.String,
+                      blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                      controller: Schema.optional(Schema.Boolean),
+                      kind: Schema.String,
+                      name: Schema.String,
+                      uid: Schema.String,
+                    }),
+                  ),
+                ),
+                resourceVersion: Schema.optional(Schema.String),
+                selfLink: Schema.optional(Schema.String),
+                uid: Schema.optional(Schema.String),
+              }),
+            ),
+            spec: Schema.optional(
+              Schema.Struct({
+                devices: Schema.optional(
+                  Schema.Struct({
+                    config: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
-                          driver: Schema.String,
-                          parameters: Schema.Unknown,
+                          opaque: Schema.optional(
+                            Schema.Struct({
+                              driver: Schema.String,
+                              parameters: Schema.Unknown,
+                            }),
+                          ),
+                          requests: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
                         }),
                       ),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                constraints: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      distinctAttribute: Schema.optional(Schema.String),
-                      matchAttribute: Schema.optional(Schema.String),
-                      requests: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                requests: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      exactly: Schema.optional(
+                    ),
+                    constraints: Schema.optional(
+                      Schema.Array(
                         Schema.Struct({
-                          adminAccess: Schema.optional(Schema.Boolean),
-                          allocationMode: Schema.optional(Schema.String),
-                          capacity: Schema.optional(
+                          distinctAttribute: Schema.optional(Schema.String),
+                          matchAttribute: Schema.optional(Schema.String),
+                          requests: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                    ),
+                    requests: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          exactly: Schema.optional(
                             Schema.Struct({
-                              requests: Schema.optional(
-                                Schema.Record(Schema.String, Schema.String),
+                              adminAccess: Schema.optional(Schema.Boolean),
+                              allocationMode: Schema.optional(Schema.String),
+                              capacity: Schema.optional(
+                                Schema.Struct({
+                                  requests: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              count: Schema.optional(Schema.Number),
+                              deviceClassName: Schema.String,
+                              selectors: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    cel: Schema.optional(
+                                      Schema.Struct({
+                                        expression: Schema.String,
+                                      }),
+                                    ),
+                                  }),
+                                ),
+                              ),
+                              tolerations: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    effect: Schema.optional(Schema.String),
+                                    key: Schema.optional(Schema.String),
+                                    operator: Schema.optional(Schema.String),
+                                    tolerationSeconds: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
                               ),
                             }),
                           ),
-                          count: Schema.optional(Schema.Number),
-                          deviceClassName: Schema.String,
-                          selectors: Schema.optional(
+                          firstAvailable: Schema.optional(
                             Schema.Array(
                               Schema.Struct({
-                                cel: Schema.optional(
+                                allocationMode: Schema.optional(Schema.String),
+                                capacity: Schema.optional(
                                   Schema.Struct({
-                                    expression: Schema.String,
+                                    requests: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
                                   }),
                                 ),
-                              }),
-                            ),
-                          ),
-                          tolerations: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                effect: Schema.optional(Schema.String),
-                                key: Schema.optional(Schema.String),
-                                operator: Schema.optional(Schema.String),
-                                tolerationSeconds: Schema.optional(
-                                  Schema.Number,
-                                ),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                      firstAvailable: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            allocationMode: Schema.optional(Schema.String),
-                            capacity: Schema.optional(
-                              Schema.Struct({
-                                requests: Schema.optional(
-                                  Schema.Record(Schema.String, Schema.String),
-                                ),
-                              }),
-                            ),
-                            count: Schema.optional(Schema.Number),
-                            deviceClassName: Schema.String,
-                            name: Schema.String,
-                            selectors: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  cel: Schema.optional(
+                                count: Schema.optional(Schema.Number),
+                                deviceClassName: Schema.String,
+                                name: Schema.String,
+                                selectors: Schema.optional(
+                                  Schema.Array(
                                     Schema.Struct({
-                                      expression: Schema.String,
+                                      cel: Schema.optional(
+                                        Schema.Struct({
+                                          expression: Schema.String,
+                                        }),
+                                      ),
                                     }),
                                   ),
-                                }),
-                              ),
-                            ),
-                            tolerations: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  effect: Schema.optional(Schema.String),
-                                  key: Schema.optional(Schema.String),
-                                  operator: Schema.optional(Schema.String),
-                                  tolerationSeconds: Schema.optional(
-                                    Schema.Number,
+                                ),
+                                tolerations: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      effect: Schema.optional(Schema.String),
+                                      key: Schema.optional(Schema.String),
+                                      operator: Schema.optional(Schema.String),
+                                      tolerationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      value: Schema.optional(Schema.String),
+                                    }),
                                   ),
-                                  value: Schema.optional(Schema.String),
-                                }),
-                              ),
+                                ),
+                              }),
                             ),
-                          }),
-                        ),
+                          ),
+                          name: Schema.String,
+                        }),
                       ),
-                      name: Schema.String,
-                    }),
-                  ),
+                    ),
+                  }),
                 ),
               }),
             ),
           }),
-        }),
+        ),
       }),
     ),
     kind: Schema.optional(Schema.String),
@@ -17971,32 +18187,34 @@ export const PatchResourceV1DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type PatchResourceV1DeviceClassOutput =
   typeof PatchResourceV1DeviceClassOutput.Type;
@@ -18087,74 +18305,38 @@ export const PatchResourceV1NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -18165,7 +18347,6 @@ export const PatchResourceV1NamespacedResourceClaimOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -18190,14 +18371,53 @@ export const PatchResourceV1NamespacedResourceClaimOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -18413,74 +18633,38 @@ export const PatchResourceV1NamespacedResourceClaimStatusOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -18491,7 +18675,6 @@ export const PatchResourceV1NamespacedResourceClaimStatusOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -18516,14 +18699,53 @@ export const PatchResourceV1NamespacedResourceClaimStatusOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -18739,163 +18961,173 @@ export const PatchResourceV1NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type PatchResourceV1NamespacedResourceClaimTemplateOutput =
   typeof PatchResourceV1NamespacedResourceClaimTemplateOutput.Type;
@@ -19712,32 +19944,34 @@ export const PatchResourceV1beta1DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type PatchResourceV1beta1DeviceClassOutput =
   typeof PatchResourceV1beta1DeviceClassOutput.Type;
@@ -19827,113 +20061,115 @@ export const PatchResourceV1beta1NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -20149,113 +20385,115 @@ export const PatchResourceV1beta1NamespacedResourceClaimStatusOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -20471,159 +20709,167 @@ export const PatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  adminAccess: Schema.optional(Schema.Boolean),
-                  allocationMode: Schema.optional(Schema.String),
-                  capacity: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      requests: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
+                      opaque: Schema.optional(
+                        Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
                       ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  count: Schema.optional(Schema.Number),
-                  deviceClassName: Schema.optional(Schema.String),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
+                      allocationMode: Schema.optional(Schema.String),
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      count: Schema.optional(Schema.Number),
+                      deviceClassName: Schema.optional(Schema.String),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
                             ),
                           }),
                         ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  name: Schema.String,
-                  selectors: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        cel: Schema.optional(
+                      ),
+                      name: Schema.String,
+                      selectors: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            expression: Schema.String,
+                            cel: Schema.optional(
+                              Schema.Struct({
+                                expression: Schema.String,
+                              }),
+                            ),
                           }),
                         ),
-                      }),
-                    ),
+                      ),
+                      tolerations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            effect: Schema.optional(Schema.String),
+                            key: Schema.optional(Schema.String),
+                            operator: Schema.optional(Schema.String),
+                            tolerationSeconds: Schema.optional(Schema.Number),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
                   ),
-                  tolerations: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        effect: Schema.optional(Schema.String),
-                        key: Schema.optional(Schema.String),
-                        operator: Schema.optional(Schema.String),
-                        tolerationSeconds: Schema.optional(Schema.Number),
-                        value: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type PatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
   typeof PatchResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
@@ -20970,32 +21216,34 @@ export const PatchResourceV1beta2DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type PatchResourceV1beta2DeviceClassOutput =
   typeof PatchResourceV1beta2DeviceClassOutput.Type;
@@ -21323,74 +21571,38 @@ export const PatchResourceV1beta2NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -21401,7 +21613,6 @@ export const PatchResourceV1beta2NamespacedResourceClaimOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -21426,14 +21637,53 @@ export const PatchResourceV1beta2NamespacedResourceClaimOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -21649,74 +21899,38 @@ export const PatchResourceV1beta2NamespacedResourceClaimStatusOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -21727,7 +21941,6 @@ export const PatchResourceV1beta2NamespacedResourceClaimStatusOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -21752,14 +21965,53 @@ export const PatchResourceV1beta2NamespacedResourceClaimStatusOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -21975,163 +22227,173 @@ export const PatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type PatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
   typeof PatchResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
@@ -22464,32 +22726,34 @@ export const ReadResourceV1DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type ReadResourceV1DeviceClassOutput =
   typeof ReadResourceV1DeviceClassOutput.Type;
@@ -22572,74 +22836,38 @@ export const ReadResourceV1NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -22650,7 +22878,6 @@ export const ReadResourceV1NamespacedResourceClaimOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -22675,14 +22902,53 @@ export const ReadResourceV1NamespacedResourceClaimOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -22890,74 +23156,38 @@ export const ReadResourceV1NamespacedResourceClaimStatusOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -22968,7 +23198,6 @@ export const ReadResourceV1NamespacedResourceClaimStatusOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -22993,14 +23222,53 @@ export const ReadResourceV1NamespacedResourceClaimStatusOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -23208,163 +23476,173 @@ export const ReadResourceV1NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type ReadResourceV1NamespacedResourceClaimTemplateOutput =
   typeof ReadResourceV1NamespacedResourceClaimTemplateOutput.Type;
@@ -24134,32 +24412,34 @@ export const ReadResourceV1beta1DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type ReadResourceV1beta1DeviceClassOutput =
   typeof ReadResourceV1beta1DeviceClassOutput.Type;
@@ -24241,113 +24521,115 @@ export const ReadResourceV1beta1NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -24555,113 +24837,115 @@ export const ReadResourceV1beta1NamespacedResourceClaimStatusOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -24869,159 +25153,167 @@ export const ReadResourceV1beta1NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  adminAccess: Schema.optional(Schema.Boolean),
-                  allocationMode: Schema.optional(Schema.String),
-                  capacity: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      requests: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
+                      opaque: Schema.optional(
+                        Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
                       ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  count: Schema.optional(Schema.Number),
-                  deviceClassName: Schema.optional(Schema.String),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
+                      allocationMode: Schema.optional(Schema.String),
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      count: Schema.optional(Schema.Number),
+                      deviceClassName: Schema.optional(Schema.String),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
                             ),
                           }),
                         ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  name: Schema.String,
-                  selectors: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        cel: Schema.optional(
+                      ),
+                      name: Schema.String,
+                      selectors: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            expression: Schema.String,
+                            cel: Schema.optional(
+                              Schema.Struct({
+                                expression: Schema.String,
+                              }),
+                            ),
                           }),
                         ),
-                      }),
-                    ),
+                      ),
+                      tolerations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            effect: Schema.optional(Schema.String),
+                            key: Schema.optional(Schema.String),
+                            operator: Schema.optional(Schema.String),
+                            tolerationSeconds: Schema.optional(Schema.Number),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
                   ),
-                  tolerations: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        effect: Schema.optional(Schema.String),
-                        key: Schema.optional(Schema.String),
-                        operator: Schema.optional(Schema.String),
-                        tolerationSeconds: Schema.optional(Schema.Number),
-                        value: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type ReadResourceV1beta1NamespacedResourceClaimTemplateOutput =
   typeof ReadResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
@@ -25352,32 +25644,34 @@ export const ReadResourceV1beta2DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type ReadResourceV1beta2DeviceClassOutput =
   typeof ReadResourceV1beta2DeviceClassOutput.Type;
@@ -25681,74 +25975,38 @@ export const ReadResourceV1beta2NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -25759,7 +26017,6 @@ export const ReadResourceV1beta2NamespacedResourceClaimOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -25784,14 +26041,53 @@ export const ReadResourceV1beta2NamespacedResourceClaimOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -25999,74 +26295,38 @@ export const ReadResourceV1beta2NamespacedResourceClaimStatusOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -26077,7 +26337,6 @@ export const ReadResourceV1beta2NamespacedResourceClaimStatusOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -26102,14 +26361,53 @@ export const ReadResourceV1beta2NamespacedResourceClaimStatusOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -26317,163 +26615,173 @@ export const ReadResourceV1beta2NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type ReadResourceV1beta2NamespacedResourceClaimTemplateOutput =
   typeof ReadResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
@@ -26785,32 +27093,34 @@ export const ReplaceResourceV1DeviceClassInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -26869,32 +27179,34 @@ export const ReplaceResourceV1DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type ReplaceResourceV1DeviceClassOutput =
   typeof ReplaceResourceV1DeviceClassOutput.Type;
@@ -26970,74 +27282,38 @@ export const ReplaceResourceV1NamespacedResourceClaimInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -27048,7 +27324,6 @@ export const ReplaceResourceV1NamespacedResourceClaimInput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -27073,14 +27348,53 @@ export const ReplaceResourceV1NamespacedResourceClaimInput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -27264,74 +27578,38 @@ export const ReplaceResourceV1NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -27342,7 +27620,6 @@ export const ReplaceResourceV1NamespacedResourceClaimOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -27367,14 +27644,53 @@ export const ReplaceResourceV1NamespacedResourceClaimOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -27576,74 +27892,38 @@ export const ReplaceResourceV1NamespacedResourceClaimStatusInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -27654,7 +27934,6 @@ export const ReplaceResourceV1NamespacedResourceClaimStatusInput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -27679,14 +27958,53 @@ export const ReplaceResourceV1NamespacedResourceClaimStatusInput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -27870,74 +28188,38 @@ export const ReplaceResourceV1NamespacedResourceClaimStatusOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -27948,7 +28230,6 @@ export const ReplaceResourceV1NamespacedResourceClaimStatusOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -27973,14 +28254,53 @@ export const ReplaceResourceV1NamespacedResourceClaimStatusOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -28182,163 +28502,173 @@ export const ReplaceResourceV1NamespacedResourceClaimTemplateInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -28397,163 +28727,173 @@ export const ReplaceResourceV1NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type ReplaceResourceV1NamespacedResourceClaimTemplateOutput =
   typeof ReplaceResourceV1NamespacedResourceClaimTemplateOutput.Type;
@@ -29865,32 +30205,34 @@ export const ReplaceResourceV1beta1DeviceClassInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -29949,32 +30291,34 @@ export const ReplaceResourceV1beta1DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type ReplaceResourceV1beta1DeviceClassOutput =
   typeof ReplaceResourceV1beta1DeviceClassOutput.Type;
@@ -30050,113 +30394,115 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -30340,113 +30686,115 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -30648,113 +30996,115 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimStatusInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -30938,113 +31288,115 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                adminAccess: Schema.optional(Schema.Boolean),
-                allocationMode: Schema.optional(Schema.String),
-                capacity: Schema.optional(
-                  Schema.Struct({
-                    requests: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                count: Schema.optional(Schema.Number),
-                deviceClassName: Schema.optional(Schema.String),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminAccess: Schema.optional(Schema.Boolean),
+                  allocationMode: Schema.optional(Schema.String),
+                  capacity: Schema.optional(
+                    Schema.Struct({
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      name: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
+                    }),
+                  ),
+                  count: Schema.optional(Schema.Number),
+                  deviceClassName: Schema.optional(Schema.String),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
                           Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
                             ),
                           }),
                         ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                  selectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cel: Schema.optional(
                           Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
+                            expression: Schema.String,
                           }),
                         ),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                name: Schema.String,
-                selectors: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      cel: Schema.optional(
-                        Schema.Struct({
-                          expression: Schema.String,
-                        }),
-                      ),
-                    }),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
                   ),
-                ),
-                tolerations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      effect: Schema.optional(Schema.String),
-                      key: Schema.optional(Schema.String),
-                      operator: Schema.optional(Schema.String),
-                      tolerationSeconds: Schema.optional(Schema.Number),
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -31246,159 +31598,167 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  adminAccess: Schema.optional(Schema.Boolean),
-                  allocationMode: Schema.optional(Schema.String),
-                  capacity: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      requests: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
+                      opaque: Schema.optional(
+                        Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
                       ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  count: Schema.optional(Schema.Number),
-                  deviceClassName: Schema.optional(Schema.String),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
+                      allocationMode: Schema.optional(Schema.String),
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      count: Schema.optional(Schema.Number),
+                      deviceClassName: Schema.optional(Schema.String),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
                             ),
                           }),
                         ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  name: Schema.String,
-                  selectors: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        cel: Schema.optional(
+                      ),
+                      name: Schema.String,
+                      selectors: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            expression: Schema.String,
+                            cel: Schema.optional(
+                              Schema.Struct({
+                                expression: Schema.String,
+                              }),
+                            ),
                           }),
                         ),
-                      }),
-                    ),
+                      ),
+                      tolerations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            effect: Schema.optional(Schema.String),
+                            key: Schema.optional(Schema.String),
+                            operator: Schema.optional(Schema.String),
+                            tolerationSeconds: Schema.optional(Schema.Number),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
                   ),
-                  tolerations: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        effect: Schema.optional(Schema.String),
-                        key: Schema.optional(Schema.String),
-                        operator: Schema.optional(Schema.String),
-                        tolerationSeconds: Schema.optional(Schema.Number),
-                        value: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -31457,159 +31817,167 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  adminAccess: Schema.optional(Schema.Boolean),
-                  allocationMode: Schema.optional(Schema.String),
-                  capacity: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      requests: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
+                      opaque: Schema.optional(
+                        Schema.Struct({
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
+                        }),
                       ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  count: Schema.optional(Schema.Number),
-                  deviceClassName: Schema.optional(Schema.String),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
+                      allocationMode: Schema.optional(Schema.String),
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      count: Schema.optional(Schema.Number),
+                      deviceClassName: Schema.optional(Schema.String),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
                             ),
                           }),
                         ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  name: Schema.String,
-                  selectors: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        cel: Schema.optional(
+                      ),
+                      name: Schema.String,
+                      selectors: Schema.optional(
+                        Schema.Array(
                           Schema.Struct({
-                            expression: Schema.String,
+                            cel: Schema.optional(
+                              Schema.Struct({
+                                expression: Schema.String,
+                              }),
+                            ),
                           }),
                         ),
-                      }),
-                    ),
+                      ),
+                      tolerations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            effect: Schema.optional(Schema.String),
+                            key: Schema.optional(Schema.String),
+                            operator: Schema.optional(Schema.String),
+                            tolerationSeconds: Schema.optional(Schema.Number),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
                   ),
-                  tolerations: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        effect: Schema.optional(Schema.String),
-                        key: Schema.optional(Schema.String),
-                        operator: Schema.optional(Schema.String),
-                        tolerationSeconds: Schema.optional(Schema.Number),
-                        value: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput =
   typeof ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
@@ -32155,32 +32523,34 @@ export const ReplaceResourceV1beta2DeviceClassInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -32239,32 +32609,34 @@ export const ReplaceResourceV1beta2DeviceClassOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      config: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            opaque: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                parameters: Schema.Unknown,
-              }),
-            ),
-          }),
+    spec: Schema.optional(
+      Schema.Struct({
+        config: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              opaque: Schema.optional(
+                Schema.Struct({
+                  driver: Schema.String,
+                  parameters: Schema.Unknown,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-      extendedResourceName: Schema.optional(Schema.String),
-      selectors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cel: Schema.optional(
-              Schema.Struct({
-                expression: Schema.String,
-              }),
-            ),
-          }),
+        extendedResourceName: Schema.optional(Schema.String),
+        selectors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              cel: Schema.optional(
+                Schema.Struct({
+                  expression: Schema.String,
+                }),
+              ),
+            }),
+          ),
         ),
-      ),
-    }),
+      }),
+    ),
   });
 export type ReplaceResourceV1beta2DeviceClassOutput =
   typeof ReplaceResourceV1beta2DeviceClassOutput.Type;
@@ -32728,74 +33100,38 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -32806,7 +33142,6 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimInput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -32831,14 +33166,53 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimInput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -33022,74 +33396,38 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -33100,7 +33438,6 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -33125,14 +33462,53 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -33334,74 +33710,38 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimStatusInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -33412,7 +33752,6 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimStatusInput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -33437,14 +33776,53 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimStatusInput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -33628,74 +34006,38 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      devices: Schema.optional(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                opaque: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    parameters: Schema.Unknown,
-                  }),
-                ),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          constraints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                distinctAttribute: Schema.optional(Schema.String),
-                matchAttribute: Schema.optional(Schema.String),
-                requests: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          ),
-          requests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                exactly: Schema.optional(
-                  Schema.Struct({
-                    adminAccess: Schema.optional(Schema.Boolean),
-                    allocationMode: Schema.optional(Schema.String),
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        requests: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    count: Schema.optional(Schema.Number),
-                    deviceClassName: Schema.String,
-                    selectors: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          cel: Schema.optional(
-                            Schema.Struct({
-                              expression: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                    ),
-                    tolerations: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          effect: Schema.optional(Schema.String),
-                          key: Schema.optional(Schema.String),
-                          operator: Schema.optional(Schema.String),
-                          tolerationSeconds: Schema.optional(Schema.Number),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                firstAvailable: Schema.optional(
-                  Schema.Array(
+    spec: Schema.optional(
+      Schema.Struct({
+        devices: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  opaque: Schema.optional(
                     Schema.Struct({
+                      driver: Schema.String,
+                      parameters: Schema.Unknown,
+                    }),
+                  ),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            constraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  distinctAttribute: Schema.optional(Schema.String),
+                  matchAttribute: Schema.optional(Schema.String),
+                  requests: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            requests: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  exactly: Schema.optional(
+                    Schema.Struct({
+                      adminAccess: Schema.optional(Schema.Boolean),
                       allocationMode: Schema.optional(Schema.String),
                       capacity: Schema.optional(
                         Schema.Struct({
@@ -33706,7 +34048,6 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput =
                       ),
                       count: Schema.optional(Schema.Number),
                       deviceClassName: Schema.String,
-                      name: Schema.String,
                       selectors: Schema.optional(
                         Schema.Array(
                           Schema.Struct({
@@ -33731,14 +34072,53 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput =
                       ),
                     }),
                   ),
-                ),
-                name: Schema.String,
-              }),
+                  firstAvailable: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        allocationMode: Schema.optional(Schema.String),
+                        capacity: Schema.optional(
+                          Schema.Struct({
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        count: Schema.optional(Schema.Number),
+                        deviceClassName: Schema.String,
+                        name: Schema.String,
+                        selectors: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              cel: Schema.optional(
+                                Schema.Struct({
+                                  expression: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        tolerations: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              effect: Schema.optional(Schema.String),
+                              key: Schema.optional(Schema.String),
+                              operator: Schema.optional(Schema.String),
+                              tolerationSeconds: Schema.optional(Schema.Number),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.String,
+                }),
+              ),
             ),
-          ),
-        }),
-      ),
-    }),
+          }),
+        ),
+      }),
+    ),
     status: Schema.optional(
       Schema.Struct({
         allocation: Schema.optional(
@@ -33940,163 +34320,173 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -34155,163 +34545,173 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput =
         uid: Schema.optional(Schema.String),
       }),
     ),
-    spec: Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
-      spec: Schema.Struct({
-        devices: Schema.optional(
+    spec: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
           Schema.Struct({
-            config: Schema.optional(
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  opaque: Schema.optional(
-                    Schema.Struct({
-                      driver: Schema.String,
-                      parameters: Schema.Unknown,
-                    }),
-                  ),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            constraints: Schema.optional(
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  distinctAttribute: Schema.optional(Schema.String),
-                  matchAttribute: Schema.optional(Schema.String),
-                  requests: Schema.optional(Schema.Array(Schema.String)),
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
                 }),
               ),
             ),
-            requests: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  exactly: Schema.optional(
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            devices: Schema.optional(
+              Schema.Struct({
+                config: Schema.optional(
+                  Schema.Array(
                     Schema.Struct({
-                      adminAccess: Schema.optional(Schema.Boolean),
-                      allocationMode: Schema.optional(Schema.String),
-                      capacity: Schema.optional(
+                      opaque: Schema.optional(
                         Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
+                          driver: Schema.String,
+                          parameters: Schema.Unknown,
                         }),
                       ),
-                      count: Schema.optional(Schema.Number),
-                      deviceClassName: Schema.String,
-                      selectors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            cel: Schema.optional(
-                              Schema.Struct({
-                                expression: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      tolerations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            effect: Schema.optional(Schema.String),
-                            key: Schema.optional(Schema.String),
-                            operator: Schema.optional(Schema.String),
-                            tolerationSeconds: Schema.optional(Schema.Number),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
-                  firstAvailable: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        allocationMode: Schema.optional(Schema.String),
-                        capacity: Schema.optional(
-                          Schema.Struct({
-                            requests: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        count: Schema.optional(Schema.Number),
-                        deviceClassName: Schema.String,
-                        name: Schema.String,
-                        selectors: Schema.optional(
-                          Schema.Array(
+                ),
+                constraints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      distinctAttribute: Schema.optional(Schema.String),
+                      matchAttribute: Schema.optional(Schema.String),
+                      requests: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                requests: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      exactly: Schema.optional(
+                        Schema.Struct({
+                          adminAccess: Schema.optional(Schema.Boolean),
+                          allocationMode: Schema.optional(Schema.String),
+                          capacity: Schema.optional(
                             Schema.Struct({
-                              cel: Schema.optional(
-                                Schema.Struct({
-                                  expression: Schema.String,
-                                }),
+                              requests: Schema.optional(
+                                Schema.Record(Schema.String, Schema.String),
                               ),
                             }),
                           ),
-                        ),
-                        tolerations: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              effect: Schema.optional(Schema.String),
-                              key: Schema.optional(Schema.String),
-                              operator: Schema.optional(Schema.String),
-                              tolerationSeconds: Schema.optional(Schema.Number),
-                              value: Schema.optional(Schema.String),
-                            }),
+                          count: Schema.optional(Schema.Number),
+                          deviceClassName: Schema.String,
+                          selectors: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                cel: Schema.optional(
+                                  Schema.Struct({
+                                    expression: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
                           ),
+                          tolerations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                effect: Schema.optional(Schema.String),
+                                key: Schema.optional(Schema.String),
+                                operator: Schema.optional(Schema.String),
+                                tolerationSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      firstAvailable: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            allocationMode: Schema.optional(Schema.String),
+                            capacity: Schema.optional(
+                              Schema.Struct({
+                                requests: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                              }),
+                            ),
+                            count: Schema.optional(Schema.Number),
+                            deviceClassName: Schema.String,
+                            name: Schema.String,
+                            selectors: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  cel: Schema.optional(
+                                    Schema.Struct({
+                                      expression: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            tolerations: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  effect: Schema.optional(Schema.String),
+                                  key: Schema.optional(Schema.String),
+                                  operator: Schema.optional(Schema.String),
+                                  tolerationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
                         ),
-                      }),
-                    ),
+                      ),
+                      name: Schema.String,
+                    }),
                   ),
-                  name: Schema.String,
-                }),
-              ),
+                ),
+              }),
             ),
           }),
         ),
       }),
-    }),
+    ),
   });
 export type ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput =
   typeof ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;

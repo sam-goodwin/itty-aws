@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingGroupingRulesRetrieveInput =
@@ -11,7 +10,7 @@ export const ErrorTrackingGroupingRulesRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/grouping_rules/{id}/",
+      path: "/api/projects/{project_id}/error_tracking/grouping_rules/{id}/",
     }),
   );
 export type ErrorTrackingGroupingRulesRetrieveInput =
@@ -35,7 +34,7 @@ export const ErrorTrackingGroupingRulesRetrieveOutput =
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
     order_key: Schema.optional(Schema.Number),
-    disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    disabled_data: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
   });
@@ -45,12 +44,10 @@ export type ErrorTrackingGroupingRulesRetrieveOutput =
 // The operation
 /**
  *
- * @param id - A UUID string identifying this error tracking grouping rule.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingGroupingRulesRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingGroupingRulesRetrieveInput,
     outputSchema: ErrorTrackingGroupingRulesRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

@@ -97,6 +97,7 @@ export * from "./cancelDeployRequest.ts";
 export * from "./completeErroredDeploy.ts";
 export * from "./queueDeployRequest.ts";
 export * from "./getDeployment.ts";
+export * from "./forceCutoverDeployRequest.ts";
 export * from "./listDeployOperations.ts";
 export * from "./completeRevert.ts";
 export * from "./listDeployRequestReviews.ts";

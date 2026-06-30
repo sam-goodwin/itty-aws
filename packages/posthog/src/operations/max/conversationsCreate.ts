@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsCreateInput =
@@ -29,14 +28,16 @@ export const ConversationsCreateInput =
         "flags",
         "llm_analytics",
         "sandbox",
+        "user_interview",
+        "customer_analytics",
       ]),
     ),
     is_sandbox: Schema.optional(Schema.Boolean),
-    resume_payload: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    resume_payload: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/conversations/",
+      path: "/api/projects/{project_id}/conversations/",
     }),
   );
 export type ConversationsCreateInput = typeof ConversationsCreateInput.Type;
@@ -66,10 +67,12 @@ export const ConversationsCreateOutput =
         "flags",
         "llm_analytics",
         "sandbox",
+        "user_interview",
+        "customer_analytics",
       ]),
     ),
     is_sandbox: Schema.optional(Schema.Boolean),
-    resume_payload: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    resume_payload: Schema.optional(Schema.Unknown),
   });
 export type ConversationsCreateOutput = typeof ConversationsCreateOutput.Type;
 
@@ -84,5 +87,4 @@ export type ConversationsCreateOutput = typeof ConversationsCreateOutput.Type;
 export const conversationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConversationsCreateInput,
   outputSchema: ConversationsCreateOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

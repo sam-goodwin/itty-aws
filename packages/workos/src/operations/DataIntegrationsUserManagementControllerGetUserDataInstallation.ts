@@ -26,6 +26,8 @@ export const DataIntegrationsUserManagementControllerGetUserDataInstallationOutp
     user_id: Schema.optional(Schema.NullOr(Schema.String)),
     organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     scopes: Schema.optional(Schema.Array(Schema.String)),
+    auth_method: Schema.optional(Schema.Literals(["oauth", "api_key"])),
+    api_key_last_4: Schema.optional(Schema.NullOr(Schema.String)),
     state: Schema.optional(
       Schema.Literals(["connected", "needs_reauthorization", "disconnected"]),
     ),

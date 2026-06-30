@@ -1,8 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare R2 Object API
+  title: Cloudflare R2 API
   version: 0.0.0
-  description: R2 object operations not exposed in the Cloudflare TypeScript SDK.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: r2

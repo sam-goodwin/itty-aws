@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const GetTerminalConfigurationsInput =
@@ -302,7 +302,27 @@ export const GetTerminalConfigurationsOutput =
             ),
           }),
         ),
+        verifone_m425: Schema.optional(
+          Schema.Struct({
+            splashscreen: Schema.optional(Schema.Unknown),
+          }),
+        ),
         verifone_p400: Schema.optional(
+          Schema.Struct({
+            splashscreen: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        verifone_p630: Schema.optional(
+          Schema.Struct({
+            splashscreen: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        verifone_ux700: Schema.optional(
+          Schema.Struct({
+            splashscreen: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        verifone_v660p: Schema.optional(
           Schema.Struct({
             splashscreen: Schema.optional(Schema.Unknown),
           }),
@@ -312,7 +332,7 @@ export const GetTerminalConfigurationsOutput =
             enterprise_eap_peap: Schema.optional(
               Schema.Struct({
                 ca_certificate_file: Schema.optional(Schema.String),
-                password: SensitiveString,
+                password: SensitiveOutputString,
                 ssid: Schema.String,
                 username: Schema.String,
               }),
@@ -322,13 +342,15 @@ export const GetTerminalConfigurationsOutput =
                 ca_certificate_file: Schema.optional(Schema.String),
                 client_certificate_file: Schema.String,
                 private_key_file: Schema.String,
-                private_key_file_password: Schema.optional(SensitiveString),
+                private_key_file_password: Schema.optional(
+                  SensitiveOutputString,
+                ),
                 ssid: Schema.String,
               }),
             ),
             personal_psk: Schema.optional(
               Schema.Struct({
-                password: SensitiveString,
+                password: SensitiveOutputString,
                 ssid: Schema.String,
               }),
             ),

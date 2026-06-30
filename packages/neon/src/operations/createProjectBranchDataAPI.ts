@@ -50,7 +50,7 @@ export type CreateProjectBranchDataAPIOutput =
  * Create Neon Data API
  *
  * Creates a new instance of Neon Data API in the specified branch.
- * You can obtain the `project_id` and `branch_id` by listing the projects and branches for your Neon account.
+ * The Data API exposes a REST interface over the branch database. The `database_name` path parameter determines which database the API serves.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

@@ -153,15 +153,11 @@ export type CreateProjectEndpointOutput =
  * Create compute endpoint
  *
  * Creates a compute endpoint for the specified branch.
- * An endpoint is a Neon compute instance.
+ * A compute endpoint is a Neon compute instance.
  * There is a maximum of one read-write compute endpoint per branch.
  * If the specified branch already has a read-write compute endpoint, the operation fails.
  * A branch can have multiple read-only compute endpoints.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain `branch_id` by listing the project's branches.
- * A `branch_id` has a `br-` prefix.
- * For supported regions and `region_id` values, see [Regions](https://neon.tech/docs/introduction/regions/).
- * For more information about compute endpoints, see [Manage computes](https://neon.tech/docs/manage/endpoints/).
+ * For more information about compute endpoints, see [Manage computes](https://neon.com/docs/manage/endpoints/).
  *
  * @param project_id - The Neon project ID
  */

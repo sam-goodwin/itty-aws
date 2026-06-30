@@ -25,6 +25,7 @@ export const GetBalanceSettingsOutput =
       settlement_timing: Schema.Struct({
         delay_days: Schema.Number,
         delay_days_override: Schema.optional(Schema.Number),
+        start_of_day: Schema.Unknown,
       }),
     }),
   });

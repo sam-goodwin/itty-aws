@@ -7,7 +7,7 @@ import {
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,6 +26,8 @@ export const PostV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   isDefault: Schema.optional(Schema.Boolean),
   source: Schema.optional(Schema.Unknown),
+  branchId: Schema.optional(Schema.NullOr(Schema.String)),
+  branchGitName: Schema.optional(Schema.NullOr(Schema.String)),
 }).pipe(T.Http({ method: "POST", path: "/v1/databases" }));
 export type PostV1DatabasesInput = typeof PostV1DatabasesInput.Type;
 
@@ -53,21 +55,21 @@ export const PostV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
-              connectionString: Schema.optional(SensitiveString),
+              connectionString: Schema.optional(SensitiveOutputString),
             }),
           ),
           pooled: Schema.optional(
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
-              connectionString: Schema.optional(SensitiveString),
+              connectionString: Schema.optional(SensitiveOutputString),
             }),
           ),
           accelerate: Schema.optional(
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
-              connectionString: Schema.optional(SensitiveString),
+              connectionString: Schema.optional(SensitiveOutputString),
             }),
           ),
         }),
@@ -99,6 +101,7 @@ export const PostV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
     source: Schema.Unknown,
+    branchId: Schema.NullOr(Schema.String),
   }),
 });
 export type PostV1DatabasesOutput = typeof PostV1DatabasesOutput.Type;

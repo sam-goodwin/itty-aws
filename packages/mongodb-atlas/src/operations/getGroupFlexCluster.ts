@@ -27,7 +27,7 @@ export type GetGroupFlexClusterOutput = typeof GetGroupFlexClusterOutput.Type;
 /**
  * Return One Flex Cluster from One Project
  *
- * Returns details for one flex cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns details for one flex cluster in the specified project.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

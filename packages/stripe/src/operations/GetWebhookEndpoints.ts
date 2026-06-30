@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const GetWebhookEndpointsInput =
@@ -33,7 +33,7 @@ export const GetWebhookEndpointsOutput =
         livemode: Schema.Boolean,
         metadata: Schema.Record(Schema.String, Schema.String),
         object: Schema.Literals(["webhook_endpoint"]),
-        secret: Schema.optional(SensitiveString),
+        secret: Schema.optional(SensitiveOutputString),
         status: Schema.String,
         url: Schema.String,
       }),

@@ -49,6 +49,8 @@ export type ProxyRecordsListOutput = typeof ProxyRecordsListOutput.Type;
 // The operation
 /**
  * List all reverse proxies configured for the organization. Returns proxy records along with the maximum number allowed by the current plan.
+ *
+ * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const proxyRecordsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProxyRecordsListInput,

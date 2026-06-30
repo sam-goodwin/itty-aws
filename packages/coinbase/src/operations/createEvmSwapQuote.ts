@@ -29,7 +29,7 @@ export type CreateEvmSwapQuoteOutput = typeof CreateEvmSwapQuoteOutput.Type;
 
 // The operation
 /**
- * Create a swap quote
+ * Create swap quote
  *
  * Create a swap quote, which includes the payload to sign as well as the transaction data needed to execute the swap. The developer is responsible for signing the payload and submitting the transaction to the network in order to execute the swap.
  *

@@ -5,7 +5,12 @@ import * as T from "../traits.ts";
 // Input Schema
 export const PostV2CommerceProductCatalogImportsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    feed_type: Schema.Literals(["inventory", "pricing", "product"]),
+    feed_type: Schema.Literals([
+      "inventory",
+      "pricing",
+      "product",
+      "promotion",
+    ]),
     metadata: Schema.Record(Schema.String, Schema.String),
     mode: Schema.Literals(["replace", "upsert"]),
   }).pipe(
@@ -18,10 +23,16 @@ export type PostV2CommerceProductCatalogImportsInput =
 export const PostV2CommerceProductCatalogImportsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.String,
-    feed_type: Schema.Literals(["inventory", "pricing", "product"]),
+    feed_type: Schema.Literals([
+      "inventory",
+      "pricing",
+      "product",
+      "promotion",
+    ]),
     id: Schema.String,
     livemode: Schema.Boolean,
     metadata: Schema.Record(Schema.String, Schema.String),
+    mode: Schema.Literals(["replace", "upsert"]),
     object: Schema.Literals(["v2.commerce.product_catalog_import"]),
     status: Schema.Literals([
       "awaiting_upload",

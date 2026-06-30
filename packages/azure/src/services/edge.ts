@@ -184,6 +184,466 @@ export const ArtifactsListDownloadUri = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ConfigTemplateMetadatasCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    configTemplateMetadataName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        contextId: Schema.optional(Schema.String),
+        linkedHierarchies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              hierarchyIds: Schema.optional(Schema.Array(Schema.String)),
+              level: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        unLinkedHierarchies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              hierarchyIds: Schema.optional(Schema.Array(Schema.String)),
+              level: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        templateUniqueIdentifier: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplateMetadatasCreateOrUpdateInput =
+  typeof ConfigTemplateMetadatasCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ConfigTemplateMetadatasCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ConfigTemplateMetadatasCreateOrUpdateOutput =
+  typeof ConfigTemplateMetadatasCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create or update a ConfigTemplateMetadata Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ * @param configTemplateMetadataName - The name of the ConfigTemplateMetadataProperties
+ */
+export const ConfigTemplateMetadatasCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigTemplateMetadatasCreateOrUpdateInput,
+    outputSchema: ConfigTemplateMetadatasCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const ConfigTemplateMetadatasDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    configTemplateMetadataName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplateMetadatasDeleteInput =
+  typeof ConfigTemplateMetadatasDeleteInput.Type;
+
+// Output Schema
+export const ConfigTemplateMetadatasDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ConfigTemplateMetadatasDeleteOutput =
+  typeof ConfigTemplateMetadatasDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete a ConfigTemplateMetadata Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ * @param configTemplateMetadataName - The name of the ConfigTemplateMetadataProperties
+ */
+export const ConfigTemplateMetadatasDelete =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigTemplateMetadatasDeleteInput,
+    outputSchema: ConfigTemplateMetadatasDeleteOutput,
+  }));
+// Input Schema
+export const ConfigTemplateMetadatasGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    configTemplateMetadataName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplateMetadatasGetInput =
+  typeof ConfigTemplateMetadatasGetInput.Type;
+
+// Output Schema
+export const ConfigTemplateMetadatasGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ConfigTemplateMetadatasGetOutput =
+  typeof ConfigTemplateMetadatasGetOutput.Type;
+
+// The operation
+/**
+ * Get a ConfigTemplateMetadata Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ * @param configTemplateMetadataName - The name of the ConfigTemplateMetadataProperties
+ */
+export const ConfigTemplateMetadatasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ConfigTemplateMetadatasGetInput,
+    outputSchema: ConfigTemplateMetadatasGetOutput,
+  }),
+);
+// Input Schema
+export const ConfigTemplateMetadatasListByConfigTemplateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplateMetadatasListByConfigTemplateInput =
+  typeof ConfigTemplateMetadatasListByConfigTemplateInput.Type;
+
+// Output Schema
+export const ConfigTemplateMetadatasListByConfigTemplateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ConfigTemplateMetadatasListByConfigTemplateOutput =
+  typeof ConfigTemplateMetadatasListByConfigTemplateOutput.Type;
+
+// The operation
+/**
+ * List by ConfigTemplate
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ */
+export const ConfigTemplateMetadatasListByConfigTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigTemplateMetadatasListByConfigTemplateInput,
+    outputSchema: ConfigTemplateMetadatasListByConfigTemplateOutput,
+  }));
+// Input Schema
+export const ConfigTemplateMetadatasUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    configTemplateMetadataName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        contextId: Schema.optional(Schema.String),
+        linkedHierarchies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              hierarchyIds: Schema.optional(Schema.Array(Schema.String)),
+              level: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        unLinkedHierarchies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              hierarchyIds: Schema.optional(Schema.Array(Schema.String)),
+              level: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplateMetadatasUpdateInput =
+  typeof ConfigTemplateMetadatasUpdateInput.Type;
+
+// Output Schema
+export const ConfigTemplateMetadatasUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ConfigTemplateMetadatasUpdateOutput =
+  typeof ConfigTemplateMetadatasUpdateOutput.Type;
+
+// The operation
+/**
+ * Update a ConfigTemplateMetadata Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ * @param configTemplateMetadataName - The name of the ConfigTemplateMetadataProperties
+ */
+export const ConfigTemplateMetadatasUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigTemplateMetadatasUpdateInput,
+    outputSchema: ConfigTemplateMetadatasUpdateOutput,
+  }));
+// Input Schema
+export const ConfigTemplateSchemasGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    configTemplateVersionName: Schema.String.pipe(T.PathParam()),
+    configTemplateSchemaName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}/configTemplateSchemas/{configTemplateSchemaName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplateSchemasGetInput =
+  typeof ConfigTemplateSchemasGetInput.Type;
+
+// Output Schema
+export const ConfigTemplateSchemasGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ConfigTemplateSchemasGetOutput =
+  typeof ConfigTemplateSchemasGetOutput.Type;
+
+// The operation
+/**
+ * Get a ConfigTemplateSchema Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ * @param configTemplateVersionName - The name of the ConfigTemplateVersion
+ * @param configTemplateSchemaName - The name of the ConfigTemplateSchemaProperties
+ */
+export const ConfigTemplateSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ConfigTemplateSchemasGetInput,
+    outputSchema: ConfigTemplateSchemasGetOutput,
+  }),
+);
+// Input Schema
+export const ConfigTemplateSchemasListByConfigTemplateVersionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    configTemplateVersionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}/configTemplateSchemas",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplateSchemasListByConfigTemplateVersionInput =
+  typeof ConfigTemplateSchemasListByConfigTemplateVersionInput.Type;
+
+// Output Schema
+export const ConfigTemplateSchemasListByConfigTemplateVersionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ConfigTemplateSchemasListByConfigTemplateVersionOutput =
+  typeof ConfigTemplateSchemasListByConfigTemplateVersionOutput.Type;
+
+// The operation
+/**
+ * List by ConfigTemplateVersion
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ * @param configTemplateVersionName - The name of the ConfigTemplateVersion
+ */
+export const ConfigTemplateSchemasListByConfigTemplateVersion =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigTemplateSchemasListByConfigTemplateVersionInput,
+    outputSchema: ConfigTemplateSchemasListByConfigTemplateVersionOutput,
+  }));
+// Input Schema
 export const ConfigTemplatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -213,7 +673,7 @@ export const ConfigTemplatesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ConfigTemplatesCreateOrUpdateInput =
@@ -288,7 +748,7 @@ export const ConfigTemplatesCreateVersionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/createVersion",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ConfigTemplatesCreateVersionInput =
@@ -342,7 +802,7 @@ export const ConfigTemplatesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ConfigTemplatesDeleteInput = typeof ConfigTemplatesDeleteInput.Type;
@@ -378,7 +838,7 @@ export const ConfigTemplatesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ConfigTemplatesGetInput = typeof ConfigTemplatesGetInput.Type;
@@ -420,6 +880,45 @@ export const ConfigTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConfigTemplatesGetOutput,
 }));
 // Input Schema
+export const ConfigTemplatesLinkToHierarchiesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    contextId: Schema.String,
+    hierarchyIds: Schema.optional(Schema.Array(Schema.String)),
+    level: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/linkToHierarchies",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplatesLinkToHierarchiesInput =
+  typeof ConfigTemplatesLinkToHierarchiesInput.Type;
+
+// Output Schema
+export const ConfigTemplatesLinkToHierarchiesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ConfigTemplatesLinkToHierarchiesOutput =
+  typeof ConfigTemplatesLinkToHierarchiesOutput.Type;
+
+// The operation
+/**
+ * Apply a Config Template to a particular hierarchy node
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ */
+export const ConfigTemplatesLinkToHierarchies =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigTemplatesLinkToHierarchiesInput,
+    outputSchema: ConfigTemplatesLinkToHierarchiesOutput,
+  }));
+// Input Schema
 export const ConfigTemplatesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -428,7 +927,7 @@ export const ConfigTemplatesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ConfigTemplatesListByResourceGroupInput =
@@ -494,7 +993,7 @@ export const ConfigTemplatesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/configTemplates",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ConfigTemplatesListBySubscriptionInput =
@@ -562,7 +1061,7 @@ export const ConfigTemplatesRemoveVersionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/removeVersion",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ConfigTemplatesRemoveVersionInput =
@@ -591,6 +1090,45 @@ export const ConfigTemplatesRemoveVersion =
     outputSchema: ConfigTemplatesRemoveVersionOutput,
   }));
 // Input Schema
+export const ConfigTemplatesUnLinkFromHierarchiesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    contextId: Schema.String,
+    hierarchyIds: Schema.optional(Schema.Array(Schema.String)),
+    level: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/unLinkFromHierarchies",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplatesUnLinkFromHierarchiesInput =
+  typeof ConfigTemplatesUnLinkFromHierarchiesInput.Type;
+
+// Output Schema
+export const ConfigTemplatesUnLinkFromHierarchiesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ConfigTemplatesUnLinkFromHierarchiesOutput =
+  typeof ConfigTemplatesUnLinkFromHierarchiesOutput.Type;
+
+// The operation
+/**
+ * Remove a Config Template from a particular hierarchy node
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ */
+export const ConfigTemplatesUnLinkFromHierarchies =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigTemplatesUnLinkFromHierarchiesInput,
+    outputSchema: ConfigTemplatesUnLinkFromHierarchiesOutput,
+  }));
+// Input Schema
 export const ConfigTemplatesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -606,7 +1144,7 @@ export const ConfigTemplatesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ConfigTemplatesUpdateInput = typeof ConfigTemplatesUpdateInput.Type;
@@ -651,6 +1189,116 @@ export const ConfigTemplatesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ConfigTemplateVersionsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    configTemplateVersionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        configurations: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplateVersionsCreateOrUpdateInput =
+  typeof ConfigTemplateVersionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ConfigTemplateVersionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ConfigTemplateVersionsCreateOrUpdateOutput =
+  typeof ConfigTemplateVersionsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create or update a Config Template Version Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ * @param configTemplateVersionName - The name of the ConfigTemplateVersion
+ */
+export const ConfigTemplateVersionsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigTemplateVersionsCreateOrUpdateInput,
+    outputSchema: ConfigTemplateVersionsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const ConfigTemplateVersionsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    configTemplateVersionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplateVersionsDeleteInput =
+  typeof ConfigTemplateVersionsDeleteInput.Type;
+
+// Output Schema
+export const ConfigTemplateVersionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ConfigTemplateVersionsDeleteOutput =
+  typeof ConfigTemplateVersionsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete a Config Template Version Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ * @param configTemplateVersionName - The name of the ConfigTemplateVersion
+ */
+export const ConfigTemplateVersionsDelete =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigTemplateVersionsDeleteInput,
+    outputSchema: ConfigTemplateVersionsDeleteOutput,
+  }));
+// Input Schema
 export const ConfigTemplateVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -661,7 +1309,7 @@ export const ConfigTemplateVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ConfigTemplateVersionsGetInput =
@@ -717,7 +1365,7 @@ export const ConfigTemplateVersionsListByConfigTemplateInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ConfigTemplateVersionsListByConfigTemplateInput =
@@ -777,8 +1425,70 @@ export const ConfigTemplateVersionsListByConfigTemplate =
     outputSchema: ConfigTemplateVersionsListByConfigTemplateOutput,
   }));
 // Input Schema
+export const ConfigTemplateVersionsUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    configTemplateName: Schema.String.pipe(T.PathParam()),
+    configTemplateVersionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        configurations: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type ConfigTemplateVersionsUpdateInput =
+  typeof ConfigTemplateVersionsUpdateInput.Type;
+
+// Output Schema
+export const ConfigTemplateVersionsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ConfigTemplateVersionsUpdateOutput =
+  typeof ConfigTemplateVersionsUpdateOutput.Type;
+
+// The operation
+/**
+ * Update a Config Template Version Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param configTemplateName - The name of the ConfigTemplate
+ * @param configTemplateVersionName - The name of the ConfigTemplateVersion
+ */
+export const ConfigTemplateVersionsUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigTemplateVersionsUpdateInput,
+    outputSchema: ConfigTemplateVersionsUpdateOutput,
+  }));
+// Input Schema
 export const ConfigurationReferencesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     configurationReferenceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -827,6 +1537,7 @@ export type ConfigurationReferencesCreateOrUpdateOutput =
  * Create a ConfigurationReference
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param configurationReferenceName - The name of the ConfigurationReference
  */
 export const ConfigurationReferencesCreateOrUpdate =
@@ -837,6 +1548,7 @@ export const ConfigurationReferencesCreateOrUpdate =
 // Input Schema
 export const ConfigurationReferencesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     configurationReferenceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -859,6 +1571,7 @@ export type ConfigurationReferencesDeleteOutput =
  * Delete a ConfigurationReference
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param configurationReferenceName - The name of the ConfigurationReference
  */
 export const ConfigurationReferencesDelete =
@@ -869,6 +1582,7 @@ export const ConfigurationReferencesDelete =
 // Input Schema
 export const ConfigurationReferencesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     configurationReferenceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -909,6 +1623,7 @@ export type ConfigurationReferencesGetOutput =
  * Get a ConfigurationReference
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param configurationReferenceName - The name of the ConfigurationReference
  */
 export const ConfigurationReferencesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -919,7 +1634,9 @@ export const ConfigurationReferencesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigurationReferencesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences",
@@ -973,6 +1690,7 @@ export type ConfigurationReferencesListOutput =
  * List ConfigurationReference resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const ConfigurationReferencesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -983,6 +1701,7 @@ export const ConfigurationReferencesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConfigurationReferencesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     configurationReferenceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1031,6 +1750,7 @@ export type ConfigurationReferencesUpdateOutput =
  * Update a ConfigurationReference
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param configurationReferenceName - The name of the ConfigurationReference
  */
 export const ConfigurationReferencesUpdate =
@@ -1389,6 +2109,7 @@ export const ContextsCreateOrUpdateInput =
     contextName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
+        uniqueIdentifier: Schema.optional(Schema.String),
         capabilities: Schema.Array(
           Schema.Struct({
             name: Schema.String,
@@ -1420,7 +2141,7 @@ export const ContextsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ContextsCreateOrUpdateInput =
@@ -1474,7 +2195,7 @@ export const ContextsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ContextsDeleteInput = typeof ContextsDeleteInput.Type;
@@ -1505,7 +2226,7 @@ export const ContextsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ContextsGetInput = typeof ContextsGetInput.Type;
@@ -1554,7 +2275,7 @@ export const ContextsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ContextsListByResourceGroupInput =
@@ -1621,7 +2342,7 @@ export const ContextsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/contexts",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ContextsListBySubscriptionInput =
@@ -1710,7 +2431,7 @@ export const ContextsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ContextsUpdateInput = typeof ContextsUpdateInput.Type;
@@ -1783,7 +2504,7 @@ export const DiagnosticsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DiagnosticsCreateOrUpdateInput =
@@ -1839,7 +2560,7 @@ export const DiagnosticsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DiagnosticsDeleteInput = typeof DiagnosticsDeleteInput.Type;
@@ -1870,7 +2591,7 @@ export const DiagnosticsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DiagnosticsGetInput = typeof DiagnosticsGetInput.Type;
@@ -1919,7 +2640,7 @@ export const DiagnosticsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DiagnosticsListByResourceGroupInput =
@@ -1985,7 +2706,7 @@ export const DiagnosticsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/diagnostics",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DiagnosticsListBySubscriptionInput =
@@ -2048,14 +2769,27 @@ export const DiagnosticsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diagnosticName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(Schema.Unknown),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DiagnosticsUpdateInput = typeof DiagnosticsUpdateInput.Type;
@@ -3238,7 +3972,7 @@ export const DynamicSchemasCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DynamicSchemasCreateOrUpdateInput =
@@ -3294,7 +4028,7 @@ export const DynamicSchemasDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DynamicSchemasDeleteInput = typeof DynamicSchemasDeleteInput.Type;
@@ -3332,7 +4066,7 @@ export const DynamicSchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DynamicSchemasGetInput = typeof DynamicSchemasGetInput.Type;
@@ -3384,7 +4118,7 @@ export const DynamicSchemasListBySchemaInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DynamicSchemasListBySchemaInput =
@@ -3476,7 +4210,7 @@ export const DynamicSchemasUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DynamicSchemasUpdateInput = typeof DynamicSchemasUpdateInput.Type;
@@ -3548,7 +4282,7 @@ export const DynamicSchemaVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DynamicSchemaVersionsCreateOrUpdateInput =
@@ -3606,7 +4340,7 @@ export const DynamicSchemaVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DynamicSchemaVersionsDeleteInput =
@@ -3647,7 +4381,7 @@ export const DynamicSchemaVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DynamicSchemaVersionsGetInput =
@@ -3705,7 +4439,7 @@ export const DynamicSchemaVersionsListByDynamicSchemaInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DynamicSchemaVersionsListByDynamicSchemaInput =
@@ -3782,7 +4516,7 @@ export const DynamicSchemaVersionsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DynamicSchemaVersionsUpdateInput =
@@ -3894,7 +4628,7 @@ export const ExecutionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ExecutionsCreateOrUpdateInput =
@@ -3954,7 +4688,7 @@ export const ExecutionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ExecutionsDeleteInput = typeof ExecutionsDeleteInput.Type;
@@ -3991,7 +4725,7 @@ export const ExecutionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ExecutionsGetInput = typeof ExecutionsGetInput.Type;
@@ -4046,7 +4780,7 @@ export const ExecutionsListByWorkflowVersionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ExecutionsListByWorkflowVersionInput =
@@ -4127,7 +4861,7 @@ export const ExecutionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ExecutionsUpdateInput = typeof ExecutionsUpdateInput.Type;
@@ -4406,6 +5140,246 @@ export const HardwareSettingsListByParent =
     outputSchema: HardwareSettingsListByParentOutput,
   }));
 // Input Schema
+export const HierarchyConfigurationMetadatasGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    hierarchyConfigurationMetadataName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceUri}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas/{hierarchyConfigurationMetadataName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type HierarchyConfigurationMetadatasGetInput =
+  typeof HierarchyConfigurationMetadatasGetInput.Type;
+
+// Output Schema
+export const HierarchyConfigurationMetadatasGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type HierarchyConfigurationMetadatasGetOutput =
+  typeof HierarchyConfigurationMetadatasGetOutput.Type;
+
+// The operation
+/**
+ * Get a Hierarchy Configuration Metadata resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param hierarchyConfigurationMetadataName - Name of the hierarchy configuration metadata
+ */
+export const HierarchyConfigurationMetadatasGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: HierarchyConfigurationMetadatasGetInput,
+    outputSchema: HierarchyConfigurationMetadatasGetOutput,
+  }));
+// Input Schema
+export const HierarchyConfigurationMetadatasListByParentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceUri}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type HierarchyConfigurationMetadatasListByParentInput =
+  typeof HierarchyConfigurationMetadatasListByParentInput.Type;
+
+// Output Schema
+export const HierarchyConfigurationMetadatasListByParentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type HierarchyConfigurationMetadatasListByParentOutput =
+  typeof HierarchyConfigurationMetadatasListByParentOutput.Type;
+
+// The operation
+/**
+ * List Solution resources
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ */
+export const HierarchyConfigurationMetadatasListByParent =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: HierarchyConfigurationMetadatasListByParentInput,
+    outputSchema: HierarchyConfigurationMetadatasListByParentOutput,
+  }));
+// Input Schema
+export const HierarchyConfigurationMetadataVersionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    hierarchyConfigurationMetadataName: Schema.String.pipe(T.PathParam()),
+    hierarchyConfigurationMetadataVersionName: Schema.String.pipe(
+      T.PathParam(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceUri}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas/{hierarchyConfigurationMetadataName}/versions/{hierarchyConfigurationMetadataVersionName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type HierarchyConfigurationMetadataVersionsGetInput =
+  typeof HierarchyConfigurationMetadataVersionsGetInput.Type;
+
+// Output Schema
+export const HierarchyConfigurationMetadataVersionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type HierarchyConfigurationMetadataVersionsGetOutput =
+  typeof HierarchyConfigurationMetadataVersionsGetOutput.Type;
+
+// The operation
+/**
+ * Get a Hierarchy Configuration Metadata Version resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param hierarchyConfigurationMetadataName - Name of the hierarchy configuration metadata
+ * @param hierarchyConfigurationMetadataVersionName - Name of the hierarchy configuration metadata version
+ */
+export const HierarchyConfigurationMetadataVersionsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: HierarchyConfigurationMetadataVersionsGetInput,
+    outputSchema: HierarchyConfigurationMetadataVersionsGetOutput,
+  }));
+// Input Schema
+export const HierarchyConfigurationMetadataVersionsListByParentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    hierarchyConfigurationMetadataName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceUri}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas/{hierarchyConfigurationMetadataName}/versions",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type HierarchyConfigurationMetadataVersionsListByParentInput =
+  typeof HierarchyConfigurationMetadataVersionsListByParentInput.Type;
+
+// Output Schema
+export const HierarchyConfigurationMetadataVersionsListByParentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type HierarchyConfigurationMetadataVersionsListByParentOutput =
+  typeof HierarchyConfigurationMetadataVersionsListByParentOutput.Type;
+
+// The operation
+/**
+ * List Hierarchy Configuration Metadata Version resources
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param hierarchyConfigurationMetadataName - Name of the hierarchy configuration metadata
+ */
+export const HierarchyConfigurationMetadataVersionsListByParent =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: HierarchyConfigurationMetadataVersionsListByParentInput,
+    outputSchema: HierarchyConfigurationMetadataVersionsListByParentOutput,
+  }));
+// Input Schema
 export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4462,6 +5436,9 @@ export const ImagesListByDisconnectedOperationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4518,6 +5495,9 @@ export type ImagesListByDisconnectedOperationOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression.
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
  * @param name - Name of the resource
  */
 export const ImagesListByDisconnectedOperation =
@@ -4598,7 +5578,7 @@ export const InstanceHistoriesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}/histories/{instanceHistoryName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type InstanceHistoriesGetInput = typeof InstanceHistoriesGetInput.Type;
@@ -4656,7 +5636,7 @@ export const InstanceHistoriesListByInstanceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}/histories",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type InstanceHistoriesListByInstanceInput =
@@ -4788,7 +5768,7 @@ export const InstancesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type InstancesCreateOrUpdateInput =
@@ -4846,7 +5826,7 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;
@@ -4881,7 +5861,7 @@ export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type InstancesGetInput = typeof InstancesGetInput.Type;
@@ -4934,7 +5914,7 @@ export const InstancesListBySolutionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type InstancesListBySolutionInput =
@@ -5020,7 +6000,7 @@ export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type InstancesUpdateInput = typeof InstancesUpdateInput.Type;
@@ -5064,12 +6044,13 @@ export const InstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.Edge/jobs/{jobName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type JobsGetInput = typeof JobsGetInput.Type;
@@ -5101,6 +6082,7 @@ export type JobsGetOutput = typeof JobsGetOutput.Type;
  * Get a Job resource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param jobName - The name of the Job
  */
 export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5108,13 +6090,13 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsGetOutput,
 }));
 // Input Schema
-export const JobsListByTargetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const JobsListByTargetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.Edge/jobs",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type JobsListByTargetInput = typeof JobsListByTargetInput.Type;
@@ -5163,6 +6145,7 @@ export type JobsListByTargetOutput = typeof JobsListByTargetOutput.Type;
  * List Jobs by parent resource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const JobsListByTarget = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsListByTargetInput,
@@ -5219,6 +6202,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SchemaReferencesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     schemaReferenceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -5240,7 +6224,7 @@ export const SchemaReferencesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemaReferencesCreateOrUpdateInput =
@@ -5275,6 +6259,7 @@ export type SchemaReferencesCreateOrUpdateOutput =
  * Create or update a Schema Reference Resource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param schemaReferenceName - The name of the SchemaReference
  */
 export const SchemaReferencesCreateOrUpdate =
@@ -5285,12 +6270,13 @@ export const SchemaReferencesCreateOrUpdate =
 // Input Schema
 export const SchemaReferencesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     schemaReferenceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemaReferencesDeleteInput =
@@ -5307,6 +6293,7 @@ export type SchemaReferencesDeleteOutput =
  * Delete a Schema Reference Resource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param schemaReferenceName - The name of the SchemaReference
  */
 export const SchemaReferencesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5318,12 +6305,13 @@ export const SchemaReferencesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SchemaReferencesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     schemaReferenceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemaReferencesGetInput = typeof SchemaReferencesGetInput.Type;
@@ -5356,6 +6344,7 @@ export type SchemaReferencesGetOutput = typeof SchemaReferencesGetOutput.Type;
  * Get a Schema Reference Resource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param schemaReferenceName - The name of the SchemaReference
  */
 export const SchemaReferencesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5364,11 +6353,13 @@ export const SchemaReferencesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SchemaReferencesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemaReferencesListByResourceGroupInput =
@@ -5418,6 +6409,7 @@ export type SchemaReferencesListByResourceGroupOutput =
  * List by specified resource group
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const SchemaReferencesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5427,6 +6419,7 @@ export const SchemaReferencesListByResourceGroup =
 // Input Schema
 export const SchemaReferencesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     schemaReferenceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -5437,7 +6430,7 @@ export const SchemaReferencesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemaReferencesUpdateInput =
@@ -5472,6 +6465,7 @@ export type SchemaReferencesUpdateOutput =
  * update a Schema Reference Resource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param schemaReferenceName - The name of the SchemaReference
  */
 export const SchemaReferencesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5508,7 +6502,7 @@ export const SchemasCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemasCreateOrUpdateInput = typeof SchemasCreateOrUpdateInput.Type;
@@ -5583,7 +6577,7 @@ export const SchemasCreateVersionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/createVersion",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemasCreateVersionInput = typeof SchemasCreateVersionInput.Type;
@@ -5635,7 +6629,7 @@ export const SchemasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SchemasDeleteInput = typeof SchemasDeleteInput.Type;
@@ -5666,7 +6660,7 @@ export const SchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SchemasGetInput = typeof SchemasGetInput.Type;
@@ -5715,7 +6709,7 @@ export const SchemasListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemasListByResourceGroupInput =
@@ -5782,7 +6776,7 @@ export const SchemasListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/schemas",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemasListBySubscriptionInput =
@@ -5851,7 +6845,7 @@ export const SchemasRemoveVersionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/removeVersion",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemasRemoveVersionInput = typeof SchemasRemoveVersionInput.Type;
@@ -5883,13 +6877,27 @@ export const SchemasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schemaName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(Schema.Unknown),
+  properties: Schema.optional(
+    Schema.Struct({
+      currentVersion: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Initialized",
+          "InProgress",
+          "Deleting",
+        ]),
+      ),
+    }),
+  ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SchemasUpdateInput = typeof SchemasUpdateInput.Type;
@@ -5956,7 +6964,7 @@ export const SchemaVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemaVersionsCreateOrUpdateInput =
@@ -6012,7 +7020,7 @@ export const SchemaVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemaVersionsDeleteInput = typeof SchemaVersionsDeleteInput.Type;
@@ -6050,7 +7058,7 @@ export const SchemaVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SchemaVersionsGetInput = typeof SchemaVersionsGetInput.Type;
@@ -6102,7 +7110,7 @@ export const SchemaVersionsListBySchemaInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemaVersionsListBySchemaInput =
@@ -6178,7 +7186,7 @@ export const SchemaVersionsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SchemaVersionsUpdateInput = typeof SchemaVersionsUpdateInput.Type;
@@ -6248,7 +7256,7 @@ export const SiteReferencesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SiteReferencesCreateOrUpdateInput =
@@ -6304,7 +7312,7 @@ export const SiteReferencesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SiteReferencesDeleteInput = typeof SiteReferencesDeleteInput.Type;
@@ -6342,7 +7350,7 @@ export const SiteReferencesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SiteReferencesGetInput = typeof SiteReferencesGetInput.Type;
@@ -6394,7 +7402,7 @@ export const SiteReferencesListByContextInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SiteReferencesListByContextInput =
@@ -6470,7 +7478,7 @@ export const SiteReferencesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SiteReferencesUpdateInput = typeof SiteReferencesUpdateInput.Type;
@@ -7391,6 +8399,370 @@ export const SitesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SitesUpdateOutput,
 }));
 // Input Schema
+export const SolutionMetadatasGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    solutionMetadataName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceUri}/providers/Microsoft.Edge/solutionMetadatas/{solutionMetadataName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type SolutionMetadatasGetInput = typeof SolutionMetadatasGetInput.Type;
+
+// Output Schema
+export const SolutionMetadatasGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type SolutionMetadatasGetOutput = typeof SolutionMetadatasGetOutput.Type;
+
+// The operation
+/**
+ * Get a Solution resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param solutionMetadataName - Name of the solution metadata
+ */
+export const SolutionMetadatasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SolutionMetadatasGetInput,
+    outputSchema: SolutionMetadatasGetOutput,
+  }),
+);
+// Input Schema
+export const SolutionMetadatasListByParentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceUri}/providers/Microsoft.Edge/solutionMetadatas",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type SolutionMetadatasListByParentInput =
+  typeof SolutionMetadatasListByParentInput.Type;
+
+// Output Schema
+export const SolutionMetadatasListByParentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SolutionMetadatasListByParentOutput =
+  typeof SolutionMetadatasListByParentOutput.Type;
+
+// The operation
+/**
+ * List Solution resources
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ */
+export const SolutionMetadatasListByParent =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SolutionMetadatasListByParentInput,
+    outputSchema: SolutionMetadatasListByParentOutput,
+  }));
+// Input Schema
+export const SolutionMetadataVersionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    solutionMetadataName: Schema.String.pipe(T.PathParam()),
+    solutionMetadataVersionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceUri}/providers/Microsoft.Edge/solutionMetadatas/{solutionMetadataName}/versions/{solutionMetadataVersionName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type SolutionMetadataVersionsGetInput =
+  typeof SolutionMetadataVersionsGetInput.Type;
+
+// Output Schema
+export const SolutionMetadataVersionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type SolutionMetadataVersionsGetOutput =
+  typeof SolutionMetadataVersionsGetOutput.Type;
+
+// The operation
+/**
+ * Get a Solution resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param solutionMetadataName - Name of the solution metadata
+ * @param solutionMetadataVersionName - Name of the solution metadata version
+ */
+export const SolutionMetadataVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SolutionMetadataVersionsGetInput,
+    outputSchema: SolutionMetadataVersionsGetOutput,
+  }),
+);
+// Input Schema
+export const SolutionMetadataVersionsListByParentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    solutionMetadataName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceUri}/providers/Microsoft.Edge/solutionMetadatas/{solutionMetadataName}/versions",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type SolutionMetadataVersionsListByParentInput =
+  typeof SolutionMetadataVersionsListByParentInput.Type;
+
+// Output Schema
+export const SolutionMetadataVersionsListByParentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SolutionMetadataVersionsListByParentOutput =
+  typeof SolutionMetadataVersionsListByParentOutput.Type;
+
+// The operation
+/**
+ * List Solution resources
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param solutionMetadataName - Name of the solution metadata
+ */
+export const SolutionMetadataVersionsListByParent =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SolutionMetadataVersionsListByParentInput,
+    outputSchema: SolutionMetadataVersionsListByParentOutput,
+  }));
+// Input Schema
+export const SolutionSchemasGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    solutionTemplateName: Schema.String.pipe(T.PathParam()),
+    solutionTemplateVersionName: Schema.String.pipe(T.PathParam()),
+    solutionSchemaName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/solutionSchemas/{solutionSchemaName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type SolutionSchemasGetInput = typeof SolutionSchemasGetInput.Type;
+
+// Output Schema
+export const SolutionSchemasGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type SolutionSchemasGetOutput = typeof SolutionSchemasGetOutput.Type;
+
+// The operation
+/**
+ * Get a SolutionSchema Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param solutionTemplateName - The name of the SolutionTemplate
+ * @param solutionTemplateVersionName - The name of the SolutionTemplateVersion
+ * @param solutionSchemaName - The name of the SolutionSchemaProperties
+ */
+export const SolutionSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SolutionSchemasGetInput,
+  outputSchema: SolutionSchemasGetOutput,
+}));
+// Input Schema
+export const SolutionSchemasListBySolutionTemplateVersionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    solutionTemplateName: Schema.String.pipe(T.PathParam()),
+    solutionTemplateVersionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/solutionSchemas",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type SolutionSchemasListBySolutionTemplateVersionInput =
+  typeof SolutionSchemasListBySolutionTemplateVersionInput.Type;
+
+// Output Schema
+export const SolutionSchemasListBySolutionTemplateVersionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SolutionSchemasListBySolutionTemplateVersionOutput =
+  typeof SolutionSchemasListBySolutionTemplateVersionOutput.Type;
+
+// The operation
+/**
+ * List by SolutionTemplateVersion
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param solutionTemplateName - The name of the SolutionTemplate
+ * @param solutionTemplateVersionName - The name of the SolutionTemplateVersion
+ */
+export const SolutionSchemasListBySolutionTemplateVersion =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SolutionSchemasListBySolutionTemplateVersionInput,
+    outputSchema: SolutionSchemasListBySolutionTemplateVersionOutput,
+  }));
+// Input Schema
 export const SolutionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7433,7 +8805,7 @@ export const SolutionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionsCreateOrUpdateInput =
@@ -7489,7 +8861,7 @@ export const SolutionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SolutionsDeleteInput = typeof SolutionsDeleteInput.Type;
@@ -7522,7 +8894,7 @@ export const SolutionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SolutionsGetInput = typeof SolutionsGetInput.Type;
@@ -7573,7 +8945,7 @@ export const SolutionsListByTargetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionsListByTargetInput = typeof SolutionsListByTargetInput.Type;
@@ -7638,12 +9010,36 @@ export const SolutionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
   solutionName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(Schema.Unknown),
+  properties: Schema.optional(
+    Schema.Struct({
+      solutionTemplateId: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+      availableSolutionTemplateVersions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            solutionTemplateVersion: Schema.String,
+            latestConfigRevision: Schema.String,
+            isConfigured: Schema.Boolean,
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Initialized",
+          "InProgress",
+          "Deleting",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type SolutionsUpdateInput = typeof SolutionsUpdateInput.Type;
@@ -7717,7 +9113,7 @@ export const SolutionTemplatesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplatesCreateOrUpdateInput =
@@ -7792,7 +9188,7 @@ export const SolutionTemplatesCreateVersionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/createVersion",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplatesCreateVersionInput =
@@ -7846,7 +9242,7 @@ export const SolutionTemplatesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplatesDeleteInput =
@@ -7883,7 +9279,7 @@ export const SolutionTemplatesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplatesGetInput = typeof SolutionTemplatesGetInput.Type;
@@ -7935,7 +9331,7 @@ export const SolutionTemplatesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplatesListByResourceGroupInput =
@@ -8001,7 +9397,7 @@ export const SolutionTemplatesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/solutionTemplates",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplatesListBySubscriptionInput =
@@ -8069,7 +9465,7 @@ export const SolutionTemplatesRemoveVersionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/removeVersion",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplatesRemoveVersionInput =
@@ -8114,7 +9510,7 @@ export const SolutionTemplatesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplatesUpdateInput =
@@ -8175,7 +9571,7 @@ export const SolutionTemplateVersionsBulkDeploySolutionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkDeploySolution",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplateVersionsBulkDeploySolutionInput =
@@ -8212,6 +9608,18 @@ export const SolutionTemplateVersionsBulkPublishSolutionInput =
     targets: Schema.Array(
       Schema.Struct({
         targetId: Schema.String,
+        solutionDependencies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              solutionVersionId: Schema.optional(Schema.String),
+              solutionTemplateId: Schema.optional(Schema.String),
+              solutionTemplateVersion: Schema.optional(Schema.String),
+              solutionInstanceName: Schema.optional(Schema.String),
+              targetId: Schema.optional(Schema.String),
+              dependencies: Schema.optional(Schema.Array(Schema.Unknown)),
+            }),
+          ),
+        ),
         solutionInstanceName: Schema.optional(Schema.String),
         solutionVersionId: Schema.optional(Schema.String),
         solutionConfiguration: Schema.optional(Schema.String),
@@ -8235,7 +9643,7 @@ export const SolutionTemplateVersionsBulkPublishSolutionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkPublishSolution",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplateVersionsBulkPublishSolutionInput =
@@ -8272,6 +9680,18 @@ export const SolutionTemplateVersionsBulkReviewSolutionInput =
     targets: Schema.Array(
       Schema.Struct({
         targetId: Schema.String,
+        solutionDependencies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              solutionVersionId: Schema.optional(Schema.String),
+              solutionTemplateId: Schema.optional(Schema.String),
+              solutionTemplateVersion: Schema.optional(Schema.String),
+              solutionInstanceName: Schema.optional(Schema.String),
+              targetId: Schema.optional(Schema.String),
+              dependencies: Schema.optional(Schema.Array(Schema.Unknown)),
+            }),
+          ),
+        ),
         solutionInstanceName: Schema.optional(Schema.String),
         solutionConfiguration: Schema.optional(Schema.String),
       }),
@@ -8294,7 +9714,7 @@ export const SolutionTemplateVersionsBulkReviewSolutionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkReviewSolution",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplateVersionsBulkReviewSolutionInput =
@@ -8322,6 +9742,126 @@ export const SolutionTemplateVersionsBulkReviewSolution =
     outputSchema: SolutionTemplateVersionsBulkReviewSolutionOutput,
   }));
 // Input Schema
+export const SolutionTemplateVersionsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    solutionTemplateName: Schema.String.pipe(T.PathParam()),
+    solutionTemplateVersionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        configurations: Schema.String,
+        specification: Schema.Record(Schema.String, Schema.Unknown),
+        orchestratorType: Schema.optional(Schema.Literals(["TO"])),
+        internalState: Schema.optional(
+          Schema.Literals([
+            "PendingValidation",
+            "Validated",
+            "ValidatedWithSchema",
+            "ValidatedWithoutSchema",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type SolutionTemplateVersionsCreateOrUpdateInput =
+  typeof SolutionTemplateVersionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const SolutionTemplateVersionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type SolutionTemplateVersionsCreateOrUpdateOutput =
+  typeof SolutionTemplateVersionsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create or update a Solution Template Version Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param solutionTemplateName - The name of the SolutionTemplate
+ * @param solutionTemplateVersionName - The name of the SolutionTemplateVersion
+ */
+export const SolutionTemplateVersionsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SolutionTemplateVersionsCreateOrUpdateInput,
+    outputSchema: SolutionTemplateVersionsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const SolutionTemplateVersionsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    solutionTemplateName: Schema.String.pipe(T.PathParam()),
+    solutionTemplateVersionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type SolutionTemplateVersionsDeleteInput =
+  typeof SolutionTemplateVersionsDeleteInput.Type;
+
+// Output Schema
+export const SolutionTemplateVersionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type SolutionTemplateVersionsDeleteOutput =
+  typeof SolutionTemplateVersionsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete a Solution Template Version Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param solutionTemplateName - The name of the SolutionTemplate
+ * @param solutionTemplateVersionName - The name of the SolutionTemplateVersion
+ */
+export const SolutionTemplateVersionsDelete =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SolutionTemplateVersionsDeleteInput,
+    outputSchema: SolutionTemplateVersionsDeleteOutput,
+  }));
+// Input Schema
 export const SolutionTemplateVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8332,7 +9872,7 @@ export const SolutionTemplateVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplateVersionsGetInput =
@@ -8388,7 +9928,7 @@ export const SolutionTemplateVersionsListBySolutionTemplateInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionTemplateVersionsListBySolutionTemplateInput =
@@ -8446,6 +9986,71 @@ export const SolutionTemplateVersionsListBySolutionTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: SolutionTemplateVersionsListBySolutionTemplateInput,
     outputSchema: SolutionTemplateVersionsListBySolutionTemplateOutput,
+  }));
+// Input Schema
+export const SolutionTemplateVersionsUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    solutionTemplateName: Schema.String.pipe(T.PathParam()),
+    solutionTemplateVersionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        configurations: Schema.optional(Schema.String),
+        specification: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        orchestratorType: Schema.optional(Schema.Literals(["TO"])),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
+      apiVersion: "2026-03-01",
+    }),
+  );
+export type SolutionTemplateVersionsUpdateInput =
+  typeof SolutionTemplateVersionsUpdateInput.Type;
+
+// Output Schema
+export const SolutionTemplateVersionsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type SolutionTemplateVersionsUpdateOutput =
+  typeof SolutionTemplateVersionsUpdateOutput.Type;
+
+// The operation
+/**
+ * Update a Solution Template Version Resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param solutionTemplateName - The name of the SolutionTemplate
+ * @param solutionTemplateVersionName - The name of the SolutionTemplateVersion
+ */
+export const SolutionTemplateVersionsUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SolutionTemplateVersionsUpdateInput,
+    outputSchema: SolutionTemplateVersionsUpdateOutput,
   }));
 // Input Schema
 export const SolutionVersionsCreateOrUpdateInput =
@@ -8584,6 +10189,7 @@ export const SolutionVersionsCreateOrUpdateInput =
             "publish",
             "staging",
             "externalValidation",
+            "uninstall",
           ]),
         ),
         provisioningState: Schema.optional(
@@ -8609,7 +10215,7 @@ export const SolutionVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionVersionsCreateOrUpdateInput =
@@ -8667,7 +10273,7 @@ export const SolutionVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionVersionsDeleteInput =
@@ -8708,7 +10314,7 @@ export const SolutionVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionVersionsGetInput = typeof SolutionVersionsGetInput.Type;
@@ -8762,7 +10368,7 @@ export const SolutionVersionsListBySolutionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionVersionsListBySolutionInput =
@@ -8841,7 +10447,7 @@ export const SolutionVersionsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SolutionVersionsUpdateInput =
@@ -8956,7 +10562,7 @@ export const TargetsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsCreateOrUpdateInput = typeof TargetsCreateOrUpdateInput.Type;
@@ -9005,11 +10611,12 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
+  forceDelete: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
@@ -9025,6 +10632,7 @@ export type TargetsDeleteOutput = typeof TargetsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param forceDelete - Force delete
  * @param targetName - Name of the target
  */
 export const TargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9040,7 +10648,7 @@ export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type TargetsGetInput = typeof TargetsGetInput.Type;
@@ -9091,7 +10699,7 @@ export const TargetsInstallSolutionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/installSolution",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsInstallSolutionInput =
@@ -9127,7 +10735,7 @@ export const TargetsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsListByResourceGroupInput =
@@ -9194,7 +10802,7 @@ export const TargetsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/targets",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsListBySubscriptionInput =
@@ -9263,7 +10871,7 @@ export const TargetsPublishSolutionVersionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/publishSolutionVersion",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsPublishSolutionVersionInput =
@@ -9319,7 +10927,7 @@ export const TargetsRemoveRevisionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/removeRevision",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsRemoveRevisionInput = typeof TargetsRemoveRevisionInput.Type;
@@ -9369,7 +10977,7 @@ export const TargetsResolveConfigurationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/resolveConfiguration",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsResolveConfigurationInput =
@@ -9422,7 +11030,7 @@ export const TargetsReviewSolutionVersionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/reviewSolutionVersion",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsReviewSolutionVersionInput =
@@ -9478,7 +11086,7 @@ export const TargetsUninstallSolutionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/uninstallSolution",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsUninstallSolutionInput =
@@ -9516,7 +11124,7 @@ export const TargetsUnstageSolutionVersionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/unstageSolutionVersion",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsUnstageSolutionVersionInput =
@@ -9584,7 +11192,7 @@ export const TargetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type TargetsUpdateInput = typeof TargetsUpdateInput.Type;
@@ -9670,7 +11278,7 @@ export const TargetsUpdateExternalValidationStatusInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/updateExternalValidationStatus",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TargetsUpdateExternalValidationStatusInput =
@@ -9747,7 +11355,7 @@ export const WorkflowsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkflowsCreateOrUpdateInput =
@@ -9803,7 +11411,7 @@ export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type WorkflowsDeleteInput = typeof WorkflowsDeleteInput.Type;
@@ -9836,7 +11444,7 @@ export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type WorkflowsGetInput = typeof WorkflowsGetInput.Type;
@@ -9887,7 +11495,7 @@ export const WorkflowsListByContextInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkflowsListByContextInput =
@@ -9972,7 +11580,7 @@ export const WorkflowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-03-01",
   }),
 );
 export type WorkflowsUpdateInput = typeof WorkflowsUpdateInput.Type;
@@ -10102,7 +11710,7 @@ export const WorkflowVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkflowVersionsCreateOrUpdateInput =
@@ -10160,7 +11768,7 @@ export const WorkflowVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkflowVersionsDeleteInput =
@@ -10201,7 +11809,7 @@ export const WorkflowVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkflowVersionsGetInput = typeof WorkflowVersionsGetInput.Type;
@@ -10255,7 +11863,7 @@ export const WorkflowVersionsListByWorkflowInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkflowVersionsListByWorkflowInput =
@@ -10370,7 +11978,7 @@ export const WorkflowVersionsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-03-01",
     }),
   );
 export type WorkflowVersionsUpdateInput =

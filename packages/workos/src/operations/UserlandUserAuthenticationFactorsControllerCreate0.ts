@@ -1,0 +1,81 @@
+import * as Schema from "effect/Schema";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+import { UnprocessableEntity } from "../errors.ts";
+import { SensitiveString, SensitiveOutputString } from "../sensitive.ts";
+
+// Input Schema
+export const UserlandUserAuthenticationFactorsControllerCreate0Input =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userlandUserId: Schema.String.pipe(T.PathParam()),
+    type: Schema.optional(Schema.String),
+    totp_issuer: Schema.optional(Schema.String),
+    totp_user: Schema.optional(Schema.String),
+    totp_secret: Schema.optional(SensitiveString),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/user_management/users/{userlandUserId}/auth_factors",
+    }),
+  );
+export type UserlandUserAuthenticationFactorsControllerCreate0Input =
+  typeof UserlandUserAuthenticationFactorsControllerCreate0Input.Type;
+
+// Output Schema
+export const UserlandUserAuthenticationFactorsControllerCreate0Output =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authentication_factor: Schema.optional(
+      Schema.Struct({
+        object: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals(["generic_otp", "sms", "totp", "webauthn"]),
+        ),
+        user_id: Schema.optional(Schema.String),
+        sms: Schema.optional(
+          Schema.Struct({
+            phone_number: Schema.String,
+          }),
+        ),
+        totp: Schema.optional(
+          Schema.Struct({
+            issuer: Schema.String,
+            user: Schema.String,
+            secret: SensitiveOutputString,
+            qr_code: Schema.String,
+            uri: Schema.String,
+          }),
+        ),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+      }),
+    ),
+    authentication_challenge: Schema.optional(
+      Schema.Struct({
+        object: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        expires_at: Schema.optional(Schema.String),
+        code: Schema.optional(Schema.String),
+        authentication_factor_id: Schema.optional(Schema.String),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type UserlandUserAuthenticationFactorsControllerCreate0Output =
+  typeof UserlandUserAuthenticationFactorsControllerCreate0Output.Type;
+
+// The operation
+/**
+ * Enroll an authentication factor
+ *
+ * Enrolls a user in a new [authentication factor](/reference/authkit/mfa/authentication-factor).
+ *
+ * @param userlandUserId - The ID of the [user](/reference/authkit/user).
+ */
+export const UserlandUserAuthenticationFactorsControllerCreate0 =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: UserlandUserAuthenticationFactorsControllerCreate0Input,
+    outputSchema: UserlandUserAuthenticationFactorsControllerCreate0Output,
+    errors: [UnprocessableEntity] as const,
+  }));

@@ -23,9 +23,9 @@ export type AddEndUserSolanaAccountOutput =
 
 // The operation
 /**
- * Add a Solana account to an end user
+ * Add Solana account to end user
  *
- * Adds a new Solana account to an existing end user. End users can have  up to 10 Solana accounts.
+ * Adds a new Solana account to an existing end user. End users can have up to 10 Solana accounts.
  * This API is intended to be used by the developer's own backend, and is authenticated using the developer's CDP API key.
  *
  * @param userId - The ID of the end user to add the account to.

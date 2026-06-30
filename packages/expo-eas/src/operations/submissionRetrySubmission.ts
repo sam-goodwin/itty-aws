@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation submissionRetrySubmission($parentSubmissionId: ID!) {\n  submission {\n    retrySubmission(parentSubmissionId: $parentSubmissionId) {\n      submission {\n        activityTimestamp\n        actor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        androidConfig {\n          applicationIdentifier\n          archiveType\n          releaseStatus\n          rollout\n          track\n        }\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        archiveUrl\n        canRetry\n        cancelingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        completedAt\n        createdAt\n        error {\n          errorCode\n          message\n        }\n        id\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        iosConfig {\n          appleIdUsername\n          ascApiKeyId\n          ascAppIdentifier\n        }\n        jobRun {\n          createdAt\n          displayName\n          endedAt\n          expiresAt\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          id\n          isWaived\n          logFileUrls\n          name\n          priority\n          startedAt\n          status\n          updateGroups\n        }\n        logFiles\n        logsUrl\n        maxRetryTimeMinutes\n        platform\n        priority\n        status\n        submittedBuild {\n          activityTimestamp\n          appBuildVersion\n          appIdentifier\n          appVersion\n          buildMode\n          buildProfile\n          channel\n          cliVersion\n          completedAt\n          createdAt\n          customNodeVersion\n          customWorkflowName\n          developmentClient\n          distribution\n          enqueuedAt\n          estimatedWaitTimeLeftSeconds\n          expirationDate\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          githubRepositoryOwnerAndName\n          id\n          initialQueuePosition\n          iosEnterpriseProvisioning\n          isForIosSimulator\n          isGitWorkingTreeDirty\n          isWaived\n          logFiles\n          maxBuildTimeSeconds\n          maxRetryTimeMinutes\n          message\n          platform\n          priority\n          projectMetadataFileUrl\n          projectRootDirectory\n          provisioningStartedAt\n          queuePosition\n          reactNativeVersion\n          releaseChannel\n          requiredPackageManager\n          resolvedEnvironment\n          resourceClass\n          resourceClassDisplayName\n          runFromCI\n          runtimeVersion\n          sdkVersion\n          selectedImage\n          status\n          updatedAt\n          waiverType\n          workerStartedAt\n        }\n        updatedAt\n        workflowJob {\n          createdAt\n          environment\n          id\n          key\n          name\n          outputs\n          requiredJobKeys\n          status\n          type\n          updatedAt\n        }\n      }\n    }\n  }\n}";
+  "mutation submissionRetrySubmission($parentSubmissionId: ID!) {\n  submission {\n    retrySubmission(parentSubmissionId: $parentSubmissionId) {\n      submission {\n        activityTimestamp\n        actor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        androidConfig {\n          applicationIdentifier\n          archiveType\n          releaseStatus\n          rollout\n          track\n        }\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        archiveUrl\n        canRetry\n        cancelingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        completedAt\n        createdAt\n        error {\n          errorCode\n          message\n        }\n        id\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        iosConfig {\n          appleIdUsername\n          ascApiKeyId\n          ascAppIdentifier\n        }\n        jobRun {\n          createdAt\n          displayName\n          endedAt\n          enqueuedAt\n          expiresAt\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          id\n          isWaived\n          logFileUrls\n          maxRunTimeSeconds\n          name\n          priority\n          resourceClassDisplayName\n          startedAt\n          status\n          updateGroups\n        }\n        logFiles\n        logsUrl\n        maxRetryTimeMinutes\n        platform\n        priority\n        status\n        submittedBuild {\n          activityTimestamp\n          appBuildVersion\n          appIdentifier\n          appVersion\n          buildMode\n          buildProfile\n          channel\n          cliVersion\n          completedAt\n          createdAt\n          customNodeVersion\n          customWorkflowName\n          developmentClient\n          distribution\n          enqueuedAt\n          estimatedWaitTimeLeftSeconds\n          expirationDate\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          githubRepositoryOwnerAndName\n          id\n          initialQueuePosition\n          iosEnterpriseProvisioning\n          isForIosSimulator\n          isGitWorkingTreeDirty\n          isWaived\n          logFiles\n          maxBuildTimeSeconds\n          maxRetryTimeMinutes\n          message\n          platform\n          priority\n          projectMetadataFileUrl\n          projectRootDirectory\n          provisioningStartedAt\n          queuePosition\n          reactNativeVersion\n          releaseChannel\n          requiredPackageManager\n          resolvedEnvironment\n          resolvedImage\n          resourceClass\n          resourceClassDisplayName\n          runFromCI\n          runtimeVersion\n          sdkVersion\n          selectedImage\n          status\n          updatedAt\n          waiverType\n          workerStartedAt\n        }\n        updatedAt\n        workflowJob {\n          createdAt\n          environment\n          id\n          key\n          name\n          outputs\n          requiredJobKeys\n          status\n          type\n          updatedAt\n        }\n      }\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const SubmissionRetrySubmissionInput = Schema.Struct({
@@ -45,6 +45,11 @@ export const SubmissionRetrySubmissionOutput = Schema.Struct({
       }),
     ),
     app: Schema.Struct({
+      appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+        "HAS_WORKFLOWS_IS_CONNECTED",
+        "HAS_WORKFLOWS_MISSING_CONNECTION",
+        "NO_APP_STORE_CONNECT_WORKFLOWS",
+      ]),
       appStoreUrl: Schema.NullOr(Schema.String),
       assetLimitPerUpdateGroup: Schema.Number,
       buildProfiles: Schema.Array(Schema.String),
@@ -126,6 +131,7 @@ export const SubmissionRetrySubmissionOutput = Schema.Struct({
         createdAt: Schema.String,
         displayName: Schema.NullOr(Schema.String),
         endedAt: Schema.NullOr(Schema.String),
+        enqueuedAt: Schema.NullOr(Schema.String),
         expiresAt: Schema.String,
         gitCommitHash: Schema.NullOr(Schema.String),
         gitCommitMessage: Schema.NullOr(Schema.String),
@@ -133,8 +139,10 @@ export const SubmissionRetrySubmissionOutput = Schema.Struct({
         id: Schema.String,
         isWaived: Schema.Boolean,
         logFileUrls: Schema.Array(Schema.String),
+        maxRunTimeSeconds: Schema.Number,
         name: Schema.String,
         priority: Schema.Literals(["HIGH", "NORMAL"]),
+        resourceClassDisplayName: Schema.String,
         startedAt: Schema.NullOr(Schema.String),
         status: Schema.Literals([
           "CANCELED",
@@ -210,6 +218,7 @@ export const SubmissionRetrySubmissionOutput = Schema.Struct({
         releaseChannel: Schema.NullOr(Schema.String),
         requiredPackageManager: Schema.NullOr(Schema.String),
         resolvedEnvironment: Schema.NullOr(Schema.Unknown),
+        resolvedImage: Schema.NullOr(Schema.String),
         resourceClass: Schema.Literals([
           "ANDROID_DEFAULT",
           "ANDROID_LARGE",
@@ -270,6 +279,7 @@ export const SubmissionRetrySubmissionOutput = Schema.Struct({
         ]),
         type: Schema.Literals([
           "APPLE_DEVICE_REGISTRATION_REQUEST",
+          "BRANCH_DELETE",
           "BUILD",
           "CUSTOM",
           "DEPLOY",

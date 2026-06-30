@@ -16,7 +16,7 @@ export type GetNeonAuthInput = typeof GetNeonAuthInput.Type;
 
 // Output Schema
 export const GetNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  auth_provider: Schema.Literals(["mock", "stack", "stack_v2", "better_auth"]),
+  auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
   auth_provider_project_id: Schema.String,
   branch_id: Schema.String,
   db_name: Schema.String,
@@ -31,9 +31,10 @@ export type GetNeonAuthOutput = typeof GetNeonAuthOutput.Type;
 
 // The operation
 /**
- * Get details of Neon Auth for the branch
+ * Retrieve Neon Auth details for the branch
  *
- * / Fetches the details of the Neon Auth for the specified branch. You can obtain the `project_id` and `branch_id` by listing the projects and branches for your Neon account.
+ * Retrieves the Neon Auth integration details for the specified branch,
+ * including the auth provider type and integration status.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

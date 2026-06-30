@@ -22,7 +22,13 @@ export const LogsAlertsResetCreateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
-    filters: Schema.optional(Schema.Unknown),
+    filters: Schema.optional(
+      Schema.Struct({
+        filterGroup: Schema.optional(Schema.Unknown),
+        serviceNames: Schema.optional(Schema.Unknown),
+        severityLevels: Schema.optional(Schema.Unknown),
+      }),
+    ),
     threshold_count: Schema.optional(Schema.Number),
     threshold_operator: Schema.optional(Schema.Literals(["above", "below"])),
     window_minutes: Schema.optional(Schema.Number),
@@ -66,8 +72,9 @@ export const LogsAlertsResetCreateOutput =
       ),
     ),
     destination_types: Schema.optional(
-      Schema.Array(Schema.Literals(["slack", "webhook"])),
+      Schema.Array(Schema.Literals(["slack", "webhook", "teams"])),
     ),
+    first_enabled_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(
       Schema.NullOr(

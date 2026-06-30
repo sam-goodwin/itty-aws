@@ -9,6 +9,7 @@ export const ActionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   format: Schema.optional(Schema.Literals(["csv", "json"])),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
+  search: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "GET", path: "/api/projects/{project_id}/actions/" }));
 export type ActionsListInput = typeof ActionsListInput.Type;
 
@@ -82,9 +83,10 @@ export type ActionsListOutput = typeof ActionsListOutput.Type;
 // The operation
 /**
  *
- * @param limit - Number of results to return per page.
- * @param offset - The initial index from which to return the results.
+ * @param limit - Maximum number of actions to return. Omit to return all.
+ * @param offset - Number of actions to skip before returning results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+ * @param search - Case-insensitive substring match on the action name.
  */
 export const actionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ActionsListInput,

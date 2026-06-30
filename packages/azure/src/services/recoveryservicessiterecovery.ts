@@ -22,7 +22,7 @@ export const ClusterRecoveryPointGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/recoveryPoints/{recoveryPointName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ClusterRecoveryPointGetInput =
@@ -89,7 +89,7 @@ export const ClusterRecoveryPointsListByReplicationProtectionClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/recoveryPoints",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ClusterRecoveryPointsListByReplicationProtectionClusterInput =
@@ -160,7 +160,7 @@ export const MigrationRecoveryPointsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrationRecoveryPoints/{migrationRecoveryPointName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type MigrationRecoveryPointsGetInput =
@@ -222,7 +222,7 @@ export const MigrationRecoveryPointsListByReplicationMigrationItemsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrationRecoveryPoints",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type MigrationRecoveryPointsListByReplicationMigrationItemsInput =
@@ -292,7 +292,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/operations",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -347,7 +347,7 @@ export const RecoveryPointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/recoveryPoints/{recoveryPointName}",
-    apiVersion: "2025-08-01",
+    apiVersion: "2026-05-01",
   }),
 );
 export type RecoveryPointsGetInput = typeof RecoveryPointsGetInput.Type;
@@ -407,7 +407,7 @@ export const RecoveryPointsListByReplicationProtectedItemsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/recoveryPoints",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type RecoveryPointsListByReplicationProtectedItemsInput =
@@ -489,7 +489,7 @@ export const ReplicationAlertSettingsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationAlertSettingsCreateInput =
@@ -547,7 +547,7 @@ export const ReplicationAlertSettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationAlertSettingsGetInput =
@@ -605,7 +605,7 @@ export const ReplicationAlertSettingsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationAlertSettingsListInput =
@@ -677,7 +677,7 @@ export const ReplicationAppliancesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAppliances",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationAppliancesListInput =
@@ -727,11 +727,12 @@ export const ReplicationEligibilityResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualMachineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.RecoveryServices/replicationEligibilityResults/default",
-      apiVersion: "2025-08-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.RecoveryServices/replicationEligibilityResults/default",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationEligibilityResultsGetInput =
@@ -770,6 +771,7 @@ export type ReplicationEligibilityResultsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualMachineName - Virtual Machine name.
  */
 export const ReplicationEligibilityResultsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -781,11 +783,12 @@ export const ReplicationEligibilityResultsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualMachineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.RecoveryServices/replicationEligibilityResults",
-      apiVersion: "2025-08-01",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.RecoveryServices/replicationEligibilityResults",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationEligibilityResultsListInput =
@@ -840,6 +843,7 @@ export type ReplicationEligibilityResultsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualMachineName - Virtual Machine name.
  */
 export const ReplicationEligibilityResultsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -857,7 +861,7 @@ export const ReplicationEventsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents/{eventName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationEventsGetInput = typeof ReplicationEventsGetInput.Type;
@@ -914,7 +918,7 @@ export const ReplicationEventsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationEventsListInput = typeof ReplicationEventsListInput.Type;
@@ -987,7 +991,7 @@ export const ReplicationFabricsCheckConsistencyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/checkConsistency",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationFabricsCheckConsistencyInput =
@@ -1054,7 +1058,7 @@ export const ReplicationFabricsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationFabricsCreateInput =
@@ -1113,7 +1117,7 @@ export const ReplicationFabricsDeleteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/remove",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationFabricsDeleteInput =
@@ -1155,7 +1159,7 @@ export const ReplicationFabricsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationFabricsGetInput = typeof ReplicationFabricsGetInput.Type;
@@ -1213,7 +1217,7 @@ export const ReplicationFabricsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationFabricsListInput =
@@ -1286,7 +1290,7 @@ export const ReplicationFabricsMigrateToAadInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/migratetoaad",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationFabricsMigrateToAadInput =
@@ -1326,7 +1330,7 @@ export const ReplicationFabricsPurgeInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationFabricsPurgeInput =
@@ -1376,7 +1380,7 @@ export const ReplicationFabricsReassociateGatewayInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/reassociateGateway",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationFabricsReassociateGatewayInput =
@@ -1434,7 +1438,7 @@ export const ReplicationFabricsRemoveInfraInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/removeInfra",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationFabricsRemoveInfraInput =
@@ -1477,7 +1481,7 @@ export const ReplicationFabricsRenewCertificateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/renewCertificate",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationFabricsRenewCertificateInput =
@@ -1535,7 +1539,7 @@ export const ReplicationJobsCancelInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/cancel",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationJobsCancelInput = typeof ReplicationJobsCancelInput.Type;
@@ -1600,7 +1604,7 @@ export const ReplicationJobsExportInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/export",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationJobsExportInput = typeof ReplicationJobsExportInput.Type;
@@ -1657,7 +1661,7 @@ export const ReplicationJobsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationJobsGetInput = typeof ReplicationJobsGetInput.Type;
@@ -1712,7 +1716,7 @@ export const ReplicationJobsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationJobsListInput = typeof ReplicationJobsListInput.Type;
@@ -1782,7 +1786,7 @@ export const ReplicationJobsRestartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/restart",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationJobsRestartInput =
@@ -1846,7 +1850,7 @@ export const ReplicationJobsResumeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/resume",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationJobsResumeInput = typeof ReplicationJobsResumeInput.Type;
@@ -1905,7 +1909,7 @@ export const ReplicationLogicalNetworksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationLogicalNetworks/{logicalNetworkName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationLogicalNetworksGetInput =
@@ -1964,7 +1968,7 @@ export const ReplicationLogicalNetworksListByReplicationFabricsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationLogicalNetworks",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationLogicalNetworksListByReplicationFabricsInput =
@@ -2045,7 +2049,7 @@ export const ReplicationMigrationItemsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsCreateInput =
@@ -2108,7 +2112,7 @@ export const ReplicationMigrationItemsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsDeleteInput =
@@ -2153,7 +2157,7 @@ export const ReplicationMigrationItemsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsGetInput =
@@ -2213,7 +2217,7 @@ export const ReplicationMigrationItemsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationMigrationItems",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsListInput =
@@ -2290,7 +2294,7 @@ export const ReplicationMigrationItemsListByReplicationProtectionContainersInput
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsListByReplicationProtectionContainersInput =
@@ -2376,7 +2380,7 @@ export const ReplicationMigrationItemsMigrateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrate",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsMigrateInput =
@@ -2441,7 +2445,7 @@ export const ReplicationMigrationItemsPauseReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/pauseReplication",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsPauseReplicationInput =
@@ -2508,7 +2512,7 @@ export const ReplicationMigrationItemsResumeReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/resumeReplication",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsResumeReplicationInput =
@@ -2575,7 +2579,7 @@ export const ReplicationMigrationItemsResyncInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/resync",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsResyncInput =
@@ -2642,7 +2646,7 @@ export const ReplicationMigrationItemsTestMigrateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/testMigrate",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsTestMigrateInput =
@@ -2707,7 +2711,7 @@ export const ReplicationMigrationItemsTestMigrateCleanupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/testMigrateCleanup",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsTestMigrateCleanupInput =
@@ -2776,7 +2780,7 @@ export const ReplicationMigrationItemsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationMigrationItemsUpdateInput =
@@ -2847,7 +2851,7 @@ export const ReplicationNetworkMappingsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationNetworkMappingsCreateInput =
@@ -2909,7 +2913,7 @@ export const ReplicationNetworkMappingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationNetworkMappingsDeleteInput =
@@ -2953,7 +2957,7 @@ export const ReplicationNetworkMappingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationNetworkMappingsGetInput =
@@ -3012,7 +3016,7 @@ export const ReplicationNetworkMappingsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworkMappings",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationNetworkMappingsListInput =
@@ -3085,7 +3089,7 @@ export const ReplicationNetworkMappingsListByReplicationNetworksInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationNetworkMappingsListByReplicationNetworksInput =
@@ -3172,7 +3176,7 @@ export const ReplicationNetworkMappingsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationNetworkMappingsUpdateInput =
@@ -3233,7 +3237,7 @@ export const ReplicationNetworksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationNetworksGetInput =
@@ -3292,7 +3296,7 @@ export const ReplicationNetworksListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworks",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationNetworksListInput =
@@ -3365,7 +3369,7 @@ export const ReplicationNetworksListByReplicationFabricsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationNetworksListByReplicationFabricsInput =
@@ -3447,7 +3451,7 @@ export const ReplicationPoliciesCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationPoliciesCreateInput =
@@ -3506,7 +3510,7 @@ export const ReplicationPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationPoliciesDeleteInput =
@@ -3547,7 +3551,7 @@ export const ReplicationPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationPoliciesGetInput =
@@ -3605,7 +3609,7 @@ export const ReplicationPoliciesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationPoliciesListInput =
@@ -3687,7 +3691,7 @@ export const ReplicationPoliciesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationPoliciesUpdateInput =
@@ -3748,7 +3752,7 @@ export const ReplicationProtectableItemsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectableItems/{protectableItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectableItemsGetInput =
@@ -3812,7 +3816,7 @@ export const ReplicationProtectableItemsListByReplicationProtectionContainersInp
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectableItems",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectableItemsListByReplicationProtectionContainersInput =
@@ -3900,7 +3904,7 @@ export const ReplicationProtectedItemsAddDisksInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/addDisks",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsAddDisksInput =
@@ -3968,7 +3972,7 @@ export const ReplicationProtectedItemsApplyRecoveryPointInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/applyRecoveryPoint",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsApplyRecoveryPointInput =
@@ -4041,7 +4045,7 @@ export const ReplicationProtectedItemsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsCreateInput =
@@ -4113,7 +4117,7 @@ export const ReplicationProtectedItemsDeleteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/remove",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsDeleteInput =
@@ -4157,7 +4161,7 @@ export const ReplicationProtectedItemsFailoverCancelInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCancel",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsFailoverCancelInput =
@@ -4219,7 +4223,7 @@ export const ReplicationProtectedItemsFailoverCommitInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCommit",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsFailoverCommitInput =
@@ -4281,7 +4285,7 @@ export const ReplicationProtectedItemsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsGetInput =
@@ -4342,7 +4346,7 @@ export const ReplicationProtectedItemsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectedItems",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsListInput =
@@ -4417,7 +4421,7 @@ export const ReplicationProtectedItemsListByReplicationProtectionContainersInput
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsListByReplicationProtectionContainersInput =
@@ -4505,7 +4509,7 @@ export const ReplicationProtectedItemsPlannedFailoverInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/plannedFailover",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsPlannedFailoverInput =
@@ -4567,7 +4571,7 @@ export const ReplicationProtectedItemsPurgeInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsPurgeInput =
@@ -4616,7 +4620,7 @@ export const ReplicationProtectedItemsReinstallMobilityServiceInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/reinstallMobilityService",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsReinstallMobilityServiceInput =
@@ -4687,7 +4691,7 @@ export const ReplicationProtectedItemsRemoveDisksInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/removeDisks",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsRemoveDisksInput =
@@ -4749,7 +4753,7 @@ export const ReplicationProtectedItemsRepairReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/repairReplication",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsRepairReplicationInput =
@@ -4821,7 +4825,7 @@ export const ReplicationProtectedItemsReprotectInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/reProtect",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsReprotectInput =
@@ -4894,7 +4898,7 @@ export const ReplicationProtectedItemsResolveHealthErrorsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/resolveHealthErrors",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsResolveHealthErrorsInput =
@@ -4966,7 +4970,7 @@ export const ReplicationProtectedItemsSwitchProviderInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/switchProvider",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsSwitchProviderInput =
@@ -5038,7 +5042,7 @@ export const ReplicationProtectedItemsTestFailoverInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/testFailover",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsTestFailoverInput =
@@ -5103,7 +5107,7 @@ export const ReplicationProtectedItemsTestFailoverCleanupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/testFailoverCleanup",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsTestFailoverCleanupInput =
@@ -5174,7 +5178,7 @@ export const ReplicationProtectedItemsUnplannedFailoverInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/unplannedFailover",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsUnplannedFailoverInput =
@@ -5297,7 +5301,7 @@ export const ReplicationProtectedItemsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsUpdateInput =
@@ -5365,7 +5369,7 @@ export const ReplicationProtectedItemsUpdateApplianceInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/updateAppliance",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsUpdateApplianceInput =
@@ -5432,7 +5436,7 @@ export const ReplicationProtectedItemsUpdateMobilityServiceInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/updateMobilityService",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectedItemsUpdateMobilityServiceInput =
@@ -5503,7 +5507,7 @@ export const ReplicationProtectionClustersApplyRecoveryPointInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/applyRecoveryPoint",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersApplyRecoveryPointInput =
@@ -5729,7 +5733,7 @@ export const ReplicationProtectionClustersCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersCreateInput =
@@ -5791,7 +5795,7 @@ export const ReplicationProtectionClustersFailoverCommitInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/failoverCommit",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersFailoverCommitInput =
@@ -5853,7 +5857,7 @@ export const ReplicationProtectionClustersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersGetInput =
@@ -5916,7 +5920,7 @@ export const ReplicationProtectionClustersGetOperationResultsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/operationResults/{jobId}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersGetOperationResultsInput =
@@ -5978,7 +5982,7 @@ export const ReplicationProtectionClustersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionClusters",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersListInput =
@@ -6053,7 +6057,7 @@ export const ReplicationProtectionClustersListByReplicationProtectionContainersI
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersListByReplicationProtectionContainersInput =
@@ -6131,7 +6135,7 @@ export const ReplicationProtectionClustersPurgeInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersPurgeInput =
@@ -6175,7 +6179,7 @@ export const ReplicationProtectionClustersRepairReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/repairReplication",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersRepairReplicationInput =
@@ -6249,7 +6253,7 @@ export const ReplicationProtectionClustersTestFailoverInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/testFailover",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersTestFailoverInput =
@@ -6314,7 +6318,7 @@ export const ReplicationProtectionClustersTestFailoverCleanupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/testFailoverCleanup",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersTestFailoverCleanupInput =
@@ -6385,7 +6389,7 @@ export const ReplicationProtectionClustersUnplannedFailoverInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/unplannedFailover",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionClustersUnplannedFailoverInput =
@@ -6458,7 +6462,7 @@ export const ReplicationProtectionContainerMappingsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainerMappingsCreateInput =
@@ -6529,7 +6533,7 @@ export const ReplicationProtectionContainerMappingsDeleteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}/remove",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainerMappingsDeleteInput =
@@ -6573,7 +6577,7 @@ export const ReplicationProtectionContainerMappingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainerMappingsGetInput =
@@ -6632,7 +6636,7 @@ export const ReplicationProtectionContainerMappingsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainerMappings",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainerMappingsListInput =
@@ -6705,7 +6709,7 @@ export const ReplicationProtectionContainerMappingsListByReplicationProtectionCo
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainerMappingsListByReplicationProtectionContainersInput =
@@ -6783,7 +6787,7 @@ export const ReplicationProtectionContainerMappingsPurgeInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainerMappingsPurgeInput =
@@ -6836,7 +6840,7 @@ export const ReplicationProtectionContainerMappingsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainerMappingsUpdateInput =
@@ -6908,7 +6912,7 @@ export const ReplicationProtectionContainersCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainersCreateInput =
@@ -6968,7 +6972,7 @@ export const ReplicationProtectionContainersDeleteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/remove",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainersDeleteInput =
@@ -7017,7 +7021,7 @@ export const ReplicationProtectionContainersDiscoverProtectableItemInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/discoverProtectableItem",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainersDiscoverProtectableItemInput =
@@ -7077,7 +7081,7 @@ export const ReplicationProtectionContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainersGetInput =
@@ -7135,7 +7139,7 @@ export const ReplicationProtectionContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainers",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainersListInput =
@@ -7207,7 +7211,7 @@ export const ReplicationProtectionContainersListByReplicationFabricsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainersListByReplicationFabricsInput =
@@ -7291,7 +7295,7 @@ export const ReplicationProtectionContainersSwitchClusterProtectionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/switchClusterProtection",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainersSwitchClusterProtectionInput =
@@ -7361,7 +7365,7 @@ export const ReplicationProtectionContainersSwitchProtectionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/switchprotection",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionContainersSwitchProtectionInput =
@@ -7429,7 +7433,7 @@ export const ReplicationProtectionIntentsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents/{intentObjectName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionIntentsCreateInput =
@@ -7487,7 +7491,7 @@ export const ReplicationProtectionIntentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents/{intentObjectName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionIntentsGetInput =
@@ -7546,7 +7550,7 @@ export const ReplicationProtectionIntentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationProtectionIntentsListInput =
@@ -7709,7 +7713,7 @@ export const ReplicationRecoveryPlansCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansCreateInput =
@@ -7767,7 +7771,7 @@ export const ReplicationRecoveryPlansDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansDeleteInput =
@@ -7807,7 +7811,7 @@ export const ReplicationRecoveryPlansFailoverCancelInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/failoverCancel",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansFailoverCancelInput =
@@ -7865,7 +7869,7 @@ export const ReplicationRecoveryPlansFailoverCommitInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/failoverCommit",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansFailoverCommitInput =
@@ -7923,7 +7927,7 @@ export const ReplicationRecoveryPlansGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansGetInput =
@@ -7981,7 +7985,7 @@ export const ReplicationRecoveryPlansListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansListInput =
@@ -8066,7 +8070,7 @@ export const ReplicationRecoveryPlansPlannedFailoverInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/plannedFailover",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansPlannedFailoverInput =
@@ -8124,7 +8128,7 @@ export const ReplicationRecoveryPlansReprotectInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/reProtect",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansReprotectInput =
@@ -8197,7 +8201,7 @@ export const ReplicationRecoveryPlansTestFailoverInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/testFailover",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansTestFailoverInput =
@@ -8258,7 +8262,7 @@ export const ReplicationRecoveryPlansTestFailoverCleanupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/testFailoverCleanup",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansTestFailoverCleanupInput =
@@ -8330,7 +8334,7 @@ export const ReplicationRecoveryPlansUnplannedFailoverInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/unplannedFailover",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansUnplannedFailoverInput =
@@ -8475,7 +8479,7 @@ export const ReplicationRecoveryPlansUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryPlansUpdateInput =
@@ -8562,7 +8566,7 @@ export const ReplicationRecoveryServicesProvidersCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryServicesProvidersCreateInput =
@@ -8622,7 +8626,7 @@ export const ReplicationRecoveryServicesProvidersDeleteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}/remove",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryServicesProvidersDeleteInput =
@@ -8664,7 +8668,7 @@ export const ReplicationRecoveryServicesProvidersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryServicesProvidersGetInput =
@@ -8722,7 +8726,7 @@ export const ReplicationRecoveryServicesProvidersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryServicesProviders",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryServicesProvidersListInput =
@@ -8794,7 +8798,7 @@ export const ReplicationRecoveryServicesProvidersListByReplicationFabricsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryServicesProvidersListByReplicationFabricsInput =
@@ -8870,7 +8874,7 @@ export const ReplicationRecoveryServicesProvidersPurgeInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryServicesProvidersPurgeInput =
@@ -8912,7 +8916,7 @@ export const ReplicationRecoveryServicesProvidersRefreshProviderInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}/refreshProvider",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationRecoveryServicesProvidersRefreshProviderInput =
@@ -8978,7 +8982,7 @@ export const ReplicationStorageClassificationMappingsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationStorageClassificationMappingsCreateInput =
@@ -9040,7 +9044,7 @@ export const ReplicationStorageClassificationMappingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationStorageClassificationMappingsDeleteInput =
@@ -9084,7 +9088,7 @@ export const ReplicationStorageClassificationMappingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationStorageClassificationMappingsGetInput =
@@ -9143,7 +9147,7 @@ export const ReplicationStorageClassificationMappingsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationStorageClassificationMappings",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationStorageClassificationMappingsListInput =
@@ -9216,7 +9220,7 @@ export const ReplicationStorageClassificationMappingsListByReplicationStorageCla
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationStorageClassificationMappingsListByReplicationStorageClassificationsInput =
@@ -9293,7 +9297,7 @@ export const ReplicationStorageClassificationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationStorageClassificationsGetInput =
@@ -9351,7 +9355,7 @@ export const ReplicationStorageClassificationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationStorageClassifications",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationStorageClassificationsListInput =
@@ -9423,7 +9427,7 @@ export const ReplicationStorageClassificationsListByReplicationFabricsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationStorageClassificationsListByReplicationFabricsInput =
@@ -9496,7 +9500,7 @@ export const ReplicationVaultHealthGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationVaultHealthGetInput =
@@ -9553,7 +9557,7 @@ export const ReplicationVaultHealthRefreshInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth/default/refresh",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationVaultHealthRefreshInput =
@@ -9612,7 +9616,7 @@ export const ReplicationVaultSettingCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationVaultSettingCreateInput =
@@ -9670,7 +9674,7 @@ export const ReplicationVaultSettingGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationVaultSettingGetInput =
@@ -9728,7 +9732,7 @@ export const ReplicationVaultSettingListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationVaultSettingListInput =
@@ -9811,7 +9815,7 @@ export const ReplicationvCentersCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationvCentersCreateInput =
@@ -9872,7 +9876,7 @@ export const ReplicationvCentersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationvCentersDeleteInput =
@@ -9915,7 +9919,7 @@ export const ReplicationvCentersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationvCentersGetInput =
@@ -9974,7 +9978,7 @@ export const ReplicationvCentersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationvCenters",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationvCentersListInput =
@@ -10047,7 +10051,7 @@ export const ReplicationvCentersListByReplicationFabricsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationvCentersListByReplicationFabricsInput =
@@ -10130,7 +10134,7 @@ export const ReplicationvCentersUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type ReplicationvCentersUpdateInput =
@@ -10190,7 +10194,7 @@ export const SupportedOperatingSystemsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationSupportedOperatingSystems",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type SupportedOperatingSystemsGetInput =
@@ -10248,7 +10252,7 @@ export const TargetComputeSizesListByReplicationProtectedItemsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/targetComputeSizes",
-      apiVersion: "2025-08-01",
+      apiVersion: "2026-05-01",
     }),
   );
 export type TargetComputeSizesListByReplicationProtectedItemsInput =

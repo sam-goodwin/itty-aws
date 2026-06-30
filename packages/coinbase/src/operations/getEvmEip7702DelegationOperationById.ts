@@ -43,7 +43,7 @@ export type GetEvmEip7702DelegationOperationByIdOutput =
 
 // The operation
 /**
- * Get EIP-7702 delegation operation for an operationID
+ * Get EIP-7702 delegation operation by ID
  *
  * Returns the EIP-7702 delegation operation. Use the delegationOperationId returned by the Create EIP-7702 delegation endpoint to poll for operation completion.
  *

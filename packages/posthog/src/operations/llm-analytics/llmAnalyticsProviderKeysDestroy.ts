@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsProviderKeysDestroyInput =
@@ -11,7 +10,7 @@ export const LlmAnalyticsProviderKeysDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/llm_analytics/provider_keys/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/provider_keys/{id}/",
     }),
   );
 export type LlmAnalyticsProviderKeysDestroyInput =
@@ -33,5 +32,4 @@ export const llmAnalyticsProviderKeysDestroy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsProviderKeysDestroyInput,
     outputSchema: LlmAnalyticsProviderKeysDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

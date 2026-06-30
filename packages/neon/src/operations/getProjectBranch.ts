@@ -87,13 +87,11 @@ export type GetProjectBranchOutput = typeof GetProjectBranchOutput.Type;
  * Retrieve branch details
  *
  * Retrieves information about the specified branch.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain a `branch_id` by listing the project's branches.
  * A `branch_id` value has a `br-` prefix.
  * Each Neon project is initially created with a root and default branch named `main`.
  * A project can contain one or more branches.
  * A parent branch is identified by a `parent_id` value, which is the `id` of the parent branch.
- * For related information, see [Manage branches](https://neon.tech/docs/manage/branches/).
+ * For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

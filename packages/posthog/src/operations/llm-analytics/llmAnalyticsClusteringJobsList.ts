@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsClusteringJobsListInput =
@@ -12,7 +11,7 @@ export const LlmAnalyticsClusteringJobsListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/llm_analytics/clustering_jobs/",
+      path: "/api/projects/{project_id}/llm_analytics/clustering_jobs/",
     }),
   );
 export type LlmAnalyticsClusteringJobsListInput =
@@ -45,7 +44,7 @@ export type LlmAnalyticsClusteringJobsListOutput =
 
 // The operation
 /**
- * CRUD for clustering job configurations (max 5 per team).
+ * CRUD for clustering job configurations (max 10 per team).
  *
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
@@ -55,5 +54,4 @@ export const llmAnalyticsClusteringJobsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsClusteringJobsListInput,
     outputSchema: LlmAnalyticsClusteringJobsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

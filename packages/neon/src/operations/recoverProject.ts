@@ -114,6 +114,9 @@ export const RecoverProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.optional(Schema.String),
     maintenance_scheduled_for: Schema.optional(Schema.String),
     hipaa_enabled_at: Schema.optional(Schema.String),
+    effective_project_permission: Schema.optional(
+      Schema.NullOr(Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"])),
+    ),
   }),
   branches: Schema.Array(
     Schema.Struct({
@@ -175,8 +178,10 @@ export type RecoverProjectOutput = typeof RecoverProjectOutput.Type;
 /**
  * Recover a deleted project
  *
- * Recovers a deleted project during the deletion grace period.
- * You can obtain a `project_id` by listing the projects for your Neon account.
+ * Recovers a deleted project within the 7-day deletion recovery period.
+ * Restores branches, endpoints, settings, and connection strings.
+ * Some integrations require manual reconfiguration after recovery.
+ * To list recoverable projects, use `GET /projects?recoverable=true`.
  *
  * @param project_id - The Neon project ID
  */

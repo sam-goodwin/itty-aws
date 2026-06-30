@@ -21,7 +21,7 @@ export type AddEndUserEvmAccountOutput = typeof AddEndUserEvmAccountOutput.Type;
 
 // The operation
 /**
- * Add an EVM account to an end user
+ * Add EVM account to end user
  *
  * Adds a new EVM EOA account to an existing end user. End users can have up to 10 EVM accounts.
  * This API is intended to be used by the developer's own backend, and is authenticated using the developer's CDP API key.

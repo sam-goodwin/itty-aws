@@ -10,7 +10,7 @@ export const CreateTrafficRuleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
     budget_id: Schema.String.pipe(T.PathParam()),
-    kind: Schema.optional(Schema.Literals(["match"])),
+    kind: Schema.optional(Schema.Literals(["match", "each"])),
     keyspace: Schema.optional(Schema.String),
     fingerprint: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Array(Schema.String)),
@@ -27,7 +27,7 @@ export type CreateTrafficRuleInput = typeof CreateTrafficRuleInput.Type;
 export const CreateTrafficRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    kind: Schema.Literals(["match"]),
+    kind: Schema.Literals(["match", "each"]),
     tags: Schema.Array(
       Schema.Struct({
         key_id: Schema.String,
@@ -60,7 +60,7 @@ export type CreateTrafficRuleOutput = typeof CreateTrafficRuleOutput.Type;
  * @param kind - Kind of rule
  * @param keyspace - The keyspace to apply a query pattern rule to
  * @param fingerprint - Query pattern fingerprint to apply rule to
- * @param tags - Optional array of tags for this rule
+ * @param tags - Optional array of tags for this rule. Each rules take exactly one tag.
  */
 export const createTrafficRule = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateTrafficRuleInput,

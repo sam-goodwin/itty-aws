@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const WebVitalsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -10,7 +9,7 @@ export const WebVitalsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     pathname: Schema.String,
   },
 ).pipe(
-  T.Http({ method: "GET", path: "/api/environments/{project_id}/web_vitals/" }),
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/web_vitals/" }),
 );
 export type WebVitalsRetrieveInput = typeof WebVitalsRetrieveInput.Type;
 
@@ -30,5 +29,4 @@ export type WebVitalsRetrieveOutput = typeof WebVitalsRetrieveOutput.Type;
 export const webVitalsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebVitalsRetrieveInput,
   outputSchema: WebVitalsRetrieveOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ChangeRequestsListInput =
@@ -17,7 +16,7 @@ export const ChangeRequestsListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/change_requests/",
+      path: "/api/projects/{project_id}/change_requests/",
     }),
   );
 export type ChangeRequestsListInput = typeof ChangeRequestsListInput.Type;
@@ -42,7 +41,7 @@ export const ChangeRequestsListOutput =
           validation_status: Schema.optional(
             Schema.Literals(["valid", "invalid", "expired", "stale"]),
           ),
-          validation_errors: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          validation_errors: Schema.optional(Schema.Unknown),
           validated_at: Schema.optional(Schema.NullOr(Schema.String)),
           state: Schema.optional(
             Schema.Literals([
@@ -97,7 +96,7 @@ export const ChangeRequestsListOutput =
           expires_at: Schema.optional(Schema.String),
           applied_at: Schema.optional(Schema.NullOr(Schema.String)),
           apply_error: Schema.optional(Schema.String),
-          result_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          result_data: Schema.optional(Schema.Unknown),
           approvals: Schema.optional(
             Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
           ),
@@ -122,5 +121,4 @@ export type ChangeRequestsListOutput = typeof ChangeRequestsListOutput.Type;
 export const changeRequestsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChangeRequestsListInput,
   outputSchema: ChangeRequestsListOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

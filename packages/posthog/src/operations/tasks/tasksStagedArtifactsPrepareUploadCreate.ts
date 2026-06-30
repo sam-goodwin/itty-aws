@@ -21,11 +21,26 @@ export const TasksStagedArtifactsPrepareUploadCreateInput =
               "artifact",
               "tree_snapshot",
               "user_attachment",
+              "skill_bundle",
             ]),
           ),
           source: Schema.optional(Schema.String),
           size: Schema.optional(Schema.Number),
           content_type: Schema.optional(Schema.String),
+          metadata: Schema.optional(
+            Schema.Struct({
+              skill_name: Schema.String,
+              skill_source: Schema.Literals([
+                "user",
+                "repo",
+                "marketplace",
+                "codex",
+              ]),
+              content_sha256: Schema.String,
+              bundle_format: Schema.Literals(["zip"]),
+              schema_version: Schema.Number,
+            }),
+          ),
         }),
       ),
     ),
@@ -50,6 +65,20 @@ export const TasksStagedArtifactsPrepareUploadCreateOutput =
           source: Schema.optional(Schema.String),
           size: Schema.optional(Schema.Number),
           content_type: Schema.optional(Schema.String),
+          metadata: Schema.optional(
+            Schema.Struct({
+              skill_name: Schema.String,
+              skill_source: Schema.Literals([
+                "user",
+                "repo",
+                "marketplace",
+                "codex",
+              ]),
+              content_sha256: Schema.String,
+              bundle_format: Schema.Literals(["zip"]),
+              schema_version: Schema.Number,
+            }),
+          ),
           storage_path: Schema.optional(Schema.String),
           expires_in: Schema.optional(Schema.Number),
           presigned_post: Schema.optional(
@@ -73,7 +102,6 @@ export type TasksStagedArtifactsPrepareUploadCreateOutput =
  *
  * Reserve S3 object keys for task attachments before creating a new run and return presigned POST forms for direct uploads.
  *
- * @param id - A UUID string identifying this task.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksStagedArtifactsPrepareUploadCreate =

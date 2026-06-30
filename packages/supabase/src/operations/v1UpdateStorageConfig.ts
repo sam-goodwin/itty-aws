@@ -20,6 +20,11 @@ export const V1UpdateStorageConfigInput =
             enabled: Schema.Boolean,
           }),
         ),
+        purgeCache: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.Boolean,
+          }),
+        ),
         icebergCatalog: Schema.optional(
           Schema.Struct({
             enabled: Schema.Boolean,

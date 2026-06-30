@@ -55,7 +55,7 @@ export type GetEndUserOutput = typeof GetEndUserOutput.Type;
 
 // The operation
 /**
- * Get an end user
+ * Get end user
  *
  * Gets an end user by ID.
  * This API is intended to be used by the developer's own backend, and is authenticated using the developer's CDP API key.

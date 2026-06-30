@@ -26,7 +26,8 @@ export type UpdateNeonAuthEmailProviderOutput =
 /**
  * Update email provider configuration
  *
- * Updates the email provider configuration for the specified branch.
+ * Updates the email provider configuration for the specified branch's Neon Auth integration.
+ * The email provider handles transactional messages such as verification emails and password reset links.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

@@ -35,9 +35,6 @@ export const FeatureFlagsMyFlagsRetrieveOutput =
           ensure_experience_continuity: Schema.optional(
             Schema.NullOr(Schema.Boolean),
           ),
-          has_encrypted_payloads: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
           version: Schema.optional(Schema.NullOr(Schema.Number)),
           evaluation_runtime: Schema.optional(Schema.Unknown),
           bucketing_identifier: Schema.optional(Schema.Unknown),

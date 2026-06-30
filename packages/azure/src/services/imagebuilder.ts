@@ -22,23 +22,21 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(Schema.Unknown),
-        isDataAction: Schema.optional(Schema.Boolean),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      display: Schema.optional(
+        Schema.Struct({
+          provider: Schema.optional(Schema.String),
+          operation: Schema.optional(Schema.String),
+          resource: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+      origin: Schema.optional(Schema.String),
+      properties: Schema.optional(Schema.Unknown),
+      isDataAction: Schema.optional(Schema.Boolean),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -59,6 +57,8 @@ export const TriggersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    imageTemplateName: Schema.String.pipe(T.PathParam()),
+    triggerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         kind: Schema.String,
@@ -122,6 +122,8 @@ export type TriggersCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
+ * @param triggerName - The name of the trigger
  */
 export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -133,6 +135,8 @@ export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  imageTemplateName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -153,6 +157,8 @@ export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
+ * @param triggerName - The name of the trigger
  */
 export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TriggersDeleteInput,
@@ -162,6 +168,8 @@ export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  imageTemplateName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -200,6 +208,8 @@ export type TriggersGetOutput = typeof TriggersGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
+ * @param triggerName - The name of the trigger
  */
 export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TriggersGetInput,
@@ -210,6 +220,7 @@ export const TriggersListByImageTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    imageTemplateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -266,6 +277,7 @@ export type TriggersListByImageTemplateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
  */
 export const TriggersListByImageTemplate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -278,6 +290,7 @@ export const VirtualMachineImageTemplatesCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    imageTemplateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -301,6 +314,7 @@ export type VirtualMachineImageTemplatesCancelOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesCancel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -312,6 +326,7 @@ export const VirtualMachineImageTemplatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    imageTemplateName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         source: Schema.Struct({
@@ -530,6 +545,7 @@ export type VirtualMachineImageTemplatesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -541,6 +557,7 @@ export const VirtualMachineImageTemplatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    imageTemplateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -564,6 +581,7 @@ export type VirtualMachineImageTemplatesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -575,6 +593,7 @@ export const VirtualMachineImageTemplatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    imageTemplateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -616,6 +635,7 @@ export type VirtualMachineImageTemplatesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -627,6 +647,8 @@ export const VirtualMachineImageTemplatesGetRunOutputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    imageTemplateName: Schema.String.pipe(T.PathParam()),
+    runOutputName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -668,6 +690,8 @@ export type VirtualMachineImageTemplatesGetRunOutputOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
+ * @param runOutputName - The name of the run output
  */
 export const VirtualMachineImageTemplatesGetRunOutput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -691,38 +715,36 @@ export type VirtualMachineImageTemplatesListInput =
 // Output Schema
 export const VirtualMachineImageTemplatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -733,8 +755,8 @@ export type VirtualMachineImageTemplatesListOutput =
 /**
  * Gets information about the VM image templates associated with the subscription.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const VirtualMachineImageTemplatesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -744,8 +766,8 @@ export const VirtualMachineImageTemplatesList =
 // Input Schema
 export const VirtualMachineImageTemplatesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -759,38 +781,36 @@ export type VirtualMachineImageTemplatesListByResourceGroupInput =
 // Output Schema
 export const VirtualMachineImageTemplatesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -801,9 +821,9 @@ export type VirtualMachineImageTemplatesListByResourceGroupOutput =
 /**
  * Gets information about the VM image templates associated with the specified resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -815,6 +835,7 @@ export const VirtualMachineImageTemplatesListRunOutputsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    imageTemplateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -828,38 +849,36 @@ export type VirtualMachineImageTemplatesListRunOutputsInput =
 // Output Schema
 export const VirtualMachineImageTemplatesListRunOutputsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -873,6 +892,7 @@ export type VirtualMachineImageTemplatesListRunOutputsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesListRunOutputs =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -884,6 +904,7 @@ export const VirtualMachineImageTemplatesRunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    imageTemplateName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -907,6 +928,7 @@ export type VirtualMachineImageTemplatesRunOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesRun =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -918,6 +940,7 @@ export const VirtualMachineImageTemplatesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    imageTemplateName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
       Schema.Struct({
         type: Schema.optional(Schema.Literals(["UserAssigned", "None"])),
@@ -1002,9 +1025,10 @@ export type VirtualMachineImageTemplatesUpdateOutput =
 /**
  * Update the tags for this Virtual Machine Image Template
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

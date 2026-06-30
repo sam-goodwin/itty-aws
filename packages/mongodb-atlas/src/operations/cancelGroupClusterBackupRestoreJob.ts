@@ -30,7 +30,7 @@ export type CancelGroupClusterBackupRestoreJobOutput =
 /**
  * Cancel One Restore Job for One Cluster
  *
- * Cancels one cloud backup restore job of one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role, Project Backup Export Operator role, or Project Backup Recovery Operator role.
+ * Cancels one cloud backup restore job of one cluster from the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

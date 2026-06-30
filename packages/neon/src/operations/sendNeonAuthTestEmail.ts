@@ -36,7 +36,9 @@ export type SendNeonAuthTestEmailOutput =
 /**
  * Send test email
  *
- * Sends a test email to the specified email address.
+ * Sends a test email using the configured email server settings to verify SMTP connectivity and credentials.
+ * The request body must include the SMTP server settings
+ * (`host`, `port`, `username`, `password`, `sender_email`, `sender_name`) and the `recipient_email` address.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

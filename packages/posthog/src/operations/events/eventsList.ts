@@ -11,6 +11,7 @@ export const EventsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   distinct_id: Schema.optional(Schema.Number),
   event: Schema.optional(Schema.String),
   format: Schema.optional(Schema.Literals(["csv", "json"])),
+  include_person: Schema.optional(Schema.Boolean),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
   person_id: Schema.optional(Schema.Number),
@@ -73,6 +74,7 @@ export type EventsListOutput = typeof EventsListOutput.Type;
  * @param before - Only return events with a timestamp before this time. Default: now() + 5 seconds.
  * @param distinct_id - Filter list by distinct id.
  * @param event - Filter list by event. For example `user sign up` or `$pageview`.
+ * @param include_person - Include person details for each event. Default: false.
  * @param limit - The maximum number of results to return
  * @param offset - Allows to skip first offset rows. Will fail for value larger than 100000. Read about proper way of paginating: https://posthog.com/docs/api/queries#5-use-timestamp-based-pagination-instead-of-offset
  * @param person_id - Filter list by person id.

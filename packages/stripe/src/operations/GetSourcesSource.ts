@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const GetSourcesSourceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -143,7 +143,7 @@ export const GetSourcesSourceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         transaction_status_information: Schema.optional(Schema.String),
       }),
     ),
-    client_secret: SensitiveString,
+    client_secret: SensitiveOutputString,
     code_verification: Schema.optional(
       Schema.Struct({
         attempts_remaining: Schema.Number,

@@ -7,12 +7,7 @@ export const DeleteBranchNeonAuthTrustedDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
-    auth_provider: Schema.Literals([
-      "mock",
-      "stack",
-      "stack_v2",
-      "better_auth",
-    ]),
+    auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
     domains: Schema.Array(
       Schema.Struct({
         domain: Schema.String,
@@ -37,7 +32,8 @@ export type DeleteBranchNeonAuthTrustedDomainOutput =
 /**
  * Delete domain from redirect_uri whitelist
  *
- * Deletes a domain from the redirect_uri whitelist for the specified project.
+ * Removes a domain from the redirect URI whitelist for the specified branch.
+ * After removal, the domain can no longer be used as a redirect target after authentication.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

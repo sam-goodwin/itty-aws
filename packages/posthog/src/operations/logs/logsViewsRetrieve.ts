@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LogsViewsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -12,7 +11,7 @@ export const LogsViewsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "GET",
-    path: "/api/environments/{project_id}/logs/views/{short_id}/",
+    path: "/api/projects/{project_id}/logs/views/{short_id}/",
   }),
 );
 export type LogsViewsRetrieveInput = typeof LogsViewsRetrieveInput.Type;
@@ -55,5 +54,4 @@ export type LogsViewsRetrieveOutput = typeof LogsViewsRetrieveOutput.Type;
 export const logsViewsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LogsViewsRetrieveInput,
   outputSchema: LogsViewsRetrieveOutput,
-  errors: [Forbidden, NotFound] as const,
 }));

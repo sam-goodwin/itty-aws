@@ -153,7 +153,13 @@ export interface ChatCompletionsInstanceRequest {
   accountId: string;
   /** Body param */
   messages: {
-    content: string | null;
+    content:
+      | string
+      | (
+          | { text: string; type: "text" }
+          | { imageUrl: { url: string }; type: "image_url" }
+        )[]
+      | null;
     role:
       | "system"
       | "developer"
@@ -273,7 +279,26 @@ export const ChatCompletionsInstanceRequest =
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       messages: Schema.Array(
         Schema.Struct({
-          content: Schema.Union([Schema.String, Schema.Null]),
+          content: Schema.Union([
+            Schema.String,
+            Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  text: Schema.String,
+                  type: Schema.Literal("text"),
+                }),
+                Schema.Struct({
+                  imageUrl: Schema.Struct({
+                    url: Schema.String,
+                  }),
+                  type: Schema.Literal("image_url"),
+                }).pipe(
+                  Schema.encodeKeys({ imageUrl: "image_url", type: "type" }),
+                ),
+              ]),
+            ),
+            Schema.Null,
+          ]),
           role: Schema.Union([
             Schema.Literals([
               "system",
@@ -493,7 +518,13 @@ export const ChatCompletionsInstanceRequest =
 export interface ChatCompletionsInstanceResponse {
   choices: {
     message: {
-      content: string | null;
+      content:
+        | string
+        | (
+            | { text: string; type: "text" }
+            | { imageUrl: { url: string }; type: "image_url" }
+          )[]
+        | null;
       role:
         | "system"
         | "developer"
@@ -534,7 +565,26 @@ export const ChatCompletionsInstanceResponse =
       choices: Schema.Array(
         Schema.Struct({
           message: Schema.Struct({
-            content: Schema.Union([Schema.String, Schema.Null]),
+            content: Schema.Union([
+              Schema.String,
+              Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    text: Schema.String,
+                    type: Schema.Literal("text"),
+                  }),
+                  Schema.Struct({
+                    imageUrl: Schema.Struct({
+                      url: Schema.String,
+                    }),
+                    type: Schema.Literal("image_url"),
+                  }).pipe(
+                    Schema.encodeKeys({ imageUrl: "image_url", type: "type" }),
+                  ),
+                ]),
+              ),
+              Schema.Null,
+            ]),
             role: Schema.Union([
               Schema.Literals([
                 "system",
@@ -720,7 +770,13 @@ export interface ChatCompletionsNamespaceRequest {
   };
   /** Body param */
   messages: {
-    content: string | null;
+    content:
+      | string
+      | (
+          | { text: string; type: "text" }
+          | { imageUrl: { url: string }; type: "image_url" }
+        )[]
+      | null;
     role:
       | "system"
       | "developer"
@@ -920,7 +976,26 @@ export const ChatCompletionsNamespaceRequest =
       ),
       messages: Schema.Array(
         Schema.Struct({
-          content: Schema.Union([Schema.String, Schema.Null]),
+          content: Schema.Union([
+            Schema.String,
+            Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  text: Schema.String,
+                  type: Schema.Literal("text"),
+                }),
+                Schema.Struct({
+                  imageUrl: Schema.Struct({
+                    url: Schema.String,
+                  }),
+                  type: Schema.Literal("image_url"),
+                }).pipe(
+                  Schema.encodeKeys({ imageUrl: "image_url", type: "type" }),
+                ),
+              ]),
+            ),
+            Schema.Null,
+          ]),
           role: Schema.Union([
             Schema.Literals([
               "system",
@@ -988,7 +1063,13 @@ export const ChatCompletionsNamespaceRequest =
 export interface ChatCompletionsNamespaceResponse {
   choices: {
     message: {
-      content: string | null;
+      content:
+        | string
+        | (
+            | { text: string; type: "text" }
+            | { imageUrl: { url: string }; type: "image_url" }
+          )[]
+        | null;
       role:
         | "system"
         | "developer"
@@ -1031,7 +1112,26 @@ export const ChatCompletionsNamespaceResponse =
       choices: Schema.Array(
         Schema.Struct({
           message: Schema.Struct({
-            content: Schema.Union([Schema.String, Schema.Null]),
+            content: Schema.Union([
+              Schema.String,
+              Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    text: Schema.String,
+                    type: Schema.Literal("text"),
+                  }),
+                  Schema.Struct({
+                    imageUrl: Schema.Struct({
+                      url: Schema.String,
+                    }),
+                    type: Schema.Literal("image_url"),
+                  }).pipe(
+                    Schema.encodeKeys({ imageUrl: "image_url", type: "type" }),
+                  ),
+                ]),
+              ),
+              Schema.Null,
+            ]),
             role: Schema.Union([
               Schema.Literals([
                 "system",
@@ -1168,7 +1268,13 @@ export interface ChatCompletionsNamespaceInstanceRequest {
   accountId: string;
   /** Body param */
   messages: {
-    content: string | null;
+    content:
+      | string
+      | (
+          | { text: string; type: "text" }
+          | { imageUrl: { url: string }; type: "image_url" }
+        )[]
+      | null;
     role:
       | "system"
       | "developer"
@@ -1289,7 +1395,26 @@ export const ChatCompletionsNamespaceInstanceRequest =
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       messages: Schema.Array(
         Schema.Struct({
-          content: Schema.Union([Schema.String, Schema.Null]),
+          content: Schema.Union([
+            Schema.String,
+            Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  text: Schema.String,
+                  type: Schema.Literal("text"),
+                }),
+                Schema.Struct({
+                  imageUrl: Schema.Struct({
+                    url: Schema.String,
+                  }),
+                  type: Schema.Literal("image_url"),
+                }).pipe(
+                  Schema.encodeKeys({ imageUrl: "image_url", type: "type" }),
+                ),
+              ]),
+            ),
+            Schema.Null,
+          ]),
           role: Schema.Union([
             Schema.Literals([
               "system",
@@ -1509,7 +1634,13 @@ export const ChatCompletionsNamespaceInstanceRequest =
 export interface ChatCompletionsNamespaceInstanceResponse {
   choices: {
     message: {
-      content: string | null;
+      content:
+        | string
+        | (
+            | { text: string; type: "text" }
+            | { imageUrl: { url: string }; type: "image_url" }
+          )[]
+        | null;
       role:
         | "system"
         | "developer"
@@ -1550,7 +1681,26 @@ export const ChatCompletionsNamespaceInstanceResponse =
       choices: Schema.Array(
         Schema.Struct({
           message: Schema.Struct({
-            content: Schema.Union([Schema.String, Schema.Null]),
+            content: Schema.Union([
+              Schema.String,
+              Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    text: Schema.String,
+                    type: Schema.Literal("text"),
+                  }),
+                  Schema.Struct({
+                    imageUrl: Schema.Struct({
+                      url: Schema.String,
+                    }),
+                    type: Schema.Literal("image_url"),
+                  }).pipe(
+                    Schema.encodeKeys({ imageUrl: "image_url", type: "type" }),
+                  ),
+                ]),
+              ),
+              Schema.Null,
+            ]),
             role: Schema.Union([
               Schema.Literals([
                 "system",
@@ -1756,6 +1906,7 @@ export interface ListInstancesResponse {
       | null;
     embeddingModel?:
       | "@cf/qwen/qwen3-embedding-0.6b"
+      | "@cf/qwen/qwen3-vl-embedding-2b"
       | "@cf/baai/bge-m3"
       | "@cf/baai/bge-large-en-v1.5"
       | "@cf/google/embeddinggemma-300m"
@@ -1853,13 +2004,6 @@ export interface ListInstancesResponse {
       prefix?: string | null;
       r2Jurisdiction?: string | null;
       webCrawler?: {
-        crawlOptions?: {
-          depth?: number | null;
-          includeExternalLinks?: boolean | null;
-          includeSubdomains?: boolean | null;
-          maxAge?: number | null;
-          source?: "all" | "sitemaps" | "links" | (string & {}) | null;
-        } | null;
         parseOptions?: {
           contentSelector?: { path: string; selector: string }[] | null;
           includeHeaders?: Record<string, unknown> | null;
@@ -1867,12 +2011,7 @@ export interface ListInstancesResponse {
           specificSitemaps?: string[] | null;
           useBrowserRendering?: boolean | null;
         } | null;
-        parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
-        storeOptions?: {
-          storageId: string;
-          r2Jurisdiction?: string | null;
-          storageType?: "r2" | null;
-        } | null;
+        parseType?: "sitemap" | "crawl" | (string & {}) | null;
       } | null;
     } | null;
     status?: string | null;
@@ -1980,6 +2119,7 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
           embeddingModel: Schema.optional(
             Schema.Union([
               Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+              Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
               Schema.Literal("@cf/baai/bge-m3"),
               Schema.Literal("@cf/baai/bge-large-en-v1.5"),
               Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -2263,42 +2403,6 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                 webCrawler: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      crawlOptions: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            depth: Schema.optional(
-                              Schema.Union([Schema.Number, Schema.Null]),
-                            ),
-                            includeExternalLinks: Schema.optional(
-                              Schema.Union([Schema.Boolean, Schema.Null]),
-                            ),
-                            includeSubdomains: Schema.optional(
-                              Schema.Union([Schema.Boolean, Schema.Null]),
-                            ),
-                            maxAge: Schema.optional(
-                              Schema.Union([Schema.Number, Schema.Null]),
-                            ),
-                            source: Schema.optional(
-                              Schema.Union([
-                                Schema.Union([
-                                  Schema.Literals(["all", "sitemaps", "links"]),
-                                  Schema.String,
-                                ]),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              depth: "depth",
-                              includeExternalLinks: "include_external_links",
-                              includeSubdomains: "include_subdomains",
-                              maxAge: "max_age",
-                              source: "source",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
                       parseOptions: Schema.optional(
                         Schema.Union([
                           Schema.Struct({
@@ -2346,38 +2450,16 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                       parseType: Schema.optional(
                         Schema.Union([
                           Schema.Union([
-                            Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                            Schema.Literals(["sitemap", "crawl"]),
                             Schema.String,
                           ]),
                           Schema.Null,
                         ]),
                       ),
-                      storeOptions: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            storageId: Schema.String,
-                            r2Jurisdiction: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            storageType: Schema.optional(
-                              Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              storageId: "storage_id",
-                              r2Jurisdiction: "r2_jurisdiction",
-                              storageType: "storage_type",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
                     }).pipe(
                       Schema.encodeKeys({
-                        crawlOptions: "crawl_options",
                         parseOptions: "parse_options",
                         parseType: "parse_type",
-                        storeOptions: "store_options",
                       }),
                     ),
                     Schema.Null,
@@ -2561,6 +2643,7 @@ export interface CreateInstanceRequest {
   /** Body param */
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -2655,13 +2738,6 @@ export interface CreateInstanceRequest {
     prefix?: string;
     r2Jurisdiction?: string;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number;
-        includeExternalLinks?: boolean;
-        includeSubdomains?: boolean;
-        maxAge?: number;
-        source?: "all" | "sitemaps" | "links" | (string & {});
-      };
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[];
         includeHeaders?: Record<string, unknown>;
@@ -2669,12 +2745,7 @@ export interface CreateInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {});
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string;
-        storageType?: "r2";
-      };
+      parseType?: "sitemap" | "crawl" | (string & {});
     };
   } | null;
   /** Body param: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
@@ -2761,6 +2832,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -2939,28 +3011,6 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
             r2Jurisdiction: Schema.optional(Schema.String),
             webCrawler: Schema.optional(
               Schema.Struct({
-                crawlOptions: Schema.optional(
-                  Schema.Struct({
-                    depth: Schema.optional(Schema.Number),
-                    includeExternalLinks: Schema.optional(Schema.Boolean),
-                    includeSubdomains: Schema.optional(Schema.Boolean),
-                    maxAge: Schema.optional(Schema.Number),
-                    source: Schema.optional(
-                      Schema.Union([
-                        Schema.Literals(["all", "sitemaps", "links"]),
-                        Schema.String,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      depth: "depth",
-                      includeExternalLinks: "include_external_links",
-                      includeSubdomains: "include_subdomains",
-                      maxAge: "max_age",
-                      source: "source",
-                    }),
-                  ),
-                ),
                 parseOptions: Schema.optional(
                   Schema.Struct({
                     contentSelector: Schema.optional(
@@ -2991,29 +3041,14 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Literals(["sitemap", "crawl"]),
                     Schema.String,
                   ]),
                 ),
-                storeOptions: Schema.optional(
-                  Schema.Struct({
-                    storageId: Schema.String,
-                    r2Jurisdiction: Schema.optional(Schema.String),
-                    storageType: Schema.optional(Schema.Literal("r2")),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      storageId: "storage_id",
-                      r2Jurisdiction: "r2_jurisdiction",
-                      storageType: "storage_type",
-                    }),
-                  ),
-                ),
               }).pipe(
                 Schema.encodeKeys({
-                  crawlOptions: "crawl_options",
                   parseOptions: "parse_options",
                   parseType: "parse_type",
-                  storeOptions: "store_options",
                 }),
               ),
             ),
@@ -3135,6 +3170,7 @@ export interface CreateInstanceResponse {
     | null;
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -3234,13 +3270,6 @@ export interface CreateInstanceResponse {
     prefix?: string | null;
     r2Jurisdiction?: string | null;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number | null;
-        includeExternalLinks?: boolean | null;
-        includeSubdomains?: boolean | null;
-        maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
-      } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
         includeHeaders?: Record<string, unknown> | null;
@@ -3248,12 +3277,7 @@ export interface CreateInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
+      parseType?: "sitemap" | "crawl" | (string & {}) | null;
     } | null;
   } | null;
   status?: string | null;
@@ -3341,6 +3365,7 @@ export const CreateInstanceResponse =
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -3609,42 +3634,6 @@ export const CreateInstanceResponse =
             webCrawler: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  crawlOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        depth: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        includeExternalLinks: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        includeSubdomains: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        maxAge: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        source: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["all", "sitemaps", "links"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          depth: "depth",
-                          includeExternalLinks: "include_external_links",
-                          includeSubdomains: "include_subdomains",
-                          maxAge: "max_age",
-                          source: "source",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                   parseOptions: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -3692,38 +3681,16 @@ export const CreateInstanceResponse =
                   parseType: Schema.optional(
                     Schema.Union([
                       Schema.Union([
-                        Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                        Schema.Literals(["sitemap", "crawl"]),
                         Schema.String,
                       ]),
                       Schema.Null,
                     ]),
                   ),
-                  storeOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        storageId: Schema.String,
-                        r2Jurisdiction: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        storageType: Schema.optional(
-                          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          storageId: "storage_id",
-                          r2Jurisdiction: "r2_jurisdiction",
-                          storageType: "storage_type",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                 }).pipe(
                   Schema.encodeKeys({
-                    crawlOptions: "crawl_options",
                     parseOptions: "parse_options",
                     parseType: "parse_type",
-                    storeOptions: "store_options",
                   }),
                 ),
                 Schema.Null,
@@ -3889,6 +3856,7 @@ export interface UpdateInstanceRequest {
   /** Body param */
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -3975,19 +3943,14 @@ export interface UpdateInstanceRequest {
   /** Body param */
   scoreThreshold?: number;
   /** Body param */
+  source?: string | null;
+  /** Body param */
   sourceParams?: {
     excludeItems?: string[];
     includeItems?: string[];
     prefix?: string;
     r2Jurisdiction?: string;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number;
-        includeExternalLinks?: boolean;
-        includeSubdomains?: boolean;
-        maxAge?: number;
-        source?: "all" | "sitemaps" | "links" | (string & {});
-      };
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[];
         includeHeaders?: Record<string, unknown>;
@@ -3995,12 +3958,7 @@ export interface UpdateInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {});
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string;
-        storageType?: "r2";
-      };
+      parseType?: "sitemap" | "crawl" | (string & {});
     };
   } | null;
   /** Body param */
@@ -4126,6 +4084,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -4294,6 +4253,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       rewriteQuery: Schema.optional(Schema.Boolean),
       scoreThreshold: Schema.optional(Schema.Number),
+      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       sourceParams: Schema.optional(
         Schema.Union([
           Schema.Struct({
@@ -4303,28 +4263,6 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
             r2Jurisdiction: Schema.optional(Schema.String),
             webCrawler: Schema.optional(
               Schema.Struct({
-                crawlOptions: Schema.optional(
-                  Schema.Struct({
-                    depth: Schema.optional(Schema.Number),
-                    includeExternalLinks: Schema.optional(Schema.Boolean),
-                    includeSubdomains: Schema.optional(Schema.Boolean),
-                    maxAge: Schema.optional(Schema.Number),
-                    source: Schema.optional(
-                      Schema.Union([
-                        Schema.Literals(["all", "sitemaps", "links"]),
-                        Schema.String,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      depth: "depth",
-                      includeExternalLinks: "include_external_links",
-                      includeSubdomains: "include_subdomains",
-                      maxAge: "max_age",
-                      source: "source",
-                    }),
-                  ),
-                ),
                 parseOptions: Schema.optional(
                   Schema.Struct({
                     contentSelector: Schema.optional(
@@ -4355,29 +4293,14 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Literals(["sitemap", "crawl"]),
                     Schema.String,
                   ]),
                 ),
-                storeOptions: Schema.optional(
-                  Schema.Struct({
-                    storageId: Schema.String,
-                    r2Jurisdiction: Schema.optional(Schema.String),
-                    storageType: Schema.optional(Schema.Literal("r2")),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      storageId: "storage_id",
-                      r2Jurisdiction: "r2_jurisdiction",
-                      storageType: "storage_type",
-                    }),
-                  ),
-                ),
               }).pipe(
                 Schema.encodeKeys({
-                  crawlOptions: "crawl_options",
                   parseOptions: "parse_options",
                   parseType: "parse_type",
-                  storeOptions: "store_options",
                 }),
               ),
             ),
@@ -4465,6 +4388,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         rewriteModel: "rewrite_model",
         rewriteQuery: "rewrite_query",
         scoreThreshold: "score_threshold",
+        source: "source",
         sourceParams: "source_params",
         summarization: "summarization",
         summarizationModel: "summarization_model",
@@ -4539,6 +4463,7 @@ export interface UpdateInstanceResponse {
     | null;
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -4638,13 +4563,6 @@ export interface UpdateInstanceResponse {
     prefix?: string | null;
     r2Jurisdiction?: string | null;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number | null;
-        includeExternalLinks?: boolean | null;
-        includeSubdomains?: boolean | null;
-        maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
-      } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
         includeHeaders?: Record<string, unknown> | null;
@@ -4652,12 +4570,7 @@ export interface UpdateInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
+      parseType?: "sitemap" | "crawl" | (string & {}) | null;
     } | null;
   } | null;
   status?: string | null;
@@ -4745,6 +4658,7 @@ export const UpdateInstanceResponse =
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -5013,42 +4927,6 @@ export const UpdateInstanceResponse =
             webCrawler: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  crawlOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        depth: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        includeExternalLinks: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        includeSubdomains: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        maxAge: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        source: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["all", "sitemaps", "links"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          depth: "depth",
-                          includeExternalLinks: "include_external_links",
-                          includeSubdomains: "include_subdomains",
-                          maxAge: "max_age",
-                          source: "source",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                   parseOptions: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -5096,38 +4974,16 @@ export const UpdateInstanceResponse =
                   parseType: Schema.optional(
                     Schema.Union([
                       Schema.Union([
-                        Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                        Schema.Literals(["sitemap", "crawl"]),
                         Schema.String,
                       ]),
                       Schema.Null,
                     ]),
                   ),
-                  storeOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        storageId: Schema.String,
-                        r2Jurisdiction: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        storageType: Schema.optional(
-                          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          storageId: "storage_id",
-                          r2Jurisdiction: "r2_jurisdiction",
-                          storageType: "storage_type",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                 }).pipe(
                   Schema.encodeKeys({
-                    crawlOptions: "crawl_options",
                     parseOptions: "parse_options",
                     parseType: "parse_type",
-                    storeOptions: "store_options",
                   }),
                 ),
                 Schema.Null,
@@ -5303,6 +5159,7 @@ export interface DeleteInstanceResponse {
     | null;
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -5402,13 +5259,6 @@ export interface DeleteInstanceResponse {
     prefix?: string | null;
     r2Jurisdiction?: string | null;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number | null;
-        includeExternalLinks?: boolean | null;
-        includeSubdomains?: boolean | null;
-        maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
-      } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
         includeHeaders?: Record<string, unknown> | null;
@@ -5416,12 +5266,7 @@ export interface DeleteInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
+      parseType?: "sitemap" | "crawl" | (string & {}) | null;
     } | null;
   } | null;
   status?: string | null;
@@ -5509,6 +5354,7 @@ export const DeleteInstanceResponse =
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -5777,42 +5623,6 @@ export const DeleteInstanceResponse =
             webCrawler: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  crawlOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        depth: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        includeExternalLinks: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        includeSubdomains: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        maxAge: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        source: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["all", "sitemaps", "links"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          depth: "depth",
-                          includeExternalLinks: "include_external_links",
-                          includeSubdomains: "include_subdomains",
-                          maxAge: "max_age",
-                          source: "source",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                   parseOptions: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -5860,38 +5670,16 @@ export const DeleteInstanceResponse =
                   parseType: Schema.optional(
                     Schema.Union([
                       Schema.Union([
-                        Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                        Schema.Literals(["sitemap", "crawl"]),
                         Schema.String,
                       ]),
                       Schema.Null,
                     ]),
                   ),
-                  storeOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        storageId: Schema.String,
-                        r2Jurisdiction: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        storageType: Schema.optional(
-                          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          storageId: "storage_id",
-                          r2Jurisdiction: "r2_jurisdiction",
-                          storageType: "storage_type",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                 }).pipe(
                   Schema.encodeKeys({
-                    crawlOptions: "crawl_options",
                     parseOptions: "parse_options",
                     parseType: "parse_type",
-                    storeOptions: "store_options",
                   }),
                 ),
                 Schema.Null,
@@ -6060,6 +5848,7 @@ export interface ReadInstanceResponse {
     | null;
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -6159,13 +5948,6 @@ export interface ReadInstanceResponse {
     prefix?: string | null;
     r2Jurisdiction?: string | null;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number | null;
-        includeExternalLinks?: boolean | null;
-        includeSubdomains?: boolean | null;
-        maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
-      } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
         includeHeaders?: Record<string, unknown> | null;
@@ -6173,12 +5955,7 @@ export interface ReadInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
+      parseType?: "sitemap" | "crawl" | (string & {}) | null;
     } | null;
   } | null;
   status?: string | null;
@@ -6266,6 +6043,7 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -6534,42 +6312,6 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
             webCrawler: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  crawlOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        depth: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        includeExternalLinks: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        includeSubdomains: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        maxAge: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        source: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["all", "sitemaps", "links"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          depth: "depth",
-                          includeExternalLinks: "include_external_links",
-                          includeSubdomains: "include_subdomains",
-                          maxAge: "max_age",
-                          source: "source",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                   parseOptions: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -6617,38 +6359,16 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                   parseType: Schema.optional(
                     Schema.Union([
                       Schema.Union([
-                        Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                        Schema.Literals(["sitemap", "crawl"]),
                         Schema.String,
                       ]),
                       Schema.Null,
                     ]),
                   ),
-                  storeOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        storageId: Schema.String,
-                        r2Jurisdiction: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        storageType: Schema.optional(
-                          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          storageId: "storage_id",
-                          r2Jurisdiction: "r2_jurisdiction",
-                          storageType: "storage_type",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                 }).pipe(
                   Schema.encodeKeys({
-                    crawlOptions: "crawl_options",
                     parseOptions: "parse_options",
                     parseType: "parse_type",
-                    storeOptions: "store_options",
                   }),
                 ),
                 Schema.Null,
@@ -6812,9 +6532,15 @@ export interface SearchInstanceRequest {
       returnOnFailure?: boolean;
     };
   };
-  /** Body param */
+  /** Body param: OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'} */
   messages?: {
-    content: string | null;
+    content:
+      | string
+      | (
+          | { text: string; type: "text" }
+          | { imageUrl: { url: string }; type: "image_url" }
+        )[]
+      | null;
     role:
       | "system"
       | "developer"
@@ -6987,7 +6713,26 @@ export const SearchInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       messages: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            content: Schema.Union([Schema.String, Schema.Null]),
+            content: Schema.Union([
+              Schema.String,
+              Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    text: Schema.String,
+                    type: Schema.Literal("text"),
+                  }),
+                  Schema.Struct({
+                    imageUrl: Schema.Struct({
+                      url: Schema.String,
+                    }),
+                    type: Schema.Literal("image_url"),
+                  }).pipe(
+                    Schema.encodeKeys({ imageUrl: "image_url", type: "type" }),
+                  ),
+                ]),
+              ),
+              Schema.Null,
+            ]),
             role: Schema.Union([
               Schema.Literals([
                 "system",
@@ -7035,7 +6780,8 @@ export interface SearchInstanceResponse {
       vectorScore?: number | null;
     } | null;
   }[];
-  searchQuery: string;
+  queryKind: "text" | "image" | "multimodal" | (string & {});
+  searchQuery?: string | null;
 }
 
 export const SearchInstanceResponse =
@@ -7115,10 +6861,18 @@ export const SearchInstanceResponse =
           }),
         ),
       ),
-      searchQuery: Schema.String,
+      queryKind: Schema.Union([
+        Schema.Literals(["text", "image", "multimodal"]),
+        Schema.String,
+      ]),
+      searchQuery: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
-        Schema.encodeKeys({ chunks: "chunks", searchQuery: "search_query" }),
+        Schema.encodeKeys({
+          chunks: "chunks",
+          queryKind: "query_kind",
+          searchQuery: "search_query",
+        }),
       )
       .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<SearchInstanceResponse>;
@@ -8013,9 +7767,15 @@ export interface SearchNamespaceRequest {
       returnOnFailure?: boolean;
     };
   };
-  /** Body param */
+  /** Body param: OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'} */
   messages?: {
-    content: string | null;
+    content:
+      | string
+      | (
+          | { text: string; type: "text" }
+          | { imageUrl: { url: string }; type: "image_url" }
+        )[]
+      | null;
     role:
       | "system"
       | "developer"
@@ -8183,7 +7943,26 @@ export const SearchNamespaceRequest =
       messages: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            content: Schema.Union([Schema.String, Schema.Null]),
+            content: Schema.Union([
+              Schema.String,
+              Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    text: Schema.String,
+                    type: Schema.Literal("text"),
+                  }),
+                  Schema.Struct({
+                    imageUrl: Schema.Struct({
+                      url: Schema.String,
+                    }),
+                    type: Schema.Literal("image_url"),
+                  }).pipe(
+                    Schema.encodeKeys({ imageUrl: "image_url", type: "type" }),
+                  ),
+                ]),
+              ),
+              Schema.Null,
+            ]),
             role: Schema.Union([
               Schema.Literals([
                 "system",
@@ -8232,8 +8011,9 @@ export interface SearchNamespaceResponse {
       vectorScore?: number | null;
     } | null;
   }[];
-  searchQuery: string;
+  queryKind: "text" | "image" | "multimodal" | (string & {});
   errors?: { instanceId: string; message: string }[] | null;
+  searchQuery?: string | null;
 }
 
 export const SearchNamespaceResponse =
@@ -8315,7 +8095,10 @@ export const SearchNamespaceResponse =
           }),
         ),
       ),
-      searchQuery: Schema.String,
+      queryKind: Schema.Union([
+        Schema.Literals(["text", "image", "multimodal"]),
+        Schema.String,
+      ]),
       errors: Schema.optional(
         Schema.Union([
           Schema.Array(
@@ -8332,12 +8115,14 @@ export const SearchNamespaceResponse =
           Schema.Null,
         ]),
       ),
+      searchQuery: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
           chunks: "chunks",
-          searchQuery: "search_query",
+          queryKind: "query_kind",
           errors: "errors",
+          searchQuery: "search_query",
         }),
       )
       .pipe(T.ResponsePath("result")),
@@ -8456,6 +8241,7 @@ export interface ListNamespaceInstancesResponse {
       | null;
     embeddingModel?:
       | "@cf/qwen/qwen3-embedding-0.6b"
+      | "@cf/qwen/qwen3-vl-embedding-2b"
       | "@cf/baai/bge-m3"
       | "@cf/baai/bge-large-en-v1.5"
       | "@cf/google/embeddinggemma-300m"
@@ -8553,13 +8339,6 @@ export interface ListNamespaceInstancesResponse {
       prefix?: string | null;
       r2Jurisdiction?: string | null;
       webCrawler?: {
-        crawlOptions?: {
-          depth?: number | null;
-          includeExternalLinks?: boolean | null;
-          includeSubdomains?: boolean | null;
-          maxAge?: number | null;
-          source?: "all" | "sitemaps" | "links" | (string & {}) | null;
-        } | null;
         parseOptions?: {
           contentSelector?: { path: string; selector: string }[] | null;
           includeHeaders?: Record<string, unknown> | null;
@@ -8567,12 +8346,7 @@ export interface ListNamespaceInstancesResponse {
           specificSitemaps?: string[] | null;
           useBrowserRendering?: boolean | null;
         } | null;
-        parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
-        storeOptions?: {
-          storageId: string;
-          r2Jurisdiction?: string | null;
-          storageType?: "r2" | null;
-        } | null;
+        parseType?: "sitemap" | "crawl" | (string & {}) | null;
       } | null;
     } | null;
     status?: string | null;
@@ -8680,6 +8454,7 @@ export const ListNamespaceInstancesResponse =
           embeddingModel: Schema.optional(
             Schema.Union([
               Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+              Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
               Schema.Literal("@cf/baai/bge-m3"),
               Schema.Literal("@cf/baai/bge-large-en-v1.5"),
               Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -8963,42 +8738,6 @@ export const ListNamespaceInstancesResponse =
                 webCrawler: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      crawlOptions: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            depth: Schema.optional(
-                              Schema.Union([Schema.Number, Schema.Null]),
-                            ),
-                            includeExternalLinks: Schema.optional(
-                              Schema.Union([Schema.Boolean, Schema.Null]),
-                            ),
-                            includeSubdomains: Schema.optional(
-                              Schema.Union([Schema.Boolean, Schema.Null]),
-                            ),
-                            maxAge: Schema.optional(
-                              Schema.Union([Schema.Number, Schema.Null]),
-                            ),
-                            source: Schema.optional(
-                              Schema.Union([
-                                Schema.Union([
-                                  Schema.Literals(["all", "sitemaps", "links"]),
-                                  Schema.String,
-                                ]),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              depth: "depth",
-                              includeExternalLinks: "include_external_links",
-                              includeSubdomains: "include_subdomains",
-                              maxAge: "max_age",
-                              source: "source",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
                       parseOptions: Schema.optional(
                         Schema.Union([
                           Schema.Struct({
@@ -9046,38 +8785,16 @@ export const ListNamespaceInstancesResponse =
                       parseType: Schema.optional(
                         Schema.Union([
                           Schema.Union([
-                            Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                            Schema.Literals(["sitemap", "crawl"]),
                             Schema.String,
                           ]),
                           Schema.Null,
                         ]),
                       ),
-                      storeOptions: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            storageId: Schema.String,
-                            r2Jurisdiction: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            storageType: Schema.optional(
-                              Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              storageId: "storage_id",
-                              r2Jurisdiction: "r2_jurisdiction",
-                              storageType: "storage_type",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
                     }).pipe(
                       Schema.encodeKeys({
-                        crawlOptions: "crawl_options",
                         parseOptions: "parse_options",
                         parseType: "parse_type",
-                        storeOptions: "store_options",
                       }),
                     ),
                     Schema.Null,
@@ -9266,6 +8983,7 @@ export interface CreateNamespaceInstanceRequest {
   /** Body param */
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -9360,13 +9078,6 @@ export interface CreateNamespaceInstanceRequest {
     prefix?: string;
     r2Jurisdiction?: string;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number;
-        includeExternalLinks?: boolean;
-        includeSubdomains?: boolean;
-        maxAge?: number;
-        source?: "all" | "sitemaps" | "links" | (string & {});
-      };
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[];
         includeHeaders?: Record<string, unknown>;
@@ -9374,12 +9085,7 @@ export interface CreateNamespaceInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {});
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string;
-        storageType?: "r2";
-      };
+      parseType?: "sitemap" | "crawl" | (string & {});
     };
   } | null;
   /** Body param: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
@@ -9467,6 +9173,7 @@ export const CreateNamespaceInstanceRequest =
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -9645,28 +9352,6 @@ export const CreateNamespaceInstanceRequest =
             r2Jurisdiction: Schema.optional(Schema.String),
             webCrawler: Schema.optional(
               Schema.Struct({
-                crawlOptions: Schema.optional(
-                  Schema.Struct({
-                    depth: Schema.optional(Schema.Number),
-                    includeExternalLinks: Schema.optional(Schema.Boolean),
-                    includeSubdomains: Schema.optional(Schema.Boolean),
-                    maxAge: Schema.optional(Schema.Number),
-                    source: Schema.optional(
-                      Schema.Union([
-                        Schema.Literals(["all", "sitemaps", "links"]),
-                        Schema.String,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      depth: "depth",
-                      includeExternalLinks: "include_external_links",
-                      includeSubdomains: "include_subdomains",
-                      maxAge: "max_age",
-                      source: "source",
-                    }),
-                  ),
-                ),
                 parseOptions: Schema.optional(
                   Schema.Struct({
                     contentSelector: Schema.optional(
@@ -9697,29 +9382,14 @@ export const CreateNamespaceInstanceRequest =
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Literals(["sitemap", "crawl"]),
                     Schema.String,
                   ]),
                 ),
-                storeOptions: Schema.optional(
-                  Schema.Struct({
-                    storageId: Schema.String,
-                    r2Jurisdiction: Schema.optional(Schema.String),
-                    storageType: Schema.optional(Schema.Literal("r2")),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      storageId: "storage_id",
-                      r2Jurisdiction: "r2_jurisdiction",
-                      storageType: "storage_type",
-                    }),
-                  ),
-                ),
               }).pipe(
                 Schema.encodeKeys({
-                  crawlOptions: "crawl_options",
                   parseOptions: "parse_options",
                   parseType: "parse_type",
-                  storeOptions: "store_options",
                 }),
               ),
             ),
@@ -9841,6 +9511,7 @@ export interface CreateNamespaceInstanceResponse {
     | null;
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -9940,13 +9611,6 @@ export interface CreateNamespaceInstanceResponse {
     prefix?: string | null;
     r2Jurisdiction?: string | null;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number | null;
-        includeExternalLinks?: boolean | null;
-        includeSubdomains?: boolean | null;
-        maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
-      } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
         includeHeaders?: Record<string, unknown> | null;
@@ -9954,12 +9618,7 @@ export interface CreateNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
+      parseType?: "sitemap" | "crawl" | (string & {}) | null;
     } | null;
   } | null;
   status?: string | null;
@@ -10047,6 +9706,7 @@ export const CreateNamespaceInstanceResponse =
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -10315,42 +9975,6 @@ export const CreateNamespaceInstanceResponse =
             webCrawler: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  crawlOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        depth: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        includeExternalLinks: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        includeSubdomains: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        maxAge: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        source: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["all", "sitemaps", "links"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          depth: "depth",
-                          includeExternalLinks: "include_external_links",
-                          includeSubdomains: "include_subdomains",
-                          maxAge: "max_age",
-                          source: "source",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                   parseOptions: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -10398,38 +10022,16 @@ export const CreateNamespaceInstanceResponse =
                   parseType: Schema.optional(
                     Schema.Union([
                       Schema.Union([
-                        Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                        Schema.Literals(["sitemap", "crawl"]),
                         Schema.String,
                       ]),
                       Schema.Null,
                     ]),
                   ),
-                  storeOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        storageId: Schema.String,
-                        r2Jurisdiction: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        storageType: Schema.optional(
-                          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          storageId: "storage_id",
-                          r2Jurisdiction: "r2_jurisdiction",
-                          storageType: "storage_type",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                 }).pipe(
                   Schema.encodeKeys({
-                    crawlOptions: "crawl_options",
                     parseOptions: "parse_options",
                     parseType: "parse_type",
-                    storeOptions: "store_options",
                   }),
                 ),
                 Schema.Null,
@@ -10602,6 +10204,7 @@ export interface UpdateNamespaceInstanceRequest {
   /** Body param */
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -10688,19 +10291,14 @@ export interface UpdateNamespaceInstanceRequest {
   /** Body param */
   scoreThreshold?: number;
   /** Body param */
+  source?: string | null;
+  /** Body param */
   sourceParams?: {
     excludeItems?: string[];
     includeItems?: string[];
     prefix?: string;
     r2Jurisdiction?: string;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number;
-        includeExternalLinks?: boolean;
-        includeSubdomains?: boolean;
-        maxAge?: number;
-        source?: "all" | "sitemaps" | "links" | (string & {});
-      };
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[];
         includeHeaders?: Record<string, unknown>;
@@ -10708,12 +10306,7 @@ export interface UpdateNamespaceInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {});
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string;
-        storageType?: "r2";
-      };
+      parseType?: "sitemap" | "crawl" | (string & {});
     };
   } | null;
   /** Body param */
@@ -10840,6 +10433,7 @@ export const UpdateNamespaceInstanceRequest =
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -11008,6 +10602,7 @@ export const UpdateNamespaceInstanceRequest =
       ),
       rewriteQuery: Schema.optional(Schema.Boolean),
       scoreThreshold: Schema.optional(Schema.Number),
+      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       sourceParams: Schema.optional(
         Schema.Union([
           Schema.Struct({
@@ -11017,28 +10612,6 @@ export const UpdateNamespaceInstanceRequest =
             r2Jurisdiction: Schema.optional(Schema.String),
             webCrawler: Schema.optional(
               Schema.Struct({
-                crawlOptions: Schema.optional(
-                  Schema.Struct({
-                    depth: Schema.optional(Schema.Number),
-                    includeExternalLinks: Schema.optional(Schema.Boolean),
-                    includeSubdomains: Schema.optional(Schema.Boolean),
-                    maxAge: Schema.optional(Schema.Number),
-                    source: Schema.optional(
-                      Schema.Union([
-                        Schema.Literals(["all", "sitemaps", "links"]),
-                        Schema.String,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      depth: "depth",
-                      includeExternalLinks: "include_external_links",
-                      includeSubdomains: "include_subdomains",
-                      maxAge: "max_age",
-                      source: "source",
-                    }),
-                  ),
-                ),
                 parseOptions: Schema.optional(
                   Schema.Struct({
                     contentSelector: Schema.optional(
@@ -11069,29 +10642,14 @@ export const UpdateNamespaceInstanceRequest =
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Literals(["sitemap", "crawl"]),
                     Schema.String,
                   ]),
                 ),
-                storeOptions: Schema.optional(
-                  Schema.Struct({
-                    storageId: Schema.String,
-                    r2Jurisdiction: Schema.optional(Schema.String),
-                    storageType: Schema.optional(Schema.Literal("r2")),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      storageId: "storage_id",
-                      r2Jurisdiction: "r2_jurisdiction",
-                      storageType: "storage_type",
-                    }),
-                  ),
-                ),
               }).pipe(
                 Schema.encodeKeys({
-                  crawlOptions: "crawl_options",
                   parseOptions: "parse_options",
                   parseType: "parse_type",
-                  storeOptions: "store_options",
                 }),
               ),
             ),
@@ -11179,6 +10737,7 @@ export const UpdateNamespaceInstanceRequest =
         rewriteModel: "rewrite_model",
         rewriteQuery: "rewrite_query",
         scoreThreshold: "score_threshold",
+        source: "source",
         sourceParams: "source_params",
         summarization: "summarization",
         summarizationModel: "summarization_model",
@@ -11253,6 +10812,7 @@ export interface UpdateNamespaceInstanceResponse {
     | null;
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -11352,13 +10912,6 @@ export interface UpdateNamespaceInstanceResponse {
     prefix?: string | null;
     r2Jurisdiction?: string | null;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number | null;
-        includeExternalLinks?: boolean | null;
-        includeSubdomains?: boolean | null;
-        maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
-      } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
         includeHeaders?: Record<string, unknown> | null;
@@ -11366,12 +10919,7 @@ export interface UpdateNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
+      parseType?: "sitemap" | "crawl" | (string & {}) | null;
     } | null;
   } | null;
   status?: string | null;
@@ -11459,6 +11007,7 @@ export const UpdateNamespaceInstanceResponse =
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -11727,42 +11276,6 @@ export const UpdateNamespaceInstanceResponse =
             webCrawler: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  crawlOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        depth: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        includeExternalLinks: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        includeSubdomains: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        maxAge: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        source: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["all", "sitemaps", "links"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          depth: "depth",
-                          includeExternalLinks: "include_external_links",
-                          includeSubdomains: "include_subdomains",
-                          maxAge: "max_age",
-                          source: "source",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                   parseOptions: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -11810,38 +11323,16 @@ export const UpdateNamespaceInstanceResponse =
                   parseType: Schema.optional(
                     Schema.Union([
                       Schema.Union([
-                        Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                        Schema.Literals(["sitemap", "crawl"]),
                         Schema.String,
                       ]),
                       Schema.Null,
                     ]),
                   ),
-                  storeOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        storageId: Schema.String,
-                        r2Jurisdiction: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        storageType: Schema.optional(
-                          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          storageId: "storage_id",
-                          r2Jurisdiction: "r2_jurisdiction",
-                          storageType: "storage_type",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                 }).pipe(
                   Schema.encodeKeys({
-                    crawlOptions: "crawl_options",
                     parseOptions: "parse_options",
                     parseType: "parse_type",
-                    storeOptions: "store_options",
                   }),
                 ),
                 Schema.Null,
@@ -12023,6 +11514,7 @@ export interface DeleteNamespaceInstanceResponse {
     | null;
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -12122,13 +11614,6 @@ export interface DeleteNamespaceInstanceResponse {
     prefix?: string | null;
     r2Jurisdiction?: string | null;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number | null;
-        includeExternalLinks?: boolean | null;
-        includeSubdomains?: boolean | null;
-        maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
-      } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
         includeHeaders?: Record<string, unknown> | null;
@@ -12136,12 +11621,7 @@ export interface DeleteNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
+      parseType?: "sitemap" | "crawl" | (string & {}) | null;
     } | null;
   } | null;
   status?: string | null;
@@ -12229,6 +11709,7 @@ export const DeleteNamespaceInstanceResponse =
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -12497,42 +11978,6 @@ export const DeleteNamespaceInstanceResponse =
             webCrawler: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  crawlOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        depth: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        includeExternalLinks: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        includeSubdomains: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        maxAge: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        source: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["all", "sitemaps", "links"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          depth: "depth",
-                          includeExternalLinks: "include_external_links",
-                          includeSubdomains: "include_subdomains",
-                          maxAge: "max_age",
-                          source: "source",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                   parseOptions: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -12580,38 +12025,16 @@ export const DeleteNamespaceInstanceResponse =
                   parseType: Schema.optional(
                     Schema.Union([
                       Schema.Union([
-                        Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                        Schema.Literals(["sitemap", "crawl"]),
                         Schema.String,
                       ]),
                       Schema.Null,
                     ]),
                   ),
-                  storeOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        storageId: Schema.String,
-                        r2Jurisdiction: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        storageType: Schema.optional(
-                          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          storageId: "storage_id",
-                          r2Jurisdiction: "r2_jurisdiction",
-                          storageType: "storage_type",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                 }).pipe(
                   Schema.encodeKeys({
-                    crawlOptions: "crawl_options",
                     parseOptions: "parse_options",
                     parseType: "parse_type",
-                    storeOptions: "store_options",
                   }),
                 ),
                 Schema.Null,
@@ -12789,6 +12212,7 @@ export interface ReadNamespaceInstanceResponse {
     | null;
   embeddingModel?:
     | "@cf/qwen/qwen3-embedding-0.6b"
+    | "@cf/qwen/qwen3-vl-embedding-2b"
     | "@cf/baai/bge-m3"
     | "@cf/baai/bge-large-en-v1.5"
     | "@cf/google/embeddinggemma-300m"
@@ -12888,13 +12312,6 @@ export interface ReadNamespaceInstanceResponse {
     prefix?: string | null;
     r2Jurisdiction?: string | null;
     webCrawler?: {
-      crawlOptions?: {
-        depth?: number | null;
-        includeExternalLinks?: boolean | null;
-        includeSubdomains?: boolean | null;
-        maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
-      } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
         includeHeaders?: Record<string, unknown> | null;
@@ -12902,12 +12319,7 @@ export interface ReadNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
+      parseType?: "sitemap" | "crawl" | (string & {}) | null;
     } | null;
   } | null;
   status?: string | null;
@@ -12995,6 +12407,7 @@ export const ReadNamespaceInstanceResponse =
       embeddingModel: Schema.optional(
         Schema.Union([
           Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
           Schema.Literal("@cf/baai/bge-m3"),
           Schema.Literal("@cf/baai/bge-large-en-v1.5"),
           Schema.Literal("@cf/google/embeddinggemma-300m"),
@@ -13263,42 +12676,6 @@ export const ReadNamespaceInstanceResponse =
             webCrawler: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  crawlOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        depth: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        includeExternalLinks: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        includeSubdomains: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        maxAge: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        source: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["all", "sitemaps", "links"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          depth: "depth",
-                          includeExternalLinks: "include_external_links",
-                          includeSubdomains: "include_subdomains",
-                          maxAge: "max_age",
-                          source: "source",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                   parseOptions: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -13346,38 +12723,16 @@ export const ReadNamespaceInstanceResponse =
                   parseType: Schema.optional(
                     Schema.Union([
                       Schema.Union([
-                        Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                        Schema.Literals(["sitemap", "crawl"]),
                         Schema.String,
                       ]),
                       Schema.Null,
                     ]),
                   ),
-                  storeOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        storageId: Schema.String,
-                        r2Jurisdiction: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        storageType: Schema.optional(
-                          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          storageId: "storage_id",
-                          r2Jurisdiction: "r2_jurisdiction",
-                          storageType: "storage_type",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
                 }).pipe(
                   Schema.encodeKeys({
-                    crawlOptions: "crawl_options",
                     parseOptions: "parse_options",
                     parseType: "parse_type",
-                    storeOptions: "store_options",
                   }),
                 ),
                 Schema.Null,
@@ -13549,9 +12904,15 @@ export interface SearchNamespaceInstanceRequest {
       returnOnFailure?: boolean;
     };
   };
-  /** Body param */
+  /** Body param: OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'} */
   messages?: {
-    content: string | null;
+    content:
+      | string
+      | (
+          | { text: string; type: "text" }
+          | { imageUrl: { url: string }; type: "image_url" }
+        )[]
+      | null;
     role:
       | "system"
       | "developer"
@@ -13725,7 +13086,26 @@ export const SearchNamespaceInstanceRequest =
       messages: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            content: Schema.Union([Schema.String, Schema.Null]),
+            content: Schema.Union([
+              Schema.String,
+              Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    text: Schema.String,
+                    type: Schema.Literal("text"),
+                  }),
+                  Schema.Struct({
+                    imageUrl: Schema.Struct({
+                      url: Schema.String,
+                    }),
+                    type: Schema.Literal("image_url"),
+                  }).pipe(
+                    Schema.encodeKeys({ imageUrl: "image_url", type: "type" }),
+                  ),
+                ]),
+              ),
+              Schema.Null,
+            ]),
             role: Schema.Union([
               Schema.Literals([
                 "system",
@@ -13773,7 +13153,8 @@ export interface SearchNamespaceInstanceResponse {
       vectorScore?: number | null;
     } | null;
   }[];
-  searchQuery: string;
+  queryKind: "text" | "image" | "multimodal" | (string & {});
+  searchQuery?: string | null;
 }
 
 export const SearchNamespaceInstanceResponse =
@@ -13853,10 +13234,18 @@ export const SearchNamespaceInstanceResponse =
           }),
         ),
       ),
-      searchQuery: Schema.String,
+      queryKind: Schema.Union([
+        Schema.Literals(["text", "image", "multimodal"]),
+        Schema.String,
+      ]),
+      searchQuery: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
-        Schema.encodeKeys({ chunks: "chunks", searchQuery: "search_query" }),
+        Schema.encodeKeys({
+          chunks: "chunks",
+          queryKind: "query_kind",
+          searchQuery: "search_query",
+        }),
       )
       .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<SearchNamespaceInstanceResponse>;

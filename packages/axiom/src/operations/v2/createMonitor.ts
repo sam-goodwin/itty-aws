@@ -38,6 +38,7 @@ export const CreateMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   triggerAfterNPositiveResults: Schema.optional(Schema.Number),
   triggerFromNRuns: Schema.optional(Schema.Number),
   type: Schema.Literals(["Threshold", "MatchEvent", "AnomalyDetection"]),
+  updatedAt: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "POST", path: "/v2/monitors" }));
 export type CreateMonitorInput = typeof CreateMonitorInput.Type;
 
@@ -76,6 +77,7 @@ export const CreateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   triggerAfterNPositiveResults: Schema.optional(Schema.Number),
   triggerFromNRuns: Schema.optional(Schema.Number),
   type: Schema.Literals(["Threshold", "MatchEvent", "AnomalyDetection"]),
+  updatedAt: Schema.optional(Schema.String),
   id: Schema.String,
 });
 export type CreateMonitorOutput = typeof CreateMonitorOutput.Type;

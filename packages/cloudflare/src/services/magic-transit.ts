@@ -585,6 +585,1091 @@ export const deleteApp: API.OperationMethod<
 }));
 
 // =============================================================================
+// Cf1Site
+// =============================================================================
+
+export interface GetCf1SiteRequest {
+  cf1SiteId: string;
+  /** Identifier */
+  accountId: string;
+}
+
+export const GetCf1SiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}",
+      }),
+    ),
+) as unknown as Schema.Schema<GetCf1SiteRequest>;
+
+export interface GetCf1SiteResponse {
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name: string;
+  /** Identifier */
+  id?: string | null;
+  createdOn?: string | null;
+  /** A human-provided description of the CF1 Site. */
+  description?: string | null;
+  location?: {
+    lat?: number | null;
+    long?: number | null;
+    name?: string | null;
+  } | null;
+  modifiedOn?: string | null;
+}
+
+export const GetCf1SiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      name: Schema.String,
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      location: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            lat: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            long: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          name: "name",
+          id: "id",
+          createdOn: "created_on",
+          description: "description",
+          location: "location",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetCf1SiteResponse>;
+
+export type GetCf1SiteError = DefaultErrors;
+
+export const getCf1Site: API.OperationMethod<
+  GetCf1SiteRequest,
+  GetCf1SiteResponse,
+  GetCf1SiteError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetCf1SiteRequest,
+  output: GetCf1SiteResponse,
+  errors: [],
+}));
+
+export interface ListCf1SitesRequest {
+  /** Identifier */
+  accountId: string;
+}
+
+export const ListCf1SitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({ method: "GET", path: "/accounts/{account_id}/magic/cf1_sites" }),
+    ),
+) as unknown as Schema.Schema<ListCf1SitesRequest>;
+
+export interface ListCf1SitesResponse {
+  result: {
+    name: string;
+    id?: string | null;
+    createdOn?: string | null;
+    description?: string | null;
+    location?: {
+      lat?: number | null;
+      long?: number | null;
+      name?: string | null;
+    } | null;
+    modifiedOn?: string | null;
+  }[];
+}
+
+export const ListCf1SitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          createdOn: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          location: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                lat: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                long: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          modifiedOn: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            id: "id",
+            createdOn: "created_on",
+            description: "description",
+            location: "location",
+            modifiedOn: "modified_on",
+          }),
+        ),
+      ),
+    }),
+) as unknown as Schema.Schema<ListCf1SitesResponse>;
+
+export type ListCf1SitesError = DefaultErrors;
+
+export const listCf1Sites: API.PaginatedOperationMethod<
+  ListCf1SitesRequest,
+  ListCf1SitesResponse,
+  ListCf1SitesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListCf1SitesRequest,
+  output: ListCf1SitesResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export interface CreateCf1SiteRequest {
+  /** Path param: Identifier */
+  accountId: string;
+  /** Body param */
+  body: {
+    name: string;
+    description?: string;
+    location?: { lat?: number; long?: number; name?: string };
+  }[];
+}
+
+export const CreateCf1SiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      body: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          description: Schema.optional(Schema.String),
+          location: Schema.optional(
+            Schema.Struct({
+              lat: Schema.optional(Schema.Number),
+              long: Schema.optional(Schema.Number),
+              name: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ).pipe(T.HttpBody()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cf1_sites",
+      }),
+    ),
+) as unknown as Schema.Schema<CreateCf1SiteRequest>;
+
+export interface CreateCf1SiteResponse {
+  result: {
+    name: string;
+    id?: string | null;
+    createdOn?: string | null;
+    description?: string | null;
+    location?: {
+      lat?: number | null;
+      long?: number | null;
+      name?: string | null;
+    } | null;
+    modifiedOn?: string | null;
+  }[];
+}
+
+export const CreateCf1SiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          createdOn: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          location: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                lat: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                long: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          modifiedOn: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            id: "id",
+            createdOn: "created_on",
+            description: "description",
+            location: "location",
+            modifiedOn: "modified_on",
+          }),
+        ),
+      ),
+    }),
+) as unknown as Schema.Schema<CreateCf1SiteResponse>;
+
+export type CreateCf1SiteError = DefaultErrors;
+
+export const createCf1Site: API.PaginatedOperationMethod<
+  CreateCf1SiteRequest,
+  CreateCf1SiteResponse,
+  CreateCf1SiteError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: CreateCf1SiteRequest,
+  output: CreateCf1SiteResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export interface PatchCf1SiteRequest {
+  cf1SiteId: string;
+  /** Path param: Identifier */
+  accountId: string;
+  /** Body param: A human-provided description of the CF1 Site. */
+  description?: string;
+  /** Body param */
+  location?: { lat?: number; long?: number; name?: string };
+  /** Body param: A human-provided name describing the CF1 Site that should be unique within the account. */
+  name?: string;
+}
+
+export const PatchCf1SiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      description: Schema.optional(Schema.String),
+      location: Schema.optional(
+        Schema.Struct({
+          lat: Schema.optional(Schema.Number),
+          long: Schema.optional(Schema.Number),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      name: Schema.optional(Schema.String),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}",
+      }),
+    ),
+) as unknown as Schema.Schema<PatchCf1SiteRequest>;
+
+export interface PatchCf1SiteResponse {
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name: string;
+  /** Identifier */
+  id?: string | null;
+  createdOn?: string | null;
+  /** A human-provided description of the CF1 Site. */
+  description?: string | null;
+  location?: {
+    lat?: number | null;
+    long?: number | null;
+    name?: string | null;
+  } | null;
+  modifiedOn?: string | null;
+}
+
+export const PatchCf1SiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      name: Schema.String,
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      location: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            lat: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            long: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          name: "name",
+          id: "id",
+          createdOn: "created_on",
+          description: "description",
+          location: "location",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<PatchCf1SiteResponse>;
+
+export type PatchCf1SiteError = DefaultErrors;
+
+export const patchCf1Site: API.OperationMethod<
+  PatchCf1SiteRequest,
+  PatchCf1SiteResponse,
+  PatchCf1SiteError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchCf1SiteRequest,
+  output: PatchCf1SiteResponse,
+  errors: [],
+}));
+
+export interface DeleteCf1SiteRequest {
+  cf1SiteId: string;
+  /** Identifier */
+  accountId: string;
+}
+
+export const DeleteCf1SiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}",
+      }),
+    ),
+) as unknown as Schema.Schema<DeleteCf1SiteRequest>;
+
+export interface DeleteCf1SiteResponse {
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name: string;
+  /** Identifier */
+  id?: string | null;
+  createdOn?: string | null;
+  /** A human-provided description of the CF1 Site. */
+  description?: string | null;
+  location?: {
+    lat?: number | null;
+    long?: number | null;
+    name?: string | null;
+  } | null;
+  modifiedOn?: string | null;
+}
+
+export const DeleteCf1SiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      name: Schema.String,
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      location: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            lat: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            long: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          name: "name",
+          id: "id",
+          createdOn: "created_on",
+          description: "description",
+          location: "location",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<DeleteCf1SiteResponse>;
+
+export type DeleteCf1SiteError = DefaultErrors;
+
+export const deleteCf1Site: API.OperationMethod<
+  DeleteCf1SiteRequest,
+  DeleteCf1SiteResponse,
+  DeleteCf1SiteError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteCf1SiteRequest,
+  output: DeleteCf1SiteResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// Cf1SiteRamp
+// =============================================================================
+
+export interface GetCf1SiteRampRequest {
+  cf1SiteId: string;
+  rampId: string;
+  /** Identifier */
+  accountId: string;
+}
+
+export const GetCf1SiteRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+      rampId: Schema.String.pipe(T.HttpPath("rampId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}/ramps/{rampId}",
+      }),
+    ),
+) as unknown as Schema.Schema<GetCf1SiteRampRequest>;
+
+export interface GetCf1SiteRampResponse {
+  /** Identifier */
+  id: string;
+  createdOn: string;
+  modifiedOn: string;
+  /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
+  name: string;
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  type:
+    | "gre"
+    | "gre_interconnect"
+    | "mpls_interconnect"
+    | "mconn"
+    | "ipsec"
+    | (string & {});
+  /** A human-provided description of the ramp. */
+  description?: string | null;
+  gre?: { managedBy?: string | null } | null;
+  greInterconnect?: { managedBy?: string | null } | null;
+  ipsec?: { managedBy?: string | null } | null;
+  mconn?: { managedBy?: string | null } | null;
+  mplsInterconnect?: { managedBy?: string | null } | null;
+}
+
+export const GetCf1SiteRampResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      type: Schema.Union([
+        Schema.Literals([
+          "gre",
+          "gre_interconnect",
+          "mpls_interconnect",
+          "mconn",
+          "ipsec",
+        ]),
+        Schema.String,
+      ]),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      gre: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+          Schema.Null,
+        ]),
+      ),
+      greInterconnect: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+          Schema.Null,
+        ]),
+      ),
+      ipsec: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+          Schema.Null,
+        ]),
+      ),
+      mconn: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+          Schema.Null,
+        ]),
+      ),
+      mplsInterconnect: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdOn: "created_on",
+          modifiedOn: "modified_on",
+          name: "name",
+          type: "type",
+          description: "description",
+          gre: "gre",
+          greInterconnect: "gre_interconnect",
+          ipsec: "ipsec",
+          mconn: "mconn",
+          mplsInterconnect: "mpls_interconnect",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetCf1SiteRampResponse>;
+
+export type GetCf1SiteRampError = DefaultErrors;
+
+export const getCf1SiteRamp: API.OperationMethod<
+  GetCf1SiteRampRequest,
+  GetCf1SiteRampResponse,
+  GetCf1SiteRampError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetCf1SiteRampRequest,
+  output: GetCf1SiteRampResponse,
+  errors: [],
+}));
+
+export interface ListCf1SiteRampsRequest {
+  cf1SiteId: string;
+  /** Identifier */
+  accountId: string;
+}
+
+export const ListCf1SiteRampsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}/ramps",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ListCf1SiteRampsRequest>;
+
+export interface ListCf1SiteRampsResponse {
+  result: {
+    id: string;
+    createdOn: string;
+    modifiedOn: string;
+    name: string;
+    type:
+      | "gre"
+      | "gre_interconnect"
+      | "mpls_interconnect"
+      | "mconn"
+      | "ipsec"
+      | (string & {});
+    description?: string | null;
+    gre?: { managedBy?: string | null } | null;
+    greInterconnect?: { managedBy?: string | null } | null;
+    ipsec?: { managedBy?: string | null } | null;
+    mconn?: { managedBy?: string | null } | null;
+    mplsInterconnect?: { managedBy?: string | null } | null;
+  }[];
+}
+
+export const ListCf1SiteRampsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          createdOn: Schema.String,
+          modifiedOn: Schema.String,
+          name: Schema.String,
+          type: Schema.Union([
+            Schema.Literals([
+              "gre",
+              "gre_interconnect",
+              "mpls_interconnect",
+              "mconn",
+              "ipsec",
+            ]),
+            Schema.String,
+          ]),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          gre: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                managedBy: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+              Schema.Null,
+            ]),
+          ),
+          greInterconnect: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                managedBy: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+              Schema.Null,
+            ]),
+          ),
+          ipsec: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                managedBy: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+              Schema.Null,
+            ]),
+          ),
+          mconn: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                managedBy: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+              Schema.Null,
+            ]),
+          ),
+          mplsInterconnect: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                managedBy: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdOn: "created_on",
+            modifiedOn: "modified_on",
+            name: "name",
+            type: "type",
+            description: "description",
+            gre: "gre",
+            greInterconnect: "gre_interconnect",
+            ipsec: "ipsec",
+            mconn: "mconn",
+            mplsInterconnect: "mpls_interconnect",
+          }),
+        ),
+      ),
+    }),
+  ) as unknown as Schema.Schema<ListCf1SiteRampsResponse>;
+
+export type ListCf1SiteRampsError = DefaultErrors;
+
+export const listCf1SiteRamps: API.PaginatedOperationMethod<
+  ListCf1SiteRampsRequest,
+  ListCf1SiteRampsResponse,
+  ListCf1SiteRampsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListCf1SiteRampsRequest,
+  output: ListCf1SiteRampsResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export interface CreateCf1SiteRampRequest {
+  cf1SiteId: string;
+  /** Path param: Identifier */
+  accountId: string;
+  /** Body param */
+  body: {
+    sourceRampId: string;
+    type:
+      | "gre"
+      | "gre_interconnect"
+      | "mpls_interconnect"
+      | "mconn"
+      | "ipsec"
+      | (string & {});
+  }[];
+}
+
+export const CreateCf1SiteRampRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      body: Schema.Array(
+        Schema.Struct({
+          sourceRampId: Schema.String,
+          type: Schema.Union([
+            Schema.Literals([
+              "gre",
+              "gre_interconnect",
+              "mpls_interconnect",
+              "mconn",
+              "ipsec",
+            ]),
+            Schema.String,
+          ]),
+        }).pipe(
+          Schema.encodeKeys({ sourceRampId: "source_ramp_id", type: "type" }),
+        ),
+      ).pipe(T.HttpBody()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}/ramps",
+      }),
+    ),
+  ) as unknown as Schema.Schema<CreateCf1SiteRampRequest>;
+
+export interface CreateCf1SiteRampResponse {
+  result: {
+    id: string;
+    createdOn: string;
+    modifiedOn: string;
+    name: string;
+    type:
+      | "gre"
+      | "gre_interconnect"
+      | "mpls_interconnect"
+      | "mconn"
+      | "ipsec"
+      | (string & {});
+    description?: string | null;
+    gre?: { managedBy?: string | null } | null;
+    greInterconnect?: { managedBy?: string | null } | null;
+    ipsec?: { managedBy?: string | null } | null;
+    mconn?: { managedBy?: string | null } | null;
+    mplsInterconnect?: { managedBy?: string | null } | null;
+  }[];
+}
+
+export const CreateCf1SiteRampResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          createdOn: Schema.String,
+          modifiedOn: Schema.String,
+          name: Schema.String,
+          type: Schema.Union([
+            Schema.Literals([
+              "gre",
+              "gre_interconnect",
+              "mpls_interconnect",
+              "mconn",
+              "ipsec",
+            ]),
+            Schema.String,
+          ]),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          gre: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                managedBy: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+              Schema.Null,
+            ]),
+          ),
+          greInterconnect: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                managedBy: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+              Schema.Null,
+            ]),
+          ),
+          ipsec: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                managedBy: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+              Schema.Null,
+            ]),
+          ),
+          mconn: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                managedBy: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+              Schema.Null,
+            ]),
+          ),
+          mplsInterconnect: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                managedBy: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdOn: "created_on",
+            modifiedOn: "modified_on",
+            name: "name",
+            type: "type",
+            description: "description",
+            gre: "gre",
+            greInterconnect: "gre_interconnect",
+            ipsec: "ipsec",
+            mconn: "mconn",
+            mplsInterconnect: "mpls_interconnect",
+          }),
+        ),
+      ),
+    }),
+  ) as unknown as Schema.Schema<CreateCf1SiteRampResponse>;
+
+export type CreateCf1SiteRampError = DefaultErrors;
+
+export const createCf1SiteRamp: API.PaginatedOperationMethod<
+  CreateCf1SiteRampRequest,
+  CreateCf1SiteRampResponse,
+  CreateCf1SiteRampError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: CreateCf1SiteRampRequest,
+  output: CreateCf1SiteRampResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export interface DeleteCf1SiteRampRequest {
+  cf1SiteId: string;
+  rampId: string;
+  /** Identifier */
+  accountId: string;
+}
+
+export const DeleteCf1SiteRampRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+      rampId: Schema.String.pipe(T.HttpPath("rampId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}/ramps/{rampId}",
+      }),
+    ),
+  ) as unknown as Schema.Schema<DeleteCf1SiteRampRequest>;
+
+export interface DeleteCf1SiteRampResponse {
+  /** Identifier */
+  id: string;
+  createdOn: string;
+  modifiedOn: string;
+  /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
+  name: string;
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  type:
+    | "gre"
+    | "gre_interconnect"
+    | "mpls_interconnect"
+    | "mconn"
+    | "ipsec"
+    | (string & {});
+  /** A human-provided description of the ramp. */
+  description?: string | null;
+  gre?: { managedBy?: string | null } | null;
+  greInterconnect?: { managedBy?: string | null } | null;
+  ipsec?: { managedBy?: string | null } | null;
+  mconn?: { managedBy?: string | null } | null;
+  mplsInterconnect?: { managedBy?: string | null } | null;
+}
+
+export const DeleteCf1SiteRampResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      type: Schema.Union([
+        Schema.Literals([
+          "gre",
+          "gre_interconnect",
+          "mpls_interconnect",
+          "mconn",
+          "ipsec",
+        ]),
+        Schema.String,
+      ]),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      gre: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+          Schema.Null,
+        ]),
+      ),
+      greInterconnect: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+          Schema.Null,
+        ]),
+      ),
+      ipsec: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+          Schema.Null,
+        ]),
+      ),
+      mconn: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+          Schema.Null,
+        ]),
+      ),
+      mplsInterconnect: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            managedBy: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdOn: "created_on",
+          modifiedOn: "modified_on",
+          name: "name",
+          type: "type",
+          description: "description",
+          gre: "gre",
+          greInterconnect: "gre_interconnect",
+          ipsec: "ipsec",
+          mconn: "mconn",
+          mplsInterconnect: "mpls_interconnect",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<DeleteCf1SiteRampResponse>;
+
+export type DeleteCf1SiteRampError = DefaultErrors;
+
+export const deleteCf1SiteRamp: API.OperationMethod<
+  DeleteCf1SiteRampRequest,
+  DeleteCf1SiteRampResponse,
+  DeleteCf1SiteRampError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteCf1SiteRampRequest,
+  output: DeleteCf1SiteRampResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // CfInterconnect
 // =============================================================================
 
@@ -1242,6 +2327,7 @@ export interface GetConnectorResponse {
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: {
     id: string;
@@ -1251,6 +2337,7 @@ export interface GetConnectorResponse {
   lastHeartbeat?: string | null;
   lastSeenVersion?: string | null;
   licenseKey?: string | null;
+  siteId?: string | null;
 }
 
 export const GetConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
@@ -1277,6 +2364,7 @@ export const GetConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       interruptWindowHourOfDay: Schema.Number,
       lastUpdated: Schema.String,
       notes: Schema.String,
+      primary: Schema.Boolean,
       timezone: Schema.String,
       device: Schema.optional(
         Schema.Union([
@@ -1311,6 +2399,7 @@ export const GetConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.Union([Schema.String, Schema.Null]),
       ),
       licenseKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -1322,11 +2411,13 @@ export const GetConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
           interruptWindowHourOfDay: "interrupt_window_hour_of_day",
           lastUpdated: "last_updated",
           notes: "notes",
+          primary: "primary",
           timezone: "timezone",
           device: "device",
           lastHeartbeat: "last_heartbeat",
           lastSeenVersion: "last_seen_version",
           licenseKey: "license_key",
+          siteId: "site_id",
         }),
       )
       .pipe(T.ResponsePath("result")),
@@ -1386,6 +2477,7 @@ export interface ListConnectorsResponse {
     interruptWindowHourOfDay: number;
     lastUpdated: string;
     notes: string;
+    primary: boolean;
     timezone: string;
     device?: {
       id: string;
@@ -1395,6 +2487,7 @@ export interface ListConnectorsResponse {
     lastHeartbeat?: string | null;
     lastSeenVersion?: string | null;
     licenseKey?: string | null;
+    siteId?: string | null;
   }[];
 }
 
@@ -1424,6 +2517,7 @@ export const ListConnectorsResponse =
           interruptWindowHourOfDay: Schema.Number,
           lastUpdated: Schema.String,
           notes: Schema.String,
+          primary: Schema.Boolean,
           timezone: Schema.String,
           device: Schema.optional(
             Schema.Union([
@@ -1460,6 +2554,7 @@ export const ListConnectorsResponse =
           licenseKey: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
+          siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
@@ -1470,11 +2565,13 @@ export const ListConnectorsResponse =
             interruptWindowHourOfDay: "interrupt_window_hour_of_day",
             lastUpdated: "last_updated",
             notes: "notes",
+            primary: "primary",
             timezone: "timezone",
             device: "device",
             lastHeartbeat: "last_heartbeat",
             lastSeenVersion: "last_seen_version",
             licenseKey: "license_key",
+            siteId: "site_id",
           }),
         ),
       ),
@@ -1525,6 +2622,10 @@ export interface CreateConnectorRequest {
   /** Body param */
   notes?: string;
   /** Body param */
+  primary?: boolean;
+  /** Body param */
+  siteId?: string;
+  /** Body param */
   timezone?: string;
 }
 
@@ -1564,6 +2665,8 @@ export const CreateConnectorRequest =
       interruptWindowEmbargoDates: Schema.optional(Schema.Array(Schema.String)),
       interruptWindowHourOfDay: Schema.optional(Schema.Number),
       notes: Schema.optional(Schema.String),
+      primary: Schema.optional(Schema.Boolean),
+      siteId: Schema.optional(Schema.String),
       timezone: Schema.optional(Schema.String),
     }).pipe(
       Schema.encodeKeys({
@@ -1574,6 +2677,8 @@ export const CreateConnectorRequest =
         interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
         interruptWindowHourOfDay: "interrupt_window_hour_of_day",
         notes: "notes",
+        primary: "primary",
+        siteId: "site_id",
         timezone: "timezone",
       }),
       T.Http({
@@ -1603,6 +2708,7 @@ export interface CreateConnectorResponse {
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: {
     id: string;
@@ -1612,6 +2718,7 @@ export interface CreateConnectorResponse {
   lastHeartbeat?: string | null;
   lastSeenVersion?: string | null;
   licenseKey?: string | null;
+  siteId?: string | null;
 }
 
 export const CreateConnectorResponse =
@@ -1638,6 +2745,7 @@ export const CreateConnectorResponse =
       interruptWindowHourOfDay: Schema.Number,
       lastUpdated: Schema.String,
       notes: Schema.String,
+      primary: Schema.Boolean,
       timezone: Schema.String,
       device: Schema.optional(
         Schema.Union([
@@ -1672,6 +2780,7 @@ export const CreateConnectorResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
       licenseKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -1683,11 +2792,13 @@ export const CreateConnectorResponse =
           interruptWindowHourOfDay: "interrupt_window_hour_of_day",
           lastUpdated: "last_updated",
           notes: "notes",
+          primary: "primary",
           timezone: "timezone",
           device: "device",
           lastHeartbeat: "last_heartbeat",
           lastSeenVersion: "last_seen_version",
           licenseKey: "license_key",
+          siteId: "site_id",
         }),
       )
       .pipe(T.ResponsePath("result")),
@@ -1731,8 +2842,12 @@ export interface UpdateConnectorRequest {
   interruptWindowHourOfDay?: number;
   /** Body param */
   notes?: string;
+  /** Body param */
+  primary?: boolean;
   /** Body param: When true, regenerate license key for the connector. */
   provisionLicense?: boolean;
+  /** Body param */
+  siteId?: string;
   /** Body param */
   timezone?: string;
 }
@@ -1763,7 +2878,9 @@ export const UpdateConnectorRequest =
       interruptWindowEmbargoDates: Schema.optional(Schema.Array(Schema.String)),
       interruptWindowHourOfDay: Schema.optional(Schema.Number),
       notes: Schema.optional(Schema.String),
+      primary: Schema.optional(Schema.Boolean),
       provisionLicense: Schema.optional(Schema.Boolean),
+      siteId: Schema.optional(Schema.String),
       timezone: Schema.optional(Schema.String),
     }).pipe(
       Schema.encodeKeys({
@@ -1773,7 +2890,9 @@ export const UpdateConnectorRequest =
         interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
         interruptWindowHourOfDay: "interrupt_window_hour_of_day",
         notes: "notes",
+        primary: "primary",
         provisionLicense: "provision_license",
+        siteId: "site_id",
         timezone: "timezone",
       }),
       T.Http({
@@ -1803,6 +2922,7 @@ export interface UpdateConnectorResponse {
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: {
     id: string;
@@ -1812,6 +2932,7 @@ export interface UpdateConnectorResponse {
   lastHeartbeat?: string | null;
   lastSeenVersion?: string | null;
   licenseKey?: string | null;
+  siteId?: string | null;
 }
 
 export const UpdateConnectorResponse =
@@ -1838,6 +2959,7 @@ export const UpdateConnectorResponse =
       interruptWindowHourOfDay: Schema.Number,
       lastUpdated: Schema.String,
       notes: Schema.String,
+      primary: Schema.Boolean,
       timezone: Schema.String,
       device: Schema.optional(
         Schema.Union([
@@ -1872,6 +2994,7 @@ export const UpdateConnectorResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
       licenseKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -1883,11 +3006,13 @@ export const UpdateConnectorResponse =
           interruptWindowHourOfDay: "interrupt_window_hour_of_day",
           lastUpdated: "last_updated",
           notes: "notes",
+          primary: "primary",
           timezone: "timezone",
           device: "device",
           lastHeartbeat: "last_heartbeat",
           lastSeenVersion: "last_seen_version",
           licenseKey: "license_key",
+          siteId: "site_id",
         }),
       )
       .pipe(T.ResponsePath("result")),
@@ -1931,8 +3056,12 @@ export interface PatchConnectorRequest {
   interruptWindowHourOfDay?: number;
   /** Body param */
   notes?: string;
+  /** Body param */
+  primary?: boolean;
   /** Body param: When true, regenerate license key for the connector. */
   provisionLicense?: boolean;
+  /** Body param */
+  siteId?: string;
   /** Body param */
   timezone?: string;
 }
@@ -1963,7 +3092,9 @@ export const PatchConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       interruptWindowEmbargoDates: Schema.optional(Schema.Array(Schema.String)),
       interruptWindowHourOfDay: Schema.optional(Schema.Number),
       notes: Schema.optional(Schema.String),
+      primary: Schema.optional(Schema.Boolean),
       provisionLicense: Schema.optional(Schema.Boolean),
+      siteId: Schema.optional(Schema.String),
       timezone: Schema.optional(Schema.String),
     }).pipe(
       Schema.encodeKeys({
@@ -1973,7 +3104,9 @@ export const PatchConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
         interruptWindowHourOfDay: "interrupt_window_hour_of_day",
         notes: "notes",
+        primary: "primary",
         provisionLicense: "provision_license",
+        siteId: "site_id",
         timezone: "timezone",
       }),
       T.Http({
@@ -2003,6 +3136,7 @@ export interface PatchConnectorResponse {
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: {
     id: string;
@@ -2012,6 +3146,7 @@ export interface PatchConnectorResponse {
   lastHeartbeat?: string | null;
   lastSeenVersion?: string | null;
   licenseKey?: string | null;
+  siteId?: string | null;
 }
 
 export const PatchConnectorResponse =
@@ -2038,6 +3173,7 @@ export const PatchConnectorResponse =
       interruptWindowHourOfDay: Schema.Number,
       lastUpdated: Schema.String,
       notes: Schema.String,
+      primary: Schema.Boolean,
       timezone: Schema.String,
       device: Schema.optional(
         Schema.Union([
@@ -2072,6 +3208,7 @@ export const PatchConnectorResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
       licenseKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -2083,11 +3220,13 @@ export const PatchConnectorResponse =
           interruptWindowHourOfDay: "interrupt_window_hour_of_day",
           lastUpdated: "last_updated",
           notes: "notes",
+          primary: "primary",
           timezone: "timezone",
           device: "device",
           lastHeartbeat: "last_heartbeat",
           lastSeenVersion: "last_seen_version",
           licenseKey: "license_key",
+          siteId: "site_id",
         }),
       )
       .pipe(T.ResponsePath("result")),
@@ -2145,6 +3284,7 @@ export interface DeleteConnectorResponse {
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: {
     id: string;
@@ -2154,6 +3294,7 @@ export interface DeleteConnectorResponse {
   lastHeartbeat?: string | null;
   lastSeenVersion?: string | null;
   licenseKey?: string | null;
+  siteId?: string | null;
 }
 
 export const DeleteConnectorResponse =
@@ -2180,6 +3321,7 @@ export const DeleteConnectorResponse =
       interruptWindowHourOfDay: Schema.Number,
       lastUpdated: Schema.String,
       notes: Schema.String,
+      primary: Schema.Boolean,
       timezone: Schema.String,
       device: Schema.optional(
         Schema.Union([
@@ -2214,6 +3356,7 @@ export const DeleteConnectorResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
       licenseKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -2225,11 +3368,13 @@ export const DeleteConnectorResponse =
           interruptWindowHourOfDay: "interrupt_window_hour_of_day",
           lastUpdated: "last_updated",
           notes: "notes",
+          primary: "primary",
           timezone: "timezone",
           device: "device",
           lastHeartbeat: "last_heartbeat",
           lastSeenVersion: "last_seen_version",
           licenseKey: "license_key",
+          siteId: "site_id",
         }),
       )
       .pipe(T.ResponsePath("result")),
@@ -5444,7 +6589,9 @@ export interface GetGreTunnelResponse {
     automaticReturnRouting?: boolean | null;
     bgp?: {
       customerAsn: number;
+      exportFilterId?: string | null;
       extraPrefixes?: string[] | null;
+      importFilterId?: string | null;
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
@@ -5494,8 +6641,14 @@ export const GetGreTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
               Schema.Union([
                 Schema.Struct({
                   customerAsn: Schema.Number,
+                  exportFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                   extraPrefixes: Schema.optional(
                     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  ),
+                  importFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
                   ),
                   md5Key: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -5503,7 +6656,9 @@ export const GetGreTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
                 }).pipe(
                   Schema.encodeKeys({
                     customerAsn: "customer_asn",
+                    exportFilterId: "export_filter_id",
                     extraPrefixes: "extra_prefixes",
+                    importFilterId: "import_filter_id",
                     md5Key: "md5_key",
                   }),
                 ),
@@ -5693,7 +6848,9 @@ export interface ListGreTunnelsResponse {
         automaticReturnRouting?: boolean | null;
         bgp?: {
           customerAsn: number;
+          exportFilterId?: string | null;
           extraPrefixes?: string[] | null;
+          importFilterId?: string | null;
           md5Key?: string | null;
         } | null;
         bgpStatus?: {
@@ -5745,8 +6902,14 @@ export const ListGreTunnelsResponse =
                 Schema.Union([
                   Schema.Struct({
                     customerAsn: Schema.Number,
+                    exportFilterId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
                     extraPrefixes: Schema.optional(
                       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    importFilterId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
                     ),
                     md5Key: Schema.optional(
                       Schema.Union([Schema.String, Schema.Null]),
@@ -5754,7 +6917,9 @@ export const ListGreTunnelsResponse =
                   }).pipe(
                     Schema.encodeKeys({
                       customerAsn: "customer_asn",
+                      exportFilterId: "export_filter_id",
                       extraPrefixes: "extra_prefixes",
+                      importFilterId: "import_filter_id",
                       md5Key: "md5_key",
                     }),
                   ),
@@ -5931,7 +7096,13 @@ export interface CreateGreTunnelRequest {
   /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` wi */
   automaticReturnRouting?: boolean;
   /** Body param */
-  bgp?: { customerAsn: number; extraPrefixes?: string[]; md5Key?: string };
+  bgp?: {
+    customerAsn: number;
+    exportFilterId?: string;
+    extraPrefixes?: string[];
+    importFilterId?: string;
+    md5Key?: string;
+  };
   /** Body param: An optional description of the GRE tunnel. */
   description?: string;
   /** Body param */
@@ -5965,12 +7136,16 @@ export const CreateGreTunnelRequest =
       bgp: Schema.optional(
         Schema.Struct({
           customerAsn: Schema.Number,
+          exportFilterId: Schema.optional(Schema.String),
           extraPrefixes: Schema.optional(Schema.Array(Schema.String)),
+          importFilterId: Schema.optional(Schema.String),
           md5Key: Schema.optional(Schema.String),
         }).pipe(
           Schema.encodeKeys({
             customerAsn: "customer_asn",
+            exportFilterId: "export_filter_id",
             extraPrefixes: "extra_prefixes",
+            importFilterId: "import_filter_id",
             md5Key: "md5_key",
           }),
         ),
@@ -6046,7 +7221,9 @@ export interface CreateGreTunnelResponse {
   automaticReturnRouting?: boolean | null;
   bgp?: {
     customerAsn: number;
+    exportFilterId?: string | null;
     extraPrefixes?: string[] | null;
+    importFilterId?: string | null;
     md5Key?: string | null;
   } | null;
   bgpStatus?: {
@@ -6098,14 +7275,22 @@ export const CreateGreTunnelResponse =
         Schema.Union([
           Schema.Struct({
             customerAsn: Schema.Number,
+            exportFilterId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
             extraPrefixes: Schema.optional(
               Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            importFilterId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
             ),
             md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           }).pipe(
             Schema.encodeKeys({
               customerAsn: "customer_asn",
+              exportFilterId: "export_filter_id",
               extraPrefixes: "extra_prefixes",
+              importFilterId: "import_filter_id",
               md5Key: "md5_key",
             }),
           ),
@@ -6364,7 +7549,9 @@ export interface UpdateGreTunnelResponse {
     automaticReturnRouting?: boolean | null;
     bgp?: {
       customerAsn: number;
+      exportFilterId?: string | null;
       extraPrefixes?: string[] | null;
+      importFilterId?: string | null;
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
@@ -6415,8 +7602,14 @@ export const UpdateGreTunnelResponse =
               Schema.Union([
                 Schema.Struct({
                   customerAsn: Schema.Number,
+                  exportFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                   extraPrefixes: Schema.optional(
                     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  ),
+                  importFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
                   ),
                   md5Key: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -6424,7 +7617,9 @@ export const UpdateGreTunnelResponse =
                 }).pipe(
                   Schema.encodeKeys({
                     customerAsn: "customer_asn",
+                    exportFilterId: "export_filter_id",
                     extraPrefixes: "extra_prefixes",
+                    importFilterId: "import_filter_id",
                     md5Key: "md5_key",
                   }),
                 ),
@@ -6621,7 +7816,9 @@ export interface DeleteGreTunnelResponse {
     automaticReturnRouting?: boolean | null;
     bgp?: {
       customerAsn: number;
+      exportFilterId?: string | null;
       extraPrefixes?: string[] | null;
+      importFilterId?: string | null;
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
@@ -6672,8 +7869,14 @@ export const DeleteGreTunnelResponse =
               Schema.Union([
                 Schema.Struct({
                   customerAsn: Schema.Number,
+                  exportFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                   extraPrefixes: Schema.optional(
                     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  ),
+                  importFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
                   ),
                   md5Key: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -6681,7 +7884,9 @@ export const DeleteGreTunnelResponse =
                 }).pipe(
                   Schema.encodeKeys({
                     customerAsn: "customer_asn",
+                    exportFilterId: "export_filter_id",
                     extraPrefixes: "extra_prefixes",
+                    importFilterId: "import_filter_id",
                     md5Key: "md5_key",
                   }),
                 ),
@@ -6881,7 +8086,9 @@ export interface GetIpsecTunnelResponse {
     automaticReturnRouting?: boolean | null;
     bgp?: {
       customerAsn: number;
+      exportFilterId?: string | null;
       extraPrefixes?: string[] | null;
+      importFilterId?: string | null;
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
@@ -6935,8 +8142,14 @@ export const GetIpsecTunnelResponse =
               Schema.Union([
                 Schema.Struct({
                   customerAsn: Schema.Number,
+                  exportFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                   extraPrefixes: Schema.optional(
                     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  ),
+                  importFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
                   ),
                   md5Key: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -6944,7 +8157,9 @@ export const GetIpsecTunnelResponse =
                 }).pipe(
                   Schema.encodeKeys({
                     customerAsn: "customer_asn",
+                    exportFilterId: "export_filter_id",
                     extraPrefixes: "extra_prefixes",
+                    importFilterId: "import_filter_id",
                     md5Key: "md5_key",
                   }),
                 ),
@@ -7162,7 +8377,9 @@ export interface ListIpsecTunnelsResponse {
         automaticReturnRouting?: boolean | null;
         bgp?: {
           customerAsn: number;
+          exportFilterId?: string | null;
           extraPrefixes?: string[] | null;
+          importFilterId?: string | null;
           md5Key?: string | null;
         } | null;
         bgpStatus?: {
@@ -7218,8 +8435,14 @@ export const ListIpsecTunnelsResponse =
                 Schema.Union([
                   Schema.Struct({
                     customerAsn: Schema.Number,
+                    exportFilterId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
                     extraPrefixes: Schema.optional(
                       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    importFilterId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
                     ),
                     md5Key: Schema.optional(
                       Schema.Union([Schema.String, Schema.Null]),
@@ -7227,7 +8450,9 @@ export const ListIpsecTunnelsResponse =
                   }).pipe(
                     Schema.encodeKeys({
                       customerAsn: "customer_asn",
+                      exportFilterId: "export_filter_id",
                       extraPrefixes: "extra_prefixes",
+                      importFilterId: "import_filter_id",
                       md5Key: "md5_key",
                     }),
                   ),
@@ -7430,7 +8655,13 @@ export interface CreateIpsecTunnelRequest {
   /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` wi */
   automaticReturnRouting?: boolean;
   /** Body param */
-  bgp?: { customerAsn: number; extraPrefixes?: string[]; md5Key?: string };
+  bgp?: {
+    customerAsn: number;
+    exportFilterId?: string;
+    extraPrefixes?: string[];
+    importFilterId?: string;
+    md5Key?: string;
+  };
   /** Body param */
   customRemoteIdentities?: { fqdnId?: string };
   /** Body param: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
@@ -7467,12 +8698,16 @@ export const CreateIpsecTunnelRequest =
       bgp: Schema.optional(
         Schema.Struct({
           customerAsn: Schema.Number,
+          exportFilterId: Schema.optional(Schema.String),
           extraPrefixes: Schema.optional(Schema.Array(Schema.String)),
+          importFilterId: Schema.optional(Schema.String),
           md5Key: Schema.optional(Schema.String),
         }).pipe(
           Schema.encodeKeys({
             customerAsn: "customer_asn",
+            exportFilterId: "export_filter_id",
             extraPrefixes: "extra_prefixes",
+            importFilterId: "import_filter_id",
             md5Key: "md5_key",
           }),
         ),
@@ -7555,7 +8790,9 @@ export interface CreateIpsecTunnelResponse {
   automaticReturnRouting?: boolean | null;
   bgp?: {
     customerAsn: number;
+    exportFilterId?: string | null;
     extraPrefixes?: string[] | null;
+    importFilterId?: string | null;
     md5Key?: string | null;
   } | null;
   bgpStatus?: {
@@ -7612,14 +8849,22 @@ export const CreateIpsecTunnelResponse =
         Schema.Union([
           Schema.Struct({
             customerAsn: Schema.Number,
+            exportFilterId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
             extraPrefixes: Schema.optional(
               Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            importFilterId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
             ),
             md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           }).pipe(
             Schema.encodeKeys({
               customerAsn: "customer_asn",
+              exportFilterId: "export_filter_id",
               extraPrefixes: "extra_prefixes",
+              importFilterId: "import_filter_id",
               md5Key: "md5_key",
             }),
           ),
@@ -7804,7 +9049,13 @@ export interface UpdateIpsecTunnelRequest {
   /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` wi */
   automaticReturnRouting?: boolean;
   /** Body param */
-  bgp?: { customerAsn: number; extraPrefixes?: string[]; md5Key?: string };
+  bgp?: {
+    customerAsn: number;
+    exportFilterId?: string;
+    extraPrefixes?: string[];
+    importFilterId?: string;
+    md5Key?: string;
+  };
   /** Body param */
   customRemoteIdentities?: { fqdnId?: string };
   /** Body param: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
@@ -7842,12 +9093,16 @@ export const UpdateIpsecTunnelRequest =
       bgp: Schema.optional(
         Schema.Struct({
           customerAsn: Schema.Number,
+          exportFilterId: Schema.optional(Schema.String),
           extraPrefixes: Schema.optional(Schema.Array(Schema.String)),
+          importFilterId: Schema.optional(Schema.String),
           md5Key: Schema.optional(Schema.String),
         }).pipe(
           Schema.encodeKeys({
             customerAsn: "customer_asn",
+            exportFilterId: "export_filter_id",
             extraPrefixes: "extra_prefixes",
+            importFilterId: "import_filter_id",
             md5Key: "md5_key",
           }),
         ),
@@ -7926,7 +9181,9 @@ export interface UpdateIpsecTunnelResponse {
     automaticReturnRouting?: boolean | null;
     bgp?: {
       customerAsn: number;
+      exportFilterId?: string | null;
       extraPrefixes?: string[] | null;
+      importFilterId?: string | null;
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
@@ -7981,8 +9238,14 @@ export const UpdateIpsecTunnelResponse =
               Schema.Union([
                 Schema.Struct({
                   customerAsn: Schema.Number,
+                  exportFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                   extraPrefixes: Schema.optional(
                     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  ),
+                  importFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
                   ),
                   md5Key: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -7990,7 +9253,9 @@ export const UpdateIpsecTunnelResponse =
                 }).pipe(
                   Schema.encodeKeys({
                     customerAsn: "customer_asn",
+                    exportFilterId: "export_filter_id",
                     extraPrefixes: "extra_prefixes",
+                    importFilterId: "import_filter_id",
                     md5Key: "md5_key",
                   }),
                 ),
@@ -8215,7 +9480,9 @@ export interface DeleteIpsecTunnelResponse {
     automaticReturnRouting?: boolean | null;
     bgp?: {
       customerAsn: number;
+      exportFilterId?: string | null;
       extraPrefixes?: string[] | null;
+      importFilterId?: string | null;
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
@@ -8270,8 +9537,14 @@ export const DeleteIpsecTunnelResponse =
               Schema.Union([
                 Schema.Struct({
                   customerAsn: Schema.Number,
+                  exportFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                   extraPrefixes: Schema.optional(
                     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  ),
+                  importFilterId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
                   ),
                   md5Key: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -8279,7 +9552,9 @@ export const DeleteIpsecTunnelResponse =
                 }).pipe(
                   Schema.encodeKeys({
                     customerAsn: "customer_asn",
+                    exportFilterId: "export_filter_id",
                     extraPrefixes: "extra_prefixes",
+                    importFilterId: "import_filter_id",
                     md5Key: "md5_key",
                   }),
                 ),
@@ -9920,7 +11195,9 @@ export interface BulkPutGreTunnelsResponse {
         automaticReturnRouting?: boolean | null;
         bgp?: {
           customerAsn: number;
+          exportFilterId?: string | null;
           extraPrefixes?: string[] | null;
+          importFilterId?: string | null;
           md5Key?: string | null;
         } | null;
         bgpStatus?: {
@@ -9973,8 +11250,14 @@ export const BulkPutGreTunnelsResponse =
                 Schema.Union([
                   Schema.Struct({
                     customerAsn: Schema.Number,
+                    exportFilterId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
                     extraPrefixes: Schema.optional(
                       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    importFilterId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
                     ),
                     md5Key: Schema.optional(
                       Schema.Union([Schema.String, Schema.Null]),
@@ -9982,7 +11265,9 @@ export const BulkPutGreTunnelsResponse =
                   }).pipe(
                     Schema.encodeKeys({
                       customerAsn: "customer_asn",
+                      exportFilterId: "export_filter_id",
                       extraPrefixes: "extra_prefixes",
+                      importFilterId: "import_filter_id",
                       md5Key: "md5_key",
                     }),
                   ),
@@ -10186,7 +11471,9 @@ export interface BulkPutIpsecTunnelsResponse {
         automaticReturnRouting?: boolean | null;
         bgp?: {
           customerAsn: number;
+          exportFilterId?: string | null;
           extraPrefixes?: string[] | null;
+          importFilterId?: string | null;
           md5Key?: string | null;
         } | null;
         bgpStatus?: {
@@ -10243,8 +11530,14 @@ export const BulkPutIpsecTunnelsResponse =
                 Schema.Union([
                   Schema.Struct({
                     customerAsn: Schema.Number,
+                    exportFilterId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
                     extraPrefixes: Schema.optional(
                       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    importFilterId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
                     ),
                     md5Key: Schema.optional(
                       Schema.Union([Schema.String, Schema.Null]),
@@ -10252,7 +11545,9 @@ export const BulkPutIpsecTunnelsResponse =
                   }).pipe(
                     Schema.encodeKeys({
                       customerAsn: "customer_asn",
+                      exportFilterId: "export_filter_id",
                       extraPrefixes: "extra_prefixes",
+                      importFilterId: "import_filter_id",
                       md5Key: "md5_key",
                     }),
                   ),
@@ -11320,6 +12615,85 @@ export const emptyRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EmptyRouteRequest,
   output: EmptyRouteResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// SetIpsecTunnel
+// =============================================================================
+
+export interface PskSetIpsecTunnelRequest {
+  /** Path param: Identifier */
+  accountId: string;
+  /** Query param: If `true`, only run validation without persisting changes. */
+  validateOnly?: boolean;
+  /** Body param: List of tunnel ID and PSK pairs. */
+  psks: { id: string; psk: string }[];
+}
+
+export const PskSetIpsecTunnelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      validateOnly: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("validate_only"),
+      ),
+      psks: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          psk: Schema.String,
+        }),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/ipsec_tunnels/psk",
+      }),
+    ),
+  ) as unknown as Schema.Schema<PskSetIpsecTunnelRequest>;
+
+export interface PskSetIpsecTunnelResponse {
+  /** Map of tunnel IDs to successfully applied PSK details. */
+  successfullyAppliedPsks?: Record<string, unknown> | null;
+  /** Map of tunnel IDs to failure reasons for PSKs that could not be applied. */
+  unappliedPsks?: Record<string, unknown> | null;
+}
+
+export const PskSetIpsecTunnelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      successfullyAppliedPsks: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      unappliedPsks: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          successfullyAppliedPsks: "successfully_applied_psks",
+          unappliedPsks: "unapplied_psks",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PskSetIpsecTunnelResponse>;
+
+export type PskSetIpsecTunnelError = DefaultErrors;
+
+export const pskSetIpsecTunnel: API.OperationMethod<
+  PskSetIpsecTunnelRequest,
+  PskSetIpsecTunnelResponse,
+  PskSetIpsecTunnelError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PskSetIpsecTunnelRequest,
+  output: PskSetIpsecTunnelResponse,
   errors: [],
 }));
 

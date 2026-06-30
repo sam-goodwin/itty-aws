@@ -23,7 +23,7 @@ export type SendSolanaTransactionOutput =
 
 // The operation
 /**
- * Send a Solana transaction
+ * Send Solana transaction
  *
  * Signs and sends a single Solana transaction using multiple Solana accounts. The transaction may contain contain several instructions, each of which may require signatures from different account keys.
  * The transaction should be serialized into a byte array and base64 encoded. The API handles recent blockhash management and fee estimation, leaving the developer to provide only the minimal set of fields necessary to send the transaction.

@@ -10,6 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AdvisorScoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -48,7 +49,9 @@ export type AdvisorScoresGetOutput = typeof AdvisorScoresGetOutput.Type;
 /**
  * Gets the advisor score.
  *
+ * @param subscriptionId - The Azure subscription ID.
  * @param name - The scope of Advisor score entity.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const AdvisorScoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AdvisorScoresGetInput,
@@ -56,7 +59,9 @@ export const AdvisorScoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AdvisorScoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
@@ -108,6 +113,9 @@ export type AdvisorScoresListOutput = typeof AdvisorScoresListOutput.Type;
 // The operation
 /**
  * Gets the list of advisor scores.
+ *
+ * @param subscriptionId - The Azure subscription ID.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const AdvisorScoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AdvisorScoresListInput,
@@ -116,6 +124,7 @@ export const AdvisorScoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ConfigurationsCreateInResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["default"]).pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -206,6 +215,8 @@ export type ConfigurationsCreateInResourceGroupOutput =
 /**
  * Create/Overwrite Azure Advisor configuration.
  *
+ * @param api-version - The version of the API to be used with the client request.
+ * @param subscriptionId - The Azure subscription ID.
  * @param configurationName - Advisor configuration name. Value must be 'default'
  * @param resourceGroup - The name of the Azure resource group.
  */
@@ -217,6 +228,7 @@ export const ConfigurationsCreateInResourceGroup =
 // Input Schema
 export const ConfigurationsCreateInSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -308,6 +320,8 @@ export type ConfigurationsCreateInSubscriptionOutput =
  *
  * Create/Overwrite Azure Advisor configuration and also delete all configurations of contained resource groups.
  *
+ * @param api-version - The version of the API to be used with the client request.
+ * @param subscriptionId - The Azure subscription ID.
  * @param configurationName - Advisor configuration name. Value must be 'default'
  */
 export const ConfigurationsCreateInSubscription =
@@ -318,6 +332,7 @@ export const ConfigurationsCreateInSubscription =
 // Input Schema
 export const ConfigurationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -374,6 +389,8 @@ export type ConfigurationsListByResourceGroupOutput =
 /**
  * Retrieve Azure Advisor configurations.
  *
+ * @param api-version - The version of the API to be used with the client request.
+ * @param subscriptionId - The Azure subscription ID.
  * @param resourceGroup - The name of the Azure resource group.
  */
 export const ConfigurationsListByResourceGroup =
@@ -383,7 +400,9 @@ export const ConfigurationsListByResourceGroup =
   }));
 // Input Schema
 export const ConfigurationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/configurations",
@@ -439,6 +458,9 @@ export type ConfigurationsListBySubscriptionOutput =
  * Retrieve Azure Advisor configurations.
  *
  * Retrieve Azure Advisor configurations and also retrieve configurations of contained resource groups.
+ *
+ * @param api-version - The version of the API to be used with the client request.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const ConfigurationsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -481,6 +503,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all the available Advisor REST API operations.
+ *
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -488,6 +512,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PredictInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       predictionType: Schema.optional(
@@ -539,6 +564,9 @@ export type PredictOutput = typeof PredictOutput.Type;
 // The operation
 /**
  * Predicts a recommendation.
+ *
+ * @param subscriptionId - The Azure subscription ID.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const Predict = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PredictInput,
@@ -590,6 +618,7 @@ export type RecommendationMetadataGetOutput =
  * Gets the metadata entity.
  *
  * @param name - Name of metadata entity.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const RecommendationMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -649,6 +678,7 @@ export type RecommendationMetadataListOutput =
 /**
  * Gets the list of metadata entities.
  *
+ * @param api-version - The version of the API to be used with the client request.
  * @param $filter - The filter to apply to the recommendation metadata.<br>Filter can be applied to properties ['[recommendationCategory](#category)', '[recommendationSubCategory](#recommendationSubCategory)', 'RetirementDate'] with operators ['eq', 'and', 'le', 'ge']<br>The filter can also be applied to property ['[TrackingIds]']<br><br>⚠ **Note:** `recommendationControl` is a legacy filter property and will be deprecated in the future. Please use `recommendationSubCategory` for filtering recommendation subcategory.<br><br>Valid options for recommendationSubCategory: ['BusinessContinuity', 'DisasterRecovery', 'HighAvailability', 'MonitoringAndAlerting', 'Other', 'Personalized', 'PrioritizedRecommendations', 'Scalability', 'ServiceUpgradeAndRetirement', 'Validation']<br><br>Example:<br>- $filter=recommendationCategory eq 'HighAvailability' and recommendationSubCategory eq 'ServiceUpgradeAndRetirement' and retirementDate ge '2024-01-01' and retirementDate le '2028-01-01'. Filter can be applied on trackingIds as well.<br>- $filter=trackingIds/any(t: t eq 'some-guid')<br><br>⚠ **Note:** `trackingIDs` filter can be used for filtering one value at a time. The support to filter multiple values is not currently available. Also the support to add other filters along with `trackingIDs` is not available.
  */
 export const RecommendationMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -659,7 +689,9 @@ export const RecommendationMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const RecommendationsGenerateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/generateRecommendations",
@@ -678,6 +710,9 @@ export type RecommendationsGenerateOutput =
 // The operation
 /**
  * Initiates the recommendation generation or computation process for a subscription. This operation is asynchronous. The generated recommendations are stored in a cache in the Advisor service.
+ *
+ * @param subscriptionId - The Azure subscription ID.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const RecommendationsGenerate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -728,6 +763,7 @@ export type RecommendationsGetOutput = typeof RecommendationsGetOutput.Type;
  *
  * @param resourceUri - The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
  * @param recommendationId - The recommendation ID.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const RecommendationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RecommendationsGetInput,
@@ -736,6 +772,7 @@ export const RecommendationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const RecommendationsGetGenerateStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -757,7 +794,9 @@ export type RecommendationsGetGenerateStatusOutput =
 /**
  * Retrieves the status of the recommendation computation or generation process. Invoke this API after calling the generation recommendation. The URI of this API is returned in the Location field of the response header.
  *
+ * @param subscriptionId - The Azure subscription ID.
  * @param operationId - The operation ID, which can be found from the Location field in the generate recommendation response header.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const RecommendationsGetGenerateStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -767,6 +806,7 @@ export const RecommendationsGetGenerateStatus =
 // Input Schema
 export const RecommendationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -823,6 +863,8 @@ export type RecommendationsListOutput = typeof RecommendationsListOutput.Type;
 /**
  * Obtains cached recommendations for a subscription. The recommendations are generated or computed by invoking generateRecommendations.
  *
+ * @param subscriptionId - The Azure subscription ID.
+ * @param api-version - The version of the API to be used with the client request.
  * @param $filter - The filter to apply to the recommendations.<br>Filter can be applied to properties ['ResourceId', 'ResourceGroup', 'RecommendationTypeGuid', '[Category](#category)', 'SubCategory', 'RetirementDate'] with operators ['eq', 'and', 'or', 'lt', 'gt', 'le', 'ge'].<br><br>⚠ **Note:** `Control` is a legacy filter property and will be deprecated in the future. Please use `SubCategory` for filtering recommendation subcategory.<br><br>Valid options for SubCategory:<br>['BusinessContinuity', 'DisasterRecovery', 'HighAvailability', 'MonitoringAndAlerting', 'Other', 'Personalized', 'PrioritizedRecommendations', 'Scalability', 'ServiceUpgradeAndRetirement', 'Validation']<br><br>Example:<br>- $filter=Category eq 'Cost' and ResourceGroup eq 'MyResourceGroup'<br>-$filter=SubCategory eq 'ServiceUpgradeAndRetirement' and RetirementDate le '2024-01-01' and RetirementDate ge '2028-01-01'
  * @param $top - The number of recommendations per page if a paged version of this API is being used.
  * @param $skipToken - The page-continuation token to use with a paged version of this API.
@@ -899,6 +941,7 @@ export type SuppressionsCreateOutput = typeof SuppressionsCreateOutput.Type;
  * @param resourceUri - The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
  * @param recommendationId - The recommendation ID.
  * @param name - The name of the suppression.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const SuppressionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SuppressionsCreateInput,
@@ -930,6 +973,7 @@ export type SuppressionsDeleteOutput = typeof SuppressionsDeleteOutput.Type;
  * @param resourceUri - The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
  * @param recommendationId - The recommendation ID.
  * @param name - The name of the suppression.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const SuppressionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SuppressionsDeleteInput,
@@ -978,6 +1022,7 @@ export type SuppressionsGetOutput = typeof SuppressionsGetOutput.Type;
  * @param resourceUri - The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
  * @param recommendationId - The recommendation ID.
  * @param name - The name of the suppression.
+ * @param api-version - The version of the API to be used with the client request.
  */
 export const SuppressionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SuppressionsGetInput,
@@ -985,6 +1030,7 @@ export const SuppressionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SuppressionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
   $skipToken: Schema.optional(Schema.String),
 }).pipe(
@@ -1041,6 +1087,8 @@ export type SuppressionsListOutput = typeof SuppressionsListOutput.Type;
 /**
  * Retrieves the list of snoozed or dismissed suppressions for a subscription. The snoozed or dismissed attribute of a recommendation is referred to as a suppression.
  *
+ * @param subscriptionId - The Azure subscription ID.
+ * @param api-version - The version of the API to be used with the client request.
  * @param $top - The number of suppressions per page if a paged version of this API is being used.
  * @param $skipToken - The page-continuation token to use with a paged version of this API.
  */

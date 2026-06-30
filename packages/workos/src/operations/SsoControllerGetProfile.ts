@@ -77,6 +77,7 @@ export const SsoControllerGetProfileOutput =
     email: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
     last_name: Schema.optional(Schema.NullOr(Schema.String)),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
     role: Schema.optional(Schema.Unknown),
     roles: Schema.optional(Schema.Unknown),
     groups: Schema.optional(Schema.Array(Schema.String)),

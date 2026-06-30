@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingFingerprintsRetrieveInput =
@@ -11,7 +10,7 @@ export const ErrorTrackingFingerprintsRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/fingerprints/{id}/",
+      path: "/api/projects/{project_id}/error_tracking/fingerprints/{id}/",
     }),
   );
 export type ErrorTrackingFingerprintsRetrieveInput =
@@ -38,5 +37,4 @@ export const errorTrackingFingerprintsRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingFingerprintsRetrieveInput,
     outputSchema: ErrorTrackingFingerprintsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

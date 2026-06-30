@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation auditLogExportAuditLogs($exportInput: AuditLogExportInput!) {\n  auditLog {\n    exportAuditLogs(exportInput: $exportInput) {\n      account {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        appCount\n        appStoreConnectApiKeys {\n          createdAt\n          id\n          issuerIdentifier\n          keyIdentifier\n          keyP8\n          name\n          roles\n          updatedAt\n        }\n        appleDistributionCertificates {\n          certificateP12\n          certificatePassword\n          certificatePrivateSigningKey\n          createdAt\n          developerPortalIdentifier\n          id\n          serialNumber\n          updatedAt\n          validityNotAfter\n          validityNotBefore\n        }\n        applePushKeys {\n          createdAt\n          id\n          keyIdentifier\n          keyP8\n          updatedAt\n        }\n        availableBuilds\n        billing {\n          id\n        }\n        convexTeamConnections {\n          convexTeamIdentifier\n          createdAt\n          id\n          updatedAt\n        }\n        createdAt\n        displayName\n        environmentVariableEnvironments\n        githubAppInstallations {\n          id\n          installationIdentifier\n        }\n        googleServiceAccountKeys {\n          clientEmail\n          clientIdentifier\n          createdAt\n          id\n          keyJson\n          privateKeyIdentifier\n          projectIdentifier\n          updatedAt\n        }\n        hasBuilds\n        id\n        isCurrent\n        isDisabled\n        isFreeAppDevDomainTier\n        isSSOEnabled\n        lastDeletionAttemptTime\n        logRocketOrganization {\n          createdAt\n          id\n          orgName\n          orgSlug\n        }\n        memberStats {\n          allHave2FAEnabled\n          humanCount\n          ownerCount\n          robotCount\n          ssoUserCount\n          totalCount\n        }\n        name\n        offers {\n          features\n          id\n          price\n          quantity\n          stripeId\n          trialLength\n          type\n        }\n        onboardingStats {\n          firstBuildCompletedAt\n          firstProjectCreatedAt\n          firstSubmissionCompletedAt\n          firstUpdateCreatedAt\n          hasConfiguredUpdate\n          hasConfiguredWorkflow\n          hasTeamMembers\n        }\n        owner {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          email\n          emailVerified\n          firstName\n          fullName\n          githubUsername\n          hasPassword\n          hasPendingUserInvitations\n          id\n          industry\n          isExpoAdmin\n          isLegacy\n          isSecondFactorAuthenticationEnabled\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          newEmailPendingVerification\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n        ownerUserActor {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          firstName\n          fullName\n          githubUsername\n          id\n          industry\n          isExpoAdmin\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n        pendingSentryInstallation {\n          createdAt\n          id\n          installationId\n          orgSlug\n        }\n        profileImageUrl\n        pushSecurityEnabled\n        requireTwoFactor\n        requiresAccessTokenForPushSecurity\n        sentryInstallation {\n          createdAt\n          id\n          installationId\n          orgSlug\n        }\n        ssoAllowedAuthProviders\n        ssoConfiguration {\n          authProtocol\n          authProviderIdentifier\n          clientIdentifier\n          clientSecret\n          createdAt\n          id\n          issuer\n          updatedAt\n        }\n        subscription {\n          cancelAt\n          endedAt\n          id\n          isDowngrading\n          name\n          nextInvoice\n          nextInvoiceAmountDueCents\n          planId\n          price\n          recurringCents\n          status\n          trialEnd\n          willCancel\n        }\n        subscriptionChangesPending\n        unlimitedBuilds\n        updatedAt\n        userActorOwner {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          firstName\n          fullName\n          githubUsername\n          id\n          industry\n          isExpoAdmin\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n        userInvitations {\n          accountName\n          accountProfileImageUrl\n          accountProfilePhoto\n          accountRequiresTwoFactor\n          created\n          email\n          expires\n          id\n          isForOrganization\n          permissions\n          role\n        }\n        userSpecifiedAccountUsage\n        users {\n          id\n          permissions\n          role\n        }\n        vexoAccountConnection {\n          id\n        }\n        viewerUserPermission {\n          id\n          permissions\n          role\n        }\n        willAutoRenewBuilds\n      }\n      createdAt\n      errorCode\n      errorMessage\n      id\n      resultData\n      resultId\n      resultType\n      state\n      tries\n      updatedAt\n      willRetry\n    }\n  }\n}";
+  "mutation auditLogExportAuditLogs($exportInput: AuditLogExportInput!) {\n  auditLog {\n    exportAuditLogs(exportInput: $exportInput) {\n      account {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        appCount\n        appStoreConnectApiKeys {\n          createdAt\n          id\n          issuerIdentifier\n          keyIdentifier\n          keyP8\n          name\n          roles\n          updatedAt\n        }\n        appleDistributionCertificates {\n          certificateP12\n          certificatePassword\n          certificatePrivateSigningKey\n          createdAt\n          developerPortalIdentifier\n          id\n          serialNumber\n          updatedAt\n          validityNotAfter\n          validityNotBefore\n        }\n        applePushKeys {\n          createdAt\n          id\n          keyIdentifier\n          keyP8\n          updatedAt\n        }\n        availableBuilds\n        billing {\n          id\n        }\n        convexTeamConnections {\n          convexTeamIdentifier\n          convexTeamName\n          convexTeamSlug\n          createdAt\n          hasBeenClaimed\n          id\n          invitedAt\n          invitedEmail\n          updatedAt\n        }\n        createdAt\n        displayName\n        environmentVariableEnvironments\n        githubAppInstallations {\n          id\n          installationIdentifier\n        }\n        googleServiceAccountKeys {\n          clientEmail\n          clientIdentifier\n          createdAt\n          id\n          keyJson\n          privateKeyIdentifier\n          projectIdentifier\n          updatedAt\n        }\n        hasBuilds\n        id\n        isCurrent\n        isDisabled\n        isFreeAppDevDomainTier\n        isSSOEnabled\n        lastDeletionAttemptTime\n        logRocketOrganization {\n          createdAt\n          id\n          orgName\n          orgSlug\n        }\n        memberStats {\n          allHave2FAEnabled\n          humanCount\n          ownerCount\n          robotCount\n          ssoUserCount\n          totalCount\n        }\n        name\n        offers {\n          features\n          id\n          price\n          quantity\n          stripeId\n          trialLength\n          type\n        }\n        onboardingStats {\n          firstBuildCompletedAt\n          firstProjectCreatedAt\n          firstSubmissionCompletedAt\n          firstUpdateCreatedAt\n          hasConfiguredUpdate\n          hasConfiguredWorkflow\n          hasTeamMembers\n        }\n        owner {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          email\n          emailVerified\n          firstName\n          fullName\n          githubUsername\n          hasPassword\n          hasPendingUserInvitations\n          id\n          industry\n          isExpoAdmin\n          isLegacy\n          isSecondFactorAuthenticationEnabled\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          newEmailPendingVerification\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n        ownerUserActor {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          firstName\n          fullName\n          githubUsername\n          id\n          industry\n          isExpoAdmin\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n        pendingSentryInstallation {\n          createdAt\n          id\n          installationId\n          orgSlug\n        }\n        posthogOrganizationConnection {\n          createdAt\n          id\n          posthogOrganizationIdentifier\n          posthogOrganizationName\n          posthogRegion\n          updatedAt\n        }\n        profileImageUrl\n        pushSecurityEnabled\n        requireTwoFactor\n        requiresAccessTokenForPushSecurity\n        sentryInstallation {\n          createdAt\n          id\n          installationId\n          orgSlug\n        }\n        ssoAllowedAuthProviders\n        ssoConfiguration {\n          authProtocol\n          authProviderIdentifier\n          clientIdentifier\n          clientSecret\n          createdAt\n          id\n          issuer\n          updatedAt\n        }\n        subscription {\n          cancelAt\n          endedAt\n          id\n          includedAgentCreditsInCents\n          isDowngrading\n          name\n          nextInvoice\n          nextInvoiceAmountDueCents\n          planId\n          price\n          recurringCents\n          status\n          trialEnd\n          willCancel\n        }\n        subscriptionChangesPending\n        unlimitedBuilds\n        updatedAt\n        userActorOwner {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          firstName\n          fullName\n          githubUsername\n          id\n          industry\n          isExpoAdmin\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n        userInvitations {\n          accountName\n          accountProfileImageUrl\n          accountProfilePhoto\n          accountRequiresTwoFactor\n          created\n          email\n          expires\n          id\n          isForOrganization\n          permissions\n          role\n        }\n        userSpecifiedAccountUsage\n        users {\n          id\n          permissions\n          role\n        }\n        vexoAccountConnection {\n          id\n        }\n        viewerUserPermission {\n          id\n          permissions\n          role\n        }\n        willAutoRenewBuilds\n      }\n      createdAt\n      errorCode\n      errorMessage\n      id\n      resultData\n      resultId\n      resultType\n      state\n      tries\n      updatedAt\n      willRetry\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const AuditLogExportAuditLogsInput = Schema.Struct({
@@ -44,6 +44,8 @@ export const AuditLogExportAuditLogsInput = Schema.Struct({
             "IosAppCredentialsEntity",
             "LogRocketOrganizationEntity",
             "LogRocketProjectEntity",
+            "PostHogOrganizationConnectionEntity",
+            "PostHogProjectEntity",
             "UserInvitationEntity",
             "UserPermissionEntity",
             "VexoAccountConnectionEntity",
@@ -152,8 +154,13 @@ export const AuditLogExportAuditLogsOutput = Schema.Struct({
     convexTeamConnections: Schema.Array(
       Schema.Struct({
         convexTeamIdentifier: Schema.String,
+        convexTeamName: Schema.String,
+        convexTeamSlug: Schema.String,
         createdAt: Schema.String,
+        hasBeenClaimed: Schema.Boolean,
         id: Schema.String,
+        invitedAt: Schema.NullOr(Schema.String),
+        invitedEmail: Schema.NullOr(Schema.String),
         updatedAt: Schema.String,
       }),
     ),
@@ -254,7 +261,7 @@ export const AuditLogExportAuditLogsOutput = Schema.Struct({
         lastName: Schema.NullOr(Schema.String),
         location: Schema.NullOr(Schema.String),
         newEmailPendingVerification: Schema.NullOr(Schema.String),
-        primaryAccountProfileImageUrl: Schema.NullOr(Schema.String),
+        primaryAccountProfileImageUrl: Schema.String,
         profilePhoto: Schema.String,
         twitterUsername: Schema.NullOr(Schema.String),
         username: Schema.String,
@@ -277,7 +284,7 @@ export const AuditLogExportAuditLogsOutput = Schema.Struct({
         lastDeletionAttemptTime: Schema.NullOr(Schema.String),
         lastName: Schema.NullOr(Schema.String),
         location: Schema.NullOr(Schema.String),
-        primaryAccountProfileImageUrl: Schema.NullOr(Schema.String),
+        primaryAccountProfileImageUrl: Schema.String,
         profilePhoto: Schema.String,
         twitterUsername: Schema.NullOr(Schema.String),
         username: Schema.String,
@@ -289,6 +296,16 @@ export const AuditLogExportAuditLogsOutput = Schema.Struct({
         id: Schema.String,
         installationId: Schema.String,
         orgSlug: Schema.String,
+      }),
+    ),
+    posthogOrganizationConnection: Schema.NullOr(
+      Schema.Struct({
+        createdAt: Schema.String,
+        id: Schema.String,
+        posthogOrganizationIdentifier: Schema.String,
+        posthogOrganizationName: Schema.String,
+        posthogRegion: Schema.Literals(["EU", "US"]),
+        updatedAt: Schema.String,
       }),
     ),
     profileImageUrl: Schema.String,
@@ -339,6 +356,7 @@ export const AuditLogExportAuditLogsOutput = Schema.Struct({
         cancelAt: Schema.NullOr(Schema.String),
         endedAt: Schema.NullOr(Schema.String),
         id: Schema.String,
+        includedAgentCreditsInCents: Schema.Number,
         isDowngrading: Schema.NullOr(Schema.Boolean),
         name: Schema.NullOr(Schema.String),
         nextInvoice: Schema.NullOr(Schema.String),
@@ -371,7 +389,7 @@ export const AuditLogExportAuditLogsOutput = Schema.Struct({
         lastDeletionAttemptTime: Schema.NullOr(Schema.String),
         lastName: Schema.NullOr(Schema.String),
         location: Schema.NullOr(Schema.String),
-        primaryAccountProfileImageUrl: Schema.NullOr(Schema.String),
+        primaryAccountProfileImageUrl: Schema.String,
         profilePhoto: Schema.String,
         twitterUsername: Schema.NullOr(Schema.String),
         username: Schema.String,

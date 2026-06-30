@@ -46,6 +46,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists all of the available Windows IoT Services REST API operations.
+ *
+ * @param api-version - The version of the API.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -54,6 +56,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServicesCheckDeviceServiceNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({
@@ -78,6 +81,9 @@ export type ServicesCheckDeviceServiceNameAvailabilityOutput =
 // The operation
 /**
  * Check if a Windows IoT Device Service name is available.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
  */
 export const ServicesCheckDeviceServiceNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -87,6 +93,9 @@ export const ServicesCheckDeviceServiceNameAvailability =
 // Input Schema
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    deviceName: Schema.String.pipe(T.PathParam()),
     etag: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -125,6 +134,10 @@ export type ServicesCreateOrUpdateOutput =
  *
  * Create or update the metadata of a Windows IoT Device Service. The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to update the Windows IoT Device Service.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the Windows IoT Device Service.
+ * @param deviceName - The name of the Windows IoT Device Service.
  * @param If-Match - ETag of the Windows IoT Device Service. Do not specify for creating a new Windows IoT Device Service. Required to update an existing Windows IoT Device Service.
  */
 export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -134,9 +147,11 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  deviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}",
@@ -156,15 +171,22 @@ export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 // The operation
 /**
  * Delete a Windows IoT Device Service.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the Windows IoT Device Service.
+ * @param deviceName - The name of the Windows IoT Device Service.
  */
 export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  deviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}",
@@ -184,15 +206,20 @@ export type ServicesGetOutput = typeof ServicesGetOutput.Type;
 // The operation
 /**
  * Get the non-security related metadata of a Windows IoT Device Service.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the Windows IoT Device Service.
+ * @param deviceName - The name of the Windows IoT Device Service.
  */
 export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.WindowsIoT/deviceServices",
@@ -219,6 +246,9 @@ export type ServicesListOutput = typeof ServicesListOutput.Type;
 // The operation
 /**
  * Get all the IoT hubs in a subscription.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
  */
 export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
@@ -226,7 +256,10 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices",
@@ -256,6 +289,10 @@ export type ServicesListByResourceGroupOutput =
 // The operation
 /**
  * Get all the IoT hubs in a resource group.
+ *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the Windows IoT Device Service.
  */
 export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -265,6 +302,9 @@ export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  deviceName: Schema.String.pipe(T.PathParam()),
   etag: Schema.optional(Schema.String),
   properties: Schema.optional(
     Schema.Struct({
@@ -300,6 +340,10 @@ export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
  *
  * Updates the metadata of a Windows IoT Device Service. The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to update the Windows IoT Device Service.
  *
+ * @param api-version - The version of the API.
+ * @param subscriptionId - The subscription identifier.
+ * @param resourceGroupName - The name of the resource group that contains the Windows IoT Device Service.
+ * @param deviceName - The name of the Windows IoT Device Service.
  * @param If-Match - ETag of the Windows IoT Device Service. Do not specify for creating a brand new Windows IoT Device Service. Required to update an existing Windows IoT Device Service.
  */
 export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

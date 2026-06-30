@@ -25,7 +25,7 @@ export type UpdateEvmSmartAccountOutput =
 
 // The operation
 /**
- * Update an EVM Smart Account
+ * Update EVM Smart Account
  *
  * Updates an existing EVM smart account. Use this to update the smart account's name.
  *

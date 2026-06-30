@@ -20,6 +20,8 @@ export const CreateOnrampOrderInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ]),
     phoneNumber: Schema.String,
     phoneNumberVerifiedAt: Schema.String,
+    smsVerificationId: Schema.optional(Schema.String),
+    emailVerificationId: Schema.optional(Schema.String),
     purchaseAmount: Schema.optional(Schema.String),
     purchaseCurrency: Schema.String,
     clientIp: Schema.optional(Schema.String),

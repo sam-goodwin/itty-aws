@@ -19,18 +19,7 @@ export const RadarStandaloneControllerAssessInput =
       "SSO",
       "Other",
     ]),
-    action: Schema.Literals([
-      "login",
-      "signup",
-      "sign-up",
-      "sign-in",
-      "sign_up",
-      "sign_in",
-      "sign in",
-      "sign up",
-    ]),
-    device_fingerprint: Schema.optional(Schema.String),
-    bot_score: Schema.optional(Schema.String),
+    action: Schema.Literals(["sign-up", "sign-in"]),
   }).pipe(T.Http({ method: "POST", path: "/radar/attempts" }));
 export type RadarStandaloneControllerAssessInput =
   typeof RadarStandaloneControllerAssessInput.Type;
@@ -45,9 +34,6 @@ export const RadarStandaloneControllerAssessOutput =
       Schema.Literals([
         "bot_detection",
         "brute_force_attack",
-        "credential_stuffing",
-        "domain_sign_up_rate_limit",
-        "ip_sign_up_rate_limit",
         "impossible_travel",
         "repeat_sign_up",
         "stale_account",

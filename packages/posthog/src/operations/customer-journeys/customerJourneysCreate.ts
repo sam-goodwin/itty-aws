@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const CustomerJourneysCreateInput =
@@ -17,7 +16,7 @@ export const CustomerJourneysCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/customer_journeys/",
+      path: "/api/projects/{project_id}/customer_journeys/",
     }),
   );
 export type CustomerJourneysCreateInput =
@@ -46,6 +45,5 @@ export const customerJourneysCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CustomerJourneysCreateInput,
     outputSchema: CustomerJourneysCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

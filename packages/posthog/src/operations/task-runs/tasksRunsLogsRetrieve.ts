@@ -27,9 +27,8 @@ export type TasksRunsLogsRetrieveOutput =
 /**
  * Get task run logs
  *
- * Fetch the logs for a task run. Returns JSONL formatted log entries.
+ * Fetch the logs for a task run as JSONL. If the run resumes from another (state.resume_from_run_id), each ancestor's log is concatenated first (oldest ancestor → ... → this run) so resume consumers see a single continuous history and can find the most recent git_checkpoint event regardless of which run emitted it.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsLogsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(

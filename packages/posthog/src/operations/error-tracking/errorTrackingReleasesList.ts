@@ -31,7 +31,9 @@ export const ErrorTrackingReleasesListOutput =
           hash_id: Schema.optional(Schema.String),
           team_id: Schema.optional(Schema.Number),
           created_at: Schema.optional(Schema.String),
-          metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          metadata: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
           version: Schema.optional(Schema.String),
           project: Schema.optional(Schema.String),
         }),

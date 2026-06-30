@@ -93,11 +93,11 @@ export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
   });
 
 export interface GitSource {
-  /** Optional. Repository URL. Example: 'https://github.com/kubernetes/examples.git' */
+  /** Repository URL. Example: 'https://github.com/kubernetes/examples.git' */
   repo?: string;
-  /** Optional. Subdirectory inside the repository. Example: 'staging/my-package' */
+  /** Subdirectory inside the repository. Example: 'staging/my-package' */
   directory?: string;
-  /** Optional. Git reference (e.g. branch or tag). */
+  /** Git reference (e.g. branch or tag). */
   ref?: string;
 }
 
@@ -272,13 +272,13 @@ export interface Deployment {
   tfErrors?: ReadonlyArray<TerraformError>;
   /** Output only. Location of Terraform error logs in Google Cloud Storage. Format: `gs://{bucket}/{object}`. */
   errorLogs?: string;
-  /** Optional. User-defined location of Cloud Build logs and artifacts in Google Cloud Storage. Format: `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty. Default bucket format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the deployment - The path cannot be within the path of `gcs_source` - The field cannot be updated, including changing its presence */
+  /** User-defined location of Cloud Build logs and artifacts in Google Cloud Storage. Format: `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty. Default bucket format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the deployment - The path cannot be within the path of `gcs_source` - The field cannot be updated, including changing its presence */
   artifactsGcsBucket?: string;
   /** Required. User-specified Service Account (SA) credentials to be used when actuating resources. Format: `projects/{projectID}/serviceAccounts/{serviceAccount}` */
   serviceAccount?: string;
   /** By default, Infra Manager will return a failure when Terraform encounters a 409 code (resource conflict error) during actuation. If this flag is set to true, Infra Manager will instead attempt to automatically import the resource into the Terraform state (for supported resource types) and continue actuation. Not all resource types are supported, refer to documentation. */
   importExistingResources?: boolean;
-  /** Optional. The user-specified Cloud Build worker pool resource in which the Cloud Build job will execute. Format: `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If this field is unspecified, the default Cloud Build worker pool will be used. */
+  /** The user-specified Cloud Build worker pool resource in which the Cloud Build job will execute. Format: `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If this field is unspecified, the default Cloud Build worker pool will be used. */
   workerPool?: string;
   /** Output only. Current lock state of the deployment. */
   lockState?:
@@ -290,7 +290,7 @@ export interface Deployment {
     | "LOCK_FAILED"
     | "UNLOCK_FAILED"
     | (string & {});
-  /** Optional. The user-specified Terraform version constraint. Example: "=1.3.10". */
+  /** The user-specified Terraform version constraint. Example: "=1.3.10". */
   tfVersionConstraint?: string;
   /** Output only. The current Terraform version set on the deployment. It is in the format of "Major.Minor.Patch", for example, "1.3.10". */
   tfVersion?: string;
@@ -666,9 +666,9 @@ export interface Preview {
     | (string & {});
   /** Required. User-specified Service Account (SA) credentials to be used when previewing resources. Format: `projects/{projectID}/serviceAccounts/{serviceAccount}` */
   serviceAccount?: string;
-  /** Optional. User-defined location of Cloud Build logs, artifacts, and in Google Cloud Storage. Format: `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty Default Bucket Format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the deployment - The path cannot be within the path of `gcs_source` If omitted and deployment resource ref provided has artifacts_gcs_bucket defined, that artifact bucket is used. */
+  /** User-defined location of Cloud Build logs, artifacts, and in Google Cloud Storage. Format: `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty Default Bucket Format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the deployment - The path cannot be within the path of `gcs_source` If omitted and deployment resource ref provided has artifacts_gcs_bucket defined, that artifact bucket is used. */
   artifactsGcsBucket?: string;
-  /** Optional. The user-specified Worker Pool resource in which the Cloud Build job will execute. Format projects/{project}/locations/{location}/workerPools/{workerPoolId} If this field is unspecified, the default Cloud Build worker pool will be used. If omitted and deployment resource ref provided has worker_pool defined, that worker pool is used. */
+  /** The user-specified Worker Pool resource in which the Cloud Build job will execute. Format projects/{project}/locations/{location}/workerPools/{workerPoolId} If this field is unspecified, the default Cloud Build worker pool will be used. If omitted and deployment resource ref provided has worker_pool defined, that worker pool is used. */
   workerPool?: string;
   /** Output only. Code describing any errors that may have occurred. */
   errorCode?:
@@ -695,7 +695,7 @@ export interface Preview {
   logs?: string;
   /** Output only. The current Terraform version set on the preview. It is in the format of "Major.Minor.Patch", for example, "1.3.10". */
   tfVersion?: string;
-  /** Optional. The user-specified Terraform version constraint. Example: "=1.3.10". */
+  /** The user-specified Terraform version constraint. Example: "=1.3.10". */
   tfVersionConstraint?: string;
   /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify preview during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
   annotations?: Record<string, string>;

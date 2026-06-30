@@ -127,6 +127,444 @@ export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
     identifier: "CancelOperationRequest",
   });
 
+export interface NetworkMonitoringProvider {
+  /** Output only. Identifier. Name of the resource. Format: `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}` */
+  name?: string;
+  /** Output only. The time the NetworkMonitoringProvider was created. */
+  createTime?: string;
+  /** Output only. The time the NetworkMonitoringProvider was updated. */
+  updateTime?: string;
+  /** Required. Type of the NetworkMonitoringProvider. */
+  providerType?: "PROVIDER_TYPE_UNSPECIFIED" | "EXTERNAL" | (string & {});
+  /** Output only. Link to the provider's UI. */
+  providerUri?: string;
+  /** Output only. State of the NetworkMonitoringProvider. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "ACTIVATING"
+    | "ACTIVE"
+    | "SUSPENDING"
+    | "SUSPENDED"
+    | "DELETING"
+    | "DELETED"
+    | (string & {});
+  /** Output only. The list of error messages detected for the NetworkMonitoringProvider. */
+  errors?: ReadonlyArray<string>;
+}
+
+export const NetworkMonitoringProvider: Schema.Schema<NetworkMonitoringProvider> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    providerType: Schema.optional(Schema.String),
+    providerUri: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "NetworkMonitoringProvider" });
+
+export interface ListNetworkMonitoringProvidersResponse {
+  /** The list of NetworkMonitoringProvider */
+  networkMonitoringProviders?: ReadonlyArray<NetworkMonitoringProvider>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+}
+
+export const ListNetworkMonitoringProvidersResponse: Schema.Schema<ListNetworkMonitoringProvidersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkMonitoringProviders: Schema.optional(
+      Schema.Array(NetworkMonitoringProvider),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListNetworkMonitoringProvidersResponse" });
+
+export interface GenerateProviderAccessTokenResponse {
+  /** Provider access token for the NetworkMonitoringProvider resource. */
+  providerAccessToken?: string;
+}
+
+export const GenerateProviderAccessTokenResponse: Schema.Schema<GenerateProviderAccessTokenResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    providerAccessToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateProviderAccessTokenResponse" });
+
+export interface HttpBody {
+  /** The HTTP Content-Type header value specifying the content type of the body. */
+  contentType?: string;
+  /** The HTTP request/response body as raw binary. */
+  data?: string;
+  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
+  extensions?: ReadonlyArray<Record<string, unknown>>;
+}
+
+export const HttpBody: Schema.Schema<HttpBody> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentType: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.String),
+    extensions: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "HttpBody" });
+
+export interface GenerateMonitoringPointConfigResponse {
+  /** The Monitoring Point configuration of the provider in JSON format. */
+  config?: Record<string, unknown>;
+}
+
+export const GenerateMonitoringPointConfigResponse: Schema.Schema<GenerateMonitoringPointConfigResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GenerateMonitoringPointConfigResponse" });
+
+export interface GeoLocation {
+  /** Formatted address. */
+  formattedAddress?: string;
+  /** Unicode CLDR region code. */
+  regionCode?: string;
+}
+
+export const GeoLocation: Schema.Schema<GeoLocation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    formattedAddress: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GeoLocation" });
+
+export interface NetworkInterface {
+  /** Output only. The name of the network interface. Examples: eth0, eno1 */
+  interfaceName?: string;
+  /** Output only. Speed of the interface in millions of bits per second. */
+  speed?: string;
+  /** Output only. The IP address of the interface. */
+  ipAddress?: string;
+  /** Output only. The IP address of the interface and subnet mask in CIDR format. Examples: 192.168.1.0/24, 2001:db8::/32 */
+  cidr?: string;
+  /** Output only. The MAC address of the interface. */
+  macAddress?: string;
+  /** Output only. The description of the interface. */
+  adapterDescription?: string;
+  /** Output only. The id of the VLAN. */
+  vlanId?: string;
+}
+
+export const NetworkInterface: Schema.Schema<NetworkInterface> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    interfaceName: Schema.optional(Schema.String),
+    speed: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    cidr: Schema.optional(Schema.String),
+    macAddress: Schema.optional(Schema.String),
+    adapterDescription: Schema.optional(Schema.String),
+    vlanId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkInterface" });
+
+export interface ProviderTag {
+  /** Output only. The category of the provider tag. */
+  category?: string;
+  /** Output only. The value of the provider tag. */
+  value?: string;
+  /** Output only. The resource type of the provider tag. */
+  resourceType?:
+    | "RESOURCE_TYPE_UNSPECIFIED"
+    | "NETWORK_PATH"
+    | "WEB_PATH"
+    | "MONITORING_POLICY"
+    | "MONITORING_POINT"
+    | "MONITORING_POINT_RULE"
+    | "MONITORING_POINT_RULE_AUTO"
+    | (string & {});
+}
+
+export const ProviderTag: Schema.Schema<ProviderTag> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProviderTag" });
+
+export interface Host {
+  /** Output only. The operating system of the host. */
+  os?: string;
+  /** Output only. The cloud provider of the host. */
+  cloudProvider?: string;
+  /** Output only. The cloud project id of the host. */
+  cloudProjectId?: string;
+  /** Output only. The cloud instance id of the host. */
+  cloudInstanceId?: string;
+  /** Output only. The cloud region of the host. */
+  cloudRegion?: string;
+  /** Output only. The cloud zone of the host. */
+  cloudZone?: string;
+  /** Output only. The ids of cloud virtual networks of the host. */
+  cloudVirtualNetworkIds?: ReadonlyArray<string>;
+}
+
+export const Host: Schema.Schema<Host> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    os: Schema.optional(Schema.String),
+    cloudProvider: Schema.optional(Schema.String),
+    cloudProjectId: Schema.optional(Schema.String),
+    cloudInstanceId: Schema.optional(Schema.String),
+    cloudRegion: Schema.optional(Schema.String),
+    cloudZone: Schema.optional(Schema.String),
+    cloudVirtualNetworkIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Host" });
+
+export interface MonitoringPoint {
+  /** Identifier. Name of the resource. Format: `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point}` */
+  name?: string;
+  /** Output only. The time the MonitoringPoint was created. */
+  createTime?: string;
+  /** Output only. The time the MonitoringPoint was updated. */
+  updateTime?: string;
+  /** Output only. Display name of the MonitoringPoint. */
+  displayName?: string;
+  /** Output only. IP address visible when MonitoringPoint connects to the provider. */
+  originatingIp?: string;
+  /** Output only. Version of the software running on the MonitoringPoint. */
+  version?: string;
+  /** Output only. Deployment type of the MonitoringPoint. */
+  type?: string;
+  /** Output only. Connection status of the MonitoringPoint. */
+  connectionStatus?:
+    | "CONNECTION_STATUS_UNSPECIFIED"
+    | "ONLINE"
+    | "OFFLINE"
+    | (string & {});
+  /** Output only. The hostname of the MonitoringPoint. */
+  hostname?: string;
+  /** Output only. The geographical location of the MonitoringPoint. */
+  geoLocation?: GeoLocation;
+  /** Output only. The type of upgrade available for the MonitoringPoint. */
+  upgradeType?:
+    | "UPGRADE_TYPE_UNSPECIFIED"
+    | "MANUAL"
+    | "MANAGED"
+    | "SCHEDULED"
+    | "AUTO"
+    | "EXTERNAL"
+    | (string & {});
+  /** Output only. The network interfaces of the MonitoringPoint. */
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
+  /** Output only. The codes of errors detected in the MonitoringPoint. */
+  errors?: ReadonlyArray<
+    | "ERROR_CODE_UNSPECIFIED"
+    | "NTP_ERROR"
+    | "UPGRADE_ERROR"
+    | "DOWNLOAD_FAILED"
+    | (string & {})
+  >;
+  /** Output only. Indicates if automaitic geographic location is enabled for the MonitoringPoint. */
+  autoGeoLocationEnabled?: boolean;
+  /** Output only. The provider tags of the MonitoringPoint. */
+  providerTags?: ReadonlyArray<ProviderTag>;
+  /** Output only. The host information of the MonitoringPoint. */
+  host?: Host;
+  /** Output only. Indicates if an upgrade is available for the MonitoringPoint. */
+  upgradeAvailable?: boolean;
+  /** Output only. The GUID of the MonitoringPoint. */
+  guid?: string;
+  /** Output only. The deployment type of the MonitoringPoint. */
+  deploymentType?:
+    | "DEPLOYMENT_TYPE_UNSPECIFIED"
+    | "DOCKER"
+    | "PODMAN"
+    | "HELM"
+    | (string & {});
+}
+
+export const MonitoringPoint: Schema.Schema<MonitoringPoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    originatingIp: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    connectionStatus: Schema.optional(Schema.String),
+    hostname: Schema.optional(Schema.String),
+    geoLocation: Schema.optional(GeoLocation),
+    upgradeType: Schema.optional(Schema.String),
+    networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
+    errors: Schema.optional(Schema.Array(Schema.String)),
+    autoGeoLocationEnabled: Schema.optional(Schema.Boolean),
+    providerTags: Schema.optional(Schema.Array(ProviderTag)),
+    host: Schema.optional(Host),
+    upgradeAvailable: Schema.optional(Schema.Boolean),
+    guid: Schema.optional(Schema.String),
+    deploymentType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MonitoringPoint" });
+
+export interface ListMonitoringPointsResponse {
+  /** The list of MonitoringPoints. */
+  monitoringPoints?: ReadonlyArray<MonitoringPoint>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+}
+
+export const ListMonitoringPointsResponse: Schema.Schema<ListMonitoringPointsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    monitoringPoints: Schema.optional(Schema.Array(MonitoringPoint)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMonitoringPointsResponse" });
+
+export interface NetworkPath {
+  /** Identifier. Name of the resource. Format: `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/networkPaths/{network_path}` */
+  name?: string;
+  /** Output only. The time the NetworkPath was created. */
+  createTime?: string;
+  /** Output only. The time the NetworkPath was updated. */
+  updateTime?: string;
+  /** Output only. Provider's UUID of the source MonitoringPoint. This id may not point to a resource in the Google Cloud. */
+  sourceMonitoringPointId?: string;
+  /** Output only. Provider's UUID of the destination MonitoringPoint. This id may not point to a resource in the Google Cloud. */
+  destinationMonitoringPointId?: string;
+  /** Output only. IP address or hostname of the network path destination. */
+  destination?: string;
+  /** Output only. Indicates if the network path is dual ended. When true, the network path is measured both: from both source to destination, and from destination to source. When false, the network path is measured from the source through the destination back to the source (round trip measurement). */
+  dualEnded?: boolean;
+  /** Output only. The display name of the network path. */
+  displayName?: string;
+  /** Output only. Geographical location of the destination MonitoringPoint. */
+  destinationGeoLocation?: GeoLocation;
+  /** Output only. The network protocol of the network path. */
+  networkProtocol?:
+    | "NETWORK_PROTOCOL_UNSPECIFIED"
+    | "ICMP"
+    | "UDP"
+    | "TCP"
+    | (string & {});
+  /** Output only. Is monitoring enabled for the network path. */
+  monitoringEnabled?: boolean;
+  /** Output only. The monitoring status of the network path. */
+  monitoringStatus?:
+    | "MONITORING_STATUS_UNSPECIFIED"
+    | "MONITORING"
+    | "POLICY_MISMATCH"
+    | "MONITORING_POINT_OFFLINE"
+    | "DISABLED"
+    | (string & {});
+  /** Output only. The provider tags of the network path. */
+  providerTags?: ReadonlyArray<ProviderTag>;
+  /** Output only. ID of monitoring policy. */
+  monitoringPolicyId?: string;
+  /** Output only. Display name of the monitoring policy. */
+  monitoringPolicyDisplayName?: string;
+  /** Output only. Link to provider's UI; link shows the NetworkPath. */
+  providerUiUri?: string;
+}
+
+export const NetworkPath: Schema.Schema<NetworkPath> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    sourceMonitoringPointId: Schema.optional(Schema.String),
+    destinationMonitoringPointId: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.String),
+    dualEnded: Schema.optional(Schema.Boolean),
+    displayName: Schema.optional(Schema.String),
+    destinationGeoLocation: Schema.optional(GeoLocation),
+    networkProtocol: Schema.optional(Schema.String),
+    monitoringEnabled: Schema.optional(Schema.Boolean),
+    monitoringStatus: Schema.optional(Schema.String),
+    providerTags: Schema.optional(Schema.Array(ProviderTag)),
+    monitoringPolicyId: Schema.optional(Schema.String),
+    monitoringPolicyDisplayName: Schema.optional(Schema.String),
+    providerUiUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkPath" });
+
+export interface ListNetworkPathsResponse {
+  /** The list of NetworkPath */
+  networkPaths?: ReadonlyArray<NetworkPath>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+}
+
+export const ListNetworkPathsResponse: Schema.Schema<ListNetworkPathsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkPaths: Schema.optional(Schema.Array(NetworkPath)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListNetworkPathsResponse" });
+
+export interface WebPath {
+  /** Identifier. Name of the resource. Format: `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/webPaths/{web_path}` */
+  name?: string;
+  /** Output only. The time the WebPath was created. */
+  createTime?: string;
+  /** Output only. The time the WebPath was updated. */
+  updateTime?: string;
+  /** Output only. ID of the source MonitoringPoint. */
+  sourceMonitoringPointId?: string;
+  /** Output only. Display name of the WebPath. */
+  displayName?: string;
+  /** Output only. Web monitoring target. */
+  destination?: string;
+  /** Output only. Is monitoring enabled for the WebPath. */
+  monitoringEnabled?: boolean;
+  /** Output only. The monitoring status of the WebPath. */
+  monitoringStatus?:
+    | "MONITORING_STATUS_UNSPECIFIED"
+    | "MONITORING"
+    | "POLICY_MISMATCH"
+    | "MONITORING_POINT_OFFLINE"
+    | "DISABLED"
+    | (string & {});
+  /** Output only. Monitoring interval. */
+  interval?: string;
+  /** Output only. The workflow type of the WebPath. */
+  workflowType?:
+    | "WORKFLOW_TYPE_UNSPECIFIED"
+    | "BROWSER"
+    | "HTTP"
+    | (string & {});
+  /** Output only. Provider's UUID of the related NetworkPath. */
+  relatedNetworkPathId?: string;
+  /** Output only. The provider tags of the web path. */
+  providerTags?: ReadonlyArray<ProviderTag>;
+  /** Output only. ID of the monitoring policy. */
+  monitoringPolicyId?: string;
+  /** Output only. Display name of the monitoring policy. */
+  monitoringPolicyDisplayName?: string;
+  /** Output only. Link to provider's UI; link shows the WebPath. */
+  providerUiUri?: string;
+  /** Output only. Geographical location of the destination. */
+  destinationGeoLocation?: GeoLocation;
+}
+
+export const WebPath: Schema.Schema<WebPath> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    sourceMonitoringPointId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.String),
+    monitoringEnabled: Schema.optional(Schema.Boolean),
+    monitoringStatus: Schema.optional(Schema.String),
+    interval: Schema.optional(Schema.String),
+    workflowType: Schema.optional(Schema.String),
+    relatedNetworkPathId: Schema.optional(Schema.String),
+    providerTags: Schema.optional(Schema.Array(ProviderTag)),
+    monitoringPolicyId: Schema.optional(Schema.String),
+    monitoringPolicyDisplayName: Schema.optional(Schema.String),
+    providerUiUri: Schema.optional(Schema.String),
+    destinationGeoLocation: Schema.optional(GeoLocation),
+  }).annotate({ identifier: "WebPath" });
+
+export interface ListWebPathsResponse {
+  /** The list of WebPath. */
+  webPaths?: ReadonlyArray<WebPath>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+}
+
+export const ListWebPathsResponse: Schema.Schema<ListWebPathsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    webPaths: Schema.optional(Schema.Array(WebPath)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWebPathsResponse" });
+
 export interface CloudFunctionEndpoint {
   /** A [Cloud Function](https://cloud.google.com/functions) name. */
   uri?: string;
@@ -205,12 +643,16 @@ export interface Endpoint {
   redisCluster?: string;
   /** A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI. */
   gkePod?: string;
+  /** A [DMS Private Connection](https://docs.cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.privateConnections) name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}. */
+  dmsPrivateConnection?: string;
   /** A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint. */
   cloudFunction?: CloudFunctionEndpoint;
   /** An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions). Applicable only to source endpoint. */
   appEngineVersion?: AppEngineVersionEndpoint;
   /** A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to source endpoint. */
   cloudRunRevision?: CloudRunRevisionEndpoint;
+  /** A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job} */
+  cloudRunJob?: string;
   /** A VPC network URI. For source endpoints, used according to the `network_type`. For destination endpoints, used only when the source is an external IP address endpoint, and the destination is an internal IP address endpoint. */
   network?: string;
   /** For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints. */
@@ -239,9 +681,11 @@ export const Endpoint: Schema.Schema<Endpoint> =
     redisInstance: Schema.optional(Schema.String),
     redisCluster: Schema.optional(Schema.String),
     gkePod: Schema.optional(Schema.String),
+    dmsPrivateConnection: Schema.optional(Schema.String),
     cloudFunction: Schema.optional(CloudFunctionEndpoint),
     appEngineVersion: Schema.optional(AppEngineVersionEndpoint),
     cloudRunRevision: Schema.optional(CloudRunRevisionEndpoint),
+    cloudRunJob: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
     networkType: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -258,9 +702,9 @@ export interface EndpointInfo {
   sourcePort?: number;
   /** Destination port. Only valid when protocol is TCP or UDP. */
   destinationPort?: number;
-  /** URI of the network where this packet originates from. */
+  /** URI of the network where this packet originates from. Format: `projects/{project_id}/global/networks/{network_id}` */
   sourceNetworkUri?: string;
-  /** URI of the network where this packet is sent to. */
+  /** URI of the network where this packet is sent to. Format: `projects/{project_id}/global/networks/{network_id}` */
   destinationNetworkUri?: string;
   /** URI of the source telemetry agent this packet originates from. */
   sourceAgentUri?: string;
@@ -281,11 +725,11 @@ export const EndpointInfo: Schema.Schema<EndpointInfo> =
 export interface InstanceInfo {
   /** Name of a Compute Engine instance. */
   displayName?: string;
-  /** URI of a Compute Engine instance. */
+  /** URI of a Compute Engine instance in format "projects/{project}/zones/{zone}/instances/{instance}" */
   uri?: string;
   /** Name of the network interface of a Compute Engine instance. */
   interface?: string;
-  /** URI of a Compute Engine network. */
+  /** URI of a Compute Engine network in format "projects/{project}/global/networks/{network}" */
   networkUri?: string;
   /** Internal IP address of the network interface. */
   internalIp?: string;
@@ -295,7 +739,7 @@ export interface InstanceInfo {
   networkTags?: ReadonlyArray<string>;
   /** Service account authorized for the instance. */
   serviceAccount?: string;
-  /** URI of the PSC network attachment the NIC is attached to (if relevant). */
+  /** URI of the PSC network attachment the NIC is attached to (if relevant) in format "projects/{project}/regions/{region}/networkAttachments/{network_attachment}" */
   pscNetworkAttachmentUri?: string;
   /** Indicates whether the Compute Engine instance is running. Deprecated: use the `status` field instead. */
   running?: boolean;
@@ -321,7 +765,7 @@ export const InstanceInfo: Schema.Schema<InstanceInfo> =
 export interface FirewallInfo {
   /** The display name of the firewall rule. This field might be empty for firewall policy rules. */
   displayName?: string;
-  /** The URI of the firewall rule. This field is not applicable to implied VPC firewall rules. */
+  /** The URI of the firewall rule in format "projects/{project}/global/firewalls/{firewall}". This field is not applicable to implied VPC firewall rules. */
   uri?: string;
   /** Possible values: INGRESS, EGRESS */
   direction?: string;
@@ -329,7 +773,7 @@ export interface FirewallInfo {
   action?: string;
   /** The priority of the firewall rule. */
   priority?: number;
-  /** The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules. */
+  /** The URI of the VPC network that the firewall rule is associated with in format "projects/{project}/global/networks/{network}". This field is not applicable to hierarchical firewall policy rules. */
   networkUri?: string;
   /** The target tags defined by the VPC firewall rule. This field is not applicable to firewall policy rules. */
   targetTags?: ReadonlyArray<string>;
@@ -337,7 +781,7 @@ export interface FirewallInfo {
   targetServiceAccounts?: ReadonlyArray<string>;
   /** The name of the firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules and implied VPC firewall rules. */
   policy?: string;
-  /** The URI of the firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules and implied VPC firewall rules. */
+  /** The URI of the firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules and implied VPC firewall rules. Format: * `locations/global/firewallPolicies/{policy_id}` (hierarchical policy) * `projects/{project_id}/global/firewallPolicies/{policy_id}` (global network firewall policy) * `projects/{project_id}/regions/{region}/firewallPolicies/{policy_id}` (regional network firewall policy) */
   policyUri?: string;
   /** The firewall rule's type. */
   firewallRuleType?:
@@ -419,7 +863,7 @@ export interface RouteInfo {
     | (string & {});
   /** Name of a route. */
   displayName?: string;
-  /** URI of a route. SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED routes only. */
+  /** URI of a route in format "projects/{project}/global/routes/{route}". SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED routes only. */
   uri?: string;
   /** Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set for POLICY_BASED route, this is a region of VLAN attachments for Cloud Interconnect the route applies to. If set to "all" for POLICY_BASED route, the route applies to VLAN attachments of Cloud Interconnect in all regions. */
   region?: string;
@@ -427,7 +871,7 @@ export interface RouteInfo {
   destIpRange?: string;
   /** String type of the next hop of the route (for example, "VPN tunnel"). Deprecated in favor of the next_hop_type and next_hop_uri fields, not used in new tests. */
   nextHop?: string;
-  /** URI of a VPC network where route is located. */
+  /** URI of a VPC network where route is located in format "projects/{project}/global/networks/{network}". */
   networkUri?: string;
   /** Priority of the route. */
   priority?: number;
@@ -441,23 +885,23 @@ export interface RouteInfo {
   srcPortRanges?: ReadonlyArray<string>;
   /** Protocols of the route. POLICY_BASED routes only. */
   protocols?: ReadonlyArray<string>;
-  /** URI of the NCC Hub the route is advertised by. PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub only. */
+  /** URI of the NCC Hub the route is advertised by in format "projects/{project}/locations/global/hubs/{hub}". PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub only. */
   nccHubUri?: string;
-  /** URI of the destination NCC Spoke. PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub only. */
+  /** URI of the destination NCC Spoke in format "projects/{project}/locations/{location}/spokes/{spoke}" (regional) or "projects/{project}/locations/global/spokes/{spoke}" (global). PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub only. */
   nccSpokeUri?: string;
-  /** For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix. */
+  /** For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix in format "projects/{project}/regions/{region}/routers/{router}". */
   advertisedRouteSourceRouterUri?: string;
   /** For ADVERTISED routes, the URI of their next hop, i.e. the URI of the hybrid endpoint (VPN tunnel, Interconnect attachment, NCC router appliance) the advertised prefix is advertised through, or URI of the source peered network. Deprecated in favor of the next_hop_uri field, not used in new tests. */
   advertisedRouteNextHopUri?: string;
   /** URI of the next hop resource. */
   nextHopUri?: string;
-  /** URI of a VPC network where the next hop resource is located. */
+  /** URI of a VPC network where the next hop resource is located in format "projects/{project}/global/networks/{network}". */
   nextHopNetworkUri?: string;
-  /** For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating SUBNET/STATIC route. */
+  /** For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating SUBNET/STATIC route. Format: `projects/{project_id}/global/routes/{route_id}` */
   originatingRouteUri?: string;
   /** For PEERING_SUBNET, PEERING_STATIC and PEERING_DYNAMIC routes, the name of the originating SUBNET/STATIC/DYNAMIC route. */
   originatingRouteDisplayName?: string;
-  /** For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub, the URI of the corresponding route in NCC Hub's routing table. */
+  /** For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub, the URI of the corresponding route in NCC Hub's routing table. Format: `projects/{project_id}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}/routes/{route_id}` */
   nccHubRouteUri?: string;
 }
 
@@ -514,7 +958,7 @@ export const GoogleServiceInfo: Schema.Schema<GoogleServiceInfo> =
 export interface ForwardingRuleInfo {
   /** Name of the forwarding rule. */
   displayName?: string;
-  /** URI of the forwarding rule. */
+  /** URI of the forwarding rule in format "projects/{project}/global/forwardingRules/{forwarding_rule}" (global) or "projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}" (regional). */
   uri?: string;
   /** Protocol defined in the forwarding rule that matches the packet. */
   matchedProtocol?: string;
@@ -524,13 +968,13 @@ export interface ForwardingRuleInfo {
   vip?: string;
   /** Target type of the forwarding rule. */
   target?: string;
-  /** Network URI. */
+  /** URI of a VPC network where the forwarding rule is located in format "projects/{project}/global/networks/{network}". */
   networkUri?: string;
   /** Region of the forwarding rule. Set only for regional forwarding rules. */
   region?: string;
   /** Name of the load balancer the forwarding rule belongs to. Empty for forwarding rules not related to load balancers (like PSC forwarding rules). */
   loadBalancerName?: string;
-  /** URI of the PSC service attachment this forwarding rule targets (if applicable). */
+  /** URI of the PSC service attachment this forwarding rule targets (if applicable) in format "projects/{project}/regions/{region}/serviceAttachments/{service_attachment}". */
   pscServiceAttachmentUri?: string;
   /** PSC Google API target this forwarding rule targets (if applicable). */
   pscGoogleApiTarget?: string;
@@ -554,7 +998,7 @@ export const ForwardingRuleInfo: Schema.Schema<ForwardingRuleInfo> =
 export interface HybridSubnetInfo {
   /** Name of a hybrid subnet. */
   displayName?: string;
-  /** URI of a hybrid subnet. */
+  /** URI of the hybrid subnet. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}` */
   uri?: string;
   /** Name of a Google Cloud region where the hybrid subnet is configured. */
   region?: string;
@@ -570,13 +1014,13 @@ export const HybridSubnetInfo: Schema.Schema<HybridSubnetInfo> =
 export interface VpnGatewayInfo {
   /** Name of a VPN gateway. */
   displayName?: string;
-  /** URI of a VPN gateway. */
+  /** URI of the VPN gateway. Format: * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (HA VPN gateway) * `projects/{project_id}/regions/{region}/targetVpnGateways/{target_vpn_gateway_id}` (Classic VPN gateway) */
   uri?: string;
-  /** URI of a Compute Engine network where the VPN gateway is configured. */
+  /** URI of the VPC network where the VPN gateway is configured. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
   /** IP address of the VPN gateway. */
   ipAddress?: string;
-  /** A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed. */
+  /** URI of the VPN tunnel associated with the VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed. Format: `projects/{project_id}/regions/{region}/vpnTunnels/{vpn_tunnel_id}` */
   vpnTunnelUri?: string;
   /** Name of a Google Cloud region where this VPN gateway is configured. */
   region?: string;
@@ -595,17 +1039,17 @@ export const VpnGatewayInfo: Schema.Schema<VpnGatewayInfo> =
 export interface VpnTunnelInfo {
   /** Name of a VPN tunnel. */
   displayName?: string;
-  /** URI of a VPN tunnel. */
+  /** URI of the VPN tunnel. Format: `projects/{project_id}/regions/{region}/vpnTunnels/{vpn_tunnel_id}` */
   uri?: string;
-  /** URI of the VPN gateway at local end of the tunnel. */
+  /** URI of the VPN gateway at local end of the tunnel. Format: * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (HA VPN gateway) * `projects/{project_id}/regions/{region}/targetVpnGateways/{target_vpn_gateway_id}` (Classic VPN gateway) */
   sourceGateway?: string;
-  /** URI of a VPN gateway at remote end of the tunnel. */
+  /** URI of a VPN gateway at remote end of the tunnel. Format: * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (GCP HA VPN gateway) * `projects/{project_id}/global/peerVpnGateways/{peer_vpn_gateway_id}` (GCP peer VPN gateway) */
   remoteGateway?: string;
   /** Remote VPN gateway's IP address. */
   remoteGatewayIp?: string;
   /** Local VPN gateway's IP address. */
   sourceGatewayIp?: string;
-  /** URI of a Compute Engine network where the VPN tunnel is configured. */
+  /** URI of the VPC network where the VPN tunnel is configured. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
   /** Name of a Google Cloud region where this VPN tunnel is configured. */
   region?: string;
@@ -634,13 +1078,13 @@ export const VpnTunnelInfo: Schema.Schema<VpnTunnelInfo> =
 export interface InterconnectAttachmentInfo {
   /** Name of an Interconnect attachment. */
   displayName?: string;
-  /** URI of an Interconnect attachment. */
+  /** URI of the Interconnect attachment. Format: `projects/{project_id}/regions/{region}/interconnectAttachments/{attachment_id}` */
   uri?: string;
-  /** URI of the Interconnect where the Interconnect attachment is configured. */
+  /** URI of the Interconnect. Format: `projects/{project_id}/global/interconnects/{interconnect_id}` */
   interconnectUri?: string;
   /** Name of a Google Cloud region where the Interconnect attachment is configured. */
   region?: string;
-  /** URI of the Cloud Router to be used for dynamic routing. */
+  /** URI of the Cloud Router to be used for dynamic routing. Format: `projects/{project_id}/regions/{region}/routers/{router_id}` */
   cloudRouterUri?: string;
   /** The type of interconnect attachment this is. */
   type?:
@@ -668,7 +1112,7 @@ export const InterconnectAttachmentInfo: Schema.Schema<InterconnectAttachmentInf
 export interface VpcConnectorInfo {
   /** Name of a VPC connector. */
   displayName?: string;
-  /** URI of a VPC connector. */
+  /** URI of a VPC connector. Format: `projects/{project_id}/locations/{location}/connectors/{connector_id}` */
   uri?: string;
   /** Location in which the VPC connector is deployed. */
   location?: string;
@@ -682,9 +1126,9 @@ export const VpcConnectorInfo: Schema.Schema<VpcConnectorInfo> =
   }).annotate({ identifier: "VpcConnectorInfo" });
 
 export interface DirectVpcEgressConnectionInfo {
-  /** URI of direct access network. */
+  /** URI of the VPC network for direct egress. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
-  /** URI of direct access subnetwork. */
+  /** URI of the subnetwork for direct egress. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}` */
   subnetworkUri?: string;
   /** Selected IP range. */
   selectedIpRange?: string;
@@ -735,8 +1179,11 @@ export interface DeliverInfo {
     | "REDIS_INSTANCE"
     | "REDIS_CLUSTER"
     | "GKE_POD"
+    | "CLOUD_RUN_JOB"
+    | "DMS_PRIVATE_CONNECTION"
+    | "DATASTREAM_PRIVATE_CONNECTION"
     | (string & {});
-  /** URI of the resource that the packet is delivered to. */
+  /** URI of the resource that the packet is delivered to. For example: * `"projects/{project}/zones/{zone}/instances/{instance}"` * `"projects/{project}/regions/{region}/networkEndpointGroups/{network_endpoint_group}"` */
   resourceUri?: string;
   /** IP address of the target (if applicable). */
   ipAddress?: string;
@@ -780,7 +1227,7 @@ export interface ForwardInfo {
     | "ROUTER_APPLIANCE"
     | "SECURE_WEB_PROXY_GATEWAY"
     | (string & {});
-  /** URI of the resource that the packet is forwarded to. */
+  /** URI of the resource that the packet is forwarded to. Format: * `projects/{project_id}/global/networks/{network_id}` (VPC peering network) * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (VPN gateway) */
   resourceUri?: string;
   /** IP address of the target (if applicable). */
   ipAddress?: string;
@@ -842,7 +1289,7 @@ export interface AbortInfo {
     | "GKE_POD_UNKNOWN_ENDPOINT_LOCATION"
     | "RESPONSE_TOO_LARGE"
     | (string & {});
-  /** URI of the resource that caused the abort. */
+  /** URI of the resource that caused the abort. Format: * `projects/{project_id}/global/networks/{network_id}` (VPC network) * `projects/{project_id}/zones/{zone}/instances/{instance_id}` (VM instance) */
   resourceUri?: string;
   /** IP address that caused the abort. */
   ipAddress?: string;
@@ -888,6 +1335,7 @@ export interface DropInfo {
     | "FORWARDING_RULE_MISMATCH"
     | "FORWARDING_RULE_NO_INSTANCES"
     | "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK"
+    | "FIREWALL_BLOCKING_LOAD_BALANCER_ENVOY_PROXY_HEALTH_CHECK"
     | "INGRESS_FIREWALL_TAGS_UNSUPPORTED_BY_DIRECT_VPC_EGRESS"
     | "INSTANCE_NOT_RUNNING"
     | "GKE_CLUSTER_NOT_RUNNING"
@@ -900,6 +1348,8 @@ export interface DropInfo {
     | "CLOUD_SQL_INSTANCE_UNAUTHORIZED_ACCESS"
     | "DROPPED_INSIDE_GKE_SERVICE"
     | "DROPPED_INSIDE_CLOUD_SQL_SERVICE"
+    | "DROPPED_INSIDE_DMS_PRIVATE_CONNECTION"
+    | "DROPPED_INSIDE_DATASTREAM_PRIVATE_CONNECTION"
     | "GOOGLE_MANAGED_SERVICE_NO_PEERING"
     | "GOOGLE_MANAGED_SERVICE_NO_PSC_ENDPOINT"
     | "GKE_PSC_ENDPOINT_MISSING"
@@ -927,6 +1377,7 @@ export interface DropInfo {
     | "HYBRID_NEG_NON_DYNAMIC_ROUTE_MATCHED"
     | "HYBRID_NEG_NON_LOCAL_DYNAMIC_ROUTE_MATCHED"
     | "CLOUD_RUN_REVISION_NOT_READY"
+    | "CLOUD_RUN_JOB_NOT_READY"
     | "DROPPED_INSIDE_PSC_SERVICE_PRODUCER"
     | "LOAD_BALANCER_HAS_NO_PROXY_SUBNET"
     | "CLOUD_NAT_NO_ADDRESSES"
@@ -968,7 +1419,7 @@ export interface DropInfo {
     | "NO_VALID_ROUTE_FROM_GOOGLE_MANAGED_NETWORK_TO_DESTINATION"
     | "PRIVATE_CONNECTION_NO_RUNNING_INSTANCE"
     | (string & {});
-  /** URI of the resource that caused the drop. */
+  /** URI of the resource that caused the drop. Format: * `projects/{project_id}/global/firewalls/{firewall_id}` (firewall rule) * `projects/{project_id}/global/routes/{route_id}` (route) */
   resourceUri?: string;
   /** Source IP address of the dropped packet (if relevant). */
   sourceIp?: string;
@@ -996,7 +1447,7 @@ export const DropInfo: Schema.Schema<DropInfo> =
 export interface LoadBalancerBackend {
   /** Name of a Compute Engine instance or network endpoint. */
   displayName?: string;
-  /** URI of a Compute Engine instance or network endpoint. */
+  /** URI of the backend instance or network endpoint. Format: * `projects/{project_id}/zones/{zone}/instances/{instance_id}` (instance) * `projects/{project_id}/zones/{zone}/networkEndpointGroups/{neg_id}` (zonal NEG) * `projects/{project_id}/regions/{region}/networkEndpointGroups/{neg_id}` (regional NEG) * `projects/{project_id}/global/networkEndpointGroups/{neg_id}` (global NEG) */
   uri?: string;
   /** State of the health check firewall configuration. */
   healthCheckFirewallState?:
@@ -1044,7 +1495,7 @@ export interface LoadBalancerInfo {
     | "TARGET_POOL"
     | "TARGET_INSTANCE"
     | (string & {});
-  /** Backend configuration URI. */
+  /** URI of the backend associated with the load balancer. Format: * `projects/{project_id}/regions/{region}/backendServices/{backend_service_id}` * `projects/{project_id}/global/backendServices/{backend_service_id}` * `projects/{project_id}/regions/{region}/targetPools/{target_pool_id}` * `projects/{project_id}/zones/{zone}/targetInstances/{target_instance_id}` */
   backendUri?: string;
 }
 
@@ -1060,9 +1511,9 @@ export const LoadBalancerInfo: Schema.Schema<LoadBalancerInfo> =
 export interface NetworkInfo {
   /** Name of a Compute Engine network. */
   displayName?: string;
-  /** URI of a Compute Engine network. */
+  /** URI of a Compute Engine network in format "projects/{project}/global/networks/{network}" */
   uri?: string;
-  /** URI of the subnet matching the source IP address of the test. */
+  /** URI of the subnet matching the source IP address of the test in format "projects/{project}/regions/{region}/subnetworks/{subnetwork}" */
   matchedSubnetUri?: string;
   /** The IP range of the subnet matching the source IP address of the test. */
   matchedIpRange?: string;
@@ -1080,9 +1531,9 @@ export const NetworkInfo: Schema.Schema<NetworkInfo> =
   }).annotate({ identifier: "NetworkInfo" });
 
 export interface GKEMasterInfo {
-  /** URI of a GKE cluster. */
+  /** URI of the GKE cluster. Format: * `projects/{project_id}/locations/{location}/clusters/{cluster_id}` (regional cluster) * `projects/{project_id}/zones/{zone}/clusters/{cluster_id}` (zonal cluster) */
   clusterUri?: string;
-  /** URI of a GKE cluster network. */
+  /** URI of the GKE cluster network. Format: `projects/{project_id}/global/networks/{network_id}` */
   clusterNetworkUri?: string;
   /** Internal IP address of a GKE cluster control plane. */
   internalIp?: string;
@@ -1106,7 +1557,7 @@ export interface GkePodInfo {
   podUri?: string;
   /** IP address of a GKE Pod. If the Pod is dual-stack, this is the IP address relevant to the trace. */
   ipAddress?: string;
-  /** URI of the network containing the GKE Pod. */
+  /** URI of the network containing the GKE Pod. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
 }
 
@@ -1178,9 +1629,9 @@ export const GkeNetworkPolicySkippedInfo: Schema.Schema<GkeNetworkPolicySkippedI
 export interface CloudSQLInstanceInfo {
   /** Name of a Cloud SQL instance. */
   displayName?: string;
-  /** URI of a Cloud SQL instance. */
+  /** URI of a Cloud SQL instance in format "projects/{project}/instances/{instance}" */
   uri?: string;
-  /** URI of a Cloud SQL instance network or empty string if the instance does not have one. */
+  /** URI of a Cloud SQL instance network or empty string if the instance does not have one. In format "projects/{project}/global/networks/{network}". */
   networkUri?: string;
   /** Internal IP address of a Cloud SQL instance. */
   internalIp?: string;
@@ -1203,9 +1654,9 @@ export const CloudSQLInstanceInfo: Schema.Schema<CloudSQLInstanceInfo> =
 export interface RedisInstanceInfo {
   /** Name of a Cloud Redis Instance. */
   displayName?: string;
-  /** URI of a Cloud Redis Instance. */
+  /** URI of a Cloud Redis Instance in format "projects/{project}/locations/{location}/instances/{instance}" */
   uri?: string;
-  /** URI of a Cloud Redis Instance network. */
+  /** URI of a Cloud Redis Instance network in format "projects/{project}/global/networks/{network}". */
   networkUri?: string;
   /** Primary endpoint IP address of a Cloud Redis Instance. */
   primaryEndpointIp?: string;
@@ -1253,7 +1704,7 @@ export const RedisClusterInfo: Schema.Schema<RedisClusterInfo> =
 export interface CloudFunctionInfo {
   /** Name of a Cloud Function. */
   displayName?: string;
-  /** URI of a Cloud Function. */
+  /** URI of the Cloud Function. Format: `projects/{project_id}/locations/{location}/functions/{function_id}` */
   uri?: string;
   /** Location in which the Cloud Function is deployed. */
   location?: string;
@@ -1272,7 +1723,7 @@ export const CloudFunctionInfo: Schema.Schema<CloudFunctionInfo> =
 export interface AppEngineVersionInfo {
   /** Name of an App Engine version. */
   displayName?: string;
-  /** URI of an App Engine version. */
+  /** URI of the App Engine version. Format: `apps/{app_id}/services/{service_id}/versions/{version_id}` */
   uri?: string;
   /** Runtime of the App Engine version. */
   runtime?: string;
@@ -1291,11 +1742,11 @@ export const AppEngineVersionInfo: Schema.Schema<AppEngineVersionInfo> =
 export interface CloudRunRevisionInfo {
   /** Name of a Cloud Run revision. */
   displayName?: string;
-  /** URI of a Cloud Run revision. */
+  /** URI of the Cloud Run revision. Format: `projects/{project_id}/locations/{location}/revisions/{revision_id}` */
   uri?: string;
   /** Location in which this revision is deployed. */
   location?: string;
-  /** URI of Cloud Run service this revision belongs to. */
+  /** URI of Cloud Run service this revision belongs to. Format: `projects/{project_id}/locations/{location}/services/{service_id}` */
   serviceUri?: string;
 }
 
@@ -1306,6 +1757,22 @@ export const CloudRunRevisionInfo: Schema.Schema<CloudRunRevisionInfo> =
     location: Schema.optional(Schema.String),
     serviceUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "CloudRunRevisionInfo" });
+
+export interface CloudRunJobInfo {
+  /** Name of a Cloud Run job. */
+  displayName?: string;
+  /** URI of the Cloud Run job. Format: `projects/{project_id}/locations/{location}/jobs/{job_id}` */
+  uri?: string;
+  /** Location in which this job is deployed. */
+  location?: string;
+}
+
+export const CloudRunJobInfo: Schema.Schema<CloudRunJobInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudRunJobInfo" });
 
 export interface NatInfo {
   /** Type of NAT. */
@@ -1319,7 +1786,7 @@ export interface NatInfo {
     | (string & {});
   /** IP protocol in string format, for example: "TCP", "UDP", "ICMP". */
   protocol?: string;
-  /** URI of the network where NAT translation takes place. */
+  /** URI of the VPC network where NAT translation takes place. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
   /** Source IP address before NAT translation. */
   oldSourceIp?: string;
@@ -1337,7 +1804,7 @@ export interface NatInfo {
   oldDestinationPort?: number;
   /** Destination port after NAT translation. Only valid when protocol is TCP or UDP. */
   newDestinationPort?: number;
-  /** Uri of the Cloud Router. Only valid when type is CLOUD_NAT. */
+  /** URI of the Cloud Router. Only valid when type is CLOUD_NAT. Format: `projects/{project_id}/regions/{region}/routers/{router_id}` */
   routerUri?: string;
   /** The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT. */
   natGatewayName?: string;
@@ -1389,9 +1856,9 @@ export interface ProxyConnectionInfo {
   oldDestinationPort?: number;
   /** Destination port of a new connection. Only valid when protocol is TCP or UDP. */
   newDestinationPort?: number;
-  /** Uri of proxy subnet. */
+  /** URI of the proxy subnet. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}` */
   subnetUri?: string;
-  /** URI of the network where connection is proxied. */
+  /** URI of the VPC network where connection is proxied. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
 }
 
@@ -1413,21 +1880,21 @@ export const ProxyConnectionInfo: Schema.Schema<ProxyConnectionInfo> =
 export interface LoadBalancerBackendInfo {
   /** Display name of the backend. For example, it might be an instance name for the instance group backends, or an IP address and port for zonal network endpoint group backends. */
   name?: string;
-  /** URI of the backend instance (if applicable). Populated for instance group backends, and zonal NEG backends. */
+  /** URI of the backend instance (if applicable) in format "projects/{project}/zones/{zone}/instances/{instance}". Populated for instance group backends, and zonal NEG backends. */
   instanceUri?: string;
-  /** URI of the backend service this backend belongs to (if applicable). */
+  /** URI of the backend service this backend belongs to (if applicable) in format "projects/{project}/regions/{region}/backendServices/{backend_service}" (regional) or "projects/{project}/global/backendServices/{backend_service}" (global). */
   backendServiceUri?: string;
-  /** URI of the instance group this backend belongs to (if applicable). */
+  /** URI of the instance group this backend belongs to (if applicable) in format "projects/{project}/zones/{zone}/instanceGroups/{instance_group}". */
   instanceGroupUri?: string;
-  /** URI of the network endpoint group this backend belongs to (if applicable). */
+  /** URI of the network endpoint group this backend belongs to (if applicable) Format: * `projects/{project_id}/zones/{zone}/networkEndpointGroups/{neg_id}` (zonal NEG) * `projects/{project_id}/regions/{region}/networkEndpointGroups/{neg_id}` (regional NEG) * `projects/{project_id}/global/networkEndpointGroups/{neg_id}` (global NEG) */
   networkEndpointGroupUri?: string;
-  /** URI of the backend bucket this backend targets (if applicable). */
+  /** URI of the backend bucket this backend targets (if applicable) in format "projects/{project}/global/backendBuckets/{backend_bucket}". */
   backendBucketUri?: string;
-  /** URI of the PSC service attachment this PSC NEG backend targets (if applicable). */
+  /** URI of the PSC service attachment this PSC NEG backend targets (if applicable) in format "projects/{project}/regions/{region}/serviceAttachments/{service_attachment}". */
   pscServiceAttachmentUri?: string;
   /** PSC Google API target this PSC NEG backend targets (if applicable). */
   pscGoogleApiTarget?: string;
-  /** URI of the health check attached to this backend (if applicable). */
+  /** URI of the health check attached to this backend (if applicable). Format: * `projects/{project_id}/global/healthChecks/{health_check_id}` * `projects/{project_id}/regions/{region}/healthChecks/{health_check_id}` * `projects/{project_id}/global/httpHealthChecks/{health_check_id}` (legacy) */
   healthCheckUri?: string;
   /** Output only. Health check firewalls configuration state for the backend. This is a result of the static firewall analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation for more information: https://cloud.google.com/load-balancing/docs/firewall-rules */
   healthCheckFirewallsConfigState?:
@@ -1464,7 +1931,7 @@ export const StorageBucketInfo: Schema.Schema<StorageBucketInfo> =
   }).annotate({ identifier: "StorageBucketInfo" });
 
 export interface ServerlessNegInfo {
-  /** URI of the serverless network endpoint group. */
+  /** URI of the serverless network endpoint group in format "projects/{project}/regions/{region}/networkEndpointGroups/{network_endpoint_group}". */
   negUri?: string;
 }
 
@@ -1474,7 +1941,7 @@ export const ServerlessNegInfo: Schema.Schema<ServerlessNegInfo> =
   }).annotate({ identifier: "ServerlessNegInfo" });
 
 export interface NgfwPacketInspectionInfo {
-  /** URI of the security profile group associated with this firewall packet inspection. */
+  /** URI of the security profile group associated with this firewall packet inspection. Format: `organizations/{organization_id}/locations/global/securityProfileGroups/{security_profile_group_id}` */
   securityProfileGroupUri?: string;
 }
 
@@ -1511,6 +1978,7 @@ export interface Step {
     | "START_FROM_CLOUD_FUNCTION"
     | "START_FROM_APP_ENGINE_VERSION"
     | "START_FROM_CLOUD_RUN_REVISION"
+    | "START_FROM_CLOUD_RUN_JOB"
     | "START_FROM_STORAGE_BUCKET"
     | "START_FROM_PSC_PUBLISHED_SERVICE"
     | "START_FROM_SERVERLESS_NEG"
@@ -1611,6 +2079,8 @@ export interface Step {
   appEngineVersion?: AppEngineVersionInfo;
   /** Display information of a Cloud Run revision. */
   cloudRunRevision?: CloudRunRevisionInfo;
+  /** Display information of a Cloud Run job. */
+  cloudRunJob?: CloudRunJobInfo;
   /** Display information of a NAT. */
   nat?: NatInfo;
   /** Display information of a ProxyConnection. */
@@ -1667,6 +2137,7 @@ export const Step: Schema.Schema<Step> =
     cloudFunction: Schema.optional(CloudFunctionInfo),
     appEngineVersion: Schema.optional(AppEngineVersionInfo),
     cloudRunRevision: Schema.optional(CloudRunRevisionInfo),
+    cloudRunJob: Schema.optional(CloudRunJobInfo),
     nat: Schema.optional(NatInfo),
     proxyConnection: Schema.optional(ProxyConnectionInfo),
     loadBalancerBackendInfo: Schema.optional(LoadBalancerBackendInfo),
@@ -2926,6 +3397,685 @@ export const testIamPermissionsProjectsLocationsGlobalConnectivityTests: API.Ope
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface ListProjectsLocationsNetworkMonitoringProvidersRequest {
+  /** Required. Parent value for ListNetworkMonitoringProvidersRequest. Format: `projects/{project}/locations/{location}` */
+  parent: string;
+  /** Optional. The maximum number of monitoring points to return. The service may return fewer than this value. If unspecified, at most 20 monitoring points will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMonitoringPoints` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsNetworkMonitoringProvidersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/networkMonitoringProviders" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsNetworkMonitoringProvidersRequest>;
+
+export type ListProjectsLocationsNetworkMonitoringProvidersResponse =
+  ListNetworkMonitoringProvidersResponse;
+export const ListProjectsLocationsNetworkMonitoringProvidersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListNetworkMonitoringProvidersResponse;
+
+export type ListProjectsLocationsNetworkMonitoringProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists NetworkMonitoringProviders for a given project and location. */
+export const listProjectsLocationsNetworkMonitoringProviders: API.PaginatedOperationMethod<
+  ListProjectsLocationsNetworkMonitoringProvidersRequest,
+  ListProjectsLocationsNetworkMonitoringProvidersResponse,
+  ListProjectsLocationsNetworkMonitoringProvidersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsNetworkMonitoringProvidersRequest,
+  output: ListProjectsLocationsNetworkMonitoringProvidersResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsNetworkMonitoringProvidersRequest {
+  /** Required. Name of the resource. Format: `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}` */
+  name: string;
+}
+
+export const GetProjectsLocationsNetworkMonitoringProvidersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsNetworkMonitoringProvidersRequest>;
+
+export type GetProjectsLocationsNetworkMonitoringProvidersResponse =
+  NetworkMonitoringProvider;
+export const GetProjectsLocationsNetworkMonitoringProvidersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ NetworkMonitoringProvider;
+
+export type GetProjectsLocationsNetworkMonitoringProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the NetworkMonitoringProvider resource. */
+export const getProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
+  GetProjectsLocationsNetworkMonitoringProvidersRequest,
+  GetProjectsLocationsNetworkMonitoringProvidersResponse,
+  GetProjectsLocationsNetworkMonitoringProvidersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsNetworkMonitoringProvidersRequest,
+  output: GetProjectsLocationsNetworkMonitoringProvidersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsNetworkMonitoringProvidersRequest {
+  /** Required. Parent value for CreateNetworkMonitoringProviderRequest. Format: projects/{project}/locations/{location} */
+  parent: string;
+  /** Required. The ID to use for the NetworkMonitoringProvider resource, which will become the final component of the NetworkMonitoringProvider resource's name. */
+  networkMonitoringProviderId?: string;
+  /** Request body */
+  body?: NetworkMonitoringProvider;
+}
+
+export const CreateProjectsLocationsNetworkMonitoringProvidersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    networkMonitoringProviderId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("networkMonitoringProviderId"),
+    ),
+    body: Schema.optional(NetworkMonitoringProvider).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/networkMonitoringProviders",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsNetworkMonitoringProvidersRequest>;
+
+export type CreateProjectsLocationsNetworkMonitoringProvidersResponse =
+  Operation;
+export const CreateProjectsLocationsNetworkMonitoringProvidersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsNetworkMonitoringProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a NetworkMonitoringProvider resource. */
+export const createProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
+  CreateProjectsLocationsNetworkMonitoringProvidersRequest,
+  CreateProjectsLocationsNetworkMonitoringProvidersResponse,
+  CreateProjectsLocationsNetworkMonitoringProvidersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsNetworkMonitoringProvidersRequest,
+  output: CreateProjectsLocationsNetworkMonitoringProvidersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsNetworkMonitoringProvidersRequest {
+  /** Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
+  name: string;
+  /** Optional. If set to true, any nested MonitoringPoints, NetworkPaths and WebPaths resources from this NetworkMonitoringProvider will also be deleted. Otherwise, the request will only work if there are no nested resources. */
+  force?: boolean;
+}
+
+export const DeleteProjectsLocationsNetworkMonitoringProvidersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsNetworkMonitoringProvidersRequest>;
+
+export type DeleteProjectsLocationsNetworkMonitoringProvidersResponse =
+  Operation;
+export const DeleteProjectsLocationsNetworkMonitoringProvidersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsNetworkMonitoringProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a NetworkMonitoringProvider resource and all of its child resources. */
+export const deleteProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
+  DeleteProjectsLocationsNetworkMonitoringProvidersRequest,
+  DeleteProjectsLocationsNetworkMonitoringProvidersResponse,
+  DeleteProjectsLocationsNetworkMonitoringProvidersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsNetworkMonitoringProvidersRequest,
+  output: DeleteProjectsLocationsNetworkMonitoringProvidersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest {
+  /** Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
+  name: string;
+  /** Required. Google access token. */
+  gcpAccessToken?: string;
+}
+
+export const GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    gcpAccessToken: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("gcpAccessToken"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:generateProviderAccessToken" }),
+    svc,
+  ) as unknown as Schema.Schema<GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest>;
+
+export type GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersResponse =
+  GenerateProviderAccessTokenResponse;
+export const GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GenerateProviderAccessTokenResponse;
+
+export type GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Generates a provider access token for a given Google access token. Provider access token is a short-lived token that is used to access resources in the provider's platform. */
+export const generateProviderAccessTokenProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
+  GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest,
+  GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersResponse,
+  GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersRequest,
+  output:
+    GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest {
+  /** Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
+  name: string;
+  /** Optional. For Google Cloud MPs, this field indicates whether the Monitoring Point is deployed in a Private Service Connect deployment. Not used for non-Google Cloud MPs. */
+  privateConnectivityEnabled?: boolean;
+}
+
+export const GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    privateConnectivityEnabled: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("privateConnectivityEnabled"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:generateMonitoringPointConfig" }),
+    svc,
+  ) as unknown as Schema.Schema<GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest>;
+
+export type GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersResponse =
+  GenerateMonitoringPointConfigResponse;
+export const GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GenerateMonitoringPointConfigResponse;
+
+export type GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Generates Monitoring Point configuration of a NetworkMonitoringProvider resource. */
+export const generateMonitoringPointConfigProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
+  GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest,
+  GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersResponse,
+  GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersRequest,
+  output:
+    GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest {
+  /** Required. Parent value for DownloadInstallScriptRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
+  parent: string;
+  /** Required. The type of the monitoring point. */
+  monitoringPointType?:
+    | "MONITORING_POINT_TYPE_UNSPECIFIED"
+    | "CONTAINER"
+    | "KVM"
+    | "VMWARE"
+    | "HELM"
+    | "GCE_VM"
+    | "AZURE_VM"
+    | "AWS_EC2"
+    | (string & {});
+  /** Required. The hostname of the MonitoringPoint, e.g. "test-vm" */
+  hostname?: string;
+  /** Optional. Password for logging into the MonitoringPoint. */
+  _password?: string;
+  /** IANA Time Zone Database time zone. For example "America/New_York". */
+  "timeZone.id"?: string;
+  /** Optional. IANA Time Zone Database version number. For example "2019a". */
+  "timeZone.version"?: string;
+  /** Optional. For Google Cloud MPs, this field indicates whether the Monitoring Point is deployed in a Private Service Connect deployment. Not used for non-Google Cloud MPs. */
+  privateConnectivityEnabled?: boolean;
+  /** Optional. Dynamic Host Configuration Protocol, is a network management protocol that automatically assigns IP addresses and other network configuration parameters to devices connecting to a network. */
+  useDhcp?: boolean;
+  /** Required. IP address of the MonitoringPoint. */
+  "staticIpAddress.ipAddress"?: string;
+  /** Optional. Networkmask and CIDR range. Example: "255.255.255.0/24" */
+  "staticIpAddress.netmask"?: string;
+  /** Required. Gateway IP address. Example: "100.80.40.1". */
+  "staticIpAddress.gatewayAddress"?: string;
+  /** Required. DNS server. */
+  "staticIpAddress.dnsServerAddress"?: string;
+  /** Optional. Second DNS server. */
+  "staticIpAddress.dnsServerSecondaryAddress"?: string;
+  /** Optional. Domain name of the MonitoringPoint. */
+  "staticIpAddress.domain"?: string;
+  /** Optional. Network Time Protocol a user can configure. If the user omits the field, the default is either NTP servers provided in the DHCP lease or a set of well-known NTP servers pre-configured on the monitoring point. This field can be an IP address or FQDN. */
+  ntpServerAddress?: string;
+  /** Optional. Second NTP server. */
+  ntpServerSecondaryAddress?: string;
+}
+
+export const DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    monitoringPointType: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("monitoringPointType"),
+    ),
+    hostname: Schema.optional(Schema.String).pipe(T.HttpQuery("hostname")),
+    _password: Schema.optional(Schema.String).pipe(T.HttpQuery("_password")),
+    "timeZone.id": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("timeZone.id"),
+    ),
+    "timeZone.version": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("timeZone.version"),
+    ),
+    privateConnectivityEnabled: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("privateConnectivityEnabled"),
+    ),
+    useDhcp: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("useDhcp")),
+    "staticIpAddress.ipAddress": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("staticIpAddress.ipAddress"),
+    ),
+    "staticIpAddress.netmask": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("staticIpAddress.netmask"),
+    ),
+    "staticIpAddress.gatewayAddress": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("staticIpAddress.gatewayAddress"),
+    ),
+    "staticIpAddress.dnsServerAddress": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("staticIpAddress.dnsServerAddress"),
+    ),
+    "staticIpAddress.dnsServerSecondaryAddress": Schema.optional(
+      Schema.String,
+    ).pipe(T.HttpQuery("staticIpAddress.dnsServerSecondaryAddress")),
+    "staticIpAddress.domain": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("staticIpAddress.domain"),
+    ),
+    ntpServerAddress: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("ntpServerAddress"),
+    ),
+    ntpServerSecondaryAddress: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("ntpServerSecondaryAddress"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+parent}/monitoringPoints:downloadInstallScript",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
+
+export type DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse =
+  HttpBody;
+export const DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Downloads an install script for MonitoringPoints for a given network monitoring provider. */
+export const downloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
+  DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse,
+  DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  output:
+    DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest {
+  /** Required. Resource name of the MonitoringPoint. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point} */
+  name: string;
+  /** Optional. The hostname of the MonitoringPoint, e.g. "test-vm" */
+  hostname?: string;
+}
+
+export const DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    hostname: Schema.optional(Schema.String).pipe(T.HttpQuery("hostname")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:downloadRecreateInstallScript" }),
+    svc,
+  ) as unknown as Schema.Schema<DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
+
+export type DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse =
+  HttpBody;
+export const DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Downloads an install script for a specific Container MonitoringPoint. */
+export const downloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
+  DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse,
+  DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  output:
+    DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest {
+  /** Required. Parent value for DownloadServerConnectConfigRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
+  parent: string;
+}
+
+export const DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+parent}/monitoringPoints:downloadServerConnectConfig",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
+
+export type DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse =
+  HttpBody;
+export const DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Downloads the server connect configuration for a given network monitoring provider. */
+export const downloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
+  DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse,
+  DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  output:
+    DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest {
+  /** Required. Parent value for ListMonitoringPointsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
+  parent: string;
+  /** Optional. The maximum number of monitoring points to return. The service may return fewer than this value. If unspecified, at most 20 monitoring points will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMonitoringPoints` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/monitoringPoints" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
+
+export type ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse =
+  ListMonitoringPointsResponse;
+export const ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListMonitoringPointsResponse;
+
+export type ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Lists MonitoringPoints for a given network monitoring provider. */
+export const listProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.PaginatedOperationMethod<
+  ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse,
+  ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  output:
+    ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest {
+  /** Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point} */
+  name: string;
+}
+
+export const GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest>;
+
+export type GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse =
+  MonitoringPoint;
+export const GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ MonitoringPoint;
+
+export type GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
+  DefaultErrors | NotFound | Forbidden;
+
+/** Gets the MonitoringPoint resource. */
+export const getProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
+  GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse,
+  GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
+  output:
+    GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest {
+  /** Required. Parent value for ListNetworkPathsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
+  parent: string;
+  /** Optional. The maximum number of network paths to return. The service may return fewer than this value. If unspecified, at most 20 network pathswill be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Optional. A page token, received from a previous `ListNetworkPaths` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListNetworkPaths` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/networkPaths" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest>;
+
+export type ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsResponse =
+  ListNetworkPathsResponse;
+export const ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListNetworkPathsResponse;
+
+export type ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists NetworkPaths for a given network monitoring provider. */
+export const listProjectsLocationsNetworkMonitoringProvidersNetworkPaths: API.PaginatedOperationMethod<
+  ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest,
+  ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsResponse,
+  ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest,
+  output: ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest {
+  /** Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/networkPaths/{network_path} */
+  name: string;
+}
+
+export const GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest>;
+
+export type GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsResponse =
+  NetworkPath;
+export const GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ NetworkPath;
+
+export type GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the NetworkPath resource. */
+export const getProjectsLocationsNetworkMonitoringProvidersNetworkPaths: API.OperationMethod<
+  GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest,
+  GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsResponse,
+  GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest,
+  output: GetProjectsLocationsNetworkMonitoringProvidersNetworkPathsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest {
+  /** Required. Parent value for ListWebPathsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} */
+  parent: string;
+  /** Optional. The maximum number of web paths to return. The service may return fewer than this value. If unspecified, at most 20 web paths will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Optional. A page token, received from a previous `ListWebPaths` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWebPaths` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/webPaths" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest>;
+
+export type ListProjectsLocationsNetworkMonitoringProvidersWebPathsResponse =
+  ListWebPathsResponse;
+export const ListProjectsLocationsNetworkMonitoringProvidersWebPathsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListWebPathsResponse;
+
+export type ListProjectsLocationsNetworkMonitoringProvidersWebPathsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists WebPaths for a given network monitoring provider. */
+export const listProjectsLocationsNetworkMonitoringProvidersWebPaths: API.PaginatedOperationMethod<
+  ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest,
+  ListProjectsLocationsNetworkMonitoringProvidersWebPathsResponse,
+  ListProjectsLocationsNetworkMonitoringProvidersWebPathsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest,
+  output: ListProjectsLocationsNetworkMonitoringProvidersWebPathsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest {
+  /** Required. Name of the resource.. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/webPaths/{web_path} */
+  name: string;
+}
+
+export const GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest>;
+
+export type GetProjectsLocationsNetworkMonitoringProvidersWebPathsResponse =
+  WebPath;
+export const GetProjectsLocationsNetworkMonitoringProvidersWebPathsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ WebPath;
+
+export type GetProjectsLocationsNetworkMonitoringProvidersWebPathsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the WebPath resource. */
+export const getProjectsLocationsNetworkMonitoringProvidersWebPaths: API.OperationMethod<
+  GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest,
+  GetProjectsLocationsNetworkMonitoringProvidersWebPathsResponse,
+  GetProjectsLocationsNetworkMonitoringProvidersWebPathsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsNetworkMonitoringProvidersWebPathsRequest,
+  output: GetProjectsLocationsNetworkMonitoringProvidersWebPathsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The parent resource of the VpcFlowLogsConfig, in one of the following formats: - For project-level resources: `projects/{project_id}/locations/global` - For organization-level resources: `organizations/{organization_id}/locations/global` */
   parent: string;
@@ -3168,9 +4318,7 @@ export const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRespon
   /*@__PURE__*/ /*#__PURE__*/ QueryOrgVpcFlowLogsConfigsResponse;
 
 export type QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** QueryOrgVpcFlowLogsConfigs returns a list of all organization-level VPC Flow Logs configurations applicable to the specified project. */
 export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
@@ -3222,9 +4370,7 @@ export const ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResp
   /*@__PURE__*/ /*#__PURE__*/ ShowEffectiveFlowLogsConfigsResponse;
 
 export type ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations applicable to a specified resource. */
 export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<

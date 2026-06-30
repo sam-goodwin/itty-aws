@@ -29,7 +29,7 @@ export type SignSolanaTransactionWithEndUserAccountOutput =
 
 // The operation
 /**
- * Sign a transaction with end user Solana account
+ * Sign transaction via end user Solana account
  *
  * Signs a transaction with the given end user Solana account.
  * The unsigned transaction should be serialized into a byte array and then encoded as base64.

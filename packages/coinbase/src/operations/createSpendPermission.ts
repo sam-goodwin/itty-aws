@@ -82,13 +82,14 @@ export const CreateSpendPermissionOutput =
         }),
       ),
     ),
+    expiresAt: Schema.optional(Schema.String),
   });
 export type CreateSpendPermissionOutput =
   typeof CreateSpendPermissionOutput.Type;
 
 // The operation
 /**
- * Create a spend permission
+ * Create spend permission
  *
  * Creates a spend permission for the given smart account address.
  *

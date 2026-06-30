@@ -9,6 +9,7 @@ export const GetGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
+  orgMembershipStatuses: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -25,7 +26,7 @@ export type GetGroupUserOutput = typeof GetGroupUserOutput.Type;
 /**
  * Return One MongoDB Cloud User in One Project
  *
- * Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns information about the specified MongoDB Cloud user within the context of the specified project.
  * **Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
  * **Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
  *
@@ -35,6 +36,7 @@ export type GetGroupUserOutput = typeof GetGroupUserOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by `username`.
+ * @param orgMembershipStatuses - Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
  */
 export const getGroupUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetGroupUserInput,

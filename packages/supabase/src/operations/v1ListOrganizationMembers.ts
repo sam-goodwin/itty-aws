@@ -20,6 +20,7 @@ export const V1ListOrganizationMembersOutput =
       email: Schema.optional(Schema.String),
       role_name: Schema.String,
       mfa_enabled: Schema.Boolean,
+      avatar_url: Schema.NullOr(Schema.String),
     }),
   );
 export type V1ListOrganizationMembersOutput =

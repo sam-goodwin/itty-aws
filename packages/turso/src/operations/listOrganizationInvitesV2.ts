@@ -24,7 +24,6 @@ export const ListOrganizationInvitesV2Output =
           id: Schema.optional(Schema.Number),
           email: Schema.optional(Schema.String),
           role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
-          token: Schema.optional(Schema.String),
           created_at: Schema.optional(Schema.String),
         }),
       ),

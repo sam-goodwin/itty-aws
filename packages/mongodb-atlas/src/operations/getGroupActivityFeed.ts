@@ -29,7 +29,7 @@ export type GetGroupActivityFeedOutput = typeof GetGroupActivityFeedOutput.Type;
 /**
  * Return Pre-Filtered Activity Feed Link for One Project
  *
- * Returns a pre-filtered activity feed link for the specified project based on the provided date range and event types. The returned link can be shared and opened to view the activity feed with the same filters applied. To use this resource, the requesting Service Account or API Key must have the Project Read Only role or higher.
+ * Returns a pre-filtered activity feed link for the specified project based on the provided date range and event types. The returned link can be shared and opened to view the activity feed with the same filters applied.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

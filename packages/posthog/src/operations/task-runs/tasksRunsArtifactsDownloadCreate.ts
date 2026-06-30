@@ -31,7 +31,6 @@ export type TasksRunsArtifactsDownloadCreateOutput =
  *
  * Streams artifact content for a task run artifact after validating that it belongs to the run.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsArtifactsDownloadCreate =

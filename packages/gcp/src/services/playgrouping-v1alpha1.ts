@@ -23,25 +23,25 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Tag {
+  /** A signed 64-bit integer value of the tag. */
+  int64Value?: string;
   /** A time value of the tag. */
   timeValue?: string;
-  /** A string value of the tag. */
-  stringValue?: string;
   /** Required. Key for the tag. */
   key?: string;
   /** A boolean value of the tag. */
   booleanValue?: boolean;
-  /** A signed 64-bit integer value of the tag. */
-  int64Value?: string;
+  /** A string value of the tag. */
+  stringValue?: string;
 }
 
 export const Tag: Schema.Schema<Tag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    int64Value: Schema.optional(Schema.String),
     timeValue: Schema.optional(Schema.String),
-    stringValue: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
     booleanValue: Schema.optional(Schema.Boolean),
-    int64Value: Schema.optional(Schema.String),
+    stringValue: Schema.optional(Schema.String),
   }).annotate({ identifier: "Tag" });
 
 export interface CreateOrUpdateTagsRequest {
@@ -53,16 +53,6 @@ export const CreateOrUpdateTagsRequest: Schema.Schema<CreateOrUpdateTagsRequest>
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Tag)),
   }).annotate({ identifier: "CreateOrUpdateTagsRequest" });
-
-export interface VerifyTokenRequest {
-  /** Required. Persona represented by the token. Format: personas/{persona} */
-  persona?: string;
-}
-
-export const VerifyTokenRequest: Schema.Schema<VerifyTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    persona: Schema.optional(Schema.String),
-  }).annotate({ identifier: "VerifyTokenRequest" });
 
 export interface VerifyTokenResponse {}
 
@@ -80,6 +70,16 @@ export const CreateOrUpdateTagsResponse: Schema.Schema<CreateOrUpdateTagsRespons
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Tag)),
   }).annotate({ identifier: "CreateOrUpdateTagsResponse" });
+
+export interface VerifyTokenRequest {
+  /** Required. Persona represented by the token. Format: personas/{persona} */
+  persona?: string;
+}
+
+export const VerifyTokenRequest: Schema.Schema<VerifyTokenRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    persona: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerifyTokenRequest" });
 
 // ==========================================================================
 // Errors
@@ -136,18 +136,18 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface VerifyAppsTokensRequest {
-  /** Required. The token to be verified. Format: tokens/{token} */
-  token: string;
   /** Required. App the token belongs to. Format: apps/{package_name} */
   appPackage: string;
+  /** Required. The token to be verified. Format: tokens/{token} */
+  token: string;
   /** Request body */
   body?: VerifyTokenRequest;
 }
 
 export const VerifyAppsTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    token: Schema.String.pipe(T.HttpPath("token")),
     appPackage: Schema.String.pipe(T.HttpPath("appPackage")),
+    token: Schema.String.pipe(T.HttpPath("token")),
     body: Schema.optional(VerifyTokenRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -182,18 +182,18 @@ export const verifyAppsTokens: API.OperationMethod<
 }));
 
 export interface CreateOrUpdateAppsTokensTagsRequest {
-  /** Required. Token for which the tags are being inserted or updated. Format: tokens/{token} */
-  token: string;
   /** Required. App whose tags are being manipulated. Format: apps/{package_name} */
   appPackage: string;
+  /** Required. Token for which the tags are being inserted or updated. Format: tokens/{token} */
+  token: string;
   /** Request body */
   body?: CreateOrUpdateTagsRequest;
 }
 
 export const CreateOrUpdateAppsTokensTagsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    token: Schema.String.pipe(T.HttpPath("token")),
     appPackage: Schema.String.pipe(T.HttpPath("appPackage")),
+    token: Schema.String.pipe(T.HttpPath("token")),
     body: Schema.optional(CreateOrUpdateTagsRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({

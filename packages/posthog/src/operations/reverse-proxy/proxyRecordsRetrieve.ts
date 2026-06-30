@@ -45,6 +45,7 @@ export type ProxyRecordsRetrieveOutput = typeof ProxyRecordsRetrieveOutput.Type;
  * Get details of a specific reverse proxy by ID. Returns the full configuration including domain, CNAME target, and current provisioning status.
  *
  * @param id - A UUID string identifying this proxy record.
+ * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const proxyRecordsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

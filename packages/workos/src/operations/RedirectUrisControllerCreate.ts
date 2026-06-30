@@ -28,7 +28,7 @@ export type RedirectUrisControllerCreateOutput =
 /**
  * Create a redirect URI
  *
- * Creates a new redirect URI for an environment.
+ * Creates a new redirect URI for an application.
  */
 export const RedirectUrisControllerCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

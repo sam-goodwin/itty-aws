@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsAppendMessageCreateInput =
@@ -12,7 +11,7 @@ export const ConversationsAppendMessageCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/conversations/{conversation}/append_message/",
+      path: "/api/projects/{project_id}/conversations/{conversation}/append_message/",
     }),
   );
 export type ConversationsAppendMessageCreateInput =
@@ -39,5 +38,4 @@ export const conversationsAppendMessageCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ConversationsAppendMessageCreateInput,
     outputSchema: ConversationsAppendMessageCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

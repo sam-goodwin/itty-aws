@@ -11,6 +11,8 @@ import * as T from "../traits.ts";
 // Input Schema
 export const ContainerHostMappingsGetContainerHostMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     containerHostResourceId: Schema.optional(Schema.String),
     mappedControllerResourceId: Schema.optional(Schema.String),
@@ -37,6 +39,9 @@ export type ContainerHostMappingsGetContainerHostMappingOutput =
 /**
  * Returns container host mapping object for a container host resource ID if an associated controller exists.
  *
+ * @param api-version - Client API version.
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Resource group to which the resource belongs.
  * @param location - Location of the container host.
  */
 export const ContainerHostMappingsGetContainerHostMapping =
@@ -47,6 +52,9 @@ export const ContainerHostMappingsGetContainerHostMapping =
 // Input Schema
 export const ControllersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals([
@@ -95,6 +103,11 @@ export type ControllersCreateOutput = typeof ControllersCreateOutput.Type;
  * Creates an Azure Dev Spaces Controller.
  *
  * Creates an Azure Dev Spaces Controller with the specified create parameters.
+ *
+ * @param api-version - Client API version.
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Resource group to which the resource belongs.
+ * @param name - Name of the resource.
  */
 export const ControllersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ControllersCreateInput,
@@ -102,7 +115,11 @@ export const ControllersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ControllersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "DELETE",
@@ -121,15 +138,22 @@ export type ControllersDeleteOutput = typeof ControllersDeleteOutput.Type;
  * Deletes an Azure Dev Spaces Controller.
  *
  * Deletes an existing Azure Dev Spaces Controller.
+ *
+ * @param api-version - Client API version.
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Resource group to which the resource belongs.
+ * @param name - Name of the resource.
  */
 export const ControllersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ControllersDeleteInput,
   outputSchema: ControllersDeleteOutput,
 }));
 // Input Schema
-export const ControllersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ControllersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}",
@@ -151,15 +175,20 @@ export type ControllersGetOutput = typeof ControllersGetOutput.Type;
  * Gets an Azure Dev Spaces Controller.
  *
  * Gets the properties for an Azure Dev Spaces Controller.
+ *
+ * @param api-version - Client API version.
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Resource group to which the resource belongs.
+ * @param name - Name of the resource.
  */
 export const ControllersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ControllersGetInput,
   outputSchema: ControllersGetOutput,
 }));
 // Input Schema
-export const ControllersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ControllersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevSpaces/controllers",
@@ -188,6 +217,9 @@ export type ControllersListOutput = typeof ControllersListOutput.Type;
  * Lists the Azure Dev Spaces Controllers in a subscription.
  *
  * Lists all the Azure Dev Spaces Controllers with their properties in the subscription.
+ *
+ * @param api-version - Client API version.
+ * @param subscriptionId - Azure subscription ID.
  */
 export const ControllersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ControllersListInput,
@@ -195,7 +227,10 @@ export const ControllersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ControllersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers",
@@ -227,6 +262,10 @@ export type ControllersListByResourceGroupOutput =
  * Lists the Azure Dev Spaces Controllers in a resource group.
  *
  * Lists all the Azure Dev Spaces Controllers with their properties in the specified resource group and subscription.
+ *
+ * @param api-version - Client API version.
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Resource group to which the resource belongs.
  */
 export const ControllersListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -236,6 +275,9 @@ export const ControllersListByResourceGroup =
 // Input Schema
 export const ControllersListConnectionDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
     targetContainerHostResourceId: Schema.String,
   }).pipe(
     T.Http({
@@ -270,6 +312,11 @@ export type ControllersListConnectionDetailsOutput =
  * Lists connection details for an Azure Dev Spaces Controller.
  *
  * Lists connection details for the underlying container resources of an Azure Dev Spaces Controller.
+ *
+ * @param api-version - Client API version.
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Resource group to which the resource belongs.
+ * @param name - Name of the resource.
  */
 export const ControllersListConnectionDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -279,6 +326,9 @@ export const ControllersListConnectionDetails =
 // Input Schema
 export const ControllersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Unknown),
     properties: Schema.optional(
       Schema.Struct({
@@ -309,6 +359,11 @@ export type ControllersUpdateOutput = typeof ControllersUpdateOutput.Type;
  * Updates an Azure Dev Spaces Controller.
  *
  * Updates the properties of an existing Azure Dev Spaces Controller with the specified update parameters.
+ *
+ * @param api-version - Client API version.
+ * @param subscriptionId - Azure subscription ID.
+ * @param resourceGroupName - Resource group to which the resource belongs.
+ * @param name - Name of the resource.
  */
 export const ControllersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ControllersUpdateInput,
@@ -352,6 +407,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  * Lists operations for the resource provider.
  *
  * Lists all the supported operations by the Microsoft.DevSpaces resource provider along with their description.
+ *
+ * @param api-version - Client API version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,

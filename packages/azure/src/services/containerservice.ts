@@ -20,7 +20,7 @@ export const AgentPoolsAbortLatestOperationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/abort",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AgentPoolsAbortLatestOperationInput =
@@ -84,7 +84,9 @@ export const AgentPoolsCreateOrUpdateInput =
             "Windows2019",
             "Windows2022",
             "Ubuntu2204",
+            "Windows2025",
             "Ubuntu2404",
+            "AzureContainerLinux",
           ]),
         ),
         maxCount: Schema.optional(Schema.Number),
@@ -250,6 +252,11 @@ export const AgentPoolsCreateOrUpdateInput =
             publicIPPrefixSize: Schema.optional(Schema.Number),
           }),
         ),
+        artifactStreamingProfile: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
         virtualMachinesProfile: Schema.optional(
           Schema.Struct({
             scale: Schema.optional(
@@ -375,7 +382,7 @@ export const AgentPoolsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AgentPoolsCreateOrUpdateInput =
@@ -434,7 +441,7 @@ export const AgentPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type AgentPoolsDeleteInput = typeof AgentPoolsDeleteInput.Type;
@@ -471,7 +478,7 @@ export const AgentPoolsDeleteMachinesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/deleteMachines",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AgentPoolsDeleteMachinesInput =
@@ -509,7 +516,7 @@ export const AgentPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type AgentPoolsGetInput = typeof AgentPoolsGetInput.Type;
@@ -560,7 +567,7 @@ export const AgentPoolsGetAvailableAgentPoolVersionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/availableAgentPoolVersions",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AgentPoolsGetAvailableAgentPoolVersionsInput =
@@ -614,7 +621,7 @@ export const AgentPoolsGetUpgradeProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeProfiles/default",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AgentPoolsGetUpgradeProfileInput =
@@ -669,7 +676,7 @@ export const AgentPoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type AgentPoolsListInput = typeof AgentPoolsListInput.Type;
@@ -725,7 +732,7 @@ export const AgentPoolsUpgradeNodeImageVersionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeNodeImageVersion",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AgentPoolsUpgradeNodeImageVersionInput =
@@ -1015,6 +1022,8 @@ export const AutoUpgradeProfilesListByFleetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fleetName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1072,6 +1081,8 @@ export type AutoUpgradeProfilesListByFleetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - The name of the Fleet resource.
+ * @param $top - The number of result items to return.
+ * @param $skipToken - The page-continuation token to use with a paged version of this API.
  */
 export const AutoUpgradeProfilesListByFleet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1081,6 +1092,7 @@ export const AutoUpgradeProfilesListByFleet =
 // Input Schema
 export const DeploymentSafeguardsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -1141,6 +1153,7 @@ export type DeploymentSafeguardsCreateOutput =
  * Creates or updates a deploymentSafeguard
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const DeploymentSafeguardsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1150,7 +1163,9 @@ export const DeploymentSafeguardsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DeploymentSafeguardsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards/default",
@@ -1171,6 +1186,7 @@ export type DeploymentSafeguardsDeleteOutput =
  * Delete DeploymentSafeguards
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const DeploymentSafeguardsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1180,7 +1196,9 @@ export const DeploymentSafeguardsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DeploymentSafeguardsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards/default",
@@ -1219,6 +1237,7 @@ export type DeploymentSafeguardsGetOutput =
  * Fetch a deployment safeguard by name
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const DeploymentSafeguardsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1228,7 +1247,9 @@ export const DeploymentSafeguardsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DeploymentSafeguardsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards",
@@ -1282,6 +1303,7 @@ export type DeploymentSafeguardsListOutput =
  * List DeploymentSafeguards by parent resource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const DeploymentSafeguardsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1491,6 +1513,9 @@ export const FleetMembersListByFleetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fleetName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1548,6 +1573,9 @@ export type FleetMembersListByFleetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - The name of the Fleet resource.
+ * @param $top - The number of result items to return.
+ * @param $skipToken - The page-continuation token to use with a paged version of this API.
+ * @param $filter - Filter the result list using the given expression.
  */
 export const FleetMembersListByFleet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1919,6 +1947,8 @@ export const FleetsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const FleetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1974,6 +2004,8 @@ export type FleetsListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The number of result items to return.
+ * @param $skipToken - The page-continuation token to use with a paged version of this API.
  */
 export const FleetsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2282,6 +2314,8 @@ export const FleetUpdateStrategiesListByFleetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fleetName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2339,11 +2373,256 @@ export type FleetUpdateStrategiesListByFleetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - The name of the Fleet resource.
+ * @param $top - The number of result items to return.
+ * @param $skipToken - The page-continuation token to use with a paged version of this API.
  */
 export const FleetUpdateStrategiesListByFleet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: FleetUpdateStrategiesListByFleetInput,
     outputSchema: FleetUpdateStrategiesListByFleetOutput,
+  }));
+// Input Schema
+export const IdentityBindingsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    identityBindingName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        managedIdentity: Schema.Struct({
+          resourceId: Schema.String,
+          objectId: Schema.optional(Schema.String),
+          clientId: Schema.optional(Schema.String),
+          tenantId: Schema.optional(Schema.String),
+        }),
+        oidcIssuer: Schema.optional(
+          Schema.Struct({
+            oidcIssuerUrl: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type IdentityBindingsCreateOrUpdateInput =
+  typeof IdentityBindingsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const IdentityBindingsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type IdentityBindingsCreateOrUpdateOutput =
+  typeof IdentityBindingsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an identity binding in the specified managed cluster.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the managed cluster resource.
+ * @param identityBindingName - The name of the identity binding.
+ */
+export const IdentityBindingsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: IdentityBindingsCreateOrUpdateInput,
+    outputSchema: IdentityBindingsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const IdentityBindingsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    identityBindingName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type IdentityBindingsDeleteInput =
+  typeof IdentityBindingsDeleteInput.Type;
+
+// Output Schema
+export const IdentityBindingsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type IdentityBindingsDeleteOutput =
+  typeof IdentityBindingsDeleteOutput.Type;
+
+// The operation
+/**
+ * Deletes an identity binding in the specified managed cluster.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the managed cluster resource.
+ * @param identityBindingName - The name of the identity binding.
+ */
+export const IdentityBindingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: IdentityBindingsDeleteInput,
+    outputSchema: IdentityBindingsDeleteOutput,
+  }),
+);
+// Input Schema
+export const IdentityBindingsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    identityBindingName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type IdentityBindingsGetInput = typeof IdentityBindingsGetInput.Type;
+
+// Output Schema
+export const IdentityBindingsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type IdentityBindingsGetOutput = typeof IdentityBindingsGetOutput.Type;
+
+// The operation
+/**
+ * Gets the specified Identity Binding.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the managed cluster resource.
+ * @param identityBindingName - The name of the identity binding.
+ */
+export const IdentityBindingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: IdentityBindingsGetInput,
+  outputSchema: IdentityBindingsGetOutput,
+}));
+// Input Schema
+export const IdentityBindingsListByManagedClusterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type IdentityBindingsListByManagedClusterInput =
+  typeof IdentityBindingsListByManagedClusterInput.Type;
+
+// Output Schema
+export const IdentityBindingsListByManagedClusterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type IdentityBindingsListByManagedClusterOutput =
+  typeof IdentityBindingsListByManagedClusterOutput.Type;
+
+// The operation
+/**
+ * Gets a list of identity bindings in the specified managed cluster.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the managed cluster resource.
+ */
+export const IdentityBindingsListByManagedCluster =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: IdentityBindingsListByManagedClusterInput,
+    outputSchema: IdentityBindingsListByManagedClusterOutput,
   }));
 // Input Schema
 export const MachinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2356,7 +2635,7 @@ export const MachinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/machines/{machineName}",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type MachinesGetInput = typeof MachinesGetInput.Type;
@@ -2408,7 +2687,7 @@ export const MachinesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/machines",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type MachinesListInput = typeof MachinesListInput.Type;
@@ -2559,7 +2838,7 @@ export const MaintenanceConfigurationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type MaintenanceConfigurationsCreateOrUpdateInput =
@@ -2615,7 +2894,7 @@ export const MaintenanceConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type MaintenanceConfigurationsDeleteInput =
@@ -2653,7 +2932,7 @@ export const MaintenanceConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type MaintenanceConfigurationsGetInput =
@@ -2708,7 +2987,7 @@ export const MaintenanceConfigurationsListByManagedClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type MaintenanceConfigurationsListByManagedClusterInput =
@@ -2777,7 +3056,7 @@ export const ManagedClustersAbortLatestOperationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/abort",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersAbortLatestOperationInput =
@@ -2864,7 +3143,9 @@ export const ManagedClustersCreateOrUpdateInput =
                   "Windows2019",
                   "Windows2022",
                   "Ubuntu2204",
+                  "Windows2025",
                   "Ubuntu2404",
+                  "AzureContainerLinux",
                 ]),
               ),
               maxCount: Schema.optional(Schema.Number),
@@ -3050,6 +3331,11 @@ export const ManagedClustersCreateOrUpdateInput =
               gatewayProfile: Schema.optional(
                 Schema.Struct({
                   publicIPPrefixSize: Schema.optional(Schema.Number),
+                }),
+              ),
+              artifactStreamingProfile: Schema.optional(
+                Schema.Struct({
+                  enabled: Schema.optional(Schema.Boolean),
                 }),
               ),
               virtualMachinesProfile: Schema.optional(
@@ -3644,6 +3930,17 @@ export const ManagedClustersCreateOrUpdateInput =
             webAppRouting: Schema.optional(
               Schema.Struct({
                 enabled: Schema.optional(Schema.Boolean),
+                gatewayAPIImplementations: Schema.optional(
+                  Schema.Struct({
+                    appRoutingIstio: Schema.optional(
+                      Schema.Struct({
+                        mode: Schema.optional(
+                          Schema.Literals(["Enabled", "Disabled"]),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
                 dnsZoneResourceIds: Schema.optional(
                   Schema.Array(Schema.String),
                 ),
@@ -3665,6 +3962,13 @@ export const ManagedClustersCreateOrUpdateInput =
                     clientId: Schema.optional(Schema.String),
                     objectId: Schema.optional(Schema.String),
                   }),
+                ),
+              }),
+            ),
+            gatewayAPI: Schema.optional(
+              Schema.Struct({
+                installation: Schema.optional(
+                  Schema.Literals(["Disabled", "Standard"]),
                 ),
               }),
             ),
@@ -3696,6 +4000,20 @@ export const ManagedClustersCreateOrUpdateInput =
                   Schema.Struct({
                     metricLabelsAllowlist: Schema.optional(Schema.String),
                     metricAnnotationsAllowList: Schema.optional(Schema.String),
+                  }),
+                ),
+                controlPlane: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              }),
+            ),
+            appMonitoring: Schema.optional(
+              Schema.Struct({
+                autoInstrumentation: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
                   }),
                 ),
               }),
@@ -3781,6 +4099,13 @@ export const ManagedClustersCreateOrUpdateInput =
         aiToolchainOperatorProfile: Schema.optional(
           Schema.Struct({
             enabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        hostedSystemProfile: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            systemNodeSubnetID: Schema.optional(Schema.String),
+            nodeSubnetID: Schema.optional(Schema.String),
           }),
         ),
         status: Schema.optional(
@@ -3871,7 +4196,7 @@ export const ManagedClustersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersCreateOrUpdateInput =
@@ -3927,7 +4252,7 @@ export const ManagedClustersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersDeleteInput = typeof ManagedClustersDeleteInput.Type;
@@ -3964,7 +4289,7 @@ export const ManagedClustersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersGetInput = typeof ManagedClustersGetInput.Type;
@@ -4016,7 +4341,7 @@ export const ManagedClustersGetCommandResultInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/commandResults/{commandId}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersGetCommandResultInput =
@@ -4065,7 +4390,7 @@ export const ManagedClustersGetMeshRevisionProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/meshRevisionProfiles/{mode}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersGetMeshRevisionProfileInput =
@@ -4122,7 +4447,7 @@ export const ManagedClustersGetMeshUpgradeProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/meshUpgradeProfiles/{mode}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersGetMeshUpgradeProfileInput =
@@ -4177,7 +4502,7 @@ export const ManagedClustersGetUpgradeProfileInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/upgradeProfiles/default",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersGetUpgradeProfileInput =
@@ -4229,7 +4554,7 @@ export const ManagedClustersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/managedClusters",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersListInput = typeof ManagedClustersListInput.Type;
@@ -4292,7 +4617,7 @@ export const ManagedClustersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersListByResourceGroupInput =
@@ -4361,7 +4686,7 @@ export const ManagedClustersListClusterAdminCredentialsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterAdminCredential",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersListClusterAdminCredentialsInput =
@@ -4408,7 +4733,7 @@ export const ManagedClustersListClusterMonitoringUserCredentialsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterMonitoringUserCredential",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersListClusterMonitoringUserCredentialsInput =
@@ -4456,7 +4781,7 @@ export const ManagedClustersListClusterUserCredentialsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterUserCredential",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersListClusterUserCredentialsInput =
@@ -4502,7 +4827,7 @@ export const ManagedClustersListKubernetesVersionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/kubernetesVersions",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersListKubernetesVersionsInput =
@@ -4565,7 +4890,7 @@ export const ManagedClustersListMeshRevisionProfilesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/meshRevisionProfiles",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersListMeshRevisionProfilesInput =
@@ -4635,7 +4960,7 @@ export const ManagedClustersListMeshUpgradeProfilesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/meshUpgradeProfiles",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersListMeshUpgradeProfilesInput =
@@ -4704,7 +5029,7 @@ export const ManagedClustersListOutboundNetworkDependenciesEndpointsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/outboundNetworkDependenciesEndpoints",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersListOutboundNetworkDependenciesEndpointsInput =
@@ -4768,7 +5093,7 @@ export const ManagedClustersResetServicePrincipalProfileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resetServicePrincipalProfile",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersResetServicePrincipalProfileInput =
@@ -4806,7 +5131,7 @@ export const ManagedClustersRotateClusterCertificatesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateClusterCertificates",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersRotateClusterCertificatesInput =
@@ -4844,7 +5169,7 @@ export const ManagedClustersRotateServiceAccountSigningKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateServiceAccountSigningKeys",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersRotateServiceAccountSigningKeysInput =
@@ -4883,7 +5208,7 @@ export const ManagedClustersRunCommandInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/runCommand",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersRunCommandInput =
@@ -4934,7 +5259,7 @@ export const ManagedClustersStartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/start",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersStartInput = typeof ManagedClustersStartInput.Type;
@@ -4971,7 +5296,7 @@ export const ManagedClustersStopInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/stop",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersStopInput = typeof ManagedClustersStopInput.Type;
@@ -5007,7 +5332,7 @@ export const ManagedClustersUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedClustersUpdateTagsInput =
@@ -5108,7 +5433,7 @@ export const ManagedNamespacesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedNamespacesCreateOrUpdateInput =
@@ -5164,7 +5489,7 @@ export const ManagedNamespacesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedNamespacesDeleteInput =
@@ -5203,7 +5528,7 @@ export const ManagedNamespacesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedNamespacesGetInput = typeof ManagedNamespacesGetInput.Type;
@@ -5257,7 +5582,7 @@ export const ManagedNamespacesListByManagedClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedNamespacesListByManagedClusterInput =
@@ -5327,7 +5652,7 @@ export const ManagedNamespacesListCredentialInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}/listCredential",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedNamespacesListCredentialInput =
@@ -5375,7 +5700,7 @@ export const ManagedNamespacesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ManagedNamespacesUpdateInput =
@@ -5480,7 +5805,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -5518,7 +5843,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -5575,7 +5900,7 @@ export const PrivateEndpointConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -5677,7 +6002,7 @@ export const PrivateEndpointConnectionsUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PrivateEndpointConnectionsUpdateInput =
@@ -5732,7 +6057,7 @@ export const PrivateLinkResourcesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateLinkResources",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -5790,7 +6115,7 @@ export const ResolvePrivateLinkServiceIdPOSTInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resolvePrivateLinkServiceId",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type ResolvePrivateLinkServiceIdPOSTInput =
@@ -5849,7 +6174,9 @@ export const SnapshotsCreateOrUpdateInput =
             "Windows2019",
             "Windows2022",
             "Ubuntu2204",
+            "Windows2025",
             "Ubuntu2404",
+            "AzureContainerLinux",
           ]),
         ),
         vmSize: Schema.optional(Schema.String),
@@ -5862,7 +6189,7 @@ export const SnapshotsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SnapshotsCreateOrUpdateInput =
@@ -5916,7 +6243,7 @@ export const SnapshotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SnapshotsDeleteInput = typeof SnapshotsDeleteInput.Type;
@@ -5947,7 +6274,7 @@ export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SnapshotsGetInput = typeof SnapshotsGetInput.Type;
@@ -5994,7 +6321,7 @@ export const SnapshotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/snapshots",
-    apiVersion: "2026-01-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SnapshotsListInput = typeof SnapshotsListInput.Type;
@@ -6046,7 +6373,7 @@ export const SnapshotsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SnapshotsListByResourceGroupInput =
@@ -6115,7 +6442,7 @@ export const SnapshotsUpdateTagsInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SnapshotsUpdateTagsInput = typeof SnapshotsUpdateTagsInput.Type;
@@ -6180,7 +6507,7 @@ export const TrustedAccessRoleBindingsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type TrustedAccessRoleBindingsCreateOrUpdateInput =
@@ -6236,7 +6563,7 @@ export const TrustedAccessRoleBindingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type TrustedAccessRoleBindingsDeleteInput =
@@ -6274,7 +6601,7 @@ export const TrustedAccessRoleBindingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type TrustedAccessRoleBindingsGetInput =
@@ -6329,7 +6656,7 @@ export const TrustedAccessRoleBindingsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type TrustedAccessRoleBindingsListInput =
@@ -6397,7 +6724,7 @@ export const TrustedAccessRolesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/trustedAccessRoles",
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type TrustedAccessRolesListInput =
@@ -6968,6 +7295,8 @@ export const UpdateRunsListByFleetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fleetName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7024,6 +7353,8 @@ export type UpdateRunsListByFleetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - The name of the Fleet resource.
+ * @param $top - The number of result items to return.
+ * @param $skipToken - The page-continuation token to use with a paged version of this API.
  */
 export const UpdateRunsListByFleet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

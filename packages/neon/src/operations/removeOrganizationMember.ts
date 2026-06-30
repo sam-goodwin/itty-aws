@@ -24,11 +24,11 @@ export type RemoveOrganizationMemberOutput =
 
 // The operation
 /**
- * Remove member from the organization
+ * Remove organization member
  *
- * Remove member from the organization.
- * Only an admin of the organization can perform this action.
- * If another admin is being removed, it will not be allows in case it is the only admin left in the organization.
+ * Removes the specified member from the organization.
+ * Only organization admins can perform this action.
+ * The last admin in an organization cannot be removed.
  *
  * @param org_id - The Neon organization ID
  * @param member_id - The Neon organization member ID

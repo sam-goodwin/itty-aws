@@ -139,9 +139,7 @@ export type SetDefaultProjectBranchOutput =
  *
  * Sets the specified branch as the project's default branch.
  * The default designation is automatically removed from the previous default branch.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
- * For more information, see [Manage branches](https://neon.tech/docs/manage/branches/).
+ * For more information, see [Manage branches](https://neon.com/docs/manage/branches/).
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

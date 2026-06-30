@@ -24,9 +24,11 @@ export type GetAuthDetailsOutput = typeof GetAuthDetailsOutput.Type;
 
 // The operation
 /**
- * Get request authentication details
+ * Retrieve request authentication details
  *
- * Returns auth information about the passed credentials. It can refer to an API key, Bearer token or OAuth session.
+ * Returns authentication details for the credentials used in the request,
+ * including the credential type (API key, Bearer token, or OAuth session)
+ * and the associated identity.
  */
 export const getAuthDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetAuthDetailsInput,

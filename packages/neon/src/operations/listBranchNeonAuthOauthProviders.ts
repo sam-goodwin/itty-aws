@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const ListBranchNeonAuthOauthProvidersInput =
@@ -25,7 +25,7 @@ export const ListBranchNeonAuthOauthProvidersOutput =
         id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
         type: Schema.Literals(["standard", "shared"]),
         client_id: Schema.optional(Schema.String),
-        client_secret: Schema.optional(SensitiveString),
+        client_secret: Schema.optional(SensitiveOutputString),
       }),
     ),
   });
@@ -34,9 +34,9 @@ export type ListBranchNeonAuthOauthProvidersOutput =
 
 // The operation
 /**
- * List OAuth providers for neon auth for a branch
+ * List OAuth providers for the branch
  *
- * Lists the OAuth providers for the specified project and branch.
+ * Lists the OAuth providers configured for the specified branch's Neon Auth integration.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

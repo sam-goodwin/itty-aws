@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LogsViewsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -10,7 +9,7 @@ export const LogsViewsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "/api/environments/{project_id}/logs/views/{short_id}/",
+    path: "/api/projects/{project_id}/logs/views/{short_id}/",
   }),
 );
 export type LogsViewsDestroyInput = typeof LogsViewsDestroyInput.Type;
@@ -27,5 +26,4 @@ export type LogsViewsDestroyOutput = typeof LogsViewsDestroyOutput.Type;
 export const logsViewsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LogsViewsDestroyInput,
   outputSchema: LogsViewsDestroyOutput,
-  errors: [Forbidden, NotFound] as const,
 }));

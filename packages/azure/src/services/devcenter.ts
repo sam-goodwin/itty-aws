@@ -14,6 +14,8 @@ export const AttachedNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    attachedNetworkConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -112,6 +114,8 @@ export type AttachedNetworksCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param attachedNetworkConnectionName - The name of the attached NetworkConnection.
  */
 export const AttachedNetworksCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -123,6 +127,8 @@ export const AttachedNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    attachedNetworkConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -146,6 +152,8 @@ export type AttachedNetworksDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param attachedNetworkConnectionName - The name of the attached NetworkConnection.
  */
 export const AttachedNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -158,6 +166,8 @@ export const AttachedNetworksGetByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    attachedNetworkConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -199,6 +209,8 @@ export type AttachedNetworksGetByDevCenterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param attachedNetworkConnectionName - The name of the attached NetworkConnection.
  */
 export const AttachedNetworksGetByDevCenter =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -210,6 +222,8 @@ export const AttachedNetworksGetByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    attachedNetworkConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -251,6 +265,8 @@ export type AttachedNetworksGetByProjectOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param attachedNetworkConnectionName - The name of the attached NetworkConnection.
  */
 export const AttachedNetworksGetByProject =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -262,6 +278,7 @@ export const AttachedNetworksListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -321,6 +338,7 @@ export type AttachedNetworksListByDevCenterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const AttachedNetworksListByDevCenter =
@@ -333,6 +351,7 @@ export const AttachedNetworksListByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -392,6 +411,7 @@ export type AttachedNetworksListByProjectOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const AttachedNetworksListByProject =
@@ -403,6 +423,8 @@ export const AttachedNetworksListByProject =
 export const CatalogsConnectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -423,6 +445,8 @@ export type CatalogsConnectOutput = typeof CatalogsConnectOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
  */
 export const CatalogsConnect = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CatalogsConnectInput,
@@ -433,6 +457,8 @@ export const CatalogsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         gitHub: Schema.optional(
@@ -513,6 +539,8 @@ export type CatalogsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
  */
 export const CatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -524,6 +552,8 @@ export const CatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -544,6 +574,8 @@ export type CatalogsDeleteOutput = typeof CatalogsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
  */
 export const CatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CatalogsDeleteInput,
@@ -553,6 +585,8 @@ export const CatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const CatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -591,6 +625,8 @@ export type CatalogsGetOutput = typeof CatalogsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
  */
 export const CatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CatalogsGetInput,
@@ -598,7 +634,12 @@ export const CatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CatalogsGetSyncErrorDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/getSyncErrorDetails",
@@ -647,6 +688,12 @@ export type CatalogsGetSyncErrorDetailsOutput =
 // The operation
 /**
  * Gets catalog synchronization error details
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
  */
 export const CatalogsGetSyncErrorDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -659,6 +706,7 @@ export const CatalogsListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -718,6 +766,7 @@ export type CatalogsListByDevCenterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const CatalogsListByDevCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -730,6 +779,8 @@ export const CatalogsListByDevCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CatalogsSyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
@@ -750,6 +801,8 @@ export type CatalogsSyncOutput = typeof CatalogsSyncOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
  */
 export const CatalogsSync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CatalogsSyncInput,
@@ -759,6 +812,8 @@ export const CatalogsSync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const CatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       gitHub: Schema.optional(
@@ -819,6 +874,8 @@ export type CatalogsUpdateOutput = typeof CatalogsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
  */
 export const CatalogsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CatalogsUpdateInput,
@@ -905,7 +962,13 @@ export const CheckScopedNameAvailabilityExecute =
   }));
 // Input Schema
 export const CustomizationTasksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    taskName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/tasks/{taskName}",
@@ -941,6 +1004,13 @@ export type CustomizationTasksGetOutput =
 // The operation
 /**
  * Gets a Task from the catalog
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
+ * @param taskName - The name of the Task.
  */
 export const CustomizationTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -950,7 +1020,13 @@ export const CustomizationTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CustomizationTasksGetErrorDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    taskName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/tasks/{taskName}/getErrorDetails",
@@ -978,6 +1054,13 @@ export type CustomizationTasksGetErrorDetailsOutput =
 // The operation
 /**
  * Gets Customization Task error details
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
+ * @param taskName - The name of the Task.
  */
 export const CustomizationTasksGetErrorDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -986,7 +1069,13 @@ export const CustomizationTasksGetErrorDetails =
   }));
 // Input Schema
 export const CustomizationTasksListByCatalogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/tasks",
@@ -1040,6 +1129,13 @@ export type CustomizationTasksListByCatalogOutput =
 // The operation
 /**
  * List Tasks in the catalog.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const CustomizationTasksListByCatalog =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1049,6 +1145,10 @@ export const CustomizationTasksListByCatalog =
 // Input Schema
 export const DevBoxDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    devBoxDefinitionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         imageReference: Schema.optional(
@@ -1113,6 +1213,12 @@ export type DevBoxDefinitionsCreateOrUpdateOutput =
 // The operation
 /**
  * Creates or updates a Dev Box definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param devBoxDefinitionName - The name of the Dev Box definition.
  */
 export const DevBoxDefinitionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1121,7 +1227,12 @@ export const DevBoxDefinitionsCreateOrUpdate =
   }));
 // Input Schema
 export const DevBoxDefinitionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    devBoxDefinitionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}",
@@ -1140,6 +1251,12 @@ export type DevBoxDefinitionsDeleteOutput =
 // The operation
 /**
  * Deletes a Dev Box definition
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param devBoxDefinitionName - The name of the Dev Box definition.
  */
 export const DevBoxDefinitionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1149,7 +1266,12 @@ export const DevBoxDefinitionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DevBoxDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    devBoxDefinitionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}",
@@ -1184,6 +1306,12 @@ export type DevBoxDefinitionsGetOutput = typeof DevBoxDefinitionsGetOutput.Type;
 // The operation
 /**
  * Gets a Dev Box definition
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param devBoxDefinitionName - The name of the Dev Box definition.
  */
 export const DevBoxDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1193,7 +1321,12 @@ export const DevBoxDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DevBoxDefinitionsGetByProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    devBoxDefinitionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/devboxdefinitions/{devBoxDefinitionName}",
@@ -1230,6 +1363,12 @@ export type DevBoxDefinitionsGetByProjectOutput =
 // The operation
 /**
  * Gets a Dev Box definition configured for a project
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param devBoxDefinitionName - The name of the Dev Box definition.
  */
 export const DevBoxDefinitionsGetByProject =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1238,7 +1377,12 @@ export const DevBoxDefinitionsGetByProject =
   }));
 // Input Schema
 export const DevBoxDefinitionsListByDevCenterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions",
@@ -1292,6 +1436,12 @@ export type DevBoxDefinitionsListByDevCenterOutput =
 // The operation
 /**
  * List Dev Box definitions for a devcenter.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const DevBoxDefinitionsListByDevCenter =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1300,7 +1450,12 @@ export const DevBoxDefinitionsListByDevCenter =
   }));
 // Input Schema
 export const DevBoxDefinitionsListByProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/devboxdefinitions",
@@ -1354,6 +1509,12 @@ export type DevBoxDefinitionsListByProjectOutput =
 // The operation
 /**
  * List Dev Box definitions configured for a project.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const DevBoxDefinitionsListByProject =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1363,6 +1524,10 @@ export const DevBoxDefinitionsListByProject =
 // Input Schema
 export const DevBoxDefinitionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    devBoxDefinitionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         imageReference: Schema.optional(
@@ -1427,6 +1592,12 @@ export type DevBoxDefinitionsUpdateOutput =
 // The operation
 /**
  * Partially updates a Dev Box definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param devBoxDefinitionName - The name of the Dev Box definition.
  */
 export const DevBoxDefinitionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1439,6 +1610,7 @@ export const DevCentersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         encryption: Schema.optional(
@@ -1553,6 +1725,7 @@ export type DevCentersCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
  */
 export const DevCentersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1564,6 +1737,7 @@ export const DevCentersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DevCentersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -1584,6 +1758,7 @@ export type DevCentersDeleteOutput = typeof DevCentersDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
  */
 export const DevCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DevCentersDeleteInput,
@@ -1593,6 +1768,7 @@ export const DevCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DevCentersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1631,6 +1807,7 @@ export type DevCentersGetOutput = typeof DevCentersGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
  */
 export const DevCentersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DevCentersGetInput,
@@ -1780,6 +1957,7 @@ export const DevCentersListBySubscription =
 export const DevCentersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
   identity: Schema.optional(
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
@@ -1893,6 +2071,7 @@ export type DevCentersUpdateOutput = typeof DevCentersUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
  */
 export const DevCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DevCentersUpdateInput,
@@ -1900,7 +2079,13 @@ export const DevCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const EnvironmentDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    environmentDefinitionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}",
@@ -1937,6 +2122,13 @@ export type EnvironmentDefinitionsGetOutput =
 // The operation
 /**
  * Gets an environment definition from the catalog.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
+ * @param environmentDefinitionName - The name of the Environment Definition.
  */
 export const EnvironmentDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1946,7 +2138,13 @@ export const EnvironmentDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const EnvironmentDefinitionsGetByProjectCatalogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    environmentDefinitionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}",
@@ -1983,6 +2181,13 @@ export type EnvironmentDefinitionsGetByProjectCatalogOutput =
 // The operation
 /**
  * Gets an environment definition from the catalog.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
+ * @param environmentDefinitionName - The name of the Environment Definition.
  */
 export const EnvironmentDefinitionsGetByProjectCatalog =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1991,7 +2196,13 @@ export const EnvironmentDefinitionsGetByProjectCatalog =
   }));
 // Input Schema
 export const EnvironmentDefinitionsGetErrorDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    environmentDefinitionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}/getErrorDetails",
@@ -2019,6 +2230,13 @@ export type EnvironmentDefinitionsGetErrorDetailsOutput =
 // The operation
 /**
  * Gets Environment Definition error details
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
+ * @param environmentDefinitionName - The name of the Environment Definition.
  */
 export const EnvironmentDefinitionsGetErrorDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2030,6 +2248,8 @@ export const EnvironmentDefinitionsListByCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -2089,6 +2309,8 @@ export type EnvironmentDefinitionsListByCatalogOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param catalogName - The name of the Catalog.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const EnvironmentDefinitionsListByCatalog =
@@ -2101,6 +2323,8 @@ export const EnvironmentDefinitionsListByProjectCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2159,6 +2383,8 @@ export type EnvironmentDefinitionsListByProjectCatalogOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
  */
 export const EnvironmentDefinitionsListByProjectCatalog =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2170,6 +2396,8 @@ export const EnvironmentTypesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    environmentTypeName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -2234,6 +2462,8 @@ export type EnvironmentTypesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param environmentTypeName - The name of the environment type.
  */
 export const EnvironmentTypesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2245,6 +2475,8 @@ export const EnvironmentTypesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    environmentTypeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2268,6 +2500,8 @@ export type EnvironmentTypesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param environmentTypeName - The name of the environment type.
  */
 export const EnvironmentTypesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2280,6 +2514,8 @@ export const EnvironmentTypesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    environmentTypeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2319,6 +2555,8 @@ export type EnvironmentTypesGetOutput = typeof EnvironmentTypesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param environmentTypeName - The name of the environment type.
  */
 export const EnvironmentTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentTypesGetInput,
@@ -2329,6 +2567,7 @@ export const EnvironmentTypesListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -2388,6 +2627,7 @@ export type EnvironmentTypesListByDevCenterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const EnvironmentTypesListByDevCenter =
@@ -2400,6 +2640,8 @@ export const EnvironmentTypesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    environmentTypeName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -2447,6 +2689,8 @@ export type EnvironmentTypesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param environmentTypeName - The name of the environment type.
  */
 export const EnvironmentTypesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2459,6 +2703,8 @@ export const GalleriesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    galleryName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -2542,6 +2788,8 @@ export type GalleriesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param galleryName - The name of the gallery.
  */
 export const GalleriesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2553,6 +2801,8 @@ export const GalleriesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const GalleriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
+  galleryName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -2573,6 +2823,8 @@ export type GalleriesDeleteOutput = typeof GalleriesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param galleryName - The name of the gallery.
  */
 export const GalleriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GalleriesDeleteInput,
@@ -2582,6 +2834,8 @@ export const GalleriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GalleriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
+  galleryName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2620,6 +2874,8 @@ export type GalleriesGetOutput = typeof GalleriesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param galleryName - The name of the gallery.
  */
 export const GalleriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GalleriesGetInput,
@@ -2630,6 +2886,7 @@ export const GalleriesListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -2689,6 +2946,7 @@ export type GalleriesListByDevCenterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const GalleriesListByDevCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2701,6 +2959,9 @@ export const GalleriesListByDevCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
+  galleryName: Schema.String.pipe(T.PathParam()),
+  imageName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -2739,6 +3000,9 @@ export type ImagesGetOutput = typeof ImagesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param galleryName - The name of the gallery.
+ * @param imageName - The name of the image.
  */
 export const ImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ImagesGetInput,
@@ -2750,6 +3014,7 @@ export const ImagesGetByProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
+    imageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2790,6 +3055,7 @@ export type ImagesGetByProjectOutput = typeof ImagesGetByProjectOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param projectName - The name of the project.
+ * @param imageName - The name of the image.
  */
 export const ImagesGetByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ImagesGetByProjectInput,
@@ -2800,6 +3066,7 @@ export const ImagesListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -2858,6 +3125,7 @@ export type ImagesListByDevCenterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const ImagesListByDevCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2871,6 +3139,8 @@ export const ImagesListByGalleryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    galleryName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -2928,6 +3198,8 @@ export type ImagesListByGalleryOutput = typeof ImagesListByGalleryOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param galleryName - The name of the gallery.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const ImagesListByGallery = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3006,6 +3278,10 @@ export const ImagesListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ImageVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  devCenterName: Schema.String.pipe(T.PathParam()),
+  galleryName: Schema.String.pipe(T.PathParam()),
+  imageName: Schema.String.pipe(T.PathParam()),
+  versionName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -3046,6 +3322,10 @@ export type ImageVersionsGetOutput = typeof ImageVersionsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param galleryName - The name of the gallery.
+ * @param imageName - The name of the image.
+ * @param versionName - The version of the image.
  */
 export const ImageVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ImageVersionsGetInput,
@@ -3057,6 +3337,8 @@ export const ImageVersionsGetByProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
+    imageName: Schema.String.pipe(T.PathParam()),
+    versionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3099,6 +3381,8 @@ export type ImageVersionsGetByProjectOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param projectName - The name of the project.
+ * @param imageName - The name of the image.
+ * @param versionName - The version of the image.
  */
 export const ImageVersionsGetByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3111,6 +3395,9 @@ export const ImageVersionsListByImageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    galleryName: Schema.String.pipe(T.PathParam()),
+    imageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3169,6 +3456,9 @@ export type ImageVersionsListByImageOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param galleryName - The name of the gallery.
+ * @param imageName - The name of the image.
  */
 export const ImageVersionsListByImage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3182,6 +3472,7 @@ export const ImageVersionsListByProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
+    imageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3241,6 +3532,7 @@ export type ImageVersionsListByProjectOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param projectName - The name of the project.
+ * @param imageName - The name of the image.
  */
 export const ImageVersionsListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3251,6 +3543,9 @@ export const ImageVersionsListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const NetworkConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         subnetId: Schema.optional(Schema.String),
@@ -3299,6 +3594,11 @@ export type NetworkConnectionsCreateOrUpdateOutput =
 // The operation
 /**
  * Creates or updates a Network Connections resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkConnectionName - Name of the Network Connection that can be applied to a Pool.
  */
 export const NetworkConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3307,7 +3607,11 @@ export const NetworkConnectionsCreateOrUpdate =
   }));
 // Input Schema
 export const NetworkConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}",
@@ -3326,6 +3630,11 @@ export type NetworkConnectionsDeleteOutput =
 // The operation
 /**
  * Deletes a Network Connections resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkConnectionName - Name of the Network Connection that can be applied to a Pool.
  */
 export const NetworkConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3335,7 +3644,11 @@ export const NetworkConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const NetworkConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}",
@@ -3371,6 +3684,11 @@ export type NetworkConnectionsGetOutput =
 // The operation
 /**
  * Gets a network connection resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkConnectionName - Name of the Network Connection that can be applied to a Pool.
  */
 export const NetworkConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3383,6 +3701,7 @@ export const NetworkConnectionsGetHealthDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3424,6 +3743,7 @@ export type NetworkConnectionsGetHealthDetailsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkConnectionName - Name of the Network Connection that can be applied to a Pool.
  */
 export const NetworkConnectionsGetHealthDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3432,7 +3752,11 @@ export const NetworkConnectionsGetHealthDetails =
   }));
 // Input Schema
 export const NetworkConnectionsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections",
@@ -3486,6 +3810,11 @@ export type NetworkConnectionsListByResourceGroupOutput =
 // The operation
 /**
  * Lists network connections in a resource group
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const NetworkConnectionsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3494,7 +3823,10 @@ export const NetworkConnectionsListByResourceGroup =
   }));
 // Input Schema
 export const NetworkConnectionsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/networkConnections",
@@ -3548,6 +3880,10 @@ export type NetworkConnectionsListBySubscriptionOutput =
 // The operation
 /**
  * Lists network connections in a subscription
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const NetworkConnectionsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3556,7 +3892,12 @@ export const NetworkConnectionsListBySubscription =
   }));
 // Input Schema
 export const NetworkConnectionsListHealthDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkConnectionName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/healthChecks",
@@ -3610,6 +3951,12 @@ export type NetworkConnectionsListHealthDetailsOutput =
 // The operation
 /**
  * Lists health check status details
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param networkConnectionName - Name of the Network Connection that can be applied to a Pool.
  */
 export const NetworkConnectionsListHealthDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3618,7 +3965,12 @@ export const NetworkConnectionsListHealthDetails =
   }));
 // Input Schema
 export const NetworkConnectionsListOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkConnectionName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/outboundNetworkDependenciesEndpoints",
@@ -3661,6 +4013,12 @@ export type NetworkConnectionsListOutboundNetworkDependenciesEndpointsOutput =
 // The operation
 /**
  * Lists the endpoints that agents may call as part of Dev Box service administration. These FQDNs should be allowed for outbound access in order for the Dev Box service to function.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param networkConnectionName - Name of the Network Connection that can be applied to a Pool.
  */
 export const NetworkConnectionsListOutboundNetworkDependenciesEndpoints =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3674,6 +4032,7 @@ export const NetworkConnectionsRunHealthChecksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3697,6 +4056,7 @@ export type NetworkConnectionsRunHealthChecksOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkConnectionName - Name of the Network Connection that can be applied to a Pool.
  */
 export const NetworkConnectionsRunHealthChecks =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3706,6 +4066,9 @@ export const NetworkConnectionsRunHealthChecks =
 // Input Schema
 export const NetworkConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         subnetId: Schema.optional(Schema.String),
@@ -3754,6 +4117,11 @@ export type NetworkConnectionsUpdateOutput =
 // The operation
 /**
  * Partially updates a Network Connection
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkConnectionName - Name of the Network Connection that can be applied to a Pool.
  */
 export const NetworkConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3813,6 +4181,8 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OperationStatusesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3889,6 +4259,8 @@ export type OperationStatusesGetOutput = typeof OperationStatusesGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The Azure region
+ * @param operationId - The ID of an ongoing async operation
  */
 export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3899,6 +4271,10 @@ export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         devBoxDefinitionType: Schema.optional(
@@ -3998,15 +4374,24 @@ export type PoolsCreateOrUpdateOutput = typeof PoolsCreateOrUpdateOutput.Type;
 // The operation
 /**
  * Creates or updates a machine pool
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param poolName - Name of the pool.
  */
 export const PoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PoolsCreateOrUpdateInput,
   outputSchema: PoolsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
@@ -4022,13 +4407,24 @@ export type PoolsDeleteOutput = typeof PoolsDeleteOutput.Type;
 // The operation
 /**
  * Deletes a machine pool
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param poolName - Name of the pool.
  */
 export const PoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PoolsDeleteInput,
   outputSchema: PoolsDeleteOutput,
 }));
 // Input Schema
-export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
@@ -4062,6 +4458,12 @@ export type PoolsGetOutput = typeof PoolsGetOutput.Type;
 // The operation
 /**
  * Gets a machine pool
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param poolName - Name of the pool.
  */
 export const PoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PoolsGetInput,
@@ -4069,7 +4471,12 @@ export const PoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PoolsListByProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools",
@@ -4121,6 +4528,12 @@ export type PoolsListByProjectOutput = typeof PoolsListByProjectOutput.Type;
 // The operation
 /**
  * Lists pools for a project
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const PoolsListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PoolsListByProjectInput,
@@ -4132,6 +4545,7 @@ export const PoolsRunHealthChecksInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4154,6 +4568,7 @@ export type PoolsRunHealthChecksOutput = typeof PoolsRunHealthChecksOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param projectName - The name of the project.
+ * @param poolName - Name of the pool.
  */
 export const PoolsRunHealthChecks = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4163,6 +4578,10 @@ export const PoolsRunHealthChecks = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       devBoxDefinitionType: Schema.optional(
@@ -4261,6 +4680,12 @@ export type PoolsUpdateOutput = typeof PoolsUpdateOutput.Type;
 // The operation
 /**
  * Partially updates a machine pool
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param poolName - Name of the pool.
  */
 export const PoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PoolsUpdateInput,
@@ -4271,6 +4696,8 @@ export const ProjectAllowedEnvironmentTypesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    environmentTypeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4312,6 +4739,8 @@ export type ProjectAllowedEnvironmentTypesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param environmentTypeName - The name of the environment type.
  */
 export const ProjectAllowedEnvironmentTypesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4323,6 +4752,7 @@ export const ProjectAllowedEnvironmentTypesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -4382,6 +4812,7 @@ export type ProjectAllowedEnvironmentTypesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const ProjectAllowedEnvironmentTypesList =
@@ -4394,6 +4825,9 @@ export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    environmentDefinitionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4426,6 +4860,9 @@ export type ProjectCatalogEnvironmentDefinitionsGetErrorDetailsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
+ * @param environmentDefinitionName - The name of the Environment Definition.
  */
 export const ProjectCatalogEnvironmentDefinitionsGetErrorDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4434,7 +4871,14 @@ export const ProjectCatalogEnvironmentDefinitionsGetErrorDetails =
   }));
 // Input Schema
 export const ProjectCatalogImageDefinitionBuildCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    imageDefinitionName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}/cancel",
@@ -4453,6 +4897,14 @@ export type ProjectCatalogImageDefinitionBuildCancelOutput =
 // The operation
 /**
  * Cancels the specified build for an image definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
+ * @param imageDefinitionName - The name of the Image Definition.
+ * @param buildName - The ID of the Image Definition Build.
  */
 export const ProjectCatalogImageDefinitionBuildCancel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4461,7 +4913,14 @@ export const ProjectCatalogImageDefinitionBuildCancel =
   }));
 // Input Schema
 export const ProjectCatalogImageDefinitionBuildGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    imageDefinitionName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}",
@@ -4498,6 +4957,14 @@ export type ProjectCatalogImageDefinitionBuildGetOutput =
 // The operation
 /**
  * Gets a build for a specified image definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
+ * @param imageDefinitionName - The name of the Image Definition.
+ * @param buildName - The ID of the Image Definition Build.
  */
 export const ProjectCatalogImageDefinitionBuildGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4509,6 +4976,10 @@ export const ProjectCatalogImageDefinitionBuildGetBuildDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    imageDefinitionName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4550,6 +5021,10 @@ export type ProjectCatalogImageDefinitionBuildGetBuildDetailsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
+ * @param imageDefinitionName - The name of the Image Definition.
+ * @param buildName - The ID of the Image Definition Build.
  */
 export const ProjectCatalogImageDefinitionBuildGetBuildDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4558,7 +5033,13 @@ export const ProjectCatalogImageDefinitionBuildGetBuildDetails =
   }));
 // Input Schema
 export const ProjectCatalogImageDefinitionBuildsListByImageDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    imageDefinitionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds",
@@ -4612,6 +5093,13 @@ export type ProjectCatalogImageDefinitionBuildsListByImageDefinitionOutput =
 // The operation
 /**
  * Lists builds for a specified image definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
+ * @param imageDefinitionName - The name of the Image Definition.
  */
 export const ProjectCatalogImageDefinitionBuildsListByImageDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4621,7 +5109,13 @@ export const ProjectCatalogImageDefinitionBuildsListByImageDefinition =
   }));
 // Input Schema
 export const ProjectCatalogImageDefinitionsBuildImageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    imageDefinitionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/buildImage",
@@ -4640,6 +5134,13 @@ export type ProjectCatalogImageDefinitionsBuildImageOutput =
 // The operation
 /**
  * Builds an image for the specified Image Definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
+ * @param imageDefinitionName - The name of the Image Definition.
  */
 export const ProjectCatalogImageDefinitionsBuildImage =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4648,7 +5149,13 @@ export const ProjectCatalogImageDefinitionsBuildImage =
   }));
 // Input Schema
 export const ProjectCatalogImageDefinitionsGetByProjectCatalogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    imageDefinitionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}",
@@ -4685,6 +5192,13 @@ export type ProjectCatalogImageDefinitionsGetByProjectCatalogOutput =
 // The operation
 /**
  * Gets an Image Definition from the catalog
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
+ * @param imageDefinitionName - The name of the Image Definition.
  */
 export const ProjectCatalogImageDefinitionsGetByProjectCatalog =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4696,6 +5210,9 @@ export const ProjectCatalogImageDefinitionsGetErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    imageDefinitionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4728,6 +5245,9 @@ export type ProjectCatalogImageDefinitionsGetErrorDetailsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
+ * @param imageDefinitionName - The name of the Image Definition.
  */
 export const ProjectCatalogImageDefinitionsGetErrorDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4736,7 +5256,13 @@ export const ProjectCatalogImageDefinitionsGetErrorDetails =
   }));
 // Input Schema
 export const ProjectCatalogImageDefinitionsListByProjectCatalogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions",
@@ -4790,6 +5316,13 @@ export type ProjectCatalogImageDefinitionsListByProjectCatalogOutput =
 // The operation
 /**
  * List Image Definitions in the catalog.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const ProjectCatalogImageDefinitionsListByProjectCatalog =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4801,6 +5334,8 @@ export const ProjectCatalogsConnectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4824,6 +5359,8 @@ export type ProjectCatalogsConnectOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
  */
 export const ProjectCatalogsConnect = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4836,6 +5373,8 @@ export const ProjectCatalogsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         gitHub: Schema.optional(
@@ -4916,6 +5455,8 @@ export type ProjectCatalogsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
  */
 export const ProjectCatalogsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4927,6 +5468,8 @@ export const ProjectCatalogsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -4949,6 +5492,8 @@ export type ProjectCatalogsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
  */
 export const ProjectCatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4961,6 +5506,8 @@ export const ProjectCatalogsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5000,6 +5547,8 @@ export type ProjectCatalogsGetOutput = typeof ProjectCatalogsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
  */
 export const ProjectCatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectCatalogsGetInput,
@@ -5010,6 +5559,8 @@ export const ProjectCatalogsGetSyncErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5063,6 +5614,8 @@ export type ProjectCatalogsGetSyncErrorDetailsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
  */
 export const ProjectCatalogsGetSyncErrorDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5074,6 +5627,7 @@ export const ProjectCatalogsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -5131,6 +5685,7 @@ export type ProjectCatalogsListOutput = typeof ProjectCatalogsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const ProjectCatalogsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5142,6 +5697,8 @@ export const ProjectCatalogsPatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         gitHub: Schema.optional(
@@ -5203,6 +5760,8 @@ export type ProjectCatalogsPatchOutput = typeof ProjectCatalogsPatchOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
  */
 export const ProjectCatalogsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5215,6 +5774,8 @@ export const ProjectCatalogsSyncInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    catalogName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5236,6 +5797,8 @@ export type ProjectCatalogsSyncOutput = typeof ProjectCatalogsSyncOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param catalogName - The name of the Catalog.
  */
 export const ProjectCatalogsSync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectCatalogsSyncInput,
@@ -5246,6 +5809,8 @@ export const ProjectEnvironmentTypesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    environmentTypeName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         deploymentTargetId: Schema.optional(Schema.String),
@@ -5363,6 +5928,8 @@ export type ProjectEnvironmentTypesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param environmentTypeName - The name of the environment type.
  */
 export const ProjectEnvironmentTypesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5374,6 +5941,8 @@ export const ProjectEnvironmentTypesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    environmentTypeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5397,6 +5966,8 @@ export type ProjectEnvironmentTypesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param environmentTypeName - The name of the environment type.
  */
 export const ProjectEnvironmentTypesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5408,6 +5979,8 @@ export const ProjectEnvironmentTypesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    environmentTypeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5449,6 +6022,8 @@ export type ProjectEnvironmentTypesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param environmentTypeName - The name of the environment type.
  */
 export const ProjectEnvironmentTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5461,6 +6036,7 @@ export const ProjectEnvironmentTypesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -5520,6 +6096,7 @@ export type ProjectEnvironmentTypesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const ProjectEnvironmentTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5533,6 +6110,8 @@ export const ProjectEnvironmentTypesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    environmentTypeName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         deploymentTargetId: Schema.optional(Schema.String),
@@ -5632,6 +6211,8 @@ export type ProjectEnvironmentTypesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param environmentTypeName - The name of the environment type.
  */
 export const ProjectEnvironmentTypesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5643,6 +6224,8 @@ export const ProjectPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    projectPolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         resourcePolicies: Schema.optional(
@@ -5718,6 +6301,8 @@ export type ProjectPoliciesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param projectPolicyName - The name of the project policy.
  */
 export const ProjectPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5729,6 +6314,8 @@ export const ProjectPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    projectPolicyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5751,6 +6338,8 @@ export type ProjectPoliciesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param projectPolicyName - The name of the project policy.
  */
 export const ProjectPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5763,6 +6352,8 @@ export const ProjectPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    projectPolicyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5802,6 +6393,8 @@ export type ProjectPoliciesGetOutput = typeof ProjectPoliciesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param projectPolicyName - The name of the project policy.
  */
 export const ProjectPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectPoliciesGetInput,
@@ -5812,6 +6405,7 @@ export const ProjectPoliciesListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -5871,6 +6465,7 @@ export type ProjectPoliciesListByDevCenterOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const ProjectPoliciesListByDevCenter =
@@ -5883,6 +6478,8 @@ export const ProjectPoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    devCenterName: Schema.String.pipe(T.PathParam()),
+    projectPolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         resourcePolicies: Schema.optional(
@@ -5940,6 +6537,8 @@ export type ProjectPoliciesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param devCenterName - The name of the devcenter.
+ * @param projectPolicyName - The name of the project policy.
  */
 export const ProjectPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5952,6 +6551,7 @@ export const ProjectsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         devCenterId: Schema.optional(Schema.String),
@@ -6033,6 +6633,7 @@ export type ProjectsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
  */
 export const ProjectsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6044,6 +6645,7 @@ export const ProjectsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -6064,6 +6666,7 @@ export type ProjectsDeleteOutput = typeof ProjectsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
  */
 export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectsDeleteInput,
@@ -6073,6 +6676,7 @@ export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -6111,6 +6715,7 @@ export type ProjectsGetOutput = typeof ProjectsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
  */
 export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectsGetInput,
@@ -6121,6 +6726,7 @@ export const ProjectsGetInheritedSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6159,6 +6765,7 @@ export type ProjectsGetInheritedSettingsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
  */
 export const ProjectsGetInheritedSettings =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6311,6 +6918,7 @@ export const ProjectsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       devCenterId: Schema.optional(Schema.String),
@@ -6389,6 +6997,7 @@ export type ProjectsUpdateOutput = typeof ProjectsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
  */
 export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectsUpdateInput,
@@ -6397,6 +7006,12 @@ export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
+    scheduleName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
     properties: Schema.optional(
       Schema.Struct({
         tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -6457,6 +7072,14 @@ export type SchedulesCreateOrUpdateOutput =
 // The operation
 /**
  * Creates or updates a Schedule.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param poolName - Name of the pool.
+ * @param scheduleName - The name of the schedule that uniquely identifies it.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const SchedulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6465,9 +7088,14 @@ export const SchedulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  scheduleName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
@@ -6483,15 +7111,28 @@ export type SchedulesDeleteOutput = typeof SchedulesDeleteOutput.Type;
 // The operation
 /**
  * Deletes a Scheduled.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param poolName - Name of the pool.
+ * @param scheduleName - The name of the schedule that uniquely identifies it.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const SchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SchedulesDeleteInput,
   outputSchema: SchedulesDeleteOutput,
 }));
 // Input Schema
-export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  scheduleName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
@@ -6525,6 +7166,14 @@ export type SchedulesGetOutput = typeof SchedulesGetOutput.Type;
 // The operation
 /**
  * Gets a schedule resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param poolName - Name of the pool.
+ * @param scheduleName - The name of the schedule that uniquely identifies it.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const SchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SchedulesGetInput,
@@ -6532,7 +7181,13 @@ export const SchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SchedulesListByPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules",
@@ -6584,6 +7239,13 @@ export type SchedulesListByPoolOutput = typeof SchedulesListByPoolOutput.Type;
 // The operation
 /**
  * Lists schedules for a pool
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param poolName - Name of the pool.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const SchedulesListByPool = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SchedulesListByPoolInput,
@@ -6591,6 +7253,12 @@ export const SchedulesListByPool = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  scheduleName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
   properties: Schema.optional(
     Schema.Struct({
       tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -6631,6 +7299,14 @@ export type SchedulesUpdateOutput = typeof SchedulesUpdateOutput.Type;
 // The operation
 /**
  * Partially updates a Scheduled.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
+ * @param poolName - Name of the pool.
+ * @param scheduleName - The name of the schedule that uniquely identifies it.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const SchedulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SchedulesUpdateInput,
@@ -6641,6 +7317,7 @@ export const SkusListByProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -6678,6 +7355,7 @@ export type SkusListByProjectOutput = typeof SkusListByProjectOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param projectName - The name of the project.
  */
 export const SkusListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SkusListByProjectInput,
@@ -6685,7 +7363,10 @@ export const SkusListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SkusListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/skus",
@@ -6719,6 +7400,10 @@ export type SkusListBySubscriptionOutput =
 // The operation
 /**
  * Lists the Microsoft.DevCenter SKUs available in a subscription
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  */
 export const SkusListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6730,6 +7415,7 @@ export const SkusListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const UsagesListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6768,6 +7454,7 @@ export type UsagesListByLocationOutput = typeof UsagesListByLocationOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The Azure region
  */
 export const UsagesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

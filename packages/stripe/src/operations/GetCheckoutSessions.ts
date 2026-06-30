@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const GetCheckoutSessionsInput =
@@ -61,7 +61,7 @@ export const GetCheckoutSessionsOutput =
         ),
         cancel_url: Schema.NullOr(Schema.String),
         client_reference_id: Schema.NullOr(Schema.String),
-        client_secret: SensitiveNullableString,
+        client_secret: SensitiveOutputNullableString,
         collected_information: Schema.Unknown,
         consent: Schema.Unknown,
         consent_collection: Schema.Unknown,
@@ -309,6 +309,7 @@ export const GetCheckoutSessionsOutput =
             "zh-TW",
           ]),
         ),
+        managed_payments: Schema.Unknown,
         metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
         mode: Schema.Literals(["payment", "setup", "subscription"]),
         name_collection: Schema.optional(

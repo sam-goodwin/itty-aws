@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostAccountSessionsInput =
@@ -32,6 +32,12 @@ export const PostAccountSessionsInput =
               external_account_collection: Schema.optional(Schema.Boolean),
             }),
           ),
+        }),
+      ),
+      balance_report: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          features: Schema.optional(Schema.Struct({})),
         }),
       ),
       balances: Schema.optional(
@@ -202,6 +208,12 @@ export const PostAccountSessionsInput =
           features: Schema.optional(Schema.Struct({})),
         }),
       ),
+      payout_reconciliation_report: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          features: Schema.optional(Schema.Struct({})),
+        }),
+      ),
       payouts: Schema.optional(
         Schema.Struct({
           enabled: Schema.Boolean,
@@ -251,7 +263,7 @@ export type PostAccountSessionsInput = typeof PostAccountSessionsInput.Type;
 export const PostAccountSessionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String,
-    client_secret: SensitiveString,
+    client_secret: SensitiveOutputString,
     components: Schema.Struct({
       account_management: Schema.Struct({
         enabled: Schema.Boolean,
@@ -266,6 +278,10 @@ export const PostAccountSessionsOutput =
           disable_stripe_user_authentication: Schema.Boolean,
           external_account_collection: Schema.Boolean,
         }),
+      }),
+      balance_report: Schema.Struct({
+        enabled: Schema.Boolean,
+        features: Schema.Struct({}),
       }),
       balances: Schema.Struct({
         enabled: Schema.Boolean,
@@ -366,6 +382,10 @@ export const PostAccountSessionsOutput =
         }),
       }),
       payout_details: Schema.Struct({
+        enabled: Schema.Boolean,
+        features: Schema.Struct({}),
+      }),
+      payout_reconciliation_report: Schema.Struct({
         enabled: Schema.Boolean,
         features: Schema.Struct({}),
       }),

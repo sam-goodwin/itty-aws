@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ConversationsQueueDestroyInput =
@@ -12,7 +11,7 @@ export const ConversationsQueueDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/conversations/{conversation}/queue/{queue_id}/",
+      path: "/api/projects/{project_id}/conversations/{conversation}/queue/{queue_id}/",
     }),
   );
 export type ConversationsQueueDestroyInput =
@@ -34,6 +33,5 @@ export const conversationsQueueDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ConversationsQueueDestroyInput,
     outputSchema: ConversationsQueueDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

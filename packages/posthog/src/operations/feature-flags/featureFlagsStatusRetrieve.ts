@@ -22,6 +22,14 @@ export const FeatureFlagsStatusRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
+    rollout: Schema.optional(
+      Schema.Struct({
+        effectively_full_rollout: Schema.Boolean,
+        has_targeting_conditions: Schema.Boolean,
+        max_rollout_percentage: Schema.NullOr(Schema.Number),
+        is_multivariate: Schema.Boolean,
+      }),
+    ),
   });
 export type FeatureFlagsStatusRetrieveOutput =
   typeof FeatureFlagsStatusRetrieveOutput.Type;

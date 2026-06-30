@@ -413,6 +413,7 @@ export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
             Schema.Struct({
               lastTransitionTime: Schema.optional(Schema.String),
               message: Schema.optional(Schema.String),
+              observedGeneration: Schema.optional(Schema.Number),
               reason: Schema.optional(Schema.String),
               status: Schema.String,
               type: Schema.String,
@@ -786,6 +787,7 @@ export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
             Schema.Struct({
               lastTransitionTime: Schema.optional(Schema.String),
               message: Schema.optional(Schema.String),
+              observedGeneration: Schema.optional(Schema.Number),
               reason: Schema.optional(Schema.String),
               status: Schema.String,
               type: Schema.String,
@@ -2180,6 +2182,7 @@ export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput =
                 Schema.Struct({
                   lastTransitionTime: Schema.optional(Schema.String),
                   message: Schema.optional(Schema.String),
+                  observedGeneration: Schema.optional(Schema.Number),
                   reason: Schema.optional(Schema.String),
                   status: Schema.String,
                   type: Schema.String,
@@ -2658,6 +2661,7 @@ export const ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
                 Schema.Struct({
                   lastTransitionTime: Schema.optional(Schema.String),
                   message: Schema.optional(Schema.String),
+                  observedGeneration: Schema.optional(Schema.Number),
                   reason: Schema.optional(Schema.String),
                   status: Schema.String,
                   type: Schema.String,
@@ -3344,6 +3348,7 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
             Schema.Struct({
               lastTransitionTime: Schema.optional(Schema.String),
               message: Schema.optional(Schema.String),
+              observedGeneration: Schema.optional(Schema.Number),
               reason: Schema.optional(Schema.String),
               status: Schema.String,
               type: Schema.String,
@@ -3749,6 +3754,7 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
             Schema.Struct({
               lastTransitionTime: Schema.optional(Schema.String),
               message: Schema.optional(Schema.String),
+              observedGeneration: Schema.optional(Schema.Number),
               reason: Schema.optional(Schema.String),
               status: Schema.String,
               type: Schema.String,
@@ -4354,6 +4360,7 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
             Schema.Struct({
               lastTransitionTime: Schema.optional(Schema.String),
               message: Schema.optional(Schema.String),
+              observedGeneration: Schema.optional(Schema.Number),
               reason: Schema.optional(Schema.String),
               status: Schema.String,
               type: Schema.String,
@@ -4751,6 +4758,7 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
             Schema.Struct({
               lastTransitionTime: Schema.optional(Schema.String),
               message: Schema.optional(Schema.String),
+              observedGeneration: Schema.optional(Schema.Number),
               reason: Schema.optional(Schema.String),
               status: Schema.String,
               type: Schema.String,
@@ -5486,6 +5494,7 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
             Schema.Struct({
               lastTransitionTime: Schema.optional(Schema.String),
               message: Schema.optional(Schema.String),
+              observedGeneration: Schema.optional(Schema.Number),
               reason: Schema.optional(Schema.String),
               status: Schema.String,
               type: Schema.String,
@@ -5859,6 +5868,7 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
             Schema.Struct({
               lastTransitionTime: Schema.optional(Schema.String),
               message: Schema.optional(Schema.String),
+              observedGeneration: Schema.optional(Schema.Number),
               reason: Schema.optional(Schema.String),
               status: Schema.String,
               type: Schema.String,
@@ -6250,6 +6260,7 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
             Schema.Struct({
               lastTransitionTime: Schema.optional(Schema.String),
               message: Schema.optional(Schema.String),
+              observedGeneration: Schema.optional(Schema.Number),
               reason: Schema.optional(Schema.String),
               status: Schema.String,
               type: Schema.String,
@@ -6623,6 +6634,7 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
             Schema.Struct({
               lastTransitionTime: Schema.optional(Schema.String),
               message: Schema.optional(Schema.String),
+              observedGeneration: Schema.optional(Schema.Number),
               reason: Schema.optional(Schema.String),
               status: Schema.String,
               type: Schema.String,

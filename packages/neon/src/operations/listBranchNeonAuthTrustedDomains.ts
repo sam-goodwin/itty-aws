@@ -22,12 +22,7 @@ export const ListBranchNeonAuthTrustedDomainsOutput =
     domains: Schema.Array(
       Schema.Struct({
         domain: Schema.String,
-        auth_provider: Schema.Literals([
-          "mock",
-          "stack",
-          "stack_v2",
-          "better_auth",
-        ]),
+        auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
       }),
     ),
   });
@@ -38,7 +33,8 @@ export type ListBranchNeonAuthTrustedDomainsOutput =
 /**
  * List domains in redirect_uri whitelist
  *
- * Lists the domains in the redirect_uri whitelist for the specified project.
+ * Lists the trusted domains in the redirect URI whitelist for the specified branch.
+ * Only domains in this list are permitted as redirect targets after authentication.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

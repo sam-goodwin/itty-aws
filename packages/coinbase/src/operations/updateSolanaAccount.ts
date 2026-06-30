@@ -24,7 +24,7 @@ export type UpdateSolanaAccountOutput = typeof UpdateSolanaAccountOutput.Type;
 
 // The operation
 /**
- * Update a Solana account
+ * Update Solana account
  *
  * Updates an existing Solana account. Use this to update the account's name or account-level policy.
  *

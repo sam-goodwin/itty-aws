@@ -22,7 +22,6 @@ export const ProductToursDraftPartialUpdateInput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -41,7 +40,6 @@ export const ProductToursDraftPartialUpdateInput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -49,7 +47,7 @@ export const ProductToursDraftPartialUpdateInput =
       }),
     ),
     linked_flag_id: Schema.optional(Schema.NullOr(Schema.Number)),
-    targeting_flag_filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    targeting_flag_filters: Schema.optional(Schema.Unknown),
     content: Schema.optional(Schema.Unknown),
     auto_launch: Schema.optional(Schema.Boolean),
     start_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -102,7 +100,6 @@ export const ProductToursDraftPartialUpdateOutput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -121,7 +118,6 @@ export const ProductToursDraftPartialUpdateOutput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
         evaluation_runtime: Schema.optional(Schema.Unknown),
         bucketing_identifier: Schema.optional(Schema.Unknown),
@@ -132,7 +128,7 @@ export const ProductToursDraftPartialUpdateOutput =
       Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
     ),
     content: Schema.optional(Schema.Unknown),
-    draft_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    draft_content: Schema.optional(Schema.Unknown),
     has_draft: Schema.optional(Schema.Boolean),
     auto_launch: Schema.optional(Schema.Boolean),
     start_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -157,6 +153,7 @@ export const ProductToursDraftPartialUpdateOutput =
     ),
     updated_at: Schema.optional(Schema.String),
     archived: Schema.optional(Schema.Boolean),
+    search_match_type: Schema.optional(Schema.Unknown),
   });
 export type ProductToursDraftPartialUpdateOutput =
   typeof ProductToursDraftPartialUpdateOutput.Type;

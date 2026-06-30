@@ -75,7 +75,7 @@ export const PostBillingCreditGrantsOutput =
     metadata: Schema.Record(Schema.String, Schema.String),
     name: Schema.NullOr(Schema.String),
     object: Schema.Literals(["billing.credit_grant"]),
-    priority: Schema.optional(Schema.NullOr(Schema.Number)),
+    priority: Schema.NullOr(Schema.Number),
     test_clock: Schema.Unknown,
     updated: Schema.Number,
     voided_at: Schema.NullOr(Schema.Number),

@@ -12,6 +12,7 @@ import { SensitiveOutputString } from "../sensitive.ts";
 // Input Schema
 export const OffersGenerateAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.optional(Schema.String),
     edgeMarketPlaceRegion: Schema.String,
@@ -46,6 +47,7 @@ export type OffersGenerateAccessTokenOutput =
  * A long-running resource action.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param offerId - Id of the offer
  */
 export const OffersGenerateAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -56,6 +58,7 @@ export const OffersGenerateAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   offerId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -93,6 +96,7 @@ export type OffersGetOutput = typeof OffersGetOutput.Type;
  * Get a Offer
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param offerId - Id of the offer
  */
 export const OffersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -102,6 +106,7 @@ export const OffersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const OffersGetAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
     requestId: Schema.String,
   }).pipe(
@@ -127,6 +132,7 @@ export type OffersGetAccessTokenOutput = typeof OffersGetAccessTokenOutput.Type;
  * get access token.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param offerId - Id of the offer
  */
 export const OffersGetAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -137,6 +143,7 @@ export const OffersGetAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const OffersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
   skip: Schema.optional(Schema.Number),
   maxpagesize: Schema.optional(Schema.Number),
@@ -183,6 +190,7 @@ export type OffersListOutput = typeof OffersListOutput.Type;
  * List Offer resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param $top - The number of result items to return.
  * @param skip - The number of result items to skip.
  * @param maxpagesize - The maximum number of result items per page.
@@ -309,6 +317,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -346,6 +355,7 @@ export type PublishersGetOutput = typeof PublishersGetOutput.Type;
  * Get a Publisher
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param publisherName - Name of the publisher
  */
 export const PublishersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -354,6 +364,7 @@ export const PublishersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PublishersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
   skip: Schema.optional(Schema.Number),
   maxpagesize: Schema.optional(Schema.Number),
@@ -400,6 +411,7 @@ export type PublishersListOutput = typeof PublishersListOutput.Type;
  * List Publisher resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param $top - The number of result items to return.
  * @param skip - The number of result items to skip.
  * @param maxpagesize - The maximum number of result items per page.

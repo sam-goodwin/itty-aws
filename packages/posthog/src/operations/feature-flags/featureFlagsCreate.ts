@@ -23,34 +23,25 @@ export const FeatureFlagsCreateInput =
             }),
           ),
         ),
-        multivariate: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              variants: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    rollout_percentage: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
+        multivariate: Schema.optional(Schema.Unknown),
         aggregation_group_type_index: Schema.optional(
           Schema.NullOr(Schema.Number),
         ),
         payloads: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        super_groups: Schema.optional(
-          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-        ),
         feature_enrollment: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        early_exit: Schema.optional(Schema.Boolean),
       }),
     ),
     active: Schema.optional(Schema.Boolean),
+    archived: Schema.optional(Schema.Boolean),
     tags: Schema.optional(Schema.Array(Schema.String)),
     evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
+    is_remote_configuration: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    ensure_experience_continuity: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    evaluation_runtime: Schema.optional(Schema.Unknown),
+    bucketing_identifier: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "POST",
@@ -68,6 +59,7 @@ export const FeatureFlagsCreateOutput =
     filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     deleted: Schema.optional(Schema.Boolean),
     active: Schema.optional(Schema.Boolean),
+    archived: Schema.optional(Schema.Boolean),
     created_by: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -110,11 +102,17 @@ export const FeatureFlagsCreateOutput =
     ),
     experiment_set: Schema.optional(Schema.Array(Schema.Number)),
     experiment_set_metadata: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.Number,
+          name: Schema.String,
+          is_running: Schema.Boolean,
+        }),
+      ),
     ),
     surveys: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     features: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    rollback_conditions: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    rollback_conditions: Schema.optional(Schema.Unknown),
     performed_rollback: Schema.optional(Schema.NullOr(Schema.Boolean)),
     can_edit: Schema.optional(Schema.Boolean),
     tags: Schema.optional(Schema.Array(Schema.Unknown)),

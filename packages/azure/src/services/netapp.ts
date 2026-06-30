@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AccountsChangeKeyVaultInput =
@@ -28,7 +28,7 @@ export const AccountsChangeKeyVaultInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/changeKeyVault",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AccountsChangeKeyVaultInput =
@@ -173,7 +173,7 @@ export const AccountsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AccountsCreateOrUpdateInput =
@@ -227,7 +227,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -258,7 +258,7 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -308,7 +308,7 @@ export const AccountsGetChangeKeyVaultInformationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/getKeyVaultStatus",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AccountsGetChangeKeyVaultInformationInput =
@@ -358,7 +358,7 @@ export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type AccountsListInput = typeof AccountsListInput.Type;
@@ -410,7 +410,7 @@ export const AccountsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/netAppAccounts",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AccountsListBySubscriptionInput =
@@ -478,7 +478,7 @@ export const AccountsRenewCredentialsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/renewCredentials",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AccountsRenewCredentialsInput =
@@ -517,7 +517,7 @@ export const AccountsTransitionToCmkInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/transitiontocmk",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AccountsTransitionToCmkInput =
@@ -661,7 +661,7 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -734,7 +734,7 @@ export const BackupPoliciesCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupPoliciesCreateInput = typeof BackupPoliciesCreateInput.Type;
@@ -789,7 +789,7 @@ export const BackupPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupPoliciesDeleteInput = typeof BackupPoliciesDeleteInput.Type;
@@ -827,7 +827,7 @@ export const BackupPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type BackupPoliciesGetInput = typeof BackupPoliciesGetInput.Type;
@@ -879,7 +879,7 @@ export const BackupPoliciesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupPoliciesListInput = typeof BackupPoliciesListInput.Type;
@@ -972,7 +972,7 @@ export const BackupPoliciesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupPoliciesUpdateInput = typeof BackupPoliciesUpdateInput.Type;
@@ -1043,7 +1043,7 @@ export const BackupsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type BackupsCreateInput = typeof BackupsCreateInput.Type;
@@ -1096,7 +1096,7 @@ export const BackupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type BackupsDeleteInput = typeof BackupsDeleteInput.Type;
@@ -1131,7 +1131,7 @@ export const BackupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type BackupsGetInput = typeof BackupsGetInput.Type;
@@ -1185,7 +1185,7 @@ export const BackupsGetLatestStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestBackupStatus/current",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupsGetLatestStatusInput =
@@ -1240,7 +1240,7 @@ export const BackupsGetVolumeLatestRestoreStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestRestoreStatus/current",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupsGetVolumeLatestRestoreStatusInput =
@@ -1291,7 +1291,7 @@ export const BackupsListByVaultInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupsListByVaultInput = typeof BackupsListByVaultInput.Type;
@@ -1360,7 +1360,7 @@ export const BackupsUnderAccountMigrateBackupsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/migrateBackups",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupsUnderAccountMigrateBackupsInput =
@@ -1401,7 +1401,7 @@ export const BackupsUnderBackupVaultRestoreFilesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}/restoreFiles",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupsUnderBackupVaultRestoreFilesInput =
@@ -1442,7 +1442,7 @@ export const BackupsUnderVolumeMigrateBackupsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/migrateBackups",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupsUnderVolumeMigrateBackupsInput =
@@ -1486,7 +1486,7 @@ export const BackupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type BackupsUpdateInput = typeof BackupsUpdateInput.Type;
@@ -1546,7 +1546,7 @@ export const BackupVaultsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupVaultsCreateOrUpdateInput =
@@ -1603,7 +1603,7 @@ export const BackupVaultsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupVaultsDeleteInput = typeof BackupVaultsDeleteInput.Type;
@@ -1636,7 +1636,7 @@ export const BackupVaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type BackupVaultsGetInput = typeof BackupVaultsGetInput.Type;
@@ -1687,7 +1687,7 @@ export const BackupVaultsListByNetAppAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupVaultsListByNetAppAccountInput =
@@ -1758,7 +1758,7 @@ export const BackupVaultsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BackupVaultsUpdateInput = typeof BackupVaultsUpdateInput.Type;
@@ -1801,6 +1801,1179 @@ export const BackupVaultsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BackupVaultsUpdateOutput,
 }));
 // Input Schema
+export const BucketsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
+    volumeName: Schema.String.pipe(T.PathParam()),
+    bucketName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        path: Schema.optional(Schema.String),
+        fileSystemUser: Schema.optional(
+          Schema.Struct({
+            nfsUser: Schema.optional(
+              Schema.Struct({
+                userId: Schema.optional(Schema.Number),
+                groupId: Schema.optional(Schema.Number),
+              }),
+            ),
+            cifsUser: Schema.optional(
+              Schema.Struct({
+                username: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Creating",
+            "Patching",
+            "Updating",
+            "Deleting",
+            "Moving",
+            "Failed",
+            "Succeeded",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Literals(["NoCredentialsSet", "CredentialsExpired", "Active"]),
+        ),
+        server: Schema.optional(
+          Schema.Struct({
+            fqdn: Schema.optional(Schema.String),
+            certificateCommonName: Schema.optional(Schema.String),
+            certificateExpiryDate: Schema.optional(Schema.String),
+            ipAddress: Schema.optional(Schema.String),
+            certificateObject: Schema.optional(Schema.String),
+            onCertificateConflictAction: Schema.optional(
+              Schema.Literals(["Update", "Fail"]),
+            ),
+          }),
+        ),
+        permissions: Schema.optional(
+          Schema.Literals(["ReadOnly", "ReadWrite"]),
+        ),
+        akvDetails: Schema.optional(
+          Schema.Struct({
+            certificateAkvDetails: Schema.optional(
+              Schema.Struct({
+                certificateKeyVaultUri: Schema.optional(Schema.String),
+                certificateName: Schema.optional(Schema.String),
+              }),
+            ),
+            credentialsAkvDetails: Schema.optional(
+              Schema.Struct({
+                credentialsKeyVaultUri: Schema.optional(Schema.String),
+                secretName: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type BucketsCreateOrUpdateInput = typeof BucketsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const BucketsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type BucketsCreateOrUpdateOutput =
+  typeof BucketsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates a bucket for a volume. A bucket allows additional services, such as AI services, connect to the volume data contained in those buckets.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param volumeName - The name of the volume
+ * @param bucketName - The name of the bucket
+ */
+export const BucketsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: BucketsCreateOrUpdateInput,
+    outputSchema: BucketsCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const BucketsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  bucketName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
+    apiVersion: "2026-04-01",
+  }),
+);
+export type BucketsDeleteInput = typeof BucketsDeleteInput.Type;
+
+// Output Schema
+export const BucketsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type BucketsDeleteOutput = typeof BucketsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete a volume's bucket.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param volumeName - The name of the volume
+ * @param bucketName - The name of the bucket
+ */
+export const BucketsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: BucketsDeleteInput,
+  outputSchema: BucketsDeleteOutput,
+}));
+// Input Schema
+export const BucketsGenerateAkvCredentialsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
+    volumeName: Schema.String.pipe(T.PathParam()),
+    bucketName: Schema.String.pipe(T.PathParam()),
+    keyPairExpiryDays: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}/generateAkvCredentials",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type BucketsGenerateAkvCredentialsInput =
+  typeof BucketsGenerateAkvCredentialsInput.Type;
+
+// Output Schema
+export const BucketsGenerateAkvCredentialsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type BucketsGenerateAkvCredentialsOutput =
+  typeof BucketsGenerateAkvCredentialsOutput.Type;
+
+// The operation
+/**
+ * Generate the access key and secret key used for accessing the specified volume bucket and store in Azure Key Vault.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param volumeName - The name of the volume
+ * @param bucketName - The name of the bucket
+ */
+export const BucketsGenerateAkvCredentials =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BucketsGenerateAkvCredentialsInput,
+    outputSchema: BucketsGenerateAkvCredentialsOutput,
+  }));
+// Input Schema
+export const BucketsGenerateCredentialsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
+    volumeName: Schema.String.pipe(T.PathParam()),
+    bucketName: Schema.String.pipe(T.PathParam()),
+    keyPairExpiryDays: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}/generateCredentials",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type BucketsGenerateCredentialsInput =
+  typeof BucketsGenerateCredentialsInput.Type;
+
+// Output Schema
+export const BucketsGenerateCredentialsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessKey: Schema.optional(Schema.String),
+    secretKey: Schema.optional(SensitiveOutputString),
+    keyPairExpiry: Schema.optional(Schema.String),
+  });
+export type BucketsGenerateCredentialsOutput =
+  typeof BucketsGenerateCredentialsOutput.Type;
+
+// The operation
+/**
+ * Generate the access key and secret key used for accessing the specified volume bucket. Also return expiry date and time of key pair (in UTC).
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param volumeName - The name of the volume
+ * @param bucketName - The name of the bucket
+ */
+export const BucketsGenerateCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: BucketsGenerateCredentialsInput,
+    outputSchema: BucketsGenerateCredentialsOutput,
+  }),
+);
+// Input Schema
+export const BucketsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  bucketName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
+    apiVersion: "2026-04-01",
+  }),
+);
+export type BucketsGetInput = typeof BucketsGetInput.Type;
+
+// Output Schema
+export const BucketsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type BucketsGetOutput = typeof BucketsGetOutput.Type;
+
+// The operation
+/**
+ * Get the details of the specified volume's bucket. A bucket allows additional services, such as AI services, connect to the volume data contained in those buckets.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param volumeName - The name of the volume
+ * @param bucketName - The name of the bucket
+ */
+export const BucketsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: BucketsGetInput,
+  outputSchema: BucketsGetOutput,
+}));
+// Input Schema
+export const BucketsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets",
+    apiVersion: "2026-04-01",
+  }),
+);
+export type BucketsListInput = typeof BucketsListInput.Type;
+
+// Output Schema
+export const BucketsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type BucketsListOutput = typeof BucketsListOutput.Type;
+
+// The operation
+/**
+ * Describes all buckets belonging to a volume. Buckets allow additional services, such as AI services, connect to the volume data contained in those buckets.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param volumeName - The name of the volume
+ */
+export const BucketsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: BucketsListInput,
+  outputSchema: BucketsListOutput,
+}));
+// Input Schema
+export const BucketsRefreshCertificateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
+    volumeName: Schema.String.pipe(T.PathParam()),
+    bucketName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}/refreshCertificate",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type BucketsRefreshCertificateInput =
+  typeof BucketsRefreshCertificateInput.Type;
+
+// Output Schema
+export const BucketsRefreshCertificateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type BucketsRefreshCertificateOutput =
+  typeof BucketsRefreshCertificateOutput.Type;
+
+// The operation
+/**
+ * This operation will fetch the certificate from Azure Key Vault and install it on the bucket server.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param volumeName - The name of the volume
+ * @param bucketName - The name of the bucket
+ */
+export const BucketsRefreshCertificate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: BucketsRefreshCertificateInput,
+    outputSchema: BucketsRefreshCertificateOutput,
+  }),
+);
+// Input Schema
+export const BucketsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  bucketName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      fileSystemUser: Schema.optional(
+        Schema.Struct({
+          nfsUser: Schema.optional(
+            Schema.Struct({
+              userId: Schema.optional(Schema.Number),
+              groupId: Schema.optional(Schema.Number),
+            }),
+          ),
+          cifsUser: Schema.optional(
+            Schema.Struct({
+              username: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Creating",
+          "Patching",
+          "Updating",
+          "Deleting",
+          "Moving",
+          "Failed",
+          "Succeeded",
+        ]),
+      ),
+      server: Schema.optional(
+        Schema.Struct({
+          fqdn: Schema.optional(Schema.String),
+          certificateObject: Schema.optional(Schema.String),
+          onCertificateConflictAction: Schema.optional(
+            Schema.Literals(["Update", "Fail"]),
+          ),
+        }),
+      ),
+      permissions: Schema.optional(Schema.Literals(["ReadOnly", "ReadWrite"])),
+      akvDetails: Schema.optional(
+        Schema.Struct({
+          certificateAkvDetails: Schema.optional(
+            Schema.Struct({
+              certificateKeyVaultUri: Schema.optional(Schema.String),
+              certificateName: Schema.optional(Schema.String),
+            }),
+          ),
+          credentialsAkvDetails: Schema.optional(
+            Schema.Struct({
+              credentialsKeyVaultUri: Schema.optional(Schema.String),
+              secretName: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
+    apiVersion: "2026-04-01",
+  }),
+);
+export type BucketsUpdateInput = typeof BucketsUpdateInput.Type;
+
+// Output Schema
+export const BucketsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type BucketsUpdateOutput = typeof BucketsUpdateOutput.Type;
+
+// The operation
+/**
+ * Updates the details of a volume bucket.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param volumeName - The name of the volume
+ * @param bucketName - The name of the bucket
+ */
+export const BucketsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: BucketsUpdateInput,
+  outputSchema: BucketsUpdateOutput,
+}));
+// Input Schema
+export const CachesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      filePath: Schema.String,
+      size: Schema.Number,
+      exportPolicy: Schema.optional(
+        Schema.Struct({
+          rules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                ruleIndex: Schema.optional(Schema.Number),
+                unixReadOnly: Schema.optional(Schema.Boolean),
+                unixReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5ReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5ReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5iReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5iReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5pReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5pReadWrite: Schema.optional(Schema.Boolean),
+                cifs: Schema.optional(Schema.Boolean),
+                nfsv3: Schema.optional(Schema.Boolean),
+                nfsv41: Schema.optional(Schema.Boolean),
+                allowedClients: Schema.optional(Schema.String),
+                hasRootAccess: Schema.optional(Schema.Boolean),
+                chownMode: Schema.optional(
+                  Schema.Literals(["Restricted", "Unrestricted"]),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      protocolTypes: Schema.optional(
+        Schema.Array(Schema.Literals(["NFSv3", "NFSv4", "SMB"])),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Failed",
+          "Succeeded",
+          "Canceled",
+        ]),
+      ),
+      cacheState: Schema.optional(
+        Schema.Literals([
+          "ClusterPeeringOfferSent",
+          "VserverPeeringOfferSent",
+          "Creating",
+          "Succeeded",
+          "Failed",
+        ]),
+      ),
+      cacheSubnetResourceId: Schema.String,
+      peeringSubnetResourceId: Schema.String,
+      mountTargets: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            mountTargetId: Schema.optional(Schema.String),
+            ipAddress: Schema.optional(Schema.String),
+            smbServerFqdn: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      kerberos: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+      smbSettings: Schema.optional(
+        Schema.Struct({
+          smbEncryption: Schema.optional(
+            Schema.Literals(["Disabled", "Enabled"]),
+          ),
+          smbAccessBasedEnumeration: Schema.optional(
+            Schema.Literals(["Disabled", "Enabled"]),
+          ),
+          smbNonBrowsable: Schema.optional(
+            Schema.Literals(["Disabled", "Enabled"]),
+          ),
+        }),
+      ),
+      throughputMibps: Schema.optional(Schema.Number),
+      actualThroughputMibps: Schema.optional(Schema.Number),
+      encryptionKeySource: Schema.Literals([
+        "Microsoft.NetApp",
+        "Microsoft.KeyVault",
+      ]),
+      keyVaultPrivateEndpointResourceId: Schema.optional(Schema.String),
+      maximumNumberOfFiles: Schema.optional(Schema.Number),
+      encryption: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+      language: Schema.optional(
+        Schema.Literals([
+          "c.utf-8",
+          "utf8mb4",
+          "ar",
+          "ar.utf-8",
+          "hr",
+          "hr.utf-8",
+          "cs",
+          "cs.utf-8",
+          "da",
+          "da.utf-8",
+          "nl",
+          "nl.utf-8",
+          "en",
+          "en.utf-8",
+          "fi",
+          "fi.utf-8",
+          "fr",
+          "fr.utf-8",
+          "de",
+          "de.utf-8",
+          "he",
+          "he.utf-8",
+          "hu",
+          "hu.utf-8",
+          "it",
+          "it.utf-8",
+          "ja",
+          "ja.utf-8",
+          "ja-v1",
+          "ja-v1.utf-8",
+          "ja-jp.pck",
+          "ja-jp.pck.utf-8",
+          "ja-jp.932",
+          "ja-jp.932.utf-8",
+          "ja-jp.pck-v2",
+          "ja-jp.pck-v2.utf-8",
+          "ko",
+          "ko.utf-8",
+          "no",
+          "no.utf-8",
+          "pl",
+          "pl.utf-8",
+          "pt",
+          "pt.utf-8",
+          "c",
+          "ro",
+          "ro.utf-8",
+          "ru",
+          "ru.utf-8",
+          "zh",
+          "zh.utf-8",
+          "zh.gbk",
+          "zh.gbk.utf-8",
+          "zh-tw.big5",
+          "zh-tw.big5.utf-8",
+          "zh-tw",
+          "zh-tw.utf-8",
+          "sk",
+          "sk.utf-8",
+          "sl",
+          "sl.utf-8",
+          "es",
+          "es.utf-8",
+          "sv",
+          "sv.utf-8",
+          "tr",
+          "tr.utf-8",
+          "en-us",
+          "en-us.utf-8",
+        ]),
+      ),
+      ldap: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+      ldapServerType: Schema.optional(
+        Schema.Literals(["ActiveDirectory", "OpenLDAP"]),
+      ),
+      originClusterInformation: Schema.Struct({
+        peerClusterName: Schema.String,
+        peerAddresses: Schema.Array(Schema.String),
+        peerVserverName: Schema.String,
+        peerVolumeName: Schema.String,
+      }),
+      cifsChangeNotifications: Schema.optional(
+        Schema.Literals(["Disabled", "Enabled"]),
+      ),
+      globalFileLocking: Schema.optional(
+        Schema.Literals(["Disabled", "Enabled"]),
+      ),
+      writeBack: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+      fileAccessLogs: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    }),
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type CachesCreateOrUpdateInput = typeof CachesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const CachesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CachesCreateOrUpdateOutput = typeof CachesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create or update the specified Cache within the Capacity Pool
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param cacheName - The name of the cache resource.
+ */
+export const CachesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CachesCreateOrUpdateInput,
+    outputSchema: CachesCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const CachesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
+    apiVersion: "2026-04-01",
+  }),
+);
+export type CachesDeleteInput = typeof CachesDeleteInput.Type;
+
+// Output Schema
+export const CachesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CachesDeleteOutput = typeof CachesDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete the specified cache
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param cacheName - The name of the cache resource.
+ */
+export const CachesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CachesDeleteInput,
+  outputSchema: CachesDeleteOutput,
+}));
+// Input Schema
+export const CachesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
+    apiVersion: "2026-04-01",
+  }),
+);
+export type CachesGetInput = typeof CachesGetInput.Type;
+
+// Output Schema
+export const CachesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type CachesGetOutput = typeof CachesGetOutput.Type;
+
+// The operation
+/**
+ * Get the details of the specified Cache
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param cacheName - The name of the cache resource.
+ */
+export const CachesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CachesGetInput,
+  outputSchema: CachesGetOutput,
+}));
+// Input Schema
+export const CachesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches",
+    apiVersion: "2026-04-01",
+  }),
+);
+export type CachesListInput = typeof CachesListInput.Type;
+
+// Output Schema
+export const CachesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type CachesListOutput = typeof CachesListOutput.Type;
+
+// The operation
+/**
+ * List all Caches within the Capacity Pool
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ */
+export const CachesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CachesListInput,
+  outputSchema: CachesListOutput,
+}));
+// Input Schema
+export const CachesListPeeringPassphrasesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/listPeeringPassphrases",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type CachesListPeeringPassphrasesInput =
+  typeof CachesListPeeringPassphrasesInput.Type;
+
+// Output Schema
+export const CachesListPeeringPassphrasesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterPeeringCommand: Schema.String,
+    clusterPeeringPassphrase: Schema.String,
+    vserverPeeringCommand: Schema.String,
+    criticalWarning: Schema.optional(Schema.String),
+  });
+export type CachesListPeeringPassphrasesOutput =
+  typeof CachesListPeeringPassphrasesOutput.Type;
+
+// The operation
+/**
+ * This operation will list the cluster peering command, cluster peering passphrase and the vserver peering command
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param cacheName - The name of the cache resource.
+ */
+export const CachesListPeeringPassphrases =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CachesListPeeringPassphrasesInput,
+    outputSchema: CachesListPeeringPassphrasesOutput,
+  }));
+// Input Schema
+export const CachesPoolChangeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  newPoolResourceId: Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/poolChange",
+    apiVersion: "2026-04-01",
+  }),
+);
+export type CachesPoolChangeInput = typeof CachesPoolChangeInput.Type;
+
+// Output Schema
+export const CachesPoolChangeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  },
+);
+export type CachesPoolChangeOutput = typeof CachesPoolChangeOutput.Type;
+
+// The operation
+/**
+ * Moves Cache  to another Capacity Pool
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param cacheName - The name of the cache resource.
+ */
+export const CachesPoolChange = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CachesPoolChangeInput,
+  outputSchema: CachesPoolChangeOutput,
+}));
+// Input Schema
+export const CachesResetSmbPasswordInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    poolName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/resetSmbPassword",
+      apiVersion: "2026-04-01",
+    }),
+  );
+export type CachesResetSmbPasswordInput =
+  typeof CachesResetSmbPasswordInput.Type;
+
+// Output Schema
+export const CachesResetSmbPasswordOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CachesResetSmbPasswordOutput =
+  typeof CachesResetSmbPasswordOutput.Type;
+
+// The operation
+/**
+ * Resets the SMB password for the cache
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param cacheName - The name of the cache resource.
+ */
+export const CachesResetSmbPassword = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CachesResetSmbPasswordInput,
+    outputSchema: CachesResetSmbPasswordOutput,
+  }),
+);
+// Input Schema
+export const CachesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      size: Schema.optional(Schema.Number),
+      exportPolicy: Schema.optional(
+        Schema.Struct({
+          rules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                ruleIndex: Schema.optional(Schema.Number),
+                unixReadOnly: Schema.optional(Schema.Boolean),
+                unixReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5ReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5ReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5iReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5iReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5pReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5pReadWrite: Schema.optional(Schema.Boolean),
+                cifs: Schema.optional(Schema.Boolean),
+                nfsv3: Schema.optional(Schema.Boolean),
+                nfsv41: Schema.optional(Schema.Boolean),
+                allowedClients: Schema.optional(Schema.String),
+                hasRootAccess: Schema.optional(Schema.Boolean),
+                chownMode: Schema.optional(
+                  Schema.Literals(["Restricted", "Unrestricted"]),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      protocolTypes: Schema.optional(
+        Schema.Array(Schema.Literals(["NFSv3", "NFSv4", "SMB"])),
+      ),
+      smbSettings: Schema.optional(
+        Schema.Struct({
+          smbEncryption: Schema.optional(
+            Schema.Literals(["Disabled", "Enabled"]),
+          ),
+          smbAccessBasedEnumeration: Schema.optional(
+            Schema.Literals(["Disabled", "Enabled"]),
+          ),
+          smbNonBrowsable: Schema.optional(
+            Schema.Literals(["Disabled", "Enabled"]),
+          ),
+        }),
+      ),
+      throughputMibps: Schema.optional(Schema.Number),
+      keyVaultPrivateEndpointResourceId: Schema.optional(Schema.String),
+      cifsChangeNotifications: Schema.optional(
+        Schema.Literals(["Disabled", "Enabled"]),
+      ),
+      writeBack: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+    }),
+  ),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
+    apiVersion: "2026-04-01",
+  }),
+);
+export type CachesUpdateInput = typeof CachesUpdateInput.Type;
+
+// Output Schema
+export const CachesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type CachesUpdateOutput = typeof CachesUpdateOutput.Type;
+
+// The operation
+/**
+ * Patch the specified Cache
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the NetApp account
+ * @param poolName - The name of the capacity pool
+ * @param cacheName - The name of the cache resource.
+ */
+export const CachesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CachesUpdateInput,
+  outputSchema: CachesUpdateOutput,
+}));
+// Input Schema
 export const NetAppResourceCheckFilePathAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1812,7 +2985,7 @@ export const NetAppResourceCheckFilePathAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkFilePathAvailability",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceCheckFilePathAvailabilityInput =
@@ -1862,7 +3035,7 @@ export const NetAppResourceCheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkNameAvailability",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceCheckNameAvailabilityInput =
@@ -1912,7 +3085,7 @@ export const NetAppResourceCheckQuotaAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkQuotaAvailability",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceCheckQuotaAvailabilityInput =
@@ -1954,7 +3127,7 @@ export const NetAppResourceQueryNetworkSiblingSetInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/queryNetworkSiblingSet",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceQueryNetworkSiblingSetInput =
@@ -2013,7 +3186,7 @@ export const NetAppResourceQueryRegionInfoInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfo",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceQueryRegionInfoInput =
@@ -2072,7 +3245,7 @@ export const NetAppResourceQuotaLimitsAccountGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/quotaLimits/{quotaLimitName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceQuotaLimitsAccountGetInput =
@@ -2127,7 +3300,7 @@ export const NetAppResourceQuotaLimitsAccountListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/quotaLimits",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceQuotaLimitsAccountListInput =
@@ -2196,7 +3369,7 @@ export const NetAppResourceQuotaLimitsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits/{quotaLimitName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceQuotaLimitsGetInput =
@@ -2249,7 +3422,7 @@ export const NetAppResourceQuotaLimitsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceQuotaLimitsListInput =
@@ -2316,7 +3489,7 @@ export const NetAppResourceRegionInfosGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos/default",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceRegionInfosGetInput =
@@ -2368,7 +3541,7 @@ export const NetAppResourceRegionInfosListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceRegionInfosListInput =
@@ -2444,7 +3617,7 @@ export const NetAppResourceUpdateNetworkSiblingSetInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/updateNetworkSiblingSet",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceUpdateNetworkSiblingSetInput =
@@ -2504,7 +3677,7 @@ export const NetAppResourceUsagesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages/{usageType}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceUsagesGetInput =
@@ -2557,7 +3730,7 @@ export const NetAppResourceUsagesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NetAppResourceUsagesListInput =
@@ -2612,7 +3785,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.NetApp/operations",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2732,7 +3905,7 @@ export const PoolsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type PoolsCreateOrUpdateInput = typeof PoolsCreateOrUpdateInput.Type;
@@ -2784,7 +3957,7 @@ export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type PoolsDeleteInput = typeof PoolsDeleteInput.Type;
@@ -2817,7 +3990,7 @@ export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type PoolsGetInput = typeof PoolsGetInput.Type;
@@ -2867,7 +4040,7 @@ export const PoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type PoolsListInput = typeof PoolsListInput.Type;
@@ -2935,7 +4108,7 @@ export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type PoolsUpdateInput = typeof PoolsUpdateInput.Type;
@@ -2991,7 +4164,7 @@ export const RansomwareReportsClearSuspectsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}/clearSuspects",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type RansomwareReportsClearSuspectsInput =
@@ -3034,7 +4207,7 @@ export const RansomwareReportsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type RansomwareReportsGetInput = typeof RansomwareReportsGetInput.Type;
@@ -3094,7 +4267,7 @@ export const RansomwareReportsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type RansomwareReportsListInput = typeof RansomwareReportsListInput.Type;
@@ -3209,7 +4382,7 @@ export const SnapshotPoliciesCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SnapshotPoliciesCreateInput =
@@ -3266,7 +4439,7 @@ export const SnapshotPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SnapshotPoliciesDeleteInput =
@@ -3305,7 +4478,7 @@ export const SnapshotPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SnapshotPoliciesGetInput = typeof SnapshotPoliciesGetInput.Type;
@@ -3357,7 +4530,7 @@ export const SnapshotPoliciesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SnapshotPoliciesListInput = typeof SnapshotPoliciesListInput.Type;
@@ -3426,7 +4599,7 @@ export const SnapshotPoliciesListVolumesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}/volumes",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SnapshotPoliciesListVolumesInput =
@@ -3542,7 +4715,7 @@ export const SnapshotPoliciesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SnapshotPoliciesUpdateInput =
@@ -3608,7 +4781,7 @@ export const SnapshotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SnapshotsCreateInput = typeof SnapshotsCreateInput.Type;
@@ -3663,7 +4836,7 @@ export const SnapshotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SnapshotsDeleteInput = typeof SnapshotsDeleteInput.Type;
@@ -3700,7 +4873,7 @@ export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SnapshotsGetInput = typeof SnapshotsGetInput.Type;
@@ -3754,7 +4927,7 @@ export const SnapshotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SnapshotsListInput = typeof SnapshotsListInput.Type;
@@ -3816,7 +4989,7 @@ export const SnapshotsRestoreFilesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}/restoreFiles",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SnapshotsRestoreFilesInput = typeof SnapshotsRestoreFilesInput.Type;
@@ -3857,7 +5030,7 @@ export const SnapshotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SnapshotsUpdateInput = typeof SnapshotsUpdateInput.Type;
@@ -3920,7 +5093,7 @@ export const SubvolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SubvolumesCreateInput = typeof SubvolumesCreateInput.Type;
@@ -3977,7 +5150,7 @@ export const SubvolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SubvolumesDeleteInput = typeof SubvolumesDeleteInput.Type;
@@ -4014,7 +5187,7 @@ export const SubvolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SubvolumesGetInput = typeof SubvolumesGetInput.Type;
@@ -4070,7 +5243,7 @@ export const SubvolumesGetMetadataInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}/getMetadata",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SubvolumesGetMetadataInput = typeof SubvolumesGetMetadataInput.Type;
@@ -4129,7 +5302,7 @@ export const SubvolumesListByVolumeInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SubvolumesListByVolumeInput =
@@ -4209,7 +5382,7 @@ export const SubvolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SubvolumesUpdateInput = typeof SubvolumesUpdateInput.Type;
@@ -4412,6 +5585,28 @@ export const VolumeGroupsCreateInput =
                             }),
                           ),
                         ),
+                        externalReplicationSetupStatus: Schema.optional(
+                          Schema.Literals([
+                            "ClusterPeerRequired",
+                            "ClusterPeerPending",
+                            "VServerPeerRequired",
+                            "ReplicationCreateRequired",
+                            "NoActionRequired",
+                          ]),
+                        ),
+                        externalReplicationSetupInfo: Schema.optional(
+                          Schema.String,
+                        ),
+                        mirrorState: Schema.optional(
+                          Schema.Literals([
+                            "Uninitialized",
+                            "Mirrored",
+                            "Broken",
+                          ]),
+                        ),
+                        relationshipStatus: Schema.optional(
+                          Schema.Literals(["Idle", "Transferring"]),
+                        ),
                       }),
                     ),
                     snapshot: Schema.optional(
@@ -4529,7 +5724,7 @@ export const VolumeGroupsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumeGroupsCreateInput = typeof VolumeGroupsCreateInput.Type;
@@ -4582,7 +5777,7 @@ export const VolumeGroupsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumeGroupsDeleteInput = typeof VolumeGroupsDeleteInput.Type;
@@ -4615,7 +5810,7 @@ export const VolumeGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type VolumeGroupsGetInput = typeof VolumeGroupsGetInput.Type;
@@ -4666,7 +5861,7 @@ export const VolumeGroupsListByNetAppAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumeGroupsListByNetAppAccountInput =
@@ -4766,7 +5961,7 @@ export const VolumeQuotaRulesCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumeQuotaRulesCreateInput =
@@ -4827,7 +6022,7 @@ export const VolumeQuotaRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumeQuotaRulesDeleteInput =
@@ -4870,7 +6065,7 @@ export const VolumeQuotaRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumeQuotaRulesGetInput = typeof VolumeQuotaRulesGetInput.Type;
@@ -4926,7 +6121,7 @@ export const VolumeQuotaRulesListByVolumeInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumeQuotaRulesListByVolumeInput =
@@ -5027,7 +6222,7 @@ export const VolumeQuotaRulesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumeQuotaRulesUpdateInput =
@@ -5087,7 +6282,7 @@ export const VolumesAuthorizeExternalReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeExternalReplication",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesAuthorizeExternalReplicationInput =
@@ -5096,7 +6291,11 @@ export type VolumesAuthorizeExternalReplicationInput =
 // Output Schema
 export const VolumesAuthorizeExternalReplicationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    svmPeeringCommand: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        svmPeeringCommand: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type VolumesAuthorizeExternalReplicationOutput =
   typeof VolumesAuthorizeExternalReplicationOutput.Type;
@@ -5130,7 +6329,7 @@ export const VolumesAuthorizeReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeReplication",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesAuthorizeReplicationInput =
@@ -5173,7 +6372,7 @@ export const VolumesBreakFileLocksInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakFileLocks",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesBreakFileLocksInput = typeof VolumesBreakFileLocksInput.Type;
@@ -5214,7 +6413,7 @@ export const VolumesBreakReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakReplication",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesBreakReplicationInput =
@@ -5369,6 +6568,22 @@ export const VolumesCreateOrUpdateInput =
                   }),
                 ),
               ),
+              externalReplicationSetupStatus: Schema.optional(
+                Schema.Literals([
+                  "ClusterPeerRequired",
+                  "ClusterPeerPending",
+                  "VServerPeerRequired",
+                  "ReplicationCreateRequired",
+                  "NoActionRequired",
+                ]),
+              ),
+              externalReplicationSetupInfo: Schema.optional(Schema.String),
+              mirrorState: Schema.optional(
+                Schema.Literals(["Uninitialized", "Mirrored", "Broken"]),
+              ),
+              relationshipStatus: Schema.optional(
+                Schema.Literals(["Idle", "Transferring"]),
+              ),
             }),
           ),
           snapshot: Schema.optional(
@@ -5465,7 +6680,7 @@ export const VolumesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesCreateOrUpdateInput = typeof VolumesCreateOrUpdateInput.Type;
@@ -5523,7 +6738,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
@@ -5560,7 +6775,7 @@ export const VolumesDeleteReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/deleteReplication",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesDeleteReplicationInput =
@@ -5601,7 +6816,7 @@ export const VolumesFinalizeExternalReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeExternalReplication",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesFinalizeExternalReplicationInput =
@@ -5641,7 +6856,7 @@ export const VolumesFinalizeRelocationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeRelocation",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesFinalizeRelocationInput =
@@ -5681,7 +6896,7 @@ export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type VolumesGetInput = typeof VolumesGetInput.Type;
@@ -5733,7 +6948,7 @@ export const VolumesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type VolumesListInput = typeof VolumesListInput.Type;
@@ -5792,7 +7007,7 @@ export const VolumesListGetGroupIdListForLdapUserInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/getGroupIdListForLdapUser",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesListGetGroupIdListForLdapUserInput =
@@ -5844,7 +7059,7 @@ export const VolumesListQuotaReportInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listQuotaReport",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesListQuotaReportInput =
@@ -5910,7 +7125,7 @@ export const VolumesListReplicationsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listReplications",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesListReplicationsInput =
@@ -5970,7 +7185,7 @@ export const VolumesPeerExternalClusterInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/peerExternalCluster",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesPeerExternalClusterInput =
@@ -5979,7 +7194,12 @@ export type VolumesPeerExternalClusterInput =
 // Output Schema
 export const VolumesPeerExternalClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    peerAcceptCommand: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        clusterPeeringCommand: Schema.optional(Schema.String),
+        passphrase: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type VolumesPeerExternalClusterOutput =
   typeof VolumesPeerExternalClusterOutput.Type;
@@ -6013,7 +7233,7 @@ export const VolumesPerformReplicationTransferInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/performReplicationTransfer",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesPerformReplicationTransferInput =
@@ -6055,7 +7275,7 @@ export const VolumesPoolChangeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/poolChange",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type VolumesPoolChangeInput = typeof VolumesPoolChangeInput.Type;
@@ -6091,7 +7311,7 @@ export const VolumesPopulateAvailabilityZoneInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/populateAvailabilityZone",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesPopulateAvailabilityZoneInput =
@@ -6150,7 +7370,7 @@ export const VolumesReestablishReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reestablishReplication",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesReestablishReplicationInput =
@@ -6190,7 +7410,7 @@ export const VolumesReInitializeReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reinitializeReplication",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesReInitializeReplicationInput =
@@ -6230,7 +7450,7 @@ export const VolumesRelocateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/relocate",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type VolumesRelocateInput = typeof VolumesRelocateInput.Type;
@@ -6266,7 +7486,7 @@ export const VolumesReplicationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/replicationStatus",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesReplicationStatusInput =
@@ -6317,7 +7537,7 @@ export const VolumesResetCifsPasswordInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resetCifsPassword",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesResetCifsPasswordInput =
@@ -6358,7 +7578,7 @@ export const VolumesResyncReplicationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resyncReplication",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesResyncReplicationInput =
@@ -6399,7 +7619,7 @@ export const VolumesRevertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revert",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type VolumesRevertInput = typeof VolumesRevertInput.Type;
@@ -6435,7 +7655,7 @@ export const VolumesRevertRelocationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revertRelocation",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesRevertRelocationInput =
@@ -6476,7 +7696,7 @@ export const VolumesSplitCloneFromParentInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/splitCloneFromParent",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-04-01",
     }),
   );
 export type VolumesSplitCloneFromParentInput =
@@ -6624,7 +7844,7 @@ export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-04-01",
   }),
 );
 export type VolumesUpdateInput = typeof VolumesUpdateInput.Type;

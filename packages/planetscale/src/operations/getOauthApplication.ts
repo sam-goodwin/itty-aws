@@ -31,6 +31,7 @@ export const GetOauthApplicationOutput =
     tokens: Schema.Number,
     dcr: Schema.Boolean,
     single_org_authorization: Schema.Boolean,
+    requires_org_scope: Schema.Boolean,
     scopes_by_resource: Schema.Record(Schema.String, Schema.Unknown),
     all_scopes_by_resource: Schema.Record(Schema.String, Schema.Unknown),
   });

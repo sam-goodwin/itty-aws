@@ -39,14 +39,14 @@ export type DeleteGroupLimitOutput = typeof DeleteGroupLimitOutput.Type;
 /**
  * Remove One Project Limit
  *
- * Removes the specified project limit. Depending on the limit, Atlas either resets the limit to its default value or removes the limit entirely. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+ * Removes the specified project limit. Depending on the limit, Atlas either resets the limit to its default value or removes the limit entirely.
  *
  * @param limitName - Human-readable label that identifies this project limit.
 
 | Limit Name | Description | Default | API Override Limit |
 | --- | --- | --- | --- |
 | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 |
-| `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on the number of nodes per Private Link region in this project | 50 | 90 |
+| `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 |
 | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 |
 | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 |
 | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 |

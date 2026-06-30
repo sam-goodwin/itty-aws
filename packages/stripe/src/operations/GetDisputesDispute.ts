@@ -62,6 +62,9 @@ export const GetDisputesDisputeOutput =
           "climate_order_refund",
           "connect_collection_transfer",
           "contribution",
+          "fee_credit_funding",
+          "inbound_transfer",
+          "inbound_transfer_reversal",
           "issuing_authorization_hold",
           "issuing_authorization_release",
           "issuing_dispute",
@@ -91,6 +94,7 @@ export const GetDisputesDisputeOutput =
           "stripe_fee",
           "stripe_fx_fee",
           "tax_fee",
+          "tax_fund",
           "topup",
           "topup_reversal",
           "transfer",
@@ -104,7 +108,11 @@ export const GetDisputesDisputeOutput =
     created: Schema.Number,
     currency: Schema.String,
     enhanced_eligibility_types: Schema.Array(
-      Schema.Literals(["visa_compelling_evidence_3", "visa_compliance"]),
+      Schema.Literals([
+        "mastercard_compliance",
+        "visa_compelling_evidence_3",
+        "visa_compliance",
+      ]),
     ),
     evidence: Schema.Struct({
       access_activity_log: Schema.NullOr(Schema.String),
@@ -121,6 +129,11 @@ export const GetDisputesDisputeOutput =
       duplicate_charge_explanation: Schema.NullOr(Schema.String),
       duplicate_charge_id: Schema.NullOr(Schema.String),
       enhanced_evidence: Schema.Struct({
+        mastercard_compliance: Schema.optional(
+          Schema.Struct({
+            fee_acknowledged: Schema.Boolean,
+          }),
+        ),
         visa_compelling_evidence_3: Schema.optional(
           Schema.Struct({
             disputed_transaction: Schema.Unknown,
@@ -162,6 +175,14 @@ export const GetDisputesDisputeOutput =
     evidence_details: Schema.Struct({
       due_by: Schema.NullOr(Schema.Number),
       enhanced_eligibility: Schema.Struct({
+        mastercard_compliance: Schema.optional(
+          Schema.Struct({
+            status: Schema.Literals([
+              "fee_acknowledged",
+              "requires_fee_acknowledgement",
+            ]),
+          }),
+        ),
         visa_compelling_evidence_3: Schema.optional(
           Schema.Struct({
             required_actions: Schema.Array(

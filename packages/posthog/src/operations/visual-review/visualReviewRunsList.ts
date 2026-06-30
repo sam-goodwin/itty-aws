@@ -7,9 +7,13 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const VisualReviewRunsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
+    branch: Schema.optional(Schema.String),
+    commit_sha: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
+    pr_number: Schema.optional(Schema.Number),
     review_state: Schema.optional(Schema.String),
+    search: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -27,15 +31,8 @@ export const VisualReviewRunsListOutput =
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          approved_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                first_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
+          approved_by: Schema.optional(Schema.Unknown),
+          search_match_type: Schema.optional(Schema.Unknown),
           id: Schema.optional(Schema.String),
           repo_id: Schema.optional(Schema.String),
           status: Schema.optional(Schema.String),
@@ -72,12 +69,16 @@ export type VisualReviewRunsListOutput = typeof VisualReviewRunsListOutput.Type;
 
 // The operation
 /**
- * List runs for the team, optionally filtered by review state.
+ * List runs for the team, optionally filtered by review state, PR number, commit SHA, branch, or free-text search.
  *
+ * @param branch - Filter by branch name
+ * @param commit_sha - Filter by full commit SHA
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
+ * @param pr_number - Filter by GitHub PR number
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param review_state - Filter by review state
+ * @param search - Free-text search over branch, commit SHA, run type, and PR number
  */
 export const visualReviewRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

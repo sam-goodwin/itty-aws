@@ -898,6 +898,8 @@ export interface CreateDnsResponse {
     | "unlocked"
     | (string & {})
     | null;
+  /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
+  supportSubaddress?: true | false | null;
   /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
@@ -928,6 +930,9 @@ export const CreateDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
           Schema.Null,
         ]),
       ),
+      supportSubaddress: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
       tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
@@ -939,6 +944,7 @@ export const CreateDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
           modified: "modified",
           skipWizard: "skip_wizard",
           status: "status",
+          supportSubaddress: "support_subaddress",
           tag: "tag",
         }),
       )
@@ -996,6 +1002,8 @@ export interface PatchDnsResponse {
     | "unlocked"
     | (string & {})
     | null;
+  /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
+  supportSubaddress?: true | false | null;
   /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
@@ -1025,6 +1033,9 @@ export const PatchDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
         Schema.Null,
       ]),
     ),
+    supportSubaddress: Schema.optional(
+      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+    ),
     tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -1036,6 +1047,7 @@ export const PatchDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
         modified: "modified",
         skipWizard: "skip_wizard",
         status: "status",
+        supportSubaddress: "support_subaddress",
         tag: "tag",
       }),
     )
@@ -1200,6 +1212,8 @@ export interface GetEmailRoutingResponse {
     | "unlocked"
     | (string & {})
     | null;
+  /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
+  supportSubaddress?: true | false | null;
   /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
@@ -1230,6 +1244,9 @@ export const GetEmailRoutingResponse =
           Schema.Null,
         ]),
       ),
+      supportSubaddress: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
       tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
@@ -1241,6 +1258,7 @@ export const GetEmailRoutingResponse =
           modified: "modified",
           skipWizard: "skip_wizard",
           status: "status",
+          supportSubaddress: "support_subaddress",
           tag: "tag",
         }),
       )
@@ -1299,6 +1317,8 @@ export interface EnableEmailRoutingResponse {
     | "unlocked"
     | (string & {})
     | null;
+  /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
+  supportSubaddress?: true | false | null;
   /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
@@ -1329,6 +1349,9 @@ export const EnableEmailRoutingResponse =
           Schema.Null,
         ]),
       ),
+      supportSubaddress: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
       tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
@@ -1340,6 +1363,7 @@ export const EnableEmailRoutingResponse =
           modified: "modified",
           skipWizard: "skip_wizard",
           status: "status",
+          supportSubaddress: "support_subaddress",
           tag: "tag",
         }),
       )
@@ -1401,6 +1425,8 @@ export interface DisableEmailRoutingResponse {
     | "unlocked"
     | (string & {})
     | null;
+  /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
+  supportSubaddress?: true | false | null;
   /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
@@ -1431,6 +1457,9 @@ export const DisableEmailRoutingResponse =
           Schema.Null,
         ]),
       ),
+      supportSubaddress: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
       tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
       .pipe(
@@ -1442,6 +1471,7 @@ export const DisableEmailRoutingResponse =
           modified: "modified",
           skipWizard: "skip_wizard",
           status: "status",
+          supportSubaddress: "support_subaddress",
           tag: "tag",
         }),
       )
@@ -1567,151 +1597,6 @@ export const getRule: API.OperationMethod<
   input: GetRuleRequest,
   output: GetRuleResponse,
   errors: [],
-}));
-
-export interface ListRulesRequest {
-  /** Path param: Identifier. */
-  zoneId: string;
-  page?: number;
-  perPage?: number;
-  /** Query param: Filter by enabled routing rules. */
-  enabled?: true | false;
-}
-
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-  Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    enabled: Schema.optional(Schema.Literals([true, false])).pipe(
-      T.HttpQuery("enabled"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/email/routing/rules" }),
-  ),
-) as unknown as Schema.Schema<ListRulesRequest>;
-
-export interface ListRulesResponse {
-  result: {
-    id?: string | null;
-    actions?:
-      | {
-          type: "drop" | "forward" | "worker" | (string & {});
-          value?: string[] | null;
-        }[]
-      | null;
-    enabled?: true | false | null;
-    matchers?:
-      | {
-          type: "all" | "literal" | (string & {});
-          field?: "to" | null;
-          value?: string | null;
-        }[]
-      | null;
-    name?: string | null;
-    priority?: number | null;
-    tag?: string | null;
-  }[];
-  resultInfo?: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  } | null;
-}
-
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          actions: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.Union([
-                    Schema.Literals(["drop", "forward", "worker"]),
-                    Schema.String,
-                  ]),
-                  value: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          enabled: Schema.optional(
-            Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-          ),
-          matchers: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.Union([
-                    Schema.Literals(["all", "literal"]),
-                    Schema.String,
-                  ]),
-                  field: Schema.optional(
-                    Schema.Union([Schema.Literal("to"), Schema.Null]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
-      resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListRulesResponse>;
-
-export type ListRulesError = DefaultErrors;
-
-export const listRules: API.PaginatedOperationMethod<
-  ListRulesRequest,
-  ListRulesResponse,
-  ListRulesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListRulesRequest,
-  output: ListRulesResponse,
-  errors: [],
-  pagination: {
-    mode: "page",
-    inputToken: "page",
-    outputToken: "resultInfo.page",
-    items: "result",
-    pageSize: "perPage",
-  } as const,
 }));
 
 export interface CreateRuleRequest {

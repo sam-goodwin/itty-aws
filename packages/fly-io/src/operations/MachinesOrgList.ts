@@ -18,6 +18,7 @@ export type MachinesOrgListInput = typeof MachinesOrgListInput.Type;
 
 // Output Schema
 export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error_regions: Schema.optional(Schema.Array(Schema.String)),
   last_machine_id: Schema.optional(Schema.String),
   last_updated_at: Schema.optional(Schema.String),
   machines: Schema.optional(
@@ -49,7 +50,6 @@ export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         created_at: Schema.optional(Schema.String),
         id: Schema.optional(Schema.String),
-        instance_id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
         private_ip: Schema.optional(Schema.String),
         region: Schema.optional(Schema.String),
@@ -76,8 +76,8 @@ export type MachinesOrgListOutput = typeof MachinesOrgListOutput.Type;
  * @param state - Comma separated list of states to filter (created, started, stopped, suspended)
  * @param summary - Omit config from responses
  * @param updated_after - Only return machines updated after this time. Timestamp must be in the RFC 3339 format
- * @param cursor - Pagination cursor from previous response (takes precedence over updated_after)
- * @param limit - The number of machines to fetch (max of 2000). This limit is advisory. Responses may be shorter, even when more machines remain. If omitted, the maximum is used
+ * @param cursor - Pagination cursor from previous response (takes precedence over updated_after). Note that there is no guarantee that all machines returned by this endpoint are sorted by their updated_at fields. Pagination may reveal machines older than the last updated_at.
+ * @param limit - The number of machines to fetch (max of 1000). This limit is advisory. Responses may be shorter, or even empty, even when more machines remain. If omitted, the maximum is used
  */
 export const MachinesOrgList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MachinesOrgListInput,

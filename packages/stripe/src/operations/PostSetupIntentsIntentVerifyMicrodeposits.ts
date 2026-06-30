@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostSetupIntentsIntentVerifyMicrodepositsInput =
@@ -29,7 +29,7 @@ export const PostSetupIntentsIntentVerifyMicrodepositsOutput =
     cancellation_reason: Schema.NullOr(
       Schema.Literals(["abandoned", "duplicate", "requested_by_customer"]),
     ),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
     customer: Schema.Unknown,
     customer_account: Schema.optional(Schema.NullOr(Schema.String)),
@@ -47,6 +47,7 @@ export const PostSetupIntentsIntentVerifyMicrodepositsOutput =
           "bacs_debit",
           "bancontact",
           "billie",
+          "bizum",
           "blik",
           "boleto",
           "card",
@@ -79,8 +80,10 @@ export const PostSetupIntentsIntentVerifyMicrodepositsOutput =
           "revolut_pay",
           "samsung_pay",
           "satispay",
+          "scalapay",
           "sepa_debit",
           "sofort",
+          "sunbit",
           "swish",
           "twint",
           "upi",
@@ -97,6 +100,7 @@ export const PostSetupIntentsIntentVerifyMicrodepositsOutput =
     last_setup_error: Schema.Unknown,
     latest_attempt: Schema.Unknown,
     livemode: Schema.Boolean,
+    managed_payments: Schema.optional(Schema.Unknown),
     mandate: Schema.Unknown,
     metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     next_action: Schema.Unknown,

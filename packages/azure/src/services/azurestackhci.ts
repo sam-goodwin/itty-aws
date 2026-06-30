@@ -20,7 +20,7 @@ export const ArcSettingsConsentAndInstallDefaultExtensionsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/consentAndInstallDefaultExtensions",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ArcSettingsConsentAndInstallDefaultExtensionsInput =
@@ -182,7 +182,7 @@ export const ArcSettingsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ArcSettingsCreateInput = typeof ArcSettingsCreateInput.Type;
@@ -235,7 +235,7 @@ export const ArcSettingsCreateIdentityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/createArcIdentity",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ArcSettingsCreateIdentityInput =
@@ -284,7 +284,7 @@ export const ArcSettingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ArcSettingsDeleteInput = typeof ArcSettingsDeleteInput.Type;
@@ -318,7 +318,7 @@ export const ArcSettingsGeneratePasswordInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/generatePassword",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ArcSettingsGeneratePasswordInput =
@@ -361,7 +361,7 @@ export const ArcSettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ArcSettingsGetInput = typeof ArcSettingsGetInput.Type;
@@ -413,7 +413,7 @@ export const ArcSettingsInitializeDisableProcessInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/initializeDisableProcess",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ArcSettingsInitializeDisableProcessInput =
@@ -450,7 +450,7 @@ export const ArcSettingsListByClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ArcSettingsListByClusterInput =
@@ -526,7 +526,7 @@ export const ArcSettingsReconcileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/reconcile",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ArcSettingsReconcileInput = typeof ArcSettingsReconcileInput.Type;
@@ -600,7 +600,7 @@ export const ArcSettingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ArcSettingsUpdateInput = typeof ArcSettingsUpdateInput.Type;
@@ -663,7 +663,7 @@ export const ClustersConfigureRemoteSupportInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/configureRemoteSupport",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ClustersConfigureRemoteSupportInput =
@@ -848,8 +848,18 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 accessLevel: Schema.optional(
                   Schema.Literals(["Diagnostics", "DiagnosticsAndRepair"]),
                 ),
+                transcriptLocation: Schema.optional(Schema.String),
               }),
             ),
+          ),
+          remoteSupportProvisioningState: Schema.optional(
+            Schema.Literals([
+              "None",
+              "GrantInProgress",
+              "RevokeInProgress",
+              "Succeeded",
+              "Failed",
+            ]),
           ),
         }),
       ),
@@ -925,6 +935,17 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       trialDaysRemaining: Schema.optional(Schema.Number),
       billingModel: Schema.optional(Schema.String),
+      billingProperties: Schema.optional(
+        Schema.Struct({
+          nextBillingModel: Schema.optional(
+            Schema.Struct({
+              billingModel: Schema.optional(Schema.String),
+              capabilitiesEnabled: Schema.optional(Schema.Array(Schema.String)),
+              trialDaysRemaining: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
       registrationTimestamp: Schema.optional(Schema.String),
       lastSyncTimestamp: Schema.optional(Schema.String),
       lastBillingTimestamp: Schema.optional(Schema.String),
@@ -952,6 +973,7 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       identityProvider: Schema.optional(
         Schema.Literals(["ActiveDirectory", "LocalIdentity"]),
       ),
+      storageType: Schema.optional(Schema.Literals(["S2D", "SAN", "SANS2D"])),
     }),
   ),
   identity: Schema.optional(
@@ -975,13 +997,14 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
+  kind: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ClustersCreateInput = typeof ClustersCreateInput.Type;
@@ -1031,7 +1054,7 @@ export const ClustersCreateIdentityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/createClusterIdentity",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ClustersCreateIdentityInput =
@@ -1076,7 +1099,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -1115,7 +1138,7 @@ export const ClustersExtendSoftwareAssuranceBenefitInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/extendSoftwareAssuranceBenefit",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ClustersExtendSoftwareAssuranceBenefitInput =
@@ -1168,7 +1191,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -1217,7 +1240,7 @@ export const ClustersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -1284,7 +1307,7 @@ export const ClustersListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/clusters",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ClustersListBySubscriptionInput =
@@ -1358,7 +1381,7 @@ export const ClustersTriggerLogCollectionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/triggerLogCollection",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ClustersTriggerLogCollectionInput =
@@ -1450,7 +1473,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -1508,7 +1531,7 @@ export const ClustersUpdateSecretsLocationsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSecretsLocations",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ClustersUpdateSecretsLocationsInput =
@@ -1567,7 +1590,7 @@ export const ClustersUploadCertificateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/uploadCertificate",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ClustersUploadCertificateInput =
@@ -1679,6 +1702,25 @@ export const DeploymentSettingsCreateOrUpdateInput =
                 storage: Schema.optional(
                   Schema.Struct({
                     configurationMode: Schema.optional(Schema.String),
+                    storageType: Schema.optional(
+                      Schema.Literals(["S2D", "SAN", "SANS2D"]),
+                    ),
+                    s2d: Schema.optional(
+                      Schema.Struct({
+                        volumeType: Schema.optional(
+                          Schema.Literals(["Fixed", "ThinProvisioned"]),
+                        ),
+                        overprovisioningRatio: Schema.optional(
+                          Schema.Literals(["0", "1", "2"]),
+                        ),
+                      }),
+                    ),
+                    san: Schema.optional(
+                      Schema.Struct({
+                        infraVolLunId: Schema.optional(Schema.String),
+                        infraPerfLunId: Schema.optional(Schema.String),
+                      }),
+                    ),
                   }),
                 ),
                 namingPrefix: Schema.optional(Schema.String),
@@ -1789,6 +1831,40 @@ export const DeploymentSettingsCreateOrUpdateInput =
                           ),
                         }),
                       ),
+                    ),
+                    sanNetworks: Schema.optional(
+                      Schema.Struct({
+                        clusterNetworkConfig: Schema.optional(
+                          Schema.Struct({
+                            adapterProperties: Schema.optional(
+                              Schema.Struct({
+                                priorityValue8021ActionCluster: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                priorityValue8021ActionSmb: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                bandwidthPercentageSmb: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                jumboPacket: Schema.optional(Schema.Number),
+                              }),
+                            ),
+                            adapterIPConfig: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  networkAdapterName: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  vlanId: Schema.optional(Schema.Number),
+                                  addressPrefix: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      }),
                     ),
                     storageConnectivitySwitchless: Schema.optional(
                       Schema.Boolean,
@@ -1938,7 +2014,7 @@ export const DeploymentSettingsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings/{deploymentSettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type DeploymentSettingsCreateOrUpdateInput =
@@ -1994,7 +2070,7 @@ export const DeploymentSettingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings/{deploymentSettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type DeploymentSettingsDeleteInput =
@@ -2033,7 +2109,7 @@ export const DeploymentSettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings/{deploymentSettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type DeploymentSettingsGetInput = typeof DeploymentSettingsGetInput.Type;
@@ -2088,7 +2164,7 @@ export const DeploymentSettingsListByClustersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type DeploymentSettingsListByClustersInput =
@@ -2158,7 +2234,7 @@ export const EdgeDeviceJobsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs/{jobsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type EdgeDeviceJobsCreateOrUpdateInput =
@@ -2212,7 +2288,7 @@ export const EdgeDeviceJobsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs/{jobsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type EdgeDeviceJobsDeleteInput = typeof EdgeDeviceJobsDeleteInput.Type;
@@ -2248,7 +2324,7 @@ export const EdgeDeviceJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs/{jobsName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type EdgeDeviceJobsGetInput = typeof EdgeDeviceJobsGetInput.Type;
@@ -2298,7 +2374,7 @@ export const EdgeDeviceJobsListByEdgeDeviceInput =
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type EdgeDeviceJobsListByEdgeDeviceInput =
@@ -2366,7 +2442,7 @@ export const EdgeDevicesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type EdgeDevicesCreateOrUpdateInput =
@@ -2420,7 +2496,7 @@ export const EdgeDevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type EdgeDevicesDeleteInput = typeof EdgeDevicesDeleteInput.Type;
@@ -2449,7 +2525,7 @@ export const EdgeDevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type EdgeDevicesGetInput = typeof EdgeDevicesGetInput.Type;
@@ -2495,7 +2571,7 @@ export const EdgeDevicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type EdgeDevicesListInput = typeof EdgeDevicesListInput.Type;
@@ -2549,7 +2625,7 @@ export const EdgeDevicesValidateInput =
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/validate",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type EdgeDevicesValidateInput = typeof EdgeDevicesValidateInput.Type;
@@ -2693,7 +2769,7 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
@@ -2748,7 +2824,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
@@ -2783,7 +2859,7 @@ export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ExtensionsGetInput = typeof ExtensionsGetInput.Type;
@@ -2836,7 +2912,7 @@ export const ExtensionsListByArcSettingInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ExtensionsListByArcSettingInput =
@@ -2920,7 +2996,7 @@ export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ExtensionsUpdateInput = typeof ExtensionsUpdateInput.Type;
@@ -2978,7 +3054,7 @@ export const ExtensionsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}/upgrade",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type ExtensionsUpgradeInput = typeof ExtensionsUpgradeInput.Type;
@@ -3007,6 +3083,7 @@ export const GalleryImagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    galleryImageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         containerId: Schema.optional(Schema.String),
@@ -3119,6 +3196,7 @@ export type GalleryImagesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const GalleryImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3132,6 +3210,7 @@ export const GalleryImagesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    galleryImageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -3152,6 +3231,7 @@ export type GalleryImagesDeleteOutput = typeof GalleryImagesDeleteOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const GalleryImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3162,6 +3242,7 @@ export const GalleryImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GalleryImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  galleryImageName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
@@ -3201,6 +3282,7 @@ export type GalleryImagesGetOutput = typeof GalleryImagesGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const GalleryImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3345,6 +3427,7 @@ export const GalleryImagesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    galleryImageName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -3384,6 +3467,7 @@ export type GalleryImagesUpdateOutput = typeof GalleryImagesUpdateOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const GalleryImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3392,6 +3476,7 @@ export const GalleryImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GuestAgentCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     credentials: Schema.optional(
       Schema.Struct({
@@ -3458,6 +3543,7 @@ export type GuestAgentCreateOutput = typeof GuestAgentCreateOutput.Type;
  *
  * Create Or Update GuestAgent.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const GuestAgentCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3465,9 +3551,9 @@ export const GuestAgentCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestAgentCreateOutput,
 }));
 // Input Schema
-export const GuestAgentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GuestAgentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default",
@@ -3486,6 +3572,7 @@ export type GuestAgentDeleteOutput = typeof GuestAgentDeleteOutput.Type;
  *
  * Implements GuestAgent DELETE method.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const GuestAgentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3493,9 +3580,9 @@ export const GuestAgentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestAgentDeleteOutput,
 }));
 // Input Schema
-export const GuestAgentGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GuestAgentGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default",
@@ -3532,6 +3619,7 @@ export type GuestAgentGetOutput = typeof GuestAgentGetOutput.Type;
  *
  * Implements GuestAgent GET method.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const GuestAgentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3539,9 +3627,9 @@ export const GuestAgentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestAgentGetOutput,
 }));
 // Input Schema
-export const GuestAgentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GuestAgentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents",
@@ -3583,6 +3671,7 @@ export type GuestAgentsListOutput = typeof GuestAgentsListOutput.Type;
  *
  * Returns the list of GuestAgent of the given vm.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const GuestAgentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3591,7 +3680,9 @@ export const GuestAgentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const HybridIdentityMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/hybridIdentityMetadata/default",
@@ -3631,6 +3722,7 @@ export type HybridIdentityMetadataGetOutput =
  *
  * Implements HybridIdentityMetadata GET method.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3641,7 +3733,9 @@ export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const HybridIdentityMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/hybridIdentityMetadata",
@@ -3696,6 +3790,7 @@ export type HybridIdentityMetadataListOutput =
  *
  * Returns the list of HybridIdentityMetadata of the given vm.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3709,6 +3804,7 @@ export const LogicalNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    logicalNetworkName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         dhcpOptions: Schema.optional(
@@ -3861,6 +3957,7 @@ export type LogicalNetworksCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
 export const LogicalNetworksCreateOrUpdate =
@@ -3873,6 +3970,7 @@ export const LogicalNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    logicalNetworkName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -3894,6 +3992,7 @@ export type LogicalNetworksDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
 export const LogicalNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3907,6 +4006,7 @@ export const LogicalNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    logicalNetworkName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3944,6 +4044,7 @@ export type LogicalNetworksGetOutput = typeof LogicalNetworksGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
 export const LogicalNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4089,6 +4190,7 @@ export const LogicalNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    logicalNetworkName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -4129,6 +4231,7 @@ export type LogicalNetworksUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
 export const LogicalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4142,6 +4245,7 @@ export const MarketplaceGalleryImagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         containerId: Schema.optional(Schema.String),
@@ -4253,6 +4357,7 @@ export type MarketplaceGalleryImagesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param marketplaceGalleryImageName - Name of the marketplace gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesCreateOrUpdate =
@@ -4265,6 +4370,7 @@ export const MarketplaceGalleryImagesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -4287,6 +4393,7 @@ export type MarketplaceGalleryImagesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param marketplaceGalleryImageName - Name of the marketplace gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesDelete =
@@ -4299,6 +4406,7 @@ export const MarketplaceGalleryImagesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4339,6 +4447,7 @@ export type MarketplaceGalleryImagesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param marketplaceGalleryImageName - Name of the marketplace gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4488,6 +4597,7 @@ export const MarketplaceGalleryImagesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -4529,6 +4639,7 @@ export type MarketplaceGalleryImagesUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param marketplaceGalleryImageName - Name of the marketplace gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesUpdate =
@@ -4541,6 +4652,7 @@ export const NetworkInterfacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         ipConfigurations: Schema.optional(
@@ -4642,6 +4754,7 @@ export type NetworkInterfacesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkInterfacesCreateOrUpdate =
@@ -4654,6 +4767,7 @@ export const NetworkInterfacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -4676,6 +4790,7 @@ export type NetworkInterfacesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkInterfacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4689,6 +4804,7 @@ export const NetworkInterfacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4727,6 +4843,7 @@ export type NetworkInterfacesGetOutput = typeof NetworkInterfacesGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkInterfacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4877,6 +4994,7 @@ export const NetworkInterfacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -4918,6 +5036,7 @@ export type NetworkInterfacesUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkInterfacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4938,7 +5057,7 @@ export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/publishers/{publisherName}/offers/{offerName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type OffersGetInput = typeof OffersGetInput.Type;
@@ -4992,7 +5111,7 @@ export const OffersListByClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/offers",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type OffersListByClusterInput = typeof OffersListByClusterInput.Type;
@@ -5061,7 +5180,7 @@ export const OffersListByPublisherInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/publishers/{publisherName}/offers",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type OffersListByPublisherInput = typeof OffersListByPublisherInput.Type;
@@ -5232,7 +5351,7 @@ export const SecuritySettingsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings/{securitySettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type SecuritySettingsCreateOrUpdateInput =
@@ -5288,7 +5407,7 @@ export const SecuritySettingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings/{securitySettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type SecuritySettingsDeleteInput =
@@ -5327,7 +5446,7 @@ export const SecuritySettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings/{securitySettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type SecuritySettingsGetInput = typeof SecuritySettingsGetInput.Type;
@@ -5379,7 +5498,7 @@ export const SecuritySettingsListByClustersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type SecuritySettingsListByClustersInput =
@@ -5451,7 +5570,7 @@ export const SkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/publishers/{publisherName}/offers/{offerName}/skus/{skuName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type SkusGetInput = typeof SkusGetInput.Type;
@@ -5507,7 +5626,7 @@ export const SkusListByOfferInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/publishers/{publisherName}/offers/{offerName}/skus",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type SkusListByOfferInput = typeof SkusListByOfferInput.Type;
@@ -5560,6 +5679,7 @@ export const StorageContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    storageContainerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         path: Schema.String,
@@ -5639,6 +5759,7 @@ export type StorageContainersCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
 export const StorageContainersCreateOrUpdate =
@@ -5651,6 +5772,7 @@ export const StorageContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    storageContainerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5673,6 +5795,7 @@ export type StorageContainersDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
 export const StorageContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5686,6 +5809,7 @@ export const StorageContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    storageContainerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5724,6 +5848,7 @@ export type StorageContainersGetOutput = typeof StorageContainersGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
 export const StorageContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5874,6 +5999,7 @@ export const StorageContainersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    storageContainerName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -5915,6 +6041,7 @@ export type StorageContainersUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
 export const StorageContainersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5934,7 +6061,7 @@ export const UpdateRunsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/updateRuns/{updateRunName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type UpdateRunsDeleteInput = typeof UpdateRunsDeleteInput.Type;
@@ -5969,7 +6096,7 @@ export const UpdateRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/updateRuns/{updateRunName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type UpdateRunsGetInput = typeof UpdateRunsGetInput.Type;
@@ -6021,7 +6148,7 @@ export const UpdateRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/updateRuns",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type UpdateRunsListInput = typeof UpdateRunsListInput.Type;
@@ -6124,7 +6251,7 @@ export const UpdateRunsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/updateRuns/{updateRunName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type UpdateRunsPutInput = typeof UpdateRunsPutInput.Type;
@@ -6176,7 +6303,7 @@ export const UpdatesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type UpdatesDeleteInput = typeof UpdatesDeleteInput.Type;
@@ -6209,7 +6336,7 @@ export const UpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type UpdatesGetInput = typeof UpdatesGetInput.Type;
@@ -6259,7 +6386,7 @@ export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type UpdatesListInput = typeof UpdatesListInput.Type;
@@ -6314,7 +6441,7 @@ export const UpdatesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/apply",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type UpdatesPostInput = typeof UpdatesPostInput.Type;
@@ -6336,6 +6463,39 @@ export type UpdatesPostOutput = typeof UpdatesPostOutput.Type;
 export const UpdatesPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdatesPostInput,
   outputSchema: UpdatesPostOutput,
+}));
+// Input Schema
+export const UpdatesPrepareInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  updateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/prepare",
+    apiVersion: "2026-04-30",
+  }),
+);
+export type UpdatesPrepareInput = typeof UpdatesPrepareInput.Type;
+
+// Output Schema
+export const UpdatesPrepareOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdatesPrepareOutput = typeof UpdatesPrepareOutput.Type;
+
+// The operation
+/**
+ * Prepare Update
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param updateName - The name of the Update
+ */
+export const UpdatesPrepare = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdatesPrepareInput,
+  outputSchema: UpdatesPrepareOutput,
 }));
 // Input Schema
 export const UpdatesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6391,6 +6551,8 @@ export const UpdatesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           "ScanInProgress",
           "ScanFailed",
           "AdditionalContentRequired",
+          "HealthCheckExpired",
+          "PendingOEMValidation",
         ]),
       ),
       prerequisites: Schema.optional(
@@ -6497,7 +6659,7 @@ export const UpdatesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
 );
 export type UpdatesPutInput = typeof UpdatesPutInput.Type;
@@ -6548,7 +6710,7 @@ export const UpdateSummariesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type UpdateSummariesDeleteInput = typeof UpdateSummariesDeleteInput.Type;
@@ -6584,7 +6746,7 @@ export const UpdateSummariesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type UpdateSummariesGetInput = typeof UpdateSummariesGetInput.Type;
@@ -6635,7 +6797,7 @@ export const UpdateSummariesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type UpdateSummariesListInput = typeof UpdateSummariesListInput.Type;
@@ -6691,6 +6853,79 @@ export const UpdateSummariesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdateSummariesListInput,
   outputSchema: UpdateSummariesListOutput,
 }));
+// Input Schema
+export const UpdateSummariesOperationGroupCheckHealthInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default/checkHealth",
+      apiVersion: "2026-04-30",
+    }),
+  );
+export type UpdateSummariesOperationGroupCheckHealthInput =
+  typeof UpdateSummariesOperationGroupCheckHealthInput.Type;
+
+// Output Schema
+export const UpdateSummariesOperationGroupCheckHealthOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateSummariesOperationGroupCheckHealthOutput =
+  typeof UpdateSummariesOperationGroupCheckHealthOutput.Type;
+
+// The operation
+/**
+ * Check health of UpdateSummaries
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ */
+export const UpdateSummariesOperationGroupCheckHealth =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: UpdateSummariesOperationGroupCheckHealthInput,
+    outputSchema: UpdateSummariesOperationGroupCheckHealthOutput,
+  }));
+// Input Schema
+export const UpdateSummariesOperationGroupCheckUpdatesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    updateName: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default/checkUpdates",
+      apiVersion: "2026-04-30",
+    }),
+  );
+export type UpdateSummariesOperationGroupCheckUpdatesInput =
+  typeof UpdateSummariesOperationGroupCheckUpdatesInput.Type;
+
+// Output Schema
+export const UpdateSummariesOperationGroupCheckUpdatesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateSummariesOperationGroupCheckUpdatesOutput =
+  typeof UpdateSummariesOperationGroupCheckUpdatesOutput.Type;
+
+// The operation
+/**
+ * Check for updates
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ */
+export const UpdateSummariesOperationGroupCheckUpdates =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: UpdateSummariesOperationGroupCheckUpdatesInput,
+    outputSchema: UpdateSummariesOperationGroupCheckUpdatesOutput,
+  }));
 // Input Schema
 export const UpdateSummariesPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6815,7 +7050,7 @@ export const UpdateSummariesPutInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type UpdateSummariesPutInput = typeof UpdateSummariesPutInput.Type;
@@ -6866,7 +7101,7 @@ export const ValidatedSolutionRecipesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/locations/{location}/validatedSolutionRecipes/{validatedSolutionRecipeName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ValidatedSolutionRecipesGetInput =
@@ -6920,7 +7155,7 @@ export const ValidatedSolutionRecipesListBySubscriptionLocationResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/locations/{location}/validatedSolutionRecipes",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
   );
 export type ValidatedSolutionRecipesListBySubscriptionLocationResourceInput =
@@ -6985,6 +7220,7 @@ export const VirtualHardDisksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHardDiskName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         blockSizeBytes: Schema.optional(Schema.Number),
@@ -7069,6 +7305,7 @@ export type VirtualHardDisksCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualHardDisksCreateOrUpdate =
@@ -7081,6 +7318,7 @@ export const VirtualHardDisksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHardDiskName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -7103,6 +7341,7 @@ export type VirtualHardDisksDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualHardDisksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7116,6 +7355,7 @@ export const VirtualHardDisksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHardDiskName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7154,6 +7394,7 @@ export type VirtualHardDisksGetOutput = typeof VirtualHardDisksGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualHardDisksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7301,6 +7542,7 @@ export const VirtualHardDisksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHardDiskName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -7342,6 +7584,7 @@ export type VirtualHardDisksUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualHardDisksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7353,6 +7596,7 @@ export const VirtualHardDisksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualMachineInstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         hardwareProfile: Schema.optional(
@@ -7653,6 +7897,7 @@ export type VirtualMachineInstancesCreateOrUpdateOutput =
 /**
  * The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesCreateOrUpdate =
@@ -7662,7 +7907,9 @@ export const VirtualMachineInstancesCreateOrUpdate =
   }));
 // Input Schema
 export const VirtualMachineInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
@@ -7682,6 +7929,7 @@ export type VirtualMachineInstancesDeleteOutput =
 /**
  * The operation to delete a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesDelete =
@@ -7691,7 +7939,9 @@ export const VirtualMachineInstancesDelete =
   }));
 // Input Schema
 export const VirtualMachineInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
@@ -7729,6 +7979,7 @@ export type VirtualMachineInstancesGetOutput =
 /**
  * Gets a virtual machine instance
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7739,7 +7990,9 @@ export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachineInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances",
@@ -7794,6 +8047,7 @@ export type VirtualMachineInstancesListOutput =
 /**
  * Lists all of the virtual machine instances within the specified parent resource.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7804,7 +8058,9 @@ export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachineInstancesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/restart",
@@ -7842,6 +8098,7 @@ export type VirtualMachineInstancesRestartOutput =
 /**
  * The operation to restart a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesRestart =
@@ -7851,7 +8108,9 @@ export const VirtualMachineInstancesRestart =
   }));
 // Input Schema
 export const VirtualMachineInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/start",
@@ -7889,6 +8148,7 @@ export type VirtualMachineInstancesStartOutput =
 /**
  * The operation to start a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesStart =
@@ -7898,7 +8158,9 @@ export const VirtualMachineInstancesStart =
   }));
 // Input Schema
 export const VirtualMachineInstancesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/stop",
@@ -7936,6 +8198,7 @@ export type VirtualMachineInstancesStopOutput =
 /**
  * The operation to stop a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7947,6 +8210,7 @@ export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualMachineInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         hardwareProfile: Schema.optional(
@@ -8068,6 +8332,7 @@ export type VirtualMachineInstancesUpdateOutput =
 /**
  * The operation to update a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesUpdate =

@@ -22,6 +22,47 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface Reader {
+  /** Output only. The SwG publication id that the reader's subscription linking was originating from. */
+  originatingPublicationId?: string;
+  /** Output only. The SwG publication id that the reader has linked their subscription to. */
+  publicationId?: string;
+  /** Output only. Time the publication reader was created and associated with a Google user. */
+  createTime?: string;
+  /** Output only. The resource name of the reader. The last part of ppid in the resource name is the publisher provided id. */
+  name?: string;
+  /** Output only. The publisher provided id of the reader. */
+  ppid?: string;
+}
+
+export const Reader: Schema.Schema<Reader> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originatingPublicationId: Schema.optional(Schema.String),
+    publicationId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    ppid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Reader" });
+
+export interface Entitlement {
+  /** Required. Expiration time of the entitlement. Entitlements that have expired over 30 days will be purged. The max expire_time is 398 days from now(). */
+  expireTime?: string;
+  /** The detail field can carry a description of the SKU that corresponds to what the user has been granted access to. This description, which is opaque to Google, can be displayed in the Google user subscription console for users who linked the subscription to a Google Account. Max 80 character limit. */
+  detail?: string;
+  /** Required. The publication's product ID that the user has access to. This is the same product ID as can be found in Schema.org markup (http://schema.org/productID). E.g. "dailybugle.com:basic" */
+  productId?: string;
+  /** A source-specific subscription token. This is an opaque string that the publisher provides to Google. This token is opaque and has no meaning to Google. */
+  subscriptionToken?: string;
+}
+
+export const Entitlement: Schema.Schema<Entitlement> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    subscriptionToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Entitlement" });
+
 export interface DeleteReaderResponse {}
 
 export const DeleteReaderResponse: Schema.Schema<DeleteReaderResponse> =
@@ -29,59 +70,18 @@ export const DeleteReaderResponse: Schema.Schema<DeleteReaderResponse> =
     identifier: "DeleteReaderResponse",
   });
 
-export interface Entitlement {
-  /** Required. The publication's product ID that the user has access to. This is the same product ID as can be found in Schema.org markup (http://schema.org/productID). E.g. "dailybugle.com:basic" */
-  productId?: string;
-  /** The detail field can carry a description of the SKU that corresponds to what the user has been granted access to. This description, which is opaque to Google, can be displayed in the Google user subscription console for users who linked the subscription to a Google Account. Max 80 character limit. */
-  detail?: string;
-  /** Required. Expiration time of the entitlement. Entitlements that have expired over 30 days will be purged. The max expire_time is 398 days from now(). */
-  expireTime?: string;
-  /** A source-specific subscription token. This is an opaque string that the publisher provides to Google. This token is opaque and has no meaning to Google. */
-  subscriptionToken?: string;
-}
-
-export const Entitlement: Schema.Schema<Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    productId: Schema.optional(Schema.String),
-    detail: Schema.optional(Schema.String),
-    expireTime: Schema.optional(Schema.String),
-    subscriptionToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Entitlement" });
-
 export interface ReaderEntitlements {
-  /** Output only. The resource name of the singleton. */
-  name?: string;
   /** All of the entitlements for a publication reader. */
   entitlements?: ReadonlyArray<Entitlement>;
+  /** Output only. The resource name of the singleton. */
+  name?: string;
 }
 
 export const ReaderEntitlements: Schema.Schema<ReaderEntitlements> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
     entitlements: Schema.optional(Schema.Array(Entitlement)),
-  }).annotate({ identifier: "ReaderEntitlements" });
-
-export interface Reader {
-  /** Output only. The resource name of the reader. The last part of ppid in the resource name is the publisher provided id. */
-  name?: string;
-  /** Output only. The SwG publication id that the reader's subscription linking was originating from. */
-  originatingPublicationId?: string;
-  /** Output only. The SwG publication id that the reader has linked their subscription to. */
-  publicationId?: string;
-  /** Output only. Time the publication reader was created and associated with a Google user. */
-  createTime?: string;
-  /** Output only. The publisher provided id of the reader. */
-  ppid?: string;
-}
-
-export const Reader: Schema.Schema<Reader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
-    originatingPublicationId: Schema.optional(Schema.String),
-    publicationId: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    ppid: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Reader" });
+  }).annotate({ identifier: "ReaderEntitlements" });
 
 // ==========================================================================
 // Errors
@@ -171,6 +171,48 @@ export const getEntitlementsPublicationsReaders: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
+export interface UpdateEntitlementsPublicationsReadersRequest {
+  /** Output only. The resource name of the singleton. */
+  name: string;
+  /** Optional. The list of fields to update. Defaults to all fields. */
+  updateMask?: string;
+  /** Request body */
+  body?: ReaderEntitlements;
+}
+
+export const UpdateEntitlementsPublicationsReadersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(ReaderEntitlements).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateEntitlementsPublicationsReadersRequest>;
+
+export type UpdateEntitlementsPublicationsReadersResponse = ReaderEntitlements;
+export const UpdateEntitlementsPublicationsReadersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ReaderEntitlements;
+
+export type UpdateEntitlementsPublicationsReadersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the reader entitlements for a publication reader. The entire reader entitlements will be overwritten by the new reader entitlements in the payload, like a PUT. - Returns PERMISSION_DENIED if the caller does not have access. - Returns NOT_FOUND if the reader does not exist. */
+export const updateEntitlementsPublicationsReaders: API.OperationMethod<
+  UpdateEntitlementsPublicationsReadersRequest,
+  UpdateEntitlementsPublicationsReadersResponse,
+  UpdateEntitlementsPublicationsReadersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateEntitlementsPublicationsReadersRequest,
+  output: UpdateEntitlementsPublicationsReadersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface GetPublicationsReadersRequest {
   /** Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} */
   name: string;
@@ -238,47 +280,5 @@ export const deletePublicationsReaders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePublicationsReadersRequest,
   output: DeletePublicationsReadersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UpdateEntitlementsPublicationsReadersRequest {
-  /** Output only. The resource name of the singleton. */
-  name: string;
-  /** Optional. The list of fields to update. Defaults to all fields. */
-  updateMask?: string;
-  /** Request body */
-  body?: ReaderEntitlements;
-}
-
-export const UpdateEntitlementsPublicationsReadersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(ReaderEntitlements).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateEntitlementsPublicationsReadersRequest>;
-
-export type UpdateEntitlementsPublicationsReadersResponse = ReaderEntitlements;
-export const UpdateEntitlementsPublicationsReadersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReaderEntitlements;
-
-export type UpdateEntitlementsPublicationsReadersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the reader entitlements for a publication reader. The entire reader entitlements will be overwritten by the new reader entitlements in the payload, like a PUT. - Returns PERMISSION_DENIED if the caller does not have access. - Returns NOT_FOUND if the reader does not exist. */
-export const updateEntitlementsPublicationsReaders: API.OperationMethod<
-  UpdateEntitlementsPublicationsReadersRequest,
-  UpdateEntitlementsPublicationsReadersResponse,
-  UpdateEntitlementsPublicationsReadersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateEntitlementsPublicationsReadersRequest,
-  output: UpdateEntitlementsPublicationsReadersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

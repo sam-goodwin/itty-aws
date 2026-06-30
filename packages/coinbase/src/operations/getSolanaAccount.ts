@@ -22,7 +22,7 @@ export type GetSolanaAccountOutput = typeof GetSolanaAccountOutput.Type;
 
 // The operation
 /**
- * Get a Solana account by address
+ * Get Solana account by address
  *
  * Gets a Solana account by its address.
  *

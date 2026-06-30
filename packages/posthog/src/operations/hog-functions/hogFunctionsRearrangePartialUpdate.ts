@@ -47,7 +47,7 @@ export const HogFunctionsRearrangePartialUpdateOutput =
       enabled: Schema.optional(Schema.Boolean),
       deleted: Schema.optional(Schema.Boolean),
       hog: Schema.optional(Schema.String),
-      bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+      bytecode: Schema.optional(Schema.Unknown),
       transpiled: Schema.optional(Schema.NullOr(Schema.String)),
       inputs_schema: Schema.optional(
         Schema.Array(
@@ -67,6 +67,7 @@ export const HogFunctionsRearrangePartialUpdateOutput =
                 "posthog_assignee",
                 "posthog_ticket_tags",
                 "posthog_business_hours",
+                "non_failure_status_codes",
               ]),
             ),
             key: Schema.optional(Schema.String),
@@ -74,6 +75,7 @@ export const HogFunctionsRearrangePartialUpdateOutput =
             choices: Schema.optional(
               Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
             ),
+            searchable: Schema.optional(Schema.Boolean),
             required: Schema.optional(Schema.Boolean),
             default: Schema.optional(Schema.Unknown),
             secret: Schema.optional(Schema.Boolean),
@@ -121,22 +123,13 @@ export const HogFunctionsRearrangePartialUpdateOutput =
           properties: Schema.optional(
             Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          bytecode: Schema.optional(Schema.Unknown),
           transpiled: Schema.optional(Schema.Unknown),
           filter_test_accounts: Schema.optional(Schema.Boolean),
           bytecode_error: Schema.optional(Schema.String),
         }),
       ),
-      masking: Schema.optional(
-        Schema.NullOr(
-          Schema.Struct({
-            ttl: Schema.optional(Schema.Number),
-            threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-            hash: Schema.optional(Schema.String),
-            bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          }),
-        ),
-      ),
+      masking: Schema.optional(Schema.Unknown),
       mappings: Schema.optional(
         Schema.NullOr(
           Schema.Array(
@@ -160,6 +153,7 @@ export const HogFunctionsRearrangePartialUpdateOutput =
                         "posthog_assignee",
                         "posthog_ticket_tags",
                         "posthog_business_hours",
+                        "non_failure_status_codes",
                       ]),
                     ),
                     key: Schema.optional(Schema.String),
@@ -169,6 +163,7 @@ export const HogFunctionsRearrangePartialUpdateOutput =
                         Schema.Record(Schema.String, Schema.Unknown),
                       ),
                     ),
+                    searchable: Schema.optional(Schema.Boolean),
                     required: Schema.optional(Schema.Boolean),
                     default: Schema.optional(Schema.Unknown),
                     secret: Schema.optional(Schema.Boolean),
@@ -218,7 +213,7 @@ export const HogFunctionsRearrangePartialUpdateOutput =
                   properties: Schema.optional(
                     Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
                   ),
-                  bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  bytecode: Schema.optional(Schema.Unknown),
                   transpiled: Schema.optional(Schema.Unknown),
                   filter_test_accounts: Schema.optional(Schema.Boolean),
                   bytecode_error: Schema.optional(Schema.String),
@@ -242,8 +237,8 @@ export const HogFunctionsRearrangePartialUpdateOutput =
           category: Schema.optional(Schema.Unknown),
           free: Schema.optional(Schema.Boolean),
           icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-          filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          filters: Schema.optional(Schema.Unknown),
+          masking: Schema.optional(Schema.Unknown),
           mapping_templates: Schema.optional(
             Schema.NullOr(
               Schema.Array(
@@ -255,9 +250,9 @@ export const HogFunctionsRearrangePartialUpdateOutput =
                   use_all_events_by_default: Schema.optional(
                     Schema.NullOr(Schema.Boolean),
                   ),
-                  filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                  inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                  inputs_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  filters: Schema.optional(Schema.Unknown),
+                  inputs: Schema.optional(Schema.Unknown),
+                  inputs_schema: Schema.optional(Schema.Unknown),
                 }),
               ),
             ),
@@ -265,17 +260,11 @@ export const HogFunctionsRearrangePartialUpdateOutput =
         }),
       ),
       template_id: Schema.optional(Schema.NullOr(Schema.String)),
-      status: Schema.optional(
-        Schema.NullOr(
-          Schema.Struct({
-            state: Schema.optional(Schema.Literals([0, 1, 2, 3, 11, 12])),
-            tokens: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
+      status: Schema.optional(Schema.Unknown),
       execution_order: Schema.optional(Schema.NullOr(Schema.Number)),
       _create_in_folder: Schema.optional(Schema.String),
       batch_export_id: Schema.optional(Schema.NullOr(Schema.String)),
+      search_match_type: Schema.optional(Schema.Unknown),
     }),
   );
 export type HogFunctionsRearrangePartialUpdateOutput =

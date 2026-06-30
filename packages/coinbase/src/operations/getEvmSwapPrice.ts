@@ -21,7 +21,7 @@ export type GetEvmSwapPriceOutput = typeof GetEvmSwapPriceOutput.Type;
 
 // The operation
 /**
- * Get a price estimate for a swap
+ * Get swap price estimate
  *
  * Get a price estimate for a swap between two tokens on an EVM network.
  */

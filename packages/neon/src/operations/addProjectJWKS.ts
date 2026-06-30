@@ -92,12 +92,12 @@ export type AddProjectJWKSOutput = typeof AddProjectJWKSOutput.Type;
 /**
  * Add JWKS URL
  *
- * Add a new JWKS URL to a project, such that it can be used for verifying JWTs used as the authentication mechanism for the specified project.
+ * Adds a JWKS URL to the specified project for verifying JWTs used as the authentication mechanism.
  * The URL must be a valid HTTPS URL that returns a JSON Web Key Set.
- * The `provider_name` field allows you to specify which authentication provider you're using (e.g., Clerk, Auth0, AWS Cognito, etc.).
- * The `branch_id` can be used to specify on which branches the JWKS URL will be accepted. If not specified, then it will work on any branch.
- * The `role_names` can be used to specify for which roles the JWKS URL will be accepted. If not specified, then default roles will be used (authenticator, authenticated and anonymous).
- * The `jwt_audience` can be used to specify which "aud" values should be accepted by Neon in the JWTs that are used for authentication.
+ * The `provider_name` field allows you to specify which authentication provider you're using (e.g., Clerk, Auth0, AWS Cognito).
+ * The `branch_id` scopes the JWKS URL to specific branches; if not specified, it applies to all branches.
+ * The `role_names` scopes the URL to specific roles; if not specified, default roles are used (`authenticator`, `authenticated`, `anonymous`).
+ * The `jwt_audience` specifies which `aud` values are accepted in JWTs.
  *
  * @param project_id - The Neon project ID
  */

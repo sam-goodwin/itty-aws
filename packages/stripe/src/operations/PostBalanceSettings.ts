@@ -11,6 +11,9 @@ export const PostBalanceSettingsInput =
         debit_negative_balances: Schema.optional(Schema.Boolean),
         payouts: Schema.optional(
           Schema.Struct({
+            automatic_transfer_rules_by_currency: Schema.optional(
+              Schema.Unknown,
+            ),
             minimum_balance_by_currency: Schema.optional(Schema.Unknown),
             schedule: Schema.optional(
               Schema.Struct({
@@ -39,6 +42,7 @@ export const PostBalanceSettingsInput =
         settlement_timing: Schema.optional(
           Schema.Struct({
             delay_days_override: Schema.optional(Schema.Unknown),
+            start_of_day: Schema.optional(Schema.Unknown),
           }),
         ),
       }),
@@ -62,6 +66,7 @@ export const PostBalanceSettingsOutput =
       settlement_timing: Schema.Struct({
         delay_days: Schema.Number,
         delay_days_override: Schema.optional(Schema.Number),
+        start_of_day: Schema.Unknown,
       }),
     }),
   });

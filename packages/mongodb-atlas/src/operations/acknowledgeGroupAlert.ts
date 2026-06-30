@@ -28,7 +28,7 @@ export type AcknowledgeGroupAlertOutput =
 /**
  * Acknowledge One Alert from One Project
  *
- * Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role. Use the Return All Alerts from One Project endpoint to retrieve all alerts to which the authenticated user has access.
+ * Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. Use the Return All Alerts from One Project endpoint to retrieve all alerts to which the authenticated user has access.
  * This resource remains under revision and may change. Deprecated versions: v2-{2023-01-01}
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

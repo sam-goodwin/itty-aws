@@ -413,16 +413,7 @@ export const Operation: Schema.Schema<Operation> =
               message: Schema.optional(Schema.String),
               arguments: Schema.optional(Schema.Array(Schema.String)),
               debugInfo: Schema.optional(DebugInfo),
-              errorDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    errorInfo: Schema.optional(ErrorInfo),
-                    quotaInfo: Schema.optional(QuotaExceededInfo),
-                    help: Schema.optional(Help),
-                    localizedMessage: Schema.optional(LocalizedMessage),
-                  }),
-                ),
-              ),
+              errorDetails: Schema.optional(Schema.Array(Schema.Unknown)),
             }),
           ),
         ),
@@ -464,7 +455,7 @@ export const Operation: Schema.Schema<Operation> =
     setAutoscalerLinkOperationMetadata: Schema.optional(
       SetAutoscalerLinkOperationMetadata,
     ),
-  }).annotate({ identifier: "Operation" });
+  }).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
 
 export interface CompositeTypeLabelEntry {
   /** Key of the label */
@@ -1005,16 +996,7 @@ export const ResourceUpdate: Schema.Schema<ResourceUpdate> =
               message: Schema.optional(Schema.String),
               arguments: Schema.optional(Schema.Array(Schema.String)),
               debugInfo: Schema.optional(DebugInfo),
-              errorDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    errorInfo: Schema.optional(ErrorInfo),
-                    quotaInfo: Schema.optional(QuotaExceededInfo),
-                    help: Schema.optional(Help),
-                    localizedMessage: Schema.optional(LocalizedMessage),
-                  }),
-                ),
-              ),
+              errorDetails: Schema.optional(Schema.Array(Schema.Unknown)),
             }),
           ),
         ),
@@ -1041,7 +1023,9 @@ export const ResourceUpdate: Schema.Schema<ResourceUpdate> =
     properties: Schema.optional(Schema.String),
     finalProperties: Schema.optional(Schema.String),
     accessControl: Schema.optional(ResourceAccessControl),
-  }).annotate({ identifier: "ResourceUpdate" });
+  }).annotate({
+    identifier: "ResourceUpdate",
+  }) as any as Schema.Schema<ResourceUpdate>;
 
 export interface Resource {
   id?: string;

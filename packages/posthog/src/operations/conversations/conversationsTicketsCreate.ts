@@ -10,7 +10,7 @@ export const ConversationsTicketsCreateInput =
     id: Schema.optional(Schema.String),
     ticket_number: Schema.optional(Schema.Number),
     channel_source: Schema.optional(
-      Schema.Literals(["widget", "email", "slack", "teams"]),
+      Schema.Literals(["widget", "email", "slack", "teams", "github"]),
     ),
     channel_detail: Schema.optional(Schema.Unknown),
     distinct_id: Schema.optional(Schema.String),
@@ -33,6 +33,7 @@ export const ConversationsTicketsCreateInput =
     anonymous_traits: Schema.optional(Schema.Unknown),
     ai_resolved: Schema.optional(Schema.Boolean),
     escalation_reason: Schema.optional(Schema.NullOr(Schema.String)),
+    ai_triage: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     message_count: Schema.optional(Schema.Number),
@@ -51,20 +52,10 @@ export const ConversationsTicketsCreateInput =
     email_from: Schema.optional(Schema.NullOr(Schema.String)),
     email_to: Schema.optional(Schema.NullOr(Schema.String)),
     cc_participants: Schema.optional(Schema.Unknown),
-    person: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          distinct_ids: Schema.optional(Schema.Array(Schema.String)),
-          properties: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          created_at: Schema.optional(Schema.String),
-          is_identified: Schema.optional(Schema.Boolean),
-        }),
-      ),
-    ),
+    github_repo: Schema.optional(Schema.NullOr(Schema.String)),
+    github_issue_number: Schema.optional(Schema.NullOr(Schema.Number)),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
+    person: Schema.optional(Schema.Unknown),
     tags: Schema.optional(Schema.Array(Schema.Unknown)),
   }).pipe(
     T.Http({
@@ -81,7 +72,7 @@ export const ConversationsTicketsCreateOutput =
     id: Schema.optional(Schema.String),
     ticket_number: Schema.optional(Schema.Number),
     channel_source: Schema.optional(
-      Schema.Literals(["widget", "email", "slack", "teams"]),
+      Schema.Literals(["widget", "email", "slack", "teams", "github"]),
     ),
     channel_detail: Schema.optional(Schema.Unknown),
     distinct_id: Schema.optional(Schema.String),
@@ -104,6 +95,7 @@ export const ConversationsTicketsCreateOutput =
     anonymous_traits: Schema.optional(Schema.Unknown),
     ai_resolved: Schema.optional(Schema.Boolean),
     escalation_reason: Schema.optional(Schema.NullOr(Schema.String)),
+    ai_triage: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     message_count: Schema.optional(Schema.Number),
@@ -122,20 +114,10 @@ export const ConversationsTicketsCreateOutput =
     email_from: Schema.optional(Schema.NullOr(Schema.String)),
     email_to: Schema.optional(Schema.NullOr(Schema.String)),
     cc_participants: Schema.optional(Schema.Unknown),
-    person: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          distinct_ids: Schema.optional(Schema.Array(Schema.String)),
-          properties: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          created_at: Schema.optional(Schema.String),
-          is_identified: Schema.optional(Schema.Boolean),
-        }),
-      ),
-    ),
+    github_repo: Schema.optional(Schema.NullOr(Schema.String)),
+    github_issue_number: Schema.optional(Schema.NullOr(Schema.Number)),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
+    person: Schema.optional(Schema.Unknown),
     tags: Schema.optional(Schema.Array(Schema.Unknown)),
   });
 export type ConversationsTicketsCreateOutput =

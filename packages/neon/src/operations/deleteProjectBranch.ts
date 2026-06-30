@@ -136,19 +136,13 @@ export type DeleteProjectBranchOutput = typeof DeleteProjectBranchOutput.Type;
 /**
  * Delete branch
  *
- * Deletes the specified branch from a project, and places
- * all compute endpoints into an idle state, breaking existing client connections.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain a `branch_id` by listing the project's branches.
- * For related information, see [Manage branches](https://neon.tech/docs/manage/branches/).
- * When a successful response status is received, the compute endpoints are still active,
- * and the branch is not yet deleted from storage.
- * The deletion occurs after all operations finish.
- * You cannot delete a project's root or default branch, and you cannot delete a branch that has a child branch.
+ * Deletes the specified branch from a project and places all compute endpoints into an idle state, breaking existing client connections.
+ * The deletion completes after all operations finish.
+ * You cannot delete a project's root or default branch, or a branch that has a child branch.
  * A project must have at least one branch.
  * By default, deleted branches can be recovered within a 7-day grace period.
- * Use the `hard_delete` parameter to permanently delete the branch immediately without a recovery window.
- * Soft delete and branch recovery are in preview and not available to all users.
+ * Use the `hard_delete` parameter to permanently delete the branch immediately.
+ * For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

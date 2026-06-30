@@ -6,7 +6,8 @@ import * as T from "../traits.ts";
 export const InviteOrganizationMemberV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
-    email: Schema.String,
+    email: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
     role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
   }).pipe(
     T.Http({
@@ -25,7 +26,6 @@ export const InviteOrganizationMemberV2Output =
         email: Schema.optional(Schema.String),
         role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
         organization: Schema.optional(Schema.String),
-        token: Schema.optional(Schema.String),
       }),
     ),
   });

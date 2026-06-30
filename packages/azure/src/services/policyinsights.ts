@@ -11,6 +11,8 @@ import * as T from "../traits.ts";
 // Input Schema
 export const AttestationsCreateOrUpdateAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    attestationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       policyAssignmentId: Schema.String,
       policyDefinitionReferenceId: Schema.optional(Schema.String),
@@ -33,23 +35,6 @@ export const AttestationsCreateOrUpdateAtResourceInput =
       assessmentDate: Schema.optional(Schema.String),
       metadata: Schema.optional(Schema.Unknown),
     }),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -66,6 +51,20 @@ export const AttestationsCreateOrUpdateAtResourceOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type AttestationsCreateOrUpdateAtResourceOutput =
   typeof AttestationsCreateOrUpdateAtResourceOutput.Type;
@@ -75,6 +74,8 @@ export type AttestationsCreateOrUpdateAtResourceOutput =
  * Creates or updates an attestation at resource scope.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param attestationName - The name of the attestation.
  */
 export const AttestationsCreateOrUpdateAtResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -86,6 +87,7 @@ export const AttestationsCreateOrUpdateAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    attestationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       policyAssignmentId: Schema.String,
       policyDefinitionReferenceId: Schema.optional(Schema.String),
@@ -108,23 +110,6 @@ export const AttestationsCreateOrUpdateAtResourceGroupInput =
       assessmentDate: Schema.optional(Schema.String),
       metadata: Schema.optional(Schema.Unknown),
     }),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -141,6 +126,20 @@ export const AttestationsCreateOrUpdateAtResourceGroupOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type AttestationsCreateOrUpdateAtResourceGroupOutput =
   typeof AttestationsCreateOrUpdateAtResourceGroupOutput.Type;
@@ -149,9 +148,10 @@ export type AttestationsCreateOrUpdateAtResourceGroupOutput =
 /**
  * Creates or updates an attestation at resource group scope.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param attestationName - The name of the attestation.
  */
 export const AttestationsCreateOrUpdateAtResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -162,6 +162,7 @@ export const AttestationsCreateOrUpdateAtResourceGroup =
 export const AttestationsCreateOrUpdateAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    attestationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       policyAssignmentId: Schema.String,
       policyDefinitionReferenceId: Schema.optional(Schema.String),
@@ -184,23 +185,6 @@ export const AttestationsCreateOrUpdateAtSubscriptionInput =
       assessmentDate: Schema.optional(Schema.String),
       metadata: Schema.optional(Schema.Unknown),
     }),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -217,6 +201,20 @@ export const AttestationsCreateOrUpdateAtSubscriptionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type AttestationsCreateOrUpdateAtSubscriptionOutput =
   typeof AttestationsCreateOrUpdateAtSubscriptionOutput.Type;
@@ -225,8 +223,9 @@ export type AttestationsCreateOrUpdateAtSubscriptionOutput =
 /**
  * Creates or updates an attestation at subscription scope.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param attestationName - The name of the attestation.
  */
 export const AttestationsCreateOrUpdateAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -235,7 +234,10 @@ export const AttestationsCreateOrUpdateAtSubscription =
   }));
 // Input Schema
 export const AttestationsDeleteAtResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    attestationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
@@ -256,6 +258,8 @@ export type AttestationsDeleteAtResourceOutput =
  * Deletes an existing attestation at individual resource scope.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param attestationName - The name of the attestation.
  */
 export const AttestationsDeleteAtResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -267,6 +271,7 @@ export const AttestationsDeleteAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    attestationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -287,9 +292,10 @@ export type AttestationsDeleteAtResourceGroupOutput =
 /**
  * Deletes an existing attestation at resource group scope.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param attestationName - The name of the attestation.
  */
 export const AttestationsDeleteAtResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -300,6 +306,7 @@ export const AttestationsDeleteAtResourceGroup =
 export const AttestationsDeleteAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    attestationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -320,8 +327,9 @@ export type AttestationsDeleteAtSubscriptionOutput =
 /**
  * Deletes an existing attestation at subscription scope.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param attestationName - The name of the attestation.
  */
 export const AttestationsDeleteAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -330,7 +338,10 @@ export const AttestationsDeleteAtSubscription =
   }));
 // Input Schema
 export const AttestationsGetAtResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    attestationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
@@ -346,6 +357,20 @@ export const AttestationsGetAtResourceOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type AttestationsGetAtResourceOutput =
   typeof AttestationsGetAtResourceOutput.Type;
@@ -355,6 +380,8 @@ export type AttestationsGetAtResourceOutput =
  * Gets an existing attestation at resource scope.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param attestationName - The name of the attestation.
  */
 export const AttestationsGetAtResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -367,6 +394,7 @@ export const AttestationsGetAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    attestationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -383,6 +411,20 @@ export const AttestationsGetAtResourceGroupOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type AttestationsGetAtResourceGroupOutput =
   typeof AttestationsGetAtResourceGroupOutput.Type;
@@ -391,9 +433,10 @@ export type AttestationsGetAtResourceGroupOutput =
 /**
  * Gets an existing attestation at resource group scope.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param attestationName - The name of the attestation.
  */
 export const AttestationsGetAtResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -404,6 +447,7 @@ export const AttestationsGetAtResourceGroup =
 export const AttestationsGetAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    attestationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -420,6 +464,20 @@ export const AttestationsGetAtSubscriptionOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type AttestationsGetAtSubscriptionOutput =
   typeof AttestationsGetAtSubscriptionOutput.Type;
@@ -428,8 +486,9 @@ export type AttestationsGetAtSubscriptionOutput =
 /**
  * Gets an existing attestation at subscription scope.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param attestationName - The name of the attestation.
  */
 export const AttestationsGetAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -438,7 +497,11 @@ export const AttestationsGetAtSubscription =
   }));
 // Input Schema
 export const AttestationsListForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations",
@@ -451,14 +514,36 @@ export type AttestationsListForResourceInput =
 // Output Schema
 export const AttestationsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -470,6 +555,9 @@ export type AttestationsListForResourceOutput =
  * Gets all attestations for a resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param $top - Maximum number of records to return.
+ * @param $filter - OData filter expression.
  */
 export const AttestationsListForResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -482,6 +570,8 @@ export const AttestationsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -495,14 +585,36 @@ export type AttestationsListForResourceGroupInput =
 // Output Schema
 export const AttestationsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -513,9 +625,11 @@ export type AttestationsListForResourceGroupOutput =
 /**
  * Gets all attestations for the resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param $top - Maximum number of records to return.
+ * @param $filter - OData filter expression.
  */
 export const AttestationsListForResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -526,6 +640,8 @@ export const AttestationsListForResourceGroup =
 export const AttestationsListForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -539,14 +655,36 @@ export type AttestationsListForSubscriptionInput =
 // Output Schema
 export const AttestationsListForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -557,8 +695,10 @@ export type AttestationsListForSubscriptionOutput =
 /**
  * Gets all attestations for the subscription.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param $top - Maximum number of records to return.
+ * @param $filter - OData filter expression.
  */
 export const AttestationsListForSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -567,7 +707,23 @@ export const AttestationsListForSubscription =
   }));
 // Input Schema
 export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyDefinitionName: Schema.String.pipe(T.PathParam()),
+    componentPolicyStatesResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
@@ -646,6 +802,19 @@ export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionOutput =
 // The operation
 /**
  * Queries component policy states for the subscription level policy definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyDefinitionName - Policy definition name.
+ * @param componentPolicyStatesResource - The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s).
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
  */
 export const ComponentPolicyStatesListQueryResultsForPolicyDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -655,7 +824,20 @@ export const ComponentPolicyStatesListQueryResultsForPolicyDefinition =
   }));
 // Input Schema
 export const ComponentPolicyStatesListQueryResultsForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    componentPolicyStatesResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
@@ -734,6 +916,18 @@ export type ComponentPolicyStatesListQueryResultsForResourceOutput =
 // The operation
 /**
  * Queries component policy states for the resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param componentPolicyStatesResource - The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s).
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $expand - The $expand query parameter.
  */
 export const ComponentPolicyStatesListQueryResultsForResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -742,7 +936,20 @@ export const ComponentPolicyStatesListQueryResultsForResource =
   }));
 // Input Schema
 export const ComponentPolicyStatesListQueryResultsForResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    componentPolicyStatesResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
@@ -821,6 +1028,18 @@ export type ComponentPolicyStatesListQueryResultsForResourceGroupOutput =
 // The operation
 /**
  * Queries component policy states under resource group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param componentPolicyStatesResource - The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s).
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
  */
 export const ComponentPolicyStatesListQueryResultsForResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -829,7 +1048,24 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroup =
   }));
 // Input Schema
 export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyAssignmentName: Schema.String.pipe(T.PathParam()),
+    componentPolicyStatesResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
@@ -908,6 +1144,20 @@ export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssi
 // The operation
 /**
  * Queries component policy states for the resource group level policy assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - Resource group name.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyAssignmentName - Policy assignment name.
+ * @param componentPolicyStatesResource - The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s).
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
  */
 export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -918,7 +1168,19 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAss
   }));
 // Input Schema
 export const ComponentPolicyStatesListQueryResultsForSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    componentPolicyStatesResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
@@ -997,6 +1259,17 @@ export type ComponentPolicyStatesListQueryResultsForSubscriptionOutput =
 // The operation
 /**
  * Queries component policy states under subscription scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param componentPolicyStatesResource - The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s).
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
  */
 export const ComponentPolicyStatesListQueryResultsForSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1005,7 +1278,23 @@ export const ComponentPolicyStatesListQueryResultsForSubscription =
   }));
 // Input Schema
 export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyAssignmentName: Schema.String.pipe(T.PathParam()),
+    componentPolicyStatesResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
@@ -1084,6 +1373,19 @@ export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssig
 // The operation
 /**
  * Queries component policy states for the subscription level policy assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyAssignmentName - Policy assignment name.
+ * @param componentPolicyStatesResource - The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s).
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
  */
 export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1129,6 +1431,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists available operations.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -1136,7 +1440,21 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PolicyEventsListQueryResultsForManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyEventsResource: Schema.Literals(["default"]).pipe(T.PathParam()),
+    managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
@@ -1208,6 +1526,19 @@ export type PolicyEventsListQueryResultsForManagementGroupOutput =
 // The operation
 /**
  * Queries policy events for the resources under the management group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param policyEventsResource - The name of the virtual resource under PolicyEvents resource type; only "default" is allowed.
+ * @param managementGroupsNamespace - The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
+ * @param managementGroupName - Management group name.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyEventsListQueryResultsForManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1216,7 +1547,22 @@ export const PolicyEventsListQueryResultsForManagementGroup =
   }));
 // Input Schema
 export const PolicyEventsListQueryResultsForPolicyDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyEventsResource: Schema.Literals(["default"]).pipe(T.PathParam()),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyDefinitionName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
@@ -1288,6 +1634,20 @@ export type PolicyEventsListQueryResultsForPolicyDefinitionOutput =
 // The operation
 /**
  * Queries policy events for the subscription level policy definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyEventsResource - The name of the virtual resource under PolicyEvents resource type; only "default" is allowed.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyDefinitionName - Policy definition name.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyEventsListQueryResultsForPolicyDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1296,7 +1656,22 @@ export const PolicyEventsListQueryResultsForPolicyDefinition =
   }));
 // Input Schema
 export const PolicyEventsListQueryResultsForPolicySetDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyEventsResource: Schema.Literals(["default"]).pipe(T.PathParam()),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policySetDefinitionName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
@@ -1368,6 +1743,20 @@ export type PolicyEventsListQueryResultsForPolicySetDefinitionOutput =
 // The operation
 /**
  * Queries policy events for the subscription level policy set definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyEventsResource - The name of the virtual resource under PolicyEvents resource type; only "default" is allowed.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policySetDefinitionName - Policy set definition name.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyEventsListQueryResultsForPolicySetDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1376,7 +1765,19 @@ export const PolicyEventsListQueryResultsForPolicySetDefinition =
   }));
 // Input Schema
 export const PolicyEventsListQueryResultsForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyEventsResource: Schema.Literals(["default"]).pipe(T.PathParam()),
+    resourceId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
@@ -1448,6 +1849,19 @@ export type PolicyEventsListQueryResultsForResourceOutput =
 // The operation
 /**
  * Queries policy events for the resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param policyEventsResource - The name of the virtual resource under PolicyEvents resource type; only "default" is allowed.
+ * @param resourceId - Resource ID.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $expand - The $expand query parameter. For example, to expand components use $expand=components
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyEventsListQueryResultsForResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1456,7 +1870,19 @@ export const PolicyEventsListQueryResultsForResource =
   }));
 // Input Schema
 export const PolicyEventsListQueryResultsForResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyEventsResource: Schema.Literals(["default"]).pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
@@ -1528,6 +1954,19 @@ export type PolicyEventsListQueryResultsForResourceGroupOutput =
 // The operation
 /**
  * Queries policy events for the resources under the resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param policyEventsResource - The name of the virtual resource under PolicyEvents resource type; only "default" is allowed.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyEventsListQueryResultsForResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1536,7 +1975,23 @@ export const PolicyEventsListQueryResultsForResourceGroup =
   }));
 // Input Schema
 export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyEventsResource: Schema.Literals(["default"]).pipe(T.PathParam()),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyAssignmentName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
@@ -1608,6 +2063,21 @@ export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentOut
 // The operation
 /**
  * Queries policy events for the resource group level policy assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - Resource group name.
+ * @param policyEventsResource - The name of the virtual resource under PolicyEvents resource type; only "default" is allowed.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyAssignmentName - Policy assignment name.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1618,7 +2088,18 @@ export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignment =
   }));
 // Input Schema
 export const PolicyEventsListQueryResultsForSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyEventsResource: Schema.Literals(["default"]).pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
@@ -1690,6 +2171,18 @@ export type PolicyEventsListQueryResultsForSubscriptionOutput =
 // The operation
 /**
  * Queries policy events for the resources under the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyEventsResource - The name of the virtual resource under PolicyEvents resource type; only "default" is allowed.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyEventsListQueryResultsForSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1698,7 +2191,22 @@ export const PolicyEventsListQueryResultsForSubscription =
   }));
 // Input Schema
 export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyEventsResource: Schema.Literals(["default"]).pipe(T.PathParam()),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyAssignmentName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
@@ -1770,6 +2278,20 @@ export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentOutp
 // The operation
 /**
  * Queries policy events for the subscription level policy assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyEventsResource - The name of the virtual resource under PolicyEvents resource type; only "default" is allowed.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyAssignmentName - Policy assignment name.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1780,7 +2302,9 @@ export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignment =
   }));
 // Input Schema
 export const PolicyMetadataGetResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.PolicyInsights/policyMetadata/{resourceName}",
@@ -1793,19 +2317,23 @@ export type PolicyMetadataGetResourceInput =
 // Output Schema
 export const PolicyMetadataGetResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
       Schema.Struct({
-        metadataId: Schema.optional(Schema.String),
-        category: Schema.optional(Schema.String),
-        title: Schema.optional(Schema.String),
-        owner: Schema.optional(Schema.String),
-        additionalContentUrl: Schema.optional(Schema.String),
-        metadata: Schema.optional(Schema.Unknown),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
   });
 export type PolicyMetadataGetResourceOutput =
   typeof PolicyMetadataGetResourceOutput.Type;
@@ -1813,6 +2341,9 @@ export type PolicyMetadataGetResourceOutput =
 // The operation
 /**
  * Get policy metadata resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceName - The name of the policy metadata resource.
  */
 export const PolicyMetadataGetResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1822,7 +2353,9 @@ export const PolicyMetadataGetResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PolicyMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.PolicyInsights/policyMetadata",
@@ -1834,24 +2367,22 @@ export type PolicyMetadataListInput = typeof PolicyMetadataListInput.Type;
 // Output Schema
 export const PolicyMetadataListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              metadataId: Schema.optional(Schema.String),
-              category: Schema.optional(Schema.String),
-              title: Schema.optional(Schema.String),
-              owner: Schema.optional(Schema.String),
-              additionalContentUrl: Schema.optional(Schema.String),
-              metadata: Schema.optional(Schema.Unknown),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            metadataId: Schema.optional(Schema.String),
+            category: Schema.optional(Schema.String),
+            title: Schema.optional(Schema.String),
+            owner: Schema.optional(Schema.String),
+            additionalContentUrl: Schema.optional(Schema.String),
+            metadata: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1860,6 +2391,9 @@ export type PolicyMetadataListOutput = typeof PolicyMetadataListOutput.Type;
 // The operation
 /**
  * Get a list of the policy metadata resources.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param $top - Maximum number of records to return.
  */
 export const PolicyMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PolicyMetadataListInput,
@@ -1868,6 +2402,10 @@ export const PolicyMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PolicyRestrictionsCheckAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupId: Schema.String.pipe(T.PathParam()),
     resourceDetails: Schema.optional(
       Schema.Struct({
         resourceContent: Schema.Unknown,
@@ -1981,6 +2519,8 @@ export type PolicyRestrictionsCheckAtManagementGroupScopeOutput =
  * Checks what restrictions Azure Policy will place on resources within a management group.
  *
  * @param api-version - The API version to use for this operation.
+ * @param managementGroupsNamespace - The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
+ * @param managementGroupId - Management group ID.
  */
 export const PolicyRestrictionsCheckAtManagementGroupScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2103,9 +2643,9 @@ export type PolicyRestrictionsCheckAtResourceGroupScopeOutput =
 /**
  * Checks what restrictions Azure Policy will place on a resource within a resource group. Use this when the resource group the resource will be created in is already known.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const PolicyRestrictionsCheckAtResourceGroupScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2227,8 +2767,8 @@ export type PolicyRestrictionsCheckAtSubscriptionScopeOutput =
 /**
  * Checks what restrictions Azure Policy will place on a resource within a subscription.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const PolicyRestrictionsCheckAtSubscriptionScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2237,7 +2777,23 @@ export const PolicyRestrictionsCheckAtSubscriptionScope =
   }));
 // Input Schema
 export const PolicyStatesListQueryResultsForManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyStatesResource: Schema.Literals(["default", "latest"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
@@ -2334,6 +2890,19 @@ export type PolicyStatesListQueryResultsForManagementGroupOutput =
 // The operation
 /**
  * Queries policy states for the resources under the management group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param policyStatesResource - The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s).
+ * @param managementGroupsNamespace - The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
+ * @param managementGroupName - Management group name.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyStatesListQueryResultsForManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2342,7 +2911,24 @@ export const PolicyStatesListQueryResultsForManagementGroup =
   }));
 // Input Schema
 export const PolicyStatesListQueryResultsForPolicyDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyStatesResource: Schema.Literals(["default", "latest"]).pipe(
+      T.PathParam(),
+    ),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyDefinitionName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
@@ -2439,6 +3025,20 @@ export type PolicyStatesListQueryResultsForPolicyDefinitionOutput =
 // The operation
 /**
  * Queries policy states for the subscription level policy definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyStatesResource - The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s).
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyDefinitionName - Policy definition name.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyStatesListQueryResultsForPolicyDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2447,7 +3047,24 @@ export const PolicyStatesListQueryResultsForPolicyDefinition =
   }));
 // Input Schema
 export const PolicyStatesListQueryResultsForPolicySetDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyStatesResource: Schema.Literals(["default", "latest"]).pipe(
+      T.PathParam(),
+    ),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policySetDefinitionName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
@@ -2544,6 +3161,20 @@ export type PolicyStatesListQueryResultsForPolicySetDefinitionOutput =
 // The operation
 /**
  * Queries policy states for the subscription level policy set definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyStatesResource - The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s).
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policySetDefinitionName - Policy set definition name.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyStatesListQueryResultsForPolicySetDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2552,7 +3183,21 @@ export const PolicyStatesListQueryResultsForPolicySetDefinition =
   }));
 // Input Schema
 export const PolicyStatesListQueryResultsForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyStatesResource: Schema.Literals(["default", "latest"]).pipe(
+      T.PathParam(),
+    ),
+    resourceId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
@@ -2649,6 +3294,19 @@ export type PolicyStatesListQueryResultsForResourceOutput =
 // The operation
 /**
  * Queries policy states for the resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param policyStatesResource - The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s).
+ * @param resourceId - Resource ID.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $expand - The $expand query parameter. For example, to expand components use $expand=components
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyStatesListQueryResultsForResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2657,7 +3315,21 @@ export const PolicyStatesListQueryResultsForResource =
   }));
 // Input Schema
 export const PolicyStatesListQueryResultsForResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyStatesResource: Schema.Literals(["default", "latest"]).pipe(
+      T.PathParam(),
+    ),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
@@ -2754,6 +3426,19 @@ export type PolicyStatesListQueryResultsForResourceGroupOutput =
 // The operation
 /**
  * Queries policy states for the resources under the resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param policyStatesResource - The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s).
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyStatesListQueryResultsForResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2762,7 +3447,25 @@ export const PolicyStatesListQueryResultsForResourceGroup =
   }));
 // Input Schema
 export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyStatesResource: Schema.Literals(["default", "latest"]).pipe(
+      T.PathParam(),
+    ),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyAssignmentName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
@@ -2859,6 +3562,21 @@ export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOut
 // The operation
 /**
  * Queries policy states for the resource group level policy assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - Resource group name.
+ * @param policyStatesResource - The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s).
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyAssignmentName - Policy assignment name.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2869,7 +3587,20 @@ export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignment =
   }));
 // Input Schema
 export const PolicyStatesListQueryResultsForSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyStatesResource: Schema.Literals(["default", "latest"]).pipe(
+      T.PathParam(),
+    ),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
@@ -2966,6 +3697,18 @@ export type PolicyStatesListQueryResultsForSubscriptionOutput =
 // The operation
 /**
  * Queries policy states for the resources under the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyStatesResource - The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s).
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyStatesListQueryResultsForSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2974,7 +3717,24 @@ export const PolicyStatesListQueryResultsForSubscription =
   }));
 // Input Schema
 export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyStatesResource: Schema.Literals(["default", "latest"]).pipe(
+      T.PathParam(),
+    ),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyAssignmentName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $orderby: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $apply: Schema.optional(Schema.String),
+    $skiptoken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
@@ -3071,6 +3831,20 @@ export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutp
 // The operation
 /**
  * Queries policy states for the subscription level policy assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyStatesResource - The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s).
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyAssignmentName - Policy assignment name.
+ * @param $top - Maximum number of records to return.
+ * @param $orderby - Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @param $select - Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId".
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
+ * @param $apply - OData apply expression for aggregations.
+ * @param $skiptoken - Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element.
  */
 export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3081,7 +3855,19 @@ export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignment =
   }));
 // Input Schema
 export const PolicyStatesSummarizeForManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyStatesSummaryResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
@@ -3264,6 +4050,15 @@ export type PolicyStatesSummarizeForManagementGroupOutput =
 // The operation
 /**
  * Summarizes policy states for the resources under the management group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param policyStatesSummaryResource - The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value.
+ * @param managementGroupsNamespace - The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
+ * @param managementGroupName - Management group name.
+ * @param $top - Maximum number of records to return.
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
  */
 export const PolicyStatesSummarizeForManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3272,7 +4067,20 @@ export const PolicyStatesSummarizeForManagementGroup =
   }));
 // Input Schema
 export const PolicyStatesSummarizeForPolicyDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyStatesSummaryResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyDefinitionName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
@@ -3455,6 +4263,16 @@ export type PolicyStatesSummarizeForPolicyDefinitionOutput =
 // The operation
 /**
  * Summarizes policy states for the subscription level policy definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyStatesSummaryResource - The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyDefinitionName - Policy definition name.
+ * @param $top - Maximum number of records to return.
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
  */
 export const PolicyStatesSummarizeForPolicyDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3463,7 +4281,20 @@ export const PolicyStatesSummarizeForPolicyDefinition =
   }));
 // Input Schema
 export const PolicyStatesSummarizeForPolicySetDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyStatesSummaryResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policySetDefinitionName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
@@ -3646,6 +4477,16 @@ export type PolicyStatesSummarizeForPolicySetDefinitionOutput =
 // The operation
 /**
  * Summarizes policy states for the subscription level policy set definition.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyStatesSummaryResource - The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policySetDefinitionName - Policy set definition name.
+ * @param $top - Maximum number of records to return.
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
  */
 export const PolicyStatesSummarizeForPolicySetDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3654,7 +4495,16 @@ export const PolicyStatesSummarizeForPolicySetDefinition =
   }));
 // Input Schema
 export const PolicyStatesSummarizeForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyStatesSummaryResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    resourceId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
@@ -3837,6 +4687,14 @@ export type PolicyStatesSummarizeForResourceOutput =
 // The operation
 /**
  * Summarizes policy states for the resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param policyStatesSummaryResource - The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value.
+ * @param resourceId - Resource ID.
+ * @param $top - Maximum number of records to return.
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
  */
 export const PolicyStatesSummarizeForResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3845,7 +4703,17 @@ export const PolicyStatesSummarizeForResource =
   }));
 // Input Schema
 export const PolicyStatesSummarizeForResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyStatesSummaryResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    $top: Schema.optional(Schema.Number),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
@@ -4028,6 +4896,15 @@ export type PolicyStatesSummarizeForResourceGroupOutput =
 // The operation
 /**
  * Summarizes policy states for the resources under the resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param policyStatesSummaryResource - The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value.
+ * @param $top - Maximum number of records to return.
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
  */
 export const PolicyStatesSummarizeForResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4036,7 +4913,21 @@ export const PolicyStatesSummarizeForResourceGroup =
   }));
 // Input Schema
 export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    policyStatesSummaryResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyAssignmentName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
@@ -4219,6 +5110,17 @@ export type PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput =
 // The operation
 /**
  * Summarizes policy states for the resource group level policy assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - Resource group name.
+ * @param policyStatesSummaryResource - The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyAssignmentName - Policy assignment name.
+ * @param $top - Maximum number of records to return.
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
  */
 export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4229,7 +5131,16 @@ export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignment =
   }));
 // Input Schema
 export const PolicyStatesSummarizeForSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyStatesSummaryResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    $top: Schema.optional(Schema.Number),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
@@ -4412,6 +5323,14 @@ export type PolicyStatesSummarizeForSubscriptionOutput =
 // The operation
 /**
  * Summarizes policy states for the resources under the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyStatesSummaryResource - The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value.
+ * @param $top - Maximum number of records to return.
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
  */
 export const PolicyStatesSummarizeForSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4420,7 +5339,20 @@ export const PolicyStatesSummarizeForSubscription =
   }));
 // Input Schema
 export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    policyStatesSummaryResource: Schema.Literals(["latest"]).pipe(
+      T.PathParam(),
+    ),
+    authorizationNamespace: Schema.Literals(["Microsoft.Authorization"]).pipe(
+      T.PathParam(),
+    ),
+    policyAssignmentName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $from: Schema.optional(Schema.String),
+    $to: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
@@ -4603,6 +5535,16 @@ export type PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput =
 // The operation
 /**
  * Summarizes policy states for the subscription level policy assignment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param policyStatesSummaryResource - The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value.
+ * @param authorizationNamespace - The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed.
+ * @param policyAssignmentName - Policy assignment name.
+ * @param $top - Maximum number of records to return.
+ * @param $from - ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day).
+ * @param $to - ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time.
+ * @param $filter - OData filter expression.
  */
 export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4612,7 +5554,10 @@ export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignment =
   }));
 // Input Schema
 export const PolicyStatesTriggerResourceGroupEvaluationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation",
@@ -4631,6 +5576,10 @@ export type PolicyStatesTriggerResourceGroupEvaluationOutput =
 // The operation
 /**
  * Triggers a policy evaluation scan for all the resources under the resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - Resource group name.
  */
 export const PolicyStatesTriggerResourceGroupEvaluation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4639,7 +5588,9 @@ export const PolicyStatesTriggerResourceGroupEvaluation =
   }));
 // Input Schema
 export const PolicyStatesTriggerSubscriptionEvaluationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation",
@@ -4658,6 +5609,9 @@ export type PolicyStatesTriggerSubscriptionEvaluationOutput =
 // The operation
 /**
  * Triggers a policy evaluation scan for all the resources under the subscription
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PolicyStatesTriggerSubscriptionEvaluation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4666,7 +5620,13 @@ export const PolicyStatesTriggerSubscriptionEvaluation =
   }));
 // Input Schema
 export const RemediationsCancelAtManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
@@ -4679,43 +5639,9 @@ export type RemediationsCancelAtManagementGroupInput =
 // Output Schema
 export const RemediationsCancelAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -4737,6 +5663,11 @@ export type RemediationsCancelAtManagementGroupOutput =
 // The operation
 /**
  * Cancels a remediation at management group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param managementGroupsNamespace - The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
+ * @param managementGroupId - Management group ID.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsCancelAtManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4745,7 +5676,10 @@ export const RemediationsCancelAtManagementGroup =
   }));
 // Input Schema
 export const RemediationsCancelAtResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
@@ -4758,43 +5692,9 @@ export type RemediationsCancelAtResourceInput =
 // Output Schema
 export const RemediationsCancelAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -4816,6 +5716,10 @@ export type RemediationsCancelAtResourceOutput =
 // The operation
 /**
  * Cancel a remediation at resource scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsCancelAtResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4824,7 +5728,11 @@ export const RemediationsCancelAtResource =
   }));
 // Input Schema
 export const RemediationsCancelAtResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
@@ -4837,43 +5745,9 @@ export type RemediationsCancelAtResourceGroupInput =
 // Output Schema
 export const RemediationsCancelAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -4895,6 +5769,11 @@ export type RemediationsCancelAtResourceGroupOutput =
 // The operation
 /**
  * Cancels a remediation at resource group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsCancelAtResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4903,7 +5782,10 @@ export const RemediationsCancelAtResourceGroup =
   }));
 // Input Schema
 export const RemediationsCancelAtSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
@@ -4916,43 +5798,9 @@ export type RemediationsCancelAtSubscriptionInput =
 // Output Schema
 export const RemediationsCancelAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -4974,6 +5822,10 @@ export type RemediationsCancelAtSubscriptionOutput =
 // The operation
 /**
  * Cancels a remediation at subscription scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsCancelAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4983,6 +5835,11 @@ export const RemediationsCancelAtSubscription =
 // Input Schema
 export const RemediationsCreateOrUpdateAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         policyAssignmentId: Schema.optional(Schema.String),
@@ -5015,23 +5872,6 @@ export const RemediationsCreateOrUpdateAtManagementGroupInput =
             percentage: Schema.optional(Schema.Number),
           }),
         ),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   }).pipe(
@@ -5047,43 +5887,9 @@ export type RemediationsCreateOrUpdateAtManagementGroupInput =
 // Output Schema
 export const RemediationsCreateOrUpdateAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -5105,6 +5911,11 @@ export type RemediationsCreateOrUpdateAtManagementGroupOutput =
 // The operation
 /**
  * Creates or updates a remediation at management group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param managementGroupsNamespace - The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
+ * @param managementGroupId - Management group ID.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsCreateOrUpdateAtManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5114,6 +5925,8 @@ export const RemediationsCreateOrUpdateAtManagementGroup =
 // Input Schema
 export const RemediationsCreateOrUpdateAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         policyAssignmentId: Schema.optional(Schema.String),
@@ -5146,23 +5959,6 @@ export const RemediationsCreateOrUpdateAtResourceInput =
             percentage: Schema.optional(Schema.Number),
           }),
         ),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   }).pipe(
@@ -5178,43 +5974,9 @@ export type RemediationsCreateOrUpdateAtResourceInput =
 // Output Schema
 export const RemediationsCreateOrUpdateAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -5236,6 +5998,10 @@ export type RemediationsCreateOrUpdateAtResourceOutput =
 // The operation
 /**
  * Creates or updates a remediation at resource scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsCreateOrUpdateAtResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5245,6 +6011,9 @@ export const RemediationsCreateOrUpdateAtResource =
 // Input Schema
 export const RemediationsCreateOrUpdateAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         policyAssignmentId: Schema.optional(Schema.String),
@@ -5277,23 +6046,6 @@ export const RemediationsCreateOrUpdateAtResourceGroupInput =
             percentage: Schema.optional(Schema.Number),
           }),
         ),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   }).pipe(
@@ -5309,43 +6061,9 @@ export type RemediationsCreateOrUpdateAtResourceGroupInput =
 // Output Schema
 export const RemediationsCreateOrUpdateAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -5367,6 +6085,11 @@ export type RemediationsCreateOrUpdateAtResourceGroupOutput =
 // The operation
 /**
  * Creates or updates a remediation at resource group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsCreateOrUpdateAtResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5376,6 +6099,8 @@ export const RemediationsCreateOrUpdateAtResourceGroup =
 // Input Schema
 export const RemediationsCreateOrUpdateAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         policyAssignmentId: Schema.optional(Schema.String),
@@ -5408,23 +6133,6 @@ export const RemediationsCreateOrUpdateAtSubscriptionInput =
             percentage: Schema.optional(Schema.Number),
           }),
         ),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   }).pipe(
@@ -5440,43 +6148,9 @@ export type RemediationsCreateOrUpdateAtSubscriptionInput =
 // Output Schema
 export const RemediationsCreateOrUpdateAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -5498,6 +6172,10 @@ export type RemediationsCreateOrUpdateAtSubscriptionOutput =
 // The operation
 /**
  * Creates or updates a remediation at subscription scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsCreateOrUpdateAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5506,7 +6184,13 @@ export const RemediationsCreateOrUpdateAtSubscription =
   }));
 // Input Schema
 export const RemediationsDeleteAtManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
@@ -5519,43 +6203,9 @@ export type RemediationsDeleteAtManagementGroupInput =
 // Output Schema
 export const RemediationsDeleteAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -5577,6 +6227,11 @@ export type RemediationsDeleteAtManagementGroupOutput =
 // The operation
 /**
  * Deletes an existing remediation at management group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param managementGroupsNamespace - The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
+ * @param managementGroupId - Management group ID.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsDeleteAtManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5585,7 +6240,10 @@ export const RemediationsDeleteAtManagementGroup =
   }));
 // Input Schema
 export const RemediationsDeleteAtResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
@@ -5598,43 +6256,9 @@ export type RemediationsDeleteAtResourceInput =
 // Output Schema
 export const RemediationsDeleteAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -5656,6 +6280,10 @@ export type RemediationsDeleteAtResourceOutput =
 // The operation
 /**
  * Deletes an existing remediation at individual resource scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsDeleteAtResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5664,7 +6292,11 @@ export const RemediationsDeleteAtResource =
   }));
 // Input Schema
 export const RemediationsDeleteAtResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
@@ -5677,43 +6309,9 @@ export type RemediationsDeleteAtResourceGroupInput =
 // Output Schema
 export const RemediationsDeleteAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -5735,6 +6333,11 @@ export type RemediationsDeleteAtResourceGroupOutput =
 // The operation
 /**
  * Deletes an existing remediation at resource group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsDeleteAtResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5743,7 +6346,10 @@ export const RemediationsDeleteAtResourceGroup =
   }));
 // Input Schema
 export const RemediationsDeleteAtSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
@@ -5756,43 +6362,9 @@ export type RemediationsDeleteAtSubscriptionInput =
 // Output Schema
 export const RemediationsDeleteAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -5814,6 +6386,10 @@ export type RemediationsDeleteAtSubscriptionOutput =
 // The operation
 /**
  * Deletes an existing remediation at subscription scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsDeleteAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5822,7 +6398,13 @@ export const RemediationsDeleteAtSubscription =
   }));
 // Input Schema
 export const RemediationsGetAtManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
@@ -5835,43 +6417,9 @@ export type RemediationsGetAtManagementGroupInput =
 // Output Schema
 export const RemediationsGetAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -5893,6 +6441,11 @@ export type RemediationsGetAtManagementGroupOutput =
 // The operation
 /**
  * Gets an existing remediation at management group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param managementGroupsNamespace - The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
+ * @param managementGroupId - Management group ID.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsGetAtManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5901,7 +6454,10 @@ export const RemediationsGetAtManagementGroup =
   }));
 // Input Schema
 export const RemediationsGetAtResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
@@ -5914,43 +6470,9 @@ export type RemediationsGetAtResourceInput =
 // Output Schema
 export const RemediationsGetAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -5972,6 +6494,10 @@ export type RemediationsGetAtResourceOutput =
 // The operation
 /**
  * Gets an existing remediation at resource scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsGetAtResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5981,7 +6507,11 @@ export const RemediationsGetAtResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const RemediationsGetAtResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
@@ -5994,43 +6524,9 @@ export type RemediationsGetAtResourceGroupInput =
 // Output Schema
 export const RemediationsGetAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -6052,6 +6548,11 @@ export type RemediationsGetAtResourceGroupOutput =
 // The operation
 /**
  * Gets an existing remediation at resource group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsGetAtResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6060,7 +6561,10 @@ export const RemediationsGetAtResourceGroup =
   }));
 // Input Schema
 export const RemediationsGetAtSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
@@ -6073,43 +6577,9 @@ export type RemediationsGetAtSubscriptionInput =
 // Output Schema
 export const RemediationsGetAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
     id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -6131,6 +6601,10 @@ export type RemediationsGetAtSubscriptionOutput =
 // The operation
 /**
  * Gets an existing remediation at subscription scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param remediationName - The name of the remediation.
  */
 export const RemediationsGetAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6139,7 +6613,14 @@ export const RemediationsGetAtSubscription =
   }));
 // Input Schema
 export const RemediationsListDeploymentsAtManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
@@ -6152,33 +6633,31 @@ export type RemediationsListDeploymentsAtManagementGroupInput =
 // Output Schema
 export const RemediationsListDeploymentsAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          remediatedResourceId: Schema.optional(Schema.String),
-          deploymentId: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
+    value: Schema.Array(
+      Schema.Struct({
+        remediatedResourceId: Schema.optional(Schema.String),
+        deploymentId: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+        resourceLocation: Schema.optional(Schema.String),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
               ),
-            }),
-          ),
-          createdOn: Schema.optional(Schema.String),
-          lastUpdatedOn: Schema.optional(Schema.String),
-        }),
-      ),
+            ),
+          }),
+        ),
+        createdOn: Schema.optional(Schema.String),
+        lastUpdatedOn: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6188,6 +6667,12 @@ export type RemediationsListDeploymentsAtManagementGroupOutput =
 // The operation
 /**
  * Gets all deployments for a remediation at management group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param managementGroupsNamespace - The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
+ * @param managementGroupId - Management group ID.
+ * @param remediationName - The name of the remediation.
+ * @param $top - Maximum number of records to return.
  */
 export const RemediationsListDeploymentsAtManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6196,7 +6681,11 @@ export const RemediationsListDeploymentsAtManagementGroup =
   }));
 // Input Schema
 export const RemediationsListDeploymentsAtResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
@@ -6209,33 +6698,31 @@ export type RemediationsListDeploymentsAtResourceInput =
 // Output Schema
 export const RemediationsListDeploymentsAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          remediatedResourceId: Schema.optional(Schema.String),
-          deploymentId: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
+    value: Schema.Array(
+      Schema.Struct({
+        remediatedResourceId: Schema.optional(Schema.String),
+        deploymentId: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+        resourceLocation: Schema.optional(Schema.String),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
               ),
-            }),
-          ),
-          createdOn: Schema.optional(Schema.String),
-          lastUpdatedOn: Schema.optional(Schema.String),
-        }),
-      ),
+            ),
+          }),
+        ),
+        createdOn: Schema.optional(Schema.String),
+        lastUpdatedOn: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6245,6 +6732,11 @@ export type RemediationsListDeploymentsAtResourceOutput =
 // The operation
 /**
  * Gets all deployments for a remediation at resource scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param remediationName - The name of the remediation.
+ * @param $top - Maximum number of records to return.
  */
 export const RemediationsListDeploymentsAtResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6253,7 +6745,12 @@ export const RemediationsListDeploymentsAtResource =
   }));
 // Input Schema
 export const RemediationsListDeploymentsAtResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
@@ -6266,33 +6763,31 @@ export type RemediationsListDeploymentsAtResourceGroupInput =
 // Output Schema
 export const RemediationsListDeploymentsAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          remediatedResourceId: Schema.optional(Schema.String),
-          deploymentId: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
+    value: Schema.Array(
+      Schema.Struct({
+        remediatedResourceId: Schema.optional(Schema.String),
+        deploymentId: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+        resourceLocation: Schema.optional(Schema.String),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
               ),
-            }),
-          ),
-          createdOn: Schema.optional(Schema.String),
-          lastUpdatedOn: Schema.optional(Schema.String),
-        }),
-      ),
+            ),
+          }),
+        ),
+        createdOn: Schema.optional(Schema.String),
+        lastUpdatedOn: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6302,6 +6797,12 @@ export type RemediationsListDeploymentsAtResourceGroupOutput =
 // The operation
 /**
  * Gets all deployments for a remediation at resource group scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param remediationName - The name of the remediation.
+ * @param $top - Maximum number of records to return.
  */
 export const RemediationsListDeploymentsAtResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6310,7 +6811,11 @@ export const RemediationsListDeploymentsAtResourceGroup =
   }));
 // Input Schema
 export const RemediationsListDeploymentsAtSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    remediationName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
@@ -6323,33 +6828,31 @@ export type RemediationsListDeploymentsAtSubscriptionInput =
 // Output Schema
 export const RemediationsListDeploymentsAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          remediatedResourceId: Schema.optional(Schema.String),
-          deploymentId: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
+    value: Schema.Array(
+      Schema.Struct({
+        remediatedResourceId: Schema.optional(Schema.String),
+        deploymentId: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+        resourceLocation: Schema.optional(Schema.String),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
               ),
-            }),
-          ),
-          createdOn: Schema.optional(Schema.String),
-          lastUpdatedOn: Schema.optional(Schema.String),
-        }),
-      ),
+            ),
+          }),
+        ),
+        createdOn: Schema.optional(Schema.String),
+        lastUpdatedOn: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6359,6 +6862,11 @@ export type RemediationsListDeploymentsAtSubscriptionOutput =
 // The operation
 /**
  * Gets all deployments for a remediation at subscription scope.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param remediationName - The name of the remediation.
+ * @param $top - Maximum number of records to return.
  */
 export const RemediationsListDeploymentsAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6367,7 +6875,14 @@ export const RemediationsListDeploymentsAtSubscription =
   }));
 // Input Schema
 export const RemediationsListForManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
+      T.PathParam(),
+    ),
+    managementGroupId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations",
@@ -6380,75 +6895,36 @@ export type RemediationsListForManagementGroupInput =
 // Output Schema
 export const RemediationsListForManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              policyAssignmentId: Schema.optional(Schema.String),
-              policyDefinitionReferenceId: Schema.optional(Schema.String),
-              resourceDiscoveryMode: Schema.optional(
-                Schema.Literals([
-                  "ExistingNonCompliant",
-                  "ReEvaluateCompliance",
-                ]),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              lastUpdatedOn: Schema.optional(Schema.String),
-              filters: Schema.optional(
-                Schema.Struct({
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceIds: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              deploymentStatus: Schema.optional(
-                Schema.Struct({
-                  totalDeployments: Schema.optional(Schema.Number),
-                  successfulDeployments: Schema.optional(Schema.Number),
-                  failedDeployments: Schema.optional(Schema.Number),
-                }),
-              ),
-              statusMessage: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              resourceCount: Schema.optional(Schema.Number),
-              parallelDeployments: Schema.optional(Schema.Number),
-              failureThreshold: Schema.optional(
-                Schema.Struct({
-                  percentage: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6458,6 +6934,12 @@ export type RemediationsListForManagementGroupOutput =
 // The operation
 /**
  * Gets all remediations for the management group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param managementGroupsNamespace - The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
+ * @param managementGroupId - Management group ID.
+ * @param $top - Maximum number of records to return.
+ * @param $filter - OData filter expression.
  */
 export const RemediationsListForManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6466,7 +6948,11 @@ export const RemediationsListForManagementGroup =
   }));
 // Input Schema
 export const RemediationsListForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations",
@@ -6479,75 +6965,36 @@ export type RemediationsListForResourceInput =
 // Output Schema
 export const RemediationsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              policyAssignmentId: Schema.optional(Schema.String),
-              policyDefinitionReferenceId: Schema.optional(Schema.String),
-              resourceDiscoveryMode: Schema.optional(
-                Schema.Literals([
-                  "ExistingNonCompliant",
-                  "ReEvaluateCompliance",
-                ]),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              lastUpdatedOn: Schema.optional(Schema.String),
-              filters: Schema.optional(
-                Schema.Struct({
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceIds: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              deploymentStatus: Schema.optional(
-                Schema.Struct({
-                  totalDeployments: Schema.optional(Schema.Number),
-                  successfulDeployments: Schema.optional(Schema.Number),
-                  failedDeployments: Schema.optional(Schema.Number),
-                }),
-              ),
-              statusMessage: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              resourceCount: Schema.optional(Schema.Number),
-              parallelDeployments: Schema.optional(Schema.Number),
-              failureThreshold: Schema.optional(
-                Schema.Struct({
-                  percentage: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6557,6 +7004,11 @@ export type RemediationsListForResourceOutput =
 // The operation
 /**
  * Gets all remediations for a resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceId - Resource ID.
+ * @param $top - Maximum number of records to return.
+ * @param $filter - OData filter expression.
  */
 export const RemediationsListForResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6566,7 +7018,12 @@ export const RemediationsListForResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const RemediationsListForResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations",
@@ -6579,75 +7036,36 @@ export type RemediationsListForResourceGroupInput =
 // Output Schema
 export const RemediationsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              policyAssignmentId: Schema.optional(Schema.String),
-              policyDefinitionReferenceId: Schema.optional(Schema.String),
-              resourceDiscoveryMode: Schema.optional(
-                Schema.Literals([
-                  "ExistingNonCompliant",
-                  "ReEvaluateCompliance",
-                ]),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              lastUpdatedOn: Schema.optional(Schema.String),
-              filters: Schema.optional(
-                Schema.Struct({
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceIds: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              deploymentStatus: Schema.optional(
-                Schema.Struct({
-                  totalDeployments: Schema.optional(Schema.Number),
-                  successfulDeployments: Schema.optional(Schema.Number),
-                  failedDeployments: Schema.optional(Schema.Number),
-                }),
-              ),
-              statusMessage: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              resourceCount: Schema.optional(Schema.Number),
-              parallelDeployments: Schema.optional(Schema.Number),
-              failureThreshold: Schema.optional(
-                Schema.Struct({
-                  percentage: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6657,6 +7075,12 @@ export type RemediationsListForResourceGroupOutput =
 // The operation
 /**
  * Gets all remediations for the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - Maximum number of records to return.
+ * @param $filter - OData filter expression.
  */
 export const RemediationsListForResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6665,7 +7089,11 @@ export const RemediationsListForResourceGroup =
   }));
 // Input Schema
 export const RemediationsListForSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations",
@@ -6678,75 +7106,36 @@ export type RemediationsListForSubscriptionInput =
 // Output Schema
 export const RemediationsListForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              policyAssignmentId: Schema.optional(Schema.String),
-              policyDefinitionReferenceId: Schema.optional(Schema.String),
-              resourceDiscoveryMode: Schema.optional(
-                Schema.Literals([
-                  "ExistingNonCompliant",
-                  "ReEvaluateCompliance",
-                ]),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              lastUpdatedOn: Schema.optional(Schema.String),
-              filters: Schema.optional(
-                Schema.Struct({
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceIds: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              deploymentStatus: Schema.optional(
-                Schema.Struct({
-                  totalDeployments: Schema.optional(Schema.Number),
-                  successfulDeployments: Schema.optional(Schema.Number),
-                  failedDeployments: Schema.optional(Schema.Number),
-                }),
-              ),
-              statusMessage: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              resourceCount: Schema.optional(Schema.Number),
-              parallelDeployments: Schema.optional(Schema.Number),
-              failureThreshold: Schema.optional(
-                Schema.Struct({
-                  percentage: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6756,6 +7145,11 @@ export type RemediationsListForSubscriptionOutput =
 // The operation
 /**
  * Gets all remediations for the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param $top - Maximum number of records to return.
+ * @param $filter - OData filter expression.
  */
 export const RemediationsListForSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

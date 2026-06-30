@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const UserInterviewsDestroyInput =
@@ -11,7 +10,7 @@ export const UserInterviewsDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/user_interviews/{id}/",
+      path: "/api/projects/{project_id}/user_interviews/{id}/",
     }),
   );
 export type UserInterviewsDestroyInput = typeof UserInterviewsDestroyInput.Type;
@@ -32,6 +31,5 @@ export const userInterviewsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UserInterviewsDestroyInput,
     outputSchema: UserInterviewsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

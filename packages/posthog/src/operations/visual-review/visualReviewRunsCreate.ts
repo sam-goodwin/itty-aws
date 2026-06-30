@@ -32,6 +32,7 @@ export const VisualReviewRunsCreateInput =
     removed_identifiers: Schema.optional(Schema.Array(Schema.String)),
     purpose: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    is_partial: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",

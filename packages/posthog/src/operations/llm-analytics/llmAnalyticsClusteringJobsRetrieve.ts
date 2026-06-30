@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const LlmAnalyticsClusteringJobsRetrieveInput =
@@ -11,7 +10,7 @@ export const LlmAnalyticsClusteringJobsRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/llm_analytics/clustering_jobs/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/clustering_jobs/{id}/",
     }),
   );
 export type LlmAnalyticsClusteringJobsRetrieveInput =
@@ -35,7 +34,7 @@ export type LlmAnalyticsClusteringJobsRetrieveOutput =
 
 // The operation
 /**
- * CRUD for clustering job configurations (max 5 per team).
+ * CRUD for clustering job configurations (max 10 per team).
  *
  * @param id - A UUID string identifying this clustering job.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -44,5 +43,4 @@ export const llmAnalyticsClusteringJobsRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsClusteringJobsRetrieveInput,
     outputSchema: LlmAnalyticsClusteringJobsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

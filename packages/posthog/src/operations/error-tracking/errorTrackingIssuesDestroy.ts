@@ -1,7 +1,6 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
 export const ErrorTrackingIssuesDestroyInput =
@@ -11,7 +10,7 @@ export const ErrorTrackingIssuesDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/error_tracking/issues/{id}/",
+      path: "/api/projects/{project_id}/error_tracking/issues/{id}/",
     }),
   );
 export type ErrorTrackingIssuesDestroyInput =
@@ -27,13 +26,11 @@ export type ErrorTrackingIssuesDestroyOutput =
 /**
  * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
  *
- * @param id - A UUID string identifying this error tracking issue.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingIssuesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ErrorTrackingIssuesDestroyInput,
     outputSchema: ErrorTrackingIssuesDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );
